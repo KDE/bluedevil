@@ -94,10 +94,12 @@ void BlueDevilDaemon::onlineMode()
     qDebug() << "You've got '" << d->man->bluetoothInterfaces().size() << "' bluetooth interfaces";
     d->status = true;
     d->agentListener = new AgentListener(this);
+    d->agentListener->start();
+
     if (d->agentListener->isRunning()) {
-        qDebug() << "AAAAAAAAA";
+        qDebug() << "QThread is on the building!";
     } else {
-        qDebug() << "oooooooooooooo";
+        qDebug() << "No Qthread here";
     }
 }
 

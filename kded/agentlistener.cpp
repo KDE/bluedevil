@@ -20,15 +20,13 @@
 #include "agentlistener.h"
 #include <QDebug>
 
-AgentListener::AgentListener(QObject *app) : QThread(app)
+AgentListener::AgentListener(QObject* parent): QThread(parent)
 {
-    qDebug() << "AADSADASDASDA";
-    m_worker = new AgentListenerWorker(app);
-    exec();
 }
 
-AgentListener::~AgentListener()
+void AgentListener::run()
 {
-    delete m_worker;
+    m_worker = new AgentListenerWorker(new QObject);
+    exec();
 }
 

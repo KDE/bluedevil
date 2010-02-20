@@ -23,7 +23,10 @@
 #include <QDebug>
 #include <KIcon>
 #include <kiconloader.h>
+#include <QCoreApplication>
+#include <iostream>
 
+using namespace std;
 Authorize::Authorize() : QObject()
 {
     KNotification *notification = new KNotification("bluedevilAuthorize",
@@ -44,21 +47,26 @@ Authorize::Authorize() : QObject()
 
     notification->setPixmap(SmallIcon("preferences-system-bluetooth"));
     notification->sendEvent();
+    qDebug() << "Sending the F**** notification";
 }
 
 
 void Authorize::trust()
 {
     qDebug() << "Trusted";
+    //TODO: ACtually trust it
+    qApp->exit(0);
 }
 
 void Authorize::accept()
 {
-    qDebug() << "Accepted";
+    cout << "Accepted";
+    qApp->exit(0);
 }
 
 void Authorize::reject()
 {
     qDebug() << "Rejected";
+    qApp->exit(1);
 }
 

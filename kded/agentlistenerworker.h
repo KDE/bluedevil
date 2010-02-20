@@ -23,7 +23,6 @@
 
 #include <QtDBus>
 #include <QDebug>
-#include <QApplication>
 #include <QThread>
 
 class AgentListenerWorker : public QDBusAbstractAdaptor

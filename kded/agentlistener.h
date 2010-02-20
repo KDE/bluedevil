@@ -28,8 +28,9 @@ class AgentListener : public QThread
 
 public:
     AgentListener(QObject *parent);
-    ~AgentListener();
-    
+//     ~AgentListener();
+
+virtual void run();
 private:
     AgentListenerWorker *m_worker;
 };
