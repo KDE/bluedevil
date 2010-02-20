@@ -30,10 +30,10 @@ AgentListenerWorker::AgentListenerWorker(QObject *app) :  QDBusAbstractAdaptor(a
     if(!QDBusConnection::systemBus().registerObject(agentPath, app)){
         qDebug() << "The dbus object can't be registered";
     }
-    
+
     Solid::Control::BluetoothManager &man = Solid::Control::BluetoothManager::self();
-    Solid::Control::BluetoothInterface *adapter = new Solid::Control::BluetoothInterface(man.defaultInterface());
-    adapter->registerAgent(agentPath,"DisplayYesNo");
+    m_adapter = new Solid::Control::BluetoothInterface(man.defaultInterface());
+    m_adapter->registerAgent(agentPath,"DisplayYesNo");
     qDebug() << "Agent registered";
 }
 
@@ -52,15 +52,14 @@ void AgentListenerWorker::Release()
 void AgentListenerWorker::Authorize(QDBusObjectPath device, const QString& uuid, const QDBusMessage &msg)
 {
     qDebug() << "Authorize called";
-//     KProcess process;
-// //     process.setOutputChannelMode(KProcess::OnlyStdoutChannel);
-//     process.setProgram("/home/nasete/cod3s/cpp/kde/bin/bin/bluedevil-authorize");
-//     process.start();
-//     if (process.waitForFinished()) {
-//         qDebug() << "PPPPPPPPPPPPPPPPPPPPPPPP";
-//         return;
-//     }
-    int result = KProcess::execute("/home/nasete/cod3s/cpp/kde/bin/bin/bluedevil-authorize");
+
+    Solid::Control::BluetoothRemoteDevice *remote = m_adapter->findBluetoothRemoteDeviceUBI(device.path());
+
+    QStringList list;
+    list.append(remote->name());
+    list.append(device.path());
+
+    int result = KProcess::execute("/home/nasete/cod3s/cpp/kde/bin/bin/bluedevil-authorize",list);
     if (result == 0) {
         qDebug() << "Go on camarada!";
         return;
@@ -68,40 +67,20 @@ void AgentListenerWorker::Authorize(QDBusObjectPath device, const QString& uuid,
     qDebug() << "Sending Authorization cancelled";
     QDBusMessage error = msg.createErrorReply("org.bluez.Error.Canceled", "Authorization canceled");
     QDBusConnection::systemBus().send(error);
-
-    //Now the process is dead, and we should be able to get the output
-//     qDebug() << "AAA" << process.readAllStandardOutput();
-//     qDebug() << "AGENT-Authorize " << device.path() << " Service: " << uuid;
-//     remoteDevice = adapter->findBluetoothRemoteDeviceUBI(device.path());
-//     authDialog->setName(remoteDevice->name());
-//     authDialog->setAddr(remoteDevice->address());
-//     authDialog->setService(uuid);
-// 
-//     int trust = execDialog(authDialog);
-//     qDebug() << "trust value = " << trust;
-// 
-//     switch(trust) {
-//         case(2): {
-//             remoteDevice->setTrusted(true);
-//             qDebug() << "Set Always Trust for " << remoteDevice->name();
-//             return;
-// //      }
-//         case(1): {
-//             //No error no anything means OK, and this case is for the Trust button
-//             return;
-//         }
-//         case(0): {
-//             QDBusMessage error = msg.createErrorReply("org.bluez.Error.Canceled", "Authorization canceled");
-//             QDBusConnection::systemBus().send(error);
-//             break;
-//         }
-//     }
 }
 
 QString AgentListenerWorker::RequestPinCode(QDBusObjectPath device, const QDBusMessage &msg)
 {
     qDebug() << "AGENT-RequestPinCode " << device.path();
 /*
+    //     KProcess process;
+// //     process.setOutputChannelMode(KProcess::OnlyStdoutChannel);
+//     process.setProgram("/home/nasete/cod3s/cpp/kde/bin/bin/bluedevil-authorize");
+//     process.start();
+//     if (process.waitForFinished()) {
+//         qDebug() << "PPPPPPPPPPPPPPPPPPPPPPPP";
+//         return;
+//     }
     remoteDevice = adapter->findBluetoothRemoteDeviceUBI(device.path());
 
     passkeyDialog->setName(remoteDevice->name());

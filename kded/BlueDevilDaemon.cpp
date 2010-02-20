@@ -99,20 +99,12 @@ void BlueDevilDaemon::onlineMode()
         return;
     }
 
-    qDebug() << "You've got '" << d->man->bluetoothInterfaces().size() << "' bluetooth interfaces";
-    d->status = true;
+    qDebug() << "Online mode";
     d->agentListener = new AgentListener(this);
     d->agentListener->start();
-
-    if (d->agentListener->isRunning()) {
-        qDebug() << "QThread is on the building!";
-    } else {
-        qDebug() << "No Qthread here";
-    }
     d->adapter = new Solid::Control::BluetoothInterface(d->man->defaultInterface());
-//     d->adapter->setDiscoverable(true);
-//     d->adapter->setName("bluedevil-works");
     d->server = new OpenObex::Server(d->adapter->address());
+    d->status = true;
 }
 
 void BlueDevilDaemon::offlineMode()
@@ -121,14 +113,25 @@ void BlueDevilDaemon::offlineMode()
         qDebug() << "Already in offlineMode";
         return;
     }
+    qDebug() << "Offline mode";
+
+    connect(d->agentListener,SIGNAL(finished()),this,SLOT(agentThreadStopped()));
+    d->agentListener->quit();
 
     qDebug() << "You've got no bluetooth interfaces attached!";
     d->status = false;
+
+    if (d->server) {
+        d->server->close();
+        connect(d->server, SIGNAL(closed()), this, SLOT(serverClosed()));
+    }
+}
+
+void BlueDevilDaemon::agentThreadStopped()
+{
     delete d->agentListener;
     d->agentListener = 0;
-
-    d->server->close();
-    connect(d->server, SIGNAL(closed()), this, SLOT(serverClosed()));
+    qDebug() << "agent listener deleted";
 }
 
 void BlueDevilDaemon::serverClosed()

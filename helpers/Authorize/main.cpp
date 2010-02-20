@@ -38,14 +38,8 @@ int main(int argc, char *argv[])
                 );
     aboutData.addAuthor(ki18n("Alex Fiestas"), ki18n("Maintainer"), "alex@eyeos.org", "http://www.afiestas.org/");
 
-//     //Is this check needed?
-//     Solid::Control::BluetoothManager& btmanager = Solid::Control::BluetoothManager::self();
-//     if (btmanager.bluetoothInterfaces().size() == 0) {
-//         qDebug() << "No Bluetooth Adapter found!\n";
-//         return 0;
-//     }
+//     #warning Check the arguments
 
-//     KCmdLineArgs::init(argc, argv, &aboutData);
     QApplication app(argc,argv);
     Authorize *auth = new Authorize;
 

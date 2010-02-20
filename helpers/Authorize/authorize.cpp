@@ -25,6 +25,7 @@
 #include <kiconloader.h>
 #include <QCoreApplication>
 #include <iostream>
+#include <solid/control/bluetoothmanager.h>
 
 using namespace std;
 Authorize::Authorize() : QObject()
@@ -32,7 +33,8 @@ Authorize::Authorize() : QObject()
     KNotification *notification = new KNotification("bluedevilAuthorize",
                                                         KNotification::Persistent |
                                                         KNotification::CloseWhenWidgetActivated,this);
-    notification->setText(i18n("The bluetooth device XXXXX is requesting access"));
+
+    notification->setText(i18n("%1 is requesting access to this computer",qApp->arguments()[1]));
     QStringList actions;
 
     actions.append(i18nc("Text of button to always trust a bluetooth device", "Trust"));
@@ -45,16 +47,18 @@ Authorize::Authorize() : QObject()
     connect(notification, SIGNAL(action2Activated()),this, SLOT(accept()));
     connect(notification, SIGNAL(action3Activated()),this, SLOT(reject()));
 
-    notification->setPixmap(SmallIcon("preferences-system-bluetooth"));
+    notification->setPixmap(KIcon("preferences-system-bluetooth").pixmap(42,42));
     notification->sendEvent();
     qDebug() << "Sending the F**** notification";
 }
 
-
 void Authorize::trust()
 {
     qDebug() << "Trusted";
-    //TODO: ACtually trust it
+    Solid::Control::BluetoothManager &man = Solid::Control::BluetoothManager::self();
+    Solid::Control::BluetoothInterface *adapter = new Solid::Control::BluetoothInterface(man.defaultInterface());
+    Solid::Control::BluetoothRemoteDevice *remoteDevice = adapter->findBluetoothRemoteDeviceUBI(qApp->arguments()[2]);
+    remoteDevice->setTrusted(true);
     qApp->exit(0);
 }
 

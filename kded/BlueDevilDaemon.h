@@ -45,7 +45,7 @@ private Q_SLOTS:
     void adapterAdded(const QString&);
     void adapterRemoved(const QString&);
     void defaultAdapterChanged(const QString&);
-    
+    void agentThreadStopped();
 private:
     struct Private;
     Private *d;
