@@ -91,16 +91,10 @@ void BlueDevilDaemon::onlineMode()
         return;
     }
 
-    qDebug() << "You've got '" << d->man->bluetoothInterfaces().size() << "' bluetooth interfaces";
-    d->status = true;
+    qDebug() << "Online mode";
     d->agentListener = new AgentListener(this);
     d->agentListener->start();
-
-    if (d->agentListener->isRunning()) {
-        qDebug() << "QThread is on the building!";
-    } else {
-        qDebug() << "No Qthread here";
-    }
+    d->status = true;
 }
 
 void BlueDevilDaemon::offlineMode()
@@ -109,10 +103,19 @@ void BlueDevilDaemon::offlineMode()
         qDebug() << "Already in offlineMode";
         return;
     }
+    qDebug() << "Offline mode";
+
+    connect(d->agentListener,SIGNAL(finished()),this,SLOT(agentThreadStopped()));
+    d->agentListener->quit();
+
     qDebug() << "You've got no bluetooth interfaces attached!";
     d->status = false;
+}
+
+void BlueDevilDaemon::agentThreadStopped()
+{
     delete d->agentListener;
-    d->agentListener = 0;
+    d->agentListener = 0;//We're in KDED, better do not play with fire
 }
 
 

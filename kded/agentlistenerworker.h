@@ -24,6 +24,7 @@
 #include <QtDBus>
 #include <QDebug>
 #include <QThread>
+#include <solid/control/bluetoothinterface.h>
 
 class AgentListenerWorker : public QDBusAbstractAdaptor
 {
@@ -43,5 +44,8 @@ public slots:
     void RequestConfirmation(QDBusObjectPath device, quint32 passkey, const QDBusMessage &msg);
     void ConfirmModeChange(const QString& mode, const QDBusMessage &msg);
     void Cancel();
+
+private:
+    Solid::Control::BluetoothInterface *m_adapter;
 };
 #endif
