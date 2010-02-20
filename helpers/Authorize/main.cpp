@@ -23,8 +23,8 @@
 #include <kcmdlineargs.h>
 #include <solid/control/bluetoothmanager.h>
 #include <QApplication>
+
 static const KLocalizedString  description = ki18n("Small application part of BlueDevil");
-static const char *version = "0.4";
 
 int main(int argc, char *argv[])
 {
