@@ -1,0 +1,27 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN" "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+  <interface name="org.openobex.Server">
+    <signal name="Started">
+    </signal>
+    <signal name="Stopped">
+    </signal>
+    <signal name="Closed">
+    </signal>
+    <signal name="SessionCreated">
+      <arg name="session_object" type="o" direction="out"/>
+    </signal>
+    <signal name="SessionRemoved">
+      <arg name="session_object" type="o" direction="out"/>
+    </signal>
+    <signal name="ErrorOccured">
+      <arg name="error_name" type="s" direction="out"/>
+      <arg name="error_message" type="s" direction="out"/>
+    </signal>
+    <method name="Start">
+    </method>
+    <method name="Stop">
+    </method>
+    <method name="Close">
+    </method>
+  </interface>
+</node>

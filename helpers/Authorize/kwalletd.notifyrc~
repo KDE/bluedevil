@@ -1,8 +1,0 @@
-[Global]
-Comment=BlueDevil
-Name=BlueDevil2
-
-[Event/bluedevil-authorize]
-Name=Access requested
-Comment=A device wants connect to you
-Action=Popup

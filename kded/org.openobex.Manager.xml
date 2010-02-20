@@ -1,0 +1,21 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN" "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+  <interface name="org.openobex.Manager">
+    <method name="CreateBluetoothServer">
+      <arg name="source_address" type="s" direction="in"/>
+      <arg name="pattern" type="s" direction="in"/>
+      <arg name="require_pairing" type="b" direction="in"/>
+    </method>
+    <signal name="SessionConnected">
+        <arg name="path" type="o" direction="out"/>
+    </signal>
+    <signal name="SessionConnectError">
+        <arg name="path" type="o" direction="out"/>
+        <arg name="error_name" type="s" direction="out"/>
+        <arg name="error_message" type="s" direction="out"/>
+    </signal>
+    <signal name="SessionClosed">
+        <arg name="path" type="o" direction="out"/>
+    </signal>
+  </interface>
+</node>

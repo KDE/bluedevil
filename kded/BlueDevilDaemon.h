@@ -39,7 +39,9 @@ public:
 private:
     void onlineMode();
     void offlineMode();
+    
 private Q_SLOTS:
+    void serverClosed();
     void adapterAdded(const QString&);
     void adapterRemoved(const QString&);
     void defaultAdapterChanged(const QString&);

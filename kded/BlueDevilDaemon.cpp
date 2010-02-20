@@ -33,6 +33,8 @@
 #include <QWidget>
 #include <solid/control/bluetoothmanager.h>
 #include "agentlistener.h"
+#include <solid/control/bluetoothinterface.h>
+#include "openobex/server.h"
 
 K_PLUGIN_FACTORY(BlueDevilFactory,
                  registerPlugin<BlueDevilDaemon>();)
@@ -44,12 +46,18 @@ struct BlueDevilDaemon::Private
     //Do not delete this :)
     Solid::Control::BluetoothManager* man;
     AgentListener *agentListener;
+    Solid::Control::BluetoothInterface* adapter;
+    OpenObex::Server *server;
 };
 
 BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     : KDEDModule(parent),
     d(new Private)
 {
+    d->agentListener = 0;
+    d->adapter = 0;
+    d->server = 0;
+
     KGlobal::locale()->insertCatalog("bluedevil");
 
     KAboutData aboutData("bluedevil", "bluedevil", ki18n("BlueDevil"),
@@ -59,15 +67,15 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
 
     aboutData.addAuthor(ki18n("Alex Fiestas"), ki18n("Maintainer"), "alex@eyeos.org",
         "http://www.afiestas.org");
-    
+
     aboutData.addAuthor(ki18n("Eduardo Robles Elvira"), ki18n("Maintainer"), "edulix@gmail.com",
         "http://blog.edulix.es");
 
-    //Status = offiline ATM
+    //Status = offline ATM
     d->status = false;
 
     d->man = &Solid::Control::BluetoothManager::self();
-    
+
     connect(d->man,SIGNAL(interfaceAdded(const QString&)),this,SLOT(adapterAdded(const QString&)));
     connect(d->man,SIGNAL(interfaceRemoved(const QString&)),this,SLOT(adapterRemoved(const QString&)));
     connect(d->man,SIGNAL(defaultInterfaceChanged(const QString&)),this,SLOT(defaultAdapterChanged(const QString&)));
@@ -101,6 +109,10 @@ void BlueDevilDaemon::onlineMode()
     } else {
         qDebug() << "No Qthread here";
     }
+    d->adapter = new Solid::Control::BluetoothInterface(d->man->defaultInterface());
+//     d->adapter->setDiscoverable(true);
+//     d->adapter->setName("bluedevil-works");
+    d->server = new OpenObex::Server(d->adapter->address());
 }
 
 void BlueDevilDaemon::offlineMode()
@@ -109,18 +121,27 @@ void BlueDevilDaemon::offlineMode()
         qDebug() << "Already in offlineMode";
         return;
     }
+
     qDebug() << "You've got no bluetooth interfaces attached!";
     d->status = false;
     delete d->agentListener;
     d->agentListener = 0;
+
+    d->server->close();
+    connect(d->server, SIGNAL(closed()), this, SLOT(serverClosed()));
 }
 
+void BlueDevilDaemon::serverClosed()
+{
+    delete d->server;
+    d->server = 0;
+}
 
 void BlueDevilDaemon::adapterAdded(const QString& adapterName)
 {
     qDebug() << adapterName;
     if (d->man->bluetoothInterfaces().size() > 0 && d->status == false) {
-        onlineMode();
+        onlineMode(); 
     }
 }
 
@@ -131,6 +152,7 @@ void BlueDevilDaemon::adapterRemoved(const QString& adapterName)
         offlineMode();
     }
 }
+
 void BlueDevilDaemon::defaultAdapterChanged(const QString& adapterName)
 {
     qDebug() << adapterName;
