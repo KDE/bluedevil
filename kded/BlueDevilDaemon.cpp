@@ -101,7 +101,9 @@ void BlueDevilDaemon::onlineMode()
 
     qDebug() << "Online mode";
     d->agentListener = new AgentListener(this);
+    connect(d->agentListener,SIGNAL(agentReleased()),this,SLOT(agentRelaesed()));
     d->agentListener->start();
+
     d->adapter = new Solid::Control::BluetoothInterface(d->man->defaultInterface());
     d->server = new OpenObex::Server(d->adapter->address());
     d->status = true;
@@ -125,6 +127,18 @@ void BlueDevilDaemon::offlineMode()
         d->server->close();
         connect(d->server, SIGNAL(closed()), this, SLOT(serverClosed()));
     }
+}
+
+/*
+ * The agent is released by another agents, for example if an user wants to use
+ * blueman agent in kde, we've to respect the user decision here, so ATM until we have
+ * the KCM, we should just delete the agent and be quiet
+ */
+void BlueDevilDaemon::agentRelaesed()
+{
+    //If this code grows just one line, put it in a method
+    connect(d->agentListener,SIGNAL(finished()),this,SLOT(agentThreadStopped()));
+    d->agentListener->quit();
 }
 
 void BlueDevilDaemon::agentThreadStopped()

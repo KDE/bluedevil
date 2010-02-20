@@ -45,14 +45,13 @@ AgentListenerWorker::~AgentListenerWorker()
 void AgentListenerWorker::Release()
 {
     qDebug() << "Agent Release";
-//     if ( exitOnRelease() )
-//         app->quit();
+    emit agentReleased();
 }
 
 void AgentListenerWorker::Authorize(QDBusObjectPath device, const QString& uuid, const QDBusMessage &msg)
 {
     qDebug() << "Authorize called";
-
+emit agentReleased();
     Solid::Control::BluetoothRemoteDevice *remote = m_adapter->findBluetoothRemoteDeviceUBI(device.path());
 
     QStringList list;

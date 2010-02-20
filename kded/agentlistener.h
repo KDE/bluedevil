@@ -26,13 +26,18 @@
 class AgentListener : public QThread
 {
 
+Q_OBJECT
 public:
     AgentListener(QObject *parent);
-//     ~AgentListener();
 
-virtual void run();
+Q_SIGNALS:
+    void agentReleased();
+
 private:
     AgentListenerWorker *m_worker;
+
+virtual void run();
 };
+
 
 #endif // AGENTLISTENER_H

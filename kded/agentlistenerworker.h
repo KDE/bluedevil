@@ -45,6 +45,9 @@ public slots:
     void ConfirmModeChange(const QString& mode, const QDBusMessage &msg);
     void Cancel();
 
+Q_SIGNALS:
+    void agentReleased();
+
 private:
     Solid::Control::BluetoothInterface *m_adapter;
 };
