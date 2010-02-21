@@ -21,7 +21,7 @@
 #ifndef AUTHORIZE_H
 #define AUTHORIZE_H
 
-#include <kapplication.h>
+#include <QObject>
 
 /**
  * @short Small class which send a KNotificaton to know if the Bluetooth device is authorized or not
@@ -43,7 +43,7 @@ class Authorize : public QObject
 
     private slots:
         /**
-         * Mark the remot device as trust and quit the application as success
+         * Mark the remote device as trust and quit the application as success
          */
         void trust();
 
