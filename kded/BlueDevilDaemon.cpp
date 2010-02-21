@@ -172,4 +172,7 @@ void BlueDevilDaemon::adapterRemoved(const QString& adapterName)
 void BlueDevilDaemon::defaultAdapterChanged(const QString& adapterName)
 {
     qDebug() << adapterName;
+    //This should do the trick :)
+    offlineMode();
+    onlineMode();
 }
