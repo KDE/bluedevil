@@ -55,7 +55,7 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     KGlobal::locale()->insertCatalog("bluedevil");
 
     KAboutData aboutData("bluedevil", "bluedevil", ki18n("BlueDevil"),
-        BLUEDEVIL_VERSION, ki18n("KDE4 Bluetooth System"),
+        BLUEDEVIL_VERSION, ki18n("KDE Bluetooth System"),
         KAboutData::License_GPL, ki18n("(c) 2010 Artesanos del Software "),
         KLocalizedString(), "http://www.kde.org");
 
