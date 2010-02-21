@@ -101,7 +101,7 @@ void BlueDevilDaemon::onlineMode()
 
     qDebug() << "Online mode";
     d->agentListener = new AgentListener(this);
-    connect(d->agentListener,SIGNAL(agentReleased()),this,SLOT(agentRelaesed()));
+    connect(d->agentListener,SIGNAL(agentReleased()),this,SLOT(agentReleased()));
     d->agentListener->start();
 
     d->adapter = new Solid::Control::BluetoothInterface(d->man->defaultInterface());
@@ -134,7 +134,7 @@ void BlueDevilDaemon::offlineMode()
  * blueman agent in kde, we've to respect the user decision here, so ATM until we have
  * the KCM, we should just delete the agent and be quiet
  */
-void BlueDevilDaemon::agentRelaesed()
+void BlueDevilDaemon::agentReleased()
 {
     //If this code grows just one line, put it in a method
     connect(d->agentListener,SIGNAL(finished()),this,SLOT(agentThreadStopped()));
