@@ -26,7 +26,6 @@
 #include <KIcon>
 #include <kiconloader.h>
 #include <QCoreApplication>
-#include <iostream>
 #include <solid/control/bluetoothmanager.h>
 
 using namespace std;
@@ -47,8 +46,8 @@ ConfirmeModeChange::ConfirmeModeChange() : QObject()
 
     notification->setActions(actions);
 
-    connect(notification, SIGNAL(action2Activated()),this, SLOT(confirm()));
-    connect(notification, SIGNAL(action3Activated()),this, SLOT(deny()));
+    connect(notification, SIGNAL(action1Activated()),this, SLOT(confirm()));
+    connect(notification, SIGNAL(action2Activated()),this, SLOT(deny()));
 
     notification->setPixmap(KIcon("preferences-system-bluetooth").pixmap(42,42));
     notification->sendEvent();
@@ -56,13 +55,13 @@ ConfirmeModeChange::ConfirmeModeChange() : QObject()
 
 void ConfirmeModeChange::confirm()
 {
-    cout << "Accepted";
+    qDebug << "confirmed";
     qApp->exit(0);
 }
 
 void ConfirmeModeChange::deny()
 {
-    qDebug() << "Rejected";
+    qDebug() << "Denied";
     qApp->exit(1);
 }
 
