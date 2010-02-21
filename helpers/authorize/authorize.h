@@ -42,8 +42,19 @@ class Authorize : public QObject
         Authorize();
 
     private slots:
+        /**
+         * Mark the remot device as trust and quit the application as success
+         */
         void trust();
+
+        /**
+         * Quits the application as success
+         */
         void authorize();
+
+        /**
+         * Quits the application as error
+         */
         void deny();
 };
 #endif
