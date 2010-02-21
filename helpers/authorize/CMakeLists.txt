@@ -19,4 +19,4 @@ install(TARGETS bluedevil-authorize
         DESTINATION ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES bluedevil-authorize.notifyrc
-       DESTINATION ${DATA_INSTALL_DIR}/bluedevil)
+       DESTINATION ${DATA_INSTALL_DIR}/bluedevil-authorize)
