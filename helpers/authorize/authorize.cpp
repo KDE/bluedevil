@@ -36,12 +36,15 @@ Authorize::Authorize() : QObject()
                                                         KNotification::Persistent |
                                                         KNotification::CloseWhenWidgetActivated,this);
 
-    notification->setText(i18n("%1 is requesting access to this computer",qApp->arguments()[1]));
+    notification->setText(i18nc(
+        "Show a notification asking for authorize or deny access to this computer from Bluetooth",
+        "%1 is requesting access to this computer",qApp->arguments()[1])
+    );
     QStringList actions;
 
-    actions.append(i18nc("Text of button to always trust a bluetooth device", "Trust"));
-    actions.append(i18nc("Text of button to access a conneciton only once", "Authorize"));
-    actions.append(i18nc("Text of button to reject the incoming bluetooth connection", "Deny"));
+    actions.append(i18nc("Button to trust a bluetooth remote device and authorize it to connect", "Trust"));
+    actions.append(i18nc("Button to authorize a bluetooth remote device to connect ", "Authorize"));
+    actions.append(i18nc("Deny access to a remote bluetooth device", "Deny"));
 
     notification->setActions(actions);
 
@@ -51,7 +54,6 @@ Authorize::Authorize() : QObject()
 
     notification->setPixmap(KIcon("preferences-system-bluetooth").pixmap(42,42));
     notification->sendEvent();
-    qDebug() << "Sending the F**** notification";
 }
 
 void Authorize::trust()
