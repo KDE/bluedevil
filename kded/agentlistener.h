@@ -37,8 +37,8 @@ class AgentListener : public QThread
 
 Q_OBJECT
 public:
-    AgentListener(QObject *parent);
-
+    AgentListener();
+    virtual ~AgentListener();
 Q_SIGNALS:
     void agentReleased();
 

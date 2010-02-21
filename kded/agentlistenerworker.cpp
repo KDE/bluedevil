@@ -23,11 +23,11 @@
 #include <KProcess>
 #include <solid/control/bluetoothmanager.h>
 
-AgentListenerWorker::AgentListenerWorker(QObject *app) :  QDBusAbstractAdaptor(app)
+AgentListenerWorker::AgentListenerWorker(QObject *parent) :  QDBusAbstractAdaptor(parent)
 {
     const QString agentPath = "/blueDevil_agent";
 
-    if(!QDBusConnection::systemBus().registerObject(agentPath, app)){
+    if(!QDBusConnection::systemBus().registerObject(agentPath, parent)){
         qDebug() << "The dbus object can't be registered";
         return;
     }
@@ -38,8 +38,12 @@ AgentListenerWorker::AgentListenerWorker(QObject *app) :  QDBusAbstractAdaptor(a
     qDebug() << "Agent registered";
 }
 
-AgentListenerWorker::~AgentListenerWorker()
+void AgentListenerWorker::unregister()
 {
+    const QString agentPath = "/blueDevil_agent";
+
+    qDebug() << "Unregistering object";
+    QDBusConnection::systemBus().unregisterObject(agentPath);
 }
 
 void AgentListenerWorker::Release()

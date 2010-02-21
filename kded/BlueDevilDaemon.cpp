@@ -100,12 +100,14 @@ void BlueDevilDaemon::onlineMode()
     }
 
     qDebug() << "Online mode";
-    d->agentListener = new AgentListener(this);
+
+    d->agentListener = new AgentListener();
     connect(d->agentListener,SIGNAL(agentReleased()),this,SLOT(agentReleased()));
     d->agentListener->start();
 
     d->adapter = new Solid::Control::BluetoothInterface(d->man->defaultInterface());
     d->server = new OpenObex::Server(d->adapter->address());
+
     d->status = true;
 }
 
@@ -143,8 +145,9 @@ void BlueDevilDaemon::agentReleased()
 
 void BlueDevilDaemon::agentThreadStopped()
 {
-    delete d->agentListener;
+    d->agentListener->deleteLater();
     d->agentListener = 0;
+
     qDebug() << "agent listener deleted";
 }
 
@@ -158,7 +161,7 @@ void BlueDevilDaemon::adapterAdded(const QString& adapterName)
 {
     qDebug() << adapterName;
     if (d->man->bluetoothInterfaces().size() > 0 && d->status == false) {
-        onlineMode(); 
+        onlineMode();
     }
 }
 

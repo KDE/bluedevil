@@ -43,12 +43,7 @@ public:
     /**
      * Register the path and initialize the  m_adapter
      */
-    AgentListenerWorker(QObject *app);
-
-    /**
-     * Unregister the path
-     */
-    ~AgentListenerWorker();
+    AgentListenerWorker(QObject *parent);
 
 public slots:
     /**
@@ -99,6 +94,13 @@ Q_SIGNALS:
      * Emited to propagate the release call (so BlueDevil can decide what to do)
      */
     void agentReleased();
+
+public:
+    /**
+     * Called by agentListener just before delete. This is needed because ~QDBusAbstractAdaptor is
+     * not virtual
+     */
+    void unregister();
 
 private:
     /**
