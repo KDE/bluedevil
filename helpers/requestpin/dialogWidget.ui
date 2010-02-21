@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>272</width>
-    <height>152</height>
+    <width>273</width>
+    <height>95</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,32 +19,16 @@
      <x>0</x>
      <y>0</y>
      <width>271</width>
-     <height>151</height>
+     <height>91</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QWidget" name="imageContainer" native="true">
-        <property name="minimumSize">
-         <size>
-          <width>64</width>
-          <height>64</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="descLabel">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>71</height>
-         </size>
-        </property>
+       <widget class="QLabel" name="pixmap">
         <property name="text">
-         <string>TextLabel</string>
+         <string/>
         </property>
        </widget>
       </item>
@@ -59,10 +43,33 @@
         </property>
        </widget>
       </item>
-      <item>
-       <widget class="KLineEdit" name="pin"/>
-      </item>
      </layout>
+    </item>
+    <item row="1" column="1">
+     <widget class="KLineEdit" name="pin">
+      <property name="urlDropsEnabled">
+       <bool>false</bool>
+      </property>
+      <property name="trapEnterKeyEvent" stdset="0">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLabel" name="descLabel">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>

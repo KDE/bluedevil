@@ -51,21 +51,23 @@ RequestPin::RequestPin() : QObject()
 
 void RequestPin::introducePin()
 {
-    QPixmap pixmap = KIcon("preferences-system-bluetooth").pixmap(42,42);
+    KIcon icon = KIcon("preferences-system-bluetooth");
 
     Ui::dialogWidget *dialogWidget = new Ui::dialogWidget;
     QWidget *mainWidget = new QWidget();
     dialogWidget->setupUi(mainWidget);
-    dialogWidget->descLabel->setText(i18n("In order to pair this computer with %1 you've to enter a PIN, do it below please"));
-//     dialgoWidget->imageContainer->render(&pixmap);
+    dialogWidget->descLabel->setText(i18n("In order to pair this computer with %1 you've to enter a PIN, do it below please",qApp->arguments()[1]));
+    dialogWidget->pixmap->setPixmap(icon.pixmap(64,64));
     
     KDialog *dialog = new KDialog();
     dialog->setMainWidget(mainWidget);
 
     dialog->setCaption(i18n("Introduce the PIN"));
     dialog->setButtons(KDialog::Ok | KDialog::Cancel);
-    dialog->setMinimumWidth(430);
-    dialog->setMinimumHeight(200);
+    dialog->setMinimumWidth(300);
+    dialog->setMinimumHeight(150);
+    dialog->setMaximumWidth(300);
+    dialog->setMaximumHeight(150);
     int response = dialog->exec();
 
     if(response == QDialog::Accepted)
