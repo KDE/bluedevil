@@ -23,6 +23,15 @@
 #include <QThread>
 #include "agentlistenerworker.h"
 
+/**
+ * @internal
+ * @short This class is only a delegate to be able to use agentlistener on a QThread (We can't inherit
+ *        from 2 QObjects
+ * This class is only a delegate to be able to use agentlistener on a QThread (We can't inherit
+ * from 2 QObjects, so we had to create a new Class only to do the threading stuff
+ * @ref AgentListenerWorker
+ * @since 1.0
+ */
 class AgentListener : public QThread
 {
 
