@@ -18,6 +18,9 @@
       <arg name="error_message" type="s" direction="out"/>
     </signal>
     <method name="Start">
+      <arg name="path" type="s" direction="in"/>
+      <arg name="allow_write" type="b" direction="in"/>
+      <arg name="auto_accept" type="b" direction="in"/>
     </method>
     <method name="Stop">
     </method>

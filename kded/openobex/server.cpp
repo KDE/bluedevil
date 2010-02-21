@@ -67,7 +67,7 @@ OpenObex::Server::~Server()
 
 void OpenObex::Server::start()
 {
-    d->dbusServer->Start();
+    d->dbusServer->Start(QString("/tmp"), true, false);
     emit started();
 }
 
@@ -115,8 +115,11 @@ void OpenObex::Server::slotStopped()
 
 void OpenObex::Server::serverCreated(QDBusObjectPath path)
 {
+    QDBusConnection* dbus = new QDBusConnection("dbus");
+    QDBusConnection dbusconn = dbus->connectToBus(QDBusConnection::SessionBus, "dbus");
+
     d->dbusServer = new org::openobex::Server("org.openobex",
-        path.path(), QDBusConnection::sessionBus(), this);
+        path.path(), dbusconn, this);
 
     //This interface MUST be valid too, if not is because openobex have some problem
     if(!d->dbusServer->isValid()){
@@ -136,6 +139,7 @@ void OpenObex::Server::serverCreated(QDBusObjectPath path)
         this, SLOT(slotSessionRemoved(QDBusObjectPath)));
     connect(d->dbusServer, SIGNAL(ErrorOccured(const QString&, const QString&)),
         this, SLOT(slotErrorOccured(const QString&, const QString&)));
+    start();
 }
 
 void OpenObex::Server::serverCreatedError(QDBusError error)
