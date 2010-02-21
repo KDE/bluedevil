@@ -91,22 +91,8 @@ QString AgentListenerWorker::RequestPinCode(QDBusObjectPath device, const QDBusM
 quint32 AgentListenerWorker::RequestPasskey(QDBusObjectPath device, const QDBusMessage &msg)
 {
     qDebug() << "AGENT-RequestPasskey " << device.path();
-/*
-    remoteDevice = adapter->findBluetoothRemoteDeviceUBI(device.path());
-
-    passkeyDialog->setName(remoteDevice->name());
-    passkeyDialog->setAddr(remoteDevice->address());
-
-    bool done = execDialog(passkeyDialog);
-
-    qDebug() << "passkey " << QString::number(passkey);
-
-    if (done)
-        return passkey;
-
-    QDBusMessage error = msg.createErrorReply("org.bluez.Error.Canceled", "Passkey request failed");
-    QDBusConnection::systemBus().send(error);
-    return 0;*/
+    //We've to check if pin can be a string actually (or is only the return format)
+    RequestPinCode(device, msg);
 }
 
 void AgentListenerWorker::DisplayPasskey(QDBusObjectPath device, quint32 passkey)
@@ -136,19 +122,18 @@ void AgentListenerWorker::RequestConfirmation(QDBusObjectPath device, quint32 pa
 
 void AgentListenerWorker::ConfirmModeChange(const QString& mode, const QDBusMessage &msg)
 {
-//     qDebug() << "AGENT-ConfirmModeChange " << adapter->name() << " " << adapter->address() << " " << mode;
-        qDebug() << "AGENT-ConfirmModeChange " << " " << mode;
-//     confirmDialog->setName(adapter->name());
-//     confirmDialog->setAddr(adapter->address());
-//     confirmDialog->setMode(mode);
-// 
-//     bool confirm = execDialog(confirmDialog);
-// 
-//     if (confirm)
-//         return;
-// 
-//     QDBusMessage error = msg.createErrorReply("org.bluez.Error.Rejected", "Mode change rejected");
-//     QDBusConnection::systemBus().send(error);
+
+    QStringList list;
+    list.append(mode);
+
+    int result = KProcess::execute("bluedevil-confirmchangemode",list);
+    if (result == 0) {
+        qDebug() << "Go on camarada!";
+        return;
+    }
+    qDebug() << "Sending Authorization cancelled";
+    QDBusMessage error = msg.createErrorReply("org.bluez.Error.Canceled", "Authorization canceled");
+    QDBusConnection::systemBus().send(error);
 }
 
 void AgentListenerWorker::Cancel()
