@@ -35,6 +35,10 @@ class Authorize : public QObject
 {
     Q_OBJECT
     public:
+        /**
+         * Launch the KNotification which the respective actions, also makes the needed connection
+         * between those actions and the slots
+         */
         Authorize();
 
     private slots:
