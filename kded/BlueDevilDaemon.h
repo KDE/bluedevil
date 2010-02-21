@@ -33,20 +33,56 @@ class KDE_EXPORT BlueDevilDaemon : public KDEDModule
     Q_CLASSINFO("D-Bus Interface", "org.kde.BlueDevil")
 
 public:
+    /**
+     * Stablish basics connections with solid siganls and calls online if interfaces are availables
+     */
     BlueDevilDaemon(QObject *parent, const QList<QVariant>&);
     virtual ~BlueDevilDaemon();
 
 private:
+    /**
+     * Called by constructor or eventually by adapterAdded initialize all the helpers
+     * @see helpers
+     */
     void onlineMode();
+
+    /**
+     * Called eventually adapterRemoved shutdown all the helpers
+     * @see helpers
+     */
     void offlineMode();
-    
+
 private Q_SLOTS:
-    void serverClosed();
+    /**
+     * Called when a new adapter is available calls onlineMode if needed
+     */
     void adapterAdded(const QString&);
+
+    /**
+     * Called when an adapter is removed calls offlineMode if needed
+     */
     void adapterRemoved(const QString&);
+
+    /**
+     * Called when the default adapter changes, re-initialize the kded with the new
+     * default adapter
+     */
     void defaultAdapterChanged(const QString&);
+
+    /**
+     * AgentListner is a QThread, so we've to delete it after call QThread::quit();
+     */
     void agentThreadStopped();
+
+    /**
+     * When the agent is released this is called to unload it
+     */
     void agentReleased();
+
+    /**
+     * Remove the server object
+     */
+    void serverClosed();
 
 private:
     struct Private;
