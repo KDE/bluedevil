@@ -26,6 +26,7 @@
 #include <KIcon>
 #include <kiconloader.h>
 #include <QCoreApplication>
+#include <iostream>
 #include <solid/control/bluetoothmanager.h>
 
 using namespace std;
