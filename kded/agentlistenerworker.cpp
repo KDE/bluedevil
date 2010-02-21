@@ -58,7 +58,7 @@ void AgentListenerWorker::Authorize(QDBusObjectPath device, const QString& uuid,
     list.append(remote->name());
     list.append(device.path());
 
-    int result = KProcess::execute("/home/nasete/cod3s/cpp/kde/bin/bin/bluedevil-authorize",list);
+    int result = KProcess::execute("bluedevil-authorize",list);
     if (result == 0) {
         qDebug() << "Go on camarada!";
         return;
@@ -77,7 +77,7 @@ QString AgentListenerWorker::RequestPinCode(QDBusObjectPath device, const QDBusM
 
     KProcess process;
     process.setOutputChannelMode(KProcess::OnlyStdoutChannel);
-    process.setProgram("/home/nasete/cod3s/cpp/kde/bin/bin/bluedevil-requestpin",list);
+    process.setProgram("bluedevil-requestpin",list);
     process.start();
 
     if (process.waitForFinished()) {
