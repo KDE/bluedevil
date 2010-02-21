@@ -63,9 +63,12 @@ void AgentListenerWorker::Authorize(QDBusObjectPath device, const QString& uuid,
         qDebug() << "Go on camarada!";
         return;
     }
-    qDebug() << "Sending Authorization cancelled";
-    QDBusMessage error = msg.createErrorReply("org.bluez.Error.Canceled", "Authorization canceled");
-    QDBusConnection::systemBus().send(error);
+
+}
+
+void AgentListenerWorker::sendBluezError(QString helper)
+{
+    
 }
 
 QString AgentListenerWorker::RequestPinCode(QDBusObjectPath device, const QDBusMessage &msg)
@@ -80,10 +83,12 @@ QString AgentListenerWorker::RequestPinCode(QDBusObjectPath device, const QDBusM
     process.setProgram("bluedevil-requestpin",list);
     process.start();
 
-    if (process.waitForFinished()) {
+    if (process.waitForFinished(-1)) {
         return QString(process.readAllStandardOutput());
     }
 
+    }
+    qDebug() << "Timeout men!";
     QDBusMessage error = msg.createErrorReply("org.bluez.Error.Canceled", "Pincode request failed");
     QDBusConnection::systemBus().send(error);
 }
@@ -122,7 +127,7 @@ void AgentListenerWorker::RequestConfirmation(QDBusObjectPath device, quint32 pa
 
 void AgentListenerWorker::ConfirmModeChange(const QString& mode, const QDBusMessage &msg)
 {
-
+    qDebug() << "AGENT-ConfirmModechange " << mode;
     QStringList list;
     list.append(mode);
 
@@ -139,10 +144,5 @@ void AgentListenerWorker::ConfirmModeChange(const QString& mode, const QDBusMess
 void AgentListenerWorker::Cancel()
 {
     qDebug() << "AGENT-Cancel";
-
-//     if (!currentDialog)
-//         return;
-// 
-//     currentDialog->reject();
-//     currentDialog = 0;
+    
 }
