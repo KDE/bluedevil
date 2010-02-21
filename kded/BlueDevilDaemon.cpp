@@ -51,8 +51,7 @@ struct BlueDevilDaemon::Private
 };
 
 BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
-    : KDEDModule(parent),
-    d(new Private)
+    : KDEDModule(parent), d(new Private)
 {
     d->agentListener = 0;
     d->adapter = 0;
@@ -82,8 +81,6 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
 
     if ( d->man->bluetoothInterfaces().size() > 0 ) {
         onlineMode();
-    } else {
-        offlineMode();
     }
 }
 
