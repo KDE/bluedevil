@@ -117,18 +117,21 @@ void AgentListenerWorker::DisplayPasskey(QDBusObjectPath device, quint32 passkey
 void AgentListenerWorker::RequestConfirmation(QDBusObjectPath device, quint32 passkey, const QDBusMessage &msg)
 {
     qDebug() << "AGENT-RequestConfirmation " << device.path() << ", " << QString::number(passkey);
-//     remoteDevice = adapter->findBluetoothRemoteDeviceUBI(device.path());
-//     confirmDialog->setName(remoteDevice->name());
-//     confirmDialog->setAddr(remoteDevice->address());
-//     confirmDialog->setPassKey(QString::number(passkey));
-// 
-//     bool confirm = execDialog(confirmDialog);
-// 
-//     if (confirm)
-//         return;
-// 
-//     QDBusMessage error = msg.createErrorReply("org.bluez.Error.Rejected", "Confirmation rejected");
-//     QDBusConnection::systemBus().send(error);
+
+    Solid::Control::BluetoothRemoteDevice *remote = m_adapter->findBluetoothRemoteDeviceUBI(device.path());
+
+    QStringList list;
+    list.append(remote->name());
+    list.append(device.path());
+
+    int result = KProcess::execute("bluedevil-requestconfirmation",list);
+    if (result == 0) {
+        qDebug() << "Go on camarada!";
+        return;
+    }
+    qDebug() << "Sending Authorization cancelled";
+    QDBusMessage error = msg.createErrorReply("org.bluez.Error.Canceled", "Authorization canceled");
+    QDBusConnection::systemBus().send(error);
 }
 
 void AgentListenerWorker::ConfirmModeChange(const QString& mode, const QDBusMessage &msg)

@@ -1,0 +1,9 @@
+[Global]
+IconName=preferences-system-bluetooth
+Comment=BlueDevil
+Name=BlueDevil
+
+[Event/bluedevilRequestConfirmation]
+Name=Access requested
+Comment=A device ask for confirmation
+Action=Popup
