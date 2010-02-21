@@ -16,7 +16,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA            *
  ***************************************************************************/
 
-#include "authorize.h"
+#include "requestpin.h"
 #include <QDebug>
 #include <kcomponentdata.h>
 #include <kaboutdata.h>
@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 //     #warning Check the arguments
 
     QApplication app(argc,argv);
-    Authorize *auth = new Authorize;
+    RequestPin *auth = new RequestPin;
 
     return app.exec();
 }

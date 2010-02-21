@@ -16,8 +16,9 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA            *
  ***************************************************************************/
 
-#include "authorize.h"
+#include "requestpin.h"
 #include <knotification.h>
+#include "ui_dialogWidget.h"
 #include <klocale.h>
 
 #include <QDebug>
@@ -26,51 +27,53 @@
 #include <QCoreApplication>
 #include <iostream>
 #include <solid/control/bluetoothmanager.h>
+#include <KDialog>
 
 using namespace std;
-Authorize::Authorize() : QObject()
+RequestPin::RequestPin() : QObject()
 {
-    KNotification *notification = new KNotification("bluedevilAuthorize",
+    KNotification *notification = new KNotification("bluedevilRequestPin",
                                                         KNotification::Persistent |
                                                         KNotification::CloseWhenWidgetActivated,this);
 
-    notification->setText(i18n("%1 is requesting access to this computer",qApp->arguments()[1]));
+    notification->setText(i18n("Pin is needed to pair with %1",qApp->arguments()[1]));
     QStringList actions;
 
-    actions.append(i18nc("Text of button to always trust a bluetooth device", "Trust"));
-    actions.append(i18nc("Text of button to access a conneciton only once", "Accept"));
-    actions.append(i18nc("Text of button to reject the incoming bluetooth connection", "Reject"));
+    actions.append(i18nc("Text of button to always trust a bluetooth device", "Introduce pin"));
 
     notification->setActions(actions);
 
-    connect(notification, SIGNAL(action1Activated()),this, SLOT(trust()));
-    connect(notification, SIGNAL(action2Activated()),this, SLOT(accept()));
-    connect(notification, SIGNAL(action3Activated()),this, SLOT(reject()));
+    connect(notification, SIGNAL(action1Activated()),this, SLOT(introducePin()));
 
     notification->setPixmap(KIcon("preferences-system-bluetooth").pixmap(42,42));
     notification->sendEvent();
-    qDebug() << "Sending the F**** notification";
 }
 
-void Authorize::trust()
+void RequestPin::introducePin()
 {
-    qDebug() << "Trusted";
-    Solid::Control::BluetoothManager &man = Solid::Control::BluetoothManager::self();
-    Solid::Control::BluetoothInterface *adapter = new Solid::Control::BluetoothInterface(man.defaultInterface());
-    Solid::Control::BluetoothRemoteDevice *remoteDevice = adapter->findBluetoothRemoteDeviceUBI(qApp->arguments()[2]);
-    remoteDevice->setTrusted(true);
-    qApp->exit(0);
-}
+    QPixmap pixmap = KIcon("preferences-system-bluetooth").pixmap(42,42);
 
-void Authorize::accept()
-{
-    cout << "Accepted";
-    qApp->exit(0);
-}
+    Ui::dialogWidget *dialogWidget = new Ui::dialogWidget;
+    QWidget *mainWidget = new QWidget();
+    dialogWidget->setupUi(mainWidget);
+    dialogWidget->descLabel->setText(i18n("In order to pair this computer with %1 you've to enter a PIN, do it below please"));
+//     dialgoWidget->imageContainer->render(&pixmap);
+    
+    KDialog *dialog = new KDialog();
+    dialog->setMainWidget(mainWidget);
 
-void Authorize::reject()
-{
-    qDebug() << "Rejected";
+    dialog->setCaption(i18n("Introduce the PIN"));
+    dialog->setButtons(KDialog::Ok | KDialog::Cancel);
+    dialog->setMinimumWidth(430);
+    dialog->setMinimumHeight(200);
+    int response = dialog->exec();
+
+    if(response == QDialog::Accepted)
+    {
+        cout << dialogWidget->pin->text().toLatin1().data();
+        qApp->exit(0);
+    }
+    delete dialog;
     qApp->exit(1);
 }
 

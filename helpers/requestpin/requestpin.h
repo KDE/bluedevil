@@ -19,17 +19,15 @@
 #ifndef AUTHORIZE_H
 #define AUTHORIZE_H
 
-#include <kapplication.h>
+#include <QObject>
 
-class Authorize : public QObject
+class RequestPin : public QObject
 {
     Q_OBJECT
     public:
-        Authorize();
+        RequestPin();
 
     private slots:
-        void trust();
-        void accept();
-        void reject();
+        void introducePin();
 };
 #endif
