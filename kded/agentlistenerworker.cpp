@@ -96,7 +96,8 @@ QString AgentListenerWorker::RequestPinCode(QDBusObjectPath device, const QDBusM
 quint32 AgentListenerWorker::RequestPasskey(QDBusObjectPath device, const QDBusMessage &msg)
 {
     qDebug() << "AGENT-RequestPasskey " << device.path();
-    RequestPinCode(device, msg);
+    QString ret = RequestPinCode(device, msg);
+    return ret.toInt();
 }
 
 void AgentListenerWorker::DisplayPasskey(QDBusObjectPath device, quint32 passkey)
@@ -140,7 +141,7 @@ void AgentListenerWorker::Cancel()
 {
     qDebug() << "AGENT-Cancel";
 }
- 
+
 
 void AgentListenerWorker::sendBluezError(const QString &helper, const QDBusMessage &msg)
 {
