@@ -39,14 +39,9 @@ OpenObex::Server::Server(const QString& addr) : QObject(0), d(new Private)
         return;
     }
 
-    QString obexService = "org.openobex";
-    QString path = "/org/openobex";
-    QString method = "CreateBluetoothServer";
-    QString iface = "org.openobex.Manager";
-
     qDebug() << addr;
 
-    QDBusInterface* manager = new QDBusInterface(obexService, path, iface, dbusconn);
+    QDBusInterface* manager = new QDBusInterface("org.openobex", "/org/openobex", "org.openobex.Manager", dbusconn);
 
     QString pattern = "opp";
     bool require_pairing = false;
@@ -54,7 +49,7 @@ OpenObex::Server::Server(const QString& addr) : QObject(0), d(new Private)
     args << addr << pattern << require_pairing;
     qDebug() << args;
     qDebug() << "CallWithCallback";
-    manager->callWithCallback(method, args, this,
+    manager->callWithCallback("CreateBluetoothServer", args, this,
         SLOT(serverCreated(QDBusObjectPath)),
         SLOT(serverCreatedError(QDBusError)));
     delete dbus;
