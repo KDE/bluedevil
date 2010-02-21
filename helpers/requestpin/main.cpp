@@ -19,28 +19,30 @@
 */
 
 #include "requestpin.h"
-#include <QDebug>
 #include <kcomponentdata.h>
 #include <kaboutdata.h>
 #include <kcmdlineargs.h>
 #include <solid/control/bluetoothmanager.h>
 #include <QApplication>
 
-static const KLocalizedString  description = ki18n("Small application part of BlueDevil");
+static const KLocalizedString  description = ki18n("KDE Bluetooth System");
 
 int main(int argc, char *argv[])
 {
-    KAboutData aboutData("BlueDevil-Authorize",
-                "bluedevil",
-                ki18n("BlueDevil"),
-                "1.0",
-                description,
-                KAboutData::License_GPL,
-                ki18n("(c) 2008-2009, Artesanos del Sotware")
-                );
-    aboutData.addAuthor(ki18n("Alex Fiestas"), ki18n("Maintainer"), "alex@eyeos.org", "http://www.afiestas.org/");
+    KAboutData aboutData(
+        "BlueDevil",
+        "bluedevil",
+        ki18n("BlueDevil"),
+        "1.0",
+        description,
+        KAboutData::License_GPL,
+        ki18n("(c) 2010, Artesanos del Sotware")
+    );
 
-//     #warning Check the arguments
+    aboutData.addAuthor(ki18n("Alex Fiestas"), ki18n("Maintainer"), "alex@eyeos.org",
+        "http://www.afiestas.org/");
+    aboutData.addAuthor(ki18n("Eduardo Robles Elvira"), ki18n("Maintainer"), "edulix@gmail.com",
+        "http://blog.edulix.es");
 
     QApplication app(argc,argv);
     RequestPin *auth = new RequestPin;

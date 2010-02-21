@@ -20,7 +20,6 @@
 
 #include "BlueDevilDaemon.h"
 
-#define BLUEDEVIL_VERSION "0.1"
 #include <kdemacros.h>
 #include <kdebug.h>
 #include <KAboutData>
@@ -54,10 +53,15 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
 
     KGlobal::locale()->insertCatalog("bluedevil");
 
-    KAboutData aboutData("bluedevil", "bluedevil", ki18n("BlueDevil"),
-        BLUEDEVIL_VERSION, ki18n("KDE Bluetooth System"),
-        KAboutData::License_GPL, ki18n("(c) 2010 Artesanos del Software "),
-        KLocalizedString(), "http://www.kde.org");
+    KAboutData aboutData(
+        "BlueDevil",
+        "bluedevil",
+        ki18n("BlueDevil"),
+        "1.0",
+        ki18n("KDE Bluetooth System"),
+        KAboutData::License_GPL,
+        ki18n("(c) 2010, Artesanos del Sotware")
+    );
 
     aboutData.addAuthor(ki18n("Alex Fiestas"), ki18n("Maintainer"), "alex@eyeos.org",
         "http://www.afiestas.org");
