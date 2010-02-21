@@ -26,7 +26,6 @@
 #include <KIcon>
 #include <kiconloader.h>
 #include <QCoreApplication>
-#include <iostream>
 #include <solid/control/bluetoothmanager.h>
 
 RequestConfirmation::RequestConfirmation() : QObject()
@@ -35,12 +34,14 @@ RequestConfirmation::RequestConfirmation() : QObject()
                                                         KNotification::Persistent |
                                                         KNotification::CloseWhenWidgetActivated,this);
 
-    notification->setText(i18n("%1 is asking if the PIN is correct: %2",
-                                    qApp->arguments()[1], qApp->arguments()[2]));
+    notification->setText(i18nc(
+        "The text is showed in a knotification to know if the PIN is correct, %1 is the remote bluetotoh device and %2 is the pin",
+        "%1 is asking if the PIN is correct: %2", qApp->arguments()[1], qApp->arguments()[2])
+    );
 
     QStringList actions;
-    actions.append(i18nc("Text of button to always trust a bluetooth device", "Correct pin"));
-    actions.append(i18nc("Text of button to access a conneciton only once", "Wrong pin"));
+    actions.append(i18nc("Notification button to know if the pin is correct or not", "Correct pin"));
+    actions.append(i18nc("Notification button to say that the PIN is wrong", "Wrong pin"));
 
     notification->setActions(actions);
 
