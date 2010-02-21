@@ -26,7 +26,6 @@
 #include <KIcon>
 #include <kiconloader.h>
 #include <QCoreApplication>
-#include <iostream>
 #include <solid/control/bluetoothmanager.h>
 
 using namespace std;
@@ -37,7 +36,7 @@ Authorize::Authorize() : QObject()
                                                         KNotification::CloseWhenWidgetActivated,this);
 
     notification->setText(i18nc(
-        "Show a notification asking for authorize or deny access to this computer from Bluetooth",
+        "Show a notification asking for authorize or deny access to this computer from Bluetooth the %i is the name of the bluetooth device",
         "%1 is requesting access to this computer",qApp->arguments()[1])
     );
     QStringList actions;
