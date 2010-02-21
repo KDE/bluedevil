@@ -64,13 +64,21 @@ void RequestPin::introducePin()
     Ui::dialogWidget *dialogWidget = new Ui::dialogWidget;
     QWidget *mainWidget = new QWidget();
     dialogWidget->setupUi(mainWidget);
-    dialogWidget->descLabel->setText(i18n("In order to pair this computer with %1 you've to enter a PIN, do it below please",qApp->arguments()[1]));
+    dialogWidget->descLabel->setText(i18nc(
+        "Showed in a dialog which ask to introduce a PIN that will be used tu pair a bluetooth device, %1 is the name of the bluetooth device",
+        "In order to pair this computer with %1 you've to enter a PIN, do it below please",
+        qApp->arguments()[1])
+    );
     dialogWidget->pixmap->setPixmap(icon.pixmap(64,64));
 
     KDialog *dialog = new KDialog();
     dialog->setMainWidget(mainWidget);
 
-    dialog->setCaption(i18n("Introduce the PIN"));
+    dialog->setCaption(i18nc(
+        "Showed in the caption of a dialog where the user introduce the PIN",
+        "Introduce the PIN"
+    ));
+
     dialog->setButtons(KDialog::Ok | KDialog::Cancel);
     dialog->setMinimumWidth(300);
     dialog->setMinimumHeight(150);
