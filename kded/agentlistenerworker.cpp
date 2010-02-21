@@ -51,7 +51,7 @@ void AgentListenerWorker::Release()
 void AgentListenerWorker::Authorize(QDBusObjectPath device, const QString& uuid, const QDBusMessage &msg)
 {
     qDebug() << "Authorize called";
-emit agentReleased();
+
     Solid::Control::BluetoothRemoteDevice *remote = m_adapter->findBluetoothRemoteDeviceUBI(device.path());
 
     QStringList list;
@@ -71,31 +71,21 @@ emit agentReleased();
 QString AgentListenerWorker::RequestPinCode(QDBusObjectPath device, const QDBusMessage &msg)
 {
     qDebug() << "AGENT-RequestPinCode " << device.path();
-/*
-    //     KProcess process;
-// //     process.setOutputChannelMode(KProcess::OnlyStdoutChannel);
-//     process.setProgram("/home/nasete/cod3s/cpp/kde/bin/bin/bluedevil-authorize");
-//     process.start();
-//     if (process.waitForFinished()) {
-//         qDebug() << "PPPPPPPPPPPPPPPPPPPPPPPP";
-//         return;
-//     }
-    remoteDevice = adapter->findBluetoothRemoteDeviceUBI(device.path());
+    Solid::Control::BluetoothRemoteDevice *remote = m_adapter->findBluetoothRemoteDeviceUBI(device.path());
 
-    passkeyDialog->setName(remoteDevice->name());
-    passkeyDialog->setAddr(remoteDevice->address());
-    passkeyDialog->clearPinCode();
+    QStringList list(remote->name());
 
-    bool done = execDialog(passkeyDialog);
+    KProcess process;
+    process.setOutputChannelMode(KProcess::OnlyStdoutChannel);
+    process.setProgram("/home/nasete/cod3s/cpp/kde/bin/bin/bluedevil-requestpin",list);
+    process.start();
 
-    qDebug() << "pinCode " << pincode;
-
-    if (done)
-        return pincode;
+    if (process.waitForFinished()) {
+        return QString(process.readAllStandardOutput());
+    }
 
     QDBusMessage error = msg.createErrorReply("org.bluez.Error.Canceled", "Pincode request failed");
     QDBusConnection::systemBus().send(error);
-    return 0;*/
 }
 
 quint32 AgentListenerWorker::RequestPasskey(QDBusObjectPath device, const QDBusMessage &msg)
