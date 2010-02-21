@@ -26,7 +26,6 @@
 #include <KIcon>
 #include <kiconloader.h>
 #include <QCoreApplication>
-#include <iostream>
 #include <solid/control/bluetoothmanager.h>
 
 using namespace std;
@@ -36,11 +35,14 @@ ConfirmeModeChange::ConfirmeModeChange() : QObject()
                                                         KNotification::Persistent |
                                                         KNotification::CloseWhenWidgetActivated,this);
 
-    notification->setText(i18n("Change bluetooth mode to %1 ?",qApp->arguments()[1]));
+    notification->setText(i18nc(
+        "Showed in a notification when the Bluetooth mode is going to be changed (for example to flight mode), the %1 is the name of the mode",
+        "Change bluetooth mode to %1 ?",qApp->arguments()[1])
+    );
     QStringList actions;
 
-    actions.append(i18nc("Text of button to access a conneciton only once", "Confirm"));
-    actions.append(i18nc("Text of button to reject the incoming bluetooth connection", "Deny"));
+    actions.append(i18nc("Confirm the bluetooth mode change, showed in a notification button", "Confirm"));
+    actions.append(i18nc("Deny the bluetooth mdoe change, showed in a notification", "Deny"));
 
     notification->setActions(actions);
 
