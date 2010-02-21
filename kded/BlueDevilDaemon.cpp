@@ -160,7 +160,7 @@ void BlueDevilDaemon::serverClosed()
 void BlueDevilDaemon::adapterAdded(const QString& adapterName)
 {
     qDebug() << adapterName;
-    if (d->man->bluetoothInterfaces().size() > 0 && d->status == false) {
+    if (d->man->bluetoothInterfaces().size() > 0 && !d->status) {
         onlineMode();
     }
 }

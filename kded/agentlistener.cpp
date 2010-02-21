@@ -34,7 +34,6 @@ AgentListener::~AgentListener()
 void AgentListener::run()
 {
     m_worker = new AgentListenerWorker(new QObject);
-    connect(m_worker,SIGNAL(agentReleased()),this,SIGNAL(agentReleased()));
+    connect(m_worker, SIGNAL(agentReleased()), this, SIGNAL(agentReleased()));
     exec();
 }
-

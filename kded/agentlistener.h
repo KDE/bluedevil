@@ -42,10 +42,11 @@ public:
 Q_SIGNALS:
     void agentReleased();
 
+protected:
+    virtual void run();
+
 private:
     AgentListenerWorker *m_worker;
-
-virtual void run();
 };
 
 
