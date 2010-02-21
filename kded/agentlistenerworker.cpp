@@ -63,12 +63,7 @@ void AgentListenerWorker::Authorize(QDBusObjectPath device, const QString& uuid,
         qDebug() << "Go on camarada!";
         return;
     }
-
-}
-
-void AgentListenerWorker::sendBluezError(QString helper)
-{
-    
+    sendBluezError(QString("Authorize"),msg);
 }
 
 QString AgentListenerWorker::RequestPinCode(QDBusObjectPath device, const QDBusMessage &msg)
@@ -87,7 +82,6 @@ QString AgentListenerWorker::RequestPinCode(QDBusObjectPath device, const QDBusM
         return QString(process.readAllStandardOutput());
     }
 
-    }
     qDebug() << "Timeout men!";
     QDBusMessage error = msg.createErrorReply("org.bluez.Error.Canceled", "Pincode request failed");
     QDBusConnection::systemBus().send(error);
@@ -119,9 +113,7 @@ void AgentListenerWorker::RequestConfirmation(QDBusObjectPath device, quint32 pa
     if (result == 0) {
         qDebug() << "Go on camarada!";
         return;
-    }
-    qDebug() << "Sending Authorization cancelled";
-    QDBusMessage error = msg.createErrorReply("org.bluez.Error.Canceled", "Authorization canceled");
+    sendBluezError(QString("RequestConfirmation"),msg);("org.bluez.Error.Canceled", "Authorization canceled");
     QDBusConnection::systemBus().send(error);
 }
 
@@ -135,14 +127,18 @@ void AgentListenerWorker::ConfirmModeChange(const QString& mode, const QDBusMess
     if (result == 0) {
         qDebug() << "Go on camarada!";
         return;
-    }
-    qDebug() << "Sending Authorization cancelled";
-    QDBusMessage error = msg.createErrorReply("org.bluez.Error.Canceled", "Authorization canceled");
+    sendBluezError(QString("ConfirmModechange"),msg);("org.bluez.Error.Canceled", "Authorization canceled");
     QDBusConnection::systemBus().send(error);
 }
 
 void AgentListenerWorker::Cancel()
+{qDebug() << "AGENT-Cancel";
+ 
+
+void AgentListenerWorker::sendBluezError(const QString &helper, const QDBusMessage &msg)
 {
-    qDebug() << "AGENT-Cancel";
-    
+    qDebug() << "Sending canceled msg to bluetooth" << helper;
+    QDBusMessage error = msg.createErrorReply("org.bluez.Error.Canceled", "Authorization canceled");
+    QDBusConnection::systemBus().send(error);
+}   
 }

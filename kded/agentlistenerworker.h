@@ -49,6 +49,8 @@ Q_SIGNALS:
     void agentReleased();
 
 private:
+    void sendBluezError(const QString& helper, const QDBusMessage &msg);
+private:
     Solid::Control::BluetoothInterface *m_adapter;
 };
 #endif
