@@ -29,17 +29,17 @@ AgentListenerWorker::AgentListenerWorker(QObject *app) :  QDBusAbstractAdaptor(a
 
     if(!QDBusConnection::systemBus().registerObject(agentPath, app)){
         qDebug() << "The dbus object can't be registered";
+        return;
     }
 
     Solid::Control::BluetoothManager &man = Solid::Control::BluetoothManager::self();
     m_adapter = new Solid::Control::BluetoothInterface(man.defaultInterface());
-    m_adapter->registerAgent(agentPath,"DisplayYesNo");
+    m_adapter->registerAgent(agentPath, "DisplayYesNo");
     qDebug() << "Agent registered";
 }
 
 AgentListenerWorker::~AgentListenerWorker()
 {
-
 }
 
 void AgentListenerWorker::Release()
@@ -50,6 +50,7 @@ void AgentListenerWorker::Release()
 
 void AgentListenerWorker::Authorize(QDBusObjectPath device, const QString& uuid, const QDBusMessage &msg)
 {
+    Q_UNUSED(uuid)
     qDebug() << "Authorize called";
 
     Solid::Control::BluetoothRemoteDevice *remote = m_adapter->findBluetoothRemoteDeviceUBI(device.path());
@@ -86,10 +87,12 @@ QString AgentListenerWorker::RequestPinCode(QDBusObjectPath device, const QDBusM
 
     QDBusMessage error = msg.createErrorReply("org.bluez.Error.Canceled", "Pincode request failed");
     QDBusConnection::systemBus().send(error);
+    return QString();
 }
 
 quint32 AgentListenerWorker::RequestPasskey(QDBusObjectPath device, const QDBusMessage &msg)
 {
+    Q_UNUSED(msg)
     qDebug() << "AGENT-RequestPasskey " << device.path();
 /*
     remoteDevice = adapter->findBluetoothRemoteDeviceUBI(device.path());
@@ -105,8 +108,8 @@ quint32 AgentListenerWorker::RequestPasskey(QDBusObjectPath device, const QDBusM
         return passkey;
 
     QDBusMessage error = msg.createErrorReply("org.bluez.Error.Canceled", "Passkey request failed");
-    QDBusConnection::systemBus().send(error);
-    return 0;*/
+    QDBusConnection::systemBus().send(error);*/
+    return 0;
 }
 
 void AgentListenerWorker::DisplayPasskey(QDBusObjectPath device, quint32 passkey)
@@ -136,6 +139,7 @@ void AgentListenerWorker::RequestConfirmation(QDBusObjectPath device, quint32 pa
 
 void AgentListenerWorker::ConfirmModeChange(const QString& mode, const QDBusMessage &msg)
 {
+    Q_UNUSED(msg)
 //     qDebug() << "AGENT-ConfirmModeChange " << adapter->name() << " " << adapter->address() << " " << mode;
         qDebug() << "AGENT-ConfirmModeChange " << " " << mode;
 //     confirmDialog->setName(adapter->name());
