@@ -38,10 +38,16 @@ RequestPin::RequestPin() : QObject()
                                                         KNotification::Persistent |
                                                         KNotification::CloseWhenWidgetActivated,this);
 
-    notification->setText(i18n("Pin is needed to pair with %1",qApp->arguments()[1]));
-    QStringList actions;
+    notification->setText(i18nc(
+        "Showed in a notification to announce that a PIN is needed to acomplish a pair action, %1 is the name of the bluetooth device",
+        "Pin is needed to pair with %1",qApp->arguments()[1])
+    );
 
-    actions.append(i18nc("Text of button to always trust a bluetooth device", "Introduce pin"));
+    QStringList actions;
+    actions.append(i18nc(
+        "Notification button which once clicked, a dialog to introduce the pin will be showed",
+        "Introduce pin")
+    );
 
     notification->setActions(actions);
 
