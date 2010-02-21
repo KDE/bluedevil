@@ -43,7 +43,7 @@ class Authorize : public QObject
 
     private slots:
         void trust();
-        void accept();
-        void reject();
+        void authorize();
+        void deny();
 };
 #endif

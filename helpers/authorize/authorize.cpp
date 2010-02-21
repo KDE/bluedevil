@@ -40,14 +40,14 @@ Authorize::Authorize() : QObject()
     QStringList actions;
 
     actions.append(i18nc("Text of button to always trust a bluetooth device", "Trust"));
-    actions.append(i18nc("Text of button to access a conneciton only once", "Accept"));
-    actions.append(i18nc("Text of button to reject the incoming bluetooth connection", "Reject"));
+    actions.append(i18nc("Text of button to access a conneciton only once", "Authorize"));
+    actions.append(i18nc("Text of button to reject the incoming bluetooth connection", "Deny"));
 
     notification->setActions(actions);
 
     connect(notification, SIGNAL(action1Activated()),this, SLOT(trust()));
-    connect(notification, SIGNAL(action2Activated()),this, SLOT(accept()));
-    connect(notification, SIGNAL(action3Activated()),this, SLOT(reject()));
+    connect(notification, SIGNAL(action2Activated()),this, SLOT(authorize()));
+    connect(notification, SIGNAL(action3Activated()),this, SLOT(deny()));
 
     notification->setPixmap(KIcon("preferences-system-bluetooth").pixmap(42,42));
     notification->sendEvent();
@@ -64,13 +64,13 @@ void Authorize::trust()
     qApp->exit(0);
 }
 
-void Authorize::accept()
+void Authorize::authorize()
 {
     cout << "Accepted";
     qApp->exit(0);
 }
 
-void Authorize::reject()
+void Authorize::deny()
 {
     qDebug() << "Rejected";
     qApp->exit(1);
