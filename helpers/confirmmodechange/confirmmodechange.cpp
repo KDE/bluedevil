@@ -29,7 +29,7 @@
 #include <solid/control/bluetoothmanager.h>
 
 using namespace std;
-ConfirmeModeChange::ConfirmeModeChange() : QObject()
+ConfirmModeChange::ConfirmModeChange() : QObject()
 {
     KNotification *notification = new KNotification("bluedevilConfirmModechange",
                                                         KNotification::Persistent |
@@ -53,13 +53,13 @@ ConfirmeModeChange::ConfirmeModeChange() : QObject()
     notification->sendEvent();
 }
 
-void ConfirmeModeChange::confirm()
+void ConfirmModeChange::confirm()
 {
-    qDebug << "confirmed";
+    qDebug() << "confirmed";
     qApp->exit(0);
 }
 
-void ConfirmeModeChange::deny()
+void ConfirmModeChange::deny()
 {
     qDebug() << "Denied";
     qApp->exit(1);

@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
         "http://blog.edulix.es");
 
     QApplication app(argc,argv);
-    ConfirmeModeChange *auth = new ConfirmeModeChange;
+    ConfirmModeChange *auth = new ConfirmModeChange;
 
     return app.exec();
 }

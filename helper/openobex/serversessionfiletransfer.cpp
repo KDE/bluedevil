@@ -57,7 +57,6 @@ ServerSessionFileTransfer::ServerSessionFileTransfer(OpenObex::ServerSession* se
     m_remoteAddr = bluetoothDevice.address();
 }
 
-
 ServerSessionFileTransfer::~ServerSessionFileTransfer()
 {
 }
