@@ -15,27 +15,26 @@
 */
 
 #include "server.h"
-#include "server.h"
 #include "server_interface.h"
-
+#include "bluedevil_service_interface.h"
 #include <kdebug.h>
 
 
 struct OpenObex::Server::Private
 {
     org::openobex::Server *dbusServer;
+    org::kde::BlueDevil::Service* service;
 };
 
 OpenObex::Server::Server(const QString& addr) : QObject(0), d(new Private)
 {
     qDebug();
-    bool error;
+    d->service = 0;
     QDBusConnection* dbus = new QDBusConnection("dbus");
     QDBusConnection dbusconn = dbus->connectToBus(QDBusConnection::SessionBus, "dbus");
 
     //Dbus must be pressent and this connection can't fail
     if(!dbusconn.isConnected()){
-        error = true;
         return;
     }
 
@@ -62,6 +61,7 @@ OpenObex::Server::Server(const QString& addr) : QObject(0), d(new Private)
 
 OpenObex::Server::~Server()
 {
+    delete d->service;
     delete d;
 }
 
@@ -88,19 +88,47 @@ void OpenObex::Server::slotClosed()
     qDebug();
 }
 
-void OpenObex::Server::slotErrorOccured(const QString& error_name, const QString& error_message)
+bool OpenObex::Server::serviceStarted()
 {
-    qDebug() << "error_name" << error_name << "error_message" << error_message;
+    d->service = new org::kde::BlueDevil::Service("org.kde.BlueDevil.Service",
+        "/Service", QDBusConnection::sessionBus(), this);
+
+    if ((QString)d->service->ping() == "pong") {
+        qDebug() << "org::kde::BlueDevil::Service is up and running!";
+    } else {
+        qDebug() << d->service->ping();
+        return;
+    }
+}
+
+void OpenObex::Server::slotErrorOccured(const QString& errorName, const QString& errorMessage)
+{
+    qDebug() << "error_name" << errorName << "error_message" << errorMessage;
+
+    if (!serviceStarted()) {
+        return;
+    }
+    d->service->errorOccured(errorName, errorMessage);
 }
 
 void OpenObex::Server::slotSessionCreated(QDBusObjectPath path)
 {
     qDebug() << "path" << path.path();
+
+    if (!serviceStarted()) {
+        return;
+    }
+    d->service->sessionCreated(path);
 }
 
 void OpenObex::Server::slotSessionRemoved(QDBusObjectPath path)
 {
     qDebug() << "path" << path.path();
+
+    if (!serviceStarted()) {
+        return;
+    }
+    d->service->sessionRemoved(path);
 }
 
 void OpenObex::Server::slotStarted()
