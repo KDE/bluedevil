@@ -1,20 +1,21 @@
-/*
-    <one line to give the program's name and a brief idea of what it does.>
-    Copyright (C) <year>  <name of author>
+/*  This file is part of the KDE project
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+    Copyright (C) 2010  Alex Fiestas <alex@eyeos.org>
+    Copyright (C) 2010 by Eduardo Robles Elvira <edulix@gmail.com>
 
-    This program is distributed in the hope that it will be useful,
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Library General Public
+    License version 2 as published by the Free Software Foundation.
+
+    This library is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Library General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
+    You should have received a copy of the GNU Library General Public License
+    along with this library; see the file COPYING.LIB.  If not, write to
+    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+    Boston, MA 02110-1301, USA.
 */
 
 #include "agentlistenerworker.h"
@@ -23,11 +24,11 @@
 #include <KProcess>
 #include <solid/control/bluetoothmanager.h>
 
-AgentListenerWorker::AgentListenerWorker(QObject *app) :  QDBusAbstractAdaptor(app)
+AgentListenerWorker::AgentListenerWorker(QObject *parent) :  QDBusAbstractAdaptor(parent)
 {
     const QString agentPath = "/blueDevil_agent";
 
-    if(!QDBusConnection::systemBus().registerObject(agentPath, app)){
+    if(!QDBusConnection::systemBus().registerObject(agentPath, parent)){
         qDebug() << "The dbus object can't be registered";
         return;
     }
@@ -38,8 +39,12 @@ AgentListenerWorker::AgentListenerWorker(QObject *app) :  QDBusAbstractAdaptor(a
     qDebug() << "Agent registered";
 }
 
-AgentListenerWorker::~AgentListenerWorker()
+void AgentListenerWorker::unregister()
 {
+    const QString agentPath = "/blueDevil_agent";
+
+    qDebug() << "Unregistering object";
+    QDBusConnection::systemBus().unregisterObject(agentPath);
 }
 
 void AgentListenerWorker::Release()
@@ -64,9 +69,7 @@ void AgentListenerWorker::Authorize(QDBusObjectPath device, const QString& uuid,
         qDebug() << "Go on camarada!";
         return;
     }
-    qDebug() << "Sending Authorization cancelled";
-    QDBusMessage error = msg.createErrorReply("org.bluez.Error.Canceled", "Authorization canceled");
-    QDBusConnection::systemBus().send(error);
+    sendBluezError(QString("Authorize"),msg);
 }
 
 QString AgentListenerWorker::RequestPinCode(QDBusObjectPath device, const QDBusMessage &msg)
@@ -81,10 +84,11 @@ QString AgentListenerWorker::RequestPinCode(QDBusObjectPath device, const QDBusM
     process.setProgram("bluedevil-requestpin",list);
     process.start();
 
-    if (process.waitForFinished()) {
+    if (process.waitForFinished(-1)) {
         return QString(process.readAllStandardOutput());
     }
 
+    qDebug() << "Timeout men!";
     QDBusMessage error = msg.createErrorReply("org.bluez.Error.Canceled", "Pincode request failed");
     QDBusConnection::systemBus().send(error);
     return QString();
@@ -92,24 +96,9 @@ QString AgentListenerWorker::RequestPinCode(QDBusObjectPath device, const QDBusM
 
 quint32 AgentListenerWorker::RequestPasskey(QDBusObjectPath device, const QDBusMessage &msg)
 {
-    Q_UNUSED(msg)
     qDebug() << "AGENT-RequestPasskey " << device.path();
-/*
-    remoteDevice = adapter->findBluetoothRemoteDeviceUBI(device.path());
-
-    passkeyDialog->setName(remoteDevice->name());
-    passkeyDialog->setAddr(remoteDevice->address());
-
-    bool done = execDialog(passkeyDialog);
-
-    qDebug() << "passkey " << QString::number(passkey);
-
-    if (done)
-        return passkey;
-
-    QDBusMessage error = msg.createErrorReply("org.bluez.Error.Canceled", "Passkey request failed");
-    QDBusConnection::systemBus().send(error);*/
-    return 0;
+    QString ret = RequestPinCode(device, msg);
+    return ret.toInt();
 }
 
 void AgentListenerWorker::DisplayPasskey(QDBusObjectPath device, quint32 passkey)
@@ -132,36 +121,32 @@ void AgentListenerWorker::RequestConfirmation(QDBusObjectPath device, quint32 pa
         qDebug() << "Go on camarada!";
         return;
     }
-    qDebug() << "Sending Authorization cancelled";
-    QDBusMessage error = msg.createErrorReply("org.bluez.Error.Canceled", "Authorization canceled");
-    QDBusConnection::systemBus().send(error);
+    sendBluezError(QString("RequestConfirmation"),msg);
 }
 
 void AgentListenerWorker::ConfirmModeChange(const QString& mode, const QDBusMessage &msg)
 {
-    Q_UNUSED(msg)
-//     qDebug() << "AGENT-ConfirmModeChange " << adapter->name() << " " << adapter->address() << " " << mode;
-        qDebug() << "AGENT-ConfirmModeChange " << " " << mode;
-//     confirmDialog->setName(adapter->name());
-//     confirmDialog->setAddr(adapter->address());
-//     confirmDialog->setMode(mode);
-// 
-//     bool confirm = execDialog(confirmDialog);
-// 
-//     if (confirm)
-//         return;
-// 
-//     QDBusMessage error = msg.createErrorReply("org.bluez.Error.Rejected", "Mode change rejected");
-//     QDBusConnection::systemBus().send(error);
+    qDebug() << "AGENT-ConfirmModechange " << mode;
+    QStringList list;
+    list.append(mode);
+
+    int result = KProcess::execute("bluedevil-confirmchangemode",list);
+    if (result == 0) {
+        qDebug() << "Go on camarada!";
+        return;
+    }
+    sendBluezError(QString("ConfirmModechange"),msg);
 }
 
 void AgentListenerWorker::Cancel()
 {
     qDebug() << "AGENT-Cancel";
+}
 
-//     if (!currentDialog)
-//         return;
-// 
-//     currentDialog->reject();
-//     currentDialog = 0;
+
+void AgentListenerWorker::sendBluezError(const QString &helper, const QDBusMessage &msg)
+{
+    qDebug() << "Sending canceled msg to bluetooth" << helper;
+    QDBusMessage error = msg.createErrorReply("org.bluez.Error.Canceled", "Authorization canceled");
+    QDBusConnection::systemBus().send(error);
 }

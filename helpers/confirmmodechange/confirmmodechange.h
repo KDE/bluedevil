@@ -24,14 +24,14 @@
 #include <QObject>
 
 /**
- * @short Small class which send a KNotificaton to know if the Bluetooth device is authorized or not
+ * @short Small class which send a KNotificaton to know if the mode change is authorized or not
  * A popup KNotification is send with 3 actions, trust accept and reject.
  * Trust set the remote device as trusted (using solid remote device) and quits with 0
  * Authorize quits the app with 0 (which means authorized).
  * Deny quits the app with 1 (which means denied)
  * @internal
  */
-class Authorize : public QObject
+class ConfirmeModeChange : public QObject
 {
     Q_OBJECT
     public:
@@ -39,18 +39,13 @@ class Authorize : public QObject
          * Launch the KNotification which the respective actions, also makes the needed connection
          * between those actions and the slots
          */
-        Authorize();
+        ConfirmeModeChange();
 
     private slots:
         /**
-         * Mark the remote device as trust and quit the application as success
-         */
-        void trust();
-
-        /**
          * Quits the application as success
          */
-        void authorize();
+        void confirm();
 
         /**
          * Quits the application as error

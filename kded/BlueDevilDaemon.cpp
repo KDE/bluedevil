@@ -1,31 +1,25 @@
-/***************************************************************************
- *   Copyright (C) 2010 by Alex Fiestas <alex@eyeos.org>                   *
- *   Copyright (C) 2010 by Eduardo Robles Elvira <edulix@gmail.com>        *
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- *   This program is distributed in the hope that it will be useful,       *
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- *   GNU General Public License for more details.                          *
- *                                                                         *
- *   You should have received a copy of the GNU General Public License     *
- *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc.,                                       *
- *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA .        *
- ***************************************************************************
- *                                                                         *
- *   Part of the code in this file was taken from KDE4Bluesave and/or     *
- *   Lithium, where noticed.                                               *
- *                                                                         *
- **************************************************************************/
+/*  This file is part of the KDE project
+
+    Copyright (C) 2010  Alex Fiestas <alex@eyeos.org>
+    Copyright (C) 2010 by Eduardo Robles Elvira <edulix@gmail.com>
+
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Library General Public
+    License version 2 as published by the Free Software Foundation.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Library General Public License for more details.
+
+    You should have received a copy of the GNU Library General Public License
+    along with this library; see the file COPYING.LIB.  If not, write to
+    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+    Boston, MA 02110-1301, USA.
+*/
 
 #include "BlueDevilDaemon.h"
 
-#define BLUEDEVIL_VERSION "0.1"
 #include <kdemacros.h>
 #include <kdebug.h>
 #include <KAboutData>
@@ -51,8 +45,7 @@ struct BlueDevilDaemon::Private
 };
 
 BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
-    : KDEDModule(parent),
-    d(new Private)
+    : KDEDModule(parent), d(new Private)
 {
     d->agentListener = 0;
     d->adapter = 0;
@@ -60,10 +53,15 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
 
     KGlobal::locale()->insertCatalog("bluedevil");
 
-    KAboutData aboutData("bluedevil", "bluedevil", ki18n("BlueDevil"),
-        BLUEDEVIL_VERSION, ki18n("A Bluetooth Management tool for KDE4"),
-        KAboutData::License_GPL, ki18n("(c) 2010 Artesanos del Software "),
-        KLocalizedString(), "http://www.kde.org");
+    KAboutData aboutData(
+        "BlueDevil",
+        "bluedevil",
+        ki18n("BlueDevil"),
+        "1.0",
+        ki18n("KDE Bluetooth System"),
+        KAboutData::License_GPL,
+        ki18n("(c) 2010, Artesanos del Sotware")
+    );
 
     aboutData.addAuthor(ki18n("Alex Fiestas"), ki18n("Maintainer"), "alex@eyeos.org",
         "http://www.afiestas.org");
@@ -82,8 +80,6 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
 
     if ( d->man->bluetoothInterfaces().size() > 0 ) {
         onlineMode();
-    } else {
-        offlineMode();
     }
 }
 
@@ -100,12 +96,14 @@ void BlueDevilDaemon::onlineMode()
     }
 
     qDebug() << "Online mode";
-    d->agentListener = new AgentListener(this);
+
+    d->agentListener = new AgentListener();
     connect(d->agentListener,SIGNAL(agentReleased()),this,SLOT(agentReleased()));
     d->agentListener->start();
 
     d->adapter = new Solid::Control::BluetoothInterface(d->man->defaultInterface());
     d->server = new OpenObex::Server(d->adapter->address());
+
     d->status = true;
 }
 
@@ -143,8 +141,9 @@ void BlueDevilDaemon::agentReleased()
 
 void BlueDevilDaemon::agentThreadStopped()
 {
-    delete d->agentListener;
+    d->agentListener->deleteLater();
     d->agentListener = 0;
+
     qDebug() << "agent listener deleted";
 }
 
@@ -157,8 +156,8 @@ void BlueDevilDaemon::serverClosed()
 void BlueDevilDaemon::adapterAdded(const QString& adapterName)
 {
     qDebug() << adapterName;
-    if (d->man->bluetoothInterfaces().size() > 0 && d->status == false) {
-        onlineMode(); 
+    if (d->man->bluetoothInterfaces().size() > 0 && !d->status) {
+        onlineMode();
     }
 }
 

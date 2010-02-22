@@ -18,7 +18,7 @@
     Boston, MA 02110-1301, USA.
 */
 
-#include "authorize.h"
+#include "confirmmodechange.h"
 #include <knotification.h>
 #include <klocale.h>
 
@@ -29,51 +29,39 @@
 #include <solid/control/bluetoothmanager.h>
 
 using namespace std;
-Authorize::Authorize() : QObject()
+ConfirmeModeChange::ConfirmeModeChange() : QObject()
 {
-    KNotification *notification = new KNotification("bluedevilAuthorize",
+    KNotification *notification = new KNotification("bluedevilConfirmModechange",
                                                         KNotification::Persistent |
                                                         KNotification::CloseWhenWidgetActivated,this);
 
     notification->setText(i18nc(
-        "Show a notification asking for authorize or deny access to this computer from Bluetooth the %1 is the name of the bluetooth device",
-        "%1 is requesting access to this computer",qApp->arguments()[1])
+        "Showed in a notification when the Bluetooth mode is going to be changed (for example to flight mode), the %1 is the name of the mode",
+        "Change bluetooth mode to %1 ?",qApp->arguments()[1])
     );
     QStringList actions;
 
-    actions.append(i18nc("Button to trust a bluetooth remote device and authorize it to connect", "Trust"));
-    actions.append(i18nc("Button to authorize a bluetooth remote device to connect ", "Authorize"));
-    actions.append(i18nc("Deny access to a remote bluetooth device", "Deny"));
+    actions.append(i18nc("Confirm the bluetooth mode change, showed in a notification button", "Confirm"));
+    actions.append(i18nc("Deny the bluetooth mdoe change, showed in a notification", "Deny"));
 
     notification->setActions(actions);
 
-    connect(notification, SIGNAL(action1Activated()),this, SLOT(trust()));
-    connect(notification, SIGNAL(action2Activated()),this, SLOT(authorize()));
-    connect(notification, SIGNAL(action3Activated()),this, SLOT(deny()));
+    connect(notification, SIGNAL(action1Activated()),this, SLOT(confirm()));
+    connect(notification, SIGNAL(action2Activated()),this, SLOT(deny()));
 
     notification->setPixmap(KIcon("preferences-system-bluetooth").pixmap(42,42));
     notification->sendEvent();
 }
 
-void Authorize::trust()
+void ConfirmeModeChange::confirm()
 {
-    qDebug() << "Trusted";
-    Solid::Control::BluetoothManager &man = Solid::Control::BluetoothManager::self();
-    Solid::Control::BluetoothInterface *adapter = new Solid::Control::BluetoothInterface(man.defaultInterface());
-    Solid::Control::BluetoothRemoteDevice *remoteDevice = adapter->findBluetoothRemoteDeviceUBI(qApp->arguments()[2]);
-    remoteDevice->setTrusted(true);
+    qDebug << "confirmed";
     qApp->exit(0);
 }
 
-void Authorize::authorize()
+void ConfirmeModeChange::deny()
 {
-    qDebug << "Accepted";
-    qApp->exit(0);
-}
-
-void Authorize::deny()
-{
-    qDebug() << "Rejected";
+    qDebug() << "Denied";
     qApp->exit(1);
 }
 

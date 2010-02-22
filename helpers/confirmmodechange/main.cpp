@@ -18,7 +18,7 @@
     Boston, MA 02110-1301, USA.
 */
 
-#include "requestpin.h"
+#include "confirmmodechange.h"
 #include <kcomponentdata.h>
 #include <kaboutdata.h>
 #include <kcmdlineargs.h>
@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
         "http://blog.edulix.es");
 
     QApplication app(argc,argv);
-    RequestPin *auth = new RequestPin;
+    ConfirmeModeChange *auth = new ConfirmeModeChange;
 
     return app.exec();
 }
