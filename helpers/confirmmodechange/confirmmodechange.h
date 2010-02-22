@@ -31,7 +31,7 @@
  * Deny quits the app with 1 (which means denied)
  * @internal
  */
-class ConfirmeModeChange : public QObject
+class ConfirmModeChange : public QObject
 {
     Q_OBJECT
     public:
@@ -39,7 +39,7 @@ class ConfirmeModeChange : public QObject
          * Launch the KNotification which the respective actions, also makes the needed connection
          * between those actions and the slots
          */
-        ConfirmeModeChange();
+        ConfirmModeChange();
 
     private slots:
         /**

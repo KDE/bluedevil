@@ -67,7 +67,7 @@ void Authorize::trust()
 
 void Authorize::authorize()
 {
-    qDebug << "Accepted";
+    qDebug() << "Accepted";
     qApp->exit(0);
 }
 

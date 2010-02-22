@@ -24,7 +24,6 @@
 #include <QtCore/QObject>
 #include <QtDBus>
 
-
 namespace OpenObex
 {
 
@@ -44,12 +43,15 @@ protected Q_SLOTS:
     void slotStarted();
     void slotStopped();
     void slotClosed();
-    void slotErrorOccured(const QString& error_name, const QString& error_message);
+    void slotErrorOccured(const QString& errorName, const QString& errorMessage);
     void slotSessionCreated(QDBusObjectPath path);
     void slotSessionRemoved(QDBusObjectPath path);
 
     void serverCreated(QDBusObjectPath path);
     void serverCreatedError(QDBusError error);
+
+private:
+    bool serviceStarted();
 
 Q_SIGNALS:
     void started();

@@ -4,3 +4,4 @@ include (KDE4Defaults)
 
 add_subdirectory(kded)
 add_subdirectory(helpers)
+add_subdirectory(helper)

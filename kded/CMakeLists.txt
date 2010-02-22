@@ -8,6 +8,10 @@ set(kded_bluedevil_SRCS
 )
 
 qt4_add_dbus_interface(kded_bluedevil_SRCS
+    ../helper/org.kde.BlueDevil.Service.xml
+    bluedevil_service_interface)
+
+qt4_add_dbus_interface(kded_bluedevil_SRCS
     org.openobex.Manager.xml
     manager_interface)
 

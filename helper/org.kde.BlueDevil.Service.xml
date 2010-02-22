@@ -1,0 +1,21 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN" "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+    <interface name="org.kde.BlueDevil.Service">
+        <method name="sessionCreated">
+            <arg name="sessionObject" type="o" direction="in"/>
+        </method>
+        <method name="sessionRemoved">
+            <arg name="sessionObject" type="o" direction="in"/>
+        </method>
+        <method name="GetServerSessionInfo">
+            <arg type="asv" direction="out"/>
+        </method>
+        <method name="errorOccured">
+            <arg name="errorName" type="s" direction="in"/>
+            <arg name="errorMessage" type="s" direction="in"/>
+        </method>
+        <method name="ping">
+            <arg type="s" direction="out">
+        </method>
+    </interface>
+</node>
