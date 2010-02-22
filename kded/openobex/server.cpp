@@ -95,9 +95,10 @@ bool OpenObex::Server::serviceStarted()
 
     if ((QString)d->service->ping() == "pong") {
         qDebug() << "org::kde::BlueDevil::Service is up and running!";
+        return true;
     } else {
         qDebug() << d->service->ping();
-        return;
+        return false;
     }
 }
 
