@@ -49,7 +49,7 @@ public:
 protected:
     bool doKill();
 
-private slots:
+private Q_SLOTS:
     void receiveFiles();
     void slotTransferProgress(qulonglong);
     void slotTransferCompleted();

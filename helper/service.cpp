@@ -44,10 +44,10 @@ void Service::errorOccured(const QString& errorName, const QString& errorMessage
     }
 }
 
-void Service::sessionCreated(const QDBusObjectPath& path)
+void Service::sessionCreated(const QDBusObjectPath& path, const QString& bluetoothAddress)
 {
     // TODO: Be able to deal with more than one session at a time
-    m_serversession = new OpenObex::ServerSession(path.path());
+    m_serversession = new OpenObex::ServerSession(path.path(), bluetoothAddress);
 }
 
 void Service::sessionRemoved(const QDBusObjectPath& path)

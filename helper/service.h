@@ -32,9 +32,8 @@ public:
 
 public Q_SLOTS:
     void errorOccured(const QString& errorName, const QString& errorMessage);
-    void sessionCreated(const QDBusObjectPath& path);
+    void sessionCreated(const QDBusObjectPath& path, const QString& bluetoothAddress);
     void sessionRemoved(const QDBusObjectPath& path);
-    QMap<QString, QVariant> GetServerSessionInfo() {}
     QString ping();
 
 private:

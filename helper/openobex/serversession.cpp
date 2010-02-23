@@ -25,9 +25,10 @@
 
 using namespace OpenObex;
 
-ServerSession::ServerSession(const QString& path): QObject(0)
+ServerSession::ServerSession(const QString& path, const QString& bluetoothAddress): QObject(0)
 {
     m_path = path;
+    m_bluetoothAddress = bluetoothAddress;
     QDBusConnection* dbus = new QDBusConnection("dbus");
     QDBusConnection dbusConnection = dbus->connectToBus(QDBusConnection::SessionBus, "dbus");
     m_dbusServerSession = new org::openobex::ServerSession("org.openobex", path, dbusConnection,
@@ -81,6 +82,11 @@ void ServerSession::slotDisconnected()
     qDebug() << "slotDisconnected()";
 }
 
+QString ServerSession::bluetoothAddress()
+{
+  return m_bluetoothAddress;
+}
+
 org::openobex::ServerSession* ServerSession::dbusServerSession()
 {
     return m_dbusServerSession;
@@ -97,25 +103,7 @@ void ServerSession::slotTransferStarted(const QString& filename, const QString& 
     qDebug() << "slotTransferStarted()" << "filename" << filename << "localPath" << localPath <<
         "totalBytes" << totalBytes;
     m_fileTransfer = new ServerSessionFileTransfer(this, filename, localPath, totalBytes);
-    m_fileTransfer->setLocalPath("/tmp/file");
     KIO::getJobTracker()->registerJob(m_fileTransfer);
     m_fileTransfer->start();
-    
-}
 
-typedef QMap<QString, QString> StringMapReply;
-Q_DECLARE_METATYPE(StringMapReply)
-
-QMap<QString,QString> ServerSession::getServerSessionInfo(QDBusObjectPath path)
-{
-    qDBusRegisterMetaType<StringMapReply>();
-    QList<QVariant> argumentList;
-    argumentList << QVariant::fromValue(path);
-    QDBusReply<QMap<QString, QString> > reply = m_dbusServerSession->callWithArgumentList(QDBus::Block, QLatin1String("GetServerSessionInfo"), argumentList);
-    if (reply.isValid()) {
-        return reply.value();
-    } else {
-        qDebug() << "replay not valid" << reply.error().message();
-        return QMap<QString,QString>();
-    }
 }

@@ -3,12 +3,10 @@
     <interface name="org.kde.BlueDevil.Service">
         <method name="sessionCreated">
             <arg name="sessionObject" type="o" direction="in"/>
+            <arg name="bluetoothAddress" type="s" direction="in"/>
         </method>
         <method name="sessionRemoved">
             <arg name="sessionObject" type="o" direction="in"/>
-        </method>
-        <method name="GetServerSessionInfo">
-            <arg type="asv" direction="out"/>
         </method>
         <method name="errorOccured">
             <arg name="errorName" type="s" direction="in"/>
