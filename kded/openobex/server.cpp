@@ -113,12 +113,15 @@ void OpenObex::Server::slotErrorOccured(const QString& errorName, const QString&
 
 void OpenObex::Server::slotSessionCreated(QDBusObjectPath path)
 {
-    qDebug() << "path" << path.path();
+    qDebug() << "slotSessionCreated path" << path.path();
+
+    QMap<QString, QString> sessionInfo = getServerSessionInfo(path);
 
     if (!serviceStarted()) {
         return;
     }
-    d->service->sessionCreated(path);
+    d->service->sessionCreated(path, sessionInfo["BluetoothAddress"]);
+
 }
 
 void OpenObex::Server::slotSessionRemoved(QDBusObjectPath path)
@@ -175,3 +178,19 @@ void OpenObex::Server::serverCreatedError(QDBusError error)
     qDebug() << error.message();
 }
 
+
+typedef QMap<QString, QString> StringMapReply;
+Q_DECLARE_METATYPE(StringMapReply)
+
+QMap<QString,QString> OpenObex::Server::getServerSessionInfo(QDBusObjectPath path) {
+  qDBusRegisterMetaType<StringMapReply>();
+  QList<QVariant> argumentList;
+  argumentList << QVariant::fromValue(path);
+  QDBusReply<QMap<QString, QString> > reply = d->dbusServer->callWithArgumentList(QDBus::Block, QLatin1String("GetServerSessionInfo"), argumentList);
+  if (reply.isValid()) {
+    return reply.value();
+  } else {
+    kDebug() << "replay not valid" << reply.error().message();
+    return QMap<QString,QString>();
+  }
+}

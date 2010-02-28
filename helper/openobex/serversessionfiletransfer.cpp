@@ -46,12 +46,10 @@ ServerSessionFileTransfer::ServerSessionFileTransfer(OpenObex::ServerSession* se
     m_totalFileSize = size;
     setCapabilities(Killable);
 
-    kDebug() << m_serverSession->path();
-    QMap<QString, QString> sessionInfo = m_serverSession->getServerSessionInfo(QDBusObjectPath(m_serverSession->path()));
-    kDebug() << sessionInfo["BluetoothAddress"];
+    qDebug() << "m_localPath" << m_localPath;
     Solid::Control::BluetoothManager &bluetoothManager = Solid::Control::BluetoothManager::self();
     Solid::Control::BluetoothInterface* bluetoothInterface = new Solid::Control::BluetoothInterface(bluetoothManager.defaultInterface());
-    bluetoothDevice = bluetoothInterface->findBluetoothRemoteDeviceAddr(sessionInfo["BluetoothAddress"]);
+    bluetoothDevice = bluetoothInterface->findBluetoothRemoteDeviceAddr(serverSession->bluetoothAddress());
 
     m_remoteName =  bluetoothDevice.name();
     m_remoteAddr = bluetoothDevice.address();

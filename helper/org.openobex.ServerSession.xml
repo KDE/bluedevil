@@ -8,7 +8,7 @@
         <method name="Disconnect">
         </method>
         <method name="GetTransferInfo">
-            <arg type="asv" direction="out"/>
+            <arg type="o" direction="out"/>
         </method>
         <method name="Cancel">
         </method>
@@ -24,9 +24,9 @@
         <signal name="TransferProgress">
             <arg name="bytes_transferred" type="t" direction="out"/>
         </signal>
-        <signal name="SignalCompleted">
+        <signal name="TransferCompleted">
         </signal>
-        <signal name="ErrorOcurred">
+        <signal name="ErrorOccurred">
             <arg name="error_name" type="s" direction="out"/>
             <arg name="error_message" type="s" direction="out"/>
         </signal>

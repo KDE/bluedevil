@@ -49,6 +49,7 @@ protected Q_SLOTS:
 
     void serverCreated(QDBusObjectPath path);
     void serverCreatedError(QDBusError error);
+    QMap<QString,QString> getServerSessionInfo(QDBusObjectPath path);
 
 private:
     bool serviceStarted();

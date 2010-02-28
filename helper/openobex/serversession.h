@@ -30,26 +30,28 @@ class ServerSession : public QObject
 {
 Q_OBJECT
 public:
-    ServerSession(const QString& path);
+    ServerSession(const QString& path, const QString& bluetoothAddress);
     virtual ~ServerSession();
     QString path();
     void accept();
     void reject();
     void cancel();
     org::openobex::ServerSession* dbusServerSession();
-    
+
 public Q_SLOTS:
-    QMap<QString,QString> getServerSessionInfo(QDBusObjectPath path);
     void slotCancelled();
     void slotDisconnected();
     void slotTransferStarted(const QString& filename, const QString& localPath,
         qulonglong totalBytes);
     void slotErrorOccurred(const QString& errorName, const QString& errorMessage);
+    QString bluetoothAddress();
 
 private:
     QString m_path;
     org::openobex::ServerSession* m_dbusServerSession;
     OpenObex::ServerSessionFileTransfer* m_fileTransfer;
+    QDBusObjectPath m_serverPath;
+    QString m_bluetoothAddress;
 };
 
 }
