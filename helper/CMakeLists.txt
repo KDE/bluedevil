@@ -30,10 +30,8 @@ target_link_libraries(bluedevil-helper
     ${KDE4WORKSPACE_SOLIDCONTROL_LIBRARY}
 )
 
-install(TARGETS bluedevil-helper
-    DESTINATION ${INSTALL_TARGETS_DEFAULT_ARGS}
-)
-
+install(TARGETS bluedevil-helper DESTINATION ${INSTALL_TARGETS_DEFAULT_ARGS})
+install(FILES bluedevil-helper.notifyrc DESTINATION ${DATA_INSTALL_DIR}/bluedevil-helper)
 
 # for dbus_add_activation_service
 include(PkgConfigGetVar)

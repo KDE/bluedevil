@@ -62,29 +62,11 @@ OpenObex::Server::Server(const QString& addr)
 OpenObex::Server::~Server()
 {
     kDebug();
-    stop();
+    d->dbusServer->Stop();
     disconnect();
     delete d->dbusServer;
     delete d->serverSession;
     delete d;
-}
-
-void OpenObex::Server::start()
-{
-    d->dbusServer->Start(QString("/tmp"), true, false);
-    emit started();
-}
-
-void OpenObex::Server::stop()
-{
-    d->dbusServer->Stop();
-    emit stopped();
-}
-
-void OpenObex::Server::close()
-{
-    d->dbusServer->Close();
-    emit closed();
 }
 
 void OpenObex::Server::slotErrorOccured(const QString& errorName, const QString& errorMessage)
@@ -128,9 +110,8 @@ void OpenObex::Server::serverCreated(QDBusObjectPath path)
         path.path(), dbusconn, this);
 
     //This interface MUST be valid too, if not is because openobex have some problem
-    if(!d->dbusServer->isValid()){
+    if (!d->dbusServer->isValid()) {
         qDebug() << "open obex error: invalid dbus server interface" << path.path();
-        emit openObexError();
         return;
     }
     qDebug() << "session interface created for: " << d->dbusServer->path();
@@ -142,7 +123,7 @@ void OpenObex::Server::serverCreated(QDBusObjectPath path)
         this, SLOT(slotSessionRemoved(QDBusObjectPath)));
     connect(d->dbusServer, SIGNAL(ErrorOccured(const QString&, const QString&)),
         this, SLOT(slotErrorOccured(const QString&, const QString&)));
-    start();
+    d->dbusServer->Start(QString("/tmp"), true, false);
 }
 
 void OpenObex::Server::serverCreatedError(QDBusError error)

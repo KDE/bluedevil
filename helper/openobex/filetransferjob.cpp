@@ -57,7 +57,7 @@ void FileTransferJob::start()
 
 void FileTransferJob::reject()
 {
-    m_serverSession->reject();
+    m_serverSession->dbusServerSession()->Reject();
     doKill();
 }
 
@@ -75,7 +75,7 @@ void FileTransferJob::receiveFiles()
     kDebug() << "Transfer started ...";
     setTotalAmount(Bytes, m_totalFileSize);
     setProcessedAmount(Bytes, 0);
-    m_serverSession->accept();
+    serverSession->Accept();
     m_time = QTime::currentTime();
     m_procesedBytes = 0;
 }
@@ -118,6 +118,6 @@ bool FileTransferJob::doKill()
 {
     kDebug() << "doKill called";
     m_serverSession->disconnect();
-    m_serverSession->cancel();
+    m_serverSession->dbusServerSession()->Cancel();
     return true;
 }

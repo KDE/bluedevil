@@ -1,4 +1,5 @@
-/*  This file is part of the KDE project
+/*
+    This file is part of the KDE project
 
     Copyright (C) 2010 by Eduardo Robles Elvira <edulix@gmail.com>
 
@@ -21,6 +22,7 @@
 #define OPENOBEX_SERVERSESSION_H
 
 #include <QObject>
+#include <solid/control/bluetoothremotedevice.h>
 #include "server_session_interface.h"
 
 namespace OpenObex {
@@ -34,9 +36,6 @@ public:
     ServerSession(const QString& path, const QString& bluetoothAddress);
     virtual ~ServerSession();
     QString path();
-    void accept();
-    void reject();
-    void cancel();
     org::openobex::ServerSession* dbusServerSession();
 
 public Q_SLOTS:
@@ -44,13 +43,23 @@ public Q_SLOTS:
     void slotDisconnected();
     void slotTransferStarted(const QString& filename, const QString& localPath,
         qulonglong totalBytes);
-    QString bluetoothAddress();
+
+private Q_SLOTS:
+    void slotAccept();
+    void slotCancel();
+    void slotSaveAs();
 
 private:
     QString m_path;
     org::openobex::ServerSession* m_dbusServerSession;
     QDBusObjectPath m_serverPath;
-    QString m_bluetoothAddress;
+    Solid::Control::BluetoothRemoteDevice m_bluetoothDevice;
+
+    // These three vars store information received when the slotTransferStarted gets called and
+    // needs to be stored so that it's available when the user decides to accept the file transfer
+    QString  m_filename;
+    QString m_localPath;
+    qulonglong m_totalBytes;
 };
 
 }

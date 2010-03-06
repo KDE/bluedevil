@@ -20,9 +20,12 @@
 
 #include "serversession.h"
 #include "filetransferjob.h"
-#include <QtDBus>
-#include <KDebug>
 
+#include <QtDBus>
+
+#include <KDebug>
+#include <KLocale>
+#include <KNotification>
 #include <kstatusbarjobtracker.h>
 #include <KIO/JobUiDelegate>
 
@@ -31,7 +34,10 @@ using namespace OpenObex;
 ServerSession::ServerSession(const QString& path, const QString& bluetoothAddress): QObject(0)
 {
     m_path = path;
-    m_bluetoothAddress = bluetoothAddress;
+
+    Solid::Control::BluetoothManager &bluetoothManager = Solid::Control::BluetoothManager::self();
+    Solid::Control::BluetoothInterface* bluetoothInterface = new Solid::Control::BluetoothInterface(bluetoothManager.defaultInterface());
+    m_bluetoothDevice = bluetoothInterface->findBluetoothRemoteDeviceAddr(bluetoothAddress);
     QDBusConnection* dbus = new QDBusConnection("dbus");
     QDBusConnection dbusConnection = dbus->connectToBus(QDBusConnection::SessionBus, "dbus");
     m_dbusServerSession = new org::openobex::ServerSession("org.openobex", path, dbusConnection,
@@ -52,27 +58,10 @@ ServerSession::~ServerSession()
     m_dbusServerSession->deleteLater();
 }
 
-void ServerSession::accept()
-{
-    m_dbusServerSession->Accept();
-}
-
-void ServerSession::reject()
-{
-    m_dbusServerSession->Reject();
-}
-
 QString ServerSession::path()
 {
     return m_path;
 }
-
-
-void ServerSession::cancel()
-{
-    m_dbusServerSession->Cancel();
-}
-
 
 void ServerSession::slotCancelled()
 {
@@ -84,11 +73,6 @@ void ServerSession::slotDisconnected()
     qDebug() << "slotDisconnected()";
 }
 
-QString ServerSession::bluetoothAddress()
-{
-  return m_bluetoothAddress;
-}
-
 org::openobex::ServerSession* ServerSession::dbusServerSession()
 {
     return m_dbusServerSession;
@@ -97,9 +81,52 @@ org::openobex::ServerSession* ServerSession::dbusServerSession()
 void ServerSession::slotTransferStarted(const QString& filename, const QString& localPath,
     qulonglong totalBytes)
 {
+    m_filename = filename;
+    m_localPath = localPath;
+    m_totalBytes = totalBytes;
+
     qDebug() << "slotTransferStarted()" << "filename" << filename << "localPath" << localPath <<
         "totalBytes" << totalBytes;
-    FileTransferJob *fileTransferJob = new FileTransferJob(this, filename, localPath, totalBytes);
+    KNotification *notification = new KNotification("bluedevilIncomingFile",
+        KNotification::Persistent | KNotification::CloseWhenWidgetActivated, this);
+
+    notification->setText(i18nc(
+        "Show a notification asking for authorize or deny an incoming file transfer to this computer from a Bluetooth device.",
+        "%1 is sending you the file %2", m_bluetoothDevice.name(), filename));
+    QStringList actions;
+
+    actions.append(i18nc("Deny the incoming file transfer", "Cancel"));
+    actions.append(i18nc("Button to accept the incoming file transfer and download it in the default download directory", "Accept"));
+    actions.append(i18nc("Button to accept the incoming file transfer and show a SaveAs.. dialog that will let the user choose where will the file be downloaded to", "Save as.."));
+
+    notification->setActions(actions);
+
+    connect(notification, SIGNAL(action1Activated()), this, SLOT(slotCancel()));
+    connect(notification, SIGNAL(action2Activated()), this, SLOT(slotAccept()));
+    connect(notification, SIGNAL(action3Activated()), this, SLOT(slotSaveAs()));
+
+    notification->setPixmap(KIcon("preferences-system-bluetooth").pixmap(42, 42));
+    notification->sendEvent();
+}
+
+void ServerSession::slotCancel()
+{
+    m_dbusServerSession->Cancel();
+}
+
+void ServerSession::slotAccept()
+{
+    FileTransferJob *fileTransferJob = new FileTransferJob(this, m_filename, m_localPath,
+        m_totalBytes);
+    KIO::getJobTracker()->registerJob(fileTransferJob);
+    fileTransferJob->start();
+}
+
+void ServerSession::slotSaveAs()
+{
+    // TODO: Show a "Save As.." dialog
+    FileTransferJob *fileTransferJob = new FileTransferJob(this, m_filename, m_localPath,
+        m_totalBytes);
     KIO::getJobTracker()->registerJob(fileTransferJob);
     fileTransferJob->start();
 }
