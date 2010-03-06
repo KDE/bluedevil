@@ -27,8 +27,8 @@
 #include <QWidget>
 #include <solid/control/bluetoothmanager.h>
 #include "agentlistener.h"
+#include "bluedevil_service_interface.h"
 #include <solid/control/bluetoothinterface.h>
-#include "openobex/server.h"
 
 K_PLUGIN_FACTORY(BlueDevilFactory,
                  registerPlugin<BlueDevilDaemon>();)
@@ -41,7 +41,7 @@ struct BlueDevilDaemon::Private
     Solid::Control::BluetoothManager* man;
     AgentListener *agentListener;
     Solid::Control::BluetoothInterface* adapter;
-    OpenObex::Server *server;
+    org::kde::BlueDevil::Service* service;
 };
 
 BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
@@ -49,7 +49,7 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
 {
     d->agentListener = 0;
     d->adapter = 0;
-    d->server = 0;
+    d->service = 0;
 
     KGlobal::locale()->insertCatalog("bluedevil");
 
@@ -88,6 +88,20 @@ BlueDevilDaemon::~BlueDevilDaemon()
     delete d;
 }
 
+bool BlueDevilDaemon::serviceStarted()
+{
+    d->service = new org::kde::BlueDevil::Service("org.kde.BlueDevil.Service",
+        "/Service", QDBusConnection::sessionBus(), this);
+
+    if ((QString)d->service->ping() == "pong") {
+        qDebug() << "org::kde::BlueDevil::Service is up and running!";
+        return true;
+    } else {
+        qDebug() << d->service->ping();
+        return false;
+    }
+}
+
 void BlueDevilDaemon::onlineMode()
 {
     if (d->status == true) {
@@ -102,7 +116,10 @@ void BlueDevilDaemon::onlineMode()
     d->agentListener->start();
 
     d->adapter = new Solid::Control::BluetoothInterface(d->man->defaultInterface());
-    d->server = new OpenObex::Server(d->adapter->address());
+    if (!serviceStarted()) {
+      return;
+    }
+    d->service->launchServer();
 
     d->status = true;
 }
@@ -121,10 +138,10 @@ void BlueDevilDaemon::offlineMode()
     qDebug() << "You've got no bluetooth interfaces attached!";
     d->status = false;
 
-    if (d->server) {
-        d->server->close();
-        connect(d->server, SIGNAL(closed()), this, SLOT(serverClosed()));
+    if (!serviceStarted()) {
+      return;
     }
+    d->service->stopServer();
 }
 
 /*
@@ -145,12 +162,6 @@ void BlueDevilDaemon::agentThreadStopped()
     d->agentListener = 0;
 
     qDebug() << "agent listener deleted";
-}
-
-void BlueDevilDaemon::serverClosed()
-{
-    delete d->server;
-    d->server = 0;
 }
 
 void BlueDevilDaemon::adapterAdded(const QString& adapterName)

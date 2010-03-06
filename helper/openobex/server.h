@@ -40,9 +40,6 @@ public Q_SLOTS:
     void close();
 
 protected Q_SLOTS:
-    void slotStarted();
-    void slotStopped();
-    void slotClosed();
     void slotErrorOccured(const QString& errorName, const QString& errorMessage);
     void slotSessionCreated(QDBusObjectPath path);
     void slotSessionRemoved(QDBusObjectPath path);

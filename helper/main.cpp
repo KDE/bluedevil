@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
         "http://blog.edulix.es/");
 
     QApplication app(argc,argv);
-    Service *helperService = new Service;
+    new Service;
 
     return app.exec();
 }

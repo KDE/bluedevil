@@ -79,11 +79,11 @@ private Q_SLOTS:
      */
     void agentReleased();
 
+private:
     /**
-     * Remove the server object
+     * Tries to start the helper process via dbus and returns true if successful
      */
-    void serverClosed();
-
+    bool serviceStarted();
 private:
     struct Private;
     Private *d;

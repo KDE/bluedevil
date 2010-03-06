@@ -18,8 +18,11 @@
 
 #include "service.h"
 #include "serviceadaptor.h"
-#include <kdebug.h>
 #include "openobex/serversession.h"
+
+#include <solid/control/bluetoothmanager.h>
+#include <solid/control/bluetoothinterface.h>
+#include <kdebug.h>
 
 Service::Service()
 {
@@ -28,32 +31,28 @@ Service::Service()
     QDBusConnection dbus = QDBusConnection::sessionBus();
     dbus.registerObject("/Service", this);
     dbus.registerService("org.kde.BlueDevil.Service");
-    m_serversession = 0;
+    m_server = 0;
 }
 
 Service::~Service()
 {
-    m_serversession->deleteLater();
+    delete m_server;
 }
 
-void Service::errorOccured(const QString& errorName, const QString& errorMessage)
+void Service::launchServer()
 {
-    kDebug(4567) << "errorName" << errorName << "errorMessage" << errorMessage;
-    if (m_serversession) {
-        m_serversession->deleteLater();
+    if (m_server) {
+        return;
     }
+
+    Solid::Control::BluetoothInterface *adapter = new Solid::Control::BluetoothInterface(
+        Solid::Control::BluetoothManager::self().defaultInterface());
+    m_server = new OpenObex::Server(adapter->address());
 }
 
-void Service::sessionCreated(const QDBusObjectPath& path, const QString& bluetoothAddress)
+void Service::stopServer()
 {
-    // TODO: Be able to deal with more than one session at a time
-    m_serversession = new OpenObex::ServerSession(path.path(), bluetoothAddress);
-}
-
-void Service::sessionRemoved(const QDBusObjectPath& path)
-{
-    m_serversession->deleteLater();
-    m_serversession = 0;
+  m_server->deleteLater();
 }
 
 QString Service::ping()
