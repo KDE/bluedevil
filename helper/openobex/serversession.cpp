@@ -20,6 +20,7 @@
 
 #include "serversession.h"
 #include "filetransferjob.h"
+#include "saveasdialog_p.h"
 
 #include <QtDBus>
 
@@ -65,12 +66,12 @@ QString ServerSession::path()
 
 void ServerSession::slotCancelled()
 {
-    qDebug() << "slotCancelled()";
+    kDebug() << "slotCancelled()";
 }
 
 void ServerSession::slotDisconnected()
 {
-    qDebug() << "slotDisconnected()";
+    kDebug() << "slotDisconnected()";
 }
 
 org::openobex::ServerSession* ServerSession::dbusServerSession()
@@ -85,7 +86,7 @@ void ServerSession::slotTransferStarted(const QString& filename, const QString& 
     m_localPath = localPath;
     m_totalBytes = totalBytes;
 
-    qDebug() << "slotTransferStarted()" << "filename" << filename << "localPath" << localPath <<
+    kDebug() << "slotTransferStarted()" << "filename" << filename << "localPath" << localPath <<
         "totalBytes" << totalBytes;
     KNotification *notification = new KNotification("bluedevilIncomingFile",
         KNotification::Persistent | KNotification::CloseWhenWidgetActivated, this);
@@ -122,11 +123,24 @@ void ServerSession::slotAccept()
     fileTransferJob->start();
 }
 
-void ServerSession::slotSaveAs()
+
+/**
+ * Only called by the startTransfer signal of the SaveAsDialog thread.
+ */
+void ServerSession::slotSaveAs(const QString& localPath)
 {
-    // TODO: Show a "Save As.." dialog
+    m_localPath = localPath;
     FileTransferJob *fileTransferJob = new FileTransferJob(this, m_filename, m_localPath,
         m_totalBytes);
     KIO::getJobTracker()->registerJob(fileTransferJob);
     fileTransferJob->start();
 }
+
+void ServerSession::slotSaveAs()
+{
+    SaveAsDialog* dialog = new SaveAsDialog(this);
+    connect(dialog, SIGNAL(cancelTransfer()), this, SLOT(slotCancel()));
+    connect(dialog, SIGNAL(startTransfer(QString)), this, SLOT(slotSaveAs(QString)));
+    dialog->start();
+}
+

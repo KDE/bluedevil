@@ -31,7 +31,7 @@ class FileTransferJob;
 
 class ServerSession : public QObject
 {
-Q_OBJECT
+    Q_OBJECT
 public:
     ServerSession(const QString& path, const QString& bluetoothAddress);
     virtual ~ServerSession();
@@ -48,6 +48,7 @@ private Q_SLOTS:
     void slotAccept();
     void slotCancel();
     void slotSaveAs();
+    void slotSaveAs(const QString& localPath);
 
 private:
     QString m_path;
