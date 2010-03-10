@@ -34,15 +34,7 @@ public:
     Server(const QString& addr);
     virtual ~Server();
 
-public Q_SLOTS:
-    void start();
-    void stop();
-    void close();
-
 protected Q_SLOTS:
-    void slotStarted();
-    void slotStopped();
-    void slotClosed();
     void slotErrorOccured(const QString& errorName, const QString& errorMessage);
     void slotSessionCreated(QDBusObjectPath path);
     void slotSessionRemoved(QDBusObjectPath path);
@@ -53,13 +45,6 @@ protected Q_SLOTS:
 
 private:
     bool serviceStarted();
-
-Q_SIGNALS:
-    void started();
-    void closed();
-    void stopped();
-    void serverReady();
-    void openObexError();
 
 private:
     struct Private;

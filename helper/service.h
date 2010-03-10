@@ -21,7 +21,7 @@
 
 #include <QObject>
 #include <QtDBus>
-#include "openobex/serversession.h"
+#include "openobex/server.h"
 
 class Service : public QObject
 {
@@ -31,13 +31,12 @@ public:
     virtual ~Service();
 
 public Q_SLOTS:
-    void errorOccured(const QString& errorName, const QString& errorMessage);
-    void sessionCreated(const QDBusObjectPath& path, const QString& bluetoothAddress);
-    void sessionRemoved(const QDBusObjectPath& path);
+    void launchServer();
+    void stopServer();
     QString ping();
 
 private:
-    OpenObex::ServerSession* m_serversession;
+    OpenObex::Server* m_server;
 };
 
 #endif // SERVICE_H

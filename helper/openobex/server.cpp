@@ -20,31 +20,32 @@
 
 #include "server.h"
 #include "server_interface.h"
-#include "bluedevil_service_interface.h"
-#include <kdebug.h>
-
+#include "server_session_interface.h"
+#include "serversession.h"
+#include <KDebug>
 
 struct OpenObex::Server::Private
 {
-    org::openobex::Server *dbusServer;
-    org::kde::BlueDevil::Service* service;
+    org::openobex::Server* dbusServer;
+    OpenObex::ServerSession* serverSession;
 };
 
-OpenObex::Server::Server(const QString& addr) : QObject(0), d(new Private)
+OpenObex::Server::Server(const QString& addr)
+    : QObject(0), d(new Private)
 {
     qDebug();
-    d->service = 0;
+    d->serverSession = 0;
     QDBusConnection* dbus = new QDBusConnection("dbus");
     QDBusConnection dbusconn = dbus->connectToBus(QDBusConnection::SessionBus, "dbus");
 
     //Dbus must be pressent and this connection can't fail
-    if(!dbusconn.isConnected()){
+    if (!dbusconn.isConnected()) {
         return;
     }
-
     qDebug() << addr;
 
-    QDBusInterface* manager = new QDBusInterface("org.openobex", "/org/openobex", "org.openobex.Manager", dbusconn);
+    QDBusInterface* manager = new QDBusInterface("org.openobex", "/org/openobex",
+        "org.openobex.Manager", dbusconn);
 
     QString pattern = "opp";
     bool require_pairing = false;
@@ -60,67 +61,37 @@ OpenObex::Server::Server(const QString& addr) : QObject(0), d(new Private)
 
 OpenObex::Server::~Server()
 {
-    delete d->service;
-    delete d;
-}
-
-void OpenObex::Server::start()
-{
-    d->dbusServer->Start(QString("/tmp"), true, false);
-    emit started();
-}
-
-void OpenObex::Server::stop()
-{
+    kDebug();
     d->dbusServer->Stop();
-    emit stopped();
-}
-
-void OpenObex::Server::close()
-{
-    d->dbusServer->Close();
-    emit closed();
-}
-
-void OpenObex::Server::slotClosed()
-{
-    qDebug();
-}
-
-bool OpenObex::Server::serviceStarted()
-{
-    d->service = new org::kde::BlueDevil::Service("org.kde.BlueDevil.Service",
-        "/Service", QDBusConnection::sessionBus(), this);
-
-    if ((QString)d->service->ping() == "pong") {
-        qDebug() << "org::kde::BlueDevil::Service is up and running!";
-        return true;
-    } else {
-        qDebug() << d->service->ping();
-        return false;
-    }
+    disconnect();
+    delete d->dbusServer;
+    delete d->serverSession;
+    delete d;
 }
 
 void OpenObex::Server::slotErrorOccured(const QString& errorName, const QString& errorMessage)
 {
     qDebug() << "error_name" << errorName << "error_message" << errorMessage;
-
-    if (!serviceStarted()) {
-        return;
-    }
-    d->service->errorOccured(errorName, errorMessage);
 }
 
 void OpenObex::Server::slotSessionCreated(QDBusObjectPath path)
 {
     qDebug() << "slotSessionCreated path" << path.path();
 
-    QMap<QString, QString> sessionInfo = getServerSessionInfo(path);
+    QDBusConnection* dbus = new QDBusConnection("dbus");
+    QDBusConnection dbusConnection = dbus->connectToBus(QDBusConnection::SessionBus, "dbus");
+    org::openobex::ServerSession* dbusServerSession = new
+        org::openobex::ServerSession("org.openobex", path.path(), dbusConnection, this);
 
-    if (!serviceStarted()) {
+    if (!dbusServerSession->isValid()) {
+        qDebug() << "invalid org::openobex::ServerSession interface";
         return;
     }
-    d->service->sessionCreated(path, sessionInfo["BluetoothAddress"]);
+
+    QMap<QString, QString> sessionInfo = getServerSessionInfo(path);
+
+    d->serverSession = new OpenObex::ServerSession(path.path(),
+        sessionInfo["BluetoothAddress"]);
 
 }
 
@@ -128,22 +99,8 @@ void OpenObex::Server::slotSessionRemoved(QDBusObjectPath path)
 {
     qDebug() << "path" << path.path();
 
-    if (!serviceStarted()) {
-        return;
-    }
-    d->service->sessionRemoved(path);
+    d->serverSession->deleteLater();
 }
-
-void OpenObex::Server::slotStarted()
-{
-    qDebug();
-}
-
-void OpenObex::Server::slotStopped()
-{
-    qDebug();
-}
-
 void OpenObex::Server::serverCreated(QDBusObjectPath path)
 {
     QDBusConnection* dbus = new QDBusConnection("dbus");
@@ -153,24 +110,20 @@ void OpenObex::Server::serverCreated(QDBusObjectPath path)
         path.path(), dbusconn, this);
 
     //This interface MUST be valid too, if not is because openobex have some problem
-    if(!d->dbusServer->isValid()){
+    if (!d->dbusServer->isValid()) {
         qDebug() << "open obex error: invalid dbus server interface" << path.path();
-        emit openObexError();
         return;
     }
     qDebug() << "session interface created for: " << d->dbusServer->path();
 
 //  connect the DBus Signal to slots
-    connect(d->dbusServer, SIGNAL(Started()), this, SLOT(slotStarted()));
-    connect(d->dbusServer, SIGNAL(Stopped()), this, SLOT(slotStopped()));
-    connect(d->dbusServer, SIGNAL(Closed()), this, SLOT(slotClosed()));
     connect(d->dbusServer, SIGNAL(SessionCreated(QDBusObjectPath)), this,
         SLOT(slotSessionCreated(QDBusObjectPath)));
     connect(d->dbusServer, SIGNAL(SessionRemoved(QDBusObjectPath)),
         this, SLOT(slotSessionRemoved(QDBusObjectPath)));
     connect(d->dbusServer, SIGNAL(ErrorOccured(const QString&, const QString&)),
         this, SLOT(slotErrorOccured(const QString&, const QString&)));
-    start();
+    d->dbusServer->Start(QString("/tmp"), true, false);
 }
 
 void OpenObex::Server::serverCreatedError(QDBusError error)
@@ -182,7 +135,8 @@ void OpenObex::Server::serverCreatedError(QDBusError error)
 typedef QMap<QString, QString> StringMapReply;
 Q_DECLARE_METATYPE(StringMapReply)
 
-QMap<QString,QString> OpenObex::Server::getServerSessionInfo(QDBusObjectPath path) {
+QMap<QString,QString> OpenObex::Server::getServerSessionInfo(QDBusObjectPath path)
+{
   qDBusRegisterMetaType<StringMapReply>();
   QList<QVariant> argumentList;
   argumentList << QVariant::fromValue(path);
