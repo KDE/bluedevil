@@ -42,7 +42,7 @@ FileTransferJob::FileTransferJob(OpenObex::ServerSession* serverSession,
     m_totalFileSize = size;
     setCapabilities(Killable);
 
-    qDebug() << "m_localPath" << m_localPath;
+    kDebug() << "m_localPath" << m_localPath;
 }
 
 FileTransferJob::~FileTransferJob()

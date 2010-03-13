@@ -23,3 +23,8 @@ Action=Popup
 Name=Request pin
 Comment=A pin is needed
 Action=Popup
+
+[Event/bluedevilIncomingFile]
+Name=Incoming File
+Comment=Incoming file
+Action=Popup

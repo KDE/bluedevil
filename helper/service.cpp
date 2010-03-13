@@ -22,7 +22,7 @@
 
 #include <solid/control/bluetoothmanager.h>
 #include <solid/control/bluetoothinterface.h>
-#include <kdebug.h>
+#include <KDebug>
 
 Service::Service()
 {

@@ -18,29 +18,17 @@
 
 #include "service.h"
 #include <QDebug>
-#include <kcomponentdata.h>
-#include <kaboutdata.h>
+#include <KComponentData>
 #include <kcmdlineargs.h>
 #include <solid/control/bluetoothmanager.h>
 #include <QApplication>
 
-static const KLocalizedString  description = ki18n("Small application part of BlueDevil");
-
 int main(int argc, char *argv[])
 {
-    KAboutData aboutData("BlueDevil-Helper",
-        "bluedevil-helper",
-        ki18n("BlueDevil Helper"),
-        "1.0",
-        description,
-        KAboutData::License_GPL,
-        ki18n("(c) 2010, Artesanos del Sotware")
-    );
+    KComponentData data("bluedevil", "bluedevil");
+    KGlobal::setActiveComponent(data);
 
-    aboutData.addAuthor(ki18n("Eduardo Robles Elvira"), ki18n("Maintainer"), "edulix@gmail.com",
-        "http://blog.edulix.es/");
-
-    QApplication app(argc,argv);
+    QApplication app(argc, argv);
     new Service;
 
     return app.exec();

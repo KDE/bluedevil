@@ -14,7 +14,6 @@ set(helper_SRCS
     openobex/server.cpp
     openobex/serversession.cpp
     openobex/filetransferjob.cpp
-    openobex/saveasdialog_p.cpp
 )
 
 qt4_add_dbus_adaptor(helper_SRCS org.kde.BlueDevil.Service.xml service.h Service)
@@ -36,5 +35,4 @@ target_link_libraries(bluedevil-helper
 )
 
 install(TARGETS bluedevil-helper DESTINATION ${INSTALL_TARGETS_DEFAULT_ARGS})
-install(FILES bluedevil-helper.notifyrc DESTINATION ${DATA_INSTALL_DIR}/bluedevil-helper)
 

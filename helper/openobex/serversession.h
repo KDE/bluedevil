@@ -48,7 +48,6 @@ private Q_SLOTS:
     void slotAccept();
     void slotCancel();
     void slotSaveAs();
-    void slotSaveAs(const QString& localPath);
 
 private:
     QString m_path;

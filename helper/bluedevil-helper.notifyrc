@@ -1,9 +1,0 @@
-[Global]
-IconName=preferences-system-bluetooth
-Comment=BlueDevil
-Name=BlueDevil
-
-[Event/bluedevilIncomingFile]
-Name=Incoming File
-Comment=Incoming file
-Action=Popup

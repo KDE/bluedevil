@@ -20,12 +20,12 @@
 
 #include "serversession.h"
 #include "filetransferjob.h"
-#include "saveasdialog_p.h"
 
 #include <QtDBus>
 
 #include <KDebug>
 #include <KLocale>
+#include <KFileDialog>
 #include <KNotification>
 #include <kstatusbarjobtracker.h>
 #include <KIO/JobUiDelegate>
@@ -89,7 +89,7 @@ void ServerSession::slotTransferStarted(const QString& filename, const QString& 
     kDebug() << "slotTransferStarted()" << "filename" << filename << "localPath" << localPath <<
         "totalBytes" << totalBytes;
     KNotification *notification = new KNotification("bluedevilIncomingFile",
-        KNotification::Persistent | KNotification::CloseWhenWidgetActivated, this);
+        KNotification::Persistent, this);
 
     notification->setText(i18nc(
         "Show a notification asking for authorize or deny an incoming file transfer to this computer from a Bluetooth device.",
@@ -123,24 +123,17 @@ void ServerSession::slotAccept()
     fileTransferJob->start();
 }
 
-
-/**
- * Only called by the startTransfer signal of the SaveAsDialog thread.
- */
-void ServerSession::slotSaveAs(const QString& localPath)
-{
-    m_localPath = localPath;
-    FileTransferJob *fileTransferJob = new FileTransferJob(this, m_filename, m_localPath,
-        m_totalBytes);
-    KIO::getJobTracker()->registerJob(fileTransferJob);
-    fileTransferJob->start();
-}
-
 void ServerSession::slotSaveAs()
 {
-    SaveAsDialog* dialog = new SaveAsDialog(this);
-    connect(dialog, SIGNAL(cancelTransfer()), this, SLOT(slotCancel()));
-    connect(dialog, SIGNAL(startTransfer(QString)), this, SLOT(slotSaveAs(QString)));
-    dialog->start();
+    QString localPath = KFileDialog::getSaveFileName();
+    if (!localPath.isEmpty()) {
+      m_localPath = localPath;
+      FileTransferJob *fileTransferJob = new FileTransferJob(this, m_filename, m_localPath,
+          m_totalBytes);
+      KIO::getJobTracker()->registerJob(fileTransferJob);
+      fileTransferJob->start();
+    } else {
+      slotCancel();
+    }
 }
 
