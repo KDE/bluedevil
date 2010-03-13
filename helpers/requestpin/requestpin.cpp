@@ -19,24 +19,26 @@
 */
 
 #include "requestpin.h"
-#include <knotification.h>
 #include "ui_dialogWidget.h"
-#include <klocale.h>
+
+#include <iostream>
 
 #include <QDebug>
-#include <KIcon>
-#include <kiconloader.h>
 #include <QCoreApplication>
-#include <iostream>
-#include <solid/control/bluetoothmanager.h>
+#include <QTimer>
+
+#include <KIcon>
+#include <knotification.h>
+#include <klocale.h>
+#include <kiconloader.h>
 #include <KDialog>
+#include <solid/control/bluetoothmanager.h>
 
 using namespace std;
 RequestPin::RequestPin() : QObject()
 {
     KNotification *notification = new KNotification("bluedevilRequestPin",
-                                                        KNotification::Persistent |
-                                                        KNotification::CloseWhenWidgetActivated,this);
+                                                        KNotification::Persistent, this);
 
     notification->setText(i18nc(
         "Showed in a notification to announce that a PIN is needed to acomplish a pair action, %1 is the name of the bluetooth device",
@@ -52,7 +54,11 @@ RequestPin::RequestPin() : QObject()
     notification->setActions(actions);
 
     connect(notification, SIGNAL(action1Activated()),this, SLOT(introducePin()));
+    connect(notification, SIGNAL(closed()), this, SLOT(deny()));
+    connect(notification, SIGNAL(ignored()), this, SLOT(deny()));
 
+    //We're using persistent notifications so we have to use our own timeout (10s)
+    QTimer::singleShot(10000, notification, SLOT(close()));
     notification->setPixmap(KIcon("preferences-system-bluetooth").pixmap(42,42));
     notification->sendEvent();
 }

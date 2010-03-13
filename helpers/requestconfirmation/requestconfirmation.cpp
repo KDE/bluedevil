@@ -19,20 +19,21 @@
 */
 
 #include "requestconfirmation.h"
-#include <knotification.h>
-#include <klocale.h>
 
 #include <QDebug>
+#include <QCoreApplication>
+#include <QTimer>
+
 #include <KIcon>
 #include <kiconloader.h>
-#include <QCoreApplication>
+#include <knotification.h>
+#include <klocale.h>
 #include <solid/control/bluetoothmanager.h>
 
 RequestConfirmation::RequestConfirmation() : QObject()
 {
     KNotification *notification = new KNotification("bluedevilRequestConfirmation",
-                                                        KNotification::Persistent |
-                                                        KNotification::CloseWhenWidgetActivated,this);
+                                                        KNotification::Persistent, this);
 
     notification->setText(i18nc(
         "The text is showed in a knotification to know if the PIN is correct, %1 is the remote bluetotoh device and %2 is the pin",
@@ -47,7 +48,11 @@ RequestConfirmation::RequestConfirmation() : QObject()
 
     connect(notification, SIGNAL(action1Activated()),this, SLOT(pinCorrect()));
     connect(notification, SIGNAL(action2Activated()),this, SLOT(pinWrong()));
+    connect(notification, SIGNAL(closed()), this, SLOT(deny()));
+    connect(notification, SIGNAL(ignored()), this, SLOT(deny()));
 
+    //We're using persistent notifications so we have to use our own timeout (10s)
+    QTimer::singleShot(10000, notification, SLOT(close()));
     notification->setPixmap(KIcon("preferences-system-bluetooth").pixmap(42,42));
     notification->sendEvent();
 }

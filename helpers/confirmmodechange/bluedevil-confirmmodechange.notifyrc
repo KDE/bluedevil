@@ -1,9 +1,0 @@
-[Global]
-IconName=preferences-system-bluetooth
-Comment=BlueDevil
-Name=BlueDevil
-
-[Event/bluedevilConfirmModechange]
-Name=Access requested
-Comment=A device wants to connect to you
-Action=Popup

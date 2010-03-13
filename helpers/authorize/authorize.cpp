@@ -23,17 +23,18 @@
 #include <klocale.h>
 
 #include <QDebug>
+#include <QCoreApplication>
+#include <QTimer>
+
 #include <KIcon>
 #include <kiconloader.h>
-#include <QCoreApplication>
 #include <solid/control/bluetoothmanager.h>
 
 using namespace std;
 Authorize::Authorize() : QObject()
 {
     KNotification *notification = new KNotification("bluedevilAuthorize",
-                                                        KNotification::Persistent |
-                                                        KNotification::CloseWhenWidgetActivated,this);
+                                                        KNotification::Persistent,this);
 
     notification->setText(i18nc(
         "Show a notification asking for authorize or deny access to this computer from Bluetooth the %1 is the name of the bluetooth device",
@@ -50,8 +51,13 @@ Authorize::Authorize() : QObject()
     connect(notification, SIGNAL(action1Activated()),this, SLOT(trust()));
     connect(notification, SIGNAL(action2Activated()),this, SLOT(authorize()));
     connect(notification, SIGNAL(action3Activated()),this, SLOT(deny()));
+    connect(notification, SIGNAL(closed()), this, SLOT(deny()));
+    connect(notification, SIGNAL(ignored()), this, SLOT(deny()));
 
     notification->setPixmap(KIcon("preferences-system-bluetooth").pixmap(42,42));
+
+    //We're using persistent notifications so we have to use our own timeout (10s)
+    QTimer::singleShot(10000, notification, SLOT(close()));
     notification->sendEvent();
 }
 

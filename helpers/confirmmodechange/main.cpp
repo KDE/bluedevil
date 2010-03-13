@@ -29,22 +29,9 @@ static const KLocalizedString  description = ki18n("KDE Bluetooth System");
 
 int main(int argc, char *argv[])
 {
-    KAboutData aboutData(
-        "BlueDevil",
-        "bluedevil",
-        ki18n("BlueDevil"),
-        "1.0",
-        description,
-        KAboutData::License_GPL,
-        ki18n("(c) 2010, Artesanos del Sotware")
-    );
-
-    aboutData.addAuthor(ki18n("Alex Fiestas"), ki18n("Maintainer"), "alex@eyeos.org",
-        "http://www.afiestas.org/");
-    aboutData.addAuthor(ki18n("Eduardo Robles Elvira"), ki18n("Maintainer"), "edulix@gmail.com",
-        "http://blog.edulix.es");
-
     QApplication app(argc,argv);
+    KComponentData data("bluedevil", "bluedevil");
+    KGlobal::setActiveComponent(data);
     ConfirmModeChange *auth = new ConfirmModeChange;
 
     return app.exec();

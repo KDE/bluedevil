@@ -1,9 +1,0 @@
-[Global]
-IconName=preferences-system-bluetooth
-Comment=BlueDevil
-Name=BlueDevil
-
-[Event/bluedevilRequestPin]
-Name=Request pin
-Comment=A pin is needed
-Action=Popup
