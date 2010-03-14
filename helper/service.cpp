@@ -48,11 +48,14 @@ void Service::launchServer()
     Solid::Control::BluetoothInterface *adapter = new Solid::Control::BluetoothInterface(
         Solid::Control::BluetoothManager::self().defaultInterface());
     m_server = new OpenObex::Server(adapter->address());
+    kDebug() << m_server;
 }
 
 void Service::stopServer()
 {
+  kDebug() << m_server;
   m_server->deleteLater();
+  m_server = 0;
 }
 
 QString Service::ping()

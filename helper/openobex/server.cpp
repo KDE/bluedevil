@@ -62,7 +62,12 @@ OpenObex::Server::Server(const QString& addr)
 OpenObex::Server::~Server()
 {
     kDebug();
-    d->dbusServer->Stop();
+    // If serverCreatedError() was called instead of serverCreated(), d->dbusServer won't
+    // have been initialized so it will not exist
+    if (d->dbusServer) {
+      d->dbusServer->Stop();
+      d->dbusServer->Close();
+    }
     disconnect();
     delete d->dbusServer;
     delete d->serverSession;
