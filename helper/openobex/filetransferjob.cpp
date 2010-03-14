@@ -31,18 +31,14 @@
 using namespace OpenObex;
 
 FileTransferJob::FileTransferJob(OpenObex::ServerSession* serverSession,
-    const QString& filename, const QString& path, qulonglong size) : KJob(serverSession)
+    const KUrl& url, qulonglong size) : KJob(serverSession)
 {
     m_serverSession = serverSession;
-    m_fileName = filename;
-    if (path.length() != 0) {
-        m_localPath = path;
-    }
-
+    m_url = url;
     m_totalFileSize = size;
     setCapabilities(Killable);
 
-    kDebug() << "m_localPath" << m_localPath;
+    kDebug() << "url" << m_url;
 }
 
 FileTransferJob::~FileTransferJob()
@@ -63,7 +59,7 @@ void FileTransferJob::reject()
 
 void FileTransferJob::receiveFiles()
 {
-    emit description(this, "Receiving file over bluetooth", QPair<QString, QString>("From", bluetoothDevice.name()), QPair<QString, QString>("To", m_localPath));
+    emit description(this, "Receiving file over bluetooth", QPair<QString, QString>("From", bluetoothDevice.name()), QPair<QString, QString>("To", m_url.url()));
 
     org::openobex::ServerSession* serverSession = m_serverSession->dbusServerSession();
     connect(serverSession, SIGNAL(TransferProgress(qulonglong)),

@@ -58,7 +58,7 @@ private:
     // These three vars store information received when the slotTransferStarted gets called and
     // needs to be stored so that it's available when the user decides to accept the file transfer
     QString  m_filename;
-    QString m_localPath;
+    QString m_localDir;
     qulonglong m_totalBytes;
 };
 

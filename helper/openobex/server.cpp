@@ -23,6 +23,9 @@
 #include "server_session_interface.h"
 #include "serversession.h"
 #include <KDebug>
+#include <KGlobal>
+#include <KConfig>
+#include <KConfigGroup>
 
 struct OpenObex::Server::Private
 {
@@ -128,7 +131,9 @@ void OpenObex::Server::serverCreated(QDBusObjectPath path)
         this, SLOT(slotSessionRemoved(QDBusObjectPath)));
     connect(d->dbusServer, SIGNAL(ErrorOccured(const QString&, const QString&)),
         this, SLOT(slotErrorOccured(const QString&, const QString&)));
-    d->dbusServer->Start(QString("/tmp"), true, false);
+
+    KConfigGroup group = KGlobal::config()->group("ObexServer");
+    d->dbusServer->Start(group.readEntry("savePath", "/tmp"), true, false);
 }
 
 void OpenObex::Server::serverCreatedError(QDBusError error)

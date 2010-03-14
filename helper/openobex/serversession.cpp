@@ -22,7 +22,9 @@
 #include "filetransferjob.h"
 
 #include <QtDBus>
-
+#include <KGlobal>
+#include <KConfig>
+#include <KConfigGroup>
 #include <KDebug>
 #include <KLocale>
 #include <KFileDialog>
@@ -83,10 +85,10 @@ void ServerSession::slotTransferStarted(const QString& filename, const QString& 
     qulonglong totalBytes)
 {
     m_filename = filename;
-    m_localPath = localPath;
+    m_localDir = KUrl(localPath).directory();
     m_totalBytes = totalBytes;
 
-    kDebug() << "slotTransferStarted()" << "filename" << filename << "localPath" << localPath <<
+    kDebug() << "slotTransferStarted()" << "filename" << filename << "m_localDir" << m_localDir <<
         "totalBytes" << totalBytes;
     KNotification *notification = new KNotification("bluedevilIncomingFile",
         KNotification::Persistent, this);
@@ -117,19 +119,28 @@ void ServerSession::slotCancel()
 
 void ServerSession::slotAccept()
 {
-    FileTransferJob *fileTransferJob = new FileTransferJob(this, m_filename, m_localPath,
-        m_totalBytes);
+    KUrl saveUrl;
+    saveUrl.setDirectory(m_localDir);
+    saveUrl.setFileName(m_filename);
+    FileTransferJob *fileTransferJob = new FileTransferJob(this, saveUrl, m_totalBytes);
     KIO::getJobTracker()->registerJob(fileTransferJob);
     fileTransferJob->start();
 }
 
 void ServerSession::slotSaveAs()
 {
-    QString localPath = KFileDialog::getSaveFileName();
-    if (!localPath.isEmpty()) {
-      m_localPath = localPath;
-      FileTransferJob *fileTransferJob = new FileTransferJob(this, m_filename, m_localPath,
-          m_totalBytes);
+    KUrl saveUrl = m_localDir;
+    saveUrl = KFileDialog::getSaveUrl(saveUrl);
+
+    if (!saveUrl.isEmpty()) {
+      // Update save Url
+      KConfigGroup group = KGlobal::config()->group("ObexServer");
+      group.writeEntry("savePath", saveUrl.directory());
+      m_localDir = saveUrl.directory();
+      kDebug() << "saveUrl" << saveUrl;
+      kDebug() << "m_localDir" << m_localDir;
+
+      FileTransferJob *fileTransferJob = new FileTransferJob(this, saveUrl, m_totalBytes);
       KIO::getJobTracker()->registerJob(fileTransferJob);
       fileTransferJob->start();
     } else {

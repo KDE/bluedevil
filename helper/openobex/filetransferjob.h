@@ -26,6 +26,7 @@
 #include <solid/control/bluetoothmanager.h>
 #include <solid/control/bluetoothremotedevice.h>
 #include <KJob>
+#include <KUrl>
 
 class QDBusInterface;
 
@@ -35,7 +36,7 @@ class FileTransferJob : public KJob
 {
 Q_OBJECT
 public:
-    FileTransferJob(OpenObex::ServerSession*, const QString&, const QString&, qulonglong);
+    FileTransferJob(OpenObex::ServerSession* serverSession, const KUrl& url, qulonglong size);
     ~FileTransferJob();
 
     void start();
@@ -52,12 +53,11 @@ private Q_SLOTS:
 
 private:
     OpenObex::ServerSession* m_serverSession;
-    QString m_fileName;
-    QString m_localPath;
     qulonglong m_totalFileSize;
     Solid::Control::BluetoothRemoteDevice bluetoothDevice;
     QTime m_time;
     qlonglong m_procesedBytes;
+    KUrl m_url;
 };
 
 }
