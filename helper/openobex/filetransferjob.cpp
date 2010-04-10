@@ -33,6 +33,8 @@ using namespace OpenObex;
 FileTransferJob::FileTransferJob(OpenObex::ServerSession* serverSession,
     const KUrl& url, qulonglong size) : KJob(serverSession)
 {
+    m_transferCompleted = false;
+    m_canFinish = false;
     m_serverSession = serverSession;
     m_url = url;
     m_totalFileSize = size;
@@ -47,9 +49,32 @@ FileTransferJob::~FileTransferJob()
 
 void FileTransferJob::start()
 {
-    // TODO get notification even if file transfer takes less than 1.2 seconds
     QTimer::singleShot(0, this, SLOT(receiveFiles()));
+
+    /// @see documentation for checkFinish() for details
+    QTimer::singleShot(2000, this, SLOT(checkFinish()));
 }
+
+void FileTransferJob::checkFinish()
+{
+  kDebug();
+  if (m_transferCompleted) {
+    emitResult();
+  } else {
+    m_canFinish = true;
+  }
+}
+
+void FileTransferJob::transferCompleted()
+{
+  kDebug();
+  if (m_canFinish) {
+    emitResult();
+  } else {
+    m_transferCompleted = true;
+  }
+}
+
 
 void FileTransferJob::reject()
 {
@@ -97,7 +122,7 @@ void FileTransferJob::slotTransferCompleted()
 {
     kDebug() << "Transfer completed";
     setProcessedAmount(Bytes, m_totalFileSize);
-    emitResult();
+    transferCompleted();
 }
 
 void FileTransferJob::slotErrorOccured(const QString& reason1, const QString& reason2)

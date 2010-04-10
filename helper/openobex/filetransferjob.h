@@ -51,6 +51,23 @@ private Q_SLOTS:
     void slotTransferCompleted();
     void slotErrorOccured(const QString&, const QString&);
 
+    /**
+     * Because plasma won't show notifications for less than 1.2 seconds, we'll wait to send the
+     * emitResult() signal for successfully completed transfers at least for 1.2 seconds. This
+     * function will be called 1.2 seconds after the start() function was called to see if the job
+     * has already finished, and it will finish if m_transferCompleted is true, or else it will set
+     * m_canFinish to true so that when transferCompleted() it will directly emitResult().
+     */
+    void checkFinish();
+
+    /**
+     * If m_canFinish is true, this function will directly call to emitResult(). Else, it will set
+     * m_transferCompleted to true.
+     *
+     * @see checkFinish()
+     */
+    void transferCompleted();
+
 private:
     OpenObex::ServerSession* m_serverSession;
     qulonglong m_totalFileSize;
@@ -58,6 +75,8 @@ private:
     QTime m_time;
     qlonglong m_procesedBytes;
     KUrl m_url;
+    bool m_canFinish;
+    bool m_transferCompleted;
 };
 
 }
