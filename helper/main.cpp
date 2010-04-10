@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
     KGlobal::setActiveComponent(data);
 
     QApplication app(argc, argv);
+    app.setQuitOnLastWindowClosed(false);
     new Service;
 
     return app.exec();
