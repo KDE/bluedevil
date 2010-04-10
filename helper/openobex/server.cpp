@@ -26,6 +26,7 @@
 #include <KGlobal>
 #include <KConfig>
 #include <KConfigGroup>
+#include <QtGui/QDesktopServices>
 
 struct OpenObex::Server::Private
 {
@@ -73,7 +74,7 @@ OpenObex::Server::~Server()
     }
     disconnect();
     delete d->dbusServer;
-    delete d->serverSession;
+    d->serverSession->queueDelete();
     delete d;
 }
 
@@ -107,7 +108,7 @@ void OpenObex::Server::slotSessionRemoved(QDBusObjectPath path)
 {
     kDebug() << "path" << path.path();
 
-    d->serverSession->deleteLater();
+    d->serverSession->queueDelete();
 }
 void OpenObex::Server::serverCreated(QDBusObjectPath path)
 {
@@ -132,7 +133,12 @@ void OpenObex::Server::serverCreated(QDBusObjectPath path)
     connect(d->dbusServer, SIGNAL(ErrorOccured(const QString&, const QString&)),
         this, SLOT(slotErrorOccured(const QString&, const QString&)));
 
+    // Get the default save dir, where all files will be downloaded (even if user chooses "Save As"
+    // option, files will be downloaded here and then moved to the file path the user wanted)
     KConfigGroup group = KGlobal::config()->group("ObexServer");
+//     QString saveDir = group.readEntry("saveDir",
+//         QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation));
+//     d->dbusServer->Start(saveDir, true, false);
     d->dbusServer->Start(group.readEntry("savePath", "/tmp"), true, false);
 }
 

@@ -22,21 +22,29 @@
 #include "openobex/filetransferjob.h"
 #include "openobex/serversession.h"
 
-#include <QTimer>
-#include <qdbusconnection.h>
-#include <qdbusinterface.h>
+#include <QtCore/QTimer>
+#include <QtDBus/QDBusConnection>
+#include <QtDBus/QDBusInterface>
 
 #include <KDebug>
+#include <KIO/CopyJob>
+#include <KIO/NetAccess>
 
 using namespace OpenObex;
 
-FileTransferJob::FileTransferJob(OpenObex::ServerSession* serverSession,
-    const KUrl& url, qulonglong size) : KJob(serverSession)
+FileTransferJob::FileTransferJob(OpenObex::ServerSession *serverSession,
+    const KUrl &url, qulonglong size) : KJob(serverSession)
 {
+    Q_ASSERT(serverSession != 0);
+
+    connect(serverSession, SIGNAL(customSaveUrl(QString)), SLOT(setCustomSaveUrl(QString)));
+    connect(serverSession->dbusServerSession(), SIGNAL(Cancelled()), SLOT(Cancelled()));
+    connect(serverSession->dbusServerSession(), SIGNAL(Disconnected()), SLOT(Disconnected()));
     m_transferCompleted = false;
     m_canFinish = false;
     m_serverSession = serverSession;
     m_url = url;
+    m_customSaveUrl = QString();
     m_totalFileSize = size;
     setCapabilities(Killable);
 
@@ -57,22 +65,24 @@ void FileTransferJob::start()
 
 void FileTransferJob::checkFinish()
 {
-  kDebug();
-  if (m_transferCompleted) {
-    emitResult();
-  } else {
-    m_canFinish = true;
-  }
+    kDebug();
+    if (m_transferCompleted) {
+        emitResult();
+    } else {
+        m_canFinish = true;
+    }
 }
 
 void FileTransferJob::transferCompleted()
 {
-  kDebug();
-  if (m_canFinish) {
-    emitResult();
-  } else {
-    m_transferCompleted = true;
-  }
+    kDebug();
+    if (m_canFinish) {
+        emitResult();
+    } else {
+        m_transferCompleted = true;
+    }
+    disconnect(m_serverSession->dbusServerSession(), SIGNAL(Cancelled()), this, SLOT(Cancelled()));
+    disconnect(m_serverSession->dbusServerSession(), SIGNAL(Disconnected()), this, SLOT(Disconnected()));
 }
 
 
@@ -84,13 +94,13 @@ void FileTransferJob::reject()
 
 void FileTransferJob::receiveFiles()
 {
-    emit description(this, "Receiving file over bluetooth", QPair<QString, QString>("From", bluetoothDevice.name()), QPair<QString, QString>("To", m_url.url()));
+    emit description(this, "Receiving file over bluetooth", QPair<QString, QString>("From", m_bluetoothDevice.name()), QPair<QString, QString>("To", m_url.url()));
 
-    org::openobex::ServerSession* serverSession = m_serverSession->dbusServerSession();
+    org::openobex::ServerSession *serverSession = m_serverSession->dbusServerSession();
     connect(serverSession, SIGNAL(TransferProgress(qulonglong)),
         this, SLOT(slotTransferProgress(qulonglong)));
-    connect(serverSession, SIGNAL(ErrorOccurred(const QString&, const QString&)),
-        this, SLOT(slotErrorOccured(const QString&, const QString&)));
+    connect(serverSession, SIGNAL(ErrorOccurred(QString, QString)),
+        this, SLOT(slotErrorOccured(QString, QString)));
     connect(serverSession, SIGNAL(TransferCompleted()),
         this, SLOT(slotTransferCompleted()));
     kDebug() << "Transfer started ...";
@@ -118,14 +128,35 @@ void FileTransferJob::slotTransferProgress(qulonglong transferred)
     setProcessedAmount(Bytes, transferred);
 }
 
+void FileTransferJob::setCustomSaveUrl(const QString& customSaveUrl)
+{
+  kDebug() << "m_customSaveUrl" << m_customSaveUrl;
+  m_customSaveUrl = customSaveUrl;
+
+  emit description(this, "Receiving file over bluetooth", QPair<QString, QString>("From", m_bluetoothDevice.name()), QPair<QString, QString>("To", m_customSaveUrl));
+}
+
+
 void FileTransferJob::slotTransferCompleted()
 {
     kDebug() << "Transfer completed";
+    if (error()) {
+      kDebug() << "Error Occurred, do nothing";
+      return;
+    }
+
     setProcessedAmount(Bytes, m_totalFileSize);
+
+    if (!m_customSaveUrl.isNull()) {
+      // Move the file if it's already been transfered
+        KIO::CopyJob *moveJob = KIO::move(KUrl(m_url),KUrl(m_customSaveUrl));
+        KIO::NetAccess::synchronousRun(moveJob, NULL);
+    }
+    m_serverSession->slotJobFinished();
     transferCompleted();
 }
 
-void FileTransferJob::slotErrorOccured(const QString& reason1, const QString& reason2)
+void FileTransferJob::slotErrorOccured(const QString &reason1, const QString &reason2)
 {
     kDebug() << "slotErrorOccured";
     kDebug() << reason1;
@@ -141,4 +172,16 @@ bool FileTransferJob::doKill()
     m_serverSession->disconnect();
     m_serverSession->dbusServerSession()->Cancel();
     return true;
+}
+
+void OpenObex::FileTransferJob::Cancelled()
+{
+  kDebug();
+  kill();
+}
+
+void OpenObex::FileTransferJob::Disconnected()
+{
+  kDebug();
+  kill();
 }

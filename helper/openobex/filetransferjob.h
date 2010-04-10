@@ -36,20 +36,28 @@ class FileTransferJob : public KJob
 {
 Q_OBJECT
 public:
-    FileTransferJob(OpenObex::ServerSession* serverSession, const KUrl& url, qulonglong size);
+    FileTransferJob(OpenObex::ServerSession *serverSession, const KUrl &saveUrl, qulonglong size);
     ~FileTransferJob();
 
     void start();
     void reject();
     qulonglong fileSize();
+
 protected:
     bool doKill();
+
 
 private Q_SLOTS:
     void receiveFiles();
     void slotTransferProgress(qulonglong);
     void slotTransferCompleted();
-    void slotErrorOccured(const QString&, const QString&);
+    void slotErrorOccured(const QString &, const QString &);
+
+    /**
+     * Sets the custom save url, s that when the file transfer finishes the file is moved there.
+     * See @ref ServerSession::customSaveUrl for details.
+     */
+    void setCustomSaveUrl(const QString &customSaveUrl);
 
     /**
      * Because plasma won't show notifications for less than 1.2 seconds, we'll wait to send the
@@ -68,10 +76,15 @@ private Q_SLOTS:
      */
     void transferCompleted();
 
+private Q_SLOTS:
+    void Cancelled();
+    void Disconnected();
+
 private:
-    OpenObex::ServerSession* m_serverSession;
+    OpenObex::ServerSession *m_serverSession;
     qulonglong m_totalFileSize;
-    Solid::Control::BluetoothRemoteDevice bluetoothDevice;
+    QString m_customSaveUrl;
+    Solid::Control::BluetoothRemoteDevice m_bluetoothDevice;
     QTime m_time;
     qlonglong m_procesedBytes;
     KUrl m_url;
