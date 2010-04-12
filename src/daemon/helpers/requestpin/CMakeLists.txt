@@ -1,0 +1,21 @@
+include_directories(
+   ${CMAKE_SOURCE_DIR}
+   ${CMAKE_BINARY_DIR}
+   ${KDE4_INCLUDES}
+)
+
+set(requestpin_SRCS
+    main.cpp
+    requestpin.cpp
+)
+
+kde4_add_ui_files(requestpin_UI
+                  dialogWidget.ui)
+
+kde4_add_executable(bluedevil-requestpin ${requestpin_SRCS} ${requestpin_UI})
+
+target_link_libraries(bluedevil-requestpin
+                      ${KDE4_KIO_LIBRARY} ${KDE4_KDEUI_LIBS} ${KDE4_SOLID_LIBS} ${KDE4WORKSPACE_SOLIDCONTROL_LIBRARY})
+
+install(TARGETS bluedevil-requestpin
+        DESTINATION ${INSTALL_TARGETS_DEFAULT_ARGS})

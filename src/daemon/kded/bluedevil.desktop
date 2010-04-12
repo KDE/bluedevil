@@ -1,0 +1,28 @@
+[Desktop Entry]
+Type=Service
+Icon=preferences-system-power-management
+X-KDE-ServiceTypes=KDEDModule
+X-KDE-Library=bluedevil
+X-KDE-DBus-ModuleName=bluedevil
+X-KDE-Kded-autoload=true
+X-KDE-Kded-load-on-demand=false
+X-KDE-Kded-phase=1
+
+Name=BlueDevil
+Name[cs]=BlueDevil
+Name[en_GB]=BlueDevil
+Name[es]=BlueDevil
+Name[pt]=BlueDevil
+Name[pt_BR]=BlueDevil
+Name[sv]=Blådjävul
+Name[uk]=BlueDevil
+Name[x-test]=xxBlueDevilxx
+
+Comment=Bluetooth Management Daemon
+Comment[en_GB]=Bluetooth Management Dæmon
+Comment[es]=Demonio de gestión de Bluetooth
+Comment[pt]=Servidor de Gestão do Bluetooth
+Comment[pt_BR]=Daemon de gerenciamento Bluetooth
+Comment[sv]=Hanteringsdemon för Blåtand
+Comment[uk]=Фонова служба керування Bluetooth
+Comment[x-test]=xxBluetooth Management Daemonxx
