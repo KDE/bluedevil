@@ -32,7 +32,7 @@
 
 K_PLUGIN_FACTORY(BlueDevilFactory,
                  registerPlugin<BlueDevilDaemon>();)
-K_EXPORT_PLUGIN(BlueDevilFactory("bluedevildaemon"))
+K_EXPORT_PLUGIN(BlueDevilFactory("bluedevildaemon", "bluedevil"))
 
 struct BlueDevilDaemon::Private
 {
