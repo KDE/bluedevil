@@ -61,7 +61,7 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
         "1.0",
         ki18n("KDE Bluetooth System"),
         KAboutData::License_GPL,
-        ki18n("(c) 2010, Artesanos del Sotware")
+        ki18n("(c) 2010, Artesanos del Software")
     );
 
     aboutData.addAuthor(ki18n("Alejandro Fiestas Olivares"), ki18n("Maintainer"), "alex@eyeos.org",
