@@ -11,6 +11,11 @@ X-KDE-System-Settings-Parent-Category=bluetooth
 X-KDE-Weight=50
 
 Name=Bluetooth
+Name[nn]=Bluetooth
+Name[pt]=Bluetooth
+Name[pt_BR]=Bluetooth
+Name[sv]=Blåtand
+Name[uk]=Bluetooth
 Name[x-test]=xxBluetoothxx
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
