@@ -9,6 +9,7 @@ X-KDE-Kded-load-on-demand=false
 X-KDE-Kded-phase=1
 
 Name=BlueDevil
+Name[nb]=PowerDevil
 Name[nn]=PowerDevil
 Name[pt]=BlueDevil
 Name[pt_BR]=BlueDevil
@@ -17,6 +18,7 @@ Name[uk]=BlueDevil
 Name[x-test]=xxBlueDevilxx
 
 Comment=Bluetooth Management Daemon
+Comment[nb]=Bakgrunnsmotor for Bluetooth-styring
 Comment[nn]=Motor for Bluetooth-handtering
 Comment[pt]=Servidor de Gestão do Bluetooth
 Comment[pt_BR]=Daemon do gerenciamento de Bluetooth

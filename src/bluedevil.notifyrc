@@ -1,6 +1,7 @@
 [Global]
 IconName=preferences-system-bluetooth
 Comment=BlueDevil
+Comment[nb]=PowerDevil
 Comment[nn]=PowerDevil
 Comment[pt]=BlueDevil
 Comment[pt_BR]=BlueDevil
@@ -8,6 +9,7 @@ Comment[sv]=Blådjävul
 Comment[uk]=BlueDevil
 Comment[x-test]=xxBlueDevilxx
 Name=BlueDevil
+Name[nb]=PowerDevil
 Name[nn]=PowerDevil
 Name[pt]=BlueDevil
 Name[pt_BR]=BlueDevil
@@ -18,6 +20,7 @@ Ignore=true
 
 [Event/bluedevilAuthorize]
 Name=Access requested
+Name[nb]=Kvittering utbes
 Name[nn]=Kvittering er førespurd
 Name[pt]=Foi pedido o acesso
 Name[pt_BR]=Acesso solicitado
@@ -25,6 +28,7 @@ Name[sv]=Åtkomst begärd
 Name[uk]=Надійшов запит щодо доступу
 Name[x-test]=xxAccess requestedxx
 Comment=A device wants to connect to you
+Comment[nb]=Tjener det skal kobles til
 Comment[nn]=Kopla til port:
 Comment[pt]=Um dispositivo está a tentar ligar-se a si
 Comment[pt_BR]=Um dispositivo quer se conectar a você
@@ -35,6 +39,7 @@ Action=Popup
 
 [Event/bluedevilConfirmModechange]
 Name=Access requested
+Name[nb]=Kvittering utbes
 Name[nn]=Kvittering er førespurd
 Name[pt]=Foi pedido o acesso
 Name[pt_BR]=Acesso solicitado
@@ -51,6 +56,7 @@ Action=Popup
 
 [Event/bluedevilRequestConfirmation]
 Name=Access requested
+Name[nb]=Kvittering utbes
 Name[nn]=Kvittering er førespurd
 Name[pt]=Foi pedido o acesso
 Name[pt_BR]=Acesso solicitado
@@ -58,6 +64,7 @@ Name[sv]=Åtkomst begärd
 Name[uk]=Надійшов запит щодо доступу
 Name[x-test]=xxAccess requestedxx
 Comment=A device ask for confirmation
+Comment[nb]=Spør etter bekreftelse
 Comment[nn]=Spø&r etter stadfesting
 Comment[pt]=Um dispositivo pede a confirmação
 Comment[pt_BR]=Um dispositivo solicita confirmação
@@ -68,6 +75,7 @@ Action=Popup
 
 [Event/bluedevilRequestPin]
 Name=Request pin
+Name[nb]=Be om hjelp
 Name[nn]=Be om hjelp
 Name[pt]=Pedir o PIN
 Name[pt_BR]=Solicitar o PIN
@@ -75,6 +83,7 @@ Name[sv]=Begär PIN-kod
 Name[uk]=Запит щодо PIN-коду
 Name[x-test]=xxRequest pinxx
 Comment=A pin is needed
+Comment[nb]=Spør når det &trengs
 Comment[nn]=Spør når det &trengst
 Comment[pt]=É necessário um PIN
 Comment[pt_BR]=É necessário um PIN
@@ -85,6 +94,7 @@ Action=Popup
 
 [Event/bluedevilIncomingFile]
 Name=Incoming File
+Name[nb]=Innkommende fil
 Name[nn]=Innkommande samtale
 Name[pt]=Ficheiro Recebido
 Name[pt_BR]=Arquivo recebido
@@ -92,6 +102,7 @@ Name[sv]=Inkommande fil
 Name[uk]=Вхідний файл
 Name[x-test]=xxIncoming Filexx
 Comment=Incoming file
+Comment[nb]=Innkommende fil
 Comment[nn]=Innkommande samtale
 Comment[pt]=Foi recebido um ficheiro
 Comment[pt_BR]=Arquivo recebido
