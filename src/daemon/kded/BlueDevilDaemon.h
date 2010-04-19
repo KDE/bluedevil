@@ -25,7 +25,6 @@
 #include <KComponentData>
 #include <QStringList>
 
-class SuspensionLockHandler;
 
 class KDE_EXPORT BlueDevilDaemon : public KDEDModule
 {

@@ -27,7 +27,6 @@
 #include <KJob>
 #include <KUrl>
 
-class QDBusInterface;
 
 namespace OpenObex {
 
