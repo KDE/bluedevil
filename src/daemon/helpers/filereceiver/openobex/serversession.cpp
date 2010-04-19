@@ -21,11 +21,7 @@
 #include "serversession.h"
 #include "filetransferjob.h"
 
-#include <QtDBus>
-#include <QDesktopServices>
-#include <KGlobal>
 #include <KConfig>
-#include <KConfigGroup>
 #include <KDebug>
 #include <KLocale>
 #include <KFileDialog>

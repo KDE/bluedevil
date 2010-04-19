@@ -22,8 +22,6 @@
 #define BLUEDEVILDAEMON_H
 
 #include <kdedmodule.h>
-#include <KComponentData>
-#include <QStringList>
 
 
 class KDE_EXPORT BlueDevilDaemon : public KDEDModule

@@ -22,7 +22,6 @@
 #define SERVICE_H
 
 #include <QObject>
-#include <QtDBus>
 #include "openobex/server.h"
 
 class Service : public QObject

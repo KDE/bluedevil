@@ -24,7 +24,6 @@
 #include <KDebug>
 #include <KAboutData>
 #include <KPluginFactory>
-#include <QWidget>
 #include <solid/control/bluetoothmanager.h>
 #include "agentlistener.h"
 #include "bluedevil_service_interface.h"

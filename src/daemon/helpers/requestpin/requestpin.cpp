@@ -23,8 +23,6 @@
 
 #include <iostream>
 
-#include <QDebug>
-#include <QCoreApplication>
 #include <QTimer>
 
 #include <KIcon>

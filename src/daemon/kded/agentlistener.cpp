@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 #include "agentlistener.h"
-#include <QDebug>
 
 AgentListener::AgentListener(): QThread()
 {

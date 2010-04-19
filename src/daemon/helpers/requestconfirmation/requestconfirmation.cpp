@@ -20,7 +20,6 @@
 
 #include "requestconfirmation.h"
 
-#include <QDebug>
 #include <QCoreApplication>
 #include <QTimer>
 

@@ -23,7 +23,6 @@
 #define AGENTLISTENERWORKER_H
 
 #include <QtDBus>
-#include <QDebug>
 #include <QThread>
 #include <solid/control/bluetoothinterface.h>
 /**
