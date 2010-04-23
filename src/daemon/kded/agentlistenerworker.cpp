@@ -62,6 +62,7 @@ void AgentListenerWorker::Authorize(QDBusObjectPath device, const QString& uuid,
 
     QStringList list;
     list.append(remote->name());
+    list.append(remote->icon());
     list.append(device.path());
 
     int result = KProcess::execute("bluedevil-authorize",list);

@@ -54,7 +54,7 @@ Authorize::Authorize() : QObject()
     connect(notification, SIGNAL(closed()), this, SLOT(deny()));
     connect(notification, SIGNAL(ignored()), this, SLOT(deny()));
 
-    notification->setPixmap(KIcon("preferences-system-bluetooth").pixmap(42,42));
+    notification->setPixmap(KIcon(qApp->arguments()[2]).pixmap(52,52));
 
     //We're using persistent notifications so we have to use our own timeout (10s)
     QTimer::singleShot(10000, notification, SLOT(close()));
@@ -66,7 +66,7 @@ void Authorize::trust()
     qDebug() << "Trusted";
     Solid::Control::BluetoothManager &man = Solid::Control::BluetoothManager::self();
     Solid::Control::BluetoothInterface *adapter = new Solid::Control::BluetoothInterface(man.defaultInterface());
-    Solid::Control::BluetoothRemoteDevice *remoteDevice = adapter->findBluetoothRemoteDeviceUBI(qApp->arguments()[2]);
+    Solid::Control::BluetoothRemoteDevice *remoteDevice = adapter->findBluetoothRemoteDeviceUBI(qApp->arguments().last());
     remoteDevice->setTrusted(true);
     qApp->exit(0);
 }
