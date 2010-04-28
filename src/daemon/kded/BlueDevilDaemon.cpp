@@ -78,7 +78,7 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     connect(d->man,SIGNAL(interfaceRemoved(const QString&)),this,SLOT(adapterRemoved(const QString&)));
     connect(d->man,SIGNAL(defaultInterfaceChanged(const QString&)),this,SLOT(defaultAdapterChanged(const QString&)));
 
-    if ( d->man->bluetoothInterfaces().size() > 0 ) {
+    if (!d->man->bluetoothInterfaces().isEmpty()) {
         onlineMode();
     }
 }
@@ -109,12 +109,24 @@ void BlueDevilDaemon::onlineMode()
         kDebug() << "Already in onlineMode";
         return;
     }
+    
+    QString interface;
+    if (!d->man->defaultInterface().isEmpty()) {
+        interface = d->man->defaultInterface();
+    } else if (!d->man->bluetoothInterfaces().isEmpty() &&
+        !d->man->bluetoothInterfaces().first().ubi().isEmpty()) {
+        kDebug() << "There's no default interface, using the first one we can grab";
+        interface = d->man->bluetoothInterfaces().first().ubi();
+    } else {
+        kDebug() << "No available interface";
+        return;
+    }
 
     d->agentListener = new AgentListener();
     connect(d->agentListener,SIGNAL(agentReleased()),this,SLOT(agentReleased()));
     d->agentListener->start();
 
-    d->adapter = new Solid::Control::BluetoothInterface(d->man->defaultInterface());
+    d->adapter = new Solid::Control::BluetoothInterface(interface);
     if (!serviceStarted()) {
       return;
     }
