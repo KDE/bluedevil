@@ -1,6 +1,7 @@
 [Global]
 IconName=preferences-system-bluetooth
 Comment=BlueDevil
+Comment[cs]=BlueDevil
 Comment[es]=BlueDevil
 Comment[fr]=BlueDevil
 Comment[nb]=PowerDevil
@@ -11,6 +12,7 @@ Comment[sv]=Blådjävul
 Comment[uk]=BlueDevil
 Comment[x-test]=xxBlueDevilxx
 Name=BlueDevil
+Name[cs]=BlueDevil
 Name[es]=BlueDevil
 Name[fr]=BlueDevil
 Name[nb]=PowerDevil
@@ -114,6 +116,7 @@ Action=Popup
 
 [Event/bluedevilIncomingFile]
 Name=Incoming File
+Name[cs]=Příchozí soubor
 Name[es]=Archivo entrante
 Name[fr]=Fichier entrant
 Name[nb]=Innkommende fil
@@ -124,6 +127,7 @@ Name[sv]=Inkommande fil
 Name[uk]=Вхідний файл
 Name[x-test]=xxIncoming Filexx
 Comment=Incoming file
+Comment[cs]=Příchozí soubor
 Comment[es]=Archivo entrante
 Comment[fr]=Fichier entrant
 Comment[nb]=Innkommende fil
