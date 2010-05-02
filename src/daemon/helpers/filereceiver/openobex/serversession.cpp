@@ -114,7 +114,7 @@ void ServerSession::slotTransferStarted(const QString& filename, const QString& 
 
     actions.append(i18nc("Deny the incoming file transfer", "Cancel"));
     actions.append(i18nc("Button to accept the incoming file transfer and download it in the default download directory", "Accept"));
-    actions.append(i18nc("Button to accept the incoming file transfer and show a SaveAs.. dialog that will let the user choose where will the file be downloaded to", "Save as.."));
+    actions.append(i18nc("Button to accept the incoming file transfer and show a SaveAs.. dialog that will let the user choose where will the file be downloaded to", "Save as..."));
 
     m_notification->setActions(actions);
 
