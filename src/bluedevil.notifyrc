@@ -94,6 +94,11 @@ Name[sv]=Åtkomst begärd
 Name[uk]=Надійшов запит щодо доступу
 Name[x-test]=xxAccess requestedxx
 Comment=A device is asking for confirmation
+Comment[en_GB]=A device is asking for confirmation
+Comment[es]=Un dispositivo pide confirmación
+Comment[pt]=Um dispositivo está a pedir a confirmação
+Comment[sv]=En enhet frågar efter bekräftelse
+Comment[uk]=Пристрій надіслав запит щодо підтвердження
 Comment[x-test]=xxA device is asking for confirmationxx
 Action=Popup
 
