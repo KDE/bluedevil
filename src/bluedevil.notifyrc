@@ -97,6 +97,7 @@ Comment=A device is asking for confirmation
 Comment[en_GB]=A device is asking for confirmation
 Comment[es]=Un dispositivo pide confirmación
 Comment[pt]=Um dispositivo está a pedir a confirmação
+Comment[pt_BR]=Um dispositivo está solicitando confirmação
 Comment[sv]=En enhet frågar efter bekräftelse
 Comment[uk]=Пристрій надіслав запит щодо підтвердження
 Comment[x-test]=xxA device is asking for confirmationxx
