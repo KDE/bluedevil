@@ -38,7 +38,7 @@ ConfirmModeChange::ConfirmModeChange() : QObject()
 
     notification->setText(i18nc(
         "Showed in a notification when the Bluetooth mode is going to be changed (for example to flight mode), the %1 is the name of the mode",
-        "Change bluetooth mode to %1 ?",qApp->arguments()[1])
+        "Change bluetooth mode to %1?",qApp->arguments()[1])
     );
     QStringList actions;
 
