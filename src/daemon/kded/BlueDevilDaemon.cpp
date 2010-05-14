@@ -39,6 +39,7 @@ struct BlueDevilDaemon::Private
     //Do not delete this :)
     Solid::Control::BluetoothManager* man;
     AgentListener *agentListener;
+    AgentListener *oldAgentListener;
     Solid::Control::BluetoothInterface* adapter;
     org::kde::BlueDevil::Service* service;
     QString m_defaultAdapterName;
@@ -48,6 +49,7 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     : KDEDModule(parent), d(new Private)
 {
     d->agentListener = 0;
+    d->oldAgentListener = 0;
     d->adapter = 0;
     d->service = 0;
 
@@ -109,9 +111,10 @@ void BlueDevilDaemon::onlineMode()
         kDebug() << "Already in onlineMode";
         return;
     }
-    
+
     QString interface;
     if (!d->man->defaultInterface().isEmpty()) {
+        kDebug() << "using default interface";
         interface = d->man->defaultInterface();
     } else if (!d->man->bluetoothInterfaces().isEmpty() &&
         !d->man->bluetoothInterfaces().first().ubi().isEmpty()) {
@@ -145,8 +148,8 @@ void BlueDevilDaemon::offlineMode()
 
     connect(d->agentListener,SIGNAL(finished()),this,SLOT(agentThreadStopped()));
     d->agentListener->quit();
+    d->oldAgentListener = d->agentListener;
 
-    kDebug() << "You've got no bluetooth interfaces attached!";
     d->status = Private::Offline;
 
     if (!serviceStarted()) {
@@ -169,8 +172,13 @@ void BlueDevilDaemon::agentReleased()
 
 void BlueDevilDaemon::agentThreadStopped()
 {
-    d->agentListener->deleteLater();
-    d->agentListener = 0;
+    d->oldAgentListener->deleteLater();
+    if (d->agentListener == d->oldAgentListener) {
+        d->agentListener = 0;
+    } else {
+        kDebug() <<  "Not removing the new agent listener, only the old one";
+    }
+    d->oldAgentListener = 0;
 
     kDebug() << "agent listener deleted";
 }
@@ -195,12 +203,16 @@ void BlueDevilDaemon::adapterRemoved(const QString& adapterName)
 
 void BlueDevilDaemon::defaultAdapterChanged(const QString& adapterName)
 {
-    kDebug() << adapterName;
+    kDebug() << adapterName << d->status;
     //This should do the trick :)
-    if (d->m_defaultAdapterName == adapterName && d->status == Private::Online) {
-      kDebug() << "already online with that adapter";
-      return;
+    if (d->m_defaultAdapterName == adapterName) {
+        kDebug() << "already online with that adapter";
+        return;
     }
-    offlineMode();
+
+    if (d->status == Private::Online) {
+        kDebug() << "We are online, getting offline first";
+        offlineMode();
+    }
     onlineMode();
 }
