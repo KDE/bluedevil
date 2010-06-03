@@ -1,0 +1,23 @@
+[Desktop Entry]
+Exec=kcmshell4 bluedevil
+Icon=preferences-system-bluetooth
+Type=Service
+X-KDE-ServiceTypes=KCModule
+
+X-KDE-Library=kcm_bluetooth
+X-KDE-ParentApp=kcontrol
+
+X-KDE-System-Settings-Parent-Category=bluetooth
+X-KDE-Weight=50
+
+Name=Bluetooth
+Name[nn]=Bluetooth
+Name[pt]=Bluetooth
+Name[pt_BR]=Bluetooth
+Name[sv]=Blåtand
+Name[uk]=Bluetooth
+Name[x-test]=xxBluetoothxx
+
+X-KDE-Keywords=Network,Connectivity,Bluetooth
+
+Categories=Qt;KDE;X-KDE-settings-bluetooth;
