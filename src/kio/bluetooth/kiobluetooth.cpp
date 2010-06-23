@@ -242,7 +242,6 @@ void KioBluetoothPrivate::listDevices()
 
 void KioBluetoothPrivate::listDevice(Device *device)
 {
-    // Create UDS entry
     QString target = QString("bluetooth://").append(QString(device->address()).replace(':', '-'));
     QString name = device->name();
     if (name.isEmpty()) {
@@ -329,7 +328,7 @@ void KioBluetooth::setHost(const QString &constHostname, quint16 port, const QSt
     Q_UNUSED(pass)
 
     QString hostname = constHostname;
-    hostname = hostname.replace('-',':').toUpper();
+    hostname = hostname.replace('-', ':').toUpper();
     if (hostname.isEmpty()) {
         d->hasCurrentHost = false;
     } else {
