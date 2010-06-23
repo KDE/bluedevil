@@ -28,7 +28,8 @@
 #include <klocale.h>
 #include <kiconloader.h>
 #include <knotification.h>
-#include <solid/control/bluetoothmanager.h>
+
+#include <bluedevil/bluedevil.h>
 
 Authorize::Authorize()
     : QObject()
@@ -56,7 +57,7 @@ Authorize::Authorize()
 
     notification->setPixmap(KIcon("preferences-system-bluetooth").pixmap(42, 42));
 
-    //We're using persistent notifications so we have to use our own timeout (10s)
+    // We're using persistent notifications so we have to use our own timeout (10s)
     QTimer::singleShot(10000, notification, SLOT(close()));
     notification->sendEvent();
 }
@@ -64,10 +65,7 @@ Authorize::Authorize()
 void Authorize::trust()
 {
     qDebug() << "Trusted";
-    Solid::Control::BluetoothManager &man = Solid::Control::BluetoothManager::self();
-    Solid::Control::BluetoothInterface *adapter = new Solid::Control::BluetoothInterface(man.defaultInterface());
-    Solid::Control::BluetoothRemoteDevice *remoteDevice = adapter->findBluetoothRemoteDeviceUBI(qApp->arguments()[2]);
-    remoteDevice->setTrusted(true);
+    BlueDevil::Manager::self()->defaultAdapter()->deviceForUBI(qApp->arguments()[2])->setTrusted(true);
     qApp->exit(0);
 }
 
