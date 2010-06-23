@@ -20,16 +20,17 @@
 
 #include "kiobluetooth.h"
 
+#include <QtCore/QTimer>
+
 #include <KDebug>
 #include <KComponentData>
 #include <KCmdLineArgs>
 #include <KAboutData>
-#include <solid/control/bluetoothmanager.h>
 
 #include <KApplication>
 #include <KLocale>
-#include <QTest>
-#include <solid/control/bluetoothremotedevice.h>
+
+#include <bluedevil/bluedevil.h>
 
 extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
 {
@@ -103,7 +104,7 @@ public:
 
     /**
      * This is set in @p setHost when it's called to list a given remote device like for example
-     * 00:2a:5E:8e:6e:f5. We don't directly set @p currentHost in @p setHost because solid might not
+     * 00:2a:5E:8e:6e:f5. We don't directly set @p currentHost in @p setHost because libbludevil might not
      * have ready the remote bluetooth device yet ready at that time (it.s being created by the call
      * to @p Solid::Control::BluetoothDevice::createBluetoothRemoteDevice .
      */
@@ -113,7 +114,7 @@ public:
      * Represents the current host when @p hasCurrentHost is set to true. This is set in
      * @p listRemoteDeviceServices function.
      */
-    Solid::Control::BluetoothRemoteDevice currentHost;
+    BlueDevil::Device *currentHost;
 
     /**
      * When @p hasCurrentHost to true, this list holds the list of service names provided by the
@@ -124,7 +125,7 @@ public:
     /**
      * Represents the bluetooth adapter connected to our PC.
      */
-    Solid::Control::BluetoothInterface adapter;
+    BlueDevil::Adapter *adapter;
 
     /**
      * This is an array containing as key the uuid and as value the name of the service that the
@@ -218,8 +219,8 @@ QString KioBluetoothPrivate::urlForRemoteService(const QString &host, const QStr
 void KioBluetoothPrivate::listRemoteDeviceServices()
 {
     kDebug();
-    currentHost = adapter.findBluetoothRemoteDeviceAddr(currentHostname.replace('-',':').toUpper());
-    currentHostServiceNames = getServiceNames(currentHost.uuids());
+    currentHost = adapter->deviceForAddress(currentHostname.replace('-', ':').toUpper());
+    currentHostServiceNames = getServiceNames(currentHost->UUIDs());
     Q_FOREACH (QString serviceName, currentHostServiceNames) {
         KIO::UDSEntry entry;
         entry.insert(KIO::UDSEntry::UDS_NAME, serviceName);
@@ -240,17 +241,12 @@ void KioBluetoothPrivate::listRemoteDeviceServices()
 void KioBluetoothPrivate::listDevices()
 {
     remoteDevices.clear();
-    q->connect(&adapter, SIGNAL(deviceFound(QString,QMap<QString,QVariant>)),
-        q, SLOT(listDevice(QString,QMap<QString,QVariant>)));
-    adapter.startDiscovery();
-    for (int i = 0; i < 10; i++) {
-        QTest::qWait(500);
-        QCoreApplication::processEvents();
-        kDebug() << "looping" << i;
-    }
-    adapter.stopDiscovery();
-    q->disconnect(&adapter, SIGNAL(deviceFound(QString,QMap<QString,QVariant>)),
-        q, SLOT(listDevice(QString,QMap<QString,QVariant>)));
+    q->connect(adapter, SIGNAL(deviceFound(QString,QMap<QString,QVariant>)),
+               q, SLOT(listDevice(QString,QMap<QString,QVariant>))); // FIXME
+    adapter->startDiscovery();
+    QTimer::singleShot(5000, adapter, SLOT(stopDiscovery()));
+    q->disconnect(adapter, SIGNAL(deviceFound(QString,QMap<QString,QVariant>)),
+        q, SLOT(listDevice(QString,QMap<QString,QVariant>))); // FIXME
     kDebug() << "listEntry(KIO::UDSEntry(),true);finished();";
 
     q->listEntry(KIO::UDSEntry(), true);
@@ -264,7 +260,7 @@ void KioBluetoothPrivate::listDevice(const QString &address, const QMap<QString,
         return;
     }
     remoteDevices.append(address);
-    adapter.createBluetoothRemoteDevice(address);
+    // adapter->createBluetoothRemoteDevice(address); // TODO: not needed ?
 
     // Create UDS entry
     QString target = QString("bluetooth://").append(QString(address).replace(':','-'));
@@ -285,21 +281,13 @@ KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
 {
     d->hasCurrentHost = false;
 
-    // Find which interface to use
-    Solid::Control::BluetoothManager &man = Solid::Control::BluetoothManager::self();
-    QString interface;
-    if (!man.defaultInterface().isEmpty()) {
-        interface = man.defaultInterface();
-    } else if (!man.bluetoothInterfaces().isEmpty() &&
-        !man.bluetoothInterfaces().first().ubi().isEmpty()) {
-        kDebug() << "There's no default interface, using the first one we can grab";
-        interface = man.bluetoothInterfaces().first().ubi();
-    } else {
+    BlueDevil::Adapter *defaultAdapter = BlueDevil::Manager::self()->defaultAdapter();
+    if (!defaultAdapter) {
         kDebug() << "No available interface";
         d->online = false;
         return;
     }
-    d->adapter = Solid::Control::BluetoothInterface(interface);
+    d->adapter = defaultAdapter;
     d->online = true;
 }
 
@@ -358,7 +346,7 @@ void KioBluetooth::setHost(const QString &constHostname, quint16 port, const QSt
     } else {
         d->hasCurrentHost = true;
         d->currentHostname = constHostname;
-        d->adapter.createBluetoothRemoteDevice(hostname);
+        //d->adapter.createBluetoothRemoteDevice(hostname); // TODO: not needed ?
         d->currentHostServiceNames.clear();
     }
 }
