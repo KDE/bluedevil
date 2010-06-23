@@ -32,7 +32,6 @@
 #include <klocale.h>
 #include <kiconloader.h>
 #include <KDialog>
-#include <solid/control/bluetoothmanager.h>
 
 RequestPin::RequestPin() : QObject()
 {

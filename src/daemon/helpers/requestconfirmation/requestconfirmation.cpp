@@ -27,7 +27,6 @@
 #include <kiconloader.h>
 #include <knotification.h>
 #include <klocale.h>
-#include <solid/control/bluetoothmanager.h>
 
 RequestConfirmation::RequestConfirmation() : QObject()
 {
@@ -35,7 +34,7 @@ RequestConfirmation::RequestConfirmation() : QObject()
                                                     KNotification::Persistent, this);
 
     notification->setText(i18nc(
-        "The text is showed in a knotification to know if the PIN is correct, %1 is the remote bluetotoh device and %2 is the pin",
+        "The text is showed in a knotification to know if the PIN is correct, %1 is the remote bluetooth device and %2 is the pin",
         "%1 is asking if the PIN is correct: %2", qApp->arguments()[1], qApp->arguments()[2])
     );
 
