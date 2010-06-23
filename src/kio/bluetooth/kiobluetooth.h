@@ -70,6 +70,7 @@ private:
     KioBluetoothPrivate *d;
 
     Q_PRIVATE_SLOT(d, void listDevice(Device *device))
+    Q_PRIVATE_SLOT(d, void finishDiscovery())
 };
 
 #endif // KIOBLUETOOTH_H

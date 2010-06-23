@@ -80,6 +80,7 @@ public:
     void listRemoteDeviceServices();
 
     void listDevice(Device *device);
+    void finishDiscovery();
 
     QString urlForRemoteService(const QString &host, const QString &serviceName);
 
@@ -89,12 +90,6 @@ public:
       * Specifies if we've got a working bluetooth adpater to our computer or not.
       */
      bool online;
-
-    /**
-     * List of remote devices that the default bluetooth adapter sees. Used when listing the
-     * bluetooth:/ directory, which shows the list of remote devices.
-     */
-    QStringList remoteDevices;
 
     /**
      * This is set to true when @p setHost is called to list a given remote device, like for example
@@ -240,26 +235,13 @@ void KioBluetoothPrivate::listRemoteDeviceServices()
 
 void KioBluetoothPrivate::listDevices()
 {
-    remoteDevices.clear();
-    q->connect(adapter, SIGNAL(deviceFound(Device*)),
-               q, SLOT(listDevice(Device*)));
     adapter->startDiscovery();
-    QTimer::singleShot(5000, adapter, SLOT(stopDiscovery()));
+    QTimer::singleShot(5000, q, SLOT(finishDiscovery()));
     kDebug() << "listEntry(KIO::UDSEntry(),true);finished();";
-
-    q->listEntry(KIO::UDSEntry(), true);
-    q->finished();
 }
 
 void KioBluetoothPrivate::listDevice(Device *device)
 {
-    if (remoteDevices.contains(device->address())) {
-        kDebug() << "Device already listed";
-        return;
-    }
-    remoteDevices.append(device->address());
-    // adapter->createBluetoothRemoteDevice(address); // TODO: not needed ?
-
     // Create UDS entry
     QString target = QString("bluetooth://").append(QString(device->address()).replace(':', '-'));
     QString name = device->name();
@@ -272,6 +254,14 @@ void KioBluetoothPrivate::listDevice(Device *device)
     entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
     q->listEntry(entry, false);
 }
+
+void KioBluetoothPrivate::finishDiscovery()
+{
+    adapter->stopDiscovery();
+    q->listEntry(KIO::UDSEntry(), true);
+    q->finished();
+}
+
 //@endcond
 
 KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
@@ -285,6 +275,7 @@ KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
         d->online = false;
         return;
     }
+    connect(defaultAdapter, SIGNAL(deviceFound(Device*)), this, SLOT(listDevice(Device*)));
     d->adapter = defaultAdapter;
     d->online = true;
 }
@@ -344,7 +335,6 @@ void KioBluetooth::setHost(const QString &constHostname, quint16 port, const QSt
     } else {
         d->hasCurrentHost = true;
         d->currentHostname = constHostname;
-        //d->adapter.createBluetoothRemoteDevice(hostname); // TODO: not needed ?
         d->currentHostServiceNames.clear();
     }
 }
