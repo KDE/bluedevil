@@ -24,9 +24,7 @@
 #include <QtCore/QDebug>
 
 #include <KProcess>
-#include <bluedevil/bluedevildevice.h>
-#include <bluedevil/bluedeviladapter.h>
-#include <bluedevil/bluedevilmanager.h>
+#include <bluedevil/bluedevil.h>
 
 #define AGENT_PATH "/blueDevil_agent"
 
