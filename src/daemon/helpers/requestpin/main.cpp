@@ -19,17 +19,19 @@
  ***************************************************************************/
 
 #include "requestpin.h"
+
+#include <QtGui/QApplication>
+
 #include <kcomponentdata.h>
 #include <kaboutdata.h>
 #include <kcmdlineargs.h>
 #include <solid/control/bluetoothmanager.h>
-#include <QApplication>
 
-static const KLocalizedString  description = ki18n("KDE Bluetooth System");
+static const KLocalizedString description = ki18n("KDE Bluetooth System");
 
 int main(int argc, char *argv[])
 {
-    QApplication app(argc,argv);
+    QApplication app(argc, argv);
     KComponentData data("bluedevil", "bluedevil");
     KGlobal::setActiveComponent(data);
     RequestPin request;

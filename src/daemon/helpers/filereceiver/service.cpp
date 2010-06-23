@@ -30,7 +30,6 @@
 
 Service::Service()
 {
-    kDebug(4567);
     new ServiceAdaptor(this);
     QDBusConnection dbus = QDBusConnection::sessionBus();
     dbus.registerObject("/Service", this);
@@ -51,7 +50,6 @@ void Service::launchServer()
     if (m_server) {
         return;
     }
-
     Solid::Control::BluetoothInterface *adapter = new Solid::Control::BluetoothInterface(
         Solid::Control::BluetoothManager::self().defaultInterface());
     m_server = new OpenObex::Server(adapter->address());
@@ -60,26 +58,26 @@ void Service::launchServer()
 
 void Service::stopServer()
 {
-  kDebug() << m_server;
-  
-  if (!m_server) {
-    return;
-  }
-  
-  m_server->deleteLater();
-  m_server = 0;
-  
-  // After 10 seconds, if server is not restarted, terminate the helper
-  QTimer::singleShot(10000, this, SLOT(quit()));
+    kDebug() << m_server;
+    
+    if (!m_server) {
+        return;
+    }
+
+    m_server->deleteLater();
+    m_server = 0;
+
+    // After 10 seconds, if server is not restarted, terminate the helper
+    QTimer::singleShot(10000, this, SLOT(quit()));
 }
 
 void Service::quit()
 {
-  kDebug();
-  // Only quit if no server is running
-  if (!m_server) {
-    deleteLater();
-  }
+    kDebug();
+    // Only quit if no server is running
+    if (!m_server) {
+        deleteLater();
+    }
 }
 
 
@@ -87,4 +85,3 @@ QString Service::ping()
 {
     return "pong";
 }
-

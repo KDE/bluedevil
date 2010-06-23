@@ -19,6 +19,8 @@
  ***************************************************************************/
 
 #include "BlueDevilDaemon.h"
+#include "agentlistener.h"
+#include "bluedevil_service_interface.h"
 
 #include <kdemacros.h>
 #include <KDebug>
@@ -26,8 +28,6 @@
 #include <KPluginFactory>
 #include <QWidget>
 #include <solid/control/bluetoothmanager.h>
-#include "agentlistener.h"
-#include "bluedevil_service_interface.h"
 #include <solid/control/bluetoothinterface.h>
 
 K_PLUGIN_FACTORY(BlueDevilFactory,
@@ -46,7 +46,8 @@ struct BlueDevilDaemon::Private
 };
 
 BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
-    : KDEDModule(parent), d(new Private)
+    : KDEDModule(parent)
+    , d(new Private)
 {
     d->agentListener = 0;
     d->adapter = 0;
@@ -117,7 +118,7 @@ void BlueDevilDaemon::onlineMode()
 
     d->adapter = new Solid::Control::BluetoothInterface(d->man->defaultInterface());
     if (!serviceStarted()) {
-      return;
+        return;
     }
     d->service->launchServer();
 
@@ -139,7 +140,7 @@ void BlueDevilDaemon::offlineMode()
     d->status = Private::Offline;
 
     if (!serviceStarted()) {
-      return;
+        return;
     }
     d->service->stopServer();
 }

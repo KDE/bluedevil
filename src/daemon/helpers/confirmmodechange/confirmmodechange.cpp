@@ -20,9 +20,9 @@
 
 #include "confirmmodechange.h"
 
-#include <QDebug>
-#include <QCoreApplication>
-#include <QTimer>
+#include <QtCore/QDebug>
+#include <QtCore/QCoreApplication>
+#include <QtCore/QTimer>
 
 #include <KIcon>
 #include <kiconloader.h>
@@ -30,18 +30,18 @@
 #include <klocale.h>
 #include <solid/control/bluetoothmanager.h>
 
-using namespace std;
-ConfirmModeChange::ConfirmModeChange() : QObject()
+ConfirmModeChange::ConfirmModeChange()
+    : QObject()
 {
     KNotification *notification = new KNotification("bluedevilConfirmModechange",
-                                                        KNotification::Persistent, this);
+                                                    KNotification::Persistent, this);
 
     notification->setText(i18nc(
         "Showed in a notification when the Bluetooth mode is going to be changed (for example to flight mode), the %1 is the name of the mode",
-        "Change bluetooth mode to %1 ?",qApp->arguments()[1])
+        "Change bluetooth mode to %1 ?", qApp->arguments()[1])
     );
-    QStringList actions;
 
+    QStringList actions;
     actions.append(i18nc("Confirm the bluetooth mode change, showed in a notification button", "Confirm"));
     actions.append(i18nc("Deny the bluetooth mdoe change, showed in a notification", "Deny"));
 
@@ -52,9 +52,9 @@ ConfirmModeChange::ConfirmModeChange() : QObject()
     connect(notification, SIGNAL(closed()), this, SLOT(deny()));
     connect(notification, SIGNAL(ignored()), this, SLOT(deny()));
 
-    //We're using persistent notifications so we have to use our own timeout (10s)
+    // We're using persistent notifications so we have to use our own timeout (10s)
     QTimer::singleShot(10000, notification, SLOT(close()));
-    notification->setPixmap(KIcon("preferences-system-bluetooth").pixmap(42,42));
+    notification->setPixmap(KIcon("preferences-system-bluetooth").pixmap(42, 42));
     notification->sendEvent();
 }
 

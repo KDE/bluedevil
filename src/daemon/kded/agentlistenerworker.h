@@ -22,10 +22,14 @@
 #ifndef AGENTLISTENERWORKER_H
 #define AGENTLISTENERWORKER_H
 
-#include <QtDBus>
-#include <QDebug>
-#include <QThread>
-#include <solid/control/bluetoothinterface.h>
+#include <QtDBus/QDBusMessage>
+#include <QtDBus/QDBusObjectPath>
+#include <QtDBus/QDBusAbstractAdaptor>
+
+namespace BlueDevil {
+    class Adapter;
+};
+
 /**
  * @internal
  * @short This class is only a delegate to be able to use agentlistener on a QThread (We can't inherit
@@ -35,7 +39,8 @@
  * @ref AgentListenerWorker
  * @since 1.0
  */
-class AgentListenerWorker : public QDBusAbstractAdaptor
+class AgentListenerWorker
+    : public QDBusAbstractAdaptor
 {
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.bluez.Agent")
@@ -55,28 +60,28 @@ public slots:
     /**
      * Called by bluez to ask for a device authoritation
      */
-    void Authorize(QDBusObjectPath device, const QString& uuid, const QDBusMessage &msg);
+    void Authorize(const QDBusObjectPath &device, const QString& uuid, const QDBusMessage &msg);
 
     /**
      * Called by bluez to ask for a PIN
      */
-    QString RequestPinCode(QDBusObjectPath device, const QDBusMessage &msg);
+    QString RequestPinCode(const QDBusObjectPath &device, const QDBusMessage &msg);
 
     /**
      * Called by bluez to ask for a passkey, currently is a aslias of RequestPinCode
      */
-    quint32 RequestPasskey(QDBusObjectPath device, const QDBusMessage &msg);
+    quint32 RequestPasskey(const QDBusObjectPath &device, const QDBusMessage &msg);
 
     /**
      * Called by bluez to display the passkey (Currently it's not implemented because we don't know
      * what to do with it).
      */
-    void DisplayPasskey(QDBusObjectPath device, quint32 passkey);
+    void DisplayPasskey(const QDBusObjectPath &device, quint32 passkey);
 
     /**
      * Called by bluez to ask for a request confirmation
      */
-    void RequestConfirmation(QDBusObjectPath device, quint32 passkey, const QDBusMessage &msg);
+    void RequestConfirmation(const QDBusObjectPath &device, quint32 passkey, const QDBusMessage &msg);
 
     /**
      * Called by bluez to confirm the change mode
@@ -115,6 +120,6 @@ private:
     /**
      * Global adapter usually used to get information from a remote device
      */
-    Solid::Control::BluetoothInterface *m_adapter;
+    BlueDevil::Adapter *m_adapter;
 };
 #endif

@@ -20,9 +20,8 @@
 
 #include "requestconfirmation.h"
 
-#include <QDebug>
-#include <QCoreApplication>
-#include <QTimer>
+#include <QtCore/QTimer>
+#include <QtCore/QCoreApplication>
 
 #include <KIcon>
 #include <kiconloader.h>
@@ -33,7 +32,7 @@
 RequestConfirmation::RequestConfirmation() : QObject()
 {
     KNotification *notification = new KNotification("bluedevilRequestConfirmation",
-                                                        KNotification::Persistent, this);
+                                                    KNotification::Persistent, this);
 
     notification->setText(i18nc(
         "The text is showed in a knotification to know if the PIN is correct, %1 is the remote bluetotoh device and %2 is the pin",

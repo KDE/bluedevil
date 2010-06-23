@@ -21,7 +21,7 @@
 #ifndef AUTHORIZE_H
 #define AUTHORIZE_H
 
-#include <QObject>
+#include <QtCore/QObject>
 
 /**
  * @short Small class which send a KNotificaton to know if the mode change is authorized or not
@@ -31,25 +31,27 @@
  * Deny quits the app with 1 (which means denied)
  * @internal
  */
-class ConfirmModeChange : public QObject
+class ConfirmModeChange
+    : public QObject
 {
     Q_OBJECT
-    public:
-        /**
-         * Launch the KNotification which the respective actions, also makes the needed connection
-         * between those actions and the slots
-         */
-        ConfirmModeChange();
 
-    private slots:
-        /**
-         * Quits the application as success
-         */
-        void confirm();
+public:
+    /**
+     * Launch the KNotification which the respective actions, also makes the needed connection
+     * between those actions and the slots
+     */
+    ConfirmModeChange();
 
-        /**
-         * Quits the application as error
-         */
-        void deny();
+private Q_SLOTS:
+    /**
+     * Quits the application as success
+     */
+    void confirm();
+
+    /**
+     * Quits the application as error
+     */
+    void deny();
 };
 #endif

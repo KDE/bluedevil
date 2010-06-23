@@ -21,7 +21,7 @@
 #ifndef AUTHORIZE_H
 #define AUTHORIZE_H
 
-#include <QObject>
+#include <QtCore/QObject>
 
 /**
  * @short Small class which send a KNotificaton to know if the Bluetooth device is authorized or not
@@ -31,25 +31,27 @@
  * Deny quits the app with 1 (which means denied)
  * @internal
  */
-class RequestConfirmation : public QObject
+class RequestConfirmation
+    : public QObject
 {
     Q_OBJECT
-    public:
-        /**
-         * Launch the KNotification which the respective actions, also makes the needed connection
-         * between those actions and the slots
-         */
-        RequestConfirmation();
 
-    private slots:
-        /**
-         * Quits the application as success
-         */
-        void pinCorrect();
+public:
+    /**
+     * Launch the KNotification which the respective actions, also makes the needed connection
+     * between those actions and the slots
+     */
+    RequestConfirmation();
 
-        /**
-         * Quits the application as error
-         */
-        void pinWrong();
+private Q_SLOTS:
+    /**
+     * Quits the application as success
+     */
+    void pinCorrect();
+
+    /**
+     * Quits the application as error
+     */
+    void pinWrong();
 };
 #endif

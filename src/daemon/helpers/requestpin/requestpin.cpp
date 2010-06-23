@@ -23,9 +23,9 @@
 
 #include <iostream>
 
-#include <QDebug>
-#include <QCoreApplication>
-#include <QTimer>
+#include <QtCore/QDebug>
+#include <QtCore/QCoreApplication>
+#include <QtCore/QTimer>
 
 #include <KIcon>
 #include <knotification.h>
@@ -34,11 +34,10 @@
 #include <KDialog>
 #include <solid/control/bluetoothmanager.h>
 
-using namespace std;
 RequestPin::RequestPin() : QObject()
 {
     KNotification *notification = new KNotification("bluedevilRequestPin",
-                                                        KNotification::Persistent, this);
+                                                    KNotification::Persistent, this);
 
     notification->setText(i18nc(
         "Showed in a notification to announce that a PIN is needed to acomplish a pair action, %1 is the name of the bluetooth device",
@@ -65,7 +64,7 @@ RequestPin::RequestPin() : QObject()
 
 void RequestPin::introducePin()
 {
-    KIcon icon = KIcon("preferences-system-bluetooth");
+    KIcon icon("preferences-system-bluetooth");
 
     Ui::dialogWidget *dialogWidget = new Ui::dialogWidget;
     QWidget *mainWidget = new QWidget();
@@ -90,13 +89,11 @@ void RequestPin::introducePin()
     dialog->setMinimumHeight(150);
     dialog->setMaximumWidth(300);
     dialog->setMaximumHeight(150);
-    int response = dialog->exec();
 
-    if(response == QDialog::Accepted)
-    {
-        cout << dialogWidget->pin->text().toLatin1().data();
+    if (dialog->exec() == KDialog::Accepted) {
         qApp->exit(0);
     }
+
     delete dialog;
     qApp->exit(1);
 }

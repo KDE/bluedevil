@@ -21,13 +21,16 @@
 #ifndef SERVICE_H
 #define SERVICE_H
 
-#include <QObject>
-#include <QtDBus>
+#include <QtCore/QObject>
+#include <QtDBus/QtDBus>
+
 #include "openobex/server.h"
 
-class Service : public QObject
+class Service
+    : public QObject
 {
     Q_OBJECT
+
 public:
     Service();
     virtual ~Service();
