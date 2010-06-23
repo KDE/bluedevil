@@ -25,7 +25,7 @@
 #include <kcomponentdata.h>
 #include <kaboutdata.h>
 #include <kcmdlineargs.h>
-#include <solid/control/bluetoothmanager.h>
+#include <kglobal.h>
 
 static const KLocalizedString  description = ki18n("KDE Bluetooth System");
 

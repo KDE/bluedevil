@@ -26,7 +26,7 @@
 /**
  * @short Small class which send a KNotificaton to know if the Bluetooth device is authorized or not
  * A popup KNotification is send with 3 actions, trust accept and reject.
- * Trust set the remote device as trusted (using solid remote device) and quits with 0
+ * Trust set the remote device as trusted (using libbluedevil remote device) and quits with 0
  * Authorize quits the app with 0 (which means authorized).
  * Deny quits the app with 1 (which means denied)
  * @internal

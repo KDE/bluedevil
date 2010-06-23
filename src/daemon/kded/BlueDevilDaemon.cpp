@@ -73,12 +73,12 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     aboutData.addAuthor(ki18n("Eduardo Robles Elvira"), ki18n("Maintainer"), "edulix@gmail.com",
         "http://blog.edulix.es");
 
-    connect(BlueDevil::Manager::self(), SIGNAL(adapterAdded(BlueDevil::Adapter*)),
-            this, SLOT(adapterAdded(BlueDevil::Adapter*)));
-    connect(BlueDevil::Manager::self(), SIGNAL(adapterRemoved(BlueDevil::Adapter*)),
-            this, SLOT(adapterRemoved(BlueDevil::Adapter*)));
-    connect(BlueDevil::Manager::self(), SIGNAL(defaultAdapterChanged(BlueDevil::Adapter*)),
-            this, SLOT(defaultAdapterChanged(BlueDevil::Adapter*)));
+    connect(BlueDevil::Manager::self(), SIGNAL(adapterAdded(Adapter*)),
+            this, SLOT(adapterAdded(Adapter*)));
+    connect(BlueDevil::Manager::self(), SIGNAL(adapterRemoved(Adapter*)),
+            this, SLOT(adapterRemoved(Adapter*)));
+    connect(BlueDevil::Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)),
+            this, SLOT(defaultAdapterChanged(Adapter*)));
 
     d->m_status = Private::Offline;
     if (BlueDevil::Manager::self()->defaultAdapter()) {

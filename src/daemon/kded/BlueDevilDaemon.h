@@ -27,6 +27,8 @@ namespace BlueDevil {
     class Adapter;
 };
 
+typedef BlueDevil::Adapter Adapter;
+
 class KDE_EXPORT BlueDevilDaemon
     : public KDEDModule
 {
@@ -35,7 +37,7 @@ class KDE_EXPORT BlueDevilDaemon
 
 public:
     /**
-     * Stablish basics connections with solid siganls and calls online if interfaces are availables
+     * Stablish basics connections with libbluedevil signals and calls online if interfaces are availables
      */
     BlueDevilDaemon(QObject *parent, const QList<QVariant>&);
     virtual ~BlueDevilDaemon();
@@ -57,18 +59,18 @@ private Q_SLOTS:
     /**
      * Called when a new adapter is available calls onlineMode if needed
      */
-    void adapterAdded(BlueDevil::Adapter *adapter);
+    void adapterAdded(Adapter *adapter);
 
     /**
      * Called when an adapter is removed calls offlineMode if needed
      */
-    void adapterRemoved(BlueDevil::Adapter *adapter);
+    void adapterRemoved(Adapter *adapter);
 
     /**
      * Called when the default adapter changes, re-initialize the kded with the new
      * default adapter
      */
-    void defaultAdapterChanged(BlueDevil::Adapter *adapter);
+    void defaultAdapterChanged(Adapter *adapter);
 
     /**
      * AgentListner is a QThread, so we've to delete it after call QThread::quit();
