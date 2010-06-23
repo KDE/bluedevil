@@ -5,8 +5,5 @@
         </method>
         <method name="stopServer">
         </method>
-        <method name="ping">
-            <arg type="s" direction="out">
-        </method>
     </interface>
 </node>

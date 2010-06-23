@@ -119,7 +119,7 @@ void AgentListenerWorker::RequestConfirmation(const QDBusObjectPath &device, qui
     list.append(remote->name());
     list.append(device.path());
 
-    int result = KProcess::execute("bluedevil-requestconfirmation",list);
+    int result = KProcess::execute("bluedevil-requestconfirmation", list);
     if (result == 0) {
         qDebug() << "Go on camarada!";
         return;

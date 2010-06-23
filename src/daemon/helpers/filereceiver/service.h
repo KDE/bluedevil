@@ -38,7 +38,6 @@ public:
 public Q_SLOTS:
     void launchServer();
     void stopServer();
-    QString ping();
 
 private Q_SLOTS:
     void quit();

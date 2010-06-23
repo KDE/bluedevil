@@ -79,9 +79,3 @@ void Service::quit()
         deleteLater();
     }
 }
-
-
-QString Service::ping()
-{
-    return "pong";
-}

@@ -22,12 +22,13 @@
 #define BLUEDEVILDAEMON_H
 
 #include <kdedmodule.h>
-#include <KComponentData>
-#include <QStringList>
 
-class SuspensionLockHandler;
+namespace BlueDevil {
+    class Adapter;
+};
 
-class KDE_EXPORT BlueDevilDaemon : public KDEDModule
+class KDE_EXPORT BlueDevilDaemon
+    : public KDEDModule
 {
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.kde.BlueDevil")
@@ -56,18 +57,18 @@ private Q_SLOTS:
     /**
      * Called when a new adapter is available calls onlineMode if needed
      */
-    void adapterAdded(const QString&);
+    void adapterAdded(BlueDevil::Adapter *adapter);
 
     /**
      * Called when an adapter is removed calls offlineMode if needed
      */
-    void adapterRemoved(const QString&);
+    void adapterRemoved(BlueDevil::Adapter *adapter);
 
     /**
      * Called when the default adapter changes, re-initialize the kded with the new
      * default adapter
      */
-    void defaultAdapterChanged(const QString&);
+    void defaultAdapterChanged(BlueDevil::Adapter *adapter);
 
     /**
      * AgentListner is a QThread, so we've to delete it after call QThread::quit();
@@ -84,6 +85,7 @@ private:
      * Tries to start the helper process via dbus and returns true if successful
      */
     bool serviceStarted();
+
 private:
     struct Private;
     Private *d;
