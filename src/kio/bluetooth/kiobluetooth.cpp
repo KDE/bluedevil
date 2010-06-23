@@ -79,7 +79,7 @@ public:
      */
     void listRemoteDeviceServices();
 
-    void listDevice(const QString &address, const QMap<QString, QVariant> &properties);
+    void listDevice(Device *device);
 
     QString urlForRemoteService(const QString &host, const QString &serviceName);
 
@@ -241,30 +241,28 @@ void KioBluetoothPrivate::listRemoteDeviceServices()
 void KioBluetoothPrivate::listDevices()
 {
     remoteDevices.clear();
-    q->connect(adapter, SIGNAL(deviceFound(QString,QMap<QString,QVariant>)),
-               q, SLOT(listDevice(QString,QMap<QString,QVariant>))); // FIXME
+    q->connect(adapter, SIGNAL(deviceFound(Device*)),
+               q, SLOT(listDevice(Device*)));
     adapter->startDiscovery();
     QTimer::singleShot(5000, adapter, SLOT(stopDiscovery()));
-    q->disconnect(adapter, SIGNAL(deviceFound(QString,QMap<QString,QVariant>)),
-        q, SLOT(listDevice(QString,QMap<QString,QVariant>))); // FIXME
     kDebug() << "listEntry(KIO::UDSEntry(),true);finished();";
 
     q->listEntry(KIO::UDSEntry(), true);
     q->finished();
 }
 
-void KioBluetoothPrivate::listDevice(const QString &address, const QMap<QString, QVariant> &properties)
+void KioBluetoothPrivate::listDevice(Device *device)
 {
-    if (remoteDevices.contains(address)) {
+    if (remoteDevices.contains(device->address())) {
         kDebug() << "Device already listed";
         return;
     }
-    remoteDevices.append(address);
+    remoteDevices.append(device->address());
     // adapter->createBluetoothRemoteDevice(address); // TODO: not needed ?
 
     // Create UDS entry
-    QString target = QString("bluetooth://").append(QString(address).replace(':','-'));
-    QString name = properties.value("Name").toString();
+    QString target = QString("bluetooth://").append(QString(device->address()).replace(':', '-'));
+    QString name = device->name();
     if (name.isEmpty()) {
         name = i18n("Untitled device");
     }

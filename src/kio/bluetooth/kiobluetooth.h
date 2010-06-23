@@ -28,6 +28,12 @@
  */
 class KioBluetoothPrivate;
 
+namespace BlueDevil {
+    class Device;
+}
+
+typedef BlueDevil::Device Device;
+
 class KioBluetooth : public QObject, public KIO::SlaveBase
 {
   Q_OBJECT
@@ -63,7 +69,7 @@ public:
 private:
     KioBluetoothPrivate *d;
 
-    Q_PRIVATE_SLOT(d, void listDevice(QString, QMap<QString, QVariant>))
+    Q_PRIVATE_SLOT(d, void listDevice(Device *device))
 };
 
 #endif // KIOBLUETOOTH_H
