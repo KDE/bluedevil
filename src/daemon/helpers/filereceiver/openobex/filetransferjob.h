@@ -22,12 +22,14 @@
 #define OPENOBEX_FILETRANSFERJOB_H
 
 #include "openobex/serversession.h"
-#include <solid/control/bluetoothmanager.h>
-#include <solid/control/bluetoothremotedevice.h>
 #include <KJob>
 #include <KUrl>
 
 class QDBusInterface;
+
+namespace BlueDevil {
+    class Device;
+};
 
 namespace OpenObex {
 
@@ -83,7 +85,6 @@ private:
     OpenObex::ServerSession *m_serverSession;
     qulonglong m_totalFileSize;
     QString m_customSaveUrl;
-    Solid::Control::BluetoothRemoteDevice m_bluetoothDevice;
     QTime m_time;
     qlonglong m_procesedBytes;
     KUrl m_url;

@@ -28,7 +28,6 @@
 #include <kiconloader.h>
 #include <knotification.h>
 #include <klocale.h>
-#include <solid/control/bluetoothmanager.h>
 
 ConfirmModeChange::ConfirmModeChange()
     : QObject()

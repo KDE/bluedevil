@@ -22,9 +22,9 @@
 #include "serviceadaptor.h"
 #include "openobex/serversession.h"
 
-#include <solid/control/bluetoothmanager.h>
-#include <solid/control/bluetoothinterface.h>
 #include <KDebug>
+#include <bluedevil/bluedevilmanager.h>
+#include <bluedevil/bluedeviladapter.h>
 
 #include <QtCore/QCoreApplication>
 
@@ -32,8 +32,8 @@ Service::Service()
 {
     new ServiceAdaptor(this);
     QDBusConnection dbus = QDBusConnection::sessionBus();
-    dbus.registerObject("/Service", this);
     dbus.registerService("org.kde.BlueDevil.Service");
+    dbus.registerObject("/Service", this);
     m_server = 0;
 }
 
@@ -50,9 +50,7 @@ void Service::launchServer()
     if (m_server) {
         return;
     }
-    Solid::Control::BluetoothInterface *adapter = new Solid::Control::BluetoothInterface(
-        Solid::Control::BluetoothManager::self().defaultInterface());
-    m_server = new OpenObex::Server(adapter->address());
+    m_server = new OpenObex::Server(BlueDevil::Manager::self()->defaultAdapter()->address());
     kDebug() << m_server;
 }
 

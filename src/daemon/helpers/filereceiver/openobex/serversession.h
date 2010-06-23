@@ -22,10 +22,13 @@
 #define OPENOBEX_SERVERSESSION_H
 
 #include <QObject>
-#include <solid/control/bluetoothremotedevice.h>
 #include "server_session_interface.h"
 
 class KNotification;
+
+namespace BlueDevil {
+    class Device;
+};
 
 namespace OpenObex {
 
@@ -51,6 +54,11 @@ public:
      * Dbus server session object. Used by the file transfer job to administrate the file transfer.
      */
     org::openobex::ServerSession* dbusServerSession();
+
+    /**
+     * @return The remote bluetooth device.
+     */
+    BlueDevil::Device *device();
 
     /**
      * Call this function if you want to delete this object, never call to deleteLater() or
@@ -122,7 +130,7 @@ private:
     org::openobex::ServerSession* m_dbusServerSession;
 
     /// Remote Bluetooth device
-    Solid::Control::BluetoothRemoteDevice m_bluetoothDevice;
+    BlueDevil::Device *m_bluetoothDevice;
 
     /**
      * These vars store information received when the slotTransferStarted gets called and
