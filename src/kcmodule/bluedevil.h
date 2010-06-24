@@ -60,6 +60,9 @@ private Q_SLOTS:
     void adapterAdded(Adapter *adapter);
     void adapterRemoved(Adapter *adapter);
 
+    void fixNotDiscoverableAdapterError();
+    void fixDisabledNotificationsError();
+
 private:
     void checkKDEDModuleLoaded();
     void updateInformationState();

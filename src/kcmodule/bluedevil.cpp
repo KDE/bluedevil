@@ -373,13 +373,17 @@ KCMBlueDevil::KCMBlueDevil(QWidget *parent, const QVariantList&)
     m_notDiscoverableAdapter = new ErrorWidget(this);
     m_notDiscoverableAdapter->setIcon("layer-visible-off");
     m_notDiscoverableAdapter->setReason(i18n("Your default Bluetooth adapter is not visible for remote devices."));
-    m_notDiscoverableAdapter->addAction(new KPushButton(KIcon("dialog-ok-apply"), i18n("Fix it, please"), this));
+    KPushButton *fixNotDiscoverableAdapter = new KPushButton(KIcon("dialog-ok-apply"), i18n("Fix it, please"), this);
+    connect(fixNotDiscoverableAdapter, SIGNAL(clicked()), this, SLOT(fixNotDiscoverableAdapterError()));
+    m_notDiscoverableAdapter->addAction(fixNotDiscoverableAdapter);
     layout->addWidget(m_notDiscoverableAdapter);
 
     m_disabledNotifications = new ErrorWidget(this);
     m_disabledNotifications->setIcon("preferences-desktop-notification");
     m_disabledNotifications->setReason(i18n("Interaction with Bluetooth system is turned off."));
-    m_disabledNotifications->addAction(new KPushButton(KIcon("dialog-ok-apply"), i18n("Fix it, please"), this));
+    KPushButton *fixDisabledNotifications = new KPushButton(KIcon("dialog-ok-apply"), i18n("Fix it, please"), this);
+    connect(fixDisabledNotifications, SIGNAL(clicked()), this, SLOT(fixDisabledNotificationsError()));
+    m_disabledNotifications->addAction(fixDisabledNotifications);
     layout->addWidget(m_disabledNotifications);
 
     layout->addWidget(m_enable);
@@ -499,6 +503,17 @@ void KCMBlueDevil::adapterRemoved(Adapter *adapter)
     updateInformationState();
 }
 
+void KCMBlueDevil::fixNotDiscoverableAdapterError()
+{
+    BlueDevil::Manager::self()->defaultAdapter()->setDiscoverable(true);
+    updateInformationState();
+}
+
+void KCMBlueDevil::fixDisabledNotificationsError()
+{
+    updateInformationState();
+}
+
 void KCMBlueDevil::checkKDEDModuleLoaded()
 {
     const QStringList res = m_kded->loadedModules();
@@ -518,9 +533,17 @@ void KCMBlueDevil::updateInformationState()
     m_noAdaptersError->setVisible(false);
     m_notDiscoverableAdapter->setVisible(false);
     m_disabledNotifications->setVisible(false);
-    if (!BlueDevil::Manager::self()->defaultAdapter() && m_isEnabled) {
+    if (!m_isEnabled) {
+        return;
+    }
+    BlueDevil::Adapter *const defaultAdapter = BlueDevil::Manager::self()->defaultAdapter();
+    if (!defaultAdapter) {
         m_noAdaptersError->setVisible(true);
         m_devices->setEnabled(false);
+        return;
+    }
+    if (!defaultAdapter->isDiscoverable()) {
+        m_notDiscoverableAdapter->setVisible(true);
         return;
     }
 }
