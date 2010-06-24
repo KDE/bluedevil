@@ -364,25 +364,13 @@ KCMBlueDevil::KCMBlueDevil(QWidget *parent, const QVariantList&)
     checkKDEDModuleLoaded();
 
     QVBoxLayout *layout = new QVBoxLayout;
-    layout->addWidget(m_enable);
-
-#if 0
-    // Error widget
-    {
-        ErrorWidget *errorWidget = new ErrorWidget(this);
-        errorWidget->setIcon("dialog-information");
-        errorWidget->setReason(i18n("No Bluetooth adapters have been detected"));
-        errorWidget->addAction(new KPushButton(KIcon("dialog-ok"), i18n("Make toasts, now !!")));
-        layout->addWidget(errorWidget);
-    }
-#endif
 
     m_noAdapters = new ErrorWidget(this);
     m_noAdapters->setIcon("window-close");
     m_noAdapters->setReason(i18n("No Bluetooth adapters have been found."));
     layout->addWidget(m_noAdapters);
-    m_noAdapters->setVisible(!BlueDevil::Manager::self()->defaultAdapter());
 
+    layout->addWidget(m_enable);
 
     // Bluetooth device list
     {
@@ -432,6 +420,8 @@ KCMBlueDevil::KCMBlueDevil(QWidget *parent, const QVariantList&)
     setLayout(layout);
 
     connect(m_enable, SIGNAL(stateChanged(int)), SLOT(stateChanged(int)));
+
+    updateInformationState();
 }
 
 KCMBlueDevil::~KCMBlueDevil()
@@ -449,8 +439,8 @@ void KCMBlueDevil::save()
     } else if (m_isEnabled && !m_enable->isChecked()) {
         m_kded->unloadModule("bluedevil");
     }
-
     checkKDEDModuleLoaded();
+    updateInformationState();
 }
 
 void KCMBlueDevil::stateChanged(int)
@@ -482,4 +472,13 @@ void KCMBlueDevil::checkKDEDModuleLoaded()
     }
     m_enable->setChecked(moduleLoaded);
     m_isEnabled = moduleLoaded;
+}
+
+void KCMBlueDevil::updateInformationState()
+{
+    m_noAdapters->setVisible(false);
+    if (!BlueDevil::Manager::self()->defaultAdapter() && m_isEnabled) {
+        m_noAdapters->setVisible(true);
+        m_devices->setEnabled(false);
+    }
 }

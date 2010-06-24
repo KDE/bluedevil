@@ -53,6 +53,7 @@ private Q_SLOTS:
 
 private:
     void checkKDEDModuleLoaded();
+    void updateInformationState();
 
 private:
     QCheckBox             *m_enable;
