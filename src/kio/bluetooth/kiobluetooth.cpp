@@ -190,15 +190,15 @@ KioBluetoothPrivate::KioBluetoothPrivate(KioBluetooth *parent)
 
 QStringList KioBluetoothPrivate::getServiceNames(const QStringList &uuids)
 {
-  QStringList retValue;
-  Q_FOREACH (const QString &uuid, uuids) {
-    if (serviceNames.contains(uuid)) {
-        retValue.append(serviceNames[uuid]);
-    } else {
-        retValue.append(uuid);
+    QStringList retValue;
+    Q_FOREACH (const QString &uuid, uuids) {
+        if (serviceNames.contains(uuid)) {
+            retValue << serviceNames[uuid];
+        } else {
+            retValue << uuid;
+        }
     }
-  }
-  return retValue;
+    return retValue;
 }
 
 QString KioBluetoothPrivate::urlForRemoteService(const QString &host, const QString &serviceName)
@@ -215,11 +215,12 @@ void KioBluetoothPrivate::listRemoteDeviceServices()
     kDebug();
     currentHost = adapter->deviceForAddress(currentHostname.replace('-', ':').toUpper());
     currentHostServiceNames = getServiceNames(currentHost->UUIDs());
+
     Q_FOREACH (QString serviceName, currentHostServiceNames) {
         KIO::UDSEntry entry;
         entry.insert(KIO::UDSEntry::UDS_NAME, serviceName);
         // This will change
-        QString url = urlForRemoteService(currentHostname.replace(':','-'), serviceName);
+        QString url = urlForRemoteService(currentHostname.replace(':', '-'), serviceName);
         kDebug() << url;
         entry.insert(KIO::UDSEntry::UDS_TARGET_URL, url);
         entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFLNK);
@@ -281,6 +282,7 @@ KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
         d->online = false;
         return;
     }
+
     connect(defaultAdapter, SIGNAL(deviceFound(Device*)), this, SLOT(listDevice(Device*)));
     d->adapter = defaultAdapter;
     d->online = true;
@@ -325,7 +327,7 @@ void KioBluetooth::get(const KUrl &url)
 }
 
 void KioBluetooth::setHost(const QString &constHostname, quint16 port, const QString &user,
-    const QString &pass)
+                           const QString &pass)
 {
     kDebug() << constHostname;
     // In this kio only the hostname (constHostname) is used
