@@ -558,15 +558,18 @@ bool KCMBlueDevil::checkNotificationsOK()
 void KCMBlueDevil::updateInformationState()
 {
     m_noAdaptersError->setVisible(false);
+    m_noAdaptersError->setEnabled(true);
     m_notDiscoverableAdapterError->setVisible(false);
     m_disabledNotificationsError->setVisible(false);
+    m_devices->setEnabled(false);
     if (!m_isEnabled) {
+        m_noAdaptersError->setVisible(true);
+        m_noAdaptersError->setEnabled(false);
         return;
     }
     BlueDevil::Adapter *const defaultAdapter = BlueDevil::Manager::self()->defaultAdapter();
     if (!defaultAdapter) {
         m_noAdaptersError->setVisible(true);
-        m_devices->setEnabled(false);
         return;
     }
     if (!defaultAdapter->isDiscoverable()) {
@@ -575,5 +578,7 @@ void KCMBlueDevil::updateInformationState()
     }
     if (!checkNotificationsOK()) {
         m_disabledNotificationsError->setVisible(true);
+        return;
     }
+    m_devices->setEnabled(true);
 }
