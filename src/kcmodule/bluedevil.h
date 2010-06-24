@@ -59,6 +59,7 @@ private Q_SLOTS:
 
     void adapterAdded(Adapter *adapter);
     void adapterRemoved(Adapter *adapter);
+    void adapterDiscoverableChanged();
 
     void fixNotDiscoverableAdapterError();
     void fixDisabledNotificationsError();

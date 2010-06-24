@@ -452,6 +452,12 @@ KCMBlueDevil::KCMBlueDevil(QWidget *parent, const QVariantList&)
     connect(BlueDevil::Manager::self(), SIGNAL(adapterRemoved(Adapter*)),
             this, SLOT(adapterRemoved(Adapter*)));
 
+    BlueDevil::Adapter *const defaultAdapter = BlueDevil::Manager::self()->defaultAdapter();
+    if (defaultAdapter) {
+        connect(defaultAdapter, SIGNAL(discoverableChanged(bool)),
+                this, SLOT(adapterDiscoverableChanged()));
+    }
+
     updateInformationState();
 }
 
@@ -500,6 +506,11 @@ void KCMBlueDevil::adapterAdded(Adapter *adapter)
 void KCMBlueDevil::adapterRemoved(Adapter *adapter)
 {
     Q_UNUSED(adapter)
+    updateInformationState();
+}
+
+void KCMBlueDevil::adapterDiscoverableChanged()
+{
     updateInformationState();
 }
 
