@@ -57,17 +57,17 @@ private Q_SLOTS:
     void deviceSelectionChanged(const QItemSelection &selection);
     void removeDevice();
 
-    void adapterAdded(Adapter *adapter);
-    void adapterRemoved(Adapter *adapter);
+    void defaultAdapterChanged(Adapter *adapter);
     void adapterDiscoverableChanged();
 
     void fixNotDiscoverableAdapterError();
     void fixDisabledNotificationsError();
 
+    void updateInformationState();
+
 private:
     void checkKDEDModuleLoaded();
     bool checkNotificationsOK();
-    void updateInformationState();
 
 private:
     QCheckBox             *m_enable;
@@ -78,8 +78,8 @@ private:
     KPushButton           *m_removeDevice;
     bool                   m_isEnabled;
     ErrorWidget           *m_noAdaptersError;
-    ErrorWidget           *m_notDiscoverableAdapter;
-    ErrorWidget           *m_disabledNotifications;
+    ErrorWidget           *m_notDiscoverableAdapterError;
+    ErrorWidget           *m_disabledNotificationsError;
     BluetoothDevicesModel *m_devicesModel;
     QListView             *m_devices;
     KDED                  *m_kded;
