@@ -26,6 +26,7 @@
 
 #include <kcmodule.h>
 
+class ErrorWidget;
 class BluetoothDevicesModel;
 
 class QListView;
@@ -57,6 +58,7 @@ private:
     QCheckBox             *m_enable;
     KPushButton           *m_removeDevice;
     bool                   m_isEnabled;
+    ErrorWidget           *m_noAdapters;
     BluetoothDevicesModel *m_devicesModel;
     QListView             *m_devices;
     KDED                  *m_kded;

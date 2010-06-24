@@ -19,6 +19,8 @@
 
 #include "bluedevil.h"
 
+#include <bluedevil/bluedevil.h>
+
 #include <QtCore/QAbstractItemModel>
 
 #include <QtGui/QLabel>
@@ -364,6 +366,7 @@ KCMBlueDevil::KCMBlueDevil(QWidget *parent, const QVariantList&)
     QVBoxLayout *layout = new QVBoxLayout;
     layout->addWidget(m_enable);
 
+#if 0
     // Error widget
     {
         ErrorWidget *errorWidget = new ErrorWidget(this);
@@ -372,11 +375,20 @@ KCMBlueDevil::KCMBlueDevil(QWidget *parent, const QVariantList&)
         errorWidget->addAction(new KPushButton(KIcon("dialog-ok"), i18n("Make toasts, now !!")));
         layout->addWidget(errorWidget);
     }
+#endif
+
+    m_noAdapters = new ErrorWidget(this);
+    m_noAdapters->setIcon("window-close");
+    m_noAdapters->setReason(i18n("No Bluetooth adapters have been found."));
+    layout->addWidget(m_noAdapters);
+    m_noAdapters->setVisible(!BlueDevil::Manager::self()->defaultAdapter());
+
 
     // Bluetooth device list
     {
         m_devicesModel = new BluetoothDevicesModel(this);
 
+#if 0
         // Fill some info
         {
             m_devicesModel->insertRows(0, 5);
@@ -392,6 +404,7 @@ KCMBlueDevil::KCMBlueDevil(QWidget *parent, const QVariantList&)
                 m_devicesModel->setData(deviceTypeIndex, fakeDevices[i]);
             }
         }
+#endif
 
         m_devices = new QListView(this);
         m_devices->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
