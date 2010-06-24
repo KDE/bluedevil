@@ -66,6 +66,7 @@ private Q_SLOTS:
 
 private:
     void checkKDEDModuleLoaded();
+    bool checkNotificationsOK();
     void updateInformationState();
 
 private:
