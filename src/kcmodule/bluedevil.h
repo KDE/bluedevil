@@ -34,6 +34,12 @@ class QCheckBox;
 
 class KPushButton;
 
+namespace BlueDevil {
+    class Adapter;
+}
+
+typedef BlueDevil::Adapter Adapter;
+
 class KCMBlueDevil
     : public KCModule
 {
@@ -51,6 +57,9 @@ private Q_SLOTS:
     void deviceSelectionChanged(const QItemSelection &selection);
     void removeDevice();
 
+    void adapterAdded(Adapter *adapter);
+    void adapterRemoved(Adapter *adapter);
+
 private:
     void checkKDEDModuleLoaded();
     void updateInformationState();
@@ -59,7 +68,7 @@ private:
     QCheckBox             *m_enable;
     KPushButton           *m_removeDevice;
     bool                   m_isEnabled;
-    ErrorWidget           *m_noAdapters;
+    ErrorWidget           *m_noAdaptersError;
     BluetoothDevicesModel *m_devicesModel;
     QListView             *m_devices;
     KDED                  *m_kded;

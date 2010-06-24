@@ -365,10 +365,10 @@ KCMBlueDevil::KCMBlueDevil(QWidget *parent, const QVariantList&)
 
     QVBoxLayout *layout = new QVBoxLayout;
 
-    m_noAdapters = new ErrorWidget(this);
-    m_noAdapters->setIcon("window-close");
-    m_noAdapters->setReason(i18n("No Bluetooth adapters have been found."));
-    layout->addWidget(m_noAdapters);
+    m_noAdaptersError = new ErrorWidget(this);
+    m_noAdaptersError->setIcon("window-close");
+    m_noAdaptersError->setReason(i18n("No Bluetooth adapters have been found."));
+    layout->addWidget(m_noAdaptersError);
 
     layout->addWidget(m_enable);
 
@@ -420,6 +420,10 @@ KCMBlueDevil::KCMBlueDevil(QWidget *parent, const QVariantList&)
     setLayout(layout);
 
     connect(m_enable, SIGNAL(stateChanged(int)), SLOT(stateChanged(int)));
+    connect(BlueDevil::Manager::self(), SIGNAL(adapterAdded(Adapter*)),
+            this, SLOT(adapterAdded(Adapter*)));
+    connect(BlueDevil::Manager::self(), SIGNAL(adapterRemoved(Adapter*)),
+            this, SLOT(adapterRemoved(Adapter*)));
 
     updateInformationState();
 }
@@ -460,6 +464,18 @@ void KCMBlueDevil::removeDevice()
     m_devicesModel->removeRow(m_devices->currentIndex().row());
 }
 
+void KCMBlueDevil::adapterAdded(Adapter *adapter)
+{
+    Q_UNUSED(adapter)
+    updateInformationState();
+}
+
+void KCMBlueDevil::adapterRemoved(Adapter *adapter)
+{
+    Q_UNUSED(adapter)
+    updateInformationState();
+}
+
 void KCMBlueDevil::checkKDEDModuleLoaded()
 {
     const QStringList res = m_kded->loadedModules();
@@ -476,9 +492,9 @@ void KCMBlueDevil::checkKDEDModuleLoaded()
 
 void KCMBlueDevil::updateInformationState()
 {
-    m_noAdapters->setVisible(false);
+    m_noAdaptersError->setVisible(false);
     if (!BlueDevil::Manager::self()->defaultAdapter() && m_isEnabled) {
-        m_noAdapters->setVisible(true);
+        m_noAdaptersError->setVisible(true);
         m_devices->setEnabled(false);
     }
 }
