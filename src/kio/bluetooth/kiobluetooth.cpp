@@ -20,7 +20,7 @@
 
 #include "kiobluetooth.h"
 
-#include <QtCore/QTimer>
+#include <QtCore/QThread>
 
 #include <KDebug>
 #include <KComponentData>
@@ -80,7 +80,6 @@ public:
     void listRemoteDeviceServices();
 
     void listDevice(Device *device);
-    void finishDiscovery();
 
     QString urlForRemoteService(const QString &host, const QString &serviceName);
 
@@ -233,11 +232,26 @@ void KioBluetoothPrivate::listRemoteDeviceServices()
     q->finished();
 }
 
+class SleeperThread
+    : public QThread
+{
+public:
+    static void msleep(unsigned long msecs)
+    {
+        QThread::msleep(msecs);
+    }
+};
+
 void KioBluetoothPrivate::listDevices()
 {
     adapter->startDiscovery();
-    QTimer::singleShot(5000, q, SLOT(finishDiscovery()));
-    kDebug() << "listEntry(KIO::UDSEntry(),true);finished();";
+    for (int i = 0; i < 5; ++i) {
+        SleeperThread::msleep(1000);
+        QApplication::processEvents();
+    }
+    adapter->stopDiscovery();
+    q->listEntry(KIO::UDSEntry(), true);
+    q->finished();
 }
 
 void KioBluetoothPrivate::listDevice(Device *device)
@@ -253,14 +267,6 @@ void KioBluetoothPrivate::listDevice(Device *device)
     entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
     q->listEntry(entry, false);
 }
-
-void KioBluetoothPrivate::finishDiscovery()
-{
-    adapter->stopDiscovery();
-    q->listEntry(KIO::UDSEntry(), true);
-    q->finished();
-}
-
 //@endcond
 
 KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
@@ -283,7 +289,6 @@ KioBluetooth::~KioBluetooth()
 {
     delete d;
 }
-
 
 void KioBluetooth::listDir(const KUrl &url)
 {
