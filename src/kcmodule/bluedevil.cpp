@@ -376,6 +376,12 @@ KCMBlueDevil::KCMBlueDevil(QWidget *parent, const QVariantList&)
     m_notDiscoverableAdapter->addAction(new KPushButton(KIcon("dialog-ok-apply"), i18n("Fix it, please"), this));
     layout->addWidget(m_notDiscoverableAdapter);
 
+    m_disabledNotifications = new ErrorWidget(this);
+    m_disabledNotifications->setIcon("preferences-desktop-notification");
+    m_disabledNotifications->setReason(i18n("Interaction with Bluetooth system is turned off."));
+    m_disabledNotifications->addAction(new KPushButton(KIcon("dialog-ok-apply"), i18n("Fix it, please"), this));
+    layout->addWidget(m_disabledNotifications);
+
     layout->addWidget(m_enable);
 
     // Bluetooth device list
@@ -510,8 +516,11 @@ void KCMBlueDevil::checkKDEDModuleLoaded()
 void KCMBlueDevil::updateInformationState()
 {
     m_noAdaptersError->setVisible(false);
+    m_notDiscoverableAdapter->setVisible(false);
+    m_disabledNotifications->setVisible(false);
     if (!BlueDevil::Manager::self()->defaultAdapter() && m_isEnabled) {
         m_noAdaptersError->setVisible(true);
         m_devices->setEnabled(false);
+        return;
     }
 }

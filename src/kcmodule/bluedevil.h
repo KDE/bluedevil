@@ -74,6 +74,7 @@ private:
     bool                   m_isEnabled;
     ErrorWidget           *m_noAdaptersError;
     ErrorWidget           *m_notDiscoverableAdapter;
+    ErrorWidget           *m_disabledNotifications;
     BluetoothDevicesModel *m_devicesModel;
     QListView             *m_devices;
     KDED                  *m_kded;
