@@ -66,9 +66,14 @@ private:
 
 private:
     QCheckBox             *m_enable;
+    KPushButton           *m_trustDevice;
+    KPushButton           *m_blockDevice;
+    KPushButton           *m_renameAlias;
+    KPushButton           *m_addDevice;
     KPushButton           *m_removeDevice;
     bool                   m_isEnabled;
     ErrorWidget           *m_noAdaptersError;
+    ErrorWidget           *m_notDiscoverableAdapter;
     BluetoothDevicesModel *m_devicesModel;
     QListView             *m_devices;
     KDED                  *m_kded;

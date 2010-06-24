@@ -370,6 +370,12 @@ KCMBlueDevil::KCMBlueDevil(QWidget *parent, const QVariantList&)
     m_noAdaptersError->setReason(i18n("No Bluetooth adapters have been found."));
     layout->addWidget(m_noAdaptersError);
 
+    m_notDiscoverableAdapter = new ErrorWidget(this);
+    m_notDiscoverableAdapter->setIcon("layer-visible-off");
+    m_notDiscoverableAdapter->setReason(i18n("Your default Bluetooth adapter is not visible for remote devices."));
+    m_notDiscoverableAdapter->addAction(new KPushButton(KIcon("dialog-ok-apply"), i18n("Fix it, please"), this));
+    layout->addWidget(m_notDiscoverableAdapter);
+
     layout->addWidget(m_enable);
 
     // Bluetooth device list
@@ -406,14 +412,25 @@ KCMBlueDevil::KCMBlueDevil(QWidget *parent, const QVariantList&)
     }
 
     {
+        m_trustDevice = new KPushButton(KIcon("security-high"), i18n("Trust Device"));
+        m_trustDevice->setEnabled(false);
+        m_blockDevice = new KPushButton(KIcon("security-low"), i18n("Block Device"));
+        m_blockDevice->setEnabled(false);
+        m_renameAlias = new KPushButton(KIcon("document-edit"), i18n("Rename Device"));
+        m_renameAlias->setEnabled(false);
         m_removeDevice = new KPushButton(KIcon("list-remove"), i18n("Remove Device"));
         m_removeDevice->setEnabled(false);
+        m_addDevice = new KPushButton(KIcon("list-add"), i18n("Add Device..."));
 
         connect(m_removeDevice, SIGNAL(clicked()), this, SLOT(removeDevice()));
 
         QHBoxLayout *hLayout = new QHBoxLayout;
-        hLayout->addStretch();
+        hLayout->addWidget(m_trustDevice);
+        hLayout->addWidget(m_blockDevice);
+        hLayout->addWidget(m_renameAlias);
         hLayout->addWidget(m_removeDevice);
+        hLayout->addStretch();
+        hLayout->addWidget(m_addDevice);
         layout->addLayout(hLayout);
     }
 
