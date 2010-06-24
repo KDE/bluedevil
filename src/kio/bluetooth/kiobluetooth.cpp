@@ -245,8 +245,8 @@ public:
 void KioBluetoothPrivate::listDevices()
 {
     adapter->startDiscovery();
-    for (int i = 0; i < 5; ++i) {
-        SleeperThread::msleep(1000);
+    for (int i = 0; i < 10; ++i) {
+        SleeperThread::msleep(500);
         QApplication::processEvents();
     }
     adapter->stopDiscovery();
@@ -263,6 +263,7 @@ void KioBluetoothPrivate::listDevice(Device *device)
     }
     KIO::UDSEntry entry;
     entry.insert(KIO::UDSEntry::UDS_NAME, name);
+    entry.insert(KIO::UDSEntry::UDS_ICON_NAME, device->icon());
     entry.insert(KIO::UDSEntry::UDS_TARGET_URL, target);
     entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
     q->listEntry(entry, false);
