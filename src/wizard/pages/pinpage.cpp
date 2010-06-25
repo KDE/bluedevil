@@ -47,7 +47,7 @@ void PinPage::manualToggle(bool checked)
     }
 
     pinEdit->setEnabled(checked);
-    m_wizard->setAutoPin(checked);
+    m_wizard->setManualPin(checked);
     emit completeChanged();
 }
 

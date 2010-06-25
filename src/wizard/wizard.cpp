@@ -22,14 +22,16 @@
 #include "pages/introductionpage.h"
 #include "pages/discoverpage.h"
 #include "pages/pinpage.h"
+#include "pages/pairingpage.h"
 
 #include <QDBusConnection>
 #include <QApplication>
-BlueWizard::BlueWizard() : QWizard()
+BlueWizard::BlueWizard() : QWizard(), m_manualPin(false)
 {
     addPage(new IntroductionPage(this));
     addPage(new DiscoverPage(this));
     addPage(new PinPage(this));
+    addPage(new PairingPage(this));
 
     if(!QDBusConnection::systemBus().registerObject("/wizardAgent", qApp)) {
         qDebug() << "The dbus object can't be registered";
@@ -64,12 +66,17 @@ QByteArray BlueWizard::pin() const
     return m_pin;
 }
 
-void BlueWizard::setAutoPin(bool pinAuto)
+void BlueWizard::setManualPin(bool pinManual)
 {
-    m_autoPin = pinAuto;
+    m_manualPin = pinManual;
 }
 
-bool BlueWizard::autoPin() const
+bool BlueWizard::manualPin() const
 {
-    return m_autoPin;
+    return m_manualPin;
+}
+
+WizardAgent* BlueWizard::agent() const
+{
+    return m_agent;
 }

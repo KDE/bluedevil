@@ -17,38 +17,29 @@
 */
 
 
-#ifndef WIZARD_H
-#define WIZARD_H
+#ifndef PAIRINGPAGE_H
+#define PAIRINGPAGE_H
 
-#include <QObject>
-#include <QWizard>
+#include "ui_pairing.h"
+#include <QWizardPage>
 
-class WizardAgent;
-class BlueWizard : public QWizard
+class BlueWizard;
+class PairingPage : public QWizardPage
+, Ui::Pairing
 {
 Q_OBJECT
 
 public:
-    BlueWizard();
-    virtual ~BlueWizard();
+    PairingPage(QWidget* parent = 0);
 
-    QByteArray deviceAddress() const;
-    void setDeviceAddress(const QByteArray& address);
+    virtual void initializePage();
 
-    QByteArray pin() const;
-    void setPin(const QByteArray& pin);
-
-    bool manualPin() const;
-    void setManualPin(bool);
-
-    WizardAgent* agent() const;
+public Q_SLOTS:
+    void usedPin(const QString&);
+    void devicePaired(bool paired);
 
 private:
-    QByteArray m_deviceAddress;
-    QByteArray m_pin;
-    WizardAgent *m_agent;
-
-    bool m_manualPin;
+    BlueWizard *m_wizard;
 };
 
-#endif // WIZARD_H
+#endif // PAIRINGPAGE_H
