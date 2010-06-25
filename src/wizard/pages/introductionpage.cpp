@@ -25,8 +25,10 @@
 IntroductionPage::IntroductionPage(QWidget* parent): QWizardPage(parent)
 {
     setTitle("Introduction");
-    Ui::Introduction *introductionUi= new Ui::Introduction;
-    introductionUi->setupUi(this);
+    setupUi(this);
+
+//     this->setLayout(layout);
+
 }
 
 IntroductionPage::~IntroductionPage()

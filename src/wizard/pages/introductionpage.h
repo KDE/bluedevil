@@ -21,8 +21,10 @@
 #define INTRODUCTIONPAGE_H
 
 #include <QWizardPage>
+#include <ui_introduction.h>
 
 class IntroductionPage : public QWizardPage
+, public Ui::Introduction
 {
 
 public:
