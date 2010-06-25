@@ -20,10 +20,10 @@
 #ifndef PINPAGE_H
 #define PINPAGE_H
 
+#include "ui_pin.h"
 #include <QWizardPage>
 
-#include <ui_pin.h>
-
+class BlueWizard;
 class PinPage : public QWizardPage
 , public Ui::Pin
 {
@@ -31,7 +31,15 @@ Q_OBJECT
 
 public:
     PinPage(QWidget* parent = 0);
-    virtual ~PinPage();
+    virtual bool isComplete() const;
+    virtual void initializePage();
+
+private Q_SLOTS:
+    void manualToggle(bool checked);
+    void pinChange(const QString& pin);
+
+private:
+    BlueWizard *m_wizard;
 };
 
 #endif // PINPAGE_H

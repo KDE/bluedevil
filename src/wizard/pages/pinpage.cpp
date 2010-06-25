@@ -19,15 +19,53 @@
 
 #include "pinpage.h"
 #include "ui_pin.h"
+#include "../wizard.h"
 
+#include <QDebug>
 
 PinPage::PinPage(QWidget* parent): QWizardPage(parent)
 {
     setTitle(i18n("Choose your PIN mode"));
     setupUi(this);
+
+    connect(manualBtn, SIGNAL(toggled(bool)), this, SLOT(manualToggle(bool)));
+    connect(pinEdit, SIGNAL(textChanged(QString)), this, SLOT(pinChange(QString)));
 }
 
-PinPage::~PinPage()
+void PinPage::initializePage()
 {
+    if (!m_wizard) {
+        m_wizard = static_cast<BlueWizard* >(wizard());
+    }
+}
 
+void PinPage::manualToggle(bool checked)
+{
+    if (checked == true) {
+        pinEdit->setFocus();
+        pinEdit->setCursorPosition(0);
+    }
+
+    pinEdit->setEnabled(checked);
+    m_wizard->setAutoPin(checked);
+    emit completeChanged();
+}
+
+void PinPage::pinChange(const QString& pin)
+{
+    m_wizard->setPin(pin.toAscii());
+    emit completeChanged();
+}
+
+bool PinPage::isComplete() const
+{
+    if (manualBtn->isChecked()) {
+        if (!pinEdit->text().isEmpty()) {
+            if (pinEdit->text().length() > 3) {
+                return true;
+            }
+        }
+        return false;
+    }
+    return true;
 }
