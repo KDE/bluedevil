@@ -23,7 +23,7 @@
 
 #include <QDebug>
 
-PinPage::PinPage(QWidget* parent): QWizardPage(parent)
+PinPage::PinPage(QWidget* parent): QWizardPage(parent), m_wizard(0)
 {
     setTitle(i18n("Choose your PIN mode"));
     setupUi(this);
