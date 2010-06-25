@@ -17,19 +17,18 @@
 */
 
 
-#include "wizard.h"
-#include "pages/introductionpage.h"
-#include "pages/discoverpage.h"
+#ifndef DISCOVERPAGE_H
+#define DISCOVERPAGE_H
 
-Wizard::Wizard()
-{
-    m_wizard= new QWizard();
-    m_wizard->addPage(new IntroductionPage(m_wizard));
-    m_wizard->addPage(new DiscoverPage(m_wizard));
-    m_wizard->show();
-}
+#include <QWizard>
 
-Wizard::~Wizard()
+
+class DiscoverPage : public QWizardPage
 {
-    delete m_wizard;
-}
+
+public:
+    DiscoverPage(QWidget* parent = 0);
+    virtual ~DiscoverPage();
+};
+
+#endif // DISCOVERPAGE_H

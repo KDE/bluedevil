@@ -17,19 +17,19 @@
 */
 
 
-#include "wizard.h"
-#include "pages/introductionpage.h"
-#include "pages/discoverpage.h"
+#include "discoverpage.h"
+#include "ui_discover.h"
 
-Wizard::Wizard()
+DiscoverPage::DiscoverPage(QWidget* parent): QWizardPage(parent)
 {
-    m_wizard= new QWizard();
-    m_wizard->addPage(new IntroductionPage(m_wizard));
-    m_wizard->addPage(new DiscoverPage(m_wizard));
-    m_wizard->show();
+    setTitle("Discover Devices");
+    Ui::Discover *discoverUi= new Ui::Discover;
+    discoverUi->setupUi(this);
 }
 
-Wizard::~Wizard()
+
+DiscoverPage::~DiscoverPage()
 {
-    delete m_wizard;
+
 }
+
