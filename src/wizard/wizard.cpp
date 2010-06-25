@@ -44,3 +44,23 @@ QByteArray BlueWizard::deviceAddress() const
 {
     return m_deviceAddress;
 }
+
+void BlueWizard::setPin(const QByteArray& pinNum)
+{
+    m_pin = pinNum;
+}
+
+QByteArray BlueWizard::pin() const
+{
+    return m_pin;
+}
+
+void BlueWizard::setAutoPin(bool pinAuto)
+{
+    m_autoPin = pinAuto;
+}
+
+bool BlueWizard::autoPin() const
+{
+    return m_autoPin;
+}

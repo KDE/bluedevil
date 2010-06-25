@@ -32,10 +32,18 @@ public:
     virtual ~BlueWizard();
 
     QByteArray deviceAddress() const;
-    void setDeviceAddress(const QByteArray&);
+    void setDeviceAddress(const QByteArray& address);
+
+    QByteArray pin() const;
+    void setPin(const QByteArray& pin);
+
+    bool autoPin() const;
+    void setAutoPin(bool);
 
 private:
     QByteArray m_deviceAddress;
+    QByteArray m_pin;
+    bool m_autoPin;
 };
 
 #endif // WIZARD_H
