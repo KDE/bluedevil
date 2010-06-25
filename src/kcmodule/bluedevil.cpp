@@ -525,6 +525,7 @@ void KCMBlueDevil::deviceSelectionChanged(const QItemSelection &selection)
 {
     const bool enable = !selection.isEmpty();
     m_trustDevice->setEnabled(enable);
+    m_trustDevice->setChecked(false);
     m_renameAliasDevice->setEnabled(enable);
     m_removeDevice->setEnabled(enable);
 
