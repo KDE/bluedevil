@@ -75,6 +75,7 @@ bool DiscoverPage::isComplete() const
 
 void DiscoverPage::startScan()
 {
+    m_counter = 0;
     progressBar->setValue(0);
     deviceList->clear();
     stopScan();
