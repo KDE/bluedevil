@@ -23,16 +23,19 @@
 #include <QObject>
 #include <QWizard>
 
-class Wizard : public QObject
+class BlueWizard : public QWizard
 {
 Q_OBJECT
 
 public:
-    Wizard();
-    virtual ~Wizard();
+    BlueWizard();
+    virtual ~BlueWizard();
+
+    QByteArray deviceAddress() const;
+    void setDeviceAddress(const QByteArray&);
 
 private:
-    QWizard *m_wizard;
+    QByteArray m_deviceAddress;
 };
 
 #endif // WIZARD_H

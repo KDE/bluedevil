@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
     KCmdLineArgs::init(argc, argv, &aboutData);
 
     KApplication app;
-    new Wizard;
+    new BlueWizard;
 
     return app.exec();
 }

@@ -21,15 +21,24 @@
 #include "pages/introductionpage.h"
 #include "pages/discoverpage.h"
 
-Wizard::Wizard()
+BlueWizard::BlueWizard() : QWizard()
 {
-    m_wizard= new QWizard();
-    m_wizard->addPage(new IntroductionPage(m_wizard));
-    m_wizard->addPage(new DiscoverPage(m_wizard));
-    m_wizard->show();
+    addPage(new IntroductionPage(this));
+    addPage(new DiscoverPage(this));
+    show();
 }
 
-Wizard::~Wizard()
+BlueWizard::~BlueWizard()
 {
-    delete m_wizard;
+
+}
+
+void BlueWizard::setDeviceAddress(const QByteArray& address)
+{
+    m_deviceAddress = address;
+}
+
+QByteArray BlueWizard::deviceAddress() const
+{
+    return m_deviceAddress;
 }
