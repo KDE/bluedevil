@@ -554,7 +554,6 @@ void KCMBlueDevil::removeDevice()
 {
     Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
     BlueDevil::Manager::self()->defaultAdapter()->removeDevice(device);
-    m_devicesModel->removeRow(m_devices->currentIndex().row());
 }
 
 void KCMBlueDevil::defaultAdapterChanged(Adapter *adapter)
@@ -562,6 +561,8 @@ void KCMBlueDevil::defaultAdapterChanged(Adapter *adapter)
     if (adapter) {
         connect(adapter, SIGNAL(discoverableChanged(bool)),
                 this, SLOT(adapterDiscoverableChanged()));
+        connect(adapter, SIGNAL(devicesChanged(QList<Device*>)),
+                this, SLOT(adapterDevicesChanged(QList<Device*>)));
     }
     fillRemoteDevicesModelInformation();
     QTimer::singleShot(300, this, SLOT(updateInformationState()));
@@ -575,7 +576,7 @@ void KCMBlueDevil::adapterDiscoverableChanged()
 void KCMBlueDevil::adapterDevicesChanged(const QList<Device*> &devices)
 {
     Q_UNUSED(devices)
-    // TODO: reload remote devices model
+    fillRemoteDevicesModelInformation();
 }
 
 void KCMBlueDevil::fixNotDiscoverableAdapterError()
