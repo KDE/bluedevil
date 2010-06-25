@@ -48,6 +48,11 @@ DiscoverPage::~DiscoverPage()
 
 }
 
+void DiscoverPage::initializePage()
+{
+    startScan();
+}
+
 void DiscoverPage::startScan()
 {
     progressBar->setValue(0);

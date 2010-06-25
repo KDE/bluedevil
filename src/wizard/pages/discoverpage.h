@@ -38,6 +38,8 @@ public:
     DiscoverPage(QWidget* parent = 0);
     virtual ~DiscoverPage();
 
+    virtual void initializePage();
+
 private Q_SLOTS:
     void startScan();
     void deviceFound(Device * device);
