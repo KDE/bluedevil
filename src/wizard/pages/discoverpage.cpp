@@ -37,7 +37,8 @@ DiscoverPage::DiscoverPage(QWidget* parent): QWizardPage(parent), m_counter(0), 
     setupUi(this);
 
     m_timer = new QTimer();
-    m_timer->setInterval(1000);
+    m_timer->setInterval(100);
+
     connect(m_timer, SIGNAL(timeout()), this, SLOT(timeout()));
     connect(scanBtn, SIGNAL(clicked()), this, SLOT(startScan()));
 
@@ -123,7 +124,7 @@ void DiscoverPage::timeout()
     m_counter ++;
     progressBar->setValue(m_counter);
 
-    if (m_counter == 10) {
+    if (m_counter == 100) {
         stopScan();
     }
 }
