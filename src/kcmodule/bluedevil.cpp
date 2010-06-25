@@ -300,6 +300,7 @@ public:
 private:
     QPixmap m_trustedPixmap;
     QPixmap m_connectedPixmap;
+    QPixmap m_disconnectedPixmap;
 };
 
 BluetoothDevicesDelegate::BluetoothDevicesDelegate(QObject *parent)
@@ -307,8 +308,10 @@ BluetoothDevicesDelegate::BluetoothDevicesDelegate(QObject *parent)
 {
     KIcon trustedIcon("security-high");
     m_trustedPixmap = trustedIcon.pixmap(22, 22);
-    KIcon connectedIcon("network-wired");
+    KIcon connectedIcon("user-online");
     m_connectedPixmap = connectedIcon.pixmap(22, 22);
+    KIcon disconnectedIcon("user-offline");
+    m_disconnectedPixmap = disconnectedIcon.pixmap(22, 22);
 }
 
 BluetoothDevicesDelegate::~BluetoothDevicesDelegate()
@@ -373,16 +376,17 @@ void BluetoothDevicesDelegate::paint(QPainter *painter, const QStyleOptionViewIt
         r.setLeft(r.right() - 5 - 22);
         r.setSize(QSize(22, 22));
 
-        quint32 shiftLeft = 0;
-
-        if (device->isTrusted()) {
-            painter->drawPixmap(r, m_trustedPixmap);
-            shiftLeft += 5 + 22;
-        }
 
         if (device->isConnected()) {
-            r.setLeft(r.right() - 5 - 22 - shiftLeft);
             painter->drawPixmap(r, m_connectedPixmap);
+        } else {
+            painter->drawPixmap(r, m_disconnectedPixmap);
+        }
+
+        if (device->isTrusted()) {
+            r.setLeft(r.right() - 5 - 22 - 5 - 22);
+            r.setSize(QSize(22, 22));
+            painter->drawPixmap(r, m_trustedPixmap);
         }
     }
 
