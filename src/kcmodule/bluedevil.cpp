@@ -136,6 +136,7 @@ public:
         IconModelRole = 0,
         NameModelRole,
         AliasModelRole,
+        IdModelRole,
         DeviceTypeModelRole,
         DeviceModelRole,
         LastModelRole
@@ -154,7 +155,15 @@ public:
     virtual bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex());
 
 private:
-    QList<BlueDevil::Device*> m_deviceList;
+    struct BluetoothDevice {
+        QPixmap m_icon;
+        QString m_name;
+        QString m_alias;
+        QString m_id;
+        QString m_deviceType;
+        Device *m_device;
+    };
+    QList<BluetoothDevice> m_deviceList;
 };
 
 BluetoothDevicesModel::BluetoothDevicesModel(QObject *parent)
@@ -180,15 +189,17 @@ QVariant BluetoothDevicesModel::data(const QModelIndex &index, int role) const
     }
     switch (role) {
             case IconModelRole:
-                return KIcon(m_deviceList[index.row()]->icon()).pixmap(48, 48);
+                return m_deviceList[index.row()].m_icon;
             case NameModelRole:
-                return m_deviceList[index.row()]->name();
+                return m_deviceList[index.row()].m_name;
             case AliasModelRole:
-                return m_deviceList[index.row()]->alias();
+                return m_deviceList[index.row()].m_alias;
+            case IdModelRole:
+                return m_deviceList[index.row()].m_id;
             case DeviceTypeModelRole:
-                return m_deviceList[index.row()]->deviceClass();
+                return m_deviceList[index.row()].m_deviceType;
             case DeviceModelRole:
-                return QVariant::fromValue<void*>(m_deviceList[index.row()]);
+                return QVariant::fromValue<void*>(m_deviceList[index.row()].m_device);
             default:
                 break;
     }
@@ -201,9 +212,24 @@ bool BluetoothDevicesModel::setData(const QModelIndex &index, const QVariant &va
         return false;
     }
     switch (role) {
+            case IconModelRole:
+                m_deviceList[index.row()].m_icon = value.value<QPixmap>();
+                break;
+            case NameModelRole:
+                m_deviceList[index.row()].m_name = value.toString();
+                break;
+            case AliasModelRole:
+                m_deviceList[index.row()].m_alias = value.toString();
+                break;
+            case IdModelRole:
+                m_deviceList[index.row()].m_id = value.toString();
+                break;
+            case DeviceTypeModelRole:
+                m_deviceList[index.row()].m_deviceType = value.toString();
+                break;
             case DeviceModelRole: {
                     Device *const device = static_cast<Device*>(value.value<void*>());
-                    m_deviceList[index.row()] = device;
+                    m_deviceList[index.row()].m_device = device;
                     connect(device, SIGNAL(propertyChanged(QString,QVariant)),
                             this, SIGNAL(layoutChanged()));
                 }
@@ -247,7 +273,7 @@ bool BluetoothDevicesModel::insertRows(int row, int count, const QModelIndex &pa
     }
     beginInsertRows(parent, row, row + count - 1);
     for (int i = row; i < row + count; ++i) {
-        m_deviceList.insert(i, 0);
+        m_deviceList.insert(i, BluetoothDevice());
     }
     endInsertRows();
     return true;
@@ -624,6 +650,9 @@ void KCMBlueDevil::fillRemoteDevicesModelInformation()
     int i = 0;
     Q_FOREACH (Device *const device, deviceList) {
         QModelIndex index = m_devicesModel->index(i, 0);
+        m_devicesModel->setData(index, device->name(), BluetoothDevicesModel::NameModelRole);
+        m_devicesModel->setData(index, device->alias(), BluetoothDevicesModel::AliasModelRole);
+        m_devicesModel->setData(index, KIcon(device->icon()).pixmap(48, 48), BluetoothDevicesModel::IconModelRole);
         m_devicesModel->setData(index, QVariant::fromValue<void*>(device), BluetoothDevicesModel::DeviceModelRole);
         ++i;
     }
