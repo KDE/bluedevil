@@ -40,8 +40,9 @@ DiscoverPage::DiscoverPage(QWidget* parent): QWizardPage(parent)
     connect(scanBtn, SIGNAL(clicked()), this, SLOT(startScan()));
 
     connect(Manager::self()->defaultAdapter(), SIGNAL(deviceFound(Device*)), this,
-                        SLOT(deviceFound(Device*)));
-
+            SLOT(deviceFound(Device*)));
+    connect(deviceList, SIGNAL(currentItemChanged(QListWidgetItem*,QListWidgetItem*)), this,
+            SLOT(itemSelected()));
 }
 
 DiscoverPage::~DiscoverPage()
@@ -57,6 +58,14 @@ void DiscoverPage::initializePage()
 void DiscoverPage::cleanupPage()
 {
     stopScan();
+}
+
+bool DiscoverPage::isComplete() const
+{
+    if (!deviceList->currentItem()) {
+        return false;
+    }
+    return true;
 }
 
 void DiscoverPage::startScan()
@@ -101,4 +110,9 @@ void DiscoverPage::timeout()
     if (m_counter == 10) {
         stopScan();
     }
+}
+
+void DiscoverPage::itemSelected()
+{
+    emit completeChanged();
 }

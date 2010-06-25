@@ -40,11 +40,13 @@ public:
 
     virtual void initializePage();
     virtual void cleanupPage();
+    virtual bool isComplete() const;
 
 private Q_SLOTS:
     void startScan();
     void deviceFound(Device * device);
     void timeout();
+    void itemSelected();
 
 private:
     void stopScan();
