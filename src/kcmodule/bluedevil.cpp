@@ -299,7 +299,6 @@ public:
 
 private:
     QPixmap m_trustedPixmap;
-    QPixmap m_blockedPixmap;
     QPixmap m_connectedPixmap;
 };
 
@@ -308,8 +307,6 @@ BluetoothDevicesDelegate::BluetoothDevicesDelegate(QObject *parent)
 {
     KIcon trustedIcon("security-high");
     m_trustedPixmap = trustedIcon.pixmap(22, 22);
-    KIcon blockedIcon("security-low");
-    m_blockedPixmap = blockedIcon.pixmap(22, 22);
     KIcon connectedIcon("network-wired");
     m_connectedPixmap = connectedIcon.pixmap(22, 22);
 }
@@ -383,12 +380,6 @@ void BluetoothDevicesDelegate::paint(QPainter *painter, const QStyleOptionViewIt
             shiftLeft += 5 + 22;
         }
 
-        if (device->isBlocked()) {
-            r.setLeft(r.right() - 5 - 22 - shiftLeft);
-            painter->drawPixmap(r, m_blockedPixmap);
-            shiftLeft += 5 + 22;
-        }
-
         if (device->isConnected()) {
             r.setLeft(r.right() - 5 - 22 - shiftLeft);
             painter->drawPixmap(r, m_connectedPixmap);
@@ -456,9 +447,6 @@ KCMBlueDevil::KCMBlueDevil(QWidget *parent, const QVariantList&)
         m_trustDevice = new KPushButton(KIcon("security-high"), i18n("Trust Device"));
         m_trustDevice->setEnabled(false);
         m_trustDevice->setCheckable(true);
-        m_blockDevice = new KPushButton(KIcon("security-low"), i18n("Block Device"));
-        m_blockDevice->setEnabled(false);
-        m_blockDevice->setCheckable(true);
         m_renameAliasDevice = new KPushButton(KIcon("document-edit"), i18n("Rename Device"));
         m_renameAliasDevice->setEnabled(false);
         m_removeDevice = new KPushButton(KIcon("list-remove"), i18n("Remove Device"));
@@ -466,13 +454,11 @@ KCMBlueDevil::KCMBlueDevil(QWidget *parent, const QVariantList&)
         m_addDevice = new KPushButton(KIcon("list-add"), i18n("Add Device..."));
 
         connect(m_trustDevice, SIGNAL(clicked()), this, SLOT(trustDevice()));
-        connect(m_blockDevice, SIGNAL(clicked()), this, SLOT(blockDevice()));
         connect(m_renameAliasDevice, SIGNAL(clicked()), this, SLOT(renameAliasDevice()));
         connect(m_removeDevice, SIGNAL(clicked()), this, SLOT(removeDevice()));
 
         QHBoxLayout *hLayout = new QHBoxLayout;
         hLayout->addWidget(m_trustDevice);
-        hLayout->addWidget(m_blockDevice);
         hLayout->addWidget(m_renameAliasDevice);
         hLayout->addWidget(m_removeDevice);
         hLayout->addStretch();
@@ -529,25 +515,17 @@ void KCMBlueDevil::deviceSelectionChanged(const QItemSelection &selection)
 {
     const bool enable = !selection.isEmpty();
     m_trustDevice->setEnabled(enable);
-    m_blockDevice->setEnabled(enable);
     m_renameAliasDevice->setEnabled(enable);
     m_removeDevice->setEnabled(enable);
 
     Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
     m_trustDevice->setChecked(device->isTrusted());
-    m_blockDevice->setChecked(device->isBlocked());
 }
 
 void KCMBlueDevil::trustDevice()
 {
     Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
     device->setTrusted(m_trustDevice->isChecked());
-}
-
-void KCMBlueDevil::blockDevice()
-{
-    Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
-    device->setBlocked(m_blockDevice->isChecked());
 }
 
 void KCMBlueDevil::renameAliasDevice()
