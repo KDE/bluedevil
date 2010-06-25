@@ -41,11 +41,12 @@ DiscoverPage::DiscoverPage(QWidget* parent): QWizardPage(parent)
 
     connect(Manager::self()->defaultAdapter(), SIGNAL(deviceFound(Device*)), this,
                         SLOT(deviceFound(Device*)));
+
 }
 
 DiscoverPage::~DiscoverPage()
 {
-
+    delete m_timer;
 }
 
 void DiscoverPage::initializePage()
