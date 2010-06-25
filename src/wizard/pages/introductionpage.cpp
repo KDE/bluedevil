@@ -19,20 +19,53 @@
 
 #include "introductionpage.h"
 #include "ui_introduction.h"
+
 #include <QLabel>
 #include <QVBoxLayout>
+#include <QDebug>
 
+#include <bluedevil/bluedevil.h>
+
+using namespace BlueDevil;
 IntroductionPage::IntroductionPage(QWidget* parent): QWizardPage(parent)
 {
-    setTitle("Introduction");
+    setTitle(i18n("Introduction"));
     setupUi(this);
 
-//     this->setLayout(layout);
+    if (!Manager::self()->defaultAdapter()) {
+        noAdapter(0);
+    }
 
+    connect(Manager::self(), SIGNAL(adapterAdded(Adapter*)), this,
+                    SLOT(adapterAdded()));
+    connect(Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)), this,
+                    SLOT(noAdapter(Adapter*)));
 }
 
 IntroductionPage::~IntroductionPage()
 {
 
+}
+
+void IntroductionPage::noAdapter(Adapter* adapter)
+{
+    if (!adapter) {
+        labelsStack->setCurrentIndex(1);
+        emit completeChanged();
+    }
+}
+
+void IntroductionPage::adapterAdded()
+{
+    labelsStack->setCurrentIndex(0);
+    emit completeChanged();
+}
+
+bool IntroductionPage::isComplete() const
+{
+    if (!Manager::self()->defaultAdapter()) {
+        return false;
+    }
+    return true;
 }
 

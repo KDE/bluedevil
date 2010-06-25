@@ -21,15 +21,27 @@
 #define INTRODUCTIONPAGE_H
 
 #include <QWizardPage>
+
 #include <ui_introduction.h>
+
+namespace BlueDevil {
+    class Adapter;
+}
+using namespace BlueDevil;
 
 class IntroductionPage : public QWizardPage
 , public Ui::Introduction
 {
+Q_OBJECT
 
 public:
     IntroductionPage(QWidget* parent = 0);
     virtual ~IntroductionPage();
+
+    virtual bool isComplete() const;
+private Q_SLOTS:
+    void adapterAdded();
+    void noAdapter( Adapter *);
 };
 
 #endif // INTRODUCTIONPAGE_H
