@@ -67,9 +67,7 @@ void DiscoverPage::stopScan()
 
 void DiscoverPage::deviceFound(Device* device)
 {
-    qDebug() << "Device found: " << device->address() << "  " << device->name();
-    QString name;
-    name.append(device->alias());
+    QString name = device->alias();
     if (device->alias() != device->name() && !device->name().isEmpty()) {
         name.append(" ("+device->name()+")");
     }
@@ -80,6 +78,7 @@ void DiscoverPage::deviceFound(Device* device)
     }
 
     QListWidgetItem *item = new QListWidgetItem(KIcon(icon), name, deviceList);
+    item->setData(Qt::UserRole, device->address());
     deviceList->addItem(item);
 }
 
