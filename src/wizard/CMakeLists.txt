@@ -10,11 +10,13 @@ set(wizard_SRCS
     wizard.cpp
     pages/introductionpage.cpp
     pages/discoverpage.cpp
+    pages/pinpage.cpp
 )
 
 kde4_add_ui_files(wizard_SRCS
             pages/introduction.ui
-            pages/discover.ui)
+            pages/discover.ui
+            pages/pin.ui)
 
 kde4_add_executable(bluedevil-wizard ${wizard_SRCS})
 

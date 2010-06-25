@@ -17,30 +17,21 @@
 */
 
 
-#include "wizard.h"
-#include "pages/introductionpage.h"
-#include "pages/discoverpage.h"
-#include "pages/pinpage.h"
+#ifndef PINPAGE_H
+#define PINPAGE_H
 
-BlueWizard::BlueWizard() : QWizard()
+#include <QWizardPage>
+
+#include <ui_pin.h>
+
+class PinPage : public QWizardPage
+, public Ui::Pin
 {
-    addPage(new IntroductionPage(this));
-    addPage(new DiscoverPage(this));
-    addPage(new PinPage(this));
-    show();
-}
+Q_OBJECT
 
-BlueWizard::~BlueWizard()
-{
+public:
+    PinPage(QWidget* parent = 0);
+    virtual ~PinPage();
+};
 
-}
-
-void BlueWizard::setDeviceAddress(const QByteArray& address)
-{
-    m_deviceAddress = address;
-}
-
-QByteArray BlueWizard::deviceAddress() const
-{
-    return m_deviceAddress;
-}
+#endif // PINPAGE_H

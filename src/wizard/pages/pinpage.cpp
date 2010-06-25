@@ -17,30 +17,17 @@
 */
 
 
-#include "wizard.h"
-#include "pages/introductionpage.h"
-#include "pages/discoverpage.h"
-#include "pages/pinpage.h"
+#include "pinpage.h"
+#include "ui_pin.h"
 
-BlueWizard::BlueWizard() : QWizard()
+
+PinPage::PinPage(QWidget* parent): QWizardPage(parent)
 {
-    addPage(new IntroductionPage(this));
-    addPage(new DiscoverPage(this));
-    addPage(new PinPage(this));
-    show();
+    setTitle(i18n("Choose your PIN mode"));
+    setupUi(this);
 }
 
-BlueWizard::~BlueWizard()
+PinPage::~PinPage()
 {
 
-}
-
-void BlueWizard::setDeviceAddress(const QByteArray& address)
-{
-    m_deviceAddress = address;
-}
-
-QByteArray BlueWizard::deviceAddress() const
-{
-    return m_deviceAddress;
 }
