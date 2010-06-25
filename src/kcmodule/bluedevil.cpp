@@ -224,8 +224,12 @@ bool BluetoothDevicesModel::setData(const QModelIndex &index, const QVariant &va
             case DeviceTypeModelRole:
                 m_deviceList[index.row()].m_deviceType = value.toString();
                 break;
-            case DeviceModelRole:
-                m_deviceList[index.row()].m_device = static_cast<Device*>(value.value<void*>());
+            case DeviceModelRole: {
+                    Device *const device = static_cast<Device*>(value.value<void*>());
+                    m_deviceList[index.row()].m_device = device;
+                    connect(device, SIGNAL(propertyChanged(QString,QVariant)),
+                            this, SIGNAL(layoutChanged()));
+                }
                 break;
             default:
                 return false;
@@ -299,6 +303,7 @@ public:
 
 private:
     QPixmap m_trustedPixmap;
+    QPixmap m_untrustedPixmap;
     QPixmap m_connectedPixmap;
     QPixmap m_disconnectedPixmap;
 };
@@ -308,6 +313,8 @@ BluetoothDevicesDelegate::BluetoothDevicesDelegate(QObject *parent)
 {
     KIcon trustedIcon("security-high");
     m_trustedPixmap = trustedIcon.pixmap(22, 22);
+    KIcon untrustedIcon("security-low");
+    m_untrustedPixmap = untrustedIcon.pixmap(22, 22);
     KIcon connectedIcon("user-online");
     m_connectedPixmap = connectedIcon.pixmap(22, 22);
     KIcon disconnectedIcon("user-offline");
@@ -383,10 +390,13 @@ void BluetoothDevicesDelegate::paint(QPainter *painter, const QStyleOptionViewIt
             painter->drawPixmap(r, m_disconnectedPixmap);
         }
 
+        r.setLeft(r.right() - 5 - 22 - 22);
+        r.setSize(QSize(22, 22));
+
         if (device->isTrusted()) {
-            r.setLeft(r.right() - 5 - 22 - 22);
-            r.setSize(QSize(22, 22));
             painter->drawPixmap(r, m_trustedPixmap);
+        } else {
+            painter->drawPixmap(r, m_untrustedPixmap);
         }
     }
 
@@ -522,8 +532,10 @@ void KCMBlueDevil::deviceSelectionChanged(const QItemSelection &selection)
     m_renameAliasDevice->setEnabled(enable);
     m_removeDevice->setEnabled(enable);
 
-    Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
-    m_trustDevice->setChecked(device->isTrusted());
+    if (m_devices->currentIndex().isValid()) {
+        Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
+        m_trustDevice->setChecked(device->isTrusted());
+    }
 }
 
 void KCMBlueDevil::trustDevice()
@@ -540,6 +552,8 @@ void KCMBlueDevil::renameAliasDevice()
 
 void KCMBlueDevil::removeDevice()
 {
+    Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
+    BlueDevil::Manager::self()->defaultAdapter()->removeDevice(device);
     m_devicesModel->removeRow(m_devices->currentIndex().row());
 }
 
