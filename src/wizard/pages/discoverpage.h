@@ -39,6 +39,7 @@ public:
     virtual ~DiscoverPage();
 
     virtual void initializePage();
+    virtual void cleanupPage();
 
 private Q_SLOTS:
     void startScan();

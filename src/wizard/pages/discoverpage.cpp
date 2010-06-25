@@ -54,6 +54,11 @@ void DiscoverPage::initializePage()
     startScan();
 }
 
+void DiscoverPage::cleanupPage()
+{
+    stopScan();
+}
+
 void DiscoverPage::startScan()
 {
     progressBar->setValue(0);
