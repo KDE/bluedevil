@@ -384,7 +384,7 @@ void BluetoothDevicesDelegate::paint(QPainter *painter, const QStyleOptionViewIt
         }
 
         if (device->isTrusted()) {
-            r.setLeft(r.right() - 5 - 22 - 5 - 22);
+            r.setLeft(r.right() - 5 - 22 - 22);
             r.setSize(QSize(22, 22));
             painter->drawPixmap(r, m_trustedPixmap);
         }
