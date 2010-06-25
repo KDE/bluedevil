@@ -24,6 +24,7 @@
 #include <QDebug>
 #include <QListWidgetItem>
 #include <QListView>
+#include <QLabel>
 
 using namespace BlueDevil;
 
@@ -41,8 +42,8 @@ DiscoverPage::DiscoverPage(QWidget* parent): QWizardPage(parent)
 
     connect(Manager::self()->defaultAdapter(), SIGNAL(deviceFound(Device*)), this,
             SLOT(deviceFound(Device*)));
-    connect(deviceList, SIGNAL(currentItemChanged(QListWidgetItem*,QListWidgetItem*)), this,
-            SLOT(itemSelected()));
+    connect(deviceList, SIGNAL(itemActivated(QListWidgetItem*)), this,
+            SLOT(itemSelected(QListWidgetItem*)));
 }
 
 DiscoverPage::~DiscoverPage()
@@ -98,6 +99,7 @@ void DiscoverPage::deviceFound(Device* device)
     }
 
     QListWidgetItem *item = new QListWidgetItem(KIcon(icon), name, deviceList);
+
     item->setData(Qt::UserRole, device->address());
     deviceList->addItem(item);
 }
@@ -112,7 +114,7 @@ void DiscoverPage::timeout()
     }
 }
 
-void DiscoverPage::itemSelected()
+void DiscoverPage::itemSelected(QListWidgetItem* item)
 {
     emit completeChanged();
 }

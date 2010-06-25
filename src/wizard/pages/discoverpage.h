@@ -46,7 +46,7 @@ private Q_SLOTS:
     void startScan();
     void deviceFound(Device * device);
     void timeout();
-    void itemSelected();
+    void itemSelected(QListWidgetItem* item);
 
 private:
     void stopScan();
