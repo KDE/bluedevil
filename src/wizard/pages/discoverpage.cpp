@@ -20,14 +20,27 @@
 #include "discoverpage.h"
 #include "ui_discover.h"
 
+#include <bluedevil/bluedevil.h>
 #include <QDebug>
+#include <QListWidgetItem>
+#include <QListView>
+
+using namespace BlueDevil;
 
 DiscoverPage::DiscoverPage(QWidget* parent): QWizardPage(parent)
 {
     setTitle("Discover Devices");
     setupUi(this);
 
+    m_counter = 0;
+
+    m_timer = new QTimer();
+    m_timer->setInterval(1000);
+    connect(m_timer, SIGNAL(timeout()), this, SLOT(timeout()));
     connect(scanBtn, SIGNAL(clicked()), this, SLOT(startScan()));
+
+    connect(Manager::self()->defaultAdapter(), SIGNAL(deviceFound(Device*)), this,
+                        SLOT(deviceFound(Device*)));
 }
 
 DiscoverPage::~DiscoverPage()
@@ -37,5 +50,45 @@ DiscoverPage::~DiscoverPage()
 
 void DiscoverPage::startScan()
 {
+    progressBar->setValue(0);
+    deviceList->clear();
+    stopScan();
 
+    Manager::self()->defaultAdapter()->startDiscovery();
+    m_timer->start();
+}
+
+void DiscoverPage::stopScan()
+{
+    m_counter = 0;
+    m_timer->stop();
+    Manager::self()->defaultAdapter()->stopDiscovery();
+}
+
+void DiscoverPage::deviceFound(Device* device)
+{
+    qDebug() << "Device found: " << device->address() << "  " << device->name();
+    QString name;
+    name.append(device->alias());
+    if (device->alias() != device->name() && !device->name().isEmpty()) {
+        name.append(" ("+device->name()+")");
+    }
+
+    QString icon = device->icon();
+    if (icon.isEmpty()) {
+        icon.append("preferences-system-bluetooth");
+    }
+
+    QListWidgetItem *item = new QListWidgetItem(KIcon(icon), name, deviceList);
+    deviceList->addItem(item);
+}
+
+void DiscoverPage::timeout()
+{
+    m_counter ++;
+    progressBar->setValue(m_counter);
+
+    if (m_counter == 10) {
+        stopScan();
+    }
 }

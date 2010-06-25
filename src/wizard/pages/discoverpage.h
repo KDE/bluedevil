@@ -20,9 +20,14 @@
 #ifndef DISCOVERPAGE_H
 #define DISCOVERPAGE_H
 
+#include "ui_discover.h"
 #include <QWizard>
-#include <ui_discover.h>
+#include <QtCore/QTimer>
 
+namespace BlueDevil {
+    class Device;
+}
+using namespace BlueDevil;
 
 class DiscoverPage : public QWizardPage
 , public Ui::Discover
@@ -33,8 +38,17 @@ public:
     DiscoverPage(QWidget* parent = 0);
     virtual ~DiscoverPage();
 
-public Q_SLOTS:
+private Q_SLOTS:
     void startScan();
+    void deviceFound(Device * device);
+    void timeout();
+
+private:
+    void stopScan();
+
+private:
+    QTimer *m_timer;
+    char m_counter;
 };
 
 #endif // DISCOVERPAGE_H
