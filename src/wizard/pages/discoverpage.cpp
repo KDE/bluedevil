@@ -20,15 +20,22 @@
 #include "discoverpage.h"
 #include "ui_discover.h"
 
+#include <QDebug>
+
 DiscoverPage::DiscoverPage(QWidget* parent): QWizardPage(parent)
 {
     setTitle("Discover Devices");
     setupUi(this);
-}
 
+    connect(scanBtn, SIGNAL(clicked()), this, SLOT(startScan()));
+}
 
 DiscoverPage::~DiscoverPage()
 {
 
 }
 
+void DiscoverPage::startScan()
+{
+
+}

@@ -22,7 +22,7 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <widget class="KPushButton" name="kpushbutton">
+        <widget class="KPushButton" name="scanBtn">
          <property name="text">
           <string>Re-scan</string>
          </property>

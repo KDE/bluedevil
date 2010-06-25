@@ -27,10 +27,14 @@
 class DiscoverPage : public QWizardPage
 , public Ui::Discover
 {
+Q_OBJECT
 
 public:
     DiscoverPage(QWidget* parent = 0);
     virtual ~DiscoverPage();
+
+public Q_SLOTS:
+    void startScan();
 };
 
 #endif // DISCOVERPAGE_H
