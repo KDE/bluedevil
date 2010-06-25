@@ -91,7 +91,7 @@ QString WizardAgent::RequestPinCode(QDBusObjectPath device, const QDBusMessage &
 
     QString pin = getPin(device.path());
     emit pinRequested(pin);
-    return QString(pin);
+    return pin;
 }
 
 QString WizardAgent::getPin(const QString& path) const
@@ -159,5 +159,6 @@ QString WizardAgent::getPin(const QString& path) const
 
 void WizardAgent::setPin(const QString& pin)
 {
+    qDebug() << "Setting ping from ouside: " << pin;
     m_pin = pin;
 }
