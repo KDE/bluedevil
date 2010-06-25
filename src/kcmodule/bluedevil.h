@@ -36,9 +36,11 @@ class KPushButton;
 
 namespace BlueDevil {
     class Adapter;
+    class Device;
 }
 
 typedef BlueDevil::Adapter Adapter;
+typedef BlueDevil::Device Device;
 
 class KCMBlueDevil
     : public KCModule
@@ -55,10 +57,14 @@ public:
 private Q_SLOTS:
     void stateChanged(int state);
     void deviceSelectionChanged(const QItemSelection &selection);
+    void trustDevice();
+    void blockDevice();
+    void renameAliasDevice();
     void removeDevice();
 
     void defaultAdapterChanged(Adapter *adapter);
     void adapterDiscoverableChanged();
+    void adapterDevicesChanged(const QList<Device*> &devices);
 
     void fixNotDiscoverableAdapterError();
     void fixDisabledNotificationsError();
@@ -66,6 +72,7 @@ private Q_SLOTS:
     void updateInformationState();
 
 private:
+    void fillRemoteDevicesModelInformation();
     void checkKDEDModuleLoaded();
     bool checkNotificationsOK();
 
@@ -73,7 +80,7 @@ private:
     QCheckBox             *m_enable;
     KPushButton           *m_trustDevice;
     KPushButton           *m_blockDevice;
-    KPushButton           *m_renameAlias;
+    KPushButton           *m_renameAliasDevice;
     KPushButton           *m_addDevice;
     KPushButton           *m_removeDevice;
     bool                   m_isEnabled;

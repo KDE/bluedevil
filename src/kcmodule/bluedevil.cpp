@@ -129,20 +129,22 @@ class BluetoothDevicesModel
     : public QAbstractItemModel
 {
 public:
-    enum ModelColumns {
-        IconModelColumn = 0,
-        AliasModelColumn,
-        IdModelColumn,
-        DeviceTypeModelColumn,
-        LastModelColumn
+    enum ModelRoles {
+        IconModelRole = 0,
+        NameModelRole,
+        AliasModelRole,
+        IdModelRole,
+        DeviceTypeModelRole,
+        DeviceModelRole,
+        LastModelRole
     };
 
     BluetoothDevicesModel(QObject *parent = 0);
     virtual ~BluetoothDevicesModel();
 
     virtual int columnCount(const QModelIndex &parent = QModelIndex()) const;
-    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
-    virtual bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::DisplayRole);
+    virtual QVariant data(const QModelIndex &index, int role) const;
+    virtual bool setData(const QModelIndex &index, const QVariant &value, int role);
     virtual QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const;
     virtual QModelIndex parent(const QModelIndex &index) const;
     virtual int rowCount(const QModelIndex &parent = QModelIndex()) const;
@@ -152,9 +154,11 @@ public:
 private:
     struct BluetoothDevice {
         QPixmap m_icon;
+        QString m_name;
         QString m_alias;
         QString m_id;
         QString m_deviceType;
+        Device *m_device;
     };
     QList<BluetoothDevice> m_deviceList;
 };
@@ -172,7 +176,7 @@ int BluetoothDevicesModel::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
 
-    return LastModelColumn;
+    return 1;
 }
 
 QVariant BluetoothDevicesModel::data(const QModelIndex &index, int role) const
@@ -181,22 +185,20 @@ QVariant BluetoothDevicesModel::data(const QModelIndex &index, int role) const
         return QVariant();
     }
     switch (role) {
-        case Qt::DisplayRole:
-            switch (index.column()) {
-                case IconModelColumn:
-                    return m_deviceList[index.row()].m_icon;
-                case AliasModelColumn:
-                    return m_deviceList[index.row()].m_alias;
-                case IdModelColumn:
-                    return m_deviceList[index.row()].m_id;
-                case DeviceTypeModelColumn:
-                    return m_deviceList[index.row()].m_deviceType;
-                default:
-                    break;
-            }
-            break;
-        default:
-            break;
+            case IconModelRole:
+                return m_deviceList[index.row()].m_icon;
+            case NameModelRole:
+                return m_deviceList[index.row()].m_name;
+            case AliasModelRole:
+                return m_deviceList[index.row()].m_alias;
+            case IdModelRole:
+                return m_deviceList[index.row()].m_id;
+            case DeviceTypeModelRole:
+                return m_deviceList[index.row()].m_deviceType;
+            case DeviceModelRole:
+                return QVariant::fromValue<void*>(m_deviceList[index.row()].m_device);
+            default:
+                break;
     }
     return QVariant();
 }
@@ -207,26 +209,26 @@ bool BluetoothDevicesModel::setData(const QModelIndex &index, const QVariant &va
         return false;
     }
     switch (role) {
-        case Qt::DisplayRole:
-            switch (index.column()) {
-                case IconModelColumn:
-                    m_deviceList[index.row()].m_icon = value.value<QPixmap>();
-                    break;
-                case AliasModelColumn:
-                    m_deviceList[index.row()].m_alias = value.toString();
-                    break;
-                case IdModelColumn:
-                    m_deviceList[index.row()].m_id = value.toString();
-                    break;
-                case DeviceTypeModelColumn:
-                    m_deviceList[index.row()].m_deviceType = value.toString();
-                    break;
-                default:
-                    return false;
-            }
-            break;
-        default:
-            return false;
+            case IconModelRole:
+                m_deviceList[index.row()].m_icon = value.value<QPixmap>();
+                break;
+            case NameModelRole:
+                m_deviceList[index.row()].m_name = value.toString();
+                break;
+            case AliasModelRole:
+                m_deviceList[index.row()].m_alias = value.toString();
+                break;
+            case IdModelRole:
+                m_deviceList[index.row()].m_id = value.toString();
+                break;
+            case DeviceTypeModelRole:
+                m_deviceList[index.row()].m_deviceType = value.toString();
+                break;
+            case DeviceModelRole:
+                m_deviceList[index.row()].m_device = static_cast<Device*>(value.value<void*>());
+                break;
+            default:
+                return false;
     }
     emit dataChanged(index, index);
     return true;
@@ -236,7 +238,7 @@ QModelIndex BluetoothDevicesModel::index(int row, int column, const QModelIndex 
 {
     Q_UNUSED(parent);
 
-    if (row < 0 || row >= m_deviceList.count() || column < 0 || column >= LastModelColumn) {
+    if (row < 0 || row >= m_deviceList.count() || column != 0) {
         return QModelIndex();
     }
 
@@ -317,15 +319,16 @@ void BluetoothDevicesDelegate::paint(QPainter *painter, const QStyleOptionViewIt
 
     // Draw icon
     {
-        const QModelIndex iconIndex = index.model()->index(index.row(), BluetoothDevicesModel::IconModelColumn);
-        const QPixmap icon = iconIndex.data().value<QPixmap>();
+        const QModelIndex iconIndex = index.model()->index(index.row(), 0);
+        const QPixmap icon = iconIndex.data(BluetoothDevicesModel::IconModelRole).value<QPixmap>();
         painter->drawPixmap(option.rect.left() + 5, option.rect.top() + 5, icon);
     }
 
     // Draw alias and device type
     {
-        const QModelIndex aliasIndex = index.model()->index(index.row(), BluetoothDevicesModel::AliasModelColumn);
-        const QModelIndex deviceTypeIndex = index.model()->index(index.row(), BluetoothDevicesModel::DeviceTypeModelColumn);
+        const QModelIndex nameIndex = index.model()->index(index.row(), 0);
+        const QModelIndex aliasIndex = index.model()->index(index.row(), 0);
+        const QModelIndex deviceTypeIndex = index.model()->index(index.row(), 0);
         QRect r = option.rect;
         r.setTop(r.top() + 10);
         r.setBottom(r.bottom() - 10);
@@ -334,9 +337,15 @@ void BluetoothDevicesDelegate::paint(QPainter *painter, const QStyleOptionViewIt
         f.setBold(true);
         painter->save();
         painter->setFont(f);
-        painter->drawText(r, Qt::AlignLeft | Qt::AlignTop, aliasIndex.data().toString());
+        const QString name = nameIndex.data(BluetoothDevicesModel::NameModelRole).toString();
+        const QString alias = aliasIndex.data(BluetoothDevicesModel::AliasModelRole).toString();
+        if (name == alias) {
+            painter->drawText(r, Qt::AlignLeft | Qt::AlignTop, name);
+        } else {
+            painter->drawText(r, Qt::AlignLeft | Qt::AlignTop, QString("%1 (%2)").arg(alias).arg(name));
+        }
         painter->restore();
-        painter->drawText(r, Qt::AlignLeft | Qt::AlignBottom, deviceTypeIndex.data().toString());
+        painter->drawText(r, Qt::AlignLeft | Qt::AlignBottom, deviceTypeIndex.data(BluetoothDevicesModel::DeviceTypeModelRole).toString());
     }
 
     // Draw last connection
@@ -407,20 +416,25 @@ KCMBlueDevil::KCMBlueDevil(QWidget *parent, const QVariantList&)
     {
         m_trustDevice = new KPushButton(KIcon("security-high"), i18n("Trust Device"));
         m_trustDevice->setEnabled(false);
+        m_trustDevice->setCheckable(true);
         m_blockDevice = new KPushButton(KIcon("security-low"), i18n("Block Device"));
         m_blockDevice->setEnabled(false);
-        m_renameAlias = new KPushButton(KIcon("document-edit"), i18n("Rename Device"));
-        m_renameAlias->setEnabled(false);
+        m_blockDevice->setCheckable(true);
+        m_renameAliasDevice = new KPushButton(KIcon("document-edit"), i18n("Rename Device"));
+        m_renameAliasDevice->setEnabled(false);
         m_removeDevice = new KPushButton(KIcon("list-remove"), i18n("Remove Device"));
         m_removeDevice->setEnabled(false);
         m_addDevice = new KPushButton(KIcon("list-add"), i18n("Add Device..."));
 
+        connect(m_trustDevice, SIGNAL(clicked()), this, SLOT(trustDevice()));
+        connect(m_blockDevice, SIGNAL(clicked()), this, SLOT(blockDevice()));
+        connect(m_renameAliasDevice, SIGNAL(clicked()), this, SLOT(renameAliasDevice()));
         connect(m_removeDevice, SIGNAL(clicked()), this, SLOT(removeDevice()));
 
         QHBoxLayout *hLayout = new QHBoxLayout;
         hLayout->addWidget(m_trustDevice);
         hLayout->addWidget(m_blockDevice);
-        hLayout->addWidget(m_renameAlias);
+        hLayout->addWidget(m_renameAliasDevice);
         hLayout->addWidget(m_removeDevice);
         hLayout->addStretch();
         hLayout->addWidget(m_addDevice);
@@ -437,6 +451,10 @@ KCMBlueDevil::KCMBlueDevil(QWidget *parent, const QVariantList&)
     if (defaultAdapter) {
         connect(defaultAdapter, SIGNAL(discoverableChanged(bool)),
                 this, SLOT(adapterDiscoverableChanged()));
+        connect(defaultAdapter, SIGNAL(devicesChanged(QList<Device*>)),
+                this, SLOT(adapterDevicesChanged(QList<Device*>)));
+
+        fillRemoteDevicesModelInformation();
     }
 
     updateInformationState();
@@ -470,7 +488,33 @@ void KCMBlueDevil::stateChanged(int)
 
 void KCMBlueDevil::deviceSelectionChanged(const QItemSelection &selection)
 {
-    m_removeDevice->setEnabled(!selection.isEmpty());
+    const bool enable = !selection.isEmpty();
+    m_trustDevice->setEnabled(enable);
+    m_blockDevice->setEnabled(enable);
+    m_renameAliasDevice->setEnabled(enable);
+    m_removeDevice->setEnabled(enable);
+
+    Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
+    m_trustDevice->setChecked(device->isTrusted());
+    m_blockDevice->setChecked(device->isBlocked());
+}
+
+void KCMBlueDevil::trustDevice()
+{
+    Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
+    device->setTrusted(m_trustDevice->isChecked());
+}
+
+void KCMBlueDevil::blockDevice()
+{
+    Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
+    device->setBlocked(m_blockDevice->isChecked());
+}
+
+void KCMBlueDevil::renameAliasDevice()
+{
+    Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
+    device->setAlias("Testing");
 }
 
 void KCMBlueDevil::removeDevice()
@@ -484,12 +528,19 @@ void KCMBlueDevil::defaultAdapterChanged(Adapter *adapter)
         connect(adapter, SIGNAL(discoverableChanged(bool)),
                 this, SLOT(adapterDiscoverableChanged()));
     }
+    fillRemoteDevicesModelInformation();
     QTimer::singleShot(300, this, SLOT(updateInformationState()));
 }
 
 void KCMBlueDevil::adapterDiscoverableChanged()
 {
     QTimer::singleShot(300, this, SLOT(updateInformationState()));
+}
+
+void KCMBlueDevil::adapterDevicesChanged(const QList<Device*> &devices)
+{
+    Q_UNUSED(devices)
+    // TODO: reload remote devices model
 }
 
 void KCMBlueDevil::fixNotDiscoverableAdapterError()
@@ -519,6 +570,26 @@ void KCMBlueDevil::fixDisabledNotificationsError()
     config.sync();
 
     updateInformationState();
+}
+
+void KCMBlueDevil::fillRemoteDevicesModelInformation()
+{
+    m_devicesModel->removeRows(0, m_devicesModel->rowCount());
+    if (!BlueDevil::Manager::self()->defaultAdapter()) {
+        return;
+    }
+    Adapter *defaultAdapter = BlueDevil::Manager::self()->defaultAdapter();
+    const QList<Device*> deviceList = defaultAdapter->devices();
+    m_devicesModel->insertRows(0, deviceList.count());
+    int i = 0;
+    Q_FOREACH (Device *const device, deviceList) {
+        QModelIndex index = m_devicesModel->index(i, 0);
+        m_devicesModel->setData(index, device->name(), BluetoothDevicesModel::NameModelRole);
+        m_devicesModel->setData(index, device->alias(), BluetoothDevicesModel::AliasModelRole);
+        m_devicesModel->setData(index, KIcon(device->icon()).pixmap(48, 48), BluetoothDevicesModel::IconModelRole);
+        m_devicesModel->setData(index, QVariant::fromValue<void*>(device), BluetoothDevicesModel::DeviceModelRole);
+        ++i;
+    }
 }
 
 void KCMBlueDevil::checkKDEDModuleLoaded()
@@ -557,13 +628,12 @@ bool KCMBlueDevil::checkNotificationsOK()
 
 void KCMBlueDevil::updateInformationState()
 {
-    m_noAdaptersError->setVisible(false);
     m_noAdaptersError->setEnabled(true);
+    m_noAdaptersError->setVisible(false);
     m_notDiscoverableAdapterError->setVisible(false);
     m_disabledNotificationsError->setVisible(false);
     m_devices->setEnabled(false);
     if (!m_isEnabled) {
-        m_noAdaptersError->setVisible(true);
         m_noAdaptersError->setEnabled(false);
         return;
     }
