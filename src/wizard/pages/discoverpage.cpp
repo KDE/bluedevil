@@ -19,21 +19,22 @@
 
 #include "discoverpage.h"
 #include "ui_discover.h"
+#include "wizard.h"
 
 #include <bluedevil/bluedevil.h>
+
 #include <QDebug>
 #include <QListWidgetItem>
 #include <QListView>
 #include <QLabel>
+#include <QTimer>
 
 using namespace BlueDevil;
 
-DiscoverPage::DiscoverPage(QWidget* parent): QWizardPage(parent)
+DiscoverPage::DiscoverPage(QWidget* parent): QWizardPage(parent), m_counter(0), m_wizard(0)
 {
     setTitle("Discover Devices");
     setupUi(this);
-
-    m_counter = 0;
 
     m_timer = new QTimer();
     m_timer->setInterval(1000);
@@ -53,6 +54,9 @@ DiscoverPage::~DiscoverPage()
 
 void DiscoverPage::initializePage()
 {
+    if (!m_wizard) {
+        m_wizard = static_cast<BlueWizard* >(wizard());
+    }
     startScan();
 }
 
@@ -63,7 +67,7 @@ void DiscoverPage::cleanupPage()
 
 bool DiscoverPage::isComplete() const
 {
-    if (!deviceList->currentItem()) {
+    if (m_wizard->deviceAddress().isEmpty()) {
         return false;
     }
     return true;
@@ -116,5 +120,6 @@ void DiscoverPage::timeout()
 
 void DiscoverPage::itemSelected(QListWidgetItem* item)
 {
+    m_wizard->setDeviceAddress(item->data(Qt::UserRole).toByteArray());
     emit completeChanged();
 }

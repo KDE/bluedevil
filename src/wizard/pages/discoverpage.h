@@ -22,7 +22,9 @@
 
 #include "ui_discover.h"
 #include <QWizard>
-#include <QtCore/QTimer>
+
+class QTimer;
+class BlueWizard;
 
 namespace BlueDevil {
     class Device;
@@ -52,8 +54,10 @@ private:
     void stopScan();
 
 private:
-    QTimer *m_timer;
     char m_counter;
+
+    QTimer *m_timer;
+    BlueWizard *m_wizard;
 };
 
 #endif // DISCOVERPAGE_H
