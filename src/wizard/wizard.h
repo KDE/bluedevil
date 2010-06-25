@@ -23,6 +23,7 @@
 #include <QObject>
 #include <QWizard>
 
+class WizardAgent;
 class BlueWizard : public QWizard
 {
 Q_OBJECT
@@ -43,6 +44,8 @@ public:
 private:
     QByteArray m_deviceAddress;
     QByteArray m_pin;
+    WizardAgent *m_agent;
+
     bool m_autoPin;
 };
 

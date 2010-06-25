@@ -18,15 +18,24 @@
 
 
 #include "wizard.h"
+#include "wizardagent.h"
 #include "pages/introductionpage.h"
 #include "pages/discoverpage.h"
 #include "pages/pinpage.h"
 
+#include <QDBusConnection>
+#include <QApplication>
 BlueWizard::BlueWizard() : QWizard()
 {
     addPage(new IntroductionPage(this));
     addPage(new DiscoverPage(this));
     addPage(new PinPage(this));
+
+    if(!QDBusConnection::systemBus().registerObject("/wizardAgent", qApp)) {
+        qDebug() << "The dbus object can't be registered";
+    }
+
+    m_agent = new WizardAgent(qApp);
     show();
 }
 
