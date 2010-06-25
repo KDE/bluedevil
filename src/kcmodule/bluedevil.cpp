@@ -33,6 +33,8 @@
 #include <QtGui/QStyledItemDelegate>
 
 #include <kicon.h>
+#include <kdialog.h>
+#include <klineedit.h>
 #include <kaboutdata.h>
 #include <kiconloader.h>
 #include <kpushbutton.h>
@@ -557,6 +559,25 @@ void KCMBlueDevil::renameAliasDevice()
 {
     Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
     device->setAlias("Testing");
+    KDialog *newAlias = new KDialog(this);
+    QWidget *widget = new QWidget(newAlias);
+    QVBoxLayout *layout = new QVBoxLayout;
+    layout->addWidget(new QLabel(i18n("Pick a new alias for the selected device. Left it blank to remove alias for this device."), widget));
+    KLineEdit *lineEdit = new KLineEdit(widget);
+    lineEdit->setText(device->alias());
+    lineEdit->selectAll();
+    layout->addWidget(lineEdit);
+    widget->setLayout(layout);
+    newAlias->setMainWidget(widget);
+    newAlias->setButtons(KDialog::Ok | KDialog::Cancel);
+    if (newAlias->exec() == KDialog::Accepted) {
+        if (lineEdit->text().isEmpty()) {
+            device->setAlias(device->name());
+        } else {
+            device->setAlias(lineEdit->text());
+        }
+    }
+    delete newAlias;
 }
 
 void KCMBlueDevil::removeDevice()
