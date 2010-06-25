@@ -21,9 +21,11 @@
 #define DISCOVERPAGE_H
 
 #include <QWizard>
+#include <ui_discover.h>
 
 
 class DiscoverPage : public QWizardPage
+, public Ui::Discover
 {
 
 public:

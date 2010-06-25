@@ -23,8 +23,7 @@
 DiscoverPage::DiscoverPage(QWidget* parent): QWizardPage(parent)
 {
     setTitle("Discover Devices");
-    Ui::Discover *discoverUi= new Ui::Discover;
-    discoverUi->setupUi(this);
+    setupUi(this);
 }
 
 
