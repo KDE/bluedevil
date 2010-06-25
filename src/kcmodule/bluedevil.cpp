@@ -33,6 +33,7 @@
 #include <QtGui/QStyledItemDelegate>
 
 #include <kicon.h>
+#include <kaboutdata.h>
 #include <kiconloader.h>
 #include <kpushbutton.h>
 #include <kcolorscheme.h>
@@ -416,6 +417,14 @@ KCMBlueDevil::KCMBlueDevil(QWidget *parent, const QVariantList&)
     , m_enable(new QCheckBox(i18n("Enable Bluetooth"), this))
     , m_kded(new KDED("org.kde.kded", "/kded", QDBusConnection::sessionBus()))
 {
+    KAboutData* ab = new KAboutData(
+        "kcmbluedevil", 0, ki18n("BlueDevil"), "1.0",
+        ki18n("BlueDevil Control Panel Module"),
+        KAboutData::License_GPL, ki18n("(c) 2010 Rafael Fernández López"));
+
+    ab->addAuthor(ki18n("Rafael Fernández López"), KLocalizedString(), "ereslibre@kde.org");
+    setAboutData(ab);
+
     checkKDEDModuleLoaded();
 
     QVBoxLayout *layout = new QVBoxLayout;
