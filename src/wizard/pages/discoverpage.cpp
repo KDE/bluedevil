@@ -57,7 +57,16 @@ void DiscoverPage::initializePage()
     if (!m_wizard) {
         m_wizard = static_cast<BlueWizard* >(wizard());
     }
+    connect(m_wizard, SIGNAL(currentIdChanged(int)), this, SLOT(leavePage(int)));
     startScan();
+}
+
+void DiscoverPage::leavePage(int id)
+{
+    if (id == 2) {
+        progressBar->setValue(0);
+        cleanupPage();
+    }
 }
 
 void DiscoverPage::cleanupPage()

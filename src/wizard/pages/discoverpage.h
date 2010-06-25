@@ -49,6 +49,7 @@ private Q_SLOTS:
     void deviceFound(Device * device);
     void timeout();
     void itemSelected(QListWidgetItem* item);
+    void leavePage(int id);
 
 private:
     void stopScan();
