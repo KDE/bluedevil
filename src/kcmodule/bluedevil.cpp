@@ -296,11 +296,22 @@ public:
 
     void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
+
+private:
+    QPixmap m_trustedPixmap;
+    QPixmap m_blockedPixmap;
+    QPixmap m_connectedPixmap;
 };
 
 BluetoothDevicesDelegate::BluetoothDevicesDelegate(QObject *parent)
     : QStyledItemDelegate(parent)
 {
+    KIcon trustedIcon("security-high");
+    m_trustedPixmap = trustedIcon.pixmap(22, 22);
+    KIcon blockedIcon("security-low");
+    m_blockedPixmap = blockedIcon.pixmap(22, 22);
+    KIcon connectedIcon("network-wired");
+    m_connectedPixmap = connectedIcon.pixmap(22, 22);
 }
 
 BluetoothDevicesDelegate::~BluetoothDevicesDelegate()
@@ -354,6 +365,34 @@ void BluetoothDevicesDelegate::paint(QPainter *painter, const QStyleOptionViewIt
         r.setTop(r.top() + 5);
         r.setRight(r.right() - 5);
         painter->drawText(r, Qt::AlignRight | Qt::AlignTop, "Last Connection: Yesterday");
+    }
+
+    // Draw state
+    {
+        Device *const device = static_cast<Device*>(index.data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
+
+        QRect r = option.rect;
+        r.setTop(r.bottom() - 5 - 22);
+        r.setLeft(r.right() - 5 - 22);
+        r.setSize(QSize(22, 22));
+
+        quint32 shiftLeft = 0;
+
+        if (device->isTrusted()) {
+            painter->drawPixmap(r, m_trustedPixmap);
+            shiftLeft += 5 + 22;
+        }
+
+        if (device->isBlocked()) {
+            r.setLeft(r.right() - 5 - 22 - shiftLeft);
+            painter->drawPixmap(r, m_blockedPixmap);
+            shiftLeft += 5 + 22;
+        }
+
+        if (device->isConnected()) {
+            r.setLeft(r.right() - 5 - 22 - shiftLeft);
+            painter->drawPixmap(r, m_connectedPixmap);
+        }
     }
 
     painter->restore();
