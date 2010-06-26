@@ -24,6 +24,7 @@
 #include <bluedevil/bluedevil.h>
 
 using namespace BlueDevil;
+
 PairingPage::PairingPage(QWidget* parent): QWizardPage(parent), m_wizard(0)
 {
     setTitle("PIN Validation");
@@ -34,34 +35,41 @@ void PairingPage::initializePage()
 {
     if (!m_wizard) {
         m_wizard = static_cast<BlueWizard*>(wizard());
-        Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
+        m_device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
         WizardAgent *agent = m_wizard->agent();
-
-        if (device->isPaired()) {
-            qDebug() << "DEvice alreayd paired men";
-        }
 
         QString pin;
         if (m_wizard->manualPin()) {
             pin = m_wizard->pin();
         } else {
-            pin = agent->getPin(device->UBI());
+            pin = agent->getPin(m_device->UBI());
         }
+
         agent->setPin(pin);
         pinNumber->setText(pin);
 
-        connect(agent, SIGNAL(pinRequested(const QString&)), this, SLOT(usedPin(const QString&)));
-        connect(device, SIGNAL(pairedChanged(bool)), this, SLOT(devicePaired(bool)));
-        device->pair("/wizardAgent", "DisplayYesNo");
+        connect(agent, SIGNAL(pinRequested(const QString&)), pinNumber, SLOT(setText(QString)));
+        connect(m_device, SIGNAL(connectedChanged(bool)), this, SLOT(deviceConnect(bool)));
+        m_device->pair("/wizardAgent", "DisplayYesNo");
     }
 }
 
-void PairingPage::usedPin(const QString& pin)
+bool PairingPage::isComplete() const
 {
-    pinNumber->setText(pin);
+    return false;
 }
 
-void PairingPage::devicePaired(bool paired)
+int PairingPage::nextId() const
 {
-    qDebug() << "Device Paired! " << paired;
+    qDebug() << "NEXT ID CALLED";
+    if (m_device->isPaired()) {
+        return BlueWizard::Services;
+    }
+    return BlueWizard::Introduction;
+}
+
+void PairingPage::deviceConnect(bool connect)
+{
+    qDebug() << "DEvice connected: " << connect;
+    m_wizard->next();
 }

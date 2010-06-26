@@ -24,6 +24,12 @@
 #include <QWizardPage>
 
 class BlueWizard;
+namespace BlueDevil {
+    class Device;
+}
+
+using namespace BlueDevil;
+
 class PairingPage : public QWizardPage
 , Ui::Pairing
 {
@@ -33,13 +39,15 @@ public:
     PairingPage(QWidget* parent = 0);
 
     virtual void initializePage();
+    virtual bool isComplete() const;
+    virtual int nextId() const;
 
 public Q_SLOTS:
-    void usedPin(const QString&);
-    void devicePaired(bool paired);
+    void deviceConnect(bool);
 
 private:
-    BlueWizard *m_wizard;
+    BlueWizard  *m_wizard;
+    Device      *m_device;
 };
 
 #endif // PAIRINGPAGE_H
