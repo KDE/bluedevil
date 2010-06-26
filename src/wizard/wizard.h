@@ -28,8 +28,6 @@ class BlueWizard : public QWizard
 {
 Q_OBJECT
 
-enum { Introduction, Discover, Pin, Pairing, ManualPin, Services};
-
 public:
     BlueWizard();
     virtual ~BlueWizard();
@@ -45,6 +43,7 @@ public:
 
     WizardAgent* agent() const;
 
+    enum { Introduction, Discover, Pin, Pairing, ManualPin, Services};
 private:
     QByteArray m_deviceAddress;
     QByteArray m_pin;
