@@ -27,13 +27,14 @@
 
 #include <QDBusConnection>
 #include <QApplication>
+
 BlueWizard::BlueWizard() : QWizard(), m_manualPin(false)
 {
-    addPage(new IntroductionPage(this));
-    addPage(new DiscoverPage(this));
-    addPage(new PinPage(this));
-    addPage(new PairingPage(this));
-    addPage(new ServicesPage(this));
+    setPage(Introduction, new IntroductionPage(this));
+    setPage(Discover, new DiscoverPage(this));
+    setPage(Pin, new PinPage(this));
+    setPage(Pairing, new PairingPage(this));
+    setPage(Services, new ServicesPage(this));
 
     if(!QDBusConnection::systemBus().registerObject("/wizardAgent", qApp)) {
         qDebug() << "The dbus object can't be registered";

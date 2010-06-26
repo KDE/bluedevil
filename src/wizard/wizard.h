@@ -28,6 +28,8 @@ class BlueWizard : public QWizard
 {
 Q_OBJECT
 
+enum { Introduction, Discover, Pin, Pairing, ManualPin, Services};
+
 public:
     BlueWizard();
     virtual ~BlueWizard();
