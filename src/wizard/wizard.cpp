@@ -23,6 +23,7 @@
 #include "pages/discoverpage.h"
 #include "pages/pinpage.h"
 #include "pages/pairingpage.h"
+#include "pages/servicespage.h"
 
 #include <QDBusConnection>
 #include <QApplication>
@@ -32,6 +33,7 @@ BlueWizard::BlueWizard() : QWizard(), m_manualPin(false)
     addPage(new DiscoverPage(this));
     addPage(new PinPage(this));
     addPage(new PairingPage(this));
+    addPage(new ServicesPage(this));
 
     if(!QDBusConnection::systemBus().registerObject("/wizardAgent", qApp)) {
         qDebug() << "The dbus object can't be registered";

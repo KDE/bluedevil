@@ -13,6 +13,8 @@ set(wizard_SRCS
     pages/discoverpage.cpp
     pages/pinpage.cpp
     pages/pairingpage.cpp
+    pages/servicespage.cpp
+    pages/serviceoption.cpp
 )
 
 kde4_add_ui_files(wizard_SRCS
@@ -20,6 +22,8 @@ kde4_add_ui_files(wizard_SRCS
             pages/discover.ui
             pages/pin.ui
             pages/pairing.ui
+            pages/services.ui
+            pages/serviceOption.ui
 )
 
 kde4_add_executable(bluedevil-wizard ${wizard_SRCS})
