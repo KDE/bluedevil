@@ -26,6 +26,14 @@ kde4_add_ui_files(wizard_SRCS
             pages/serviceOption.ui
 )
 
+qt4_add_dbus_interface(wizard_SRCS
+    pages/org.bluez.Audio.xml
+    audio_interface)
+
+qt4_add_dbus_interface(wizard_SRCS
+    pages/org.bluez.Input.xml
+    input_interface)
+
 kde4_add_executable(bluedevil-wizard ${wizard_SRCS})
 
 target_link_libraries(bluedevil-wizard
