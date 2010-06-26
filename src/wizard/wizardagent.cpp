@@ -37,7 +37,7 @@ WizardAgent::~WizardAgent()
 void WizardAgent::Release()
 {
     qDebug() << "Agent Release";
-    //TODO: emit a signal
+    emit agentReleased();
 }
 
 void WizardAgent::Authorize(QDBusObjectPath device, const QString& uuid, const QDBusMessage &msg)
