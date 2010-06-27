@@ -18,7 +18,7 @@
 
 
 #include "serviceplugin.h"
-#include "../wizard.h"
+#include "../bluewizard.h"
 
 struct Private {
     BlueWizard *wizard;
