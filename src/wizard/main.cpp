@@ -36,6 +36,7 @@ int main(int argc, char *argv[])
     KCmdLineArgs::init(argc, argv, &aboutData);
 
     KApplication app;
+    app.setQuitOnLastWindowClosed(false);
     new BlueWizard;
 
     return app.exec();
