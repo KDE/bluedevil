@@ -49,7 +49,9 @@ void PairingPage::initializePage()
         pinNumber->setText(pin);
 
         connect(agent, SIGNAL(pinRequested(const QString&)), pinNumber, SLOT(setText(QString)));
-        connect(m_device, SIGNAL(connectedChanged(bool)), this, SLOT(deviceConnect(bool)));
+        connect(m_device, SIGNAL(connectedChanged(bool)), this, SLOT(nextPage()));
+        connect(m_device, SIGNAL(pairedChanged(bool)), this, SLOT(nextPage()));
+
         m_device->pair("/wizardAgent", "DisplayYesNo");
     }
 }
@@ -61,15 +63,15 @@ bool PairingPage::isComplete() const
 
 int PairingPage::nextId() const
 {
-    qDebug() << "NEXT ID CALLED";
     if (m_device->isPaired()) {
         return BlueWizard::Services;
     }
     return BlueWizard::Introduction;
 }
 
-void PairingPage::deviceConnect(bool connect)
+void PairingPage::nextPage()
 {
-    qDebug() << "DEvice connected: " << connect;
+    disconnect(m_device, SIGNAL(connectedChanged(bool)), this, SLOT(nextPage()));
+    disconnect(m_device, SIGNAL(pairedChanged(bool)), this, SLOT(nextPage()));
     m_wizard->next();
 }

@@ -43,7 +43,7 @@ public:
     virtual int nextId() const;
 
 public Q_SLOTS:
-    void deviceConnect(bool);
+    void nextPage();
 
 private:
     BlueWizard  *m_wizard;
