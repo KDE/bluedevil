@@ -1,4 +1,5 @@
 add_subdirectory(input)
+add_subdirectory(audio)
 
 kde4_add_library(bluedevilservice SHARED serviceplugin.cpp)
 
