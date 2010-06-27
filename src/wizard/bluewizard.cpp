@@ -30,16 +30,17 @@
 #include <QApplication>
 
 #include <KServiceTypeTrader>
+#include <bluedevil/bluedevil.h>
 
 BlueWizard::BlueWizard() : QWizard(), m_manualPin(false)
 {
-    setPage(Introduction, new ServicesPage(this));
-//     setPage(Services, new IntroductionPage(this));
-//     setPage(Discover, new DiscoverPage(this));
-//     setPage(Pin, new PinPage(this));
-//     setPage(Pairing, new PairingPage(this));
 
-    m_services = KServiceTypeTrader::self()->query("BlueDevil/ServicePlugin");
+    setPage(Introduction, new IntroductionPage(this));
+    setPage(Discover, new DiscoverPage(this));
+    setPage(Pin, new PinPage(this));
+    setPage(Pairing, new PairingPage(this));
+    setPage(Services, new ServicesPage(this));
+
     //First show, then do the rest
     show();
 
