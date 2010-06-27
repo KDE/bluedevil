@@ -18,7 +18,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA            *
  ***************************************************************************/
 
-#include "wizard.h"
+#include "bluewizard.h"
 #include <KCmdLineArgs>
 #include <solid/control/bluetoothmanager.h>
 #include <KApplication>

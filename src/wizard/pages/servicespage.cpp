@@ -20,7 +20,7 @@
 #include "servicespage.h"
 #include "ui_services.h"
 #include "serviceoption.h"
-#include "../wizard.h"
+#include "../bluewizard.h"
 
 #include <kservice.h>
 #include <bluedevil/bluedevil.h>

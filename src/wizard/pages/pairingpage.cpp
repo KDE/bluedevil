@@ -18,7 +18,7 @@
 
 
 #include "pairingpage.h"
-#include "../wizard.h"
+#include "../bluewizard.h"
 #include "../wizardagent.h"
 
 #include <bluedevil/bluedevil.h>

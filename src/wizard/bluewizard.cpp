@@ -17,13 +17,14 @@
 */
 
 
-#include "wizard.h"
+#include "bluewizard.h"
 #include "wizardagent.h"
 #include "pages/introductionpage.h"
 #include "pages/discoverpage.h"
 #include "pages/pinpage.h"
 #include "pages/pairingpage.h"
 #include "pages/servicespage.h"
+#include "plugins/serviceplugin.h"
 
 #include <QDBusConnection>
 #include <QApplication>
@@ -32,12 +33,13 @@
 
 BlueWizard::BlueWizard() : QWizard(), m_manualPin(false)
 {
-    setPage(Introduction, new IntroductionPage(this));
-    setPage(Discover, new DiscoverPage(this));
-    setPage(Pin, new PinPage(this));
-    setPage(Pairing, new PairingPage(this));
-    setPage(Services, new ServicesPage(this));
+    setPage(Introduction, new ServicesPage(this));
+//     setPage(Services, new IntroductionPage(this));
+//     setPage(Discover, new DiscoverPage(this));
+//     setPage(Pin, new PinPage(this));
+//     setPage(Pairing, new PairingPage(this));
 
+    m_services = KServiceTypeTrader::self()->query("BlueDevil/ServicePlugin");
     //First show, then do the rest
     show();
 
@@ -47,9 +49,22 @@ BlueWizard::BlueWizard() : QWizard(), m_manualPin(false)
 
     m_agent = new WizardAgent(qApp);
 
-    QString constraint = "'00001124-0000-1000-8000-00805F9B34FB' in X-BlueDevil-UUIDS";
-    m_services = KServiceTypeTrader::self()->query("BlueDevil/ServicePlugin");
 }
+
+void BlueWizard::done(int result)
+{
+    QWizard::done(result);
+
+    //If we have a service to connect with
+    if (m_service) {
+        KPluginFactory *factory = KPluginLoader(m_service->library()).factory();
+        if (!factory) {
+            qDebug() << "Error loading the service: " << m_service->name();
+        }
+        ServicePlugin *plugin = factory->create<ServicePlugin>(this);
+    }
+}
+
 
 BlueWizard::~BlueWizard()
 {
@@ -94,4 +109,9 @@ WizardAgent* BlueWizard::agent() const
 KService::List BlueWizard::services() const
 {
     return m_services;
+}
+
+void BlueWizard::setService(const KService* service)
+{
+    m_service = service;
 }

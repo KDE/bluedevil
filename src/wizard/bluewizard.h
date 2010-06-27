@@ -17,8 +17,8 @@
 */
 
 
-#ifndef WIZARD_H
-#define WIZARD_H
+#ifndef BLUEWIZARD_H
+#define BLUEWIZARD_H
 
 #include <QObject>
 #include <QWizard>
@@ -46,14 +46,20 @@ public:
 
     KService::List services() const;
 
+    void setService(const KService *);
     enum { Introduction, Discover, Pin, Pairing, ManualPin, Services};
+
+public Q_SLOTS:
+    virtual void done(int result);
+
 private:
     QByteArray m_deviceAddress;
     QByteArray m_pin;
     WizardAgent *m_agent;
     KService::List m_services;
+    const KService *m_service;
 
     bool m_manualPin;
 };
 
-#endif // WIZARD_H
+#endif // BLUEWIZARD_H

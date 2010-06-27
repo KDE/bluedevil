@@ -19,7 +19,7 @@
 
 #include "discoverpage.h"
 #include "ui_discover.h"
-#include "../wizard.h"
+#include "../bluewizard.h"
 
 #include <bluedevil/bluedevil.h>
 

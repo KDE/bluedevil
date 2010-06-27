@@ -19,7 +19,7 @@
 
 #include "pinpage.h"
 #include "ui_pin.h"
-#include "../wizard.h"
+#include "../bluewizard.h"
 
 #include <QDebug>
 

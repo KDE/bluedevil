@@ -9,7 +9,7 @@ add_subdirectory(plugins)
 
 set(wizard_SRCS
     main.cpp
-    wizard.cpp
+    bluewizard.cpp
     wizardagent.cpp
     pages/introductionpage.cpp
     pages/discoverpage.cpp
@@ -38,7 +38,7 @@ qt4_add_dbus_interface(wizard_SRCS
 
 kde4_add_executable(bluedevil-wizard ${wizard_SRCS})
 
-target_link_libraries(bluedevil-wizard
+target_link_libraries(bluedevil-wizard bluedevilservice
                       ${KDE4_KIO_LIBRARY} ${KDE4_KDEUI_LIBS} ${KDE4_SOLID_LIBS} ${KDE4WORKSPACE_SOLIDCONTROL_LIBRARY} bluedevil)
 
 install(TARGETS bluedevil-wizard ${INSTALL_TARGETS_DEFAULT_ARGS})
