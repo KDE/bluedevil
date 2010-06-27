@@ -20,7 +20,6 @@
 
 #include "bluewizard.h"
 #include <KCmdLineArgs>
-#include <solid/control/bluetoothmanager.h>
 #include <KApplication>
 #include <KAboutData>
 
