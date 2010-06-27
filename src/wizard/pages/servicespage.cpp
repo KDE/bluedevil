@@ -19,19 +19,33 @@
 
 #include "servicespage.h"
 #include "ui_services.h"
-#include "ui_serviceOption.h"
 #include "serviceoption.h"
+#include "../wizard.h"
+
+#include <kservice.h>
+#include <bluedevil/bluedevil.h>
+#include <QDebug>
 
 ServicesPage::ServicesPage(QWidget* parent): QWizardPage(parent)
 {
     setTitle("Service selection");
     setupUi(this);
-    addService("Foo service", "Blabalbalab control your blabalbal fofoof bli bli loh!");
 }
 
 void ServicesPage::initializePage()
 {
-
+    BlueWizard *m_wizard = static_cast<BlueWizard*>(wizard());
+    m_device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
+    QStringList uuids = m_device->UUIDs();
+    KService::List services =m_wizard->services();
+    Q_FOREACH(QString uuid, uuids) {
+        uuid = uuid.toUpper();
+        Q_FOREACH(const KSharedPtr<KService> service, services) {
+            if (service.data()->property("X-BlueDevil-UUIDS").toStringList().contains(uuid)) {
+                addService(service.data()->name(), service.data()->comment());
+            }
+        }
+    }
 }
 
 void ServicesPage::cleanupPage()

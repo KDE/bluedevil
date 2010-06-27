@@ -23,6 +23,11 @@
 #include <QWizardPage>
 #include "ui_services.h"
 
+namespace BlueDevil {
+    class Device;
+}
+using namespace BlueDevil;
+
 class ServicesPage : public QWizardPage
 , Ui::Services
 {
@@ -34,6 +39,9 @@ public:
 
 private:
     void addService(const QString& name, const QString& desc);
+
+private:
+    Device *m_device;
 };
 
 #endif // SERVICESPAGE_H
