@@ -32,7 +32,7 @@
 #include <bluedevil/bluedevil.h>
 #include <KServiceTypeTrader>
 
-BlueWizard::BlueWizard() : QWizard(), m_manualPin(false)
+BlueWizard::BlueWizard() : QWizard(), m_service(0), m_manualPin(false)
 {
 
     setPage(Introduction, new IntroductionPage(this));
@@ -67,6 +67,8 @@ void BlueWizard::done(int result)
 
         plugin->setDevice(device);
         plugin->connectService();
+    } else {
+        qApp->quit();
     }
 }
 
