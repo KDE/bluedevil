@@ -31,18 +31,29 @@
   K_EXPORT_PLUGIN( BlueDevilService("c") )
 
 struct Private;
-class BlueWizard;
+namespace BlueDevil {
+    class Device;
+}
+
+using namespace BlueDevil;
 
 class KDE_EXPORT ServicePlugin : public QObject
 {
-
 Q_OBJECT
 public:
     ServicePlugin(QObject* parent = 0);
 
-    BlueWizard *wizard();
+    virtual void connectService()=0;
+
+    void setDevice(Device*);
+    Device* device();
+
 private:
     Private *d;
+
+Q_SIGNALS:
+    virtual void finished();
 };
 
+Q_DECLARE_INTERFACE(ServicePlugin, "org.bluedevil.serviceplugin");
 #endif // SERVICEPLUGIN_H

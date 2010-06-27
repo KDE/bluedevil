@@ -18,19 +18,23 @@
 
 
 #include "serviceplugin.h"
-#include "../bluewizard.h"
+#include "bluedevil/bluedevildevice.h"
+
+using namespace BlueDevil;
 
 struct Private {
-    BlueWizard *wizard;
+    Device *device;
 };
 
 ServicePlugin::ServicePlugin(QObject* parent): QObject(parent), d(new Private)
+{}
+
+void ServicePlugin::setDevice(Device* device)
 {
-//     d->wizard = parent;
+    d->device= device;
 }
 
-BlueWizard* ServicePlugin::wizard()
+Device* ServicePlugin::device()
 {
-    return d->wizard;
+    return d->device;
 }
-
