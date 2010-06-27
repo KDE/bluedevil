@@ -22,6 +22,7 @@
 class AudioPlugin : public ServicePlugin
 {
     Q_OBJECT
+    Q_INTERFACES(ServicePlugin)
     public:
         AudioPlugin(QObject* parent, const QVariantList& args);
         virtual void connectService();

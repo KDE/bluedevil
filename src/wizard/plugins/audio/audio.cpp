@@ -18,20 +18,38 @@
  *************************************************************************************/
 
 #include "audio.h"
+#include "audio_interface.h"
+
 #include <KPluginFactory>
-#include <QDebug>
+#include <KNotification>
+#include <KIcon>
+#include <KLocalizedString>
+
+#include <QDBusConnection>
+#include <bluedevil/bluedevildevice.h>
 
 BLUEDEVILSERVICE_PLUGIN_EXPORT(AudioPlugin)
 
 AudioPlugin::AudioPlugin(QObject* parent, const QVariantList& args)
     : ServicePlugin(parent)
-{
-    qDebug() << "Instanced!";
-}
+{}
 
 void AudioPlugin::connectService()
 {
-    qDebug() << "Connecting";
+    OrgBluezAudioInterface *interface = new OrgBluezAudioInterface("org.bluez", device()->UBI(), QDBusConnection::systemBus());
+    interface->Connect();
+
+    QString desc = device()->alias();
+    if (device()->alias() != device()->name() && !device()->name().isEmpty()) {
+        desc.append(" ("+device()->name()+")");
+    }
+    desc.append(i18n(" Audio device connected and configured"));
+
+    KNotification::event(
+        KNotification::Notification,
+        desc,
+        KIcon(device()->icon()).pixmap(48,48)
+    )->sendEvent();
+
+    emit finished();
 }
-
-
