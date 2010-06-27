@@ -18,20 +18,38 @@
  *************************************************************************************/
 
 #include "input.h"
+#include "input_interface.h"
+
 #include <KPluginFactory>
-#include <QDebug>
+#include <KNotification>
+#include <KIcon>
+#include <KLocalizedString>
+
+#include <QDBusConnection>
+#include <bluedevil/bluedevildevice.h>
 
 BLUEDEVILSERVICE_PLUGIN_EXPORT(InputPlugin)
 
 InputPlugin::InputPlugin(QObject* parent, const QVariantList& args)
     : ServicePlugin(parent)
-{
-    qDebug() << "Instanced!";
-}
+{}
 
 void InputPlugin::connectService()
 {
-    qDebug() << "YAYAYA";
+    OrgBluezInputInterface *interface = new OrgBluezInputInterface("org.bluez", device()->UBI(), QDBusConnection::systemBus());
+    interface->Connect();
+
+    QString desc = device()->alias();
+    if (device()->alias() != device()->name() && !device()->name().isEmpty()) {
+        desc.append(" ("+device()->name()+")");
+    }
+    desc.append(i18n(" Input device connected and configured"));
+
+    KNotification::event(
+        KNotification::Notification,
+        desc,
+        KIcon(device()->icon()).pixmap(48,48)
+    )->sendEvent();
+
+    emit finished();
 }
-
-

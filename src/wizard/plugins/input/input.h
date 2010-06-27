@@ -22,6 +22,7 @@
 class InputPlugin : public ServicePlugin
 {
     Q_OBJECT
+    Q_INTERFACES(ServicePlugin)
     public:
         InputPlugin(QObject* parent, const QVariantList& args);
         virtual void connectService();
