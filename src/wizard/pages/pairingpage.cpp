@@ -29,6 +29,12 @@ PairingPage::PairingPage(QWidget* parent): QWizardPage(parent), m_wizard(0)
 {
     setTitle("PIN Validation");
     setupUi(this);
+
+    QFont font(pinNumber->font());
+    font.setPointSize(42);
+    font.setBold(true);
+    pinNumber->setFont(font);
+
 }
 
 void PairingPage::initializePage()
