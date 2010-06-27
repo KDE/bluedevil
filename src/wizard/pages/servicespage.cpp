@@ -24,7 +24,6 @@
 
 #include <kservice.h>
 #include <bluedevil/bluedevil.h>
-#include <QDebug>
 
 ServicesPage::ServicesPage(QWidget* parent): QWizardPage(parent)
 {
@@ -34,26 +33,41 @@ ServicesPage::ServicesPage(QWidget* parent): QWizardPage(parent)
 
 void ServicesPage::initializePage()
 {
-    BlueWizard *m_wizard = static_cast<BlueWizard*>(wizard());
+    m_wizard = static_cast<BlueWizard*>(wizard());
+
     m_device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
     QStringList uuids = m_device->UUIDs();
-    KService::List services =m_wizard->services();
+    KService::List services = m_wizard->services();
     Q_FOREACH(QString uuid, uuids) {
         uuid = uuid.toUpper();
         Q_FOREACH(const KSharedPtr<KService> service, services) {
             if (service.data()->property("X-BlueDevil-UUIDS").toStringList().contains(uuid)) {
-                addService(service.data()->name(), service.data()->comment());
+                addService(service.data());
             }
         }
     }
 }
+
 
 void ServicesPage::cleanupPage()
 {
 
 }
 
-void ServicesPage::addService(const QString& name, const QString& desc)
+void ServicesPage::addService(const KService* service)
 {
-    d_layout->addWidget(new ServiceOption(name, desc, this));
+    ServiceOption *widget = new ServiceOption(service, m_buttonGroup, this);
+    connect(widget, SIGNAL(selected(const KService*)), this, SLOT(selected(const KService*)));
+
+    if (d_layout->count() == 0) {
+        m_wizard->setService(service);
+        widget->setChecked(true);
+    }
+
+    d_layout->addWidget(widget);
+}
+
+void ServicesPage::selected(const KService* service)
+{
+    m_wizard->setService(service);
 }

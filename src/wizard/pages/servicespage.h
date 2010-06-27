@@ -21,7 +21,11 @@
 #define SERVICESPAGE_H
 
 #include <QWizardPage>
+#include <QButtonGroup>
 #include "ui_services.h"
+
+class KService;
+class BlueWizard;
 
 namespace BlueDevil {
     class Device;
@@ -31,17 +35,24 @@ using namespace BlueDevil;
 class ServicesPage : public QWizardPage
 , Ui::Services
 {
+Q_OBJECT
 
 public:
     ServicesPage(QWidget* parent = 0);
     virtual void initializePage();
     virtual void cleanupPage();
 
+public Q_SLOTS:
+    void selected(const KService *);
+
 private:
-    void addService(const QString& name, const QString& desc);
+    void addService(const KService* service);
 
 private:
     Device *m_device;
+    BlueWizard *m_wizard;
+    KService *m_service;
+    QButtonGroup m_buttonGroup;
 };
 
 #endif // SERVICESPAGE_H

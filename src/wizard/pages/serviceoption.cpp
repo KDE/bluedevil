@@ -18,13 +18,30 @@
 
 
 #include "serviceoption.h"
+#include <kservice.h>
+#include <QButtonGroup>
 
-ServiceOption::ServiceOption(const QString& name, const QString& desc, QWidget* parent):
+ServiceOption::ServiceOption(const KService* service, QButtonGroup& buttonGroup, QWidget* parent):
 QWidget(parent)
 {
     setupUi(this);
+    m_service = service;
 
-    radioButton->setText(name);
-    descLbl->setText(desc);
+    radioButton->setText(service->name());
+    descLbl->setText(service->comment());
+
+    buttonGroup.addButton(radioButton);
+    connect(radioButton, SIGNAL(toggled(bool)), this, SLOT(toggled(bool)));
 }
 
+void ServiceOption::setChecked(bool checked)
+{
+    radioButton->setChecked(checked);
+}
+
+void ServiceOption::toggled(bool checked)
+{
+    if (checked == true) {
+        emit selected(m_service);
+    }
+}

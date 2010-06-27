@@ -21,14 +21,27 @@
 #define SERVICEOPTION_H
 
 #include "ui_serviceOption.h"
-#include <QtGui/QWidget>
-
+#include <QWidget>
+#include <QButtonGroup>
+class KService;
 class ServiceOption : public QWidget
 , Ui::ServiceOption
 {
+Q_OBJECT
 
 public:
-    ServiceOption(const QString& name, const QString& desc, QWidget *parent = 0);
+    ServiceOption(const KService* service, QButtonGroup&,  QWidget *parent = 0);
+
+    void setChecked(bool);
+
+private Q_SLOTS:
+    void toggled(bool);
+
+private:
+    const KService *m_service;
+
+Q_SIGNALS:
+    void selected(const KService*);
 };
 
 #endif // SERVICEOPTION_H
