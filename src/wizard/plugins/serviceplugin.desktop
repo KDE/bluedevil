@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=ServiceType
+X-KDE-ServiceType=BlueDevil/ServicePlugin
+X-KDE-Derived=KPluginInfo
+Name=BlueDevil Service Plugin
+
+[PropertyDef::X-BlueDevil-UUIDS]
+Type=QStringList

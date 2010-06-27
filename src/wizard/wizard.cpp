@@ -28,6 +28,8 @@
 #include <QDBusConnection>
 #include <QApplication>
 
+#include <KServiceTypeTrader>
+
 BlueWizard::BlueWizard() : QWizard(), m_manualPin(false)
 {
     setPage(Introduction, new IntroductionPage(this));
@@ -36,12 +38,17 @@ BlueWizard::BlueWizard() : QWizard(), m_manualPin(false)
     setPage(Pairing, new PairingPage(this));
     setPage(Services, new ServicesPage(this));
 
+    //First show, then do the rest
+    show();
+
     if(!QDBusConnection::systemBus().registerObject("/wizardAgent", qApp)) {
         qDebug() << "The dbus object can't be registered";
     }
 
     m_agent = new WizardAgent(qApp);
-    show();
+
+    QString constraint = "'00001124-0000-1000-8000-00805F9B34FB' in X-BlueDevil-UUIDS";
+    m_services = KServiceTypeTrader::self()->query("BlueDevil/ServicePlugin");
 }
 
 BlueWizard::~BlueWizard()
@@ -82,4 +89,9 @@ bool BlueWizard::manualPin() const
 WizardAgent* BlueWizard::agent() const
 {
     return m_agent;
+}
+
+KService::List BlueWizard::services() const
+{
+    return m_services;
 }

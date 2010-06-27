@@ -17,43 +17,20 @@
 */
 
 
-#ifndef WIZARD_H
-#define WIZARD_H
+#include "serviceplugin.h"
+#include "../wizard.h"
 
-#include <QObject>
-#include <QWizard>
-#include <kservice.h>
-
-class WizardAgent;
-class BlueWizard : public QWizard
-{
-Q_OBJECT
-
-public:
-    BlueWizard();
-    virtual ~BlueWizard();
-
-    QByteArray deviceAddress() const;
-    void setDeviceAddress(const QByteArray& address);
-
-    QByteArray pin() const;
-    void setPin(const QByteArray& pin);
-
-    bool manualPin() const;
-    void setManualPin(bool);
-
-    WizardAgent* agent() const;
-
-    KService::List services() const;
-
-    enum { Introduction, Discover, Pin, Pairing, ManualPin, Services};
-private:
-    QByteArray m_deviceAddress;
-    QByteArray m_pin;
-    WizardAgent *m_agent;
-    KService::List m_services;
-
-    bool m_manualPin;
+struct Private {
+    BlueWizard *wizard;
 };
 
-#endif // WIZARD_H
+ServicePlugin::ServicePlugin(QObject* parent): QObject(parent), d(new Private)
+{
+//     d->wizard = parent;
+}
+
+BlueWizard* ServicePlugin::wizard()
+{
+    return d->wizard;
+}
+

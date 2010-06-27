@@ -17,43 +17,32 @@
 */
 
 
-#ifndef WIZARD_H
-#define WIZARD_H
+#ifndef SERVICEPLUGIN_H
+#define SERVICEPLUGIN_H
 
 #include <QObject>
-#include <QWizard>
-#include <kservice.h>
 
-class WizardAgent;
-class BlueWizard : public QWizard
+#include <kdemacros.h>
+#include <KPluginFactory>
+#include <KPluginLoader>
+
+#define BLUEDEVILSERVICE_PLUGIN_EXPORT( c ) \
+  K_PLUGIN_FACTORY( BlueDevilService, registerPlugin< c >(); ) \
+  K_EXPORT_PLUGIN( BlueDevilService("c") )
+
+struct Private;
+class BlueWizard;
+
+class KDE_EXPORT ServicePlugin : public QObject
 {
+
 Q_OBJECT
-
 public:
-    BlueWizard();
-    virtual ~BlueWizard();
+    ServicePlugin(QObject* parent = 0);
 
-    QByteArray deviceAddress() const;
-    void setDeviceAddress(const QByteArray& address);
-
-    QByteArray pin() const;
-    void setPin(const QByteArray& pin);
-
-    bool manualPin() const;
-    void setManualPin(bool);
-
-    WizardAgent* agent() const;
-
-    KService::List services() const;
-
-    enum { Introduction, Discover, Pin, Pairing, ManualPin, Services};
+    BlueWizard *wizard();
 private:
-    QByteArray m_deviceAddress;
-    QByteArray m_pin;
-    WizardAgent *m_agent;
-    KService::List m_services;
-
-    bool m_manualPin;
+    Private *d;
 };
 
-#endif // WIZARD_H
+#endif // SERVICEPLUGIN_H

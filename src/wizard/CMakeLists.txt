@@ -5,6 +5,8 @@ include_directories(
    ${KDE4_INCLUDES}
 )
 
+add_subdirectory(plugins)
+
 set(wizard_SRCS
     main.cpp
     wizard.cpp
