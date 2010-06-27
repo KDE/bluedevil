@@ -54,4 +54,5 @@ Q_SIGNALS:
     void pinRequested(const QString&);
     void agentReleased();
 };
+
 #endif

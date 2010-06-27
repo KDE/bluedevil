@@ -1,6 +1,5 @@
 /*************************************************************************************
- *  Copyright (C) 2008-2009 by Aleix Pol <aleixpol@kde.org>                          *
- *  Copyright (C) 2008-2009 by Alex Fiestas <alex@eyeos.org>                         *
+ *  Copyright (C) 2010 by Alex Fiestas <alex@eyeos.org>                              *
  *                                                                                   *
  *  This program is free software; you can redistribute it and/or                    *
  *  modify it under the terms of the GNU General Public License                      *
@@ -20,12 +19,13 @@
 #include "input.h"
 #include "input_interface.h"
 
+#include <QDBusConnection>
+
+#include <KLocalizedString>
 #include <KPluginFactory>
 #include <KNotification>
 #include <KIcon>
-#include <KLocalizedString>
 
-#include <QDBusConnection>
 #include <bluedevil/bluedevildevice.h>
 
 BLUEDEVILSERVICE_PLUGIN_EXPORT(InputPlugin)

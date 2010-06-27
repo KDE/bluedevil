@@ -22,6 +22,7 @@
 #include "serviceoption.h"
 #include "../bluewizard.h"
 
+#include <QButtonGroup>
 #include <kservice.h>
 #include <bluedevil/bluedevil.h>
 

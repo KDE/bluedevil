@@ -20,12 +20,12 @@
 #ifndef SERVICESPAGE_H
 #define SERVICESPAGE_H
 
-#include <QWizardPage>
-#include <QButtonGroup>
 #include "ui_services.h"
+#include <QWizardPage>
 
 class KService;
 class BlueWizard;
+class QButtonGroup;
 
 namespace BlueDevil {
     class Device;

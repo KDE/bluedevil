@@ -1,6 +1,5 @@
 /*
-    <one line to give the program's name and a brief idea of what it does.>
-    Copyright (C) <year>  <name of author>
+    Copyright (C) 2010 Alex Fiestas <alex@eyeos.org>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -21,13 +20,12 @@
 #include "ui_discover.h"
 #include "../bluewizard.h"
 
-#include <bluedevil/bluedevil.h>
-
-#include <QDebug>
 #include <QListWidgetItem>
 #include <QListView>
 #include <QLabel>
 #include <QTimer>
+
+#include <bluedevil/bluedevil.h>
 
 using namespace BlueDevil;
 
@@ -58,6 +56,7 @@ void DiscoverPage::initializePage()
     if (!m_wizard) {
         m_wizard = static_cast<BlueWizard* >(wizard());
     }
+
     connect(m_wizard, SIGNAL(currentIdChanged(int)), this, SLOT(leavePage(int)));
     startScan();
 }

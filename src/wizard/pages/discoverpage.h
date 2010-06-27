@@ -21,7 +21,7 @@
 #define DISCOVERPAGE_H
 
 #include "ui_discover.h"
-#include <QWizard>
+#include <QWizardPage>
 
 class QTimer;
 class BlueWizard;

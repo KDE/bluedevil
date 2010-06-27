@@ -21,8 +21,10 @@
 #define SERVICEOPTION_H
 
 #include "ui_serviceOption.h"
+
 #include <QWidget>
 #include <QButtonGroup>
+
 class KService;
 class ServiceOption : public QWidget
 , Ui::ServiceOption

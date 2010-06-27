@@ -20,9 +20,8 @@
 #ifndef INTRODUCTIONPAGE_H
 #define INTRODUCTIONPAGE_H
 
+#include "ui_introduction.h"
 #include <QWizardPage>
-
-#include <ui_introduction.h>
 
 namespace BlueDevil {
     class Adapter;

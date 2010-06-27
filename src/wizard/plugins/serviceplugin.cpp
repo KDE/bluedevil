@@ -18,6 +18,7 @@
 
 
 #include "serviceplugin.h"
+
 #include "bluedevil/bluedevildevice.h"
 
 using namespace BlueDevil;

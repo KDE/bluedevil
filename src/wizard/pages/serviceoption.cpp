@@ -18,8 +18,8 @@
 
 
 #include "serviceoption.h"
-#include <kservice.h>
 #include <QButtonGroup>
+#include <kservice.h>
 
 ServiceOption::ServiceOption(const KService* service, QButtonGroup& buttonGroup, QWidget* parent):
 QWidget(parent)

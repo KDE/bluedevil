@@ -29,8 +29,8 @@
 #include <QDBusConnection>
 #include <QApplication>
 
-#include <KServiceTypeTrader>
 #include <bluedevil/bluedevil.h>
+#include <KServiceTypeTrader>
 
 BlueWizard::BlueWizard() : QWizard(), m_manualPin(false)
 {
