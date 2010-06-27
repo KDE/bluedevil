@@ -159,6 +159,5 @@ QString WizardAgent::getPin(const QString& path) const
 
 void WizardAgent::setPin(const QString& pin)
 {
-    qDebug() << "Setting ping from ouside: " << pin;
     m_pin = pin;
 }
