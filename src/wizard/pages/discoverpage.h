@@ -43,7 +43,7 @@ public:
     virtual void initializePage();
     virtual void cleanupPage();
     virtual bool isComplete() const;
-
+    virtual int nextId() const;
 private Q_SLOTS:
     void startScan();
     void deviceFound(Device * device);

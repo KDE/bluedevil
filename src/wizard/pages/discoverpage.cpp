@@ -134,3 +134,16 @@ void DiscoverPage::itemSelected(QListWidgetItem* item)
     m_wizard->setDeviceAddress(item->data(Qt::UserRole).toByteArray());
     emit completeChanged();
 }
+
+int DiscoverPage::nextId() const
+{
+    if (m_wizard) {
+        if (!m_wizard->deviceAddress().isEmpty()) {
+            Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
+            if (device->isPaired()) {
+                return BlueWizard::Services;
+            }
+        }
+    }
+    return BlueWizard::Pin;
+}
