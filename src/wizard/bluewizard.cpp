@@ -59,7 +59,6 @@ void BlueWizard::done(int result)
     //If we have a service to connect with
     if (m_service) {
         KPluginFactory *factory = KPluginLoader(m_service->library()).factory();
-        Q_ASSERT(!m_service);
 
         Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_deviceAddress);
         ServicePlugin *plugin = factory->create<ServicePlugin>(this);
