@@ -42,14 +42,14 @@ namespace BlueDevil {
 typedef BlueDevil::Adapter Adapter;
 typedef BlueDevil::Device Device;
 
-class KCMBlueDevil
+class KCMBlueDevilDevices
     : public KCModule
 {
     Q_OBJECT
 
 public:
-    KCMBlueDevil(QWidget *parent, const QVariantList&);
-    virtual ~KCMBlueDevil();
+    KCMBlueDevilDevices(QWidget *parent, const QVariantList&);
+    virtual ~KCMBlueDevilDevices();
 
     virtual void defaults();
     virtual void save();

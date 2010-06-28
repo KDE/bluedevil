@@ -1,10 +1,10 @@
 [Desktop Entry]
-Exec=kcmshell4 bluedevil
+Exec=kcmshell4 bluedevildevices
 Icon=preferences-system-bluetooth
 Type=Service
 X-KDE-ServiceTypes=KCModule
 
-X-KDE-Library=kcm_bluetooth
+X-KDE-Library=kcm_bluedevildevices
 X-KDE-ParentApp=kcontrol
 
 X-KDE-System-Settings-Parent-Category=bluetooth

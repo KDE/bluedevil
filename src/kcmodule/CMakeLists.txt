@@ -1,8 +1,8 @@
-set(kcm_bluedevil_PART_SRCS bluedevil.cpp kded.cpp)
+set(kcm_bluedevil_PART_SRCS bluedevildevices.cpp kded.cpp)
 
-kde4_add_plugin(kcm_bluetooth ${kcm_bluedevil_PART_SRCS})
+kde4_add_plugin(kcm_bluedevildevices ${kcm_bluedevil_PART_SRCS})
 
-target_link_libraries(kcm_bluetooth  ${KDE4_KIO_LIBS} ${KDE4_KNOTIFYCONFIG_LIBS} ${QT_QTGUI_LIBRARY} bluedevil)
+target_link_libraries(kcm_bluedevildevices ${KDE4_KIO_LIBS} ${KDE4_KNOTIFYCONFIG_LIBS} ${QT_QTGUI_LIBRARY} bluedevil)
 
-install(TARGETS kcm_bluetooth  DESTINATION ${PLUGIN_INSTALL_DIR})
-install(FILES bluedevil.desktop DESTINATION ${SERVICES_INSTALL_DIR})
+install(TARGETS kcm_bluedevildevices  DESTINATION ${PLUGIN_INSTALL_DIR})
+install(FILES bluedevildevices.desktop DESTINATION ${SERVICES_INSTALL_DIR})
