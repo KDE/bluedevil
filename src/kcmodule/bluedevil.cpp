@@ -668,7 +668,10 @@ void KCMBlueDevil::fillRemoteDevicesModelInformation()
         m_devices->setViewport(m_noDevicesMessage);
         m_noDevicesMessage->setVisible(true);
     } else if (m_devices->viewport() == m_noDevicesMessage) {
-        m_devices->setViewport(0);
+        QWidget *viewport = new QWidget(m_devices);
+        viewport->setBackgroundRole(QPalette::Base);
+        viewport->setAutoFillBackground(true);
+        m_devices->setViewport(viewport);
     }
     m_devicesModel->insertRows(0, deviceList.count());
     int i = 0;
