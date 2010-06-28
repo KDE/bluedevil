@@ -27,7 +27,6 @@
 
 #include <kcmodule.h>
 
-class ErrorWidget;
 class BluetoothAdaptersModel;
 
 class QListView;
@@ -67,16 +66,11 @@ private Q_SLOTS:
     void adapterDiscoverableChanged();
     void adapterDevicesChanged(const QList<Device*> &devices);
 
-    void fixNotDiscoverableAdapterError();
-    void fixDisabledNotificationsError();
-
     void updateInformationState();
 
 private:
     void generateNoDevicesMessage();
     void fillRemoteDevicesModelInformation();
-    void checkKDEDModuleLoaded();
-    bool checkNotificationsOK();
 
 private:
     QCheckBox              *m_enable;
@@ -85,13 +79,9 @@ private:
     KPushButton            *m_addDevice;
     KPushButton            *m_removeDevice;
     bool                    m_isEnabled;
-    ErrorWidget            *m_noAdaptersError;
-    ErrorWidget            *m_notDiscoverableAdapterError;
-    ErrorWidget            *m_disabledNotificationsError;
     BluetoothAdaptersModel *m_devicesModel;
     QListView              *m_devices;
     QWidget                *m_noDevicesMessage;
-    KDED                   *m_kded;
 };
 
 #endif

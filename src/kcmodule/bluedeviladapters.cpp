@@ -19,6 +19,7 @@
  */
 
 #include "bluedeviladapters.h"
+#include "systemcheck.h"
 
 #include <bluedevil/bluedevil.h>
 
@@ -29,7 +30,6 @@
 #include <QtGui/QCheckBox>
 #include <QtGui/QListView>
 #include <QtGui/QBoxLayout>
-#include <QtGui/QPaintEvent>
 #include <QtGui/QHeaderView>
 #include <QtGui/QStyledItemDelegate>
 
@@ -41,93 +41,14 @@
 #include <kmessagebox.h>
 #include <kiconloader.h>
 #include <kpushbutton.h>
-#include <kcolorscheme.h>
 #include <kapplication.h>
-#include <kconfiggroup.h>
-#include <kstandarddirs.h>
 #include <kpluginfactory.h>
 #include <klocalizedstring.h>
 
 K_PLUGIN_FACTORY(BlueDevilFactory, registerPlugin<KCMBlueDevilAdapters>();)
 K_EXPORT_PLUGIN(BlueDevilFactory("bluedeviladapters"))
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-class ErrorWidget
-    : public QWidget
-{
-public:
-    ErrorWidget(QWidget *parent = 0);
-    virtual ~ErrorWidget();
-
-    void setIcon(const QString &icon);
-    void setReason(const QString &reason);
-    void addAction(KPushButton *action);
-
-protected:
-    virtual void paintEvent(QPaintEvent *event);
-
-private:
-    QLabel      *m_icon;
-    QLabel      *m_reason;
-    QHBoxLayout *m_actions;
-};
-
-ErrorWidget::ErrorWidget(QWidget *parent)
-    : QWidget(parent)
-    , m_icon(new QLabel(this))
-    , m_reason(new QLabel(this))
-    , m_actions(new QHBoxLayout)
-{
-    setAutoFillBackground(false);
-
-    m_actions->addStretch();
-
-    QHBoxLayout *layout = new QHBoxLayout;
-    layout->addWidget(m_icon);
-    layout->addWidget(m_reason, 1);
-
-    QVBoxLayout *outter = new QVBoxLayout;
-    outter->addLayout(layout);
-    outter->addLayout(m_actions);
-
-    setLayout(outter);
-}
-
-ErrorWidget::~ErrorWidget()
-{
-}
-
-void ErrorWidget::setIcon(const QString &icon)
-{
-    m_icon->setPixmap(KIconLoader::global()->loadIcon(icon, KIconLoader::NoGroup));
-}
-
-void ErrorWidget::setReason(const QString &reason)
-{
-    m_reason->setText(reason);
-}
-
-void ErrorWidget::addAction(KPushButton *action)
-{
-    action->setAutoFillBackground(false);
-    m_actions->addWidget(action);
-}
-
-void ErrorWidget::paintEvent(QPaintEvent *event)
-{
-    const QRect r = event->rect();
-    const KColorScheme colorScheme(QPalette::Active, KColorScheme::Window);
-
-    QPainter p(this);
-    p.setRenderHint(QPainter::Antialiasing);
-
-    QPainterPath path;
-    path.addRoundedRect(0, 0, r.width(), r.height(), 10, 10);
-    p.fillPath(path, colorScheme.background(KColorScheme::NegativeBackground));
-
-    QWidget::paintEvent(event);
-}
+K_GLOBAL_STATIC(SystemCheck, systemCheck)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -282,12 +203,12 @@ bool BluetoothAdaptersModel::removeRows(int row, int count, const QModelIndex &p
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class BluetoothDevicesDelegate
+class BluetoothAdaptersDelegate
     : public QStyledItemDelegate
 {
 public:
-    BluetoothDevicesDelegate(QObject *parent = 0);
-    virtual ~BluetoothDevicesDelegate();
+    BluetoothAdaptersDelegate(QObject *parent = 0);
+    virtual ~BluetoothAdaptersDelegate();
 
     void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
@@ -299,7 +220,7 @@ private:
     QPixmap m_disconnectedPixmap;
 };
 
-BluetoothDevicesDelegate::BluetoothDevicesDelegate(QObject *parent)
+BluetoothAdaptersDelegate::BluetoothAdaptersDelegate(QObject *parent)
     : QStyledItemDelegate(parent)
 {
     KIcon trustedIcon("security-high");
@@ -312,11 +233,11 @@ BluetoothDevicesDelegate::BluetoothDevicesDelegate(QObject *parent)
     m_disconnectedPixmap = disconnectedIcon.pixmap(22, 22);
 }
 
-BluetoothDevicesDelegate::~BluetoothDevicesDelegate()
+BluetoothAdaptersDelegate::~BluetoothAdaptersDelegate()
 {
 }
 
-void BluetoothDevicesDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
+void BluetoothAdaptersDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     QStyledItemDelegate::paint(painter, option, index);
 
@@ -384,7 +305,7 @@ void BluetoothDevicesDelegate::paint(QPainter *painter, const QStyleOptionViewIt
     painter->restore();
 }
 
-QSize BluetoothDevicesDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
+QSize BluetoothAdaptersDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     const QSize res = QStyledItemDelegate::sizeHint(option, index);
     return QSize(res.width(), KIconLoader::SizeLarge + 10);
@@ -395,42 +316,21 @@ QSize BluetoothDevicesDelegate::sizeHint(const QStyleOptionViewItem &option, con
 KCMBlueDevilAdapters::KCMBlueDevilAdapters(QWidget *parent, const QVariantList&)
     : KCModule(BlueDevilFactory::componentData(), parent)
     , m_enable(new QCheckBox(i18n("Enable Bluetooth"), this))
-    , m_kded(new KDED("org.kde.kded", "/kded", QDBusConnection::sessionBus()))
 {
     KAboutData* ab = new KAboutData(
-        "kcmbluedevil", 0, ki18n("BlueDevil"), "1.0",
-        ki18n("BlueDevil Control Panel Module"),
+        "kcmbluedeviladapters", 0, ki18n("BlueDevil Adapters"), "1.0",
+        ki18n("BlueDevil Adapters Control Panel Module"),
         KAboutData::License_GPL, ki18n("(c) 2010 Rafael Fernández López"));
 
-    ab->addAuthor(ki18n("Rafael Fernández López"), KLocalizedString(), "ereslibre@kde.org");
+    ab->addAuthor(ki18n("Rafael Fernández López"), ki18n("Developer and Maintainer"), "ereslibre@kde.org");
     setAboutData(ab);
 
     generateNoDevicesMessage();
-    checkKDEDModuleLoaded();
+    m_isEnabled = systemCheck->checkKDEDModuleLoaded();
 
     QVBoxLayout *layout = new QVBoxLayout;
     layout->addWidget(m_enable);
-
-    m_noAdaptersError = new ErrorWidget(this);
-    m_noAdaptersError->setIcon("window-close");
-    m_noAdaptersError->setReason(i18n("No Bluetooth adapters have been found."));
-    layout->addWidget(m_noAdaptersError);
-
-    m_notDiscoverableAdapterError = new ErrorWidget(this);
-    m_notDiscoverableAdapterError->setIcon("layer-visible-off");
-    m_notDiscoverableAdapterError->setReason(i18n("Your default Bluetooth adapter is not visible for remote devices."));
-    KPushButton *fixNotDiscoverableAdapter = new KPushButton(KIcon("dialog-ok-apply"), i18n("Fix it"), this);
-    connect(fixNotDiscoverableAdapter, SIGNAL(clicked()), this, SLOT(fixNotDiscoverableAdapterError()));
-    m_notDiscoverableAdapterError->addAction(fixNotDiscoverableAdapter);
-    layout->addWidget(m_notDiscoverableAdapterError);
-
-    m_disabledNotificationsError = new ErrorWidget(this);
-    m_disabledNotificationsError->setIcon("preferences-desktop-notification");
-    m_disabledNotificationsError->setReason(i18n("Interaction with Bluetooth system is not optimal."));
-    KPushButton *fixDisabledNotifications = new KPushButton(KIcon("dialog-ok-apply"), i18n("Fix it"), this);
-    connect(fixDisabledNotifications, SIGNAL(clicked()), this, SLOT(fixDisabledNotificationsError()));
-    m_disabledNotificationsError->addAction(fixDisabledNotifications);
-    layout->addWidget(m_disabledNotificationsError);
+    systemCheck->createWarnings(layout);
 
     // Bluetooth device list
     {
@@ -438,7 +338,7 @@ KCMBlueDevilAdapters::KCMBlueDevilAdapters(QWidget *parent, const QVariantList&)
 
         m_devices = new QListView(this);
         m_devices->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
-        m_devices->setItemDelegate(new BluetoothDevicesDelegate(this));
+        m_devices->setItemDelegate(new BluetoothAdaptersDelegate(this));
         m_devices->setModel(m_devicesModel);
 
         connect(m_devices->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
@@ -448,12 +348,12 @@ KCMBlueDevilAdapters::KCMBlueDevilAdapters(QWidget *parent, const QVariantList&)
     }
 
     {
-        m_trustDevice = new KPushButton(KIcon("security-high"), i18n("Trust Device"));
+        m_trustDevice = new KPushButton(KIcon("security-high"), i18n("Trust"));
         m_trustDevice->setEnabled(false);
         m_trustDevice->setCheckable(true);
-        m_renameAliasDevice = new KPushButton(KIcon("document-edit"), i18n("Rename Device"));
+        m_renameAliasDevice = new KPushButton(KIcon("document-edit"), i18n("Rename"));
         m_renameAliasDevice->setEnabled(false);
-        m_removeDevice = new KPushButton(KIcon("list-remove"), i18n("Remove Device"));
+        m_removeDevice = new KPushButton(KIcon("list-remove"), i18n("Remove"));
         m_removeDevice->setEnabled(false);
         m_addDevice = new KPushButton(KIcon("list-add"), i18n("Add Device..."));
 
@@ -501,11 +401,11 @@ void KCMBlueDevilAdapters::defaults()
 void KCMBlueDevilAdapters::save()
 {
     if (!m_isEnabled && m_enable->isChecked()) {
-        m_kded->loadModule("bluedevil");
+        systemCheck->kded()->loadModule("bluedevil");
     } else if (m_isEnabled && !m_enable->isChecked()) {
-        m_kded->unloadModule("bluedevil");
+        systemCheck->kded()->unloadModule("bluedevil");
     }
-    checkKDEDModuleLoaded();
+    m_isEnabled = systemCheck->checkKDEDModuleLoaded();
     updateInformationState();
 }
 
@@ -597,35 +497,6 @@ void KCMBlueDevilAdapters::adapterDevicesChanged(const QList<Device*> &devices)
 {
     Q_UNUSED(devices)
     fillRemoteDevicesModelInformation();
-}
-
-void KCMBlueDevilAdapters::fixNotDiscoverableAdapterError()
-{
-    m_notDiscoverableAdapterError->setVisible(false);
-    BlueDevil::Manager::self()->defaultAdapter()->setDiscoverable(true);
-    // No need to call to updateInformationState, since we are changing this property, it will be
-    // triggered automatically.
-}
-
-void KCMBlueDevilAdapters::fixDisabledNotificationsError()
-{
-    m_disabledNotificationsError->setVisible(false);
-
-    KConfig config("bluedevil.notifyrc", KConfig::NoGlobals);
-    config.addConfigSources(KGlobal::dirs()->findAllResources("data", "bluedevil/bluedevil.notifyrc"));
-
-    QStringList confList = config.groupList();
-    QRegExp rx("^Event/([^/]*)$");
-    confList = confList.filter(rx);
-
-    Q_FOREACH (const QString &group , confList) {
-        KConfigGroup cg(&config, group);
-        cg.writeEntry("Action", "Popup");
-    }
-
-    config.sync();
-
-    updateInformationState();
 }
 
 void KCMBlueDevilAdapters::generateNoDevicesMessage()
@@ -725,65 +596,20 @@ void KCMBlueDevilAdapters::fillRemoteDevicesModelInformation()
     }
 }
 
-void KCMBlueDevilAdapters::checkKDEDModuleLoaded()
-{
-    const QStringList res = m_kded->loadedModules();
-    bool moduleLoaded = false;
-    foreach (const QString &module, res) {
-        if (module == "bluedevil") {
-            moduleLoaded = true;
-            break;
-        }
-    }
-    m_enable->setChecked(moduleLoaded);
-    m_isEnabled = moduleLoaded;
-}
-
-bool KCMBlueDevilAdapters::checkNotificationsOK()
-{
-    KConfig config("bluedevil.notifyrc", KConfig::NoGlobals);
-    config.addConfigSources(KGlobal::dirs()->findAllResources("data", "bluedevil/bluedevil.notifyrc"));
-
-    QStringList confList = config.groupList();
-    QRegExp rx("^Event/([^/]*)$");
-    confList = confList.filter(rx);
-
-    Q_FOREACH (const QString &group , confList) {
-        KConfigGroup cg(&config, group);
-        const QString action = cg.readEntry("Action");
-        if (!action.contains("Popup")) {
-            return false;
-        }
-    }
-
-    return true;
-}
-
 void KCMBlueDevilAdapters::updateInformationState()
 {
-    m_noAdaptersError->setEnabled(true);
-    m_noAdaptersError->setVisible(false);
-    m_addDevice->setEnabled(true);
-    m_notDiscoverableAdapterError->setVisible(false);
-    m_disabledNotificationsError->setVisible(false);
+    systemCheck->updateInformationState();
+
+    m_enable->setChecked(m_isEnabled);
+    m_addDevice->setEnabled(false);
     m_devices->setEnabled(false);
     if (!m_isEnabled) {
-        m_noAdaptersError->setEnabled(false);
         m_addDevice->setEnabled(false);
         return;
     }
     BlueDevil::Adapter *const defaultAdapter = BlueDevil::Manager::self()->defaultAdapter();
-    if (!defaultAdapter) {
-        m_noAdaptersError->setVisible(true);
-        return;
+    if (defaultAdapter && defaultAdapter->isDiscoverable() && systemCheck->checkNotificationsOK()) {
+        m_addDevice->setEnabled(true);
+        m_devices->setEnabled(true);
     }
-    if (!defaultAdapter->isDiscoverable()) {
-        m_notDiscoverableAdapterError->setVisible(true);
-        return;
-    }
-    if (!checkNotificationsOK()) {
-        m_disabledNotificationsError->setVisible(true);
-        return;
-    }
-    m_devices->setEnabled(true);
 }

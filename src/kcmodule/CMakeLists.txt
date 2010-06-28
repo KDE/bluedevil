@@ -1,8 +1,11 @@
-set(kcm_bluedevildevices_PART_SRCS bluedevildevices.cpp kded.cpp)
-set(kcm_bluedeviladapters_PART_SRCS bluedeviladapters.cpp kded.cpp)
+set(kcm_bluedevildevices_PART_SRCS bluedevildevices.cpp systemcheck.cpp kded.cpp)
+set(kcm_bluedeviladapters_PART_SRCS bluedeviladapters.cpp systemcheck.cpp kded.cpp)
 
 kde4_add_plugin(kcm_bluedevildevices ${kcm_bluedevildevices_PART_SRCS})
 kde4_add_plugin(kcm_bluedeviladapters ${kcm_bluedeviladapters_PART_SRCS})
+
+qt4_automoc(${kcm_bluedevildevices}
+            ${kcm_bluedeviladapters})
 
 target_link_libraries(kcm_bluedevildevices ${KDE4_KIO_LIBS} ${KDE4_KNOTIFYCONFIG_LIBS} ${QT_QTGUI_LIBRARY} bluedevil)
 target_link_libraries(kcm_bluedeviladapters ${KDE4_KIO_LIBS} ${KDE4_KNOTIFYCONFIG_LIBS} ${QT_QTGUI_LIBRARY} bluedevil)
