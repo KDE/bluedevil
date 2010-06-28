@@ -544,11 +544,10 @@ void KCMBlueDevil::trustDevice()
 void KCMBlueDevil::renameAliasDevice()
 {
     Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
-    device->setAlias("Testing");
     KDialog *newAlias = new KDialog(this);
     QWidget *widget = new QWidget(newAlias);
     QVBoxLayout *layout = new QVBoxLayout;
-    layout->addWidget(new QLabel(i18n("Pick a new alias for the selected device. Left it blank to remove alias for this device."), widget));
+    layout->addWidget(new QLabel(i18n("Pick a new alias for %1").arg(device->name()), widget));
     KLineEdit *lineEdit = new KLineEdit(widget);
     lineEdit->setText(device->alias());
     lineEdit->selectAll();
