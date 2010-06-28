@@ -20,7 +20,8 @@
 
 #include "agentlistener.h"
 
-AgentListener::AgentListener(): QThread()
+AgentListener::AgentListener()
+    : QThread()
 {
 }
 

@@ -21,12 +21,16 @@
 #ifndef SERVICE_H
 #define SERVICE_H
 
-#include <QObject>
+#include <QtCore/QObject>
+#include <QtDBus/QtDBus>
+
 #include "openobex/server.h"
 
-class Service : public QObject
+class Service
+    : public QObject
 {
     Q_OBJECT
+
 public:
     Service();
     virtual ~Service();
@@ -34,7 +38,6 @@ public:
 public Q_SLOTS:
     void launchServer();
     void stopServer();
-    QString ping();
 
 private Q_SLOTS:
     void quit();

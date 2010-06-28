@@ -19,32 +19,33 @@
  ***************************************************************************/
 
 #include "agentlistenerworker.h"
-#include <QDBusConnection>
-#include <QDebug>
+
+#include <QtDBus/QDBusConnection>
+#include <QtCore/QDebug>
+
 #include <KProcess>
-#include <solid/control/bluetoothmanager.h>
+#include <bluedevil/bluedevil.h>
 
-AgentListenerWorker::AgentListenerWorker(QObject *parent) :  QDBusAbstractAdaptor(parent)
+#define AGENT_PATH "/blueDevil_agent"
+
+AgentListenerWorker::AgentListenerWorker(QObject *parent)
+    : QDBusAbstractAdaptor(parent)
 {
-    const QString agentPath = "/blueDevil_agent";
-
-    if(!QDBusConnection::systemBus().registerObject(agentPath, parent)){
+    if (!QDBusConnection::systemBus().registerObject(AGENT_PATH, parent)) {
         qDebug() << "The dbus object can't be registered";
         return;
     }
 
-    Solid::Control::BluetoothManager &man = Solid::Control::BluetoothManager::self();
-    m_adapter = new Solid::Control::BluetoothInterface(man.defaultInterface());
-    m_adapter->registerAgent(agentPath, "DisplayYesNo");
+    m_adapter = BlueDevil::Manager::self()->defaultAdapter();
+    m_adapter->registerAgent(AGENT_PATH, BlueDevil::Adapter::DisplayYesNo);
+
     qDebug() << "Agent registered";
 }
 
 void AgentListenerWorker::unregister()
 {
-    const QString agentPath = "/blueDevil_agent";
-
     qDebug() << "Unregistering object";
-    QDBusConnection::systemBus().unregisterObject(agentPath);
+    BlueDevil::Manager::self()->defaultAdapter()->unregisterAgent(AGENT_PATH);
 }
 
 void AgentListenerWorker::Release()
@@ -53,19 +54,18 @@ void AgentListenerWorker::Release()
     emit agentReleased();
 }
 
-void AgentListenerWorker::Authorize(QDBusObjectPath device, const QString& uuid, const QDBusMessage &msg)
+void AgentListenerWorker::Authorize(const QDBusObjectPath &device, const QString& uuid, const QDBusMessage &msg)
 {
     Q_UNUSED(uuid)
     qDebug() << "Authorize called";
 
-    Solid::Control::BluetoothRemoteDevice *remote = m_adapter->findBluetoothRemoteDeviceUBI(device.path());
+    BlueDevil::Device *remote = m_adapter->deviceForUBI(device.path());
 
     QStringList list;
     list.append(remote->name());
-    list.append(remote->icon());
     list.append(device.path());
 
-    int result = KProcess::execute("bluedevil-authorize",list);
+    int result = KProcess::execute("bluedevil-authorize", list);
     if (result == 0) {
         qDebug() << "Go on camarada!";
         return;
@@ -73,10 +73,10 @@ void AgentListenerWorker::Authorize(QDBusObjectPath device, const QString& uuid,
     sendBluezError(QString("Authorize"),msg);
 }
 
-QString AgentListenerWorker::RequestPinCode(QDBusObjectPath device, const QDBusMessage &msg)
+QString AgentListenerWorker::RequestPinCode(const QDBusObjectPath &device, const QDBusMessage &msg)
 {
     qDebug() << "AGENT-RequestPinCode " << device.path();
-    Solid::Control::BluetoothRemoteDevice *remote = m_adapter->findBluetoothRemoteDeviceUBI(device.path());
+    BlueDevil::Device *remote = m_adapter->deviceForUBI(device.path());
 
     QStringList list(remote->name());
 
@@ -95,29 +95,29 @@ QString AgentListenerWorker::RequestPinCode(QDBusObjectPath device, const QDBusM
     return QString();
 }
 
-quint32 AgentListenerWorker::RequestPasskey(QDBusObjectPath device, const QDBusMessage &msg)
+quint32 AgentListenerWorker::RequestPasskey(const QDBusObjectPath &device, const QDBusMessage &msg)
 {
     qDebug() << "AGENT-RequestPasskey " << device.path();
     QString ret = RequestPinCode(device, msg);
     return ret.toInt();
 }
 
-void AgentListenerWorker::DisplayPasskey(QDBusObjectPath device, quint32 passkey)
+void AgentListenerWorker::DisplayPasskey(const QDBusObjectPath &device, quint32 passkey)
 {
     qDebug() << "AGENT-DisplayPasskey " << device.path() << ", " << QString::number(passkey);
 }
 
-void AgentListenerWorker::RequestConfirmation(QDBusObjectPath device, quint32 passkey, const QDBusMessage &msg)
+void AgentListenerWorker::RequestConfirmation(const QDBusObjectPath &device, quint32 passkey, const QDBusMessage &msg)
 {
     qDebug() << "AGENT-RequestConfirmation " << device.path() << ", " << QString::number(passkey);
 
-    Solid::Control::BluetoothRemoteDevice *remote = m_adapter->findBluetoothRemoteDeviceUBI(device.path());
+    BlueDevil::Device *remote = m_adapter->deviceForUBI(device.path());
 
     QStringList list;
     list.append(remote->name());
     list.append(device.path());
 
-    int result = KProcess::execute("bluedevil-requestconfirmation",list);
+    int result = KProcess::execute("bluedevil-requestconfirmation", list);
     if (result == 0) {
         qDebug() << "Go on camarada!";
         return;

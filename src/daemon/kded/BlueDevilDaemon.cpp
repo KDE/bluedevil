@@ -19,15 +19,17 @@
  ***************************************************************************/
 
 #include "BlueDevilDaemon.h"
+#include "agentlistener.h"
+#include "bluedevil_service_interface.h"
 
 #include <kdemacros.h>
 #include <KDebug>
 #include <KAboutData>
 #include <KPluginFactory>
-#include <solid/control/bluetoothmanager.h>
-#include "agentlistener.h"
-#include "bluedevil_service_interface.h"
-#include <solid/control/bluetoothinterface.h>
+#include <QWidget>
+
+#include <bluedevil/bluedevilmanager.h>
+#include <bluedevil/bluedeviladapter.h>
 
 K_PLUGIN_FACTORY(BlueDevilFactory,
                  registerPlugin<BlueDevilDaemon>();)
@@ -35,23 +37,23 @@ K_EXPORT_PLUGIN(BlueDevilFactory("bluedevildaemon", "bluedevil"))
 
 struct BlueDevilDaemon::Private
 {
-    enum Status {Online = 0, Offline} status;
-    //Do not delete this :)
-    Solid::Control::BluetoothManager* man;
-    AgentListener *agentListener;
-    AgentListener *oldAgentListener;
-    Solid::Control::BluetoothInterface* adapter;
-    org::kde::BlueDevil::Service* service;
-    QString m_defaultAdapterName;
+    enum Status {
+        Online = 0,
+        Offline
+    } m_status;
+
+    AgentListener                *m_agentListener;
+    BlueDevil::Adapter           *m_adapter;
+    org::kde::BlueDevil::Service *m_service;
 };
 
 BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
-    : KDEDModule(parent), d(new Private)
+    : KDEDModule(parent)
+    , d(new Private)
 {
-    d->agentListener = 0;
-    d->oldAgentListener = 0;
-    d->adapter = 0;
-    d->service = 0;
+    d->m_agentListener = 0;
+    d->m_adapter = 0;
+    d->m_service = 0;
 
     KGlobal::locale()->insertCatalog("bluedevil");
 
@@ -71,16 +73,15 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     aboutData.addAuthor(ki18n("Eduardo Robles Elvira"), ki18n("Maintainer"), "edulix@gmail.com",
         "http://blog.edulix.es");
 
-    //Status = offline ATM
-    d->status = Private::Offline;
+    connect(BlueDevil::Manager::self(), SIGNAL(adapterAdded(Adapter*)),
+            this, SLOT(adapterAdded(Adapter*)));
+    connect(BlueDevil::Manager::self(), SIGNAL(adapterRemoved(Adapter*)),
+            this, SLOT(adapterRemoved(Adapter*)));
+    connect(BlueDevil::Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)),
+            this, SLOT(defaultAdapterChanged(Adapter*)));
 
-    d->man = &Solid::Control::BluetoothManager::self();
-
-    connect(d->man,SIGNAL(interfaceAdded(const QString&)),this,SLOT(adapterAdded(const QString&)));
-    connect(d->man,SIGNAL(interfaceRemoved(const QString&)),this,SLOT(adapterRemoved(const QString&)));
-    connect(d->man,SIGNAL(defaultInterfaceChanged(const QString&)),this,SLOT(defaultAdapterChanged(const QString&)));
-
-    if (!d->man->bluetoothInterfaces().isEmpty()) {
+    d->m_status = Private::Offline;
+    if (BlueDevil::Manager::self()->defaultAdapter()) {
         onlineMode();
     }
 }
@@ -92,70 +93,49 @@ BlueDevilDaemon::~BlueDevilDaemon()
 
 bool BlueDevilDaemon::serviceStarted()
 {
-    d->service = new org::kde::BlueDevil::Service("org.kde.BlueDevil.Service",
+    d->m_service = new org::kde::BlueDevil::Service("org.kde.BlueDevil.Service",
         "/Service", QDBusConnection::sessionBus(), this);
-
-    if ((QString)d->service->ping() == "pong") {
-        kDebug() << "org::kde::BlueDevil::Service is up and running!";
-        return true;
-    } else {
-        kDebug() << d->service->ping();
-        return false;
-    }
+    return d->m_service->isValid();
 }
 
 void BlueDevilDaemon::onlineMode()
 {
     kDebug();
-    if (d->status == Private::Online) {
+    if (d->m_status == Private::Online) {
         kDebug() << "Already in onlineMode";
         return;
     }
 
-    QString interface;
-    if (!d->man->defaultInterface().isEmpty()) {
-        kDebug() << "using default interface";
-        interface = d->man->defaultInterface();
-    } else if (!d->man->bluetoothInterfaces().isEmpty() &&
-        !d->man->bluetoothInterfaces().first().ubi().isEmpty()) {
-        kDebug() << "There's no default interface, using the first one we can grab";
-        interface = d->man->bluetoothInterfaces().first().ubi();
-    } else {
-        kDebug() << "No available interface";
+    d->m_agentListener = new AgentListener();
+    connect(d->m_agentListener, SIGNAL(agentReleased()), this, SLOT(agentReleased()));
+    d->m_agentListener->start();
+
+    d->m_adapter = BlueDevil::Manager::self()->defaultAdapter();
+    if (!serviceStarted()) {
         return;
     }
+    d->m_service->launchServer();
 
-    d->agentListener = new AgentListener();
-    connect(d->agentListener,SIGNAL(agentReleased()),this,SLOT(agentReleased()));
-    d->agentListener->start();
-
-    d->adapter = new Solid::Control::BluetoothInterface(interface);
-    if (!serviceStarted()) {
-      return;
-    }
-    d->service->launchServer();
-
-    d->status = Private::Online;
+    d->m_status = Private::Online;
 }
 
 void BlueDevilDaemon::offlineMode()
 {
-    if (d->status == Private::Offline) {
+    if (d->m_status == Private::Offline) {
         kDebug() << "Already in offlineMode";
         return;
     }
     kDebug() << "Offline mode";
 
-    connect(d->agentListener,SIGNAL(finished()),this,SLOT(agentThreadStopped()));
-    d->agentListener->quit();
-    d->oldAgentListener = d->agentListener;
+    connect(d->m_agentListener, SIGNAL(finished()), this, SLOT(agentThreadStopped()));
+    d->m_agentListener->quit();
 
-    d->status = Private::Offline;
-
+    d->m_status = Private::Offline;
     if (!serviceStarted()) {
-      return;
+        return;
     }
-    d->service->stopServer();
+
+    d->m_service->stopServer();
 }
 
 /*
@@ -165,54 +145,41 @@ void BlueDevilDaemon::offlineMode()
  */
 void BlueDevilDaemon::agentReleased()
 {
-    //If this code grows just one line, put it in a method
-    connect(d->agentListener,SIGNAL(finished()),this,SLOT(agentThreadStopped()));
-    d->agentListener->quit();
+    connect(d->m_agentListener,SIGNAL(finished()),this,SLOT(agentThreadStopped()));
+    d->m_agentListener->quit();
 }
 
 void BlueDevilDaemon::agentThreadStopped()
 {
-    d->oldAgentListener->deleteLater();
-    if (d->agentListener == d->oldAgentListener) {
-        d->agentListener = 0;
-    } else {
-        kDebug() <<  "Not removing the new agent listener, only the old one";
-    }
-    d->oldAgentListener = 0;
+    d->m_agentListener->deleteLater();
+    d->m_agentListener = 0;
 
     kDebug() << "agent listener deleted";
 }
 
-void BlueDevilDaemon::adapterAdded(const QString& adapterName)
+void BlueDevilDaemon::adapterAdded(BlueDevil::Adapter *adapter)
 {
-    kDebug() << adapterName;
-    if (!d->man->bluetoothInterfaces().isEmpty() && d->status == Private::Offline) {
-        d->m_defaultAdapterName = adapterName;
+    kDebug() << adapter->name();
+    if (d->m_status == Private::Offline) {
         onlineMode();
     }
 }
 
-void BlueDevilDaemon::adapterRemoved(const QString& adapterName)
+void BlueDevilDaemon::adapterRemoved(BlueDevil::Adapter *adapter)
 {
-    kDebug() << adapterName;
-    if (d->man->bluetoothInterfaces().isEmpty()) {
-        d->m_defaultAdapterName = QString();
+    kDebug() << adapter->name();
+    if (BlueDevil::Manager::self()->listAdapters().isEmpty()) {
         offlineMode();
     }
 }
 
-void BlueDevilDaemon::defaultAdapterChanged(const QString& adapterName)
+void BlueDevilDaemon::defaultAdapterChanged(BlueDevil::Adapter *adapter)
 {
-    kDebug() << adapterName << d->status;
-    //This should do the trick :)
-    if (d->m_defaultAdapterName == adapterName) {
-        kDebug() << "already online with that adapter";
-        return;
+    kDebug() << adapter->name();
+    if (d->m_adapter == adapter && d->m_status == Private::Online) {
+      kDebug() << "already online with that adapter";
+      return;
     }
-
-    if (d->status == Private::Online) {
-        kDebug() << "We are online, getting offline first";
-        offlineMode();
-    }
+    offlineMode();
     onlineMode();
 }

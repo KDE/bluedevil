@@ -19,11 +19,13 @@
  ***************************************************************************/
 
 #include "confirmmodechange.h"
+
+#include <QtGui/QApplication>
+
 #include <kcomponentdata.h>
 #include <kaboutdata.h>
 #include <kcmdlineargs.h>
-#include <solid/control/bluetoothmanager.h>
-#include <QApplication>
+#include <kglobal.h>
 
 static const KLocalizedString  description = ki18n("KDE Bluetooth System");
 

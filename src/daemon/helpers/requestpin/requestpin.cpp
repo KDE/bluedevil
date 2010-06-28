@@ -23,20 +23,20 @@
 
 #include <iostream>
 
-#include <QTimer>
+#include <QtCore/QDebug>
+#include <QtCore/QCoreApplication>
+#include <QtCore/QTimer>
 
 #include <KIcon>
 #include <knotification.h>
 #include <klocale.h>
 #include <kiconloader.h>
 #include <KDialog>
-#include <solid/control/bluetoothmanager.h>
 
-using namespace std;
 RequestPin::RequestPin() : QObject()
 {
     KNotification *notification = new KNotification("bluedevilRequestPin",
-                                                        KNotification::Persistent, this);
+                                                    KNotification::Persistent, this);
 
     notification->setText(i18nc(
         "Showed in a notification to announce that a PIN is needed to acomplish a pair action, %1 is the name of the bluetooth device",
@@ -63,14 +63,14 @@ RequestPin::RequestPin() : QObject()
 
 void RequestPin::introducePin()
 {
-    KIcon icon = KIcon("preferences-system-bluetooth");
+    KIcon icon("preferences-system-bluetooth");
 
     Ui::dialogWidget *dialogWidget = new Ui::dialogWidget;
     QWidget *mainWidget = new QWidget();
     dialogWidget->setupUi(mainWidget);
     dialogWidget->descLabel->setText(i18nc(
         "Showed in a dialog which ask to introduce a PIN that will be used tu pair a bluetooth device, %1 is the name of the bluetooth device",
-        "In order to pair this computer with %1 you have to enter a PIN - please do so below.",
+        "In order to pair this computer with %1 you've to enter a PIN, do it below please",
         qApp->arguments()[1])
     );
     dialogWidget->pixmap->setPixmap(icon.pixmap(64,64));
@@ -88,13 +88,11 @@ void RequestPin::introducePin()
     dialog->setMinimumHeight(150);
     dialog->setMaximumWidth(300);
     dialog->setMaximumHeight(150);
-    int response = dialog->exec();
 
-    if(response == QDialog::Accepted)
-    {
-        cout << dialogWidget->pin->text().toLatin1().data();
+    if (dialog->exec() == KDialog::Accepted) {
         qApp->exit(0);
     }
+
     delete dialog;
     qApp->exit(1);
 }

@@ -21,40 +21,42 @@
 #ifndef AUTHORIZE_H
 #define AUTHORIZE_H
 
-#include <QObject>
+#include <QtCore/QObject>
 
 /**
  * @short Small class which send a KNotificaton to know if the Bluetooth device is authorized or not
  * A popup KNotification is send with 3 actions, trust accept and reject.
- * Trust set the remote device as trusted (using solid remote device) and quits with 0
+ * Trust set the remote device as trusted (using libbluedevil remote device) and quits with 0
  * Authorize quits the app with 0 (which means authorized).
  * Deny quits the app with 1 (which means denied)
  * @internal
  */
-class Authorize : public QObject
+class Authorize
+    : public QObject
 {
     Q_OBJECT
-    public:
-        /**
-         * Launch the KNotification which the respective actions, also makes the needed connection
-         * between those actions and the slots
-         */
-        Authorize();
 
-    private slots:
-        /**
-         * Mark the remote device as trust and quit the application as success
-         */
-        void trust();
+public:
+    /**
+     * Launch the KNotification which the respective actions, also makes the needed connection
+     * between those actions and the slots
+     */
+    Authorize();
 
-        /**
-         * Quits the application as success
-         */
-        void authorize();
+private Q_SLOTS:
+    /**
+     * Mark the remote device as trust and quit the application as success
+     */
+    void trust();
 
-        /**
-         * Quits the application as error
-         */
-        void deny();
+    /**
+     * Quits the application as success
+     */
+    void authorize();
+
+    /**
+     * Quits the application as error
+     */
+    void deny();
 };
 #endif

@@ -19,29 +19,30 @@
  ***************************************************************************/
 
 #include "authorize.h"
-#include <knotification.h>
-#include <klocale.h>
 
-#include <QDebug>
-#include <QCoreApplication>
-#include <QTimer>
+#include <QtCore/QDebug>
+#include <QtCore/QCoreApplication>
+#include <QtCore/QTimer>
 
 #include <KIcon>
+#include <klocale.h>
 #include <kiconloader.h>
-#include <solid/control/bluetoothmanager.h>
+#include <knotification.h>
 
-using namespace std;
-Authorize::Authorize() : QObject()
+#include <bluedevil/bluedevil.h>
+
+Authorize::Authorize()
+    : QObject()
 {
     KNotification *notification = new KNotification("bluedevilAuthorize",
-                                                        KNotification::Persistent,this);
+                                                    KNotification::Persistent, this);
 
     notification->setText(i18nc(
         "Show a notification asking for authorize or deny access to this computer from Bluetooth the %1 is the name of the bluetooth device",
-        "%1 is requesting access to this computer",qApp->arguments()[1])
+        "%1 is requesting access to this computer", qApp->arguments()[1])
     );
-    QStringList actions;
 
+    QStringList actions;
     actions.append(i18nc("Button to trust a bluetooth remote device and authorize it to connect", "Trust"));
     actions.append(i18nc("Button to authorize a bluetooth remote device to connect ", "Authorize"));
     actions.append(i18nc("Deny access to a remote bluetooth device", "Deny"));
@@ -54,9 +55,9 @@ Authorize::Authorize() : QObject()
     connect(notification, SIGNAL(closed()), this, SLOT(deny()));
     connect(notification, SIGNAL(ignored()), this, SLOT(deny()));
 
-    notification->setPixmap(KIcon(qApp->arguments()[2]).pixmap(52,52));
+    notification->setPixmap(KIcon("preferences-system-bluetooth").pixmap(42, 42));
 
-    //We're using persistent notifications so we have to use our own timeout (10s)
+    // We're using persistent notifications so we have to use our own timeout (10s)
     QTimer::singleShot(10000, notification, SLOT(close()));
     notification->sendEvent();
 }
@@ -64,10 +65,7 @@ Authorize::Authorize() : QObject()
 void Authorize::trust()
 {
     qDebug() << "Trusted";
-    Solid::Control::BluetoothManager &man = Solid::Control::BluetoothManager::self();
-    Solid::Control::BluetoothInterface *adapter = new Solid::Control::BluetoothInterface(man.defaultInterface());
-    Solid::Control::BluetoothRemoteDevice *remoteDevice = adapter->findBluetoothRemoteDeviceUBI(qApp->arguments().last());
-    remoteDevice->setTrusted(true);
+    BlueDevil::Manager::self()->defaultAdapter()->deviceForUBI(qApp->arguments()[2])->setTrusted(true);
     qApp->exit(0);
 }
 

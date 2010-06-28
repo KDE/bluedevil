@@ -22,19 +22,18 @@
 #include "serviceadaptor.h"
 #include "openobex/serversession.h"
 
-#include <solid/control/bluetoothmanager.h>
-#include <solid/control/bluetoothinterface.h>
 #include <KDebug>
+#include <bluedevil/bluedevilmanager.h>
+#include <bluedevil/bluedeviladapter.h>
 
 #include <QtCore/QCoreApplication>
 
 Service::Service()
 {
-    kDebug(4567);
     new ServiceAdaptor(this);
     QDBusConnection dbus = QDBusConnection::sessionBus();
-    dbus.registerObject("/Service", this);
     dbus.registerService("org.kde.BlueDevil.Service");
+    dbus.registerObject("/Service", this);
     m_server = 0;
 }
 
@@ -51,40 +50,30 @@ void Service::launchServer()
     if (m_server) {
         return;
     }
-
-    Solid::Control::BluetoothInterface *adapter = new Solid::Control::BluetoothInterface(
-        Solid::Control::BluetoothManager::self().defaultInterface());
-    m_server = new OpenObex::Server(adapter->address());
+    m_server = new OpenObex::Server(BlueDevil::Manager::self()->defaultAdapter()->address());
     kDebug() << m_server;
 }
 
 void Service::stopServer()
 {
-  kDebug() << m_server;
-  
-  if (!m_server) {
-    return;
-  }
-  
-  m_server->deleteLater();
-  m_server = 0;
-  
-  // After 10 seconds, if server is not restarted, terminate the helper
-  QTimer::singleShot(10000, this, SLOT(quit()));
+    kDebug() << m_server;
+    
+    if (!m_server) {
+        return;
+    }
+
+    m_server->deleteLater();
+    m_server = 0;
+
+    // After 10 seconds, if server is not restarted, terminate the helper
+    QTimer::singleShot(10000, this, SLOT(quit()));
 }
 
 void Service::quit()
 {
-  kDebug();
-  // Only quit if no server is running
-  if (!m_server) {
-    deleteLater();
-  }
+    kDebug();
+    // Only quit if no server is running
+    if (!m_server) {
+        deleteLater();
+    }
 }
-
-
-QString Service::ping()
-{
-    return "pong";
-}
-

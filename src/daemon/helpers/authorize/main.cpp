@@ -17,15 +17,18 @@
  *   Free Software Foundation, Inc.,                                       *
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA            *
  ***************************************************************************/
+
 #include "authorize.h"
-#include <kcomponentdata.h>
+
+#include <QtGui/QApplication>
+
+#include <KGlobal>
 #include <kaboutdata.h>
 #include <kcmdlineargs.h>
-#include <solid/control/bluetoothmanager.h>
-#include <QApplication>
-#include <KGlobal>
+#include <kcomponentdata.h>
+#include <kglobal.h>
 
-static const KLocalizedString  description = ki18n("KDE Bluetooth System");
+static const KLocalizedString description = ki18n("KDE Bluetooth System");
 
 int main(int argc, char *argv[])
 {

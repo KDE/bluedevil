@@ -30,9 +30,8 @@ dbus_add_activation_service(org.kde.BlueDevil.Service.service.in)
 target_link_libraries(bluedevil-helper
     ${KDE4_KIO_LIBRARY}
     ${KDE4_KDEUI_LIBS}
-    ${KDE4_SOLID_LIBS}
-    ${KDE4WORKSPACE_SOLIDCONTROL_LIBRARY}
+    bluedevil
 )
 
-install(TARGETS bluedevil-helper ${INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS bluedevil-helper DESTINATION ${INSTALL_TARGETS_DEFAULT_ARGS})
 

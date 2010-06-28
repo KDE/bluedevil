@@ -19,15 +19,16 @@
  ***************************************************************************/
 
 #include "service.h"
+#include <QDebug>
+#include <KComponentData>
 #include <KCmdLineArgs>
-#include <solid/control/bluetoothmanager.h>
 #include <KApplication>
 #include <KAboutData>
 
 int main(int argc, char *argv[])
 {
     KAboutData aboutData("bluedevil", 0, ki18n("BlueDevil"), "0.1", ki18n("Bluedevil helper"),
-        KAboutData::License_GPL, ki18n("(c) 2010, Artesanos del Software"));
+                         KAboutData::License_GPL, ki18n("(c) 2010, Artesanos del Software"));
 
     aboutData.addAuthor(ki18n("Alex Fiestas"), ki18n("Developer"), "alex@eyeos.org",
         "http://www.afiestas.org/");

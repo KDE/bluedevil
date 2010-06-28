@@ -21,6 +21,8 @@
 #include "openobex/filetransferjob.h"
 #include "openobex/serversession.h"
 
+#include <bluedevil/bluedevil.h>
+
 #include <QtCore/QTimer>
 #include <QtDBus/QDBusConnection>
 #include <QtDBus/QDBusInterface>
@@ -31,20 +33,21 @@
 
 using namespace OpenObex;
 
-FileTransferJob::FileTransferJob(OpenObex::ServerSession *serverSession,
-    const KUrl &url, qulonglong size) : KJob(serverSession)
+FileTransferJob::FileTransferJob(OpenObex::ServerSession *serverSession, const KUrl &url,
+                                 qulonglong size)
+    : KJob(serverSession)
+    , m_serverSession(serverSession)
+    , m_totalFileSize(size)
+    , m_url(url)
+    , m_canFinish(false)
+    , m_transferCompleted(false)
 {
     Q_ASSERT(serverSession != 0);
 
     connect(serverSession, SIGNAL(customSaveUrl(QString)), SLOT(setCustomSaveUrl(QString)));
     connect(serverSession->dbusServerSession(), SIGNAL(Cancelled()), SLOT(Cancelled()));
     connect(serverSession->dbusServerSession(), SIGNAL(Disconnected()), SLOT(Disconnected()));
-    m_transferCompleted = false;
-    m_canFinish = false;
-    m_serverSession = serverSession;
-    m_url = url;
-    m_customSaveUrl = QString();
-    m_totalFileSize = size;
+
     setCapabilities(Killable);
 
     kDebug() << "url" << m_url;
@@ -93,7 +96,7 @@ void FileTransferJob::reject()
 
 void FileTransferJob::receiveFiles()
 {
-    emit description(this, "Receiving file over bluetooth", QPair<QString, QString>("From", m_bluetoothDevice.name()), QPair<QString, QString>("To", m_url.url()));
+    emit description(this, "Receiving file over bluetooth", QPair<QString, QString>("From", m_serverSession->device()->name()), QPair<QString, QString>("To", m_url.url()));
 
     org::openobex::ServerSession *serverSession = m_serverSession->dbusServerSession();
     connect(serverSession, SIGNAL(TransferProgress(qulonglong)),
@@ -132,7 +135,7 @@ void FileTransferJob::setCustomSaveUrl(const QString& customSaveUrl)
   kDebug() << "m_customSaveUrl" << m_customSaveUrl;
   m_customSaveUrl = customSaveUrl;
 
-  emit description(this, "Receiving file over bluetooth", QPair<QString, QString>("From", m_bluetoothDevice.name()), QPair<QString, QString>("To", m_customSaveUrl));
+  emit description(this, "Receiving file over bluetooth", QPair<QString, QString>("From", m_serverSession->device()->name()), QPair<QString, QString>("To", m_customSaveUrl));
 }
 
 
@@ -175,12 +178,12 @@ bool FileTransferJob::doKill()
 
 void OpenObex::FileTransferJob::Cancelled()
 {
-  kDebug();
-  kill();
+    kDebug();
+    kill();
 }
 
 void OpenObex::FileTransferJob::Disconnected()
 {
-  kDebug();
-  kill();
+    kDebug();
+    kill();
 }

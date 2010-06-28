@@ -21,7 +21,14 @@
 #include "serversession.h"
 #include "filetransferjob.h"
 
+#include <bluedevil/bluedevil.h>
+
+#include <QtDBus>
+#include <QDesktopServices>
+
+#include <KGlobal>
 #include <KConfig>
+#include <KConfigGroup>
 #include <KDebug>
 #include <KLocale>
 #include <KFileDialog>
@@ -42,9 +49,7 @@ ServerSession::ServerSession(const QString& path, const QString& bluetoothAddres
     m_deleteLater = false;
     m_doNotDelete = false;
 
-    Solid::Control::BluetoothManager &bluetoothManager = Solid::Control::BluetoothManager::self();
-    Solid::Control::BluetoothInterface* bluetoothInterface = new Solid::Control::BluetoothInterface(bluetoothManager.defaultInterface());
-    m_bluetoothDevice = bluetoothInterface->findBluetoothRemoteDeviceAddr(bluetoothAddress);
+    m_bluetoothDevice = BlueDevil::Manager::self()->defaultAdapter()->deviceForAddress(bluetoothAddress);
     QDBusConnection* dbus = new QDBusConnection("dbus");
     QDBusConnection dbusConnection = dbus->connectToBus(QDBusConnection::SessionBus, "dbus");
     m_dbusServerSession = new org::openobex::ServerSession("org.openobex", path, dbusConnection,
@@ -92,6 +97,11 @@ org::openobex::ServerSession* ServerSession::dbusServerSession()
     return m_dbusServerSession;
 }
 
+BlueDevil::Device *ServerSession::device()
+{
+    return m_bluetoothDevice;
+}
+
 void ServerSession::slotTransferStarted(const QString& filename, const QString& localPath,
     qulonglong totalBytes)
 {
@@ -109,12 +119,12 @@ void ServerSession::slotTransferStarted(const QString& filename, const QString& 
 
     m_notification->setText(i18nc(
         "Show a notification asking for authorize or deny an incoming file transfer to this computer from a Bluetooth device.",
-        "%1 is sending you the file %2", m_bluetoothDevice.name(), filename));
+        "%1 is sending you the file %2", m_bluetoothDevice->name(), filename));
     QStringList actions;
 
     actions.append(i18nc("Deny the incoming file transfer", "Cancel"));
     actions.append(i18nc("Button to accept the incoming file transfer and download it in the default download directory", "Accept"));
-    actions.append(i18nc("Button to accept the incoming file transfer and show a SaveAs.. dialog that will let the user choose where will the file be downloaded to", "Save as..."));
+    actions.append(i18nc("Button to accept the incoming file transfer and show a SaveAs.. dialog that will let the user choose where will the file be downloaded to", "Save as.."));
 
     m_notification->setActions(actions);
 
