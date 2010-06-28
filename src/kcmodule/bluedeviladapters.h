@@ -17,8 +17,8 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef _BLUEDEVILDEVICES_H
-#define _BLUEDEVILDEVICES_H
+#ifndef _BLUEDEVILADAPTERS_H
+#define _BLUEDEVILADAPTERS_H
 
 #include "kded.h"
 
@@ -27,7 +27,7 @@
 #include <kcmodule.h>
 
 class ErrorWidget;
-class BluetoothDevicesModel;
+class BluetoothAdaptersModel;
 
 class QListView;
 class QCheckBox;
@@ -42,14 +42,14 @@ namespace BlueDevil {
 typedef BlueDevil::Adapter Adapter;
 typedef BlueDevil::Device Device;
 
-class KCMBlueDevilDevices
+class KCMBlueDevilAdapters
     : public KCModule
 {
     Q_OBJECT
 
 public:
-    KCMBlueDevilDevices(QWidget *parent, const QVariantList&);
-    virtual ~KCMBlueDevilDevices();
+    KCMBlueDevilAdapters(QWidget *parent, const QVariantList&);
+    virtual ~KCMBlueDevilAdapters();
 
     virtual void defaults();
     virtual void save();
@@ -78,19 +78,19 @@ private:
     bool checkNotificationsOK();
 
 private:
-    QCheckBox             *m_enable;
-    KPushButton           *m_trustDevice;
-    KPushButton           *m_renameAliasDevice;
-    KPushButton           *m_addDevice;
-    KPushButton           *m_removeDevice;
-    bool                   m_isEnabled;
-    ErrorWidget           *m_noAdaptersError;
-    ErrorWidget           *m_notDiscoverableAdapterError;
-    ErrorWidget           *m_disabledNotificationsError;
-    BluetoothDevicesModel *m_devicesModel;
-    QListView             *m_devices;
-    QWidget               *m_noDevicesMessage;
-    KDED                  *m_kded;
+    QCheckBox              *m_enable;
+    KPushButton            *m_trustDevice;
+    KPushButton            *m_renameAliasDevice;
+    KPushButton            *m_addDevice;
+    KPushButton            *m_removeDevice;
+    bool                    m_isEnabled;
+    ErrorWidget            *m_noAdaptersError;
+    ErrorWidget            *m_notDiscoverableAdapterError;
+    ErrorWidget            *m_disabledNotificationsError;
+    BluetoothAdaptersModel *m_devicesModel;
+    QListView              *m_devices;
+    QWidget                *m_noDevicesMessage;
+    KDED                   *m_kded;
 };
 
 #endif

@@ -1,16 +1,16 @@
 [Desktop Entry]
-Exec=kcmshell4 bluedevildevices
-Icon=input-mouse
+Exec=kcmshell4 bluedeviladapters
+Icon=audio-card
 Type=Service
 X-KDE-ServiceTypes=KCModule
 
-X-KDE-Library=kcm_bluedevildevices
+X-KDE-Library=kcm_bluedeviladapters
 X-KDE-ParentApp=kcontrol
 
 X-KDE-System-Settings-Parent-Category=bluetooth
 X-KDE-Weight=50
 
-Name=Devices
+Name=Adapters
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
 
