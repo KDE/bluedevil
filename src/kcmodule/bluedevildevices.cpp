@@ -448,12 +448,12 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     }
 
     {
-        m_trustDevice = new KPushButton(KIcon("security-high"), i18n("Trust Device"));
+        m_trustDevice = new KPushButton(KIcon("security-high"), i18n("Trust"));
         m_trustDevice->setEnabled(false);
         m_trustDevice->setCheckable(true);
-        m_renameAliasDevice = new KPushButton(KIcon("document-edit"), i18n("Rename Device"));
+        m_renameAliasDevice = new KPushButton(KIcon("document-edit"), i18n("Rename"));
         m_renameAliasDevice->setEnabled(false);
-        m_removeDevice = new KPushButton(KIcon("list-remove"), i18n("Remove Device"));
+        m_removeDevice = new KPushButton(KIcon("list-remove"), i18n("Remove"));
         m_removeDevice->setEnabled(false);
         m_addDevice = new KPushButton(KIcon("list-add"), i18n("Add Device..."));
 
