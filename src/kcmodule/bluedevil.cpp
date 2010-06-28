@@ -669,6 +669,7 @@ void KCMBlueDevil::fillRemoteDevicesModelInformation()
         m_noDevicesMessage->setVisible(true);
     } else if (m_devices->viewport() == m_noDevicesMessage) {
         QWidget *viewport = new QWidget(m_devices);
+        viewport->setMouseTracking(true);
         viewport->setBackgroundRole(QPalette::Base);
         viewport->setAutoFillBackground(true);
         m_devices->setViewport(viewport);
