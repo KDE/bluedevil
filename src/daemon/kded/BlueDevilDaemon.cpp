@@ -175,7 +175,6 @@ void BlueDevilDaemon::adapterRemoved(BlueDevil::Adapter *adapter)
 
 void BlueDevilDaemon::defaultAdapterChanged(BlueDevil::Adapter *adapter)
 {
-    kDebug() << adapter->name();
     if (d->m_adapter == adapter && d->m_status == Private::Online) {
       kDebug() << "already online with that adapter";
       return;
