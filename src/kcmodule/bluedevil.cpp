@@ -334,9 +334,7 @@ void BluetoothDevicesDelegate::paint(QPainter *painter, const QStyleOptionViewIt
 
     // Draw alias and device type
     {
-        const QModelIndex nameIndex = index.model()->index(index.row(), 0);
-        const QModelIndex aliasIndex = index.model()->index(index.row(), 0);
-        const QModelIndex deviceTypeIndex = index.model()->index(index.row(), 0);
+        const QModelIndex idx = index.model()->index(index.row(), 0);
         QRect r = option.rect;
         r.setTop(r.top() + 10);
         r.setBottom(r.bottom() - 10);
@@ -345,23 +343,15 @@ void BluetoothDevicesDelegate::paint(QPainter *painter, const QStyleOptionViewIt
         f.setBold(true);
         painter->save();
         painter->setFont(f);
-        const QString name = nameIndex.data(BluetoothDevicesModel::NameModelRole).toString();
-        const QString alias = aliasIndex.data(BluetoothDevicesModel::AliasModelRole).toString();
+        const QString name = idx.data(BluetoothDevicesModel::NameModelRole).toString();
+        const QString alias = idx.data(BluetoothDevicesModel::AliasModelRole).toString();
         if (name == alias) {
             painter->drawText(r, Qt::AlignLeft | Qt::AlignTop, name);
         } else {
             painter->drawText(r, Qt::AlignLeft | Qt::AlignTop, QString("%1 (%2)").arg(alias).arg(name));
         }
         painter->restore();
-        painter->drawText(r, Qt::AlignLeft | Qt::AlignBottom, deviceTypeIndex.data(BluetoothDevicesModel::DeviceTypeModelRole).toString());
-    }
-
-    // Draw last connection
-    {
-        QRect r = option.rect;
-        r.setTop(r.top() + 5);
-        r.setRight(r.right() - 5);
-        painter->drawText(r, Qt::AlignRight | Qt::AlignTop, "Last Connection: Yesterday");
+        painter->drawText(r, Qt::AlignLeft | Qt::AlignBottom, idx.data(BluetoothDevicesModel::DeviceTypeModelRole).toString());
     }
 
     // Draw state
@@ -369,7 +359,7 @@ void BluetoothDevicesDelegate::paint(QPainter *painter, const QStyleOptionViewIt
         Device *const device = static_cast<Device*>(index.data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
 
         QRect r = option.rect;
-        r.setTop(r.bottom() - 5 - 22);
+        r.setTop(r.top() + r.height() / 2 - 11);
         r.setLeft(r.right() - 5 - 22);
         r.setSize(QSize(22, 22));
 
@@ -679,6 +669,56 @@ void KCMBlueDevil::fillRemoteDevicesModelInformation()
     Q_FOREACH (Device *const device, deviceList) {
         QModelIndex index = m_devicesModel->index(i, 0);
         m_devicesModel->setData(index, KIcon(device->icon()).pixmap(48, 48), BluetoothDevicesModel::IconModelRole);
+        QString deviceType;
+        const quint32 type = BlueDevil::classToType(device->deviceClass());
+        switch (type) {
+            case BlueDevil::BLUETOOTH_TYPE_ANY:
+                deviceType = i18n("Unknown");
+                break;
+            case BlueDevil::BLUETOOTH_TYPE_PHONE:
+                deviceType = i18n("Phone");
+                break;
+            case BlueDevil::BLUETOOTH_TYPE_MODEM:
+                deviceType = i18n("Modem");
+                break;
+            case BlueDevil::BLUETOOTH_TYPE_COMPUTER:
+                deviceType = i18n("Computer");
+                break;
+            case BlueDevil::BLUETOOTH_TYPE_NETWORK:
+                deviceType = i18n("Network");
+                break;
+            case BlueDevil::BLUETOOTH_TYPE_HEADSET:
+                deviceType = i18n("Headset");
+                break;
+            case BlueDevil::BLUETOOTH_TYPE_HEADPHONES:
+                deviceType = i18n("Headphones");
+                break;
+            case BlueDevil::BLUETOOTH_TYPE_OTHER_AUDIO:
+                deviceType = i18n("Audio");
+                break;
+            case BlueDevil::BLUETOOTH_TYPE_KEYBOARD:
+                deviceType = i18n("Keyboard");
+                break;
+            case BlueDevil::BLUETOOTH_TYPE_MOUSE:
+                deviceType = i18n("Mouse");
+                break;
+            case BlueDevil::BLUETOOTH_TYPE_CAMERA:
+                deviceType = i18n("Camera");
+                break;
+            case BlueDevil::BLUETOOTH_TYPE_PRINTER:
+                deviceType = i18n("Printer");
+                break;
+            case BlueDevil::BLUETOOTH_TYPE_JOYPAD:
+                deviceType = i18n("Joypad");
+                break;
+            case BlueDevil::BLUETOOTH_TYPE_TABLET:
+                deviceType = i18n("Tablet");
+                break;
+            default:
+                deviceType = i18n("Unknown");
+                break;
+        }
+        m_devicesModel->setData(index, i18n("Type: %1").arg(deviceType), BluetoothDevicesModel::DeviceTypeModelRole);
         m_devicesModel->setData(index, QVariant::fromValue<void*>(device), BluetoothDevicesModel::DeviceModelRole);
         ++i;
     }
