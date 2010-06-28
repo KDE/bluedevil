@@ -1,6 +1,7 @@
 /*
     Implementation of the client side of the OBEX FTP protocol.
-    Copyright (c) 2010 Eduardo Robles Elvira <edulix@gmail.com>
+    Copyright (C) 2010 Eduardo Robles Elvira <edulix@gmail.com>
+    Copyright (C) 2010 UFO Coders <info@ufocoders.com>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Library General Public

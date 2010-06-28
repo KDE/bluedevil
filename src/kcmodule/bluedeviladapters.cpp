@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2010 Rafael Fernández López <ereslibre@kde.org>
+ * Copyright (C) 2010 UFO Coders <info@ufocoders.com>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public
