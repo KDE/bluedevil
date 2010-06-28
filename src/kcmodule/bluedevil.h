@@ -60,6 +60,7 @@ private Q_SLOTS:
     void trustDevice();
     void renameAliasDevice();
     void removeDevice();
+    void launchWizard();
 
     void defaultAdapterChanged(Adapter *adapter);
     void adapterDiscoverableChanged();
@@ -71,6 +72,7 @@ private Q_SLOTS:
     void updateInformationState();
 
 private:
+    void generateNoDevicesMessage();
     void fillRemoteDevicesModelInformation();
     void checkKDEDModuleLoaded();
     bool checkNotificationsOK();
@@ -87,6 +89,7 @@ private:
     ErrorWidget           *m_disabledNotificationsError;
     BluetoothDevicesModel *m_devicesModel;
     QListView             *m_devices;
+    QWidget               *m_noDevicesMessage;
     KDED                  *m_kded;
 };
 

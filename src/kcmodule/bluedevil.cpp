@@ -34,6 +34,7 @@
 
 #include <kicon.h>
 #include <kdialog.h>
+#include <kprocess.h>
 #include <klineedit.h>
 #include <kaboutdata.h>
 #include <kmessagebox.h>
@@ -413,6 +414,7 @@ KCMBlueDevil::KCMBlueDevil(QWidget *parent, const QVariantList&)
     ab->addAuthor(ki18n("Rafael Fernández López"), KLocalizedString(), "ereslibre@kde.org");
     setAboutData(ab);
 
+    generateNoDevicesMessage();
     checkKDEDModuleLoaded();
 
     QVBoxLayout *layout = new QVBoxLayout;
@@ -467,6 +469,7 @@ KCMBlueDevil::KCMBlueDevil(QWidget *parent, const QVariantList&)
         connect(m_trustDevice, SIGNAL(clicked()), this, SLOT(trustDevice()));
         connect(m_renameAliasDevice, SIGNAL(clicked()), this, SLOT(renameAliasDevice()));
         connect(m_removeDevice, SIGNAL(clicked()), this, SLOT(removeDevice()));
+        connect(m_addDevice, SIGNAL(clicked()), this, SLOT(launchWizard()));
 
         QHBoxLayout *hLayout = new QHBoxLayout;
         hLayout->addWidget(m_trustDevice);
@@ -575,6 +578,13 @@ void KCMBlueDevil::removeDevice()
     }
 }
 
+void KCMBlueDevil::launchWizard()
+{
+    KProcess wizard;
+    wizard.setProgram("bluedevil-wizard");
+    wizard.startDetached();
+}
+
 void KCMBlueDevil::defaultAdapterChanged(Adapter *adapter)
 {
     if (adapter) {
@@ -627,6 +637,24 @@ void KCMBlueDevil::fixDisabledNotificationsError()
     updateInformationState();
 }
 
+void KCMBlueDevil::generateNoDevicesMessage()
+{
+    QGridLayout *layout = new QGridLayout;
+    m_noDevicesMessage = new QWidget(this);
+    QLabel *label = new QLabel(m_noDevicesMessage);
+    label->setPixmap(KIcon("dialog-information").pixmap(128, 128));
+    layout->addWidget(label, 0, 1, Qt::AlignHCenter);
+    layout->addWidget(new QLabel("No remote devices have been added"), 1, 1, Qt::AlignHCenter);
+    KPushButton *const addDevice = new KPushButton(KIcon("list-add"), "Click here to add a remote device");
+    connect(addDevice, SIGNAL(clicked()), this, SLOT(launchWizard()));
+    layout->addWidget(addDevice, 2, 1, Qt::AlignHCenter);
+    layout->setRowStretch(3, 1);
+    layout->setColumnStretch(0, 1);
+    layout->setColumnStretch(2, 1);
+    m_noDevicesMessage->setLayout(layout);
+    m_noDevicesMessage->setVisible(false);
+}
+
 void KCMBlueDevil::fillRemoteDevicesModelInformation()
 {
     m_devicesModel->removeRows(0, m_devicesModel->rowCount());
@@ -635,6 +663,13 @@ void KCMBlueDevil::fillRemoteDevicesModelInformation()
     }
     Adapter *defaultAdapter = BlueDevil::Manager::self()->defaultAdapter();
     const QList<Device*> deviceList = defaultAdapter->devices();
+    if (deviceList.isEmpty()) {
+        generateNoDevicesMessage();
+        m_devices->setViewport(m_noDevicesMessage);
+        m_noDevicesMessage->setVisible(true);
+    } else if (m_devices->viewport() == m_noDevicesMessage) {
+        m_devices->setViewport(0);
+    }
     m_devicesModel->insertRows(0, deviceList.count());
     int i = 0;
     Q_FOREACH (Device *const device, deviceList) {
