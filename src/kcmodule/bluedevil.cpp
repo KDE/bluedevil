@@ -36,6 +36,7 @@
 #include <kdialog.h>
 #include <klineedit.h>
 #include <kaboutdata.h>
+#include <kmessagebox.h>
 #include <kiconloader.h>
 #include <kpushbutton.h>
 #include <kcolorscheme.h>
@@ -568,7 +569,10 @@ void KCMBlueDevil::renameAliasDevice()
 void KCMBlueDevil::removeDevice()
 {
     Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
-    BlueDevil::Manager::self()->defaultAdapter()->removeDevice(device);
+    if (KMessageBox::questionYesNo(this, i18n("Are you sure that you want to remove device \"%1\" from the list of known devices?").arg(device->alias()),
+                                   i18n("Device removal")) == KMessageBox::Yes) {
+        BlueDevil::Manager::self()->defaultAdapter()->removeDevice(device);
+    }
 }
 
 void KCMBlueDevil::defaultAdapterChanged(Adapter *adapter)
