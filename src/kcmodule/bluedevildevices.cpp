@@ -48,8 +48,6 @@
 K_PLUGIN_FACTORY(BlueDevilFactory, registerPlugin<KCMBlueDevilDevices>();)
 K_EXPORT_PLUGIN(BlueDevilFactory("bluedevildevices"))
 
-K_GLOBAL_STATIC(SystemCheck, systemCheck)
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class BluetoothDevicesModel
@@ -316,6 +314,7 @@ QSize BluetoothDevicesDelegate::sizeHint(const QStyleOptionViewItem &option, con
 KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     : KCModule(BlueDevilFactory::componentData(), parent)
     , m_enable(new QCheckBox(i18n("Enable Bluetooth"), this))
+    , m_systemCheck(new SystemCheck(this))
 {
     KAboutData* ab = new KAboutData(
         "kcmbluedevildevices", 0, ki18n("BlueDevil Devices"), "1.0",
@@ -325,12 +324,15 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     ab->addAuthor(ki18n("Rafael Fernández López"), ki18n("Developer and Maintainer"), "ereslibre@kde.org");
     setAboutData(ab);
 
+    connect(m_systemCheck, SIGNAL(updateInformationStateRequest()),
+            this, SLOT(updateInformationState()));
+
     generateNoDevicesMessage();
-    m_isEnabled = systemCheck->checkKDEDModuleLoaded();
+    m_isEnabled = m_systemCheck->checkKDEDModuleLoaded();
 
     QVBoxLayout *layout = new QVBoxLayout;
     layout->addWidget(m_enable);
-    systemCheck->createWarnings(layout);
+    m_systemCheck->createWarnings(layout);
 
     // Bluetooth device list
     {
@@ -401,11 +403,11 @@ void KCMBlueDevilDevices::defaults()
 void KCMBlueDevilDevices::save()
 {
     if (!m_isEnabled && m_enable->isChecked()) {
-        systemCheck->kded()->loadModule("bluedevil");
+        m_systemCheck->kded()->loadModule("bluedevil");
     } else if (m_isEnabled && !m_enable->isChecked()) {
-        systemCheck->kded()->unloadModule("bluedevil");
+        m_systemCheck->kded()->unloadModule("bluedevil");
     }
-    m_isEnabled = systemCheck->checkKDEDModuleLoaded();
+    m_isEnabled = m_systemCheck->checkKDEDModuleLoaded();
     updateInformationState();
 }
 
@@ -598,7 +600,7 @@ void KCMBlueDevilDevices::fillRemoteDevicesModelInformation()
 
 void KCMBlueDevilDevices::updateInformationState()
 {
-    systemCheck->updateInformationState();
+    m_systemCheck->updateInformationState();
 
     m_enable->setChecked(m_isEnabled);
     m_addDevice->setEnabled(false);
@@ -608,7 +610,7 @@ void KCMBlueDevilDevices::updateInformationState()
         return;
     }
     BlueDevil::Adapter *const defaultAdapter = BlueDevil::Manager::self()->defaultAdapter();
-    if (defaultAdapter && defaultAdapter->isDiscoverable() && systemCheck->checkNotificationsOK()) {
+    if (defaultAdapter && defaultAdapter->isDiscoverable() && m_systemCheck->checkNotificationsOK()) {
         m_addDevice->setEnabled(true);
         m_devices->setEnabled(true);
     }

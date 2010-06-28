@@ -114,8 +114,9 @@ void ErrorWidget::paintEvent(QPaintEvent *event)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-SystemCheck::SystemCheck()
-    : m_kded(new KDED("org.kde.kded", "/kded", QDBusConnection::sessionBus()))
+SystemCheck::SystemCheck(QWidget *parent)
+    : QWidget(parent)
+    , m_kded(new KDED("org.kde.kded", "/kded", QDBusConnection::sessionBus()))
     , m_noAdaptersError(0)
     , m_notDiscoverableAdapterError(0)
     , m_disabledNotificationsError(0)
@@ -124,6 +125,10 @@ SystemCheck::SystemCheck()
 
 SystemCheck::~SystemCheck()
 {
+    m_noAdaptersError = 0;
+    m_notDiscoverableAdapterError = 0;
+    m_disabledNotificationsError = 0;
+    delete m_kded;
 }
 
 void SystemCheck::createWarnings(QVBoxLayout *layout)
@@ -243,5 +248,5 @@ void SystemCheck::fixDisabledNotificationsError()
 
     config.sync();
 
-    updateInformationState();
+    emit updateInformationStateRequest();
 }

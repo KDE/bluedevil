@@ -31,7 +31,7 @@ class SystemCheck
     Q_OBJECT
 
 public:
-    SystemCheck();
+    SystemCheck(QWidget *parent);
     virtual ~SystemCheck();
 
     struct SystemCheckResult {
@@ -50,6 +50,9 @@ public:
     bool checkKDEDModuleLoaded();
     bool checkNotificationsOK();
     KDED *kded();
+
+Q_SIGNALS:
+    void updateInformationStateRequest();
 
 public Q_SLOTS:
     void updateInformationState();

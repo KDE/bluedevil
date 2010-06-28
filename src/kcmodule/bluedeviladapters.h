@@ -27,6 +27,7 @@
 
 #include <kcmodule.h>
 
+class SystemCheck;
 class BluetoothAdaptersModel;
 
 class QListView;
@@ -82,6 +83,8 @@ private:
     BluetoothAdaptersModel *m_devicesModel;
     QListView              *m_devices;
     QWidget                *m_noDevicesMessage;
+
+    SystemCheck            *m_systemCheck;
 };
 
 #endif
