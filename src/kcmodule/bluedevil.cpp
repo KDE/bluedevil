@@ -762,11 +762,13 @@ void KCMBlueDevil::updateInformationState()
 {
     m_noAdaptersError->setEnabled(true);
     m_noAdaptersError->setVisible(false);
+    m_addDevice->setEnabled(true);
     m_notDiscoverableAdapterError->setVisible(false);
     m_disabledNotificationsError->setVisible(false);
     m_devices->setEnabled(false);
     if (!m_isEnabled) {
         m_noAdaptersError->setEnabled(false);
+        m_addDevice->setEnabled(false);
         return;
     }
     BlueDevil::Adapter *const defaultAdapter = BlueDevil::Manager::self()->defaultAdapter();
