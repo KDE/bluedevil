@@ -58,7 +58,7 @@ void PairingPage::initializePage()
         connect(m_device, SIGNAL(connectedChanged(bool)), this, SLOT(nextPage()));
         connect(m_device, SIGNAL(pairedChanged(bool)), this, SLOT(nextPage()));
 
-        m_device->pair("/wizardAgent", "DisplayYesNo");
+        m_device->pair("/wizardAgent", Adapter::DisplayYesNo);
     }
 }
 
