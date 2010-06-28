@@ -46,7 +46,10 @@ AgentListenerWorker::AgentListenerWorker(QObject *parent)
 void AgentListenerWorker::unregister()
 {
     qDebug() << "Unregistering object";
-    BlueDevil::Manager::self()->defaultAdapter()->unregisterAgent(AGENT_PATH);
+    BlueDevil::Adapter *const defaultAdapter = BlueDevil::Manager::self()->defaultAdapter();
+    if (defaultAdapter) {
+        defaultAdapter->unregisterAgent(AGENT_PATH);
+    }
 }
 
 void AgentListenerWorker::Release()

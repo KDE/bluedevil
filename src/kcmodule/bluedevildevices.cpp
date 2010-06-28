@@ -505,6 +505,9 @@ void KCMBlueDevilDevices::generateNoDevicesMessage()
 {
     QGridLayout *layout = new QGridLayout;
     m_noDevicesMessage = new QWidget(this);
+    m_noDevicesMessage->setMouseTracking(true);
+    m_noDevicesMessage->setBackgroundRole(QPalette::Base);
+    m_noDevicesMessage->setAutoFillBackground(true);
     QLabel *label = new QLabel(m_noDevicesMessage);
     label->setPixmap(KIcon("dialog-information").pixmap(128, 128));
     layout->addWidget(label, 0, 1, Qt::AlignHCenter);
@@ -532,7 +535,7 @@ void KCMBlueDevilDevices::fillRemoteDevicesModelInformation()
         m_devices->setViewport(m_noDevicesMessage);
         m_noDevicesMessage->setVisible(true);
     } else if (m_devices->viewport() == m_noDevicesMessage) {
-        QWidget *viewport = new QWidget(m_devices);
+        QWidget *viewport = new QWidget(this);
         viewport->setMouseTracking(true);
         viewport->setBackgroundRole(QPalette::Base);
         viewport->setAutoFillBackground(true);

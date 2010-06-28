@@ -18,7 +18,7 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#include <QtGui/QWidget>
+#include <QtCore/QObject>
 
 class QVBoxLayout;
 
@@ -26,7 +26,7 @@ class KDED;
 class ErrorWidget;
 
 class SystemCheck
-    : public QWidget
+    : public QObject
 {
     Q_OBJECT
 
@@ -63,6 +63,7 @@ private Q_SLOTS:
 
 private:
     KDED        *m_kded;
+    QWidget     *m_parent;
     ErrorWidget *m_noAdaptersError;
     ErrorWidget *m_notDiscoverableAdapterError;
     ErrorWidget *m_disabledNotificationsError;    

@@ -115,8 +115,9 @@ void ErrorWidget::paintEvent(QPaintEvent *event)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 SystemCheck::SystemCheck(QWidget *parent)
-    : QWidget(parent)
+    : QObject(parent)
     , m_kded(new KDED("org.kde.kded", "/kded", QDBusConnection::sessionBus()))
+    , m_parent(parent)
     , m_noAdaptersError(0)
     , m_notDiscoverableAdapterError(0)
     , m_disabledNotificationsError(0)
@@ -137,23 +138,23 @@ void SystemCheck::createWarnings(QVBoxLayout *layout)
         return;
     }
 
-    m_noAdaptersError = new ErrorWidget(this);
+    m_noAdaptersError = new ErrorWidget(m_parent);
     m_noAdaptersError->setIcon("window-close");
     m_noAdaptersError->setReason(i18n("No Bluetooth adapters have been found."));
     layout->addWidget(m_noAdaptersError);
 
-    m_notDiscoverableAdapterError = new ErrorWidget(this);
+    m_notDiscoverableAdapterError = new ErrorWidget(m_parent);
     m_notDiscoverableAdapterError->setIcon("layer-visible-off");
     m_notDiscoverableAdapterError->setReason(i18n("Your default Bluetooth adapter is not visible for remote devices."));
-    KPushButton *fixNotDiscoverableAdapter = new KPushButton(KIcon("dialog-ok-apply"), i18n("Fix it"), this);
+    KPushButton *fixNotDiscoverableAdapter = new KPushButton(KIcon("dialog-ok-apply"), i18n("Fix it"), m_notDiscoverableAdapterError);
     connect(fixNotDiscoverableAdapter, SIGNAL(clicked()), this, SLOT(fixNotDiscoverableAdapterError()));
     m_notDiscoverableAdapterError->addAction(fixNotDiscoverableAdapter);
     layout->addWidget(m_notDiscoverableAdapterError);
 
-    m_disabledNotificationsError = new ErrorWidget(this);
+    m_disabledNotificationsError = new ErrorWidget(m_parent);
     m_disabledNotificationsError->setIcon("preferences-desktop-notification");
     m_disabledNotificationsError->setReason(i18n("Interaction with Bluetooth system is not optimal."));
-    KPushButton *fixDisabledNotifications = new KPushButton(KIcon("dialog-ok-apply"), i18n("Fix it"), this);
+    KPushButton *fixDisabledNotifications = new KPushButton(KIcon("dialog-ok-apply"), i18n("Fix it"), m_disabledNotificationsError);
     connect(fixDisabledNotifications, SIGNAL(clicked()), this, SLOT(fixDisabledNotificationsError()));
     m_disabledNotificationsError->addAction(fixDisabledNotifications);
     layout->addWidget(m_disabledNotificationsError);
