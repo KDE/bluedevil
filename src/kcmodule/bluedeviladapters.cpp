@@ -221,6 +221,7 @@ KCMBlueDevilAdapters::KCMBlueDevilAdapters(QWidget *parent, const QVariantList&)
             this, SLOT(updateInformationState()));
 
     QVBoxLayout *layout = new QVBoxLayout;
+    m_systemCheck->createWarnings(layout);
     QScrollArea *mainArea = new QScrollArea(this);
     QWidget *widget = new QWidget(mainArea);
     m_layout = new QVBoxLayout;
@@ -230,12 +231,11 @@ KCMBlueDevilAdapters::KCMBlueDevilAdapters(QWidget *parent, const QVariantList&)
     layout->addWidget(mainArea);
     setLayout(layout);
 
-#if 1
     connect(BlueDevil::Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)),
             this, SLOT(defaultAdapterChanged(Adapter*)));
-#endif
 
     fillAdaptersInformation();
+    updateInformationState();
 }
 
 KCMBlueDevilAdapters::~KCMBlueDevilAdapters()
