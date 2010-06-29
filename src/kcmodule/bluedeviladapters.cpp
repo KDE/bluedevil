@@ -77,7 +77,7 @@ AdapterSettings::AdapterSettings(Adapter *adapter, KCModule *parent)
             m_temporaryVisibleOrig = true;
         }
     }
-    m_discoverTime->setRange(1, 10);
+    m_discoverTime->setRange(0, 30);
     m_discoverTime->setValue(adapter->discoverableTimeout() / 60);
     m_discoverTime->setTickPosition(QSlider::TicksBelow);
     m_discoverTime->setTickInterval(1);

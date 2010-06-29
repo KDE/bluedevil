@@ -108,9 +108,7 @@ public:
 
 private Q_SLOTS:
     void defaultAdapterChanged(Adapter *adapter);
-
     void updateInformationState();
-
     void adapterConfigurationChanged(bool modified);
 
 private:
