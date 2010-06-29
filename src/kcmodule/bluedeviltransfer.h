@@ -23,6 +23,8 @@
 
 #include <kcmodule.h>
 
+class KUrlRequester;
+
 class SystemCheck;
 
 namespace BlueDevil {
@@ -45,11 +47,11 @@ public:
 
 private Q_SLOTS:
     void defaultAdapterChanged(Adapter *adapter);
-    void adapterDiscoverableChanged();
-
     void updateInformationState();
 
 private:
+    KUrlRequester *m_transferTargetDirectory;
+
     SystemCheck *m_systemCheck;
 };
 
