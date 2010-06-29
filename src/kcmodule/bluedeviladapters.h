@@ -21,15 +21,67 @@
 #ifndef _BLUEDEVILADAPTERS_H
 #define _BLUEDEVILADAPTERS_H
 
+#include <QtGui/QGroupBox>
+
 #include <kcmodule.h>
 
+class QVBoxLayout;
+class QRadioButton;
+class QSlider;
+class QCheckBox;
+class QFormLayout;
+
+class KLineEdit;
+
 class SystemCheck;
+class AdapterSettings;
 
 namespace BlueDevil {
     class Adapter;
 }
 
 typedef BlueDevil::Adapter Adapter;
+
+class AdapterSettings
+    : public QGroupBox
+{
+    Q_OBJECT
+
+public:
+    enum DiscoverOptions {
+        Hidden = 0,
+        AlwaysVisible,
+        TemporaryVisible
+    };
+
+    AdapterSettings(Adapter *adapter, KCModule *parent);
+    virtual ~AdapterSettings();
+
+    QString name() const;
+    DiscoverOptions discoverOptions() const;
+    quint32 discoverTime() const;
+    bool powered() const;
+
+private Q_SLOTS:
+    void visibilityChanged();
+
+private:
+    Adapter      *m_adapter;
+    KLineEdit    *m_name;
+    QString       m_nameOrig;
+    QRadioButton *m_hidden;
+    bool          m_hiddenOrig;
+    QRadioButton *m_alwaysVisible;
+    bool          m_alwaysVisibleOrig;
+    QRadioButton *m_temporaryVisible;
+    bool          m_temporaryVisibleOrig;
+    QSlider      *m_discoverTime;
+    quint32       m_discoverTimeOrig;
+    QCheckBox    *m_powered;
+    bool          m_poweredOrig;
+
+    QFormLayout  *m_layout;
+};
 
 class KCMBlueDevilAdapters
     : public KCModule
@@ -50,6 +102,12 @@ private Q_SLOTS:
     void updateInformationState();
 
 private:
+    void fillAdaptersInformation();
+
+private:
+    QVBoxLayout                     *m_layout;
+    QMap<Adapter*, AdapterSettings*> m_adapterSettingsMap;
+
     SystemCheck *m_systemCheck;
 };
 

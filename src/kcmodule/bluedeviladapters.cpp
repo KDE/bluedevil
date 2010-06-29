@@ -23,13 +23,124 @@
 
 #include <QtCore/QTimer>
 
+#include <QtGui/QScrollArea>
+#include <QtGui/QBoxLayout>
+#include <QtGui/QRadioButton>
+#include <QtGui/QCheckBox>
+#include <QtGui/QSlider>
+#include <QtGui/QFormLayout>
+#include <QtGui/QButtonGroup>
+
 #include <bluedevil/bluedevil.h>
 
+#include <klineedit.h>
 #include <kaboutdata.h>
 #include <kpluginfactory.h>
 
 K_PLUGIN_FACTORY(BlueDevilFactory, registerPlugin<KCMBlueDevilAdapters>();)
 K_EXPORT_PLUGIN(BlueDevilFactory("bluedeviladapters"))
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+AdapterSettings::AdapterSettings(Adapter *adapter, KCModule *parent)
+    : QGroupBox(parent)
+    , m_adapter(adapter)
+    , m_name(new KLineEdit(this))
+    , m_hidden(new QRadioButton(i18n("Hidden"), this))
+    , m_alwaysVisible(new QRadioButton(i18n("Always visible"), this))
+    , m_temporaryVisible(new QRadioButton(i18n("Temporary visible"), this))
+    , m_discoverTime(new QSlider(Qt::Horizontal, this))
+    , m_powered(new QCheckBox(i18n("Powered"), this))
+{
+    QButtonGroup *const buttonGroup = new QButtonGroup(this);
+    buttonGroup->addButton(m_hidden);
+    buttonGroup->addButton(m_alwaysVisible);
+    buttonGroup->addButton(m_temporaryVisible);
+
+    m_name->setText(adapter->name());
+    m_nameOrig = adapter->name();
+    m_hiddenOrig = false;
+    m_alwaysVisibleOrig = false;
+    m_temporaryVisibleOrig = false;
+    if (!adapter->isDiscoverable()) {
+        m_hidden->setChecked(true);
+        m_hiddenOrig = true;
+    } else {
+        if (!adapter->discoverableTimeout()) {
+            m_alwaysVisible->setChecked(true);
+            m_alwaysVisibleOrig = true;
+        } else {
+            m_temporaryVisible->setChecked(true);
+            m_temporaryVisibleOrig = true;
+        }
+    }
+    m_discoverTime->setMinimum(1);
+    m_discoverTime->setMaximum(10);
+    m_discoverTime->setValue(adapter->discoverableTimeout() / 60);
+    m_discoverTime->setEnabled(m_temporaryVisibleOrig);
+    m_discoverTime->setTickPosition(QSlider::TicksBelow);
+    m_discoverTime->setTickInterval(1);
+    m_discoverTimeOrig = adapter->discoverableTimeout() / 60;
+    m_powered->setChecked(adapter->isPowered());
+    m_poweredOrig = adapter->isPowered();
+
+    m_layout = new QFormLayout;
+    m_layout->addRow(i18n("Name"), m_name);
+    m_layout->addWidget(m_powered);
+    m_layout->addRow(i18n("Visibility"), m_hidden);
+    m_layout->addWidget(m_alwaysVisible);
+    m_layout->addWidget(m_temporaryVisible);
+    m_layout->addRow(i18n("Discover time"), m_discoverTime);
+    setLayout(m_layout);
+
+    m_layout->labelForField(m_discoverTime)->setEnabled(m_temporaryVisibleOrig);
+
+    connect(m_hidden, SIGNAL(toggled(bool)), this, SLOT(visibilityChanged()));
+    connect(m_alwaysVisible, SIGNAL(toggled(bool)), this, SLOT(visibilityChanged()));
+    connect(m_temporaryVisible, SIGNAL(toggled(bool)), this, SLOT(visibilityChanged()));
+
+    setTitle(i18n("Adapter: %1 (%2)").arg(adapter->name()).arg(adapter->address()));
+}
+
+AdapterSettings::~AdapterSettings()
+{
+}
+
+QString AdapterSettings::name() const
+{
+    return m_name->text();
+}
+
+AdapterSettings::DiscoverOptions AdapterSettings::discoverOptions() const
+{
+    if (m_hidden->isChecked()) {
+        return Hidden;
+    }
+    if (m_alwaysVisible->isChecked()) {
+        return AlwaysVisible;
+    }
+    return TemporaryVisible;
+}
+
+quint32 AdapterSettings::discoverTime() const
+{
+    return m_discoverTime->value() * 60;
+}
+
+bool AdapterSettings::powered() const
+{
+    return m_powered->isChecked();
+}
+
+void AdapterSettings::visibilityChanged()
+{
+    QRadioButton *const sdr = static_cast<QRadioButton*>(sender());
+    if (!sdr->isChecked()) {
+        return;
+    }
+    m_discoverTime->setEnabled(sender() == m_temporaryVisible);
+    m_layout->labelForField(m_discoverTime)->setEnabled(sender() == m_temporaryVisible);
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -47,6 +158,18 @@ KCMBlueDevilAdapters::KCMBlueDevilAdapters(QWidget *parent, const QVariantList&)
 
     connect(m_systemCheck, SIGNAL(updateInformationStateRequest()),
             this, SLOT(updateInformationState()));
+
+    QVBoxLayout *layout = new QVBoxLayout;
+    QScrollArea *mainArea = new QScrollArea(this);
+    QWidget *widget = new QWidget(mainArea);
+    m_layout = new QVBoxLayout;
+    widget->setLayout(m_layout);
+    mainArea->setWidget(widget);
+    mainArea->setWidgetResizable(true);
+    layout->addWidget(mainArea);
+    setLayout(layout);
+
+    fillAdaptersInformation();
 }
 
 KCMBlueDevilAdapters::~KCMBlueDevilAdapters()
@@ -80,4 +203,12 @@ void KCMBlueDevilAdapters::adapterDiscoverableChanged()
 void KCMBlueDevilAdapters::updateInformationState()
 {
     m_systemCheck->updateInformationState();
+}
+
+void KCMBlueDevilAdapters::fillAdaptersInformation()
+{
+    Q_FOREACH (Adapter *const adapter, BlueDevil::Manager::self()->adapters()) {
+        AdapterSettings *const adapterSettings = new AdapterSettings(adapter, this);
+        m_layout->addWidget(adapterSettings);
+    }
 }
