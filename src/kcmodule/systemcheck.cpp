@@ -227,6 +227,7 @@ void SystemCheck::fixNotDiscoverableAdapterError()
 {
     m_notDiscoverableAdapterError->setVisible(false);
     BlueDevil::Manager::self()->defaultAdapter()->setDiscoverable(true);
+    BlueDevil::Manager::self()->defaultAdapter()->setDiscoverableTimeout(0);
     // No need to call to updateInformationState, since we are changing this property, it will be
     // triggered automatically.
 }

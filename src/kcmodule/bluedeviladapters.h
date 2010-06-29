@@ -67,6 +67,7 @@ public:
     bool powered() const;
 
 private Q_SLOTS:
+    void readChanges();
     void visibilityChanged();
     void slotSettingsChanged();
 

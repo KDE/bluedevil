@@ -105,6 +105,7 @@ AdapterSettings::AdapterSettings(Adapter *adapter, KCModule *parent)
 
     m_layout->labelForField(m_discoverTimeWidget)->setEnabled(m_temporaryVisibleOrig);
 
+    connect(m_adapter, SIGNAL(propertyChanged(QString,QVariant)), this, SLOT(readChanges()));
     connect(m_name, SIGNAL(textEdited(QString)), this, SLOT(slotSettingsChanged()));
     connect(m_hidden, SIGNAL(toggled(bool)), this, SLOT(visibilityChanged()));
     connect(m_hidden, SIGNAL(toggled(bool)), this, SLOT(slotSettingsChanged()));
@@ -134,7 +135,6 @@ void AdapterSettings::applyChanges()
 {
     if (m_name->text() != m_nameOrig) {
         m_adapter->setName(m_name->text());
-        m_nameOrig = m_name->text();
     }
 
     if (m_hidden->isChecked()) {
@@ -147,17 +147,9 @@ void AdapterSettings::applyChanges()
         m_adapter->setDiscoverableTimeout(m_discoverTime->value() * 60);
     }
 
-    m_hiddenOrig = m_hidden->isChecked();
-    m_alwaysVisibleOrig = m_alwaysVisible->isChecked();
-    m_temporaryVisibleOrig = m_temporaryVisible->isChecked();
-    m_discoverTimeOrig = m_discoverTime->value();
-
     if (m_powered->isChecked() != m_poweredOrig) {
         m_adapter->setPowered(m_powered->isChecked());
-        m_poweredOrig = m_powered->isChecked();
     }
-
-    emit settingsChanged(false);
 }
 
 QString AdapterSettings::name() const
@@ -184,6 +176,29 @@ quint32 AdapterSettings::discoverTime() const
 bool AdapterSettings::powered() const
 {
     return m_powered->isChecked();
+}
+
+void AdapterSettings::readChanges()
+{
+    blockSignals(true);
+
+    m_nameOrig = m_adapter->name();
+    m_hiddenOrig = !m_adapter->isDiscoverable();
+    m_alwaysVisibleOrig = m_adapter->isDiscoverable() && !m_adapter->discoverableTimeout();
+    m_temporaryVisibleOrig = m_adapter->isDiscoverable() && m_adapter->discoverableTimeout();
+    m_discoverTimeOrig = m_adapter->discoverableTimeout() / 60;
+    m_poweredOrig = m_adapter->isPowered();
+
+    m_name->setText(m_nameOrig);
+    m_hidden->setChecked(m_hiddenOrig);
+    m_alwaysVisible->setChecked(m_alwaysVisibleOrig);
+    m_temporaryVisible->setChecked(m_temporaryVisibleOrig);
+    m_discoverTime->setValue(m_discoverTimeOrig);
+    m_powered->setChecked(m_poweredOrig);
+
+    blockSignals(false);
+
+    emit settingsChanged(false);
 }
 
 void AdapterSettings::visibilityChanged()
@@ -251,19 +266,20 @@ void KCMBlueDevilAdapters::save()
     Q_FOREACH (AdapterSettings *const adapterSettings, m_adapterSettingsMap) {
         adapterSettings->applyChanges();
     }
+    QTimer::singleShot(300, this, SLOT(updateInformationState()));
 }
 
 void KCMBlueDevilAdapters::defaultAdapterChanged(Adapter *adapter)
 {
     Q_UNUSED(adapter)
 
-    QTimer::singleShot(300, this, SLOT(updateInformationState()));
+    fillAdaptersInformation();
+    updateInformationState();
 }
 
 void KCMBlueDevilAdapters::updateInformationState()
 {
     m_systemCheck->updateInformationState();
-    fillAdaptersInformation();
 }
 
 void KCMBlueDevilAdapters::adapterConfigurationChanged(bool modified)
