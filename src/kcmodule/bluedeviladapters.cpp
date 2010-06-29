@@ -196,6 +196,9 @@ void AdapterSettings::readChanges()
     m_discoverTime->setValue(m_discoverTimeOrig);
     m_powered->setChecked(m_poweredOrig);
 
+    m_discoverTimeLabel->setText(i18np("1 minute", "%1 minutes", m_discoverTime->value()));
+    setTitle(i18n("Adapter: %1 (%2)").arg(m_adapter->name()).arg(m_adapter->address()));
+
     blockSignals(false);
 
     emit settingsChanged(false);
