@@ -28,6 +28,7 @@
 class QVBoxLayout;
 class QRadioButton;
 class QSlider;
+class QLabel;
 class QCheckBox;
 class QFormLayout;
 
@@ -57,6 +58,8 @@ public:
     AdapterSettings(Adapter *adapter, KCModule *parent);
     virtual ~AdapterSettings();
 
+    bool isModified() const;
+
     QString name() const;
     DiscoverOptions discoverOptions() const;
     quint32 discoverTime() const;
@@ -64,6 +67,10 @@ public:
 
 private Q_SLOTS:
     void visibilityChanged();
+    void slotSettingsChanged();
+
+Q_SIGNALS:
+    void settingsChanged(bool changed);
 
 private:
     Adapter      *m_adapter;
@@ -76,7 +83,8 @@ private:
     QRadioButton *m_temporaryVisible;
     bool          m_temporaryVisibleOrig;
     QSlider      *m_discoverTime;
-    quint32       m_discoverTimeOrig;
+    int           m_discoverTimeOrig;
+    QLabel       *m_minutes;
     QCheckBox    *m_powered;
     bool          m_poweredOrig;
 
@@ -100,6 +108,8 @@ private Q_SLOTS:
     void adapterDiscoverableChanged();
 
     void updateInformationState();
+
+    void adapterConfigurationChanged(bool modified);
 
 private:
     void fillAdaptersInformation();

@@ -23,6 +23,7 @@
 
 #include <QtCore/QTimer>
 
+#include <QtGui/QLabel>
 #include <QtGui/QScrollArea>
 #include <QtGui/QBoxLayout>
 #include <QtGui/QRadioButton>
@@ -90,20 +91,37 @@ AdapterSettings::AdapterSettings(Adapter *adapter, KCModule *parent)
     m_layout->addRow(i18n("Visibility"), m_hidden);
     m_layout->addWidget(m_alwaysVisible);
     m_layout->addWidget(m_temporaryVisible);
-    m_layout->addRow(i18n("Discover time"), m_discoverTime);
+    m_layout->addRow(i18n("Discover Time"), m_discoverTime);
+    m_minutes = new QLabel(i18n("(minutes)"), this);
+    m_layout->addWidget(m_minutes);
     setLayout(m_layout);
 
     m_layout->labelForField(m_discoverTime)->setEnabled(m_temporaryVisibleOrig);
+    m_minutes->setEnabled(m_temporaryVisibleOrig);
 
+    connect(m_name, SIGNAL(textEdited(QString)), this, SLOT(slotSettingsChanged()));
     connect(m_hidden, SIGNAL(toggled(bool)), this, SLOT(visibilityChanged()));
+    connect(m_hidden, SIGNAL(toggled(bool)), this, SLOT(slotSettingsChanged()));
     connect(m_alwaysVisible, SIGNAL(toggled(bool)), this, SLOT(visibilityChanged()));
+    connect(m_alwaysVisible, SIGNAL(toggled(bool)), this, SLOT(slotSettingsChanged()));
     connect(m_temporaryVisible, SIGNAL(toggled(bool)), this, SLOT(visibilityChanged()));
+    connect(m_temporaryVisible, SIGNAL(toggled(bool)), this, SLOT(slotSettingsChanged()));
+    connect(m_discoverTime, SIGNAL(valueChanged(int)), this, SLOT(slotSettingsChanged()));
+    connect(m_powered, SIGNAL(stateChanged(int)), this, SLOT(slotSettingsChanged()));
 
     setTitle(i18n("Adapter: %1 (%2)").arg(adapter->name()).arg(adapter->address()));
 }
 
 AdapterSettings::~AdapterSettings()
 {
+}
+
+bool AdapterSettings::isModified() const
+{
+    return m_name->text() != m_nameOrig || m_hidden->isChecked() != m_hiddenOrig ||
+           m_alwaysVisible->isChecked() != m_alwaysVisibleOrig ||
+           m_temporaryVisible->isChecked() != m_temporaryVisibleOrig ||
+           m_discoverTime->value() != m_discoverTimeOrig || m_powered->isChecked() != m_poweredOrig;
 }
 
 QString AdapterSettings::name() const
@@ -138,8 +156,15 @@ void AdapterSettings::visibilityChanged()
     if (!sdr->isChecked()) {
         return;
     }
-    m_discoverTime->setEnabled(sender() == m_temporaryVisible);
-    m_layout->labelForField(m_discoverTime)->setEnabled(sender() == m_temporaryVisible);
+    const bool enabled = sender() == m_temporaryVisible;
+    m_discoverTime->setEnabled(enabled);
+    m_layout->labelForField(m_discoverTime)->setEnabled(enabled);
+    m_minutes->setEnabled(enabled);
+}
+
+void AdapterSettings::slotSettingsChanged()
+{
+    emit settingsChanged(isModified());
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -205,10 +230,27 @@ void KCMBlueDevilAdapters::updateInformationState()
     m_systemCheck->updateInformationState();
 }
 
+void KCMBlueDevilAdapters::adapterConfigurationChanged(bool modified)
+{
+    if (modified) {
+        emit changed(true);
+        return;
+    }
+    Q_FOREACH (AdapterSettings *const adapterSettings, m_adapterSettingsMap) {
+        if (adapterSettings->isModified()) {
+            return;
+        }
+    }
+    emit changed(false);
+}
+
 void KCMBlueDevilAdapters::fillAdaptersInformation()
 {
     Q_FOREACH (Adapter *const adapter, BlueDevil::Manager::self()->adapters()) {
         AdapterSettings *const adapterSettings = new AdapterSettings(adapter, this);
+        connect(adapterSettings, SIGNAL(settingsChanged(bool)),
+                this, SLOT(adapterConfigurationChanged(bool)));
+        m_adapterSettingsMap.insert(adapter, adapterSettings);
         m_layout->addWidget(adapterSettings);
     }
 }
