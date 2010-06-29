@@ -51,7 +51,7 @@ private:
     Private *d;
 
 Q_SIGNALS:
-    virtual void finished();
+    void finished();
 };
 
 Q_DECLARE_INTERFACE(ServicePlugin, "org.bluedevil.serviceplugin");
