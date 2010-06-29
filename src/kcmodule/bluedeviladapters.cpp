@@ -274,7 +274,7 @@ void KCMBlueDevilAdapters::defaultAdapterChanged(Adapter *adapter)
     Q_UNUSED(adapter)
 
     fillAdaptersInformation();
-    updateInformationState();
+    QTimer::singleShot(300, this, SLOT(updateInformationState()));
 }
 
 void KCMBlueDevilAdapters::updateInformationState()
