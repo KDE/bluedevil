@@ -107,7 +107,7 @@ public:
     virtual void save();
 
 private Q_SLOTS:
-    void defaultAdapterChanged(Adapter *adapter);
+    void updateAdapters();
     void adapterDiscoverableChanged();
     void updateInformationState();
     void adapterConfigurationChanged(bool modified);
