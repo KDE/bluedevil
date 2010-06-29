@@ -280,6 +280,11 @@ void KCMBlueDevilAdapters::defaultAdapterChanged(Adapter *adapter)
     QTimer::singleShot(300, this, SLOT(updateInformationState()));
 }
 
+void KCMBlueDevilAdapters::adapterDiscoverableChanged()
+{
+    QTimer::singleShot(300, this, SLOT(updateInformationState()));
+}
+
 void KCMBlueDevilAdapters::updateInformationState()
 {
     m_systemCheck->updateInformationState();
