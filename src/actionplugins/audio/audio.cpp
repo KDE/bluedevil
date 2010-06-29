@@ -33,7 +33,9 @@ BLUEDEVILACTION_PLUGIN_EXPORT(AudioPlugin)
 
 AudioPlugin::AudioPlugin(QObject* parent, const QVariantList& args)
     : ActionPlugin(parent)
-{}
+{
+    Q_UNUSED(args);
+}
 
 void AudioPlugin::startAction()
 {

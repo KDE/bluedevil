@@ -33,7 +33,9 @@ BLUEDEVILACTION_PLUGIN_EXPORT(InputPlugin)
 
 InputPlugin::InputPlugin(QObject* parent, const QVariantList& args)
     : ActionPlugin(parent)
-{}
+{
+    Q_UNUSED(args);
+}
 
 void InputPlugin::startAction()
 {
