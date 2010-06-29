@@ -23,7 +23,7 @@
 #include "pages/pinpage.h"
 #include "pages/pairingpage.h"
 #include "pages/servicespage.h"
-#include "actionplugins/actionplugin.h"
+#include "../actionplugins/actionplugin.h"
 
 #include <QDBusConnection>
 #include <QApplication>
