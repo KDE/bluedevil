@@ -8,9 +8,9 @@ X-KDE-Library=kcm_bluedeviltransfer
 X-KDE-ParentApp=kcontrol
 
 X-KDE-System-Settings-Parent-Category=bluetooth
-X-KDE-Weight=150
+X-KDE-Weight=60
 
-Name=File transfer
+Name=File Transfer
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
 
