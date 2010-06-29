@@ -282,9 +282,8 @@ void KCMBlueDevilAdapters::adapterConfigurationChanged(bool modified)
 
 void KCMBlueDevilAdapters::fillAdaptersInformation()
 {
-    for (int i = 0; i < m_layout->count(); ++i) {
-        m_layout->takeAt(0)->widget()->deleteLater();
-    }
+    qDeleteAll(m_adapterSettingsMap);
+    m_adapterSettingsMap.clear();
 
     Q_FOREACH (Adapter *const adapter, BlueDevil::Manager::self()->adapters()) {
         AdapterSettings *const adapterSettings = new AdapterSettings(adapter, this);
