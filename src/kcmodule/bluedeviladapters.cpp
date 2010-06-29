@@ -53,7 +53,7 @@ AdapterSettings::AdapterSettings(Adapter *adapter, KCModule *parent)
     , m_discoverTime(new QSlider(Qt::Horizontal, this))
     , m_discoverTimeLabel(new QLabel(this))
     , m_discoverTimeWidget(new QWidget(this))
-    , m_powered(new QCheckBox(i18n("Powered"), this))
+    , m_powered(new QCheckBox(this))
 {
     QButtonGroup *const buttonGroup = new QButtonGroup(this);
     buttonGroup->addButton(m_hidden);
@@ -96,7 +96,7 @@ AdapterSettings::AdapterSettings(Adapter *adapter, KCModule *parent)
 
     m_layout = new QFormLayout;
     m_layout->addRow(i18n("Name"), m_name);
-    m_layout->addWidget(m_powered);
+    m_layout->addRow(i18n("Powered"), m_powered);
     m_layout->addRow(i18n("Visibility"), m_hidden);
     m_layout->addWidget(m_alwaysVisible);
     m_layout->addWidget(m_temporaryVisible);
@@ -128,6 +128,36 @@ bool AdapterSettings::isModified() const
            m_alwaysVisible->isChecked() != m_alwaysVisibleOrig ||
            m_temporaryVisible->isChecked() != m_temporaryVisibleOrig ||
            m_discoverTime->value() != m_discoverTimeOrig || m_powered->isChecked() != m_poweredOrig;
+}
+
+void AdapterSettings::applyChanges()
+{
+    if (m_name->text() != m_nameOrig) {
+        m_adapter->setName(m_name->text());
+        m_nameOrig = m_name->text();
+    }
+
+    if (m_hidden->isChecked()) {
+        m_adapter->setDiscoverable(false);
+    } else if (m_alwaysVisible->isChecked()) {
+        m_adapter->setDiscoverable(true);
+        m_adapter->setDiscoverableTimeout(0);
+    } else {
+        m_adapter->setDiscoverable(true);
+        m_adapter->setDiscoverableTimeout(m_discoverTime->value() * 60);
+    }
+
+    m_hiddenOrig = m_hidden->isChecked();
+    m_alwaysVisibleOrig = m_alwaysVisible->isChecked();
+    m_temporaryVisibleOrig = m_temporaryVisible->isChecked();
+    m_discoverTimeOrig = m_discoverTime->value();
+
+    if (m_powered->isChecked() != m_poweredOrig) {
+        m_adapter->setPowered(m_powered->isChecked());
+        m_poweredOrig = m_powered->isChecked();
+    }
+
+    emit settingsChanged(false);
 }
 
 QString AdapterSettings::name() const
@@ -200,6 +230,11 @@ KCMBlueDevilAdapters::KCMBlueDevilAdapters(QWidget *parent, const QVariantList&)
     layout->addWidget(mainArea);
     setLayout(layout);
 
+#if 1
+    connect(BlueDevil::Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)),
+            this, SLOT(defaultAdapterChanged(Adapter*)));
+#endif
+
     fillAdaptersInformation();
 }
 
@@ -213,6 +248,9 @@ void KCMBlueDevilAdapters::defaults()
 
 void KCMBlueDevilAdapters::save()
 {
+    Q_FOREACH (AdapterSettings *const adapterSettings, m_adapterSettingsMap) {
+        adapterSettings->applyChanges();
+    }
 }
 
 void KCMBlueDevilAdapters::defaultAdapterChanged(Adapter *adapter)

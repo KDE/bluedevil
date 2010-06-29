@@ -59,6 +59,7 @@ public:
     virtual ~AdapterSettings();
 
     bool isModified() const;
+    void applyChanges();
 
     QString name() const;
     DiscoverOptions discoverOptions() const;
