@@ -255,23 +255,15 @@ void KCMBlueDevilAdapters::save()
 
 void KCMBlueDevilAdapters::defaultAdapterChanged(Adapter *adapter)
 {
-    if (adapter) {
-        connect(adapter, SIGNAL(discoverableChanged(bool)),
-                this, SLOT(adapterDiscoverableChanged()));
-        connect(adapter, SIGNAL(devicesChanged(QList<Device*>)),
-                this, SLOT(adapterDevicesChanged(QList<Device*>)));
-    }
-    QTimer::singleShot(300, this, SLOT(updateInformationState()));
-}
+    Q_UNUSED(adapter)
 
-void KCMBlueDevilAdapters::adapterDiscoverableChanged()
-{
     QTimer::singleShot(300, this, SLOT(updateInformationState()));
 }
 
 void KCMBlueDevilAdapters::updateInformationState()
 {
     m_systemCheck->updateInformationState();
+    fillAdaptersInformation();
 }
 
 void KCMBlueDevilAdapters::adapterConfigurationChanged(bool modified)
@@ -290,6 +282,10 @@ void KCMBlueDevilAdapters::adapterConfigurationChanged(bool modified)
 
 void KCMBlueDevilAdapters::fillAdaptersInformation()
 {
+    for (int i = 0; i < m_layout->count(); ++i) {
+        m_layout->takeAt(0)->widget()->deleteLater();
+    }
+
     Q_FOREACH (Adapter *const adapter, BlueDevil::Manager::self()->adapters()) {
         AdapterSettings *const adapterSettings = new AdapterSettings(adapter, this);
         connect(adapterSettings, SIGNAL(settingsChanged(bool)),
