@@ -1,0 +1,17 @@
+[Desktop Entry]
+Exec=kcmshell4 bluedeviltransfer
+Icon=folder-tar
+Type=Service
+X-KDE-ServiceTypes=KCModule
+
+X-KDE-Library=kcm_bluedeviltransfer
+X-KDE-ParentApp=kcontrol
+
+X-KDE-System-Settings-Parent-Category=bluetooth
+X-KDE-Weight=150
+
+Name=File transfer
+
+X-KDE-Keywords=Network,Connectivity,Bluetooth
+
+Categories=Qt;KDE;X-KDE-settings-bluetooth;

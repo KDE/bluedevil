@@ -20,6 +20,7 @@
 
 #include "bluedevildevices.h"
 #include "systemcheck.h"
+#include "kded.h"
 
 #include <bluedevil/bluedevil.h>
 

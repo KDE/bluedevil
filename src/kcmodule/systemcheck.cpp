@@ -144,7 +144,7 @@ void SystemCheck::createWarnings(QVBoxLayout *layout)
     layout->addWidget(m_noAdaptersError);
 
     m_notDiscoverableAdapterError = new ErrorWidget(m_parent);
-    m_notDiscoverableAdapterError->setIcon("layer-visible-off");
+    m_notDiscoverableAdapterError->setIcon("edit-find");
     m_notDiscoverableAdapterError->setReason(i18n("Your default Bluetooth adapter is not visible for remote devices."));
     KPushButton *fixNotDiscoverableAdapter = new KPushButton(KIcon("dialog-ok-apply"), i18n("Fix it"), m_notDiscoverableAdapterError);
     connect(fixNotDiscoverableAdapter, SIGNAL(clicked()), this, SLOT(fixNotDiscoverableAdapterError()));

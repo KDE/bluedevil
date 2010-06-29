@@ -18,7 +18,7 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#include "bluedeviladapters.h"
+#include "bluedeviltransfer.h"
 #include "systemcheck.h"
 
 #include <QtCore/QTimer>
@@ -28,18 +28,18 @@
 #include <kaboutdata.h>
 #include <kpluginfactory.h>
 
-K_PLUGIN_FACTORY(BlueDevilFactory, registerPlugin<KCMBlueDevilAdapters>();)
-K_EXPORT_PLUGIN(BlueDevilFactory("bluedeviladapters"))
+K_PLUGIN_FACTORY(BlueDevilFactory, registerPlugin<KCMBlueDevilTransfer>();)
+K_EXPORT_PLUGIN(BlueDevilFactory("bluedeviltransfer"))
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-KCMBlueDevilAdapters::KCMBlueDevilAdapters(QWidget *parent, const QVariantList&)
+KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
     : KCModule(BlueDevilFactory::componentData(), parent)
     , m_systemCheck(new SystemCheck(this))
 {
     KAboutData* ab = new KAboutData(
-        "kcmbluedeviladapters", 0, ki18n("BlueDevil Adapters"), "1.0",
-        ki18n("BlueDevil Adapters Control Panel Module"),
+        "kcmbluedeviltransfer", 0, ki18n("BlueDevil Transfer"), "1.0",
+        ki18n("BlueDevil Transfer Control Panel Module"),
         KAboutData::License_GPL, ki18n("(c) 2010 Rafael Fernández López"));
 
     ab->addAuthor(ki18n("Rafael Fernández López"), ki18n("Developer and Maintainer"), "ereslibre@kde.org");
@@ -49,19 +49,19 @@ KCMBlueDevilAdapters::KCMBlueDevilAdapters(QWidget *parent, const QVariantList&)
             this, SLOT(updateInformationState()));
 }
 
-KCMBlueDevilAdapters::~KCMBlueDevilAdapters()
+KCMBlueDevilTransfer::~KCMBlueDevilTransfer()
 {
 }
 
-void KCMBlueDevilAdapters::defaults()
+void KCMBlueDevilTransfer::defaults()
 {
 }
 
-void KCMBlueDevilAdapters::save()
+void KCMBlueDevilTransfer::save()
 {
 }
 
-void KCMBlueDevilAdapters::defaultAdapterChanged(Adapter *adapter)
+void KCMBlueDevilTransfer::defaultAdapterChanged(Adapter *adapter)
 {
     if (adapter) {
         connect(adapter, SIGNAL(discoverableChanged(bool)),
@@ -72,12 +72,12 @@ void KCMBlueDevilAdapters::defaultAdapterChanged(Adapter *adapter)
     QTimer::singleShot(300, this, SLOT(updateInformationState()));
 }
 
-void KCMBlueDevilAdapters::adapterDiscoverableChanged()
+void KCMBlueDevilTransfer::adapterDiscoverableChanged()
 {
     QTimer::singleShot(300, this, SLOT(updateInformationState()));
 }
 
-void KCMBlueDevilAdapters::updateInformationState()
+void KCMBlueDevilTransfer::updateInformationState()
 {
     m_systemCheck->updateInformationState();
 }

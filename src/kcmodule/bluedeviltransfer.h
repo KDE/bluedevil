@@ -18,8 +18,8 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef _BLUEDEVILADAPTERS_H
-#define _BLUEDEVILADAPTERS_H
+#ifndef _BLUEDEVILTRANSFER_H
+#define _BLUEDEVILTRANSFER_H
 
 #include <kcmodule.h>
 
@@ -31,14 +31,14 @@ namespace BlueDevil {
 
 typedef BlueDevil::Adapter Adapter;
 
-class KCMBlueDevilAdapters
+class KCMBlueDevilTransfer
     : public KCModule
 {
     Q_OBJECT
 
 public:
-    KCMBlueDevilAdapters(QWidget *parent, const QVariantList&);
-    virtual ~KCMBlueDevilAdapters();
+    KCMBlueDevilTransfer(QWidget *parent, const QVariantList&);
+    virtual ~KCMBlueDevilTransfer();
 
     virtual void defaults();
     virtual void save();
