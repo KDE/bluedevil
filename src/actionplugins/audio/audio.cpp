@@ -29,13 +29,13 @@
 
 #include <bluedevil/bluedevildevice.h>
 
-BLUEDEVILSERVICE_PLUGIN_EXPORT(AudioPlugin)
+BLUEDEVILACTION_PLUGIN_EXPORT(AudioPlugin)
 
 AudioPlugin::AudioPlugin(QObject* parent, const QVariantList& args)
-    : ServicePlugin(parent)
+    : ActionPlugin(parent)
 {}
 
-void AudioPlugin::connectService()
+void AudioPlugin::startAction()
 {
     OrgBluezAudioInterface *interface = new OrgBluezAudioInterface("org.bluez", device()->UBI(), QDBusConnection::systemBus());
     interface->Connect();
