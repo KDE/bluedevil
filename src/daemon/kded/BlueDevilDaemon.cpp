@@ -169,7 +169,7 @@ void BlueDevilDaemon::adapterAdded(BlueDevil::Adapter *adapter)
 void BlueDevilDaemon::adapterRemoved(BlueDevil::Adapter *adapter)
 {
     kDebug() << adapter->name();
-    if (BlueDevil::Manager::self()->listAdapters().isEmpty()) {
+    if (BlueDevil::Manager::self()->adapters().isEmpty()) {
         offlineMode();
     }
 }
