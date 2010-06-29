@@ -23,12 +23,12 @@
 
 #include <QtCore/QTimer>
 
-#include <QtGui/QLabel>
 #include <QtGui/QScrollArea>
 #include <QtGui/QBoxLayout>
 #include <QtGui/QRadioButton>
 #include <QtGui/QCheckBox>
 #include <QtGui/QSlider>
+#include <QtGui/QLabel>
 #include <QtGui/QFormLayout>
 #include <QtGui/QButtonGroup>
 
@@ -51,6 +51,8 @@ AdapterSettings::AdapterSettings(Adapter *adapter, KCModule *parent)
     , m_alwaysVisible(new QRadioButton(i18n("Always visible"), this))
     , m_temporaryVisible(new QRadioButton(i18n("Temporary visible"), this))
     , m_discoverTime(new QSlider(Qt::Horizontal, this))
+    , m_discoverTimeLabel(new QLabel(this))
+    , m_discoverTimeWidget(new QWidget(this))
     , m_powered(new QCheckBox(i18n("Powered"), this))
 {
     QButtonGroup *const buttonGroup = new QButtonGroup(this);
@@ -75,13 +77,20 @@ AdapterSettings::AdapterSettings(Adapter *adapter, KCModule *parent)
             m_temporaryVisibleOrig = true;
         }
     }
-    m_discoverTime->setMinimum(1);
-    m_discoverTime->setMaximum(10);
+    m_discoverTime->setRange(1, 10);
     m_discoverTime->setValue(adapter->discoverableTimeout() / 60);
-    m_discoverTime->setEnabled(m_temporaryVisibleOrig);
     m_discoverTime->setTickPosition(QSlider::TicksBelow);
     m_discoverTime->setTickInterval(1);
     m_discoverTimeOrig = adapter->discoverableTimeout() / 60;
+
+    QHBoxLayout *layout = new QHBoxLayout;
+    layout->addWidget(m_discoverTime);
+    layout->addWidget(m_discoverTimeLabel);
+    m_discoverTimeWidget->setLayout(layout);
+    m_discoverTimeWidget->setEnabled(m_temporaryVisibleOrig);
+
+    m_discoverTimeLabel->setText(i18np("1 minute", "%1 minutes", m_discoverTime->value()));
+
     m_powered->setChecked(adapter->isPowered());
     m_poweredOrig = adapter->isPowered();
 
@@ -91,13 +100,10 @@ AdapterSettings::AdapterSettings(Adapter *adapter, KCModule *parent)
     m_layout->addRow(i18n("Visibility"), m_hidden);
     m_layout->addWidget(m_alwaysVisible);
     m_layout->addWidget(m_temporaryVisible);
-    m_layout->addRow(i18n("Discover Time"), m_discoverTime);
-    m_minutes = new QLabel(i18n("(minutes)"), this);
-    m_layout->addWidget(m_minutes);
+    m_layout->addRow(i18n("Discover Time"), m_discoverTimeWidget);
     setLayout(m_layout);
 
-    m_layout->labelForField(m_discoverTime)->setEnabled(m_temporaryVisibleOrig);
-    m_minutes->setEnabled(m_temporaryVisibleOrig);
+    m_layout->labelForField(m_discoverTimeWidget)->setEnabled(m_temporaryVisibleOrig);
 
     connect(m_name, SIGNAL(textEdited(QString)), this, SLOT(slotSettingsChanged()));
     connect(m_hidden, SIGNAL(toggled(bool)), this, SLOT(visibilityChanged()));
@@ -157,13 +163,13 @@ void AdapterSettings::visibilityChanged()
         return;
     }
     const bool enabled = sender() == m_temporaryVisible;
-    m_discoverTime->setEnabled(enabled);
-    m_layout->labelForField(m_discoverTime)->setEnabled(enabled);
-    m_minutes->setEnabled(enabled);
+    m_discoverTimeWidget->setEnabled(enabled);
+    m_layout->labelForField(m_discoverTimeWidget)->setEnabled(enabled);
 }
 
 void AdapterSettings::slotSettingsChanged()
 {
+    m_discoverTimeLabel->setText(i18np("1 minute", "%1 minutes", m_discoverTime->value()));
     emit settingsChanged(isModified());
 }
 

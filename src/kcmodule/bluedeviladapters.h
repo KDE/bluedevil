@@ -83,8 +83,9 @@ private:
     QRadioButton *m_temporaryVisible;
     bool          m_temporaryVisibleOrig;
     QSlider      *m_discoverTime;
+    QLabel       *m_discoverTimeLabel;
+    QWidget      *m_discoverTimeWidget;
     int           m_discoverTimeOrig;
-    QLabel       *m_minutes;
     QCheckBox    *m_powered;
     bool          m_poweredOrig;
 
