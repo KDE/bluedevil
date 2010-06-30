@@ -34,6 +34,7 @@
 
 #include <bluedevil/bluedevil.h>
 
+#include <kicon.h>
 #include <klineedit.h>
 #include <kaboutdata.h>
 #include <kpluginfactory.h>
@@ -116,7 +117,11 @@ AdapterSettings::AdapterSettings(Adapter *adapter, KCModule *parent)
     connect(m_discoverTime, SIGNAL(valueChanged(int)), this, SLOT(slotSettingsChanged()));
     connect(m_powered, SIGNAL(stateChanged(int)), this, SLOT(slotSettingsChanged()));
 
-    setTitle(i18n("Adapter: %1 (%2)").arg(adapter->name()).arg(adapter->address()));
+    if (BlueDevil::Manager::self()->defaultAdapter() == adapter) {
+        setTitle(i18n("Default adapter: %1 (%2)").arg(adapter->name()).arg(adapter->address()));
+    } else {
+        setTitle(i18n("Adapter: %1 (%2)").arg(adapter->name()).arg(adapter->address()));
+    }
 }
 
 AdapterSettings::~AdapterSettings()
@@ -225,6 +230,7 @@ void AdapterSettings::slotSettingsChanged()
 
 KCMBlueDevilAdapters::KCMBlueDevilAdapters(QWidget *parent, const QVariantList&)
     : KCModule(BlueDevilFactory::componentData(), parent)
+    , m_noAdaptersMessage(0)
     , m_systemCheck(new SystemCheck(this))
 {
     KAboutData* ab = new KAboutData(
@@ -285,6 +291,22 @@ void KCMBlueDevilAdapters::adapterDiscoverableChanged()
     QTimer::singleShot(300, this, SLOT(updateInformationState()));
 }
 
+void KCMBlueDevilAdapters::generateNoAdaptersMessage()
+{
+    QGridLayout *layout = new QGridLayout;
+    m_noAdaptersMessage = new QWidget(this);
+    QLabel *label = new QLabel(m_noAdaptersMessage);
+    label->setPixmap(KIcon("dialog-information").pixmap(128, 128));
+    layout->addWidget(label, 0, 1, Qt::AlignHCenter);
+    layout->addWidget(new QLabel("No adapters found. Please connect one.", m_noAdaptersMessage),
+                                 1, 1, Qt::AlignHCenter);
+    layout->setRowStretch(2, 1);
+    layout->setColumnStretch(0, 1);
+    layout->setColumnStretch(2, 1);
+    m_noAdaptersMessage->setLayout(layout);
+    m_noAdaptersMessage->setVisible(false);
+}
+
 void KCMBlueDevilAdapters::updateInformationState()
 {
     m_systemCheck->updateInformationState();
@@ -309,6 +331,21 @@ void KCMBlueDevilAdapters::fillAdaptersInformation()
     qDeleteAll(m_adapterSettingsMap);
     m_adapterSettingsMap.clear();
 
+    for (int i = 0; i < m_layout->count(); ++i) {
+        m_layout->takeAt(0);
+    }
+
+    if (BlueDevil::Manager::self()->adapters().isEmpty()) {
+        generateNoAdaptersMessage();
+        m_layout->addWidget(m_noAdaptersMessage);
+        m_noAdaptersMessage->setVisible(true);
+        return;
+    }
+
+    if (m_noAdaptersMessage) {
+        m_noAdaptersMessage->setVisible(false);
+    }
+
     Q_FOREACH (Adapter *const adapter, BlueDevil::Manager::self()->adapters()) {
         AdapterSettings *const adapterSettings = new AdapterSettings(adapter, this);
         connect(adapterSettings, SIGNAL(settingsChanged(bool)),
@@ -316,4 +353,6 @@ void KCMBlueDevilAdapters::fillAdaptersInformation()
         m_adapterSettingsMap.insert(adapter, adapterSettings);
         m_layout->addWidget(adapterSettings);
     }
+
+    m_layout->addStretch();
 }
