@@ -47,7 +47,7 @@ void PairingPage::initializePage()
         if (m_wizard->manualPin()) {
             pin = m_wizard->pin();
         } else {
-            pin = agent->getPin(m_device->UBI());
+            pin = agent->getPin(m_device);
         }
 
         agent->setPin(pin);
