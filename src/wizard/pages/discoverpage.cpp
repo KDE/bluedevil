@@ -41,8 +41,6 @@ DiscoverPage::DiscoverPage(QWidget* parent): QWizardPage(parent), m_counter(0), 
     connect(m_timer, SIGNAL(timeout()), this, SLOT(timeout()));
     connect(scanBtn, SIGNAL(clicked()), this, SLOT(startScan()));
 
-    connect(Manager::self()->defaultAdapter(), SIGNAL(deviceFound(Device*)), this,
-            SLOT(deviceFound(Device*)));
     connect(deviceList, SIGNAL(itemActivated(QListWidgetItem*)), this,
             SLOT(itemSelected(QListWidgetItem*)));
 }
@@ -56,6 +54,8 @@ void DiscoverPage::initializePage()
 {
     if (!m_wizard) {
         m_wizard = static_cast<BlueWizard* >(wizard());
+        connect(Manager::self()->defaultAdapter(), SIGNAL(deviceFound(Device*)), this,
+            SLOT(deviceFound(Device*)));
     }
 
     connect(m_wizard, SIGNAL(currentIdChanged(int)), this, SLOT(leavePage(int)));
