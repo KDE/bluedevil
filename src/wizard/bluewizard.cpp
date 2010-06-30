@@ -25,21 +25,28 @@
 #include "pages/servicespage.h"
 #include "../actionplugins/actionplugin.h"
 
-#include <QDBusConnection>
 #include <QApplication>
+#include <QDBusConnection>
+#include <QWizard>
 
 #include <bluedevil/bluedevil.h>
 #include <KServiceTypeTrader>
+#include <KPushButton>
 
 BlueWizard::BlueWizard() : QWizard(), m_service(0), m_manualPin(false)
 {
-
     setPage(Introduction, new IntroductionPage(this));
     setPage(Discover, new DiscoverPage(this));
     setPage(Pin, new PinPage(this));
     setPage(Pairing, new PairingPage(this));
     setPage(Services, new ServicesPage(this));
 
+    setButton(QWizard::BackButton, new KPushButton(KStandardGuiItem::back(KStandardGuiItem::UseRTL)));
+    setButton(QWizard::NextButton, new KPushButton(KStandardGuiItem::forward(KStandardGuiItem::UseRTL)));
+    setButton(QWizard::CancelButton, new KPushButton(KStandardGuiItem::cancel()));
+
+    //We do not want "Forward" as text
+    setButtonText(QWizard::NextButton, i18n("Next"));
     //First show, then do the rest
     show();
 
