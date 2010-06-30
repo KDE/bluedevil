@@ -16,7 +16,7 @@
 */
 
 
-#include "serviceplugin.h"
+#include "actionplugin.h"
 
 #include "bluedevil/bluedevildevice.h"
 
@@ -26,15 +26,15 @@ struct Private {
     Device *device;
 };
 
-ServicePlugin::ServicePlugin(QObject* parent): QObject(parent), d(new Private)
+ActionPlugin::ActionPlugin(QObject* parent): QObject(parent), d(new Private)
 {}
 
-void ServicePlugin::setDevice(Device* device)
+void ActionPlugin::setDevice(Device* device)
 {
     d->device= device;
 }
 
-Device* ServicePlugin::device()
+Device* ActionPlugin::device()
 {
     return d->device;
 }

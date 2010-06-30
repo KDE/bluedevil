@@ -16,8 +16,8 @@
 */
 
 
-#ifndef SERVICEPLUGIN_H
-#define SERVICEPLUGIN_H
+#ifndef ACTIONPLUGIN_H
+#define ACTIONPLUGIN_H
 
 #include <QObject>
 
@@ -25,9 +25,9 @@
 #include <KPluginFactory>
 #include <KPluginLoader>
 
-#define BLUEDEVILSERVICE_PLUGIN_EXPORT( c ) \
-  K_PLUGIN_FACTORY( BlueDevilService, registerPlugin< c >(); ) \
-  K_EXPORT_PLUGIN( BlueDevilService("c") )
+#define BLUEDEVILACTION_PLUGIN_EXPORT( c ) \
+  K_PLUGIN_FACTORY( BlueDevilAction, registerPlugin< c >(); ) \
+  K_EXPORT_PLUGIN( BlueDevilAction("c") )
 
 struct Private;
 namespace BlueDevil {
@@ -36,13 +36,13 @@ namespace BlueDevil {
 
 using namespace BlueDevil;
 
-class KDE_EXPORT ServicePlugin : public QObject
+class KDE_EXPORT ActionPlugin : public QObject
 {
 Q_OBJECT
 public:
-    ServicePlugin(QObject* parent = 0);
+    ActionPlugin(QObject* parent = 0);
 
-    virtual void connectService()=0;
+    virtual void startAction()=0;
 
     void setDevice(Device*);
     Device* device();
@@ -51,8 +51,8 @@ private:
     Private *d;
 
 Q_SIGNALS:
-    virtual void finished();
+    void finished();
 };
 
-Q_DECLARE_INTERFACE(ServicePlugin, "org.bluedevil.serviceplugin");
-#endif // SERVICEPLUGIN_H
+Q_DECLARE_INTERFACE(ActionPlugin, "org.bluedevil.actionplugin");
+#endif // ACTIONPLUGIN_H

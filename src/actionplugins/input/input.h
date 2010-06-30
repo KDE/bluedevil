@@ -17,13 +17,13 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA   *
  *************************************************************************************/
 
-#include "../serviceplugin.h"
+#include "../actionplugin.h"
 
-class AudioPlugin : public ServicePlugin
+class InputPlugin : public ActionPlugin
 {
     Q_OBJECT
-    Q_INTERFACES(ServicePlugin)
+    Q_INTERFACES(ActionPlugin)
     public:
-        AudioPlugin(QObject* parent, const QVariantList& args);
-        virtual void connectService();
+        InputPlugin(QObject* parent, const QVariantList& args);
+        virtual void startAction();
 };

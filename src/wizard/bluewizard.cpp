@@ -23,7 +23,7 @@
 #include "pages/pinpage.h"
 #include "pages/pairingpage.h"
 #include "pages/servicespage.h"
-#include "plugins/serviceplugin.h"
+#include "../actionplugins/actionplugin.h"
 
 #include <QDBusConnection>
 #include <QApplication>
@@ -60,11 +60,11 @@ void BlueWizard::done(int result)
         KPluginFactory *factory = KPluginLoader(m_service->library()).factory();
 
         Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_deviceAddress);
-        ServicePlugin *plugin = factory->create<ServicePlugin>(this);
+        ActionPlugin *plugin = factory->create<ActionPlugin>(this);
         connect(plugin, SIGNAL(finished()), qApp, SLOT(quit()));
 
         plugin->setDevice(device);
-        plugin->connectService();
+        plugin->startAction();
     } else {
         qApp->quit();
     }
