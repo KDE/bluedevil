@@ -35,6 +35,8 @@
 
 BlueWizard::BlueWizard() : QWizard(), m_service(0), m_manualPin(false)
 {
+    setWindowTitle(i18n("BlueDevil Remote Device Wizard"));
+
     setPage(Introduction, new IntroductionPage(this));
     setPage(Discover, new DiscoverPage(this));
     setPage(Pin, new PinPage(this));
