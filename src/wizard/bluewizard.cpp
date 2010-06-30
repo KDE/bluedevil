@@ -33,6 +33,7 @@
 
 BlueWizard::BlueWizard() : QWizard(), m_service(0), m_manualPin(false)
 {
+    setWindowTitle(i18n("BlueDevil Remote Device Wizard"));
 
     setPage(Introduction, new IntroductionPage(this));
     setPage(Discover, new DiscoverPage(this));
@@ -40,7 +41,6 @@ BlueWizard::BlueWizard() : QWizard(), m_service(0), m_manualPin(false)
     setPage(Pairing, new PairingPage(this));
     setPage(Services, new ServicesPage(this));
 
-    //First show, then do the rest
     show();
 
     if(!QDBusConnection::systemBus().registerObject("/wizardAgent", qApp)) {
