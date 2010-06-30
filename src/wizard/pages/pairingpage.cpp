@@ -41,6 +41,7 @@ void PairingPage::initializePage()
     if (!m_wizard) {
         m_wizard = static_cast<BlueWizard*>(wizard());
         m_device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
+
         WizardAgent *agent = m_wizard->agent();
 
         QString pin;
@@ -57,8 +58,20 @@ void PairingPage::initializePage()
         connect(m_device, SIGNAL(connectedChanged(bool)), this, SLOT(nextPage()));
         connect(m_device, SIGNAL(pairedChanged(bool)), this, SLOT(nextPage()));
 
-        m_device->pair("/wizardAgent", Adapter::DisplayYesNo);
+        if (!m_device->isRegistered()) {
+            qDebug() << "Device is not registered";
+            connect(m_device, SIGNAL(registerDeviceResult(Device*,bool)), this, SLOT(doPair()));
+            asyncCall(m_device, SLOT(registerDevice()));
+            return;
+        }
+
+        doPair();
     }
+}
+
+void PairingPage::doPair()
+{
+    m_device->pair("/wizardAgent", Adapter::DisplayYesNo);
 }
 
 bool PairingPage::isComplete() const
