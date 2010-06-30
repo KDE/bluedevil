@@ -55,7 +55,7 @@ BlueWizard::BlueWizard() : QWizard(), m_service(0), m_manualPin(false)
     }
 
     m_agent = new WizardAgent(qApp);
-    m_services = KServiceTypeTrader::self()->query("BlueDevil/ServicePlugin");
+    m_services = KServiceTypeTrader::self()->query("BlueDevil/ActionPlugin");
 }
 
 void BlueWizard::done(int result)
