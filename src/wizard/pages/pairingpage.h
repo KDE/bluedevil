@@ -42,6 +42,7 @@ public:
     virtual int nextId() const;
 
 public Q_SLOTS:
+    void doPair();
     void nextPage();
 
 private:

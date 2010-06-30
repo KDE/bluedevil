@@ -24,6 +24,7 @@
 #include <QButtonGroup>
 #include <kservice.h>
 #include <bluedevil/bluedevil.h>
+#include <KNotification>
 
 ServicesPage::ServicesPage(QWidget* parent): QWizardPage(parent)
 {
@@ -34,17 +35,30 @@ ServicesPage::ServicesPage(QWidget* parent): QWizardPage(parent)
 void ServicesPage::initializePage()
 {
     m_wizard = static_cast<BlueWizard*>(wizard());
-
     KService::List services = m_wizard->services();
-    if (!services.empty()) {
-        m_device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
-        QStringList uuids = m_device->UUIDs();
-        Q_FOREACH(QString uuid, uuids) {
-            uuid = uuid.toUpper();
-            Q_FOREACH(const KSharedPtr<KService> service, services) {
-                if (service.data()->property("X-BlueDevil-UUIDS").toStringList().contains(uuid)) {
-                    addService(service.data());
-                }
+    Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
+
+    if (!services.isEmpty()) {
+        QString desc = device->alias();
+        if (device->alias() != device->name() && !device->name().isEmpty()) {
+            desc.append(" ("+device->name()+")");
+        }
+        desc.append(i18n(" has been paired successfully"));
+
+        KNotification::event(
+            KNotification::Notification,
+            desc,
+            KIcon(device->icon()).pixmap(48,48)
+        )->sendEvent();
+        m_wizard->done(1);
+    }
+
+    QStringList uuids = device->UUIDs();
+    Q_FOREACH(QString uuid, uuids) {
+        uuid = uuid.toUpper();
+        Q_FOREACH(const KSharedPtr<KService> service, services) {
+            if (service.data()->property("X-BlueDevil-UUIDS").toStringList().contains(uuid)) {
+                addService(service.data());
             }
         }
     }

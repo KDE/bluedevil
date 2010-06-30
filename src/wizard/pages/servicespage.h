@@ -48,7 +48,6 @@ private:
     void addService(const KService* service);
 
 private:
-    Device *m_device;
     BlueWizard *m_wizard;
     KService *m_service;
     QButtonGroup m_buttonGroup;

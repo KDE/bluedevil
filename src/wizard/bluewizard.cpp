@@ -63,17 +63,20 @@ BlueWizard::BlueWizard() : QWizard(), m_service(0), m_manualPin(false)
 void BlueWizard::done(int result)
 {
     QWizard::done(result);
+    if (result == 1) {
+        //If we have a service to connect with
+        if (m_service) {
+            KPluginFactory *factory = KPluginLoader(m_service->library()).factory();
 
-    //If we have a service to connect with
-    if (m_service) {
-        KPluginFactory *factory = KPluginLoader(m_service->library()).factory();
+            Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_deviceAddress);
+            ActionPlugin *plugin = factory->create<ActionPlugin>(this);
+            connect(plugin, SIGNAL(finished()), qApp, SLOT(quit()));
 
-        Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_deviceAddress);
-        ActionPlugin *plugin = factory->create<ActionPlugin>(this);
-        connect(plugin, SIGNAL(finished()), qApp, SLOT(quit()));
-
-        plugin->setDevice(device);
-        plugin->startAction();
+            plugin->setDevice(device);
+            plugin->startAction();
+        } else {
+            qApp->quit();
+        }
     } else {
         qApp->quit();
     }
