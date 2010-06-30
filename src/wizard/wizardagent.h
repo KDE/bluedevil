@@ -26,6 +26,11 @@
 #include <QApplication>
 #include <QXmlStreamReader>
 
+namespace BlueDevil {
+    class Device;
+}
+
+using namespace BlueDevil;
 class WizardAgent : public QDBusAbstractAdaptor
 {
     Q_OBJECT
@@ -36,7 +41,7 @@ public:
     ~WizardAgent();
 
     void setPin(const QString& pin);
-    QString getPin(const QString& path) const;
+    QString getPin(Device* device);
 
 //D-Bus interface implementation
 public slots:
@@ -51,6 +56,7 @@ public slots:
 
 private:
     QString m_pin;
+    Device *m_device;
 
 Q_SIGNALS:
     void pinRequested(const QString&);

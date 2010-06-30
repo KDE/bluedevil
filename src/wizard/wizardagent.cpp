@@ -91,36 +91,36 @@ QString WizardAgent::RequestPinCode(QDBusObjectPath device, const QDBusMessage &
     Q_UNUSED(msg);
     qDebug() << "AGENT-RequestPinCode " << device.path();
 
-    QString pin = getPin(device.path());
-    emit pinRequested(pin);
-    return pin;
+    emit pinRequested(m_pin);
+    return m_pin;
 }
 
-QString WizardAgent::getPin(const QString& path) const
+QString WizardAgent::getPin(Device *device)
 {
     if(!m_pin.isEmpty()) {
         return m_pin;
     }
+
+    m_pin.append("0000");
 
     QString xmlPath = KStandardDirs::locate("appdata", "pin-code-database.xml");
 
     QFile *file = new QFile(xmlPath);
     if(!file->open(QIODevice::ReadOnly)) {
         qDebug() << "Can't open the device";
-        return "";
+        return m_pin;
     }
 
-    Device *device = Manager::self()->defaultAdapter()->deviceForUBI(path);
     if (!device) {
         qDebug() << "could not found the device";
-        return QString("0000");
+        return m_pin;
     }
 
+    m_device = device;
     QXmlStreamReader* m_xml = new QXmlStreamReader(file);
 
     int deviceType = device->deviceClass();
     int xmlType = 0;
-    QString pin;
 
     while(!m_xml->atEnd()) {
         m_xml->readNext();
@@ -153,10 +153,11 @@ QString WizardAgent::getPin(const QString& path) const
             }
         }
 
-        return attr.value("pin").toString();
+        m_pin = attr.value("pin").toString();
+        return m_pin;
     }
 
-    return QString("0000");
+    return m_pin;
 }
 
 void WizardAgent::setPin(const QString& pin)
