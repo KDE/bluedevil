@@ -35,14 +35,16 @@ void ServicesPage::initializePage()
 {
     m_wizard = static_cast<BlueWizard*>(wizard());
 
-    m_device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
-    QStringList uuids = m_device->UUIDs();
     KService::List services = m_wizard->services();
-    Q_FOREACH(QString uuid, uuids) {
-        uuid = uuid.toUpper();
-        Q_FOREACH(const KSharedPtr<KService> service, services) {
-            if (service.data()->property("X-BlueDevil-UUIDS").toStringList().contains(uuid)) {
-                addService(service.data());
+    if (!services.empty()) {
+        m_device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
+        QStringList uuids = m_device->UUIDs();
+        Q_FOREACH(QString uuid, uuids) {
+            uuid = uuid.toUpper();
+            Q_FOREACH(const KSharedPtr<KService> service, services) {
+                if (service.data()->property("X-BlueDevil-UUIDS").toStringList().contains(uuid)) {
+                    addService(service.data());
+                }
             }
         }
     }
