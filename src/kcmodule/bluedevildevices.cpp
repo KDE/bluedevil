@@ -328,7 +328,6 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     connect(m_systemCheck, SIGNAL(updateInformationStateRequest()),
             this, SLOT(updateInformationState()));
 
-    generateNoDevicesMessage();
     m_isEnabled = m_systemCheck->checkKDEDModuleLoaded();
 
     QVBoxLayout *layout = new QVBoxLayout;
@@ -386,10 +385,9 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
                 this, SLOT(adapterDiscoverableChanged()));
         connect(defaultAdapter, SIGNAL(devicesChanged(QList<Device*>)),
                 this, SLOT(adapterDevicesChanged(QList<Device*>)));
-
-        fillRemoteDevicesModelInformation();
     }
 
+    fillRemoteDevicesModelInformation();
     updateInformationState();
 }
 
@@ -512,7 +510,8 @@ void KCMBlueDevilDevices::generateNoDevicesMessage()
     QLabel *label = new QLabel(m_noDevicesMessage);
     label->setPixmap(KIcon("dialog-information").pixmap(128, 128));
     layout->addWidget(label, 0, 1, Qt::AlignHCenter);
-    layout->addWidget(new QLabel("No remote devices have been added"), 1, 1, Qt::AlignHCenter);
+    layout->addWidget(new QLabel("No remote devices have been added", m_noDevicesMessage),
+                                 1, 1, Qt::AlignHCenter);
     KPushButton *const addDevice = new KPushButton(KIcon("list-add"), "Click here to add a remote device");
     connect(addDevice, SIGNAL(clicked()), this, SLOT(launchWizard()));
     layout->addWidget(addDevice, 2, 1, Qt::AlignHCenter);
@@ -526,15 +525,16 @@ void KCMBlueDevilDevices::generateNoDevicesMessage()
 void KCMBlueDevilDevices::fillRemoteDevicesModelInformation()
 {
     m_devicesModel->removeRows(0, m_devicesModel->rowCount());
-    if (!BlueDevil::Manager::self()->defaultAdapter()) {
-        return;
-    }
     Adapter *defaultAdapter = BlueDevil::Manager::self()->defaultAdapter();
-    const QList<Device*> deviceList = defaultAdapter->devices();
+    QList<Device*> deviceList;
+    if (defaultAdapter) {
+        deviceList = defaultAdapter->devices();
+    }
     if (deviceList.isEmpty()) {
         generateNoDevicesMessage();
         m_devices->setViewport(m_noDevicesMessage);
         m_noDevicesMessage->setVisible(true);
+        return;
     } else if (m_devices->viewport() == m_noDevicesMessage) {
         QWidget *viewport = new QWidget(this);
         viewport->setMouseTracking(true);

@@ -109,6 +109,7 @@ public:
 private Q_SLOTS:
     void updateAdapters();
     void adapterDiscoverableChanged();
+    void generateNoAdaptersMessage();
     void updateInformationState();
     void adapterConfigurationChanged(bool modified);
 
@@ -118,6 +119,7 @@ private:
 private:
     QVBoxLayout                     *m_layout;
     QMap<Adapter*, AdapterSettings*> m_adapterSettingsMap;
+    QWidget                         *m_noAdaptersMessage;
 
     SystemCheck *m_systemCheck;
 };
