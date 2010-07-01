@@ -22,8 +22,6 @@
 #include "requestpin.h"
 #include "ui_dialogWidget.h"
 
-#include <iostream>
-
 #include <QtCore/QDebug>
 #include <QtCore/QCoreApplication>
 #include <QtCore/QTimer>
