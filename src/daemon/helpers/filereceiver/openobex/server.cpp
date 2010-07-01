@@ -23,6 +23,8 @@
 #include "server_interface.h"
 #include "server_session_interface.h"
 #include "serversession.h"
+#include "settings.h"
+
 #include <KDebug>
 #include <KGlobal>
 #include <KConfig>
@@ -145,11 +147,7 @@ void OpenObex::Server::serverCreated(QDBusObjectPath path)
 
     // Get the default save dir, where all files will be downloaded (even if user chooses "Save As"
     // option, files will be downloaded here and then moved to the file path the user wanted)
-    KConfigGroup group = KGlobal::config()->group("ObexServer");
-//     QString saveDir = group.readEntry("saveDir",
-//         QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation));
-//     d->dbusServer->Start(saveDir, true, false);
-    d->dbusServer->Start(group.readEntry("savePath", "/tmp"), true, false);
+    d->dbusServer->Start(Settings::saveUrl().path(), true, false);
 }
 
 void OpenObex::Server::serverCreatedError(QDBusError error)
