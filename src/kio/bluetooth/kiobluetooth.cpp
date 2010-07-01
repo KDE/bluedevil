@@ -214,10 +214,14 @@ QString KioBluetoothPrivate::urlForRemoteService(const QString &host, const QStr
 
 void KioBluetoothPrivate::listRemoteDeviceServices()
 {
+    q->infoMessage(i18n("Retrieving services..."));
+
     kDebug();
     currentHost = adapter->deviceForAddress(currentHostname.replace('-', ':').toUpper());
     currentHostServiceNames = getServiceNames(currentHost->UUIDs());
 
+    q->totalSize(currentHostServiceNames.count());
+    int i = 1;
     Q_FOREACH (QString serviceName, currentHostServiceNames) {
         KIO::UDSEntry entry;
         entry.insert(KIO::UDSEntry::UDS_NAME, serviceName);
@@ -229,6 +233,7 @@ void KioBluetoothPrivate::listRemoteDeviceServices()
         entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRWXU|S_IRWXG|S_IRWXO);
         entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, "inode/vnd.kde.service." + serviceName);
         q->listEntry(entry, false);
+        q->processedSize(i++);
     }
 
     q->listEntry(KIO::UDSEntry(), true);
@@ -262,10 +267,17 @@ void KioBluetoothPrivate::listDevices()
 
 void KioBluetoothPrivate::listDevice(Device *device)
 {
-    QString target = QString("bluetooth://").append(QString(device->address()).replace(':', '-'));
+    const QString target = QString("bluetooth://").append(QString(device->address()).replace(':', '-'));
+    const QString alias = device->alias();
     QString name = device->name();
-    if (name.isEmpty()) {
+    if (alias.isEmpty() && name.isEmpty()) {
         name = i18n("Untitled device");
+    } else if (name != alias) {
+        if (name.isEmpty() && !alias.isEmpty()) {
+            name = alias;
+        } else if (!name.isEmpty() && !alias.isEmpty()) {
+            name = i18n("%1 (%2)").arg(alias).arg(name);
+        }
     }
     KIO::UDSEntry entry;
     entry.insert(KIO::UDSEntry::UDS_NAME, name);
