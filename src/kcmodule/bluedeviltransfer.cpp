@@ -20,6 +20,7 @@
 
 #include "bluedeviltransfer.h"
 #include "systemcheck.h"
+#include "ui_transfer.h"
 
 #include <QtCore/QTimer>
 
@@ -30,6 +31,8 @@
 #include <kaboutdata.h>
 #include <kurlrequester.h>
 #include <kpluginfactory.h>
+#include <kconfigdialogmanager.h>
+#include <../daemon/helpers/filereceiver/settings.h>
 
 K_PLUGIN_FACTORY(BlueDevilFactory, registerPlugin<KCMBlueDevilTransfer>();)
 K_EXPORT_PLUGIN(BlueDevilFactory("bluedeviltransfer"))
@@ -38,7 +41,6 @@ K_EXPORT_PLUGIN(BlueDevilFactory("bluedeviltransfer"))
 
 KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
     : KCModule(BlueDevilFactory::componentData(), parent)
-    , m_transferTargetDirectory(new KUrlRequester(this))
     , m_systemCheck(new SystemCheck(this))
 {
     KAboutData* ab = new KAboutData(
@@ -52,20 +54,17 @@ KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
     connect(m_systemCheck, SIGNAL(updateInformationStateRequest()),
             this, SLOT(updateInformationState()));
 
-    m_transferTargetDirectory->setMode(KFile::Directory);
 
     QVBoxLayout *layout = new QVBoxLayout;
     m_systemCheck->createWarnings(layout);
-    QGroupBox *transferTarget = new QGroupBox(this);
-    {
-        transferTarget->setTitle(i18n("Transfer destination directory"));
-        QVBoxLayout *layout = new QVBoxLayout;
-        layout->addWidget(m_transferTargetDirectory);
-        transferTarget->setLayout(layout);
-    }
-    layout->addWidget(transferTarget);
-    layout->addStretch();
+
+    QWidget *transfer = new QWidget(this);
+    Ui::Transfer *uiTransfer = new Ui::Transfer();
+    uiTransfer->setupUi(transfer);
+    layout->addWidget(transfer);
     setLayout(layout);
+
+    addConfig(Settings::self(), transfer);
 
     connect(BlueDevil::Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)),
             this, SLOT(defaultAdapterChanged(Adapter*)));
@@ -80,14 +79,6 @@ KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
 }
 
 KCMBlueDevilTransfer::~KCMBlueDevilTransfer()
-{
-}
-
-void KCMBlueDevilTransfer::defaults()
-{
-}
-
-void KCMBlueDevilTransfer::save()
 {
 }
 

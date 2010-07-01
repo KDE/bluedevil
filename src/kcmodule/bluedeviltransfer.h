@@ -23,8 +23,6 @@
 
 #include <kcmodule.h>
 
-class KUrlRequester;
-
 class SystemCheck;
 
 namespace BlueDevil {
@@ -42,17 +40,12 @@ public:
     KCMBlueDevilTransfer(QWidget *parent, const QVariantList&);
     virtual ~KCMBlueDevilTransfer();
 
-    virtual void defaults();
-    virtual void save();
-
 private Q_SLOTS:
     void defaultAdapterChanged(Adapter *adapter);
     void adapterDiscoverableChanged();
     void updateInformationState();
 
 private:
-    KUrlRequester *m_transferTargetDirectory;
-
     SystemCheck *m_systemCheck;
 };
 
