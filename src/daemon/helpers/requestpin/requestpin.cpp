@@ -22,6 +22,8 @@
 #include "requestpin.h"
 #include "ui_dialogWidget.h"
 
+#include <iostream>
+
 #include <QtCore/QDebug>
 #include <QtCore/QCoreApplication>
 #include <QtCore/QTimer>
@@ -32,12 +34,13 @@
 #include <kiconloader.h>
 #include <KDialog>
 
+using namespace std;
 RequestPin::RequestPin() : QObject()
 {
-    KNotification *notification = new KNotification("bluedevilRequestPin",
+    m_notification = new KNotification("bluedevilRequestPin",
                                                     KNotification::Persistent, this);
 
-    notification->setText(i18nc(
+    m_notification->setText(i18nc(
         "Showed in a notification to announce that a PIN is needed to acomplish a pair action, %1 is the name of the bluetooth device",
         "Pin is needed to pair with %1",qApp->arguments()[1])
     );
@@ -48,20 +51,23 @@ RequestPin::RequestPin() : QObject()
         "Introduce pin")
     );
 
-    notification->setActions(actions);
+    m_notification->setActions(actions);
 
-    connect(notification, SIGNAL(action1Activated()),this, SLOT(introducePin()));
-    connect(notification, SIGNAL(closed()), this, SLOT(quit()));
-    connect(notification, SIGNAL(ignored()), this, SLOT(quit()));
+    connect(m_notification, SIGNAL(action1Activated()),this, SLOT(introducePin()));
+    connect(m_notification, SIGNAL(closed()), this, SLOT(quit()));
+    connect(m_notification, SIGNAL(ignored()), this, SLOT(quit()));
 
     //We're using persistent notifications so we have to use our own timeout (10s)
-    QTimer::singleShot(10000, notification, SLOT(close()));
-    notification->setPixmap(KIcon("preferences-system-bluetooth").pixmap(42,42));
-    notification->sendEvent();
+    QTimer::singleShot(10000, m_notification, SLOT(close()));
+    m_notification->setPixmap(KIcon("preferences-system-bluetooth").pixmap(42,42));
+    m_notification->sendEvent();
 }
 
 void RequestPin::introducePin()
 {
+    disconnect(m_notification, SIGNAL(closed()), this, SLOT(quit()));
+    disconnect(m_notification, SIGNAL(ignored()), this, SLOT(quit()));
+
     KIcon icon("preferences-system-bluetooth");
 
     Ui::dialogWidget *dialogWidget = new Ui::dialogWidget;
@@ -89,6 +95,7 @@ void RequestPin::introducePin()
     dialog->setMaximumHeight(150);
 
     if (dialog->exec() == KDialog::Accepted) {
+        cout << dialogWidget->pin->text().toLatin1().data();
         qApp->exit(0);
     }
 
@@ -98,6 +105,5 @@ void RequestPin::introducePin()
 
 void RequestPin::quit()
 {
-    qDebug() << "Exit because ignored or closed";
     qApp->exit(1);
 }

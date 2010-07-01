@@ -23,6 +23,7 @@
 #define REQUESTPIN_H
 
 #include <QtCore/QObject>
+class KNotification;
 
 /**
  * @short Small class which send a KNotificaton to know if the Bluetooth device is authorized or not
@@ -56,5 +57,8 @@ private Q_SLOTS:
      * If the notification is ignored or closed, then we have to quit the helper
      */
     void quit();
+
+private:
+    KNotification *m_notification;
 };
 #endif //REQUESTPIN_H
