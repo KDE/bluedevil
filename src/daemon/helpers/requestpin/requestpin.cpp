@@ -53,8 +53,8 @@ RequestPin::RequestPin() : QObject()
     notification->setActions(actions);
 
     connect(notification, SIGNAL(action1Activated()),this, SLOT(introducePin()));
-    connect(notification, SIGNAL(closed()), this, SLOT(deny()));
-    connect(notification, SIGNAL(ignored()), this, SLOT(deny()));
+    connect(notification, SIGNAL(closed()), this, SLOT(quit()));
+    connect(notification, SIGNAL(ignored()), this, SLOT(quit()));
 
     //We're using persistent notifications so we have to use our own timeout (10s)
     QTimer::singleShot(10000, notification, SLOT(close()));
@@ -98,3 +98,8 @@ void RequestPin::introducePin()
     qApp->exit(1);
 }
 
+void RequestPin::quit()
+{
+    qDebug() << "Exit because ignored or closed";
+    qApp->exit(1);
+}

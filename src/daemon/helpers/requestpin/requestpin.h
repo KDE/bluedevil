@@ -51,5 +51,10 @@ private Q_SLOTS:
      * In case of button 2, the app is quit as error
      */
     void introducePin();
+
+    /**
+     * If the notification is ignored or closed, then we have to quit the helper
+     */
+    void quit();
 };
 #endif
