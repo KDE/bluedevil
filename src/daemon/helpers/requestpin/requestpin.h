@@ -19,8 +19,8 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA            *
  ***************************************************************************/
 
-#ifndef AUTHORIZE_H
-#define AUTHORIZE_H
+#ifndef REQUESTPIN_H
+#define REQUESTPIN_H
 
 #include <QtCore/QObject>
 
@@ -57,4 +57,4 @@ private Q_SLOTS:
      */
     void quit();
 };
-#endif
+#endif //REQUESTPIN_H
