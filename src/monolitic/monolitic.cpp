@@ -16,13 +16,35 @@
  */
 
 #include "monolitic.h"
+#include <bluedevil/bluedevil.h>
 
+using namespace BlueDevil;
 Monolitic::Monolitic(QObject* parent): KStatusNotifierItem(parent)
 {
     setCategory(KStatusNotifierItem::Hardware);
     setIconByName("preferences-system-bluetooth");
     setStatus(KStatusNotifierItem::Active);
+
+    if (!Manager::self()->defaultAdapter()) {
+        noAdapters(0);
+    }
+
+    connect(Manager::self(), SIGNAL(adapterAdded(Adapter*)), this,
+        SLOT(adapterAdded()));
+    connect(Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)), this,
+        SLOT(noAdapters(Adapter*)));
 }
 
+void Monolitic::noAdapters(Adapter* adapter)
+{
+    if (!adapter) {
+        setStatus(KStatusNotifierItem::Passive);
+    }
+}
 
-
+void Monolitic::adapterAdded()
+{
+    if (status() != KStatusNotifierItem::Active) {
+        setStatus(KStatusNotifierItem::Active);
+    }
+}

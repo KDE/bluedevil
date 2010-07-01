@@ -21,12 +21,21 @@
 
 #include <kstatusnotifieritem.h>
 
+namespace BlueDevil {
+    class Adapter;
+}
+using namespace BlueDevil;
+
 class Monolitic : public KStatusNotifierItem
 {
 
 Q_OBJECT
 public:
     Monolitic(QObject* parent = 0);
+
+public Q_SLOTS:
+    void noAdapters(Adapter *adapter);
+    void adapterAdded();
 };
 
 #endif // MONOLITIC_H
