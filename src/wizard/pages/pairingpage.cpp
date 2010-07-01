@@ -58,13 +58,6 @@ void PairingPage::initializePage()
         connect(m_device, SIGNAL(connectedChanged(bool)), this, SLOT(nextPage()));
         connect(m_device, SIGNAL(pairedChanged(bool)), this, SLOT(nextPage()));
 
-        if (!m_device->isRegistered()) {
-            qDebug() << "Device is not registered";
-            connect(m_device, SIGNAL(registerDeviceResult(Device*,bool)), this, SLOT(doPair()));
-            asyncCall(m_device, SLOT(registerDevice()));
-            return;
-        }
-
         doPair();
     }
 }
