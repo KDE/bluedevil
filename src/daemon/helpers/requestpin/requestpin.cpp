@@ -94,6 +94,7 @@ void RequestPin::introducePin()
     dialog->setMaximumWidth(300);
     dialog->setMaximumHeight(150);
 
+    dialogWidget->pin->setFocus(Qt::ActiveWindowFocusReason);
     if (dialog->exec() == KDialog::Accepted) {
         cout << dialogWidget->pin->text().toLatin1().data();
         qApp->exit(0);
