@@ -253,11 +253,11 @@ public:
 void KioBluetoothPrivate::listDevices()
 {
     q->infoMessage(i18n("Scanning for remote devices..."));
-    q->totalSize(90);
+    q->totalSize(100);
     adapter->startDiscovery();
     for (int i = 0; i < 10; ++i) {
         SleeperThread::msleep(500);
-        q->processedSize(i * 10);
+        q->processedSize((i + 1) * 10);
         QApplication::processEvents();
     }
     adapter->stopDiscovery();
