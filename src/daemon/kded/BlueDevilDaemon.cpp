@@ -89,6 +89,7 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
 
 BlueDevilDaemon::~BlueDevilDaemon()
 {
+    offlineMode();
     delete d;
 }
 
