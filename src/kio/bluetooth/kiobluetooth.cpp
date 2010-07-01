@@ -1,6 +1,7 @@
 /*  This file is part of the KDE libraries
 
     Copyright (C) 2010 Eduardo Robles Elvira <edulix@gmail.com>
+    Copyright (C) 2010 Rafael Fernández López <ereslibre@kde.org>
     Copyright (C) 2010 UFO Coders <info@ufocoders.com>
 
     This library is free software; you can redistribute it and/or
@@ -246,9 +247,12 @@ public:
 
 void KioBluetoothPrivate::listDevices()
 {
+    q->infoMessage(i18n("Scanning for remote devices..."));
+    q->totalSize(90);
     adapter->startDiscovery();
     for (int i = 0; i < 10; ++i) {
         SleeperThread::msleep(500);
+        q->processedSize(i * 10);
         QApplication::processEvents();
     }
     adapter->stopDiscovery();
