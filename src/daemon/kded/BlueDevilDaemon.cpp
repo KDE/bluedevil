@@ -113,9 +113,9 @@ void BlueDevilDaemon::onlineMode()
 
     d->m_adapter = BlueDevil::Manager::self()->defaultAdapter();
     if (!serviceStarted()) {
-        return;
+        kDebug() << "Launching srever";
+        d->m_service->launchServer();
     }
-    d->m_service->launchServer();
 
     d->m_status = Private::Online;
 }
