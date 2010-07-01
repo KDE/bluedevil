@@ -61,9 +61,6 @@ FileTransferJob::~FileTransferJob()
 void FileTransferJob::start()
 {
     QTimer::singleShot(0, this, SLOT(receiveFiles()));
-
-    /// @see documentation for checkFinish() for details
-    QTimer::singleShot(2000, this, SLOT(checkFinish()));
 }
 
 void FileTransferJob::checkFinish()
@@ -97,6 +94,9 @@ void FileTransferJob::reject()
 
 void FileTransferJob::receiveFiles()
 {
+    /// @see documentation for checkFinish() for details
+    QTimer::singleShot(2000, this, SLOT(checkFinish()));
+
     emit description(this, "Receiving file over bluetooth", QPair<QString, QString>("From", m_serverSession->device()->name()), QPair<QString, QString>("To", m_url.url()));
 
     org::openobex::ServerSession *serverSession = m_serverSession->dbusServerSession();
