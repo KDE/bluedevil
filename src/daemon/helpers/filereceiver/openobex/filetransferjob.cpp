@@ -68,7 +68,6 @@ void FileTransferJob::checkFinish()
 {
     kDebug();
     if (m_transferCompleted) {
-//         emit description(this, "Receiving file over bluetooth", QPair<QString, QString>("From", "asdasd"), QPair<QString, QString>("To", m_url.url()));
         emitResult();
     } else {
         m_canFinish = true;
