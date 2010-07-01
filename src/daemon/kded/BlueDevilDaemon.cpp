@@ -132,12 +132,11 @@ void BlueDevilDaemon::offlineMode()
     connect(d->m_agentListener, SIGNAL(finished()), this, SLOT(agentThreadStopped()));
     d->m_agentListener->quit();
 
-    d->m_status = Private::Offline;
-    if (!serviceStarted()) {
-        return;
+    if (serviceStarted()) {
+        d->m_service->stopServer();
     }
 
-    d->m_service->stopServer();
+    d->m_status = Private::Offline;
 }
 
 /*
