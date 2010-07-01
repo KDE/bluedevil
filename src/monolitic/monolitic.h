@@ -36,6 +36,15 @@ public:
 public Q_SLOTS:
     void noAdapters(Adapter *adapter);
     void adapterAdded();
+
+    void addDevice();
+    void configReceive();
+    void deviceManager();
+    void configAdapter();
+
+private:
+    void onlineMode();
+    void offlineMode();
 };
 
 #endif // MONOLITIC_H
