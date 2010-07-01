@@ -202,7 +202,11 @@ void AdapterSettings::readChanges()
     m_powered->setChecked(m_poweredOrig);
 
     m_discoverTimeLabel->setText(i18np("1 minute", "%1 minutes", m_discoverTime->value()));
-    setTitle(i18n("Adapter: %1 (%2)").arg(m_adapter->name()).arg(m_adapter->address()));
+    if (BlueDevil::Manager::self()->defaultAdapter() == m_adapter) {
+        setTitle(i18n("Default adapter: %1 (%2)").arg(m_adapter->name()).arg(m_adapter->address()));
+    } else {
+        setTitle(i18n("Adapter: %1 (%2)").arg(m_adapter->name()).arg(m_adapter->address()));
+    }
 
     blockSignals(false);
 
@@ -259,6 +263,14 @@ KCMBlueDevilAdapters::KCMBlueDevilAdapters(QWidget *parent, const QVariantList&)
             this, SLOT(updateAdapters()));
     connect(BlueDevil::Manager::self(), SIGNAL(adapterRemoved(Adapter*)),
             this, SLOT(updateAdapters()));
+    connect(BlueDevil::Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)),
+            this, SLOT(defaultAdapterChanged(Adapter*)));
+
+    BlueDevil::Adapter *const defaultAdapter = BlueDevil::Manager::self()->defaultAdapter();
+    if (defaultAdapter) {
+        connect(defaultAdapter, SIGNAL(discoverableChanged(bool)),
+                this, SLOT(adapterDiscoverableChanged()));
+    }
 
     fillAdaptersInformation();
     updateInformationState();
@@ -283,6 +295,15 @@ void KCMBlueDevilAdapters::save()
 void KCMBlueDevilAdapters::updateAdapters()
 {
     fillAdaptersInformation();
+    QTimer::singleShot(300, this, SLOT(updateInformationState()));
+}
+
+void KCMBlueDevilAdapters::defaultAdapterChanged(Adapter *adapter)
+{
+    if (adapter) {
+        connect(adapter, SIGNAL(discoverableChanged(bool)),
+                this, SLOT(adapterDiscoverableChanged()));
+    }
     QTimer::singleShot(300, this, SLOT(updateInformationState()));
 }
 
