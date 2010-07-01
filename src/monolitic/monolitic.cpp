@@ -16,6 +16,12 @@
  */
 
 #include "monolitic.h"
+#include <kmenu.h>
+#include <kaction.h>
+#include <kprocess.h>
+#include <klocalizedstring.h>
+
+#include <QDebug>
 #include <bluedevil/bluedevil.h>
 
 using namespace BlueDevil;
@@ -23,10 +29,10 @@ Monolitic::Monolitic(QObject* parent): KStatusNotifierItem(parent)
 {
     setCategory(KStatusNotifierItem::Hardware);
     setIconByName("preferences-system-bluetooth");
-    setStatus(KStatusNotifierItem::Active);
 
+    onlineMode();
     if (!Manager::self()->defaultAdapter()) {
-        noAdapters(0);
+        offlineMode();
     }
 
     connect(Manager::self(), SIGNAL(adapterAdded(Adapter*)), this,
@@ -38,13 +44,71 @@ Monolitic::Monolitic(QObject* parent): KStatusNotifierItem(parent)
 void Monolitic::noAdapters(Adapter* adapter)
 {
     if (!adapter) {
-        setStatus(KStatusNotifierItem::Passive);
+        offlineMode();
     }
 }
 
 void Monolitic::adapterAdded()
 {
     if (status() != KStatusNotifierItem::Active) {
-        setStatus(KStatusNotifierItem::Active);
+        onlineMode();
     }
+}
+
+void Monolitic::onlineMode()
+{
+    setStatus(KStatusNotifierItem::Active);
+
+    KMenu *menu = contextMenu();
+
+    KAction *addDevice = new KAction(KIcon("edit-find-project"), i18n("Add Device"), menu);
+    connect(addDevice, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(addDevice()));
+    menu->addAction(addDevice);
+
+    KAction *configReceive = new KAction(KIcon("folder-tar"),i18n("Receive files"), menu);
+    connect(configReceive, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(configReceive()));
+    menu->addAction(configReceive);
+
+    KAction *deviceManager = new KAction(KIcon("input-mouse"), i18n("Manage Devices"), menu);
+    connect(deviceManager, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(deviceManager()));
+    menu->addAction(deviceManager);
+
+    KAction *configAdapter = new KAction(KIcon("audio-card"), i18n("Configure Adapters"), menu);
+    connect(configAdapter, SIGNAL(triggered(bool)), this, SLOT(configAdapter()));
+    menu->addAction(configAdapter);
+
+    setContextMenu(menu);
+    setStandardActionsEnabled(true);
+}
+
+void Monolitic::addDevice()
+{
+    KProcess process;
+    process.setProgram("bluedevil-wizard");
+    process.startDetached();
+}
+
+void Monolitic::configReceive()
+{
+    KProcess process;
+    process.startDetached("kcmshell4", QStringList("bluedevildevices"));
+}
+
+void Monolitic::deviceManager()
+{
+    KProcess process;
+    process.startDetached("kcmshell4", QStringList("bluedevildevices"));
+}
+
+void Monolitic::configAdapter()
+{
+    KProcess process;
+    process.startDetached("kcmshell4", QStringList("bluedeviladapters"));
+}
+
+
+void Monolitic::offlineMode()
+{
+    setStatus(KStatusNotifierItem::Passive);
+    contextMenu()->clear();
 }
