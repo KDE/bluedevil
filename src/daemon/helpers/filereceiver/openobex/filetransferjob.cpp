@@ -36,7 +36,7 @@ using namespace OpenObex;
 
 FileTransferJob::FileTransferJob(OpenObex::ServerSession *serverSession, const KUrl &url,
                                  qulonglong size)
-    : KJob(serverSession)
+    : KJob()
     , m_serverSession(serverSession)
     , m_totalFileSize(size)
     , m_url(url)
@@ -56,6 +56,7 @@ FileTransferJob::FileTransferJob(OpenObex::ServerSession *serverSession, const K
 
 FileTransferJob::~FileTransferJob()
 {
+    kDebug();
 }
 
 void FileTransferJob::start()
@@ -67,6 +68,7 @@ void FileTransferJob::checkFinish()
 {
     kDebug();
     if (m_transferCompleted) {
+//         emit description(this, "Receiving file over bluetooth", QPair<QString, QString>("From", "asdasd"), QPair<QString, QString>("To", m_url.url()));
         emitResult();
     } else {
         m_canFinish = true;
@@ -97,7 +99,7 @@ void FileTransferJob::receiveFiles()
     /// @see documentation for checkFinish() for details
     QTimer::singleShot(2000, this, SLOT(checkFinish()));
 
-    emit description(this, "Receiving file over bluetooth", QPair<QString, QString>("From", m_serverSession->device()->name()), QPair<QString, QString>("To", m_url.url()));
+    emit description(this, "Receiving file over bluetooth", QPair<QString, QString>("From", QString(m_serverSession->device()->name())), QPair<QString, QString>("To", m_url.url()));
 
     org::openobex::ServerSession *serverSession = m_serverSession->dbusServerSession();
     connect(serverSession, SIGNAL(TransferProgress(qulonglong)),
