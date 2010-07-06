@@ -74,10 +74,6 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     aboutData.addAuthor(ki18n("Eduardo Robles Elvira"), ki18n("Maintainer"), "edulix@gmail.com",
         "http://blog.edulix.es");
 
-    connect(BlueDevil::Manager::self(), SIGNAL(adapterAdded(Adapter*)),
-            this, SLOT(adapterAdded(Adapter*)));
-    connect(BlueDevil::Manager::self(), SIGNAL(adapterRemoved(Adapter*)),
-            this, SLOT(adapterRemoved(Adapter*)));
     connect(BlueDevil::Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)),
             this, SLOT(defaultAdapterChanged(Adapter*)));
 
@@ -123,11 +119,13 @@ void BlueDevilDaemon::onlineMode()
 
 void BlueDevilDaemon::offlineMode()
 {
+    kDebug() << "Offline mode";
     if (d->m_status == Private::Offline) {
         kDebug() << "Already in offlineMode";
         return;
     }
-    kDebug() << "Offline mode";
+
+    d->m_adapter = 0;
 
     connect(d->m_agentListener, SIGNAL(finished()), this, SLOT(agentThreadStopped()));
     d->m_agentListener->quit();
@@ -158,28 +156,15 @@ void BlueDevilDaemon::agentThreadStopped()
     kDebug() << "agent listener deleted";
 }
 
-void BlueDevilDaemon::adapterAdded(BlueDevil::Adapter *adapter)
-{
-    kDebug() << adapter->name();
-    if (d->m_status == Private::Offline) {
-        onlineMode();
-    }
-}
-
-void BlueDevilDaemon::adapterRemoved(BlueDevil::Adapter *adapter)
-{
-    kDebug() << adapter->name();
-    if (BlueDevil::Manager::self()->adapters().isEmpty()) {
-        offlineMode();
-    }
-}
-
 void BlueDevilDaemon::defaultAdapterChanged(BlueDevil::Adapter *adapter)
 {
-    if (d->m_adapter == adapter && d->m_status == Private::Online) {
-      kDebug() << "already online with that adapter";
-      return;
+    //if we hav ean adapter, remove it and offline the KDED for a moment
+    if (d->m_adapter) {
+        offlineMode();
     }
-    offlineMode();
-    onlineMode();
+
+    //If the given adapter is not NULL, then set onlineMode again
+    if (adapter) {
+        onlineMode();
+    }
 }

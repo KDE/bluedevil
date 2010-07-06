@@ -58,16 +58,6 @@ private:
 
 private Q_SLOTS:
     /**
-     * Called when a new adapter is available calls onlineMode if needed
-     */
-    void adapterAdded(Adapter *adapter);
-
-    /**
-     * Called when an adapter is removed calls offlineMode if needed
-     */
-    void adapterRemoved(Adapter *adapter);
-
-    /**
      * Called when the default adapter changes, re-initialize the kded with the new
      * default adapter
      */
