@@ -1,6 +1,3 @@
-include_directories(${KDE4_INCLUDES} ${QT_INCLUDES} ${KDE4WORKSPACE_INCLUDE_DIR})
-include(${QT_USE_FILE})
-
 set(kio_bluetooth_PART_SRCS
    kiobluetooth.cpp)
 
@@ -10,7 +7,7 @@ target_link_libraries(kio_bluetooth
   ${KDE4_KDECORE_LIBS}
   ${KDE4_KIO_LIBRARY}
   ${KDE4_KDEUI_LIBS}
-  bluedevil
+  ${LibBlueDevil_LIBRARIES}
 )
 
 ########### install files ###############
