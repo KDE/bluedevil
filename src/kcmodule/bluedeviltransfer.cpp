@@ -21,6 +21,7 @@
 #include "bluedeviltransfer.h"
 #include "systemcheck.h"
 #include "ui_transfer.h"
+#include "filereceiversettings.h"
 
 #include <QtCore/QTimer>
 
@@ -32,8 +33,6 @@
 #include <kurlrequester.h>
 #include <kpluginfactory.h>
 #include <kconfigdialogmanager.h>
-
-#include "filereceiversettings.h"
 
 K_PLUGIN_FACTORY(BlueDevilFactory, registerPlugin<KCMBlueDevilTransfer>();)
 K_EXPORT_PLUGIN(BlueDevilFactory("bluedeviltransfer"))
