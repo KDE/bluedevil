@@ -339,51 +339,49 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
 
     m_systemCheck->createWarnings(layout);
 
-    // Bluetooth device list
-    {
-        m_devicesModel = new BluetoothDevicesModel(this);
+// Bluetooth device list
+    m_devicesModel = new BluetoothDevicesModel(this);
 
-        m_devices = new QListView(this);
-        m_devices->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
-        m_devices->setItemDelegate(new BluetoothDevicesDelegate(this));
-        m_devices->setModel(m_devicesModel);
+    m_devices = new QListView(this);
+    m_devices->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+    m_devices->setItemDelegate(new BluetoothDevicesDelegate(this));
+    m_devices->setModel(m_devicesModel);
 
-        connect(m_devices->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
-                this, SLOT(deviceSelectionChanged(QItemSelection)));
+    connect(m_devices->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
+            this, SLOT(deviceSelectionChanged(QItemSelection)));
 
-        layout->addWidget(m_devices);
-    }
+    layout->addWidget(m_devices);
 
-    {
-        m_trustDevice = new KPushButton(KIcon("security-high"), i18n("Trust"));
-        m_trustDevice->setEnabled(false);
-        m_trustDevice->setCheckable(true);
-        m_renameAliasDevice = new KPushButton(KIcon("document-edit"), i18n("Rename"));
-        m_renameAliasDevice->setEnabled(false);
-        m_removeDevice = new KPushButton(KIcon("list-remove"), i18n("Remove"));
-        m_removeDevice->setEnabled(false);
-        m_disconnectDevice = new KPushButton(KIcon("network-disconnect"), i18n("Disconnect"));
-        m_disconnectDevice->setEnabled(false);
-        m_addDevice = new KPushButton(KIcon("list-add"), i18n("Add Device..."));
+// Actions buttons
+    m_trustDevice = new KPushButton(KIcon("security-high"), i18n("Trust"));
+    m_trustDevice->setEnabled(false);
+    m_trustDevice->setCheckable(true);
+    m_renameAliasDevice = new KPushButton(KIcon("document-edit"), i18n("Rename"));
+    m_renameAliasDevice->setEnabled(false);
+    m_removeDevice = new KPushButton(KIcon("list-remove"), i18n("Remove"));
+    m_removeDevice->setEnabled(false);
+    m_disconnectDevice = new KPushButton(KIcon("network-disconnect"), i18n("Disconnect"));
+    m_disconnectDevice->setEnabled(false);
+    m_addDevice = new KPushButton(KIcon("list-add"), i18n("Add Device..."));
 
-        connect(m_trustDevice, SIGNAL(clicked()), this, SLOT(trustDevice()));
-        connect(m_renameAliasDevice, SIGNAL(clicked()), this, SLOT(renameAliasDevice()));
-        connect(m_removeDevice, SIGNAL(clicked()), this, SLOT(removeDevice()));
-        connect(m_disconnectDevice, SIGNAL(clicked()), this, SLOT(disconnectDevice()));
-        connect(m_addDevice, SIGNAL(clicked()), this, SLOT(launchWizard()));
+    connect(m_trustDevice, SIGNAL(clicked()), this, SLOT(trustDevice()));
+    connect(m_renameAliasDevice, SIGNAL(clicked()), this, SLOT(renameAliasDevice()));
+    connect(m_removeDevice, SIGNAL(clicked()), this, SLOT(removeDevice()));
+    connect(m_disconnectDevice, SIGNAL(clicked()), this, SLOT(disconnectDevice()));
+    connect(m_addDevice, SIGNAL(clicked()), this, SLOT(launchWizard()));
 
-        QHBoxLayout *hLayout = new QHBoxLayout;
-        hLayout->addWidget(m_trustDevice);
-        hLayout->addWidget(m_renameAliasDevice);
-        hLayout->addWidget(m_removeDevice);
-        hLayout->addWidget(m_disconnectDevice);
-        hLayout->addStretch();
-        hLayout->addWidget(m_addDevice);
-        layout->addLayout(hLayout);
-    }
+    QHBoxLayout *hLayout = new QHBoxLayout;
+    hLayout->addWidget(m_trustDevice);
+    hLayout->addWidget(m_renameAliasDevice);
+    hLayout->addWidget(m_removeDevice);
+    hLayout->addWidget(m_disconnectDevice);
+    hLayout->addStretch();
+    hLayout->addWidget(m_addDevice);
+    layout->addLayout(hLayout);
 
     setLayout(layout);
 
+//Logic
     connect(BlueDevil::Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)),
             this, SLOT(defaultAdapterChanged(Adapter*)));
 
