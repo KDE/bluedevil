@@ -58,6 +58,7 @@ private Q_SLOTS:
     void trustDevice();
     void renameAliasDevice();
     void removeDevice();
+    void disconnectDevice();
     void launchWizard();
 
     void defaultAdapterChanged(Adapter *adapter);
@@ -75,6 +76,7 @@ private:
     KPushButton           *m_trustDevice;
     KPushButton           *m_renameAliasDevice;
     KPushButton           *m_removeDevice;
+    KPushButton           *m_disconnectDevice;
     KPushButton           *m_addDevice;
     bool                   m_isEnabled;
     BluetoothDevicesModel *m_devicesModel;
