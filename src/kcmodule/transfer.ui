@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
-    <widget class="QCheckBox" name="kcfg_toggleReceive">
+    <widget class="QCheckBox" name="kcfg_enabled">
      <property name="text">
       <string>Enable receiving files</string>
      </property>

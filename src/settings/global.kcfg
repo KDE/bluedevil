@@ -10,9 +10,5 @@ xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
             <label>Enable or Disable all KDE bluetooth integration</label>
             <default>true</default>
         </entry>
-        <entry name="enableFileReceive" type="bool" key="enableFileReceive">
-            <label>Enable or Disable the file reception</label>
-            <default>true</default>
-        </entry>
     </group>
 </kcfg>
