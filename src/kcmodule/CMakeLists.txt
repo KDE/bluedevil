@@ -4,9 +4,13 @@ set(kcm_bluedeviltransfer_PART_SRCS bluedeviltransfer.cpp systemcheck.cpp kded.c
 
 kde4_add_ui_files(kcm_bluedeviltransfer_PART_SRCS_UI transfer.ui)
 
-kde4_add_kcfg_files(kcm_bluedeviltransfer_PART_SRCS ../settings/filereceiversettings.kcfgc)
+kde4_add_kcfg_files(kcm_bluedeviltransfer_PART_SRCS
+                    ../settings/filereceiversettings.kcfgc
+                    ../settings/globalsettings.kcfgc)
 
 kde4_add_kcfg_files(kcm_bluedevildevices_PART_SRCS ../settings/globalsettings.kcfgc)
+
+kde4_add_kcfg_files(kcm_bluedeviladapters_PART_SRCS ../settings/globalsettings.kcfgc)
 
 kde4_add_plugin(kcm_bluedevildevices ${kcm_bluedevildevices_PART_SRCS})
 kde4_add_plugin(kcm_bluedeviladapters ${kcm_bluedeviladapters_PART_SRCS})
