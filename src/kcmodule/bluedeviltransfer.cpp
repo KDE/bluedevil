@@ -33,7 +33,7 @@
 #include <kpluginfactory.h>
 #include <kconfigdialogmanager.h>
 
-#include "fileReceiverSettings.h"
+#include "filereceiversettings.h"
 
 K_PLUGIN_FACTORY(BlueDevilFactory, registerPlugin<KCMBlueDevilTransfer>();)
 K_EXPORT_PLUGIN(BlueDevilFactory("bluedeviltransfer"))

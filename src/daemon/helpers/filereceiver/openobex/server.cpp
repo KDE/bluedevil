@@ -23,7 +23,7 @@
 #include "server_interface.h"
 #include "server_session_interface.h"
 #include "serversession.h"
-#include "fileReceiverSettings.h"
+#include "filereceiversettings.h"
 
 #include <KDebug>
 #include <KGlobal>
