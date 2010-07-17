@@ -407,8 +407,10 @@ void KCMBlueDevilDevices::save()
 {
     KCModule::save();
     if (!m_isEnabled && m_enable->isChecked()) {
+        m_systemCheck->kded()->setModuleAutoloading("bluedevil", true);
         m_systemCheck->kded()->loadModule("bluedevil");
     } else if (m_isEnabled && !m_enable->isChecked()) {
+        m_systemCheck->kded()->setModuleAutoloading("bluedevil", false);
         m_systemCheck->kded()->unloadModule("bluedevil");
     }
     m_isEnabled = m_systemCheck->checkKDEDModuleLoaded();
