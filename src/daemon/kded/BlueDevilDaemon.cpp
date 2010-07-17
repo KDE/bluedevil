@@ -158,7 +158,7 @@ void BlueDevilDaemon::agentThreadStopped()
 
 void BlueDevilDaemon::defaultAdapterChanged(BlueDevil::Adapter *adapter)
 {
-    //if we hav ean adapter, remove it and offline the KDED for a moment
+    //if we have an adapter, remove it and offline the KDED for a moment
     if (d->m_adapter) {
         offlineMode();
     }
