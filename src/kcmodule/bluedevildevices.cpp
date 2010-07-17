@@ -21,6 +21,7 @@
 #include "bluedevildevices.h"
 #include "systemcheck.h"
 #include "kded.h"
+#include "globalsettings.h"
 
 #include <bluedevil/bluedevil.h>
 
@@ -332,6 +333,10 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
 
     QVBoxLayout *layout = new QVBoxLayout;
     layout->addWidget(m_enable);
+
+    m_enable->setObjectName(QString::fromUtf8("kcfg_enableGlobalBluetooth"));
+    addConfig(GlobalSettings::self(), this);
+
     m_systemCheck->createWarnings(layout);
 
     // Bluetooth device list
@@ -375,7 +380,6 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
 
     setLayout(layout);
 
-    connect(m_enable, SIGNAL(stateChanged(int)), SLOT(stateChanged(int)));
     connect(BlueDevil::Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)),
             this, SLOT(defaultAdapterChanged(Adapter*)));
 
@@ -401,6 +405,7 @@ void KCMBlueDevilDevices::defaults()
 
 void KCMBlueDevilDevices::save()
 {
+    KCModule::save();
     if (!m_isEnabled && m_enable->isChecked()) {
         m_systemCheck->kded()->loadModule("bluedevil");
     } else if (m_isEnabled && !m_enable->isChecked()) {
@@ -408,13 +413,6 @@ void KCMBlueDevilDevices::save()
     }
     m_isEnabled = m_systemCheck->checkKDEDModuleLoaded();
     updateInformationState();
-}
-
-void KCMBlueDevilDevices::stateChanged(int)
-{
-    if (sender() == m_enable) {
-        emit changed(m_enable->isChecked() != m_isEnabled);
-    }
 }
 
 void KCMBlueDevilDevices::deviceSelectionChanged(const QItemSelection &selection)
@@ -606,7 +604,6 @@ void KCMBlueDevilDevices::updateInformationState()
 {
     m_systemCheck->updateInformationState();
 
-    m_enable->setChecked(m_isEnabled);
     m_addDevice->setEnabled(false);
     m_devices->setEnabled(false);
     if (!m_isEnabled) {
