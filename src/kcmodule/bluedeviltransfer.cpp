@@ -32,6 +32,7 @@
 #include <kurlrequester.h>
 #include <kpluginfactory.h>
 #include <kconfigdialogmanager.h>
+
 #include <../daemon/helpers/filereceiver/settings.h>
 
 K_PLUGIN_FACTORY(BlueDevilFactory, registerPlugin<KCMBlueDevilTransfer>();)
