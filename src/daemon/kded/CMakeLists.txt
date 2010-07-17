@@ -1,5 +1,3 @@
-include_directories(${KDE4_INCLUDES} ${QT_INCLUDES} ${KDE4WORKSPACE_INCLUDE_DIR})
-
 set(kded_bluedevil_SRCS
     BlueDevilDaemon.cpp
     agentlistener.cpp
@@ -19,7 +17,7 @@ target_link_libraries(kded_bluedevil
     ${KDE4_KDECORE_LIBS}
     ${KDE4_KDEUI_LIBS}
     ${KDE4_KUTILS_LIBS}
-    bluedevil
+    ${LibBlueDevil_LIBRARIES}
 )
 
 install(TARGETS kded_bluedevil DESTINATION ${PLUGIN_INSTALL_DIR})
