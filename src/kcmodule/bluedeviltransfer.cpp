@@ -33,7 +33,7 @@
 #include <kpluginfactory.h>
 #include <kconfigdialogmanager.h>
 
-#include <../daemon/helpers/filereceiver/settings.h>
+#include <../daemon/helpers/filereceiver/fileReceiverSettings.h>
 
 K_PLUGIN_FACTORY(BlueDevilFactory, registerPlugin<KCMBlueDevilTransfer>();)
 K_EXPORT_PLUGIN(BlueDevilFactory("bluedeviltransfer"))
@@ -65,7 +65,7 @@ KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
     layout->addWidget(transfer);
     setLayout(layout);
 
-    addConfig(Settings::self(), transfer);
+    addConfig(FileReceiverSettings::self(), transfer);
 
     connect(BlueDevil::Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)),
             this, SLOT(defaultAdapterChanged(Adapter*)));

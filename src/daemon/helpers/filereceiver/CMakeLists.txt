@@ -21,7 +21,7 @@ qt4_add_dbus_adaptor(helper_SRCS org.kde.BlueDevil.Service.xml service.h Service
 qt4_add_dbus_interface(helper_SRCS org.openobex.Server.xml server_interface)
 qt4_add_dbus_interface(helper_SRCS org.openobex.ServerSession.xml server_session_interface)
 
-kde4_add_kcfg_files(helper_SRCS settings.kcfgc)
+kde4_add_kcfg_files(helper_SRCS ../../../settings/fileReceiverSettings.kcfgc)
 kde4_add_executable(bluedevil-helper ${helper_SRCS})
 
 # for dbus_add_activation_service

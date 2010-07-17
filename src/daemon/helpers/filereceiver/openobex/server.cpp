@@ -23,7 +23,7 @@
 #include "server_interface.h"
 #include "server_session_interface.h"
 #include "serversession.h"
-#include "settings.h"
+#include "fileReceiverSettings.h"
 
 #include <KDebug>
 #include <KGlobal>
@@ -147,7 +147,7 @@ void OpenObex::Server::serverCreated(QDBusObjectPath path)
 
     // Get the default save dir, where all files will be downloaded (even if user chooses "Save As"
     // option, files will be downloaded here and then moved to the file path the user wanted)
-    d->dbusServer->Start(Settings::saveUrl().path(), true, false);
+    d->dbusServer->Start(FileReceiverSettings::saveUrl().path(), true, false);
 }
 
 void OpenObex::Server::serverCreatedError(QDBusError error)

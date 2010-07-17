@@ -1,3 +1,4 @@
+add_subdirectory(settings)
 add_subdirectory(actionplugins)
 add_subdirectory(daemon)
 add_subdirectory(kcmodule)
