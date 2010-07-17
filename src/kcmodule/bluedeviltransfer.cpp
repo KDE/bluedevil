@@ -59,8 +59,8 @@ KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
     m_systemCheck->createWarnings(layout);
 
     QWidget *transfer = new QWidget(this);
-    Ui::Transfer *uiTransfer = new Ui::Transfer();
-    uiTransfer->setupUi(transfer);
+    m_uiTransfer = new Ui::Transfer();
+    m_uiTransfer->setupUi(transfer);
     layout->addWidget(transfer);
     setLayout(layout);
 

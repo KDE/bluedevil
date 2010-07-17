@@ -24,7 +24,9 @@
 #include <kcmodule.h>
 
 class SystemCheck;
-
+namespace Ui {
+    class Transfer;
+}
 namespace BlueDevil {
     class Adapter;
 }
@@ -47,6 +49,7 @@ private Q_SLOTS:
 
 private:
     SystemCheck *m_systemCheck;
+    Ui::Transfer *m_uiTransfer;
 };
 
 #endif
