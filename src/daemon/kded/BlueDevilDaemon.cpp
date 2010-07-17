@@ -22,6 +22,7 @@
 #include "BlueDevilDaemon.h"
 #include "agentlistener.h"
 #include "bluedevil_service_interface.h"
+#include "filereceiversettings.h"
 
 #include <kdemacros.h>
 #include <KDebug>
@@ -109,7 +110,9 @@ void BlueDevilDaemon::onlineMode()
     d->m_agentListener->start();
 
     d->m_adapter = BlueDevil::Manager::self()->defaultAdapter();
-    if (!isServiceStarted()) {
+
+    FileReceiverSettings::self()->readConfig();
+    if (!isServiceStarted() && FileReceiverSettings::self()->enabled()) {
         kDebug() << "Launching srever";
         d->m_service->launchServer();
     }
