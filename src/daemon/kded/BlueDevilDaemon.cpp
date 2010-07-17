@@ -89,7 +89,7 @@ BlueDevilDaemon::~BlueDevilDaemon()
     delete d;
 }
 
-bool BlueDevilDaemon::serviceStarted()
+bool BlueDevilDaemon::isServiceStarted()
 {
     d->m_service = new org::kde::BlueDevil::Service("org.kde.BlueDevil.Service",
         "/Service", QDBusConnection::sessionBus(), this);
@@ -109,7 +109,7 @@ void BlueDevilDaemon::onlineMode()
     d->m_agentListener->start();
 
     d->m_adapter = BlueDevil::Manager::self()->defaultAdapter();
-    if (!serviceStarted()) {
+    if (!isServiceStarted()) {
         kDebug() << "Launching srever";
         d->m_service->launchServer();
     }
@@ -130,7 +130,7 @@ void BlueDevilDaemon::offlineMode()
     connect(d->m_agentListener, SIGNAL(finished()), this, SLOT(agentThreadStopped()));
     d->m_agentListener->quit();
 
-    if (serviceStarted()) {
+    if (isServiceStarted()) {
         d->m_service->stopServer();
     }
 

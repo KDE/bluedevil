@@ -77,7 +77,7 @@ private:
     /**
      * Tries to start the helper process via dbus and returns true if successful
      */
-    bool serviceStarted();
+    bool isServiceStarted();
 
 private:
     struct Private;
