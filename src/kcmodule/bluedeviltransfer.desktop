@@ -12,6 +12,8 @@ X-KDE-Weight=60
 
 Name=File Transfer
 
+Comment=Configure the bluetooth receive files
+
 X-KDE-Keywords=Network,Connectivity,Bluetooth
 
 Categories=Qt;KDE;X-KDE-settings-bluetooth;

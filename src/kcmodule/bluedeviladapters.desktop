@@ -12,6 +12,8 @@ X-KDE-Weight=100
 
 Name=Adapters
 
+Comment=Configure the availables bluetooth adapters
+
 X-KDE-Keywords=Network,Connectivity,Bluetooth
 
 Categories=Qt;KDE;X-KDE-settings-bluetooth;
