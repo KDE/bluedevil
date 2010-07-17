@@ -66,5 +66,5 @@ private:
     QWidget     *m_parent;
     ErrorWidget *m_noAdaptersError;
     ErrorWidget *m_notDiscoverableAdapterError;
-    ErrorWidget *m_disabledNotificationsError;    
+    ErrorWidget *m_disabledNotificationsError;
 };
