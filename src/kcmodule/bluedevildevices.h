@@ -74,8 +74,8 @@ private:
     QCheckBox             *m_enable;
     KPushButton           *m_trustDevice;
     KPushButton           *m_renameAliasDevice;
-    KPushButton           *m_addDevice;
     KPushButton           *m_removeDevice;
+    KPushButton           *m_addDevice;
     bool                   m_isEnabled;
     BluetoothDevicesModel *m_devicesModel;
     QListView             *m_devices;
