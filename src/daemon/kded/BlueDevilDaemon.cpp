@@ -165,6 +165,7 @@ void BlueDevilDaemon::defaultAdapterChanged(BlueDevil::Adapter *adapter)
 
     //If the given adapter is not NULL, then set onlineMode again
     if (adapter) {
+        d->m_adapter = adapter;
         onlineMode();
     }
 }
