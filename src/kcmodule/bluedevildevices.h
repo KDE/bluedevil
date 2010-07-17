@@ -54,7 +54,6 @@ public:
     virtual void save();
 
 private Q_SLOTS:
-    void stateChanged(int state);
     void deviceSelectionChanged(const QItemSelection &selection);
     void trustDevice();
     void renameAliasDevice();
