@@ -21,8 +21,15 @@
 
 #include <QObject>
 #include <QWizard>
+#include "discoverwidget.h"
 
 class WizardAgent;
+class KFileWidget;
+namespace BlueDevil {
+    class Device;
+}
+using namespace BlueDevil;
+
 class SendFileWizard : public QWizard
 {
 Q_OBJECT
@@ -30,6 +37,16 @@ Q_OBJECT
 public:
     SendFileWizard();
     virtual ~SendFileWizard();
+
+    void setFileWidget(KFileWidget *);
+    KFileWidget * fileWidget();
+
+    void setDevice(Device *device);
+    Device* device();
+
+private:
+    KFileWidget *m_fileWidget;
+    Device      *m_device;
 };
 
 #endif // SENDFILEWIZARD_H

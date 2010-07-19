@@ -22,12 +22,26 @@
 
 #include "selectdevicepage.h"
 #include "discoverwidget.h"
+#include "../sendfilewizard.h"
 
 #include <QtGui/QVBoxLayout>
+#include <kfilewidget.h>
+#include <kdiroperator.h>
 
+#include <bluedevil/bluedevil.h>
+
+using namespace BlueDevil;
 SelectDevicePage::SelectDevicePage(QWidget* parent): QWizardPage(parent)
 {
     DiscoverWidget *widget = new DiscoverWidget(this);
     QVBoxLayout *layout = new QVBoxLayout(this);
     layout->addWidget(widget);
+
+    connect(widget, SIGNAL(deviceSelected(Device*)), this, SLOT(deviceSelected(Device*)));
+}
+
+
+void SelectDevicePage::deviceSelected(Device* device)
+{
+    static_cast<SendFileWizard* >(wizard())->setDevice(device);
 }

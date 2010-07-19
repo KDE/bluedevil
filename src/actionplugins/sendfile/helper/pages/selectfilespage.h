@@ -25,12 +25,21 @@
 
 #include <QtGui/QWizard>
 
+class KFileWidget;
 
 class SelectFilesPage : public QWizardPage
 {
 Q_OBJECT
 public:
     SelectFilesPage(QWidget* parent = 0);
+
+    virtual bool isComplete() const;
+    virtual void initializePage();
+private Q_SLOTS:
+    void selectionChanged();
+
+private:
+    KFileWidget *m_files;
 };
 
 #endif // SELECTFILESPAGE_H

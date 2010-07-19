@@ -21,18 +21,43 @@
  ***************************************************************************/
 
 #include "selectfilespage.h"
+#include "../sendfilewizard.h"
 
-#include "kfilewidget.h"
-#include "kurl.h"
+#include <kfilewidget.h>
+#include <kdiroperator.h>
+#include <kurl.h>
+
+#include <QDebug>
 
 #include <QtGui/QVBoxLayout>
 #include <QtGui/QLabel>
+
 #include <QDesktopServices>
 
 SelectFilesPage::SelectFilesPage(QWidget* parent): QWizardPage(parent)
 {
-    KFileWidget *dialog = new KFileWidget(KUrl(QDesktopServices::storageLocation(QDesktopServices::HomeLocation)), this);
+    m_files = new KFileWidget(KUrl(QDesktopServices::storageLocation(QDesktopServices::HomeLocation)), this);
+    m_files->setMode(KFile::Files | KFile::File);
+    m_files->accept();
+
+    connect(m_files, SIGNAL(selectionChanged()), this, SLOT(selectionChanged()));
 
     QVBoxLayout *layout = new QVBoxLayout(this);
-    layout->addWidget(dialog);
+    layout->addWidget(m_files);
+}
+
+void SelectFilesPage::initializePage()
+{
+    static_cast<SendFileWizard* >(wizard())->setFileWidget(m_files);
+}
+
+
+void SelectFilesPage::selectionChanged()
+{
+    emit completeChanged();
+}
+
+bool SelectFilesPage::isComplete() const
+{
+    return !m_files->dirOperator()->selectedItems().isEmpty();
 }

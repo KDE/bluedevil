@@ -24,6 +24,11 @@
 #include <kstandardguiitem.h>
 #include <klocalizedstring.h>
 #include <kpushbutton.h>
+#include "kfilewidget.h"
+
+#include <bluedevil/bluedevil.h>
+
+using namespace BlueDevil;
 
 SendFileWizard::SendFileWizard() : QWizard()
 {
@@ -46,4 +51,24 @@ SendFileWizard::SendFileWizard() : QWizard()
 SendFileWizard::~SendFileWizard()
 {
 
+}
+
+void SendFileWizard::setFileWidget(KFileWidget* fileWidget)
+{
+    m_fileWidget = fileWidget;
+}
+
+KFileWidget* SendFileWizard::fileWidget()
+{
+    return m_fileWidget;
+}
+
+void SendFileWizard::setDevice(Device* device)
+{
+    m_device = device;
+}
+
+Device* SendFileWizard::device()
+{
+    return m_device;
 }
