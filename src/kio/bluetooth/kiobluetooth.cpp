@@ -70,6 +70,17 @@ public:
      */
     QStringList getServiceNames(const QStringList &uuids);
 
+    struct Service {
+        QString name;
+        QString icon;
+    };
+
+    /**
+     * Returns a list of supported service names corresponding to the given uuids list. If an uuid is
+     * not found in the uuids list, it is not added to the list of service names.
+     */
+    QList<Service> getSupportedServices(const QStringList &uuids);
+
     /**
      * Called by @p Bluetooth::listDir when listing root dir, bluetooth:/.
      */
@@ -116,7 +127,7 @@ public:
      * When @p hasCurrentHost to true, this list holds the list of service names provided by the
      * current host (which is a remote device we can connect to using those services).
      */
-    QStringList currentHostServiceNames;
+    QList<Service> currentHostServices;
 
     /**
      * Represents the bluetooth adapter connected to our PC.
@@ -128,6 +139,12 @@ public:
      * given uuid represents.
      */
     QMap<QString, QString> serviceNames;
+
+    /**
+     * This is an array containing as key the uuid and as value the name of the service that the
+     * given uuid represents, and a representative icon. It only contains the supported service names.
+     */
+    QMap<QString, Service> supportedServices;
 
     KioBluetooth *q;
 };
@@ -188,6 +205,20 @@ KioBluetoothPrivate::KioBluetoothPrivate(KioBluetooth *parent)
     serviceNames.insert("00001202-0000-1000-8000-00805f9b34fb", i18n("Generic File Transfer"));
     serviceNames.insert("00001203-0000-1000-8000-00805f9b34fb", i18n("Generic Audio"));
     serviceNames.insert("00001204-0000-1000-8000-00805f9b34fb", i18n("Generic Telephony"));
+
+    Service s;
+    s.name = i18n("Send File");
+    s.icon = "edit-copy";
+    supportedServices.insert("00001105-0000-1000-8000-00805f9b34fb", s);
+    s.name = i18n("Browse Files");
+    s.icon = "edit-find";
+    supportedServices.insert("00001106-0000-1000-8000-00805f9b34fb", s);
+    s.name = i18n("Human Interface Device");
+    s.icon = "input-mouse";
+    supportedServices.insert("00001124-0000-1000-8000-00805f9b34fb", s);
+    s.name = i18n("Headset");
+    s.icon = "audio-headset";
+    supportedServices.insert("00001108-0000-1000-8000-00805f9b34fb", s);
 }
 
 QStringList KioBluetoothPrivate::getServiceNames(const QStringList &uuids)
@@ -198,6 +229,17 @@ QStringList KioBluetoothPrivate::getServiceNames(const QStringList &uuids)
             retValue << serviceNames[uuid];
         } else {
             retValue << uuid;
+        }
+    }
+    return retValue;
+}
+
+QList<KioBluetoothPrivate::Service> KioBluetoothPrivate::getSupportedServices(const QStringList &uuids)
+{
+    QList<Service> retValue;
+    Q_FOREACH (const QString &uuid, uuids) {
+        if (supportedServices.contains(uuid)) {
+            retValue << supportedServices[uuid];
         }
     }
     return retValue;
@@ -218,20 +260,21 @@ void KioBluetoothPrivate::listRemoteDeviceServices()
 
     kDebug();
     currentHost = adapter->deviceForAddress(currentHostname.replace('-', ':').toUpper());
-    currentHostServiceNames = getServiceNames(currentHost->UUIDs());
+    currentHostServices = getSupportedServices(currentHost->UUIDs());
 
-    q->totalSize(currentHostServiceNames.count());
+    q->totalSize(currentHostServices.count());
     int i = 1;
-    Q_FOREACH (QString serviceName, currentHostServiceNames) {
+    Q_FOREACH (const Service &service, currentHostServices) {
         KIO::UDSEntry entry;
-        entry.insert(KIO::UDSEntry::UDS_NAME, serviceName);
+        entry.insert(KIO::UDSEntry::UDS_NAME, service.name);
+        entry.insert(KIO::UDSEntry::UDS_ICON_NAME, service.icon);
         // This will change
-        QString url = urlForRemoteService(currentHostname.replace(':', '-'), serviceName);
+        QString url = urlForRemoteService(currentHostname.replace(':', '-'), service.name);
         kDebug() << url;
         entry.insert(KIO::UDSEntry::UDS_TARGET_URL, url);
         entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFLNK);
-        entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRWXU | S_IRWXG | S_IRWXO);
-        entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, "inode/vnd.kde.service." + serviceName);
+        entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRUSR | S_IRGRP | S_IROTH);
+        entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, "inode/x-vnd.kde.bluedevil.service");
         q->listEntry(entry, false);
         q->processedSize(i++);
     }
@@ -255,9 +298,9 @@ void KioBluetoothPrivate::listDevices()
     q->infoMessage(i18n("Scanning for remote devices..."));
     q->totalSize(100);
     adapter->startDiscovery();
-    for (int i = 0; i < 20; ++i) {
-        SleeperThread::msleep(500);
-        q->processedSize((i + 1) * 5);
+    for (int i = 0; i < 100; ++i) {
+        SleeperThread::msleep(100);
+        q->processedSize(i + 1);
         QApplication::processEvents();
     }
     adapter->stopDiscovery();
@@ -284,6 +327,8 @@ void KioBluetoothPrivate::listDevice(Device *device)
     entry.insert(KIO::UDSEntry::UDS_ICON_NAME, device->icon());
     entry.insert(KIO::UDSEntry::UDS_TARGET_URL, target);
     entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+    entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRUSR | S_IRGRP | S_IROTH);
+    entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, "inode/x-vnd.kde.bluedevil.device");
     q->listEntry(entry, false);
 }
 //@endcond
@@ -359,7 +404,7 @@ void KioBluetooth::setHost(const QString &constHostname, quint16 port, const QSt
     } else {
         d->hasCurrentHost = true;
         d->currentHostname = constHostname;
-        d->currentHostServiceNames.clear();
+        d->currentHostServices.clear();
     }
 }
 
