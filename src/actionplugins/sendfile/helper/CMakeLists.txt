@@ -11,11 +11,13 @@ set(sendfilehelper_SRCS
     pages/selectfilespage.cpp
     pages/selectdevicepage.cpp
     pages/connectingpage.cpp
+    pages/sendintropage.cpp
 )
 
 kde4_add_ui_files(sendfilehelper_SRCS
     discover.ui
     pages/connecting.ui
+    pages/sendintro.ui
 )
 
 

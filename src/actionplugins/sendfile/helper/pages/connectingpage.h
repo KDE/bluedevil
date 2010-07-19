@@ -33,6 +33,9 @@ public Ui::Connecting
 Q_OBJECT
 public:
     ConnectingPage(QWidget* parent = 0);
+
+    virtual void initializePage();
+    virtual bool isComplete() const;
 };
 
 #endif // CONNECTINGPAGE_H

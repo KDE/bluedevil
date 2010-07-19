@@ -21,8 +21,26 @@
  ***************************************************************************/
 
 #include "connectingpage.h"
+#include "../sendfilewizard.h"
 
+#include "klocalizedstring.h"
+
+#include <bluedevil/bluedevil.h>
+
+using namespace BlueDevil;
 ConnectingPage::ConnectingPage(QWidget* parent): QWizardPage(parent)
 {
     setupUi(this);
 }
+
+void ConnectingPage::initializePage()
+{
+    Device *device = static_cast<SendFileWizard* >(wizard())->device();
+    connLabel->setText(i18nc("Conencting to a bluetooth device", "Connecting to %1 ...").arg(device->name()));
+}
+
+bool ConnectingPage::isComplete() const
+{
+    false;
+}
+
