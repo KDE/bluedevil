@@ -44,4 +44,14 @@ SelectDevicePage::SelectDevicePage(QWidget* parent): QWizardPage(parent)
 void SelectDevicePage::deviceSelected(Device* device)
 {
     static_cast<SendFileWizard* >(wizard())->setDevice(device);
+    emit completeChanged();
+}
+
+bool SelectDevicePage::isComplete() const
+{
+    if (!static_cast<SendFileWizard* >(wizard())->device()) {
+        return false;
+    }
+
+    return true;
 }

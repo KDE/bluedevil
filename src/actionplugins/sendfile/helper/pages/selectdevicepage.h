@@ -35,7 +35,8 @@ class SelectDevicePage : public QWizardPage
 Q_OBJECT
 public:
     SelectDevicePage(QWidget* parent = 0);
-    virtual void initializePage();
+
+    virtual bool isComplete() const;
 
 private Q_SLOTS:
     void deviceSelected(Device*);
