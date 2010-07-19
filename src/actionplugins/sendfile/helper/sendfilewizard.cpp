@@ -17,10 +17,13 @@
 
 
 #include "sendfilewizard.h"
+#include "obexagent.h"
 #include "pages/selectfilespage.h"
 #include "pages/selectdevicepage.h"
 #include "pages/connectingpage.h"
 #include "pages/sendintropage.h"
+
+#include <QApplication>
 
 #include <kstandardguiitem.h>
 #include <klocalizedstring.h>
@@ -48,6 +51,8 @@ SendFileWizard::SendFileWizard() : QWizard(), m_device(0)
     addPage(new ConnectingPage());
 
     show();
+
+    ObexAgent *agent = new ObexAgent(qApp);
 }
 
 SendFileWizard::~SendFileWizard()

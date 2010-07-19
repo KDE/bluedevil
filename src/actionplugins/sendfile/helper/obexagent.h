@@ -20,25 +20,66 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA            *
  ***************************************************************************/
 
-#ifndef CONNECTINGPAGE_H
-#define CONNECTINGPAGE_H
+#ifndef OBEXAGENT_H
+#define OBEXAGENT_H
 
-#include "ui_connecting.h"
+#include <QDBusAbstractAdaptor>
+#include <QString>
 
-#include <QtGui/QWizardPage>
+#include <QDBusObjectPath>
 
-class ConnectingPage : public QWizardPage,
-public Ui::Connecting
+class ObexAgent : public QDBusAbstractAdaptor
 {
+
 Q_OBJECT
+Q_CLASSINFO("D-Bus Interface", "org.openobex.Agent")
+
 public:
-    ConnectingPage(QWidget* parent = 0);
+    ObexAgent(QObject* parent);
 
-    virtual void initializePage();
-    virtual bool isComplete() const;
+public Q_SLOTS:
 
-private:
-    void startSending();
+    /**
+     *   This method gets called when the service daemon
+     *   unregisters the agent. An agent can use it to do
+     *   cleanup tasks. There is no need to unregister the
+     *   agent, because when this method gets called it has
+     *   already been unregistered.
+     */
+    void Release() const;
+
+    /**
+     * Accept or reject a new transfer (client and server)
+     *   and provide the filename for it.
+     *
+     *   In case of incoming transfers it is the filename
+     *   where to store the file and for outgoing transfers
+     *   it is the filename to show the remote device. If left
+     *   empty it will be calculated automatically.
+     *
+     *   Possible errors: org.openobex.Error.Rejected
+     *                    org.openobex.Error.Canceled
+     */
+    QString Request(QDBusObjectPath transfer);
+
+    /**
+     * Progress within the transfer has been made. The
+     *   number of transferred bytes is given as second
+     *   argument for convenience.
+     */
+    void Progress(QDBusObjectPath transfer, quint64 transferred);
+
+    /**
+    * Informs that the transfer has completed sucessfully.
+    */
+    void Complete(QDBusObjectPath transfer);
+
+    /**
+    * Informs that the transfer has been terminated because
+    * of some error.
+    */
+    void Error(QDBusObjectPath transfer, const QString &message);
+
 };
 
-#endif // CONNECTINGPAGE_H
+#endif // OBEXAGENT_H

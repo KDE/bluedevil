@@ -20,12 +20,18 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA            *
  ***************************************************************************/
 
+#include "obex_client.h"
 #include "connectingpage.h"
 #include "../sendfilewizard.h"
 
+#include <QtCore/QVariant>
+
 #include "klocalizedstring.h"
+#include "kfilewidget.h"
 
 #include <bluedevil/bluedevil.h>
+#include <kdiroperator.h>
+#include <kcompositejob.h>
 
 using namespace BlueDevil;
 ConnectingPage::ConnectingPage(QWidget* parent): QWizardPage(parent)
@@ -37,10 +43,33 @@ void ConnectingPage::initializePage()
 {
     Device *device = static_cast<SendFileWizard* >(wizard())->device();
     connLabel->setText(i18nc("Conencting to a bluetooth device", "Connecting to %1 ...").arg(device->name()));
+
+    startSending();
 }
 
 bool ConnectingPage::isComplete() const
 {
-    false;
+    return false;
 }
 
+void ConnectingPage::startSending()
+{
+    OrgOpenobexClientInterface *client = new OrgOpenobexClientInterface("org.openobex.client", "/", QDBusConnection::sessionBus(), this);
+
+    Device *device = static_cast<SendFileWizard* >(wizard())->device();
+
+    QVariantMap map;
+    map.insert("Destination", QVariant(device->address()));
+
+    QStringList filesToSend;
+    KFileWidget *widget = static_cast<SendFileWizard* >(wizard())->fileWidget();
+    KFileItemList list =  widget->dirOperator()->selectedItems();
+
+    Q_FOREACH(const KFileItem &item, list) {
+        filesToSend << item.url().path();
+    }
+
+    qDebug() << filesToSend;
+
+    client->SendFiles(map, filesToSend, QDBusObjectPath("/BlueDevil_sendAgent"));
+}

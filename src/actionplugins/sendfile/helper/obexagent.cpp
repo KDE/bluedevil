@@ -20,25 +20,51 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA            *
  ***************************************************************************/
 
-#ifndef CONNECTINGPAGE_H
-#define CONNECTINGPAGE_H
+#include "obexagent.h"
 
-#include "ui_connecting.h"
+#include <QtCore/QDebug>
 
-#include <QtGui/QWizardPage>
+#include <QDBusConnection>
 
-class ConnectingPage : public QWizardPage,
-public Ui::Connecting
+ObexAgent::ObexAgent(QObject* parent): QDBusAbstractAdaptor(parent)
 {
-Q_OBJECT
-public:
-    ConnectingPage(QWidget* parent = 0);
+    if (!QDBusConnection::sessionBus().registerObject("/BlueDevil_sendAgent", parent)) {
+        qDebug() << "The dbus object can't be registered";
+        return;
+    }
+}
 
-    virtual void initializePage();
-    virtual bool isComplete() const;
+void ObexAgent::Release() const
+{
+    qDebug() << "Agent released";
+}
 
-private:
-    void startSending();
-};
+QString ObexAgent::Request(QDBusObjectPath transfer)
+{
+    transfer.path();
+    Q_UNUSED(transfer);
+    qDebug() << "Agent Request";
 
-#endif // CONNECTINGPAGE_H
+    return QString();
+}
+
+void ObexAgent::Progress(QDBusObjectPath transfer, quint64 transferred)
+{
+    Q_UNUSED(transfer);
+    Q_UNUSED(transferred);
+    qDebug() << "Agent Progress";
+}
+
+
+void ObexAgent::Complete(QDBusObjectPath transfer)
+{
+    Q_UNUSED(transfer);
+    qDebug() << "Agent Compelte";
+}
+
+void ObexAgent::Error(QDBusObjectPath transfer, const QString& message)
+{
+    Q_UNUSED(transfer);
+    Q_UNUSED(message);
+    qDebug() << "Agent Error";
+}
