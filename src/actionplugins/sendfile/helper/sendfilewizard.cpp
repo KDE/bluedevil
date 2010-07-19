@@ -20,6 +20,7 @@
 #include "pages/selectfilespage.h"
 #include "pages/selectdevicepage.h"
 #include "pages/connectingpage.h"
+#include "pages/sendintropage.h"
 
 #include <kstandardguiitem.h>
 #include <klocalizedstring.h>
@@ -30,13 +31,9 @@
 
 using namespace BlueDevil;
 
-SendFileWizard::SendFileWizard() : QWizard()
+SendFileWizard::SendFileWizard() : QWizard(), m_device(0)
 {
     setWindowTitle(i18n("BlueDevil Send Files"));
-
-    addPage(new SelectFilesPage());
-    addPage(new SelectDevicePage());
-    addPage(new ConnectingPage());
 
     setButton(QWizard::BackButton, new KPushButton(KStandardGuiItem::back(KStandardGuiItem::UseRTL)));
     setButton(QWizard::NextButton, new KPushButton(KStandardGuiItem::forward(KStandardGuiItem::UseRTL)));
@@ -44,7 +41,12 @@ SendFileWizard::SendFileWizard() : QWizard()
 
     //We do not want "Forward" as text
     setButtonText(QWizard::NextButton, i18n("Next"));
-    //First show, then do the rest
+
+    addPage(new SendIntroPage());
+    addPage(new SelectFilesPage());
+    addPage(new SelectDevicePage());
+    addPage(new ConnectingPage());
+
     show();
 }
 
