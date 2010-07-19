@@ -37,8 +37,7 @@
 SelectFilesPage::SelectFilesPage(QWidget* parent): QWizardPage(parent)
 {
     m_files = new KFileWidget(KUrl(QDesktopServices::storageLocation(QDesktopServices::HomeLocation)), this);
-    m_files->setMode(KFile::Files | KFile::File);
-    m_files->accept();
+    m_files->setMode(KFile::Files);
 
     connect(m_files, SIGNAL(selectionChanged()), this, SLOT(selectionChanged()));
 
