@@ -230,7 +230,7 @@ void KioBluetoothPrivate::listRemoteDeviceServices()
         kDebug() << url;
         entry.insert(KIO::UDSEntry::UDS_TARGET_URL, url);
         entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFLNK);
-        entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRWXU|S_IRWXG|S_IRWXO);
+        entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRWXU | S_IRWXG | S_IRWXO);
         entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, "inode/vnd.kde.service." + serviceName);
         q->listEntry(entry, false);
         q->processedSize(i++);
@@ -255,9 +255,9 @@ void KioBluetoothPrivate::listDevices()
     q->infoMessage(i18n("Scanning for remote devices..."));
     q->totalSize(100);
     adapter->startDiscovery();
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < 20; ++i) {
         SleeperThread::msleep(500);
-        q->processedSize((i + 1) * 10);
+        q->processedSize((i + 1) * 5);
         QApplication::processEvents();
     }
     adapter->stopDiscovery();
