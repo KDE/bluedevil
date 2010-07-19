@@ -14,11 +14,11 @@ Notes:
 -->
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
   <mime-type type="inode/x-vnd.kde.bluedevil.device">
-    <generic-icon name="computer"/>
+    <generic-icon name="video-display"/>
     <comment>Remote Device</comment>
   </mime-type>
   <mime-type type="inode/x-vnd.kde.bluedevil.service">
-    <generic-icon name="computer"/>
-    <comment>Known Service</comment>
+    <generic-icon name="preferences-system-bluetooth"/>
+    <comment>Service</comment>
   </mime-type>
 </mime-info>

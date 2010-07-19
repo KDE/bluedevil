@@ -265,13 +265,10 @@ void KioBluetoothPrivate::listRemoteDeviceServices()
     q->totalSize(currentHostServices.count());
     int i = 1;
     Q_FOREACH (const Service &service, currentHostServices) {
+        QString url = urlForRemoteService(currentHostname.replace(':', '-'), service.name);
         KIO::UDSEntry entry;
         entry.insert(KIO::UDSEntry::UDS_NAME, service.name);
         entry.insert(KIO::UDSEntry::UDS_ICON_NAME, service.icon);
-        // This will change
-        QString url = urlForRemoteService(currentHostname.replace(':', '-'), service.name);
-        kDebug() << url;
-        entry.insert(KIO::UDSEntry::UDS_TARGET_URL, url);
         entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFLNK);
         entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRUSR | S_IRGRP | S_IROTH);
         entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, "inode/x-vnd.kde.bluedevil.service");
@@ -323,9 +320,9 @@ void KioBluetoothPrivate::listDevice(Device *device)
         }
     }
     KIO::UDSEntry entry;
+    entry.insert(KIO::UDSEntry::UDS_URL, target);
     entry.insert(KIO::UDSEntry::UDS_NAME, name);
     entry.insert(KIO::UDSEntry::UDS_ICON_NAME, device->icon());
-    entry.insert(KIO::UDSEntry::UDS_TARGET_URL, target);
     entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
     entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRUSR | S_IRGRP | S_IROTH);
     entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, "inode/x-vnd.kde.bluedevil.device");
