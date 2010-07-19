@@ -12,6 +12,8 @@ X-KDE-Weight=50
 
 Name=Devices
 
+Comment=Configure the known bluetooth remote devices
+
 X-KDE-Keywords=Network,Connectivity,Bluetooth
 
 Categories=Qt;KDE;X-KDE-settings-bluetooth;

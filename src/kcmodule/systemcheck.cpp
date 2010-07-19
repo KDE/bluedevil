@@ -20,6 +20,7 @@
 
 #include "systemcheck.h"
 #include "kded.h"
+#include "globalsettings.h"
 
 #include <bluedevil/bluedevil.h>
 
@@ -158,6 +159,14 @@ void SystemCheck::createWarnings(QVBoxLayout *layout)
     connect(fixDisabledNotifications, SIGNAL(clicked()), this, SLOT(fixDisabledNotificationsError()));
     m_disabledNotificationsError->addAction(fixDisabledNotifications);
     layout->addWidget(m_disabledNotificationsError);
+
+    m_noKDEDRunning = new ErrorWidget(m_parent);
+    m_noKDEDRunning->setIcon("dialog-warning");
+    m_noKDEDRunning->setReason(i18n("Bluetooth is not complete enabled. "));
+    KPushButton *fixNoKDEDRunning = new KPushButton(KIcon("dialog-ok-apply"), i18n("Fix it"), m_noKDEDRunning);
+    connect(fixNoKDEDRunning, SIGNAL(clicked()), this, SLOT(fixNoKDEDRunning()));
+    m_noKDEDRunning->addAction(fixNoKDEDRunning);
+    layout->addWidget(m_noKDEDRunning);
 }
 
 bool SystemCheck::checkKDEDModuleLoaded()
@@ -204,10 +213,13 @@ void SystemCheck::updateInformationState()
     m_noAdaptersError->setVisible(false);
     m_notDiscoverableAdapterError->setVisible(false);
     m_disabledNotificationsError->setVisible(false);
-    if (!checkKDEDModuleLoaded()) {
+    m_noKDEDRunning->setVisible(false);
+
+    if (!GlobalSettings::self()->enableGlobalBluetooth()) {
         m_noAdaptersError->setEnabled(false);
         return;
     }
+
     BlueDevil::Adapter *const defaultAdapter = BlueDevil::Manager::self()->defaultAdapter();
     if (!defaultAdapter) {
         m_noAdaptersError->setVisible(true);
@@ -221,6 +233,16 @@ void SystemCheck::updateInformationState()
         m_disabledNotificationsError->setVisible(true);
         return;
     }
+    if (!checkKDEDModuleLoaded()) {
+        m_noKDEDRunning->setVisible(true);
+        return;
+    }
+}
+
+void SystemCheck::fixNoKDEDRunning()
+{
+    m_noKDEDRunning->setVisible(false);
+    m_kded->loadModule("bluedevil");
 }
 
 void SystemCheck::fixNotDiscoverableAdapterError()

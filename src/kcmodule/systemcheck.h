@@ -58,6 +58,7 @@ public Q_SLOTS:
     void updateInformationState();
 
 private Q_SLOTS:
+    void fixNoKDEDRunning();
     void fixNotDiscoverableAdapterError();
     void fixDisabledNotificationsError();
 
@@ -65,6 +66,7 @@ private:
     KDED        *m_kded;
     QWidget     *m_parent;
     ErrorWidget *m_noAdaptersError;
+    ErrorWidget *m_noKDEDRunning;
     ErrorWidget *m_notDiscoverableAdapterError;
-    ErrorWidget *m_disabledNotificationsError;    
+    ErrorWidget *m_disabledNotificationsError;
 };

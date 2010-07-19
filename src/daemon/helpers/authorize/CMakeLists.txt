@@ -1,9 +1,3 @@
-include_directories(
-   ${CMAKE_SOURCE_DIR}
-   ${CMAKE_BINARY_DIR}
-   ${KDE4_INCLUDES}
-)
-
 set(authorize_SRCS
     main.cpp
     authorize.cpp
@@ -12,7 +6,7 @@ set(authorize_SRCS
 kde4_add_executable(bluedevil-authorize ${authorize_SRCS})
 
 target_link_libraries(bluedevil-authorize
-                      ${KDE4_KIO_LIBRARY} ${KDE4_KDEUI_LIBS} bluedevil)
+                      ${KDE4_KIO_LIBRARY} ${KDE4_KDEUI_LIBS} ${LibBlueDevil_LIBRARIES})
 
 install(TARGETS bluedevil-authorize
         DESTINATION ${INSTALL_TARGETS_DEFAULT_ARGS})

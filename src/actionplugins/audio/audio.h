@@ -18,6 +18,7 @@
  *************************************************************************************/
 
 #include "../actionplugin.h"
+#include <QDBusVariant>
 
 class AudioPlugin : public ActionPlugin
 {
@@ -26,4 +27,8 @@ class AudioPlugin : public ActionPlugin
     public:
         AudioPlugin(QObject* parent, const QVariantList& args);
         virtual void startAction();
+
+    public Q_SLOTS:
+        void propertyChanged(const QString &property, const QDBusVariant &value);
+        void timeout();
 };

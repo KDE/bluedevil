@@ -22,6 +22,7 @@
 #include "BlueDevilDaemon.h"
 #include "agentlistener.h"
 #include "bluedevil_service_interface.h"
+#include "filereceiversettings.h"
 
 #include <kdemacros.h>
 #include <KDebug>
@@ -65,7 +66,7 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
         "1.0",
         ki18n("KDE Bluetooth System"),
         KAboutData::License_GPL,
-        ki18n("(c) 2010, Artesanos del Software")
+        ki18n("(c) 2010, UFO Coders")
     );
 
     aboutData.addAuthor(ki18n("Alejandro Fiestas Olivares"), ki18n("Maintainer"), "alex@eyeos.org",
@@ -74,10 +75,6 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     aboutData.addAuthor(ki18n("Eduardo Robles Elvira"), ki18n("Maintainer"), "edulix@gmail.com",
         "http://blog.edulix.es");
 
-    connect(BlueDevil::Manager::self(), SIGNAL(adapterAdded(Adapter*)),
-            this, SLOT(adapterAdded(Adapter*)));
-    connect(BlueDevil::Manager::self(), SIGNAL(adapterRemoved(Adapter*)),
-            this, SLOT(adapterRemoved(Adapter*)));
     connect(BlueDevil::Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)),
             this, SLOT(defaultAdapterChanged(Adapter*)));
 
@@ -89,10 +86,11 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
 
 BlueDevilDaemon::~BlueDevilDaemon()
 {
+    offlineMode();
     delete d;
 }
 
-bool BlueDevilDaemon::serviceStarted()
+bool BlueDevilDaemon::isServiceStarted()
 {
     d->m_service = new org::kde::BlueDevil::Service("org.kde.BlueDevil.Service",
         "/Service", QDBusConnection::sessionBus(), this);
@@ -112,7 +110,9 @@ void BlueDevilDaemon::onlineMode()
     d->m_agentListener->start();
 
     d->m_adapter = BlueDevil::Manager::self()->defaultAdapter();
-    if (!serviceStarted()) {
+
+    FileReceiverSettings::self()->readConfig();
+    if (!isServiceStarted() && FileReceiverSettings::self()->enabled()) {
         kDebug() << "Launching srever";
         d->m_service->launchServer();
     }
@@ -122,21 +122,22 @@ void BlueDevilDaemon::onlineMode()
 
 void BlueDevilDaemon::offlineMode()
 {
+    kDebug() << "Offline mode";
     if (d->m_status == Private::Offline) {
         kDebug() << "Already in offlineMode";
         return;
     }
-    kDebug() << "Offline mode";
+
+    d->m_adapter = 0;
 
     connect(d->m_agentListener, SIGNAL(finished()), this, SLOT(agentThreadStopped()));
     d->m_agentListener->quit();
 
-    d->m_status = Private::Offline;
-    if (!serviceStarted()) {
-        return;
+    if (isServiceStarted()) {
+        d->m_service->stopServer();
     }
 
-    d->m_service->stopServer();
+    d->m_status = Private::Offline;
 }
 
 /*
@@ -158,28 +159,16 @@ void BlueDevilDaemon::agentThreadStopped()
     kDebug() << "agent listener deleted";
 }
 
-void BlueDevilDaemon::adapterAdded(BlueDevil::Adapter *adapter)
-{
-    kDebug() << adapter->name();
-    if (d->m_status == Private::Offline) {
-        onlineMode();
-    }
-}
-
-void BlueDevilDaemon::adapterRemoved(BlueDevil::Adapter *adapter)
-{
-    kDebug() << adapter->name();
-    if (BlueDevil::Manager::self()->adapters().isEmpty()) {
-        offlineMode();
-    }
-}
-
 void BlueDevilDaemon::defaultAdapterChanged(BlueDevil::Adapter *adapter)
 {
-    if (d->m_adapter == adapter && d->m_status == Private::Online) {
-      kDebug() << "already online with that adapter";
-      return;
+    //if we have an adapter, remove it and offline the KDED for a moment
+    if (d->m_adapter) {
+        offlineMode();
     }
-    offlineMode();
-    onlineMode();
+
+    //If the given adapter is not NULL, then set onlineMode again
+    if (adapter) {
+        d->m_adapter = adapter;
+        onlineMode();
+    }
 }

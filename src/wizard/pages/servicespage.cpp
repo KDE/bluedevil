@@ -38,7 +38,7 @@ void ServicesPage::initializePage()
     KService::List services = m_wizard->services();
     Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
 
-    if (!services.isEmpty()) {
+    if (services.isEmpty()) {
         QString desc = device->alias();
         if (device->alias() != device->name() && !device->name().isEmpty()) {
             desc.append(" ("+device->name()+")");

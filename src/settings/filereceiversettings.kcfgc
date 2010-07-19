@@ -1,0 +1,4 @@
+File=filereceiver.kcfg
+ClassName=FileReceiverSettings
+Singleton=true
+Mutators=true

@@ -21,6 +21,7 @@
 #include "bluedevildevices.h"
 #include "systemcheck.h"
 #include "kded.h"
+#include "globalsettings.h"
 
 #include <bluedevil/bluedevil.h>
 
@@ -332,50 +333,55 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
 
     QVBoxLayout *layout = new QVBoxLayout;
     layout->addWidget(m_enable);
+
+    m_enable->setObjectName(QString::fromUtf8("kcfg_enableGlobalBluetooth"));
+    addConfig(GlobalSettings::self(), this);
+
     m_systemCheck->createWarnings(layout);
 
-    // Bluetooth device list
-    {
-        m_devicesModel = new BluetoothDevicesModel(this);
+// Bluetooth device list
+    m_devicesModel = new BluetoothDevicesModel(this);
 
-        m_devices = new QListView(this);
-        m_devices->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
-        m_devices->setItemDelegate(new BluetoothDevicesDelegate(this));
-        m_devices->setModel(m_devicesModel);
+    m_devices = new QListView(this);
+    m_devices->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+    m_devices->setItemDelegate(new BluetoothDevicesDelegate(this));
+    m_devices->setModel(m_devicesModel);
 
-        connect(m_devices->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
-                this, SLOT(deviceSelectionChanged(QItemSelection)));
+    connect(m_devices->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
+            this, SLOT(deviceSelectionChanged(QItemSelection)));
 
-        layout->addWidget(m_devices);
-    }
+    layout->addWidget(m_devices);
 
-    {
-        m_trustDevice = new KPushButton(KIcon("security-high"), i18n("Trust"));
-        m_trustDevice->setEnabled(false);
-        m_trustDevice->setCheckable(true);
-        m_renameAliasDevice = new KPushButton(KIcon("document-edit"), i18n("Rename"));
-        m_renameAliasDevice->setEnabled(false);
-        m_removeDevice = new KPushButton(KIcon("list-remove"), i18n("Remove"));
-        m_removeDevice->setEnabled(false);
-        m_addDevice = new KPushButton(KIcon("list-add"), i18n("Add Device..."));
+// Actions buttons
+    m_trustDevice = new KPushButton(KIcon("security-high"), i18n("Trust"));
+    m_trustDevice->setEnabled(false);
+    m_trustDevice->setCheckable(true);
+    m_renameAliasDevice = new KPushButton(KIcon("document-edit"), i18n("Rename"));
+    m_renameAliasDevice->setEnabled(false);
+    m_removeDevice = new KPushButton(KIcon("list-remove"), i18n("Remove"));
+    m_removeDevice->setEnabled(false);
+    m_disconnectDevice = new KPushButton(KIcon("network-disconnect"), i18n("Disconnect"));
+    m_disconnectDevice->setEnabled(false);
+    m_addDevice = new KPushButton(KIcon("list-add"), i18n("Add Device..."));
 
-        connect(m_trustDevice, SIGNAL(clicked()), this, SLOT(trustDevice()));
-        connect(m_renameAliasDevice, SIGNAL(clicked()), this, SLOT(renameAliasDevice()));
-        connect(m_removeDevice, SIGNAL(clicked()), this, SLOT(removeDevice()));
-        connect(m_addDevice, SIGNAL(clicked()), this, SLOT(launchWizard()));
+    connect(m_trustDevice, SIGNAL(clicked()), this, SLOT(trustDevice()));
+    connect(m_renameAliasDevice, SIGNAL(clicked()), this, SLOT(renameAliasDevice()));
+    connect(m_removeDevice, SIGNAL(clicked()), this, SLOT(removeDevice()));
+    connect(m_disconnectDevice, SIGNAL(clicked()), this, SLOT(disconnectDevice()));
+    connect(m_addDevice, SIGNAL(clicked()), this, SLOT(launchWizard()));
 
-        QHBoxLayout *hLayout = new QHBoxLayout;
-        hLayout->addWidget(m_trustDevice);
-        hLayout->addWidget(m_renameAliasDevice);
-        hLayout->addWidget(m_removeDevice);
-        hLayout->addStretch();
-        hLayout->addWidget(m_addDevice);
-        layout->addLayout(hLayout);
-    }
+    QHBoxLayout *hLayout = new QHBoxLayout;
+    hLayout->addWidget(m_trustDevice);
+    hLayout->addWidget(m_renameAliasDevice);
+    hLayout->addWidget(m_removeDevice);
+    hLayout->addWidget(m_disconnectDevice);
+    hLayout->addStretch();
+    hLayout->addWidget(m_addDevice);
+    layout->addLayout(hLayout);
 
     setLayout(layout);
 
-    connect(m_enable, SIGNAL(stateChanged(int)), SLOT(stateChanged(int)));
+//Logic
     connect(BlueDevil::Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)),
             this, SLOT(defaultAdapterChanged(Adapter*)));
 
@@ -401,20 +407,16 @@ void KCMBlueDevilDevices::defaults()
 
 void KCMBlueDevilDevices::save()
 {
+    KCModule::save();
     if (!m_isEnabled && m_enable->isChecked()) {
+        m_systemCheck->kded()->setModuleAutoloading("bluedevil", true);
         m_systemCheck->kded()->loadModule("bluedevil");
     } else if (m_isEnabled && !m_enable->isChecked()) {
+        m_systemCheck->kded()->setModuleAutoloading("bluedevil", false);
         m_systemCheck->kded()->unloadModule("bluedevil");
     }
     m_isEnabled = m_systemCheck->checkKDEDModuleLoaded();
     updateInformationState();
-}
-
-void KCMBlueDevilDevices::stateChanged(int)
-{
-    if (sender() == m_enable) {
-        emit changed(m_enable->isChecked() != m_isEnabled);
-    }
 }
 
 void KCMBlueDevilDevices::deviceSelectionChanged(const QItemSelection &selection)
@@ -424,10 +426,12 @@ void KCMBlueDevilDevices::deviceSelectionChanged(const QItemSelection &selection
     m_trustDevice->setChecked(false);
     m_renameAliasDevice->setEnabled(enable);
     m_removeDevice->setEnabled(enable);
+    m_disconnectDevice->setEnabled(false);
 
     if (m_devices->currentIndex().isValid()) {
         Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
         m_trustDevice->setChecked(device->isTrusted());
+        m_disconnectDevice->setEnabled(device->isConnected());
     }
 }
 
@@ -468,6 +472,12 @@ void KCMBlueDevilDevices::removeDevice()
                                    i18n("Device removal")) == KMessageBox::Yes) {
         BlueDevil::Manager::self()->defaultAdapter()->removeDevice(device);
     }
+}
+
+void KCMBlueDevilDevices::disconnectDevice()
+{
+    Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
+    device->disconnect();
 }
 
 void KCMBlueDevilDevices::launchWizard()
@@ -606,7 +616,6 @@ void KCMBlueDevilDevices::updateInformationState()
 {
     m_systemCheck->updateInformationState();
 
-    m_enable->setChecked(m_isEnabled);
     m_addDevice->setEnabled(false);
     m_devices->setEnabled(false);
     if (!m_isEnabled) {

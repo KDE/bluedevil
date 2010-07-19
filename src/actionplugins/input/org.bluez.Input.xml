@@ -3,9 +3,6 @@
     <interface name="org.bluez.Input">
         <method name="Connect"/>
         <method name="Disconnect"/>
-        <method name="GetProperties">
-            <arg type="a" direction="out"/>
-        </method>
         <signal name="PropertyChanged">
             <arg type="s"/>
             <arg type="v"/>
