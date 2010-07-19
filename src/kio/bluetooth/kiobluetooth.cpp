@@ -28,6 +28,7 @@
 #include <KComponentData>
 #include <KCmdLineArgs>
 #include <KAboutData>
+#include <KProcess>
 
 #include <KApplication>
 #include <KLocale>
@@ -268,9 +269,10 @@ void KioBluetoothPrivate::listRemoteDeviceServices()
         QString url = urlForRemoteService(currentHostname.replace(':', '-'), service.name);
         KIO::UDSEntry entry;
         entry.insert(KIO::UDSEntry::UDS_NAME, service.name);
+        entry.insert(KIO::UDSEntry::UDS_URL, url);
         entry.insert(KIO::UDSEntry::UDS_ICON_NAME, service.icon);
-        entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFLNK);
-        entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRUSR | S_IRGRP | S_IROTH);
+        entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
+        entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRWXU | S_IRWXG | S_IRWXO);
         entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, "inode/x-vnd.kde.bluedevil.service");
         q->listEntry(entry, false);
         q->processedSize(i++);
@@ -377,11 +379,17 @@ void KioBluetooth::listDir(const KUrl &url)
     }
 }
 
+void KioBluetooth::stat(const KUrl &url)
+{
+    KIO::SlaveBase::stat(url);
+}
+
 void KioBluetooth::get(const KUrl &url)
 {
-    Q_UNUSED(url);
-    kDebug();
-    mimeType("text/html");
+    mimeType("text/plain");
+    KProcess wizard;
+    wizard.setProgram("bluedevil-wizard");
+    wizard.startDetached();
     finished();
 }
 
