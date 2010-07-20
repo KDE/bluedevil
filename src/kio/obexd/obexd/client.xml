@@ -6,23 +6,23 @@
 			<arg type="a{sv}" direction="in"/>
 			<arg type="as" direction="in"/>
 			<arg type="o" direction="in"/>
-            <annotation name="com.trolltech.QtDBus.QtTypeName.In0" value="QVariantMap"/>
+			<annotation name="com.trolltech.QtDBus.QtTypeName.In0" value="QVariantMap"/>
 		</method>
 		<method name="PullBusinessCard">
 			<arg type="a{sv}" direction="in"/>
 			<arg type="s" direction="in"/>
-            <annotation name="com.trolltech.QtDBus.QtTypeName.In0" value="QVariantMap"/>
+			<annotation name="com.trolltech.QtDBus.QtTypeName.In0" value="QVariantMap"/>
 		</method>
 		<method name="ExchangeBusinessCards">
 			<arg type="a{sv}" direction="in"/>
 			<arg type="s" direction="in"/>
 			<arg type="s" direction="in"/>
-            <annotation name="com.trolltech.QtDBus.QtTypeName.In0" value="QVariantMap"/>
+			<annotation name="com.trolltech.QtDBus.QtTypeName.In0" value="QVariantMap"/>
 		</method>
 		<method name="CreateSession">
 			<arg type="a{sv}" direction="in"/>
 			<arg type="o" direction="out"/>
-            <annotation name="com.trolltech.QtDBus.QtTypeName.In0" value="QVariantMap"/>
+			<annotation name="com.trolltech.QtDBus.QtTypeName.In0" value="QVariantMap"/>
 		</method>
 		<method name="RemoveSession">
 			<arg type="o" direction="in"/>
@@ -30,7 +30,7 @@
 		<method name="GetCapabilities">
 			<arg type="a{sv}" direction="in"/>
 			<arg type="s" direction="out"/>
-            <annotation name="com.trolltech.QtDBus.QtTypeName.In0" value="QVariantMap"/>
+			<annotation name="com.trolltech.QtDBus.QtTypeName.In0" value="QVariantMap"/>
 		</method>
 	</interface>
 </node>

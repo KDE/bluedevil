@@ -27,10 +27,12 @@
 #include <KComponentData>
 #include <KCmdLineArgs>
 #include <KAboutData>
-
-#include <KApplication>
 #include <KLocale>
-#include <QUrlInfo>
+#include <KApplication>
+
+#define ENSURE_SESSION_CREATED(url) if (!d->m_sessionCreated) { \
+                                        d->createSession(url);  \
+                                    }
 
 extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
 {
@@ -54,20 +56,38 @@ public:
     Private(KioObexd *q);
     virtual ~Private();
 
+    void createSession(const QString &address);
+
     KioObexd *m_q;
     org::openobex::Manager *m_manager;
     org::openobex::Client  *m_client;
+
+    bool    m_sessionCreated;
+    QString m_devicePath;
 };
 
 KioObexd::Private::Private(KioObexd *q)
     : m_q(q)
-    , m_manager(new org::openobex::Manager("org.openobex", "/", QDBusConnection::sessionBus(), m_q))
-    , m_client(new org::openobex::Client("org.openobex", "/", QDBusConnection::sessionBus(), m_q))
+    , m_manager(new org::openobex::Manager("org.openobex", "/", QDBusConnection::sessionBus(), 0))
+    , m_client(new org::openobex::Client("org.openobex.client", "/", QDBusConnection::sessionBus(), 0))
+    , m_sessionCreated(false)
 {
 }
 
 KioObexd::Private::~Private()
 {
+    delete m_manager;
+    delete m_client;
+}
+
+void KioObexd::Private::createSession(const QString &address)
+{
+    QVariantMap device;
+    device["Destination"] = address;
+    device["Target"] = "ftp";
+
+    m_sessionCreated = true;
+    m_devicePath = m_client->CreateSession(device).value().path();
 }
 
 KioObexd::KioObexd(const QByteArray &pool, const QByteArray &app)
@@ -81,33 +101,37 @@ KioObexd::~KioObexd()
     delete d;
 }
 
-
 void KioObexd::listDir(const KUrl &url)
 {
+    KIO::SlaveBase::listDir(url);
 }
 
 void KioObexd::copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFlags flags)
 {
+    KIO::SlaveBase::copy(src, dest, permissions, flags);
 }
 
 void KioObexd::setHost(const QString &host, quint16 port, const QString &user, const QString &pass)
 {
+    KIO::SlaveBase::setHost(host, port, user, pass);
 }
 
 void KioObexd::del(const KUrl& url, bool isfile)
 {
+    KIO::SlaveBase::del(url, isfile);
 }
 
 void KioObexd::mkdir(const KUrl& url, int permissions)
 {
+    KIO::SlaveBase::mkdir(url, permissions);
 }
 
 void KioObexd::slave_status()
 {
+    KIO::SlaveBase::slave_status();
 }
 
 void KioObexd::stat(const KUrl &url)
 {
+    KIO::SlaveBase::stat(url);
 }
-
-#include "kio_obexd.moc"

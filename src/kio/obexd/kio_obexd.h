@@ -22,15 +22,11 @@
 #ifndef KIO_OBEXD_H
 #define KIO_OBEXD_H
 
-#include <QObject>
 #include <kio/slavebase.h>
 
 class KioObexd
-    : public QObject
-    , public KIO::SlaveBase
+    : public KIO::SlaveBase
 {
-    Q_OBJECT
-
 public:
     KioObexd(const QByteArray &pool, const QByteArray &app);
     virtual ~KioObexd();
