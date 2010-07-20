@@ -1,1 +1,4 @@
 *.o
+build
+.kdev4
+
