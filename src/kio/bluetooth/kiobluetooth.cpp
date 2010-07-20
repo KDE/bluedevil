@@ -333,7 +333,8 @@ void KioBluetoothPrivate::listDevice(Device *device)
 //@endcond
 
 KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
-    : SlaveBase("bluetooth", pool, app), d(new KioBluetoothPrivate(this))
+    : SlaveBase("bluetooth", pool, app)
+    , d(new KioBluetoothPrivate(this))
 {
     d->hasCurrentHost = false;
 
