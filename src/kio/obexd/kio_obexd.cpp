@@ -21,6 +21,8 @@
 */
 
 #include "kio_obexd.h"
+#include "obexdclient.h"
+#include "obexdmanager.h"
 
 #include <KDebug>
 #include <KComponentData>
@@ -54,10 +56,14 @@ public:
     virtual ~Private();
 
     KioObexd *m_q;
+    org::openobex::Manager *m_manager;
+    org::openobex::Client  *m_client;
 };
 
 KioObexd::Private::Private(KioObexd *q)
     : m_q(q)
+    , m_manager(new org::openobex::Manager("org.openobex", "/", QDBusConnection::sessionBus(), m_q))
+    , m_client(new org::openobex::Client("org.openobex", "/", QDBusConnection::sessionBus(), m_q))
 {
 }
 
@@ -81,12 +87,11 @@ void KioObexd::listDir(const KUrl &url)
 {
 }
 
-void KioObexd::get(const KUrl &url)
+void KioObexd::copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFlags flags)
 {
 }
 
-void KioObexd::setHost(const QString &constHostname, quint16 port, const QString &user,
-                       const QString &pass)
+void KioObexd::setHost(const QString &host, quint16 port, const QString &user, const QString &pass)
 {
 }
 
