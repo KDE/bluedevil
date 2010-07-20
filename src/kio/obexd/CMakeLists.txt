@@ -1,16 +1,20 @@
 project(kio_obexd)
 
-set(kio_obexd_PART_SRCS
-   kio_obexd.cpp)
+set(kio_obexd_SRCS
+    kio_obexd.cpp)
 
-kde4_add_plugin(kio_obexd ${kio_obexd_PART_SRCS})
+QT4_ADD_DBUS_INTERFACE(kio_obexd_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/obexd/manager.xml obexdmanager)
+QT4_ADD_DBUS_INTERFACE(kio_obexd_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/obexd/client.xml obexdclient)
+
+kde4_add_plugin(kio_obexd ${kio_obexd_SRCS})
 
 target_link_libraries(kio_obexd
   ${KDE4_KDECORE_LIBS}
   ${KDE4_KIO_LIBRARY}
-  ${KDE4_KDEUI_LIBS}
-  ${QT_QTTEST_LIBRARY}
+  ${QT_QTDBUS_LIBRARY}
 )
+
+QT4_AUTOMOC(${kio_obexd_SRCS})
 
 install(TARGETS kio_obexd DESTINATION ${PLUGIN_INSTALL_DIR})
 
