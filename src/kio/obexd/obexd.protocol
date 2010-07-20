@@ -1,6 +1,6 @@
 [Protocol]
-exec=kio_obexftp
-protocol=obexftp
+exec=kio_obexd
+protocol=obexd
 input=none
 output=filesystem
 copyToFile=true
@@ -13,4 +13,4 @@ deleting=true
 moving=true
 Icon=preferences-system-bluetooth
 maxInstances=1
-X-DocPath=kioslave/obexftp.html
+X-DocPath=kioslave/obexd.html

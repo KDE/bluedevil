@@ -1,2 +1,2 @@
 add_subdirectory(bluetooth)
-macro_optional_add_subdirectory(obexftp)
+macro_optional_add_subdirectory(obexd)
