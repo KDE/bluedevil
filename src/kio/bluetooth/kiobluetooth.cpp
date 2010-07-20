@@ -381,15 +381,12 @@ void KioBluetooth::listDir(const KUrl &url)
 
 void KioBluetooth::stat(const KUrl &url)
 {
-    KIO::SlaveBase::stat(url);
+    finished();
 }
 
 void KioBluetooth::get(const KUrl &url)
 {
-    mimeType("text/plain");
-    KProcess wizard;
-    wizard.setProgram("bluedevil-wizard");
-    wizard.startDetached();
+    mimeType("virtual/bluedevil-headset");
     finished();
 }
 

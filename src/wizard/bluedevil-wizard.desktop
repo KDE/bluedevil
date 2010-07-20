@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=BlueDevil Wizard
+GenericName=BlueDevil Wizard
+MimeType=virtual/bluedevil-headset;virtual/bluedevil-input;
+Exec=bluedevil-wizard %U
+Comment=BlueDevil Wizard
+Icon=preferences-system-bluetooth
+Terminal=false
+Categories=Qt;KDE;Bluetooth;Network;
