@@ -19,18 +19,13 @@
     the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
     Boston, MA 02110-1301, USA.
 */
-#ifndef KIO_OBEXFTP_H
-#define KIO_OBEXFTP_H
+#ifndef KIO_OBEXD_H
+#define KIO_OBEXD_H
 
 #include <QObject>
 #include <kio/slavebase.h>
 
-class KioObexFtpPrivate;
-
-/**
- * @short Kioslave that browses through the ftp service of bluetooth devices.
- */
-class KioObexFtp
+class KioObexd
     : public QObject
     , public KIO::SlaveBase
 {
@@ -40,12 +35,12 @@ public:
     /**
      * Constructor
      */
-    KioObexFtp(const QByteArray &pool, const QByteArray &app);
+    KioObexd(const QByteArray &pool, const QByteArray &app);
 
     /**
      * Destructor
      */
-    virtual ~KioObexFtp();
+    virtual ~KioObexd();
 
     /**
      * Retrieves a file from the remote device.
@@ -57,7 +52,7 @@ public:
     /**
      * List a remote directory. There are two types of directories in this kio:
      *
-     * 1. The root dir, obexftp://. This directory is empty.
+     * 1. The root dir, obexd://. This directory is empty.
      * 2. Remote device directory (something like bluetoth:/00_12_34_56_6d_34/path/to/dir). This is
      *    used when the setHost function has been called, and lists directories inside a remote
      *    bluetooth device ftp service.
@@ -98,7 +93,8 @@ public:
     void mkdir(const KUrl&url, int permissions);
 
 private:
-    KioObexFtpPrivate *d;
+    class Private;
+    Private *const d;
 };
 
-#endif // KIO_OBEXFTP_H
+#endif // KIO_OBEXD_H

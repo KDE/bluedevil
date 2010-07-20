@@ -10,7 +10,6 @@ target_link_libraries(kio_obexd
   ${KDE4_KIO_LIBRARY}
   ${KDE4_KDEUI_LIBS}
   ${QT_QTTEST_LIBRARY}
-  obexd
 )
 
 install(TARGETS kio_obexd DESTINATION ${PLUGIN_INSTALL_DIR})

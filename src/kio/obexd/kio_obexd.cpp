@@ -20,200 +20,90 @@
     Boston, MA 02110-1301, USA.
 */
 
-#include "kio_obexftp.h"
-
-#include "qobexftp.h"
+#include "kio_obexd.h"
 
 #include <KDebug>
 #include <KComponentData>
 #include <KCmdLineArgs>
 #include <KAboutData>
-#include <solid/control/bluetoothmanager.h>
 
 #include <KApplication>
 #include <KLocale>
-#include <QTest>
-#include <solid/control/bluetoothremotedevice.h>
 #include <QUrlInfo>
 
 extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
 {
-    KAboutData about("kio_obexftp", 0, ki18n("kio_obexftp"), 0);
+    KAboutData about("kio_obexd", 0, ki18n("kio_obexd"), 0);
     KCmdLineArgs::init(&about);
 
     KApplication app;
     if (argc != 4) {
-        fprintf(stderr, "Usage: kio_obexftp protocol domain-socket1 domain-socket2\n");
+        fprintf(stderr, "Usage: kio_obexd protocol domain-socket1 domain-socket2\n");
         exit(-1);
     }
 
-    KioObexFtp slave(argv[2], argv[3]);
+    KioObexd slave(argv[2], argv[3]);
     slave.dispatchLoop();
     return 0;
 }
 
-class KioObexFtpPrivate
+class KioObexd::Private
 {
 public:
-    KioObexFtpPrivate(KioObexFtp *q);
+    Private(KioObexd *q);
+    virtual ~Private();
 
-public:
-    QObexFtp   *m_obexFtp;
-    KioObexFtp *m_q;
+    KioObexd *m_q;
 };
 
-KioObexFtpPrivate::KioObexFtpPrivate(KioObexFtp *q)
-  : m_q(q)
+KioObexd::Private::Private(KioObexd *q)
+    : m_q(q)
 {
 }
 
-KioObexFtp::KioObexFtp(const QByteArray &pool, const QByteArray &app)
-    : SlaveBase("obexftp", pool, app)
-    , d(new KioObexFtpPrivate(this))
+KioObexd::Private::~Private()
 {
-    d->m_obexFtp = new QObexFtp(this);
 }
 
-KioObexFtp::~KioObexFtp()
+KioObexd::KioObexd(const QByteArray &pool, const QByteArray &app)
+    : SlaveBase("obexd", pool, app)
+    , d(new Private(this))
 {
-    delete d->m_obexFtp;
+}
+
+KioObexd::~KioObexd()
+{
     delete d;
 }
 
 
-void KioObexFtp::listDir(const KUrl &url)
+void KioObexd::listDir(const KUrl &url)
 {
-    if (!d->m_obexFtp->isConnected()) {
-        listEntry(KIO::UDSEntry(), true);
-        finished();
-        return;
-    }
-
-    QList<QUrlInfo> fileList = d->m_obexFtp->list(url.path(KUrl::AddTrailingSlash));
-    Q_FOREACH (QUrlInfo fileItem, fileList) {
-        KIO::UDSEntry entry;
-        entry.insert(KIO::UDSEntry::UDS_NAME, fileItem.name());
-        qDebug() << entry.stringValue(KIO::UDSEntry::UDS_NAME);
-        entry.insert(KIO::UDSEntry::UDS_MODIFICATION_TIME, fileItem.lastModified().toTime_t());
-
-        int perms = 0;
-        if (fileItem.isReadable()) {
-            perms = S_IRUSR | S_IRGRP | S_IROTH;
-        } else {
-            perms = S_IWUSR | S_IWGRP | S_IWOTH;
-        }
-        entry.insert(KIO::UDSEntry::UDS_ACCESS, perms);
-
-        if (fileItem.isDir()) {
-            entry.insert(KIO::UDSEntry::UDS_FILE_TYPE,S_IFDIR);
-        } else {
-            entry.insert(KIO::UDSEntry::UDS_SIZE, fileItem.size());
-            entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
-        }
-        listEntry(entry, false);
-    }
-    listEntry(KIO::UDSEntry(), true);
-    finished();
 }
 
-void KioObexFtp::get(const KUrl &url)
+void KioObexd::get(const KUrl &url)
 {
-    if (!d->m_obexFtp->isConnected()) {
-        error(KIO::ERR_SLAVE_DEFINED, i18n("Not connected"));
-        return;
-    }
-
-    QByteArray fileData = d->m_obexFtp->get(url.path());
-    data(fileData);
-    if (!fileData.isEmpty()) {
-        data(QByteArray());
-    }
-    finished();
 }
 
-void KioObexFtp::setHost(const QString &constHostname, quint16 port, const QString &user,
-                         const QString &pass)
+void KioObexd::setHost(const QString &constHostname, quint16 port, const QString &user,
+                       const QString &pass)
 {
-//     if (d->m_obexFtp->host() == constHostname) {
-//         return;
-//     }
-
-    QString hostname = constHostname;
-    hostname = hostname.replace('-',':').toUpper();
-    if (hostname.isEmpty() && d->m_obexFtp->isConnected()) {
-        d->m_obexFtp->close();
-    } else {
-        d->m_obexFtp->connectToHost(hostname);
-        slaveStatus(constHostname, d->m_obexFtp->isConnected());
-    }
 }
 
-void KioObexFtp::del(const KUrl& url, bool isfile)
+void KioObexd::del(const KUrl& url, bool isfile)
 {
-//     Q_UNUSED(isfile);
-//     qDebug() << url  << url.path();
-// 
-//     if (!d->obexFtp->isConnected()) {
-//         error(KIO::ERR_SLAVE_DEFINED, i18n("Not connected"));
-//         return;
-//     }
-// 
-//     int result = d->obexFtp->remove(url.path());
-//     if (result < 0) {
-//         error(KIO::ERR_SLAVE_DEFINED, i18n("Could not delete file"));
-//         return;
-//     }
-//     finished();
 }
 
-void KioObexFtp::mkdir(const KUrl& url, int permissions)
+void KioObexd::mkdir(const KUrl& url, int permissions)
 {
-//     Q_UNUSED(permissions);
-//     qDebug() << url << url.path();
-// 
-//     if (!d->obexFtp->isConnected()) {
-//         error(KIO::ERR_SLAVE_DEFINED, i18n("Not connected"));
-//         return;
-//     }
-// 
-//     int result = d->obexFtp->mkdir(url.path());
-//     if (result < 0) {
-//         error(KIO::ERR_SLAVE_DEFINED, i18n("Could not create directory"));
-//         return;
-//     }
-//     finished();
 }
 
-void KioObexFtp::slave_status()
+void KioObexd::slave_status()
 {
-    QString host = d->m_obexFtp->host().replace(":", "-");
-    slaveStatus(host, d->m_obexFtp->isConnected());
 }
 
-void KioObexFtp::stat(const KUrl &url)
+void KioObexd::stat(const KUrl &url)
 {
-    if (!d->m_obexFtp->isConnected()) {
-        error(KIO::ERR_SLAVE_DEFINED, "Not connected");
-        return;
-    }
-
-    QUrlInfo fileItem = d->m_obexFtp->stat(url.path());
-    if (fileItem == QUrlInfo()) {
-        error(KIO::ERR_SLAVE_DEFINED, "Could not stat file");
-        return;
-    }
-    KIO::UDSEntry entry;
-    entry.insert(KIO::UDSEntry::UDS_NAME, fileItem.name());
-    entry.insert(KIO::UDSEntry::UDS_MODIFICATION_TIME, fileItem.lastModified().toTime_t());
-    entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRWXU|S_IRWXG|S_IRWXO);
-    if (fileItem.isDir()) {
-        entry.insert(KIO::UDSEntry::UDS_FILE_TYPE,S_IFDIR);
-    } else {
-        entry.insert(KIO::UDSEntry::UDS_SIZE, fileItem.size());
-        entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
-    }
-    statEntry(entry);
-    finished();
 }
 
-#include "kio_obexftp.moc"
+#include "kio_obexd.moc"
