@@ -52,6 +52,7 @@ void ObexAgent::Progress(QDBusObjectPath transfer, quint64 transferred)
 {
     Q_UNUSED(transfer);
     Q_UNUSED(transferred);
+
     emit progress(transferred);
     qDebug() << "Agent Progress";
 }
@@ -60,6 +61,7 @@ void ObexAgent::Progress(QDBusObjectPath transfer, quint64 transferred)
 void ObexAgent::Complete(QDBusObjectPath transfer)
 {
     Q_UNUSED(transfer);
+
     emit completed();
     qDebug() << "Agent Compelte";
 }
