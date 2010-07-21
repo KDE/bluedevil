@@ -97,10 +97,13 @@ void SendFilesJob::progress(quint64 transfer)
 
 void SendFilesJob::error(const QString& error)
 {
-    quint64 toAdd = m_currentFileSize - m_currentFileProgress;
-    m_progress += toAdd;
-    qDebug() << "Bytes to add: " << toAdd;
-    setProcessedAmount(Bytes, m_progress);
+    //if this is the last file, do not complete it
+    if (!m_filesToSend.isEmpty()) {
+        quint64 toAdd = m_currentFileSize - m_currentFileProgress;
+        m_progress += toAdd;
+        qDebug() << "Bytes to add: " << toAdd;
+        setProcessedAmount(Bytes, m_progress);
+    }
 
     jobDone();
 }
