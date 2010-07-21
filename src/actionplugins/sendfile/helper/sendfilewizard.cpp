@@ -45,6 +45,8 @@ SendFileWizard::SendFileWizard() : QWizard(), m_device(0)
     setButton(QWizard::NextButton, new KPushButton(KStandardGuiItem::forward(KStandardGuiItem::UseRTL)));
     setButton(QWizard::CancelButton, new KPushButton(KStandardGuiItem::cancel()));
 
+    setOption(QWizard::DisabledBackButtonOnLastPage);
+
     //We do not want "Forward" as text
     setButtonText(QWizard::NextButton, i18n("Next"));
 
