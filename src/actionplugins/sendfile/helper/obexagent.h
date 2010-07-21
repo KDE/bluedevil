@@ -25,7 +25,6 @@
 
 #include <QDBusAbstractAdaptor>
 #include <QString>
-
 #include <QDBusObjectPath>
 
 class ObexAgent : public QDBusAbstractAdaptor
@@ -80,6 +79,11 @@ public Q_SLOTS:
     */
     void Error(QDBusObjectPath transfer, const QString &message);
 
+Q_SIGNALS:
+    void request();
+    void progress(quint64 transferred);
+    void completed();
+    void error(QString message);
 };
 
 #endif // OBEXAGENT_H
