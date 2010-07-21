@@ -51,8 +51,13 @@ void Service::launchServer()
     if (m_server) {
         return;
     }
-    m_server = new OpenObex::Server(BlueDevil::Manager::self()->defaultAdapter()->address());
-    kDebug() << m_server;
+
+    if (BlueDevil::Manager::self()->defaultAdapter()) {
+        m_server = new OpenObex::Server(BlueDevil::Manager::self()->defaultAdapter()->address());
+        kDebug() << m_server;
+    } else{
+        kDebug() << "No adapters found";
+    }
 }
 
 void Service::stopServer()
