@@ -9,8 +9,8 @@
             <arg type="s" direction="in"/>
         </method>
         <method name="ListFolder">
-            <arg type="a{sv}" direction="out"/>
-            <annotation name="com.trolltech.QtDBus.QtTypeName.Out0" value="QVariantMap"/>
+            <arg type="aa{sv}" direction="out"/>
+            <annotation name="com.trolltech.QtDBus.QtTypeName.Out0" value="QVariantMapList"/>
         </method>
         <method name="GetFile">
             <arg type="s" direction="in"/>

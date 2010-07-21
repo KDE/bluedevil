@@ -106,7 +106,8 @@ KioObexd::KioObexd(const QByteArray &pool, const QByteArray &app)
     : SlaveBase("obexd", pool, app)
     , d(new Private(this))
 {
-    d->createSession("A8:7E:33:5D:6F:4E");
+    qRegisterMetaType<QVariantMapList>("QVariantMapList");
+    qDBusRegisterMetaType<QVariantMapList>();
 }
 
 KioObexd::~KioObexd()

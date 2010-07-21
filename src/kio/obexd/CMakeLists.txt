@@ -7,7 +7,9 @@ set(kio_obexd_SRCS
 QT4_ADD_DBUS_INTERFACE(kio_obexd_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/obexd/manager.xml obexdmanager)
 QT4_ADD_DBUS_INTERFACE(kio_obexd_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/obexd/client.xml obexdclient)
 QT4_ADD_DBUS_INTERFACE(kio_obexd_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/obexd/session.xml obexdsession)
-QT4_ADD_DBUS_INTERFACE(kio_obexd_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/obexd/filetransfer.xml obexdfiletransfer)
+set(obexdfiletransfer_xml ${CMAKE_CURRENT_SOURCE_DIR}/obexd/filetransfer.xml)
+set_source_files_properties(${obexdfiletransfer_xml} PROPERTIES INCLUDE "types.h")
+QT4_ADD_DBUS_INTERFACE(kio_obexd_SRCS ${obexdfiletransfer_xml} obexdfiletransfer)
 QT4_ADD_DBUS_ADAPTOR(kio_obexd_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/obexd/org.openobex.Agent.xml
                      agent.h Agent)
 
