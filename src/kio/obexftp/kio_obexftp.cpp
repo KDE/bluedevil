@@ -93,7 +93,7 @@ KioFtp::Private::~Private()
 void KioFtp::Private::createSession(const KUrl &address)
 {
     QVariantMap device;
-    device["Destination"] = address.path().replace('-', ':').mid(1, 17));
+    device["Destination"] = address.path().replace('-', ':').mid(1, 17);
     device["Target"] = "ftp";
 
     m_sessionPath = m_client->CreateSession(device).value().path();
