@@ -1,6 +1,7 @@
 /*
     Implementation of the client side of the OBEX FTP protocol.
     Copyright (C) 2010 Eduardo Robles Elvira <edulix@gmail.com>
+    Copyright (C) 2010 Rafael Fernández López <ereslibre@kde.org>
     Copyright (C) 2010 UFO Coders <info@ufocoders.com>
 
     This library is free software; you can redistribute it and/or
@@ -34,7 +35,8 @@ class QUrlInfo;
  * This class is a wrapper over the OpenOBEX ftp client library, using C++ and Qt, and it's pretty
  * similar to QFtp Qt class.
  */
-class QObexFtp : public QObject
+class QObexFtp
+    : public QObject
 {
     Q_OBJECT
 
@@ -60,11 +62,6 @@ public:
      * @return less than zero means an error occurred an connection was not created.
      */
     int connectToHost(const QString &host);
-
-    /**
-     * Closes the connection with the server.
-     */
-    void close();
 
     /**
      * Lists a directory.
@@ -109,8 +106,11 @@ public:
 
     QString host() const;
 
+    void close();
+
 private:
-    QObexFtpPrivate * const d;
+    class Private;
+    Private *const d;
 };
 
 #endif // QOBEXFTP_H

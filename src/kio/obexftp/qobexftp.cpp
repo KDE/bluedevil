@@ -1,6 +1,7 @@
 /*
     Implementation of the client side of the OBEX FTP protocol.
     Copyright (C) 2010 Eduardo Robles Elvira <edulix@gmail.com>
+    Copyright (C) 2010 Rafael Fernández López <ereslibre@kde.org>
     Copyright (C) 2010 UFO Coders <info@ufocoders.com>
 
     This library is free software; you can redistribute it and/or
@@ -23,44 +24,56 @@
 
 // obexftp
 #include <obexftp/client.h>
+
 // Qt
 #include <QtNetwork/QUrlInfo>
 #include <QtXml/QDomDocument>
 
 #include <KDebug>
 
-class QObexFtpPrivate
+class QObexFtp::Private
 {
 public:
-    obexftp_client_t *cli;
-    bool connected;
-    QString host;
+    Private();
+    ~Private();
+
+    obexftp_client_t *m_client;
+    bool              m_connected;
+    QString           m_host;
 };
 
-QObexFtp::QObexFtp(QObject *parent)
-    : QObject(parent), d(new QObexFtpPrivate())
+QObexFtp::Private::Private()
+    : m_client(obexftp_open(OBEX_TRANS_BLUETOOTH, 0, 0, 0))
+    , m_connected(false)
 {
-    d->cli = 0;
+}
+
+QObexFtp::Private::~Private()
+{
+    if (m_connected) {
+        obexftp_disconnect(m_client);
+    }
+    obexftp_close(m_client);
+}
+
+QObexFtp::QObexFtp(QObject *parent)
+    : QObject(parent)
+    , d(new Private)
+{
 }
 
 QObexFtp::~QObexFtp()
 {
-    if (d) {
-        close();
-    }
+    delete d;
 }
 
 QUrlInfo QObexFtp::stat(const QString& path)
 {
-    Q_ASSERT(d->cli != 0);
+    stat_entry_t *const stat = obexftp_stat(d->m_client, path.toUtf8().data());
 
-    QByteArray ba = path.toLatin1();
-    kDebug() << "1";
-    stat_entry_t *stat = obexftp_stat(d->cli, ba);
-    kDebug() << "2";
-    if (stat == NULL) {
-        // For some reason, some devices do not like to list "/" dir, so if it's that dir we will
-        // send a fake answer here. What else could we do..?
+    QUrlInfo res;
+
+    if (!stat) {
         if (path == "/") {
             QUrlInfo currentItem;
             currentItem.setName("/");
@@ -68,175 +81,107 @@ QUrlInfo QObexFtp::stat(const QString& path)
             currentItem.setFile(false);
             return currentItem;
         }
-        kDebug() << "error stating dir " << path;
-        return QUrlInfo();
+        return res;
     }
-    QUrlInfo currentItem;
-    currentItem.setName(stat->name);
-    currentItem.setLastModified(QDateTime::fromTime_t(stat->mtime));
 
-    kDebug() << "3";
-    if (stat->mode & S_IFDIR) {
-        currentItem.setDir(true);
-        currentItem.setFile(false);
-    } else if (stat->mode & S_IFREG) {
-        currentItem.setDir(false);
-        currentItem.setFile(true);
-    }
-    kDebug() << "4";
-    currentItem.setSize(stat->size);
+    res.setName(QString::fromUtf8(stat->name));
+    res.setLastModified(QDateTime::fromTime_t(stat->mtime));
+    res.setDir(stat->mode & S_IFDIR);
+    res.setFile(stat->mode & S_IFREG);
+    res.setSize(stat->size);
 
-    return currentItem;
+    return res;
 }
 
 int QObexFtp::connectToHost(const QString& host)
 {
-    kDebug() << host;
-    // Closes the current connection if any
-    if (d->connected) {
-        close();
+    if (d->m_connected && d->m_host == host) {
+        return 0;
     }
 
-    QByteArray ba = host.toLatin1();
-    d->cli = obexftp_open(OBEX_TRANS_BLUETOOTH, 0, 0, 0);
-    int ret = obexftp_connect(d->cli, ba.data(), 0);
-    d->connected = ret >= 0;
-
-    if (d->connected) {
-        d->host = host;
+    if (d->m_connected) {
+        obexftp_disconnect(d->m_client);
     }
-    kDebug() << ret;
-    return ret;
-}
 
-void QObexFtp::close()
-{
-    if (d->cli != 0) {
-        obexftp_close(d->cli);
-        d->cli = 0;
-    }
-    d->host = QString();
+    const int res = obexftp_connect(d->m_client, host.toUtf8().data(), 0);
+    d->m_connected = res >= 0;
+    d->m_host = host;
+
+    return res;
 }
 
 QList<QUrlInfo> QObexFtp::list(const QString& pathToDir)
 {
-    Q_ASSERT(d->cli != 0);
-    QList<QUrlInfo> fileList;
-    QByteArray ba = pathToDir.toLatin1();
-    int listres = obexftp_list(d->cli, 0, ba.data());
+    void *dir = obexftp_opendir(d->m_client, pathToDir.toUtf8().data());
 
-    // There was some kind of error, so return an empty list
-    // TODO: Improve error handling in this case
-    if (listres < 0) {
-        kDebug() << "error listing: " << listres;
-        return fileList;
+    QList<QUrlInfo> res;
+
+    if (!dir) {
+        return res;
     }
 
-    QString dirlist(QString::fromUtf8((const char*)d->cli->buf_data));
-    kDebug() << dirlist;
-    QDomDocument doc;
-    doc.setContent(dirlist);
-
-    QDomNode listing = doc.elementsByTagName("folder-listing").item(0);
-    for (int i = 0; i < listing.childNodes().size(); i++) {
-        QDomNode node = listing.childNodes().item(i);
-        if (node.nodeName()=="folder" || node.nodeName()=="file") {
-            QUrlInfo currentItem;
-            currentItem.setName(node.attributes().namedItem("name").nodeValue());
-
-            if (node.attributes().contains("modified")) {
-                kDebug() << node.attributes().namedItem("modified").nodeValue();
-                QDateTime date = QDateTime::fromString(
-                    node.attributes().namedItem("modified").nodeValue(), "yyyyMMddTHHmmss");
-                currentItem.setLastModified(date);
-            }
-
-            if (node.attributes().contains("created")) {
-                kDebug() << node.attributes().namedItem("created").nodeValue();
-                QDateTime date = QDateTime::fromString(
-                    node.attributes().namedItem("created").nodeValue(), "yyyyMMddTHHmmss");
-                currentItem.setLastModified(date);
-            }
-
-            if (node.attributes().contains("user-perm")) {
-                QString userPerm = node.attributes().namedItem("user-perm").nodeValue().toUpper();
-                if (userPerm.contains("R")) {
-                    currentItem.setReadable(true);
-                }
-                if (userPerm.contains("W")) {
-                    currentItem.setWritable(true);
-                }
-            }
-
-            if (node.nodeName() == "folder") {
-                currentItem.setDir(true);
-            } else {
-                currentItem.setFile(true);
-                currentItem.setSize(node.attributes().namedItem("size").nodeValue().toInt());
-            }
-            fileList.push_back(currentItem);
-        }
+    stat_entry_t *entry;
+    while ((entry = obexftp_readdir(dir))) {
+        QUrlInfo info;
+        info.setName(QString::fromUtf8(entry->name));
+        info.setLastModified(QDateTime::fromTime_t(entry->mtime));
+        info.setDir(entry->mode & S_IFDIR);
+        info.setFile(entry->mode & S_IFREG);
+        info.setSize(entry->size);
+        res << info;
     }
 
-    return fileList;
+    obexftp_closedir(dir);
+
+    return res;
 }
 
 QByteArray QObexFtp::get(const QString &pathToFile)
 {
-    Q_ASSERT(d->cli != 0);
+    const int res = obexftp_get(d->m_client, 0, pathToFile.toUtf8().data());
 
-    QByteArray ba = pathToFile.toLatin1();
-    int ret = obexftp_get(d->cli, NULL, ba);
-
-    // There was some kind of error, so return an empty list
-    // TODO: Improve error handling in this case
-    if (ret < 0) {
+    if  (res < 0) {
         return QByteArray();
     }
 
-    return QByteArray((const char*)d->cli->buf_data, d->cli->buf_size);
+    return QByteArray((const char*) d->m_client->buf_data, d->m_client->buf_size);
 }
 
 int QObexFtp::put(const QByteArray &data, const QString &pathToFile)
 {
-    QByteArray ba = pathToFile.toLatin1();
-    return obexftp_put_data(d->cli, data, data.size(), ba);
+    return obexftp_put_data(d->m_client, data, data.size(), pathToFile.toUtf8().data());
 }
 
 int QObexFtp::remove(const QString &path)
 {
-    Q_ASSERT(d->cli != 0);
-
-    QByteArray ba = path.toLatin1();
-    return obexftp_del(d->cli, ba);
+    return obexftp_del(d->m_client, path.toUtf8().data());
 }
 
 int QObexFtp::rename(const QString &originPath, const QString &destinationPath)
 {
-    Q_ASSERT(d->cli != 0);
-
-    QByteArray ba = originPath.toLatin1();
-    QByteArray ba2 = destinationPath.toLatin1();
-    return obexftp_rename(d->cli, ba, ba2);
+    return obexftp_rename(d->m_client, originPath.toUtf8().data(), destinationPath.toUtf8().data());
 }
 
 bool QObexFtp::isConnected() const
 {
-    return d->connected;
+    return d->m_connected;
 }
 
 int QObexFtp::mkdir(const QString &path)
 {
-    Q_ASSERT(d->cli != 0);
-
-    QByteArray ba = path.toLatin1();
-    return obexftp_mkpath(d->cli, ba);
+    return obexftp_mkpath(d->m_client, path.toUtf8().data());
 }
 
 QString QObexFtp::host() const
 {
-    return d->host;
+    return d->m_host;
 }
 
+void QObexFtp::close()
+{
+    d->m_connected = false;
+    obexftp_disconnect(d->m_client);
+    d->m_host.clear();
+}
 
 #include "qobexftp.moc"

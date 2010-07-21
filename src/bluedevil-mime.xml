@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+It comes with ABSOLUTELY NO WARRANTY, to the extent permitted by law. You may
+redistribute copies of update-mime-database under the terms of the GNU General
+Public License. For more information about these matters, see the file named
+COPYING.
+-->
+<!--
+Notes:
+- the mime types in this file are valid with the version 0.20 of the
+  shared-mime-info package.
+- the "fdo #xxxxx" are the wish in the freedesktop.org bug database to include
+  the mime type there.
+-->
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="inode/x-vnd.kde.bluedevil.device">
+    <generic-icon name="video-display"/>
+    <comment>Remote Device</comment>
+  </mime-type>
+  <mime-type type="inode/x-vnd.kde.bluedevil.service">
+    <generic-icon name="preferences-system-bluetooth"/>
+    <comment>Service</comment>
+  </mime-type>
+  <mime-type type="virtual/bluedevil-headset">
+    <comment>Headset</comment>
+  </mime-type>
+  <mime-type type="virtual/bluedevil-audio">
+    <comment>Audio</comment>
+  </mime-type>
+</mime-info>

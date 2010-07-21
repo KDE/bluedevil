@@ -61,6 +61,8 @@ public:
      */
     void listDir(const KUrl &url);
 
+    void stat(const KUrl &url);
+
     /**
      * As at the momento we don't handle more than one level url paths, @p setHost has not much
      * difference with @p listDir

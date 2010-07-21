@@ -1,6 +1,7 @@
 /*  This file is part of the KDE libraries
 
     Copyright (C) 2010 Eduardo Robles Elvira <edulix@gmail.com>
+    Copyright (C) 2010 Rafael Fernández López <ereslibre@kde.org>
     Copyright (C) 2010 UFO Coders <info@ufocoders.com>
 
     This library is free software; you can redistribute it and/or
@@ -29,7 +30,9 @@ class KioObexFtpPrivate;
 /**
  * @short Kioslave that browses through the ftp service of bluetooth devices.
  */
-class KioObexFtp : public QObject, public KIO::SlaveBase
+class KioObexFtp
+    : public QObject
+    , public KIO::SlaveBase
 {
   Q_OBJECT
 
