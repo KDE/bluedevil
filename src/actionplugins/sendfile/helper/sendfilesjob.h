@@ -53,11 +53,13 @@ private Q_SLOTS:
 private:
     ObexAgent       *m_agent;
     QStringList     m_filesToSend;
+    QList <quint64> m_filesToSendSize;
     Device          *m_device;
     QString         m_currentFile;
     quint64         m_totalSize;
     quint64         m_progress;
     quint64         m_currentFileProgress;
+    quint64         m_currentFileSize;
 };
 
 #endif // SENDFILESJOB_H

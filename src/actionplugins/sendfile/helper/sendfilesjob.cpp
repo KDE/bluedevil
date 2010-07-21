@@ -42,9 +42,11 @@ SendFilesJob::SendFilesJob(KFileItemList list, Device *device, ObexAgent *agent,
         if (item.isLocalFile()) {
             m_filesToSend << item.url().path();
             qDebug() << "Adding size : " << item.size();
+            m_filesToSendSize << item.size();
             m_totalSize += item.size();
         }
     }
+
     connect(m_agent, SIGNAL(request()), this, SLOT(nextJob()));
     connect(m_agent, SIGNAL(completed()), this, SLOT(jobDone()));
     connect(m_agent, SIGNAL(progress(quint64)), this, SLOT(progress(quint64)));
@@ -71,12 +73,15 @@ void SendFilesJob::nextJob()
 {
     m_currentFile = m_filesToSend.takeFirst();
     m_currentFileProgress = 0;
+    m_currentFileSize = m_filesToSendSize.takeFirst();
+
     emit description(this, "Receiving file over bluetooth", QPair<QString, QString>("From", m_currentFile), QPair<QString, QString>("To", m_device->name()));
 }
 
 void SendFilesJob::jobDone()
 {
     m_currentFileProgress = 0;
+    m_currentFileSize = 0;
     if (m_currentFile.isEmpty()) {
         emitResult();
     }
@@ -92,6 +97,10 @@ void SendFilesJob::progress(quint64 transfer)
 
 void SendFilesJob::error(const QString& error)
 {
-    setErrorText(error);
-    emitResult();
+    quint64 toAdd = m_currentFileSize - m_currentFileProgress;
+    m_progress += toAdd;
+    qDebug() << "Bytes to add: " << toAdd;
+    setProcessedAmount(Bytes, m_progress);
+
+    jobDone();
 }
