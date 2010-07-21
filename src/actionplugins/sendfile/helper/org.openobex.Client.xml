@@ -8,16 +8,5 @@
                         <arg type="o" direction="in"/>
                         <annotation name="com.trolltech.QtDBus.QtTypeName.In0" value="QVariantMap"/>
                 </method>
-                <!--<method name="CreateSession">
-                        <arg type="a{sv}" direction="in"/>
-                        <arg type="o" direction="out"/>
-                </method>
-                <method name="RemoveSession">
-                        <arg type="o" direction="in"/>
-                </method>-->
-                <!--<method name="GetCapabilities">
-                        <arg type="a{sv}" direction="in"/>
-                        <arg type="s" direction="out"/>
-                </method>-->
         </interface>
 </node>
