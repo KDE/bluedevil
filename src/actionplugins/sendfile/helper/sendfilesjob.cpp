@@ -91,6 +91,8 @@ void SendFilesJob::nextJob(OrgOpenobexTransferInterface *transferObj)
 
 void SendFilesJob::jobDone(QDBusObjectPath transfer)
 {
+    Q_UNUSED(transfer);
+
     m_currentFileProgress = 0;
     m_currentFileSize = 0;
     if (m_filesToSend.isEmpty()) {
@@ -100,6 +102,8 @@ void SendFilesJob::jobDone(QDBusObjectPath transfer)
 
 void SendFilesJob::progress(QDBusObjectPath transfer, quint64 transferBytes)
 {
+    Q_UNUSED(transfer);
+
     quint64 toAdd = transferBytes - m_currentFileProgress;
     m_currentFileProgress = transferBytes;
     m_progress += toAdd;
