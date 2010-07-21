@@ -37,7 +37,7 @@
 
 using namespace BlueDevil;
 
-SendFileWizard::SendFileWizard() : QWizard(), m_device(0)
+SendFileWizard::SendFileWizard() : QWizard(), m_device(0), m_job(0)
 {
     setWindowTitle(i18n("BlueDevil Send Files"));
 
@@ -62,7 +62,9 @@ SendFileWizard::SendFileWizard() : QWizard(), m_device(0)
 
 SendFileWizard::~SendFileWizard()
 {
-
+    if (m_job) {
+        m_job->doKill();
+    }
 }
 
 void SendFileWizard::setFileWidget(KFileWidget* fileWidget)
@@ -85,9 +87,18 @@ Device* SendFileWizard::device()
     return m_device;
 }
 
+void SendFileWizard::wizardDone()
+{
+    QWizard::done(1);
+}
+
 void SendFileWizard::startTransfer()
 {
-    SendFilesJob *job = new SendFilesJob(m_fileWidget->dirOperator()->selectedItems(), m_device, m_agent);
-    KIO::getJobTracker()->registerJob(job);
-    job->start();
+    m_job = new SendFilesJob(m_fileWidget->dirOperator()->selectedItems(), m_device, m_agent);
+    connect(m_job, SIGNAL(destroyed(QObject*)), qApp, SLOT(quit()));
+
+    KIO::getJobTracker()->registerJob(m_job);
+    m_job->start();
+
+    QTimer::singleShot(2000, this, SLOT(wizardDone()));
 }
