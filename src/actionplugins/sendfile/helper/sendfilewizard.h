@@ -25,6 +25,7 @@
 
 class WizardAgent;
 class KFileWidget;
+class ObexAgent;
 namespace BlueDevil {
     class Device;
 }
@@ -44,9 +45,11 @@ public:
     void setDevice(Device *device);
     Device* device();
 
+    void startTransfer();
 private:
     KFileWidget *m_fileWidget;
     Device      *m_device;
+    ObexAgent   *m_agent;
 };
 
 #endif // SENDFILEWIZARD_H

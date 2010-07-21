@@ -36,9 +36,6 @@ public:
 
     virtual void initializePage();
     virtual bool isComplete() const;
-
-private:
-    void startSending();
 };
 
 #endif // CONNECTINGPAGE_H

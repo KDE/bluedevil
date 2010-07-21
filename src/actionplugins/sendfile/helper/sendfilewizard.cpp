@@ -28,9 +28,12 @@
 #include <kstandardguiitem.h>
 #include <klocalizedstring.h>
 #include <kpushbutton.h>
-#include "kfilewidget.h"
+#include <kstatusbarjobtracker.h>
+#include <kfilewidget.h>
 
 #include <bluedevil/bluedevil.h>
+#include <sendfilesjob.h>
+#include <kdiroperator.h>
 
 using namespace BlueDevil;
 
@@ -52,7 +55,7 @@ SendFileWizard::SendFileWizard() : QWizard(), m_device(0)
 
     show();
 
-    ObexAgent *agent = new ObexAgent(qApp);
+    m_agent = new ObexAgent(qApp);
 }
 
 SendFileWizard::~SendFileWizard()
@@ -78,4 +81,11 @@ void SendFileWizard::setDevice(Device* device)
 Device* SendFileWizard::device()
 {
     return m_device;
+}
+
+void SendFileWizard::startTransfer()
+{
+    SendFilesJob *job = new SendFilesJob(m_fileWidget->dirOperator()->selectedItems(), m_device, m_agent);
+    KIO::getJobTracker()->registerJob(job);
+    job->start();
 }

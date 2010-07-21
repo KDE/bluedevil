@@ -20,35 +20,44 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA            *
  ***************************************************************************/
 
-#include "connectingpage.h"
-#include "../sendfilewizard.h"
-#include "../sendjob.h"
+#ifndef SENDFILESJOB_H
+#define SENDFILESJOB_H
 
-#include <QtCore/QVariant>
+#include <QStringList>
+#include <QList>
 
-#include "klocalizedstring.h"
-#include "kfilewidget.h"
-
-#include <bluedevil/bluedevil.h>
-#include <kdiroperator.h>
 #include <kcompositejob.h>
-#include <sendfilesjob.h>
+#include <KFileItemList>
 
+namespace BlueDevil
+{
+    class Device;
+}
+class ObexAgent;
 using namespace BlueDevil;
-ConnectingPage::ConnectingPage(QWidget* parent): QWizardPage(parent)
-{
-    setupUi(this);
-}
 
-void ConnectingPage::initializePage()
+class SendFilesJob : public KJob
 {
-    Device *device = static_cast<SendFileWizard* >(wizard())->device();
-    connLabel->setText(i18nc("Conencting to a bluetooth device", "Connecting to %1 ...").arg(device->name()));
+Q_OBJECT
+public:
+    SendFilesJob(KFileItemList list, BlueDevil::Device* device, ObexAgent* agent, QObject* parent = 0);
 
-   static_cast<SendFileWizard*>(wizard())->startTransfer();
-}
+    virtual void start();
 
-bool ConnectingPage::isComplete() const
-{
-    return false;
-}
+private Q_SLOTS:
+    void nextJob();
+    void jobDone();
+    void progress(quint64 transfer);
+    void error(const QString &error);
+
+private:
+    ObexAgent       *m_agent;
+    QStringList     m_filesToSend;
+    Device          *m_device;
+    QString         m_currentFile;
+    quint64         m_totalSize;
+    quint64         m_progress;
+    quint64         m_currentFileProgress;
+};
+
+#endif // SENDFILESJOB_H
