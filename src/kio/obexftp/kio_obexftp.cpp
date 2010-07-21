@@ -69,6 +69,7 @@ public:
     QString                      m_sessionPath;
     org::openobex::FileTransfer *m_fileTransfer;
     Agent                       *m_agent;
+    QString                      m_path;
 };
 
 KioFtp::Private::Private(KioFtp *q)
@@ -100,6 +101,7 @@ void KioFtp::Private::createSession(const KUrl &address)
     m_session = new org::openobex::Session("org.openobex.client", m_sessionPath, QDBusConnection::sessionBus(), 0);
     m_session->AssignAgent(QDBusObjectPath("/"));
     m_fileTransfer = new org::openobex::FileTransfer("org.openobex.client", m_sessionPath, QDBusConnection::sessionBus(), 0);
+    m_path = "/";
 }
 
 QString KioFtp::Private::realPath(const KUrl &path) const
@@ -128,7 +130,11 @@ void KioFtp::listDir(const KUrl &url)
 {
     ENSURE_SESSION_CREATED(url)
 
-    d->m_fileTransfer->ChangeFolder(d->realPath(url)).waitForFinished();;
+    const QString path = d->realPath(url);
+    if (path != d->m_path) {
+        d->m_fileTransfer->ChangeFolder(path).waitForFinished();
+        d->m_path = path;
+    }
 
     int i = 0;
     Q_FOREACH (const QVariantMap &map, d->m_fileTransfer->ListFolder().value()) {
