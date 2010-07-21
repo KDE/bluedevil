@@ -22,6 +22,9 @@
 #include "kio_obexd.h"
 #include "obexdclient.h"
 #include "obexdmanager.h"
+#include "obexdsession.h"
+#include "obexdfiletransfer.h"
+#include "agent.h"
 
 #include <KDebug>
 #include <KComponentData>
@@ -30,7 +33,7 @@
 #include <KLocale>
 #include <KApplication>
 
-#define ENSURE_SESSION_CREATED(url) if (!d->m_sessionCreated) { \
+#define ENSURE_SESSION_CREATED(url) if (d->m_sessionPath.isEmpty()) { \
                                         d->createSession(url);  \
                                     }
 
@@ -59,18 +62,22 @@ public:
     void createSession(const QString &address);
 
     KioObexd *m_q;
-    org::openobex::Manager *m_manager;
-    org::openobex::Client  *m_client;
+    org::openobex::Manager      *m_manager;
+    org::openobex::Client       *m_client;
+    org::openobex::Session      *m_session;
+    org::openobex::FileTransfer *m_fileTransfer;
+    Agent                       *m_agent;
 
-    bool    m_sessionCreated;
-    QString m_devicePath;
+    QString m_sessionPath;
 };
 
 KioObexd::Private::Private(KioObexd *q)
     : m_q(q)
     , m_manager(new org::openobex::Manager("org.openobex", "/", QDBusConnection::sessionBus(), 0))
     , m_client(new org::openobex::Client("org.openobex.client", "/", QDBusConnection::sessionBus(), 0))
-    , m_sessionCreated(false)
+    , m_session(0)
+    , m_fileTransfer(0)
+    , m_agent(new Agent(0))
 {
 }
 
@@ -78,6 +85,9 @@ KioObexd::Private::~Private()
 {
     delete m_manager;
     delete m_client;
+    delete m_session;
+    delete m_fileTransfer;
+    delete m_agent;
 }
 
 void KioObexd::Private::createSession(const QString &address)
@@ -86,14 +96,17 @@ void KioObexd::Private::createSession(const QString &address)
     device["Destination"] = address;
     device["Target"] = "ftp";
 
-    m_sessionCreated = true;
-    m_devicePath = m_client->CreateSession(device).value().path();
+    m_sessionPath = m_client->CreateSession(device).value().path();
+    m_session = new org::openobex::Session("org.openobex.client", m_sessionPath, QDBusConnection::sessionBus(), 0);
+    m_session->AssignAgent(QDBusObjectPath("/"));
+    m_fileTransfer = new org::openobex::FileTransfer("org.openobex.client", m_sessionPath, QDBusConnection::sessionBus(), 0);
 }
 
 KioObexd::KioObexd(const QByteArray &pool, const QByteArray &app)
     : SlaveBase("obexd", pool, app)
     , d(new Private(this))
 {
+    d->createSession("A8:7E:33:5D:6F:4E");
 }
 
 KioObexd::~KioObexd()
