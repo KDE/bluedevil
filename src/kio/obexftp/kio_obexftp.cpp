@@ -34,7 +34,7 @@
 #include <KApplication>
 
 #define ENSURE_SESSION_CREATED(url) if (d->m_sessionPath.isEmpty()) { \
-                                        d->createSession(url);  \
+                                        d->createSession(url);        \
                                     }
 
 extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
@@ -59,16 +59,16 @@ public:
     Private(KioFtp *q);
     virtual ~Private();
 
-    void createSession(const QString &address);
+    void createSession(const KUrl &address);
+    QString realPath(const KUrl &path) const;
 
     KioFtp *m_q;
     org::openobex::Manager      *m_manager;
     org::openobex::Client       *m_client;
     org::openobex::Session      *m_session;
+    QString                      m_sessionPath;
     org::openobex::FileTransfer *m_fileTransfer;
     Agent                       *m_agent;
-
-    QString m_sessionPath;
 };
 
 KioFtp::Private::Private(KioFtp *q)
@@ -90,16 +90,21 @@ KioFtp::Private::~Private()
     delete m_agent;
 }
 
-void KioFtp::Private::createSession(const QString &address)
+void KioFtp::Private::createSession(const KUrl &address)
 {
     QVariantMap device;
-    device["Destination"] = address;
+    device["Destination"] = address.path().replace('-', ':').mid(1, 17));
     device["Target"] = "ftp";
 
     m_sessionPath = m_client->CreateSession(device).value().path();
     m_session = new org::openobex::Session("org.openobex.client", m_sessionPath, QDBusConnection::sessionBus(), 0);
     m_session->AssignAgent(QDBusObjectPath("/"));
     m_fileTransfer = new org::openobex::FileTransfer("org.openobex.client", m_sessionPath, QDBusConnection::sessionBus(), 0);
+}
+
+QString KioFtp::Private::realPath(const KUrl &path) const
+{
+    return path.path().right(18);
 }
 
 KioFtp::KioFtp(const QByteArray &pool, const QByteArray &app)
@@ -117,17 +122,38 @@ KioFtp::~KioFtp()
 
 void KioFtp::listDir(const KUrl &url)
 {
-    ENSURE_SESSION_CREATED(url.url())
+    ENSURE_SESSION_CREATED(url)
 
-    KIO::SlaveBase::listDir(url);
+    d->m_fileTransfer->ChangeFolder(d->realPath(url));
+
+    int i = 0;
+    Q_FOREACH (const QVariantMap &map, d->m_fileTransfer->ListFolder().value()) {
+        KIO::UDSEntry entry;
+        entry.insert(KIO::UDSEntry::UDS_NAME, map["Name"].toString());
+        if (map["Type"].toString() == "folder") {
+            entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+        } else {
+            entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
+        }
+        entry.insert(KIO::UDSEntry::UDS_SIZE, map["Size"].toInt());
+        entry.insert(KIO::UDSEntry::UDS_MODIFICATION_TIME, map["Modified"].toUInt());
+        entry.insert(KIO::UDSEntry::UDS_ACCESS_TIME, map["Accessed"].toUInt());
+        entry.insert(KIO::UDSEntry::UDS_CREATION_TIME, map["Created"].toUInt());
+        listEntry(entry, false);
+        ++i;
+    }
+
+    listEntry(KIO::UDSEntry(), true);
+    totalSize(0);
+    finished();
 }
 
 void KioFtp::copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFlags flags)
 {
     if (src.scheme() == "obexftp") {
-        ENSURE_SESSION_CREATED(src.url())
+        ENSURE_SESSION_CREATED(src)
     } else if (dest.scheme() == "obexftp") {
-        ENSURE_SESSION_CREATED(dest.url())
+        ENSURE_SESSION_CREATED(dest)
     }
 
     KIO::SlaveBase::copy(src, dest, permissions, flags);
@@ -140,7 +166,7 @@ void KioFtp::setHost(const QString &host, quint16 port, const QString &user, con
 
 void KioFtp::del(const KUrl& url, bool isfile)
 {
-    ENSURE_SESSION_CREATED(url.url())
+    ENSURE_SESSION_CREATED(url)
 
     d->m_fileTransfer->Delete(url.path());
 
@@ -149,7 +175,7 @@ void KioFtp::del(const KUrl& url, bool isfile)
 
 void KioFtp::mkdir(const KUrl& url, int permissions)
 {
-    ENSURE_SESSION_CREATED(url.url())
+    ENSURE_SESSION_CREATED(url)
 
     d->m_fileTransfer->CreateFolder(url.path());
 
@@ -163,7 +189,7 @@ void KioFtp::slave_status()
 
 void KioFtp::stat(const KUrl &url)
 {
-    ENSURE_SESSION_CREATED(url.url())
+    ENSURE_SESSION_CREATED(url)
 
     KIO::SlaveBase::stat(url);
 }
