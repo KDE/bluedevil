@@ -13,6 +13,8 @@ set(sendfilehelper_SRCS
     pages/connectingpage.cpp
     pages/sendintropage.cpp
     obexagent.cpp
+    sendjob.cpp
+    sendfilesjob.cpp
 )
 
 kde4_add_ui_files(sendfilehelper_SRCS
@@ -21,7 +23,7 @@ kde4_add_ui_files(sendfilehelper_SRCS
     pages/sendintro.ui
 )
 
-qt4_add_dbus_interface(sendfilehelper_SRCS pages/org.openobex.Client.xml obex_client)
+qt4_add_dbus_interface(sendfilehelper_SRCS org.openobex.Client.xml obex_client)
 
 
 kde4_add_executable(bluedevil-sendfile ${sendfilehelper_SRCS})
