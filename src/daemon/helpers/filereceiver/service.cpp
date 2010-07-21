@@ -63,7 +63,7 @@ void Service::launchServer()
 void Service::stopServer()
 {
     kDebug() << m_server;
-    
+
     if (!m_server) {
         return;
     }
