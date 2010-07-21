@@ -22,6 +22,7 @@
 
 #include "sendfilesjob.h"
 #include "obexagent.h"
+#include "obex_transfer.h"
 
 #include "obex_client.h"
 
@@ -31,6 +32,7 @@
 
 using namespace BlueDevil;
 SendFilesJob::SendFilesJob(KFileItemList list, Device *device, ObexAgent *agent, QObject* parent): KJob(parent)
+,m_currentTransferJob(0)
 {
     m_agent = agent;
     m_device = device;
@@ -47,12 +49,21 @@ SendFilesJob::SendFilesJob(KFileItemList list, Device *device, ObexAgent *agent,
         }
     }
 
-    connect(m_agent, SIGNAL(request()), this, SLOT(nextJob()));
-    connect(m_agent, SIGNAL(completed()), this, SLOT(jobDone()));
-    connect(m_agent, SIGNAL(progress(quint64)), this, SLOT(progress(quint64)));
-    connect(m_agent, SIGNAL(error(QString)), this, SLOT(error(QString)));
+    connect(m_agent, SIGNAL(request(OrgOpenobexTransferInterface *)), this, SLOT(nextJob(OrgOpenobexTransferInterface*)));
+    connect(m_agent, SIGNAL(completed(QDBusObjectPath)), this, SLOT(jobDone(QDBusObjectPath)));
+    connect(m_agent, SIGNAL(progress(QDBusObjectPath, quint64)), this, SLOT(progress(QDBusObjectPath, quint64)));
+    connect(m_agent, SIGNAL(error(QDBusObjectPath, QString)), this, SLOT(error(QDBusObjectPath, QString)));
 
     setCapabilities(Killable);
+}
+
+bool SendFilesJob::doKill()
+{
+    if(m_currentTransferJob) {
+        m_currentTransferJob->Cancel();
+    }
+    m_agent->setKilled();
+    return false;
 }
 
 
@@ -69,41 +80,42 @@ void SendFilesJob::start()
     emit description(this, "Sending file over bluetooth", QPair<QString, QString>("From", m_filesToSend.first()), QPair<QString, QString>("To", m_device->name()));
 }
 
-void SendFilesJob::nextJob()
+void SendFilesJob::nextJob(OrgOpenobexTransferInterface *transferObj)
 {
     m_currentFile = m_filesToSend.takeFirst();
     m_currentFileProgress = 0;
     m_currentFileSize = m_filesToSendSize.takeFirst();
-
+    m_currentTransferJob = transferObj;
     emit description(this, "Receiving file over bluetooth", QPair<QString, QString>("From", m_currentFile), QPair<QString, QString>("To", m_device->name()));
 }
 
-void SendFilesJob::jobDone()
+void SendFilesJob::jobDone(QDBusObjectPath transfer)
 {
     m_currentFileProgress = 0;
     m_currentFileSize = 0;
-    if (m_currentFile.isEmpty()) {
+    if (m_filesToSend.isEmpty()) {
         emitResult();
     }
 }
 
-void SendFilesJob::progress(quint64 transfer)
+void SendFilesJob::progress(QDBusObjectPath transfer, quint64 transferBytes)
 {
-    quint64 toAdd = transfer - m_currentFileProgress;
-    m_currentFileProgress = transfer;
+    quint64 toAdd = transferBytes - m_currentFileProgress;
+    m_currentFileProgress = transferBytes;
     m_progress += toAdd;
     setProcessedAmount(Bytes, m_progress);
 }
 
-void SendFilesJob::error(const QString& error)
+void SendFilesJob::error(QDBusObjectPath transfer, const QString& error)
 {
+    Q_UNUSED(error)
+
     //if this is the last file, do not complete it
     if (!m_filesToSend.isEmpty()) {
         quint64 toAdd = m_currentFileSize - m_currentFileProgress;
         m_progress += toAdd;
-        qDebug() << "Bytes to add: " << toAdd;
         setProcessedAmount(Bytes, m_progress);
     }
 
-    jobDone();
+    jobDone(transfer);
 }

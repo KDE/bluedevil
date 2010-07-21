@@ -23,8 +23,11 @@
 #ifndef SENDFILESJOB_H
 #define SENDFILESJOB_H
 
+#include <obex_transfer.h>
+
 #include <QStringList>
 #include <QList>
+#include <QDBusObjectPath>
 
 #include <kcompositejob.h>
 #include <KFileItemList>
@@ -43,12 +46,13 @@ public:
     SendFilesJob(KFileItemList list, BlueDevil::Device* device, ObexAgent* agent, QObject* parent = 0);
 
     virtual void start();
+    virtual bool doKill();
 
 private Q_SLOTS:
-    void nextJob();
-    void jobDone();
-    void progress(quint64 transfer);
-    void error(const QString &error);
+    void nextJob(OrgOpenobexTransferInterface *transferObj);
+    void jobDone(QDBusObjectPath transfer);
+    void progress(QDBusObjectPath transfer, quint64 transferBytes);
+    void error(QDBusObjectPath transfer, const QString& error);
 
 private:
     ObexAgent       *m_agent;
@@ -56,10 +60,13 @@ private:
     QList <quint64> m_filesToSendSize;
     Device          *m_device;
     QString         m_currentFile;
+    QDBusObjectPath m_currentFileDBusPath;
     quint64         m_totalSize;
     quint64         m_progress;
     quint64         m_currentFileProgress;
     quint64         m_currentFileSize;
+
+    OrgOpenobexTransferInterface *m_currentTransferJob;
 };
 
 #endif // SENDFILESJOB_H

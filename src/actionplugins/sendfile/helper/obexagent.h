@@ -23,6 +23,8 @@
 #ifndef OBEXAGENT_H
 #define OBEXAGENT_H
 
+#include <obex_transfer.h>
+
 #include <QDBusAbstractAdaptor>
 #include <QString>
 #include <QDBusObjectPath>
@@ -35,6 +37,8 @@ Q_CLASSINFO("D-Bus Interface", "org.openobex.Agent")
 
 public:
     ObexAgent(QObject* parent);
+
+    void setKilled();
 
 public Q_SLOTS:
 
@@ -59,7 +63,7 @@ public Q_SLOTS:
      *   Possible errors: org.openobex.Error.Rejected
      *                    org.openobex.Error.Canceled
      */
-    QString Request(QDBusObjectPath transfer);
+    QString Request(QDBusObjectPath transferPath);
 
     /**
      * Progress within the transfer has been made. The
@@ -79,11 +83,14 @@ public Q_SLOTS:
     */
     void Error(QDBusObjectPath transfer, const QString &message);
 
+private:
+    bool            m_killed;
+
 Q_SIGNALS:
-    void request();
-    void progress(quint64 transferred);
-    void completed();
-    void error(QString message);
+    void request(OrgOpenobexTransferInterface* transfer);
+    void progress(QDBusObjectPath transfer, quint64 transferred);
+    void completed(QDBusObjectPath transfer);
+    void error(QDBusObjectPath transfer, QString message);
 };
 
 #endif // OBEXAGENT_H

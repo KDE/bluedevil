@@ -21,13 +21,17 @@
  ***************************************************************************/
 
 #include "obexagent.h"
+#include "obex_transfer.h"
 
 #include <QtCore/QDebug>
 
 #include <QDBusConnection>
+#include <QDBusPendingCall>
+#include <QDBusMessage>
 
 ObexAgent::ObexAgent(QObject* parent): QDBusAbstractAdaptor(parent)
 {
+    m_killed = false;
     if (!QDBusConnection::sessionBus().registerObject("/BlueDevil_sendAgent", parent)) {
         qDebug() << "The dbus object can't be registered";
         return;
@@ -41,10 +45,14 @@ void ObexAgent::Release() const
 
 QString ObexAgent::Request(QDBusObjectPath transfer)
 {
-    Q_UNUSED(transfer);
     qDebug() << "Agent Request";
+    OrgOpenobexTransferInterface *transferObj = new OrgOpenobexTransferInterface("org.openobex.client", transfer.path(), QDBusConnection::sessionBus());
 
-    emit request();
+    if (m_killed == true) {
+        transferObj->Cancel();
+    }
+
+    emit request(transferObj);
     return QString();
 }
 
@@ -53,7 +61,7 @@ void ObexAgent::Progress(QDBusObjectPath transfer, quint64 transferred)
     Q_UNUSED(transfer);
     Q_UNUSED(transferred);
 
-    emit progress(transferred);
+    emit progress(transfer, transferred);
     qDebug() << "Agent Progress";
 }
 
@@ -62,7 +70,7 @@ void ObexAgent::Complete(QDBusObjectPath transfer)
 {
     Q_UNUSED(transfer);
 
-    emit completed();
+    emit completed(transfer);
     qDebug() << "Agent Compelte";
 }
 
@@ -71,6 +79,11 @@ void ObexAgent::Error(QDBusObjectPath transfer, const QString& message)
     Q_UNUSED(transfer);
     Q_UNUSED(message);
 
-    emit error(message);
+    emit error(transfer, message);
     qDebug() << "Agent Error";
+}
+
+void ObexAgent::setKilled()
+{
+    m_killed = true;
 }
