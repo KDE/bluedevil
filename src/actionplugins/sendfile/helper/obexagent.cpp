@@ -40,12 +40,10 @@ ObexAgent::ObexAgent(QObject* parent): QDBusAbstractAdaptor(parent)
 
 void ObexAgent::Release() const
 {
-    qDebug() << "Agent released";
 }
 
 QString ObexAgent::Request(QDBusObjectPath transfer)
 {
-    qDebug() << "Agent Request";
     OrgOpenobexTransferInterface *transferObj = new OrgOpenobexTransferInterface("org.openobex.client", transfer.path(), QDBusConnection::sessionBus());
 
     if (m_killed == true) {
@@ -62,7 +60,6 @@ void ObexAgent::Progress(QDBusObjectPath transfer, quint64 transferred)
     Q_UNUSED(transferred);
 
     emit progress(transfer, transferred);
-    qDebug() << "Agent Progress";
 }
 
 
@@ -71,7 +68,6 @@ void ObexAgent::Complete(QDBusObjectPath transfer)
     Q_UNUSED(transfer);
 
     emit completed(transfer);
-    qDebug() << "Agent Compelte";
 }
 
 void ObexAgent::Error(QDBusObjectPath transfer, const QString& message)
@@ -80,7 +76,6 @@ void ObexAgent::Error(QDBusObjectPath transfer, const QString& message)
     Q_UNUSED(message);
 
     emit error(transfer, message);
-    qDebug() << "Agent Error";
 }
 
 void ObexAgent::setKilled()
