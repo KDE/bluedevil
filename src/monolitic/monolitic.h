@@ -37,6 +37,7 @@ public Q_SLOTS:
     void noAdapters(Adapter *adapter);
     void adapterAdded();
 
+    void sendFile();
     void addDevice();
     void configReceive();
     void deviceManager();
