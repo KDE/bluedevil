@@ -117,11 +117,19 @@ KioObexd::~KioObexd()
 
 void KioObexd::listDir(const KUrl &url)
 {
+    ENSURE_SESSION_CREATED(url.url())
+
     KIO::SlaveBase::listDir(url);
 }
 
 void KioObexd::copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFlags flags)
 {
+    if (src.scheme() == "obexd") {
+        ENSURE_SESSION_CREATED(src.url())
+    } else if (dest.scheme() == "obexd") {
+        ENSURE_SESSION_CREATED(dest.url())
+    }
+
     KIO::SlaveBase::copy(src, dest, permissions, flags);
 }
 
@@ -132,11 +140,19 @@ void KioObexd::setHost(const QString &host, quint16 port, const QString &user, c
 
 void KioObexd::del(const KUrl& url, bool isfile)
 {
+    ENSURE_SESSION_CREATED(url.url())
+
+    d->m_fileTransfer->Delete(url.path());
+
     KIO::SlaveBase::del(url, isfile);
 }
 
 void KioObexd::mkdir(const KUrl& url, int permissions)
 {
+    ENSURE_SESSION_CREATED(url.url())
+
+    d->m_fileTransfer->CreateFolder(url.path());
+
     KIO::SlaveBase::mkdir(url, permissions);
 }
 
@@ -147,5 +163,7 @@ void KioObexd::slave_status()
 
 void KioObexd::stat(const KUrl &url)
 {
+    ENSURE_SESSION_CREATED(url.url())
+
     KIO::SlaveBase::stat(url);
 }
