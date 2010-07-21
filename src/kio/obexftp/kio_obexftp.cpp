@@ -104,7 +104,11 @@ void KioFtp::Private::createSession(const KUrl &address)
 
 QString KioFtp::Private::realPath(const KUrl &path) const
 {
-    return path.path().right(18);
+    QString res = path.path().mid(18);
+    if (res.isEmpty()) {
+        res = "/";
+    }
+    return res;
 }
 
 KioFtp::KioFtp(const QByteArray &pool, const QByteArray &app)
@@ -124,7 +128,7 @@ void KioFtp::listDir(const KUrl &url)
 {
     ENSURE_SESSION_CREATED(url)
 
-    d->m_fileTransfer->ChangeFolder(d->realPath(url));
+    d->m_fileTransfer->ChangeFolder(d->realPath(url)).waitForFinished();;
 
     int i = 0;
     Q_FOREACH (const QVariantMap &map, d->m_fileTransfer->ListFolder().value()) {
@@ -178,8 +182,6 @@ void KioFtp::mkdir(const KUrl& url, int permissions)
     ENSURE_SESSION_CREATED(url)
 
     d->m_fileTransfer->CreateFolder(url.path());
-
-    KIO::SlaveBase::mkdir(url, permissions);
 }
 
 void KioFtp::slave_status()
