@@ -144,7 +144,7 @@ void KioFtp::listDir(const KUrl &url)
     }
 
     listEntry(KIO::UDSEntry(), true);
-    totalSize(0);
+    totalSize(i);
     finished();
 }
 
