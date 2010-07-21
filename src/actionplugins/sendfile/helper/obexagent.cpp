@@ -68,5 +68,7 @@ void ObexAgent::Error(QDBusObjectPath transfer, const QString& message)
 {
     Q_UNUSED(transfer);
     Q_UNUSED(message);
+
+    emit error(message);
     qDebug() << "Agent Error";
 }
