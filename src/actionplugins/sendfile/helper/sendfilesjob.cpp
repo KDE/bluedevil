@@ -22,7 +22,6 @@
 
 #include "sendfilesjob.h"
 #include "obexagent.h"
-#include "sendjob.h"
 
 #include "obex_client.h"
 

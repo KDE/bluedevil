@@ -13,7 +13,6 @@ set(sendfilehelper_SRCS
     pages/connectingpage.cpp
     pages/sendintropage.cpp
     obexagent.cpp
-    sendjob.cpp
     sendfilesjob.cpp
 )
 

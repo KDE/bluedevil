@@ -22,7 +22,6 @@
 
 #include "connectingpage.h"
 #include "../sendfilewizard.h"
-#include "../sendjob.h"
 
 #include <QtCore/QVariant>
 
@@ -32,7 +31,6 @@
 #include <bluedevil/bluedevil.h>
 #include <kdiroperator.h>
 #include <kcompositejob.h>
-#include <sendfilesjob.h>
 
 using namespace BlueDevil;
 ConnectingPage::ConnectingPage(QWidget* parent): QWizardPage(parent)
