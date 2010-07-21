@@ -19,17 +19,17 @@
     Boston, MA 02110-1301, USA.
 */
 
-#ifndef KIO_OBEXD_H
-#define KIO_OBEXD_H
+#ifndef KIO_OBEXFTP_H
+#define KIO_OBEXFTP_H
 
 #include <kio/slavebase.h>
 
-class KioObexd
+class KioFtp
     : public KIO::SlaveBase
 {
 public:
-    KioObexd(const QByteArray &pool, const QByteArray &app);
-    virtual ~KioObexd();
+    KioFtp(const QByteArray &pool, const QByteArray &app);
+    virtual ~KioFtp();
 
     virtual void copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFlags flags);
     virtual void listDir(const KUrl &url);
@@ -44,4 +44,4 @@ private:
     Private *const d;
 };
 
-#endif // KIO_OBEXD_H
+#endif // KIO_OBEXFTP_H

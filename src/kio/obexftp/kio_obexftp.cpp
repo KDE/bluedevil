@@ -19,11 +19,11 @@
     Boston, MA 02110-1301, USA.
 */
 
-#include "kio_obexd.h"
-#include "obexdclient.h"
-#include "obexdmanager.h"
-#include "obexdsession.h"
-#include "obexdfiletransfer.h"
+#include "kio_obexftp.h"
+#include "obexftpclient.h"
+#include "obexftpmanager.h"
+#include "obexftpsession.h"
+#include "obexftpfiletransfer.h"
 #include "agent.h"
 
 #include <KDebug>
@@ -39,29 +39,29 @@
 
 extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
 {
-    KAboutData about("kio_obexd", 0, ki18n("kio_obexd"), 0);
+    KAboutData about("kio_obexftp", 0, ki18n("kio_obexftp"), 0);
     KCmdLineArgs::init(&about);
 
     KApplication app;
     if (argc != 4) {
-        fprintf(stderr, "Usage: kio_obexd protocol domain-socket1 domain-socket2\n");
+        fprintf(stderr, "Usage: kio_obexftp protocol domain-socket1 domain-socket2\n");
         exit(-1);
     }
 
-    KioObexd slave(argv[2], argv[3]);
+    KioFtp slave(argv[2], argv[3]);
     slave.dispatchLoop();
     return 0;
 }
 
-class KioObexd::Private
+class KioFtp::Private
 {
 public:
-    Private(KioObexd *q);
+    Private(KioFtp *q);
     virtual ~Private();
 
     void createSession(const QString &address);
 
-    KioObexd *m_q;
+    KioFtp *m_q;
     org::openobex::Manager      *m_manager;
     org::openobex::Client       *m_client;
     org::openobex::Session      *m_session;
@@ -71,7 +71,7 @@ public:
     QString m_sessionPath;
 };
 
-KioObexd::Private::Private(KioObexd *q)
+KioFtp::Private::Private(KioFtp *q)
     : m_q(q)
     , m_manager(new org::openobex::Manager("org.openobex", "/", QDBusConnection::sessionBus(), 0))
     , m_client(new org::openobex::Client("org.openobex.client", "/", QDBusConnection::sessionBus(), 0))
@@ -81,7 +81,7 @@ KioObexd::Private::Private(KioObexd *q)
 {
 }
 
-KioObexd::Private::~Private()
+KioFtp::Private::~Private()
 {
     delete m_manager;
     delete m_client;
@@ -90,7 +90,7 @@ KioObexd::Private::~Private()
     delete m_agent;
 }
 
-void KioObexd::Private::createSession(const QString &address)
+void KioFtp::Private::createSession(const QString &address)
 {
     QVariantMap device;
     device["Destination"] = address;
@@ -102,43 +102,43 @@ void KioObexd::Private::createSession(const QString &address)
     m_fileTransfer = new org::openobex::FileTransfer("org.openobex.client", m_sessionPath, QDBusConnection::sessionBus(), 0);
 }
 
-KioObexd::KioObexd(const QByteArray &pool, const QByteArray &app)
-    : SlaveBase("obexd", pool, app)
+KioFtp::KioFtp(const QByteArray &pool, const QByteArray &app)
+    : SlaveBase("obexftp", pool, app)
     , d(new Private(this))
 {
     qRegisterMetaType<QVariantMapList>("QVariantMapList");
     qDBusRegisterMetaType<QVariantMapList>();
 }
 
-KioObexd::~KioObexd()
+KioFtp::~KioFtp()
 {
     delete d;
 }
 
-void KioObexd::listDir(const KUrl &url)
+void KioFtp::listDir(const KUrl &url)
 {
     ENSURE_SESSION_CREATED(url.url())
 
     KIO::SlaveBase::listDir(url);
 }
 
-void KioObexd::copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFlags flags)
+void KioFtp::copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFlags flags)
 {
-    if (src.scheme() == "obexd") {
+    if (src.scheme() == "obexftp") {
         ENSURE_SESSION_CREATED(src.url())
-    } else if (dest.scheme() == "obexd") {
+    } else if (dest.scheme() == "obexftp") {
         ENSURE_SESSION_CREATED(dest.url())
     }
 
     KIO::SlaveBase::copy(src, dest, permissions, flags);
 }
 
-void KioObexd::setHost(const QString &host, quint16 port, const QString &user, const QString &pass)
+void KioFtp::setHost(const QString &host, quint16 port, const QString &user, const QString &pass)
 {
     KIO::SlaveBase::setHost(host, port, user, pass);
 }
 
-void KioObexd::del(const KUrl& url, bool isfile)
+void KioFtp::del(const KUrl& url, bool isfile)
 {
     ENSURE_SESSION_CREATED(url.url())
 
@@ -147,7 +147,7 @@ void KioObexd::del(const KUrl& url, bool isfile)
     KIO::SlaveBase::del(url, isfile);
 }
 
-void KioObexd::mkdir(const KUrl& url, int permissions)
+void KioFtp::mkdir(const KUrl& url, int permissions)
 {
     ENSURE_SESSION_CREATED(url.url())
 
@@ -156,12 +156,12 @@ void KioObexd::mkdir(const KUrl& url, int permissions)
     KIO::SlaveBase::mkdir(url, permissions);
 }
 
-void KioObexd::slave_status()
+void KioFtp::slave_status()
 {
     KIO::SlaveBase::slave_status();
 }
 
-void KioObexd::stat(const KUrl &url)
+void KioFtp::stat(const KUrl &url)
 {
     ENSURE_SESSION_CREATED(url.url())
 
