@@ -63,7 +63,7 @@ bool SendFilesJob::doKill()
         m_currentTransferJob->Cancel();
     }
     m_agent->setKilled();
-    return false;
+    return true;
 }
 
 
