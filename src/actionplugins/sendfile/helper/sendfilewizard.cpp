@@ -39,25 +39,30 @@ using namespace BlueDevil;
 
 SendFileWizard::SendFileWizard() : QWizard(), m_device(0), m_job(0)
 {
-    setWindowTitle(i18n("BlueDevil Send Files"));
+    if (!BlueDevil::Manager::self()->defaultAdapter()) {
+        qDebug() << "No Adapters found";
+        qApp->exit();
+    } else {
+        setWindowTitle(i18n("BlueDevil Send Files"));
 
-    setButton(QWizard::BackButton, new KPushButton(KStandardGuiItem::back(KStandardGuiItem::UseRTL)));
-    setButton(QWizard::NextButton, new KPushButton(KStandardGuiItem::forward(KStandardGuiItem::UseRTL)));
-    setButton(QWizard::CancelButton, new KPushButton(KStandardGuiItem::cancel()));
+        setButton(QWizard::BackButton, new KPushButton(KStandardGuiItem::back(KStandardGuiItem::UseRTL)));
+        setButton(QWizard::NextButton, new KPushButton(KStandardGuiItem::forward(KStandardGuiItem::UseRTL)));
+        setButton(QWizard::CancelButton, new KPushButton(KStandardGuiItem::cancel()));
 
-    setOption(QWizard::DisabledBackButtonOnLastPage);
+        setOption(QWizard::DisabledBackButtonOnLastPage);
 
-    //We do not want "Forward" as text
-    setButtonText(QWizard::NextButton, i18n("Next"));
+        //We do not want "Forward" as text
+        setButtonText(QWizard::NextButton, i18n("Next"));
 
-    addPage(new SendIntroPage());
-    addPage(new SelectFilesPage());
-    addPage(new SelectDevicePage());
-    addPage(new ConnectingPage());
+        addPage(new SendIntroPage());
+        addPage(new SelectFilesPage());
+        addPage(new SelectDevicePage());
+        addPage(new ConnectingPage());
 
-    show();
+        show();
 
-    m_agent = new ObexAgent(qApp);
+        m_agent = new ObexAgent(qApp);
+    }
 }
 
 SendFileWizard::~SendFileWizard()
