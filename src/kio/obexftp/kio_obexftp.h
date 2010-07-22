@@ -21,11 +21,14 @@
 
 #ifndef KIO_OBEXFTP_H
 #define KIO_OBEXFTP_H
+#include "obexftpmanager.h"
+#include "obexftpsession.h"
 
 #include <QtCore/QObject>
+#include <QDBusObjectPath>
+#include <QEventLoop>
 
 #include <kio/slavebase.h>
-#include <QEventLoop>
 
 class KioFtp
     : public QObject
@@ -38,6 +41,7 @@ public:
     virtual ~KioFtp();
 
     int processXmlEntries(const KUrl& url, const QString& xml, const char* slot);
+
     virtual void copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFlags flags);
     virtual void listDir(const KUrl &url);
     virtual void setHost(const QString &host, quint16 port, const QString &user, const QString &pass);
@@ -48,6 +52,7 @@ public:
     virtual void rename(const KUrl& src, const KUrl& dest, KIO::JobFlags flags);
 
 private Q_SLOTS:
+    void sessionCreated(const QDBusObjectPath &path);
     void TransferProgress(qulonglong transfered);
     void TransferCompleted();
     void ErrorOccurred(const QString&, const QString&);
@@ -56,10 +61,16 @@ private Q_SLOTS:
     void statCallback(const KIO::UDSEntry &entry, const KUrl& url);
 
 private:
-    QEventLoop m_eventLoop;
+    void createSession(const KUrl &address);
+    void changeDirectory(const KUrl& url);
 
-    class Private;
-    Private *const d;
+private:
+    KioFtp                      *m_q;
+    org::openobex::Manager      *m_manager;
+    org::openobex::Session      *m_session;
+    QEventLoop                   m_eventLoop;
+    QMap<QString, KIO::UDSEntry> m_statMap;
+    QString                      m_address;
 };
 
 #endif // KIO_OBEXFTP_H
