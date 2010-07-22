@@ -102,13 +102,15 @@ bool sortDevices(Device *device1, Device *device2)
     return device1->name().compare(device2->name(), Qt::CaseInsensitive) < 0;
 }
 
-void Monolithic::regenerateDeviceEntries()
+void Monolithic::generateDeviceEntries()
 {
     if (!Manager::self()->defaultAdapter()) {
         return;
     }
 
     KMenu *const menu = contextMenu();
+
+    menu->addTitle(i18n("Known Devices"));
 
     QList<Device*> devices = Manager::self()->defaultAdapter()->devices();
     qStableSort(devices.begin(), devices.end(), sortDevices);
@@ -182,9 +184,7 @@ void Monolithic::onlineMode()
     connect(configAdapter, SIGNAL(triggered(bool)), this, SLOT(configAdapter()));
     menu->addAction(configAdapter);
 
-    menu->addTitle(i18n("Known Devices"));
-
-    regenerateDeviceEntries();
+    generateDeviceEntries();
 
     menu->addSeparator();
 
@@ -224,7 +224,6 @@ void Monolithic::configAdapter()
 void Monolithic::offlineMode()
 {
     setStatus(KStatusNotifierItem::Passive);
-    regenerateDeviceEntries();
     contextMenu()->clear();
 }
 

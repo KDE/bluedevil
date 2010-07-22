@@ -41,7 +41,7 @@ public Q_SLOTS:
     void noAdapters(Adapter *adapter);
     void adapterAdded();
 
-    void regenerateDeviceEntries();
+    void generateDeviceEntries();
 
     void addDevice();
     void configReceive();
