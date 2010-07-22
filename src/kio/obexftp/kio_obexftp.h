@@ -1,6 +1,5 @@
 /*  This file is part of the KDE libraries
 
-    Copyright (C) 2010 Eduardo Robles Elvira <edulix@gmail.com>
     Copyright (C) 2010 Rafael Fernández López <ereslibre@kde.org>
     Copyright (C) 2010 UFO Coders <info@ufocoders.com>
 
@@ -19,86 +18,59 @@
     the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
     Boston, MA 02110-1301, USA.
 */
+
 #ifndef KIO_OBEXFTP_H
 #define KIO_OBEXFTP_H
+#include "obexftpmanager.h"
+#include "obexftpsession.h"
 
-#include <QObject>
+#include <QtCore/QObject>
+#include <QDBusObjectPath>
+#include <QEventLoop>
+
 #include <kio/slavebase.h>
 
-class KioObexFtpPrivate;
-
-/**
- * @short Kioslave that browses through the ftp service of bluetooth devices.
- */
-class KioObexFtp
+class KioFtp
     : public QObject
     , public KIO::SlaveBase
 {
-  Q_OBJECT
 
+Q_OBJECT
 public:
-    /**
-     * Constructor
-     */
-    KioObexFtp(const QByteArray &pool, const QByteArray &app);
+    KioFtp(const QByteArray &pool, const QByteArray &app);
+    virtual ~KioFtp();
 
-    /**
-     * Destructor
-     */
-    virtual ~KioObexFtp();
+    int processXmlEntries(const KUrl& url, const QString& xml, const char* slot);
 
-    /**
-     * Retrieves a file from the remote device.
-     * 
-     * Overrides virtual SlaveBase::get()
-     */
-    void get(const KUrl &url);
+    virtual void copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFlags flags);
+    virtual void listDir(const KUrl &url);
+    virtual void setHost(const QString &host, quint16 port, const QString &user, const QString &pass);
+    virtual void slave_status();
+    virtual void stat(const KUrl &url);
+    virtual void del(const KUrl &url, bool isfile);
+    virtual void mkdir(const KUrl&url, int permissions);
+    virtual void rename(const KUrl& src, const KUrl& dest, KIO::JobFlags flags);
 
-    /**
-     * List a remote directory. There are two types of directories in this kio:
-     *
-     * 1. The root dir, obexftp://. This directory is empty.
-     * 2. Remote device directory (something like bluetoth:/00_12_34_56_6d_34/path/to/dir). This is
-     *    used when the setHost function has been called, and lists directories inside a remote
-     *    bluetooth device ftp service.
-     * 
-     * Overrides virtual SlaveBase::listDir()
-     */
-    void listDir(const KUrl &url);
+private Q_SLOTS:
+    void sessionCreated(const QDBusObjectPath &path);
+    void TransferProgress(qulonglong transfered);
+    void TransferCompleted();
+    void ErrorOccurred(const QString&, const QString&);
 
-    /**
-     * Sets the remote bluetooth device to which the kio will be connected to, the device that will
-     * be used for listing and managing files and directories.
-     *
-     * Overrides virtual SlaveBase::setHost()
-     */
-    void setHost(const QString &constHostname, quint16 port, const QString &user,
-      const QString &pass);
-
-    /**
-     * Calls to slaveStatus().
-     *
-     * Overrides virtual SlaveBase::slave_status()
-     */
-    void slave_status();
-
-    /**
-     * Overrides virtual SlaveBase::stat()
-     */
-    void stat(const KUrl &url);
-
-    /**
-     * Overrides virtual SlaveBase::del()
-     */
-    void del(const KUrl &url, bool isfile);
-
-    /**
-     * Overrides virtual SlaveBase::url()
-     */
-    void mkdir(const KUrl&url, int permissions);
+    void listDirCallback(const KIO::UDSEntry& entry, const KUrl& url);
+    void statCallback(const KIO::UDSEntry &entry, const KUrl& url);
 
 private:
-    KioObexFtpPrivate *d;
+    void createSession(const KUrl &address);
+    void changeDirectory(const KUrl& url);
+
+private:
+    KioFtp                      *m_q;
+    org::openobex::Manager      *m_manager;
+    org::openobex::Session      *m_session;
+    QEventLoop                   m_eventLoop;
+    QMap<QString, KIO::UDSEntry> m_statMap;
+    QString                      m_address;
 };
 
 #endif // KIO_OBEXFTP_H

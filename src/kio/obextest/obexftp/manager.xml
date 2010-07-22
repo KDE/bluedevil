@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+  <interface name="org.openobex.Manager">
+    <method name="GetVersion">
+      <arg name="arg0" type="s" direction="out"/>
+    </method>
+    <method name="GetServerList">
+      <arg name="arg0" type="as" direction="out"/>
+    </method>
+    <method name="GetSessionList">
+      <arg name="arg0" type="as" direction="out"/>
+    </method>
+    <method name="GetServerInfo">
+      <arg name="server_object" type="o" direction="in"/>
+      <arg name="arg1" type="a{ss}" direction="out"/>
+      <annotation name="com.trolltech.QtDBus.QtTypeName.Out0" value="QVariantMap"/>
+    </method>
+    <method name="GetSessionInfo">
+      <arg name="session_object" type="o" direction="in"/>
+      <arg name="arg1" type="a{ss}" direction="out"/>
+      <annotation name="com.trolltech.QtDBus.QtTypeName.Out0" value="QVariantMap"/>
+    </method>
+    <method name="CreateTtyServer">
+      <arg name="tty_dev" type="s" direction="in"/>
+      <arg name="pattern" type="s" direction="in"/>
+      <arg name="server_object" type="o" direction="out"/>
+    </method>
+    <method name="CreateBluetoothServer">
+      <arg name="source_address" type="s" direction="in"/>
+      <arg name="pattern" type="s" direction="in"/>
+      <arg name="require_pairing" type="b" direction="in"/>
+      <arg name="server_object" type="o" direction="out"/>
+    </method>
+    <method name="CancelSessionConnect">
+      <arg name="session_object" type="s" direction="in"/>
+      <arg name="arg1" type="b" direction="out"/>
+    </method>
+    <method name="GetUsbInterfaceInfo">
+      <arg name="interface_number" type="u" direction="in"/>
+      <arg name="usb_interface" type="a{ss}" direction="out"/>
+      <annotation name="com.trolltech.QtDBus.QtTypeName.Out0" value="QVariantMap"/>
+    </method>
+    <method name="GetUsbInterfacesNum">
+      <arg name="interfaces_number" type="u" direction="out"/>
+    </method>
+    <method name="CreateTtySession">
+      <arg name="tty_dev" type="s" direction="in"/>
+      <arg name="pattern" type="s" direction="in"/>
+      <arg name="session_object" type="o" direction="out"/>
+    </method>
+    <method name="CreateUsbSession">
+      <arg name="interface_number" type="u" direction="in"/>
+      <arg name="pattern" type="s" direction="in"/>
+      <arg name="session_object" type="o" direction="out"/>
+    </method>
+    <method name="CreateBluetoothImagingSession">
+      <arg name="target_address" type="s" direction="in"/>
+      <arg name="source_address" type="s" direction="in"/>
+      <arg name="bip_feature" type="s" direction="in"/>
+      <arg name="session_object" type="o" direction="out"/>
+    </method>
+    <method name="CreateBluetoothSession">
+      <arg name="target_address" type="s" direction="in"/>
+      <arg name="source_address" type="s" direction="in"/>
+      <arg name="pattern" type="s" direction="in"/>
+      <arg name="session_object" type="o" direction="out"/>
+    </method>
+    <signal name="SessionConnectError">
+      <arg type="o"/>
+      <arg type="s"/>
+      <arg type="s"/>
+    </signal>
+    <signal name="SessionClosed">
+      <arg type="o"/>
+    </signal>
+    <signal name="SessionConnected">
+      <arg type="o"/>
+    </signal>
+  </interface>
+</node>

@@ -1,18 +1,22 @@
 project(kio_obexftp)
 
-set(kio_obexftp_PART_SRCS
-   qobexftp.cpp
-   kio_obexftp.cpp)
+set(kio_obexftp_SRCS
+    kio_obexftp.cpp
+   )
 
-kde4_add_plugin(kio_obexftp ${kio_obexftp_PART_SRCS})
+QT4_ADD_DBUS_INTERFACE(kio_obexftp_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/obexftp/manager.xml obexftpmanager)
+QT4_ADD_DBUS_INTERFACE(kio_obexftp_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/obexftp/session.xml obexftpsession)
+set(obexftpfiletransfer_xml ${CMAKE_CURRENT_SOURCE_DIR}/obexftp/filetransfer.xml)
+
+kde4_add_plugin(kio_obexftp ${kio_obexftp_SRCS})
 
 target_link_libraries(kio_obexftp
   ${KDE4_KDECORE_LIBS}
   ${KDE4_KIO_LIBRARY}
-  ${KDE4_KDEUI_LIBS}
-  ${QT_QTTEST_LIBRARY}
-  obexftp
+  ${QT_QTDBUS_LIBRARY}
 )
+
+QT4_AUTOMOC(${kio_obexftp_SRCS})
 
 install(TARGETS kio_obexftp DESTINATION ${PLUGIN_INSTALL_DIR})
 
