@@ -16,7 +16,7 @@
  */
 
 
-#include "monolitic.h"
+#include "monolithic.h"
 #include <KCmdLineArgs>
 #include <KApplication>
 #include <KAboutData>

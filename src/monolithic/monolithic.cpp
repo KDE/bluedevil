@@ -15,7 +15,7 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "monolitic.h"
+#include "monolithic.h"
 #include <kmenu.h>
 #include <kaction.h>
 #include <kprocess.h>
