@@ -179,7 +179,6 @@ void KioFtp::copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFl
         d->changeDirectory(dest.directory());
         d->m_session->SendFile(src.path());
     }
-//     KIO::SlaveBase::copy(src, dest, permissions, flags);
 }
 
 void KioFtp::setHost(const QString &host, quint16 port, const QString &user, const QString &pass)
