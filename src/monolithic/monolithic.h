@@ -1,5 +1,6 @@
 /*
     Copyright (C) 2010 Alejandro Fiestas Olivares  <alex@ufocoders.com>
+    Copyright (C) 2010 Rafael Fernández López <ereslibre@kde.org>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,8 +17,8 @@
 */
 
 
-#ifndef MONOLITIC_H
-#define MONOLITIC_H
+#ifndef MONOLITHIC_H
+#define MONOLITHIC_H
 
 #include <kstatusnotifieritem.h>
 
@@ -49,9 +50,17 @@ public Q_SLOTS:
     void deviceManager();
     void configAdapter();
 
+private Q_SLOTS:
+    void browseTriggered();
+    void sendTriggered();
+#if 0
+    void connectTriggered();
+    void disconnectTriggered();
+#endif
+
 private:
     void onlineMode();
     void offlineMode();
 };
 
-#endif // MONOLITIC_H
+#endif // MONOLITHIC_H

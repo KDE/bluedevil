@@ -1,5 +1,6 @@
 /*
  *    Copyright (C) 2010 Alejandro Fiestas Olivares  <alex@ufocoders.com>
+ *    Copyright (C) 2010 Rafael Fernández López <ereslibre@kde.org>
  *
  *    This program is free software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
@@ -19,6 +20,7 @@
 #include <kmenu.h>
 #include <kaction.h>
 #include <kprocess.h>
+#include <ktoolinvocation.h>
 #include <klocalizedstring.h>
 
 #include <bluedevil/bluedevil.h>
@@ -133,24 +135,40 @@ void Monolithic::generateDeviceEntries()
         QStringList UUIDs = device->UUIDs();
         if (UUIDs.contains("00001106-0000-1000-8000-00805f9b34fb"))  {
             KAction *_browse = new KAction(i18n("Browse device..."), _device);
+            _browse->setData(QVariant::fromValue<Device*>(device));
             _submenu->addAction(_browse);
+            connect(_browse, SIGNAL(triggered()), this, SLOT(browseTriggered()));
             hasSupportedServices = true;
         }
         if (UUIDs.contains("00001105-0000-1000-8000-00805f9b34fb")) {
             KAction *_send = new KAction(i18n("Send files..."), _device);
+            _send->setData(QVariant::fromValue<Device*>(device));
             _submenu->addAction(_send);
+            connect(_send, SIGNAL(triggered()), this, SLOT(sendTriggered()));
             hasSupportedServices = true;
         }
         if (UUIDs.contains("00001124-0000-1000-8000-00805f9b34fb")) {
             KAction *_connect = new KAction(i18n("Connect"), _device);
+            _connect->setData(QVariant::fromValue<Device*>(device));
             _submenu->addTitle("Input Service");
             _submenu->addAction(_connect);
+#if 0
+            connect(_connect, SIGNAL(triggered()), this, SLOT(connectTriggered()));
+#else
+            _connect->setEnabled(false);
+#endif
             hasSupportedServices = true;
         }
         if (UUIDs.contains("00001108-0000-1000-8000-00805f9b34fb")) {
             KAction *_connect = new KAction(i18n("Connect"), _device);
+            _connect->setData(QVariant::fromValue<Device*>(device));
             _submenu->addTitle("Headset Service");
             _submenu->addAction(_connect);
+#if 0
+            connect(_connect, SIGNAL(triggered()), this, SLOT(connectTriggered()));
+#else
+            _connect->setEnabled(false);
+#endif
             hasSupportedServices = true;
         }
         if (hasSupportedServices) {
@@ -231,6 +249,35 @@ void Monolithic::configAdapter()
     KProcess process;
     process.startDetached("kcmshell4", QStringList("bluedeviladapters"));
 }
+
+void Monolithic::browseTriggered()
+{
+    KAction *action = static_cast<KAction*>(sender());
+    Device *device = action->data().value<Device*>();
+    KToolInvocation::kdeinitExec("dolphin", QStringList() << QString("obexftp:/%1/").arg(device->address().replace(':', '-').toLower()));
+}
+
+void Monolithic::sendTriggered()
+{
+    KAction *action = static_cast<KAction*>(sender());
+    Device *device = action->data().value<Device*>();
+    KToolInvocation::kdeinitExec("bluedevil-sendfile", QStringList() << QString("bluetooth://%1/").arg(device->address().replace(':', '-').toLower()));
+}
+
+#if 0
+void Monolithic::connectTriggered()
+{
+    KAction *action = static_cast<KAction*>(sender());
+    Device *device = action->data().value<Device*>();
+    action->setText(i18n("Disconnect"));
+}
+
+void Monolithic::disconnectTriggered()
+{
+    KAction *action = static_cast<KAction*>(sender());
+    Device *device = action->data().value<Device*>();
+}
+#endif
 
 void Monolithic::offlineMode()
 {
