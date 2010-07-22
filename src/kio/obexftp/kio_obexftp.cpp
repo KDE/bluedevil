@@ -251,6 +251,8 @@ int KioFtp::processXmlEntries(const KUrl& url, const QString& xml, const char* s
         if (!m_statMap.contains(fullPath)) {
             kDebug() << "path not cached: " << fullPath;
             entry.insert(KIO::UDSEntry::UDS_NAME, attr.value("name").toString());
+            entry.insert(KIO::UDSEntry::UDS_CREATION_TIME, attr.value("created").toString());
+            entry.insert(KIO::UDSEntry::UDS_ACCESS, 0500);
 
             if (m_xml->name() == "folder") {
                 entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
@@ -260,8 +262,6 @@ int KioFtp::processXmlEntries(const KUrl& url, const QString& xml, const char* s
                 entry.insert(KIO::UDSEntry::UDS_SIZE, attr.value("size").toString().toUInt());
                 entry.insert(KIO::UDSEntry::UDS_MODIFICATION_TIME, attr.value("modified").toString());
             }
-
-            entry.insert(KIO::UDSEntry::UDS_CREATION_TIME, attr.value("created").toString());
 
             kDebug() << "Adding surl to map: " << fullPath;
             m_statMap[fullPath] = entry;
