@@ -124,7 +124,7 @@ void KioFtp::Private::changeDirectory(const KUrl& url)
     kDebug() << "We're in root now";
 
     Q_FOREACH(const QString &dir, list) {
-        if (dir != m_address) {
+        if (!dir.isEmpty() && dir != m_address) {
             kDebug() << "Changing to: " << dir;
             QDBusPendingReply <void > a = m_session->ChangeCurrentFolder(dir);
             a.waitForFinished();
@@ -193,7 +193,9 @@ void KioFtp::del(const KUrl& url, bool isfile)
 {
     kDebug() << "Del: " << url.url();
     ENSURE_SESSION_CREATED(url)
-//     d->m_fileTransfer->Delete(url.path());
+    d->changeDirectory(url.directory());
+    d->m_session->DeleteRemoteFile(url.fileName()).waitForFinished();
+    finished();
 }
 
 void KioFtp::mkdir(const KUrl& url, int permissions)
