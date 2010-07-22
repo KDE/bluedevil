@@ -328,6 +328,10 @@ void KioFtp::TransferCompleted()
 
 void KioFtp::ErrorOccurred(const QString &name, const QString &msg)
 {
+    error(KIO::ERR_UNKNOWN, "");
+    if (m_eventLoop.isRunning()){
+        m_eventLoop.exit();
+    }
     kDebug() << "ERROR ERROR: " << name;
     kDebug() << "ERROR ERROR: " << msg;
 }
