@@ -254,7 +254,7 @@ void Monolithic::browseTriggered()
 {
     KAction *action = static_cast<KAction*>(sender());
     Device *device = action->data().value<Device*>();
-    KToolInvocation::kdeinitExec("dolphin", QStringList() << QString("obexftp:/%1/").arg(device->address().replace(':', '-').toLower()));
+    KToolInvocation::kdeinitExec("dolphin", QStringList() << QString("obexftp:/%1/").arg(device->address().replace(':', '-')));
 }
 
 void Monolithic::sendTriggered()
