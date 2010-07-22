@@ -330,7 +330,6 @@ void KioFtp::TransferProgress(qulonglong transfered)
 void KioFtp::TransferCompleted()
 {
     kDebug() << "TransferCompleted: ";
-    m_completed = true;
     m_eventLoop.exit();
 }
 
