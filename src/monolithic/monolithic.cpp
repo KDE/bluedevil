@@ -56,6 +56,48 @@ void Monolithic::adapterAdded()
     }
 }
 
+bool sortDevices(Device *device1, Device *device2)
+{
+    quint32 type1 = classToType(device1->deviceClass());
+    quint32 type2 = classToType(device2->deviceClass());
+    if (type1 != type2) {
+        return type1 < type2;
+    }
+    return device1->name().compare(device2->name(), Qt::CaseInsensitive) < 0;
+}
+
+void Monolithic::regenerateDeviceEntries()
+{
+    qDeleteAll(m_deviceList);
+    m_deviceList.clear();
+
+    if (!Manager::self()->defaultAdapter()) {
+        return;
+    }
+
+    KMenu *const menu = contextMenu();
+
+    QList<Device*> devices = Manager::self()->defaultAdapter()->devices();
+    qStableSort(devices.begin(), devices.end(), sortDevices);
+    Device *lastDevice = 0;
+    bool first = true;
+    Q_FOREACH (Device *device, devices) {
+        KAction *_device = 0;
+        if (!lastDevice || classToType(lastDevice->deviceClass()) != classToType(device->deviceClass())) {
+            if (!first) {
+                contextMenu()->addSeparator();
+            } else {
+                first = false;
+            }
+            _device = new KAction(KIcon(device->icon()), device->name(), menu);
+        } else {
+            _device = new KAction(device->name(), menu);
+        }
+        menu->addAction(_device);
+        lastDevice = device;
+    }
+}
+
 void Monolithic::onlineMode()
 {
     setStatus(KStatusNotifierItem::Active);
@@ -77,6 +119,10 @@ void Monolithic::onlineMode()
     KAction *configAdapter = new KAction(KIcon("audio-card"), i18n("Configure Adapters"), menu);
     connect(configAdapter, SIGNAL(triggered(bool)), this, SLOT(configAdapter()));
     menu->addAction(configAdapter);
+
+    menu->addTitle(i18n("Known Devices"));
+
+    regenerateDeviceEntries();
 
     setContextMenu(menu);
     setStandardActionsEnabled(true);
@@ -111,5 +157,6 @@ void Monolithic::configAdapter()
 void Monolithic::offlineMode()
 {
     setStatus(KStatusNotifierItem::Passive);
+    regenerateDeviceEntries();
     contextMenu()->clear();
 }

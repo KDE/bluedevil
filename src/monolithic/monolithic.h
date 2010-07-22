@@ -25,6 +25,8 @@ namespace BlueDevil {
     class Adapter;
 }
 
+class KAction;
+
 using namespace BlueDevil;
 
 class Monolithic : public KStatusNotifierItem
@@ -38,6 +40,8 @@ public Q_SLOTS:
     void noAdapters(Adapter *adapter);
     void adapterAdded();
 
+    void regenerateDeviceEntries();
+
     void addDevice();
     void configReceive();
     void deviceManager();
@@ -46,6 +50,9 @@ public Q_SLOTS:
 private:
     void onlineMode();
     void offlineMode();
+
+private:
+    QList<KAction*> m_deviceList;
 };
 
 #endif // MONOLITIC_H
