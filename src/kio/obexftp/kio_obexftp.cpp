@@ -260,25 +260,30 @@ int KioFtp::processXmlEntries(const KUrl& url, const QString& xml, const char* s
         }
 
         QString fullPath = url.url();
-        fullPath.append(attr.value("name").toString());
+        fullPath.append("/" + attr.value("name").toString());
 
         KIO::UDSEntry entry;
-        kDebug(200000) << "Name Yeah baby: " << attr.value("name");
-        entry.insert(KIO::UDSEntry::UDS_NAME, attr.value("name").toString());
+        if (!d->m_statMap.contains(fullPath)) {
+            kDebug(200000) << "path not cached: " << fullPath;
+            entry.insert(KIO::UDSEntry::UDS_NAME, attr.value("name").toString());
 
-        if (m_xml->name() == "folder") {
-            entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
-            entry.insert( KIO::UDSEntry::UDS_MIME_TYPE, QString::fromLatin1( "inode/directory" ) );
+            if (m_xml->name() == "folder") {
+                entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+                entry.insert( KIO::UDSEntry::UDS_MIME_TYPE, QString::fromLatin1( "inode/directory" ) );
+            } else {
+                entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
+                entry.insert(KIO::UDSEntry::UDS_SIZE, attr.value("size").toString().toUInt());
+                entry.insert(KIO::UDSEntry::UDS_MODIFICATION_TIME, attr.value("modified").toString());
+            }
+
+            entry.insert(KIO::UDSEntry::UDS_CREATION_TIME, attr.value("created").toString());
+
+            kDebug(200000) << "Adding surl to map: " << fullPath;
+            d->m_statMap[fullPath] = entry;
         } else {
-            entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
-            entry.insert(KIO::UDSEntry::UDS_SIZE, attr.value("size").toString().toUInt());
-            entry.insert(KIO::UDSEntry::UDS_MODIFICATION_TIME, attr.value("modified").toString());
+            kDebug(200000) << "Cached entry :" << fullPath;
+            entry = d->m_statMap.value(fullPath);
         }
-
-        entry.insert(KIO::UDSEntry::UDS_CREATION_TIME, attr.value("created").toString());
-
-        kDebug(200000) << "Adding surl to map: " << fullPath();
-        d->m_statMap[fullPath] = entry;
 
         QMetaObject::invokeMethod(this, slot, Q_ARG(KIO::UDSEntry, entry), Q_ARG(KUrl, url));
         ++i;
