@@ -27,4 +27,7 @@ Notes:
   <mime-type type="virtual/bluedevil-audio">
     <comment>Audio</comment>
   </mime-type>
+  <mime-type type="virtual/bluedevil-sendfile">
+      <comment>Service</comment>
+  </mime-type>
 </mime-info>

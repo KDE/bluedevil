@@ -74,6 +74,7 @@ public:
     struct Service {
         QString name;
         QString icon;
+        QString mimetype;
     };
 
     /**
@@ -210,6 +211,7 @@ KioBluetoothPrivate::KioBluetoothPrivate(KioBluetooth *parent)
     Service s;
     s.name = i18n("Send File");
     s.icon = "edit-copy";
+    s.mimetype = "virtual/bluedevil-sendfile";
     supportedServices.insert("00001105-0000-1000-8000-00805f9b34fb", s);
     s.name = i18n("Browse Files");
     s.icon = "edit-find";
@@ -273,7 +275,11 @@ void KioBluetoothPrivate::listRemoteDeviceServices()
         entry.insert(KIO::UDSEntry::UDS_ICON_NAME, service.icon);
         entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
         entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRWXU | S_IRWXG | S_IRWXO);
-        entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, "inode/x-vnd.kde.bluedevil.service");
+        if (service.mimetype.isEmpty()) {
+            entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, "inode/x-vnd.kde.bluedevil.service");
+        } else {
+            entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, service.mimetype);
+        }
         q->listEntry(entry, false);
         q->processedSize(i++);
     }

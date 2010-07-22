@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=BlueDevil Send File
+GenericName=BlueDevil Send File
+MimeType=virtual/bluedevil-sendfile;
+Exec=bluedevil-sendfile %U
+Comment=BlueDevil Send File
+Icon=preferences-system-bluetooth
+Terminal=false
+Categories=Qt;KDE;Bluetooth;Network;
