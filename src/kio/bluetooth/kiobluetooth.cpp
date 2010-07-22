@@ -97,8 +97,6 @@ public:
 
     void listDevice(Device *device);
 
-    QString urlForRemoteService(const QString &host, const QString &serviceName);
-
 public:
 
      /**
@@ -255,15 +253,6 @@ QList<KioBluetoothPrivate::Service> KioBluetoothPrivate::getSupportedServices(co
     return retValue;
 }
 
-QString KioBluetoothPrivate::urlForRemoteService(const QString &host, const QString &serviceName)
-{
-    if (serviceName == i18n("OBEX File Transfer")) {
-        return QString("obexftp://" + host + "/");
-    } else {
-        return QString("bluetooth://" + host + "/" + serviceName);
-    }
-}
-
 void KioBluetoothPrivate::listRemoteDeviceServices()
 {
     q->infoMessage(i18n("Retrieving services..."));
@@ -275,7 +264,6 @@ void KioBluetoothPrivate::listRemoteDeviceServices()
     q->totalSize(currentHostServices.count());
     int i = 1;
     Q_FOREACH (const Service &service, currentHostServices) {
-        QString url = urlForRemoteService(currentHostname.replace(':', '-'), service.name);
         KIO::UDSEntry entry;
         entry.insert(KIO::UDSEntry::UDS_NAME, service.uuid);
         entry.insert(KIO::UDSEntry::UDS_DISPLAY_NAME, service.name);
