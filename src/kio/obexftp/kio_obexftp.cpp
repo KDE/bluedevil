@@ -63,6 +63,7 @@ public:
     org::openobex::Manager      *m_manager;
     org::openobex::Session      *m_session;
     QMap<QString, KIO::UDSEntry> m_statMap;
+    QString                      m_address;
 };
 
 KioFtp::Private::Private(KioFtp *q)
@@ -81,8 +82,10 @@ void KioFtp::Private::createSession(const KUrl &address)
 {
     m_q->infoMessage(i18n("Connecting to the remote device..."));
 
+    m_address = address.path().mid(1, 17);
+    kDebug(200000) << "Got address: " << m_address;
     m_manager = new org::openobex::Manager("org.openobex", "/org/openobex", QDBusConnection::sessionBus(), 0);
-    QDBusPendingReply <QDBusObjectPath > rep = m_manager->CreateBluetoothSession("A8:7E:33:5D:6F:4E", "00:00:00:00:00:00", "ftp");
+    QDBusPendingReply <QDBusObjectPath > rep = m_manager->CreateBluetoothSession(m_address.replace("-", ":"), "00:00:00:00:00:00", "ftp");
     rep.waitForFinished();
 
     kDebug(200000) << "SessionError: " << rep.error().message();
@@ -119,7 +122,7 @@ void KioFtp::Private::changeDirectory(const KUrl& url)
     kDebug(200000) << "We're in root now";
 
     Q_FOREACH(const QString &dir, list) {
-        if (dir != "A8-7E-33-5D-6F-4E") {
+        if (dir != m_address) {
             kDebug(200000) << "Changing to: " << dir;
            QDBusPendingReply <void > a = m_session->ChangeCurrentFolder(dir);
            a.waitForFinished();
@@ -186,8 +189,6 @@ void KioFtp::setHost(const QString &host, quint16 port, const QString &user, con
 {
     kDebug(200000) << "setHost: " << host;
     d->m_statMap.clear();
-//     d->m_path = "/";
-    KIO::SlaveBase::setHost("A8-7E-33-5D-6F-4E", port, user, pass);
 }
 
 void KioFtp::del(const KUrl& url, bool isfile)
