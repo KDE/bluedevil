@@ -84,8 +84,9 @@ void KioFtp::Private::createSession(const KUrl &address)
 
     m_address = address.path().mid(1, 17);
     kDebug(200000) << "Got address: " << m_address;
+
     m_manager = new org::openobex::Manager("org.openobex", "/org/openobex", QDBusConnection::sessionBus(), 0);
-    QDBusPendingReply <QDBusObjectPath > rep = m_manager->CreateBluetoothSession(m_address.replace("-", ":"), "00:00:00:00:00:00", "ftp");
+    QDBusPendingReply <QDBusObjectPath > rep = m_manager->CreateBluetoothSession(QString(m_address).replace("-", ":"), "00:00:00:00:00:00", "ftp");
     rep.waitForFinished();
 
     kDebug(200000) << "SessionError: " << rep.error().message();
