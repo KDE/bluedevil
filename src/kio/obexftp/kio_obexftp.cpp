@@ -20,11 +20,8 @@
 */
 
 #include "kio_obexftp.h"
-#include "obexftpclient.h"
 #include "obexftpmanager.h"
 #include "obexftpsession.h"
-#include "obexftpfiletransfer.h"
-#include "agent.h"
 
 #include <KDebug>
 #include <KComponentData>
@@ -60,65 +57,80 @@ public:
     virtual ~Private();
 
     void createSession(const KUrl &address);
-    QString realPath(const KUrl &path) const;
+    void changeDirectory(const KUrl &url);
 
     KioFtp                      *m_q;
     org::openobex::Manager      *m_manager;
-    org::openobex::Client       *m_client;
     org::openobex::Session      *m_session;
-    org::openobex::FileTransfer *m_fileTransfer;
-    Agent                       *m_agent;
-    QString                      m_path;
-    QString                      m_sessionPath;
     QMap<QString, KIO::UDSEntry> m_statMap;
 };
 
 KioFtp::Private::Private(KioFtp *q)
     : m_q(q)
-    , m_manager(new org::openobex::Manager("org.openobex", "/", QDBusConnection::sessionBus(), 0))
-    , m_client(new org::openobex::Client("org.openobex.client", "/", QDBusConnection::sessionBus(), 0))
     , m_session(0)
-    , m_fileTransfer(0)
-    , m_agent(new Agent(0))
 {
 }
 
 KioFtp::Private::~Private()
 {
     delete m_manager;
-    delete m_client;
     delete m_session;
-    delete m_fileTransfer;
-    delete m_agent;
 }
 
 void KioFtp::Private::createSession(const KUrl &address)
 {
     m_q->infoMessage(i18n("Connecting to the remote device..."));
 
-    QVariantMap device;
-    kDebug(200000) << "Raw address: " << address.path();
-    device["Destination"] = address.path().replace('-', ':').mid(1, 17);
-    device["Target"] = "ftp";
+    m_manager = new org::openobex::Manager("org.openobex", "/org/openobex", QDBusConnection::sessionBus(), 0);
+    QDBusPendingReply <QDBusObjectPath > rep = m_manager->CreateBluetoothSession("A8:7E:33:5D:6F:4E", "00:00:00:00:00:00", "ftp");
+    rep.waitForFinished();
 
-    kDebug(200000) << "Connect to: " << device["Destination"].toString();
+    kDebug(200000) << "SessionError: " << rep.error().message();
+    kDebug(200000) << "SessionPath: " << rep.value().path();
 
-    m_sessionPath = m_client->CreateSession(device).value().path();
-    kDebug(200000) << "Session path: " << m_sessionPath;
-    m_session = new org::openobex::Session("org.openobex.client", m_sessionPath, QDBusConnection::sessionBus(), 0);
-    m_session->AssignAgent(QDBusObjectPath("/"));
-    m_fileTransfer = new org::openobex::FileTransfer("org.openobex.client", m_sessionPath, QDBusConnection::sessionBus(), 0);
-    m_path = "/";
+    const QString sessioPath = rep.value().path();
+    m_session = new org::openobex::Session("org.openobex", sessioPath, QDBusConnection::sessionBus(), 0);
+
+
+    QDBusPendingReply <QString > a =  m_session->RetrieveFolderListing();
+    a.waitForFinished();
+    while(a.error().message() == "Not connected") {
+        sleep(1);
+        kDebug(200000) << "LOOP";
+        a =  m_session->RetrieveFolderListing();
+        a.waitForFinished();
+    }
     kDebug(200000) << "Private Ctor Ends";
 }
 
-QString KioFtp::Private::realPath(const KUrl &path) const
+void KioFtp::Private::changeDirectory(const KUrl& url)
 {
-    QString res = path.path().mid(19);
-    if (res.isEmpty()) {
-        res = "/";
+    kDebug(200000) << "ChangeUrl: " << url.path();
+    QStringList list = url.path().split("/");
+
+    kDebug(200000) << "List of itens: " << list;
+
+    //Lame?
+    if (list.first() == "") {
+        list.removeFirst();
     }
-    return res;
+
+    m_session->ChangeCurrentFolderToRoot().waitForFinished();
+    kDebug(200000) << "We're in root now";
+
+    Q_FOREACH(const QString &dir, list) {
+        if (dir != "A8-7E-33-5D-6F-4E") {
+            kDebug(200000) << "Changing to: " << dir;
+           QDBusPendingReply <void > a = m_session->ChangeCurrentFolder(dir);
+           a.waitForFinished();
+           kDebug(200000)  << "Change Error: " << a.error().message();
+        } else {
+            kDebug(200000) << "Skyping" << dir;
+//            QDBusPendingReply <void > a = m_session->ChangeCurrentFolder("/");
+//            a.waitForFinished();
+//            kDebug(200000)  << "Change Error: " << a.error().message();
+        }
+    }
 }
 
 KioFtp::KioFtp(const QByteArray &pool, const QByteArray &app)
@@ -126,8 +138,6 @@ KioFtp::KioFtp(const QByteArray &pool, const QByteArray &app)
     , d(new Private(this))
 {
     kDebug(200000) << "INSTANCED";
-    qRegisterMetaType<QVariantMapList>("QVariantMapList");
-    qDBusRegisterMetaType<QVariantMapList>();
 }
 
 KioFtp::~KioFtp()
@@ -142,53 +152,18 @@ void KioFtp::listDir(const KUrl &url)
 
     infoMessage(i18n("Retrieving information from remote device..."));
 
-    const QString path = d->realPath(url);
-    kDebug(200000) << "realPath : " << path;
-    if (path != "/") {
-        QStringList parts = path.split("/");
-        Q_FOREACH(const QString &part, parts) {
-            qDebug() << "Changing to: " << part;
-            QDBusPendingReply <void> rep = d->m_fileTransfer->ChangeFolder(part);
-            rep.waitForFinished();
-        }
-        kDebug(200000) << "waited";
+    if (url.directory() != "/") {
+        d->changeDirectory(url);
     }
 
-    QDBusPendingReply<QVariantMapList> folder = d->m_fileTransfer->ListFolder();
+    QDBusPendingReply<QString> folder = d->m_session->RetrieveFolderListing();
     folder.waitForFinished();
 
-    int i = 0;
-    if (folder.error().type() == QDBusError::NoError) {
-        Q_FOREACH (const QVariantMap &map, folder.value()) {
-            KIO::UDSEntry entry;
-            kDebug(200000) << "Name Yeah baby: " << map["Name"].toString();
-            entry.insert(KIO::UDSEntry::UDS_NAME, map["Name"].toString());
-            entry.insert(KIO::UDSEntry::UDS_DISPLAY_NAME, map["Name"].toString());
+    kDebug(200000) << folder.value();
 
-            if (map["Type"].toString() == "folder") {
-                entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
-            } else {
-                entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
-            }
-
-            entry.insert(KIO::UDSEntry::UDS_SIZE, map["Size"].toInt());
-            entry.insert(KIO::UDSEntry::UDS_MODIFICATION_TIME, map["Modified"].toUInt());
-            entry.insert(KIO::UDSEntry::UDS_ACCESS_TIME, map["Accessed"].toUInt());
-            entry.insert(KIO::UDSEntry::UDS_CREATION_TIME, map["Created"].toUInt());
-            entry.insert( KIO::UDSEntry::UDS_MIME_TYPE, QString::fromLatin1( "inode/directory" ) );
-            KUrl _url(url);
-            _url.addPath(map["Name"].toString());
-            d->m_statMap[_url.url()] = entry;
-            listEntry(entry, false);
-            ++i;
-        }
-    }
-
-    delete d->m_fileTransfer;
-    
-    d->m_fileTransfer = m_fileTransfer = new org::openobex::FileTransfer("org.openobex.client", m_sessionPath, QDBusConnection::sessionBus(), 0);
-    listEntry(KIO::UDSEntry(), true);
+    int i = processXmlEntries(url, folder.value(), "listDirCallback");
     totalSize(i);
+    listEntry(KIO::UDSEntry(), true);
     finished();
 }
 
@@ -197,17 +172,21 @@ void KioFtp::copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFl
     kDebug(200000) << "copy: " << src.url() << " to " << dest.url();
     if (src.scheme() == "obexftp") {
         ENSURE_SESSION_CREATED(src)
+        d->changeDirectory(src.directory());
+        d->m_session->CopyRemoteFile(src.fileName(), dest.path());
     } else if (dest.scheme() == "obexftp") {
         ENSURE_SESSION_CREATED(dest)
+        d->changeDirectory(dest.directory());
+        d->m_session->SendFile(src.path());
     }
-    KIO::SlaveBase::copy(src, dest, permissions, flags);
+//     KIO::SlaveBase::copy(src, dest, permissions, flags);
 }
 
 void KioFtp::setHost(const QString &host, quint16 port, const QString &user, const QString &pass)
 {
     kDebug(200000) << "setHost: " << host;
     d->m_statMap.clear();
-    d->m_path = "/";
+//     d->m_path = "/";
     KIO::SlaveBase::setHost("A8-7E-33-5D-6F-4E", port, user, pass);
 }
 
@@ -215,14 +194,14 @@ void KioFtp::del(const KUrl& url, bool isfile)
 {
     kDebug(200000) << "Del: " << url.url();
     ENSURE_SESSION_CREATED(url)
-    d->m_fileTransfer->Delete(url.path());
+//     d->m_fileTransfer->Delete(url.path());
 }
 
 void KioFtp::mkdir(const KUrl& url, int permissions)
 {
     kDebug(200000) << "MkDir: " << url.url();
     ENSURE_SESSION_CREATED(url)
-    d->m_fileTransfer->CreateFolder(url.fileName());
+//     d->m_fileTransfer->CreateFolder(url.fileName());
 }
 
 void KioFtp::slave_status()
@@ -233,7 +212,7 @@ void KioFtp::slave_status()
 
 void KioFtp::stat(const KUrl &url)
 {
-    kDebug(200000) << "Stat: " << url.directory();
+    kDebug(200000) << "Stat: " << url.path();
     ENSURE_SESSION_CREATED(url)
     if (url.directory() == "/") {
         KIO::UDSEntry entry;
@@ -242,8 +221,82 @@ void KioFtp::stat(const KUrl &url)
         entry.insert( KIO::UDSEntry::UDS_MIME_TYPE, QString::fromLatin1( "inode/directory" ) );
         statEntry(entry);
     } else {
-        statEntry(d->m_statMap[url.url()]);
+        if (d->m_statMap.contains(url.url())) {
+            kDebug(200000) << "statMap contains the url";
+            statEntry(d->m_statMap[url.url()]);
+        } else {
+            kDebug(200000) << "statMap NOT contains the url";
+            d->changeDirectory(url.directory());
+
+            kDebug(200000) << "RetrieveFolderListing";
+            QDBusPendingReply<QString> folder = d->m_session->RetrieveFolderListing();
+            kDebug(200000) << "retireve called";
+            folder.waitForFinished();
+            kDebug(200000) << "RetrieveError: " << folder.error().message();
+            kDebug(200000) << "Wait endds";
+            kDebug(200000) << folder.value();
+
+            processXmlEntries(url, folder.value(), "statCallback");
+        }
     }
 
     finished();
+}
+
+int KioFtp::processXmlEntries(const KUrl& url, const QString& xml, const char* slot)
+{
+    QXmlStreamReader* m_xml = new QXmlStreamReader(xml);
+
+    int i = 0;
+    while(!m_xml->atEnd()) {
+        m_xml->readNext();
+        if(m_xml->name() != "folder" &&  m_xml->name() != "file") {
+            kDebug(200000) << "Skiping dir: " << m_xml->name();
+            continue;
+        }
+        QXmlStreamAttributes attr = m_xml->attributes();
+        if (!attr.hasAttribute("name")) {
+            continue;
+        }
+
+        KIO::UDSEntry entry;
+        kDebug(200000) << "Name Yeah baby: " << attr.value("name");
+        entry.insert(KIO::UDSEntry::UDS_NAME, attr.value("name").toString());
+
+        if (m_xml->name() == "folder") {
+            entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+            entry.insert( KIO::UDSEntry::UDS_MIME_TYPE, QString::fromLatin1( "inode/directory" ) );
+        } else {
+            entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
+            entry.insert(KIO::UDSEntry::UDS_SIZE, attr.value("size").toString().toUInt());
+            entry.insert(KIO::UDSEntry::UDS_MODIFICATION_TIME, attr.value("modified").toString());
+        }
+
+        entry.insert(KIO::UDSEntry::UDS_CREATION_TIME, attr.value("created").toString());
+        //Access?
+        KUrl _url(url);
+        QString pathToAdd = _url.url();
+        pathToAdd.append(attr.value("name").toString());
+
+        kDebug(200000) << "Adding surl to map: " << _url.url();
+        d->m_statMap[pathToAdd] = entry;
+
+        QMetaObject::invokeMethod(this, slot, Q_ARG(KIO::UDSEntry, entry), Q_ARG(KUrl, url));
+        ++i;
+    }
+    return i;
+}
+
+void KioFtp::listDirCallback(const KIO::UDSEntry& entry, const KUrl &url)
+{
+    listEntry(entry, false);
+}
+
+void KioFtp::statCallback(const KIO::UDSEntry& entry, const KUrl &url)
+{
+    kDebug(200000) << "FileName : " << url.fileName();
+    if (entry.stringValue(KIO::UDSEntry::UDS_NAME) == url.fileName()) {
+        kDebug(200000) << "setting statEntry : ";
+        statEntry(entry);
+    }
 }

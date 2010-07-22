@@ -22,15 +22,21 @@
 #ifndef KIO_OBEXFTP_H
 #define KIO_OBEXFTP_H
 
+#include <QtCore/QObject>
+
 #include <kio/slavebase.h>
 
 class KioFtp
-    : public KIO::SlaveBase
+    : public QObject
+    , public KIO::SlaveBase
 {
+
+Q_OBJECT
 public:
     KioFtp(const QByteArray &pool, const QByteArray &app);
     virtual ~KioFtp();
 
+    int processXmlEntries(const KUrl& url, const QString& xml, const char* slot);
     virtual void copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFlags flags);
     virtual void listDir(const KUrl &url);
     virtual void setHost(const QString &host, quint16 port, const QString &user, const QString &pass);
@@ -38,6 +44,10 @@ public:
     virtual void stat(const KUrl &url);
     virtual void del(const KUrl &url, bool isfile);
     virtual void mkdir(const KUrl&url, int permissions);
+
+private Q_SLOTS:
+    void listDirCallback(const KIO::UDSEntry& entry, const KUrl& url);
+    void statCallback(const KIO::UDSEntry &entry, const KUrl& url);
 
 private:
     class Private;
