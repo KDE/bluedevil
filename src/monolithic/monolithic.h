@@ -23,6 +23,7 @@
 
 namespace BlueDevil {
     class Adapter;
+    class Device;
 }
 
 class KAction;
@@ -50,9 +51,6 @@ public Q_SLOTS:
 private:
     void onlineMode();
     void offlineMode();
-
-private:
-    QList<KAction*> m_deviceList;
 };
 
 #endif // MONOLITIC_H

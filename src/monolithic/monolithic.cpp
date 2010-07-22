@@ -68,9 +68,6 @@ bool sortDevices(Device *device1, Device *device2)
 
 void Monolithic::regenerateDeviceEntries()
 {
-    qDeleteAll(m_deviceList);
-    m_deviceList.clear();
-
     if (!Manager::self()->defaultAdapter()) {
         return;
     }
@@ -93,6 +90,7 @@ void Monolithic::regenerateDeviceEntries()
         } else {
             _device = new KAction(device->name(), menu);
         }
+        _device->setData(QVariant::fromValue<Device*>(device));
         menu->addAction(_device);
         lastDevice = device;
     }
@@ -160,3 +158,5 @@ void Monolithic::offlineMode()
     regenerateDeviceEntries();
     contextMenu()->clear();
 }
+
+Q_DECLARE_METATYPE(Device*)
