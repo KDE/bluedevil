@@ -69,6 +69,7 @@ public:
     org::openobex::FileTransfer *m_fileTransfer;
     Agent                       *m_agent;
     QString                      m_path;
+    QString                      m_sessionPath;
     QMap<QString, KIO::UDSEntry> m_statMap;
 };
 
@@ -96,19 +97,24 @@ void KioFtp::Private::createSession(const KUrl &address)
     m_q->infoMessage(i18n("Connecting to the remote device..."));
 
     QVariantMap device;
+    kDebug(200000) << "Raw address: " << address.path();
     device["Destination"] = address.path().replace('-', ':').mid(1, 17);
     device["Target"] = "ftp";
 
-    const QString sessionPath = m_client->CreateSession(device).value().path();
-    m_session = new org::openobex::Session("org.openobex.client", sessionPath, QDBusConnection::sessionBus(), 0);
+    kDebug(200000) << "Connect to: " << device["Destination"].toString();
+
+    m_sessionPath = m_client->CreateSession(device).value().path();
+    kDebug(200000) << "Session path: " << m_sessionPath;
+    m_session = new org::openobex::Session("org.openobex.client", m_sessionPath, QDBusConnection::sessionBus(), 0);
     m_session->AssignAgent(QDBusObjectPath("/"));
-    m_fileTransfer = new org::openobex::FileTransfer("org.openobex.client", sessionPath, QDBusConnection::sessionBus(), 0);
+    m_fileTransfer = new org::openobex::FileTransfer("org.openobex.client", m_sessionPath, QDBusConnection::sessionBus(), 0);
     m_path = "/";
+    kDebug(200000) << "Private Ctor Ends";
 }
 
 QString KioFtp::Private::realPath(const KUrl &path) const
 {
-    QString res = path.path().mid(18);
+    QString res = path.path().mid(19);
     if (res.isEmpty()) {
         res = "/";
     }
@@ -119,6 +125,7 @@ KioFtp::KioFtp(const QByteArray &pool, const QByteArray &app)
     : SlaveBase("obexftp", pool, app)
     , d(new Private(this))
 {
+    kDebug(200000) << "INSTANCED";
     qRegisterMetaType<QVariantMapList>("QVariantMapList");
     qDBusRegisterMetaType<QVariantMapList>();
 }
@@ -130,14 +137,21 @@ KioFtp::~KioFtp()
 
 void KioFtp::listDir(const KUrl &url)
 {
+    kDebug(200000) << "listdir: " << url;
     ENSURE_SESSION_CREATED(url)
 
     infoMessage(i18n("Retrieving information from remote device..."));
 
     const QString path = d->realPath(url);
-    if (path != d->m_path) {
-        d->m_fileTransfer->ChangeFolder(path).waitForFinished();
-        d->m_path = path;
+    kDebug(200000) << "realPath : " << path;
+    if (path != "/") {
+        QStringList parts = path.split("/");
+        Q_FOREACH(const QString &part, parts) {
+            qDebug() << "Changing to: " << part;
+            QDBusPendingReply <void> rep = d->m_fileTransfer->ChangeFolder(part);
+            rep.waitForFinished();
+        }
+        kDebug(200000) << "waited";
     }
 
     QDBusPendingReply<QVariantMapList> folder = d->m_fileTransfer->ListFolder();
@@ -147,16 +161,21 @@ void KioFtp::listDir(const KUrl &url)
     if (folder.error().type() == QDBusError::NoError) {
         Q_FOREACH (const QVariantMap &map, folder.value()) {
             KIO::UDSEntry entry;
+            kDebug(200000) << "Name Yeah baby: " << map["Name"].toString();
             entry.insert(KIO::UDSEntry::UDS_NAME, map["Name"].toString());
+            entry.insert(KIO::UDSEntry::UDS_DISPLAY_NAME, map["Name"].toString());
+
             if (map["Type"].toString() == "folder") {
                 entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
             } else {
                 entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
             }
+
             entry.insert(KIO::UDSEntry::UDS_SIZE, map["Size"].toInt());
             entry.insert(KIO::UDSEntry::UDS_MODIFICATION_TIME, map["Modified"].toUInt());
             entry.insert(KIO::UDSEntry::UDS_ACCESS_TIME, map["Accessed"].toUInt());
             entry.insert(KIO::UDSEntry::UDS_CREATION_TIME, map["Created"].toUInt());
+            entry.insert( KIO::UDSEntry::UDS_MIME_TYPE, QString::fromLatin1( "inode/directory" ) );
             KUrl _url(url);
             _url.addPath(map["Name"].toString());
             d->m_statMap[_url.url()] = entry;
@@ -165,6 +184,9 @@ void KioFtp::listDir(const KUrl &url)
         }
     }
 
+    delete d->m_fileTransfer;
+    
+    d->m_fileTransfer = m_fileTransfer = new org::openobex::FileTransfer("org.openobex.client", m_sessionPath, QDBusConnection::sessionBus(), 0);
     listEntry(KIO::UDSEntry(), true);
     totalSize(i);
     finished();
@@ -172,6 +194,7 @@ void KioFtp::listDir(const KUrl &url)
 
 void KioFtp::copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFlags flags)
 {
+    kDebug(200000) << "copy: " << src.url() << " to " << dest.url();
     if (src.scheme() == "obexftp") {
         ENSURE_SESSION_CREATED(src)
     } else if (dest.scheme() == "obexftp") {
@@ -182,30 +205,45 @@ void KioFtp::copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFl
 
 void KioFtp::setHost(const QString &host, quint16 port, const QString &user, const QString &pass)
 {
+    kDebug(200000) << "setHost: " << host;
     d->m_statMap.clear();
     d->m_path = "/";
-    KIO::SlaveBase::setHost(host, port, user, pass);
+    KIO::SlaveBase::setHost("A8-7E-33-5D-6F-4E", port, user, pass);
 }
 
 void KioFtp::del(const KUrl& url, bool isfile)
 {
+    kDebug(200000) << "Del: " << url.url();
     ENSURE_SESSION_CREATED(url)
     d->m_fileTransfer->Delete(url.path());
 }
 
 void KioFtp::mkdir(const KUrl& url, int permissions)
 {
+    kDebug(200000) << "MkDir: " << url.url();
     ENSURE_SESSION_CREATED(url)
     d->m_fileTransfer->CreateFolder(url.fileName());
 }
 
 void KioFtp::slave_status()
 {
+    kDebug(200000) << "Slave status";
     KIO::SlaveBase::slave_status();
 }
 
 void KioFtp::stat(const KUrl &url)
 {
+    kDebug(200000) << "Stat: " << url.directory();
     ENSURE_SESSION_CREATED(url)
-    statEntry(d->m_statMap[url.url()]);
+    if (url.directory() == "/") {
+        KIO::UDSEntry entry;
+        entry.insert(KIO::UDSEntry::UDS_NAME, QString::fromLatin1("/"));
+        entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+        entry.insert( KIO::UDSEntry::UDS_MIME_TYPE, QString::fromLatin1( "inode/directory" ) );
+        statEntry(entry);
+    } else {
+        statEntry(d->m_statMap[url.url()]);
+    }
+
+    finished();
 }
