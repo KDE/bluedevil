@@ -172,6 +172,10 @@ void Monolithic::onlineMode()
 
     KMenu *menu = contextMenu();
 
+    KAction *sendFile = new KAction(KIcon("edit-find-project"), i18n("Send File"), menu);
+    connect(sendFile, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(sendFile()));
+    menu->addAction(sendFile);
+
     KAction *configReceive = new KAction(KIcon("folder-tar"),i18n("Receive files configuration"), menu);
     connect(configReceive, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(configReceive()));
     menu->addAction(configReceive);
@@ -194,6 +198,13 @@ void Monolithic::onlineMode()
 
     setContextMenu(menu);
     setStandardActionsEnabled(true);
+}
+
+void Monolithic::sendFile()
+{
+    KProcess process;
+    process.setProgram("bluedevil-sendfile");
+    process.startDetached();
 }
 
 void Monolithic::addDevice()

@@ -52,7 +52,7 @@ public:
      */
     AgentListenerWorker(QObject *parent);
 
-public slots:
+public Q_SLOTS:
     /**
      * Called by bluez when another agent try to replace us as an agent
      */
