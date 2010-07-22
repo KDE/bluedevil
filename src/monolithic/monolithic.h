@@ -49,6 +49,14 @@ public Q_SLOTS:
     void deviceManager();
     void configAdapter();
 
+private Q_SLOTS:
+    void browseTriggered();
+    void sendTriggered();
+#if 0
+    void connectTriggered();
+    void disconnectTriggered();
+#endif
+
 private:
     void onlineMode();
     void offlineMode();
