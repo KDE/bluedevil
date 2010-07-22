@@ -238,7 +238,6 @@ void KioFtp::stat(const KUrl &url)
             kDebug() << "retireve called";
             folder.waitForFinished();
             kDebug() << "RetrieveError: " << folder.error().message();
-            kDebug() << "Wait endds";
             kDebug() << folder.value();
 
             processXmlEntries(url, folder.value(), "statCallback");
