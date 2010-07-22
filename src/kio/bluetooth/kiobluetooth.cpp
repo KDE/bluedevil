@@ -217,12 +217,17 @@ KioBluetoothPrivate::KioBluetoothPrivate(KioBluetooth *parent)
     supportedServices.insert("00001105-0000-1000-8000-00805f9b34fb", s);
     s.name = i18n("Browse Files");
     s.icon = "edit-find";
+    s.uuid = "00001106-0000-1000-8000-00805f9b34fb";
     supportedServices.insert("00001106-0000-1000-8000-00805f9b34fb", s);
     s.name = i18n("Human Interface Device");
     s.icon = "input-mouse";
+    s.mimetype = "virtual/bluedevil-input";
+    s.uuid = "00001124-0000-1000-8000-00805f9b34fb";
     supportedServices.insert("00001124-0000-1000-8000-00805f9b34fb", s);
     s.name = i18n("Headset");
     s.icon = "audio-headset";
+    s.mimetype = "virtual/bluedevil-audio";
+    s.uuid = "00001108-0000-1000-8000-00805f9b34fb";
     supportedServices.insert("00001108-0000-1000-8000-00805f9b34fb", s);
 }
 

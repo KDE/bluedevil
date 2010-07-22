@@ -21,7 +21,7 @@ Notes:
     <generic-icon name="preferences-system-bluetooth"/>
     <comment>Service</comment>
   </mime-type>
-  <mime-type type="virtual/bluedevil-headset">
+  <mime-type type="virtual/bluedevil-input">
     <comment>Headset</comment>
   </mime-type>
   <mime-type type="virtual/bluedevil-audio">
