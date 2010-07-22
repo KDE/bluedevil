@@ -1,12 +1,12 @@
 [Desktop Entry]
 Type=Service
 Exec=blubb
-Comment=Handles the connection and configuration of an input device
-Name=SendFile
+Comment=Allows you to send files to the remote device
+Name=Send File
 GenericName=Send file
 ServiceTypes=BlueDevil/ActionPlugin
 X-KDE-Library=sendfile
-X-KDE-PluginInfo-Name=SendFile
+X-KDE-PluginInfo-Name=Send File
 X-KDE-PluginInfo-Author=Alex Fiestas
 X-KDE-PluginInfo-Version=0.00000001
 X-KDE-PluginInfo-License=GPL
