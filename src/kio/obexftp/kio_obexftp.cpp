@@ -195,6 +195,13 @@ void KioFtp::copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFl
     finished();
 }
 
+void KioFtp::rename(const KUrl& src, const KUrl& dest, KIO::JobFlags flags)
+{
+    error(KIO::ERR_UNSUPPORTED_ACTION, src.prettyUrl());
+    finished();
+}
+
+
 void KioFtp::setHost(const QString &host, quint16 port, const QString &user, const QString &pass)
 {
     kDebug() << "setHost: " << host;
@@ -330,7 +337,6 @@ void KioFtp::TransferProgress(qulonglong transfered)
 void KioFtp::TransferCompleted()
 {
     kDebug() << "TransferCompleted: ";
-    m_completed = true;
     m_eventLoop.exit();
 }
 

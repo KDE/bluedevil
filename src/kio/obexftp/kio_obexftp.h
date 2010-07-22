@@ -45,6 +45,7 @@ public:
     virtual void stat(const KUrl &url);
     virtual void del(const KUrl &url, bool isfile);
     virtual void mkdir(const KUrl&url, int permissions);
+    virtual void rename(const KUrl& src, const KUrl& dest, KIO::JobFlags flags);
 
 private Q_SLOTS:
     void TransferProgress(qulonglong transfered);
