@@ -25,7 +25,8 @@
 #include <bluedevil/bluedevil.h>
 
 using namespace BlueDevil;
-Monolitic::Monolitic(QObject* parent): KStatusNotifierItem(parent)
+
+Monolithic::Monolithic(QObject* parent): KStatusNotifierItem(parent)
 {
     setCategory(KStatusNotifierItem::Hardware);
     setIconByName("preferences-system-bluetooth");
@@ -41,21 +42,21 @@ Monolitic::Monolitic(QObject* parent): KStatusNotifierItem(parent)
         SLOT(noAdapters(Adapter*)));
 }
 
-void Monolitic::noAdapters(Adapter* adapter)
+void Monolithic::noAdapters(Adapter* adapter)
 {
     if (!adapter) {
         offlineMode();
     }
 }
 
-void Monolitic::adapterAdded()
+void Monolithic::adapterAdded()
 {
     if (status() != KStatusNotifierItem::Active) {
         onlineMode();
     }
 }
 
-void Monolitic::onlineMode()
+void Monolithic::onlineMode()
 {
     setStatus(KStatusNotifierItem::Active);
 
@@ -81,33 +82,33 @@ void Monolitic::onlineMode()
     setStandardActionsEnabled(true);
 }
 
-void Monolitic::addDevice()
+void Monolithic::addDevice()
 {
     KProcess process;
     process.setProgram("bluedevil-wizard");
     process.startDetached();
 }
 
-void Monolitic::configReceive()
+void Monolithic::configReceive()
 {
     KProcess process;
     process.startDetached("kcmshell4", QStringList("bluedeviltransfer"));
 }
 
-void Monolitic::deviceManager()
+void Monolithic::deviceManager()
 {
     KProcess process;
     process.startDetached("kcmshell4", QStringList("bluedevildevices"));
 }
 
-void Monolitic::configAdapter()
+void Monolithic::configAdapter()
 {
     KProcess process;
     process.startDetached("kcmshell4", QStringList("bluedeviladapters"));
 }
 
 
-void Monolitic::offlineMode()
+void Monolithic::offlineMode()
 {
     setStatus(KStatusNotifierItem::Passive);
     contextMenu()->clear();

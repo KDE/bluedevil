@@ -24,14 +24,15 @@
 namespace BlueDevil {
     class Adapter;
 }
+
 using namespace BlueDevil;
 
-class Monolitic : public KStatusNotifierItem
+class Monolithic : public KStatusNotifierItem
 {
 
 Q_OBJECT
 public:
-    Monolitic(QObject* parent = 0);
+    Monolithic(QObject* parent = 0);
 
 public Q_SLOTS:
     void noAdapters(Adapter *adapter);

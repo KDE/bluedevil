@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 
     KApplication app;
     app.setQuitOnLastWindowClosed(false);
-    new Monolitic;
+    new Monolithic;
 
     return app.exec();
 }
