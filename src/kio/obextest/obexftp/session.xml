@@ -1,0 +1,131 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+  <interface name="org.openobex.Session">
+    <method name="Cancel">
+    </method>
+    <method name="IsBusy">
+      <arg name="arg0" type="b" direction="out"/>
+    </method>
+    <method name="GetTransferInfo">
+      <arg name="arg0" type="a{ss}" direction="out"/>
+      <annotation name="com.trolltech.QtDBus.QtTypeName.Out0" value="QVariantMap"/>
+    </method>
+    <method name="GetImagingCapabilities">
+      <arg name="imaging_capabilities" type="s" direction="out"/>
+    </method>
+    <method name="GetCapability">
+      <arg name="capability" type="s" direction="out"/>
+    </method>
+    <method name="RemoteDisplayShowPreviousImage">
+    </method>
+    <method name="RemoteDisplayShowNextImage">
+    </method>
+    <method name="RemoteDisplayShowCurrentImage">
+    </method>
+    <method name="RemoteDisplaySelectImage">
+      <arg name="image_handle" type="s" direction="in"/>
+    </method>
+    <method name="PutLinkedAttachment">
+      <arg name="image_handle" type="s" direction="in"/>
+      <arg name="local_path" type="s" direction="in"/>
+      <arg name="content_type" type="s" direction="in"/>
+      <arg name="charset" type="s" direction="in"/>
+    </method>
+    <method name="PutImageResized">
+      <arg name="local_path" type="s" direction="in"/>
+      <arg name="width" type="q" direction="in"/>
+      <arg name="height" type="q" direction="in"/>
+      <arg name="encoding" type="s" direction="in"/>
+      <arg name="transformation" type="s" direction="in"/>
+    </method>
+    <method name="PutImage">
+      <arg name="local_path" type="s" direction="in"/>
+    </method>
+    <method name="GetImageInfo">
+      <arg name="local_path" type="s" direction="in"/>
+      <arg name="width" type="q" direction="out"/>
+      <arg name="height" type="q" direction="out"/>
+      <arg name="encoding" type="s" direction="out"/>
+    </method>
+    <method name="RemoteMove">
+      <arg name="remote_source" type="s" direction="in"/>
+      <arg name="remote_destination" type="s" direction="in"/>
+    </method>
+    <method name="RemoteCopy">
+      <arg name="remote_source" type="s" direction="in"/>
+      <arg name="remote_destination" type="s" direction="in"/>
+    </method>
+    <method name="DeleteRemoteFile">
+      <arg name="remote_filename" type="s" direction="in"/>
+    </method>
+    <method name="SetTransferHints">
+      <arg name="fifo" type="s" direction="in"/>
+      <arg name="remote_filename" type="s" direction="in"/>
+      <arg name="type" type="s" direction="in"/>
+      <arg name="size" type="t" direction="in"/>
+      <arg name="mtime" type="x" direction="in"/>
+      <arg name="ctime" type="x" direction="in"/>
+    </method>
+    <method name="SendFile">
+      <arg name="local_path" type="s" direction="in"/>
+    </method>
+    <method name="SendFileExt">
+      <arg name="local_path" type="s" direction="in"/>
+      <arg name="remote_filename" type="s" direction="in"/>
+      <arg name="type" type="s" direction="in"/>
+    </method>
+    <method name="RetrieveFolderListing">
+      <arg name="listing" type="s" direction="out"/>
+    </method>
+    <method name="CreateFolder">
+      <arg name="folder_name" type="s" direction="in"/>
+    </method>
+    <method name="CopyRemoteFileByType">
+      <arg name="type" type="s" direction="in"/>
+      <arg name="local_path" type="s" direction="in"/>
+    </method>
+    <method name="CopyRemoteFile">
+      <arg name="remote_filename" type="s" direction="in"/>
+      <arg name="local_path" type="s" direction="in"/>
+    </method>
+    <method name="GetCurrentPath">
+      <arg name="arg0" type="s" direction="out"/>
+    </method>
+    <method name="ChangeCurrentFolderToRoot">
+    </method>
+    <method name="ChangeCurrentFolderBackward">
+    </method>
+    <method name="ChangeCurrentFolder">
+      <arg name="path" type="s" direction="in"/>
+    </method>
+    <method name="Close">
+    </method>
+    <method name="Disconnect">
+    </method>
+    <signal name="ImageHandleReceived">
+      <arg type="s"/>
+      <arg type="b"/>
+    </signal>
+    <signal name="ErrorOccurred">
+      <arg type="s"/>
+      <arg type="s"/>
+    </signal>
+    <signal name="TransferCompleted">
+    </signal>
+    <signal name="TransferProgress">
+      <arg type="t"/>
+    </signal>
+    <signal name="TransferStarted">
+      <arg type="s"/>
+      <arg type="s"/>
+      <arg type="t"/>
+    </signal>
+    <signal name="Closed">
+    </signal>
+    <signal name="Disconnected">
+    </signal>
+    <signal name="Cancelled">
+    </signal>
+  </interface>
+</node> 
