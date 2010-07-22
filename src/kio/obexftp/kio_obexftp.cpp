@@ -202,7 +202,9 @@ void KioFtp::mkdir(const KUrl& url, int permissions)
 {
     kDebug() << "MkDir: " << url.url();
     ENSURE_SESSION_CREATED(url)
-//     d->m_fileTransfer->CreateFolder(url.fileName());
+    d->changeDirectory(url.directory());
+    d->m_session->CreateFolder(url.fileName()).waitForFinished();
+    finished();
 }
 
 void KioFtp::slave_status()
