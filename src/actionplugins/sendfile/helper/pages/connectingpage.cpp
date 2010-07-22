@@ -33,6 +33,7 @@
 #include <kcompositejob.h>
 
 using namespace BlueDevil;
+
 ConnectingPage::ConnectingPage(QWidget* parent): QWizardPage(parent)
 {
     setupUi(this);

@@ -37,7 +37,10 @@
 
 using namespace BlueDevil;
 
-SendFileWizard::SendFileWizard() : QWizard(), m_device(0), m_job(0)
+SendFileWizard::SendFileWizard(const QString &deviceUri)
+    : QWizard()
+    , m_device(0)
+    , m_job(0)
 {
     if (!BlueDevil::Manager::self()->defaultAdapter()) {
         qDebug() << "No Adapters found";
@@ -56,10 +59,10 @@ SendFileWizard::SendFileWizard() : QWizard(), m_device(0), m_job(0)
 
         addPage(new SendIntroPage());
         addPage(new SelectFilesPage());
-        addPage(new SelectDevicePage());
+        if (deviceUri.isEmpty()) {
+            addPage(new SelectDevicePage());
+        }
         addPage(new ConnectingPage());
-
-        show();
 
         m_agent = new ObexAgent(qApp);
     }

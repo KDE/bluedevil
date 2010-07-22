@@ -22,6 +22,9 @@
 #include <KCmdLineArgs>
 #include <KApplication>
 #include <KAboutData>
+#include <bluedevil/bluedevil.h>
+
+using namespace BlueDevil;
 
 int main(int argc, char *argv[])
 {
@@ -33,10 +36,22 @@ int main(int argc, char *argv[])
     aboutData.setProgramIconName("preferences-system-bluetooth");
 
     KCmdLineArgs::init(argc, argv, &aboutData);
+    KCmdLineOptions options;
+    options.add("+[URL]", ki18n("Device to send files to"));
+    KCmdLineArgs::addCmdLineOptions( options );
+
+    KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
+    QString wizardArg;
+    if (args->count()) {
+        wizardArg = args->arg(0).mid(12, 17).replace('-', ':');
+    }
 
     KApplication app;
     app.setQuitOnLastWindowClosed(false);
-    new SendFileWizard;
+
+    SendFileWizard *sendFileWizard = new SendFileWizard(wizardArg);
+    sendFileWizard->setDevice(Manager::self()->defaultAdapter()->deviceForAddress(wizardArg));
+    sendFileWizard->show();
 
     return app.exec();
 }

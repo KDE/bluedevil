@@ -37,7 +37,7 @@ class SendFileWizard : public QWizard
 Q_OBJECT
 
 public:
-    SendFileWizard();
+    SendFileWizard(const QString &deviceUri);
     virtual ~SendFileWizard();
 
     void setFileWidget(KFileWidget *);
@@ -52,10 +52,10 @@ private Q_SLOTS:
     void wizardDone();
 
 private:
-    KFileWidget *m_fileWidget;
-    Device      *m_device;
-    ObexAgent   *m_agent;
-    SendFilesJob   *m_job;
+    KFileWidget  *m_fileWidget;
+    Device       *m_device;
+    ObexAgent    *m_agent;
+    SendFilesJob *m_job;
 };
 
 #endif // SENDFILEWIZARD_H
