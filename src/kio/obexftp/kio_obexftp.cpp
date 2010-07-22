@@ -258,6 +258,9 @@ int KioFtp::processXmlEntries(const KUrl& url, const QString& xml, const char* s
             continue;
         }
 
+        QString fullPath = url.url();
+        fullPath.append(attr.value("name").toString());
+
         KIO::UDSEntry entry;
         kDebug(200000) << "Name Yeah baby: " << attr.value("name");
         entry.insert(KIO::UDSEntry::UDS_NAME, attr.value("name").toString());
@@ -273,11 +276,8 @@ int KioFtp::processXmlEntries(const KUrl& url, const QString& xml, const char* s
 
         entry.insert(KIO::UDSEntry::UDS_CREATION_TIME, attr.value("created").toString());
 
-        QString pathToAdd = url.url();
-        pathToAdd.append(attr.value("name").toString());
-
-        kDebug(200000) << "Adding surl to map: " << pathToAdd();
-        d->m_statMap[pathToAdd] = entry;
+        kDebug(200000) << "Adding surl to map: " << fullPath();
+        d->m_statMap[fullPath] = entry;
 
         QMetaObject::invokeMethod(this, slot, Q_ARG(KIO::UDSEntry, entry), Q_ARG(KUrl, url));
         ++i;
