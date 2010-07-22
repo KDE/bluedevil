@@ -94,11 +94,6 @@ void KioFtp::changeDirectory(const KUrl& url)
 
     kDebug() << "List of itens: " << list;
 
-    //Lame?
-    if (list.first() == "") {
-        list.removeFirst();
-    }
-
     m_session->ChangeCurrentFolderToRoot().waitForFinished();
     kDebug() << "We're in root now";
 
