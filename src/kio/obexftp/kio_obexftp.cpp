@@ -52,7 +52,7 @@ extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
 }
 
 KioFtp::KioFtp(const QByteArray &pool, const QByteArray &app)
-    : SlaveBase("obexftp", pool, app), m_session(0), m_manager(0)
+    : SlaveBase("obexftp", pool, app), m_manager(0), m_session(0)
 {
 }
 
@@ -133,6 +133,9 @@ void KioFtp::listDir(const KUrl &url)
 
 void KioFtp::copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFlags flags)
 {
+    Q_UNUSED(permissions)
+    Q_UNUSED(flags)
+
     kDebug() << "copy: " << src.url() << " to " << dest.url();
     connect(m_session, SIGNAL(TransferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
     connect(m_session, SIGNAL(TransferCompleted()), this, SLOT(TransferCompleted()));
@@ -159,6 +162,10 @@ void KioFtp::copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFl
 
 void KioFtp::rename(const KUrl& src, const KUrl& dest, KIO::JobFlags flags)
 {
+    Q_UNUSED(src)
+    Q_UNUSED(dest)
+    Q_UNUSED(flags)
+
     error(KIO::ERR_UNSUPPORTED_ACTION, src.prettyUrl());
     finished();
 }
@@ -166,12 +173,18 @@ void KioFtp::rename(const KUrl& src, const KUrl& dest, KIO::JobFlags flags)
 
 void KioFtp::setHost(const QString &host, quint16 port, const QString &user, const QString &pass)
 {
+    Q_UNUSED(port)
+    Q_UNUSED(user)
+    Q_UNUSED(pass)
+
     kDebug() << "setHost: " << host;
     m_statMap.clear();
 }
 
 void KioFtp::del(const KUrl& url, bool isfile)
 {
+    Q_UNUSED(isfile)
+
     kDebug() << "Del: " << url.url();
     ENSURE_SESSION_CREATED(url)
     changeDirectory(url.directory());
@@ -181,6 +194,8 @@ void KioFtp::del(const KUrl& url, bool isfile)
 
 void KioFtp::mkdir(const KUrl& url, int permissions)
 {
+    Q_UNUSED(permissions)
+
     kDebug() << "MkDir: " << url.url();
     ENSURE_SESSION_CREATED(url)
     changeDirectory(url.directory());
@@ -278,6 +293,7 @@ int KioFtp::processXmlEntries(const KUrl& url, const QString& xml, const char* s
 
 void KioFtp::listDirCallback(const KIO::UDSEntry& entry, const KUrl &url)
 {
+    Q_UNUSED(url)
     listEntry(entry, false);
 }
 
@@ -292,6 +308,7 @@ void KioFtp::statCallback(const KIO::UDSEntry& entry, const KUrl &url)
 
 void KioFtp::sessionCreated(const QDBusObjectPath& path)
 {
+    Q_UNUSED(path)
     kDebug() << "session Created!";
     m_eventLoop.exit();
 }
