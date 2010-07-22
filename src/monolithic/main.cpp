@@ -18,7 +18,7 @@
 
 #include "monolithic.h"
 #include <KCmdLineArgs>
-#include <KApplication>
+#include <kuniqueapplication.h>
 #include <KAboutData>
 
 int main(int argc, char *argv[])
@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 
     KCmdLineArgs::init(argc, argv, &aboutData);
 
-    KApplication app;
+    KUniqueApplication app;
     app.setQuitOnLastWindowClosed(false);
     new Monolithic;
 

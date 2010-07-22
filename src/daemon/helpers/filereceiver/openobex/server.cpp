@@ -119,7 +119,7 @@ void OpenObex::Server::slotSessionRemoved(QDBusObjectPath path)
 
     if (d->serverSessions.contains(path.path())) {
       d->serverSessions[path.path()]->queueDelete();
-      d->serverSessions[path.path()] = 0;
+      d->serverSessions.remove(path.path());
     }
 }
 void OpenObex::Server::serverCreated(QDBusObjectPath path)
