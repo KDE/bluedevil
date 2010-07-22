@@ -86,14 +86,14 @@ void Monolithic::onlineMode()
     setStandardActionsEnabled(true);
 }
 
-void Monolitic::sendFile()
+void Monolithic::sendFile()
 {
     KProcess process;
     process.setProgram("bluedevil-sendfile");
     process.startDetached();
 }
 
-void Monolitic::addDevice()
+void Monolithic::addDevice()
 {
     KProcess process;
     process.setProgram("bluedevil-wizard");
