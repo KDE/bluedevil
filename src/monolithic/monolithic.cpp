@@ -90,6 +90,12 @@ void Monolithic::regenerateDeviceEntries()
         } else {
             _device = new KAction(device->name(), menu);
         }
+        KMenu *const _submenu = new KMenu;
+        KAction *_browse = new KAction(i18n("Browse device..."), _device);
+        KAction *_send = new KAction(i18n("Send files..."), _device);
+        _submenu->addAction(_browse);
+        _submenu->addAction(_send);
+        _device->setMenu(_submenu);
         _device->setData(QVariant::fromValue<Device*>(device));
         menu->addAction(_device);
         lastDevice = device;
@@ -150,7 +156,6 @@ void Monolithic::configAdapter()
     KProcess process;
     process.startDetached("kcmshell4", QStringList("bluedeviladapters"));
 }
-
 
 void Monolithic::offlineMode()
 {
