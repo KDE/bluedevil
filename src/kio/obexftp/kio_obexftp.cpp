@@ -172,15 +172,27 @@ void KioFtp::listDir(const KUrl &url)
 void KioFtp::copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFlags flags)
 {
     kDebug() << "copy: " << src.url() << " to " << dest.url();
+    connect(d->m_session, SIGNAL(TransferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
+    connect(d->m_session, SIGNAL(TransferCompleted()), this, SLOT(TransferCompleted()));
+    connect(d->m_session, SIGNAL(ErrorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
+
     if (src.scheme() == "obexftp") {
         ENSURE_SESSION_CREATED(src)
         d->changeDirectory(src.directory());
+        kDebug() << "CopyingRemoteFile....";
         d->m_session->CopyRemoteFile(src.fileName(), dest.path());
+        kDebug() << "Copyied";
     } else if (dest.scheme() == "obexftp") {
         ENSURE_SESSION_CREATED(dest)
         d->changeDirectory(dest.directory());
+        kDebug() << "Sendingfile....";
         d->m_session->SendFile(src.path());
+        kDebug() << "Copyied";
     }
+
+    m_eventLoop.exec();
+
+    finished();
 }
 
 void KioFtp::setHost(const QString &host, quint16 port, const QString &user, const QString &pass)
@@ -307,4 +319,23 @@ void KioFtp::statCallback(const KIO::UDSEntry& entry, const KUrl &url)
         kDebug() << "setting statEntry : ";
         statEntry(entry);
     }
+}
+
+void KioFtp::TransferProgress(qulonglong transfered)
+{
+    processedSize(transfered);
+    kDebug() << "TransferProgress: ";
+}
+
+void KioFtp::TransferCompleted()
+{
+    kDebug() << "TransferCompleted: ";
+    m_completed = true;
+    m_eventLoop.exit();
+}
+
+void KioFtp::ErrorOccurred(const QString &name, const QString &msg)
+{
+    kDebug() << "ERROR ERROR: " << name;
+    kDebug() << "ERROR ERROR: " << msg;
 }

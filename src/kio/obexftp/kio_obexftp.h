@@ -25,6 +25,7 @@
 #include <QtCore/QObject>
 
 #include <kio/slavebase.h>
+#include <QEventLoop>
 
 class KioFtp
     : public QObject
@@ -46,10 +47,16 @@ public:
     virtual void mkdir(const KUrl&url, int permissions);
 
 private Q_SLOTS:
+    void TransferProgress(qulonglong transfered);
+    void TransferCompleted();
+    void ErrorOccurred(const QString&, const QString&);
+
     void listDirCallback(const KIO::UDSEntry& entry, const KUrl& url);
     void statCallback(const KIO::UDSEntry &entry, const KUrl& url);
 
 private:
+    QEventLoop m_eventLoop;
+
     class Private;
     Private *const d;
 };
