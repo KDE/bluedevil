@@ -28,6 +28,6 @@ Notes:
     <comment>Audio</comment>
   </mime-type>
   <mime-type type="virtual/bluedevil-sendfile">
-      <comment>Service</comment>
+      <comment>Send File</comment>
   </mime-type>
 </mime-info>
