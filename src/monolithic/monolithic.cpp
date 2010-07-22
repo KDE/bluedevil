@@ -21,7 +21,6 @@
 #include <kprocess.h>
 #include <klocalizedstring.h>
 
-#include <QDebug>
 #include <bluedevil/bluedevil.h>
 
 using namespace BlueDevil;
@@ -56,10 +55,47 @@ void Monolithic::adapterAdded()
     }
 }
 
+quint32 sortHelper(quint32 type)
+{
+    switch (type) {
+        case BLUETOOTH_TYPE_ANY:
+            return 100;
+        case BLUETOOTH_TYPE_PHONE:
+            return 0;
+        case BLUETOOTH_TYPE_MODEM:
+            return 99;
+        case BLUETOOTH_TYPE_COMPUTER:
+            return 1;
+        case BLUETOOTH_TYPE_NETWORK:
+            return 98;
+        case BLUETOOTH_TYPE_HEADSET:
+            return 2;
+        case BLUETOOTH_TYPE_HEADPHONES:
+            return 3;
+        case BLUETOOTH_TYPE_OTHER_AUDIO:
+            return 4;
+        case BLUETOOTH_TYPE_KEYBOARD:
+            return 5;
+        case BLUETOOTH_TYPE_MOUSE:
+            return 6;
+        case BLUETOOTH_TYPE_CAMERA:
+            return 7;
+        case BLUETOOTH_TYPE_PRINTER:
+            return 8;
+        case BLUETOOTH_TYPE_JOYPAD:
+            return 9;
+        case BLUETOOTH_TYPE_TABLET:
+            return 10;
+        default:
+            break;
+    }
+    return 1000;
+}
+
 bool sortDevices(Device *device1, Device *device2)
 {
-    quint32 type1 = classToType(device1->deviceClass());
-    quint32 type2 = classToType(device2->deviceClass());
+    quint32 type1 = sortHelper(classToType(device1->deviceClass()));
+    quint32 type2 = sortHelper(classToType(device2->deviceClass()));
     if (type1 != type2) {
         return type1 < type2;
     }
@@ -91,12 +127,38 @@ void Monolithic::regenerateDeviceEntries()
             _device = new KAction(device->name(), menu);
         }
         KMenu *const _submenu = new KMenu;
-        KAction *_browse = new KAction(i18n("Browse device..."), _device);
-        KAction *_send = new KAction(i18n("Send files..."), _device);
-        _submenu->addAction(_browse);
-        _submenu->addAction(_send);
+        bool hasSupportedServices = false;
+        QStringList UUIDs = device->UUIDs();
+        if (UUIDs.contains("00001106-0000-1000-8000-00805f9b34fb"))  {
+            KAction *_browse = new KAction(i18n("Browse device..."), _device);
+            _submenu->addAction(_browse);
+            hasSupportedServices = true;
+        }
+        if (UUIDs.contains("00001105-0000-1000-8000-00805f9b34fb")) {
+            KAction *_send = new KAction(i18n("Send files..."), _device);
+            _submenu->addAction(_send);
+            hasSupportedServices = true;
+        }
+        if (UUIDs.contains("00001124-0000-1000-8000-00805f9b34fb")) {
+            KAction *_connect = new KAction(i18n("Connect"), _device);
+            _submenu->addTitle("Input Service");
+            _submenu->addAction(_connect);
+            hasSupportedServices = true;
+        }
+        if (UUIDs.contains("00001108-0000-1000-8000-00805f9b34fb")) {
+            KAction *_connect = new KAction(i18n("Connect"), _device);
+            _submenu->addTitle("Headset Service");
+            _submenu->addAction(_connect);
+            hasSupportedServices = true;
+        }
+        if (hasSupportedServices) {
+            _device->setData(QVariant::fromValue<Device*>(device));
+        } else {
+            KAction *_unknown = new KAction(i18n("Not supported services found"), _device);
+            _unknown->setEnabled(false);
+            _submenu->addAction(_unknown);
+        }
         _device->setMenu(_submenu);
-        _device->setData(QVariant::fromValue<Device*>(device));
         menu->addAction(_device);
         lastDevice = device;
     }
@@ -108,25 +170,27 @@ void Monolithic::onlineMode()
 
     KMenu *menu = contextMenu();
 
-    KAction *addDevice = new KAction(KIcon("edit-find-project"), i18n("Add Device"), menu);
-    connect(addDevice, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(addDevice()));
-    menu->addAction(addDevice);
-
-    KAction *configReceive = new KAction(KIcon("folder-tar"),i18n("Receive files"), menu);
+    KAction *configReceive = new KAction(KIcon("folder-tar"),i18n("Receive files configuration"), menu);
     connect(configReceive, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(configReceive()));
     menu->addAction(configReceive);
 
-    KAction *deviceManager = new KAction(KIcon("input-mouse"), i18n("Manage Devices"), menu);
+    KAction *deviceManager = new KAction(KIcon("input-mouse"), i18n("Manage devices"), menu);
     connect(deviceManager, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(deviceManager()));
     menu->addAction(deviceManager);
 
-    KAction *configAdapter = new KAction(KIcon("audio-card"), i18n("Configure Adapters"), menu);
+    KAction *configAdapter = new KAction(KIcon("audio-card"), i18n("Configure adapters"), menu);
     connect(configAdapter, SIGNAL(triggered(bool)), this, SLOT(configAdapter()));
     menu->addAction(configAdapter);
 
     menu->addTitle(i18n("Known Devices"));
 
     regenerateDeviceEntries();
+
+    menu->addSeparator();
+
+    KAction *addDevice = new KAction(KIcon("edit-find-project"), i18n("Add Device"), menu);
+    connect(addDevice, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(addDevice()));
+    menu->addAction(addDevice);
 
     setContextMenu(menu);
     setStandardActionsEnabled(true);
