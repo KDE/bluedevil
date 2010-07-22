@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2010 Alejandro Fiestas Olivares  <alex@ufocoders.com>
+    Copyright (C) 2010 UFO Coders <info@ufocoders.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,36 +16,46 @@
 */
 
 
-#ifndef MONOLITIC_H
-#define MONOLITIC_H
+#ifndef SENDFILEWIZARD_H
+#define SENDFILEWIZARD_H
 
-#include <kstatusnotifieritem.h>
+#include <QObject>
+#include <QWizard>
+#include "discoverwidget.h"
 
+class WizardAgent;
+class KFileWidget;
+class ObexAgent;
+class SendFilesJob;
 namespace BlueDevil {
-    class Adapter;
+    class Device;
 }
 using namespace BlueDevil;
 
-class Monolitic : public KStatusNotifierItem
+class SendFileWizard : public QWizard
 {
-
 Q_OBJECT
+
 public:
-    Monolitic(QObject* parent = 0);
+    SendFileWizard();
+    virtual ~SendFileWizard();
 
-public Q_SLOTS:
-    void noAdapters(Adapter *adapter);
-    void adapterAdded();
+    void setFileWidget(KFileWidget *);
+    KFileWidget * fileWidget();
 
-    void sendFile();
-    void addDevice();
-    void configReceive();
-    void deviceManager();
-    void configAdapter();
+    void setDevice(Device *device);
+    Device* device();
+
+    void startTransfer();
+
+private Q_SLOTS:
+    void wizardDone();
 
 private:
-    void onlineMode();
-    void offlineMode();
+    KFileWidget *m_fileWidget;
+    Device      *m_device;
+    ObexAgent   *m_agent;
+    SendFilesJob   *m_job;
 };
 
-#endif // MONOLITIC_H
+#endif // SENDFILEWIZARD_H

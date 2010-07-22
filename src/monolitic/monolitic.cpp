@@ -61,6 +61,10 @@ void Monolitic::onlineMode()
 
     KMenu *menu = contextMenu();
 
+    KAction *sendFile = new KAction(KIcon("edit-find-project"), i18n("Send File"), menu);
+    connect(sendFile, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(sendFile()));
+    menu->addAction(sendFile);
+
     KAction *addDevice = new KAction(KIcon("edit-find-project"), i18n("Add Device"), menu);
     connect(addDevice, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(addDevice()));
     menu->addAction(addDevice);
@@ -79,6 +83,13 @@ void Monolitic::onlineMode()
 
     setContextMenu(menu);
     setStandardActionsEnabled(true);
+}
+
+void Monolitic::sendFile()
+{
+    KProcess process;
+    process.setProgram("bluedevil-sendfile");
+    process.startDetached();
 }
 
 void Monolitic::addDevice()
