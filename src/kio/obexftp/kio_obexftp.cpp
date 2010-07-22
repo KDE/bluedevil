@@ -124,14 +124,11 @@ void KioFtp::Private::changeDirectory(const KUrl& url)
     Q_FOREACH(const QString &dir, list) {
         if (dir != m_address) {
             kDebug(200000) << "Changing to: " << dir;
-           QDBusPendingReply <void > a = m_session->ChangeCurrentFolder(dir);
-           a.waitForFinished();
-           kDebug(200000)  << "Change Error: " << a.error().message();
+            QDBusPendingReply <void > a = m_session->ChangeCurrentFolder(dir);
+            a.waitForFinished();
+            kDebug(200000)  << "Change Error: " << a.error().message();
         } else {
             kDebug(200000) << "Skyping" << dir;
-//            QDBusPendingReply <void > a = m_session->ChangeCurrentFolder("/");
-//            a.waitForFinished();
-//            kDebug(200000)  << "Change Error: " << a.error().message();
         }
     }
 }
