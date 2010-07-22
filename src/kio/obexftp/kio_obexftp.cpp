@@ -217,10 +217,12 @@ void KioFtp::stat(const KUrl &url)
         entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
         entry.insert( KIO::UDSEntry::UDS_MIME_TYPE, QString::fromLatin1( "inode/directory" ) );
         statEntry(entry);
+
     } else {
         if (d->m_statMap.contains(url.url())) {
             kDebug(200000) << "statMap contains the url";
             statEntry(d->m_statMap[url.url()]);
+
         } else {
             kDebug(200000) << "statMap NOT contains the url";
             d->changeDirectory(url.directory());
@@ -270,12 +272,11 @@ int KioFtp::processXmlEntries(const KUrl& url, const QString& xml, const char* s
         }
 
         entry.insert(KIO::UDSEntry::UDS_CREATION_TIME, attr.value("created").toString());
-        //Access?
-        KUrl _url(url);
-        QString pathToAdd = _url.url();
+
+        QString pathToAdd = url.url();
         pathToAdd.append(attr.value("name").toString());
 
-        kDebug(200000) << "Adding surl to map: " << _url.url();
+        kDebug(200000) << "Adding surl to map: " << pathToAdd();
         d->m_statMap[pathToAdd] = entry;
 
         QMetaObject::invokeMethod(this, slot, Q_ARG(KIO::UDSEntry, entry), Q_ARG(KUrl, url));
