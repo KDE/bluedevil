@@ -75,6 +75,7 @@ public:
         QString name;
         QString icon;
         QString mimetype;
+        QString uuid;
     };
 
     /**
@@ -212,6 +213,7 @@ KioBluetoothPrivate::KioBluetoothPrivate(KioBluetooth *parent)
     s.name = i18n("Send File");
     s.icon = "edit-copy";
     s.mimetype = "virtual/bluedevil-sendfile";
+    s.uuid = "00001105-0000-1000-8000-00805f9b34fb";
     supportedServices.insert("00001105-0000-1000-8000-00805f9b34fb", s);
     s.name = i18n("Browse Files");
     s.icon = "edit-find";
@@ -270,8 +272,8 @@ void KioBluetoothPrivate::listRemoteDeviceServices()
     Q_FOREACH (const Service &service, currentHostServices) {
         QString url = urlForRemoteService(currentHostname.replace(':', '-'), service.name);
         KIO::UDSEntry entry;
-        entry.insert(KIO::UDSEntry::UDS_NAME, service.name);
-        entry.insert(KIO::UDSEntry::UDS_URL, url);
+        entry.insert(KIO::UDSEntry::UDS_NAME, service.uuid);
+        entry.insert(KIO::UDSEntry::UDS_DISPLAY_NAME, service.name);
         entry.insert(KIO::UDSEntry::UDS_ICON_NAME, service.icon);
         entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
         entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRWXU | S_IRWXG | S_IRWXO);
@@ -393,7 +395,7 @@ void KioBluetooth::stat(const KUrl &url)
 
 void KioBluetooth::get(const KUrl &url)
 {
-    mimeType("virtual/bluedevil-headset");
+    mimeType(d->supportedServices.value(url.fileName()).mimetype);
     finished();
 }
 
