@@ -215,6 +215,7 @@ KioBluetoothPrivate::KioBluetoothPrivate(KioBluetooth *parent)
     supportedServices.insert("00001105-0000-1000-8000-00805f9b34fb", s);
     s.name = i18n("Browse Files");
     s.icon = "edit-find";
+    s.mimetype = "";
     s.uuid = "00001106-0000-1000-8000-00805f9b34fb";
     supportedServices.insert("00001106-0000-1000-8000-00805f9b34fb", s);
     s.name = i18n("Human Interface Device");
@@ -268,8 +269,16 @@ void KioBluetoothPrivate::listRemoteDeviceServices()
         entry.insert(KIO::UDSEntry::UDS_NAME, service.uuid);
         entry.insert(KIO::UDSEntry::UDS_DISPLAY_NAME, service.name);
         entry.insert(KIO::UDSEntry::UDS_ICON_NAME, service.icon);
-        entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
-        entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRWXU | S_IRWXG | S_IRWXO);
+
+        //If it is browse files, act as a folder
+        if (service.uuid == "00001106-0000-1000-8000-00805f9b34fb") {
+            entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+            entry.insert(KIO::UDSEntry::UDS_URL, "obexftp:/A8-7E-33-5D-6F-4E/");
+        } else {
+            entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
+            entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRWXU | S_IRWXG | S_IRWXO);
+        }
+
         if (service.mimetype.isEmpty()) {
             entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, "inode/x-vnd.kde.bluedevil.service");
         } else {
