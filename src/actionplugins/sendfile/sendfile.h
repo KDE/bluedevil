@@ -20,11 +20,11 @@
 #include "../actionplugin.h"
 #include <QDBusVariant>
 
-class SendFiletPlugin : public ActionPlugin
+class SendFilePlugin : public ActionPlugin
 {
     Q_OBJECT
     Q_INTERFACES(ActionPlugin)
     public:
-        SendFiletPlugin(QObject* parent, const QVariantList& args);
+        SendFilePlugin(QObject* parent, const QVariantList& args);
         virtual void startAction();
 };

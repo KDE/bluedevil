@@ -29,15 +29,15 @@
 
 #include <bluedevil/bluedevildevice.h>
 
-BLUEDEVILACTION_PLUGIN_EXPORT(SendFiletPlugin)
+BLUEDEVILACTION_PLUGIN_EXPORT(SendFilePlugin)
 
-SendFiletPlugin::SendFiletPlugin(QObject* parent, const QVariantList& args)
+SendFilePlugin::SendFilePlugin(QObject* parent, const QVariantList& args)
     : ActionPlugin(parent)
 {
     Q_UNUSED(args);
 }
 
-void SendFiletPlugin::startAction()
+void SendFilePlugin::startAction()
 {
 //     OrgBluezInputInterface *interface = new OrgBluezInputInterface("org.bluez", device()->UBI(), QDBusConnection::systemBus());
 //     connect(interface, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
