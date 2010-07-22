@@ -17,8 +17,8 @@
 */
 
 
-#ifndef MONOLITIC_H
-#define MONOLITIC_H
+#ifndef MONOLITHIC_H
+#define MONOLITHIC_H
 
 #include <kstatusnotifieritem.h>
 
@@ -63,4 +63,4 @@ private:
     void offlineMode();
 };
 
-#endif // MONOLITIC_H
+#endif // MONOLITHIC_H
