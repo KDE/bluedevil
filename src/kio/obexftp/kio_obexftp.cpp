@@ -55,6 +55,9 @@ extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
 KioFtp::KioFtp(const QByteArray &pool, const QByteArray &app)
     : SlaveBase("obexftp", pool, app), m_manager(0), m_session(0)
 {
+    m_timer = new QTimer();
+    m_timer->setInterval(100);
+    connect(m_timer, SIGNAL(timeout()), this, SLOT(updateProcess()));
 }
 
 KioFtp::~KioFtp()
@@ -69,6 +72,7 @@ void KioFtp::createSession(const KUrl &address)
 {
     infoMessage(i18n("Connecting to the remote device..."));
 
+    launchProgressBar();
     m_address = address.path().mid(1, 17);
     kDebug() << "Got address: " << m_address;
 
@@ -109,6 +113,24 @@ void KioFtp::changeDirectory(const KUrl& url)
         }
     }
 }
+
+void KioFtp::launchProgressBar()
+{
+    totalSize(50);
+    m_counter = 0;
+    m_timer->start();
+}
+
+void KioFtp::updateProcess()
+{
+    if (m_counter == 49) {
+        m_timer->stop();
+        return;
+    }
+    processedSize(m_counter);
+    m_counter++;
+}
+
 
 void KioFtp::listDir(const KUrl &url)
 {

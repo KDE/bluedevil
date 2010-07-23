@@ -61,14 +61,18 @@ private Q_SLOTS:
     void listDirCallback(const KIO::UDSEntry& entry, const KUrl& url);
     void statCallback(const KIO::UDSEntry &entry, const KUrl& url);
 
+    void updateProcess();
 private:
     void createSession(const KUrl &address);
     void changeDirectory(const KUrl& url);
+    void launchProgressBar();
 
 private:
+    int                          m_counter;
     QEventLoop                   m_eventLoop;
     QMap<QString, KIO::UDSEntry> m_statMap;
     QString                      m_address;
+    QTimer                      *m_timer;
     org::openobex::Manager      *m_manager;
     org::openobex::Session      *m_session;
 };
