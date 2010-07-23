@@ -266,6 +266,7 @@ void KioBluetoothPrivate::listRemoteDeviceServices()
     currentHost = adapter->deviceForAddress(currentHostname.replace('-', ':').toUpper());
     currentHostServices = getSupportedServices(currentHost->UUIDs());
 
+    kDebug() << "Num of supported services: " << currentHostServices.size();
     q->totalSize(currentHostServices.count());
     int i = 1;
     Q_FOREACH (const Service &service, currentHostServices) {
