@@ -324,13 +324,13 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     connect(m_systemCheck, SIGNAL(updateInformationStateRequest()),
             this, SLOT(updateInformationState()));
 
-    m_isEnabled = m_systemCheck->checkKDEDModuleLoaded();
-
     QVBoxLayout *layout = new QVBoxLayout;
     layout->addWidget(m_enable);
 
     m_enable->setObjectName(QString::fromUtf8("kcfg_enableGlobalBluetooth"));
     addConfig(GlobalSettings::self(), this);
+
+    m_isEnabled = m_enable->isChecked();
 
     m_systemCheck->createWarnings(layout);
 
@@ -410,7 +410,7 @@ void KCMBlueDevilDevices::save()
         m_systemCheck->kded()->setModuleAutoloading("bluedevil", false);
         m_systemCheck->kded()->unloadModule("bluedevil");
     }
-    m_isEnabled = m_systemCheck->checkKDEDModuleLoaded();
+    m_isEnabled = m_enable->isChecked();
     updateInformationState();
 }
 
@@ -613,13 +613,12 @@ void KCMBlueDevilDevices::updateInformationState()
 
     m_addDevice->setEnabled(false);
     m_devices->setEnabled(false);
-    if (!m_isEnabled) {
-        m_addDevice->setEnabled(false);
-        return;
-    }
-    BlueDevil::Adapter *const defaultAdapter = BlueDevil::Manager::self()->defaultAdapter();
-    if (defaultAdapter && defaultAdapter->isDiscoverable() && m_systemCheck->checkNotificationsOK()) {
-        m_addDevice->setEnabled(true);
-        m_devices->setEnabled(true);
+
+    if (m_isEnabled) {
+        BlueDevil::Adapter *const defaultAdapter = BlueDevil::Manager::self()->defaultAdapter();
+        if (defaultAdapter) {
+            m_addDevice->setEnabled(true);
+            m_devices->setEnabled(true);
+        }
     }
 }
