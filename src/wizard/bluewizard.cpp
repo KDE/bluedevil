@@ -60,7 +60,7 @@ BlueWizard::BlueWizard(const KUrl &url) : QWizard(), m_service(0), m_manualPin(f
     //First show, then do the rest
     show();
 
-    if(!QDBusConnection::systemBus().registerObject("/wizardAgent", qApp)) {
+    if(!QDBusConnection::sessionBus().registerObject("/wizardAgent", qApp)) {
         qDebug() << "The dbus object can't be registered";
     }
 
