@@ -38,6 +38,12 @@ Q_OBJECT
 public:
     Monolithic(QObject* parent = 0);
 
+    struct EntryInfo {
+        Device *device;
+        QString service;
+        void   *dbusService;
+    };
+
 public Q_SLOTS:
     void noAdapters(Adapter *adapter);
     void adapterAdded();
@@ -55,10 +61,16 @@ private Q_SLOTS:
     void sendTriggered();
     void connectTriggered();
     void disconnectTriggered();
+    void propertyChanged(const QString &key, const QDBusVariant &value);
 
 private:
     void onlineMode();
     void offlineMode();
+
+private:
+    QMap<void*, KAction*> m_interfaceMap;
 };
+
+Q_DECLARE_METATYPE(Monolithic::EntryInfo)
 
 #endif // MONOLITHIC_H

@@ -136,23 +136,32 @@ void Monolithic::generateDeviceEntries()
         KMenu *const _submenu = new KMenu;
         bool hasSupportedServices = false;
         QStringList UUIDs = device->UUIDs();
+        EntryInfo info;
+        info.device = device;
         if (UUIDs.contains("00001106-0000-1000-8000-00805f9b34fb"))  {
             KAction *_browse = new KAction(i18n("Browse device..."), _device);
-            _browse->setData(QVariant::fromValue<Device*>(device));
+            info.service = "00001106-0000-1000-8000-00805f9b34fb";
+            _browse->setData(QVariant::fromValue<EntryInfo>(info));
             _submenu->addAction(_browse);
             connect(_browse, SIGNAL(triggered()), this, SLOT(browseTriggered()));
             hasSupportedServices = true;
         }
         if (UUIDs.contains("00001105-0000-1000-8000-00805f9b34fb")) {
             KAction *_send = new KAction(i18n("Send files..."), _device);
-            _send->setData(QVariant::fromValue<Device*>(device));
+            info.service = "00001105-0000-1000-8000-00805f9b34fb";
+            _send->setData(QVariant::fromValue<EntryInfo>(info));
             _submenu->addAction(_send);
             connect(_send, SIGNAL(triggered()), this, SLOT(sendTriggered()));
             hasSupportedServices = true;
         }
         if (UUIDs.contains("00001124-0000-1000-8000-00805f9b34fb")) {
             KAction *_connect = new KAction(i18n("Connect"), _device);
-            _connect->setData(QVariant::fromValue<Device*>(device));
+            org::bluez::Input *input = new org::bluez::Input("org.bluez", device->UBI(), QDBusConnection::systemBus());
+            connect(input, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
+            m_interfaceMap[input] = _connect;
+            info.service = "00001124-0000-1000-8000-00805f9b34fb";
+            info.dbusService = input;
+            _connect->setData(QVariant::fromValue<EntryInfo>(info));
             _submenu->addTitle("Input Service");
             _submenu->addAction(_connect);
             connect(_connect, SIGNAL(triggered()), this, SLOT(connectTriggered()));
@@ -160,7 +169,12 @@ void Monolithic::generateDeviceEntries()
         }
         if (UUIDs.contains("00001108-0000-1000-8000-00805f9b34fb")) {
             KAction *_connect = new KAction(i18n("Connect"), _device);
-            _connect->setData(QVariant::fromValue<Device*>(device));
+            org::bluez::Headset *headset = new org::bluez::Headset("org.bluez", device->UBI(), QDBusConnection::systemBus());
+            connect(headset, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
+            m_interfaceMap[headset] = _connect;
+            info.service = "00001108-0000-1000-8000-00805f9b34fb";
+            info.dbusService = headset;
+            _connect->setData(QVariant::fromValue<EntryInfo>(info));
             _submenu->addTitle("Headset Service");
             _submenu->addAction(_connect);
             connect(_connect, SIGNAL(triggered()), this, SLOT(connectTriggered()));
@@ -248,30 +262,65 @@ void Monolithic::configAdapter()
 void Monolithic::browseTriggered()
 {
     KAction *action = static_cast<KAction*>(sender());
-    Device *device = action->data().value<Device*>();
-    KToolInvocation::kdeinitExec("dolphin", QStringList() << QString("obexftp:/%1/").arg(device->address().replace(':', '-')));
+    EntryInfo entryInfo = action->data().value<EntryInfo>();
+    KToolInvocation::kdeinitExec("dolphin", QStringList() << QString("obexftp:/%1/").arg(entryInfo.device->address().replace(':', '-')));
 }
 
 void Monolithic::sendTriggered()
 {
     KAction *action = static_cast<KAction*>(sender());
-    Device *device = action->data().value<Device*>();
-    KToolInvocation::kdeinitExec("bluedevil-sendfile", QStringList() << QString("bluetooth://%1/").arg(device->address().replace(':', '-').toLower()));
+    EntryInfo entryInfo = action->data().value<EntryInfo>();
+    KToolInvocation::kdeinitExec("bluedevil-sendfile", QStringList() << QString("bluetooth://%1/").arg(entryInfo.device->address().replace(':', '-').toLower()));
 }
 
 void Monolithic::connectTriggered()
 {
     KAction *action = static_cast<KAction*>(sender());
-    Device *device = action->data().value<Device*>();
-    KToolInvocation::kdeinitExec("bluedevil-audio", QStringList() << QString("bluetooth://%1/").arg(device->address().replace(':', '-').toLower()));
-
-    action->setText(i18n("Disconnect"));
+    EntryInfo entryInfo = action->data().value<EntryInfo>();
+    if (entryInfo.service == "00001124-0000-1000-8000-00805f9b34fb") {
+        KProcess p;
+        p.setProgram("bluedevil-input", QStringList() << QString("bluetooth:/%1/").arg(entryInfo.device->address()));
+        p.startDetached();
+    } else if (entryInfo.service == "00001108-0000-1000-8000-00805f9b34fb") {
+        KProcess p;
+        p.setProgram("bluedevil-audio", QStringList() << QString("bluetooth:/%1/").arg(entryInfo.device->address()));
+        p.startDetached();
+    }
 }
 
 void Monolithic::disconnectTriggered()
 {
     KAction *action = static_cast<KAction*>(sender());
-    Device *device = action->data().value<Device*>();
+    EntryInfo entryInfo = action->data().value<EntryInfo>();
+    if (entryInfo.service == "00001124-0000-1000-8000-00805f9b34fb") {
+        org::bluez::Input *input = static_cast<org::bluez::Input*>(entryInfo.dbusService);
+        input->Disconnect();
+    } else if (entryInfo.service == "00001108-0000-1000-8000-00805f9b34fb") {
+        org::bluez::Headset *headset = static_cast<org::bluez::Headset*>(entryInfo.dbusService);
+        headset->Disconnect();
+    }
+}
+
+void Monolithic::propertyChanged(const QString &key, const QDBusVariant &value)
+{
+    KAction *action = m_interfaceMap[static_cast<void*>(sender())];
+    qDebug() << key;
+    if (key == "State") {
+        if (value.variant().toString() == "disconnected") {
+            action->setText(i18n("Connect"));
+            action->setEnabled(true);
+            action->disconnect();
+            connect(action, SIGNAL(triggered()), this, SLOT(connectTriggered()));
+        } else if (value.variant().toString() == "connecting") {
+            action->setText(i18n("Connecting..."));
+            action->setEnabled(false);
+        } else {
+            action->setText(i18n("Disconnect"));
+            action->setEnabled(true);
+            action->disconnect();
+            connect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
+        }
+    }
 }
 
 void Monolithic::offlineMode()
