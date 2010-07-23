@@ -374,6 +374,7 @@ KioBluetooth::~KioBluetooth()
 void KioBluetooth::listDir(const KUrl &url)
 {
     kDebug() << "Listing..." << url;
+
     /// Url is not used here becuase all we could care about the url is the host, and that's already
     /// handled in @p setHost
     Q_UNUSED(url);
@@ -414,6 +415,7 @@ void KioBluetooth::setHost(const QString &constHostname, quint16 port, const QSt
                            const QString &pass)
 {
     kDebug() << "Setting host: " << constHostname;
+
     // In this kio only the hostname (constHostname) is used
     Q_UNUSED(port)
     Q_UNUSED(user)
