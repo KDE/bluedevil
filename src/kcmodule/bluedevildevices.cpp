@@ -247,61 +247,56 @@ void BluetoothDevicesDelegate::paint(QPainter *painter, const QStyleOptionViewIt
         painter->setPen(option.palette.highlightedText().color());
     }
 
-    // Draw icon
-    {
-        const QModelIndex iconIndex = index.model()->index(index.row(), 0);
-        const QPixmap icon = iconIndex.data(BluetoothDevicesModel::IconModelRole).value<QPixmap>();
-        painter->drawPixmap(option.rect.left() + 5, option.rect.top() + 5, icon);
+// Draw icon
+    const QModelIndex iconIndex = index.model()->index(index.row(), 0);
+    const QPixmap icon = iconIndex.data(BluetoothDevicesModel::IconModelRole).value<QPixmap>();
+    painter->drawPixmap(option.rect.left() + 5, option.rect.top() + 5, icon);
+
+// Draw alias and device type
+    const QModelIndex idx = index.model()->index(index.row(), 0);
+    QRect r = option.rect;
+    r.setTop(r.top() + 10);
+    r.setBottom(r.bottom() - 10);
+    r.setLeft(r.left() + KIconLoader::SizeLarge + 10);
+    QFont f = kapp->font();
+    f.setBold(true);
+    painter->save();
+    painter->setFont(f);
+    const QString name = idx.data(BluetoothDevicesModel::NameModelRole).toString();
+    const QString alias = idx.data(BluetoothDevicesModel::AliasModelRole).toString();
+    if (name == alias) {
+        painter->drawText(r, Qt::AlignLeft | Qt::AlignTop, name);
+    } else {
+        painter->drawText(r, Qt::AlignLeft | Qt::AlignTop, QString("%1 (%2)").arg(alias).arg(name));
+    }
+    painter->restore();
+    painter->drawText(r, Qt::AlignLeft | Qt::AlignBottom, idx.data(BluetoothDevicesModel::DeviceTypeModelRole).toString());
+
+// Draw state
+    Device *const device = static_cast<Device*>(index.data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
+
+    r = option.rect;
+    r.setTop(r.top() + r.height() / 2 - 11);
+    r.setLeft(r.right() - 5 - 22);
+    r.setSize(QSize(22, 22));
+
+
+    if (device->isConnected()) {
+        painter->drawPixmap(r, m_connectedPixmap);
+    } else {
+        painter->drawPixmap(r, m_disconnectedPixmap);
     }
 
-    // Draw alias and device type
-    {
-        const QModelIndex idx = index.model()->index(index.row(), 0);
-        QRect r = option.rect;
-        r.setTop(r.top() + 10);
-        r.setBottom(r.bottom() - 10);
-        r.setLeft(r.left() + KIconLoader::SizeLarge + 10);
-        QFont f = kapp->font();
-        f.setBold(true);
-        painter->save();
-        painter->setFont(f);
-        const QString name = idx.data(BluetoothDevicesModel::NameModelRole).toString();
-        const QString alias = idx.data(BluetoothDevicesModel::AliasModelRole).toString();
-        if (name == alias) {
-            painter->drawText(r, Qt::AlignLeft | Qt::AlignTop, name);
-        } else {
-            painter->drawText(r, Qt::AlignLeft | Qt::AlignTop, QString("%1 (%2)").arg(alias).arg(name));
-        }
-        painter->restore();
-        painter->drawText(r, Qt::AlignLeft | Qt::AlignBottom, idx.data(BluetoothDevicesModel::DeviceTypeModelRole).toString());
+    r.setLeft(r.right() - 5 - 22 - 22);
+    r.setSize(QSize(22, 22));
+
+    if (device->isTrusted()) {
+        painter->drawPixmap(r, m_trustedPixmap);
+    } else {
+        painter->drawPixmap(r, m_untrustedPixmap);
     }
 
-    // Draw state
-    {
-        Device *const device = static_cast<Device*>(index.data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
-
-        QRect r = option.rect;
-        r.setTop(r.top() + r.height() / 2 - 11);
-        r.setLeft(r.right() - 5 - 22);
-        r.setSize(QSize(22, 22));
-
-
-        if (device->isConnected()) {
-            painter->drawPixmap(r, m_connectedPixmap);
-        } else {
-            painter->drawPixmap(r, m_disconnectedPixmap);
-        }
-
-        r.setLeft(r.right() - 5 - 22 - 22);
-        r.setSize(QSize(22, 22));
-
-        if (device->isTrusted()) {
-            painter->drawPixmap(r, m_trustedPixmap);
-        } else {
-            painter->drawPixmap(r, m_untrustedPixmap);
-        }
-    }
-
+//restore
     painter->restore();
 }
 
