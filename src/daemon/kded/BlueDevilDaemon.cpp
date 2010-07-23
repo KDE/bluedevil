@@ -32,6 +32,7 @@
 
 #include <bluedevil/bluedevilmanager.h>
 #include <bluedevil/bluedeviladapter.h>
+#include <kprocess.h>
 
 K_PLUGIN_FACTORY(BlueDevilFactory,
                  registerPlugin<BlueDevilDaemon>();)
@@ -82,11 +83,21 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     if (BlueDevil::Manager::self()->defaultAdapter()) {
         onlineMode();
     }
+
+    KProcess process;
+    process.startDetached("bluedevil-monolithic");
 }
 
 BlueDevilDaemon::~BlueDevilDaemon()
 {
     offlineMode();
+    QDBusMessage msg = QDBusMessage::createMethodCall(
+        "org.kde.bluedevil-monolithic",
+        "/MainApplication",
+        "org.kde.KApplication",
+        "quit"
+    );
+    QDBusConnection::sessionBus().asyncCall(msg);
     delete d;
 }
 
