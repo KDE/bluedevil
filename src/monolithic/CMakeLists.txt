@@ -3,7 +3,7 @@ set(monolithic_SRCS
     monolithic.cpp
 )
 
-qt4_add_dbus_interface(monolithic_SRCS org.bluez.Audio.xml audio_interface)
+qt4_add_dbus_interface(monolithic_SRCS org.bluez.Headset.xml headset_interface)
 qt4_add_dbus_interface(monolithic_SRCS org.bluez.Input.xml input_interface)
 
 kde4_add_executable(bluedevil-monolithic ${monolithic_SRCS})
