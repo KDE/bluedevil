@@ -284,7 +284,9 @@ void KioBluetoothPrivate::listRemoteDeviceServices()
             entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRWXU | S_IRWXG | S_IRWXO);
         }
 
-        if (!service.mimetype.isEmpty()) {
+        if (service.mimetype.isEmpty()) {
+            entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, "inode/x-vnd.kde.bluedevil.service");
+        } else {
             entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, service.mimetype);
         }
         q->listEntry(entry, false);
@@ -340,6 +342,7 @@ void KioBluetoothPrivate::listDevice(Device *device)
     entry.insert(KIO::UDSEntry::UDS_ICON_NAME, device->icon());
     entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
     entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRUSR | S_IRGRP | S_IROTH);
+    entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, "inode/x-vnd.kde.bluedevil.device");
     q->listEntry(entry, false);
 }
 //@endcond

@@ -19,6 +19,7 @@ Notes:
     <comment>Bluetooth Device</comment>
   </mime-type>
   <mime-type type="inode/x-vnd.kde.bluedevil.service">
+    <sub-class-of type="inode/directory"/>
     <generic-icon name="preferences-system-bluetooth"/>
     <comment>Service</comment>
   </mime-type>
