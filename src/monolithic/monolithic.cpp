@@ -138,28 +138,28 @@ void Monolithic::generateDeviceEntries()
         QStringList UUIDs = device->UUIDs();
         EntryInfo info;
         info.device = device;
-        if (UUIDs.contains("00001106-0000-1000-8000-00805f9b34fb"))  {
+        if (UUIDs.contains("00001106-0000-1000-8000-00805F9B34FB"))  {
             KAction *_browse = new KAction(i18n("Browse device..."), _device);
-            info.service = "00001106-0000-1000-8000-00805f9b34fb";
+            info.service = "00001106-0000-1000-8000-00805F9B34FB";
             _browse->setData(QVariant::fromValue<EntryInfo>(info));
             _submenu->addAction(_browse);
             connect(_browse, SIGNAL(triggered()), this, SLOT(browseTriggered()));
             hasSupportedServices = true;
         }
-        if (UUIDs.contains("00001105-0000-1000-8000-00805f9b34fb")) {
+        if (UUIDs.contains("00001105-0000-1000-8000-00805F9B34FB")) {
             KAction *_send = new KAction(i18n("Send files..."), _device);
-            info.service = "00001105-0000-1000-8000-00805f9b34fb";
+            info.service = "00001105-0000-1000-8000-00805F9B34FB";
             _send->setData(QVariant::fromValue<EntryInfo>(info));
             _submenu->addAction(_send);
             connect(_send, SIGNAL(triggered()), this, SLOT(sendTriggered()));
             hasSupportedServices = true;
         }
-        if (UUIDs.contains("00001124-0000-1000-8000-00805f9b34fb")) {
+        if (UUIDs.contains("00001124-0000-1000-8000-00805F9B34FB")) {
             KAction *_connect = new KAction(i18n("Connect"), _device);
             org::bluez::Input *input = new org::bluez::Input("org.bluez", device->UBI(), QDBusConnection::systemBus());
             connect(input, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
             m_interfaceMap[input] = _connect;
-            info.service = "00001124-0000-1000-8000-00805f9b34fb";
+            info.service = "00001124-0000-1000-8000-00805F9B34FB";
             info.dbusService = input;
             _connect->setData(QVariant::fromValue<EntryInfo>(info));
             _submenu->addTitle("Input Service");
@@ -167,12 +167,12 @@ void Monolithic::generateDeviceEntries()
             connect(_connect, SIGNAL(triggered()), this, SLOT(connectTriggered()));
             hasSupportedServices = true;
         }
-        if (UUIDs.contains("00001108-0000-1000-8000-00805f9b34fb")) {
+        if (UUIDs.contains("00001108-0000-1000-8000-00805F9B34FB")) {
             KAction *_connect = new KAction(i18n("Connect"), _device);
             org::bluez::Headset *headset = new org::bluez::Headset("org.bluez", device->UBI(), QDBusConnection::systemBus());
             connect(headset, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
             m_interfaceMap[headset] = _connect;
-            info.service = "00001108-0000-1000-8000-00805f9b34fb";
+            info.service = "00001108-0000-1000-8000-00805F9B34FB";
             info.dbusService = headset;
             _connect->setData(QVariant::fromValue<EntryInfo>(info));
             _submenu->addTitle("Headset Service");
@@ -183,7 +183,7 @@ void Monolithic::generateDeviceEntries()
         if (hasSupportedServices) {
             _device->setData(QVariant::fromValue<Device*>(device));
         } else {
-            KAction *_unknown = new KAction(i18n("Not supported services found"), _device);
+            KAction *_unknown = new KAction(i18n("No supported services found"), _device);
             _unknown->setEnabled(false);
             _submenu->addAction(_unknown);
         }
@@ -277,11 +277,11 @@ void Monolithic::connectTriggered()
 {
     KAction *action = static_cast<KAction*>(sender());
     EntryInfo entryInfo = action->data().value<EntryInfo>();
-    if (entryInfo.service == "00001124-0000-1000-8000-00805f9b34fb") {
+    if (entryInfo.service == "00001124-0000-1000-8000-00805F9B34FB") {
         KProcess p;
         p.setProgram("bluedevil-input", QStringList() << QString("bluetooth://%1/").arg(entryInfo.device->address()));
         p.startDetached();
-    } else if (entryInfo.service == "00001108-0000-1000-8000-00805f9b34fb") {
+    } else if (entryInfo.service == "00001108-0000-1000-8000-00805F9B34FB") {
         KProcess p;
         p.setProgram("bluedevil-audio", QStringList() << QString("bluetooth://%1/").arg(entryInfo.device->address()));
         p.startDetached();
@@ -292,10 +292,10 @@ void Monolithic::disconnectTriggered()
 {
     KAction *action = static_cast<KAction*>(sender());
     EntryInfo entryInfo = action->data().value<EntryInfo>();
-    if (entryInfo.service == "00001124-0000-1000-8000-00805f9b34fb") {
+    if (entryInfo.service == "00001124-0000-1000-8000-00805F9B34FB") {
         org::bluez::Input *input = static_cast<org::bluez::Input*>(entryInfo.dbusService);
         input->Disconnect();
-    } else if (entryInfo.service == "00001108-0000-1000-8000-00805f9b34fb") {
+    } else if (entryInfo.service == "00001108-0000-1000-8000-00805F9B34FB") {
         org::bluez::Headset *headset = static_cast<org::bluez::Headset*>(entryInfo.dbusService);
         headset->Disconnect();
     }
