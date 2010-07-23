@@ -153,59 +153,59 @@ public:
 KioBluetoothPrivate::KioBluetoothPrivate(KioBluetooth *parent)
   : q(parent)
 {
-    serviceNames.insert("00001000-0000-1000-8000-00805f9b34fb", i18n("Service Discovery Server"));
-    serviceNames.insert("00001001-0000-1000-8000-00805f9b34fb", i18n("Browse Group"));
-    serviceNames.insert("00001002-0000-1000-8000-00805f9b34fb", i18n("Public Browse Group"));
-    serviceNames.insert("00001101-0000-1000-8000-00805f9b34fb", i18n("Serial Port"));
-    serviceNames.insert("00001102-0000-1000-8000-00805f9b34fb", i18n("LAN Access Using PPP"));
-    serviceNames.insert("00001103-0000-1000-8000-00805f9b34fb", i18n("Dial up Networking"));
-    serviceNames.insert("00001104-0000-1000-8000-00805f9b34fb", i18n("Ir MCSync"));
-    serviceNames.insert("00001105-0000-1000-8000-00805f9b34fb", i18n("OBEX Object Push"));
-    serviceNames.insert("00001106-0000-1000-8000-00805f9b34fb", i18n("OBEX File Transfer"));
-    serviceNames.insert("00001107-0000-1000-8000-00805f9b34fb", i18n("Ir MCSync Command"));
-    serviceNames.insert("00001108-0000-1000-8000-00805f9b34fb", i18n("Headset"));
-    serviceNames.insert("00001109-0000-1000-8000-00805f9b34fb", i18n("Cordless Telephony"));
-    serviceNames.insert("0000110a-0000-1000-8000-00805f9b34fb", i18n("Audio Source"));
-    serviceNames.insert("0000110b-0000-1000-8000-00805f9b34fb", i18n("Audio Sink"));
-    serviceNames.insert("0000110c-0000-1000-8000-00805f9b34fb", i18n("AV Remote Control Target"));
-    serviceNames.insert("0000110d-0000-1000-8000-00805f9b34fb", i18n("Advanced Audio Distribution"));
-    serviceNames.insert("0000110e-0000-1000-8000-00805f9b34fb", i18n("AV Remote Control"));
-    serviceNames.insert("0000110f-0000-1000-8000-00805f9b34fb", i18n("Video Conferencing"));
-    serviceNames.insert("00001110-0000-1000-8000-00805f9b34fb", i18n("Intercom"));
-    serviceNames.insert("00001111-0000-1000-8000-00805f9b34fb", i18n("Fax"));
-    serviceNames.insert("00001112-0000-1000-8000-00805f9b34fb", i18n("Headset Audio Gateway"));
-    serviceNames.insert("00001113-0000-1000-8000-00805f9b34fb", i18n("WAP"));
-    serviceNames.insert("00001114-0000-1000-8000-00805f9b34fb", i18n("WAP Client"));
-    serviceNames.insert("00001115-0000-1000-8000-00805f9b34fb", i18n("PANU"));
-    serviceNames.insert("00001116-0000-1000-8000-00805f9b34fb", i18n("NAP"));
-    serviceNames.insert("00001117-0000-1000-8000-00805f9b34fb", i18n("GN"));
-    serviceNames.insert("00001118-0000-1000-8000-00805f9b34fb", i18n("Direct Printing"));
-    serviceNames.insert("00001119-0000-1000-8000-00805f9b34fb", i18n("Reference Printing"));
-    serviceNames.insert("0000111a-0000-1000-8000-00805f9b34fb", i18n("Imaging"));
-    serviceNames.insert("0000111b-0000-1000-8000-00805f9b34fb", i18n("Imaging Responder"));
-    serviceNames.insert("0000111c-0000-1000-8000-00805f9b34fb", i18n("Imaging Automatic Archive"));
-    serviceNames.insert("0000111d-0000-1000-8000-00805f9b34fb", i18n("Imaging Reference Objects"));
-    serviceNames.insert("0000111e-0000-1000-8000-00805f9b34fb", i18n("Hands free"));
-    serviceNames.insert("0000111f-0000-1000-8000-00805f9b34fb", i18n("Hands free Audio Gateway"));
-    serviceNames.insert("00001120-0000-1000-8000-00805f9b34fb", i18n("Direct Printing Reference Objects"));
-    serviceNames.insert("00001121-0000-1000-8000-00805f9b34fb", i18n("Reflected UI"));
-    serviceNames.insert("00001122-0000-1000-8000-00805f9b34fb", i18n("Basic Pringing"));
-    serviceNames.insert("00001123-0000-1000-8000-00805f9b34fb", i18n("Printing Status"));
-    serviceNames.insert("00001124-0000-1000-8000-00805f9b34fb", i18n("Human Interface Device"));
-    serviceNames.insert("00001125-0000-1000-8000-00805f9b34fb", i18n("Hardcopy Cable Replacement"));
-    serviceNames.insert("00001126-0000-1000-8000-00805f9b34fb", i18n("HCR Print"));
-    serviceNames.insert("00001127-0000-1000-8000-00805f9b34fb", i18n("HCR Scan"));
-    serviceNames.insert("00001128-0000-1000-8000-00805f9b34fb", i18n("Common ISDN Access"));
-    serviceNames.insert("00001129-0000-1000-8000-00805f9b34fb", i18n("Video Conferencing GW"));
-    serviceNames.insert("0000112a-0000-1000-8000-00805f9b34fb", i18n("UDIMT"));
-    serviceNames.insert("0000112b-0000-1000-8000-00805f9b34fb", i18n("UDITA"));
-    serviceNames.insert("0000112c-0000-1000-8000-00805f9b34fb", i18n("Audio Video"));
-    serviceNames.insert("0000112d-0000-1000-8000-00805f9b34fb", i18n("SIM Access"));
-    serviceNames.insert("00001200-0000-1000-8000-00805f9b34fb", i18n("PnP Information"));
-    serviceNames.insert("00001201-0000-1000-8000-00805f9b34fb", i18n("Generic Networking"));
-    serviceNames.insert("00001202-0000-1000-8000-00805f9b34fb", i18n("Generic File Transfer"));
-    serviceNames.insert("00001203-0000-1000-8000-00805f9b34fb", i18n("Generic Audio"));
-    serviceNames.insert("00001204-0000-1000-8000-00805f9b34fb", i18n("Generic Telephony"));
+    serviceNames.insert("00001000-0000-1000-8000-00805F9B34FB", i18n("Service Discovery Server"));
+    serviceNames.insert("00001001-0000-1000-8000-00805F9B34FB", i18n("Browse Group"));
+    serviceNames.insert("00001002-0000-1000-8000-00805F9B34FB", i18n("Public Browse Group"));
+    serviceNames.insert("00001101-0000-1000-8000-00805F9B34FB", i18n("Serial Port"));
+    serviceNames.insert("00001102-0000-1000-8000-00805F9B34FB", i18n("LAN Access Using PPP"));
+    serviceNames.insert("00001103-0000-1000-8000-00805F9B34FB", i18n("Dial up Networking"));
+    serviceNames.insert("00001104-0000-1000-8000-00805F9B34FB", i18n("Ir MCSync"));
+    serviceNames.insert("00001105-0000-1000-8000-00805F9B34FB", i18n("OBEX Object Push"));
+    serviceNames.insert("00001106-0000-1000-8000-00805F9B34FB", i18n("OBEX File Transfer"));
+    serviceNames.insert("00001107-0000-1000-8000-00805F9B34FB", i18n("Ir MCSync Command"));
+    serviceNames.insert("00001108-0000-1000-8000-00805F9B34FB", i18n("Headset"));
+    serviceNames.insert("00001109-0000-1000-8000-00805F9B34FB", i18n("Cordless Telephony"));
+    serviceNames.insert("0000110a-0000-1000-8000-00805F9B34FB", i18n("Audio Source"));
+    serviceNames.insert("0000110b-0000-1000-8000-00805F9B34FB", i18n("Audio Sink"));
+    serviceNames.insert("0000110c-0000-1000-8000-00805F9B34FB", i18n("AV Remote Control Target"));
+    serviceNames.insert("0000110d-0000-1000-8000-00805F9B34FB", i18n("Advanced Audio Distribution"));
+    serviceNames.insert("0000110e-0000-1000-8000-00805F9B34FB", i18n("AV Remote Control"));
+    serviceNames.insert("0000110f-0000-1000-8000-00805F9B34FB", i18n("Video Conferencing"));
+    serviceNames.insert("00001110-0000-1000-8000-00805F9B34FB", i18n("Intercom"));
+    serviceNames.insert("00001111-0000-1000-8000-00805F9B34FB", i18n("Fax"));
+    serviceNames.insert("00001112-0000-1000-8000-00805F9B34FB", i18n("Headset Audio Gateway"));
+    serviceNames.insert("00001113-0000-1000-8000-00805F9B34FB", i18n("WAP"));
+    serviceNames.insert("00001114-0000-1000-8000-00805F9B34FB", i18n("WAP Client"));
+    serviceNames.insert("00001115-0000-1000-8000-00805F9B34FB", i18n("PANU"));
+    serviceNames.insert("00001116-0000-1000-8000-00805F9B34FB", i18n("NAP"));
+    serviceNames.insert("00001117-0000-1000-8000-00805F9B34FB", i18n("GN"));
+    serviceNames.insert("00001118-0000-1000-8000-00805F9B34FB", i18n("Direct Printing"));
+    serviceNames.insert("00001119-0000-1000-8000-00805F9B34FB", i18n("Reference Printing"));
+    serviceNames.insert("0000111a-0000-1000-8000-00805F9B34FB", i18n("Imaging"));
+    serviceNames.insert("0000111b-0000-1000-8000-00805F9B34FB", i18n("Imaging Responder"));
+    serviceNames.insert("0000111c-0000-1000-8000-00805F9B34FB", i18n("Imaging Automatic Archive"));
+    serviceNames.insert("0000111d-0000-1000-8000-00805F9B34FB", i18n("Imaging Reference Objects"));
+    serviceNames.insert("0000111e-0000-1000-8000-00805F9B34FB", i18n("Hands free"));
+    serviceNames.insert("0000111f-0000-1000-8000-00805F9B34FB", i18n("Hands free Audio Gateway"));
+    serviceNames.insert("00001120-0000-1000-8000-00805F9B34FB", i18n("Direct Printing Reference Objects"));
+    serviceNames.insert("00001121-0000-1000-8000-00805F9B34FB", i18n("Reflected UI"));
+    serviceNames.insert("00001122-0000-1000-8000-00805F9B34FB", i18n("Basic Pringing"));
+    serviceNames.insert("00001123-0000-1000-8000-00805F9B34FB", i18n("Printing Status"));
+    serviceNames.insert("00001124-0000-1000-8000-00805F9B34FB", i18n("Human Interface Device"));
+    serviceNames.insert("00001125-0000-1000-8000-00805F9B34FB", i18n("Hardcopy Cable Replacement"));
+    serviceNames.insert("00001126-0000-1000-8000-00805F9B34FB", i18n("HCR Print"));
+    serviceNames.insert("00001127-0000-1000-8000-00805F9B34FB", i18n("HCR Scan"));
+    serviceNames.insert("00001128-0000-1000-8000-00805F9B34FB", i18n("Common ISDN Access"));
+    serviceNames.insert("00001129-0000-1000-8000-00805F9B34FB", i18n("Video Conferencing GW"));
+    serviceNames.insert("0000112a-0000-1000-8000-00805F9B34FB", i18n("UDIMT"));
+    serviceNames.insert("0000112b-0000-1000-8000-00805F9B34FB", i18n("UDITA"));
+    serviceNames.insert("0000112c-0000-1000-8000-00805F9B34FB", i18n("Audio Video"));
+    serviceNames.insert("0000112d-0000-1000-8000-00805F9B34FB", i18n("SIM Access"));
+    serviceNames.insert("00001200-0000-1000-8000-00805F9B34FB", i18n("PnP Information"));
+    serviceNames.insert("00001201-0000-1000-8000-00805F9B34FB", i18n("Generic Networking"));
+    serviceNames.insert("00001202-0000-1000-8000-00805F9B34FB", i18n("Generic File Transfer"));
+    serviceNames.insert("00001203-0000-1000-8000-00805F9B34FB", i18n("Generic Audio"));
+    serviceNames.insert("00001204-0000-1000-8000-00805F9B34FB", i18n("Generic Telephony"));
 
     Service s;
     s.name = i18n("Send File");
@@ -226,8 +226,8 @@ KioBluetoothPrivate::KioBluetoothPrivate(KioBluetooth *parent)
     s.name = i18n("Headset");
     s.icon = "audio-headset";
     s.mimetype = "virtual/bluedevil-audio";
-    s.uuid = "00001108-0000-1000-8000-00805f9b34fb";
-    supportedServices.insert("00001108-0000-1000-8000-00805f9b34fb", s);
+    s.uuid = "00001108-0000-1000-8000-00805F9B34FB";
+    supportedServices.insert("00001108-0000-1000-8000-00805F9B34FB", s);
 
     kDebug() << "Private instanced";
 }
@@ -266,6 +266,7 @@ void KioBluetoothPrivate::listRemoteDeviceServices()
     currentHost = adapter->deviceForAddress(currentHostname.replace('-', ':').toUpper());
     currentHostServices = getSupportedServices(currentHost->UUIDs());
 
+    kDebug() << "Num of supported services: " << currentHostServices.size();
     q->totalSize(currentHostServices.count());
     int i = 1;
     Q_FOREACH (const Service &service, currentHostServices) {
@@ -275,9 +276,9 @@ void KioBluetoothPrivate::listRemoteDeviceServices()
         entry.insert(KIO::UDSEntry::UDS_ICON_NAME, service.icon);
 
         //If it is browse files, act as a folder
-        if (service.uuid == "00001106-0000-1000-8000-00805f9b34fb") {
+        if (service.uuid == "00001106-0000-1000-8000-00805F9B34FB") {
             entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
-            entry.insert(KIO::UDSEntry::UDS_URL, "obexftp:/A8-7E-33-5D-6F-4E/");
+            entry.insert(KIO::UDSEntry::UDS_URL, "obexftp:/"+currentHostname.replace(':', '-').toUpper());
         } else {
             entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
             entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRWXU | S_IRWXG | S_IRWXO);
@@ -384,10 +385,6 @@ void KioBluetooth::listDir(const KUrl &url)
         listEntry(KIO::UDSEntry(), true);
         finished();
         return;
-    }
-
-    if (!d->hasCurrentHost && url.hasHost()) {
-        setHost(url.host(), -1, QString(), QString());
     }
 
     if (!d->hasCurrentHost) {
