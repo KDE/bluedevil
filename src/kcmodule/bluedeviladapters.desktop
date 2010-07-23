@@ -2,7 +2,7 @@
 Exec=kcmshell4 bluedeviladapters
 Icon=audio-card
 Type=Service
-NoDisplay=true
+
 X-KDE-ServiceTypes=KCModule
 
 X-KDE-Library=kcm_bluedeviladapters

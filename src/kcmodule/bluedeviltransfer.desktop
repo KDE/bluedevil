@@ -2,7 +2,7 @@
 Exec=kcmshell4 bluedeviltransfer
 Icon=folder-tar
 Type=Service
-NoDisplay=true
+
 X-KDE-ServiceTypes=KCModule
 
 X-KDE-Library=kcm_bluedeviltransfer
