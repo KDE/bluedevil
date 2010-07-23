@@ -53,7 +53,7 @@ public Q_SLOTS:
 private Q_SLOTS:
     void browseTriggered();
     void sendTriggered();
-#if 0
+#if 1
     void connectTriggered();
     void disconnectTriggered();
 #endif

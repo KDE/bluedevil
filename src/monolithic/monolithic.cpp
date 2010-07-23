@@ -164,7 +164,7 @@ void Monolithic::generateDeviceEntries()
             _connect->setData(QVariant::fromValue<Device*>(device));
             _submenu->addTitle("Headset Service");
             _submenu->addAction(_connect);
-#if 0
+#if 1
             connect(_connect, SIGNAL(triggered()), this, SLOT(connectTriggered()));
 #else
             _connect->setEnabled(false);
@@ -264,11 +264,13 @@ void Monolithic::sendTriggered()
     KToolInvocation::kdeinitExec("bluedevil-sendfile", QStringList() << QString("bluetooth://%1/").arg(device->address().replace(':', '-').toLower()));
 }
 
-#if 0
+#if 1
 void Monolithic::connectTriggered()
 {
     KAction *action = static_cast<KAction*>(sender());
     Device *device = action->data().value<Device*>();
+    KToolInvocation::kdeinitExec("bluedevil-audio", QStringList() << QString("bluetooth://%1/").arg(device->address().replace(':', '-').toLower()));
+
     action->setText(i18n("Disconnect"));
 }
 
