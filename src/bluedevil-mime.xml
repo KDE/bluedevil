@@ -14,20 +14,21 @@ Notes:
 -->
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
   <mime-type type="inode/x-vnd.kde.bluedevil.device">
+    <sub-class-of type="inode/directory"/>
     <generic-icon name="video-display"/>
-    <comment>Remote Device</comment>
+    <comment>Bluetooth Device</comment>
   </mime-type>
   <mime-type type="inode/x-vnd.kde.bluedevil.service">
     <generic-icon name="preferences-system-bluetooth"/>
     <comment>Service</comment>
   </mime-type>
   <mime-type type="virtual/bluedevil-input">
-    <comment>Headset</comment>
+    <comment>Service</comment>
   </mime-type>
   <mime-type type="virtual/bluedevil-audio">
-    <comment>Audio</comment>
+    <comment>Service</comment>
   </mime-type>
   <mime-type type="virtual/bluedevil-sendfile">
-      <comment>Send File</comment>
+      <comment>Service</comment>
   </mime-type>
 </mime-info>
