@@ -385,10 +385,6 @@ void KioBluetooth::listDir(const KUrl &url)
         return;
     }
 
-    if (!d->hasCurrentHost && url.hasHost()) {
-        setHost(url.host(), -1, QString(), QString());
-    }
-
     if (!d->hasCurrentHost) {
         d->listDevices();
     } else {
