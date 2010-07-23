@@ -319,6 +319,18 @@ void Monolithic::propertyChanged(const QString &key, const QDBusVariant &value)
             action->disconnect();
             connect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
         }
+    } else if (key == "Connected") {
+        if (value.variant().toBool()) {
+            action->setText(i18n("Disconnect"));
+            action->setEnabled(true);
+            action->disconnect();
+            connect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
+        } else {
+            action->setText(i18n("Connect"));
+            action->setEnabled(true);
+            action->disconnect();
+            connect(action, SIGNAL(triggered()), this, SLOT(connectTriggered()));
+        }
     }
 }
 
