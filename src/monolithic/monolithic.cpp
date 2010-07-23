@@ -17,7 +17,7 @@
  */
 
 #include "monolithic.h"
-#include "headset_interface.h"
+#include "audio_interface.h"
 #include "input_interface.h"
 
 #include <kmenu.h>
@@ -170,11 +170,11 @@ void Monolithic::generateDeviceEntries()
         }
         if (UUIDs.contains("00001108-0000-1000-8000-00805F9B34FB")) {
             KAction *_connect = new KAction(i18n("Connect"), _device);
-            org::bluez::Headset *headset = new org::bluez::Headset("org.bluez", device->UBI(), QDBusConnection::systemBus());
-            connect(headset, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
-            m_interfaceMap[headset] = _connect;
+            org::bluez::Audio *audio = new org::bluez::Audio("org.bluez", device->UBI(), QDBusConnection::systemBus());
+            connect(audio, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
+            m_interfaceMap[audio] = _connect;
             info.service = "00001108-0000-1000-8000-00805F9B34FB";
-            info.dbusService = headset;
+            info.dbusService = audio;
             _connect->setData(QVariant::fromValue<EntryInfo>(info));
             _submenu->addTitle("Headset Service");
             _submenu->addAction(_connect);
@@ -293,11 +293,11 @@ void Monolithic::connectTriggered()
     EntryInfo entryInfo = action->data().value<EntryInfo>();
     if (entryInfo.service == "00001124-0000-1000-8000-00805F9B34FB") {
         KProcess p;
-        p.setProgram("bluedevil-input", QStringList() << QString("bluetooth://%1/").arg(entryInfo.device->address()));
+        p.setProgram("bluedevil-input", QStringList() << QString("bluetooth://%1/%2").arg(entryInfo.device->address().replace(':', '-')).arg(entryInfo.service));
         p.startDetached();
     } else if (entryInfo.service == "00001108-0000-1000-8000-00805F9B34FB") {
         KProcess p;
-        p.setProgram("bluedevil-audio", QStringList() << QString("bluetooth://%1/").arg(entryInfo.device->address()));
+        p.setProgram("bluedevil-audio", QStringList() << QString("bluetooth://%1/%2").arg(entryInfo.device->address().replace(':', '-')).arg(entryInfo.service));
         p.startDetached();
     }
 }
@@ -310,8 +310,8 @@ void Monolithic::disconnectTriggered()
         org::bluez::Input *input = static_cast<org::bluez::Input*>(entryInfo.dbusService);
         input->Disconnect();
     } else if (entryInfo.service == "00001108-0000-1000-8000-00805F9B34FB") {
-        org::bluez::Headset *headset = static_cast<org::bluez::Headset*>(entryInfo.dbusService);
-        headset->Disconnect();
+        org::bluez::Audio *audio = static_cast<org::bluez::Audio*>(entryInfo.dbusService);
+        audio->Disconnect();
     }
 }
 
