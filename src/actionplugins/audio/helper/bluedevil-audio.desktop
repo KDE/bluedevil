@@ -9,3 +9,4 @@ Comment=BlueDevil Audio connect
 Icon=preferences-system-bluetooth
 Terminal=false
 Categories=Qt;KDE;Bluetooth;Network;Audio;
+NoDisplay=true
