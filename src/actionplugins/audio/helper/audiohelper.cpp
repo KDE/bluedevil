@@ -23,6 +23,7 @@
 
 #include <klocalizedstring.h>
 #include <kservicetypetrader.h>
+#include <ktoolinvocation.h>
 
 #include <bluedevil/bluedevil.h>
 
@@ -48,5 +49,7 @@ AudioHelper::AudioHelper(const KUrl& address) {
 
         plugin->setDevice(device);
         plugin->startAction();
+    } else {
+        KToolInvocation::kdeinitExec("bluedevil-wizard", QStringList() << address.url());
     }
 }
