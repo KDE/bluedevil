@@ -305,6 +305,8 @@ void Monolithic::propertyChanged(const QString &key, const QDBusVariant &value)
 {
     KAction *action = m_interfaceMap[static_cast<void*>(sender())];
     qDebug() << key;
+
+//Audio support
     if (key == "State") {
         if (value.variant().toString() == "disconnected") {
             action->setText(i18n("Connect"));
@@ -320,6 +322,14 @@ void Monolithic::propertyChanged(const QString &key, const QDBusVariant &value)
             action->disconnect();
             connect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
         }
+    }
+
+//Input support
+    if (key == "Connected") {
+        action->setText(i18n("Disconnect"));
+        action->setEnabled(true);
+        action->disconnect();
+        connect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
     }
 }
 
