@@ -54,11 +54,20 @@ void ServicesPage::initializePage()
     }
 
     QStringList uuids = device->UUIDs();
+    QByteArray preselectedUuid = m_wizard->preselectedUuid();
     Q_FOREACH(QString uuid, uuids) {
         uuid = uuid.toUpper();
         Q_FOREACH(const KSharedPtr<KService> service, services) {
-            if (service.data()->property("X-BlueDevil-UUIDS").toStringList().contains(uuid)) {
-                addService(service.data());
+
+            if (preselectedUuid.isEmpty()) {
+                if (service.data()->property("X-BlueDevil-UUIDS").toStringList().contains(uuid)) {
+                    addService(service.data());
+                }
+            } else {
+                if (service.data()->property("X-BlueDevil-UUIDS").toStringList().contains(preselectedUuid)) {
+                    m_wizard->setService(service.data());
+                    m_wizard->done(1);
+                }
             }
         }
     }

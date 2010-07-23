@@ -34,10 +34,19 @@ int main(int argc, char *argv[])
     aboutData.setProgramIconName("preferences-system-bluetooth");
 
     KCmdLineArgs::init(argc, argv, &aboutData);
+    KCmdLineOptions options;
+    options.add("+[URL]", ki18n("Device to pair with"));
+    KCmdLineArgs::addCmdLineOptions( options );
+
+    KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
+    KUrl url;
+    if (args->count()) {
+        url = args->arg(0);
+    }
 
     KApplication app;
     app.setQuitOnLastWindowClosed(false);
-    new BlueWizard;
+    new BlueWizard(url);
 
     return app.exec();
 }
