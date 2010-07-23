@@ -66,11 +66,11 @@ private:
     void changeDirectory(const KUrl& url);
 
 private:
-    org::openobex::Manager      *m_manager;
-    org::openobex::Session      *m_session;
     QEventLoop                   m_eventLoop;
     QMap<QString, KIO::UDSEntry> m_statMap;
     QString                      m_address;
+    org::openobex::Manager      *m_manager;
+    org::openobex::Session      *m_session;
 };
 
 #endif // KIO_OBEXFTP_H
