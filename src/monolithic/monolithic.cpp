@@ -17,6 +17,9 @@
  */
 
 #include "monolithic.h"
+#include "audio_interface.h"
+#include "input_interface.h"
+
 #include <kmenu.h>
 #include <kaction.h>
 #include <kprocess.h>
@@ -152,11 +155,7 @@ void Monolithic::generateDeviceEntries()
             _connect->setData(QVariant::fromValue<Device*>(device));
             _submenu->addTitle("Input Service");
             _submenu->addAction(_connect);
-#if 0
             connect(_connect, SIGNAL(triggered()), this, SLOT(connectTriggered()));
-#else
-            _connect->setEnabled(false);
-#endif
             hasSupportedServices = true;
         }
         if (UUIDs.contains("00001108-0000-1000-8000-00805f9b34fb")) {
@@ -164,11 +163,7 @@ void Monolithic::generateDeviceEntries()
             _connect->setData(QVariant::fromValue<Device*>(device));
             _submenu->addTitle("Headset Service");
             _submenu->addAction(_connect);
-#if 1
             connect(_connect, SIGNAL(triggered()), this, SLOT(connectTriggered()));
-#else
-            _connect->setEnabled(false);
-#endif
             hasSupportedServices = true;
         }
         if (hasSupportedServices) {
@@ -264,7 +259,6 @@ void Monolithic::sendTriggered()
     KToolInvocation::kdeinitExec("bluedevil-sendfile", QStringList() << QString("bluetooth://%1/").arg(device->address().replace(':', '-').toLower()));
 }
 
-#if 1
 void Monolithic::connectTriggered()
 {
     KAction *action = static_cast<KAction*>(sender());
@@ -279,7 +273,6 @@ void Monolithic::disconnectTriggered()
     KAction *action = static_cast<KAction*>(sender());
     Device *device = action->data().value<Device*>();
 }
-#endif
 
 void Monolithic::offlineMode()
 {

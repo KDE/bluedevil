@@ -53,10 +53,8 @@ public Q_SLOTS:
 private Q_SLOTS:
     void browseTriggered();
     void sendTriggered();
-#if 1
     void connectTriggered();
     void disconnectTriggered();
-#endif
 
 private:
     void onlineMode();
