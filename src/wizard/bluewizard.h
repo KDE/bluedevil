@@ -21,6 +21,8 @@
 
 #include <QObject>
 #include <QWizard>
+
+#include <kurl.h>
 #include <kservice.h>
 
 class WizardAgent;
@@ -29,7 +31,7 @@ class BlueWizard : public QWizard
 Q_OBJECT
 
 public:
-    BlueWizard();
+    BlueWizard(const KUrl& url);
     virtual ~BlueWizard();
 
     QByteArray deviceAddress() const;
@@ -40,6 +42,9 @@ public:
 
     bool manualPin() const;
     void setManualPin(bool);
+
+    QByteArray preselectedUuid() const;
+    void setPreselectedUuid(const QByteArray &uuid);
 
     WizardAgent* agent() const;
 
@@ -54,6 +59,7 @@ public Q_SLOTS:
 private:
     QByteArray m_deviceAddress;
     QByteArray m_pin;
+    QByteArray m_preselectedUuid;
     WizardAgent *m_agent;
     KService::List m_services;
     const KService *m_service;

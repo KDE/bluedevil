@@ -9,3 +9,4 @@ Comment=BlueDevil Input connect
 Icon=preferences-system-bluetooth
 Terminal=false
 Categories=Qt;KDE;Bluetooth;Network;Input;
+NoDisplay=true

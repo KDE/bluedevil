@@ -33,12 +33,20 @@
 #include <KServiceTypeTrader>
 #include <KPushButton>
 
-BlueWizard::BlueWizard() : QWizard(), m_service(0), m_manualPin(false)
+BlueWizard::BlueWizard(const KUrl &url) : QWizard(), m_service(0), m_manualPin(false)
 {
     setWindowTitle(i18n("BlueDevil Remote Device Wizard"));
 
-    setPage(Introduction, new IntroductionPage(this));
-    setPage(Discover, new DiscoverPage(this));
+    if (url.host().length() != 17) {
+        setPage(Introduction, new IntroductionPage(this));
+        setPage(Discover, new DiscoverPage(this));
+    } else {
+        setDeviceAddress(url.host().replace("-", ":").toLatin1());
+    }
+
+    if (url.fileName().length() == 36) {
+        setPreselectedUuid(url.fileName().toLatin1());
+    }
     setPage(Pin, new PinPage(this));
     setPage(Pairing, new PairingPage(this));
     setPage(Services, new ServicesPage(this));
@@ -116,6 +124,16 @@ void BlueWizard::setManualPin(bool pinManual)
 bool BlueWizard::manualPin() const
 {
     return m_manualPin;
+}
+
+void BlueWizard::setPreselectedUuid(const QByteArray& uuid)
+{
+    m_preselectedUuid = uuid;
+}
+
+QByteArray BlueWizard::preselectedUuid() const
+{
+    return m_preselectedUuid;
 }
 
 WizardAgent* BlueWizard::agent() const

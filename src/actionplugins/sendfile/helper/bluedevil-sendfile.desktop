@@ -9,3 +9,4 @@ Comment=BlueDevil Send File
 Icon=preferences-system-bluetooth
 Terminal=false
 Categories=Qt;KDE;Bluetooth;Network;
+NoDisplay=true

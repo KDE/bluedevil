@@ -25,6 +25,7 @@
 #include <kprocess.h>
 #include <ktoolinvocation.h>
 #include <klocalizedstring.h>
+#include <krun.h>
 
 #include <bluedevil/bluedevil.h>
 
@@ -203,6 +204,10 @@ void Monolithic::onlineMode()
     connect(sendFile, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(sendFile()));
     menu->addAction(sendFile);
 
+    KAction *browseDevices = new KAction(KIcon("document-preview-archive"), i18n("Browse devices"), menu);
+    connect(browseDevices, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(browseDevices()));
+    menu->addAction(browseDevices);
+
     KAction *configReceive = new KAction(KIcon("folder-tar"),i18n("Receive files configuration"), menu);
     connect(configReceive, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(configReceive()));
     menu->addAction(configReceive);
@@ -234,6 +239,12 @@ void Monolithic::sendFile()
     process.startDetached();
 }
 
+void Monolithic::browseDevices()
+{
+    KUrl url("bluetooth:/");
+    KRun::runUrl(url, "inode/directory", new QWidget());
+}
+
 void Monolithic::addDevice()
 {
     KProcess process;
@@ -263,7 +274,10 @@ void Monolithic::browseTriggered()
 {
     KAction *action = static_cast<KAction*>(sender());
     EntryInfo entryInfo = action->data().value<EntryInfo>();
-    KToolInvocation::kdeinitExec("dolphin", QStringList() << QString("obexftp:/%1/").arg(entryInfo.device->address().replace(':', '-')));
+
+    KUrl url("obexftp:/");
+    url.setHost(entryInfo.device->address().replace(':', '-'));
+    KRun::runUrl(url, "inode/directory", new QWidget());
 }
 
 void Monolithic::sendTriggered()
@@ -304,6 +318,7 @@ void Monolithic::disconnectTriggered()
 void Monolithic::propertyChanged(const QString &key, const QDBusVariant &value)
 {
     KAction *action = m_interfaceMap[static_cast<void*>(sender())];
+
     if (key == "State") {
         if (value.variant().toString() == "disconnected") {
             action->setText(i18n("Connect"));
@@ -331,6 +346,14 @@ void Monolithic::propertyChanged(const QString &key, const QDBusVariant &value)
             action->disconnect();
             connect(action, SIGNAL(triggered()), this, SLOT(connectTriggered()));
         }
+    }
+
+//Input support
+    if (key == "Connected") {
+        action->setText(i18n("Disconnect"));
+        action->setEnabled(true);
+        action->disconnect();
+        connect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
     }
 }
 

@@ -23,6 +23,7 @@
 
 #include <klocalizedstring.h>
 #include <kservicetypetrader.h>
+#include <ktoolinvocation.h>
 
 #include <bluedevil/bluedevil.h>
 
@@ -38,7 +39,7 @@ InputHelper::InputHelper(const KUrl& address) {
 
     if(device->isPaired()) {
         QString constraing("'00001124-0000-1000-8000-00805F9B34FB' in [X-BlueDevil-UUIDS]");
-;
+
         KPluginFactory *factory = KPluginLoader(
             KServiceTypeTrader::self()->query("BlueDevil/ActionPlugin", constraing).first().data()->library()
         ).factory();
@@ -48,5 +49,7 @@ InputHelper::InputHelper(const KUrl& address) {
 
         plugin->setDevice(device);
         plugin->startAction();
+    } else {
+        KToolInvocation::kdeinitExec("bluedevil-wizard", QStringList() << address.url());
     }
 }
