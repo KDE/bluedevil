@@ -228,10 +228,13 @@ KioBluetoothPrivate::KioBluetoothPrivate(KioBluetooth *parent)
     s.mimetype = "virtual/bluedevil-audio";
     s.uuid = "00001108-0000-1000-8000-00805f9b34fb";
     supportedServices.insert("00001108-0000-1000-8000-00805f9b34fb", s);
+
+    kDebug() << "Private instanced";
 }
 
 QStringList KioBluetoothPrivate::getServiceNames(const QStringList &uuids)
 {
+    kDebug() << "getting services :" << uuids;
     QStringList retValue;
     Q_FOREACH (const QString &uuid, uuids) {
         if (serviceNames.contains(uuid)) {
@@ -245,6 +248,7 @@ QStringList KioBluetoothPrivate::getServiceNames(const QStringList &uuids)
 
 QList<KioBluetoothPrivate::Service> KioBluetoothPrivate::getSupportedServices(const QStringList &uuids)
 {
+    kDebug() << "supported services: " << uuids;
     QList<Service> retValue;
     Q_FOREACH (const QString &uuid, uuids) {
         if (supportedServices.contains(uuid)) {
@@ -258,7 +262,7 @@ void KioBluetoothPrivate::listRemoteDeviceServices()
 {
     q->infoMessage(i18n("Retrieving services..."));
 
-    kDebug();
+    kDebug() << "Listing remote devices";
     currentHost = adapter->deviceForAddress(currentHostname.replace('-', ':').toUpper());
     currentHostServices = getSupportedServices(currentHost->UUIDs());
 
@@ -358,6 +362,8 @@ KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
     connect(defaultAdapter, SIGNAL(deviceFound(Device*)), this, SLOT(listDevice(Device*)));
     d->adapter = defaultAdapter;
     d->online = true;
+
+    kDebug() << "Kio Bluetooth instanced!";
 }
 
 KioBluetooth::~KioBluetooth()
@@ -367,7 +373,7 @@ KioBluetooth::~KioBluetooth()
 
 void KioBluetooth::listDir(const KUrl &url)
 {
-    kDebug() << url;
+    kDebug("Listing...") << url;
     /// Url is not used here becuase all we could care about the url is the host, and that's already
     /// handled in @p setHost
     Q_UNUSED(url);
@@ -392,11 +398,14 @@ void KioBluetooth::listDir(const KUrl &url)
 
 void KioBluetooth::stat(const KUrl &url)
 {
+    kDebug() << "Stat: " << url;
     finished();
 }
 
 void KioBluetooth::get(const KUrl &url)
 {
+    kDebug() << "Get: " << url;
+    kDebug() << d->supportedServices.value(url.fileName()).mimetype;
     mimeType(d->supportedServices.value(url.fileName()).mimetype);
     finished();
 }
@@ -404,7 +413,7 @@ void KioBluetooth::get(const KUrl &url)
 void KioBluetooth::setHost(const QString &constHostname, quint16 port, const QString &user,
                            const QString &pass)
 {
-    kDebug() << constHostname;
+    kDebug(Setting host) << constHostname;
     // In this kio only the hostname (constHostname) is used
     Q_UNUSED(port)
     Q_UNUSED(user)
