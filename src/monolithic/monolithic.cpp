@@ -275,7 +275,7 @@ void Monolithic::browseTriggered()
     KAction *action = static_cast<KAction*>(sender());
     EntryInfo entryInfo = action->data().value<EntryInfo>();
 
-    KUrl url("obexftp:/%1/");
+    KUrl url("obexftp:/");
     url.setHost(entryInfo.device->address().replace(':', '-'));
     KRun::runUrl(url, "inode/directory", new QWidget());
 }
