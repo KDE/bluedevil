@@ -66,7 +66,6 @@ private:
     void changeDirectory(const KUrl& url);
 
 private:
-    KioFtp                      *m_q;
     org::openobex::Manager      *m_manager;
     org::openobex::Session      *m_session;
     QEventLoop                   m_eventLoop;
