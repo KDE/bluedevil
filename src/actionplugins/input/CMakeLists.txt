@@ -1,3 +1,5 @@
+add_subdirectory(helper)
+
 set(input_SRCS input.cpp)
 
 qt4_add_dbus_interface(input_SRCS
