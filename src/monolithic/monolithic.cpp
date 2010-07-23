@@ -25,6 +25,7 @@
 #include <kprocess.h>
 #include <ktoolinvocation.h>
 #include <klocalizedstring.h>
+#include <krun.h>
 
 #include <bluedevil/bluedevil.h>
 
@@ -263,7 +264,10 @@ void Monolithic::browseTriggered()
 {
     KAction *action = static_cast<KAction*>(sender());
     EntryInfo entryInfo = action->data().value<EntryInfo>();
-    KToolInvocation::kdeinitExec("dolphin", QStringList() << QString("obexftp:/%1/").arg(entryInfo.device->address().replace(':', '-')));
+
+    KUrl url("obexftp:/%1/");
+    url.setHost(entryInfo.device->address().replace(':', '-'));
+    KRun::runUrl(url, "inode/directory", new QWidget());
 }
 
 void Monolithic::sendTriggered()
