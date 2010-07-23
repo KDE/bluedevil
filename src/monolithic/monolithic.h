@@ -51,6 +51,7 @@ public Q_SLOTS:
     void generateDeviceEntries();
 
     void sendFile();
+    void browseDevices();
     void addDevice();
     void configReceive();
     void deviceManager();

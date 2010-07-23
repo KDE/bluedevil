@@ -204,6 +204,10 @@ void Monolithic::onlineMode()
     connect(sendFile, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(sendFile()));
     menu->addAction(sendFile);
 
+    KAction *browseDevices = new KAction(KIcon("document-preview-archive"), i18n("Browse devices"), menu);
+    connect(browseDevices, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(browseDevices()));
+    menu->addAction(browseDevices);
+
     KAction *configReceive = new KAction(KIcon("folder-tar"),i18n("Receive files configuration"), menu);
     connect(configReceive, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(configReceive()));
     menu->addAction(configReceive);
@@ -233,6 +237,12 @@ void Monolithic::sendFile()
     KProcess process;
     process.setProgram("bluedevil-sendfile");
     process.startDetached();
+}
+
+void Monolithic::browseDevices()
+{
+    KUrl url("bluetooth:/");
+    KRun::runUrl(url, "inode/directory", new QWidget());
 }
 
 void Monolithic::addDevice()
