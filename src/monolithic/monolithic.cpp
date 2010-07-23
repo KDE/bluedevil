@@ -184,7 +184,7 @@ void Monolithic::generateDeviceEntries()
         if (hasSupportedServices) {
             _device->setData(QVariant::fromValue<Device*>(device));
         } else {
-            KAction *_unknown = new KAction(i18n("Not supported services found"), _device);
+            KAction *_unknown = new KAction(i18n("No supported services found"), _device);
             _unknown->setEnabled(false);
             _submenu->addAction(_unknown);
         }
