@@ -2,7 +2,7 @@
 Exec=kcmshell4 bluedevildevices
 Icon=input-mouse
 Type=Service
-NoDisplay=true
+
 X-KDE-ServiceTypes=KCModule
 
 X-KDE-Library=kcm_bluedevildevices
