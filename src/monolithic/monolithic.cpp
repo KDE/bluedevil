@@ -279,11 +279,11 @@ void Monolithic::connectTriggered()
     EntryInfo entryInfo = action->data().value<EntryInfo>();
     if (entryInfo.service == "00001124-0000-1000-8000-00805f9b34fb") {
         KProcess p;
-        p.setProgram("bluedevil-input", QStringList() << QString("bluetooth:/%1/").arg(entryInfo.device->address()));
+        p.setProgram("bluedevil-input", QStringList() << QString("bluetooth://%1/").arg(entryInfo.device->address()));
         p.startDetached();
     } else if (entryInfo.service == "00001108-0000-1000-8000-00805f9b34fb") {
         KProcess p;
-        p.setProgram("bluedevil-audio", QStringList() << QString("bluetooth:/%1/").arg(entryInfo.device->address()));
+        p.setProgram("bluedevil-audio", QStringList() << QString("bluetooth://%1/").arg(entryInfo.device->address()));
         p.startDetached();
     }
 }
@@ -319,6 +319,18 @@ void Monolithic::propertyChanged(const QString &key, const QDBusVariant &value)
             action->setEnabled(true);
             action->disconnect();
             connect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
+        }
+    } else if (key == "Connected") {
+        if (value.variant().toBool()) {
+            action->setText(i18n("Disconnect"));
+            action->setEnabled(true);
+            action->disconnect();
+            connect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
+        } else {
+            action->setText(i18n("Connect"));
+            action->setEnabled(true);
+            action->disconnect();
+            connect(action, SIGNAL(triggered()), this, SLOT(connectTriggered()));
         }
     }
 
