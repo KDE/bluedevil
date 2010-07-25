@@ -102,13 +102,13 @@ public:
      /**
       * Specifies if we've got a working bluetooth adpater to our computer or not.
       */
-     bool online;
+     bool m_online;
 
     /**
      * This is set to true when @p setHost is called to list a given remote device, like for example
      * 00:2a:5E:8e:6e:f5. If listing the remote devices (bluetooth:/ uri), it's set back to false.
      */
-    bool hasCurrentHost;
+    bool m_hasCurrentHost;
 
     /**
      * This is set in @p setHost when it's called to list a given remote device like for example
@@ -116,118 +116,118 @@ public:
      * have ready the remote bluetooth device yet ready at that time (it.s being created by the call
      * to @p Solid::Control::BluetoothDevice::createBluetoothRemoteDevice .
      */
-    QString currentHostname;
+    QString m_currentHostname;
 
     /**
      * Represents the current host when @p hasCurrentHost is set to true. This is set in
      * @p listRemoteDeviceServices function.
      */
-    BlueDevil::Device *currentHost;
+    BlueDevil::Device *m_currentHost;
 
     /**
      * When @p hasCurrentHost to true, this list holds the list of service names provided by the
      * current host (which is a remote device we can connect to using those services).
      */
-    QList<Service> currentHostServices;
+    QList<Service> m_currentHostServices;
 
     /**
      * Represents the bluetooth adapter connected to our PC.
      */
-    BlueDevil::Adapter *adapter;
+    BlueDevil::Adapter *m_adapter;
 
     /**
      * This is an array containing as key the uuid and as value the name of the service that the
      * given uuid represents.
      */
-    QMap<QString, QString> serviceNames;
+    QMap<QString, QString> m_serviceNames;
 
     /**
      * This is an array containing as key the uuid and as value the name of the service that the
      * given uuid represents, and a representative icon. It only contains the supported service names.
      */
-    QMap<QString, Service> supportedServices;
+    QMap<QString, Service> m_supportedServices;
 
-    KioBluetooth *q;
+    KioBluetooth *m_q;
 };
 
 KioBluetoothPrivate::KioBluetoothPrivate(KioBluetooth *parent)
-  : q(parent)
+  : m_q(parent)
 {
-    serviceNames.insert("00001000-0000-1000-8000-00805F9B34FB", i18n("Service Discovery Server"));
-    serviceNames.insert("00001001-0000-1000-8000-00805F9B34FB", i18n("Browse Group"));
-    serviceNames.insert("00001002-0000-1000-8000-00805F9B34FB", i18n("Public Browse Group"));
-    serviceNames.insert("00001101-0000-1000-8000-00805F9B34FB", i18n("Serial Port"));
-    serviceNames.insert("00001102-0000-1000-8000-00805F9B34FB", i18n("LAN Access Using PPP"));
-    serviceNames.insert("00001103-0000-1000-8000-00805F9B34FB", i18n("Dial up Networking"));
-    serviceNames.insert("00001104-0000-1000-8000-00805F9B34FB", i18n("Ir MCSync"));
-    serviceNames.insert("00001105-0000-1000-8000-00805F9B34FB", i18n("OBEX Object Push"));
-    serviceNames.insert("00001106-0000-1000-8000-00805F9B34FB", i18n("OBEX File Transfer"));
-    serviceNames.insert("00001107-0000-1000-8000-00805F9B34FB", i18n("Ir MCSync Command"));
-    serviceNames.insert("00001108-0000-1000-8000-00805F9B34FB", i18n("Headset"));
-    serviceNames.insert("00001109-0000-1000-8000-00805F9B34FB", i18n("Cordless Telephony"));
-    serviceNames.insert("0000110a-0000-1000-8000-00805F9B34FB", i18n("Audio Source"));
-    serviceNames.insert("0000110b-0000-1000-8000-00805F9B34FB", i18n("Audio Sink"));
-    serviceNames.insert("0000110c-0000-1000-8000-00805F9B34FB", i18n("AV Remote Control Target"));
-    serviceNames.insert("0000110d-0000-1000-8000-00805F9B34FB", i18n("Advanced Audio Distribution"));
-    serviceNames.insert("0000110e-0000-1000-8000-00805F9B34FB", i18n("AV Remote Control"));
-    serviceNames.insert("0000110f-0000-1000-8000-00805F9B34FB", i18n("Video Conferencing"));
-    serviceNames.insert("00001110-0000-1000-8000-00805F9B34FB", i18n("Intercom"));
-    serviceNames.insert("00001111-0000-1000-8000-00805F9B34FB", i18n("Fax"));
-    serviceNames.insert("00001112-0000-1000-8000-00805F9B34FB", i18n("Headset Audio Gateway"));
-    serviceNames.insert("00001113-0000-1000-8000-00805F9B34FB", i18n("WAP"));
-    serviceNames.insert("00001114-0000-1000-8000-00805F9B34FB", i18n("WAP Client"));
-    serviceNames.insert("00001115-0000-1000-8000-00805F9B34FB", i18n("PANU"));
-    serviceNames.insert("00001116-0000-1000-8000-00805F9B34FB", i18n("NAP"));
-    serviceNames.insert("00001117-0000-1000-8000-00805F9B34FB", i18n("GN"));
-    serviceNames.insert("00001118-0000-1000-8000-00805F9B34FB", i18n("Direct Printing"));
-    serviceNames.insert("00001119-0000-1000-8000-00805F9B34FB", i18n("Reference Printing"));
-    serviceNames.insert("0000111a-0000-1000-8000-00805F9B34FB", i18n("Imaging"));
-    serviceNames.insert("0000111b-0000-1000-8000-00805F9B34FB", i18n("Imaging Responder"));
-    serviceNames.insert("0000111c-0000-1000-8000-00805F9B34FB", i18n("Imaging Automatic Archive"));
-    serviceNames.insert("0000111d-0000-1000-8000-00805F9B34FB", i18n("Imaging Reference Objects"));
-    serviceNames.insert("0000111e-0000-1000-8000-00805F9B34FB", i18n("Hands free"));
-    serviceNames.insert("0000111f-0000-1000-8000-00805F9B34FB", i18n("Hands free Audio Gateway"));
-    serviceNames.insert("00001120-0000-1000-8000-00805F9B34FB", i18n("Direct Printing Reference Objects"));
-    serviceNames.insert("00001121-0000-1000-8000-00805F9B34FB", i18n("Reflected UI"));
-    serviceNames.insert("00001122-0000-1000-8000-00805F9B34FB", i18n("Basic Pringing"));
-    serviceNames.insert("00001123-0000-1000-8000-00805F9B34FB", i18n("Printing Status"));
-    serviceNames.insert("00001124-0000-1000-8000-00805F9B34FB", i18n("Human Interface Device"));
-    serviceNames.insert("00001125-0000-1000-8000-00805F9B34FB", i18n("Hardcopy Cable Replacement"));
-    serviceNames.insert("00001126-0000-1000-8000-00805F9B34FB", i18n("HCR Print"));
-    serviceNames.insert("00001127-0000-1000-8000-00805F9B34FB", i18n("HCR Scan"));
-    serviceNames.insert("00001128-0000-1000-8000-00805F9B34FB", i18n("Common ISDN Access"));
-    serviceNames.insert("00001129-0000-1000-8000-00805F9B34FB", i18n("Video Conferencing GW"));
-    serviceNames.insert("0000112a-0000-1000-8000-00805F9B34FB", i18n("UDIMT"));
-    serviceNames.insert("0000112b-0000-1000-8000-00805F9B34FB", i18n("UDITA"));
-    serviceNames.insert("0000112c-0000-1000-8000-00805F9B34FB", i18n("Audio Video"));
-    serviceNames.insert("0000112d-0000-1000-8000-00805F9B34FB", i18n("SIM Access"));
-    serviceNames.insert("00001200-0000-1000-8000-00805F9B34FB", i18n("PnP Information"));
-    serviceNames.insert("00001201-0000-1000-8000-00805F9B34FB", i18n("Generic Networking"));
-    serviceNames.insert("00001202-0000-1000-8000-00805F9B34FB", i18n("Generic File Transfer"));
-    serviceNames.insert("00001203-0000-1000-8000-00805F9B34FB", i18n("Generic Audio"));
-    serviceNames.insert("00001204-0000-1000-8000-00805F9B34FB", i18n("Generic Telephony"));
+    m_serviceNames.insert("00001000-0000-1000-8000-00805F9B34FB", i18n("Service Discovery Server"));
+    m_serviceNames.insert("00001001-0000-1000-8000-00805F9B34FB", i18n("Browse Group"));
+    m_serviceNames.insert("00001002-0000-1000-8000-00805F9B34FB", i18n("Public Browse Group"));
+    m_serviceNames.insert("00001101-0000-1000-8000-00805F9B34FB", i18n("Serial Port"));
+    m_serviceNames.insert("00001102-0000-1000-8000-00805F9B34FB", i18n("LAN Access Using PPP"));
+    m_serviceNames.insert("00001103-0000-1000-8000-00805F9B34FB", i18n("Dial up Networking"));
+    m_serviceNames.insert("00001104-0000-1000-8000-00805F9B34FB", i18n("Ir MCSync"));
+    m_serviceNames.insert("00001105-0000-1000-8000-00805F9B34FB", i18n("OBEX Object Push"));
+    m_serviceNames.insert("00001106-0000-1000-8000-00805F9B34FB", i18n("OBEX File Transfer"));
+    m_serviceNames.insert("00001107-0000-1000-8000-00805F9B34FB", i18n("Ir MCSync Command"));
+    m_serviceNames.insert("00001108-0000-1000-8000-00805F9B34FB", i18n("Headset"));
+    m_serviceNames.insert("00001109-0000-1000-8000-00805F9B34FB", i18n("Cordless Telephony"));
+    m_serviceNames.insert("0000110a-0000-1000-8000-00805F9B34FB", i18n("Audio Source"));
+    m_serviceNames.insert("0000110b-0000-1000-8000-00805F9B34FB", i18n("Audio Sink"));
+    m_serviceNames.insert("0000110c-0000-1000-8000-00805F9B34FB", i18n("AV Remote Control Target"));
+    m_serviceNames.insert("0000110d-0000-1000-8000-00805F9B34FB", i18n("Advanced Audio Distribution"));
+    m_serviceNames.insert("0000110e-0000-1000-8000-00805F9B34FB", i18n("AV Remote Control"));
+    m_serviceNames.insert("0000110f-0000-1000-8000-00805F9B34FB", i18n("Video Conferencing"));
+    m_serviceNames.insert("00001110-0000-1000-8000-00805F9B34FB", i18n("Intercom"));
+    m_serviceNames.insert("00001111-0000-1000-8000-00805F9B34FB", i18n("Fax"));
+    m_serviceNames.insert("00001112-0000-1000-8000-00805F9B34FB", i18n("Headset Audio Gateway"));
+    m_serviceNames.insert("00001113-0000-1000-8000-00805F9B34FB", i18n("WAP"));
+    m_serviceNames.insert("00001114-0000-1000-8000-00805F9B34FB", i18n("WAP Client"));
+    m_serviceNames.insert("00001115-0000-1000-8000-00805F9B34FB", i18n("PANU"));
+    m_serviceNames.insert("00001116-0000-1000-8000-00805F9B34FB", i18n("NAP"));
+    m_serviceNames.insert("00001117-0000-1000-8000-00805F9B34FB", i18n("GN"));
+    m_serviceNames.insert("00001118-0000-1000-8000-00805F9B34FB", i18n("Direct Printing"));
+    m_serviceNames.insert("00001119-0000-1000-8000-00805F9B34FB", i18n("Reference Printing"));
+    m_serviceNames.insert("0000111a-0000-1000-8000-00805F9B34FB", i18n("Imaging"));
+    m_serviceNames.insert("0000111b-0000-1000-8000-00805F9B34FB", i18n("Imaging Responder"));
+    m_serviceNames.insert("0000111c-0000-1000-8000-00805F9B34FB", i18n("Imaging Automatic Archive"));
+    m_serviceNames.insert("0000111d-0000-1000-8000-00805F9B34FB", i18n("Imaging Reference Objects"));
+    m_serviceNames.insert("0000111e-0000-1000-8000-00805F9B34FB", i18n("Hands free"));
+    m_serviceNames.insert("0000111f-0000-1000-8000-00805F9B34FB", i18n("Hands free Audio Gateway"));
+    m_serviceNames.insert("00001120-0000-1000-8000-00805F9B34FB", i18n("Direct Printing Reference Objects"));
+    m_serviceNames.insert("00001121-0000-1000-8000-00805F9B34FB", i18n("Reflected UI"));
+    m_serviceNames.insert("00001122-0000-1000-8000-00805F9B34FB", i18n("Basic Pringing"));
+    m_serviceNames.insert("00001123-0000-1000-8000-00805F9B34FB", i18n("Printing Status"));
+    m_serviceNames.insert("00001124-0000-1000-8000-00805F9B34FB", i18n("Human Interface Device"));
+    m_serviceNames.insert("00001125-0000-1000-8000-00805F9B34FB", i18n("Hardcopy Cable Replacement"));
+    m_serviceNames.insert("00001126-0000-1000-8000-00805F9B34FB", i18n("HCR Print"));
+    m_serviceNames.insert("00001127-0000-1000-8000-00805F9B34FB", i18n("HCR Scan"));
+    m_serviceNames.insert("00001128-0000-1000-8000-00805F9B34FB", i18n("Common ISDN Access"));
+    m_serviceNames.insert("00001129-0000-1000-8000-00805F9B34FB", i18n("Video Conferencing GW"));
+    m_serviceNames.insert("0000112a-0000-1000-8000-00805F9B34FB", i18n("UDIMT"));
+    m_serviceNames.insert("0000112b-0000-1000-8000-00805F9B34FB", i18n("UDITA"));
+    m_serviceNames.insert("0000112c-0000-1000-8000-00805F9B34FB", i18n("Audio Video"));
+    m_serviceNames.insert("0000112d-0000-1000-8000-00805F9B34FB", i18n("SIM Access"));
+    m_serviceNames.insert("00001200-0000-1000-8000-00805F9B34FB", i18n("PnP Information"));
+    m_serviceNames.insert("00001201-0000-1000-8000-00805F9B34FB", i18n("Generic Networking"));
+    m_serviceNames.insert("00001202-0000-1000-8000-00805F9B34FB", i18n("Generic File Transfer"));
+    m_serviceNames.insert("00001203-0000-1000-8000-00805F9B34FB", i18n("Generic Audio"));
+    m_serviceNames.insert("00001204-0000-1000-8000-00805F9B34FB", i18n("Generic Telephony"));
 
     Service s;
     s.name = i18n("Send File");
     s.icon = "edit-copy";
     s.mimetype = "virtual/bluedevil-sendfile";
     s.uuid = "00001105-0000-1000-8000-00805F9B34FB";
-    supportedServices.insert("00001105-0000-1000-8000-00805F9B34FB", s);
+    m_supportedServices.insert("00001105-0000-1000-8000-00805F9B34FB", s);
     s.name = i18n("Browse Files");
     s.icon = "edit-find";
     s.mimetype = "";
     s.uuid = "00001106-0000-1000-8000-00805F9B34FB";
-    supportedServices.insert("00001106-0000-1000-8000-00805F9B34FB", s);
+    m_supportedServices.insert("00001106-0000-1000-8000-00805F9B34FB", s);
     s.name = i18n("Human Interface Device");
     s.icon = "input-mouse";
     s.mimetype = "virtual/bluedevil-input";
     s.uuid = "00001124-0000-1000-8000-00805F9B34FB";
-    supportedServices.insert("00001124-0000-1000-8000-00805F9B34FB", s);
+    m_supportedServices.insert("00001124-0000-1000-8000-00805F9B34FB", s);
     s.name = i18n("Headset");
     s.icon = "audio-headset";
     s.mimetype = "virtual/bluedevil-audio";
     s.uuid = "00001108-0000-1000-8000-00805F9B34FB";
-    supportedServices.insert("00001108-0000-1000-8000-00805F9B34FB", s);
+    m_supportedServices.insert("00001108-0000-1000-8000-00805F9B34FB", s);
 
     kDebug() << "Private instanced";
 }
@@ -237,8 +237,8 @@ QStringList KioBluetoothPrivate::getServiceNames(const QStringList &uuids)
     kDebug() << "getting services :" << uuids;
     QStringList retValue;
     Q_FOREACH (const QString &uuid, uuids) {
-        if (serviceNames.contains(uuid)) {
-            retValue << serviceNames[uuid];
+        if (m_serviceNames.contains(uuid)) {
+            retValue << m_serviceNames[uuid];
         } else {
             retValue << uuid;
         }
@@ -251,8 +251,8 @@ QList<KioBluetoothPrivate::Service> KioBluetoothPrivate::getSupportedServices(co
     kDebug() << "supported services: " << uuids;
     QList<Service> retValue;
     Q_FOREACH (const QString &uuid, uuids) {
-        if (supportedServices.contains(uuid)) {
-            retValue << supportedServices[uuid];
+        if (m_supportedServices.contains(uuid)) {
+            retValue << m_supportedServices[uuid];
         }
     }
     return retValue;
@@ -260,16 +260,16 @@ QList<KioBluetoothPrivate::Service> KioBluetoothPrivate::getSupportedServices(co
 
 void KioBluetoothPrivate::listRemoteDeviceServices()
 {
-    q->infoMessage(i18n("Retrieving services..."));
+    m_q->infoMessage(i18n("Retrieving services..."));
 
     kDebug() << "Listing remote devices";
-    currentHost = adapter->deviceForAddress(currentHostname.replace('-', ':').toUpper());
-    currentHostServices = getSupportedServices(currentHost->UUIDs());
+    m_currentHost = m_adapter->deviceForAddress(m_currentHostname.replace('-', ':').toUpper());
+    m_currentHostServices = getSupportedServices(m_currentHost->UUIDs());
 
-    kDebug() << "Num of supported services: " << currentHostServices.size();
-    q->totalSize(currentHostServices.count());
+    kDebug() << "Num of supported services: " << m_currentHostServices.size();
+    m_q->totalSize(m_currentHostServices.count());
     int i = 1;
-    Q_FOREACH (const Service &service, currentHostServices) {
+    Q_FOREACH (const Service &service, m_currentHostServices) {
         KIO::UDSEntry entry;
         entry.insert(KIO::UDSEntry::UDS_NAME, service.uuid);
         entry.insert(KIO::UDSEntry::UDS_DISPLAY_NAME, service.name);
@@ -278,7 +278,7 @@ void KioBluetoothPrivate::listRemoteDeviceServices()
         //If it is browse files, act as a folder
         if (service.uuid == "00001106-0000-1000-8000-00805F9B34FB") {
             entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
-            entry.insert(KIO::UDSEntry::UDS_URL, "obexftp:/"+currentHostname.replace(':', '-').toUpper());
+            entry.insert(KIO::UDSEntry::UDS_URL, "obexftp:/"+m_currentHostname.replace(':', '-').toUpper());
         } else {
             entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
             entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRWXU | S_IRWXG | S_IRWXO);
@@ -289,12 +289,12 @@ void KioBluetoothPrivate::listRemoteDeviceServices()
         } else {
             entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, service.mimetype);
         }
-        q->listEntry(entry, false);
-        q->processedSize(i++);
+        m_q->listEntry(entry, false);
+        m_q->processedSize(i++);
     }
 
-    q->listEntry(KIO::UDSEntry(), true);
-    q->finished();
+    m_q->listEntry(KIO::UDSEntry(), true);
+    m_q->finished();
 }
 
 class SleeperThread
@@ -309,17 +309,17 @@ public:
 
 void KioBluetoothPrivate::listDevices()
 {
-    q->infoMessage(i18n("Scanning for remote devices..."));
-    q->totalSize(100);
-    adapter->startDiscovery();
+    m_q->infoMessage(i18n("Scanning for remote devices..."));
+    m_q->totalSize(100);
+    m_adapter->startDiscovery();
     for (int i = 0; i < 100; ++i) {
         SleeperThread::msleep(100);
-        q->processedSize(i + 1);
+        m_q->processedSize(i + 1);
         QApplication::processEvents();
     }
-    adapter->stopDiscovery();
-    q->listEntry(KIO::UDSEntry(), true);
-    q->finished();
+    m_adapter->stopDiscovery();
+    m_q->listEntry(KIO::UDSEntry(), true);
+    m_q->finished();
 }
 
 void KioBluetoothPrivate::listDevice(Device *device)
@@ -343,7 +343,7 @@ void KioBluetoothPrivate::listDevice(Device *device)
     entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
     entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRUSR | S_IRGRP | S_IROTH);
     entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, "inode/x-vnd.kde.bluedevil.device");
-    q->listEntry(entry, false);
+    m_q->listEntry(entry, false);
 }
 //@endcond
 
@@ -351,18 +351,18 @@ KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
     : SlaveBase("bluetooth", pool, app)
     , d(new KioBluetoothPrivate(this))
 {
-    d->hasCurrentHost = false;
+    d->m_hasCurrentHost = false;
 
     BlueDevil::Adapter *defaultAdapter = BlueDevil::Manager::self()->defaultAdapter();
     if (!defaultAdapter) {
         kDebug() << "No available interface";
-        d->online = false;
+        d->m_online = false;
         return;
     }
 
     connect(defaultAdapter, SIGNAL(deviceFound(Device*)), this, SLOT(listDevice(Device*)));
-    d->adapter = defaultAdapter;
-    d->online = true;
+    d->m_adapter = defaultAdapter;
+    d->m_online = true;
 
     kDebug() << "Kio Bluetooth instanced!";
 }
@@ -381,13 +381,13 @@ void KioBluetooth::listDir(const KUrl &url)
     Q_UNUSED(url);
 
     // If we are not online (ie. there's no working bluetooth adapter), list an empty dir
-    if (!d->online) {
+    if (!d->m_online) {
         listEntry(KIO::UDSEntry(), true);
         finished();
         return;
     }
 
-    if (!d->hasCurrentHost) {
+    if (!d->m_hasCurrentHost) {
         d->listDevices();
     } else {
         d->listRemoteDeviceServices();
@@ -403,8 +403,8 @@ void KioBluetooth::stat(const KUrl &url)
 void KioBluetooth::get(const KUrl &url)
 {
     kDebug() << "Get: " << url;
-    kDebug() << d->supportedServices.value(url.fileName()).mimetype;
-    mimeType(d->supportedServices.value(url.fileName()).mimetype);
+    kDebug() << d->m_supportedServices.value(url.fileName()).mimetype;
+    mimeType(d->m_supportedServices.value(url.fileName()).mimetype);
     finished();
 }
 
@@ -421,11 +421,11 @@ void KioBluetooth::setHost(const QString &constHostname, quint16 port, const QSt
     QString hostname = constHostname;
     hostname = hostname.replace('-', ':').toUpper();
     if (hostname.isEmpty()) {
-        d->hasCurrentHost = false;
+        d->m_hasCurrentHost = false;
     } else {
-        d->hasCurrentHost = true;
-        d->currentHostname = constHostname;
-        d->currentHostServices.clear();
+        d->m_hasCurrentHost = true;
+        d->m_currentHostname = constHostname;
+        d->m_currentHostServices.clear();
     }
 }
 
