@@ -32,9 +32,10 @@ class KioBluetoothPrivate;
 
 namespace BlueDevil {
     class Device;
+    class Adapter;
 }
 
-typedef BlueDevil::Device Device;
+using namespace BlueDevil;
 
 class KioBluetooth : public QObject, public KIO::SlaveBase
 {

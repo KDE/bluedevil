@@ -35,6 +35,8 @@
 
 #include <bluedevil/bluedevil.h>
 
+using namespace BlueDevil;
+
 extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
 {
     KAboutData about("kio_bluetooth", 0, ki18n("kio_bluetooth"), 0);
@@ -122,7 +124,7 @@ public:
      * Represents the current host when @p hasCurrentHost is set to true. This is set in
      * @p listRemoteDeviceServices function.
      */
-    BlueDevil::Device *m_currentHost;
+    Device *m_currentHost;
 
     /**
      * When @p hasCurrentHost to true, this list holds the list of service names provided by the
@@ -133,7 +135,7 @@ public:
     /**
      * Represents the bluetooth adapter connected to our PC.
      */
-    BlueDevil::Adapter *m_adapter;
+    Adapter *m_adapter;
 
     /**
      * This is an array containing as key the uuid and as value the name of the service that the
@@ -353,7 +355,7 @@ KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
 {
     d->m_hasCurrentHost = false;
 
-    BlueDevil::Adapter *defaultAdapter = BlueDevil::Manager::self()->defaultAdapter();
+    Adapter *defaultAdapter = Manager::self()->defaultAdapter();
     if (!defaultAdapter) {
         kDebug() << "No available interface";
         d->m_online = false;
