@@ -71,6 +71,9 @@ public:
      */
     void setHost(const QString &constHostname, quint16 port, const QString &user, const QString &pass);
 
+private Q_SLOTS:
+    void defaultAdapterChanged(Adapter *adapter);
+
 private:
     KioBluetoothPrivate *d;
 

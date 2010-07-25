@@ -355,9 +355,16 @@ KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
 {
     d->m_hasCurrentHost = false;
 
+    connect(Manager::self(), SIGNAL(adapterAdded(Adapter*)), this,
+                    SLOT(defaultAdapterChanged(Adapter*)));
+
+    connect(Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)), this,
+                    SLOT(defaultAdapterChanged(Adapter*)));
+
     Adapter *defaultAdapter = Manager::self()->defaultAdapter();
     if (!defaultAdapter) {
         kDebug() << "No available interface";
+        infoMessage(i18n("No bluetooth adapter has been found"));
         d->m_online = false;
         return;
     }
@@ -384,6 +391,7 @@ void KioBluetooth::listDir(const KUrl &url)
 
     // If we are not online (ie. there's no working bluetooth adapter), list an empty dir
     if (!d->m_online) {
+        infoMessage(i18n("No bluetooth adapter has been found"));
         listEntry(KIO::UDSEntry(), true);
         finished();
         return;
@@ -430,5 +438,21 @@ void KioBluetooth::setHost(const QString &constHostname, quint16 port, const QSt
         d->m_currentHostServices.clear();
     }
 }
+
+void KioBluetooth::defaultAdapterChanged(Adapter *adapter)
+{
+    kDebug() << "Default Adapter Changed: " << adapter;
+    if (adapter) {
+        kDebug() << "online is true now";
+        d->m_adapter = adapter;
+        d->m_online = true;
+        return;
+    }
+
+    kDebug() << "Default Adapter Removed";
+    d->m_adapter = 0;
+    d->m_online = false;
+}
+
 
 #include "kiobluetooth.moc"
