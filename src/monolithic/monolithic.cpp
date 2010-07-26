@@ -28,6 +28,7 @@
 #include <krun.h>
 
 #include <bluedevil/bluedevil.h>
+#include <kactioncollection.h>
 
 using namespace BlueDevil;
 
@@ -368,22 +369,17 @@ void Monolithic::propertyChanged(const QString &key, const QDBusVariant &value)
     }
 }
 
-void Monolithic::addDevice(Device *device)
+void Monolithic::UUIDsChanged(const QStringList &UUIDs)
 {
-    KMenu *const menu = contextMenu();
-
-// Create device entry
-    KAction *_device = new KAction(device->name(), menu);
-    _device->setData(QVariant::fromValue<Device*>(device));
+    Device *const device = static_cast<Device*>(sender());
 
 // Create the submenu that will hang from this device menu entry
     KMenu *const _submenu = new KMenu;
     bool hasSupportedServices = false;
-    QStringList UUIDs = device->UUIDs();
     EntryInfo info;
     info.device = device;
     if (UUIDs.contains("00001106-0000-1000-8000-00805F9B34FB"))  {
-        KAction *_browse = new KAction(i18n("Browse device..."), _device);
+        KAction *_browse = new KAction(i18n("Browse device..."), _submenu);
         info.service = "00001106-0000-1000-8000-00805F9B34FB";
         _browse->setData(QVariant::fromValue<EntryInfo>(info));
         _submenu->addAction(_browse);
@@ -391,7 +387,7 @@ void Monolithic::addDevice(Device *device)
         hasSupportedServices = true;
     }
     if (UUIDs.contains("00001105-0000-1000-8000-00805F9B34FB")) {
-        KAction *_send = new KAction(i18n("Send files..."), _device);
+        KAction *_send = new KAction(i18n("Send files..."), _submenu);
         info.service = "00001105-0000-1000-8000-00805F9B34FB";
         _send->setData(QVariant::fromValue<EntryInfo>(info));
         _submenu->addAction(_send);
@@ -399,7 +395,7 @@ void Monolithic::addDevice(Device *device)
         hasSupportedServices = true;
     }
     if (UUIDs.contains("00001124-0000-1000-8000-00805F9B34FB")) {
-        KAction *_connect = new KAction(i18n("Connect"), _device);
+        KAction *_connect = new KAction(i18n("Connect"), _submenu);
         org::bluez::Input *input = new org::bluez::Input("org.bluez", device->UBI(), QDBusConnection::systemBus());
         connect(input, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
         m_interfaceMap[input] = _connect;
@@ -412,7 +408,7 @@ void Monolithic::addDevice(Device *device)
         hasSupportedServices = true;
     }
     if (UUIDs.contains("00001108-0000-1000-8000-00805F9B34FB")) {
-        KAction *_connect = new KAction(i18n("Connect"), _device);
+        KAction *_connect = new KAction(i18n("Connect"), _submenu);
         org::bluez::Audio *audio = new org::bluez::Audio("org.bluez", device->UBI(), QDBusConnection::systemBus());
         connect(audio, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
         m_interfaceMap[audio] = _connect;
@@ -425,11 +421,32 @@ void Monolithic::addDevice(Device *device)
         hasSupportedServices = true;
     }
     if (!hasSupportedServices) {
-        KAction *_unknown = new KAction(i18n("No supported services found"), _device);
+        KAction *_unknown = new KAction(i18n("No supported services found"), _submenu);
         _unknown->setEnabled(false);
         _submenu->addAction(_unknown);
     }
-    _device->setMenu(_submenu);
+
+    QAction *_device = 0;
+    Q_FOREACH (QAction *action, m_actions) {
+        if (action->data().value<Device*>() == device) {
+            _device = action;
+            break;
+        }
+    }
+    if (_device) {
+        _device->setMenu(_submenu);
+    }
+}
+
+void Monolithic::addDevice(Device *device)
+{
+    KMenu *const menu = contextMenu();
+
+// Create device entry
+    KAction *_device = new KAction(device->name(), menu);
+    _device->setData(QVariant::fromValue<Device*>(device));
+
+    connect(device, SIGNAL(UUIDsChanged(QStringList)), this, SLOT(UUIDsChanged(QStringList)));
 
     if (!m_actions.isEmpty()) {
         bool first = true;
@@ -470,7 +487,8 @@ void Monolithic::removeDevice(Device *device)
                     nextAction->setIcon(action->icon());
                 }
             }
-            m_actions.removeAll(action);
+            actionCollection()->removeAction(action);
+            m_actions.removeOne(action);
             delete action;
             break;
         }

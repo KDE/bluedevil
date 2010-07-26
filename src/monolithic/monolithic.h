@@ -67,6 +67,7 @@ private Q_SLOTS:
     void connectTriggered();
     void disconnectTriggered();
     void propertyChanged(const QString &key, const QDBusVariant &value);
+    void UUIDsChanged(const QStringList &UUIDs);
     void addDevice(Device *device);
     void removeDevice(Device *device);
 
