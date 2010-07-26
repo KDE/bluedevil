@@ -25,15 +25,17 @@
 #include <kservice.h>
 #include <bluedevil/bluedevil.h>
 #include <KNotification>
+#include <kdebug.h>
 
 ServicesPage::ServicesPage(QWidget* parent): QWizardPage(parent)
 {
     setTitle("Service selection");
     setupUi(this);
 }
-#include <QDebug>
+
 void ServicesPage::initializePage()
 {
+   kDebug() << "Initializing page";
     m_wizard = static_cast<BlueWizard*>(wizard());
     KService::List services = m_wizard->services();
     Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
@@ -42,15 +44,18 @@ void ServicesPage::initializePage()
     QByteArray preselectedUuid = m_wizard->preselectedUuid();
     Q_FOREACH(QString uuid, uuids) {
         uuid = uuid.toUpper();
+        kDebug() << "Checking uuid: " << uuid;
         Q_FOREACH(const KSharedPtr<KService> service, services) {
-
             if (preselectedUuid.isEmpty()) {
                 if (service.data()->property("X-BlueDevil-UUIDS").toStringList().contains(uuid)) {
+                    kDebug() << "uuid: " << uuid << " " << service->name();
                     services.removeOne(service);
                     addService(service.data());
                 }
             } else {
+                kDebug() << "Checkign direct access: " << preselectedUuid;
                 if (service.data()->property("X-BlueDevil-UUIDS").toStringList().contains(preselectedUuid)) {
+                    kDebug() << "Service found: " << service->name();
                     m_wizard->setService(service.data());
                     m_wizard->done(1);
                 }
@@ -60,6 +65,7 @@ void ServicesPage::initializePage()
 
     //If no service has been added (no compatible services)
     if (d_layout->count() == 0) {
+        kDebug() << "Any service has been found, launching the notification";
         QString desc(i18n("%1 has been paired successfully").arg(device->friendlyName()));
 
         KNotification::event(
@@ -105,5 +111,6 @@ void ServicesPage::addService(const KService* service)
 
 void ServicesPage::selected(const KService* service)
 {
+    kDebug() << "Service selected: " << service->name();
     m_wizard->setService(service);
 }
