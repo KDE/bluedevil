@@ -20,25 +20,25 @@
 
 #include "wizardagent.h"
 
-#include <QDebug>
 #include <bluedevil/bluedevil.h>
+#include <KDebug>
 #include <kstandarddirs.h>
 
 using namespace BlueDevil;
 
 WizardAgent::WizardAgent(QApplication* application) : QDBusAbstractAdaptor(application)
 {
-    qDebug() << "AGENT registered !";
+    kDebug() << "AGENT registered !";
 }
 
 WizardAgent::~WizardAgent()
 {
-    qDebug() << "Agent deleted";
+    kDebug() << "Agent deleted";
 }
 
 void WizardAgent::Release()
 {
-    qDebug() << "Agent Release";
+    kDebug() << "Agent Release";
     emit agentReleased();
 }
 
@@ -47,14 +47,14 @@ void WizardAgent::Authorize(QDBusObjectPath device, const QString& uuid, const Q
     Q_UNUSED(device);
     Q_UNUSED(uuid);
     Q_UNUSED(msg);
-    qDebug() << "AGENT-Authorize " << device.path() << " Service: " << uuid;
+    kDebug() << "AGENT-Authorize " << device.path() << " Service: " << uuid;
 }
 
 quint32 WizardAgent::RequestPasskey(QDBusObjectPath device, const QDBusMessage &msg)
 {
     Q_UNUSED(device);
     Q_UNUSED(msg);
-    qDebug() << "AGENT-RequestPasskey " << device.path();
+    kDebug() << "AGENT-RequestPasskey " << device.path();
     return 0;
 }
 
@@ -62,7 +62,7 @@ void WizardAgent::DisplayPasskey(QDBusObjectPath device, quint32 passkey)
 {
     Q_UNUSED(device);
     Q_UNUSED(passkey);
-    qDebug() << "AGENT-DisplayPasskey " << device.path() << ", " << QString::number(passkey);
+    kDebug() << "AGENT-DisplayPasskey " << device.path() << ", " << QString::number(passkey);
 }
 
 void WizardAgent::RequestConfirmation(QDBusObjectPath device, quint32 passkey, const QDBusMessage &msg)
@@ -70,26 +70,26 @@ void WizardAgent::RequestConfirmation(QDBusObjectPath device, quint32 passkey, c
     Q_UNUSED(device);
     Q_UNUSED(passkey);
     Q_UNUSED(msg);
-    qDebug() << "AGENT-RequestConfirmation " << device.path() << ", " << QString::number(passkey);
+    kDebug() << "AGENT-RequestConfirmation " << device.path() << ", " << QString::number(passkey);
 }
 
 void WizardAgent::ConfirmModeChange(const QString& mode, const QDBusMessage &msg)
 {
     Q_UNUSED(mode);
     Q_UNUSED(msg);
-    qDebug() << "AGENT-ConfirmModeChange " << mode;
+    kDebug() << "AGENT-ConfirmModeChange " << mode;
 }
 
 void WizardAgent::Cancel()
 {
-    qDebug() << "AGENT-Cancel";
+    kDebug() << "AGENT-Cancel";
 }
 
 QString WizardAgent::RequestPinCode(QDBusObjectPath device, const QDBusMessage &msg)
 {
     Q_UNUSED(device);
     Q_UNUSED(msg);
-    qDebug() << "AGENT-RequestPinCode " << device.path();
+    kDebug() << "AGENT-RequestPinCode " << device.path();
 
     emit pinRequested(m_pin);
     return m_pin;
@@ -107,12 +107,12 @@ QString WizardAgent::getPin(Device *device)
 
     QFile *file = new QFile(xmlPath);
     if(!file->open(QIODevice::ReadOnly)) {
-        qDebug() << "Can't open the device";
+        kDebug() << "Can't open the device";
         return m_pin;
     }
 
     if (!device) {
-        qDebug() << "could not found the device";
+        kDebug() << "could not found the device";
         return m_pin;
     }
 
