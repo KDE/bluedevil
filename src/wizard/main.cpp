@@ -1,5 +1,4 @@
 /***************************************************************************
- *   Copyright (C) 2010 Eduardo Robles Elvira <edulix@gmail.com>           *
  *   Copyright (C) 2010 Alejandro Fiestas Olivares <alex@eyeos.org>        *
  *   Copyright (C) 2010 UFO Coders <info@ufocoders.com>                    *
  *                                                                         *
@@ -26,10 +25,10 @@
 
 int main(int argc, char *argv[])
 {
-    KAboutData aboutData("bluedevil", 0, ki18n("BlueDevil"), "0.1", ki18n("Bluedevil helper"),
+    KAboutData aboutData("bluedevil_Wizard", "bluedevil", ki18n("BlueDevil Wizard"), "0.1", ki18n("Wizard to pair and connect bluetooth devices"),
         KAboutData::License_GPL, ki18n("(c) 2010, Artesanos del Software"));
 
-    aboutData.addAuthor(ki18n("Alex Fiestas"), ki18n("Developer"), "alex@eyeos.org",
+    aboutData.addAuthor(ki18n("Alex Fiestas"), ki18n("Developer"), "alex@ufocoders.org",
         "http://www.afiestas.org/");
     aboutData.setProgramIconName("preferences-system-bluetooth");
 
