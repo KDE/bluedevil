@@ -40,6 +40,8 @@ public:
     SendFileWizard(const QString &deviceUri);
     virtual ~SendFileWizard();
 
+    virtual void done(int result);
+
     void setFileWidget(KFileWidget *);
     KFileWidget * fileWidget();
 
