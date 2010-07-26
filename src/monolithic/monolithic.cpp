@@ -440,18 +440,28 @@ void Monolithic::addDevice(Device *device)
     _device->setMenu(_submenu);
 
     if (!m_actions.isEmpty()) {
-        Q_FOREACH (QAction *action, m_actions) {
+        bool first = true;
+        QList<QAction*>::iterator it;
+        for (it = m_actions.begin(); it != m_actions.end(); ++it) {
+            QAction *const action = *it;
             Device *const dev = action->data().value<Device*>();
-            if (!(sortDevices(device, dev) < 0)) {
-                menu->insertAction(action, _device);
+            if (!(sortDevices(device, dev) > 0)) {
+                if (first) {
+                    _device->setIcon(KIcon(device->icon()));
+                }
+                QAction *separator = menu->insertSeparator(action);
+                menu->insertAction(separator, _device);
+                m_actions.insert(it, _device);
                 break;
             }
+            first = (classToType(dev->deviceClass()) == classToType(device->deviceClass()));
         }
     } else {
         m_noKnownDevices->setVisible(false);
+        _device->setIcon(KIcon(device->icon()));
         menu->insertAction(m_lastAction, _device);
+        m_actions << _device;
     }
-    m_actions << _device;
 }
 
 void Monolithic::removeDevice(Device *device)
