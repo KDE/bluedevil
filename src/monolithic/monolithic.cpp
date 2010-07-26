@@ -458,9 +458,18 @@ void Monolithic::addDevice(Device *device)
 
 void Monolithic::removeDevice(Device *device)
 {
-    Q_FOREACH (QAction *action, m_actions) {
+    QList<QAction*>::iterator it;
+    for (it = m_actions.begin(); it != m_actions.end(); ++it) {
+        QAction *const action = *it;
         Device *const dev = action->data().value<Device*>();
-        if (device->address() == dev->address()) {
+        if (device == dev) {
+            if (!action->icon().isNull() && (++it != m_actions.end())) {
+                QAction *const nextAction = *it;
+                Device *const nextDev = nextAction->data().value<Device*>();
+                if (classToType(nextDev->deviceClass()) == classToType(device->deviceClass())) {
+                    nextAction->setIcon(action->icon());
+                }
+            }
             m_actions.removeAll(action);
             delete action;
             break;
