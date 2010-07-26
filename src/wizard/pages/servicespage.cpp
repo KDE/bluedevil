@@ -46,7 +46,7 @@ void ServicesPage::initializePage()
 
             if (preselectedUuid.isEmpty()) {
                 if (service.data()->property("X-BlueDevil-UUIDS").toStringList().contains(uuid)) {
-//                     addService(service.data());
+                    addService(service.data());
                 }
             } else {
                 if (service.data()->property("X-BlueDevil-UUIDS").toStringList().contains(preselectedUuid)) {
@@ -64,7 +64,7 @@ void ServicesPage::initializePage()
         KNotification::event(
             KNotification::Notification,
             desc,
-            KIcon(device->icon()).pixmap(48,48), 
+            KIcon(device->icon()).pixmap(48,48)
         )->sendEvent();
         m_wizard->done(0);
         return;
@@ -77,7 +77,16 @@ void ServicesPage::initializePage()
 
 void ServicesPage::cleanupPage()
 {
+    QList <QAbstractButton *>  buttonList =  m_buttonGroup.buttons();
+    Q_FOREACH(QAbstractButton *btn, buttonList) {
+         m_buttonGroup.removeButton(btn);
+    }
 
+    QLayoutItem *child;
+    while ((child = d_layout->takeAt(0)) != 0) {
+        delete child->widget();
+        delete child;
+    }
 }
 
 void ServicesPage::addService(const KService* service)
