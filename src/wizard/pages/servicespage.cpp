@@ -31,27 +31,12 @@ ServicesPage::ServicesPage(QWidget* parent): QWizardPage(parent)
     setTitle("Service selection");
     setupUi(this);
 }
-
+#include <QDebug>
 void ServicesPage::initializePage()
 {
     m_wizard = static_cast<BlueWizard*>(wizard());
     KService::List services = m_wizard->services();
     Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
-
-    if (services.isEmpty()) {
-        QString desc = device->alias();
-        if (device->alias() != device->name() && !device->name().isEmpty()) {
-            desc.append(" ("+device->name()+")");
-        }
-        desc.append(i18n(" has been paired successfully"));
-
-        KNotification::event(
-            KNotification::Notification,
-            desc,
-            KIcon(device->icon()).pixmap(48,48)
-        )->sendEvent();
-        m_wizard->done(1);
-    }
 
     QStringList uuids = device->UUIDs();
     QByteArray preselectedUuid = m_wizard->preselectedUuid();
@@ -61,7 +46,7 @@ void ServicesPage::initializePage()
 
             if (preselectedUuid.isEmpty()) {
                 if (service.data()->property("X-BlueDevil-UUIDS").toStringList().contains(uuid)) {
-                    addService(service.data());
+//                     addService(service.data());
                 }
             } else {
                 if (service.data()->property("X-BlueDevil-UUIDS").toStringList().contains(preselectedUuid)) {
@@ -71,11 +56,24 @@ void ServicesPage::initializePage()
             }
         }
     }
+
+    //If no service has been added (no compatible services)
+    if (d_layout->count() == 0) {
+        QString desc(i18n("%1 has been paired successfully").arg(device->friendlyName()));
+
+        KNotification::event(
+            KNotification::Notification,
+            desc,
+            KIcon(device->icon()).pixmap(48,48), 
+        )->sendEvent();
+        m_wizard->done(0);
+        return;
+    }
+
     ServiceOption *noneOption = new ServiceOption(i18n("None"), i18n("Do not initialize any service"), m_buttonGroup);
     connect(noneOption, SIGNAL(selected(const KService*)), this, SLOT(selected(const KService*)));
     d_layout->addWidget(noneOption);
 }
-
 
 void ServicesPage::cleanupPage()
 {
