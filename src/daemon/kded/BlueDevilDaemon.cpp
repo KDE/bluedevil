@@ -28,7 +28,6 @@
 #include <KDebug>
 #include <KAboutData>
 #include <KPluginFactory>
-#include <QWidget>
 
 #include <bluedevil/bluedevilmanager.h>
 #include <bluedevil/bluedeviladapter.h>
