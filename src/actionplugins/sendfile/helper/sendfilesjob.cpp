@@ -27,6 +27,7 @@
 #include "obex_client.h"
 
 #include <KFileItemList>
+#include <KDebug>
 
 #include <bluedevil/bluedevil.h>
 
@@ -43,7 +44,7 @@ SendFilesJob::SendFilesJob(KFileItemList list, Device *device, ObexAgent *agent,
     Q_FOREACH(const KFileItem &item, list) {
         if (item.isLocalFile()) {
             m_filesToSend << item.url().path();
-            qDebug() << "Adding size : " << item.size();
+            kDebug() << "Adding size : " << item.size();
             m_filesToSendSize << item.size();
             m_totalSize += item.size();
         }
