@@ -71,6 +71,9 @@ void ServicesPage::initializePage()
             }
         }
     }
+    ServiceOption *noneOption = new ServiceOption(i18n("None"), i18n("Do not initialize any service"), m_buttonGroup);
+    connect(noneOption, SIGNAL(selected(const KService*)), this, SLOT(selected(const KService*)));
+    d_layout->addWidget(noneOption);
 }
 
 
