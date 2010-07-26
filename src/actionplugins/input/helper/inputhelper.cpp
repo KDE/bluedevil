@@ -24,6 +24,7 @@
 #include <klocalizedstring.h>
 #include <kservicetypetrader.h>
 #include <ktoolinvocation.h>
+#include <kdebug.h>
 
 #include <bluedevil/bluedevil.h>
 
@@ -38,6 +39,7 @@ InputHelper::InputHelper(const KUrl& address) {
     Device *device = Manager::self()->defaultAdapter()->deviceForAddress(address.host().replace("-", ":"));
 
     if(device->isPaired()) {
+        kDebug() << "Device paired, getting the service";
         QString constraing("'00001124-0000-1000-8000-00805F9B34FB' in [X-BlueDevil-UUIDS]");
 
         KPluginFactory *factory = KPluginLoader(
@@ -50,6 +52,7 @@ InputHelper::InputHelper(const KUrl& address) {
         plugin->setDevice(device);
         plugin->startAction();
     } else {
+        kDebug() << "Device not paired, launched wizard: " << device->friendlyName();
         KToolInvocation::kdeinitExec("bluedevil-wizard", QStringList() << address.url());
     }
 }

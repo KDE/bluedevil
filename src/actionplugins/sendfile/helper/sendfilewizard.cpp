@@ -75,6 +75,15 @@ SendFileWizard::~SendFileWizard()
     }
 }
 
+void SendFileWizard::done(int result)
+{
+    QWizard::done(result);
+    if (!m_job) {
+        qApp->quit();
+    }
+}
+
+
 void SendFileWizard::setFileWidget(KFileWidget* fileWidget)
 {
     m_fileWidget = fileWidget;
@@ -97,7 +106,7 @@ Device* SendFileWizard::device()
 
 void SendFileWizard::wizardDone()
 {
-    QWizard::done(1);
+    done(1);
 }
 
 void SendFileWizard::startTransfer()

@@ -35,6 +35,8 @@
 
 #include <bluedevil/bluedevil.h>
 
+using namespace BlueDevil;
+
 extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
 {
     KAboutData about("kio_bluetooth", 0, ki18n("kio_bluetooth"), 0);
@@ -122,18 +124,13 @@ public:
      * Represents the current host when @p hasCurrentHost is set to true. This is set in
      * @p listRemoteDeviceServices function.
      */
-    BlueDevil::Device *m_currentHost;
+    Device *m_currentHost;
 
     /**
      * When @p hasCurrentHost to true, this list holds the list of service names provided by the
      * current host (which is a remote device we can connect to using those services).
      */
     QList<Service> m_currentHostServices;
-
-    /**
-     * Represents the bluetooth adapter connected to our PC.
-     */
-    BlueDevil::Adapter *m_adapter;
 
     /**
      * This is an array containing as key the uuid and as value the name of the service that the
@@ -263,7 +260,7 @@ void KioBluetoothPrivate::listRemoteDeviceServices()
     m_q->infoMessage(i18n("Retrieving services..."));
 
     kDebug() << "Listing remote devices";
-    m_currentHost = m_adapter->deviceForAddress(m_currentHostname.replace('-', ':').toUpper());
+    m_currentHost = Manager::self()->defaultAdapter()->deviceForAddress(m_currentHostname.replace('-', ':').toUpper());
     m_currentHostServices = getSupportedServices(m_currentHost->UUIDs());
 
     kDebug() << "Num of supported services: " << m_currentHostServices.size();
@@ -311,13 +308,13 @@ void KioBluetoothPrivate::listDevices()
 {
     m_q->infoMessage(i18n("Scanning for remote devices..."));
     m_q->totalSize(100);
-    m_adapter->startDiscovery();
+    Manager::self()->defaultAdapter()->startDiscovery();
     for (int i = 0; i < 100; ++i) {
         SleeperThread::msleep(100);
         m_q->processedSize(i + 1);
         QApplication::processEvents();
     }
-    m_adapter->stopDiscovery();
+    Manager::self()->defaultAdapter()->stopDiscovery();
     m_q->listEntry(KIO::UDSEntry(), true);
     m_q->finished();
 }
@@ -353,15 +350,20 @@ KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
 {
     d->m_hasCurrentHost = false;
 
-    BlueDevil::Adapter *defaultAdapter = BlueDevil::Manager::self()->defaultAdapter();
-    if (!defaultAdapter) {
+    connect(Manager::self(), SIGNAL(adapterAdded(Adapter*)), this,
+                    SLOT(defaultAdapterChanged(Adapter*)));
+
+    connect(Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)), this,
+                    SLOT(defaultAdapterChanged(Adapter*)));
+
+    if (!Manager::self()->defaultAdapter()) {
         kDebug() << "No available interface";
+        infoMessage(i18n("No bluetooth adapter has been found"));
         d->m_online = false;
         return;
     }
 
-    connect(defaultAdapter, SIGNAL(deviceFound(Device*)), this, SLOT(listDevice(Device*)));
-    d->m_adapter = defaultAdapter;
+    connect(Manager::self()->defaultAdapter(), SIGNAL(deviceFound(Device*)), this, SLOT(listDevice(Device*)));
     d->m_online = true;
 
     kDebug() << "Kio Bluetooth instanced!";
@@ -382,6 +384,7 @@ void KioBluetooth::listDir(const KUrl &url)
 
     // If we are not online (ie. there's no working bluetooth adapter), list an empty dir
     if (!d->m_online) {
+        infoMessage(i18n("No bluetooth adapter has been found"));
         listEntry(KIO::UDSEntry(), true);
         finished();
         return;
@@ -428,5 +431,19 @@ void KioBluetooth::setHost(const QString &constHostname, quint16 port, const QSt
         d->m_currentHostServices.clear();
     }
 }
+
+void KioBluetooth::defaultAdapterChanged(Adapter *adapter)
+{
+    kDebug() << "Default Adapter Changed: " << adapter;
+    if (adapter) {
+        kDebug() << "online is true now";
+        d->m_online = true;
+        return;
+    }
+
+    kDebug() << "Default Adapter Removed";
+    d->m_online = false;
+}
+
 
 #include "kiobluetooth.moc"

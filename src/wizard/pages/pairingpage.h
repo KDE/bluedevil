@@ -40,6 +40,7 @@ public:
     virtual void initializePage();
     virtual bool isComplete() const;
     virtual int nextId() const;
+    virtual void cleanupPage();
 
 public Q_SLOTS:
     void doPair();

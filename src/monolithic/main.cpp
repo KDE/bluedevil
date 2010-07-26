@@ -23,7 +23,7 @@
 
 int main(int argc, char *argv[])
 {
-    KAboutData aboutData("bluedevil-monolithic", 0, ki18n("BlueDevil"), "0.1", ki18n("Bluedevil helper"),
+    KAboutData aboutData("bluedevil_monolithic", "bluedevil", ki18n("BlueDevil"), "0.1", ki18n("Bluedevil helper"),
     KAboutData::License_GPL, ki18n("(c) 2010, Artesanos del Software"));
 
     aboutData.addAuthor(ki18n("Alex Fiestas"), ki18n("Developer"), "alex@ufocoders.com", "http://www.afiestas.org/");

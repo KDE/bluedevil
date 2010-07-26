@@ -18,6 +18,7 @@ target_link_libraries(kded_bluedevil
     ${KDE4_KDECORE_LIBS}
     ${KDE4_KDEUI_LIBS}
     ${KDE4_KUTILS_LIBS}
+    ${KDE4_KFILE_LIBS}
     ${LibBlueDevil_LIBRARIES}
 )
 

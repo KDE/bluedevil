@@ -25,6 +25,7 @@
 #include <kservice.h>
 #include <bluedevil/bluedevil.h>
 #include <KNotification>
+#include <kdebug.h>
 
 ServicesPage::ServicesPage(QWidget* parent): QWizardPage(parent)
 {
@@ -34,49 +35,65 @@ ServicesPage::ServicesPage(QWidget* parent): QWizardPage(parent)
 
 void ServicesPage::initializePage()
 {
+   kDebug() << "Initializing page";
     m_wizard = static_cast<BlueWizard*>(wizard());
     KService::List services = m_wizard->services();
     Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
-
-    if (services.isEmpty()) {
-        QString desc = device->alias();
-        if (device->alias() != device->name() && !device->name().isEmpty()) {
-            desc.append(" ("+device->name()+")");
-        }
-        desc.append(i18n(" has been paired successfully"));
-
-        KNotification::event(
-            KNotification::Notification,
-            desc,
-            KIcon(device->icon()).pixmap(48,48)
-        )->sendEvent();
-        m_wizard->done(1);
-    }
 
     QStringList uuids = device->UUIDs();
     QByteArray preselectedUuid = m_wizard->preselectedUuid();
     Q_FOREACH(QString uuid, uuids) {
         uuid = uuid.toUpper();
+        kDebug() << "Checking uuid: " << uuid;
         Q_FOREACH(const KSharedPtr<KService> service, services) {
-
             if (preselectedUuid.isEmpty()) {
                 if (service.data()->property("X-BlueDevil-UUIDS").toStringList().contains(uuid)) {
+                    kDebug() << "uuid: " << uuid << " " << service->name();
+                    services.removeOne(service);
                     addService(service.data());
                 }
             } else {
+                kDebug() << "Checkign direct access: " << preselectedUuid;
                 if (service.data()->property("X-BlueDevil-UUIDS").toStringList().contains(preselectedUuid)) {
+                    kDebug() << "Service found: " << service->name();
                     m_wizard->setService(service.data());
                     m_wizard->done(1);
                 }
             }
         }
     }
-}
 
+    //If no service has been added (no compatible services)
+    if (d_layout->count() == 0) {
+        kDebug() << "Any service has been found, launching the notification";
+        QString desc(i18n("%1 has been paired successfully").arg(device->friendlyName()));
+
+        KNotification::event(
+            KNotification::Notification,
+            desc,
+            KIcon(device->icon()).pixmap(48,48)
+        )->sendEvent();
+        m_wizard->done(0);
+        return;
+    }
+
+    ServiceOption *noneOption = new ServiceOption(i18n("None"), i18n("Do not initialize any service"), m_buttonGroup);
+    connect(noneOption, SIGNAL(selected(const KService*)), this, SLOT(selected(const KService*)));
+    d_layout->addWidget(noneOption);
+}
 
 void ServicesPage::cleanupPage()
 {
+    QList <QAbstractButton *>  buttonList =  m_buttonGroup.buttons();
+    Q_FOREACH(QAbstractButton *btn, buttonList) {
+         m_buttonGroup.removeButton(btn);
+    }
 
+    QLayoutItem *child;
+    while ((child = d_layout->takeAt(0)) != 0) {
+        delete child->widget();
+        delete child;
+    }
 }
 
 void ServicesPage::addService(const KService* service)
@@ -94,5 +111,6 @@ void ServicesPage::addService(const KService* service)
 
 void ServicesPage::selected(const KService* service)
 {
+    kDebug() << "Service selected: " << service->name();
     m_wizard->setService(service);
 }

@@ -427,12 +427,22 @@ void KCMBlueDevilDevices::deviceSelectionChanged(const QItemSelection &selection
         Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
         m_trustDevice->setChecked(device->isTrusted());
         m_disconnectDevice->setEnabled(device->isConnected());
+        if (device->isTrusted()){
+            m_trustDevice->setIcon(KIcon("security-high"));
+        } else {
+            m_trustDevice->setIcon(KIcon("security-low"));
+        }
     }
 }
 
 void KCMBlueDevilDevices::trustDevice()
 {
     Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
+    if (m_trustDevice->isChecked()) {
+        m_trustDevice->setIcon(KIcon("security-high"));
+    } else {
+        m_trustDevice->setIcon(KIcon("security-low"));
+    }
     device->setTrusted(m_trustDevice->isChecked());
 }
 
@@ -462,15 +472,19 @@ void KCMBlueDevilDevices::renameAliasDevice()
 
 void KCMBlueDevilDevices::removeDevice()
 {
+    m_removeDevice->setEnabled(false);
     Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
     if (KMessageBox::questionYesNo(this, i18n("Are you sure that you want to remove device \"%1\" from the list of known devices?").arg(device->alias()),
                                    i18n("Device removal")) == KMessageBox::Yes) {
         BlueDevil::Manager::self()->defaultAdapter()->removeDevice(device);
+    } else {
+        m_removeDevice->setEnabled(true);
     }
 }
 
 void KCMBlueDevilDevices::disconnectDevice()
 {
+    m_disconnectDevice->setEnabled(false);
     Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
     device->disconnect();
 }

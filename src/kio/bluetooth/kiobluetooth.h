@@ -32,9 +32,10 @@ class KioBluetoothPrivate;
 
 namespace BlueDevil {
     class Device;
+    class Adapter;
 }
 
-typedef BlueDevil::Device Device;
+using namespace BlueDevil;
 
 class KioBluetooth : public QObject, public KIO::SlaveBase
 {
@@ -69,6 +70,9 @@ public:
      *
      */
     void setHost(const QString &constHostname, quint16 port, const QString &user, const QString &pass);
+
+private Q_SLOTS:
+    void defaultAdapterChanged(Adapter *adapter);
 
 private:
     KioBluetoothPrivate *d;

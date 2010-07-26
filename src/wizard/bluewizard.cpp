@@ -32,6 +32,7 @@
 #include <bluedevil/bluedevil.h>
 #include <KServiceTypeTrader>
 #include <KPushButton>
+#include <kdebug.h>
 
 BlueWizard::BlueWizard(const KUrl &url) : QWizard(), m_service(0), m_manualPin(false)
 {
@@ -66,14 +67,18 @@ BlueWizard::BlueWizard(const KUrl &url) : QWizard(), m_service(0), m_manualPin(f
 
     m_agent = new WizardAgent(qApp);
     m_services = KServiceTypeTrader::self()->query("BlueDevil/ActionPlugin");
+    kDebug() << "Num of found services: " << m_services.count();
 }
 
 void BlueWizard::done(int result)
 {
+    kDebug() << "Wizard done: " << result;
+
     QWizard::done(result);
     if (result == 1) {
         //If we have a service to connect with
         if (m_service) {
+            kDebug() << "Connecting to: " << m_service->name();
             KPluginFactory *factory = KPluginLoader(m_service->library()).factory();
 
             Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_deviceAddress);
@@ -90,7 +95,6 @@ void BlueWizard::done(int result)
     }
 }
 
-
 BlueWizard::~BlueWizard()
 {
 
@@ -98,6 +102,7 @@ BlueWizard::~BlueWizard()
 
 void BlueWizard::setDeviceAddress(const QByteArray& address)
 {
+    kDebug() << "Device AddresS: " << address;
     m_deviceAddress = address;
 }
 
@@ -108,6 +113,7 @@ QByteArray BlueWizard::deviceAddress() const
 
 void BlueWizard::setPin(const QByteArray& pinNum)
 {
+    kDebug() << "Setting pin: :" << pinNum;
     m_pin = pinNum;
 }
 
@@ -118,6 +124,7 @@ QByteArray BlueWizard::pin() const
 
 void BlueWizard::setManualPin(bool pinManual)
 {
+    kDebug() << "Manual pin: " << pinManual;
     m_manualPin = pinManual;
 }
 
@@ -128,6 +135,7 @@ bool BlueWizard::manualPin() const
 
 void BlueWizard::setPreselectedUuid(const QByteArray& uuid)
 {
+    kDebug() << "Preselect UUID: " << uuid;
     m_preselectedUuid = uuid;
 }
 
@@ -148,5 +156,6 @@ KService::List BlueWizard::services() const
 
 void BlueWizard::setService(const KService* service)
 {
+    kDebug() << "Setting service: " << service->name();
     m_service = service;
 }

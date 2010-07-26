@@ -32,11 +32,15 @@ Q_OBJECT
 
 public:
     ServiceOption(const KService* service, QButtonGroup&,  QWidget *parent = 0);
+    ServiceOption(const QString& radioText, const QString& descText, QButtonGroup& buttonGroup, QWidget* parent = 0);
 
     void setChecked(bool);
 
 private Q_SLOTS:
     void toggled(bool);
+
+private:
+    void init(const QString& radioText, const QString& descText, QButtonGroup& buttonGroup);
 
 private:
     const KService *m_service;

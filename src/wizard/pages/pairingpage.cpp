@@ -20,6 +20,7 @@
 #include "../bluewizard.h"
 #include "../wizardagent.h"
 
+#include <KDebug>
 #include <bluedevil/bluedevil.h>
 
 using namespace BlueDevil;
@@ -38,7 +39,9 @@ PairingPage::PairingPage(QWidget* parent): QWizardPage(parent), m_wizard(0)
 
 void PairingPage::initializePage()
 {
+    kDebug() << "Initialize Page";
     if (!m_wizard) {
+        kDebug() << "No wizard, getting everything again";
         m_wizard = static_cast<BlueWizard*>(wizard());
         m_device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
 
@@ -65,6 +68,7 @@ void PairingPage::initializePage()
 void PairingPage::doPair()
 {
     m_device->pair("/wizardAgent", Adapter::DisplayYesNo);
+    kDebug() << "pair has been executed, waiting...";
 }
 
 bool PairingPage::isComplete() const
@@ -75,9 +79,20 @@ bool PairingPage::isComplete() const
 int PairingPage::nextId() const
 {
     if (m_device->isPaired()) {
+        kDebug() << "Device paired";
         return BlueWizard::Services;
     }
+    kDebug() << "Error, going back to introduction";
     return BlueWizard::Introduction;
+}
+
+void PairingPage::cleanupPage()
+{
+    WizardAgent *agent = m_wizard->agent();
+    connect(agent, SIGNAL(pinRequested(const QString&)), pinNumber, SLOT(setText(QString)));
+    disconnect(m_device, SIGNAL(connectedChanged(bool)), this, SLOT(nextPage()));
+    disconnect(m_device, SIGNAL(pairedChanged(bool)), this, SLOT(nextPage()));
+    m_wizard  = 0;
 }
 
 void PairingPage::nextPage()
