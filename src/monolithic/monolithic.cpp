@@ -33,7 +33,6 @@ using namespace BlueDevil;
 
 Monolithic::Monolithic(QObject* parent)
     : KStatusNotifierItem(parent)
-    , m_knownDevices(0)
 {
     setCategory(KStatusNotifierItem::Hardware);
     setIconByName("preferences-system-bluetooth");
@@ -43,10 +42,8 @@ Monolithic::Monolithic(QObject* parent)
         offlineMode();
     }
 
-    connect(Manager::self(), SIGNAL(adapterAdded(Adapter*)), this,
-        SLOT(adapterAdded()));
-    connect(Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)), this,
-        SLOT(noAdapters(Adapter*)));
+    connect(Manager::self(), SIGNAL(adapterAdded(Adapter*)), this, SLOT(adapterAdded()));
+    connect(Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)), this, SLOT(noAdapters(Adapter*)));
 
     setStandardActionsEnabled(true);
 }
@@ -119,28 +116,27 @@ void Monolithic::generateDeviceEntries()
     }
 
     connect(Manager::self()->defaultAdapter(), SIGNAL(deviceCreated(Device*)), this, SLOT(addDevice(Device*)));
+    connect(Manager::self()->defaultAdapter(), SIGNAL(deviceDisappeared(Device*)), this, SLOT(removeDevice(Device*)));
+    connect(Manager::self()->defaultAdapter(), SIGNAL(deviceRemoved(Device*)), this, SLOT(removeDevice(Device*)));
 
     KMenu *const menu = contextMenu();
+
+    menu->addTitle(i18n("Known Devices"));
+    m_noKnownDevices = new KAction(i18n("No known devices found"), menu);
+    m_noKnownDevices->setEnabled(false);
+    m_noKnownDevices->setVisible(false);
+    menu->addAction(m_noKnownDevices);
 
     QList<Device*> devices = Manager::self()->defaultAdapter()->devices();
     qStableSort(devices.begin(), devices.end(), sortDevices);
     Device *lastDevice = 0;
     bool first = true;
     Q_FOREACH (Device *device, devices) {
-// Connect device removal to the slot
-        connect(Manager::self()->defaultAdapter(), SIGNAL(deviceDisappeared(Device*)), this, SLOT(removeDevice(Device*)));
-        connect(Manager::self()->defaultAdapter(), SIGNAL(deviceRemoved(Device*)), this, SLOT(removeDevice(Device*)));
-
-// We have at least one device, add title to the menu
-        if (!lastDevice) {
-            m_knownDevices = menu->addTitle(i18n("Known Devices"));
-        }
-
 // Create device entry
         KAction *_device = 0;
         if (!lastDevice || classToType(lastDevice->deviceClass()) != classToType(device->deviceClass())) {
             if (!first) {
-                m_actions << contextMenu()->addSeparator();
+                contextMenu()->addSeparator();
             } else {
                 first = false;
             }
@@ -148,13 +144,10 @@ void Monolithic::generateDeviceEntries()
         } else {
             _device = new KAction(device->name(), menu);
         }
+        _device->setData(QVariant::fromValue<Device*>(device));
 
 // Add this action to the own action list
         m_actions << _device;
-// Map the menu entry with the device, in case the device dissappears
-        m_menuMap[device] = _device;
-// Also make relation between types and devices, to add devices in an ordered fashion
-        m_deviceMap.insert(classToType(device->deviceClass()), device);
 
 // Create the submenu that will hang from this device menu entry
         KMenu *const _submenu = new KMenu;
@@ -204,9 +197,7 @@ void Monolithic::generateDeviceEntries()
             connect(_connect, SIGNAL(triggered()), this, SLOT(connectTriggered()));
             hasSupportedServices = true;
         }
-        if (hasSupportedServices) {
-            _device->setData(QVariant::fromValue<Device*>(device));
-        } else {
+        if (!hasSupportedServices) {
             KAction *_unknown = new KAction(i18n("No supported services found"), _device);
             _unknown->setEnabled(false);
             _submenu->addAction(_unknown);
@@ -214,6 +205,10 @@ void Monolithic::generateDeviceEntries()
         _device->setMenu(_submenu);
         menu->addAction(_device);
         lastDevice = device;
+    }
+
+    if (!lastDevice) {
+        m_noKnownDevices->setVisible(true);
     }
 }
 
@@ -245,7 +240,9 @@ void Monolithic::onlineMode()
 
     generateDeviceEntries();
 
-    menu->addSeparator();
+    m_lastAction = new QAction(menu);
+    m_lastAction->setSeparator(true);
+    menu->addAction(m_lastAction);
 
     KAction *addDevice = new KAction(KIcon("edit-find-project"), i18n("Add Device"), menu);
     connect(addDevice, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(addDevice()));
@@ -385,30 +382,7 @@ void Monolithic::addDevice(Device *device)
 
 // Create device entry
     KAction *_device = new KAction(device->name(), menu);
-
-    bool actionAdded = false;
-    KAction *_last = 0;
-    QMap<quint32, Device*>::iterator it = m_deviceMap.find(classToType(device->deviceClass()));
-    while (it != m_deviceMap.end()) {
-        Device *menuDevice = *it;
-        if (device->friendlyName().compare(menuDevice->friendlyName(), Qt::CaseInsensitive) < 0) {
-            menu->insertAction(m_menuMap[menuDevice], _device);
-            actionAdded = true;
-            break;
-        }
-        _last = m_menuMap[menuDevice];
-        ++it;
-    }
-
-    if (!actionAdded) {
-        const int lastOne = m_actions.indexOf(_last);
-        menu->insertAction(m_actions[lastOne + 1], _device);
-    }
-
-// Map the menu entry with the device, in case the device dissappears
-    m_menuMap[device] = _device;
-// Also make relation between types and devices, to add devices in an ordered fashion
-    m_deviceMap.insert(classToType(device->deviceClass()), device);
+    _device->setData(QVariant::fromValue<Device*>(device));
 
 // Create the submenu that will hang from this device menu entry
     KMenu *const _submenu = new KMenu;
@@ -458,21 +432,41 @@ void Monolithic::addDevice(Device *device)
         connect(_connect, SIGNAL(triggered()), this, SLOT(connectTriggered()));
         hasSupportedServices = true;
     }
-    if (hasSupportedServices) {
-        _device->setData(QVariant::fromValue<Device*>(device));
-    } else {
+    if (!hasSupportedServices) {
         KAction *_unknown = new KAction(i18n("No supported services found"), _device);
         _unknown->setEnabled(false);
         _submenu->addAction(_unknown);
     }
     _device->setMenu(_submenu);
-    menu->addAction(_device);
+
+    if (!m_actions.isEmpty()) {
+        Q_FOREACH (QAction *action, m_actions) {
+            Device *const dev = action->data().value<Device*>();
+            if (!(sortDevices(device, dev) < 0)) {
+                menu->insertAction(action, _device);
+                break;
+            }
+        }
+    } else {
+        m_noKnownDevices->setVisible(false);
+        menu->insertAction(m_lastAction, _device);
+    }
+    m_actions << _device;
 }
 
 void Monolithic::removeDevice(Device *device)
 {
-    m_deviceMap.remove(classToType(device->deviceClass()), device);
-    delete m_menuMap[device];
+    Q_FOREACH (QAction *action, m_actions) {
+        Device *const dev = action->data().value<Device*>();
+        if (device->address() == dev->address()) {
+            m_actions.removeAll(action);
+            delete action;
+            break;
+        }
+    }
+    if (m_actions.isEmpty()) {
+        m_noKnownDevices->setVisible(true);
+    }
 }
 
 void Monolithic::offlineMode()

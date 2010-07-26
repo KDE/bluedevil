@@ -75,11 +75,10 @@ private:
     void offlineMode();
 
 private:
-    QMap<void*, KAction*>       m_interfaceMap;
-    QMap<Device*, KAction*>     m_menuMap;
-    QMultiMap<quint32, Device*> m_deviceMap;
-    QAction                    *m_knownDevices;
-    QList<QAction*>             m_actions;
+    QMap<void*, KAction*> m_interfaceMap;
+    QAction              *m_noKnownDevices;
+    QList<QAction*>       m_actions;
+    QAction              *m_lastAction;
 };
 
 Q_DECLARE_METATYPE(Monolithic::EntryInfo)
