@@ -23,15 +23,27 @@
 ServiceOption::ServiceOption(const KService* service, QButtonGroup& buttonGroup, QWidget* parent):
 QWidget(parent)
 {
-    setupUi(this);
+    init(service->name(), service->comment(), buttonGroup);
     m_service = service;
-
-    radioButton->setText(service->name());
-    descLbl->setText(service->comment());
-
-    buttonGroup.addButton(radioButton);
-    connect(radioButton, SIGNAL(toggled(bool)), this, SLOT(toggled(bool)));
 }
+
+ServiceOption::ServiceOption(const QString& radioText, const QString& descText, QButtonGroup& buttonGroup, QWidget* parent)
+: QWidget(parent)
+{
+    init(radioText, descText, buttonGroup);
+}
+
+void ServiceOption::init(const QString& radioText, const QString& descText, QButtonGroup& buttonGroup)
+{
+    m_service = 0;
+    setupUi(this);
+
+    radioButton->setText(radioText);
+    descLbl->setText(descText);
+    buttonGroup.addButton(radioButton);
+    connect(radioButton, SIGNAL(toggled(bool)), this, SLOT(toggled(bool)));    
+}
+
 
 void ServiceOption::setChecked(bool checked)
 {
