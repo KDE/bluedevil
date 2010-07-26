@@ -46,6 +46,7 @@ void ServicesPage::initializePage()
 
             if (preselectedUuid.isEmpty()) {
                 if (service.data()->property("X-BlueDevil-UUIDS").toStringList().contains(uuid)) {
+                    services.removeOne(service);
                     addService(service.data());
                 }
             } else {
