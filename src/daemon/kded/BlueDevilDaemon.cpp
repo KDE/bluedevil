@@ -92,7 +92,10 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
 
 BlueDevilDaemon::~BlueDevilDaemon()
 {
-    offlineMode();
+    if (d->m_status == Private::Online) {
+        offlineMode();
+    }
+
     QDBusMessage msg = QDBusMessage::createMethodCall(
         "org.kde.bluedevil-monolithic",
         "/MainApplication",
