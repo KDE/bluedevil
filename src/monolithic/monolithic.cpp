@@ -342,7 +342,7 @@ void Monolithic::propertyChanged(const QString &key, const QDBusVariant &value)
         if (value.variant().toString() == "disconnected") {
             action->setText(i18n("Connect"));
             action->setEnabled(true);
-            action->disconnect();
+            disconnect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
             connect(action, SIGNAL(triggered()), this, SLOT(connectTriggered()));
         } else if (value.variant().toString() == "connecting") {
             action->setText(i18n("Connecting..."));
@@ -350,29 +350,21 @@ void Monolithic::propertyChanged(const QString &key, const QDBusVariant &value)
         } else {
             action->setText(i18n("Disconnect"));
             action->setEnabled(true);
-            action->disconnect();
+            disconnect(action, SIGNAL(triggered()), this, SLOT(connectTriggered()));
             connect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
         }
     } else if (key == "Connected") {
         if (value.variant().toBool()) {
             action->setText(i18n("Disconnect"));
             action->setEnabled(true);
-            action->disconnect();
+            disconnect(action, SIGNAL(triggered()), this, SLOT(connectTriggered()));
             connect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
         } else {
             action->setText(i18n("Connect"));
             action->setEnabled(true);
-            action->disconnect();
+            disconnect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
             connect(action, SIGNAL(triggered()), this, SLOT(connectTriggered()));
         }
-    }
-
-//Input support
-    if (key == "Connected") {
-        action->setText(i18n("Disconnect"));
-        action->setEnabled(true);
-        action->disconnect();
-        connect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
     }
 }
 
