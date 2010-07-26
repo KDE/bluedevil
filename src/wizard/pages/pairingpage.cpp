@@ -80,6 +80,16 @@ int PairingPage::nextId() const
     return BlueWizard::Introduction;
 }
 
+void PairingPage::cleanupPage()
+{
+    WizardAgent *agent = m_wizard->agent();
+    connect(agent, SIGNAL(pinRequested(const QString&)), pinNumber, SLOT(setText(QString)));
+    disconnect(m_device, SIGNAL(connectedChanged(bool)), this, SLOT(nextPage()));
+    disconnect(m_device, SIGNAL(pairedChanged(bool)), this, SLOT(nextPage()));
+    m_wizard  = 0;
+}
+
+
 void PairingPage::nextPage()
 {
     disconnect(m_device, SIGNAL(connectedChanged(bool)), this, SLOT(nextPage()));
