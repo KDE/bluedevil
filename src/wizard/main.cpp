@@ -25,7 +25,7 @@
 
 int main(int argc, char *argv[])
 {
-    KAboutData aboutData("bluedevil_Wizard", "bluedevil", ki18n("BlueDevil Wizard"), "0.1", ki18n("Wizard to pair and connect bluetooth devices"),
+    KAboutData aboutData("bluedevil_wizard", "bluedevil", ki18n("BlueDevil Wizard"), "0.1", ki18n("Wizard to pair and connect bluetooth devices"),
         KAboutData::License_GPL, ki18n("(c) 2010, Artesanos del Software"));
 
     aboutData.addAuthor(ki18n("Alex Fiestas"), ki18n("Developer"), "alex@ufocoders.org",

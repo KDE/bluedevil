@@ -20,6 +20,8 @@
 #include "ui_pin.h"
 #include "../bluewizard.h"
 
+#include <KDebug>
+
 PinPage::PinPage(QWidget* parent): QWizardPage(parent), m_wizard(0)
 {
     setTitle(i18n("Choose your PIN mode"));
@@ -31,7 +33,9 @@ PinPage::PinPage(QWidget* parent): QWizardPage(parent), m_wizard(0)
 
 void PinPage::initializePage()
 {
+    kDebug() << "Initializing page";
     if (!m_wizard) {
+        kDebug() << "First time in the page";
         m_wizard = static_cast<BlueWizard* >(wizard());
     }
 }

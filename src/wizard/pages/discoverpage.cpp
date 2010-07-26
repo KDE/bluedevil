@@ -26,6 +26,8 @@
 #include <QLabel>
 #include <QTimer>
 
+#include <KDebug>
+
 #include <bluedevil/bluedevil.h>
 
 using namespace BlueDevil;
@@ -52,7 +54,9 @@ DiscoverPage::~DiscoverPage()
 
 void DiscoverPage::initializePage()
 {
+    kDebug() << "Initialize Page";
     if (!m_wizard) {
+        kDebug() << "First time in the page";
         m_wizard = static_cast<BlueWizard* >(wizard());
         connect(Manager::self()->defaultAdapter(), SIGNAL(deviceFound(Device*)), this,
             SLOT(deviceFound(Device*)));
@@ -141,6 +145,7 @@ int DiscoverPage::nextId() const
         if (!m_wizard->deviceAddress().isEmpty()) {
             Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
             if (device->isPaired()) {
+                kDebug() << "Device is paired, jumping";
                 return BlueWizard::Services;
             }
         }
