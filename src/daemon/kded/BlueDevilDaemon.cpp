@@ -28,6 +28,7 @@
 #include <KDebug>
 #include <KAboutData>
 #include <KPluginFactory>
+#include <kfileplacesmodel.h>
 
 #include <bluedevil/bluedevilmanager.h>
 #include <bluedevil/bluedeviladapter.h>
@@ -44,9 +45,10 @@ struct BlueDevilDaemon::Private
         Offline
     } m_status;
 
-    AgentListener                *m_agentListener;
-    BlueDevil::Adapter           *m_adapter;
-    org::kde::BlueDevil::Service *m_service;
+    AgentListener                   *m_agentListener;
+    KFilePlacesModel                *m_placesModel;
+    BlueDevil::Adapter              *m_adapter;
+    org::kde::BlueDevil::Service    *m_service;
 };
 
 BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
@@ -56,6 +58,7 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     d->m_agentListener = 0;
     d->m_adapter = 0;
     d->m_service = 0;
+    d->m_placesModel = 0;
 
     KGlobal::locale()->insertCatalog("bluedevil");
 
@@ -127,6 +130,10 @@ void BlueDevilDaemon::onlineMode()
         d->m_service->launchServer();
     }
 
+    if (!d->m_placesModel) {
+        d->m_placesModel = new KFilePlacesModel();
+    }
+    d->m_placesModel->addPlace("Bluetooth", KUrl("bluetooth:/"), "preferences-system-bluetooth");
     d->m_status = Private::Online;
 }
 
@@ -147,6 +154,11 @@ void BlueDevilDaemon::offlineMode()
         d->m_service->stopServer();
     }
 
+    //Just to be sure that online was called
+    if (d->m_placesModel)  {
+        QModelIndex index = d->m_placesModel->closestItem(KUrl("bluetooth:/"));
+        d->m_placesModel->removePlace(index);
+    }
     d->m_status = Private::Offline;
 }
 
