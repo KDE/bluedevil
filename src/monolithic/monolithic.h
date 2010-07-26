@@ -20,6 +20,8 @@
 #ifndef MONOLITHIC_H
 #define MONOLITHIC_H
 
+#include <QtCore/QMultiMap>
+
 #include <kstatusnotifieritem.h>
 
 namespace BlueDevil {
@@ -27,11 +29,13 @@ namespace BlueDevil {
     class Device;
 }
 
+class QAction;
 class KAction;
 
 using namespace BlueDevil;
 
-class Monolithic : public KStatusNotifierItem
+class Monolithic
+    : public KStatusNotifierItem
 {
 
 Q_OBJECT
@@ -63,13 +67,19 @@ private Q_SLOTS:
     void connectTriggered();
     void disconnectTriggered();
     void propertyChanged(const QString &key, const QDBusVariant &value);
+    void addDevice(Device *device);
+    void removeDevice(Device *device);
 
 private:
     void onlineMode();
     void offlineMode();
 
 private:
-    QMap<void*, KAction*> m_interfaceMap;
+    QMap<void*, KAction*>       m_interfaceMap;
+    QMap<Device*, KAction*>     m_menuMap;
+    QMultiMap<quint32, Device*> m_deviceMap;
+    QAction                    *m_knownDevices;
+    QList<QAction*>             m_actions;
 };
 
 Q_DECLARE_METATYPE(Monolithic::EntryInfo)

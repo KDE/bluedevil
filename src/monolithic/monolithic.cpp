@@ -31,7 +31,9 @@
 
 using namespace BlueDevil;
 
-Monolithic::Monolithic(QObject* parent): KStatusNotifierItem(parent)
+Monolithic::Monolithic(QObject* parent)
+    : KStatusNotifierItem(parent)
+    , m_knownDevices(0)
 {
     setCategory(KStatusNotifierItem::Hardware);
     setIconByName("preferences-system-bluetooth");
@@ -45,6 +47,8 @@ Monolithic::Monolithic(QObject* parent): KStatusNotifierItem(parent)
         SLOT(adapterAdded()));
     connect(Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)), this,
         SLOT(noAdapters(Adapter*)));
+
+    setStandardActionsEnabled(true);
 }
 
 void Monolithic::noAdapters(Adapter* adapter)
@@ -114,19 +118,29 @@ void Monolithic::generateDeviceEntries()
         return;
     }
 
-    KMenu *const menu = contextMenu();
+    connect(Manager::self()->defaultAdapter(), SIGNAL(deviceCreated(Device*)), this, SLOT(addDevice(Device*)));
 
-    menu->addTitle(i18n("Known Devices"));
+    KMenu *const menu = contextMenu();
 
     QList<Device*> devices = Manager::self()->defaultAdapter()->devices();
     qStableSort(devices.begin(), devices.end(), sortDevices);
     Device *lastDevice = 0;
     bool first = true;
     Q_FOREACH (Device *device, devices) {
+// Connect device removal to the slot
+        connect(Manager::self()->defaultAdapter(), SIGNAL(deviceDisappeared(Device*)), this, SLOT(removeDevice(Device*)));
+        connect(Manager::self()->defaultAdapter(), SIGNAL(deviceRemoved(Device*)), this, SLOT(removeDevice(Device*)));
+
+// We have at least one device, add title to the menu
+        if (!lastDevice) {
+            m_knownDevices = menu->addTitle(i18n("Known Devices"));
+        }
+
+// Create device entry
         KAction *_device = 0;
         if (!lastDevice || classToType(lastDevice->deviceClass()) != classToType(device->deviceClass())) {
             if (!first) {
-                contextMenu()->addSeparator();
+                m_actions << contextMenu()->addSeparator();
             } else {
                 first = false;
             }
@@ -134,6 +148,15 @@ void Monolithic::generateDeviceEntries()
         } else {
             _device = new KAction(device->name(), menu);
         }
+
+// Add this action to the own action list
+        m_actions << _device;
+// Map the menu entry with the device, in case the device dissappears
+        m_menuMap[device] = _device;
+// Also make relation between types and devices, to add devices in an ordered fashion
+        m_deviceMap.insert(classToType(device->deviceClass()), device);
+
+// Create the submenu that will hang from this device menu entry
         KMenu *const _submenu = new KMenu;
         bool hasSupportedServices = false;
         QStringList UUIDs = device->UUIDs();
@@ -229,7 +252,6 @@ void Monolithic::onlineMode()
     menu->addAction(addDevice);
 
     setContextMenu(menu);
-    setStandardActionsEnabled(true);
 }
 
 void Monolithic::sendFile()
@@ -355,6 +377,102 @@ void Monolithic::propertyChanged(const QString &key, const QDBusVariant &value)
         action->disconnect();
         connect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
     }
+}
+
+void Monolithic::addDevice(Device *device)
+{
+    KMenu *const menu = contextMenu();
+
+// Create device entry
+    KAction *_device = new KAction(device->name(), menu);
+
+    bool actionAdded = false;
+    KAction *_last = 0;
+    QMap<quint32, Device*>::iterator it = m_deviceMap.find(classToType(device->deviceClass()));
+    while (it != m_deviceMap.end()) {
+        Device *menuDevice = *it;
+        if (device->friendlyName().compare(menuDevice->friendlyName(), Qt::CaseInsensitive) < 0) {
+            menu->insertAction(m_menuMap[menuDevice], _device);
+            actionAdded = true;
+            break;
+        }
+        _last = m_menuMap[menuDevice];
+        ++it;
+    }
+
+    if (!actionAdded) {
+        const int lastOne = m_actions.indexOf(_last);
+        menu->insertAction(m_actions[lastOne + 1], _device);
+    }
+
+// Map the menu entry with the device, in case the device dissappears
+    m_menuMap[device] = _device;
+// Also make relation between types and devices, to add devices in an ordered fashion
+    m_deviceMap.insert(classToType(device->deviceClass()), device);
+
+// Create the submenu that will hang from this device menu entry
+    KMenu *const _submenu = new KMenu;
+    bool hasSupportedServices = false;
+    QStringList UUIDs = device->UUIDs();
+    EntryInfo info;
+    info.device = device;
+    if (UUIDs.contains("00001106-0000-1000-8000-00805F9B34FB"))  {
+        KAction *_browse = new KAction(i18n("Browse device..."), _device);
+        info.service = "00001106-0000-1000-8000-00805F9B34FB";
+        _browse->setData(QVariant::fromValue<EntryInfo>(info));
+        _submenu->addAction(_browse);
+        connect(_browse, SIGNAL(triggered()), this, SLOT(browseTriggered()));
+        hasSupportedServices = true;
+    }
+    if (UUIDs.contains("00001105-0000-1000-8000-00805F9B34FB")) {
+        KAction *_send = new KAction(i18n("Send files..."), _device);
+        info.service = "00001105-0000-1000-8000-00805F9B34FB";
+        _send->setData(QVariant::fromValue<EntryInfo>(info));
+        _submenu->addAction(_send);
+        connect(_send, SIGNAL(triggered()), this, SLOT(sendTriggered()));
+        hasSupportedServices = true;
+    }
+    if (UUIDs.contains("00001124-0000-1000-8000-00805F9B34FB")) {
+        KAction *_connect = new KAction(i18n("Connect"), _device);
+        org::bluez::Input *input = new org::bluez::Input("org.bluez", device->UBI(), QDBusConnection::systemBus());
+        connect(input, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
+        m_interfaceMap[input] = _connect;
+        info.service = "00001124-0000-1000-8000-00805F9B34FB";
+        info.dbusService = input;
+        _connect->setData(QVariant::fromValue<EntryInfo>(info));
+        _submenu->addTitle("Input Service");
+        _submenu->addAction(_connect);
+        connect(_connect, SIGNAL(triggered()), this, SLOT(connectTriggered()));
+        hasSupportedServices = true;
+    }
+    if (UUIDs.contains("00001108-0000-1000-8000-00805F9B34FB")) {
+        KAction *_connect = new KAction(i18n("Connect"), _device);
+        org::bluez::Audio *audio = new org::bluez::Audio("org.bluez", device->UBI(), QDBusConnection::systemBus());
+        connect(audio, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
+        m_interfaceMap[audio] = _connect;
+        info.service = "00001108-0000-1000-8000-00805F9B34FB";
+        info.dbusService = audio;
+        _connect->setData(QVariant::fromValue<EntryInfo>(info));
+        _submenu->addTitle("Headset Service");
+        _submenu->addAction(_connect);
+        connect(_connect, SIGNAL(triggered()), this, SLOT(connectTriggered()));
+        hasSupportedServices = true;
+    }
+    if (hasSupportedServices) {
+        _device->setData(QVariant::fromValue<Device*>(device));
+    } else {
+        KAction *_unknown = new KAction(i18n("No supported services found"), _device);
+        _unknown->setEnabled(false);
+        _submenu->addAction(_unknown);
+    }
+    _device->setMenu(_submenu);
+    menu->addAction(_device);
+}
+
+void Monolithic::removeDevice(Device *device)
+{
+    m_deviceMap.remove(classToType(device->deviceClass()), device);
+    delete m_menuMap[device];
 }
 
 void Monolithic::offlineMode()
