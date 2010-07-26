@@ -28,6 +28,7 @@
 #include <KIcon>
 
 #include <bluedevil/bluedevildevice.h>
+#include <kprocess.h>
 
 BLUEDEVILACTION_PLUGIN_EXPORT(SendFilePlugin)
 
@@ -39,9 +40,6 @@ SendFilePlugin::SendFilePlugin(QObject* parent, const QVariantList& args)
 
 void SendFilePlugin::startAction()
 {
-//     OrgBluezInputInterface *interface = new OrgBluezInputInterface("org.bluez", device()->UBI(), QDBusConnection::systemBus());
-//     connect(interface, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
-// 
-//     interface->Connect();
-//     QTimer::singleShot(30*1000, this, SLOT(timeout()));
+    KProcess process;
+    process.startDetached("bluedevil-sendfile");
 }
