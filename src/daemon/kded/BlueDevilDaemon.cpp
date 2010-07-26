@@ -63,7 +63,7 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     KGlobal::locale()->insertCatalog("bluedevil");
 
     KAboutData aboutData(
-        "BlueDevil Daemon",
+        "bluedevil_daemon",
         "bluedevil",
         ki18n("BlueDevil Daemon"),
         "1.0",
