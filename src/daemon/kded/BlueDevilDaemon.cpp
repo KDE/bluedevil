@@ -29,10 +29,10 @@
 #include <KAboutData>
 #include <KPluginFactory>
 #include <kfileplacesmodel.h>
+#include <kprocess.h>
 
 #include <bluedevil/bluedevilmanager.h>
 #include <bluedevil/bluedeviladapter.h>
-#include <kprocess.h>
 
 K_PLUGIN_FACTORY(BlueDevilFactory,
                  registerPlugin<BlueDevilDaemon>();)
