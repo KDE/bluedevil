@@ -350,7 +350,6 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
 // Actions buttons
     m_trustDevice = new KPushButton(KIcon("security-high"), i18n("Trust"));
     m_trustDevice->setEnabled(false);
-    m_trustDevice->setCheckable(true);
     m_renameAliasDevice = new KPushButton(KIcon("document-edit"), i18n("Rename"));
     m_renameAliasDevice->setEnabled(false);
     m_removeDevice = new KPushButton(KIcon("list-remove"), i18n("Remove"));
@@ -359,7 +358,7 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     m_disconnectDevice->setEnabled(false);
     m_addDevice = new KPushButton(KIcon("list-add"), i18n("Add Device..."));
 
-    connect(m_trustDevice, SIGNAL(clicked()), this, SLOT(trustDevice()));
+    connect(m_trustDevice, SIGNAL(clicked()), this, SLOT(trustUntrustDevice()));
     connect(m_renameAliasDevice, SIGNAL(clicked()), this, SLOT(renameAliasDevice()));
     connect(m_removeDevice, SIGNAL(clicked()), this, SLOT(removeDevice()));
     connect(m_disconnectDevice, SIGNAL(clicked()), this, SLOT(disconnectDevice()));
@@ -418,32 +417,34 @@ void KCMBlueDevilDevices::deviceSelectionChanged(const QItemSelection &selection
 {
     const bool enable = !selection.isEmpty();
     m_trustDevice->setEnabled(enable);
-    m_trustDevice->setChecked(false);
     m_renameAliasDevice->setEnabled(enable);
     m_removeDevice->setEnabled(enable);
     m_disconnectDevice->setEnabled(false);
 
     if (m_devices->currentIndex().isValid()) {
         Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
-        m_trustDevice->setChecked(device->isTrusted());
         m_disconnectDevice->setEnabled(device->isConnected());
         if (device->isTrusted()){
-            m_trustDevice->setIcon(KIcon("security-high"));
-        } else {
+            m_trustDevice->setText(i18n("Untrust"));
             m_trustDevice->setIcon(KIcon("security-low"));
+        } else {
+            m_trustDevice->setText(i18n("Trust"));
+            m_trustDevice->setIcon(KIcon("security-high"));
         }
     }
 }
 
-void KCMBlueDevilDevices::trustDevice()
+void KCMBlueDevilDevices::trustUntrustDevice()
 {
     Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
-    if (m_trustDevice->isChecked()) {
+    if (device->isTrusted()) {
+        m_trustDevice->setText(i18n("Trust"));
         m_trustDevice->setIcon(KIcon("security-high"));
     } else {
+        m_trustDevice->setText(i18n("Untrust"));
         m_trustDevice->setIcon(KIcon("security-low"));
     }
-    device->setTrusted(m_trustDevice->isChecked());
+    device->setTrusted(!device->isTrusted());
 }
 
 void KCMBlueDevilDevices::renameAliasDevice()

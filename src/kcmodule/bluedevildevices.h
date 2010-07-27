@@ -55,7 +55,7 @@ public:
 
 private Q_SLOTS:
     void deviceSelectionChanged(const QItemSelection &selection);
-    void trustDevice();
+    void trustUntrustDevice();
     void renameAliasDevice();
     void removeDevice();
     void disconnectDevice();
