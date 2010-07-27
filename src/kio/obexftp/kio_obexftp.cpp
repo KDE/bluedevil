@@ -70,15 +70,23 @@ KioFtp::~KioFtp()
 
 void KioFtp::createSession(const KUrl &address)
 {
+    if (address.host().isEmpty()) {
+        kDebug() << "No host";
+        error (KIO::ERR_UNKNOWN_HOST, address.prettyUrl());
+        finished();
+        return;
+    }
+
     infoMessage(i18n("Connecting to the remote device..."));
 
     launchProgressBar();
-    m_address = address.path().mid(1, 17);
+    m_address = address.host();
     kDebug() << "Got address: " << m_address;
 
     m_manager = new org::openobex::Manager("org.openobex", "/org/openobex", QDBusConnection::sessionBus(), 0);
     connect(m_manager, SIGNAL(SessionConnected(QDBusObjectPath)), this, SLOT(sessionCreated(QDBusObjectPath)));
 
+    kDebug() << "Creaing the bluetooth session: ";
     QDBusPendingReply <QDBusObjectPath > rep = m_manager->CreateBluetoothSession(QString(m_address).replace("-", ":"), "00:00:00:00:00:00", "ftp");
 
     m_eventLoop.exec();
@@ -139,7 +147,7 @@ void KioFtp::listDir(const KUrl &url)
 
     infoMessage(i18n("Retrieving information from remote device..."));
 
-    if (url.directory() != "/") {
+    if (url.fileName() != "/" && !url.fileName().isEmpty()) {
         changeDirectory(url);
     }
 
@@ -234,9 +242,11 @@ void KioFtp::slave_status()
 
 void KioFtp::stat(const KUrl &url)
 {
-    kDebug() << "Stat: " << url.path();
+    kDebug() << "Stat: " << url.url();
+    kDebug() << "Stat Dir: " << url.directory();
+    kDebug() << "Stat File: " << url.fileName();
     ENSURE_SESSION_CREATED(url)
-    if (url.directory() == "/") {
+    if (url.fileName() != "/" && url.fileName().isEmpty()) {
         KIO::UDSEntry entry;
         entry.insert(KIO::UDSEntry::UDS_NAME, QString::fromLatin1("/"));
         entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
