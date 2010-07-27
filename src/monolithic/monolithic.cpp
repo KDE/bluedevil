@@ -339,6 +339,10 @@ void Monolithic::propertyChanged(const QString &key, const QDBusVariant &value)
 {
     KAction *action = m_interfaceMap[static_cast<void*>(sender())];
 
+    if (!action) {
+        return;
+    }
+
     if (key == "State") {
         if (value.variant().toString() == "disconnected") {
             action->setText(i18n("Connect"));
@@ -448,35 +452,52 @@ void Monolithic::addDevice(Device *device)
 
     connect(device, SIGNAL(UUIDsChanged(QStringList)), this, SLOT(UUIDsChanged(QStringList)));
 
-    if (!m_actions.isEmpty()) {
-        bool first = true;
-        QList<QAction*>::iterator it;
-        for (it = m_actions.begin(); it != m_actions.end(); ++it) {
-            QAction *const action = *it;
-            Device *const dev = action->data().value<Device*>();
-            if (!(sortDevices(device, dev) > 0)) {
-                if (first) {
-                    _device->setIcon(KIcon(device->icon()));
-                }
-                QAction *separator = menu->insertSeparator(action);
-                menu->insertAction(separator, _device);
-                m_actions.insert(it, _device);
-                break;
-            }
-            first = (classToType(dev->deviceClass()) == classToType(device->deviceClass()));
-        }
-    } else {
+    if (m_actions.isEmpty()) {
         m_noKnownDevices->setVisible(false);
         _device->setIcon(KIcon(device->icon()));
         menu->insertAction(m_lastAction, _device);
         m_actions << _device;
+        return;
     }
+
+    Device *lastDevice = 0;
+    QList<QAction*>::iterator it = m_actions.begin();
+    while (it != m_actions.end()) {
+        QAction *const action = *it;
+        Device *const actionDevice = action->data().value<Device*>();
+        if (sortDevices(device, actionDevice)) {
+            if (!action->icon().isNull()) {
+                if (classToType(device->deviceClass()) == classToType(actionDevice->deviceClass())) {
+                    action->setIcon(KIcon());
+                }
+                _device->setIcon(KIcon(device->icon()));
+            }
+            menu->insertAction(action, _device);
+            m_actions.insert(it, _device);
+            return;
+        }
+        ++it;
+        lastDevice = actionDevice;
+    }
+
+    bool addSeparator = false;
+    if (classToType(device->deviceClass()) != classToType(lastDevice->deviceClass())) {
+        _device->setIcon(KIcon(device->icon()));
+        addSeparator = true;
+    }
+    menu->insertAction(m_lastAction, _device);
+    if (addSeparator) {
+        menu->insertSeparator(_device);
+    }
+    m_actions << _device;
 }
 
 void Monolithic::removeDevice(Device *device)
 {
-    QList<QAction*>::iterator it;
-    for (it = m_actions.begin(); it != m_actions.end(); ++it) {
+    KMenu *const menu = contextMenu();
+
+    QList<QAction*>::iterator it = m_actions.begin();
+    while (it != m_actions.end()) {
         QAction *const action = *it;
         Device *const dev = action->data().value<Device*>();
         if (device == dev) {
@@ -487,11 +508,13 @@ void Monolithic::removeDevice(Device *device)
                     nextAction->setIcon(action->icon());
                 }
             }
-            actionCollection()->removeAction(action);
-            m_actions.removeOne(action);
-            delete action;
+            delete action->menu();
+            action->setMenu(0);
+            menu->removeAction(action);
+            m_actions.removeAll(action);
             break;
         }
+        ++it;
     }
     if (m_actions.isEmpty()) {
         m_noKnownDevices->setVisible(true);

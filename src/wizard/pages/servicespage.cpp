@@ -111,6 +111,6 @@ void ServicesPage::addService(const KService* service)
 
 void ServicesPage::selected(const KService* service)
 {
-    kDebug() << "Service selected: " << service->name();
+    kDebug() << "Service selected: " << (service ? service->name() : "none");
     m_wizard->setService(service);
 }
