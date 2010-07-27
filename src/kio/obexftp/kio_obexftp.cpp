@@ -173,6 +173,14 @@ void KioFtp::copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFl
     connect(m_session, SIGNAL(ErrorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
 
     if (src.scheme() == "obexftp") {
+        if (m_statMap.contains(src.prettyUrl())) {
+            if (m_statMap.value(src.prettyUrl()).isDir()) {
+                kDebug() << "Skipping to copy: " << src.prettyUrl();
+                error( KIO::ERR_UNSUPPORTED_ACTION, src.prettyUrl());
+                finished();
+                return;
+            }
+        }
         ENSURE_SESSION_CREATED(src)
         changeDirectory(src.directory());
         kDebug() << "CopyingRemoteFile....";
