@@ -259,6 +259,7 @@ void KioFtp::stat(const KUrl &url)
         entry.insert(KIO::UDSEntry::UDS_NAME, QString::fromLatin1("/"));
         entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
         entry.insert( KIO::UDSEntry::UDS_MIME_TYPE, QString::fromLatin1( "inode/directory" ) );
+        m_statMap[url.prettyUrl()] = entry;
         statEntry(entry);
 
     } else {
