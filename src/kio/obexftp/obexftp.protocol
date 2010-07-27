@@ -12,5 +12,6 @@ makedir=true
 deleting=true
 moving=true
 Icon=preferences-system-bluetooth
+maxInstancesPerHost=1
 maxInstances=1
 X-DocPath=kioslave/obexftp.html
