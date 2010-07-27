@@ -176,7 +176,7 @@ void KioFtp::copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFl
         if (m_statMap.contains(src.prettyUrl())) {
             if (m_statMap.value(src.prettyUrl()).isDir()) {
                 kDebug() << "Skipping to copy: " << src.prettyUrl();
-                error( KIO::ERR_UNSUPPORTED_ACTION, src.prettyUrl());
+                error( KIO::ERR_IS_DIRECTORY, src.prettyUrl());
                 finished();
                 return;
             }
