@@ -372,6 +372,8 @@ void Monolithic::propertyChanged(const QString &key, const QDBusVariant &value)
             disconnect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
             connect(action, SIGNAL(triggered()), this, SLOT(connectTriggered()));
         }
+    } else if (key == "Name") {
+        action->setText(value.variant().toString());
     }
 }
 

@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
     KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
     QString wizardArg;
     if (args->count()) {
-        wizardArg = args->arg(0).mid(12, 17).replace('-', ':');
+        wizardArg = KUrl(args->arg(0)).host().replace('-', ':');
     }
 
     KApplication app;
