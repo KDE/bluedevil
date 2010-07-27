@@ -20,6 +20,8 @@
 #include "audio_interface.h"
 #include "input_interface.h"
 
+#include <QDebug>
+
 #include <kmenu.h>
 #include <kaction.h>
 #include <kprocess.h>
@@ -261,7 +263,7 @@ void Monolithic::sendFile()
 
 void Monolithic::browseDevices()
 {
-    KUrl url("bluetooth:/");
+    KUrl url("bluetooth://");
     KRun::runUrl(url, "inode/directory", new QWidget());
 }
 
