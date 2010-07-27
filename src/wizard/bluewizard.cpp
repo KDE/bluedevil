@@ -156,6 +156,6 @@ KService::List BlueWizard::services() const
 
 void BlueWizard::setService(const KService* service)
 {
-    kDebug() << "Setting service: " << service->name();
+    kDebug() << "Setting service: " << (service ? service->name() : "none");
     m_service = service;
 }
