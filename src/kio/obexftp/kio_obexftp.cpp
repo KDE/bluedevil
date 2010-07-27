@@ -262,9 +262,9 @@ void KioFtp::stat(const KUrl &url)
         statEntry(entry);
 
     } else {
-        if (m_statMap.contains(url.url())) {
+        if (m_statMap.contains(url.prettyUrl())) {
             kDebug() << "statMap contains the url";
-            statEntry(m_statMap[url.url()]);
+            statEntry(m_statMap[url.prettyUrl()]);
 
         } else {
             kDebug() << "statMap NOT contains the url";
@@ -300,8 +300,10 @@ int KioFtp::processXmlEntries(const KUrl& url, const QString& xml, const char* s
             continue;
         }
 
-        QString fullPath = url.url();
-        fullPath.append("/" + attr.value("name").toString());
+        KUrl fullKurl = url;
+        fullKurl.addPath(attr.value("name").toString());
+
+        const QString fullPath = fullKurl.prettyUrl();
 
         KIO::UDSEntry entry;
         if (!m_statMap.contains(fullPath)) {
