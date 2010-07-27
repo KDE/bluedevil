@@ -314,7 +314,6 @@ int KioFtp::processXmlEntries(const KUrl& url, const QString& xml, const char* s
 
             if (m_xml->name() == "folder") {
                 entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
-                entry.insert( KIO::UDSEntry::UDS_MIME_TYPE, QString::fromLatin1( "inode/directory" ) );
             } else {
                 entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
                 entry.insert(KIO::UDSEntry::UDS_SIZE, attr.value("size").toString().toUInt());
