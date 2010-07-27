@@ -275,7 +275,7 @@ void KioBluetoothPrivate::listRemoteDeviceServices()
         //If it is browse files, act as a folder
         if (service.uuid == "00001106-0000-1000-8000-00805F9B34FB") {
             entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
-            entry.insert(KIO::UDSEntry::UDS_URL, "obexftp:/"+m_currentHostname.replace(':', '-').toUpper());
+            entry.insert(KIO::UDSEntry::UDS_URL, "obexftp://"+m_currentHostname.replace(':', '-').toUpper());
         } else {
             entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
             entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRWXU | S_IRWXG | S_IRWXO);
