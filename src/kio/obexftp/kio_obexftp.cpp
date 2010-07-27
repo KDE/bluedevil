@@ -70,15 +70,23 @@ KioFtp::~KioFtp()
 
 void KioFtp::createSession(const KUrl &address)
 {
+    if (address.host().isEmpty()) {
+        kDebug() << "No host";
+        error (KIO::ERR_UNKNOWN_HOST, address.prettyUrl());
+        finished();
+        return;
+    }
+
     infoMessage(i18n("Connecting to the remote device..."));
 
     launchProgressBar();
-    m_address = address.path().mid(1, 17);
+    m_address = address.host();
     kDebug() << "Got address: " << m_address;
 
     m_manager = new org::openobex::Manager("org.openobex", "/org/openobex", QDBusConnection::sessionBus(), 0);
     connect(m_manager, SIGNAL(SessionConnected(QDBusObjectPath)), this, SLOT(sessionCreated(QDBusObjectPath)));
 
+    kDebug() << "Creaing the bluetooth session: ";
     QDBusPendingReply <QDBusObjectPath > rep = m_manager->CreateBluetoothSession(QString(m_address).replace("-", ":"), "00:00:00:00:00:00", "ftp");
 
     m_eventLoop.exec();
@@ -139,7 +147,7 @@ void KioFtp::listDir(const KUrl &url)
 
     infoMessage(i18n("Retrieving information from remote device..."));
 
-    if (url.directory() != "/") {
+    if (url.fileName() != "/" && !url.fileName().isEmpty()) {
         changeDirectory(url);
     }
 
@@ -165,6 +173,14 @@ void KioFtp::copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFl
     connect(m_session, SIGNAL(ErrorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
 
     if (src.scheme() == "obexftp") {
+        if (m_statMap.contains(src.prettyUrl())) {
+            if (m_statMap.value(src.prettyUrl()).isDir()) {
+                kDebug() << "Skipping to copy: " << src.prettyUrl();
+                error( KIO::ERR_IS_DIRECTORY, src.prettyUrl());
+                finished();
+                return;
+            }
+        }
         ENSURE_SESSION_CREATED(src)
         changeDirectory(src.directory());
         kDebug() << "CopyingRemoteFile....";
@@ -234,9 +250,11 @@ void KioFtp::slave_status()
 
 void KioFtp::stat(const KUrl &url)
 {
-    kDebug() << "Stat: " << url.path();
+    kDebug() << "Stat: " << url.url();
+    kDebug() << "Stat Dir: " << url.directory();
+    kDebug() << "Stat File: " << url.fileName();
     ENSURE_SESSION_CREATED(url)
-    if (url.directory() == "/") {
+    if (url.fileName() != "/" && url.fileName().isEmpty()) {
         KIO::UDSEntry entry;
         entry.insert(KIO::UDSEntry::UDS_NAME, QString::fromLatin1("/"));
         entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
@@ -244,9 +262,9 @@ void KioFtp::stat(const KUrl &url)
         statEntry(entry);
 
     } else {
-        if (m_statMap.contains(url.url())) {
+        if (m_statMap.contains(url.prettyUrl())) {
             kDebug() << "statMap contains the url";
-            statEntry(m_statMap[url.url()]);
+            statEntry(m_statMap[url.prettyUrl()]);
 
         } else {
             kDebug() << "statMap NOT contains the url";
@@ -282,8 +300,10 @@ int KioFtp::processXmlEntries(const KUrl& url, const QString& xml, const char* s
             continue;
         }
 
-        QString fullPath = url.url();
-        fullPath.append("/" + attr.value("name").toString());
+        KUrl fullKurl = url;
+        fullKurl.addPath(attr.value("name").toString());
+
+        const QString fullPath = fullKurl.prettyUrl();
 
         KIO::UDSEntry entry;
         if (!m_statMap.contains(fullPath)) {
@@ -294,7 +314,6 @@ int KioFtp::processXmlEntries(const KUrl& url, const QString& xml, const char* s
 
             if (m_xml->name() == "folder") {
                 entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
-                entry.insert( KIO::UDSEntry::UDS_MIME_TYPE, QString::fromLatin1( "inode/directory" ) );
             } else {
                 entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
                 entry.insert(KIO::UDSEntry::UDS_SIZE, attr.value("size").toString().toUInt());
@@ -317,12 +336,13 @@ int KioFtp::processXmlEntries(const KUrl& url, const QString& xml, const char* s
 void KioFtp::listDirCallback(const KIO::UDSEntry& entry, const KUrl &url)
 {
     Q_UNUSED(url)
+    kDebug();
     listEntry(entry, false);
 }
 
 void KioFtp::statCallback(const KIO::UDSEntry& entry, const KUrl &url)
 {
-    kDebug() << "FileName : " << url.fileName();
+    kDebug() << "FileName : " << url.fileName() << "  " << entry.stringValue(KIO::UDSEntry::UDS_NAME);
     if (entry.stringValue(KIO::UDSEntry::UDS_NAME) == url.fileName()) {
         kDebug() << "setting statEntry : ";
         statEntry(entry);
