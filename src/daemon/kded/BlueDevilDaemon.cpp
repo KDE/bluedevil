@@ -136,6 +136,14 @@ void BlueDevilDaemon::onlineMode()
     if (!d->m_placesModel) {
         d->m_placesModel = new KFilePlacesModel();
     }
+
+    //Just in case kded4 was killed or crashed
+    QModelIndex index = d->m_placesModel->closestItem(KUrl("bluetooth:/"));
+    while (index.row() != -1) {
+        d->m_placesModel->removePlace(index);
+        index = d->m_placesModel->closestItem(KUrl("bluetooth:/"));
+    }
+
     d->m_placesModel->addPlace("Bluetooth", KUrl("bluetooth:/"), "preferences-system-bluetooth");
     d->m_status = Private::Online;
 }
