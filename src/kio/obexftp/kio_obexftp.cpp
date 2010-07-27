@@ -337,12 +337,13 @@ int KioFtp::processXmlEntries(const KUrl& url, const QString& xml, const char* s
 void KioFtp::listDirCallback(const KIO::UDSEntry& entry, const KUrl &url)
 {
     Q_UNUSED(url)
+    kDebug();
     listEntry(entry, false);
 }
 
 void KioFtp::statCallback(const KIO::UDSEntry& entry, const KUrl &url)
 {
-    kDebug() << "FileName : " << url.fileName();
+    kDebug() << "FileName : " << url.fileName() << "  " << entry.stringValue(KIO::UDSEntry::UDS_NAME);
     if (entry.stringValue(KIO::UDSEntry::UDS_NAME) == url.fileName()) {
         kDebug() << "setting statEntry : ";
         statEntry(entry);
