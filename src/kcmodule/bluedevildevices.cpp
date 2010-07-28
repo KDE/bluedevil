@@ -310,7 +310,7 @@ QSize BluetoothDevicesDelegate::sizeHint(const QStyleOptionViewItem &option, con
 
 KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     : KCModule(BlueDevilFactory::componentData(), parent)
-    , m_enable(new QCheckBox(i18n("Enable Bluetooth"), this))
+    , m_enable(new QCheckBox(i18n("Enable KDE Bluetooth Integration"), this))
     , m_systemCheck(new SystemCheck(this))
 {
     KAboutData* ab = new KAboutData(
