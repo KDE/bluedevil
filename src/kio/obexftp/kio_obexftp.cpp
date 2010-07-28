@@ -258,11 +258,12 @@ void KioFtp::stat(const KUrl &url)
     kDebug() << "Stat Dir: " << url.directory();
     kDebug() << "Stat File: " << url.fileName();
     ENSURE_SESSION_CREATED(url)
-    if (url.fileName() != "/" || url.fileName().isEmpty()) {
+    if (url.directory() == "/" && url.fileName().isEmpty()) {
         KIO::UDSEntry entry;
         entry.insert(KIO::UDSEntry::UDS_NAME, QString::fromLatin1("/"));
         entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
         entry.insert( KIO::UDSEntry::UDS_MIME_TYPE, QString::fromLatin1( "inode/directory" ) );
+        kDebug() << "Adding stat cached: " << url.prettyUrl();
         m_statMap[url.prettyUrl()] = entry;
         statEntry(entry);
 
