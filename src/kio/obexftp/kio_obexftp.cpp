@@ -371,15 +371,23 @@ void KioFtp::TransferProgress(qulonglong transfered)
 void KioFtp::TransferCompleted()
 {
     kDebug() << "TransferCompleted: ";
+    disconnect(m_session, SIGNAL(TransferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
+    disconnect(m_session, SIGNAL(TransferCompleted()), this, SLOT(TransferCompleted()));
+    disconnect(m_session, SIGNAL(ErrorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
     m_eventLoop.exit();
 }
 
 void KioFtp::ErrorOccurred(const QString &name, const QString &msg)
 {
+    disconnect(m_session, SIGNAL(TransferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
+    disconnect(m_session, SIGNAL(TransferCompleted()), this, SLOT(TransferCompleted()));
+    disconnect(m_session, SIGNAL(ErrorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
+
+    kDebug() << "ERROR ERROR: " << name;
+    kDebug() << "ERROR ERROR: " << msg;
+
     error(KIO::ERR_UNKNOWN, "");
     if (m_eventLoop.isRunning()){
         m_eventLoop.exit();
     }
-    kDebug() << "ERROR ERROR: " << name;
-    kDebug() << "ERROR ERROR: " << msg;
 }
