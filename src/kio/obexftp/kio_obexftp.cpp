@@ -358,6 +358,7 @@ void KioFtp::sessionCreated(const QDBusObjectPath& path)
 {
     Q_UNUSED(path)
     kDebug() << "session Created!";
+    disconnect(m_manager, SIGNAL(SessionConnected(QDBusObjectPath)), this, SLOT(sessionCreated(QDBusObjectPath)));
     m_eventLoop.exit();
 }
 
