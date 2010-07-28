@@ -29,7 +29,7 @@ qt4_add_dbus_interface(sendfilehelper_SRCS org.openobex.Transfer.xml obex_transf
 kde4_add_executable(bluedevil-sendfile ${sendfilehelper_SRCS})
 
 target_link_libraries(bluedevil-sendfile
-                      ${KDE4_KIO_LIBRARY} ${KDE4_KDEUI_LIBS} ${KDE4_KFILE_LIBS} bluedevil)
+                      ${KDE4_KIO_LIBRARY} ${KDE4_KDEUI_LIBS} ${KDE4_KFILE_LIBS} ${LibBlueDevil_LIBRARIES})
 
 install(TARGETS bluedevil-sendfile DESTINATION ${INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES bluedevil-sendfile.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
