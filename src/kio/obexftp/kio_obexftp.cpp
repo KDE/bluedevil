@@ -32,7 +32,9 @@
 #include <KApplication>
 
 #define ENSURE_SESSION_CREATED(url) if (!m_session) {       \
-                                        createSession(url); \
+                                        if  (!createSession(url)) { \
+                                            return;\
+                                        }\
                                     }
 
 extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
@@ -68,13 +70,12 @@ KioFtp::~KioFtp()
     delete m_session;
 }
 
-void KioFtp::createSession(const KUrl &address)
+bool KioFtp::createSession(const KUrl &address)
 {
     if (address.host().isEmpty()) {
         kDebug() << "No host";
         error (KIO::ERR_UNKNOWN_HOST, address.prettyUrl());
-        finished();
-        return;
+        return false;
     }
 
     infoMessage(i18n("Connecting to the remote device..."));
@@ -97,7 +98,8 @@ void KioFtp::createSession(const KUrl &address)
     const QString sessioPath = rep.value().path();
     m_session = new org::openobex::Session("org.openobex", sessioPath, QDBusConnection::sessionBus(), 0);
 
-    kDebug() << "Private Ctor Ends";
+    kDebug() << "Create session ends";
+    return true;
 }
 
 void KioFtp::changeDirectory(const KUrl& url)
@@ -177,7 +179,9 @@ void KioFtp::copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFl
             if (m_statMap.value(src.prettyUrl()).isDir()) {
                 kDebug() << "Skipping to copy: " << src.prettyUrl();
                 error( KIO::ERR_IS_DIRECTORY, src.prettyUrl());
-                finished();
+                disconnect(m_session, SIGNAL(TransferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
+                disconnect(m_session, SIGNAL(TransferCompleted()), this, SLOT(TransferCompleted()));
+                disconnect(m_session, SIGNAL(ErrorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
                 return;
             }
         }

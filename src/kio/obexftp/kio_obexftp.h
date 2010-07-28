@@ -63,7 +63,7 @@ private Q_SLOTS:
 
     void updateProcess();
 private:
-    void createSession(const KUrl &address);
+    bool createSession(const KUrl &address);
     void changeDirectory(const KUrl& url);
     void launchProgressBar();
 
