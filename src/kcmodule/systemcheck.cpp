@@ -84,7 +84,7 @@ ErrorWidget::~ErrorWidget()
 
 void ErrorWidget::setIcon(const QString &icon)
 {
-    m_icon->setPixmap(KIconLoader::global()->loadIcon(icon, KIconLoader::NoGroup));
+    m_icon->setPixmap(KIconLoader::global()->loadIcon(icon, KIconLoader::Dialog));
 }
 
 void ErrorWidget::setReason(const QString &reason)
