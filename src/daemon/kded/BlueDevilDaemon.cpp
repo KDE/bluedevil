@@ -97,7 +97,7 @@ BlueDevilDaemon::~BlueDevilDaemon()
     }
 
     QDBusMessage msg = QDBusMessage::createMethodCall(
-        "org.kde.bluedevil-monolithic",
+        "org.kde.bluedevil_monolithic",
         "/MainApplication",
         "org.kde.KApplication",
         "quit"
