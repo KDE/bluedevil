@@ -34,7 +34,7 @@
 struct OpenObex::Server::Private
 {
     org::openobex::Server* dbusServer;
-    
+
     /**
      * Array of with key being the ServerSession path and value being the corresponding ServerSession.
      * This allows us to have more than one transfer at a time.
