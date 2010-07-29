@@ -46,6 +46,7 @@ OpenObex::Server::Server(const QString& addr)
     : QObject(0), d(new Private)
 {
     kDebug();
+    d->dbusServer = 0;
     QDBusConnection* dbus = new QDBusConnection("dbus");
     QDBusConnection dbusconn = dbus->connectToBus(QDBusConnection::SessionBus, "dbus");
 
