@@ -616,7 +616,7 @@ void KCMBlueDevilDevices::fillRemoteDevicesModelInformation()
                 deviceType = i18n("Unknown");
                 break;
         }
-        m_devicesModel->setData(index, i18n("Type: %1").arg(deviceType), BluetoothDevicesModel::DeviceTypeModelRole);
+        m_devicesModel->setData(index, i18nc("Type of remote device (e.g. Camera, Mouse, Headset...)", "Type: %1", deviceType), BluetoothDevicesModel::DeviceTypeModelRole);
         m_devicesModel->setData(index, QVariant::fromValue<void*>(device), BluetoothDevicesModel::DeviceModelRole);
         ++i;
     }
