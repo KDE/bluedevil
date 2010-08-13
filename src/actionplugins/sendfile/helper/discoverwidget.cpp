@@ -82,7 +82,9 @@ void DiscoverWidget::stopScan()
 {
     m_counter = 0;
     m_timer->stop();
-    Manager::self()->defaultAdapter()->stopDiscovery();
+    if (Manager::self()->defaultAdapter()) {
+        Manager::self()->defaultAdapter()->stopDiscovery();
+    }
 }
 
 void DiscoverWidget::deviceFound(Device* device)
