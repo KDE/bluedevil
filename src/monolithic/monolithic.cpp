@@ -48,7 +48,7 @@ Monolithic::Monolithic(QObject* parent)
     connect(Manager::self(), SIGNAL(adapterAdded(Adapter*)), this, SLOT(adapterAdded()));
     connect(Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)), this, SLOT(noAdapters(Adapter*)));
 
-    setStandardActionsEnabled(true);
+    setStandardActionsEnabled(false);
 }
 
 void Monolithic::noAdapters(Adapter* adapter)
@@ -112,23 +112,46 @@ bool sortDevices(Device *device1, Device *device2)
     return device1->name().compare(device2->name(), Qt::CaseInsensitive) < 0;
 }
 
-void Monolithic::generateDeviceEntries()
+void Monolithic::regenerateDeviceEntries()
 {
     if (!Manager::self()->defaultAdapter()) {
         return;
     }
 
-    connect(Manager::self()->defaultAdapter(), SIGNAL(deviceCreated(Device*)), this, SLOT(addDevice(Device*)));
-    connect(Manager::self()->defaultAdapter(), SIGNAL(deviceDisappeared(Device*)), this, SLOT(removeDevice(Device*)));
-    connect(Manager::self()->defaultAdapter(), SIGNAL(deviceRemoved(Device*)), this, SLOT(removeDevice(Device*)));
-
     KMenu *const menu = contextMenu();
 
+    qDeleteAll(m_interfaceMap);
+    m_interfaceMap.clear();
+    qDeleteAll(m_actions);
+    m_actions.clear();
+    qDeleteAll(menu->actions());
+    menu->clear();
+
+    KAction *sendFile = new KAction(KIcon("edit-find-project"), i18n("Send File"), menu);
+    connect(sendFile, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(sendFile()));
+    menu->addAction(sendFile);
+
+    KAction *browseDevices = new KAction(KIcon("document-preview-archive"), i18n("Browse devices"), menu);
+    connect(browseDevices, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(browseDevices()));
+    menu->addAction(browseDevices);
+
+    KAction *configReceive = new KAction(KIcon("folder-tar"),i18n("Receive files configuration"), menu);
+    connect(configReceive, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(configReceive()));
+    menu->addAction(configReceive);
+
+    KAction *deviceManager = new KAction(KIcon("input-mouse"), i18n("Manage devices"), menu);
+    connect(deviceManager, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(deviceManager()));
+    menu->addAction(deviceManager);
+
+    KAction *configAdapter = new KAction(KIcon("audio-card"), i18n("Configure adapters"), menu);
+    connect(configAdapter, SIGNAL(triggered(bool)), this, SLOT(configAdapter()));
+    menu->addAction(configAdapter);
+
     menu->addTitle(i18n("Known Devices"));
-    m_noKnownDevices = new KAction(i18n("No known devices found"), menu);
-    m_noKnownDevices->setEnabled(false);
-    m_noKnownDevices->setVisible(false);
-    menu->addAction(m_noKnownDevices);
+    KAction *noKnownDevices = new KAction(i18n("No known devices found"), menu);
+    noKnownDevices->setEnabled(false);
+    noKnownDevices->setVisible(false);
+    menu->addAction(noKnownDevices);
 
     QList<Device*> devices = Manager::self()->defaultAdapter()->devices();
     qStableSort(devices.begin(), devices.end(), sortDevices);
@@ -175,29 +198,53 @@ void Monolithic::generateDeviceEntries()
             hasSupportedServices = true;
         }
         if (UUIDs.contains("00001124-0000-1000-8000-00805F9B34FB")) {
-            KAction *_connect = new KAction(i18n("Connect"), _device);
             org::bluez::Input *input = new org::bluez::Input("org.bluez", device->UBI(), QDBusConnection::systemBus());
             connect(input, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
-            m_interfaceMap[input] = _connect;
             info.service = "00001124-0000-1000-8000-00805F9B34FB";
             info.dbusService = input;
-            _connect->setData(QVariant::fromValue<EntryInfo>(info));
             _submenu->addTitle("Input Service");
-            _submenu->addAction(_connect);
-            connect(_connect, SIGNAL(triggered()), this, SLOT(connectTriggered()));
+
+            if (input->GetProperties().value()["Connected"].toBool()) {
+                KAction *_disconnect = new KAction(i18n("Disconnect"), _device);
+                m_interfaceMap[input] = _disconnect;
+                _disconnect->setData(QVariant::fromValue<EntryInfo>(info));
+                _submenu->addAction(_disconnect);
+                connect(_disconnect, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
+            } else {
+                KAction *_connect = new KAction(i18n("Connect"), _device);
+                m_interfaceMap[input] = _connect;
+                _connect->setData(QVariant::fromValue<EntryInfo>(info));
+                _submenu->addAction(_connect);
+                connect(_connect, SIGNAL(triggered()), this, SLOT(connectTriggered()));
+            }
             hasSupportedServices = true;
         }
         if (UUIDs.contains("00001108-0000-1000-8000-00805F9B34FB")) {
-            KAction *_connect = new KAction(i18n("Connect"), _device);
             org::bluez::Audio *audio = new org::bluez::Audio("org.bluez", device->UBI(), QDBusConnection::systemBus());
             connect(audio, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
-            m_interfaceMap[audio] = _connect;
             info.service = "00001108-0000-1000-8000-00805F9B34FB";
             info.dbusService = audio;
-            _connect->setData(QVariant::fromValue<EntryInfo>(info));
             _submenu->addTitle("Headset Service");
-            _submenu->addAction(_connect);
-            connect(_connect, SIGNAL(triggered()), this, SLOT(connectTriggered()));
+
+            if (audio->GetProperties().value()["State"].toString() == "Connected") {
+                KAction *_disconnect = new KAction(i18n("Disconnect"), _device);
+                m_interfaceMap[audio] = _disconnect;
+                _disconnect->setData(QVariant::fromValue<EntryInfo>(info));
+                _submenu->addAction(_disconnect);
+                connect(_disconnect, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
+            } else if (audio->GetProperties().value()["State"].toString() == "Connecting") {
+                KAction *_connecting = new KAction(i18n("Connecting..."), _device);
+                _connecting->setEnabled(false);
+                m_interfaceMap[audio] = _connecting;
+                _connecting->setData(QVariant::fromValue<EntryInfo>(info));
+                _submenu->addAction(_connecting);
+            } else {
+                KAction *_connect = new KAction(i18n("Connect"), _device);
+                m_interfaceMap[audio] = _connect;
+                _connect->setData(QVariant::fromValue<EntryInfo>(info));
+                _submenu->addAction(_connect);
+                connect(_connect, SIGNAL(triggered()), this, SLOT(connectTriggered()));
+            }
             hasSupportedServices = true;
         }
         if (!hasSupportedServices) {
@@ -211,47 +258,33 @@ void Monolithic::generateDeviceEntries()
     }
 
     if (!lastDevice) {
-        m_noKnownDevices->setVisible(true);
+        noKnownDevices->setVisible(true);
     }
+
+    QAction *separator = new QAction(menu);
+    separator->setSeparator(true);
+    menu->addAction(separator);
+
+    KAction *addDevice = new KAction(KIcon("edit-find-project"), i18n("Add Device"), menu);
+    connect(addDevice, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(addDevice()));
+    menu->addAction(addDevice);
+
+    separator = new QAction(menu);
+    separator->setSeparator(true);
+    menu->addAction(separator);
+
+    menu->addAction(KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), menu));
 }
 
 void Monolithic::onlineMode()
 {
     setStatus(KStatusNotifierItem::Active);
 
-    KMenu *menu = contextMenu();
+    connect(Manager::self()->defaultAdapter(), SIGNAL(deviceCreated(Device*)), this, SLOT(deviceCreated(Device*)));
+    connect(Manager::self()->defaultAdapter(), SIGNAL(deviceDisappeared(Device*)), this, SLOT(regenerateDeviceEntries()));
+    connect(Manager::self()->defaultAdapter(), SIGNAL(deviceRemoved(Device*)), this, SLOT(regenerateDeviceEntries()));
 
-    KAction *sendFile = new KAction(KIcon("edit-find-project"), i18n("Send File"), menu);
-    connect(sendFile, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(sendFile()));
-    menu->addAction(sendFile);
-
-    KAction *browseDevices = new KAction(KIcon("document-preview-archive"), i18n("Browse devices"), menu);
-    connect(browseDevices, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(browseDevices()));
-    menu->addAction(browseDevices);
-
-    KAction *configReceive = new KAction(KIcon("folder-tar"),i18n("Receive files configuration"), menu);
-    connect(configReceive, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(configReceive()));
-    menu->addAction(configReceive);
-
-    KAction *deviceManager = new KAction(KIcon("input-mouse"), i18n("Manage devices"), menu);
-    connect(deviceManager, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(deviceManager()));
-    menu->addAction(deviceManager);
-
-    KAction *configAdapter = new KAction(KIcon("audio-card"), i18n("Configure adapters"), menu);
-    connect(configAdapter, SIGNAL(triggered(bool)), this, SLOT(configAdapter()));
-    menu->addAction(configAdapter);
-
-    generateDeviceEntries();
-
-    m_lastAction = new QAction(menu);
-    m_lastAction->setSeparator(true);
-    menu->addAction(m_lastAction);
-
-    KAction *addDevice = new KAction(KIcon("edit-find-project"), i18n("Add Device"), menu);
-    connect(addDevice, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(addDevice()));
-    menu->addAction(addDevice);
-
-    setContextMenu(menu);
+    regenerateDeviceEntries();
 }
 
 void Monolithic::sendFile()
@@ -446,89 +479,67 @@ void Monolithic::UUIDsChanged(const QStringList &UUIDs)
     }
 }
 
-void Monolithic::addDevice(Device *device)
+void Monolithic::deviceCreated(Device *device)
 {
-    KMenu *const menu = contextMenu();
-
-// Create device entry
-    KAction *_device = new KAction(device->name(), menu);
-    _device->setData(QVariant::fromValue<Device*>(device));
-
     connect(device, SIGNAL(UUIDsChanged(QStringList)), this, SLOT(UUIDsChanged(QStringList)));
-
-    if (m_actions.isEmpty()) {
-        m_noKnownDevices->setVisible(false);
-        _device->setIcon(KIcon(device->icon()));
-        menu->insertAction(m_lastAction, _device);
-        m_actions << _device;
-        return;
-    }
-
-    Device *lastDevice = 0;
-    QList<QAction*>::iterator it = m_actions.begin();
-    while (it != m_actions.end()) {
-        QAction *const action = *it;
-        Device *const actionDevice = action->data().value<Device*>();
-        if (sortDevices(device, actionDevice)) {
-            if (!action->icon().isNull()) {
-                if (classToType(device->deviceClass()) == classToType(actionDevice->deviceClass())) {
-                    action->setIcon(KIcon());
-                }
-                _device->setIcon(KIcon(device->icon()));
-            }
-            menu->insertAction(action, _device);
-            m_actions.insert(it, _device);
-            return;
-        }
-        ++it;
-        lastDevice = actionDevice;
-    }
-
-    bool addSeparator = false;
-    if (classToType(device->deviceClass()) != classToType(lastDevice->deviceClass())) {
-        _device->setIcon(KIcon(device->icon()));
-        addSeparator = true;
-    }
-    menu->insertAction(m_lastAction, _device);
-    if (addSeparator) {
-        menu->insertSeparator(_device);
-    }
-    m_actions << _device;
-}
-
-void Monolithic::removeDevice(Device *device)
-{
-    KMenu *const menu = contextMenu();
-
-    QList<QAction*>::iterator it = m_actions.begin();
-    while (it != m_actions.end()) {
-        QAction *const action = *it;
-        Device *const dev = action->data().value<Device*>();
-        if (device == dev) {
-            if (!action->icon().isNull() && (++it != m_actions.end())) {
-                QAction *const nextAction = *it;
-                Device *const nextDev = nextAction->data().value<Device*>();
-                if (classToType(nextDev->deviceClass()) == classToType(device->deviceClass())) {
-                    nextAction->setIcon(action->icon());
-                }
-            }
-            delete action->menu();
-            action->setMenu(0);
-            menu->removeAction(action);
-            m_actions.removeAll(action);
-            break;
-        }
-        ++it;
-    }
-    if (m_actions.isEmpty()) {
-        m_noKnownDevices->setVisible(true);
-    }
+    regenerateDeviceEntries();
 }
 
 void Monolithic::offlineMode()
 {
     setStatus(KStatusNotifierItem::Passive);
-    contextMenu()->clear();
+
+    disconnect(Manager::self()->defaultAdapter(), SIGNAL(deviceCreated(Device*)), this, SLOT(deviceCreated(Device*)));
+    disconnect(Manager::self()->defaultAdapter(), SIGNAL(deviceDisappeared(Device*)), this, SLOT(regenerateDeviceEntries()));
+    disconnect(Manager::self()->defaultAdapter(), SIGNAL(deviceRemoved(Device*)), this, SLOT(regenerateDeviceEntries()));
+
+    KMenu *const menu = contextMenu();
+
+    qDeleteAll(m_interfaceMap);
+    m_interfaceMap.clear();
+    qDeleteAll(m_actions);
+    m_actions.clear();
+    qDeleteAll(menu->actions());
+    menu->clear();
+
+    KAction *sendFile = new KAction(KIcon("edit-find-project"), i18n("Send File"), menu);
+    connect(sendFile, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(sendFile()));
+    menu->addAction(sendFile);
+
+    KAction *browseDevices = new KAction(KIcon("document-preview-archive"), i18n("Browse devices"), menu);
+    connect(browseDevices, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(browseDevices()));
+    menu->addAction(browseDevices);
+
+    KAction *configReceive = new KAction(KIcon("folder-tar"),i18n("Receive files configuration"), menu);
+    connect(configReceive, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(configReceive()));
+    menu->addAction(configReceive);
+
+    KAction *deviceManager = new KAction(KIcon("input-mouse"), i18n("Manage devices"), menu);
+    connect(deviceManager, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(deviceManager()));
+    menu->addAction(deviceManager);
+
+    KAction *configAdapter = new KAction(KIcon("audio-card"), i18n("Configure adapters"), menu);
+    connect(configAdapter, SIGNAL(triggered(bool)), this, SLOT(configAdapter()));
+    menu->addAction(configAdapter);
+
+    menu->addTitle(i18n("Known Devices"));
+    KAction *noAdaptersFound = new KAction(i18n("No adapters found"), menu);
+    noAdaptersFound->setEnabled(false);
+    menu->addAction(noAdaptersFound);
+
+    QAction *separator = new QAction(menu);
+    separator->setSeparator(true);
+    menu->addAction(separator);
+
+    KAction *addDevice = new KAction(KIcon("edit-find-project"), i18n("Add Device"), menu);
+    connect(addDevice, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(addDevice()));
+    menu->addAction(addDevice);
+
+    separator = new QAction(menu);
+    separator->setSeparator(true);
+    menu->addAction(separator);
+
+    menu->addAction(KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), menu));
 }
 
 Q_DECLARE_METATYPE(Device*)
