@@ -39,7 +39,7 @@
 
 extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
 {
-    KAboutData about("kio_obexftp", 0, ki18n("kio_obexftp"), 0);
+    KAboutData about("kioobexftp","kioobexftp", ki18n("kioobexftp"), 0);
     KCmdLineArgs::init(&about);
 
     KApplication app;
@@ -189,13 +189,13 @@ void KioFtp::copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFl
         changeDirectory(src.directory());
         kDebug() << "CopyingRemoteFile....";
         m_session->CopyRemoteFile(src.fileName(), dest.path());
-        kDebug() << "Copyied";
+        kDebug() << "Copied";
     } else if (dest.scheme() == "obexftp") {
         ENSURE_SESSION_CREATED(dest)
         changeDirectory(dest.directory());
         kDebug() << "Sendingfile....";
         m_session->SendFile(src.path());
-        kDebug() << "Copyied";
+        kDebug() << "Copied";
     }
 
     m_eventLoop.exec();

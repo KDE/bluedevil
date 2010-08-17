@@ -35,13 +35,13 @@ RequestConfirmation::RequestConfirmation() : QObject()
                                                     KNotification::Persistent, this);
 
     notification->setText(i18nc(
-        "The text is showed in a knotification to know if the PIN is correct, %1 is the remote bluetooth device and %2 is the pin",
+        "The text is shown in a notification to know if the PIN is correct, %1 is the remote bluetooth device and %2 is the pin",
         "%1 is asking if the PIN is correct: %2", qApp->arguments()[1], qApp->arguments()[2])
     );
 
     QStringList actions;
-    actions.append(i18nc("Notification button to know if the pin is correct or not", "Correct pin"));
-    actions.append(i18nc("Notification button to say that the PIN is wrong", "Wrong pin"));
+    actions.append(i18nc("Notification button to know if the pin is correct or not", "PIN is correct"));
+    actions.append(i18nc("Notification button to say that the PIN is wrong", "PIN is wrong"));
 
     notification->setActions(actions);
 

@@ -25,7 +25,7 @@
 
 int main(int argc, char *argv[])
 {
-    KAboutData aboutData("bluedevil", 0, ki18n("BlueDevil"), "0.1", ki18n("Bluedevil helper"),
+    KAboutData aboutData("bluedevilaudiohelper", "bluedevilaudiohelper", ki18n("BlueDevil Audio Helper"), "0.1", ki18n("Bluedevil Audio Helper"),
     KAboutData::License_GPL, ki18n("(c) 2010, UFO coders"));
 
     aboutData.addAuthor(ki18n("Alex Fiestas"), ki18n("Developer"), "alex@ufocoders.org",

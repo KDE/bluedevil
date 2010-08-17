@@ -169,7 +169,7 @@ QMap<QString,QString> OpenObex::Server::getServerSessionInfo(QDBusObjectPath pat
   if (reply.isValid()) {
     return reply.value();
   } else {
-    kDebug() << "replay not valid" << reply.error().message();
+    kDebug() << "reply not valid" << reply.error().message();
     return QMap<QString,QString>();
   }
 }

@@ -119,13 +119,13 @@ void ServerSession::slotTransferStarted(const QString& filename, const QString& 
         KNotification::Persistent, this);
 
     m_notification->setText(i18nc(
-        "Show a notification asking for authorize or deny an incoming file transfer to this computer from a Bluetooth device.",
+        "Show a notification asking to authorize or deny an incoming file transfer to this computer from a Bluetooth device.",
         "%1 is sending you the file %2", m_bluetoothDevice->name(), filename));
     QStringList actions;
 
     actions.append(i18nc("Deny the incoming file transfer", "Cancel"));
     actions.append(i18nc("Button to accept the incoming file transfer and download it in the default download directory", "Accept"));
-    actions.append(i18nc("Button to accept the incoming file transfer and show a SaveAs.. dialog that will let the user choose where will the file be downloaded to", "Save as.."));
+    actions.append(i18nc("Button to accept the incoming file transfer and show a Save as... dialog that will let the user choose where will the file be downloaded to", "Save as..."));
 
     m_notification->setActions(actions);
 

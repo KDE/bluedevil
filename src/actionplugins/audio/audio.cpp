@@ -43,20 +43,14 @@ void AudioPlugin::startAction()
     connect(interface, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
 
     interface->Connect();
-    QTimer::singleShot(30*1000, this, SLOT(timeout()));
+    QTimer::singleShot(30 * 1000, this, SLOT(timeout()));
 }
 
 void AudioPlugin::timeout()
 {
-    QString desc = device()->alias();
-    if (device()->alias() != device()->name() && !device()->name().isEmpty()) {
-        desc.append(" ("+device()->name()+")");
-    }
-    desc.append(i18n(" Audio device connection timeout"));
-
     KNotification::event(
         KNotification::Notification,
-        desc,
+        i18n("%1: audio service connection timeout", device()->friendlyName()),
         KIcon(device()->icon()).pixmap(48,48)
     )->sendEvent();
 
@@ -67,15 +61,9 @@ void AudioPlugin::propertyChanged(const QString &property, const QDBusVariant &v
 {
     if (property == "State") {
         if (value.variant().toString() == "connected") {
-            QString desc = device()->alias();
-            if (device()->alias() != device()->name() && !device()->name().isEmpty()) {
-                desc.append(" ("+device()->name()+")");
-            }
-            desc.append(i18n(" Audio device connected and configured"));
-
             KNotification::event(
                 KNotification::Notification,
-                desc,
+                i18n("%1: audio service connected and configured", device()->friendlyName()),
                 KIcon(device()->icon()).pixmap(48,48)
             )->sendEvent();
 

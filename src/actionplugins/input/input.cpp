@@ -44,20 +44,14 @@ void InputPlugin::startAction()
     connect(interface, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
 
     interface->Connect();
-    QTimer::singleShot(30*1000, this, SLOT(timeout()));
+    QTimer::singleShot(30 * 1000, this, SLOT(timeout()));
 }
 
 void InputPlugin::timeout()
 {
-    QString desc = device()->alias();
-    if (device()->alias() != device()->name() && !device()->name().isEmpty()) {
-        desc.append(" ("+device()->name()+")");
-    }
-    desc.append(i18n(" Input device connection timeout"));
-
     KNotification::event(
         KNotification::Notification,
-        desc,
+        i18n("%1: input service connection timeout", device()->friendlyName()),
         KIcon(device()->icon()).pixmap(48,48)
     )->sendEvent();
 
@@ -68,15 +62,9 @@ void InputPlugin::propertyChanged(const QString &property, const QDBusVariant &v
 {
     if (property == "Connected") {
         if (value.variant().toBool()) {
-            QString desc = device()->alias();
-            if (device()->alias() != device()->name() && !device()->name().isEmpty()) {
-                desc.append(" ("+device()->name()+")");
-            }
-            desc.append(i18n(" Input device connected and configured"));
-
             KNotification::event(
                 KNotification::Notification,
-                desc,
+                i18n("%1: input service connected and configured", device()->friendlyName()),
                 KIcon(device()->icon()).pixmap(48,48)
             )->sendEvent();
 
