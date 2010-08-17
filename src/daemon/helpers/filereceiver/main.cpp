@@ -29,7 +29,7 @@
 int main(int argc, char *argv[])
 {
     KAboutData aboutData("bluedevilfilereceiverhelper", "bluedevilfilereceiverhelper", ki18n("BlueDevil File Receiver Helper"), "0.1", ki18n("Bluedevil File Receiver Helper"),
-                         KAboutData::License_GPL, "(c) 2010, UFO coders");
+                         KAboutData::License_GPL, ki18n("(c) 2010, UFO coders"));
 
     aboutData.addAuthor(ki18n("Alex Fiestas"), ki18n("Developer"), "alex@eyeos.org",
         "http://www.afiestas.org/");

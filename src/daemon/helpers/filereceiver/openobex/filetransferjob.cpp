@@ -29,6 +29,7 @@
 #include <QtDBus/QDBusInterface>
 
 #include <KDebug>
+#include <KLocalizedString>
 #include <KIO/CopyJob>
 #include <KIO/NetAccess>
 
