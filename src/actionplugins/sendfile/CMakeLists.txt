@@ -7,12 +7,12 @@ include_directories(
    ${KDE4_INCLUDES}
 )
 
-set(sendfilactionplugin_SRCS sendfile.cpp)
+set(sendfile_SRCS sendfile.cpp)
 
-kde4_add_plugin(sendfilactionplugin ${sendfilactionplugin_SRCS})
+kde4_add_plugin(sendfile ${sendfile_SRCS})
 
-target_link_libraries(sendfilactionplugin ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${QT_QTCORE_LIBRARY} bluedevilaction ${LibBlueDevil_LIBRARIES})
+target_link_libraries(sendfile ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${QT_QTCORE_LIBRARY} bluedevilaction ${LibBlueDevil_LIBRARIES})
 
-install(TARGETS sendfilactionplugin DESTINATION ${PLUGIN_INSTALL_DIR})
+install(TARGETS sendfile DESTINATION ${PLUGIN_INSTALL_DIR})
 install(FILES sendfile.desktop DESTINATION ${SERVICES_INSTALL_DIR})
 
