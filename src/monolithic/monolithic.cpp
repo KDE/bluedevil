@@ -226,13 +226,13 @@ void Monolithic::regenerateDeviceEntries()
             info.dbusService = audio;
             _submenu->addTitle("Headset Service");
 
-            if (audio->GetProperties().value()["State"].toString() == "Connected") {
+            if (audio->GetProperties().value()["State"].toString() == "connected") {
                 KAction *_disconnect = new KAction(i18n("Disconnect"), _device);
                 m_interfaceMap[audio] = _disconnect;
                 _disconnect->setData(QVariant::fromValue<EntryInfo>(info));
                 _submenu->addAction(_disconnect);
                 connect(_disconnect, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
-            } else if (audio->GetProperties().value()["State"].toString() == "Connecting") {
+            } else if (audio->GetProperties().value()["State"].toString() == "connecting") {
                 KAction *_connecting = new KAction(i18n("Connecting..."), _device);
                 _connecting->setEnabled(false);
                 m_interfaceMap[audio] = _connecting;
