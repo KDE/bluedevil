@@ -52,7 +52,7 @@ public Q_SLOTS:
     void noAdapters(Adapter *adapter);
     void adapterAdded();
 
-    void generateDeviceEntries();
+    void regenerateDeviceEntries();
 
     void sendFile();
     void browseDevices();
@@ -68,8 +68,7 @@ private Q_SLOTS:
     void disconnectTriggered();
     void propertyChanged(const QString &key, const QDBusVariant &value);
     void UUIDsChanged(const QStringList &UUIDs);
-    void addDevice(Device *device);
-    void removeDevice(Device *device);
+    void deviceCreated(Device *device);
 
 private:
     void onlineMode();
@@ -77,9 +76,7 @@ private:
 
 private:
     QMap<void*, KAction*> m_interfaceMap;
-    QAction              *m_noKnownDevices;
     QList<QAction*>       m_actions;
-    QAction              *m_lastAction;
 };
 
 Q_DECLARE_METATYPE(Monolithic::EntryInfo)

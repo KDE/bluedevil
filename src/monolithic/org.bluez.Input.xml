@@ -3,6 +3,10 @@
     <interface name="org.bluez.Input">
         <method name="Connect"/>
         <method name="Disconnect"/>
+        <method name="GetProperties">
+            <arg type="a{sv}" direction="out"/>
+            <annotation name="com.trolltech.QtDBus.QtTypeName.Out0" value="QVariantMap"/>
+        </method>
         <signal name="PropertyChanged">
             <arg type="s"/>
             <arg type="v"/>
