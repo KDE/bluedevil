@@ -319,7 +319,7 @@ void KCMBlueDevilAdapters::generateNoAdaptersMessage()
     QLabel *label = new QLabel(m_noAdaptersMessage);
     label->setPixmap(KIcon("dialog-information").pixmap(128, 128));
     layout->addWidget(label, 0, 1, Qt::AlignHCenter);
-    layout->addWidget(new QLabel("No adapters found. Please connect one.", m_noAdaptersMessage),
+    layout->addWidget(new QLabel(i18n("No adapters found. Please connect one."), m_noAdaptersMessage),
                                  1, 1, Qt::AlignHCenter);
     layout->setRowStretch(2, 1);
     layout->setColumnStretch(0, 1);

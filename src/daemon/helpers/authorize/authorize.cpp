@@ -39,7 +39,7 @@ Authorize::Authorize()
                                                     KNotification::Persistent, this);
 
     notification->setText(i18nc(
-        "Show a notification asking for authorize or deny access to this computer from Bluetooth the %1 is the name of the bluetooth device",
+        "Show a notification asking to authorize or deny access to this computer from Bluetooth. The %1 is the name of the bluetooth device",
         "%1 is requesting access to this computer", qApp->arguments()[1])
     );
 

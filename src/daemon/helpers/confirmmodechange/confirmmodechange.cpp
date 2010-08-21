@@ -42,8 +42,8 @@ ConfirmModeChange::ConfirmModeChange()
     );
 
     QStringList actions;
-    actions.append(i18nc("Confirm the bluetooth mode change, showed in a notification button", "Confirm"));
-    actions.append(i18nc("Deny the bluetooth mdoe change, showed in a notification", "Deny"));
+    actions.append(i18nc("Confirm the bluetooth mode change, shown in a notification button", "Confirm"));
+    actions.append(i18nc("Deny the bluetooth mdoe change, shown in a notification", "Deny"));
 
     notification->setActions(actions);
 

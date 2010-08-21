@@ -29,13 +29,13 @@
 
 ServicesPage::ServicesPage(QWidget* parent): QWizardPage(parent)
 {
-    setTitle("Service selection");
+    setTitle(i18n("Service selection"));
     setupUi(this);
 }
 
 void ServicesPage::initializePage()
 {
-   kDebug() << "Initializing page";
+    kDebug() << "Initializing page";
     m_wizard = static_cast<BlueWizard*>(wizard());
     KService::List services = m_wizard->services();
     Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());

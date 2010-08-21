@@ -38,10 +38,10 @@ AudioHelper::AudioHelper(const KUrl& address) {
     Device *device = Manager::self()->defaultAdapter()->deviceForAddress(address.host().replace("-", ":"));
 
     if(device->isPaired()) {
-        QString constraing("'00001108-0000-1000-8000-00805F9B34FB' in [X-BlueDevil-UUIDS]");
+        QString constraint("'00001108-0000-1000-8000-00805F9B34FB' in [X-BlueDevil-UUIDS]");
 
         KPluginFactory *factory = KPluginLoader(
-            KServiceTypeTrader::self()->query("BlueDevil/ActionPlugin", constraing).first().data()->library()
+            KServiceTypeTrader::self()->query("BlueDevil/ActionPlugin", constraint).first().data()->library()
         ).factory();
 
         ActionPlugin *plugin = factory->create<ActionPlugin>(this);

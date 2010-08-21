@@ -71,7 +71,7 @@ void AgentListenerWorker::Authorize(const QDBusObjectPath &device, const QString
 
     int result = KProcess::execute("bluedevil-authorize", list);
     if (result == 0) {
-        qDebug() << "Go on camarada!";
+        qDebug() << "Correct";
         return;
     }
     sendBluezError(QString("Authorize"),msg);
@@ -93,7 +93,7 @@ QString AgentListenerWorker::RequestPinCode(const QDBusObjectPath &device, const
         return QString(process.readAllStandardOutput());
     }
 
-    qDebug() << "Timeout men!";
+    qDebug() << "Timeout!";
     QDBusMessage error = msg.createErrorReply("org.bluez.Error.Canceled", "Pincode request failed");
     QDBusConnection::systemBus().send(error);
     return QString();

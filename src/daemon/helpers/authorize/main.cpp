@@ -34,7 +34,7 @@ static const KLocalizedString description = ki18n("KDE Bluetooth System");
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    KComponentData data("bluedevil", "bluedevil");
+    KComponentData data("bluedevilauthorizehelper", "bluedevilauthorizehelper");
     KGlobal::setActiveComponent(data);
     Authorize auth;
     return app.exec();

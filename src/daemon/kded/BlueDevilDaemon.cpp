@@ -60,14 +60,12 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     d->m_service = 0;
     d->m_placesModel = 0;
 
-    KGlobal::locale()->insertCatalog("bluedevil");
-
     KAboutData aboutData(
-        "bluedevil_daemon",
-        "bluedevil",
+        "bluedevildaemon",
+        "bluedevildaemon",
         ki18n("BlueDevil Daemon"),
         "1.0",
-        ki18n("KDE Bluetooth System"),
+        ki18n("BlueDevil Daemon"),
         KAboutData::License_GPL,
         ki18n("(c) 2010, UFO Coders")
     );
@@ -129,7 +127,7 @@ void BlueDevilDaemon::onlineMode()
 
     FileReceiverSettings::self()->readConfig();
     if (!isServiceStarted() && FileReceiverSettings::self()->enabled()) {
-        kDebug() << "Launching srever";
+        kDebug() << "Launching server";
         d->m_service->launchServer();
     }
 

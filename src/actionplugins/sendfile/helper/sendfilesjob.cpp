@@ -27,6 +27,7 @@
 #include "obex_client.h"
 
 #include <KFileItemList>
+#include <KLocalizedString>
 #include <KDebug>
 
 #include <bluedevil/bluedevil.h>
@@ -78,7 +79,7 @@ void SendFilesJob::start()
 
     setTotalAmount(Bytes, m_totalSize);
     setProcessedAmount(Bytes, 0);
-    emit description(this, "Sending file over bluetooth", QPair<QString, QString>("From", m_filesToSend.first()), QPair<QString, QString>("To", m_device->name()));
+    emit description(this, i18n("Sending file over bluetooth"), QPair<QString, QString>(i18n("From"), m_filesToSend.first()), QPair<QString, QString>("To", m_device->name()));
 }
 
 void SendFilesJob::nextJob(OrgOpenobexTransferInterface *transferObj)

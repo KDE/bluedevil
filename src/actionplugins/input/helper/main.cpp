@@ -25,7 +25,7 @@
 
 int main(int argc, char *argv[])
 {
-    KAboutData aboutData("bluedevil_inputhelper", "bluedevil", ki18n("BlueDevil"), "0.1", ki18n("Bluedevil Input Helper"),
+    KAboutData aboutData("bluedevilinputhelper", "bluedevilinputhelper", ki18n("BlueDevil Input Helper"), "0.1", ki18n("Bluedevil Input Helper"),
     KAboutData::License_GPL, ki18n("(c) 2010, UFO coders"));
 
     aboutData.addAuthor(ki18n("Alex Fiestas"), ki18n("Developer"), "alex@ufocoders.org",

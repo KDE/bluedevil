@@ -38,17 +38,17 @@ using namespace std;
 RequestPin::RequestPin() : QObject()
 {
     m_notification = new KNotification("bluedevilRequestPin",
-                                                    KNotification::Persistent, this);
+                                       KNotification::Persistent, this);
 
     m_notification->setText(i18nc(
-        "Showed in a notification to announce that a PIN is needed to acomplish a pair action, %1 is the name of the bluetooth device",
-        "Pin is needed to pair with %1",qApp->arguments()[1])
+        "Shown in a notification to announce that a PIN is needed to accomplish a pair action, %1 is the name of the bluetooth device",
+        "PIN is needed to pair with %1",qApp->arguments()[1])
     );
 
     QStringList actions;
     actions.append(i18nc(
-        "Notification button which once clicked, a dialog to introduce the pin will be showed",
-        "Introduce pin")
+        "Notification button which once clicked, a dialog to introduce the PIN will be shown",
+        "Introduce PIN")
     );
 
     m_notification->setActions(actions);
@@ -74,7 +74,7 @@ void RequestPin::introducePin()
     QWidget *mainWidget = new QWidget();
     dialogWidget->setupUi(mainWidget);
     dialogWidget->descLabel->setText(i18nc(
-        "Showed in a dialog which ask to introduce a PIN that will be used tu pair a bluetooth device, %1 is the name of the bluetooth device",
+        "Shown in a dialog which asks to introduce a PIN that will be used to pair a bluetooth device, %1 is the name of the bluetooth device",
         "In order to pair this computer with %1 you've to enter a PIN, do it below please",
         qApp->arguments()[1])
     );
@@ -84,8 +84,8 @@ void RequestPin::introducePin()
     dialog->setMainWidget(mainWidget);
 
     dialog->setCaption(i18nc(
-        "Showed in the caption of a dialog where the user introduce the PIN",
-        "Introduce the PIN"
+        "Shown in the caption of a dialog where the user introduce the PIN",
+        "Introduce PIN"
     ));
 
     dialog->setButtons(KDialog::Ok | KDialog::Cancel);
