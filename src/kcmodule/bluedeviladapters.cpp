@@ -238,8 +238,8 @@ KCMBlueDevilAdapters::KCMBlueDevilAdapters(QWidget *parent, const QVariantList&)
     , m_systemCheck(new SystemCheck(this))
 {
     KAboutData* ab = new KAboutData(
-        "kcmbluedeviladapters", 0, ki18n("BlueDevil Adapters"), "1.0",
-        ki18n("BlueDevil Adapters Control Panel Module"),
+        "kcmbluedeviladapters", 0, ki18n("Bluetooth Adapters"), "1.0",
+        ki18n("Bluetooth Adapters Control Panel Module"),
         KAboutData::License_GPL, ki18n("(c) 2010 Rafael Fernández López"));
 
     ab->addAuthor(ki18n("Rafael Fernández López"), ki18n("Developer and Maintainer"), "ereslibre@kde.org");

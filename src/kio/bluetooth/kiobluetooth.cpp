@@ -329,12 +329,8 @@ void KioBluetoothPrivate::listDevice(Device *device)
     QString name = device->name();
     if (alias.isEmpty() && name.isEmpty()) {
         name = i18n("Untitled device");
-    } else if (name != alias) {
-        if (name.isEmpty() && !alias.isEmpty()) {
-            name = alias;
-        } else if (!name.isEmpty() && !alias.isEmpty()) {
-            name = i18n("%1 (%2)").arg(alias).arg(name);
-        }
+    } else {
+        name = device->friendlyName();
     }
     KIO::UDSEntry entry;
     entry.insert(KIO::UDSEntry::UDS_URL, target);

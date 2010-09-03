@@ -23,10 +23,10 @@
 
 int main(int argc, char *argv[])
 {
-    KAboutData aboutData("bluedevil", 0, ki18n("BlueDevil"), "0.1", ki18n("Bluedevil helper"),
-    KAboutData::License_GPL, ki18n("(c) 2010, Artesanos del Software"));
+    KAboutData aboutData("obextest", 0, ki18n("Obex Test"), "0.1", ki18n("Obex Test"),
+    KAboutData::License_GPL, ki18n("(c) 2010, UFO Coders"));
 
-    aboutData.addAuthor(ki18n("Alex Fiestas"), ki18n("Developer"), "alex@ufocoders.com",
+    aboutData.addAuthor(ki18n("Alejandro Fiestas Olivares"), ki18n("Developer"), "alex@ufocoders.com",
     "http://www.afiestas.org/");
     aboutData.setProgramIconName("preferences-system-bluetooth");
 

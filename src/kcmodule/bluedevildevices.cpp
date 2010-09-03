@@ -314,8 +314,8 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     , m_systemCheck(new SystemCheck(this))
 {
     KAboutData* ab = new KAboutData(
-        "kcmbluedevildevices", 0, ki18n("BlueDevil Devices"), "1.0",
-        ki18n("BlueDevil Devices Control Panel Module"),
+        "kcmbluedevildevices", 0, ki18n("Bluetooth Devices"), "1.0",
+        ki18n("Bluetooth Devices Control Panel Module"),
         KAboutData::License_GPL, ki18n("(c) 2010 Rafael Fernández López"));
 
     ab->addAuthor(ki18n("Rafael Fernández López"), ki18n("Developer and Maintainer"), "ereslibre@kde.org");

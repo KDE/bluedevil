@@ -23,10 +23,10 @@
 
 int main(int argc, char *argv[])
 {
-    KAboutData aboutData("bluedevilmonolithic", "bluedevilmonolithic", ki18n("BlueDevil Monolithic"), "0.1", ki18n("BlueDevil Monolithic"),
-    KAboutData::License_GPL, ki18n("(c) 2010, Artesanos del Software"));
+    KAboutData aboutData("bluedevilmonolithic", "bluedevilmonolithic", ki18n("Bluetooth Monolithic"), "0.1", ki18n("Bluetooth Monolithic"),
+    KAboutData::License_GPL, ki18n("(c) 2010, UFO Coders"));
 
-    aboutData.addAuthor(ki18n("Alex Fiestas"), ki18n("Developer"), "alex@ufocoders.com", "http://www.afiestas.org/");
+    aboutData.addAuthor(ki18n("Alejandro Fiestas Olivares"), ki18n("Developer"), "alex@ufocoders.com", "http://www.afiestas.org/");
     aboutData.addAuthor(ki18n("Rafael Fernández López"), ki18n("Developer"), "ereslibre@kde.org", "http://www.ereslibre.es/");
     aboutData.setProgramIconName("preferences-system-bluetooth");
 
