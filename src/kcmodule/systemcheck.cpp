@@ -147,7 +147,7 @@ void SystemCheck::createWarnings(QVBoxLayout *layout)
     m_notDiscoverableAdapterError = new ErrorWidget(m_parent);
     m_notDiscoverableAdapterError->setIcon("edit-find");
     m_notDiscoverableAdapterError->setReason(i18n("Your default Bluetooth adapter is not visible for remote devices."));
-    KPushButton *fixNotDiscoverableAdapter = new KPushButton(KIcon("dialog-ok-apply"), i18n("Fix it"), m_notDiscoverableAdapterError);
+    KPushButton *fixNotDiscoverableAdapter = new KPushButton(KIcon("dialog-ok-apply"), i18nc("Action to fix a problem", "Fix it"), m_notDiscoverableAdapterError);
     connect(fixNotDiscoverableAdapter, SIGNAL(clicked()), this, SLOT(fixNotDiscoverableAdapterError()));
     m_notDiscoverableAdapterError->addAction(fixNotDiscoverableAdapter);
     layout->addWidget(m_notDiscoverableAdapterError);
@@ -155,7 +155,7 @@ void SystemCheck::createWarnings(QVBoxLayout *layout)
     m_disabledNotificationsError = new ErrorWidget(m_parent);
     m_disabledNotificationsError->setIcon("preferences-desktop-notification");
     m_disabledNotificationsError->setReason(i18n("Interaction with Bluetooth system is not optimal."));
-    KPushButton *fixDisabledNotifications = new KPushButton(KIcon("dialog-ok-apply"), i18n("Fix it"), m_disabledNotificationsError);
+    KPushButton *fixDisabledNotifications = new KPushButton(KIcon("dialog-ok-apply"), i18nc("Action to fix a problem", "Fix it"), m_disabledNotificationsError);
     connect(fixDisabledNotifications, SIGNAL(clicked()), this, SLOT(fixDisabledNotificationsError()));
     m_disabledNotificationsError->addAction(fixDisabledNotifications);
     layout->addWidget(m_disabledNotificationsError);
@@ -163,7 +163,7 @@ void SystemCheck::createWarnings(QVBoxLayout *layout)
     m_noKDEDRunning = new ErrorWidget(m_parent);
     m_noKDEDRunning->setIcon("dialog-warning");
     m_noKDEDRunning->setReason(i18n("Bluetooth is not completely enabled. "));
-    KPushButton *fixNoKDEDRunning = new KPushButton(KIcon("dialog-ok-apply"), i18n("Fix it"), m_noKDEDRunning);
+    KPushButton *fixNoKDEDRunning = new KPushButton(KIcon("dialog-ok-apply"), i18nc("Action to fix a problem", "Fix it"), m_noKDEDRunning);
     connect(fixNoKDEDRunning, SIGNAL(clicked()), this, SLOT(fixNoKDEDRunning()));
     m_noKDEDRunning->addAction(fixNoKDEDRunning);
     layout->addWidget(m_noKDEDRunning);

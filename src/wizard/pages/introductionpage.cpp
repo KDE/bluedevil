@@ -28,7 +28,7 @@
 using namespace BlueDevil;
 IntroductionPage::IntroductionPage(QWidget* parent): QWizardPage(parent)
 {
-    setTitle(i18n("Introduction"));
+    setTitle(i18nc("Introduction page title of the wizard", "Introduction"));
     setupUi(this);
 
     if (!Manager::self()->defaultAdapter()) {

@@ -211,7 +211,7 @@ void Monolithic::regenerateDeviceEntries()
                 _submenu->addAction(_disconnect);
                 connect(_disconnect, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
             } else {
-                KAction *_connect = new KAction(i18n("Connect"), _device);
+                KAction *_connect = new KAction(i18nc("Action", "Connect"), _device);
                 m_interfaceMap[input] = _connect;
                 _connect->setData(QVariant::fromValue<EntryInfo>(info));
                 _submenu->addAction(_connect);
@@ -239,7 +239,7 @@ void Monolithic::regenerateDeviceEntries()
                 _connecting->setData(QVariant::fromValue<EntryInfo>(info));
                 _submenu->addAction(_connecting);
             } else {
-                KAction *_connect = new KAction(i18n("Connect"), _device);
+                KAction *_connect = new KAction(i18nc("Action", "Connect"), _device);
                 m_interfaceMap[audio] = _connect;
                 _connect->setData(QVariant::fromValue<EntryInfo>(info));
                 _submenu->addAction(_connect);
@@ -380,7 +380,7 @@ void Monolithic::propertyChanged(const QString &key, const QDBusVariant &value)
 
     if (key == "State") {
         if (value.variant().toString() == "disconnected") {
-            action->setText(i18n("Connect"));
+            action->setText(i18nc("Action", "Connect"));
             action->setEnabled(true);
             disconnect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
             connect(action, SIGNAL(triggered()), this, SLOT(connectTriggered()));
@@ -400,7 +400,7 @@ void Monolithic::propertyChanged(const QString &key, const QDBusVariant &value)
             disconnect(action, SIGNAL(triggered()), this, SLOT(connectTriggered()));
             connect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
         } else {
-            action->setText(i18n("Connect"));
+            action->setText(i18nc("Action", "Connect"));
             action->setEnabled(true);
             disconnect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
             connect(action, SIGNAL(triggered()), this, SLOT(connectTriggered()));
@@ -436,7 +436,7 @@ void Monolithic::UUIDsChanged(const QStringList &UUIDs)
         hasSupportedServices = true;
     }
     if (UUIDs.contains("00001124-0000-1000-8000-00805F9B34FB")) {
-        KAction *_connect = new KAction(i18n("Connect"), _submenu);
+        KAction *_connect = new KAction(i18nc("Action", "Connect"), _submenu);
         org::bluez::Input *input = new org::bluez::Input("org.bluez", device->UBI(), QDBusConnection::systemBus());
         connect(input, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
         m_interfaceMap[input] = _connect;
@@ -449,7 +449,7 @@ void Monolithic::UUIDsChanged(const QStringList &UUIDs)
         hasSupportedServices = true;
     }
     if (UUIDs.contains("00001108-0000-1000-8000-00805F9B34FB")) {
-        KAction *_connect = new KAction(i18n("Connect"), _submenu);
+        KAction *_connect = new KAction(i18nc("Action", "Connect"), _submenu);
         org::bluez::Audio *audio = new org::bluez::Audio("org.bluez", device->UBI(), QDBusConnection::systemBus());
         connect(audio, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
         m_interfaceMap[audio] = _connect;

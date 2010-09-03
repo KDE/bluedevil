@@ -27,7 +27,7 @@ using namespace BlueDevil;
 
 PairingPage::PairingPage(QWidget* parent): QWizardPage(parent), m_wizard(0)
 {
-    setTitle(i18n("PIN Validation"));
+    setTitle(i18nc("PIN Validation page title of the wizard", "PIN Validation"));
     setupUi(this);
 
     QFont font(pinNumber->font());
