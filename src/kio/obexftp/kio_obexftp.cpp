@@ -53,8 +53,8 @@ KioFtp::KioFtp(const QByteArray &pool, const QByteArray &app)
     m_timer = new QTimer();
     m_timer->setInterval(100);
     connect(m_timer, SIGNAL(timeout()), this, SLOT(updateProcess()));
-    m_kded = new org::kde::ObexFtp("org.kde.kded", "/modules/obexftpdaemon", QDBusConnection::sessionBus(), 0);
 
+    m_kded = new org::kde::ObexFtp("org.kde.kded", "/modules/obexftpdaemon", QDBusConnection::sessionBus(), 0);
     connect(m_kded, SIGNAL(sessionConnected(QString)), SLOT(sessionConnected(QString)));
 }
 
