@@ -247,6 +247,13 @@ void ObexFtpDaemon::deleteRemoteFile(QString address, QString path)
     d->m_sessionMap[address]->DeleteRemoteFile(url.fileName()).waitForFinished();;
 }
 
+bool ObexFtpDaemon::isBusy(QString address)
+{
+    address.replace("-", ":");
+    return d->m_sessionMap[address]->IsBusy().value();
+}
+
+
 void ObexFtpDaemon::SessionConnected(QDBusObjectPath path)
 {
     kDebug() << "SessionConnected!" << path.path();

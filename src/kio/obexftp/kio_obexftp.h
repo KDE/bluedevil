@@ -63,6 +63,7 @@ private Q_SLOTS:
 
 private:
     void launchProgressBar();
+    void blockUntilNotBusy(QString address);
 
 private:
     int                          m_counter;

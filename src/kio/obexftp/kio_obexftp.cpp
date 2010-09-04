@@ -90,6 +90,7 @@ void KioFtp::listDir(const KUrl &url)
 
     infoMessage(i18n("Retrieving information from remote device..."));
 
+    blockUntilNotBusy(url.host());
     QDBusPendingReply<QString> folder = m_kded->listDir(url.host(), url.path());
     folder.waitForFinished();
 
@@ -124,9 +125,11 @@ void KioFtp::copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFl
         }
 
         kDebug() << "CopyingRemoteFile....";
+        blockUntilNotBusy(src.host());
         m_kded->copyRemoteFile(src.host(), src.path(), src.fileName());
     } else if (dest.scheme() == "obexftp") {
         kDebug() << "Sendingfile....";
+        blockUntilNotBusy(dest.host());
         m_kded->sendFile(dest.host(), src.path(), dest.directory());
     }
 
@@ -169,6 +172,7 @@ void KioFtp::del(const KUrl& url, bool isfile)
     Q_UNUSED(isfile)
 
     kDebug() << "Del: " << url.url();
+    blockUntilNotBusy(url.host());
     m_kded->deleteRemoteFile(url.host(),  url.path()).waitForFinished();
     finished();
 }
@@ -178,6 +182,7 @@ void KioFtp::mkdir(const KUrl& url, int permissions)
     Q_UNUSED(permissions)
 
     kDebug() << "MkDir: " << url.url();
+    blockUntilNotBusy(url.host());
     m_kded->createFolder(url.host(), url.path()).waitForFinished();
     finished();
 }
@@ -206,6 +211,7 @@ void KioFtp::stat(const KUrl &url)
             kDebug() << "statMap NOT contains the url";
 
             kDebug() << "RetrieveFolderListing";
+            blockUntilNotBusy(url.host());
             QDBusPendingReply<QString> folder = m_kded->listDir(url.host(), url.directory());
             kDebug() << "retireve called";
             folder.waitForFinished();
@@ -322,4 +328,16 @@ void KioFtp::sessionConnected(QString address)
     if (m_settingHost) {
         m_eventLoop.exit();
     }
+}
+
+void KioFtp::blockUntilNotBusy(QString address)
+{
+    if (m_kded->isBusy(address).value()) {
+        infoMessage(i18n("The device is busy, waiting..."));
+        while (m_kded->isBusy(address).value() == true) {
+            kDebug() << "Blocking, kded is busy";
+            sleep(1);
+        }
+    }
+    kDebug() << "kded is free";
 }

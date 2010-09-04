@@ -96,6 +96,8 @@ public Q_SLOTS:
 
     Q_SCRIPTABLE void deleteRemoteFile(QString address, QString path);
 
+    Q_SCRIPTABLE bool isBusy(QString address);
+
 Q_SIGNALS:
     Q_SCRIPTABLE void sessionConnected(QString address);
     Q_SCRIPTABLE void transferProgress(qulonglong);
