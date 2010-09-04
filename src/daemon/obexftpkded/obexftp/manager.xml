@@ -15,12 +15,12 @@
     <method name="GetServerInfo">
       <arg name="server_object" type="o" direction="in"/>
       <arg name="arg1" type="a{ss}" direction="out"/>
-      <annotation name="com.trolltech.QtDBus.QtTypeName.Out0" value="QVariantMap"/>
+      <annotation name="com.trolltech.QtDBus.QtTypeName.Out0" value="QStringMap"/>
     </method>
     <method name="GetSessionInfo">
       <arg name="session_object" type="o" direction="in"/>
       <arg name="arg1" type="a{ss}" direction="out"/>
-      <annotation name="com.trolltech.QtDBus.QtTypeName.Out0" value="QVariantMap"/>
+      <annotation name="com.trolltech.QtDBus.QtTypeName.Out0" value="QStringMap"/>
     </method>
     <method name="CreateTtyServer">
       <arg name="tty_dev" type="s" direction="in"/>
@@ -40,7 +40,7 @@
     <method name="GetUsbInterfaceInfo">
       <arg name="interface_number" type="u" direction="in"/>
       <arg name="usb_interface" type="a{ss}" direction="out"/>
-      <annotation name="com.trolltech.QtDBus.QtTypeName.Out0" value="QVariantMap"/>
+      <annotation name="com.trolltech.QtDBus.QtTypeName.Out0" value="QStringMap"/>
     </method>
     <method name="GetUsbInterfacesNum">
       <arg name="interfaces_number" type="u" direction="out"/>

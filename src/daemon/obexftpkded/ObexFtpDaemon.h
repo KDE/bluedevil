@@ -22,6 +22,9 @@
 #ifndef OBEXFTPDAEMON_H
 #define OBEXFTPDAEMON_H
 
+#include <obexftpmanager.h>
+#include <obexftpsession.h>
+
 #include <QDBusObjectPath>
 #include <kdedmodule.h>
 
@@ -57,6 +60,8 @@ private:
     void offlineMode();
 
     void changeCurrentFolder(QString address, QString path);
+
+    QString getAddressFromSession(QString path);
 
 private:
     struct Private;
@@ -97,5 +102,4 @@ Q_SIGNALS:
     Q_SCRIPTABLE void transferCompleted();
     Q_SCRIPTABLE void errorOccurred(QString,QString);
 };
-
 #endif /*OBEXFTPDAEMON_H*/

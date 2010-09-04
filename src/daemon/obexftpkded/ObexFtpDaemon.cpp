@@ -22,6 +22,7 @@
 #include "obexftpmanager.h"
 #include "obexftpsession.h"
 
+#include <QVariantMap>
 #include <QHash>
 
 #include <kdemacros.h>
@@ -82,6 +83,9 @@ ObexFtpDaemon::ObexFtpDaemon(QObject *parent, const QList<QVariant>&)
     if (Manager::self()->defaultAdapter()) {
         onlineMode();
     }
+
+    qDBusRegisterMetaType<QStringMap>();
+    qRegisterMetaType<QStringMap>("QStringMap");
 }
 
 ObexFtpDaemon::~ObexFtpDaemon()
@@ -142,6 +146,7 @@ void ObexFtpDaemon::stablishConnection(QString address)
         kDebug() << "We're offline, so do nothing";
         return;
     }
+
     if (address.isEmpty()) {
         kDebug() << "Address is Empty";
     }
@@ -156,8 +161,6 @@ void ObexFtpDaemon::stablishConnection(QString address)
     connect(d->m_manager, SIGNAL(SessionConnected(QDBusObjectPath)), this, SLOT(SessionConnected(QDBusObjectPath)));
     connect(d->m_manager, SIGNAL(SessionClosed(QDBusObjectPath)), this, SLOT(SessionClosed(QDBusObjectPath)));
     QDBusPendingReply <QDBusObjectPath > rep = d->m_manager->CreateBluetoothSession(address, "00:00:00:00:00:00", "ftp");
-    org::openobex::Session  *session = new org::openobex::Session("org.openobex", rep.value().path(), QDBusConnection::sessionBus(), 0);
-    d->m_sessionMap.insert(address, session);
 
     kDebug() << "Path: " << rep.value().path();
 }
@@ -248,19 +251,15 @@ void ObexFtpDaemon::SessionConnected(QDBusObjectPath path)
 {
     kDebug() << "SessionConnected!" << path.path();
 
-    QHash<QString, org::openobex::Session*>::const_iterator i = d->m_sessionMap.constBegin();
-    while (i != d->m_sessionMap.constEnd()) {
-        if (i.value()->path() == path.path()) {
-            connect(d->m_sessionMap[i.key()], SIGNAL(TransferCompleted()), this, SIGNAL(transferCompleted()));
-            connect(d->m_sessionMap[i.key()], SIGNAL(TransferProgress(qulonglong)), this, SIGNAL(transferProgress(qulonglong)));
-            connect(d->m_sessionMap[i.key()], SIGNAL(ErrorOccurred(QString,QString)), this, SIGNAL(errorOccurred(QString,QString)));
-            emit sessionConnected(i.key());
-            return;
-        }
-    }
+    org::openobex::Session  *session = new org::openobex::Session("org.openobex", path.path(), QDBusConnection::sessionBus(), 0);
+    QString address = getAddressFromSession(path.path());
+    d->m_sessionMap.insert(address, session);
 
-    kDebug() << "THIS SHOULD NOT HAPPEN";
-    kDebug() << "No Addrress for: " << path.path() << " has been found";
+    connect(session, SIGNAL(TransferCompleted()), this, SIGNAL(transferCompleted()));
+    connect(session, SIGNAL(TransferProgress(qulonglong)), this, SIGNAL(transferProgress(qulonglong)));
+    connect(session, SIGNAL(ErrorOccurred(QString,QString)), this, SIGNAL(errorOccurred(QString,QString)));
+
+    emit sessionConnected(address);
 }
 
 void ObexFtpDaemon::SessionClosed(QDBusObjectPath path)
@@ -275,4 +274,11 @@ void ObexFtpDaemon::SessionClosed(QDBusObjectPath path)
     }
 
     kDebug() << "Attempt to remove a nto existing session";
+}
+
+QString ObexFtpDaemon::getAddressFromSession(QString path)
+{
+    kDebug() << path;
+    QStringMap info = d->m_manager->GetSessionInfo(QDBusObjectPath(path)).value();
+    return info["BluetoothTargetAddress"];
 }
