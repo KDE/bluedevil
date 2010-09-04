@@ -138,12 +138,12 @@ void ObexFtpDaemon::stablishConnection(QString address)
     address.replace("-",":");
 
     kDebug() << "Address: " << address;
-    if (address.isEmpty()) {
-        kDebug() << "Address is Empty";
-    }
     if (d->m_status == Private::Offline) {
         kDebug() << "We're offline, so do nothing";
         return;
+    }
+    if (address.isEmpty()) {
+        kDebug() << "Address is Empty";
     }
 
     //We already have a session for that address
