@@ -4,8 +4,8 @@ set(kio_obexftp_SRCS
     kio_obexftp.cpp
    )
 
-QT4_ADD_DBUS_INTERFACE(kio_obexftp_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/obexftp/manager.xml obexftpmanager)
-QT4_ADD_DBUS_INTERFACE(kio_obexftp_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/obexftp/session.xml obexftpsession)
+QT4_ADD_DBUS_INTERFACE(kio_obexftp_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/kded_obexftp.xml kdedobexftp)
+
 set(obexftpfiletransfer_xml ${CMAKE_CURRENT_SOURCE_DIR}/obexftp/filetransfer.xml)
 
 kde4_add_plugin(kio_obexftp ${kio_obexftp_SRCS})

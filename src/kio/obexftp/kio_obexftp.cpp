@@ -21,8 +21,7 @@
  ***************************************************************************/
 
 #include "kio_obexftp.h"
-#include "obexftpmanager.h"
-#include "obexftpsession.h"
+#include "kdedobexftp.h"
 
 #include <KDebug>
 #include <KComponentData>
@@ -30,12 +29,6 @@
 #include <KAboutData>
 #include <KLocale>
 #include <KApplication>
-
-#define ENSURE_SESSION_CREATED(url) if (!m_session) {       \
-                                        if  (!createSession(url)) { \
-                                            return;\
-                                        }\
-                                    }
 
 extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
 {
@@ -55,73 +48,19 @@ extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
 }
 
 KioFtp::KioFtp(const QByteArray &pool, const QByteArray &app)
-    : SlaveBase("obexftp", pool, app), m_manager(0), m_session(0)
+    : SlaveBase("obexftp", pool, app)
 {
     m_timer = new QTimer();
     m_timer->setInterval(100);
     connect(m_timer, SIGNAL(timeout()), this, SLOT(updateProcess()));
+    m_kded = new org::kde::ObexFtp("org.kde.kded", "/modules/obexftpdaemon", QDBusConnection::sessionBus(), 0);
+
+    connect(m_kded, SIGNAL(sessionConnected(QString)), SLOT(sessionConnected(QString)));
 }
 
 KioFtp::~KioFtp()
 {
-    m_session->Disconnect().waitForFinished();
-    m_session->Close().waitForFinished();
-    delete m_manager;
-    delete m_session;
-}
-
-bool KioFtp::createSession(const KUrl &address)
-{
-    if (address.host().isEmpty()) {
-        kDebug() << "No host";
-        error (KIO::ERR_UNKNOWN_HOST, address.prettyUrl());
-        return false;
-    }
-
-    infoMessage(i18n("Connecting to the remote device..."));
-
-    launchProgressBar();
-    m_address = address.host();
-    kDebug() << "Got address: " << m_address;
-
-    m_manager = new org::openobex::Manager("org.openobex", "/org/openobex", QDBusConnection::sessionBus(), 0);
-    connect(m_manager, SIGNAL(SessionConnected(QDBusObjectPath)), this, SLOT(sessionCreated(QDBusObjectPath)));
-
-    kDebug() << "Creaing the bluetooth session: ";
-    QDBusPendingReply <QDBusObjectPath > rep = m_manager->CreateBluetoothSession(QString(m_address).replace("-", ":"), "00:00:00:00:00:00", "ftp");
-
-    m_eventLoop.exec();
-
-    kDebug() << "SessionError: " << rep.error().message();
-    kDebug() << "SessionPath: " << rep.value().path();
-
-    const QString sessioPath = rep.value().path();
-    m_session = new org::openobex::Session("org.openobex", sessioPath, QDBusConnection::sessionBus(), 0);
-
-    kDebug() << "Create session ends";
-    return true;
-}
-
-void KioFtp::changeDirectory(const KUrl& url)
-{
-    kDebug() << "ChangeUrl: " << url.path();
-    QStringList list = url.path().split("/");
-
-    kDebug() << "List of itens: " << list;
-
-    m_session->ChangeCurrentFolderToRoot().waitForFinished();
-    kDebug() << "We're in root now";
-
-    Q_FOREACH(const QString &dir, list) {
-        if (!dir.isEmpty() && dir != m_address) {
-            kDebug() << "Changing to: " << dir;
-            QDBusPendingReply <void > a = m_session->ChangeCurrentFolder(dir);
-            a.waitForFinished();
-            kDebug()  << "Change Error: " << a.error().message();
-        } else {
-            kDebug() << "Skyping" << dir;
-        }
-    }
+    delete m_kded;
 }
 
 void KioFtp::launchProgressBar()
@@ -145,15 +84,10 @@ void KioFtp::updateProcess()
 void KioFtp::listDir(const KUrl &url)
 {
     kDebug() << "listdir: " << url;
-    ENSURE_SESSION_CREATED(url)
 
     infoMessage(i18n("Retrieving information from remote device..."));
 
-    if (url.fileName() != "/" && !url.fileName().isEmpty()) {
-        changeDirectory(url);
-    }
-
-    QDBusPendingReply<QString> folder = m_session->RetrieveFolderListing();
+    QDBusPendingReply<QString> folder = m_kded->listDir(url.host(), url.path());
     folder.waitForFinished();
 
     kDebug() << folder.value();
@@ -170,32 +104,27 @@ void KioFtp::copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFl
     Q_UNUSED(flags)
 
     kDebug() << "copy: " << src.url() << " to " << dest.url();
-    connect(m_session, SIGNAL(TransferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
-    connect(m_session, SIGNAL(TransferCompleted()), this, SLOT(TransferCompleted()));
-    connect(m_session, SIGNAL(ErrorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
+    connect(m_kded, SIGNAL(transferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
+    connect(m_kded, SIGNAL(transferCompleted()), this, SLOT(TransferCompleted()));
+    connect(m_kded, SIGNAL(errorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
 
     if (src.scheme() == "obexftp") {
         if (m_statMap.contains(src.prettyUrl())) {
             if (m_statMap.value(src.prettyUrl()).isDir()) {
                 kDebug() << "Skipping to copy: " << src.prettyUrl();
                 error( KIO::ERR_IS_DIRECTORY, src.prettyUrl());
-                disconnect(m_session, SIGNAL(TransferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
-                disconnect(m_session, SIGNAL(TransferCompleted()), this, SLOT(TransferCompleted()));
-                disconnect(m_session, SIGNAL(ErrorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
+                disconnect(m_kded, SIGNAL(transferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
+                disconnect(m_kded, SIGNAL(transferCompleted()), this, SLOT(TransferCompleted()));
+                disconnect(m_kded, SIGNAL(errorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
                 return;
             }
         }
-        ENSURE_SESSION_CREATED(src)
-        changeDirectory(src.directory());
+
         kDebug() << "CopyingRemoteFile....";
-        m_session->CopyRemoteFile(src.fileName(), dest.path());
-        kDebug() << "Copied";
+        m_kded->copyRemoteFile(src.host(), src.path(), src.fileName());
     } else if (dest.scheme() == "obexftp") {
-        ENSURE_SESSION_CREATED(dest)
-        changeDirectory(dest.directory());
         kDebug() << "Sendingfile....";
-        m_session->SendFile(src.path());
-        kDebug() << "Copied";
+        m_kded->sendFile(dest.host(), src.path(), dest.directory());
     }
 
     m_eventLoop.exec();
@@ -221,6 +150,11 @@ void KioFtp::setHost(const QString &host, quint16 port, const QString &user, con
     Q_UNUSED(pass)
 
     kDebug() << "setHost: " << host;
+
+    m_kded->stablishConnection(host);
+    kDebug() << "Waiting to stablish the connection";
+    m_eventLoop.exec();
+
     m_statMap.clear();
 }
 
@@ -229,9 +163,7 @@ void KioFtp::del(const KUrl& url, bool isfile)
     Q_UNUSED(isfile)
 
     kDebug() << "Del: " << url.url();
-    ENSURE_SESSION_CREATED(url)
-    changeDirectory(url.directory());
-    m_session->DeleteRemoteFile(url.fileName()).waitForFinished();
+    m_kded->deleteRemoteFile(url.host(),  url.path()).waitForFinished();
     finished();
 }
 
@@ -240,16 +172,8 @@ void KioFtp::mkdir(const KUrl& url, int permissions)
     Q_UNUSED(permissions)
 
     kDebug() << "MkDir: " << url.url();
-    ENSURE_SESSION_CREATED(url)
-    changeDirectory(url.directory());
-    m_session->CreateFolder(url.fileName()).waitForFinished();
+    m_kded->createFolder(url.host(), url.path()).waitForFinished();
     finished();
-}
-
-void KioFtp::slave_status()
-{
-    kDebug() << "Slave status";
-    KIO::SlaveBase::slave_status();
 }
 
 void KioFtp::stat(const KUrl &url)
@@ -257,7 +181,7 @@ void KioFtp::stat(const KUrl &url)
     kDebug() << "Stat: " << url.url();
     kDebug() << "Stat Dir: " << url.directory();
     kDebug() << "Stat File: " << url.fileName();
-    ENSURE_SESSION_CREATED(url)
+
     if (url.directory() == "/" && url.fileName().isEmpty()) {
         KIO::UDSEntry entry;
         entry.insert(KIO::UDSEntry::UDS_NAME, QString::fromLatin1("/"));
@@ -274,10 +198,9 @@ void KioFtp::stat(const KUrl &url)
 
         } else {
             kDebug() << "statMap NOT contains the url";
-            changeDirectory(url.directory());
 
             kDebug() << "RetrieveFolderListing";
-            QDBusPendingReply<QString> folder = m_session->RetrieveFolderListing();
+            QDBusPendingReply<QString> folder = m_kded->listDir(url.host(), url.directory());
             kDebug() << "retireve called";
             folder.waitForFinished();
             kDebug() << "RetrieveError: " << folder.error().message();
@@ -287,6 +210,7 @@ void KioFtp::stat(const KUrl &url)
         }
     }
 
+    kDebug() << "Finished";
     finished();
 }
 
@@ -355,14 +279,6 @@ void KioFtp::statCallback(const KIO::UDSEntry& entry, const KUrl &url)
     }
 }
 
-void KioFtp::sessionCreated(const QDBusObjectPath& path)
-{
-    Q_UNUSED(path)
-    kDebug() << "session Created!";
-    disconnect(m_manager, SIGNAL(SessionConnected(QDBusObjectPath)), this, SLOT(sessionCreated(QDBusObjectPath)));
-    m_eventLoop.exit();
-}
-
 void KioFtp::TransferProgress(qulonglong transfered)
 {
     processedSize(transfered);
@@ -372,17 +288,17 @@ void KioFtp::TransferProgress(qulonglong transfered)
 void KioFtp::TransferCompleted()
 {
     kDebug() << "TransferCompleted: ";
-    disconnect(m_session, SIGNAL(TransferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
-    disconnect(m_session, SIGNAL(TransferCompleted()), this, SLOT(TransferCompleted()));
-    disconnect(m_session, SIGNAL(ErrorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
+    disconnect(m_kded, SIGNAL(transferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
+    disconnect(m_kded, SIGNAL(transferCompleted()), this, SLOT(TransferCompleted()));
+    disconnect(m_kded, SIGNAL(errorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
     m_eventLoop.exit();
 }
 
 void KioFtp::ErrorOccurred(const QString &name, const QString &msg)
 {
-    disconnect(m_session, SIGNAL(TransferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
-    disconnect(m_session, SIGNAL(TransferCompleted()), this, SLOT(TransferCompleted()));
-    disconnect(m_session, SIGNAL(ErrorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
+//     disconnect(m_session, SIGNAL(TransferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
+//     disconnect(m_session, SIGNAL(TransferCompleted()), this, SLOT(TransferCompleted()));
+//     disconnect(m_session, SIGNAL(ErrorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
 
     kDebug() << "ERROR ERROR: " << name;
     kDebug() << "ERROR ERROR: " << msg;
@@ -391,4 +307,10 @@ void KioFtp::ErrorOccurred(const QString &name, const QString &msg)
     if (m_eventLoop.isRunning()){
         m_eventLoop.exit();
     }
+}
+
+void KioFtp::sessionConnected(QString address)
+{
+    kDebug() << "Session connected: " << address;
+    m_eventLoop.exit();
 }

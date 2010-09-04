@@ -22,8 +22,7 @@
 
 #ifndef KIO_OBEXFTP_H
 #define KIO_OBEXFTP_H
-#include "obexftpmanager.h"
-#include "obexftpsession.h"
+#include "kdedobexftp.h"
 
 #include <QtCore/QObject>
 #include <QDBusObjectPath>
@@ -46,14 +45,12 @@ public:
     virtual void copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFlags flags);
     virtual void listDir(const KUrl &url);
     virtual void setHost(const QString &host, quint16 port, const QString &user, const QString &pass);
-    virtual void slave_status();
     virtual void stat(const KUrl &url);
     virtual void del(const KUrl &url, bool isfile);
     virtual void mkdir(const KUrl&url, int permissions);
     virtual void rename(const KUrl& src, const KUrl& dest, KIO::JobFlags flags);
 
 private Q_SLOTS:
-    void sessionCreated(const QDBusObjectPath &path);
     void TransferProgress(qulonglong transfered);
     void TransferCompleted();
     void ErrorOccurred(const QString&, const QString&);
@@ -62,9 +59,9 @@ private Q_SLOTS:
     void statCallback(const KIO::UDSEntry &entry, const KUrl& url);
 
     void updateProcess();
+    void sessionConnected(QString address);
+
 private:
-    bool createSession(const KUrl &address);
-    void changeDirectory(const KUrl& url);
     void launchProgressBar();
 
 private:
@@ -73,8 +70,7 @@ private:
     QMap<QString, KIO::UDSEntry> m_statMap;
     QString                      m_address;
     QTimer                      *m_timer;
-    org::openobex::Manager      *m_manager;
-    org::openobex::Session      *m_session;
+    org::kde::ObexFtp           *m_kded;
 };
 
 #endif // KIO_OBEXFTP_H
