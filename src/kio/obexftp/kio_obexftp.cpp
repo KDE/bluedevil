@@ -50,6 +50,8 @@ extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
 KioFtp::KioFtp(const QByteArray &pool, const QByteArray &app)
     : SlaveBase("obexftp", pool, app)
 {
+    m_settingHost = false;
+
     m_timer = new QTimer();
     m_timer->setInterval(100);
     connect(m_timer, SIGNAL(timeout()), this, SLOT(updateProcess()));
@@ -154,10 +156,11 @@ void KioFtp::setHost(const QString &host, quint16 port, const QString &user, con
 
     m_kded->stablishConnection(host);
     kDebug() << "Waiting to stablish the connection";
-
+    m_settingHost = true;
     launchProgressBar();
     m_eventLoop.exec();
 
+    m_settingHost = false;
     m_statMap.clear();
 }
 
@@ -315,5 +318,8 @@ void KioFtp::ErrorOccurred(const QString &name, const QString &msg)
 void KioFtp::sessionConnected(QString address)
 {
     kDebug() << "Session connected: " << address;
-    m_eventLoop.exit();
+
+    if (m_settingHost) {
+        m_eventLoop.exit();
+    }
 }

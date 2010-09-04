@@ -66,6 +66,7 @@ private:
 
 private:
     int                          m_counter;
+    bool                         m_settingHost;
     QEventLoop                   m_eventLoop;
     QMap<QString, KIO::UDSEntry> m_statMap;
     QString                      m_address;
