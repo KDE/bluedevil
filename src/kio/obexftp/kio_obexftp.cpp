@@ -76,6 +76,7 @@ void KioFtp::updateProcess()
         m_timer->stop();
         return;
     }
+
     processedSize(m_counter);
     m_counter++;
 }
@@ -153,6 +154,8 @@ void KioFtp::setHost(const QString &host, quint16 port, const QString &user, con
 
     m_kded->stablishConnection(host);
     kDebug() << "Waiting to stablish the connection";
+
+    launchProgressBar();
     m_eventLoop.exec();
 
     m_statMap.clear();
