@@ -28,10 +28,10 @@
 
 int main(int argc, char *argv[])
 {
-    KAboutData aboutData("bluedevilfilereceiverhelper", "bluedevilfilereceiverhelper", ki18n("BlueDevil File Receiver Helper"), "0.1", ki18n("Bluedevil File Receiver Helper"),
-                         KAboutData::License_GPL, ki18n("(c) 2010, UFO coders"));
+    KAboutData aboutData("bluedevilfilereceiverhelper", "bluedevilfilereceiverhelper", ki18n("Bluetooth File Receiver Helper"), "0.1", ki18n("Bluetooth File Receiver Helper"),
+                         KAboutData::License_GPL, ki18n("(c) 2010, UFO Coders"));
 
-    aboutData.addAuthor(ki18n("Alex Fiestas"), ki18n("Developer"), "alex@eyeos.org",
+    aboutData.addAuthor(ki18n("Alejandro Fiestas Olivares"), ki18n("Developer"), "alex@eyeos.org",
         "http://www.afiestas.org/");
     aboutData.addAuthor(ki18n("Eduardo Robles Elvira"), ki18n("Developer"), "edulix@gmail.com",
         "http://blog.edulix.es/");

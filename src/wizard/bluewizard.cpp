@@ -36,7 +36,7 @@
 
 BlueWizard::BlueWizard(const KUrl &url) : QWizard(), m_service(0), m_manualPin(false)
 {
-    setWindowTitle(i18n("BlueDevil Remote Device Wizard"));
+    setWindowTitle(i18n("Bluetooth Remote Device Wizard"));
 
     if (url.host().length() != 17) {
         setPage(Introduction, new IntroductionPage(this));
@@ -57,7 +57,7 @@ BlueWizard::BlueWizard(const KUrl &url) : QWizard(), m_service(0), m_manualPin(f
     setButton(QWizard::CancelButton, new KPushButton(KStandardGuiItem::cancel()));
 
     //We do not want "Forward" as text
-    setButtonText(QWizard::NextButton, i18n("Next"));
+    setButtonText(QWizard::NextButton, i18nc("Action to go to the next page on the wizard", "Next"));
     //First show, then do the rest
     show();
 

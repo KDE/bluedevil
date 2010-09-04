@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
@@ -49,7 +49,7 @@
          <item>
           <widget class="QLabel" name="noAdapterText">
            <property name="text">
-            <string>No bluetooth adapters has been found
+            <string>No bluetooth adapters have been found
 
 Plug one to continue</string>
            </property>

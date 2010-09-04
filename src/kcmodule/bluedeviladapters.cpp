@@ -48,9 +48,9 @@ AdapterSettings::AdapterSettings(Adapter *adapter, KCModule *parent)
     : QGroupBox(parent)
     , m_adapter(adapter)
     , m_name(new KLineEdit(this))
-    , m_hidden(new QRadioButton(i18n("Hidden"), this))
-    , m_alwaysVisible(new QRadioButton(i18n("Always visible"), this))
-    , m_temporaryVisible(new QRadioButton(i18n("Temporary visible"), this))
+    , m_hidden(new QRadioButton(i18nc("Radio widget to set if we want the adapter to be hidden", "Hidden"), this))
+    , m_alwaysVisible(new QRadioButton(i18nc("Radio widget to set if we want the adapter to be always visible", "Always visible"), this))
+    , m_temporaryVisible(new QRadioButton(i18nc("Radio widget to set if we want the adapter to be temporary visible", "Temporary visible"), this))
     , m_discoverTime(new QSlider(Qt::Horizontal, this))
     , m_discoverTimeLabel(new QLabel(this))
     , m_discoverTimeWidget(new QWidget(this))
@@ -90,18 +90,18 @@ AdapterSettings::AdapterSettings(Adapter *adapter, KCModule *parent)
     m_discoverTimeWidget->setLayout(layout);
     m_discoverTimeWidget->setEnabled(m_temporaryVisibleOrig);
 
-    m_discoverTimeLabel->setText(i18np("1 minute", "%1 minutes", m_discoverTime->value()));
+    m_discoverTimeLabel->setText(i18ncp("Discover time for the adapter", "1 minute", "%1 minutes", m_discoverTime->value()));
 
     m_powered->setChecked(adapter->isPowered());
     m_poweredOrig = adapter->isPowered();
 
     m_layout = new QFormLayout;
-    m_layout->addRow(i18n("Name"), m_name);
-    m_layout->addRow(i18n("Powered"), m_powered);
-    m_layout->addRow(i18n("Visibility"), m_hidden);
+    m_layout->addRow(i18nc("Name of the adapter", "Name"), m_name);
+    m_layout->addRow(i18nc("Whether the adapter is powered or not", "Powered"), m_powered);
+    m_layout->addRow(i18nc("Whether the adapter is visible or not", "Visibility"), m_hidden);
     m_layout->addWidget(m_alwaysVisible);
     m_layout->addWidget(m_temporaryVisible);
-    m_layout->addRow(i18n("Discover Time"), m_discoverTimeWidget);
+    m_layout->addRow(i18nc("How long the adapter will be discoverable", "Discover Time"), m_discoverTimeWidget);
     setLayout(m_layout);
 
     m_layout->labelForField(m_discoverTimeWidget)->setEnabled(m_temporaryVisibleOrig);
@@ -238,8 +238,8 @@ KCMBlueDevilAdapters::KCMBlueDevilAdapters(QWidget *parent, const QVariantList&)
     , m_systemCheck(new SystemCheck(this))
 {
     KAboutData* ab = new KAboutData(
-        "kcmbluedeviladapters", 0, ki18n("BlueDevil Adapters"), "1.0",
-        ki18n("BlueDevil Adapters Control Panel Module"),
+        "kcmbluedeviladapters", 0, ki18n("Bluetooth Adapters"), "1.0",
+        ki18n("Bluetooth Adapters Control Panel Module"),
         KAboutData::License_GPL, ki18n("(c) 2010 Rafael Fernández López"));
 
     ab->addAuthor(ki18n("Rafael Fernández López"), ki18n("Developer and Maintainer"), "ereslibre@kde.org");

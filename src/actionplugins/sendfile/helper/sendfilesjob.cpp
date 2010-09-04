@@ -79,7 +79,8 @@ void SendFilesJob::start()
 
     setTotalAmount(Bytes, m_totalSize);
     setProcessedAmount(Bytes, 0);
-    emit description(this, i18n("Sending file over bluetooth"), QPair<QString, QString>(i18n("From"), m_filesToSend.first()), QPair<QString, QString>("To", m_device->name()));
+
+    emit description(this, i18n("Sending file over bluetooth"), QPair<QString, QString>(i18nc("File transfer origin", "From"), m_filesToSend.first()), QPair<QString, QString>(i18nc("File transfer destination", "To"), m_device->name()));
 }
 
 void SendFilesJob::nextJob(OrgOpenobexTransferInterface *transferObj)
@@ -88,7 +89,8 @@ void SendFilesJob::nextJob(OrgOpenobexTransferInterface *transferObj)
     m_currentFileProgress = 0;
     m_currentFileSize = m_filesToSendSize.takeFirst();
     m_currentTransferJob = transferObj;
-    emit description(this, "Sending file over bluetooth", QPair<QString, QString>("From", m_currentFile), QPair<QString, QString>("To", m_device->name()));
+
+    emit description(this, i18n("Receiving file over bluetooth"), QPair<QString, QString>(i18nc("File transfer origin", "From"), m_currentFile), QPair<QString, QString>(i18nc("File transfer destination", "To"), m_device->name()));
 }
 
 void SendFilesJob::jobDone(QDBusObjectPath transfer)

@@ -314,8 +314,8 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     , m_systemCheck(new SystemCheck(this))
 {
     KAboutData* ab = new KAboutData(
-        "kcmbluedevildevices", 0, ki18n("BlueDevil Devices"), "1.0",
-        ki18n("BlueDevil Devices Control Panel Module"),
+        "kcmbluedevildevices", 0, ki18n("Bluetooth Devices"), "1.0",
+        ki18n("Bluetooth Devices Control Panel Module"),
         KAboutData::License_GPL, ki18n("(c) 2010 Rafael Fernández López"));
 
     ab->addAuthor(ki18n("Rafael Fernández López"), ki18n("Developer and Maintainer"), "ereslibre@kde.org");
@@ -348,11 +348,11 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     layout->addWidget(m_devices);
 
 // Actions buttons
-    m_trustDevice = new KPushButton(KIcon("security-high"), i18n("Trust"));
+    m_trustDevice = new KPushButton(KIcon("security-high"), i18nc("Trust a device", "Trust"));
     m_trustDevice->setEnabled(false);
-    m_renameAliasDevice = new KPushButton(KIcon("document-edit"), i18n("Rename"));
+    m_renameAliasDevice = new KPushButton(KIcon("document-edit"), i18nc("Change the alias of a device", "Rename"));
     m_renameAliasDevice->setEnabled(false);
-    m_removeDevice = new KPushButton(KIcon("list-remove"), i18n("Remove"));
+    m_removeDevice = new KPushButton(KIcon("list-remove"), i18n("Remove a device from the list of known devices", "Remove"));
     m_removeDevice->setEnabled(false);
     m_disconnectDevice = new KPushButton(KIcon("network-disconnect"), i18n("Disconnect"));
     m_disconnectDevice->setEnabled(false);
@@ -425,10 +425,10 @@ void KCMBlueDevilDevices::deviceSelectionChanged(const QItemSelection &selection
         Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
         m_disconnectDevice->setEnabled(device->isConnected());
         if (device->isTrusted()){
-            m_trustDevice->setText(i18n("Untrust"));
+            m_trustDevice->setText(i18nc("Untrust a device", "Untrust"));
             m_trustDevice->setIcon(KIcon("security-low"));
         } else {
-            m_trustDevice->setText(i18n("Trust"));
+            m_trustDevice->setText(i18nc("Trust a device", "Trust"));
             m_trustDevice->setIcon(KIcon("security-high"));
         }
     }
@@ -438,10 +438,10 @@ void KCMBlueDevilDevices::trustUntrustDevice()
 {
     Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
     if (device->isTrusted()) {
-        m_trustDevice->setText(i18n("Trust"));
+        m_trustDevice->setText(i18nc("Trust a device", "Trust"));
         m_trustDevice->setIcon(KIcon("security-high"));
     } else {
-        m_trustDevice->setText(i18n("Untrust"));
+        m_trustDevice->setText(i18nc("Untrust a device", "Untrust"));
         m_trustDevice->setIcon(KIcon("security-low"));
     }
     device->setTrusted(!device->isTrusted());
@@ -476,7 +476,7 @@ void KCMBlueDevilDevices::removeDevice()
     m_removeDevice->setEnabled(false);
     Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
     if (KMessageBox::questionYesNo(this, i18n("Are you sure that you want to remove device \"%1\" from the list of known devices?").arg(device->alias()),
-                                   i18n("Device removal")) == KMessageBox::Yes) {
+                                   i18nc("Title of window that asks for confirmation when removing a device", "Device removal")) == KMessageBox::Yes) {
         BlueDevil::Manager::self()->defaultAdapter()->removeDevice(device);
     } else {
         m_removeDevice->setEnabled(true);
@@ -571,49 +571,49 @@ void KCMBlueDevilDevices::fillRemoteDevicesModelInformation()
         const quint32 type = BlueDevil::classToType(device->deviceClass());
         switch (type) {
             case BlueDevil::BLUETOOTH_TYPE_ANY:
-                deviceType = i18n("Unknown");
+                deviceType = i18nc("Type of device: could not be determined", "Unknown");
                 break;
             case BlueDevil::BLUETOOTH_TYPE_PHONE:
-                deviceType = i18n("Phone");
+                deviceType = i18nc("This device is a Phone", "Phone");
                 break;
             case BlueDevil::BLUETOOTH_TYPE_MODEM:
-                deviceType = i18n("Modem");
+                deviceType = i18nc("This device is a Modem", "Modem");
                 break;
             case BlueDevil::BLUETOOTH_TYPE_COMPUTER:
-                deviceType = i18n("Computer");
+                deviceType = i18nc("This device is a Computer", "Computer");
                 break;
             case BlueDevil::BLUETOOTH_TYPE_NETWORK:
-                deviceType = i18n("Network");
+                deviceType = i18nc("This device is of type Network", "Network");
                 break;
             case BlueDevil::BLUETOOTH_TYPE_HEADSET:
-                deviceType = i18n("Headset");
+                deviceType = i18nc("This device is a Headset", "Headset");
                 break;
             case BlueDevil::BLUETOOTH_TYPE_HEADPHONES:
-                deviceType = i18n("Headphones");
+                deviceType = i18nc("This device are Headphones", "Headphones");
                 break;
             case BlueDevil::BLUETOOTH_TYPE_OTHER_AUDIO:
-                deviceType = i18n("Audio");
+                deviceType = i18nc("This device is of type Audio", "Audio");
                 break;
             case BlueDevil::BLUETOOTH_TYPE_KEYBOARD:
-                deviceType = i18n("Keyboard");
+                deviceType = i18nc("This device is a Keyboard", "Keyboard");
                 break;
             case BlueDevil::BLUETOOTH_TYPE_MOUSE:
-                deviceType = i18n("Mouse");
+                deviceType = i18nc("This device is a Mouse", "Mouse");
                 break;
             case BlueDevil::BLUETOOTH_TYPE_CAMERA:
-                deviceType = i18n("Camera");
+                deviceType = i18nc("This device is a Camera", "Camera");
                 break;
             case BlueDevil::BLUETOOTH_TYPE_PRINTER:
-                deviceType = i18n("Printer");
+                deviceType = i18nc("This device is a Printer", "Printer");
                 break;
             case BlueDevil::BLUETOOTH_TYPE_JOYPAD:
-                deviceType = i18n("Joypad");
+                deviceType = i18nc("This device is a Joypad", "Joypad");
                 break;
             case BlueDevil::BLUETOOTH_TYPE_TABLET:
-                deviceType = i18n("Tablet");
+                deviceType = i18nc("This device is a Tablet", "Tablet");
                 break;
             default:
-                deviceType = i18n("Unknown");
+                deviceType = i18nc("Type of device: could not be determined", "Unknown");
                 break;
         }
         m_devicesModel->setData(index, i18nc("Type of remote device (e.g. Camera, Mouse, Headset...)", "Type: %1", deviceType), BluetoothDevicesModel::DeviceTypeModelRole);
