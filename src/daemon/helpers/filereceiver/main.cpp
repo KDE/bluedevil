@@ -28,7 +28,7 @@
 
 int main(int argc, char *argv[])
 {
-    KAboutData aboutData("bluedevilfilereceiverhelper", "bluedevilfilereceiverhelper", ki18n("Bluetooth File Receiver Helper"), "0.1", ki18n("Bluetooth File Receiver Helper"),
+    KAboutData aboutData("bluedevil", "bluedevilfilereceiverhelper", ki18n("Bluetooth File Receiver Helper"), "0.1", ki18n("Bluetooth File Receiver Helper"),
                          KAboutData::License_GPL, ki18n("(c) 2010, UFO Coders"));
 
     aboutData.addAuthor(ki18n("Alejandro Fiestas Olivares"), ki18n("Developer"), "alex@eyeos.org",
