@@ -39,6 +39,7 @@ public:
 public Q_SLOTS:
     void launchServer();
     void stopServer();
+    bool isRunning();
 
 private Q_SLOTS:
     void quit();
