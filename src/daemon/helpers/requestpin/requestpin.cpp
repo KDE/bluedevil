@@ -42,7 +42,7 @@ RequestPin::RequestPin() : QObject()
 
     m_notification->setText(i18nc(
         "Shown in a notification to announce that a PIN is needed to accomplish a pair action, %1 is the name of the bluetooth device",
-        "PIN is needed to pair with %1",qApp->arguments()[1])
+        "PIN needed to pair with %1",qApp->arguments()[1])
     );
 
     QStringList actions;

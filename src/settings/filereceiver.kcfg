@@ -9,7 +9,7 @@ xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
     <include>kglobalsettings.h</include>
     <group name="General">
         <entry name="enabled" type="bool" key="enabled">
-            <label>Enable or Disable the file reception</label>
+            <label>Enable or Disable receiving files</label>
             <default>true</default>
         </entry>
         <entry name="saveUrl" type="Url" key="saveUrl">

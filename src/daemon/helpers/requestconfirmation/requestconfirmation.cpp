@@ -40,8 +40,8 @@ RequestConfirmation::RequestConfirmation() : QObject()
     );
 
     QStringList actions;
-    actions.append(i18nc("Notification button to know if the pin is correct or not", "PIN is correct"));
-    actions.append(i18nc("Notification button to say that the PIN is wrong", "PIN is wrong"));
+    actions.append(i18nc("Notification button to know if the pin is correct or not", "PIN correct"));
+    actions.append(i18nc("Notification button to say that the PIN is wrong", "PIN incorrect"));
 
     notification->setActions(actions);
 
