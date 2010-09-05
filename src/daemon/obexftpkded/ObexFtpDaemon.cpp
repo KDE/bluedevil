@@ -250,6 +250,11 @@ void ObexFtpDaemon::deleteRemoteFile(QString address, QString path)
 bool ObexFtpDaemon::isBusy(QString address)
 {
     address.replace("-", ":");
+    if (!d->m_sessionMap.contains(address)) {
+        kDebug() << "The address " << address << " doesn't has a session";
+        return false;
+    }
+
     return d->m_sessionMap[address]->IsBusy().value();
 }
 
