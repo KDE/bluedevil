@@ -54,7 +54,6 @@ KioFtp::KioFtp(const QByteArray &pool, const QByteArray &app)
 
     m_timer = new QTimer();
     m_timer->setInterval(100);
-    connect(m_timer, SIGNAL(timeout()), this, SLOT(updateProcess()));
 
     m_kded = new org::kde::ObexFtp("org.kde.kded", "/modules/obexftpdaemon", QDBusConnection::sessionBus(), 0);
     connect(m_kded, SIGNAL(sessionConnected(QString)), SLOT(sessionConnected(QString)));
@@ -67,6 +66,7 @@ KioFtp::~KioFtp()
 
 void KioFtp::launchProgressBar()
 {
+    connect(m_timer, SIGNAL(timeout()), this, SLOT(updateProcess()));
     totalSize(50);
     m_counter = 0;
     m_timer->start();
@@ -75,6 +75,7 @@ void KioFtp::launchProgressBar()
 void KioFtp::updateProcess()
 {
     if (m_counter == 49) {
+        disconnect(m_timer, SIGNAL(timeout()), this, SLOT(updateProcess()));
         m_timer->stop();
         return;
     }
