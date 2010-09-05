@@ -28,6 +28,8 @@
 #include <KCmdLineArgs>
 #include <KAboutData>
 #include <KLocale>
+#include <KTemporaryFile>
+#include <KMimeType>
 #include <KApplication>
 
 extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
@@ -109,36 +111,8 @@ void KioFtp::copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFl
     Q_UNUSED(flags)
 
     kDebug() << "copy: " << src.url() << " to " << dest.url();
-    connect(m_kded, SIGNAL(transferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
-    connect(m_kded, SIGNAL(transferCompleted()), this, SLOT(TransferCompleted()));
-    connect(m_kded, SIGNAL(errorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
 
-    if (src.scheme() == "obexftp") {
-        if (m_statMap.contains(src.prettyUrl())) {
-            if (m_statMap.value(src.prettyUrl()).isDir()) {
-                kDebug() << "Skipping to copy: " << src.prettyUrl();
-                error( KIO::ERR_IS_DIRECTORY, src.prettyUrl());
-                disconnect(m_kded, SIGNAL(transferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
-                disconnect(m_kded, SIGNAL(transferCompleted()), this, SLOT(TransferCompleted()));
-                disconnect(m_kded, SIGNAL(errorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
-                return;
-            }
-        }
-
-        kDebug() << "CopyingRemoteFile....";
-        blockUntilNotBusy(src.host());
-        m_kded->copyRemoteFile(src.host(), src.path(), dest.path());
-    } else if (dest.scheme() == "obexftp") {
-        kDebug() << "Sendingfile....";
-        blockUntilNotBusy(dest.host());
-        m_kded->sendFile(dest.host(), src.path(), dest.directory());
-    }
-
-    connect(m_timer, SIGNAL(timeout()), this, SLOT(wasKilledCheck()));
-    m_timer->start();
-
-    m_eventLoop.exec();
-    m_timer->stop();
+    copyHelper(src, dest);
 
     finished();
 }
@@ -150,6 +124,28 @@ void KioFtp::rename(const KUrl& src, const KUrl& dest, KIO::JobFlags flags)
     Q_UNUSED(flags)
 
     error(KIO::ERR_UNSUPPORTED_ACTION, src.prettyUrl());
+    finished();
+}
+
+void KioFtp::get(const KUrl& url)
+{
+    KTemporaryFile tempFile;
+    tempFile.setSuffix(url.fileName());
+    tempFile.open();//Create the file
+    kDebug() << tempFile.fileName();
+
+    copyHelper(url, KUrl(tempFile.fileName()));
+
+    kDebug() << "Getting mimetype";
+    KMimeType::Ptr mime = KMimeType::findByPath(tempFile.fileName());
+    mimeType(mime->name());
+    kDebug() << "Mime: " << mime->name();
+
+    kDebug() << tempFile.size();
+    totalSize(tempFile.size());
+
+    data(tempFile.readAll());
+
     finished();
 }
 
@@ -335,6 +331,41 @@ void KioFtp::sessionConnected(QString address)
         m_eventLoop.exit();
     }
 }
+
+void KioFtp::copyHelper(const KUrl& src, const KUrl& dest)
+{
+    connect(m_kded, SIGNAL(transferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
+    connect(m_kded, SIGNAL(transferCompleted()), this, SLOT(TransferCompleted()));
+    connect(m_kded, SIGNAL(errorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
+
+    if (src.scheme() == "obexftp") {
+        if (m_statMap.contains(src.prettyUrl())) {
+            if (m_statMap.value(src.prettyUrl()).isDir()) {
+                kDebug() << "Skipping to copy: " << src.prettyUrl();
+                error( KIO::ERR_IS_DIRECTORY, src.prettyUrl());
+                disconnect(m_kded, SIGNAL(transferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
+                disconnect(m_kded, SIGNAL(transferCompleted()), this, SLOT(TransferCompleted()));
+                disconnect(m_kded, SIGNAL(errorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
+                return;
+            }
+        }
+
+        kDebug() << "CopyingRemoteFile....";
+        blockUntilNotBusy(src.host());
+        m_kded->copyRemoteFile(src.host(), src.path(), dest.path());
+    } else if (dest.scheme() == "obexftp") {
+        kDebug() << "Sendingfile....";
+        blockUntilNotBusy(dest.host());
+        m_kded->sendFile(dest.host(), src.path(), dest.directory());
+    }
+
+    connect(m_timer, SIGNAL(timeout()), this, SLOT(wasKilledCheck()));
+    m_timer->start();
+
+    m_eventLoop.exec();
+    m_timer->stop();
+}
+
 
 void KioFtp::blockUntilNotBusy(QString address)
 {

@@ -49,6 +49,7 @@ public:
     virtual void del(const KUrl &url, bool isfile);
     virtual void mkdir(const KUrl&url, int permissions);
     virtual void rename(const KUrl& src, const KUrl& dest, KIO::JobFlags flags);
+    virtual void get(const KUrl& url);
 
 private Q_SLOTS:
     void TransferProgress(qulonglong transfered);
@@ -63,6 +64,7 @@ private Q_SLOTS:
 
     void wasKilledCheck();
 private:
+    void copyHelper(const KUrl &src, const KUrl &dest);
     void launchProgressBar();
     void blockUntilNotBusy(QString address);
 
