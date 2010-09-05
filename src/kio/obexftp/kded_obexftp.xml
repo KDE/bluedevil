@@ -45,5 +45,8 @@
       <arg type="b" direction="out"/>
       <arg name="address" type="s" direction="in"/>
     </method>
+    <method name="Cancel">
+        <arg name="address" type="s" direction="in"/>
+    </method>
   </interface>
 </node>

@@ -61,6 +61,7 @@ private Q_SLOTS:
     void updateProcess();
     void sessionConnected(QString address);
 
+    void wasKilledCheck();
 private:
     void launchProgressBar();
     void blockUntilNotBusy(QString address);

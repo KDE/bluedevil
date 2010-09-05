@@ -127,14 +127,18 @@ void KioFtp::copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFl
 
         kDebug() << "CopyingRemoteFile....";
         blockUntilNotBusy(src.host());
-        m_kded->copyRemoteFile(src.host(), src.path(), src.fileName());
+        m_kded->copyRemoteFile(src.host(), src.path(), dest.path());
     } else if (dest.scheme() == "obexftp") {
         kDebug() << "Sendingfile....";
         blockUntilNotBusy(dest.host());
         m_kded->sendFile(dest.host(), src.path(), dest.directory());
     }
 
+    connect(m_timer, SIGNAL(timeout()), this, SLOT(wasKilledCheck()));
+    m_timer->start();
+
     m_eventLoop.exec();
+    m_timer->stop();
 
     finished();
 }
@@ -165,6 +169,7 @@ void KioFtp::setHost(const QString &host, quint16 port, const QString &user, con
     m_eventLoop.exec();
 
     m_settingHost = false;
+    m_address = host;
     m_statMap.clear();
 }
 
@@ -341,4 +346,15 @@ void KioFtp::blockUntilNotBusy(QString address)
         }
     }
     kDebug() << "kded is free";
+}
+
+void KioFtp::wasKilledCheck()
+{
+    if (wasKilled()) {
+        kDebug() << "slave was killed!";
+        m_timer->stop();
+        m_kded->Cancel(m_address).waitForFinished();;
+        m_eventLoop.exit();
+    }
+    kDebug() << "Slave is alive";
 }

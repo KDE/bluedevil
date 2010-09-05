@@ -202,7 +202,7 @@ QString ObexFtpDaemon::listDir(QString address, QString path)
 
 void ObexFtpDaemon::copyRemoteFile(QString address, QString fileName, QString destPath)
 {
-    kDebug();
+    kDebug() << destPath;
     address.replace("-", ":");
     ENSURE_SESSION_CREATED(address);
 
@@ -251,6 +251,14 @@ bool ObexFtpDaemon::isBusy(QString address)
 {
     address.replace("-", ":");
     return d->m_sessionMap[address]->IsBusy().value();
+}
+
+void ObexFtpDaemon::Cancel(QString address)
+{
+    address.replace("-", ":");
+    ENSURE_SESSION_CREATED(address)
+
+    d->m_sessionMap[address]->Cancel();
 }
 
 
