@@ -5,5 +5,8 @@
         </method>
         <method name="stopServer">
         </method>
+        <method name="isRunning">
+            <arg name="running" type="b" direction="out"/>
+        </method>
     </interface>
 </node>

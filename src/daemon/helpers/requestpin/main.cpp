@@ -33,7 +33,7 @@ static const KLocalizedString description = ki18n("KDE Bluetooth System");
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    KComponentData data("bluedevilrequestpinhelper", "bluedevilrequestpinhelper");
+    KComponentData data("bluedevil", "bluedevilrequestpinhelper");
     KGlobal::setActiveComponent(data);
     RequestPin request;
 

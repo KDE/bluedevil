@@ -1,0 +1,18 @@
+When developing the kio_obexftp, we noticed that the only way to make play nice obexftp protocol with kio_obexftp
+was developing a new KDED, this is why.
+
+KIO is designed to has atomic methods, to do that we need to connect/disconnect in each action becuase most of the
+devices which implement obexftp only support 1 connection.
+
+So, what does this Daemon solve?
+
+This is the idea:
+    -On setHost, the kio send the addr to connect to.
+    -The connection (from now on known as session) is saved in a map, relationing ADDR<-->Session
+    -In each action (lsitdir, copy, etc...) the call is forwarded to the KDED, together with the current host (addr)
+    -The KDED, using the session perform the actual obexftp related work.
+        -In case of copy, it will emit signals when needed
+
+Sumary of needs:
+    -Share session between kio's
+    -Have an atomic kio_salve, as they should be.

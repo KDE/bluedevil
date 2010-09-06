@@ -33,7 +33,7 @@ static const KLocalizedString  description = ki18n("KDE Bluetooth System");
 int main(int argc, char *argv[])
 {
     QApplication app(argc,argv);
-    KComponentData data("bluedevilconfirmmodechangehelper", "bluedevilconfirmmodechangehelper");
+    KComponentData data("bluedevil", "bluedevilconfirmmodechangehelper");
     KGlobal::setActiveComponent(data);
     ConfirmModeChange confirmMode;
 

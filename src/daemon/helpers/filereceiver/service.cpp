@@ -75,6 +75,15 @@ void Service::stopServer()
     QTimer::singleShot(10000, this, SLOT(quit()));
 }
 
+bool Service::isRunning()
+{
+    if (!m_server) {
+        return false;
+    }
+
+    return true;
+}
+
 void Service::quit()
 {
     kDebug();

@@ -106,9 +106,11 @@ BlueDevilDaemon::~BlueDevilDaemon()
 
 bool BlueDevilDaemon::isServiceStarted()
 {
-    d->m_service = new org::kde::BlueDevil::Service("org.kde.BlueDevil.Service",
-        "/Service", QDBusConnection::sessionBus(), this);
-    return d->m_service->isValid();
+    if (!d->m_service) {
+        d->m_service = new org::kde::BlueDevil::Service("org.kde.BlueDevil.Service",
+            "/Service", QDBusConnection::sessionBus(), this);
+    }
+    return d->m_service->isRunning();
 }
 
 void BlueDevilDaemon::onlineMode()
@@ -129,6 +131,10 @@ void BlueDevilDaemon::onlineMode()
     if (!isServiceStarted() && FileReceiverSettings::self()->enabled()) {
         kDebug() << "Launching server";
         d->m_service->launchServer();
+    }
+    if (isServiceStarted() && !FileReceiverSettings::self()->enabled()) {
+        kDebug() << "Stoppping server";
+        d->m_service->stopServer();
     }
 
     if (!d->m_placesModel) {
@@ -156,10 +162,13 @@ void BlueDevilDaemon::offlineMode()
 
     d->m_adapter = 0;
 
-    connect(d->m_agentListener, SIGNAL(finished()), this, SLOT(agentThreadStopped()));
-    d->m_agentListener->quit();
+    if (d->m_agentListener) {
+        connect(d->m_agentListener, SIGNAL(finished()), this, SLOT(agentThreadStopped()));
+        d->m_agentListener->quit();
+    }
 
     if (isServiceStarted()) {
+        kDebug() << "Stoppping server";
         d->m_service->stopServer();
     }
 
