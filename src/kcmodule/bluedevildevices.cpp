@@ -352,7 +352,7 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     m_trustDevice->setEnabled(false);
     m_renameAliasDevice = new KPushButton(KIcon("document-edit"), i18nc("Change the alias of a device", "Rename"));
     m_renameAliasDevice->setEnabled(false);
-    m_removeDevice = new KPushButton(KIcon("list-remove"), i18n("Remove a device from the list of known devices", "Remove"));
+    m_removeDevice = new KPushButton(KIcon("list-remove"), i18nc("Remove a device from the list of known devices", "Remove"));
     m_removeDevice->setEnabled(false);
     m_disconnectDevice = new KPushButton(KIcon("network-disconnect"), i18n("Disconnect"));
     m_disconnectDevice->setEnabled(false);
