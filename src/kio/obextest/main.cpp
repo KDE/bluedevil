@@ -23,7 +23,7 @@
 
 int main(int argc, char *argv[])
 {
-    KAboutData aboutData("obextest", 0, ki18n("Obex Test"), "0.1", ki18n("Obex Test"),
+    KAboutData aboutData("bluedevil", "obextest", ki18n("Obex Test"), "0.1", ki18n("Obex Test"),
     KAboutData::License_GPL, ki18n("(c) 2010, UFO Coders"));
 
     aboutData.addAuthor(ki18n("Alejandro Fiestas Olivares"), ki18n("Developer"), "alex@ufocoders.com",
