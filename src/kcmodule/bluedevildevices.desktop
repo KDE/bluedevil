@@ -12,8 +12,10 @@ X-KDE-System-Settings-Parent-Category=bluetooth
 X-KDE-Weight=50
 
 Name=Devices
+Name[x-test]=xxDevicesxx
 
 Comment=Configure the known bluetooth remote devices
+Comment[x-test]=xxConfigure the known bluetooth remote devicesxx
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
 

@@ -2,10 +2,13 @@
 Type=Application
 Version=1.0
 Name=BlueDevil Input connect
+Name[x-test]=xxBlueDevil Input connectxx
 GenericName=BlueDevil Input connect
+GenericName[x-test]=xxBlueDevil Input connectxx
 MimeType=virtual/bluedevil-input;
 Exec=bluedevil-input %U
 Comment=BlueDevil Input connect
+Comment[x-test]=xxBlueDevil Input connectxx
 Icon=preferences-system-bluetooth
 Terminal=false
 Categories=Qt;KDE;Bluetooth;Network;Input;

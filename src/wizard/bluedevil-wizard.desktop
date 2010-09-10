@@ -2,9 +2,12 @@
 Type=Application
 Version=1.0
 Name=BlueDevil Wizard
+Name[x-test]=xxBlueDevil Wizardxx
 GenericName=BlueDevil Wizard
+GenericName[x-test]=xxBlueDevil Wizardxx
 Exec=bluedevil-wizard %U
 Comment=BlueDevil Wizard
+Comment[x-test]=xxBlueDevil Wizardxx
 Icon=preferences-system-bluetooth
 Terminal=false
 Categories=Qt;KDE;Bluetooth;Network;
