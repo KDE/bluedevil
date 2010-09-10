@@ -2,8 +2,11 @@
 Type=Service
 Exec=blubb
 Comment=Allows you to send files to the remote device
+Comment[x-test]=xxAllows you to send files to the remote devicexx
 Name=Send File
+Name[x-test]=xxSend Filexx
 GenericName=Send file
+GenericName[x-test]=xxSend filexx
 ServiceTypes=BlueDevil/ActionPlugin
 X-KDE-Library=bluedevilsendfileactionplugin
 X-KDE-PluginInfo-Name=Send File
