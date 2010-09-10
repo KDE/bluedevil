@@ -64,7 +64,7 @@ ObexFtpDaemon::ObexFtpDaemon(QObject *parent, const QList<QVariant>&)
     , d(new Private)
 {
     KAboutData aboutData(
-        "bluedevil",
+        "obexftpdaemon",
         "obexftpdaemon",
         ki18n("ObexFtp Daemon"),
         "1.0",

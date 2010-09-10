@@ -23,7 +23,7 @@
 
 int main(int argc, char *argv[])
 {
-    KAboutData aboutData("bluedevil", "bluedevilmonolithic", ki18n("Bluetooth Monolithic"), "0.1", ki18n("Bluetooth Monolithic"),
+    KAboutData aboutData("bluedevilmonolithic", "bluedevilmonolithic", ki18n("Bluetooth Monolithic"), "0.1", ki18n("Bluetooth Monolithic"),
     KAboutData::License_GPL, ki18n("(c) 2010, UFO Coders"));
 
     aboutData.addAuthor(ki18n("Alejandro Fiestas Olivares"), ki18n("Developer"), "alex@ufocoders.com", "http://www.afiestas.org/");

@@ -2,8 +2,11 @@
 Type=Service
 Exec=blubb
 Comment=Handles the connection and configuration of an audio device
+Comment[x-test]=xxHandles the connection and configuration of an audio devicexx
 Name=Audio
+Name[x-test]=xxAudioxx
 GenericName=Audio
+GenericName[x-test]=xxAudioxx
 ServiceTypes=BlueDevil/ActionPlugin
 X-KDE-Library=bluedevilaudioactionplugin
 X-KDE-PluginInfo-Name=Audio

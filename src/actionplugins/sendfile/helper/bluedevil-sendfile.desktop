@@ -2,10 +2,13 @@
 Type=Application
 Version=1.0
 Name=BlueDevil Send File
+Name[x-test]=xxBlueDevil Send Filexx
 GenericName=BlueDevil Send File
+GenericName[x-test]=xxBlueDevil Send Filexx
 MimeType=virtual/bluedevil-sendfile;
 Exec=bluedevil-sendfile %U
 Comment=BlueDevil Send File
+Comment[x-test]=xxBlueDevil Send Filexx
 Icon=preferences-system-bluetooth
 Terminal=false
 Categories=Qt;KDE;Bluetooth;Network;

@@ -2,8 +2,11 @@
 Type=Service
 Exec=blubb
 Comment=Handles the connection and configuration of an input device
+Comment[x-test]=xxHandles the connection and configuration of an input devicexx
 Name=Input
+Name[x-test]=xxInputxx
 GenericName=Input
+GenericName[x-test]=xxInputxx
 ServiceTypes=BlueDevil/ActionPlugin
 X-KDE-Library=bluedevilinputactionplugin
 X-KDE-PluginInfo-Name=Input
