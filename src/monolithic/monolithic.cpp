@@ -247,6 +247,34 @@ void Monolithic::regenerateDeviceEntries()
             }
             hasSupportedServices = true;
         }
+        if (UUIDs.contains("0000110B-0000-1000-8000-00805F9B34FB")) {
+            org::bluez::Audio *audio = new org::bluez::Audio("org.bluez", device->UBI(), QDBusConnection::systemBus());
+            connect(audio, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
+            info.service = "00001108-0000-1000-8000-00805F9B34FB";
+            info.dbusService = audio;
+            _submenu->addTitle("Audio Sink");
+
+            if (audio->GetProperties().value()["State"].toString() == "connected") {
+                KAction *_disconnect = new KAction(i18n("Disconnect"), _device);
+                m_interfaceMap[audio] = _disconnect;
+                _disconnect->setData(QVariant::fromValue<EntryInfo>(info));
+                _submenu->addAction(_disconnect);
+                connect(_disconnect, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
+            } else if (audio->GetProperties().value()["State"].toString() == "connecting") {
+                KAction *_connecting = new KAction(i18n("Connecting..."), _device);
+                _connecting->setEnabled(false);
+                m_interfaceMap[audio] = _connecting;
+                _connecting->setData(QVariant::fromValue<EntryInfo>(info));
+                _submenu->addAction(_connecting);
+            } else {
+                KAction *_connect = new KAction(i18nc("Action", "Connect"), _device);
+                m_interfaceMap[audio] = _connect;
+                _connect->setData(QVariant::fromValue<EntryInfo>(info));
+                _submenu->addAction(_connect);
+                connect(_connect, SIGNAL(triggered()), this, SLOT(connectTriggered()));
+            }
+            hasSupportedServices = true;
+        }
         if (!hasSupportedServices) {
             KAction *_unknown = new KAction(i18n("No supported services found"), _device);
             _unknown->setEnabled(false);
@@ -457,6 +485,19 @@ void Monolithic::UUIDsChanged(const QStringList &UUIDs)
         info.dbusService = audio;
         _connect->setData(QVariant::fromValue<EntryInfo>(info));
         _submenu->addTitle("Headset Service");
+        _submenu->addAction(_connect);
+        connect(_connect, SIGNAL(triggered()), this, SLOT(connectTriggered()));
+        hasSupportedServices = true;
+    }
+    if (UUIDs.contains("0000110B-0000-1000-8000-00805F9B34FB")) {
+        KAction *_connect = new KAction(i18nc("Action", "Connect"), _submenu);
+        org::bluez::Audio *audio = new org::bluez::Audio("org.bluez", device->UBI(), QDBusConnection::systemBus());
+        connect(audio, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
+        m_interfaceMap[audio] = _connect;
+        info.service = "00001108-0000-1000-8000-00805F9B34FB";
+        info.dbusService = audio;
+        _connect->setData(QVariant::fromValue<EntryInfo>(info));
+        _submenu->addTitle("Audio Sink");
         _submenu->addAction(_connect);
         connect(_connect, SIGNAL(triggered()), this, SLOT(connectTriggered()));
         hasSupportedServices = true;
