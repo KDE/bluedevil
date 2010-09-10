@@ -186,7 +186,7 @@ KioBluetoothPrivate::KioBluetoothPrivate(KioBluetooth *parent)
     m_serviceNames.insert("0000111F-0000-1000-8000-00805F9B34FB", i18n("Hands free Audio Gateway"));
     m_serviceNames.insert("00001120-0000-1000-8000-00805F9B34FB", i18n("Direct Printing Reference Objects"));
     m_serviceNames.insert("00001121-0000-1000-8000-00805F9B34FB", i18n("Reflected UI"));
-    m_serviceNames.insert("00001122-0000-1000-8000-00805F9B34FB", i18n("Basic Pringing"));
+    m_serviceNames.insert("00001122-0000-1000-8000-00805F9B34FB", i18n("Basic Printing"));
     m_serviceNames.insert("00001123-0000-1000-8000-00805F9B34FB", i18n("Printing Status"));
     m_serviceNames.insert("00001124-0000-1000-8000-00805F9B34FB", i18n("Human Interface Device"));
     m_serviceNames.insert("00001125-0000-1000-8000-00805F9B34FB", i18n("Hardcopy Cable Replacement"));
