@@ -12,9 +12,16 @@ X-KDE-System-Settings-Parent-Category=bluetooth
 X-KDE-Weight=100
 
 Name=Adapters
+Name[nds]=Koppelsteden
+Name[pt]=Adaptadores
+Name[sv]=Anslutningar
+Name[uk]=Адаптери
 Name[x-test]=xxAdaptersxx
 
 Comment=Configure the available bluetooth adapters
+Comment[pt]=Configurar os adaptadores de Bluetooth disponíveis
+Comment[sv]=Anpassa tillgängliga Blåtandanslutningar
+Comment[uk]=Налаштування доступних адаптерів bluetooth
 Comment[x-test]=xxConfigure the available bluetooth adaptersxx
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth

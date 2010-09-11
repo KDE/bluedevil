@@ -12,9 +12,16 @@ X-KDE-System-Settings-Parent-Category=bluetooth
 X-KDE-Weight=60
 
 Name=File Transfer
+Name[nds]=Dateiöverdregen
+Name[pt]=Transferência de Ficheiros
+Name[sv]=Filöverföring
+Name[uk]=Перенесення файла
 Name[x-test]=xxFile Transferxx
 
 Comment=Configure the bluetooth receive files
+Comment[pt]=Configura a recepção de ficheiros por Bluetooth
+Comment[sv]=Anpassa Blåtand mottagning av filer
+Comment[uk]=Налаштування отримання файлів bluetooth
 Comment[x-test]=xxConfigure the bluetooth receive filesxx
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
