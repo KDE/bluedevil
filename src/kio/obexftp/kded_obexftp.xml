@@ -11,6 +11,8 @@
     </signal>
     <signal name="transferCompleted">
     </signal>
+    <signal name="Cancelled">
+    </signal>
     <signal name="errorOccurred">
       <arg type="s" direction="out"/>
       <arg type="s" direction="out"/>

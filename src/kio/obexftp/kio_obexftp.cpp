@@ -304,11 +304,25 @@ void KioFtp::TransferProgress(qulonglong transfered)
 void KioFtp::TransferCompleted()
 {
     kDebug() << "TransferCompleted: ";
+    disconnect(m_kded, SIGNAL(Cancelled()), this, SLOT(TransferCancelled()));
     disconnect(m_kded, SIGNAL(transferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
     disconnect(m_kded, SIGNAL(transferCompleted()), this, SLOT(TransferCompleted()));
     disconnect(m_kded, SIGNAL(errorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
+    finished();
     m_eventLoop.exit();
 }
+
+void KioFtp::TransferCancelled()
+{
+    kDebug() << "TransferCancelled";
+    disconnect(m_kded, SIGNAL(Cancelled()), this, SLOT(TransferCancelled()));
+    disconnect(m_kded, SIGNAL(transferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
+    disconnect(m_kded, SIGNAL(transferCompleted()), this, SLOT(TransferCompleted()));
+    disconnect(m_kded, SIGNAL(errorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
+    error(KIO::ERR_USER_CANCELED, "");
+    m_eventLoop.exit();
+}
+
 
 void KioFtp::ErrorOccurred(const QString &name, const QString &msg)
 {
@@ -336,6 +350,7 @@ void KioFtp::sessionConnected(QString address)
 
 void KioFtp::copyHelper(const KUrl& src, const KUrl& dest)
 {
+    connect(m_kded, SIGNAL(Cancelled()), this, SLOT(TransferCancelled()));
     connect(m_kded, SIGNAL(transferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
     connect(m_kded, SIGNAL(transferCompleted()), this, SLOT(TransferCompleted()));
     connect(m_kded, SIGNAL(errorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
@@ -352,6 +367,7 @@ void KioFtp::copyHelper(const KUrl& src, const KUrl& dest)
         if (m_statMap.value(src.prettyUrl()).isDir()) {
             kDebug() << "Skipping to copy: " << src.prettyUrl();
             error( KIO::ERR_IS_DIRECTORY, src.prettyUrl());
+            disconnect(m_kded, SIGNAL(Cancelled()), this, SLOT(TransferCancelled()));
             disconnect(m_kded, SIGNAL(transferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
             disconnect(m_kded, SIGNAL(transferCompleted()), this, SLOT(TransferCompleted()));
             disconnect(m_kded, SIGNAL(errorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));

@@ -54,6 +54,7 @@ public:
 private Q_SLOTS:
     void TransferProgress(qulonglong transfered);
     void TransferCompleted();
+    void TransferCancelled();
     void ErrorOccurred(const QString&, const QString&);
 
     void listDirCallback(const KIO::UDSEntry& entry, const KUrl& url);
