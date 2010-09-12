@@ -37,6 +37,7 @@
 
 #define ENSURE_SESSION_CREATED(address) if (!d->m_sessionMap.contains(address)) { \
         kDebug() << "The address " << address << " doesn't has a session"; \
+        stablishConnection(address); \
         return; \
     }
 
@@ -188,6 +189,7 @@ QString ObexFtpDaemon::listDir(QString address, QString path)
     address.replace("-", ":");
     if (!d->m_sessionMap.contains(address)) {
         kDebug() << "The address " << address << " doesn't has a session";
+        stablishConnection(address);
         return QString();
     }
 
@@ -253,7 +255,8 @@ bool ObexFtpDaemon::isBusy(QString address)
     address.replace("-", ":");
     if (!d->m_sessionMap.contains(address)) {
         kDebug() << "The address " << address << " doesn't has a session";
-        return false;
+        stablishConnection(address);
+        return true;//Fake the busy state, so stablishConneciton can work
     }
 
     return d->m_sessionMap[address]->IsBusy().value();
