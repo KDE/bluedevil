@@ -14,12 +14,14 @@ X-KDE-Weight=100
 Name=Adapters
 Name[nds]=Koppelsteden
 Name[pt]=Adaptadores
+Name[pt_BR]=Adaptadores
 Name[sv]=Anslutningar
 Name[uk]=Адаптери
 Name[x-test]=xxAdaptersxx
 
 Comment=Configure the available bluetooth adapters
 Comment[pt]=Configurar os adaptadores de Bluetooth disponíveis
+Comment[pt_BR]=Configurar os adaptadores de Bluetooth disponíveis
 Comment[sv]=Anpassa tillgängliga Blåtandanslutningar
 Comment[uk]=Налаштування доступних адаптерів bluetooth
 Comment[x-test]=xxConfigure the available bluetooth adaptersxx

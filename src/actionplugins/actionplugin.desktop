@@ -4,6 +4,7 @@ X-KDE-ServiceType=BlueDevil/ActionPlugin
 X-KDE-Derived=KPluginInfo
 Name=BlueDevil Service Plugin
 Name[pt]='Plugin' de Serviço Bluetooth
+Name[pt_BR]=Plug-in de serviço Bluetooth
 Name[sv]=Blådjävul tjänstinsticksprogram
 Name[uk]=Додаток служби BlueDevil
 Name[x-test]=xxBlueDevil Service Pluginxx

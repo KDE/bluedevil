@@ -11,12 +11,14 @@ X-KDE-Kded-phase=1
 Name=obexftp
 Name[nds]=ObexFTP
 Name[pt]=obexftp
+Name[pt_BR]=obexftp
 Name[sv]=OBEX FTP
 Name[uk]=obexftp
 Name[x-test]=xxobexftpxx
 
 Comment=Obexftp helper daemon
 Comment[pt]=Servidor auxiliar do Obexftp
+Comment[pt_BR]=Daemon auxiliar do obexftp
 Comment[sv]=OBEX FTP-hjälpdemon
 Comment[uk]=Фонова служба допоміжної програми Obexftp
 Comment[x-test]=xxObexftp helper daemonxx
