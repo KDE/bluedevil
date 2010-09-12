@@ -194,8 +194,10 @@ void KioFtp::stat(const KUrl &url)
     kDebug() << "Stat: " << url.url();
     kDebug() << "Stat Dir: " << url.directory();
     kDebug() << "Stat File: " << url.fileName();
+    kDebug() << "Empty Dir: " << url.directory().isEmpty();
 
-    if (url.directory() == "/" && url.fileName().isEmpty()) {
+    if ((url.directory() == "/" || url.directory().isEmpty()) && url.fileName().isEmpty()) {
+        kDebug() << "Url is root";
         KIO::UDSEntry entry;
         entry.insert(KIO::UDSEntry::UDS_NAME, QString::fromLatin1("/"));
         entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
@@ -339,15 +341,21 @@ void KioFtp::copyHelper(const KUrl& src, const KUrl& dest)
     connect(m_kded, SIGNAL(errorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
 
     if (src.scheme() == "obexftp") {
-        if (m_statMap.contains(src.prettyUrl())) {
-            if (m_statMap.value(src.prettyUrl()).isDir()) {
-                kDebug() << "Skipping to copy: " << src.prettyUrl();
-                error( KIO::ERR_IS_DIRECTORY, src.prettyUrl());
-                disconnect(m_kded, SIGNAL(transferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
-                disconnect(m_kded, SIGNAL(transferCompleted()), this, SLOT(TransferCompleted()));
-                disconnect(m_kded, SIGNAL(errorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
-                return;
-            }
+        kDebug() << "scheme is obexftp";
+        kDebug() << src.prettyUrl();
+        //Just in case the url is not in the stat, some times happens...
+        if (!m_statMap.contains(src.prettyUrl())) {
+            kDebug() << "The url is not in the cache, stating it";
+            stat(src);
+        }
+
+        if (m_statMap.value(src.prettyUrl()).isDir()) {
+            kDebug() << "Skipping to copy: " << src.prettyUrl();
+            error( KIO::ERR_IS_DIRECTORY, src.prettyUrl());
+            disconnect(m_kded, SIGNAL(transferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
+            disconnect(m_kded, SIGNAL(transferCompleted()), this, SLOT(TransferCompleted()));
+            disconnect(m_kded, SIGNAL(errorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
+            return;
         }
 
         kDebug() << "CopyingRemoteFile....";
@@ -364,6 +372,7 @@ void KioFtp::copyHelper(const KUrl& src, const KUrl& dest)
 
     m_eventLoop.exec();
     m_timer->stop();
+    kDebug() << "Copy end";
 }
 
 
