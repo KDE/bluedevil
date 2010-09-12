@@ -86,6 +86,9 @@ ObexFtpDaemon::ObexFtpDaemon(QObject *parent, const QList<QVariant>&)
 
     qDBusRegisterMetaType<QStringMap>();
     qRegisterMetaType<QStringMap>("QStringMap");
+
+    connect(d->m_manager, SIGNAL(SessionConnected(QDBusObjectPath)), this, SLOT(SessionConnected(QDBusObjectPath)));
+    connect(d->m_manager, SIGNAL(SessionClosed(QDBusObjectPath)), this, SLOT(SessionClosed(QDBusObjectPath)));
 }
 
 ObexFtpDaemon::~ObexFtpDaemon()
@@ -158,8 +161,6 @@ void ObexFtpDaemon::stablishConnection(QString address)
         return;
     }
 
-    connect(d->m_manager, SIGNAL(SessionConnected(QDBusObjectPath)), this, SLOT(SessionConnected(QDBusObjectPath)));
-    connect(d->m_manager, SIGNAL(SessionClosed(QDBusObjectPath)), this, SLOT(SessionClosed(QDBusObjectPath)));
     QDBusPendingReply <QDBusObjectPath > rep = d->m_manager->CreateBluetoothSession(address, "00:00:00:00:00:00", "ftp");
 
     kDebug() << "Path: " << rep.value().path();
