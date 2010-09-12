@@ -78,6 +78,8 @@ private Q_SLOTS:
 
     void SessionClosed(QDBusObjectPath path);
 
+    void sessionDisconnected();
+
 //Dbus interface
 public Q_SLOTS:
     /**
@@ -101,6 +103,7 @@ public Q_SLOTS:
 
 Q_SIGNALS:
     Q_SCRIPTABLE void sessionConnected(QString address);
+    Q_SCRIPTABLE void Cancelled();
     Q_SCRIPTABLE void transferProgress(qulonglong);
     Q_SCRIPTABLE void transferCompleted();
     Q_SCRIPTABLE void errorOccurred(QString,QString);

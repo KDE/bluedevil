@@ -279,6 +279,9 @@ void ObexFtpDaemon::SessionConnected(QDBusObjectPath path)
     QString address = getAddressFromSession(path.path());
     d->m_sessionMap.insert(address, session);
 
+    connect(session, SIGNAL(Closed()), this, SLOT(sessionDisconnected()));
+    connect(session, SIGNAL(Disconnected()), this, SLOT(sessionDisconnected()));
+    connect(session, SIGNAL(Cancelled()), this, SIGNAL(Cancelled()));
     connect(session, SIGNAL(TransferCompleted()), this, SIGNAL(transferCompleted()));
     connect(session, SIGNAL(TransferProgress(qulonglong)), this, SIGNAL(transferProgress(qulonglong)));
     connect(session, SIGNAL(ErrorOccurred(QString,QString)), this, SIGNAL(errorOccurred(QString,QString)));
@@ -298,6 +301,16 @@ void ObexFtpDaemon::SessionClosed(QDBusObjectPath path)
     }
 
     kDebug() << "Attempt to remove a nto existing session";
+}
+
+void ObexFtpDaemon::sessionDisconnected()
+{
+    kDebug() << "Session disconnected";
+    org::openobex::Session* session =  static_cast <org::openobex::Session*>(sender());
+    kDebug() << session->path();
+
+    d->m_sessionMap.remove(d->m_sessionMap.key(session));
+    delete session;
 }
 
 QString ObexFtpDaemon::getAddressFromSession(QString path)
