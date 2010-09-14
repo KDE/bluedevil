@@ -1,7 +1,9 @@
 [Global]
 IconName=preferences-system-bluetooth
 Comment=BlueDevil
+Comment[da]=BlueDevil
 Comment[de]=BlueDevil
+Comment[en_GB]=BlueDevil
 Comment[nds]=BlueDevil
 Comment[pt]=BlueDevil
 Comment[pt_BR]=BlueDevil
@@ -9,7 +11,9 @@ Comment[sv]=Blådjävul
 Comment[uk]=BlueDevil
 Comment[x-test]=xxBlueDevilxx
 Name=BlueDevil
+Name[da]=BlueDevil
 Name[de]=BlueDevil
+Name[en_GB]=BlueDevil
 Name[nds]=BlueDevil
 Name[pt]=BlueDevil
 Name[pt_BR]=BlueDevil
@@ -20,12 +24,16 @@ Ignore=true
 
 [Event/bluedevilAuthorize]
 Name=Access requested
+Name[da]=Anmodning om adgang
+Name[en_GB]=Access requested
 Name[pt]=Acesso pedido
 Name[pt_BR]=Acesso solicitado
 Name[sv]=Åtkomst begärd
 Name[uk]=Надійшов запит щодо доступу
 Name[x-test]=xxAccess requestedxx
 Comment=A device wants to connect to you
+Comment[da]=En enhed prøver at forbinde til dig
+Comment[en_GB]=A device wants to connect to you
 Comment[pt]=Um dispositivo deseja ligar-se a si
 Comment[pt_BR]=Um dispositivo quer se conectar a você
 Comment[sv]=En enhet vill ansluta till dig
@@ -35,12 +43,16 @@ Action=Popup
 
 [Event/bluedevilConfirmModechange]
 Name=Access requested
+Name[da]=Anmodning om adgang
+Name[en_GB]=Access requested
 Name[pt]=Acesso pedido
 Name[pt_BR]=Acesso solicitado
 Name[sv]=Åtkomst begärd
 Name[uk]=Надійшов запит щодо доступу
 Name[x-test]=xxAccess requestedxx
 Comment=Bluetooth mode is about to be changed (normal to flight for example)
+Comment[da]=Bluetooth-tilstanden er ved at blive ændret (f.eks. normal til flyvning)
+Comment[en_GB]=Bluetooth mode is about to be changed (normal to flight for example)
 Comment[pt]=Está prestes a alterar o modo de Bluetooth (normal para voo, por exemplo)
 Comment[pt_BR]=O modo do Bluetooth está para ser alterado (normal para voo, por exemplo)
 Comment[sv]=Blåtandläget ska just ändras (exempelvis från normal till flygning)
@@ -50,12 +62,16 @@ Action=Popup
 
 [Event/bluedevilRequestConfirmation]
 Name=Access requested
+Name[da]=Anmodning om adgang
+Name[en_GB]=Access requested
 Name[pt]=Acesso pedido
 Name[pt_BR]=Acesso solicitado
 Name[sv]=Åtkomst begärd
 Name[uk]=Надійшов запит щодо доступу
 Name[x-test]=xxAccess requestedxx
 Comment=A device ask for confirmation
+Comment[da]=En enhed beder om bekræftelse
+Comment[en_GB]=A device ask for confirmation
 Comment[pt]=Um dispositivo está a pedir confirmação
 Comment[pt_BR]=Um dispositivo solicita confirmação
 Comment[sv]=En enhet frågar efter bekräftelse
@@ -65,13 +81,17 @@ Action=Popup
 
 [Event/bluedevilRequestPin]
 Name=Request pin
+Name[da]=Anmod om PIN
+Name[en_GB]=Request pin
 Name[pt]=Pedir o PIN
 Name[pt_BR]=Solicitar o PIN
 Name[sv]=Begär PIN-kod
 Name[uk]=Запит щодо PIN-коду
 Name[x-test]=xxRequest pinxx
 Comment=A pin is needed
+Comment[da]=En PIN kræves
 Comment[de]=Eine PIN wird benötigt
+Comment[en_GB]=A pin is needed
 Comment[pt]=É necessário um PIN
 Comment[pt_BR]=É necessário um PIN
 Comment[sv]=En PIN-kod behövs
@@ -81,6 +101,8 @@ Action=Popup
 
 [Event/bluedevilIncomingFile]
 Name=Incoming File
+Name[da]=Indkommende fil
+Name[en_GB]=Incoming File
 Name[nds]=Datei kummt an
 Name[pt]=Ficheiro Recebido
 Name[pt_BR]=Arquivo recebido
@@ -88,6 +110,8 @@ Name[sv]=Inkommande fil
 Name[uk]=Вхідний файл
 Name[x-test]=xxIncoming Filexx
 Comment=Incoming file
+Comment[da]=Indkommende fil
+Comment[en_GB]=Incoming file
 Comment[nds]=Datei kummt an
 Comment[pt]=Ficheiro recebido
 Comment[pt_BR]=Arquivo recebido
