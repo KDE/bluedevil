@@ -63,6 +63,7 @@ private:
 
     QString getAddressFromSession(QString path);
 
+    QString cleanAddress(QString& dirtyAddress) const;
 private:
     struct Private;
     Private *d;

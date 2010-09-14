@@ -141,9 +141,9 @@ void ObexFtpDaemon::defaultAdapterChanged(Adapter *adapter)
     }
 }
 
-void ObexFtpDaemon::stablishConnection(QString address)
+void ObexFtpDaemon::stablishConnection(QString dirtyAddress)
 {
-    address.replace("-",":");
+    QString address = cleanAddress(dirtyAddress);
 
     kDebug() << "Address: " << address;
     if (d->m_status == Private::Offline) {
@@ -184,9 +184,9 @@ void ObexFtpDaemon::changeCurrentFolder(QString address, QString path)
     }
 }
 
-QString ObexFtpDaemon::listDir(QString address, QString path)
+QString ObexFtpDaemon::listDir(QString dirtyAddress, QString path)
 {
-    address.replace("-", ":");
+    QString address = cleanAddress(dirtyAddress);
     if (!d->m_sessionMap.contains(address)) {
         kDebug() << "The address " << address << " doesn't has a session";
         stablishConnection(address);
@@ -203,10 +203,10 @@ QString ObexFtpDaemon::listDir(QString address, QString path)
     return ret;
 }
 
-void ObexFtpDaemon::copyRemoteFile(QString address, QString fileName, QString destPath)
+void ObexFtpDaemon::copyRemoteFile(QString dirtyAddress, QString fileName, QString destPath)
 {
     kDebug() << destPath;
-    address.replace("-", ":");
+    QString address = cleanAddress(dirtyAddress);
     ENSURE_SESSION_CREATED(address);
 
     KUrl url = KUrl(fileName);
@@ -216,9 +216,9 @@ void ObexFtpDaemon::copyRemoteFile(QString address, QString fileName, QString de
     d->m_sessionMap[address]->CopyRemoteFile(url.fileName(), destPath);
 }
 
-void ObexFtpDaemon::sendFile(QString address, QString localPath, QString destPath)
+void ObexFtpDaemon::sendFile(QString dirtyAddress, QString localPath, QString destPath)
 {
-    address.replace("-", ":");
+    QString address = cleanAddress(dirtyAddress);
 
     kDebug();
     ENSURE_SESSION_CREATED(address);
@@ -226,10 +226,10 @@ void ObexFtpDaemon::sendFile(QString address, QString localPath, QString destPat
     d->m_sessionMap[address]->SendFile(localPath);
 }
 
-void ObexFtpDaemon::createFolder(QString address, QString path)
+void ObexFtpDaemon::createFolder(QString dirtyAddress, QString path)
 {
     kDebug();
-    address.replace("-", ":");
+    QString address = cleanAddress(dirtyAddress);
     ENSURE_SESSION_CREATED(address);
 
     KUrl url(path);
@@ -238,10 +238,10 @@ void ObexFtpDaemon::createFolder(QString address, QString path)
     d->m_sessionMap[address]->CreateFolder(url.fileName()).waitForFinished();
 }
 
-void ObexFtpDaemon::deleteRemoteFile(QString address, QString path)
+void ObexFtpDaemon::deleteRemoteFile(QString dirtyAddress, QString path)
 {
     kDebug();
-    address.replace("-", ":");
+    QString address = cleanAddress(dirtyAddress);
     ENSURE_SESSION_CREATED(address);
 
     KUrl url(path);
@@ -250,9 +250,9 @@ void ObexFtpDaemon::deleteRemoteFile(QString address, QString path)
     d->m_sessionMap[address]->DeleteRemoteFile(url.fileName()).waitForFinished();;
 }
 
-bool ObexFtpDaemon::isBusy(QString address)
+bool ObexFtpDaemon::isBusy(QString dirtyAddress)
 {
-    address.replace("-", ":");
+    QString address = cleanAddress(dirtyAddress);
     if (!d->m_sessionMap.contains(address)) {
         kDebug() << "The address " << address << " doesn't has a session";
         stablishConnection(address);
@@ -262,9 +262,9 @@ bool ObexFtpDaemon::isBusy(QString address)
     return d->m_sessionMap[address]->IsBusy().value();
 }
 
-void ObexFtpDaemon::Cancel(QString address)
+void ObexFtpDaemon::Cancel(QString dirtyAddress)
 {
-    address.replace("-", ":");
+    QString address = cleanAddress(dirtyAddress);
     ENSURE_SESSION_CREATED(address)
 
     d->m_sessionMap[address]->Cancel();
@@ -318,4 +318,10 @@ QString ObexFtpDaemon::getAddressFromSession(QString path)
     kDebug() << path;
     QStringMap info = d->m_manager->GetSessionInfo(QDBusObjectPath(path)).value();
     return info["BluetoothTargetAddress"];
+}
+
+QString ObexFtpDaemon::cleanAddress(QString& dirtyAddress) const
+{
+    dirtyAddress.replace("-", ":");
+    return dirtyAddress.toLower();
 }
