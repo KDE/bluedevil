@@ -222,7 +222,7 @@ void KioFtp::stat(const KUrl &url)
             kDebug() << "RetrieveError: " << folder.error().message();
             kDebug() << folder.value();
 
-            processXmlEntries(url, folder.value(), "statCallback");
+            processXmlEntries(url.upUrl(), folder.value(), "statCallback");
         }
     }
 
