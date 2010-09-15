@@ -184,6 +184,7 @@ void ObexFtpDaemon::stablishConnection(QString dirtyAddress)
 
 void ObexFtpDaemon::changeCurrentFolder(QString address, QString path)
 {
+    kDebug();
     d->m_sessionMap[address]->resetTimer();
     d->m_sessionMap[address]->ChangeCurrentFolderToRoot().waitForFinished();
 
@@ -202,6 +203,7 @@ void ObexFtpDaemon::changeCurrentFolder(QString address, QString path)
 
 QString ObexFtpDaemon::listDir(QString dirtyAddress, QString path)
 {
+    kDebug();
     QString address = cleanAddress(dirtyAddress);
     if (!d->m_sessionMap.contains(address)) {
         kDebug() << "The address " << address << " doesn't has a session";
@@ -278,6 +280,7 @@ void ObexFtpDaemon::deleteRemoteFile(QString dirtyAddress, QString path)
 
 bool ObexFtpDaemon::isBusy(QString dirtyAddress)
 {
+    kDebug();
     QString address = cleanAddress(dirtyAddress);
     if (!d->m_sessionMap.contains(address)) {
         kDebug() << "The address " << address << " doesn't has a session";
