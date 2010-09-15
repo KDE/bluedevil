@@ -215,6 +215,7 @@ QString ObexFtpDaemon::listDir(QString dirtyAddress, QString path)
     address.replace("-", ":");
     changeCurrentFolder(address, path);
 
+    d->m_sessionMap[address]->resetTimer();
     QString ret = d->m_sessionMap[address]->RetrieveFolderListing().value();
 
     kDebug() << ret;
@@ -232,6 +233,7 @@ void ObexFtpDaemon::copyRemoteFile(QString dirtyAddress, QString fileName, QStri
     changeCurrentFolder(address, url.directory());
     kDebug() << d->m_sessionMap[address]->GetCurrentPath().value();
     kDebug() << url.fileName();
+    d->m_sessionMap[address]->resetTimer();
     d->m_sessionMap[address]->CopyRemoteFile(url.fileName(), destPath);
 }
 
@@ -242,6 +244,8 @@ void ObexFtpDaemon::sendFile(QString dirtyAddress, QString localPath, QString de
     kDebug();
     ENSURE_SESSION_CREATED(address);
     changeCurrentFolder(address, destPath);
+
+    d->m_sessionMap[address]->resetTimer();
     d->m_sessionMap[address]->SendFile(localPath);
 }
 
@@ -254,6 +258,7 @@ void ObexFtpDaemon::createFolder(QString dirtyAddress, QString path)
     KUrl url(path);
     changeCurrentFolder(address, url.directory());
 
+    d->m_sessionMap[address]->resetTimer();
     d->m_sessionMap[address]->CreateFolder(url.fileName()).waitForFinished();
 }
 
@@ -266,6 +271,7 @@ void ObexFtpDaemon::deleteRemoteFile(QString dirtyAddress, QString path)
     KUrl url(path);
     changeCurrentFolder(address, url.directory());
 
+    d->m_sessionMap[address]->resetTimer();
     d->m_sessionMap[address]->DeleteRemoteFile(url.fileName()).waitForFinished();;
 }
 
@@ -282,6 +288,7 @@ bool ObexFtpDaemon::isBusy(QString dirtyAddress)
         return true;
     }
 
+    d->m_sessionMap[address]->resetTimer();
     return d->m_sessionMap[address]->IsBusy().value();
 }
 
@@ -290,6 +297,7 @@ void ObexFtpDaemon::Cancel(QString dirtyAddress)
     QString address = cleanAddress(dirtyAddress);
     ENSURE_SESSION_CREATED(address)
 
+    d->m_sessionMap[address]->resetTimer();
     d->m_sessionMap[address]->Cancel();
 }
 
@@ -335,6 +343,7 @@ void ObexFtpDaemon::sessionDisconnected()
     kDebug() << "Session disconnected";
     ObexSession* session =  static_cast <ObexSession*>(sender());
     kDebug() << session->path();
+    kDebug() << session->getStatus();
 
     d->m_sessionMap.remove(d->m_sessionMap.key(session));
     delete session;

@@ -18,11 +18,17 @@
 */
 
 #include "obexsession.h"
+#include <QTimer>
+#include <KDebug>
 
 ObexSession::ObexSession(const QString& service, const QString& path, const QDBusConnection& connection, QObject* parent)
 : OrgOpenobexSessionInterface(service, path, connection, parent)
 {
     m_status = ObexSession::Connecting;
+
+    connect(&m_timer, SIGNAL(timeout()), this, SLOT(sessionTimeoutSlot()));
+    m_timer.setInterval(20000);
+    m_timer.start();
 }
 
 
@@ -36,3 +42,17 @@ void ObexSession::setStatus(const ObexSession::Status& status)
     m_status = status;
 }
 
+void ObexSession::resetTimer()
+{
+    kDebug() << "Resetting the timer";
+    m_timer.stop();
+    m_timer.start();
+}
+
+void ObexSession::sessionTimeoutSlot()
+{
+    kDebug();
+    m_status = ObexSession::Timeout;
+    Disconnect();
+    Close();
+}
