@@ -298,6 +298,7 @@ void KioFtp::statCallback(const KIO::UDSEntry& entry, const KUrl &url)
 void KioFtp::TransferProgress(qulonglong transfered)
 {
     processedSize(transfered);
+    wasKilledCheck();
     kDebug() << "TransferProgress: ";
 }
 
@@ -383,11 +384,7 @@ void KioFtp::copyHelper(const KUrl& src, const KUrl& dest)
         m_kded->sendFile(dest.host(), src.path(), dest.directory());
     }
 
-    connect(m_timer, SIGNAL(timeout()), this, SLOT(wasKilledCheck()));
-    m_timer->start();
-
     m_eventLoop.exec();
-    m_timer->stop();
     kDebug() << "Copy end";
 }
 
@@ -408,7 +405,6 @@ void KioFtp::wasKilledCheck()
 {
     if (wasKilled()) {
         kDebug() << "slave was killed!";
-        m_timer->stop();
         m_kded->Cancel(m_address).waitForFinished();;
         m_eventLoop.exit();
     }
