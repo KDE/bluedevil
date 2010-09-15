@@ -28,28 +28,29 @@ class QTimer;
 class ObexSession : public OrgOpenobexSessionInterface
 {
 Q_OBJECT
-    public:
-        ObexSession(const QString& service, const QString& path, const QDBusConnection& connection, QObject* parent = 0);
 
-        enum Status {
-            Connected = 0,
-            Connecting = 1,
-            Timeout     = 2
-        };
+public:
+    ObexSession(const QString& service, const QString& path, const QDBusConnection& connection, QObject* parent = 0);
 
-        Status getStatus() const;
-        void setStatus(const Status&);
+    enum Status {
+        Connected = 0,
+        Connecting = 1,
+        Timeout     = 2
+    };
 
-        void resetTimer();
-    private Q_SLOTS:
-        /**
-         * The session has not been used for a while, so it has to be disconnected and deleted
-         */
-        void sessionTimeoutSlot();
+    Status getStatus() const;
+    void setStatus(const Status&);
 
-    private:
-        Status m_status;
-        QTimer m_timer;
+    void resetTimer();
+private Q_SLOTS:
+    /**
+        * The session has not been used for a while, so it has to be disconnected and deleted
+        */
+    void sessionTimeoutSlot();
+
+private:
+    Status m_status;
+    QTimer m_timer;
 
 };
 
