@@ -314,6 +314,7 @@ void ObexFtpDaemon::SessionConnected(QDBusObjectPath path)
 
     d->m_sessionMap[address]->setStatus(ObexSession::Connected);
 
+    connect(d->m_sessionMap[address], SIGNAL(sessionTimeout()), this, SLOT(sessionDisconnected()));
     connect(d->m_sessionMap[address], SIGNAL(Closed()), this, SLOT(sessionDisconnected()));
     connect(d->m_sessionMap[address], SIGNAL(Disconnected()), this, SLOT(sessionDisconnected()));
     connect(d->m_sessionMap[address], SIGNAL(Cancelled()), this, SIGNAL(Cancelled()));

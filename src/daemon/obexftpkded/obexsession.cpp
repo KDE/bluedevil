@@ -27,7 +27,7 @@ ObexSession::ObexSession(const QString& service, const QString& path, const QDBu
     m_status = ObexSession::Connecting;
 
     connect(&m_timer, SIGNAL(timeout()), this, SLOT(sessionTimeoutSlot()));
-    m_timer.setInterval(1000);
+    m_timer.setInterval(5000);
 }
 
 
@@ -56,6 +56,18 @@ void ObexSession::sessionTimeoutSlot()
     kDebug();
     m_status = ObexSession::Timeout;
     m_timer.stop();
+    //We can't relay on the Disconnect or Close obex-data-server signals because if two sessions
+    //are removed in a short period of time, only 1 session will emit signals.
+    //Because of that, we're forced to implement our own.
+
+    disconnect(SIGNAL(Closed()));
+    disconnect(SIGNAL(Disconnected()));
+    disconnect(SIGNAL(Cancelled()));
+    disconnect(SIGNAL(TransferCompleted()));
+    disconnect(SIGNAL(TransferProgress(qulonglong)));
+    disconnect(SIGNAL(ErrorOccurred(QString,QString)));
     Disconnect();
     Close();
+
+    emit sessionTimeout();
 }

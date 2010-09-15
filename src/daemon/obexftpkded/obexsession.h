@@ -52,6 +52,8 @@ private:
     Status m_status;
     QTimer m_timer;
 
+Q_SIGNALS:
+    void sessionTimeout();
 };
 
 #endif // OBEXSESSION_H
