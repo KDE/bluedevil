@@ -27,8 +27,7 @@ ObexSession::ObexSession(const QString& service, const QString& path, const QDBu
     m_status = ObexSession::Connecting;
 
     connect(&m_timer, SIGNAL(timeout()), this, SLOT(sessionTimeoutSlot()));
-    m_timer.setInterval(20000);
-    m_timer.start();
+    m_timer.setInterval(1000);
 }
 
 
@@ -40,6 +39,9 @@ ObexSession::Status ObexSession::status() const
 void ObexSession::setStatus(const ObexSession::Status& status)
 {
     m_status = status;
+    if (status == Connected) {
+        m_timer.start();
+    }
 }
 
 void ObexSession::resetTimer()
