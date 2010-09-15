@@ -356,6 +356,11 @@ void KioFtp::copyHelper(const KUrl& src, const KUrl& dest)
     connect(m_kded, SIGNAL(transferCompleted()), this, SLOT(TransferCompleted()));
     connect(m_kded, SIGNAL(errorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
 
+    if (src.scheme() == "obexftp" && dest.scheme() == "obexftp") {
+        error(KIO::ERR_UNSUPPORTED_ACTION, src.prettyUrl());
+        return;
+    }
+
     if (src.scheme() == "obexftp") {
         kDebug() << "scheme is obexftp";
         kDebug() << src.prettyUrl();
