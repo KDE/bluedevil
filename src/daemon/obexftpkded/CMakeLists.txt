@@ -1,5 +1,6 @@
 set(kded_obexftp_SRCS
     ObexFtpDaemon.cpp
+    obexsession.cpp
 )
 
 QT4_ADD_DBUS_INTERFACE(kded_obexftp_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/obexftp/session.xml obexftpsession)

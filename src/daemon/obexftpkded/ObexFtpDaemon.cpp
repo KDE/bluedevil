@@ -20,7 +20,7 @@
 
 #include "ObexFtpDaemon.h"
 #include "obexftpmanager.h"
-#include "obexftpsession.h"
+#include "obexsession.h"
 
 #include <QVariantMap>
 #include <QHash>
@@ -40,7 +40,7 @@
         stablishConnection(address); \
         return; \
     } \
-    if (!d->m_sessionMap[address]) { \
+    if (d->m_sessionMap[address]->getStatus() == ObexSession::Connecting) { \
         kDebug() << "The session is waiting to be connected"; \
         return; \
     }
@@ -57,7 +57,7 @@ struct ObexFtpDaemon::Private
         Offline
     } m_status;
 
-    QHash <QString, org::openobex::Session*> m_sessionMap;
+    QHash <QString, ObexSession*> m_sessionMap;
 
     org::openobex::Manager  *m_manager;
 
@@ -125,7 +125,7 @@ void ObexFtpDaemon::offlineMode()
         return;
     }
 
-    QHash<QString, org::openobex::Session*>::const_iterator i = d->m_sessionMap.constBegin();
+    QHash<QString, ObexSession*>::const_iterator i = d->m_sessionMap.constBegin();
     while (i != d->m_sessionMap.constEnd()) {
         if (d->m_sessionMap[i.key()]) {
             d->m_sessionMap[i.key()]->Disconnect().waitForFinished();
@@ -164,7 +164,7 @@ void ObexFtpDaemon::stablishConnection(QString dirtyAddress)
     //We already have a session for that address
     if (d->m_sessionMap.contains(address)) {
         //But this session is waiting for being connected
-        if (!d->m_sessionMap[address]) {
+        if (d->m_sessionMap[address]->getStatus() == ObexSession::Connecting) {
             kDebug() << "Session for this address is waiting for being connected";
             return;
         }
@@ -175,9 +175,10 @@ void ObexFtpDaemon::stablishConnection(QString dirtyAddress)
     }
 
     kDebug() << "Telling to the manager to create the session";
-    d->m_sessionMap[address] = 0;
+
     QDBusPendingReply <QDBusObjectPath > rep = d->m_manager->CreateBluetoothSession(address, "00:00:00:00:00:00", "ftp");
 
+    d->m_sessionMap[address] = new ObexSession("org.openobex", rep.value().path(), QDBusConnection::sessionBus(), 0);
     kDebug() << "Path: " << rep.value().path();
 }
 
@@ -206,7 +207,7 @@ QString ObexFtpDaemon::listDir(QString dirtyAddress, QString path)
         stablishConnection(address);
         return QString();
     }
-    if (!d->m_sessionMap[address]) {
+    if (d->m_sessionMap[address]->getStatus() == ObexSession::Connecting) {
         kDebug() << "The session is waiting to be connected";
         return QString();
     }
@@ -276,7 +277,7 @@ bool ObexFtpDaemon::isBusy(QString dirtyAddress)
         stablishConnection(address);
         return true;//Fake the busy state, so stablishConneciton can work
     }
-    if (!d->m_sessionMap[address]) {
+    if (d->m_sessionMap[address]->getStatus() == ObexSession::Connecting) {
         kDebug() << "The session is waiting to be connected";
         return true;
     }
@@ -297,17 +298,16 @@ void ObexFtpDaemon::SessionConnected(QDBusObjectPath path)
 {
     kDebug() << "SessionConnected!" << path.path();
 
-    org::openobex::Session  *session = new org::openobex::Session("org.openobex", path.path(), QDBusConnection::sessionBus(), 0);
-
     QString address = getAddressFromSession(path.path());
-    d->m_sessionMap[address] = session;
 
-    connect(session, SIGNAL(Closed()), this, SLOT(sessionDisconnected()));
-    connect(session, SIGNAL(Disconnected()), this, SLOT(sessionDisconnected()));
-    connect(session, SIGNAL(Cancelled()), this, SIGNAL(Cancelled()));
-    connect(session, SIGNAL(TransferCompleted()), this, SIGNAL(transferCompleted()));
-    connect(session, SIGNAL(TransferProgress(qulonglong)), this, SIGNAL(transferProgress(qulonglong)));
-    connect(session, SIGNAL(ErrorOccurred(QString,QString)), this, SIGNAL(errorOccurred(QString,QString)));
+    d->m_sessionMap[address]->setStatus(ObexSession::Connected);
+
+    connect(d->m_sessionMap[address], SIGNAL(Closed()), this, SLOT(sessionDisconnected()));
+    connect(d->m_sessionMap[address], SIGNAL(Disconnected()), this, SLOT(sessionDisconnected()));
+    connect(d->m_sessionMap[address], SIGNAL(Cancelled()), this, SIGNAL(Cancelled()));
+    connect(d->m_sessionMap[address], SIGNAL(TransferCompleted()), this, SIGNAL(transferCompleted()));
+    connect(d->m_sessionMap[address], SIGNAL(TransferProgress(qulonglong)), this, SIGNAL(transferProgress(qulonglong)));
+    connect(d->m_sessionMap[address], SIGNAL(ErrorOccurred(QString,QString)), this, SIGNAL(errorOccurred(QString,QString)));
 
     emit sessionConnected(address);
 }
@@ -315,19 +315,13 @@ void ObexFtpDaemon::SessionConnected(QDBusObjectPath path)
 void ObexFtpDaemon::SessionClosed(QDBusObjectPath path)
 {
     kDebug();
-    QHash<QString, org::openobex::Session*>::const_iterator i = d->m_sessionMap.constBegin();
+    QHash<QString, ObexSession*>::const_iterator i = d->m_sessionMap.constBegin();
     while (i != d->m_sessionMap.constEnd()) {
         //If the session is connected, so not 0
-        if (i.value()) {
-            if (i.value()->path() == path.path()) {
-                kDebug() << "Removing : " << i.key();
-                d->m_sessionMap.remove(i.key());
-                delete i.value();
-                return;
-            }
-        } else {
+        if (i.value()->path() == path.path()) {
             kDebug() << "Removing : " << i.key();
             d->m_sessionMap.remove(i.key());
+            delete i.value();
             return;
         }
         ++i;
@@ -339,7 +333,7 @@ void ObexFtpDaemon::SessionClosed(QDBusObjectPath path)
 void ObexFtpDaemon::sessionDisconnected()
 {
     kDebug() << "Session disconnected";
-    org::openobex::Session* session =  static_cast <org::openobex::Session*>(sender());
+    ObexSession* session =  static_cast <ObexSession*>(sender());
     kDebug() << session->path();
 
     d->m_sessionMap.remove(d->m_sessionMap.key(session));
