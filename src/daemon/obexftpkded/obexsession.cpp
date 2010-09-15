@@ -53,6 +53,7 @@ void ObexSession::sessionTimeoutSlot()
 {
     kDebug();
     m_status = ObexSession::Timeout;
+    m_timer.stop();
     Disconnect();
     Close();
 }
