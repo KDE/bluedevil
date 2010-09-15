@@ -184,6 +184,7 @@ void ObexFtpDaemon::stablishConnection(QString dirtyAddress)
 
 void ObexFtpDaemon::changeCurrentFolder(QString address, QString path)
 {
+    d->m_sessionMap[address]->resetTimer();
     d->m_sessionMap[address]->ChangeCurrentFolderToRoot().waitForFinished();
 
     QStringList list = path.split("/");
