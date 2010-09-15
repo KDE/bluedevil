@@ -38,7 +38,7 @@ public:
         Timeout     = 2
     };
 
-    Status getStatus() const;
+    Status status() const;
     void setStatus(const Status&);
 
     void resetTimer();

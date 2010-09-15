@@ -32,7 +32,7 @@ ObexSession::ObexSession(const QString& service, const QString& path, const QDBu
 }
 
 
-ObexSession::Status ObexSession::getStatus() const
+ObexSession::Status ObexSession::status() const
 {
     return m_status;
 }

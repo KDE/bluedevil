@@ -40,7 +40,7 @@
         stablishConnection(address); \
         return; \
     } \
-    if (d->m_sessionMap[address]->getStatus() == ObexSession::Connecting) { \
+    if (d->m_sessionMap[address]->status() == ObexSession::Connecting) { \
         kDebug() << "The session is waiting to be connected"; \
         return; \
     }
@@ -164,7 +164,7 @@ void ObexFtpDaemon::stablishConnection(QString dirtyAddress)
     //We already have a session for that address
     if (d->m_sessionMap.contains(address)) {
         //But this session is waiting for being connected
-        if (d->m_sessionMap[address]->getStatus() == ObexSession::Connecting) {
+        if (d->m_sessionMap[address]->status() == ObexSession::Connecting) {
             kDebug() << "Session for this address is waiting for being connected";
             return;
         }
@@ -207,7 +207,7 @@ QString ObexFtpDaemon::listDir(QString dirtyAddress, QString path)
         stablishConnection(address);
         return QString();
     }
-    if (d->m_sessionMap[address]->getStatus() == ObexSession::Connecting) {
+    if (d->m_sessionMap[address]->status() == ObexSession::Connecting) {
         kDebug() << "The session is waiting to be connected";
         return QString();
     }
@@ -283,7 +283,7 @@ bool ObexFtpDaemon::isBusy(QString dirtyAddress)
         stablishConnection(address);
         return true;//Fake the busy state, so stablishConneciton can work
     }
-    if (d->m_sessionMap[address]->getStatus() == ObexSession::Connecting) {
+    if (d->m_sessionMap[address]->status() == ObexSession::Connecting) {
         kDebug() << "The session is waiting to be connected";
         return true;
     }
@@ -343,7 +343,7 @@ void ObexFtpDaemon::sessionDisconnected()
     kDebug() << "Session disconnected";
     ObexSession* session =  static_cast <ObexSession*>(sender());
     kDebug() << session->path();
-    kDebug() << session->getStatus();
+    kDebug() << session->status();
 
     d->m_sessionMap.remove(d->m_sessionMap.key(session));
     delete session;
