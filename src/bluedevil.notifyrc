@@ -5,21 +5,25 @@ Comment[da]=BlueDevil
 Comment[de]=BlueDevil
 Comment[en_GB]=BlueDevil
 Comment[nds]=BlueDevil
+Comment[nl]=BlueDevil
 Comment[pt]=BlueDevil
 Comment[pt_BR]=BlueDevil
 Comment[sv]=Blådjävul
 Comment[uk]=BlueDevil
 Comment[x-test]=xxBlueDevilxx
+Comment[zh_TW]=BlueDevil
 Name=BlueDevil
 Name[da]=BlueDevil
 Name[de]=BlueDevil
 Name[en_GB]=BlueDevil
 Name[nds]=BlueDevil
+Name[nl]=BlueDevil
 Name[pt]=BlueDevil
 Name[pt_BR]=BlueDevil
 Name[sv]=Blådjävul
 Name[uk]=BlueDevil
 Name[x-test]=xxBlueDevilxx
+Name[zh_TW]=BlueDevil
 Ignore=true
 
 [Event/bluedevilAuthorize]
@@ -31,6 +35,7 @@ Name[pt_BR]=Acesso solicitado
 Name[sv]=Åtkomst begärd
 Name[uk]=Надійшов запит щодо доступу
 Name[x-test]=xxAccess requestedxx
+Name[zh_TW]=已要求存取
 Comment=A device wants to connect to you
 Comment[da]=En enhed prøver at forbinde til dig
 Comment[en_GB]=A device wants to connect to you
@@ -39,6 +44,7 @@ Comment[pt_BR]=Um dispositivo quer se conectar a você
 Comment[sv]=En enhet vill ansluta till dig
 Comment[uk]=З вашим комп’ютером бажає з’єднатися пристрій
 Comment[x-test]=xxA device wants to connect to youxx
+Comment[zh_TW]=某個裝置希望能與您連線
 Action=Popup
 
 [Event/bluedevilConfirmModechange]
@@ -50,6 +56,7 @@ Name[pt_BR]=Acesso solicitado
 Name[sv]=Åtkomst begärd
 Name[uk]=Надійшов запит щодо доступу
 Name[x-test]=xxAccess requestedxx
+Name[zh_TW]=已要求存取
 Comment=Bluetooth mode is about to be changed (normal to flight for example)
 Comment[da]=Bluetooth-tilstanden er ved at blive ændret (f.eks. normal til flyvning)
 Comment[en_GB]=Bluetooth mode is about to be changed (normal to flight for example)
@@ -58,6 +65,7 @@ Comment[pt_BR]=O modo do Bluetooth está para ser alterado (normal para voo, por
 Comment[sv]=Blåtandläget ska just ändras (exempelvis från normal till flygning)
 Comment[uk]=Зміна режиму роботи Bluetooth (наприклад, зі звичайного на автономний)
 Comment[x-test]=xxBluetooth mode is about to be changed (normal to flight for example)xx
+Comment[zh_TW]=即將改變藍芽模式（例如從一般模式轉換為飛航模式）
 Action=Popup
 
 [Event/bluedevilRequestConfirmation]
@@ -69,6 +77,7 @@ Name[pt_BR]=Acesso solicitado
 Name[sv]=Åtkomst begärd
 Name[uk]=Надійшов запит щодо доступу
 Name[x-test]=xxAccess requestedxx
+Name[zh_TW]=已要求存取
 Comment=A device ask for confirmation
 Comment[da]=En enhed beder om bekræftelse
 Comment[en_GB]=A device ask for confirmation
@@ -77,6 +86,7 @@ Comment[pt_BR]=Um dispositivo solicita confirmação
 Comment[sv]=En enhet frågar efter bekräftelse
 Comment[uk]=Пристрій очікує на підтвердження
 Comment[x-test]=xxA device ask for confirmationxx
+Comment[zh_TW]=某個裝置請求確認
 Action=Popup
 
 [Event/bluedevilRequestPin]
@@ -88,6 +98,7 @@ Name[pt_BR]=Solicitar o PIN
 Name[sv]=Begär PIN-kod
 Name[uk]=Запит щодо PIN-коду
 Name[x-test]=xxRequest pinxx
+Name[zh_TW]=需要 PIN 碼
 Comment=A pin is needed
 Comment[da]=En PIN kræves
 Comment[de]=Eine PIN wird benötigt
@@ -97,6 +108,7 @@ Comment[pt_BR]=É necessário um PIN
 Comment[sv]=En PIN-kod behövs
 Comment[uk]=Потрібен PIN-код
 Comment[x-test]=xxA pin is neededxx
+Comment[zh_TW]=需要 PIN 碼
 Action=Popup
 
 [Event/bluedevilIncomingFile]
@@ -109,13 +121,16 @@ Name[pt_BR]=Arquivo recebido
 Name[sv]=Inkommande fil
 Name[uk]=Вхідний файл
 Name[x-test]=xxIncoming Filexx
+Name[zh_TW]=要傳進來的檔案
 Comment=Incoming file
 Comment[da]=Indkommende fil
 Comment[en_GB]=Incoming file
 Comment[nds]=Datei kummt an
+Comment[nl]=Bestand aangeboden
 Comment[pt]=Ficheiro recebido
 Comment[pt_BR]=Arquivo recebido
 Comment[sv]=Inkommande fil
 Comment[uk]=Вхідний файл
 Comment[x-test]=xxIncoming filexx
+Comment[zh_TW]=要傳進來的檔案
 Action=Popup

@@ -5,11 +5,13 @@ X-KDE-Derived=KPluginInfo
 Name=BlueDevil Service Plugin
 Name[da]=BlueDevil tjeneste-plugin
 Name[en_GB]=BlueDevil Service Plugin
+Name[nl]=Plugin voor BlueDevil-service 
 Name[pt]='Plugin' de Serviço Bluetooth
 Name[pt_BR]=Plug-in de serviço Bluetooth
 Name[sv]=Blådjävul tjänstinsticksprogram
 Name[uk]=Додаток служби BlueDevil
 Name[x-test]=xxBlueDevil Service Pluginxx
+Name[zh_TW]=BlueDevil 服務外掛程式
 
 [PropertyDef::X-BlueDevil-UUIDS]
 Type=QStringList
