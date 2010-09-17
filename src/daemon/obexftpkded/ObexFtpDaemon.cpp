@@ -91,9 +91,6 @@ ObexFtpDaemon::ObexFtpDaemon(QObject *parent, const QList<QVariant>&)
 
     qDBusRegisterMetaType<QStringMap>();
     qRegisterMetaType<QStringMap>("QStringMap");
-
-    connect(d->m_manager, SIGNAL(SessionConnected(QDBusObjectPath)), this, SLOT(SessionConnected(QDBusObjectPath)));
-    connect(d->m_manager, SIGNAL(SessionClosed(QDBusObjectPath)), this, SLOT(SessionClosed(QDBusObjectPath)));
 }
 
 ObexFtpDaemon::~ObexFtpDaemon()
@@ -113,6 +110,8 @@ void ObexFtpDaemon::onlineMode()
     }
 
     d->m_manager = new org::openobex::Manager("org.openobex", "/org/openobex", QDBusConnection::sessionBus(), 0);
+    connect(d->m_manager, SIGNAL(SessionConnected(QDBusObjectPath)), this, SLOT(SessionConnected(QDBusObjectPath)));
+    connect(d->m_manager, SIGNAL(SessionClosed(QDBusObjectPath)), this, SLOT(SessionClosed(QDBusObjectPath)));
 
     d->m_status = Private::Online;
 }
@@ -135,6 +134,7 @@ void ObexFtpDaemon::offlineMode()
         d->m_sessionMap.remove(i.key());
     }
 
+    delete d->m_manager;
     d->m_status = Private::Offline;
 }
 
