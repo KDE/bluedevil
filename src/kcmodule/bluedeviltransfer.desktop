@@ -12,6 +12,7 @@ X-KDE-System-Settings-Parent-Category=bluetooth
 X-KDE-Weight=60
 
 Name=File Transfer
+Name[cs]=Přenos souboru
 Name[da]=Filoverførsel
 Name[en_GB]=File Transfer
 Name[fr]=Transfert de fichiers

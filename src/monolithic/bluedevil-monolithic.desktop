@@ -2,6 +2,7 @@
 Type=Application
 Version=1.0
 Name=BlueDevil
+Name[cs]=BlueDevil
 Name[da]=BlueDevil
 Name[de]=BlueDevil
 Name[en_GB]=BlueDevil
@@ -15,6 +16,7 @@ Name[uk]=BlueDevil
 Name[x-test]=xxBlueDevilxx
 Name[zh_TW]=BlueDevil
 GenericName=bluedevil
+GenericName[cs]=bluedevil
 GenericName[da]=bluedevil
 GenericName[de]=BlueDevil
 GenericName[en_GB]=bluedevil

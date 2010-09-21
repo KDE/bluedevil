@@ -12,6 +12,7 @@ X-KDE-System-Settings-Parent-Category=bluetooth
 X-KDE-Weight=50
 
 Name=Devices
+Name[cs]=Zařízení
 Name[da]=Enheder
 Name[en_GB]=Devices
 Name[fr]=Périphériques
