@@ -1,6 +1,7 @@
 [Global]
 IconName=preferences-system-bluetooth
 Comment=BlueDevil
+Comment[ca]=BlueDevil
 Comment[cs]=BlueDevil
 Comment[da]=BlueDevil
 Comment[de]=BlueDevil
@@ -15,6 +16,7 @@ Comment[uk]=BlueDevil
 Comment[x-test]=xxBlueDevilxx
 Comment[zh_TW]=BlueDevil
 Name=BlueDevil
+Name[ca]=BlueDevil
 Name[cs]=BlueDevil
 Name[da]=BlueDevil
 Name[de]=BlueDevil
@@ -32,6 +34,7 @@ Ignore=true
 
 [Event/bluedevilAuthorize]
 Name=Access requested
+Name[ca]=S'ha sol·licitat accés
 Name[da]=Anmodning om adgang
 Name[en_GB]=Access requested
 Name[fr]=Accès demandé
@@ -42,6 +45,7 @@ Name[uk]=Надійшов запит щодо доступу
 Name[x-test]=xxAccess requestedxx
 Name[zh_TW]=已要求存取
 Comment=A device wants to connect to you
+Comment[ca]=Un dispositiu es vol connectar amb vós
 Comment[da]=En enhed prøver at forbinde til dig
 Comment[en_GB]=A device wants to connect to you
 Comment[fr]=Un périphérique veut se connecter avec vous
@@ -55,6 +59,7 @@ Action=Popup
 
 [Event/bluedevilConfirmModechange]
 Name=Access requested
+Name[ca]=S'ha sol·licitat accés
 Name[da]=Anmodning om adgang
 Name[en_GB]=Access requested
 Name[fr]=Accès demandé
@@ -65,6 +70,7 @@ Name[uk]=Надійшов запит щодо доступу
 Name[x-test]=xxAccess requestedxx
 Name[zh_TW]=已要求存取
 Comment=Bluetooth mode is about to be changed (normal to flight for example)
+Comment[ca]=El mode bluetooth és a punt de canviar (de mode normal a mode avió per exemple)
 Comment[da]=Bluetooth-tilstanden er ved at blive ændret (f.eks. normal til flyvning)
 Comment[en_GB]=Bluetooth mode is about to be changed (normal to flight for example)
 Comment[fr]=Le mode Bluetooth est sur le point d'être modifié (de normal en survol par exemple)
@@ -78,6 +84,7 @@ Action=Popup
 
 [Event/bluedevilRequestConfirmation]
 Name=Access requested
+Name[ca]=S'ha sol·licitat accés
 Name[da]=Anmodning om adgang
 Name[en_GB]=Access requested
 Name[fr]=Accès demandé
@@ -88,6 +95,7 @@ Name[uk]=Надійшов запит щодо доступу
 Name[x-test]=xxAccess requestedxx
 Name[zh_TW]=已要求存取
 Comment=A device ask for confirmation
+Comment[ca]=Un dispositiu demana confirmació
 Comment[da]=En enhed beder om bekræftelse
 Comment[en_GB]=A device ask for confirmation
 Comment[fr]=Une demande de confirmation d'un périphérique
@@ -101,6 +109,7 @@ Action=Popup
 
 [Event/bluedevilRequestPin]
 Name=Request pin
+Name[ca]=Sol·licita el «pin»
 Name[da]=Anmod om PIN
 Name[en_GB]=Request pin
 Name[fr]=Demande de PIN
@@ -111,6 +120,7 @@ Name[uk]=Запит щодо PIN-коду
 Name[x-test]=xxRequest pinxx
 Name[zh_TW]=需要 PIN 碼
 Comment=A pin is needed
+Comment[ca]=Un «pin» és necessari
 Comment[da]=En PIN kræves
 Comment[de]=Eine PIN wird benötigt
 Comment[en_GB]=A pin is needed
@@ -125,6 +135,7 @@ Action=Popup
 
 [Event/bluedevilIncomingFile]
 Name=Incoming File
+Name[ca]=Fitxer entrant
 Name[cs]=Příchozí soubor
 Name[da]=Indkommende fil
 Name[en_GB]=Incoming File
@@ -137,6 +148,7 @@ Name[uk]=Вхідний файл
 Name[x-test]=xxIncoming Filexx
 Name[zh_TW]=要傳進來的檔案
 Comment=Incoming file
+Comment[ca]=Fitxer entrant
 Comment[cs]=Příchozí soubor
 Comment[da]=Indkommende fil
 Comment[en_GB]=Incoming file

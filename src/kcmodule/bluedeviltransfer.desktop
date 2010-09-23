@@ -12,6 +12,7 @@ X-KDE-System-Settings-Parent-Category=bluetooth
 X-KDE-Weight=60
 
 Name=File Transfer
+Name[ca]=Transferència de fitxers
 Name[cs]=Přenos souboru
 Name[da]=Filoverførsel
 Name[en_GB]=File Transfer
@@ -25,6 +26,7 @@ Name[x-test]=xxFile Transferxx
 Name[zh_TW]=檔案傳輸
 
 Comment=Configure the bluetooth receive files
+Comment[ca]=Configura la recepció de fitxer bluetooth
 Comment[da]=Indstil modtagelse af filer via bluetooth
 Comment[en_GB]=Configure the bluetooth receive files
 Comment[fr]=Configurer la réception de fichiers par Bluetooth

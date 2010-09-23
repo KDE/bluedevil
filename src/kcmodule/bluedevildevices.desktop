@@ -12,6 +12,7 @@ X-KDE-System-Settings-Parent-Category=bluetooth
 X-KDE-Weight=50
 
 Name=Devices
+Name[ca]=Dispositius
 Name[cs]=Zařízení
 Name[da]=Enheder
 Name[en_GB]=Devices
@@ -26,6 +27,7 @@ Name[x-test]=xxDevicesxx
 Name[zh_TW]=裝置
 
 Comment=Configure the known bluetooth remote devices
+Comment[ca]=Configura els dispositius bluetooth remots coneguts
 Comment[da]=Indstil de kendte eksterne bluetooth-enheder
 Comment[en_GB]=Configure the known bluetooth remote devices
 Comment[fr]=Configurer les périphériques distants connus de Bluetooth

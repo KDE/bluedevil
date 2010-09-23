@@ -12,6 +12,7 @@ X-KDE-System-Settings-Parent-Category=bluetooth
 X-KDE-Weight=100
 
 Name=Adapters
+Name[ca]=Adaptadors
 Name[da]=Adaptere
 Name[en_GB]=Adapters
 Name[fr]=Adaptateurs
@@ -24,6 +25,7 @@ Name[x-test]=xxAdaptersxx
 Name[zh_TW]=轉接器
 
 Comment=Configure the available bluetooth adapters
+Comment[ca]=Configura els adaptadors bluetooth disponibles
 Comment[da]=Indstil de tilgængelige bluetooth-adaptere
 Comment[en_GB]=Configure the available bluetooth adapters
 Comment[fr]=Configure les adaptateurs Bluetooth disponibles
