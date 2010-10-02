@@ -44,7 +44,7 @@ KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
     , m_systemCheck(new SystemCheck(this))
 {
     KAboutData* ab = new KAboutData(
-        "kcmbluedeviltransfer", 0, ki18n("Bluetooth Transfer"), "1.0",
+        "kcmbluedeviltransfer", "bluedevil", ki18n("Bluetooth Transfer"), "1.0",
         ki18n("Bluetooth Transfer Control Panel Module"),
         KAboutData::License_GPL, ki18n("(c) 2010 Rafael Fernández López"));
 

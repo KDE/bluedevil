@@ -34,7 +34,7 @@
 
 extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
 {
-    KAboutData about("kioobexftp","kioobexftp", ki18n("kioobexftp"), 0);
+    KAboutData about("kioobexftp", "bluedevil", ki18n("kioobexftp"), 0);
     KCmdLineArgs::init(&about);
 
     KApplication app;

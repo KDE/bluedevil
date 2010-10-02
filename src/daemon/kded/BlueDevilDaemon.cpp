@@ -62,7 +62,7 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
 
     KAboutData aboutData(
         "bluedevildaemon",
-        "bluedevildaemon",
+        "bluedevil",
         ki18n("Bluetooth Daemon"),
         "1.0",
         ki18n("Bluetooth Daemon"),
