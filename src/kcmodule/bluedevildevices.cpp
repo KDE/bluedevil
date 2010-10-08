@@ -453,7 +453,7 @@ void KCMBlueDevilDevices::renameAliasDevice()
     KDialog *newAlias = new KDialog(this);
     QWidget *widget = new QWidget(newAlias);
     QVBoxLayout *layout = new QVBoxLayout;
-    layout->addWidget(new QLabel(i18n("Pick a new alias for %1").arg(device->name()), widget));
+    layout->addWidget(new QLabel(i18n("Pick a new alias for %1", device->name()), widget));
     KLineEdit *lineEdit = new KLineEdit(widget);
     lineEdit->setText(device->alias());
     lineEdit->selectAll();
@@ -475,7 +475,7 @@ void KCMBlueDevilDevices::removeDevice()
 {
     m_removeDevice->setEnabled(false);
     Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
-    if (KMessageBox::questionYesNo(this, i18n("Are you sure that you want to remove device \"%1\" from the list of known devices?").arg(device->alias()),
+    if (KMessageBox::questionYesNo(this, i18n("Are you sure that you want to remove device \"%1\" from the list of known devices?", device->alias()),
                                    i18nc("Title of window that asks for confirmation when removing a device", "Device removal")) == KMessageBox::Yes) {
         BlueDevil::Manager::self()->defaultAdapter()->removeDevice(device);
     } else {

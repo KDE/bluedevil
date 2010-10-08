@@ -42,7 +42,7 @@ ConnectingPage::ConnectingPage(QWidget* parent): QWizardPage(parent)
 void ConnectingPage::initializePage()
 {
     Device *device = static_cast<SendFileWizard* >(wizard())->device();
-    connLabel->setText(i18nc("Connecting to a bluetooth device", "Connecting to %1 ...").arg(device->name()));
+    connLabel->setText(i18nc("Connecting to a bluetooth device", "Connecting to %1 ...", device->name()));
 
     static_cast<SendFileWizard*>(wizard())->startTransfer();
 }

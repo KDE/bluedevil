@@ -118,9 +118,9 @@ AdapterSettings::AdapterSettings(Adapter *adapter, KCModule *parent)
     connect(m_powered, SIGNAL(stateChanged(int)), this, SLOT(slotSettingsChanged()));
 
     if (BlueDevil::Manager::self()->defaultAdapter() == adapter) {
-        setTitle(i18n("Default adapter: %1 (%2)").arg(adapter->name()).arg(adapter->address()));
+        setTitle(i18n("Default adapter: %1 (%2)", adapter->name(), adapter->address()));
     } else {
-        setTitle(i18n("Adapter: %1 (%2)").arg(adapter->name()).arg(adapter->address()));
+        setTitle(i18n("Adapter: %1 (%2)", adapter->name(), adapter->address()));
     }
 }
 
@@ -203,9 +203,9 @@ void AdapterSettings::readChanges()
 
     m_discoverTimeLabel->setText(i18np("1 minute", "%1 minutes", m_discoverTime->value()));
     if (BlueDevil::Manager::self()->defaultAdapter() == m_adapter) {
-        setTitle(i18n("Default adapter: %1 (%2)").arg(m_adapter->name()).arg(m_adapter->address()));
+        setTitle(i18n("Default adapter: %1 (%2)", m_adapter->name(), m_adapter->address()));
     } else {
-        setTitle(i18n("Adapter: %1 (%2)").arg(m_adapter->name()).arg(m_adapter->address()));
+        setTitle(i18n("Adapter: %1 (%2)", m_adapter->name(), m_adapter->address()));
     }
 
     blockSignals(false);
