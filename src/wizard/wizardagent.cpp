@@ -71,6 +71,7 @@ void WizardAgent::RequestConfirmation(QDBusObjectPath device, quint32 passkey, c
     Q_UNUSED(passkey);
     Q_UNUSED(msg);
     kDebug() << "AGENT-RequestConfirmation " << device.path() << ", " << QString::number(passkey);
+    QDBusConnection::systemBus().send(QDBusMessage());
 }
 
 void WizardAgent::ConfirmModeChange(const QString& mode, const QDBusMessage &msg)

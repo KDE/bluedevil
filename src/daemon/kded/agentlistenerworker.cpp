@@ -124,6 +124,7 @@ void AgentListenerWorker::RequestConfirmation(const QDBusObjectPath &device, qui
     int result = KProcess::execute("bluedevil-requestconfirmation", list);
     if (result == 0) {
         qDebug() << "Go on camarada!";
+        QDBusConnection::systemBus().send(QDBusMessage());
         return;
     }
     sendBluezError(QString("RequestConfirmation"),msg);
