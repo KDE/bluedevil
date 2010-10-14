@@ -39,6 +39,7 @@ void ServicesPage::initializePage()
     m_wizard = static_cast<BlueWizard*>(wizard());
     KService::List services = m_wizard->services();
     Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
+    device->setTrusted(true);
 
     QStringList uuids = device->UUIDs();
     QByteArray preselectedUuid = m_wizard->preselectedUuid();
