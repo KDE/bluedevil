@@ -65,7 +65,7 @@ void ServicesPage::initializePage()
 
     //If no service has been added (no compatible services)
     if (d_layout->count() == 0) {
-        kDebug() << "Any service has been found, launching the notification";
+        kDebug() << "No service has been found, launching the notification";
         QString desc(i18n("%1 has been paired successfully", device->friendlyName()));
 
         KNotification::event(
