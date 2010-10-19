@@ -47,6 +47,7 @@ Ignore=true
 [Event/bluedevilAuthorize]
 Name=Access requested
 Name[ca]=S'ha sol·licitat accés
+Name[cs]=Vyžádán přístup
 Name[da]=Anmodning om adgang
 Name[en_GB]=Access requested
 Name[et]=Ligipääsu soov
@@ -84,6 +85,7 @@ Action=Popup
 [Event/bluedevilConfirmModechange]
 Name=Access requested
 Name[ca]=S'ha sol·licitat accés
+Name[cs]=Vyžádán přístup
 Name[da]=Anmodning om adgang
 Name[en_GB]=Access requested
 Name[et]=Ligipääsu soov
@@ -121,6 +123,7 @@ Action=Popup
 [Event/bluedevilRequestConfirmation]
 Name=Access requested
 Name[ca]=S'ha sol·licitat accés
+Name[cs]=Vyžádán přístup
 Name[da]=Anmodning om adgang
 Name[en_GB]=Access requested
 Name[et]=Ligipääsu soov

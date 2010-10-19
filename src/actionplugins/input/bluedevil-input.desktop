@@ -3,6 +3,7 @@ Type=Service
 Exec=blubb
 Comment=Handles the connection and configuration of an input device
 Comment[ca]=Gestiona la connexió i la configuració d'un dispositiu d'entrada
+Comment[cs]=Stará se o připojení a nastavení vstupního zařízení
 Comment[da]=Håndterer forbindelse og konfiguration af en input-enhed
 Comment[en_GB]=Handles the connection and configuration of an input device
 Comment[es]=Controla la conexión y configuración de un dispositivo de entrada

@@ -45,6 +45,7 @@ GenericName[zh_TW]=bluedevil
 Exec=bluedevil-monolithic
 Comment=KDE Bluetooth support
 Comment[ca]=Implementació bluetooth del KDE
+Comment[cs]=Podpora Bluetooth v KDE
 Comment[da]=KDE bluetooth-understøttelse
 Comment[de]=KDE-Bluetooth-Unterstützung
 Comment[en_GB]=KDE Bluetooth support
