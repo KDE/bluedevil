@@ -20,8 +20,7 @@
 #include "audio_interface.h"
 #include "input_interface.h"
 
-#include <QDebug>
-
+#include <KDebug>
 #include <kmenu.h>
 #include <kaction.h>
 #include <kprocess.h>
