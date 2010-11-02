@@ -45,11 +45,11 @@ Monolithic::Monolithic(QObject* parent)
         onlineMode();
     }
 
-    setAssociatedWidget(contextMenu());
     connect(Manager::self(), SIGNAL(adapterAdded(Adapter*)), this, SLOT(adapterAdded()));
     connect(Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)), this, SLOT(noAdapters(Adapter*)));
 
     setStandardActionsEnabled(false);
+    setAssociatedWidget(contextMenu());
 }
 
 void Monolithic::noAdapters(Adapter* adapter)
