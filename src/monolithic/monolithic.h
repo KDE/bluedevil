@@ -59,6 +59,7 @@ public Q_SLOTS:
     void addDevice();
     void configBluetooth();
     void toggleBluetooth();
+    void activeDiscoverable(bool active);
 
 private Q_SLOTS:
     void browseTriggered();

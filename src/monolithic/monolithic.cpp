@@ -304,6 +304,12 @@ void Monolithic::regenerateDeviceEntries()
     connect(addDevice, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(addDevice()));
     menu->addAction(addDevice);
 
+    KAction *discoverable = new KAction(i18n("Discoverable"), menu);
+    discoverable->setCheckable(true);
+    discoverable->setChecked(Manager::self()->defaultAdapter()->isDiscoverable());
+    connect(discoverable, SIGNAL(toggled(bool)), this, SLOT(activeDiscoverable(bool)));
+    menu->addAction(discoverable);
+
     KAction *activeBluetooth = new KAction(i18n("Turn Bluetooth Off"), menu);
     connect(activeBluetooth, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(toggleBluetooth()));
     menu->addAction(activeBluetooth);
@@ -323,6 +329,7 @@ void Monolithic::onlineMode()
     connect(Manager::self()->defaultAdapter(), SIGNAL(deviceDisappeared(Device*)), this, SLOT(regenerateDeviceEntries()));
     connect(Manager::self()->defaultAdapter(), SIGNAL(deviceRemoved(Device*)), this, SLOT(regenerateDeviceEntries()));
     connect(Manager::self()->defaultAdapter(), SIGNAL(poweredChanged(bool)), this, SLOT(regenerateDeviceEntries()));
+    connect(Manager::self()->defaultAdapter(), SIGNAL(discoverableChanged(bool)), this, SLOT(regenerateDeviceEntries()));
 
     regenerateDeviceEntries();
 }
@@ -373,6 +380,16 @@ void Monolithic::toggleBluetooth()
 
     //We do not call regenerateDeviceEntries because we assume that the adapter proprety powered will change
     //and then, poweredChange will be emitted
+}
+
+void Monolithic::activeDiscoverable(bool active)
+{
+    QList <Adapter*> adapters = Manager::self()->adapters();
+    if (!adapters.isEmpty()) {
+        Q_FOREACH(Adapter *adapter, adapters) {
+            adapter->setDiscoverable(active);
+        }
+    }
 }
 
 
