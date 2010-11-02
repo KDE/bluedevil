@@ -304,6 +304,15 @@ void Monolithic::regenerateDeviceEntries()
     connect(addDevice, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(addDevice()));
     menu->addAction(addDevice);
 
+    KAction *configBluetooth = new KAction(i18n("Configure Bluetooth"), menu);
+    connect(configBluetooth, SIGNAL(triggered(bool)), this, SLOT(configBluetooth()));
+    menu->addAction(configBluetooth);
+
+//Shortcut configuration actions, mainly checkables for discovering and powering
+    separator = new QAction(menu);
+    separator->setSeparator(true);
+    menu->addAction(separator);
+
     KAction *discoverable = new KAction(i18n("Discoverable"), menu);
     discoverable->setCheckable(true);
     discoverable->setChecked(Manager::self()->defaultAdapter()->isDiscoverable());
