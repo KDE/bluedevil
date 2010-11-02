@@ -327,7 +327,7 @@ void Monolithic::regenerateDeviceEntries()
     separator->setSeparator(true);
     menu->addAction(separator);
 
-    menu->addAction(KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), menu));
+//     menu->addAction(KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), menu));
 }
 
 void Monolithic::onlineMode()
@@ -599,7 +599,7 @@ void Monolithic::offlineMode()
     QAction *separator = new QAction(menu);
     separator->setSeparator(true);
     menu->addAction(separator);
-    menu->addAction(KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), menu));
+//     menu->addAction(KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), menu));
 }
 
 bool Monolithic::poweredAdapters()
