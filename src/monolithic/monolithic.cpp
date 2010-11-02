@@ -136,17 +136,9 @@ void Monolithic::regenerateDeviceEntries()
     connect(browseDevices, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(browseDevices()));
     menu->addAction(browseDevices);
 
-    KAction *configReceive = new KAction(KIcon("folder-tar"),i18n("Receive files configuration"), menu);
-    connect(configReceive, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(configReceive()));
-    menu->addAction(configReceive);
-
-    KAction *deviceManager = new KAction(KIcon("input-mouse"), i18n("Manage devices"), menu);
-    connect(deviceManager, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(deviceManager()));
-    menu->addAction(deviceManager);
-
-    KAction *configAdapter = new KAction(KIcon("audio-card"), i18n("Configure adapters"), menu);
-    connect(configAdapter, SIGNAL(triggered(bool)), this, SLOT(configAdapter()));
-    menu->addAction(configAdapter);
+    KAction *configBluetooth = new KAction(i18n("Configure Bluetooth"), menu);
+    connect(configBluetooth, SIGNAL(triggered(bool)), this, SLOT(configBluetooth()));
+    menu->addAction(configBluetooth);
 
     menu->addTitle(i18n("Known Devices"));
     KAction *noKnownDevices = new KAction(i18n("No known devices found"), menu);
@@ -336,22 +328,14 @@ void Monolithic::addDevice()
     process.startDetached();
 }
 
-void Monolithic::configReceive()
+void Monolithic::configBluetooth()
 {
     KProcess process;
-    process.startDetached("kcmshell4", QStringList("bluedeviltransfer"));
-}
-
-void Monolithic::deviceManager()
-{
-    KProcess process;
-    process.startDetached("kcmshell4", QStringList("bluedevildevices"));
-}
-
-void Monolithic::configAdapter()
-{
-    KProcess process;
-    process.startDetached("kcmshell4", QStringList("bluedeviladapters"));
+    QStringList args;
+    args << "bluedevildevices";
+    args << "bluedeviltransfer";
+    args << "bluedeviladapters";
+    process.startDetached("kcmshell4", args);
 }
 
 void Monolithic::browseTriggered()
@@ -552,17 +536,9 @@ void Monolithic::offlineMode()
     connect(browseDevices, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(browseDevices()));
     menu->addAction(browseDevices);
 
-    KAction *configReceive = new KAction(KIcon("folder-tar"),i18n("Receive files configuration"), menu);
-    connect(configReceive, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(configReceive()));
-    menu->addAction(configReceive);
-
-    KAction *deviceManager = new KAction(KIcon("input-mouse"), i18n("Manage devices"), menu);
-    connect(deviceManager, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(deviceManager()));
-    menu->addAction(deviceManager);
-
-    KAction *configAdapter = new KAction(KIcon("audio-card"), i18n("Configure adapters"), menu);
-    connect(configAdapter, SIGNAL(triggered(bool)), this, SLOT(configAdapter()));
-    menu->addAction(configAdapter);
+    KAction *configBluetooth = new KAction(i18n("Configure Bluetooth"), menu);
+    connect(configBluetooth, SIGNAL(triggered(bool)), this, SLOT(configBluetooth()));
+    menu->addAction(configBluetooth);
 
     menu->addTitle(i18n("Known Devices"));
     KAction *noAdaptersFound = new KAction(i18n("No adapters found"), menu);

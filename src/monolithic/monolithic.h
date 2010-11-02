@@ -57,9 +57,7 @@ public Q_SLOTS:
     void sendFile();
     void browseDevices();
     void addDevice();
-    void configReceive();
-    void deviceManager();
-    void configAdapter();
+    void configBluetooth();
 
 private Q_SLOTS:
     void browseTriggered();
