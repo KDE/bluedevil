@@ -150,9 +150,9 @@ void Monolithic::regenerateDeviceEntries()
     connect(browseDevices, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(browseDevices()));
     menu->addAction(browseDevices);
 
-    KAction *configBluetooth = new KAction(i18n("Configure Bluetooth"), menu);
-    connect(configBluetooth, SIGNAL(triggered(bool)), this, SLOT(configBluetooth()));
-    menu->addAction(configBluetooth);
+    QAction *separator = new QAction(menu);
+    separator->setSeparator(true);
+    menu->addAction(separator);
 
     menu->addTitle(i18n("Known Devices"));
     KAction *noKnownDevices = new KAction(i18n("No known devices found"), menu);
@@ -296,7 +296,7 @@ void Monolithic::regenerateDeviceEntries()
         noKnownDevices->setVisible(true);
     }
 
-    QAction *separator = new QAction(menu);
+    separator = new QAction(menu);
     separator->setSeparator(true);
     menu->addAction(separator);
 
