@@ -40,9 +40,10 @@ Monolithic::Monolithic(QObject* parent)
     setCategory(KStatusNotifierItem::Hardware);
     setIconByName("preferences-system-bluetooth");
 
-    onlineMode();
-    if (!Manager::self()->defaultAdapter()) {
-        offlineMode();
+    offlineMode();
+
+    if (Manager::self()->defaultAdapter()) {
+        onlineMode();
     }
 
     setAssociatedWidget(contextMenu());
