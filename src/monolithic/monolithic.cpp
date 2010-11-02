@@ -583,19 +583,6 @@ void Monolithic::offlineMode()
     qDeleteAll(menu->actions());
     menu->clear();
 
-    KAction *sendFile = new KAction(KIcon("edit-find-project"), i18n("Send File"), menu);
-    connect(sendFile, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(sendFile()));
-    menu->addAction(sendFile);
-
-    KAction *browseDevices = new KAction(KIcon("document-preview-archive"), i18n("Browse devices"), menu);
-    connect(browseDevices, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(browseDevices()));
-    menu->addAction(browseDevices);
-
-    KAction *configBluetooth = new KAction(i18n("Configure Bluetooth"), menu);
-    connect(configBluetooth, SIGNAL(triggered(bool)), this, SLOT(configBluetooth()));
-    menu->addAction(configBluetooth);
-
-    menu->addTitle(i18n("Known Devices"));
     KAction *noAdaptersFound = new KAction(i18n("No adapters found"), menu);
     noAdaptersFound->setEnabled(false);
     menu->addAction(noAdaptersFound);
@@ -603,15 +590,6 @@ void Monolithic::offlineMode()
     QAction *separator = new QAction(menu);
     separator->setSeparator(true);
     menu->addAction(separator);
-
-    KAction *addDevice = new KAction(KIcon("edit-find-project"), i18n("Add Device"), menu);
-    connect(addDevice, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(addDevice()));
-    menu->addAction(addDevice);
-
-    separator = new QAction(menu);
-    separator->setSeparator(true);
-    menu->addAction(separator);
-
     menu->addAction(KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), menu));
 }
 
