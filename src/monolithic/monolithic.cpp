@@ -169,7 +169,7 @@ void Monolithic::regenerateDeviceEntries()
         KAction *_device = 0;
         if (!lastDevice || classToType(lastDevice->deviceClass()) != classToType(device->deviceClass())) {
             if (!first) {
-                contextMenu()->addSeparator();
+//                 contextMenu()->addSeparator();
             } else {
                 first = false;
             }
