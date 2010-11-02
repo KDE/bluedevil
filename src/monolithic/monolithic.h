@@ -58,6 +58,7 @@ public Q_SLOTS:
     void browseDevices();
     void addDevice();
     void configBluetooth();
+    void toggleBluetooth();
 
 private Q_SLOTS:
     void browseTriggered();
@@ -71,6 +72,11 @@ private Q_SLOTS:
 private:
     void onlineMode();
     void offlineMode();
+
+    /**
+     * Returns true or false wether there are powered adapters
+     */
+    bool poweredAdapters();
 
 private:
     QMap<void*, KAction*> m_interfaceMap;

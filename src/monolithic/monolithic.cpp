@@ -128,6 +128,20 @@ void Monolithic::regenerateDeviceEntries()
     qDeleteAll(menu->actions());
     menu->clear();
 
+    //If there are adapters (because we're in this function) but any of them is powered
+    if (!poweredAdapters()) {
+        menu->addTitle(i18n("Bluetooth is Off"));
+
+        QAction *separator = new QAction(menu);
+        separator->setSeparator(true);
+        menu->addAction(separator);
+
+        KAction *activeBluetooth = new KAction(i18n("Turn Bluetooth On"), menu);
+        connect(activeBluetooth, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(toggleBluetooth()));
+        menu->addAction(activeBluetooth);
+        return;
+    }
+
     KAction *sendFile = new KAction(KIcon("edit-find-project"), i18n("Send File"), menu);
     connect(sendFile, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(sendFile()));
     menu->addAction(sendFile);
@@ -290,6 +304,10 @@ void Monolithic::regenerateDeviceEntries()
     connect(addDevice, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(addDevice()));
     menu->addAction(addDevice);
 
+    KAction *activeBluetooth = new KAction(i18n("Turn Bluetooth Off"), menu);
+    connect(activeBluetooth, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(toggleBluetooth()));
+    menu->addAction(activeBluetooth);
+
     separator = new QAction(menu);
     separator->setSeparator(true);
     menu->addAction(separator);
@@ -304,6 +322,7 @@ void Monolithic::onlineMode()
     connect(Manager::self()->defaultAdapter(), SIGNAL(deviceCreated(Device*)), this, SLOT(deviceCreated(Device*)));
     connect(Manager::self()->defaultAdapter(), SIGNAL(deviceDisappeared(Device*)), this, SLOT(regenerateDeviceEntries()));
     connect(Manager::self()->defaultAdapter(), SIGNAL(deviceRemoved(Device*)), this, SLOT(regenerateDeviceEntries()));
+    connect(Manager::self()->defaultAdapter(), SIGNAL(poweredChanged(bool)), this, SLOT(regenerateDeviceEntries()));
 
     regenerateDeviceEntries();
 }
@@ -337,6 +356,25 @@ void Monolithic::configBluetooth()
     args << "bluedeviladapters";
     process.startDetached("kcmshell4", args);
 }
+
+void Monolithic::toggleBluetooth()
+{
+    bool powered = true;
+    if (poweredAdapters()) {
+        powered = false;
+    }
+
+    QList <Adapter*> adapters = Manager::self()->adapters();
+    if (!adapters.isEmpty()) {
+        Q_FOREACH(Adapter *adapter, adapters) {
+            adapter->setPowered(powered);
+        }
+    }
+
+    //We do not call regenerateDeviceEntries because we assume that the adapter proprety powered will change
+    //and then, poweredChange will be emitted
+}
+
 
 void Monolithic::browseTriggered()
 {
@@ -559,5 +597,20 @@ void Monolithic::offlineMode()
 
     menu->addAction(KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), menu));
 }
+
+bool Monolithic::poweredAdapters()
+{
+    QList <Adapter*> adapters = Manager::self()->adapters();
+
+    if (!adapters.isEmpty()) {
+        Q_FOREACH(Adapter* adapter, adapters) {
+            if (adapter->isPowered()) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 
 Q_DECLARE_METATYPE(Device*)
