@@ -38,6 +38,7 @@ Monolithic::Monolithic(QObject* parent)
 {
     setCategory(KStatusNotifierItem::Hardware);
     setIconByName("preferences-system-bluetooth");
+    setToolTip("preferences-system-bluetooth", "Bluetooth", "");
 
     offlineMode();
 
