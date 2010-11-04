@@ -351,14 +351,16 @@ void Monolithic::onlineMode()
     connect(Manager::self()->defaultAdapter(), SIGNAL(deviceCreated(Device*)), this, SLOT(deviceCreated(Device*)));
     connect(Manager::self()->defaultAdapter(), SIGNAL(deviceDisappeared(Device*)), this, SLOT(regenerateDeviceEntries()));
     connect(Manager::self()->defaultAdapter(), SIGNAL(deviceRemoved(Device*)), this, SLOT(regenerateDeviceEntries()));
-    connect(Manager::self()->defaultAdapter(), SIGNAL(poweredChanged(bool)), this, SLOT(regenerateDeviceEntries()));
+    connect(Manager::self()->defaultAdapter(), SIGNAL(poweredChanged(bool)), this, SLOT(poweredChanged()));
     connect(Manager::self()->defaultAdapter(), SIGNAL(discoverableChanged(bool)), this, SLOT(regenerateDeviceEntries()));
     QList<Device*> devices = Manager::self()->defaultAdapter()->devices();
     Q_FOREACH(Device* device, devices) {
         connect(device, SIGNAL(propertyChanged(QString,QVariant)), this, SLOT(regenerateConnectedDevices()));
     }
+
     regenerateDeviceEntries();
     regenerateConnectedDevices();
+    poweredChanged();
 }
 
 void Monolithic::sendFile()
@@ -587,6 +589,21 @@ void Monolithic::UUIDsChanged(const QStringList &UUIDs)
     }
 }
 
+void Monolithic::poweredChanged()
+{
+    regenerateDeviceEntries();
+    regenerateConnectedDevices();
+
+    if (!poweredAdapters()) {
+        setTooltipTitleStatus(false);
+        setToolTipSubTitle("");
+        setOverlayIconByName("vcs-removed");
+    } else {
+        setTooltipTitleStatus(true);
+        setOverlayIconByName(QString());
+    }
+}
+
 void Monolithic::deviceCreated(Device *device)
 {
     connect(device, SIGNAL(propertyChanged(QString,QVariant)), this, SLOT(regenerateConnectedDevices()));
@@ -598,6 +615,7 @@ void Monolithic::deviceCreated(Device *device)
 void Monolithic::offlineMode()
 {
     setStatus(KStatusNotifierItem::Passive);
+    setTooltipTitleStatus(false);
 
     disconnect(Manager::self()->defaultAdapter(), SIGNAL(deviceCreated(Device*)), this, SLOT(deviceCreated(Device*)));
     disconnect(Manager::self()->defaultAdapter(), SIGNAL(deviceDisappeared(Device*)), this, SLOT(regenerateDeviceEntries()));
@@ -636,5 +654,13 @@ bool Monolithic::poweredAdapters()
     return false;
 }
 
+void Monolithic::setTooltipTitleStatus(bool status)
+{
+    if (status) {
+        setToolTipTitle(i18nc("When the bluetooth is enabled and powered","Bluetooth is On"));
+    } else {
+        setToolTipTitle(i18nc("When the bluetooth is disabled or not powered","Bluetooth is Off"));
+    }
+}
 
 Q_DECLARE_METATYPE(Device*)

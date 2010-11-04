@@ -72,6 +72,7 @@ private Q_SLOTS:
     void disconnectTriggered();
     void propertyChanged(const QString &key, const QDBusVariant &value);
     void UUIDsChanged(const QStringList &UUIDs);
+    void poweredChanged();
     void deviceCreated(Device *device);
 
 private:
@@ -82,6 +83,7 @@ private:
      * Returns true or false wether there are powered adapters
      */
     bool poweredAdapters();
+    void setTooltipTitleStatus(bool);
 private:
     QMap<void*, KAction*> m_interfaceMap;
     QList<QAction*>       m_actions;
