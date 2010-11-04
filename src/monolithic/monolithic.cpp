@@ -324,6 +324,26 @@ void Monolithic::regenerateDeviceEntries()
 //     menu->addAction(KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), menu));
 }
 
+void Monolithic::regenerateConnectedDevices()
+{
+    unsigned int connectedDevices = 0;
+    if (Manager::self()->defaultAdapter()) {
+        QList<Device*> devices = Manager::self()->defaultAdapter()->devices();
+        Q_FOREACH(Device* device, devices) {
+            if (device->isConnected()) {
+                ++connectedDevices;
+            }
+        }
+    }
+    if (connectedDevices > 0) {
+        setOverlayIconByName("emblem-link");
+        setToolTipSubTitle(i18nc("Number of bluetooth connected devices", "%1 Connected devices", connectedDevices));
+    } else {
+        setOverlayIconByName(QString());
+        setToolTipSubTitle("");
+    }
+}
+
 void Monolithic::onlineMode()
 {
     setStatus(KStatusNotifierItem::Active);
@@ -333,8 +353,12 @@ void Monolithic::onlineMode()
     connect(Manager::self()->defaultAdapter(), SIGNAL(deviceRemoved(Device*)), this, SLOT(regenerateDeviceEntries()));
     connect(Manager::self()->defaultAdapter(), SIGNAL(poweredChanged(bool)), this, SLOT(regenerateDeviceEntries()));
     connect(Manager::self()->defaultAdapter(), SIGNAL(discoverableChanged(bool)), this, SLOT(regenerateDeviceEntries()));
-
+    QList<Device*> devices = Manager::self()->defaultAdapter()->devices();
+    Q_FOREACH(Device* device, devices) {
+        connect(device, SIGNAL(propertyChanged(QString,QVariant)), this, SLOT(regenerateConnectedDevices()));
+    }
     regenerateDeviceEntries();
+    regenerateConnectedDevices();
 }
 
 void Monolithic::sendFile()
@@ -565,8 +589,10 @@ void Monolithic::UUIDsChanged(const QStringList &UUIDs)
 
 void Monolithic::deviceCreated(Device *device)
 {
+    connect(device, SIGNAL(propertyChanged(QString,QVariant)), this, SLOT(regenerateConnectedDevices()));
     connect(device, SIGNAL(UUIDsChanged(QStringList)), this, SLOT(UUIDsChanged(QStringList)));
     regenerateDeviceEntries();
+    regenerateConnectedDevices();
 }
 
 void Monolithic::offlineMode()

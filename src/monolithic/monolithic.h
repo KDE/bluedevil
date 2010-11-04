@@ -53,6 +53,10 @@ public Q_SLOTS:
     void adapterAdded();
 
     void regenerateDeviceEntries();
+    /**
+     * Check if there are connected device, and if so updates tooltip and overlay
+     */
+    void regenerateConnectedDevices();
 
     void sendFile();
     void browseDevices();
@@ -78,7 +82,6 @@ private:
      * Returns true or false wether there are powered adapters
      */
     bool poweredAdapters();
-
 private:
     QMap<void*, KAction*> m_interfaceMap;
     QList<QAction*>       m_actions;
