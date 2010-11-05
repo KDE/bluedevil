@@ -163,7 +163,7 @@ Name[tr]=Erişim istendi
 Name[uk]=Надійшов запит щодо доступу
 Name[x-test]=xxAccess requestedxx
 Name[zh_TW]=已要求存取
-Comment=A device ask for confirmation
+Comment=A device asks for confirmation
 Comment[ca]=Un dispositiu demana confirmació
 Comment[da]=En enhed beder om bekræftelse
 Comment[en_GB]=A device ask for confirmation
@@ -187,7 +187,7 @@ Comment[zh_TW]=某個裝置請求確認
 Action=Popup
 
 [Event/bluedevilRequestPin]
-Name=Request pin
+Name=Request PIN
 Name[ca]=Sol·licita el «pin»
 Name[da]=Anmod om PIN
 Name[en_GB]=Request pin
@@ -209,7 +209,7 @@ Name[tr]=Pin iste
 Name[uk]=Запит щодо PIN-коду
 Name[x-test]=xxRequest pinxx
 Name[zh_TW]=需要 PIN 碼
-Comment=A pin is needed
+Comment=A PIN is needed
 Comment[ca]=Un «pin» és necessari
 Comment[da]=En PIN kræves
 Comment[de]=Eine PIN wird benötigt

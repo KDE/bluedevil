@@ -357,7 +357,7 @@ KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
 
     if (!Manager::self()->defaultAdapter()) {
         kDebug() << "No available interface";
-        infoMessage(i18n("No bluetooth adapter has been found"));
+        infoMessage(i18n("No Bluetooth adapters have been found."));
         d->m_online = false;
         return;
     }
@@ -383,7 +383,7 @@ void KioBluetooth::listDir(const KUrl &url)
 
     // If we are not online (ie. there's no working bluetooth adapter), list an empty dir
     if (!d->m_online) {
-        infoMessage(i18n("No bluetooth adapter has been found"));
+        infoMessage(i18n("No Bluetooth adapters have been found."));
         listEntry(KIO::UDSEntry(), true);
         finished();
         return;

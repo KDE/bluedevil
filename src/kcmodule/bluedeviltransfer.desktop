@@ -37,7 +37,7 @@ Name[uk]=Перенесення файла
 Name[x-test]=xxFile Transferxx
 Name[zh_TW]=檔案傳輸
 
-Comment=Configure the bluetooth receive files
+Comment=Configure the Bluetooth receive files
 Comment[ca]=Configura la recepció de fitxer bluetooth
 Comment[da]=Indstil modtagelse af filer via bluetooth
 Comment[en_GB]=Configure the bluetooth receive files

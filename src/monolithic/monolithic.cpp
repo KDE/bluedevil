@@ -209,7 +209,7 @@ void Monolithic::regenerateDeviceEntries()
                 _submenu->addTitle("Input Service");
 
                 if (input->GetProperties().value()["Connected"].toBool()) {
-                    KAction *_disconnect = new KAction(i18n("Disconnect"), _device);
+                    KAction *_disconnect = new KAction(i18nc("Action", "Disconnect"), _device);
                     m_interfaceMap[input] = _disconnect;
                     _disconnect->setData(QVariant::fromValue<EntryInfo>(info));
                     _submenu->addAction(_disconnect);
@@ -231,7 +231,7 @@ void Monolithic::regenerateDeviceEntries()
                 _submenu->addTitle("Headset Service");
 
                 if (audio->GetProperties().value()["State"].toString() == "connected") {
-                    KAction *_disconnect = new KAction(i18n("Disconnect"), _device);
+                    KAction *_disconnect = new KAction(i18nc("Action", "Disconnect"), _device);
                     m_interfaceMap[audio] = _disconnect;
                     _disconnect->setData(QVariant::fromValue<EntryInfo>(info));
                     _submenu->addAction(_disconnect);
@@ -259,7 +259,7 @@ void Monolithic::regenerateDeviceEntries()
                 _submenu->addTitle("Audio Sink");
 
                 if (audio->GetProperties().value()["State"].toString() == "connected") {
-                    KAction *_disconnect = new KAction(i18n("Disconnect"), _device);
+                    KAction *_disconnect = new KAction(i18nc("Action", "Disconnect"), _device);
                     m_interfaceMap[audio] = _disconnect;
                     _disconnect->setData(QVariant::fromValue<EntryInfo>(info));
                     _submenu->addAction(_disconnect);
@@ -485,14 +485,14 @@ void Monolithic::propertyChanged(const QString &key, const QDBusVariant &value)
             action->setText(i18n("Connecting..."));
             action->setEnabled(false);
         } else {
-            action->setText(i18n("Disconnect"));
+            action->setText(i18nc("Action", "Disconnect"));
             action->setEnabled(true);
             disconnect(action, SIGNAL(triggered()), this, SLOT(connectTriggered()));
             connect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
         }
     } else if (key == "Connected") {
         if (value.variant().toBool()) {
-            action->setText(i18n("Disconnect"));
+            action->setText(i18nc("Action", "Disconnect"));
             action->setEnabled(true);
             disconnect(action, SIGNAL(triggered()), this, SLOT(connectTriggered()));
             connect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));

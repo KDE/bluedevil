@@ -8,7 +8,7 @@ X-KDE-Kded-autoload=true
 X-KDE-Kded-load-on-demand=false
 X-KDE-Kded-phase=1
 
-Name=obexftp
+Name=ObexFTP
 Name[ca]=obexftp
 Name[cs]=obexftp
 Name[da]=obexftp
@@ -32,7 +32,7 @@ Name[uk]=obexftp
 Name[x-test]=xxobexftpxx
 Name[zh_TW]=obexftp
 
-Comment=Obexftp helper daemon
+Comment=ObexFTP helper daemon
 Comment[ca]=Dimoni d'ajuda de l'Obexftp
 Comment[da]=Hjælperdæmon til Obexftp
 Comment[en_GB]=Obexftp helper dæmon
