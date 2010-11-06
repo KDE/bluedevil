@@ -337,7 +337,7 @@ void Monolithic::regenerateConnectedDevices()
     }
     if (connectedDevices > 0) {
         setOverlayIconByName("emblem-link");
-        setToolTipSubTitle(i18nc("Number of bluetooth connected devices", "%1 Connected devices", connectedDevices));
+        setToolTipSubTitle(i18ncp("Number of Bluetooth connected devices", "%1 connected device", "%1 connected devices", int(connectedDevices)));
     } else {
         setOverlayIconByName(QString());
         setToolTipSubTitle("");
