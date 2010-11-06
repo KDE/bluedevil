@@ -38,25 +38,7 @@ Name[x-test]=xxFile Transferxx
 Name[zh_TW]=檔案傳輸
 
 Comment=Configure the Bluetooth receive files
-Comment[ca]=Configura la recepció de fitxer bluetooth
-Comment[da]=Indstil modtagelse af filer via bluetooth
-Comment[en_GB]=Configure the bluetooth receive files
-Comment[es]=Configura la recepción de archivos por Bluetooth
-Comment[et]=Bluetoothi faili saamise seadistamine
-Comment[fr]=Configurer la réception de fichiers par Bluetooth
-Comment[hu]=Fájlok fogadásának beállítása
-Comment[it]=Configura la ricezione di file via Bluetooth
-Comment[nb]=Sett opp mottak av filer over Bluetooth
-Comment[nds]=Bluetooth - Afhalen vun Dateien instellen
-Comment[nl]=De bluetooth-ontvangbestanden instellen
-Comment[pt]=Configura a recepção de ficheiros por Bluetooth
-Comment[pt_BR]=Configura a recepção de arquivos por Bluetooth
-Comment[ru]=Настройка приёма файлов по каналу Bluetooth
-Comment[sl]=Nastavite prenašanje datotek prek Bluetooth
-Comment[sv]=Anpassa Blåtand mottagning av filer
-Comment[uk]=Налаштування отримання файлів bluetooth
-Comment[x-test]=xxConfigure the bluetooth receive filesxx
-Comment[zh_TW]=設定藍芽接收檔案
+Comment[x-test]=xxConfigure the Bluetooth receive filesxx
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
 
