@@ -37,6 +37,12 @@ Name[x-test]=xxAdaptersxx
 Name[zh_TW]=轉接器
 
 Comment=Configure the available Bluetooth adapters
+Comment[da]=Indstil de tilgængelige Bluetooth-adaptere
+Comment[it]=Configura gli adattatori Bluetooth disponibili
+Comment[pt]=Configurar os adaptadores de Bluetooth disponíveis
+Comment[pt_BR]=Configurar os adaptadores de Bluetooth disponíveis
+Comment[sv]=Anpassa tillgängliga Blåtandanslutningar
+Comment[uk]=Налаштування доступних адаптерів Bluetooth
 Comment[x-test]=xxConfigure the available Bluetooth adaptersxx
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth

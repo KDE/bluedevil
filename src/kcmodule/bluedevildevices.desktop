@@ -38,6 +38,12 @@ Name[x-test]=xxDevicesxx
 Name[zh_TW]=裝置
 
 Comment=Configure the known Bluetooth remote devices
+Comment[da]=Indstil de kendte eksterne Bluetooth-enheder
+Comment[it]=Configura i dispositivi remoti Bluetooth conosciuti
+Comment[pt]=Configura os dispositivos remotos conhecidos do Bluetooth
+Comment[pt_BR]=Configura os dispositivos remotos conhecidos do Bluetooth
+Comment[sv]=Anpassa kända Blåtand fjärrenheter
+Comment[uk]=Налаштування відомих пристроїв Bluetooth
 Comment[x-test]=xxConfigure the known Bluetooth remote devicesxx
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth

@@ -38,6 +38,12 @@ Name[x-test]=xxFile Transferxx
 Name[zh_TW]=檔案傳輸
 
 Comment=Configure the Bluetooth receive files
+Comment[da]=Indstil modtagelse af filer via Bluetooth
+Comment[it]=Configura la ricezione di file via Bluetooth
+Comment[pt]=Configura a recepção de ficheiros por Bluetooth
+Comment[pt_BR]=Configura a recepção de arquivos por Bluetooth
+Comment[sv]=Anpassa Blåtand mottagning av filer
+Comment[uk]=Налаштування отримання файлів Bluetooth
 Comment[x-test]=xxConfigure the Bluetooth receive filesxx
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
