@@ -39,7 +39,9 @@ Name[zh_TW]=裝置
 
 Comment=Configure the known Bluetooth remote devices
 Comment[da]=Indstil de kendte eksterne Bluetooth-enheder
+Comment[es]=Configurar los dispositivos Bluetooth remotos conocidos
 Comment[it]=Configura i dispositivi remoti Bluetooth conosciuti
+Comment[nl]=De bekende externe bluetooth-apparaten instellen
 Comment[pt]=Configura os dispositivos remotos conhecidos do Bluetooth
 Comment[pt_BR]=Configura os dispositivos remotos conhecidos do Bluetooth
 Comment[sv]=Anpassa kända Blåtand fjärrenheter

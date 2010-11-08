@@ -10,7 +10,9 @@ X-KDE-Kded-phase=1
 
 Name=ObexFTP
 Name[da]=ObexFTP
+Name[es]=ObexFTP
 Name[it]=ObexFTP
+Name[nl]=ObexFTP
 Name[pt]=ObexFTP
 Name[pt_BR]=ObexFTP
 Name[sv]=OBEX FTP
@@ -19,7 +21,9 @@ Name[x-test]=xxObexFTPxx
 
 Comment=ObexFTP helper daemon
 Comment[da]=Hjælperdæmon til ObexFTP
+Comment[es]=Demonio ayudante de ObexFTP
 Comment[it]=Demone di supporto ObexFTP
+Comment[nl]=Obexftp hulpdaemon
 Comment[pt]=Servidor auxiliar do ObexFTP
 Comment[pt_BR]=Daemon auxiliar do ObexFTP
 Comment[sv]=OBEX FTP-hjälpdemon
