@@ -173,6 +173,7 @@ Comment[pt_BR]=Um dispositivo solicita confirmação
 Comment[sv]=En enhet frågar efter bekräftelse
 Comment[uk]=Пристрій очікує на підтвердження
 Comment[x-test]=xxA device asks for confirmationxx
+Comment[zh_TW]=某個裝置請求確認
 Action=Popup
 
 [Event/bluedevilRequestPin]
@@ -186,6 +187,7 @@ Name[pt_BR]=Solicitar o PIN
 Name[sv]=Begär PIN-kod
 Name[uk]=Запит щодо PIN-коду
 Name[x-test]=xxRequest PINxx
+Name[zh_TW]=需要 PIN 碼
 Comment=A PIN is needed
 Comment[da]=PIN-kode kræves
 Comment[es]=Debe introducir un PIN
@@ -196,6 +198,7 @@ Comment[pt_BR]=É necessário um PIN
 Comment[sv]=En PIN-kod behövs
 Comment[uk]=Потрібен PIN-код
 Comment[x-test]=xxA PIN is neededxx
+Comment[zh_TW]=需要 PIN 碼
 Action=Popup
 
 [Event/bluedevilIncomingFile]

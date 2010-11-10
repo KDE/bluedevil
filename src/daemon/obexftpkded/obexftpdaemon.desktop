@@ -18,6 +18,7 @@ Name[pt_BR]=ObexFTP
 Name[sv]=OBEX FTP
 Name[uk]=ObexFTP
 Name[x-test]=xxObexFTPxx
+Name[zh_TW]=ObexFTP
 
 Comment=ObexFTP helper daemon
 Comment[da]=Hjælperdæmon til ObexFTP
@@ -29,3 +30,4 @@ Comment[pt_BR]=Daemon auxiliar do ObexFTP
 Comment[sv]=OBEX FTP-hjälpdemon
 Comment[uk]=Фонова служба допоміжної програми ObexFTP
 Comment[x-test]=xxObexFTP helper daemonxx
+Comment[zh_TW]=ObexFTP 輔助伺服程式
