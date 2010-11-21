@@ -135,6 +135,7 @@ void ServerSession::slotTransferStarted(const QString& filename, const QString& 
     connect(m_notification, SIGNAL(closed()), this, SLOT(slotCancel()));
 
     m_notification->setPixmap(KIcon("preferences-system-bluetooth").pixmap(42, 42));
+    m_notification->setComponentData(KComponentData("bluedevil"));
     m_notification->sendEvent();
 }
 
