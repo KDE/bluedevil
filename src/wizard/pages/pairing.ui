@@ -102,7 +102,7 @@
      <item>
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>If your device has a way to introduce the PIN, do it, if not just wait a moment</string>
+        <string>If your device has a way to introduce the PIN, then introduce it; otherwise, just wait a moment.</string>
        </property>
        <property name="wordWrap">
         <bool>true</bool>

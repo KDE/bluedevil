@@ -475,8 +475,8 @@ void KCMBlueDevilDevices::removeDevice()
 {
     m_removeDevice->setEnabled(false);
     Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
-    if (KMessageBox::questionYesNo(this, i18n("Are you sure that you want to remove device \"%1\" from the list of known devices?", device->alias()),
-                                   i18nc("Title of window that asks for confirmation when removing a device", "Device removal")) == KMessageBox::Yes) {
+    if (KMessageBox::questionYesNo(this, i18n("Are you sure that you want to remove the device \"%1\" from the list of known devices?", device->alias()),
+                                   i18nc("Title of window that asks for confirmation when removing a device", "Device Removal")) == KMessageBox::Yes) {
         BlueDevil::Manager::self()->defaultAdapter()->removeDevice(device);
     } else {
         m_removeDevice->setEnabled(true);
