@@ -113,7 +113,7 @@
        <item>
         <widget class="QLabel" name="label_2">
          <property name="text">
-          <string>&lt;html&gt;&lt;body&gt;&lt;p&gt;Choose this option only if you know the PIN of your devices which &lt;b&gt;cannot be empty&lt;/b&gt; and must be at least &lt;b&gt;4 numbers&lt;/b&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;body&gt;&lt;p&gt;Choose this option only if you know the PIN of your devices which &lt;b&gt;cannot be empty&lt;/b&gt; and must be at least &lt;b&gt;4 digits&lt;/b&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
