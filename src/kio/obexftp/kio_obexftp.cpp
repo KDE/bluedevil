@@ -309,7 +309,6 @@ void KioFtp::TransferCompleted()
     disconnect(m_kded, SIGNAL(transferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
     disconnect(m_kded, SIGNAL(transferCompleted()), this, SLOT(TransferCompleted()));
     disconnect(m_kded, SIGNAL(errorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
-    finished();
     m_eventLoop.exit();
 }
 
