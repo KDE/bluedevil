@@ -196,35 +196,7 @@ void KioFtp::stat(const KUrl &url)
     kDebug() << "Stat File: " << url.fileName();
     kDebug() << "Empty Dir: " << url.directory().isEmpty();
 
-    if ((url.directory() == "/" || url.directory().isEmpty()) && url.fileName().isEmpty()) {
-        kDebug() << "Url is root";
-        KIO::UDSEntry entry;
-        entry.insert(KIO::UDSEntry::UDS_NAME, QString::fromLatin1("/"));
-        entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
-        entry.insert( KIO::UDSEntry::UDS_MIME_TYPE, QString::fromLatin1( "inode/directory" ) );
-        kDebug() << "Adding stat cached: " << url.prettyUrl();
-        m_statMap[url.prettyUrl()] = entry;
-        statEntry(entry);
-
-    } else {
-        if (m_statMap.contains(url.prettyUrl())) {
-            kDebug() << "statMap contains the url";
-            statEntry(m_statMap[url.prettyUrl()]);
-
-        } else {
-            kDebug() << "statMap NOT contains the url";
-
-            kDebug() << "RetrieveFolderListing";
-            blockUntilNotBusy(url.host());
-            QDBusPendingReply<QString> folder = m_kded->listDir(url.host(), url.directory());
-            kDebug() << "retireve called";
-            folder.waitForFinished();
-            kDebug() << "RetrieveError: " << folder.error().message();
-            kDebug() << folder.value();
-
-            processXmlEntries(url.upUrl(), folder.value(), "statCallback");
-        }
-    }
+    statHelper(url);
 
     kDebug() << "Finished";
     finished();
@@ -366,7 +338,7 @@ void KioFtp::copyHelper(const KUrl& src, const KUrl& dest)
         //Just in case the url is not in the stat, some times happens...
         if (!m_statMap.contains(src.prettyUrl())) {
             kDebug() << "The url is not in the cache, stating it";
-            stat(src);
+            statHelper(src);
         }
 
         if (m_statMap.value(src.prettyUrl()).isDir()) {
@@ -392,6 +364,40 @@ void KioFtp::copyHelper(const KUrl& src, const KUrl& dest)
     kDebug() << "Copy end";
 }
 
+void KioFtp::statHelper(const KUrl& url)
+{
+    kDebug() << url;
+    if ((url.directory() == "/" || url.directory().isEmpty()) && url.fileName().isEmpty()) {
+        kDebug() << "Url is root";
+        KIO::UDSEntry entry;
+        entry.insert(KIO::UDSEntry::UDS_NAME, QString::fromLatin1("/"));
+        entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+        entry.insert( KIO::UDSEntry::UDS_MIME_TYPE, QString::fromLatin1( "inode/directory" ) );
+        kDebug() << "Adding stat cached: " << url.prettyUrl();
+        m_statMap[url.prettyUrl()] = entry;
+        statEntry(entry);
+
+    } else {
+        if (m_statMap.contains(url.prettyUrl())) {
+            kDebug() << "statMap contains the url";
+            statEntry(m_statMap[url.prettyUrl()]);
+
+        } else {
+            kDebug() << "statMap NOT contains the url";
+
+            kDebug() << "RetrieveFolderListing";
+            blockUntilNotBusy(url.host());
+            QDBusPendingReply<QString> folder = m_kded->listDir(url.host(), url.directory());
+            kDebug() << "retireve called";
+            folder.waitForFinished();
+            kDebug() << "RetrieveError: " << folder.error().message();
+            kDebug() << folder.value();
+
+            processXmlEntries(url.upUrl(), folder.value(), "statCallback");
+        }
+    }
+    kDebug() << "Finished";
+}
 
 void KioFtp::blockUntilNotBusy(QString address)
 {

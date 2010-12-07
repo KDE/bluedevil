@@ -66,6 +66,7 @@ private Q_SLOTS:
     void wasKilledCheck();
 private:
     void copyHelper(const KUrl &src, const KUrl &dest);
+    void statHelper(const KUrl &url);
     void launchProgressBar();
     void blockUntilNotBusy(QString address);
 
