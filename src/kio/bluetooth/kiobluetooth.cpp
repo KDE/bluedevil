@@ -294,6 +294,7 @@ void KioBluetoothPrivate::listRemoteDeviceServices()
     }
 
     m_q->listEntry(KIO::UDSEntry(), true);
+    m_q->infoMessage("");
     m_q->finished();
 }
 
@@ -319,6 +320,7 @@ void KioBluetoothPrivate::listDevices()
     }
     Manager::self()->defaultAdapter()->stopDiscovery();
     m_q->listEntry(KIO::UDSEntry(), true);
+    m_q->infoMessage("");
     m_q->finished();
 }
 
