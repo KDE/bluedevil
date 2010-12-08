@@ -62,6 +62,7 @@ private Q_SLOTS:
 
     void updateProcess();
     void sessionConnected(QString address);
+    void sessionClosed(QString address);
 
     void wasKilledCheck();
 private:
