@@ -6,6 +6,9 @@
     <signal name="sessionConnected">
       <arg name="address" type="s" direction="out"/>
     </signal>
+    <signal name="sessionClosed">
+      <arg name="address" type="s" direction="out"/>
+    </signal>
     <signal name="transferProgress">
       <arg type="t" direction="out"/>
     </signal>
