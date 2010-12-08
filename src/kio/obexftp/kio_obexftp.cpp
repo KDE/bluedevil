@@ -59,6 +59,7 @@ KioFtp::KioFtp(const QByteArray &pool, const QByteArray &app)
 
     m_kded = new org::kde::ObexFtp("org.kde.kded", "/modules/obexftpdaemon", QDBusConnection::sessionBus(), 0);
     connect(m_kded, SIGNAL(sessionConnected(QString)), SLOT(sessionConnected(QString)));
+    connect(m_kded, SIGNAL(sessionClosed(QString)), SLOT(sessionClosed(QString)));
 }
 
 KioFtp::~KioFtp()
@@ -155,6 +156,8 @@ void KioFtp::setHost(const QString &host, quint16 port, const QString &user, con
     Q_UNUSED(port)
     Q_UNUSED(user)
     Q_UNUSED(pass)
+
+    infoMessage(i18n("Connecting to the device"));
 
     kDebug() << "setHost: " << host;
 
@@ -320,6 +323,26 @@ void KioFtp::sessionConnected(QString address)
     }
 }
 
+void KioFtp::sessionClosed(QString address)
+{
+    kDebug() << "Session closed: " << address;
+    if (m_eventLoop.isRunning()) {
+        m_eventLoop.exit();
+    }
+
+    if (m_settingHost) {
+        infoMessage(i18n("Can't connect to the device"));
+    } else {
+        infoMessage(i18n("Connection closed"));
+    }
+
+    if (m_counter != 0) {
+        processedSize(50);
+        m_counter = 0;
+    }
+}
+
+
 void KioFtp::copyHelper(const KUrl& src, const KUrl& dest)
 {
     connect(m_kded, SIGNAL(Cancelled()), this, SLOT(TransferCancelled()));
@@ -407,6 +430,7 @@ void KioFtp::blockUntilNotBusy(QString address)
             kDebug() << "Blocking, kded is busy";
             sleep(1);
         }
+        infoMessage("");
     }
     kDebug() << "kded is free";
 }
