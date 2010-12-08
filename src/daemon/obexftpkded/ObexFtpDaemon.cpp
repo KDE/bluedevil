@@ -333,6 +333,7 @@ void ObexFtpDaemon::SessionClosed(QDBusObjectPath path)
         //If the session is connected, so not 0
         if (i.value()->path() == path.path()) {
             kDebug() << "Removing : " << i.key();
+            emit sessionClosed(i.key());
             d->m_sessionMap.remove(i.key());
             delete i.value();
             return;
