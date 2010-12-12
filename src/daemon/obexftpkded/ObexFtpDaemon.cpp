@@ -132,6 +132,7 @@ void ObexFtpDaemon::offlineMode()
             delete d->m_sessionMap[i.key()];
         }
         d->m_sessionMap.remove(i.key());
+        ++i;
     }
 
     delete d->m_manager;
