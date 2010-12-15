@@ -39,6 +39,7 @@ Name[zh_TW]=轉接器
 
 Comment=Configure the available Bluetooth adapters
 Comment[da]=Indstil de tilgængelige Bluetooth-adaptere
+Comment[en_GB]=Configure the available Bluetooth adapters
 Comment[es]=Configurar los adaptadores Bluetooth disponibles
 Comment[et]=Saadaolevate Bluetoothi adapterite seadistamine
 Comment[fr]=Configure les adaptateurs Bluetooth disponibles

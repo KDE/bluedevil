@@ -41,6 +41,7 @@ Name[zh_TW]=裝置
 
 Comment=Configure the known Bluetooth remote devices
 Comment[da]=Indstil de kendte eksterne Bluetooth-enheder
+Comment[en_GB]=Configure the known Bluetooth remote devices
 Comment[es]=Configurar los dispositivos Bluetooth remotos conocidos
 Comment[et]=Teadaolevate Bluetoothi kaugseadmete seadistamine
 Comment[fr]=Configurer les périphériques distants connus de Bluetooth
