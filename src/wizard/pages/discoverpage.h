@@ -47,11 +47,12 @@ private Q_SLOTS:
     void deviceFound(Device * device);
     void itemSelected(QListWidgetItem* item);
     void leavePage(int id);
-
+    void nameChanged(const QString& name);
 private:
     void stopScan();
 
 private:
+    QMap<QString, QListWidgetItem*> m_itemRelation;
     BlueWizard *m_wizard;
 };
 

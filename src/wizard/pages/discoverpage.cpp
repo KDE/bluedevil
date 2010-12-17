@@ -66,6 +66,21 @@ void DiscoverPage::leavePage(int id)
     }
 }
 
+void DiscoverPage::nameChanged(const QString& name)
+{
+    kDebug() << name;
+    Device *device = static_cast<Device *>(sender());
+    m_itemRelation.value(device->address())->setText(name);
+    if (!device->name().isEmpty()) {
+        m_itemRelation[device->address()]->setText(device->friendlyName());
+        if (m_itemRelation[device->address()]->isSelected()) {
+            m_wizard->setDeviceAddress(device->address().toAscii());
+            emit completeChanged();
+        }
+        return;
+    }
+}
+
 void DiscoverPage::cleanupPage()
 {
     stopScan();
@@ -96,6 +111,17 @@ void DiscoverPage::stopScan()
 
 void DiscoverPage::deviceFound(Device* device)
 {
+    kDebug() << m_itemRelation.keys();
+    kDebug() << device->address();
+    if (m_itemRelation.contains(device->address()) && !device->name().isEmpty()) {
+        m_itemRelation[device->address()]->setText(device->friendlyName());
+        if (m_itemRelation[device->address()]->isSelected()) {
+            m_wizard->setDeviceAddress(device->address().toAscii());
+            emit completeChanged();
+        }
+        return;
+    }
+
     QString name = device->alias();
     if (device->alias() != device->name() && !device->name().isEmpty()) {
         name.append(" ("+device->name()+")");
@@ -107,14 +133,23 @@ void DiscoverPage::deviceFound(Device* device)
     }
 
     QListWidgetItem *item = new QListWidgetItem(KIcon(icon), name, deviceList);
+    bool a = connect(device, SIGNAL(nameChanged(QString)), this, SLOT(nameChanged(QString)));
+    if (!a) {
+        kDebug() << "CONNECT FAILED HOYGAN";
+    }
 
     item->setData(Qt::UserRole, device->address());
     deviceList->addItem(item);
+
+    m_itemRelation.insert(device->address(), item);
 }
 
 void DiscoverPage::itemSelected(QListWidgetItem* item)
 {
-    m_wizard->setDeviceAddress(item->data(Qt::UserRole).toByteArray());
+    Device *device = Manager::self()->defaultAdapter()->deviceForAddress(item->data(Qt::UserRole).toString());
+    if (!device->name().isEmpty()) {
+        m_wizard->setDeviceAddress(device->address().toAscii());
+    }
     emit completeChanged();
 }
 
