@@ -32,16 +32,10 @@
 
 using namespace BlueDevil;
 
-DiscoverPage::DiscoverPage(QWidget* parent): QWizardPage(parent), m_counter(0), m_wizard(0)
+DiscoverPage::DiscoverPage(QWidget* parent): QWizardPage(parent), m_wizard(0)
 {
     setTitle("Discover Devices");
     setupUi(this);
-
-    m_timer = new QTimer();
-    m_timer->setInterval(100);
-
-    connect(m_timer, SIGNAL(timeout()), this, SLOT(timeout()));
-    connect(scanBtn, SIGNAL(clicked()), this, SLOT(startScan()));
 
     connect(deviceList, SIGNAL(itemActivated(QListWidgetItem*)), this,
             SLOT(itemSelected(QListWidgetItem*)));
@@ -49,7 +43,6 @@ DiscoverPage::DiscoverPage(QWidget* parent): QWizardPage(parent), m_counter(0), 
 
 DiscoverPage::~DiscoverPage()
 {
-    delete m_timer;
 }
 
 void DiscoverPage::initializePage()
@@ -69,7 +62,6 @@ void DiscoverPage::initializePage()
 void DiscoverPage::leavePage(int id)
 {
     if (id == 2) {
-        progressBar->setValue(0);
         cleanupPage();
     }
 }
@@ -89,19 +81,14 @@ bool DiscoverPage::isComplete() const
 
 void DiscoverPage::startScan()
 {
-    m_counter = 0;
-    progressBar->setValue(0);
     deviceList->clear();
     stopScan();
 
     Manager::self()->defaultAdapter()->startDiscovery();
-    m_timer->start();
 }
 
 void DiscoverPage::stopScan()
 {
-    m_counter = 0;
-    m_timer->stop();
     if (Manager::self()->defaultAdapter()) {
         Manager::self()->defaultAdapter()->stopDiscovery();
     }
@@ -123,16 +110,6 @@ void DiscoverPage::deviceFound(Device* device)
 
     item->setData(Qt::UserRole, device->address());
     deviceList->addItem(item);
-}
-
-void DiscoverPage::timeout()
-{
-    m_counter ++;
-    progressBar->setValue(m_counter);
-
-    if (m_counter == 100) {
-        stopScan();
-    }
 }
 
 void DiscoverPage::itemSelected(QListWidgetItem* item)

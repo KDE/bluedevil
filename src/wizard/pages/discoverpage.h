@@ -22,7 +22,6 @@
 #include "ui_discover.h"
 #include <QWizardPage>
 
-class QTimer;
 class BlueWizard;
 
 namespace BlueDevil {
@@ -46,7 +45,6 @@ public:
 private Q_SLOTS:
     void startScan();
     void deviceFound(Device * device);
-    void timeout();
     void itemSelected(QListWidgetItem* item);
     void leavePage(int id);
 
@@ -54,9 +52,6 @@ private:
     void stopScan();
 
 private:
-    char m_counter;
-
-    QTimer *m_timer;
     BlueWizard *m_wizard;
 };
 
