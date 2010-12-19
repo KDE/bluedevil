@@ -149,6 +149,8 @@ void DiscoverPage::itemSelected(QListWidgetItem* item)
     Device *device = Manager::self()->defaultAdapter()->deviceForAddress(item->data(Qt::UserRole).toString());
     if (!device->name().isEmpty()) {
         m_wizard->setDeviceAddress(device->address().toAscii());
+    } else {
+        m_wizard->setDeviceAddress(QByteArray());
     }
     emit completeChanged();
 }

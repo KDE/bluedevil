@@ -45,6 +45,8 @@ void SelectDevicePage::deviceSelected(Device* device)
 {
     if (!device->name().isEmpty()) {
         static_cast<SendFileWizard* >(wizard())->setDevice(device);
+    } else {
+        static_cast<SendFileWizard* >(wizard())->setDevice(0);
     }
     emit completeChanged();
 }
