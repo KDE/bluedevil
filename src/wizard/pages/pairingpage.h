@@ -23,6 +23,7 @@
 #include <QWizardPage>
 
 class BlueWizard;
+class KPixmapSequenceOverlayPainter;
 namespace BlueDevil {
     class Device;
 }
@@ -45,8 +46,9 @@ public:
 public Q_SLOTS:
     void doPair();
     void nextPage();
-
+    void pinRequested(const QString &pin);
 private:
+    KPixmapSequenceOverlayPainter *m_working;
     BlueWizard  *m_wizard;
     Device      *m_device;
 };
