@@ -49,13 +49,10 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void deviceFound(Device *device);
-    void timeout();
     void itemSelected(QListWidgetItem* item);
 
 private:
-    char m_counter;
-
-    QTimer *m_timer;
+    QMap<QString, QListWidgetItem*> m_itemRelation;
     BlueWizard *m_wizard;
 
 Q_SIGNALS:
