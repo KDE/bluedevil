@@ -48,7 +48,7 @@
 #include <klocalizedstring.h>
 
 K_PLUGIN_FACTORY(BlueDevilFactory, registerPlugin<KCMBlueDevilDevices>();)
-K_EXPORT_PLUGIN(BlueDevilFactory("bluedevildevices"))
+K_EXPORT_PLUGIN(BlueDevilFactory("bluedevildevices", "bluedevil"))
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
