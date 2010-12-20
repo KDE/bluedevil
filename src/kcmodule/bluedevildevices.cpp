@@ -530,9 +530,9 @@ void KCMBlueDevilDevices::generateNoDevicesMessage()
     QLabel *label = new QLabel(m_noDevicesMessage);
     label->setPixmap(KIcon("dialog-information").pixmap(128, 128));
     layout->addWidget(label, 0, 1, Qt::AlignHCenter);
-    layout->addWidget(new QLabel("No remote devices have been added", m_noDevicesMessage),
+    layout->addWidget(new QLabel(i18n("No remote devices have been added"), m_noDevicesMessage),
                                  1, 1, Qt::AlignHCenter);
-    KPushButton *const addDevice = new KPushButton(KIcon("list-add"), "Click here to add a remote device");
+    KPushButton *const addDevice = new KPushButton(KIcon("list-add"), i18n("Click here to add a remote device"));
     connect(addDevice, SIGNAL(clicked()), this, SLOT(launchWizard()));
     layout->addWidget(addDevice, 2, 1, Qt::AlignHCenter);
     layout->setRowStretch(3, 1);
