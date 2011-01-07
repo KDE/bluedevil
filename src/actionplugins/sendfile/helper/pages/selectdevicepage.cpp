@@ -43,7 +43,11 @@ SelectDevicePage::SelectDevicePage(QWidget* parent): QWizardPage(parent)
 
 void SelectDevicePage::deviceSelected(Device* device)
 {
-    static_cast<SendFileWizard* >(wizard())->setDevice(device);
+    if (!device->name().isEmpty()) {
+        static_cast<SendFileWizard* >(wizard())->setDevice(device);
+    } else {
+        static_cast<SendFileWizard* >(wizard())->setDevice(0);
+    }
     emit completeChanged();
 }
 

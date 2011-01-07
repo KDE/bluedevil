@@ -21,6 +21,8 @@
 #include "../wizardagent.h"
 
 #include <KDebug>
+#include <kpixmapsequence.h>
+#include <kpixmapsequenceoverlaypainter.h>
 #include <bluedevil/bluedevil.h>
 
 using namespace BlueDevil;
@@ -55,9 +57,11 @@ void PairingPage::initializePage()
         }
 
         agent->setPin(pin);
-        pinNumber->setText(pin);
+        m_working = new KPixmapSequenceOverlayPainter(this);
+        m_working->setWidget(pinNumber);
+        m_working->start();
 
-        connect(agent, SIGNAL(pinRequested(const QString&)), pinNumber, SLOT(setText(QString)));
+        connect(agent, SIGNAL(pinRequested(QString)), this, SLOT(pinRequested(QString)));
         connect(m_device, SIGNAL(connectedChanged(bool)), this, SLOT(nextPage()));
         connect(m_device, SIGNAL(pairedChanged(bool)), this, SLOT(nextPage()));
 
@@ -89,7 +93,8 @@ int PairingPage::nextId() const
 void PairingPage::cleanupPage()
 {
     WizardAgent *agent = m_wizard->agent();
-    connect(agent, SIGNAL(pinRequested(const QString&)), pinNumber, SLOT(setText(QString)));
+    pinNumber->setText("");
+    connect(agent, SIGNAL(pinRequested(QString)), this, SLOT(pinRequested(QString)));
     disconnect(m_device, SIGNAL(connectedChanged(bool)), this, SLOT(nextPage()));
     disconnect(m_device, SIGNAL(pairedChanged(bool)), this, SLOT(nextPage()));
     m_wizard  = 0;
@@ -100,4 +105,10 @@ void PairingPage::nextPage()
     disconnect(m_device, SIGNAL(connectedChanged(bool)), this, SLOT(nextPage()));
     disconnect(m_device, SIGNAL(pairedChanged(bool)), this, SLOT(nextPage()));
     m_wizard->next();
+}
+
+void PairingPage::pinRequested(const QString& pin)
+{
+    m_working->stop();
+    pinNumber->setText(pin);
 }

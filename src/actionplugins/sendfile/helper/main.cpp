@@ -50,7 +50,9 @@ int main(int argc, char *argv[])
     app.setQuitOnLastWindowClosed(false);
 
     SendFileWizard *sendFileWizard = new SendFileWizard(wizardArg);
-    sendFileWizard->setDevice(Manager::self()->defaultAdapter()->deviceForAddress(wizardArg));
+    if (!wizardArg.isEmpty()) {
+        sendFileWizard->setDevice(Manager::self()->defaultAdapter()->deviceForAddress(wizardArg));
+    }
     sendFileWizard->show();
 
     return app.exec();

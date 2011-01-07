@@ -29,16 +29,9 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <widget class="KPushButton" name="scanBtn">
-         <property name="text">
-          <string>Re-scan</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QProgressBar" name="progressBar">
          <property name="maximum">
-          <number>100</number>
+          <number>0</number>
          </property>
          <property name="value">
           <number>0</number>
@@ -54,13 +47,6 @@
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>KPushButton</class>
-   <extends>QPushButton</extends>
-   <header>kpushbutton.h</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

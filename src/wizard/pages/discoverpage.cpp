@@ -32,16 +32,10 @@
 
 using namespace BlueDevil;
 
-DiscoverPage::DiscoverPage(QWidget* parent): QWizardPage(parent), m_counter(0), m_wizard(0)
+DiscoverPage::DiscoverPage(QWidget* parent): QWizardPage(parent), m_wizard(0)
 {
     setTitle("Discover Devices");
     setupUi(this);
-
-    m_timer = new QTimer();
-    m_timer->setInterval(100);
-
-    connect(m_timer, SIGNAL(timeout()), this, SLOT(timeout()));
-    connect(scanBtn, SIGNAL(clicked()), this, SLOT(startScan()));
 
     connect(deviceList, SIGNAL(itemActivated(QListWidgetItem*)), this,
             SLOT(itemSelected(QListWidgetItem*)));
@@ -49,7 +43,6 @@ DiscoverPage::DiscoverPage(QWidget* parent): QWizardPage(parent), m_counter(0), 
 
 DiscoverPage::~DiscoverPage()
 {
-    delete m_timer;
 }
 
 void DiscoverPage::initializePage()
@@ -69,8 +62,22 @@ void DiscoverPage::initializePage()
 void DiscoverPage::leavePage(int id)
 {
     if (id == 2) {
-        progressBar->setValue(0);
         cleanupPage();
+    }
+}
+
+void DiscoverPage::nameChanged(const QString& name)
+{
+    kDebug() << name;
+    Device *device = static_cast<Device *>(sender());
+    m_itemRelation.value(device->address())->setText(name);
+    if (!device->name().isEmpty()) {
+        m_itemRelation[device->address()]->setText(device->friendlyName());
+        if (m_itemRelation[device->address()]->isSelected()) {
+            m_wizard->setDeviceAddress(device->address().toAscii());
+            emit completeChanged();
+        }
+        return;
     }
 }
 
@@ -89,19 +96,14 @@ bool DiscoverPage::isComplete() const
 
 void DiscoverPage::startScan()
 {
-    m_counter = 0;
-    progressBar->setValue(0);
     deviceList->clear();
     stopScan();
 
     Manager::self()->defaultAdapter()->startDiscovery();
-    m_timer->start();
 }
 
 void DiscoverPage::stopScan()
 {
-    m_counter = 0;
-    m_timer->stop();
     if (Manager::self()->defaultAdapter()) {
         Manager::self()->defaultAdapter()->stopDiscovery();
     }
@@ -109,6 +111,17 @@ void DiscoverPage::stopScan()
 
 void DiscoverPage::deviceFound(Device* device)
 {
+    kDebug() << m_itemRelation.keys();
+    kDebug() << device->address();
+    if (m_itemRelation.contains(device->address()) && !device->name().isEmpty()) {
+        m_itemRelation[device->address()]->setText(device->friendlyName());
+        if (m_itemRelation[device->address()]->isSelected()) {
+            m_wizard->setDeviceAddress(device->address().toAscii());
+            emit completeChanged();
+        }
+        return;
+    }
+
     QString name = device->alias();
     if (device->alias() != device->name() && !device->name().isEmpty()) {
         name.append(" ("+device->name()+")");
@@ -120,24 +133,25 @@ void DiscoverPage::deviceFound(Device* device)
     }
 
     QListWidgetItem *item = new QListWidgetItem(KIcon(icon), name, deviceList);
+    bool a = connect(device, SIGNAL(nameChanged(QString)), this, SLOT(nameChanged(QString)));
+    if (!a) {
+        kDebug() << "CONNECT FAILED HOYGAN";
+    }
 
     item->setData(Qt::UserRole, device->address());
     deviceList->addItem(item);
-}
 
-void DiscoverPage::timeout()
-{
-    m_counter ++;
-    progressBar->setValue(m_counter);
-
-    if (m_counter == 100) {
-        stopScan();
-    }
+    m_itemRelation.insert(device->address(), item);
 }
 
 void DiscoverPage::itemSelected(QListWidgetItem* item)
 {
-    m_wizard->setDeviceAddress(item->data(Qt::UserRole).toByteArray());
+    Device *device = Manager::self()->defaultAdapter()->deviceForAddress(item->data(Qt::UserRole).toString());
+    if (!device->name().isEmpty()) {
+        m_wizard->setDeviceAddress(device->address().toAscii());
+    } else {
+        m_wizard->setDeviceAddress(QByteArray());
+    }
     emit completeChanged();
 }
 

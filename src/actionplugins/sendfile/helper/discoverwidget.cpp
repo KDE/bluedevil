@@ -34,15 +34,9 @@
 
 using namespace BlueDevil;
 
-DiscoverWidget::DiscoverWidget(QWidget* parent) : m_counter(0)
+DiscoverWidget::DiscoverWidget(QWidget* parent)
 {
     setupUi(this);
-
-    m_timer = new QTimer();
-    m_timer->setInterval(100);
-
-    connect(m_timer, SIGNAL(timeout()), this, SLOT(timeout()));
-    connect(scanBtn, SIGNAL(clicked()), this, SLOT(startScan()));
 
     connect(deviceList, SIGNAL(itemActivated(QListWidgetItem*)), this,
             SLOT(itemSelected(QListWidgetItem*)));
@@ -54,34 +48,18 @@ DiscoverWidget::DiscoverWidget(QWidget* parent) : m_counter(0)
 
 DiscoverWidget::~DiscoverWidget()
 {
-    delete m_timer;
-}
-
-void DiscoverWidget::timeout()
-{
-    m_counter ++;
-    progressBar->setValue(m_counter);
-
-    if (m_counter == 100) {
-        stopScan();
-    }
 }
 
 void DiscoverWidget::startScan()
 {
-    m_counter = 0;
-    progressBar->setValue(0);
     deviceList->clear();
     stopScan();
 
     Manager::self()->defaultAdapter()->startDiscovery();
-    m_timer->start();
 }
 
 void DiscoverWidget::stopScan()
 {
-    m_counter = 0;
-    m_timer->stop();
     if (Manager::self()->defaultAdapter()) {
         Manager::self()->defaultAdapter()->stopDiscovery();
     }
@@ -89,6 +67,14 @@ void DiscoverWidget::stopScan()
 
 void DiscoverWidget::deviceFound(Device* device)
 {
+    if (m_itemRelation.contains(device->address()) && !device->name().isEmpty()) {
+        m_itemRelation[device->address()]->setText(device->friendlyName());
+        if (m_itemRelation[device->address()]->isSelected()) {
+            emit deviceSelected(device);
+        }
+        return;
+    }
+
     QString name = device->alias();
     if (device->alias() != device->name() && !device->name().isEmpty()) {
         name.append(" ("+device->name()+")");
@@ -102,11 +88,7 @@ void DiscoverWidget::deviceFound(Device* device)
     QListWidgetItem *item = new QListWidgetItem(KIcon(icon), name, deviceList);
 
     item->setData(Qt::UserRole, qVariantFromValue<QObject*>(device));
-    progressBar->setValue(m_counter);
-
-    if (m_counter == 100) {
-        stopScan();
-    }
+    m_itemRelation.insert(device->address(), item);
 }
 
 void DiscoverWidget::itemSelected(QListWidgetItem* item)
