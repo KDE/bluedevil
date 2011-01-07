@@ -82,7 +82,7 @@ OpenObex::Server::~Server()
     }
     disconnect();
     delete d->dbusServer;
-    Q_FOREACH (OpenObex::ServerSession* serverSession, d->serverSessions.values()) {
+    Q_FOREACH (OpenObex::ServerSession* serverSession, d->serverSessions) {
       serverSession->queueDelete();
     }
     delete d;
