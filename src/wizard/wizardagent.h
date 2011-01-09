@@ -42,6 +42,7 @@ public:
 
     void setPin(const QString& pin);
     QString getPin(Device* device);
+    QString pin();
 
 //D-Bus interface implementation
 public slots:

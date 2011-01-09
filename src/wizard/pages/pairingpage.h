@@ -23,6 +23,7 @@
 #include <QWizardPage>
 #include <QDBusMessage>
 
+class WizardAgent;
 class BlueWizard;
 class QDBusMessage;
 class KPixmapSequenceOverlayPainter;
@@ -56,6 +57,7 @@ private:
     QDBusMessage m_msg;
     KPixmapSequenceOverlayPainter *m_working;
     BlueWizard  *m_wizard;
+    WizardAgent *m_agent;
     Device      *m_device;
 };
 

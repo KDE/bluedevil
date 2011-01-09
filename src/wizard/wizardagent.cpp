@@ -121,7 +121,7 @@ QString WizardAgent::getPin(Device *device)
     m_device = device;
     QXmlStreamReader* m_xml = new QXmlStreamReader(file);
 
-    int deviceType = device->deviceClass();
+    int deviceType = classToType(device->deviceClass());
     int xmlType = 0;
 
     while(!m_xml->atEnd()) {
@@ -156,6 +156,7 @@ QString WizardAgent::getPin(Device *device)
         }
 
         m_pin = attr.value("pin").toString();
+        kDebug() << "PIN: " << m_pin;
         return m_pin;
     }
 
@@ -165,4 +166,9 @@ QString WizardAgent::getPin(Device *device)
 void WizardAgent::setPin(const QString& pin)
 {
     m_pin = pin;
+}
+
+QString WizardAgent::pin()
+{
+    return m_pin;
 }

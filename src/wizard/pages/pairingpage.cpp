@@ -51,16 +51,16 @@ void PairingPage::initializePage()
         m_wizard = static_cast<BlueWizard*>(wizard());
         m_device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
 
-        WizardAgent *agent = m_wizard->agent();
+        m_agent = m_wizard->agent();
 
         QString pin;
         if (m_wizard->manualPin()) {
             pin = m_wizard->pin();
         } else {
-            pin = agent->getPin(m_device);
+            pin = m_agent->getPin(m_device);
         }
 
-        agent->setPin(pin);
+        m_agent->setPin(pin);
         m_working = new KPixmapSequenceOverlayPainter(this);
         m_working->setWidget(pinNumber);
         m_working->start();
@@ -72,8 +72,12 @@ void PairingPage::initializePage()
             m_wizard->setButtonText(QWizard::BackButton, i18n("PIN incorrect"));
         }
 
-        connect(agent, SIGNAL(pinRequested(QString)), this, SLOT(pinRequested(QString)));
-        connect(agent, SIGNAL(confirmationRequested(quint32,QDBusMessage)), this, SLOT(confirmationRequested(quint32,QDBusMessage)));
+        if (pin == "NULL") {
+            label_2->setHidden(true);
+        }
+
+        connect(m_agent, SIGNAL(pinRequested(QString)), this, SLOT(pinRequested(QString)));
+        connect(m_agent, SIGNAL(confirmationRequested(quint32,QDBusMessage)), this, SLOT(confirmationRequested(quint32,QDBusMessage)));
         connect(m_device, SIGNAL(connectedChanged(bool)), this, SLOT(nextPage()));
         connect(m_device, SIGNAL(pairedChanged(bool)), this, SLOT(nextPage()));
 
@@ -83,7 +87,11 @@ void PairingPage::initializePage()
 
 void PairingPage::doPair()
 {
-    m_device->pair("/wizardAgent", Adapter::DisplayYesNo);
+    if (m_agent->pin() == "NULL") {
+        m_device->UBI();//This will call createDevice, is the only way of doing it right now
+    } else {
+        m_device->pair("/wizardAgent", Adapter::DisplayYesNo);
+    }
     kDebug() << "pair has been executed, waiting...";
 }
 
@@ -93,13 +101,16 @@ bool PairingPage::isComplete() const
         kDebug() << "True";
         return true;
     }
+    if (m_agent->pin() == "NULL") {
+        return true;
+    }
     kDebug() << "False";
     return false;
 }
 
 int PairingPage::nextId() const
 {
-    if (m_device->isPaired()) {
+    if (m_device->isPaired() || m_agent->pin() == "NULL") {
         kDebug() << "Device paired";
         return BlueWizard::Services;
     }
@@ -110,7 +121,7 @@ int PairingPage::nextId() const
 bool PairingPage::validatePage()
 {
     kDebug() << "Legacy: " << m_device->hasLegacyPairing();
-     if (!m_device->isPaired()) {
+     if (!m_device->isPaired() && m_agent->pin() != "NULL") {
         kDebug() << "Device is not paired";
         if (!m_device->hasLegacyPairing() && !pinNumber->text().isEmpty()) {
             kDebug() << "But device is SSP: ";
@@ -137,10 +148,9 @@ void PairingPage::cleanupPage()
         kDebug();
     }
 
-    WizardAgent *agent = m_wizard->agent();
     pinNumber->setText("");
-    connect(agent, SIGNAL(pinRequested(QString)), this, SLOT(pinRequested(QString)));
-    connect(agent, SIGNAL(confirmationRequested(quint32,QDBusMessage)), this, SLOT(confirmationRequested(quint32,QDBusMessage)));
+    connect(m_agent, SIGNAL(pinRequested(QString)), this, SLOT(pinRequested(QString)));
+    connect(m_agent, SIGNAL(confirmationRequested(quint32,QDBusMessage)), this, SLOT(confirmationRequested(quint32,QDBusMessage)));
     disconnect(m_device, SIGNAL(connectedChanged(bool)), this, SLOT(nextPage()));
     disconnect(m_device, SIGNAL(pairedChanged(bool)), this, SLOT(nextPage()));
     m_wizard->setButtonText(QWizard::NextButton, i18n("Next"));
@@ -150,6 +160,7 @@ void PairingPage::cleanupPage()
 
 void PairingPage::nextPage()
 {
+    kDebug();
     disconnect(m_device, SIGNAL(connectedChanged(bool)), this, SLOT(nextPage()));
     disconnect(m_device, SIGNAL(pairedChanged(bool)), this, SLOT(nextPage()));
     m_wizard->next();
@@ -157,8 +168,12 @@ void PairingPage::nextPage()
 
 void PairingPage::pinRequested(const QString& pin)
 {
-    m_working->stop();
-    pinNumber->setText(pin);
+    kDebug() << classToType(m_device->deviceClass());
+    kDebug() << m_device->deviceClass();
+    if (classToType(m_device->deviceClass()) == BLUETOOTH_TYPE_KEYBOARD) {
+        m_working->stop();
+        pinNumber->setText(pin);
+    }
 }
 
 void PairingPage::confirmationRequested(quint32 passkey, const QDBusMessage& msg)
