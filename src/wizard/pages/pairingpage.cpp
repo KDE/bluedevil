@@ -66,7 +66,7 @@ void PairingPage::initializePage()
         m_working->start();
 
         kDebug() << "Legacy: " << m_device->hasLegacyPairing();
-        if (!m_device->hasLegacyPairing()) {
+        if (!m_device->hasLegacyPairing() && pin != "NULL") {
             label_2->setHidden(true);
             m_wizard->setButtonText(QWizard::NextButton, i18n("PIN correct"));
             m_wizard->setButtonText(QWizard::BackButton, i18n("PIN incorrect"));
