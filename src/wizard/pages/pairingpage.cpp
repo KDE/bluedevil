@@ -170,10 +170,8 @@ void PairingPage::pinRequested(const QString& pin)
 {
     kDebug() << classToType(m_device->deviceClass());
     kDebug() << m_device->deviceClass();
-    if (classToType(m_device->deviceClass()) == BLUETOOTH_TYPE_KEYBOARD) {
-        m_working->stop();
-        pinNumber->setText(pin);
-    }
+    m_working->stop();
+    pinNumber->setText(pin);
 }
 
 void PairingPage::confirmationRequested(quint32 passkey, const QDBusMessage& msg)
