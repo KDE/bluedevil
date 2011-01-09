@@ -23,6 +23,7 @@
 #include <QDBusMessage>
 #include <bluedevil/bluedevil.h>
 #include <KDebug>
+#include <krandom.h>
 #include <kstandarddirs.h>
 
 using namespace BlueDevil;
@@ -103,7 +104,8 @@ QString WizardAgent::getPin(Device *device)
         return m_pin;
     }
 
-    m_pin.append("0000");
+    m_pin = QString::number(KRandom::random());
+    m_pin = m_pin.left(6);
 
     QString xmlPath = KStandardDirs::locate("appdata", "pin-code-database.xml");
 
@@ -156,6 +158,10 @@ QString WizardAgent::getPin(Device *device)
         }
 
         m_pin = attr.value("pin").toString();
+        if (m_pin.startsWith("max:")) {
+            int num = m_pin.right(m_pin.length() - 4).toInt();
+            m_pin = QString::number(KRandom::random()).left(num);
+        }
         kDebug() << "PIN: " << m_pin;
         return m_pin;
     }
