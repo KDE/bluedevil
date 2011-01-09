@@ -22,6 +22,9 @@
 
 #include <KDebug>
 
+#include <bluedevil/bluedevil.h>
+using namespace BlueDevil;
+
 PinPage::PinPage(QWidget* parent): QWizardPage(parent), m_wizard(0)
 {
     setTitle(i18n("Choose your PIN mode"));
@@ -37,6 +40,11 @@ void PinPage::initializePage()
     if (!m_wizard) {
         kDebug() << "First time in the page";
         m_wizard = static_cast<BlueWizard* >(wizard());
+        m_device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
+        if (!m_device->hasLegacyPairing()) {
+            emit completeChanged();
+            QMetaObject::invokeMethod(m_wizard, "next", Qt::QueuedConnection);
+        }
     }
 }
 
@@ -60,7 +68,7 @@ void PinPage::pinChange(const QString& pin)
 
 bool PinPage::isComplete() const
 {
-    if (manualBtn->isChecked()) {
+    if (manualBtn->isChecked() && m_device->hasLegacyPairing()) {
         if (!pinEdit->text().isEmpty()) {
             if (pinEdit->text().length() > 3) {
                 return true;

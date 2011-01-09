@@ -20,13 +20,15 @@
 
 #include "wizardagent.h"
 
+#include <QDBusMessage>
 #include <bluedevil/bluedevil.h>
 #include <KDebug>
+#include <krandom.h>
 #include <kstandarddirs.h>
 
 using namespace BlueDevil;
 
-WizardAgent::WizardAgent(QApplication* application) : QDBusAbstractAdaptor(application)
+WizardAgent::WizardAgent(QApplication* application) : QDBusAbstractAdaptor(application), m_fromDatabase(false)
 {
     kDebug() << "AGENT registered !";
 }
@@ -71,7 +73,7 @@ void WizardAgent::RequestConfirmation(QDBusObjectPath device, quint32 passkey, c
     Q_UNUSED(passkey);
     Q_UNUSED(msg);
     kDebug() << "AGENT-RequestConfirmation " << device.path() << ", " << QString::number(passkey);
-    QDBusConnection::systemBus().send(msg.createReply());
+    emit confirmationRequested(passkey, msg);
 }
 
 void WizardAgent::ConfirmModeChange(const QString& mode, const QDBusMessage &msg)
@@ -102,7 +104,8 @@ QString WizardAgent::getPin(Device *device)
         return m_pin;
     }
 
-    m_pin.append("0000");
+    m_pin = QString::number(KRandom::random());
+    m_pin = m_pin.left(6);
 
     QString xmlPath = KStandardDirs::locate("appdata", "pin-code-database.xml");
 
@@ -120,7 +123,7 @@ QString WizardAgent::getPin(Device *device)
     m_device = device;
     QXmlStreamReader* m_xml = new QXmlStreamReader(file);
 
-    int deviceType = device->deviceClass();
+    int deviceType = classToType(device->deviceClass());
     int xmlType = 0;
 
     while(!m_xml->atEnd()) {
@@ -155,6 +158,13 @@ QString WizardAgent::getPin(Device *device)
         }
 
         m_pin = attr.value("pin").toString();
+        m_fromDatabase = true;
+        if (m_pin.startsWith("max:")) {
+            m_fromDatabase = false;
+            int num = m_pin.right(m_pin.length() - 4).toInt();
+            m_pin = QString::number(KRandom::random()).left(num);
+        }
+        kDebug() << "PIN: " << m_pin;
         return m_pin;
     }
 
@@ -164,4 +174,14 @@ QString WizardAgent::getPin(Device *device)
 void WizardAgent::setPin(const QString& pin)
 {
     m_pin = pin;
+}
+
+QString WizardAgent::pin()
+{
+    return m_pin;
+}
+
+bool WizardAgent::isFromDatabase()
+{
+    return m_fromDatabase;
 }

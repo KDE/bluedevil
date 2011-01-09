@@ -23,6 +23,11 @@
 #include <QWizardPage>
 
 class BlueWizard;
+namespace BlueDevil {
+    class Device;
+}
+
+using namespace BlueDevil;
 class PinPage : public QWizardPage
 , public Ui::Pin
 {
@@ -38,6 +43,7 @@ private Q_SLOTS:
     void pinChange(const QString& pin);
 
 private:
+    Device     *m_device;
     BlueWizard *m_wizard;
 };
 

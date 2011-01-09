@@ -42,6 +42,8 @@ public:
 
     void setPin(const QString& pin);
     QString getPin(Device* device);
+    QString pin();
+    bool isFromDatabase();
 
 //D-Bus interface implementation
 public slots:
@@ -55,11 +57,13 @@ public slots:
     void Cancel();
 
 private:
+    bool    m_fromDatabase;
     QString m_pin;
     Device *m_device;
 
 Q_SIGNALS:
     void pinRequested(const QString&);
+    void confirmationRequested(quint32 passkey, const QDBusMessage &msg);
     void agentReleased();
 };
 
