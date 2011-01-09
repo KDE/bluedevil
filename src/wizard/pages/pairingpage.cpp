@@ -20,6 +20,10 @@
 #include "../bluewizard.h"
 #include "../wizardagent.h"
 
+#include <QDBusMessage>
+#include <QWizard>
+#include <QAbstractButton>
+
 #include <KDebug>
 #include <kpixmapsequence.h>
 #include <kpixmapsequenceoverlaypainter.h>
@@ -61,7 +65,15 @@ void PairingPage::initializePage()
         m_working->setWidget(pinNumber);
         m_working->start();
 
+        kDebug() << "Legacy: " << m_device->hasLegacyPairing();
+        if (!m_device->hasLegacyPairing()) {
+            label_2->setHidden(true);
+            m_wizard->setButtonText(QWizard::NextButton, i18n("PIN correct"));
+            m_wizard->setButtonText(QWizard::BackButton, i18n("PIN incorrect"));
+        }
+
         connect(agent, SIGNAL(pinRequested(QString)), this, SLOT(pinRequested(QString)));
+        connect(agent, SIGNAL(confirmationRequested(quint32,QDBusMessage)), this, SLOT(confirmationRequested(quint32,QDBusMessage)));
         connect(m_device, SIGNAL(connectedChanged(bool)), this, SLOT(nextPage()));
         connect(m_device, SIGNAL(pairedChanged(bool)), this, SLOT(nextPage()));
 
@@ -77,6 +89,11 @@ void PairingPage::doPair()
 
 bool PairingPage::isComplete() const
 {
+    if (!m_device->hasLegacyPairing() && !pinNumber->text().isEmpty()) {
+        kDebug() << "True";
+        return true;
+    }
+    kDebug() << "False";
     return false;
 }
 
@@ -90,13 +107,44 @@ int PairingPage::nextId() const
     return BlueWizard::Introduction;
 }
 
+bool PairingPage::validatePage()
+{
+    kDebug() << "Legacy: " << m_device->hasLegacyPairing();
+     if (!m_device->isPaired()) {
+        kDebug() << "Device is not paired";
+        if (!m_device->hasLegacyPairing() && !pinNumber->text().isEmpty()) {
+            kDebug() << "But device is SSP: ";
+            QDBusConnection::systemBus().send(m_msg.createReply());
+            pinNumber->setText("");
+            m_working->start();
+            emit completeChanged();
+            return false;
+        }
+    }
+    return true;
+}
+
+
 void PairingPage::cleanupPage()
 {
+    if (!m_device->hasLegacyPairing() && !pinNumber->text().isEmpty()) {
+        QDBusConnection::systemBus().send(m_msg.createErrorReply("org.bluez.Error.Rejected", "The request was rejected"));
+        QDBusConnection::systemBus().unregisterObject("/wizardAgent", QDBusConnection::UnregisterTree);
+
+        if(!QDBusConnection::systemBus().registerObject("/wizardAgent", qApp)) {
+            kDebug() << "The dbus object can't be registered";
+        }
+        kDebug();
+    }
+
     WizardAgent *agent = m_wizard->agent();
     pinNumber->setText("");
     connect(agent, SIGNAL(pinRequested(QString)), this, SLOT(pinRequested(QString)));
+    connect(agent, SIGNAL(confirmationRequested(quint32,QDBusMessage)), this, SLOT(confirmationRequested(quint32,QDBusMessage)));
     disconnect(m_device, SIGNAL(connectedChanged(bool)), this, SLOT(nextPage()));
     disconnect(m_device, SIGNAL(pairedChanged(bool)), this, SLOT(nextPage()));
+    m_wizard->setButtonText(QWizard::NextButton, i18n("Next"));
+    m_wizard->setButtonText(QWizard::BackButton, i18n("Back"));
     m_wizard  = 0;
 }
 
@@ -111,4 +159,13 @@ void PairingPage::pinRequested(const QString& pin)
 {
     m_working->stop();
     pinNumber->setText(pin);
+}
+
+void PairingPage::confirmationRequested(quint32 passkey, const QDBusMessage& msg)
+{
+    kDebug();
+    m_msg = msg;
+    m_working->stop();
+    pinNumber->setText(QString::number(passkey));
+    emit completeChanged();
 }

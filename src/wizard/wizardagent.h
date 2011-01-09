@@ -60,6 +60,7 @@ private:
 
 Q_SIGNALS:
     void pinRequested(const QString&);
+    void confirmationRequested(quint32 passkey, const QDBusMessage &msg);
     void agentReleased();
 };
 

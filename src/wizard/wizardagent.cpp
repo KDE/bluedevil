@@ -20,6 +20,7 @@
 
 #include "wizardagent.h"
 
+#include <QDBusMessage>
 #include <bluedevil/bluedevil.h>
 #include <KDebug>
 #include <kstandarddirs.h>
@@ -71,7 +72,7 @@ void WizardAgent::RequestConfirmation(QDBusObjectPath device, quint32 passkey, c
     Q_UNUSED(passkey);
     Q_UNUSED(msg);
     kDebug() << "AGENT-RequestConfirmation " << device.path() << ", " << QString::number(passkey);
-    QDBusConnection::systemBus().send(msg.createReply());
+    emit confirmationRequested(passkey, msg);
 }
 
 void WizardAgent::ConfirmModeChange(const QString& mode, const QDBusMessage &msg)

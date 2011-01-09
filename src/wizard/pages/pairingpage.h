@@ -21,8 +21,10 @@
 
 #include "ui_pairing.h"
 #include <QWizardPage>
+#include <QDBusMessage>
 
 class BlueWizard;
+class QDBusMessage;
 class KPixmapSequenceOverlayPainter;
 namespace BlueDevil {
     class Device;
@@ -41,13 +43,17 @@ public:
     virtual void initializePage();
     virtual bool isComplete() const;
     virtual int nextId() const;
+    virtual bool validatePage();
     virtual void cleanupPage();
 
 public Q_SLOTS:
     void doPair();
     void nextPage();
     void pinRequested(const QString &pin);
+    void confirmationRequested(quint32 passkey, const QDBusMessage &msg);
+
 private:
+    QDBusMessage m_msg;
     KPixmapSequenceOverlayPainter *m_working;
     BlueWizard  *m_wizard;
     Device      *m_device;

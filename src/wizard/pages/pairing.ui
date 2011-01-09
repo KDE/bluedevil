@@ -38,6 +38,12 @@
       </item>
       <item>
        <widget class="QLabel" name="pinNumber">
+        <property name="minimumSize">
+         <size>
+          <width>22</width>
+          <height>22</height>
+         </size>
+        </property>
         <property name="frameShape">
          <enum>QFrame::NoFrame</enum>
         </property>
