@@ -28,7 +28,7 @@
 
 using namespace BlueDevil;
 
-WizardAgent::WizardAgent(QApplication* application) : QDBusAbstractAdaptor(application)
+WizardAgent::WizardAgent(QApplication* application) : QDBusAbstractAdaptor(application), m_fromDatabase(false)
 {
     kDebug() << "AGENT registered !";
 }
@@ -158,7 +158,9 @@ QString WizardAgent::getPin(Device *device)
         }
 
         m_pin = attr.value("pin").toString();
+        m_fromDatabase = true;
         if (m_pin.startsWith("max:")) {
+            m_fromDatabase = false;
             int num = m_pin.right(m_pin.length() - 4).toInt();
             m_pin = QString::number(KRandom::random()).left(num);
         }
@@ -177,4 +179,9 @@ void WizardAgent::setPin(const QString& pin)
 QString WizardAgent::pin()
 {
     return m_pin;
+}
+
+bool WizardAgent::isFromDatabase()
+{
+    return m_fromDatabase;
 }

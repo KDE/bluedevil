@@ -72,7 +72,7 @@ void PairingPage::initializePage()
             m_wizard->setButtonText(QWizard::BackButton, i18n("PIN incorrect"));
         }
 
-        if (pin == "NULL") {
+        if (pin == "NULL" || m_agent->isFromDatabase()) {
             label_2->setHidden(true);
         }
 
@@ -170,8 +170,10 @@ void PairingPage::pinRequested(const QString& pin)
 {
     kDebug() << classToType(m_device->deviceClass());
     kDebug() << m_device->deviceClass();
-    m_working->stop();
-    pinNumber->setText(pin);
+    if (!m_agent->isFromDatabase()) {
+        m_working->stop();
+        pinNumber->setText(pin);
+    }
 }
 
 void PairingPage::confirmationRequested(quint32 passkey, const QDBusMessage& msg)
