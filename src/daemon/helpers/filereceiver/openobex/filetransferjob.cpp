@@ -99,7 +99,7 @@ void FileTransferJob::receiveFiles()
     /// @see documentation for checkFinish() for details
     QTimer::singleShot(2000, this, SLOT(checkFinish()));
 
-    emit description(this, i18n("Receiving file over Bluetooth"), QPair<QString, QString>(i18nc("File transfer origin", "From"), QString(m_serverSession->device()->name())), QPair<QString, QString>(i18nc("File transfer destination", "To"), m_url.url()));
+    emit description(this, i18n("Receiving file over bluetooth"), QPair<QString, QString>(i18n("From"), QString(m_serverSession->device()->name())), QPair<QString, QString>(i18n("To"), m_url.url()));
 
     org::openobex::ServerSession *serverSession = m_serverSession->dbusServerSession();
     connect(serverSession, SIGNAL(TransferProgress(qulonglong)),
@@ -138,7 +138,7 @@ void FileTransferJob::setCustomSaveUrl(const QString& customSaveUrl)
   kDebug() << "m_customSaveUrl" << m_customSaveUrl;
   m_customSaveUrl = customSaveUrl;
 
-  emit description(this, i18n("Receiving file over Bluetooth"), QPair<QString, QString>(i18nc("File transfer origin", "From"), m_serverSession->device()->name()), QPair<QString, QString>(i18nc("File transfer destination", "To"), m_customSaveUrl));
+  emit description(this, i18n("Receiving file over bluetooth"), QPair<QString, QString>(i18n("From"), m_serverSession->device()->name()), QPair<QString, QString>(i18n("To"), m_customSaveUrl));
 }
 
 

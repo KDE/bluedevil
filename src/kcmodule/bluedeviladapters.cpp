@@ -40,7 +40,7 @@
 #include <kpluginfactory.h>
 
 K_PLUGIN_FACTORY(BlueDevilFactory, registerPlugin<KCMBlueDevilAdapters>();)
-K_EXPORT_PLUGIN(BlueDevilFactory("bluedeviladapters", "bluedevil"))
+K_EXPORT_PLUGIN(BlueDevilFactory("bluedeviladapters"))
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 

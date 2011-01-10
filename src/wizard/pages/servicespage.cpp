@@ -29,7 +29,7 @@
 
 ServicesPage::ServicesPage(QWidget* parent): QWizardPage(parent)
 {
-    setTitle(i18n("Service Selection"));
+    setTitle(i18n("Service selection"));
     setupUi(this);
 }
 

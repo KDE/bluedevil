@@ -48,7 +48,7 @@
 #include <klocalizedstring.h>
 
 K_PLUGIN_FACTORY(BlueDevilFactory, registerPlugin<KCMBlueDevilDevices>();)
-K_EXPORT_PLUGIN(BlueDevilFactory("bluedevildevices", "bluedevil"))
+K_EXPORT_PLUGIN(BlueDevilFactory("bluedevildevices"))
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -475,8 +475,8 @@ void KCMBlueDevilDevices::removeDevice()
 {
     m_removeDevice->setEnabled(false);
     Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
-    if (KMessageBox::questionYesNo(this, i18n("Are you sure that you want to remove the device \"%1\" from the list of known devices?", device->alias()),
-                                   i18nc("Title of window that asks for confirmation when removing a device", "Device Removal")) == KMessageBox::Yes) {
+    if (KMessageBox::questionYesNo(this, i18n("Are you sure that you want to remove device \"%1\" from the list of known devices?", device->alias()),
+                                   i18nc("Title of window that asks for confirmation when removing a device", "Device removal")) == KMessageBox::Yes) {
         BlueDevil::Manager::self()->defaultAdapter()->removeDevice(device);
     } else {
         m_removeDevice->setEnabled(true);
@@ -530,9 +530,9 @@ void KCMBlueDevilDevices::generateNoDevicesMessage()
     QLabel *label = new QLabel(m_noDevicesMessage);
     label->setPixmap(KIcon("dialog-information").pixmap(128, 128));
     layout->addWidget(label, 0, 1, Qt::AlignHCenter);
-    layout->addWidget(new QLabel(i18n("No remote devices have been added"), m_noDevicesMessage),
+    layout->addWidget(new QLabel("No remote devices have been added", m_noDevicesMessage),
                                  1, 1, Qt::AlignHCenter);
-    KPushButton *const addDevice = new KPushButton(KIcon("list-add"), i18n("Click here to add a remote device"));
+    KPushButton *const addDevice = new KPushButton(KIcon("list-add"), "Click here to add a remote device");
     connect(addDevice, SIGNAL(clicked()), this, SLOT(launchWizard()));
     layout->addWidget(addDevice, 2, 1, Qt::AlignHCenter);
     layout->setRowStretch(3, 1);

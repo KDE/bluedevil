@@ -53,17 +53,13 @@ public Q_SLOTS:
     void adapterAdded();
 
     void regenerateDeviceEntries();
-    /**
-     * Check if there are connected device, and if so updates tooltip and overlay
-     */
-    void regenerateConnectedDevices();
 
     void sendFile();
     void browseDevices();
     void addDevice();
-    void configBluetooth();
-    void toggleBluetooth();
-    void activeDiscoverable(bool active);
+    void configReceive();
+    void deviceManager();
+    void configAdapter();
 
 private Q_SLOTS:
     void browseTriggered();
@@ -72,18 +68,12 @@ private Q_SLOTS:
     void disconnectTriggered();
     void propertyChanged(const QString &key, const QDBusVariant &value);
     void UUIDsChanged(const QStringList &UUIDs);
-    void poweredChanged();
     void deviceCreated(Device *device);
 
 private:
     void onlineMode();
     void offlineMode();
 
-    /**
-     * Returns true or false wether there are powered adapters
-     */
-    bool poweredAdapters();
-    void setTooltipTitleStatus(bool);
 private:
     QMap<void*, KAction*> m_interfaceMap;
     QList<QAction*>       m_actions;

@@ -74,8 +74,8 @@ void RequestPin::introducePin()
     QWidget *mainWidget = new QWidget();
     dialogWidget->setupUi(mainWidget);
     dialogWidget->descLabel->setText(i18nc(
-        "Shown in a dialog which asks to introduce a PIN that will be used to pair a Bluetooth device, %1 is the name of the Bluetooth device",
-        "In order to pair this computer with %1, you have to enter a PIN. Please do it below.",
+        "Shown in a dialog which asks to introduce a PIN that will be used to pair a bluetooth device, %1 is the name of the bluetooth device",
+        "In order to pair this computer with %1 you've to enter a PIN, do it below please",
         qApp->arguments()[1])
     );
     dialogWidget->pixmap->setPixmap(icon.pixmap(64,64));
