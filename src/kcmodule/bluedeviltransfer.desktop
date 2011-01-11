@@ -13,6 +13,7 @@ X-KDE-Weight=60
 
 Name=File Transfer
 Name[ca]=Transferència de fitxers
+Name[ca@valencia]=Transferència de fitxers
 Name[cs]=Přenos souboru
 Name[da]=Filoverførsel
 Name[de]=Dateiübertragung
