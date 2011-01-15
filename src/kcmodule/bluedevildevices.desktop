@@ -42,6 +42,7 @@ Name[x-test]=xxDevicesxx
 Name[zh_TW]=裝置
 
 Comment=Configure the known Bluetooth remote devices
+Comment[cs]=Nastavte známá zařízení připojované přes Bluetooth
 Comment[da]=Indstil de kendte eksterne Bluetooth-enheder
 Comment[en_GB]=Configure the known Bluetooth remote devices
 Comment[es]=Configurar los dispositivos Bluetooth remotos conocidos

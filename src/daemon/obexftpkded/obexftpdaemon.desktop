@@ -9,6 +9,7 @@ X-KDE-Kded-load-on-demand=false
 X-KDE-Kded-phase=1
 
 Name=ObexFTP
+Name[cs]=ObexFTP
 Name[da]=ObexFTP
 Name[en_GB]=ObexFTP
 Name[es]=ObexFTP
