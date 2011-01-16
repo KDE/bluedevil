@@ -84,6 +84,8 @@ void DiscoverPage::nameChanged(const QString& name)
 void DiscoverPage::cleanupPage()
 {
     stopScan();
+    deviceList->clear();
+    m_itemRelation.clear();
 }
 
 bool DiscoverPage::isComplete() const
