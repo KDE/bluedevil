@@ -18,10 +18,8 @@
 
 #include "sendfilewizard.h"
 #include "obexagent.h"
-#include "pages/selectfilespage.h"
 #include "pages/selectdevicepage.h"
 #include "pages/connectingpage.h"
-#include "pages/sendintropage.h"
 
 #include <QApplication>
 
@@ -29,7 +27,7 @@
 #include <klocalizedstring.h>
 #include <kpushbutton.h>
 #include <kstatusbarjobtracker.h>
-#include <kfilewidget.h>
+#include <kfiledialog.h>
 
 #include <bluedevil/bluedevil.h>
 #include <sendfilesjob.h>
@@ -48,17 +46,12 @@ SendFileWizard::SendFileWizard(const QString &deviceUri)
     } else {
         setWindowTitle(i18n("Bluetooth Send Files"));
 
-        setButton(QWizard::BackButton, new KPushButton(KStandardGuiItem::back(KStandardGuiItem::UseRTL)));
-        setButton(QWizard::NextButton, new KPushButton(KStandardGuiItem::forward(KStandardGuiItem::UseRTL)));
+        setButton(QWizard::NextButton, new KPushButton(KIcon("document-export"), i18n("Send Files")));
         setButton(QWizard::CancelButton, new KPushButton(KStandardGuiItem::cancel()));
 
         setOption(QWizard::DisabledBackButtonOnLastPage);
+        setOption(QWizard::NoBackButtonOnStartPage);
 
-        //We do not want "Forward" as text
-        setButtonText(QWizard::NextButton, i18n("Next"));
-
-        addPage(new SendIntroPage());
-        addPage(new SelectFilesPage());
         if (deviceUri.isEmpty()) {
             addPage(new SelectDevicePage());
         }
@@ -84,14 +77,14 @@ void SendFileWizard::done(int result)
 }
 
 
-void SendFileWizard::setFileWidget(KFileWidget* fileWidget)
+void SendFileWizard::setFileDialog(KFileDialog *fileDialog)
 {
-    m_fileWidget = fileWidget;
+    m_fileDialog = fileDialog;
 }
 
-KFileWidget* SendFileWizard::fileWidget()
+KFileDialog* SendFileWizard::fileDialog()
 {
-    return m_fileWidget;
+    return m_fileDialog;
 }
 
 void SendFileWizard::setDevice(Device* device)
@@ -111,7 +104,7 @@ void SendFileWizard::wizardDone()
 
 void SendFileWizard::startTransfer()
 {
-    m_job = new SendFilesJob(m_fileWidget->dirOperator()->selectedItems(), m_device, m_agent);
+    m_job = new SendFilesJob(m_fileDialog->selectedUrls(), m_device, m_agent);
     connect(m_job, SIGNAL(destroyed(QObject*)), qApp, SLOT(quit()));
 
     KIO::getJobTracker()->registerJob(m_job);

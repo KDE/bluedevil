@@ -24,7 +24,7 @@
 #include "discoverwidget.h"
 
 class WizardAgent;
-class KFileWidget;
+class KFileDialog;
 class ObexAgent;
 class SendFilesJob;
 namespace BlueDevil {
@@ -42,8 +42,8 @@ public:
 
     virtual void done(int result);
 
-    void setFileWidget(KFileWidget *);
-    KFileWidget * fileWidget();
+    void setFileDialog(KFileDialog *);
+    KFileDialog * fileDialog();
 
     void setDevice(Device *device);
     Device* device();
@@ -54,7 +54,7 @@ private Q_SLOTS:
     void wizardDone();
 
 private:
-    KFileWidget  *m_fileWidget;
+    KFileDialog  *m_fileDialog;
     Device       *m_device;
     ObexAgent    *m_agent;
     SendFilesJob *m_job;

@@ -26,14 +26,14 @@
 
 #include "obex_client.h"
 
-#include <KFileItemList>
 #include <KLocalizedString>
 #include <KDebug>
 
 #include <bluedevil/bluedevil.h>
+#include <kfile.h>
 
 using namespace BlueDevil;
-SendFilesJob::SendFilesJob(KFileItemList list, Device *device, ObexAgent *agent, QObject* parent): KJob(parent)
+SendFilesJob::SendFilesJob(KUrl::List list, Device* device, ObexAgent* agent, QObject* parent): KJob(parent)
 ,m_currentTransferJob(0)
 {
     m_agent = agent;
@@ -42,12 +42,13 @@ SendFilesJob::SendFilesJob(KFileItemList list, Device *device, ObexAgent *agent,
     m_totalSize = 0;
     m_progress = 0;
 
-    Q_FOREACH(const KFileItem &item, list) {
-        if (item.isLocalFile()) {
-            m_filesToSend << item.url().path();
-            kDebug() << "Adding size : " << item.size();
-            m_filesToSendSize << item.size();
-            m_totalSize += item.size();
+    Q_FOREACH(const KUrl &url, list) {
+        if (url.isLocalFile()) {
+            m_filesToSend << url.path();
+            QFile file(url.url());
+            kDebug() << "Adding size : " << file.size();
+            m_filesToSendSize << file.size();
+            m_totalSize += file.size();
         }
     }
 

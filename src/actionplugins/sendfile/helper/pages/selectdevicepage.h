@@ -23,14 +23,19 @@
 #ifndef SELECTDEVICEPAGE_H
 #define SELECTDEVICEPAGE_H
 
+#include "ui_selectfilediscover.h"
+
 #include <QWizard>
 
+class KUrl;
+class KFileDialog;
 namespace BlueDevil {
     class Device;
 }
 using namespace BlueDevil;
 
-class SelectDevicePage : public QWizardPage
+class SelectDevicePage : public QWizardPage ,
+        public Ui::SelectFileDiscover
 {
 Q_OBJECT
 public:
@@ -40,6 +45,11 @@ public:
 
 private Q_SLOTS:
     void deviceSelected(Device*);
+    void openFileDialog();
+    void selectionChanged();
+
+private:
+    KFileDialog *m_dialog;
 };
 
 #endif // SELECTDEVICEPAGE_H

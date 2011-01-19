@@ -8,18 +8,15 @@ set(sendfilehelper_SRCS
     main.cpp
     discoverwidget.cpp
     sendfilewizard.cpp
-    pages/selectfilespage.cpp
     pages/selectdevicepage.cpp
     pages/connectingpage.cpp
-    pages/sendintropage.cpp
     obexagent.cpp
     sendfilesjob.cpp
 )
 
 kde4_add_ui_files(sendfilehelper_SRCS
-    discover.ui
     pages/connecting.ui
-    pages/sendintro.ui
+    pages/selectfilediscover.ui
 )
 
 qt4_add_dbus_interface(sendfilehelper_SRCS org.openobex.Client.xml obex_client)
