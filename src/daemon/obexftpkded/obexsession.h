@@ -41,8 +41,11 @@ public:
     Status status() const;
     void setStatus(const Status&);
 
+public Q_SLOTS:
     void resetTimer();
+
 private Q_SLOTS:
+
     /**
         * The session has not been used for a while, so it has to be disconnected and deleted
         */
