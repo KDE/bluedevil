@@ -13,7 +13,7 @@ xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
             <default>true</default>
         </entry>
         <entry name="saveUrl" type="Url" key="saveUrl">
-            <label>Save the incoming path in:</label>
+            <label>Save received files to:</label>
             <default code="true">QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation)</default>
         </entry>
     </group>

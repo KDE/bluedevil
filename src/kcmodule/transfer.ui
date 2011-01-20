@@ -30,7 +30,7 @@
       </sizepolicy>
      </property>
      <property name="title">
-      <string>Transfer destination directory</string>
+      <string>Save received files to:</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
