@@ -26,7 +26,7 @@
 #include <QtDBus/QtDBus>
 
 #include "openobex/server.h"
-
+class QDBusServiceWatcher;
 class Service
     : public QObject
 {
@@ -41,8 +41,12 @@ public Q_SLOTS:
     void stopServer();
     bool isRunning();
 
+private Q_SLOTS:
+    void openobexUnregistered();
+
 private:
     OpenObex::Server* m_server;
+    QDBusServiceWatcher *m_watcher;
 };
 
 #endif // SERVICE_H

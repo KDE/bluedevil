@@ -27,6 +27,7 @@
 #include <bluedevil/bluedevilmanager.h>
 #include <bluedevil/bluedeviladapter.h>
 
+#include <QDBusServiceWatcher>
 #include <QtCore/QCoreApplication>
 
 Service::Service()
@@ -36,6 +37,7 @@ Service::Service()
     dbus.registerService("org.kde.BlueDevil.Service");
     dbus.registerObject("/Service", this);
     m_server = 0;
+    m_watcher = 0;
 }
 
 Service::~Service()
@@ -50,6 +52,11 @@ void Service::launchServer()
 {
     if (m_server) {
         return;
+    }
+
+    if (!m_watcher) {
+        m_watcher = new QDBusServiceWatcher("org.openobex", QDBusConnection::sessionBus(), QDBusServiceWatcher::WatchForUnregistration);
+        connect(m_watcher, SIGNAL(serviceUnregistered(QString)), this, SLOT(openobexUnregistered()));
     }
 
     if (BlueDevil::Manager::self()->defaultAdapter()) {
@@ -79,4 +86,13 @@ bool Service::isRunning()
     }
 
     return true;
+}
+
+void Service::openobexUnregistered()
+{
+    kDebug();
+    stopServer();
+
+    //Try to re-execute obex-data-server since it probably has crashed
+    launchServer();
 }
