@@ -8,7 +8,7 @@ BlueDevil runtime dependencies:
 
     -If you're using Alsa:
         The best way of having "automagical headset configuration" is having the bluetooth.conf hook
-        enabled:
+        enabled
 
     NOTE: Be sure to install only obexd-client and not obexd-server, since the last will conflic
     with obex-data-server.
