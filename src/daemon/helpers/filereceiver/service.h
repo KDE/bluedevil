@@ -41,9 +41,6 @@ public Q_SLOTS:
     void stopServer();
     bool isRunning();
 
-private Q_SLOTS:
-    void quit();
-
 private:
     OpenObex::Server* m_server;
 };

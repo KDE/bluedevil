@@ -70,9 +70,6 @@ void Service::stopServer()
 
     m_server->deleteLater();
     m_server = 0;
-
-    // After 10 seconds, if server is not restarted, terminate the helper
-    QTimer::singleShot(10000, this, SLOT(quit()));
 }
 
 bool Service::isRunning()
@@ -82,13 +79,4 @@ bool Service::isRunning()
     }
 
     return true;
-}
-
-void Service::quit()
-{
-    kDebug();
-    // Only quit if no server is running
-    if (!m_server) {
-        deleteLater();
-    }
 }
