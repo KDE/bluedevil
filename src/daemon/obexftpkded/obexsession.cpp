@@ -27,6 +27,9 @@ ObexSession::ObexSession(const QString& service, const QString& path, const QDBu
     m_status = ObexSession::Connecting;
 
     connect(&m_timer, SIGNAL(timeout()), this, SLOT(sessionTimeoutSlot()));
+    connect(this, SIGNAL(TransferStarted(QString,QString,qulonglong)), this, SLOT(resetTimer()));
+    connect(this, SIGNAL(TransferProgress(qulonglong)), this, SLOT(resetTimer()));
+    connect(this, SIGNAL(TransferCompleted()), this, SLOT(resetTimer()));
     m_timer.setInterval(120000);
 }
 
