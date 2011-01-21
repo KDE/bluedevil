@@ -17,6 +17,7 @@ set(sendfilehelper_SRCS
 kde4_add_ui_files(sendfilehelper_SRCS
     pages/connecting.ui
     pages/selectfilediscover.ui
+    discover.ui
 )
 
 qt4_add_dbus_interface(sendfilehelper_SRCS org.openobex.Client.xml obex_client)
