@@ -544,27 +544,6 @@ void Monolithic::offlineMode()
     qDeleteAll(menu->actions());
     menu->clear();
 
-    KAction *sendFile = new KAction(KIcon("edit-find-project"), i18n("Send File"), menu);
-    connect(sendFile, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(sendFile()));
-    menu->addAction(sendFile);
-
-    KAction *browseDevices = new KAction(KIcon("document-preview-archive"), i18n("Browse devices"), menu);
-    connect(browseDevices, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(browseDevices()));
-    menu->addAction(browseDevices);
-
-    KAction *configReceive = new KAction(KIcon("folder-tar"),i18n("Receive files configuration"), menu);
-    connect(configReceive, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(configReceive()));
-    menu->addAction(configReceive);
-
-    KAction *deviceManager = new KAction(KIcon("input-mouse"), i18n("Manage devices"), menu);
-    connect(deviceManager, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(deviceManager()));
-    menu->addAction(deviceManager);
-
-    KAction *configAdapter = new KAction(KIcon("audio-card"), i18n("Configure adapters"), menu);
-    connect(configAdapter, SIGNAL(triggered(bool)), this, SLOT(configAdapter()));
-    menu->addAction(configAdapter);
-
-    menu->addTitle(i18n("Known Devices"));
     KAction *noAdaptersFound = new KAction(i18n("No adapters found"), menu);
     noAdaptersFound->setEnabled(false);
     menu->addAction(noAdaptersFound);
@@ -572,15 +551,6 @@ void Monolithic::offlineMode()
     QAction *separator = new QAction(menu);
     separator->setSeparator(true);
     menu->addAction(separator);
-
-    KAction *addDevice = new KAction(KIcon("edit-find-project"), i18n("Add Device"), menu);
-    connect(addDevice, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(addDevice()));
-    menu->addAction(addDevice);
-
-    separator = new QAction(menu);
-    separator->setSeparator(true);
-    menu->addAction(separator);
-
     menu->addAction(KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), menu));
 }
 
