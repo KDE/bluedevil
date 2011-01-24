@@ -143,7 +143,7 @@ Name[uk]=Надійшов запит щодо доступу
 Name[x-test]=xxAccess requestedxx
 Name[zh_TW]=已要求存取
 Comment=Bluetooth mode is about to be changed (normal to flight for example)
-Comment[ca]=El mode bluetooth és a punt de canviar (de mode normal a mode avió per exemple)
+Comment[ca]=El mode Bluetooth és a punt de canviar (de mode normal a mode avió per exemple)
 Comment[ca@valencia]=El mode bluetooth és a punt de canviar (de mode normal a mode avió per exemple)
 Comment[da]=Bluetooth-tilstanden er ved at blive ændret (f.eks. normal til flyvning)
 Comment[en_GB]=Bluetooth mode is about to be changed (normal to flight for example)
@@ -197,11 +197,32 @@ Name[uk]=Надійшов запит щодо доступу
 Name[x-test]=xxAccess requestedxx
 Name[zh_TW]=已要求存取
 Comment=A device ask for confirmation
+Comment[ca]=Un dispositiu demana confirmació
+Comment[it]=Un dispositivo chiede conferma
+Comment[nl]=Een apparaat vraagt om bevestiging
+Comment[pt]=Um dispositivo está a pedir confirmação
+Comment[pt_BR]=Um dispositivo solicita confirmação
+Comment[uk]=Пристрій очікує на підтвердження
+Comment[x-test]=xxA device ask for confirmationxx
 Action=Popup
 
 [Event/bluedevilRequestPin]
 Name=Request pin
+Name[ca]=Sol·licita el PIN
+Name[it]=Richiesta PIN
+Name[nl]=Om PIN verzoeken
+Name[pt]=Pedir o PIN
+Name[pt_BR]=Solicitar o PIN
+Name[uk]=Запит щодо пін-коду
+Name[x-test]=xxRequest pinxx
 Comment=A pin is needed
+Comment[ca]=Es necessita un PIN
+Comment[it]=Un PIN è richiesto
+Comment[nl]=Er is een PIN nodig
+Comment[pt]=É necessário um PIN
+Comment[pt_BR]=É necessário um PIN
+Comment[uk]=Потрібен пін-код
+Comment[x-test]=xxA pin is neededxx
 Action=Popup
 
 [Event/bluedevilIncomingFile]
