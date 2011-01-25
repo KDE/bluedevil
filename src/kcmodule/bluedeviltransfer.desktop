@@ -44,10 +44,13 @@ Name[zh_TW]=檔案傳輸
 
 Comment=Configure the bluetooth receive files
 Comment[ca]=Configura la recepció de fitxers per Bluetooth
+Comment[da]=Indstil modtagelse af filer via Bluetooth
+Comment[hu]=A fájlfogadás beállítása
 Comment[it]=Configura la ricezione di file via Bluetooth
 Comment[nl]=De bluetooth-ontvangbestanden instellen
 Comment[pt]=Configurar a recepção de ficheiros por Bluetooth
 Comment[pt_BR]=Configura a recepção de arquivos por bluetooth
+Comment[sv]=Anpassa Blåtand mottagning av filer
 Comment[uk]=Налаштування отримання файлів bluetooth
 Comment[x-test]=xxConfigure the bluetooth receive filesxx
 
