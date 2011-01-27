@@ -32,6 +32,8 @@
 #include <KMimeType>
 #include <KApplication>
 
+#include <unistd.h>
+
 extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
 {
     KAboutData about("kioobexftp", "bluedevil", ki18n("kioobexftp"), 0);
