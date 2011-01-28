@@ -10,6 +10,7 @@ Comment[en_GB]=BlueDevil
 Comment[es]=BlueDevil
 Comment[et]=BlueDevil
 Comment[fr]=BlueDevil
+Comment[ga]=BlueDevil
 Comment[hu]=BlueDevil
 Comment[it]=BlueDevil
 Comment[km]=BlueDevil
@@ -38,6 +39,7 @@ Name[en_GB]=BlueDevil
 Name[es]=BlueDevil
 Name[et]=BlueDevil
 Name[fr]=BlueDevil
+Name[ga]=BlueDevil
 Name[hu]=BlueDevil
 Name[it]=BlueDevil
 Name[km]=BlueDevil
@@ -211,6 +213,7 @@ Comment[ru]=Устройство запросило подтверждение
 Comment[sv]=En enhet frågar efter bekräftelse
 Comment[uk]=Пристрій очікує на підтвердження
 Comment[x-test]=xxA device ask for confirmationxx
+Comment[zh_TW]=某個裝置請求確認
 Action=Popup
 
 [Event/bluedevilRequestPin]
@@ -228,6 +231,7 @@ Name[ru]=Запрос PIN
 Name[sv]=Begär PIN-kod
 Name[uk]=Запит щодо пін-коду
 Name[x-test]=xxRequest pinxx
+Name[zh_TW]=需要 PIN 碼
 Comment=A pin is needed
 Comment[ca]=Es necessita un PIN
 Comment[da]=PIN-kode kræves
@@ -242,6 +246,7 @@ Comment[ru]=Необходим PIN
 Comment[sv]=En PIN-kod behövs
 Comment[uk]=Потрібен пін-код
 Comment[x-test]=xxA pin is neededxx
+Comment[zh_TW]=需要 PIN 碼
 Action=Popup
 
 [Event/bluedevilIncomingFile]
