@@ -119,7 +119,7 @@ void AgentListenerWorker::RequestConfirmation(const QDBusObjectPath &device, qui
 
     QStringList list;
     list.append(remote->name());
-    list.append(device.path());
+    list.append(QString::number(passkey));
 
     int result = KProcess::execute("bluedevil-requestconfirmation", list);
     if (result == 0) {
