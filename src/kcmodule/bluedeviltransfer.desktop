@@ -43,7 +43,9 @@ Name[x-test]=xxFile Transferxx
 Name[zh_TW]=檔案傳輸
 
 Comment=Configure the Bluetooth receive files
+Comment[ca]=Configura la recepció de fitxers per Bluetooth
 Comment[da]=Indstil modtagelse af filer via Bluetooth
+Comment[de]=Den Bluetooth-Dateiempfang einrichten
 Comment[en_GB]=Configure the Bluetooth receive files
 Comment[es]=Configurar la recepción de archivos por Bluetooth
 Comment[et]=Bluetoothi faili saamise seadistamine

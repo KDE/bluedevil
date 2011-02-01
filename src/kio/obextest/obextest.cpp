@@ -30,6 +30,8 @@
 #include <QDebug>
 #include <QVariantMap>
 
+#include <unistd.h>
+
 ObexTest::ObexTest(QObject* parent): QObject(parent)
 {
     m_manager = new org::openobex::Manager("org.openobex", "/org/openobex", QDBusConnection::sessionBus(), 0);
