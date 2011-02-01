@@ -47,8 +47,8 @@ RequestConfirmation::RequestConfirmation() : QObject()
 
     connect(notification, SIGNAL(action1Activated()),this, SLOT(pinCorrect()));
     connect(notification, SIGNAL(action2Activated()),this, SLOT(pinWrong()));
-    connect(notification, SIGNAL(closed()), this, SLOT(deny()));
-    connect(notification, SIGNAL(ignored()), this, SLOT(deny()));
+    connect(notification, SIGNAL(closed()), this, SLOT(pinWrong()));
+    connect(notification, SIGNAL(ignored()), this, SLOT(pinWrong()));
 
     //We're using persistent notifications so we have to use our own timeout (10s)
     QTimer::singleShot(10000, notification, SLOT(close()));
