@@ -24,10 +24,11 @@
 #include "obex_transfer.h"
 
 #include <QtCore/QDebug>
-
 #include <QDBusConnection>
 #include <QDBusPendingCall>
 #include <QDBusMessage>
+
+#include <KDebug>
 
 ObexAgent::ObexAgent(QObject* parent): QDBusAbstractAdaptor(parent)
 {
