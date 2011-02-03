@@ -1,0 +1,8 @@
+[Desktop Entry]
+ Encoding=UTF-8
+ Type=Service
+ Name=Send file via bluetooth
+ X-KDE-Library=bluetoothfiletiemaction
+ X-KDE-Submenu=Bluetooth
+ ServiceTypes=KFileItemAction/Plugin
+ MimeType=application/octet-stream;
