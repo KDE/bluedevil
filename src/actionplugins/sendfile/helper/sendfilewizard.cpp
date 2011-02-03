@@ -45,7 +45,7 @@ SendFileWizard::SendFileWizard(const QString& deviceUBI, const QStringList& file
     , m_job(0)
 {
     if (!BlueDevil::Manager::self()->defaultAdapter()) {
-        qDebug() << "No Adapters found";
+        kDebug() << "No Adapters found";
         qApp->exit();
     } else {
         setWindowTitle(i18n("Bluetooth Send Files"));

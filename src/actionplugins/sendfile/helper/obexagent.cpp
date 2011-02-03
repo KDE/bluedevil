@@ -33,7 +33,7 @@ ObexAgent::ObexAgent(QObject* parent): QDBusAbstractAdaptor(parent)
 {
     m_killed = false;
     if (!QDBusConnection::sessionBus().registerObject("/BlueDevil_sendAgent", parent)) {
-        qDebug() << "The dbus object can't be registered";
+        kDebug() << "The dbus object can't be registered";
         return;
     }
 }
