@@ -47,32 +47,33 @@ SendFileWizard::SendFileWizard(const QString& deviceUBI, const QStringList& file
     if (!BlueDevil::Manager::self()->defaultAdapter()) {
         kDebug() << "No Adapters found";
         qApp->exit();
-    } else {
-        setWindowTitle(i18n("Bluetooth Send Files"));
-
-        setButton(QWizard::NextButton, new KPushButton(KIcon("document-export"), i18n("Send Files")));
-        setButton(QWizard::CancelButton, new KPushButton(KStandardGuiItem::cancel()));
-
-        setOption(QWizard::DisabledBackButtonOnLastPage);
-        setOption(QWizard::NoBackButtonOnStartPage);
-
-        if (deviceUBI.isEmpty() && files.isEmpty()) {
-            addPage(new SelectDeviceAndFilesPage());
-        } else if (deviceUBI.isEmpty()) {
-            addPage(new SelectDevicePage());
-            setFiles(files);
-        } else if (files.isEmpty()) {
-            addPage(new SelectFilesPage());
-            setMinimumSize(680, 400);
-            setDevice(Manager::self()->defaultAdapter()->deviceForUBI(deviceUBI));
-        } else {
-            setFiles(files);
-            setDevice(Manager::self()->defaultAdapter()->deviceForUBI(deviceUBI));
-        }
-        addPage(new ConnectingPage());
-
-        m_agent = new ObexAgent(qApp);
+        return;
     }
+
+    setWindowTitle(i18n("Bluetooth Send Files"));
+
+    setButton(QWizard::NextButton, new KPushButton(KIcon("document-export"), i18n("Send Files")));
+    setButton(QWizard::CancelButton, new KPushButton(KStandardGuiItem::cancel()));
+
+    setOption(QWizard::DisabledBackButtonOnLastPage);
+    setOption(QWizard::NoBackButtonOnStartPage);
+
+    if (deviceUBI.isEmpty() && files.isEmpty()) {
+        addPage(new SelectDeviceAndFilesPage());
+    } else if (deviceUBI.isEmpty()) {
+        addPage(new SelectDevicePage());
+        setFiles(files);
+    } else if (files.isEmpty()) {
+        addPage(new SelectFilesPage());
+        setMinimumSize(680, 400);
+        setDevice(Manager::self()->defaultAdapter()->deviceForUBI(deviceUBI));
+    } else {
+        setFiles(files);
+        setDevice(Manager::self()->defaultAdapter()->deviceForUBI(deviceUBI));
+    }
+    addPage(new ConnectingPage());
+
+    m_agent = new ObexAgent(qApp);
 }
 
 SendFileWizard::~SendFileWizard()
