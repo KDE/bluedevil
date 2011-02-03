@@ -35,7 +35,6 @@
 
 #include <bluedevil/bluedevil.h>
 #include <sendfilesjob.h>
-#include <kdiroperator.h>
 
 using namespace BlueDevil;
 
@@ -117,6 +116,9 @@ void SendFileWizard::startTransfer()
     if (m_files.isEmpty()) {
         kDebug() << "No files to send";
         return;
+    }
+    if (!m_device) {
+        kDebug() << "No device selected";
     }
 
     m_job = new SendFilesJob(m_files, m_device, m_agent);
