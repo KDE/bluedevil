@@ -42,6 +42,8 @@ DiscoverWidget::DiscoverWidget(QWidget* parent)
             SLOT(itemSelected(QListWidgetItem*)));
     connect(Manager::self()->defaultAdapter(), SIGNAL(deviceFound(Device*)), this,
             SLOT(deviceFound(Device*)));
+
+    startScan();
 }
 
 DiscoverWidget::~DiscoverWidget()
