@@ -18,11 +18,15 @@
 
 #include "sendfilewizard.h"
 #include "obexagent.h"
+
+#include "pages/selectdeviceandfilespage.h"
 #include "pages/selectdevicepage.h"
+#include "pages/selectfilespage.h"
 #include "pages/connectingpage.h"
 
 #include <QApplication>
 
+#include <kdebug.h>
 #include <kstandardguiitem.h>
 #include <klocalizedstring.h>
 #include <kpushbutton.h>
@@ -35,7 +39,7 @@
 
 using namespace BlueDevil;
 
-SendFileWizard::SendFileWizard(const QString &deviceUri)
+SendFileWizard::SendFileWizard(const QString& deviceUBI, const QStringList& files)
     : QWizard()
     , m_device(0)
     , m_job(0)
@@ -52,8 +56,18 @@ SendFileWizard::SendFileWizard(const QString &deviceUri)
         setOption(QWizard::DisabledBackButtonOnLastPage);
         setOption(QWizard::NoBackButtonOnStartPage);
 
-        if (deviceUri.isEmpty()) {
+        if (deviceUBI.isEmpty() && files.isEmpty()) {
+            addPage(new SelectDeviceAndFilesPage());
+        } else if (deviceUBI.isEmpty()) {
             addPage(new SelectDevicePage());
+            setFiles(files);
+        } else if (files.isEmpty()) {
+            addPage(new SelectFilesPage());
+            setMinimumSize(680, 400);
+            setDevice(Manager::self()->defaultAdapter()->deviceForUBI(deviceUBI));
+        } else {
+            setFiles(files);
+            setDevice(Manager::self()->defaultAdapter()->deviceForUBI(deviceUBI));
         }
         addPage(new ConnectingPage());
 
@@ -76,15 +90,10 @@ void SendFileWizard::done(int result)
     }
 }
 
-
-void SendFileWizard::setFileDialog(KFileDialog *fileDialog)
+void SendFileWizard::setFiles(const QStringList& files)
 {
-    m_fileDialog = fileDialog;
-}
-
-KFileDialog* SendFileWizard::fileDialog()
-{
-    return m_fileDialog;
+    kDebug() << files;
+    m_files = files;
 }
 
 void SendFileWizard::setDevice(Device* device)
@@ -104,7 +113,12 @@ void SendFileWizard::wizardDone()
 
 void SendFileWizard::startTransfer()
 {
-    m_job = new SendFilesJob(m_fileDialog->selectedUrls(), m_device, m_agent);
+    if (m_files.isEmpty()) {
+        kDebug() << "No files to send";
+        return;
+    }
+
+    m_job = new SendFilesJob(m_files, m_device, m_agent);
     connect(m_job, SIGNAL(destroyed(QObject*)), qApp, SLOT(quit()));
 
     KIO::getJobTracker()->registerJob(m_job);

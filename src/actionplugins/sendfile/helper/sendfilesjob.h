@@ -43,7 +43,7 @@ class SendFilesJob : public KJob
 {
 Q_OBJECT
 public:
-    SendFilesJob(KUrl::List list, BlueDevil::Device* device, ObexAgent* agent, QObject* parent = 0);
+    SendFilesJob(const QStringList &files, BlueDevil::Device* device, ObexAgent* agent, QObject* parent = 0);
 
     virtual void start();
     virtual bool doKill();

@@ -1,4 +1,6 @@
 /***************************************************************************
+ *   This file is part of the KDE project                                  *
+ *                                                                         *
  *   Copyright (C) 2010 Alejandro Fiestas Olivares <alex@ufocoders.com>    *
  *   Copyright (C) 2010 UFO Coders <info@ufocoders.com>                    *
  *                                                                         *
@@ -18,38 +20,36 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA            *
  ***************************************************************************/
 
-#include "sendfilewizard.h"
-#include <KCmdLineArgs>
-#include <KApplication>
-#include <KAboutData>
-#include <bluedevil/bluedevil.h>
+#ifndef SELECTDEVICEFILESPAGE_H
+#define SELECTDEVICEFILESPAGE_H
 
+#include "ui_selectfilediscover.h"
+
+#include <QWizard>
+
+class KUrl;
+class KFileDialog;
+namespace BlueDevil {
+    class Device;
+}
 using namespace BlueDevil;
 
-int main(int argc, char *argv[])
+class SelectDeviceAndFilesPage : public QWizardPage ,
+        public Ui::SelectFileDiscover
 {
-    KAboutData aboutData("bluedevilsendfile", "bluedevil", ki18n("Bluetooth Send File Helper"), "0.1", ki18n("Bluetooth Send File Helper"),
-    KAboutData::License_GPL, ki18n("(c) 2010, UFO Coders"));
+Q_OBJECT
+public:
+    SelectDeviceAndFilesPage(QWidget* parent = 0);
 
-    aboutData.addAuthor(ki18n("Alejandro Fiestas Olivares"), ki18n("Developer"), "alex@ufocoders.org",
-    "http://www.afiestas.org/");
-    aboutData.setProgramIconName("preferences-system-bluetooth");
+    virtual bool isComplete() const;
 
-    KCmdLineArgs::init(argc, argv, &aboutData);
+private Q_SLOTS:
+    void deviceSelected(Device*);
+    void openFileDialog();
+    void selectionChanged();
 
-    KCmdLineOptions options;
-    options.add("u").add("ubi <ubi>", ki18n("Device UUID where the files will be sent"));
-    options.add("f").add("files <files>", ki18n("Files that will be sent"));
-    KCmdLineArgs::addCmdLineOptions( options );
+private:
+    KFileDialog *m_dialog;
+};
 
-    KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
-
-    KApplication app;
-    app.setQuitOnLastWindowClosed(false);
-
-    SendFileWizard *sendFileWizard = new SendFileWizard(args->getOption("ubi"), args->getOptionList("files"));
-
-    sendFileWizard->show();
-
-    return app.exec();
-}
+#endif // SELECTDEVICEFILESPAGE_H

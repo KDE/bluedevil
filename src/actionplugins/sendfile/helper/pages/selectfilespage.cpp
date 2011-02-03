@@ -1,4 +1,6 @@
 /***************************************************************************
+ *   This file is part of the KDE project                                  *
+ *                                                                         *
  *   Copyright (C) 2010 Alejandro Fiestas Olivares <alex@ufocoders.com>    *
  *   Copyright (C) 2010 UFO Coders <info@ufocoders.com>                    *
  *                                                                         *
@@ -18,38 +20,44 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA            *
  ***************************************************************************/
 
-#include "sendfilewizard.h"
-#include <KCmdLineArgs>
-#include <KApplication>
-#include <KAboutData>
-#include <bluedevil/bluedevil.h>
+#include "selectfilespage.h"
+#include "../sendfilewizard.h"
 
-using namespace BlueDevil;
+#include <kfilewidget.h>
+#include <kdiroperator.h>
+#include <kurl.h>
+#include <kfileitem.h>
 
-int main(int argc, char *argv[])
+#include <QtGui/QVBoxLayout>
+#include <QtGui/QLabel>
+
+#include <QDesktopServices>
+
+SelectFilesPage::SelectFilesPage(QWidget* parent): QWizardPage(parent)
 {
-    KAboutData aboutData("bluedevilsendfile", "bluedevil", ki18n("Bluetooth Send File Helper"), "0.1", ki18n("Bluetooth Send File Helper"),
-    KAboutData::License_GPL, ki18n("(c) 2010, UFO Coders"));
+    m_files = new KFileWidget(KUrl(QDesktopServices::storageLocation(QDesktopServices::HomeLocation)), this);
+    m_files->setMode(KFile::Files);
+    m_files->setContentsMargins(0, 0, 0, 0);
+    setContentsMargins(0, 0, 0, 0);
 
-    aboutData.addAuthor(ki18n("Alejandro Fiestas Olivares"), ki18n("Developer"), "alex@ufocoders.org",
-    "http://www.afiestas.org/");
-    aboutData.setProgramIconName("preferences-system-bluetooth");
+    connect(m_files, SIGNAL(selectionChanged()), this, SLOT(selectionChanged()));
 
-    KCmdLineArgs::init(argc, argv, &aboutData);
+    QVBoxLayout *layout = new QVBoxLayout(this);
+    layout->addWidget(m_files);
+}
 
-    KCmdLineOptions options;
-    options.add("u").add("ubi <ubi>", ki18n("Device UUID where the files will be sent"));
-    options.add("f").add("files <files>", ki18n("Files that will be sent"));
-    KCmdLineArgs::addCmdLineOptions( options );
+void SelectFilesPage::selectionChanged()
+{
+    QStringList fileList;
+    KFileItemList itemList = m_files->dirOperator()->selectedItems();
+    Q_FOREACH(const KFileItem &file, itemList) {
+        fileList << file.localPath();
+    }
+    static_cast<SendFileWizard* >(wizard())->setFiles(fileList);
+    emit completeChanged();
+}
 
-    KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
-
-    KApplication app;
-    app.setQuitOnLastWindowClosed(false);
-
-    SendFileWizard *sendFileWizard = new SendFileWizard(args->getOption("ubi"), args->getOptionList("files"));
-
-    sendFileWizard->show();
-
-    return app.exec();
+bool SelectFilesPage::isComplete() const
+{
+    return !m_files->dirOperator()->selectedItems().isEmpty();
 }

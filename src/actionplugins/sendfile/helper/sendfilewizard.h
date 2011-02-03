@@ -21,10 +21,11 @@
 
 #include <QObject>
 #include <QWizard>
+#include <QStringList>
 #include "discoverwidget.h"
 
 class WizardAgent;
-class KFileDialog;
+class QStringList;
 class ObexAgent;
 class SendFilesJob;
 namespace BlueDevil {
@@ -37,13 +38,12 @@ class SendFileWizard : public QWizard
 Q_OBJECT
 
 public:
-    SendFileWizard(const QString &deviceUri);
+    SendFileWizard(const QString &deviceUBI, const QStringList &files);
     virtual ~SendFileWizard();
 
     virtual void done(int result);
 
-    void setFileDialog(KFileDialog *);
-    KFileDialog * fileDialog();
+    void setFiles(const QStringList &files);
 
     void setDevice(Device *device);
     Device* device();
@@ -54,7 +54,8 @@ private Q_SLOTS:
     void wizardDone();
 
 private:
-    KFileDialog  *m_fileDialog;
+    QStringList  m_files;
+
     Device       *m_device;
     ObexAgent    *m_agent;
     SendFilesJob *m_job;

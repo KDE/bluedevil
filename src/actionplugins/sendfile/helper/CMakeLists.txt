@@ -8,7 +8,9 @@ set(sendfilehelper_SRCS
     main.cpp
     discoverwidget.cpp
     sendfilewizard.cpp
+    pages/selectdeviceandfilespage.cpp
     pages/selectdevicepage.cpp
+    pages/selectfilespage.cpp
     pages/connectingpage.cpp
     obexagent.cpp
     sendfilesjob.cpp

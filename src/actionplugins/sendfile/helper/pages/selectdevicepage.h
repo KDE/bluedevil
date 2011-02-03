@@ -45,8 +45,6 @@ public:
 
 private Q_SLOTS:
     void deviceSelected(Device*);
-    void openFileDialog();
-    void selectionChanged();
 
 private:
     KFileDialog *m_dialog;
