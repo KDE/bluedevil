@@ -53,6 +53,9 @@ SendFileWizard::SendFileWizard(const QString& deviceUBI, const QStringList& file
         return;
     }
 
+    kDebug() << "DeviceUbi: " << deviceUBI;
+    kDebug() << "Files";
+    kDebug() << files;
     setWindowTitle(i18n("Bluetooth Send Files"));
 
     setButton(QWizard::NextButton, new KPushButton(KIcon("document-export"), i18n("Send Files")));
@@ -102,6 +105,7 @@ void SendFileWizard::setFiles(const QStringList& files)
 
 void SendFileWizard::setDevice(Device* device)
 {
+    kDebug() << device;
     m_device = device;
 }
 
