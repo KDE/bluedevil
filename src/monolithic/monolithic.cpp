@@ -436,7 +436,7 @@ void Monolithic::sendTriggered()
 {
     KAction *action = static_cast<KAction*>(sender());
     EntryInfo entryInfo = action->data().value<EntryInfo>();
-    KToolInvocation::kdeinitExec("bluedevil-sendfile", QStringList() << QString("bluetooth://%1/").arg(entryInfo.device->address().replace(':', '-').toLower()));
+    KToolInvocation::kdeinitExec("bluedevil-sendfile", QStringList() << QString("-u%1").arg(entryInfo.device->UBI()));
 }
 
 void Monolithic::connectTriggered()
