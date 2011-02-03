@@ -35,6 +35,7 @@ Name[zh_TW]=ObexFTP
 
 Comment=ObexFTP helper daemon
 Comment[ca]=Dimoni d'ajuda de l'Obexftp
+Comment[cs]=Pomocný démon ObexFTP
 Comment[da]=Hjælperdæmon til ObexFTP
 Comment[de]=Hilfsdienst für ObexFTP
 Comment[en_GB]=ObexFTP helper dæmon
