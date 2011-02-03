@@ -108,7 +108,11 @@ void SendFileItemAction::otherTriggered()
 {
     kDebug();
     QStringList args;
-    args.append("-u " + static_cast<QAction *>(sender())->data().toString());
+
+    KUrl::List fileList =  m_fileItemInfos.urlList();
+    Q_FOREACH(const KUrl &url,  fileList) {
+        args.append("-f " + url.path());
+    }
 
     KProcess process;
     process.setProgram("bluedevil-sendfile", args);
