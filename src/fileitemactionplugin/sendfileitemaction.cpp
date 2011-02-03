@@ -68,7 +68,7 @@ QList< QAction* > SendFileItemAction::actions(const KFileItemListProperties& fil
             if (device->UUIDs().contains("00001105-0000-1000-8000-00805F9B34FB", Qt::CaseInsensitive)) {
                 QAction *action = new QAction(KIcon(device->icon()), device->name(), hack);
                 connect(action, SIGNAL(triggered(bool)), this, SLOT(deviceTriggered()));
-                action->setData(device->address());
+                action->setData(device->UBI());
                 menu->addAction(action);
             }
         }
@@ -91,14 +91,26 @@ QList< QAction* > SendFileItemAction::actions(const KFileItemListProperties& fil
 
 void SendFileItemAction::deviceTriggered()
 {
-    kDebug() << static_cast<QAction *>(sender())->data().toString();
-    kDebug() << m_fileItemInfos.urlList();
+    QStringList args;
+    args.append("-u " + static_cast<QAction *>(sender())->data().toString());
+
+    KUrl::List fileList =  m_fileItemInfos.urlList();
+    Q_FOREACH(const KUrl &url,  fileList) {
+        args.append("-f " + url.path());
+    }
+    kDebug() << args;
+    KProcess process;
+    process.setProgram("bluedevil-sendfile", args);
+    process.startDetached();
 }
 
 void SendFileItemAction::otherTriggered()
 {
     kDebug();
+    QStringList args;
+    args.append("-u " + static_cast<QAction *>(sender())->data().toString());
+
     KProcess process;
-    process.setProgram("bluedevil-sendfile");
+    process.setProgram("bluedevil-sendfile", args);
     process.startDetached();
 }
