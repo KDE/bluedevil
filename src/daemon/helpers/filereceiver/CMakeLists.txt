@@ -5,6 +5,7 @@ set(helper_SRCS
     main.cpp
     service.cpp
     openobex/server.cpp
+    openobex/serverftp.cpp
     openobex/serversession.cpp
     openobex/filetransferjob.cpp
 )

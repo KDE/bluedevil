@@ -21,6 +21,7 @@
 
 #include "service.h"
 #include "serviceadaptor.h"
+#include "openobex/serverftp.h"
 #include "openobex/serversession.h"
 
 #include <KDebug>
@@ -61,6 +62,7 @@ void Service::launchServer()
 
     if (BlueDevil::Manager::self()->defaultAdapter()) {
         m_server = new OpenObex::Server(BlueDevil::Manager::self()->defaultAdapter()->address());
+        m_serverftp = new OpenObex::ServerFtp(BlueDevil::Manager::self()->defaultAdapter()->address());
         kDebug() << m_server;
     } else{
         kDebug() << "No adapters found";
