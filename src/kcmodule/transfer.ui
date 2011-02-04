@@ -181,7 +181,7 @@ p, li { white-space: pre-wrap; }
       </spacer>
      </item>
      <item>
-      <widget class="KPushButton" name="kpushbutton">
+      <widget class="KPushButton" name="sharedFiles">
        <property name="text">
         <string>Shared Files</string>
        </property>

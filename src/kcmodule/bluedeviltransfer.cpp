@@ -22,6 +22,7 @@
 #include "systemcheck.h"
 #include "ui_transfer.h"
 #include "filereceiversettings.h"
+#include "sharedfilesdialog/sharedfilesdialog.h"
 
 #include <QtCore/QTimer>
 
@@ -79,6 +80,7 @@ KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
 
     addConfig(FileReceiverSettings::self(), transfer);
 
+    connect(m_uiTransfer->sharedFiles, SIGNAL(clicked(bool)), this, SLOT(showSharedFilesDialog()));
     connect(BlueDevil::Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)),
             this, SLOT(defaultAdapterChanged(Adapter*)));
 
@@ -87,6 +89,7 @@ KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
         connect(defaultAdapter, SIGNAL(discoverableChanged(bool)),
                 this, SLOT(adapterDiscoverableChanged()));
     }
+
 
     updateInformationState();
 }
@@ -112,4 +115,10 @@ void KCMBlueDevilTransfer::adapterDiscoverableChanged()
 void KCMBlueDevilTransfer::updateInformationState()
 {
     m_systemCheck->updateInformationState();
+}
+
+void KCMBlueDevilTransfer::showSharedFilesDialog()
+{
+    SharedFilesDialog *d = new SharedFilesDialog();
+    d->exec();
 }
