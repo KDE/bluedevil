@@ -29,6 +29,7 @@
 #include <KGlobal>
 #include <KConfig>
 #include <KConfigGroup>
+#include <kstandarddirs.h>
 #include <QtGui/QDesktopServices>
 #include <kstandarddirs.h>
 
@@ -112,7 +113,9 @@ void OpenObex::ServerFtp::serverCreated(const QDBusObjectPath &path)
         this, SLOT(slotErrorOccured(const QString&, const QString&)));
 
     //TODO: Check if the dir exists and create it if not
-    m_dbusServer->Start("/home/nasete/Public", true, false);
+    KStandardDirs dirs;
+    kDebug() << dirs.saveLocation("data", "bluedevil/shared_files/");
+    m_dbusServer->Start(dirs.saveLocation("data", "bluedevil/shared_files/"), true, false);
 }
 
 void OpenObex::ServerFtp::serverCreatedError(const QDBusError &error)
