@@ -9,4 +9,4 @@ target_link_libraries(bluedevil-requestconfirmation
                       ${KDE4_KIO_LIBRARY} ${KDE4_KDEUI_LIBS})
 
 install(TARGETS bluedevil-requestconfirmation
-        DESTINATION ${INSTALL_TARGETS_DEFAULT_ARGS})
+        DESTINATION ${LIBEXEC_INSTALL_DIR})

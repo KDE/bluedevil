@@ -9,4 +9,4 @@ target_link_libraries(bluedevil-authorize
                       ${KDE4_KIO_LIBRARY} ${KDE4_KDEUI_LIBS} ${LibBlueDevil_LIBRARIES})
 
 install(TARGETS bluedevil-authorize
-        DESTINATION ${INSTALL_TARGETS_DEFAULT_ARGS})
+        DESTINATION ${LIBEXEC_INSTALL_DIR})
