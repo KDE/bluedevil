@@ -34,7 +34,7 @@ using namespace BlueDevil;
 
 DiscoverPage::DiscoverPage(QWidget* parent): QWizardPage(parent), m_wizard(0)
 {
-    setTitle("Discover Devices");
+    setTitle(i18n("Select a device"));
     setupUi(this);
 
     connect(deviceList, SIGNAL(itemActivated(QListWidgetItem*)), this,
