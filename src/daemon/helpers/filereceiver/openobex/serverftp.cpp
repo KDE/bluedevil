@@ -115,7 +115,7 @@ void OpenObex::ServerFtp::serverCreated(const QDBusObjectPath &path)
     //TODO: Check if the dir exists and create it if not
     KStandardDirs dirs;
     kDebug() << dirs.saveLocation("data", "bluedevil/shared_files/");
-    m_dbusServer->Start(dirs.saveLocation("data", "bluedevil/shared_files/"), true, false);
+    m_dbusServer->Start(dirs.saveLocation("data", "bluedevil/shared_files/"), FileReceiverSettings::self()->allowWrite(), true);
 }
 
 void OpenObex::ServerFtp::serverCreatedError(const QDBusError &error)
