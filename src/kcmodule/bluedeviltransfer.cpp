@@ -30,6 +30,7 @@
 #include <bluedevil/bluedevil.h>
 
 #include <kaboutdata.h>
+#include <klineedit.h>
 #include <kurlrequester.h>
 #include <kpluginfactory.h>
 #include <kconfigdialogmanager.h>
@@ -63,6 +64,19 @@ KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
     m_uiTransfer->setupUi(transfer);
     layout->addWidget(transfer);
     setLayout(layout);
+
+    m_uiTransfer->kcfg_saveUrl->lineEdit()->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+
+    m_uiTransfer->kcfg_autoAccept->addItem(i18n("Never"), QVariant(0));
+    m_uiTransfer->kcfg_autoAccept->addItem(i18n("Trusted devices"), QVariant(1));
+    m_uiTransfer->kcfg_autoAccept->addItem(i18n("All devices"), QVariant(2));
+
+    m_uiTransfer->kcfg_requirePin->addItem(i18n("Never"), QVariant(false));
+    m_uiTransfer->kcfg_requirePin->addItem(i18n("Always"), QVariant(true));
+
+    m_uiTransfer->kcfg_permissions->addItem(i18n("Only Read"), QVariant(0));
+    m_uiTransfer->kcfg_permissions->addItem(i18n("Only Write"), QVariant(1));
+    m_uiTransfer->kcfg_permissions->addItem(i18n("Modify and Read"), QVariant(2));
 
     addConfig(FileReceiverSettings::self(), transfer);
 

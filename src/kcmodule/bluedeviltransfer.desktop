@@ -11,7 +11,7 @@ X-KDE-ParentApp=kcontrol
 X-KDE-System-Settings-Parent-Category=bluetooth
 X-KDE-Weight=60
 
-Name=File Transfer
+Name=File Transfers
 Name[ca]=Transferència de fitxers
 Name[ca@valencia]=Transferència de fitxers
 Name[cs]=Přenos souboru
