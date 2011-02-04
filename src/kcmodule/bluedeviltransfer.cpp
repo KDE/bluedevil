@@ -74,9 +74,8 @@ KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
     m_uiTransfer->kcfg_requirePin->addItem(i18n("Never"), QVariant(false));
     m_uiTransfer->kcfg_requirePin->addItem(i18n("Always"), QVariant(true));
 
-    m_uiTransfer->kcfg_permissions->addItem(i18n("Only Read"), QVariant(0));
-    m_uiTransfer->kcfg_permissions->addItem(i18n("Only Write"), QVariant(1));
-    m_uiTransfer->kcfg_permissions->addItem(i18n("Modify and Read"), QVariant(2));
+    m_uiTransfer->kcfg_allowWrite->addItem(i18n("Only Read"), QVariant(false));
+    m_uiTransfer->kcfg_allowWrite->addItem(i18n("Modify and Read"), QVariant(true));
 
     addConfig(FileReceiverSettings::self(), transfer);
 

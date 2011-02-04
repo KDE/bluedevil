@@ -30,9 +30,9 @@ xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
             <label>Whether require pin or not</label>
             <default>true</default>
         </entry>
-        <entry name="permissions" type="int" key="permissions">
-            <label>Permissions granted for external devices</label>
-            <default>0</default>
+        <entry name="allowWrite" type="bool" key="allowWrite">
+            <label>Allow external devices to modify the shared files</label>
+            <default>false</default>
         </entry>
     </group>
 </kcfg>

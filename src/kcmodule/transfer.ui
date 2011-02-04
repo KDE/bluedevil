@@ -153,7 +153,7 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QComboBox" name="kcfg_permissions"/>
+       <widget class="QComboBox" name="kcfg_allowWrite"/>
       </item>
       <item row="0" column="1">
        <widget class="QCheckBox" name="kcfg_shareEnabled">
