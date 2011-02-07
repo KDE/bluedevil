@@ -53,6 +53,7 @@ private:
 
 private:
     QMap<QString, QListWidgetItem*> m_itemRelation;
+    Device     *m_selectedDevice;
     BlueWizard *m_wizard;
 };
 

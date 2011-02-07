@@ -19,7 +19,6 @@
 #include "bluewizard.h"
 #include "wizardagent.h"
 #include "pages/discoverpage.h"
-#include "pages/pinpage.h"
 #include "pages/pairingpage.h"
 #include "pages/servicespage.h"
 #include "../actionplugins/actionplugin.h"
@@ -27,6 +26,7 @@
 #include <QApplication>
 #include <QDBusConnection>
 #include <QWizard>
+#include <QString>
 
 #include <bluedevil/bluedevil.h>
 #include <KServiceTypeTrader>
@@ -46,7 +46,6 @@ BlueWizard::BlueWizard(const KUrl &url) : QWizard(), m_service(0), m_manualPin(f
     if (url.fileName().length() == 36) {
         setPreselectedUuid(url.fileName().toLatin1());
     }
-    setPage(Pin, new PinPage(this));
     setPage(Pairing, new PairingPage(this));
     setPage(Services, new ServicesPage(this));
 
@@ -113,6 +112,11 @@ void BlueWizard::setPin(const QByteArray& pinNum)
 {
     kDebug() << "Setting pin: :" << pinNum;
     m_pin = pinNum;
+}
+
+void BlueWizard::setPin(const QString& pin)
+{
+    setPin(pin.toAscii());
 }
 
 QByteArray BlueWizard::pin() const

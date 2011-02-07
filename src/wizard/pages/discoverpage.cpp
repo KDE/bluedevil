@@ -27,6 +27,7 @@
 #include <QTimer>
 
 #include <KDebug>
+#include <kpixmapsequenceoverlaypainter.h>
 
 #include <bluedevil/bluedevil.h>
 
@@ -36,6 +37,10 @@ DiscoverPage::DiscoverPage(QWidget* parent): QWizardPage(parent), m_wizard(0)
 {
     setTitle(i18n("Select a device"));
     setupUi(this);
+
+    KPixmapSequenceOverlayPainter *workingPainter = new KPixmapSequenceOverlayPainter(this);
+    workingPainter->setWidget(working);
+    workingPainter->start();
 
     connect(deviceList, SIGNAL(itemActivated(QListWidgetItem*)), this,
             SLOT(itemSelected(QListWidgetItem*)));
@@ -53,8 +58,12 @@ void DiscoverPage::initializePage()
         m_wizard = static_cast<BlueWizard* >(wizard());
         connect(Manager::self()->defaultAdapter(), SIGNAL(deviceFound(Device*)), this,
             SLOT(deviceFound(Device*)));
+        connect(manualPin, SIGNAL(toggled(bool)), pinText, SLOT(setEnabled(bool)));
+        connect(manualPin, SIGNAL(toggled(bool)), this, SIGNAL(completeChanged()));
+        connect(pinText, SIGNAL(textChanged(QString)), m_wizard, SLOT(setPin(QString)));
+        connect(pinText, SIGNAL(textChanged(QString)), this, SIGNAL(completeChanged()));
     }
-
+    m_wizard->setManualPin(manualPin->isChecked());
     connect(m_wizard, SIGNAL(currentIdChanged(int)), this, SLOT(leavePage(int)));
     startScan();
 }
@@ -89,6 +98,9 @@ void DiscoverPage::cleanupPage()
 bool DiscoverPage::isComplete() const
 {
     if (m_wizard->deviceAddress().isEmpty()) {
+        return false;
+    }
+    if (manualPin->isChecked() && pinText->text().isEmpty()) {
         return false;
     }
     return true;
@@ -149,6 +161,7 @@ void DiscoverPage::itemSelected(QListWidgetItem* item)
     Device *device = Manager::self()->defaultAdapter()->deviceForAddress(item->data(Qt::UserRole).toString());
     if (!device->name().isEmpty()) {
         m_wizard->setDeviceAddress(device->address().toAscii());
+        m_selectedDevice = device;
     } else {
         m_wizard->setDeviceAddress(QByteArray());
     }
@@ -166,5 +179,5 @@ int DiscoverPage::nextId() const
             }
         }
     }
-    return BlueWizard::Pin;
+    return BlueWizard::Pairing;
 }

@@ -4,7 +4,6 @@ set(wizard_SRCS
     wizardagent.cpp
    
     pages/discoverpage.cpp
-    pages/pinpage.cpp
     pages/pairingpage.cpp
     pages/servicespage.cpp
     pages/serviceoption.cpp
@@ -12,7 +11,6 @@ set(wizard_SRCS
 
 kde4_add_ui_files(wizard_SRCS
             pages/discover.ui
-            pages/pin.ui
             pages/pairing.ui
             pages/services.ui
             pages/serviceOption.ui

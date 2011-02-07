@@ -54,6 +54,7 @@ public:
     enum {Discover, Pin, Pairing, Services};
 
 public Q_SLOTS:
+    void setPin(const QString& pin);
     virtual void done(int result);
 
 private:
