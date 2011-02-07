@@ -51,7 +51,7 @@ public:
     KService::List services() const;
 
     void setService(const KService *);
-    enum {Discover, Pin, Pairing, ManualPin, Services};
+    enum {Discover, Pin, Pairing, Services};
 
 public Q_SLOTS:
     virtual void done(int result);
