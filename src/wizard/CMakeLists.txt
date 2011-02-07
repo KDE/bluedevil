@@ -2,7 +2,7 @@ set(wizard_SRCS
     main.cpp
     bluewizard.cpp
     wizardagent.cpp
-    pages/introductionpage.cpp
+   
     pages/discoverpage.cpp
     pages/pinpage.cpp
     pages/pairingpage.cpp
@@ -11,7 +11,6 @@ set(wizard_SRCS
 )
 
 kde4_add_ui_files(wizard_SRCS
-            pages/introduction.ui
             pages/discover.ui
             pages/pin.ui
             pages/pairing.ui

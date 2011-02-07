@@ -115,7 +115,7 @@ int PairingPage::nextId() const
         return BlueWizard::Services;
     }
     kDebug() << "Error, going back to introduction";
-    return BlueWizard::Introduction;
+    return BlueWizard::Discover;
 }
 
 bool PairingPage::validatePage()

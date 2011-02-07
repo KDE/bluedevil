@@ -18,7 +18,6 @@
 
 #include "bluewizard.h"
 #include "wizardagent.h"
-#include "pages/introductionpage.h"
 #include "pages/discoverpage.h"
 #include "pages/pinpage.h"
 #include "pages/pairingpage.h"
@@ -36,10 +35,9 @@
 
 BlueWizard::BlueWizard(const KUrl &url) : QWizard(), m_service(0), m_manualPin(false)
 {
-    setWindowTitle(i18n("Bluetooth Remote Device Wizard"));
+    setWindowTitle(i18n("Bluetooth Device Wizard"));
 
     if (url.host().length() != 17) {
-        setPage(Introduction, new IntroductionPage(this));
         setPage(Discover, new DiscoverPage(this));
     } else {
         setDeviceAddress(url.host().replace("-", ":").toLatin1());
