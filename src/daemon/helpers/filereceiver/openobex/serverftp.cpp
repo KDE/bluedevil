@@ -44,7 +44,7 @@ OpenObex::ServerFtp::ServerFtp(const QString& addr)
         "org.openobex.Manager", QDBusConnection::sessionBus());
 
     QList<QVariant> args;
-    args << addr << "ftp" << true;
+    args << addr << "ftp" << FileReceiverSettings::self()->requirePin();
     kDebug() << args;
 
     manager->callWithCallback("CreateBluetoothServer", args, this,
