@@ -27,7 +27,7 @@ xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
             <default>true</default>
         </entry>
         <entry name="requirePin" type="bool" key="requirePin">
-            <label>Whether require pin or not</label>
+            <label>Whether require the PIN</label>
             <default>true</default>
         </entry>
         <entry name="allowWrite" type="bool" key="allowWrite">

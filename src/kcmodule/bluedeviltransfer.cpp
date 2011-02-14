@@ -68,15 +68,15 @@ KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
 
     m_uiTransfer->kcfg_saveUrl->lineEdit()->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
 
-    m_uiTransfer->kcfg_autoAccept->addItem(i18n("Never"), QVariant(0));
-    m_uiTransfer->kcfg_autoAccept->addItem(i18n("Trusted devices"), QVariant(1));
-    m_uiTransfer->kcfg_autoAccept->addItem(i18n("All devices"), QVariant(2));
+    m_uiTransfer->kcfg_autoAccept->addItem(i18nc("'Auto accept' option value", "Never"), QVariant(0));
+    m_uiTransfer->kcfg_autoAccept->addItem(i18nc("'Auto accept' option value", "Trusted devices"), QVariant(1));
+    m_uiTransfer->kcfg_autoAccept->addItem(i18nc("'Auto accept' option value", "All devices"), QVariant(2));
 
-    m_uiTransfer->kcfg_requirePin->addItem(i18n("Never"), QVariant(false));
-    m_uiTransfer->kcfg_requirePin->addItem(i18n("Always"), QVariant(true));
+    m_uiTransfer->kcfg_requirePin->addItem(i18nc("'Require PIN' option value", "Never"), QVariant(false));
+    m_uiTransfer->kcfg_requirePin->addItem(i18nc("'Require PIN' option value", "Always"), QVariant(true));
 
-    m_uiTransfer->kcfg_allowWrite->addItem(i18n("Read Only"), QVariant(false));
-    m_uiTransfer->kcfg_allowWrite->addItem(i18n("Modify and Read"), QVariant(true));
+    m_uiTransfer->kcfg_allowWrite->addItem(i18nc("'Permissions' option value", "Read Only"), QVariant(false));
+    m_uiTransfer->kcfg_allowWrite->addItem(i18nc("'Permissions' option value", "Modify and Read"), QVariant(true));
 
     addConfig(FileReceiverSettings::self(), transfer);
 
