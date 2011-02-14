@@ -1,8 +1,12 @@
 set(kcm_bluedevildevices_PART_SRCS bluedevildevices.cpp systemcheck.cpp kded.cpp)
 set(kcm_bluedeviladapters_PART_SRCS bluedeviladapters.cpp systemcheck.cpp kded.cpp)
-set(kcm_bluedeviltransfer_PART_SRCS bluedeviltransfer.cpp systemcheck.cpp kded.cpp)
+set(kcm_bluedeviltransfer_PART_SRCS
+    bluedeviltransfer.cpp
+    systemcheck.cpp
+    kded.cpp
+    sharedfilesdialog/sharedfilesdialog.cpp)
 
-kde4_add_ui_files(kcm_bluedeviltransfer_PART_SRCS_UI transfer.ui)
+kde4_add_ui_files(kcm_bluedeviltransfer_PART_SRCS_UI transfer.ui sharedfiles.ui)
 
 kde4_add_kcfg_files(kcm_bluedeviltransfer_PART_SRCS
                     ../settings/filereceiversettings.kcfgc

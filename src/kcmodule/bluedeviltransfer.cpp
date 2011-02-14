@@ -22,6 +22,7 @@
 #include "systemcheck.h"
 #include "ui_transfer.h"
 #include "filereceiversettings.h"
+#include "sharedfilesdialog/sharedfilesdialog.h"
 
 #include <QtCore/QTimer>
 
@@ -30,6 +31,7 @@
 #include <bluedevil/bluedevil.h>
 
 #include <kaboutdata.h>
+#include <klineedit.h>
 #include <kurlrequester.h>
 #include <kpluginfactory.h>
 #include <kconfigdialogmanager.h>
@@ -64,8 +66,21 @@ KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
     layout->addWidget(transfer);
     setLayout(layout);
 
+    m_uiTransfer->kcfg_saveUrl->lineEdit()->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+
+    m_uiTransfer->kcfg_autoAccept->addItem(i18n("Never"), QVariant(0));
+    m_uiTransfer->kcfg_autoAccept->addItem(i18n("Trusted devices"), QVariant(1));
+    m_uiTransfer->kcfg_autoAccept->addItem(i18n("All devices"), QVariant(2));
+
+    m_uiTransfer->kcfg_requirePin->addItem(i18n("Never"), QVariant(false));
+    m_uiTransfer->kcfg_requirePin->addItem(i18n("Always"), QVariant(true));
+
+    m_uiTransfer->kcfg_allowWrite->addItem(i18n("Read Only"), QVariant(false));
+    m_uiTransfer->kcfg_allowWrite->addItem(i18n("Modify and Read"), QVariant(true));
+
     addConfig(FileReceiverSettings::self(), transfer);
 
+    connect(m_uiTransfer->sharedFiles, SIGNAL(clicked(bool)), this, SLOT(showSharedFilesDialog()));
     connect(BlueDevil::Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)),
             this, SLOT(defaultAdapterChanged(Adapter*)));
 
@@ -74,6 +89,7 @@ KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
         connect(defaultAdapter, SIGNAL(discoverableChanged(bool)),
                 this, SLOT(adapterDiscoverableChanged()));
     }
+
 
     updateInformationState();
 }
@@ -99,4 +115,10 @@ void KCMBlueDevilTransfer::adapterDiscoverableChanged()
 void KCMBlueDevilTransfer::updateInformationState()
 {
     m_systemCheck->updateInformationState();
+}
+
+void KCMBlueDevilTransfer::showSharedFilesDialog()
+{
+    SharedFilesDialog *d = new SharedFilesDialog();
+    d->exec();
 }

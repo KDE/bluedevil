@@ -1,7 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2010 Eduardo Robles Elvira <edulix@gmail.com>           *
- *   Copyright (C) 2010 Alejandro Fiestas Olivares <alex@eyeos.org>        *
- *   Copyright (C) 2010 UFO Coders <info@ufocoders.com>                    *
+ *   Copyright (C) 2010-2011 Alejandro Fiestas Olivares <afiestas@kde.org> *
+ *   Copyright (C) 2010-2011 UFO Coders <info@ufocoders.com>               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,37 +18,38 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA            *
  ***************************************************************************/
 
-#ifndef SERVICE_H
-#define SERVICE_H
+#ifndef OPENOBEX_SERVERFTP_H
+#define OPENOBEX_SERVERFTP_H
 
 #include <QtCore/QObject>
-#include <QtDBus/QtDBus>
+#include <QtDBus>
 
-#include "openobex/server.h"
-#include "openobex/serverftp.h"
+class OrgOpenobexServerInterface;
+namespace OpenObex
+{
 
-class QDBusServiceWatcher;
-class Service
-    : public QObject
+class ServerFtp : public QObject
 {
     Q_OBJECT
-
 public:
-    Service();
-    virtual ~Service();
+    ServerFtp(const QString &addr);
+    virtual ~ServerFtp();
 
-public Q_SLOTS:
-    void launchServer();
-    void stopServer();
-    bool isRunning();
+protected Q_SLOTS:
+    void slotErrorOccured(const QString &errorName, const QString &errorMessage);
+    void slotSessionCreated(const QDBusObjectPath &path);
+    void slotSessionRemoved(const QDBusObjectPath &path);
 
-private Q_SLOTS:
-    void openobexUnregistered();
+    void serverCreated(const QDBusObjectPath &path);
+    void serverCreatedError(const QDBusError &error);
 
 private:
-    OpenObex::Server *m_server;
-    OpenObex::ServerFtp *m_serverftp;
-    QDBusServiceWatcher *m_watcher;
+    bool serviceStarted();
+
+private:
+    OrgOpenobexServerInterface *m_dbusServer;
 };
 
-#endif // SERVICE_H
+}
+
+#endif // OPENOBEX_SERVERFTP_H

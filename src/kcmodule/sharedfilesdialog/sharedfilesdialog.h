@@ -1,7 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2010 Eduardo Robles Elvira <edulix@gmail.com>           *
- *   Copyright (C) 2010 Alejandro Fiestas Olivares <alex@eyeos.org>        *
- *   Copyright (C) 2010 UFO Coders <info@ufocoders.com>                    *
+ *   Copyright (C) 2010-2011 Alejandro Fiestas Olivares <afiestas@kde.org> *
+ *   Copyright (C) 2010-2011 UFO Coders <info@ufocoders.com>               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,37 +18,19 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA            *
  ***************************************************************************/
 
-#ifndef SERVICE_H
-#define SERVICE_H
+#ifndef SHAREDFILESDIALOG_H
+#define SHAREDFILESDIALOG_H
 
-#include <QtCore/QObject>
-#include <QtDBus/QtDBus>
+#include <kdialog.h>
 
-#include "openobex/server.h"
-#include "openobex/serverftp.h"
-
-class QDBusServiceWatcher;
-class Service
-    : public QObject
+class SharedFilesDialog : public KDialog
 {
     Q_OBJECT
-
 public:
-    Service();
-    virtual ~Service();
-
-public Q_SLOTS:
-    void launchServer();
-    void stopServer();
-    bool isRunning();
+    SharedFilesDialog(QWidget* parent = 0, Qt::WFlags flags = 0);
 
 private Q_SLOTS:
-    void openobexUnregistered();
-
-private:
-    OpenObex::Server *m_server;
-    OpenObex::ServerFtp *m_serverftp;
-    QDBusServiceWatcher *m_watcher;
+    void addFles();
 };
 
-#endif // SERVICE_H
+#endif // SHAREDFILESDIALOG_H
