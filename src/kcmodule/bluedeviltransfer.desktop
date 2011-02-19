@@ -13,12 +13,15 @@ X-KDE-Weight=60
 
 Name=File Transfers
 Name[cs]=Přenosy souborů
+Name[da]=Filoverførsler
 Name[el]=Μεταφορές αρχείων
+Name[es]=Transferencias de archivo
 Name[it]=Trasferimento file
 Name[nds]=Dateiöverdregen
 Name[nl]=Bestandsoverdrachten
 Name[pt]=Transferência de Ficheiros
 Name[pt_BR]=Transferência de arquivos
+Name[ru]=Приём файлов
 Name[uk]=Перенесення файла
 Name[x-test]=xxFile Transfersxx
 Name[zh_TW]=檔案傳輸
