@@ -51,7 +51,7 @@ QList< QAction* > SendFileItemAction::actions(const KFileItemListProperties& fil
 
     SendFileItemAction *hack = const_cast<SendFileItemAction*>(this);
     hack->m_fileItemInfos = fileItemInfos;
-    
+
     //If there is no adaptor, there is no bluetooth
     if (!Manager::self()->defaultAdapter()) {
         return list;
@@ -92,11 +92,11 @@ QList< QAction* > SendFileItemAction::actions(const KFileItemListProperties& fil
 void SendFileItemAction::deviceTriggered()
 {
     QStringList args;
-    args.append("-u " + static_cast<QAction *>(sender())->data().toString());
+    args.append("-u" + static_cast<QAction *>(sender())->data().toString());
 
     KUrl::List fileList =  m_fileItemInfos.urlList();
     Q_FOREACH(const KUrl &url,  fileList) {
-        args.append("-f " + url.path());
+        args.append("-f" + url.path());
     }
     kDebug() << args;
     KProcess process;
