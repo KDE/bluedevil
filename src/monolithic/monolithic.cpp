@@ -591,9 +591,6 @@ void Monolithic::UUIDsChanged(const QStringList &UUIDs)
 
 void Monolithic::poweredChanged()
 {
-    regenerateDeviceEntries();
-    regenerateConnectedDevices();
-
     if (!poweredAdapters()) {
         setTooltipTitleStatus(false);
         setToolTipSubTitle("");
@@ -602,6 +599,8 @@ void Monolithic::poweredChanged()
         setTooltipTitleStatus(true);
         setOverlayIconByName(QString());
     }
+    regenerateDeviceEntries();
+    regenerateConnectedDevices();
 }
 
 void Monolithic::deviceCreated(Device *device)
