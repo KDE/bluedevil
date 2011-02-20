@@ -25,6 +25,7 @@
 #include <QtCore/QDebug>
 
 #include <KProcess>
+#include <KStandardDirs>
 #include <bluedevil/bluedevil.h>
 
 #define AGENT_PATH "/blueDevil_agent"
@@ -69,7 +70,7 @@ void AgentListenerWorker::Authorize(const QDBusObjectPath &device, const QString
     list.append(remote->name());
     list.append(device.path());
 
-    int result = KProcess::execute("bluedevil-authorize", list);
+    int result = KProcess::execute(KStandardDirs::findExe("bluedevil-authorize"), list);
     if (result == 0) {
         qDebug() << "Correct";
         return;
@@ -86,7 +87,7 @@ QString AgentListenerWorker::RequestPinCode(const QDBusObjectPath &device, const
 
     KProcess process;
     process.setOutputChannelMode(KProcess::OnlyStdoutChannel);
-    process.setProgram("bluedevil-requestpin",list);
+    process.setProgram(KStandardDirs::findExe("bluedevil-requestpin"),list);
     process.start();
 
     if (process.waitForFinished(-1)) {
@@ -121,7 +122,7 @@ void AgentListenerWorker::RequestConfirmation(const QDBusObjectPath &device, qui
     list.append(remote->name());
     list.append(QString::number(passkey));
 
-    int result = KProcess::execute("bluedevil-requestconfirmation", list);
+    int result = KProcess::execute(KStandardDirs::findExe("bluedevil-requestconfirmation"), list);
     if (result == 0) {
         qDebug() << "Go on camarada!";
         QDBusConnection::systemBus().send(msg.createReply());
@@ -136,7 +137,7 @@ void AgentListenerWorker::ConfirmModeChange(const QString& mode, const QDBusMess
     QStringList list;
     list.append(mode);
 
-    int result = KProcess::execute("bluedevil-confirmchangemode",list);
+    int result = KProcess::execute(KStandardDirs::findExe("bluedevil-confirmchangemode"),list);
     if (result == 0) {
         qDebug() << "Go on camarada!";
         return;
