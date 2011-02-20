@@ -60,7 +60,7 @@
        <item>
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>Scanning</string>
+          <string>Scanning...</string>
          </property>
         </widget>
        </item>
@@ -120,7 +120,7 @@
          <property name="readOnly">
           <bool>false</bool>
          </property>
-         <property name="placeholderText">
+         <property name="placeholderText" stdset="0">
           <string>0000</string>
          </property>
         </widget>
