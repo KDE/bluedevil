@@ -97,6 +97,7 @@ void RequestPin::introducePin()
     dialogWidget->pin->setFocus(Qt::ActiveWindowFocusReason);
     if (dialog->exec() == KDialog::Accepted) {
         cout << dialogWidget->pin->text().toLatin1().data();
+        flush(cout);
         qApp->exit(0);
     }
 
