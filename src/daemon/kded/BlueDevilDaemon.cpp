@@ -83,9 +83,6 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     if (BlueDevil::Manager::self()->defaultAdapter()) {
         onlineMode();
     }
-
-    KProcess process;
-    process.startDetached("bluedevil-monolithic");
 }
 
 BlueDevilDaemon::~BlueDevilDaemon()
@@ -94,13 +91,6 @@ BlueDevilDaemon::~BlueDevilDaemon()
         offlineMode();
     }
 
-    QDBusMessage msg = QDBusMessage::createMethodCall(
-        "org.kde.bluedevil_monolithic",
-        "/MainApplication",
-        "org.kde.KApplication",
-        "quit"
-    );
-    QDBusConnection::sessionBus().asyncCall(msg);
     delete d;
 }
 
@@ -149,6 +139,10 @@ void BlueDevilDaemon::onlineMode()
     }
 
     d->m_placesModel->addPlace("Bluetooth", KUrl("bluetooth:/"), "preferences-system-bluetooth");
+
+    KProcess process;
+    process.startDetached("bluedevil-monolithic");
+
     d->m_status = Private::Online;
 }
 
@@ -177,6 +171,14 @@ void BlueDevilDaemon::offlineMode()
         QModelIndex index = d->m_placesModel->closestItem(KUrl("bluetooth:/"));
         d->m_placesModel->removePlace(index);
     }
+
+    QDBusMessage msg = QDBusMessage::createMethodCall(
+        "org.kde.bluedevilmonolithic",
+        "/MainApplication",
+        "org.kde.KApplication",
+        "quit"
+    );
+    QDBusConnection::sessionBus().asyncCall(msg);
     d->m_status = Private::Offline;
 }
 
