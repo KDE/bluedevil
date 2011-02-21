@@ -21,6 +21,7 @@
 
 #include "service.h"
 #include "serviceadaptor.h"
+#include "filereceiversettings.h"
 #include "openobex/serverftp.h"
 #include "openobex/serversession.h"
 
@@ -61,9 +62,16 @@ void Service::launchServer()
     }
 
     if (BlueDevil::Manager::self()->defaultAdapter()) {
-        m_server = new OpenObex::Server(BlueDevil::Manager::self()->defaultAdapter()->address());
-        m_serverftp = new OpenObex::ServerFtp(BlueDevil::Manager::self()->defaultAdapter()->address());
-        kDebug() << m_server;
+
+        FileReceiverSettings::self()->readConfig();
+        if (FileReceiverSettings::enabled()) {
+            kDebug() << "Launching Server";
+            m_server = new OpenObex::Server(BlueDevil::Manager::self()->defaultAdapter()->address());
+        }
+        if (FileReceiverSettings::shareEnabled()) {
+            kDebug() << "Launching FileSharing";
+            m_serverftp = new OpenObex::ServerFtp(BlueDevil::Manager::self()->defaultAdapter()->address());
+        }
     } else{
         kDebug() << "No adapters found";
     }
