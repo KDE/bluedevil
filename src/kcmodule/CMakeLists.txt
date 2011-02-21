@@ -7,7 +7,7 @@ set(kcm_bluedeviltransfer_PART_SRCS
     columnresizer.cpp
     sharedfilesdialog/sharedfilesdialog.cpp)
 
-kde4_add_ui_files(kcm_bluedeviltransfer_PART_SRCS_UI transfer.ui sharedfiles.ui)
+kde4_add_ui_files(kcm_bluedeviltransfer_PART_SRCS_UI transfer.ui sharedfilesdialog/sharedfiles.ui)
 
 kde4_add_kcfg_files(kcm_bluedeviltransfer_PART_SRCS
                     ../settings/filereceiversettings.kcfgc
