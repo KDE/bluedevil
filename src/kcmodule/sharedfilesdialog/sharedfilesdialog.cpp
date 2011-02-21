@@ -79,14 +79,13 @@ void SharedFilesDialog::addFiles()
     dialog->setMode(KFile::Directory | KFile::Files | KFile::LocalOnly);
     dialog->exec();
 
-    QFile file, fileExist;
+    QFile fileExist;
     KUrl url;
     QString linkPath;
     QString baseDir = KStandardDirs().saveLocation("data", "bluedevil/shared_files/");
 
     QStringList files = dialog->selectedFiles();
     Q_FOREACH(const QString &filePath, files) {
-        file.setFileName(filePath);
         url.setPath(filePath);
 
         linkPath = baseDir + url.fileName();
@@ -95,7 +94,7 @@ void SharedFilesDialog::addFiles()
             continue;
         }
 
-        file.link(linkPath);
+        QFile::link(filePath, linkPath);
         if (m_removed.contains(filePath)) {
             m_removed.removeOne(filePath);
             continue;
