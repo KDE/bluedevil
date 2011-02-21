@@ -23,6 +23,7 @@
 
 #include <kdialog.h>
 
+class Ui_sharedFiles;
 class SharedFilesDialog : public KDialog
 {
     Q_OBJECT
@@ -30,7 +31,11 @@ public:
     SharedFilesDialog(QWidget* parent = 0, Qt::WFlags flags = 0);
 
 private Q_SLOTS:
-    void addFles();
+    void addFiles();
+    void removeFiles();
+
+private:
+    Ui_sharedFiles *m_ui;
 };
 
 #endif // SHAREDFILESDIALOG_H

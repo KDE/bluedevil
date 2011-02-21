@@ -31,29 +31,51 @@
 SharedFilesDialog::SharedFilesDialog(QWidget* parent, Qt::WFlags flags): KDialog(parent, flags)
 {
     QWidget *sharedFiles = new QWidget(this);
-    Ui_sharedFiles *ui = new Ui::sharedFiles();
-    ui->setupUi(sharedFiles);
+    m_ui = new Ui::sharedFiles();
+    m_ui->setupUi(sharedFiles);
     setMainWidget(sharedFiles);
+    m_ui->listView->setSelectionMode(QAbstractItemView::ExtendedSelection);
 
     QFileSystemModel *model = new QFileSystemModel();
     qDebug() << KStandardDirs().saveLocation("data", "bluedevil/shared_files/");
     QModelIndex in = model->setRootPath(KStandardDirs().saveLocation("data", "bluedevil/shared_files/"));
-    
-    ui->listView->setModel(model);
-    ui->listView->setRootIndex(in);
 
-    ui->addBtn->setIcon(KIcon("list-add"));
-    ui->removeBtn->setIcon(KIcon("list-remove"));
+    m_ui->listView->setModel(model);
+    m_ui->listView->setRootIndex(in);
 
-    connect(ui->addBtn, SIGNAL(clicked(bool)), this, SLOT(addFles()));
+    m_ui->addBtn->setIcon(KIcon("list-add"));
+    m_ui->removeBtn->setIcon(KIcon("list-remove"));
+
+    connect(m_ui->addBtn, SIGNAL(clicked(bool)), this, SLOT(addFiles()));
+    connect(m_ui->removeBtn, SIGNAL(clicked(bool)), this, SLOT(removeFiles()));
 }
 
-void SharedFilesDialog::addFles()
+void SharedFilesDialog::addFiles()
 {
     KFileDialog *dialog = new KFileDialog(QDesktopServices::storageLocation(QDesktopServices::HomeLocation), "*", this);
     dialog->setMode(KFile::Directory | KFile::Files | KFile::LocalOnly);
     dialog->exec();
 
-    qDebug() << dialog->selectedFiles();
+    QFile file;
+    KUrl url;
+    QString baseDir = KStandardDirs().saveLocation("data", "bluedevil/shared_files/");
+
+    QStringList files = dialog->selectedFiles();
+    Q_FOREACH(const QString &fileUrl, files) {
+        file.setFileName(fileUrl);
+        url.setPath(fileUrl);
+        file.link(baseDir + url.fileName());
+    }
 }
 
+void SharedFilesDialog::removeFiles()
+{
+    QItemSelectionModel *select = m_ui->listView->selectionModel();
+    QModelIndexList list = select->selectedIndexes();
+    QFile file;
+
+    Q_FOREACH(const QModelIndex &index, list) {
+        file.setFileName(index.data(QFileSystemModel::FilePathRole).toString());
+        file.remove();
+    }
+}
