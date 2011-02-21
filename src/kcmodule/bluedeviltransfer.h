@@ -42,15 +42,18 @@ public:
     KCMBlueDevilTransfer(QWidget *parent, const QVariantList&);
     virtual ~KCMBlueDevilTransfer();
 
+    virtual void save();
 private Q_SLOTS:
     void defaultAdapterChanged(Adapter *adapter);
     void adapterDiscoverableChanged();
     void updateInformationState();
     void showSharedFilesDialog();
+    void changed(bool);
 
 private:
     SystemCheck *m_systemCheck;
     Ui::Transfer *m_uiTransfer;
+    bool m_restartNeeded;
 };
 
 #endif

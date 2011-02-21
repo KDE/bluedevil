@@ -22,6 +22,7 @@
 #include "systemcheck.h"
 #include "ui_transfer.h"
 #include "filereceiversettings.h"
+#include "bluedevil_service.h"
 #include "sharedfilesdialog/sharedfilesdialog.h"
 
 #include <QtCore/QTimer>
@@ -44,6 +45,7 @@ K_EXPORT_PLUGIN(BlueDevilFactory("bluedeviltransfer", "bluedevil"))
 KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
     : KCModule(BlueDevilFactory::componentData(), parent)
     , m_systemCheck(new SystemCheck(this))
+    , m_restartNeeded(false)
 {
     KAboutData* ab = new KAboutData(
         "kcmbluedeviltransfer", "bluedevil", ki18n("Bluetooth Transfer"), "1.0",
@@ -55,7 +57,7 @@ KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
 
     connect(m_systemCheck, SIGNAL(updateInformationStateRequest()),
             this, SLOT(updateInformationState()));
-
+    connect(this, SIGNAL(changed(bool)), this, SLOT(changed(bool)));
 
     QVBoxLayout *layout = new QVBoxLayout;
     m_systemCheck->createWarnings(layout);
@@ -98,6 +100,25 @@ KCMBlueDevilTransfer::~KCMBlueDevilTransfer()
 {
 }
 
+void KCMBlueDevilTransfer::save()
+{
+    if (!m_restartNeeded) {
+        return;
+    }
+
+    org::kde::BlueDevil::Service *service = new org::kde::BlueDevil::Service(
+                                                    "org.kde.BlueDevil.Service",
+                                                    "/Service",
+                                                    QDBusConnection::sessionBus(), this);
+    if (service->isRunning()) {
+        service->stopServer();
+    }
+
+    service->launchServer();
+
+    KCModule::save();
+}
+
 void KCMBlueDevilTransfer::defaultAdapterChanged(Adapter *adapter)
 {
     if (adapter) {
@@ -121,4 +142,9 @@ void KCMBlueDevilTransfer::showSharedFilesDialog()
 {
     SharedFilesDialog *d = new SharedFilesDialog();
     d->exec();
+}
+
+void KCMBlueDevilTransfer::changed(bool changed)
+{
+    m_restartNeeded = changed;
 }

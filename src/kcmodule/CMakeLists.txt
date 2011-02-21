@@ -16,6 +16,10 @@ kde4_add_kcfg_files(kcm_bluedevildevices_PART_SRCS ../settings/globalsettings.kc
 
 kde4_add_kcfg_files(kcm_bluedeviladapters_PART_SRCS ../settings/globalsettings.kcfgc)
 
+qt4_add_dbus_interface(kcm_bluedeviltransfer_PART_SRCS
+    org.kde.BlueDevil.Service.xml
+    bluedevil_service)
+
 kde4_add_plugin(kcm_bluedevildevices ${kcm_bluedevildevices_PART_SRCS})
 kde4_add_plugin(kcm_bluedeviladapters ${kcm_bluedeviladapters_PART_SRCS})
 kde4_add_plugin(kcm_bluedeviltransfer ${kcm_bluedeviltransfer_PART_SRCS} ${kcm_bluedeviltransfer_PART_SRCS_UI})
