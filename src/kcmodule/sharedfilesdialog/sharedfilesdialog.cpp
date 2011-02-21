@@ -46,8 +46,31 @@ SharedFilesDialog::SharedFilesDialog(QWidget* parent, Qt::WFlags flags): KDialog
     m_ui->addBtn->setIcon(KIcon("list-add"));
     m_ui->removeBtn->setIcon(KIcon("list-remove"));
 
+    connect(this, SIGNAL(finished(int)), this, SLOT(slotFinished(int)));
     connect(m_ui->addBtn, SIGNAL(clicked(bool)), this, SLOT(addFiles()));
     connect(m_ui->removeBtn, SIGNAL(clicked(bool)), this, SLOT(removeFiles()));
+}
+
+void SharedFilesDialog::slotFinished(int result)
+{
+    if (result == 1) {
+        return;
+    }
+
+    KUrl url;
+    QString baseDir = KStandardDirs().saveLocation("data", "bluedevil/shared_files/");
+    if (!m_added.isEmpty()) {
+        Q_FOREACH(const QString &filePath, m_added) {
+            url.setPath(filePath);
+            QFile::remove(baseDir + url.fileName());
+        }
+    }
+    if (!m_removed.isEmpty()) {
+        Q_FOREACH(const QString &filePath, m_removed) {
+            url.setPath(filePath);
+            QFile::link(filePath, baseDir + url.fileName());
+        }
+    }
 }
 
 void SharedFilesDialog::addFiles()
@@ -56,15 +79,30 @@ void SharedFilesDialog::addFiles()
     dialog->setMode(KFile::Directory | KFile::Files | KFile::LocalOnly);
     dialog->exec();
 
-    QFile file;
+    QFile file, fileExist;
     KUrl url;
+    QString linkPath;
     QString baseDir = KStandardDirs().saveLocation("data", "bluedevil/shared_files/");
 
     QStringList files = dialog->selectedFiles();
-    Q_FOREACH(const QString &fileUrl, files) {
-        file.setFileName(fileUrl);
-        url.setPath(fileUrl);
-        file.link(baseDir + url.fileName());
+    Q_FOREACH(const QString &filePath, files) {
+        file.setFileName(filePath);
+        url.setPath(filePath);
+
+        linkPath = baseDir + url.fileName();
+        fileExist.setFileName(linkPath);
+        if (fileExist.exists()) {
+            continue;
+        }
+
+        file.link(linkPath);
+        if (m_removed.contains(filePath)) {
+            m_removed.removeOne(filePath);
+            continue;
+        }
+        if (!m_added.contains(filePath)) {
+            m_added.append(filePath);
+        }
     }
 }
 
@@ -72,10 +110,20 @@ void SharedFilesDialog::removeFiles()
 {
     QItemSelectionModel *select = m_ui->listView->selectionModel();
     QModelIndexList list = select->selectedIndexes();
-    QFile file;
 
+    QFile file;
+    QString linkPath;
     Q_FOREACH(const QModelIndex &index, list) {
-        file.setFileName(index.data(QFileSystemModel::FilePathRole).toString());
+        linkPath = index.data(QFileSystemModel::FilePathRole).toString();
+        file.setFileName(linkPath);
+        if (m_added.contains(file.symLinkTarget())) {
+            m_added.removeOne(file.symLinkTarget());
+            continue;
+        }
+        if (!m_removed.contains(file.symLinkTarget())) {
+            m_removed.append(file.symLinkTarget());
+        }
+
         file.remove();
     }
 }

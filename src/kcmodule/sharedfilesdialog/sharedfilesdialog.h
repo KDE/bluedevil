@@ -31,11 +31,14 @@ public:
     SharedFilesDialog(QWidget* parent = 0, Qt::WFlags flags = 0);
 
 private Q_SLOTS:
+    void slotFinished(int result);
     void addFiles();
     void removeFiles();
 
 private:
     Ui_sharedFiles *m_ui;
+    QStringList m_removed;
+    QStringList m_added;
 };
 
 #endif // SHAREDFILESDIALOG_H
