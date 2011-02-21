@@ -20,6 +20,7 @@
 
 #include "bluedeviltransfer.h"
 #include "systemcheck.h"
+#include "columnresizer.h"
 #include "ui_transfer.h"
 #include "filereceiversettings.h"
 #include "bluedevil_service.h"
@@ -94,6 +95,10 @@ KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
 
 
     updateInformationState();
+
+    ColumnResizer *resizer = new ColumnResizer(this);
+    resizer->addWidgetsFromFormLayout(m_uiTransfer->formLayout, QFormLayout::LabelRole);
+    resizer->addWidgetsFromFormLayout(m_uiTransfer->formLayout_2, QFormLayout::LabelRole);
 }
 
 KCMBlueDevilTransfer::~KCMBlueDevilTransfer()
