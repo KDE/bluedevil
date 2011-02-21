@@ -110,14 +110,6 @@ void ServerSession::slotTransferStarted(const QString& filename, const QString& 
     m_savePath = localPath; // This is where the file is being downloaded
     m_totalBytes = totalBytes;
 
-    //On autoAccept mode
-    FileReceiverSettings::self()->readConfig();
-    kDebug() << "Auto Accept" << FileReceiverSettings::self()->autoAccept();
-    if (FileReceiverSettings::self()->autoAccept() == 2) {
-        slotAccept();
-        return;
-    }
-
     //AutoAccept trusted devices
     if (FileReceiverSettings::self()->autoAccept() == 1) {
         if (m_bluetoothDevice->isTrusted()) {

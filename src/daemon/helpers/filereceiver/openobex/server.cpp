@@ -148,7 +148,13 @@ void OpenObex::Server::serverCreated(QDBusObjectPath path)
 
     // Get the default save dir, where all files will be downloaded (even if user chooses "Save As"
     // option, files will be downloaded here and then moved to the file path the user wanted)
-    d->dbusServer->Start(FileReceiverSettings::saveUrl().path(), true, false);
+    bool autoAccept = false;
+    if (FileReceiverSettings::autoAccept() == 2) {
+        autoAccept = true;
+    }
+
+    kDebug() << autoAccept;
+    d->dbusServer->Start(FileReceiverSettings::saveUrl().path(), true, autoAccept);
 }
 
 void OpenObex::Server::serverCreatedError(QDBusError error)
