@@ -1,4 +1,4 @@
-set(kcm_bluedevildevices_PART_SRCS bluedevildevices.cpp systemcheck.cpp kded.cpp)
+set(kcm_bluedevildevices_PART_SRCS bluedevildevices.cpp systemcheck.cpp kded.cpp devicedetails.cpp)
 set(kcm_bluedeviladapters_PART_SRCS bluedeviladapters.cpp systemcheck.cpp kded.cpp)
 set(kcm_bluedeviltransfer_PART_SRCS
     bluedeviltransfer.cpp

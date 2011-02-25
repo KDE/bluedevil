@@ -22,6 +22,7 @@
 #include "systemcheck.h"
 #include "kded.h"
 #include "globalsettings.h"
+#include "devicedetails.h"
 
 #include <bluedevil/bluedevil.h>
 
@@ -214,6 +215,7 @@ public:
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
 
 private:
+    QPixmap m_blockedPixmap;
     QPixmap m_trustedPixmap;
     QPixmap m_untrustedPixmap;
     QPixmap m_connectedPixmap;
@@ -223,6 +225,8 @@ private:
 BluetoothDevicesDelegate::BluetoothDevicesDelegate(QObject *parent)
     : QStyledItemDelegate(parent)
 {
+    KIcon blockedIcon("dialog-cancel");
+    m_blockedPixmap = blockedIcon.pixmap(22, 22);
     KIcon trustedIcon("security-high");
     m_trustedPixmap = trustedIcon.pixmap(22, 22);
     KIcon untrustedIcon("security-low");
@@ -280,20 +284,23 @@ void BluetoothDevicesDelegate::paint(QPainter *painter, const QStyleOptionViewIt
     r.setLeft(r.right() - 5 - 22);
     r.setSize(QSize(22, 22));
 
+    if (!device->isBlocked()) {
+        if (device->isConnected()) {
+            painter->drawPixmap(r, m_connectedPixmap);
+        } else {
+            painter->drawPixmap(r, m_disconnectedPixmap);
+        }
 
-    if (device->isConnected()) {
-        painter->drawPixmap(r, m_connectedPixmap);
+        r.setLeft(r.right() - 5 - 22 - 22);
+        r.setSize(QSize(22, 22));
+
+        if (device->isTrusted()) {
+            painter->drawPixmap(r, m_trustedPixmap);
+        } else {
+            painter->drawPixmap(r, m_untrustedPixmap);
+        }
     } else {
-        painter->drawPixmap(r, m_disconnectedPixmap);
-    }
-
-    r.setLeft(r.right() - 5 - 22 - 22);
-    r.setSize(QSize(22, 22));
-
-    if (device->isTrusted()) {
-        painter->drawPixmap(r, m_trustedPixmap);
-    } else {
-        painter->drawPixmap(r, m_untrustedPixmap);
+        painter->drawPixmap(r, m_blockedPixmap);
     }
 
 //restore
@@ -344,29 +351,27 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
 
     connect(m_devices->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(deviceSelectionChanged(QItemSelection)));
+    connect(m_devices, SIGNAL(doubleClicked(QModelIndex)),
+            this, SLOT(deviceDoubleClicked(QModelIndex)));
 
     layout->addWidget(m_devices);
 
 // Actions buttons
-    m_trustDevice = new KPushButton(KIcon("security-high"), i18nc("Trust a device", "Trust"));
-    m_trustDevice->setEnabled(false);
-    m_renameAliasDevice = new KPushButton(KIcon("document-edit"), i18nc("Change the alias of a device", "Rename"));
-    m_renameAliasDevice->setEnabled(false);
+    m_detailsDevice = new KPushButton(KIcon("document-properties"), i18nc("Details of the device", "Details"));
+    m_detailsDevice->setEnabled(false);
     m_removeDevice = new KPushButton(KIcon("list-remove"), i18nc("Remove a device from the list of known devices", "Remove"));
     m_removeDevice->setEnabled(false);
     m_disconnectDevice = new KPushButton(KIcon("network-disconnect"), i18n("Disconnect"));
     m_disconnectDevice->setEnabled(false);
     m_addDevice = new KPushButton(KIcon("list-add"), i18n("Add Device..."));
 
-    connect(m_trustDevice, SIGNAL(clicked()), this, SLOT(trustUntrustDevice()));
-    connect(m_renameAliasDevice, SIGNAL(clicked()), this, SLOT(renameAliasDevice()));
+    connect(m_detailsDevice, SIGNAL(clicked()), this, SLOT(detailsDevice()));
     connect(m_removeDevice, SIGNAL(clicked()), this, SLOT(removeDevice()));
     connect(m_disconnectDevice, SIGNAL(clicked()), this, SLOT(disconnectDevice()));
     connect(m_addDevice, SIGNAL(clicked()), this, SLOT(launchWizard()));
 
     QHBoxLayout *hLayout = new QHBoxLayout;
-    hLayout->addWidget(m_trustDevice);
-    hLayout->addWidget(m_renameAliasDevice);
+    hLayout->addWidget(m_detailsDevice);
     hLayout->addWidget(m_removeDevice);
     hLayout->addWidget(m_disconnectDevice);
     hLayout->addStretch();
@@ -416,36 +421,36 @@ void KCMBlueDevilDevices::save()
 void KCMBlueDevilDevices::deviceSelectionChanged(const QItemSelection &selection)
 {
     const bool enable = !selection.isEmpty();
-    m_trustDevice->setEnabled(enable);
-    m_renameAliasDevice->setEnabled(enable);
+    m_detailsDevice->setEnabled(enable);
     m_removeDevice->setEnabled(enable);
     m_disconnectDevice->setEnabled(false);
 
     if (m_devices->currentIndex().isValid()) {
         Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
         m_disconnectDevice->setEnabled(device->isConnected());
-        if (device->isTrusted()){
-            m_trustDevice->setText(i18nc("Untrust a device", "Untrust"));
-            m_trustDevice->setIcon(KIcon("security-low"));
-        } else {
-            m_trustDevice->setText(i18nc("Trust a device", "Trust"));
-            m_trustDevice->setIcon(KIcon("security-high"));
-        }
     }
 }
 
-void KCMBlueDevilDevices::trustUntrustDevice()
+void KCMBlueDevilDevices::deviceDoubleClicked(const QModelIndex &index)
+{
+    if (!index.isValid()) {
+        return;
+    }
+
+    Device *const device = static_cast<Device*>(index.data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
+
+    DeviceDetails deviceDetails(device, this);
+    deviceDetails.exec();
+}
+
+void KCMBlueDevilDevices::detailsDevice()
 {
     Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
-    if (device->isTrusted()) {
-        m_trustDevice->setText(i18nc("Trust a device", "Trust"));
-        m_trustDevice->setIcon(KIcon("security-high"));
-    } else {
-        m_trustDevice->setText(i18nc("Untrust a device", "Untrust"));
-        m_trustDevice->setIcon(KIcon("security-low"));
-    }
-    device->setTrusted(!device->isTrusted());
+
+    DeviceDetails deviceDetails(device, this);
+    deviceDetails.exec();
 }
+
 
 void KCMBlueDevilDevices::renameAliasDevice()
 {
