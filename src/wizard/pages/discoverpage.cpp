@@ -212,7 +212,7 @@ int DiscoverPage::nextId() const
 
     if (pin == "NULL") {
         kDebug() << "NO Pairing";
-        return BlueWizard::LegacyPairing;
+        return BlueWizard::NoPairing;
     }
 
     if (classToType(device->deviceClass()) == BLUETOOTH_TYPE_KEYBOARD) {
