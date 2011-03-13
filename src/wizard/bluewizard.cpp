@@ -51,7 +51,7 @@ BlueWizard::BlueWizard(const KUrl &url) : QWizard(), m_service(0), m_manualPin(f
     }
     setPage(Pairing, new PairingPage(this));
     setPage(Services, new ServicesPage(this));
-    setPage(NoPairing, new NoPairing(this));
+    setPage(NoPairing, new NoPairingPage(this));
 
     setButton(QWizard::BackButton, new KPushButton(KStandardGuiItem::back(KStandardGuiItem::UseRTL)));
     setButton(QWizard::NextButton, new KPushButton(KStandardGuiItem::forward(KStandardGuiItem::UseRTL)));

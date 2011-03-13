@@ -37,13 +37,13 @@ namespace BlueDevil {
 
 using namespace BlueDevil;
 
-class NoPairing : public QWizardPage
+class NoPairingPage : public QWizardPage
 , Ui::NoPairing
 {
 Q_OBJECT
 
 public:
-    NoPairing(BlueWizard* parent = 0);
+    NoPairingPage(BlueWizard* parent = 0);
 
     virtual void initializePage();
     virtual bool isComplete() const;

@@ -32,7 +32,7 @@
 
 using namespace BlueDevil;
 
-NoPairing::NoPairing(BlueWizard* parent) : QWizardPage(parent)
+NoPairingPage::NoPairingPage(BlueWizard* parent) : QWizardPage(parent)
 , m_triedToregister(false)
 , m_connected(false)
 , m_wizard(parent)
@@ -43,7 +43,7 @@ NoPairing::NoPairing(BlueWizard* parent) : QWizardPage(parent)
     m_working->start();
 }
 
-void NoPairing::initializePage()
+void NoPairingPage::initializePage()
 {
     kDebug();
     Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
@@ -54,7 +54,7 @@ void NoPairing::initializePage()
     QTimer::singleShot(0, device, SLOT(registerDevice()));
 }
 
-void NoPairing::registerDeviceResult(Device* device, bool result)
+void NoPairingPage::registerDeviceResult(Device* device, bool result)
 {
     m_triedToregister = true;
     kDebug() << result;
@@ -68,12 +68,12 @@ void NoPairing::registerDeviceResult(Device* device, bool result)
     m_wizard->next();
 }
 
-bool NoPairing::isComplete() const
+bool NoPairingPage::isComplete() const
 {
     return m_connected;
 }
 
-int NoPairing::nextId() const
+int NoPairingPage::nextId() const
 {
     if (!m_triedToregister) {
         return BlueWizard::Discover;
