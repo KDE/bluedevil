@@ -33,6 +33,7 @@
 using namespace BlueDevil;
 
 NoPairing::NoPairing(BlueWizard* parent) : QWizardPage(parent)
+, m_triedToregister(false)
 , m_connected(false)
 , m_wizard(parent)
 {
@@ -46,17 +47,16 @@ void NoPairing::initializePage()
 {
     kDebug();
     Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
-//     connecting->setText(connecting->text().arg(device->name()));
+    connecting->setText(connecting->text().arg(device->name()));
 
     connect(device, SIGNAL(registerDeviceResult(Device*,bool)), this, SLOT(registerDeviceResult(Device*,bool)));
 
-    qDebug() << thread();
-    BlueDevil::asyncCall(device, SLOT(registerDevice()));
-    kDebug();
+    QTimer::singleShot(0, device, SLOT(registerDevice()));
 }
 
 void NoPairing::registerDeviceResult(Device* device, bool result)
 {
+    m_triedToregister = true;
     kDebug() << result;
     m_connected = result;
     //TODO: Handle errors
@@ -65,6 +65,7 @@ void NoPairing::registerDeviceResult(Device* device, bool result)
         kDebug() << "Error";
     }
     emit completeChanged();
+    m_wizard->next();
 }
 
 bool NoPairing::isComplete() const
@@ -74,14 +75,12 @@ bool NoPairing::isComplete() const
 
 int NoPairing::nextId() const
 {
+    if (!m_triedToregister) {
+        return BlueWizard::Discover;
+    }
     if (!m_connected) {
         return BlueWizard::Discover;
     }
 
-    Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
-
-    kDebug() << device->UUIDs();
     return BlueWizard::Services;
-
-    return BlueWizard::Discover;
 }

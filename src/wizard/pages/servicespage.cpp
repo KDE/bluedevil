@@ -97,6 +97,11 @@ void ServicesPage::cleanupPage()
     }
 }
 
+int ServicesPage::nextId() const
+{
+    return -1;
+}
+
 void ServicesPage::addService(const KService* service)
 {
     ServiceOption *widget = new ServiceOption(service, m_buttonGroup, this);

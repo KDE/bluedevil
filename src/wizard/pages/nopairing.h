@@ -53,6 +53,7 @@ public Q_SLOTS:
     void registerDeviceResult(Device* device, bool result);
 
 private:
+    bool                           m_triedToregister;
     bool                           m_connected;
     BlueWizard                    *m_wizard;
     KPixmapSequenceOverlayPainter *m_working;

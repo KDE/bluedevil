@@ -40,7 +40,7 @@ public:
     ServicesPage(QWidget* parent = 0);
     virtual void initializePage();
     virtual void cleanupPage();
-
+    virtual int nextId() const;
 public Q_SLOTS:
     void selected(const KService *);
 
