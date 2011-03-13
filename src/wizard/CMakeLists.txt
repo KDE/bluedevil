@@ -2,11 +2,12 @@ set(wizard_SRCS
     main.cpp
     bluewizard.cpp
     wizardagent.cpp
-   
+
     pages/discoverpage.cpp
     pages/pairingpage.cpp
     pages/servicespage.cpp
     pages/serviceoption.cpp
+    pages/nopairing.cpp
 )
 
 kde4_add_ui_files(wizard_SRCS
@@ -14,6 +15,7 @@ kde4_add_ui_files(wizard_SRCS
             pages/pairing.ui
             pages/services.ui
             pages/serviceOption.ui
+            pages/nopairing.ui
 )
 
 kde4_add_executable(bluedevil-wizard ${wizard_SRCS})

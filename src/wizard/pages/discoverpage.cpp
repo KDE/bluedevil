@@ -20,6 +20,7 @@
 #include "discoverpage.h"
 #include "ui_discover.h"
 #include "../bluewizard.h"
+#include "../wizardagent.h"
 
 #include <QListWidgetItem>
 #include <QListView>
@@ -53,26 +54,19 @@ DiscoverPage::~DiscoverPage()
 void DiscoverPage::initializePage()
 {
     kDebug() << "Initialize Page";
-    if (!m_wizard) {
-        kDebug() << "First time in the page";
-        m_wizard = static_cast<BlueWizard* >(wizard());
-        connect(Manager::self()->defaultAdapter(), SIGNAL(deviceFound(Device*)), this,
-            SLOT(deviceFound(Device*)));
-        connect(manualPin, SIGNAL(toggled(bool)), pinText, SLOT(setEnabled(bool)));
-        connect(manualPin, SIGNAL(toggled(bool)), this, SIGNAL(completeChanged()));
-        connect(pinText, SIGNAL(textChanged(QString)), m_wizard, SLOT(setPin(QString)));
-        connect(pinText, SIGNAL(textChanged(QString)), this, SIGNAL(completeChanged()));
-    }
-    m_wizard->setManualPin(manualPin->isChecked());
-    connect(m_wizard, SIGNAL(currentIdChanged(int)), this, SLOT(leavePage(int)));
-    startScan();
-}
 
-void DiscoverPage::leavePage(int id)
-{
-    if (id == 2) {
-        cleanupPage();
-    }
+    m_wizard = static_cast<BlueWizard* >(wizard());
+
+    connect(Manager::self()->defaultAdapter(), SIGNAL(deviceFound(QVariantMap)), this,
+        SLOT(deviceFound(QVariantMap)));
+    connect(manualPin, SIGNAL(toggled(bool)), pinText, SLOT(setEnabled(bool)));
+    connect(manualPin, SIGNAL(toggled(bool)), this, SIGNAL(completeChanged()));
+    connect(pinText, SIGNAL(textChanged(QString)), m_wizard, SLOT(setPin(QString)));
+    connect(pinText, SIGNAL(textChanged(QString)), this, SIGNAL(completeChanged()));
+
+    m_wizard->setManualPin(manualPin->isChecked());
+
+    startScan();
 }
 
 void DiscoverPage::nameChanged(const QString& name)
@@ -88,11 +82,6 @@ void DiscoverPage::nameChanged(const QString& name)
         }
         return;
     }
-}
-
-void DiscoverPage::cleanupPage()
-{
-    stopScan();
 }
 
 bool DiscoverPage::isComplete() const
@@ -121,47 +110,61 @@ void DiscoverPage::stopScan()
     }
 }
 
-void DiscoverPage::deviceFound(Device* device)
+void DiscoverPage::deviceFound(const QVariantMap &deviceInfo)
 {
-    kDebug() << m_itemRelation.keys();
-    kDebug() << device->address();
-    if (m_itemRelation.contains(device->address()) && !device->name().isEmpty()) {
-        m_itemRelation[device->address()]->setText(device->friendlyName());
-        if (m_itemRelation[device->address()]->isSelected()) {
-            m_wizard->setDeviceAddress(device->address().toAscii());
-            emit completeChanged();
-        }
-        return;
+    QString address = deviceInfo["Address"].toString();
+    QString name = deviceInfo["Name"].toString();
+    QString icon = deviceInfo["Icon"].toString();
+    QString alias = deviceInfo["Alias"].toString();
+
+    kDebug() << "Address: " << address;
+    kDebug() << "Name: " << name;
+    kDebug() << "Alias: " << alias;
+    kDebug() << "Icon: " << icon;
+
+    bool origName = false;
+    if (!name.isEmpty()) {
+        origName = true;
     }
 
-    QString name = device->alias();
-    if (device->alias() != device->name() && !device->name().isEmpty()) {
-        name.append(" ("+device->name()+")");
+    if (!alias.isEmpty() && alias != name && !name.isEmpty()) {
+        name = QString("%1 (%2)").arg(alias).arg(name);
     }
 
-    QString icon = device->icon();
+    if (name.isEmpty()) {
+        name = address;
+    }
+
     if (icon.isEmpty()) {
         icon.append("preferences-system-bluetooth");
     }
 
-    QListWidgetItem *item = new QListWidgetItem(KIcon(icon), name, deviceList);
-    bool a = connect(device, SIGNAL(nameChanged(QString)), this, SLOT(nameChanged(QString)));
-    if (!a) {
-        kDebug() << "CONNECT FAILED HOYGAN";
+    if (m_itemRelation.contains(address)) {
+        kDebug() << "Updating item";
+        m_itemRelation[address]->setText(name);
+        m_itemRelation[address]->setIcon(KIcon(icon));
+        m_itemRelation[address]->setData(Qt::UserRole+1, origName);
+
+        if (deviceList->currentItem() == m_itemRelation[address]) {
+            itemSelected(m_itemRelation[address]);
+        }
+        return;
     }
 
-    item->setData(Qt::UserRole, device->address());
-    deviceList->addItem(item);
+    QListWidgetItem *item = new QListWidgetItem(KIcon(icon), name, deviceList);
 
-    m_itemRelation.insert(device->address(), item);
+    item->setData(Qt::UserRole, address);
+    item->setData(Qt::UserRole+1, origName);
+
+    m_itemRelation.insert(address, item);
 }
 
 void DiscoverPage::itemSelected(QListWidgetItem* item)
 {
-    Device *device = Manager::self()->defaultAdapter()->deviceForAddress(item->data(Qt::UserRole).toString());
-    if (!device->name().isEmpty()) {
-        m_wizard->setDeviceAddress(device->address().toAscii());
-        m_selectedDevice = device;
+    bool origName = item->data(Qt::UserRole+1).toBool();
+    if (origName) {
+        QString address = item->data(Qt::UserRole).toString();
+        m_wizard->setDeviceAddress(address.toAscii());
     } else {
         m_wizard->setDeviceAddress(QByteArray());
     }
@@ -170,14 +173,56 @@ void DiscoverPage::itemSelected(QListWidgetItem* item)
 
 int DiscoverPage::nextId() const
 {
-    if (m_wizard) {
-        if (!m_wizard->deviceAddress().isEmpty()) {
-            Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
-            if (device->isPaired()) {
-                kDebug() << "Device is paired, jumping";
-                return BlueWizard::Services;
-            }
-        }
+    kDebug();
+    if (!isComplete()) {
+        return BlueWizard::Discover;
     }
-    return BlueWizard::Pairing;
+
+    if (!m_wizard) {
+        return BlueWizard::Discover;
+    }
+
+    if (m_wizard->deviceAddress().isEmpty()) {
+        return BlueWizard::Discover;
+    }
+
+    kDebug() << "Stopping scanning";
+
+    Manager::self()->defaultAdapter()->stopDiscovery();
+    Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
+    if (device->isPaired()) {
+        kDebug() << "Device is paired, jumping";
+        return BlueWizard::Services;
+    }
+
+    QString pin;
+    if (m_wizard->manualPin()) {
+        pin = m_wizard->pin();
+        m_wizard->agent()->setPin(pin);
+    } else {
+        pin = m_wizard->agent()->getPin(device);
+    }
+
+    //If pin ==  NULL means that not pairing is required
+    if (!device->hasLegacyPairing() && pin != "NULL") {
+        kDebug() << "Secure Pairing";
+//         return BlueWizard::SSPPairing;
+        return BlueWizard::Discover;
+    }
+
+    if (pin == "NULL") {
+        kDebug() << "NO Pairing";
+        return BlueWizard::LegacyPairing;
+    }
+
+    if (classToType(device->deviceClass()) == BLUETOOTH_TYPE_KEYBOARD) {
+        kDebug() << "Keyboard Pairing";
+        return BlueWizard::Discover;
+    }
+
+    kDebug() << "Legacy Pairing";
+    kDebug() << "From DB: " << m_wizard->agent()->isFromDatabase();
+    kDebug() << "PIN: " << m_wizard->agent()->pin();
+
+    return BlueWizard::Discover;
 }

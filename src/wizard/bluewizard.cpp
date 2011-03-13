@@ -21,6 +21,7 @@
 #include "pages/discoverpage.h"
 #include "pages/pairingpage.h"
 #include "pages/servicespage.h"
+#include "pages/nopairing.h"
 #include "../actionplugins/actionplugin.h"
 
 #include <QApplication>
@@ -37,6 +38,8 @@ BlueWizard::BlueWizard(const KUrl &url) : QWizard(), m_service(0), m_manualPin(f
 {
     setWindowTitle(i18n("Bluetooth Device Wizard"));
 
+    setOption(QWizard::IndependentPages, true);
+
     if (url.host().length() != 17) {
         setPage(Discover, new DiscoverPage(this));
     } else {
@@ -48,6 +51,7 @@ BlueWizard::BlueWizard(const KUrl &url) : QWizard(), m_service(0), m_manualPin(f
     }
     setPage(Pairing, new PairingPage(this));
     setPage(Services, new ServicesPage(this));
+    setPage(LegacyPairing, new NoPairing(this));
 
     setButton(QWizard::BackButton, new KPushButton(KStandardGuiItem::back(KStandardGuiItem::UseRTL)));
     setButton(QWizard::NextButton, new KPushButton(KStandardGuiItem::forward(KStandardGuiItem::UseRTL)));
