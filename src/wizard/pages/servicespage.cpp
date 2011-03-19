@@ -74,7 +74,7 @@ void ServicesPage::initializePage()
             desc,
             KIcon(device->icon()).pixmap(48,48)
         )->sendEvent();
-        m_wizard->done(0);
+        qApp->quit();
         return;
     }
 
