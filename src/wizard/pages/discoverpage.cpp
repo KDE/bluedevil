@@ -117,11 +117,6 @@ void DiscoverPage::deviceFound(const QVariantMap &deviceInfo)
     QString icon = deviceInfo["Icon"].toString();
     QString alias = deviceInfo["Alias"].toString();
 
-    kDebug() << "Address: " << address;
-    kDebug() << "Name: " << name;
-    kDebug() << "Alias: " << alias;
-    kDebug() << "Icon: " << icon;
-
     bool origName = false;
     if (!name.isEmpty()) {
         origName = true;
@@ -140,7 +135,6 @@ void DiscoverPage::deviceFound(const QVariantMap &deviceInfo)
     }
 
     if (m_itemRelation.contains(address)) {
-        kDebug() << "Updating item";
         m_itemRelation[address]->setText(name);
         m_itemRelation[address]->setIcon(KIcon(icon));
         m_itemRelation[address]->setData(Qt::UserRole+1, origName);
@@ -220,7 +214,8 @@ int DiscoverPage::nextId() const
         return BlueWizard::Discover;
     }
 
-    kDebug() << "Legacy Pairing";
+    kDebug() << "Class: " << classToType(device->deviceClass());
+    kDebug() << "Legacy: " << device->hasLegacyPairing();
     kDebug() << "From DB: " << m_wizard->agent()->isFromDatabase();
     kDebug() << "PIN: " << m_wizard->agent()->pin();
 
