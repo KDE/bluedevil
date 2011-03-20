@@ -51,8 +51,8 @@ void DiscoverPage::initializePage()
     if (!m_wizard) {
         kDebug() << "First time in the page";
         m_wizard = static_cast<BlueWizard* >(wizard());
-        connect(Manager::self()->defaultAdapter(), SIGNAL(deviceFound(Device*)), this,
-            SLOT(deviceFound(Device*)));
+        connect(Manager::self()->defaultAdapter(), SIGNAL(deviceFound(QVariantMap)), this,
+            SLOT(deviceFound(QVariantMap)));
     }
 
     connect(m_wizard, SIGNAL(currentIdChanged(int)), this, SLOT(leavePage(int)));
@@ -63,21 +63,6 @@ void DiscoverPage::leavePage(int id)
 {
     if (id == 2) {
         cleanupPage();
-    }
-}
-
-void DiscoverPage::nameChanged(const QString& name)
-{
-    kDebug() << name;
-    Device *device = static_cast<Device *>(sender());
-    m_itemRelation.value(device->address())->setText(name);
-    if (!device->name().isEmpty()) {
-        m_itemRelation[device->address()]->setText(device->friendlyName());
-        if (m_itemRelation[device->address()]->isSelected()) {
-            m_wizard->setDeviceAddress(device->address().toAscii());
-            emit completeChanged();
-        }
-        return;
     }
 }
 
@@ -111,46 +96,62 @@ void DiscoverPage::stopScan()
     }
 }
 
-void DiscoverPage::deviceFound(Device* device)
+void DiscoverPage::deviceFound(const QVariantMap &deviceInfo)
 {
-    kDebug() << m_itemRelation.keys();
-    kDebug() << device->address();
-    if (m_itemRelation.contains(device->address()) && !device->name().isEmpty()) {
-        m_itemRelation[device->address()]->setText(device->friendlyName());
-        if (m_itemRelation[device->address()]->isSelected()) {
-            m_wizard->setDeviceAddress(device->address().toAscii());
-            emit completeChanged();
-        }
-        return;
+    QString address = deviceInfo["Address"].toString();
+    QString name = deviceInfo["Name"].toString();
+    QString icon = deviceInfo["Icon"].toString();
+    QString alias = deviceInfo["Alias"].toString();
+
+    kDebug() << "========================";
+    kDebug() << "Address: " << address;
+    kDebug() << "Name: " << name;
+    kDebug() << "Alias: " << alias;
+    kDebug() << "Icon: " << icon;
+    kDebug() << "\n";
+
+    bool origName = false;
+    if (!name.isEmpty()) {
+        origName = true;
     }
 
-    QString name = device->alias();
-    if (device->alias() != device->name() && !device->name().isEmpty()) {
-        name.append(" ("+device->name()+")");
+    if (!alias.isEmpty() && alias != name && !name.isEmpty()) {
+        name = QString("%1 (%2)").arg(alias).arg(name);
     }
 
-    QString icon = device->icon();
+    if (name.isEmpty()) {
+        name = address;
+    }
+
     if (icon.isEmpty()) {
         icon.append("preferences-system-bluetooth");
     }
 
-    QListWidgetItem *item = new QListWidgetItem(KIcon(icon), name, deviceList);
-    bool a = connect(device, SIGNAL(nameChanged(QString)), this, SLOT(nameChanged(QString)));
-    if (!a) {
-        kDebug() << "CONNECT FAILED HOYGAN";
+    if (m_itemRelation.contains(address)) {
+        m_itemRelation[address]->setText(name);
+        m_itemRelation[address]->setIcon(KIcon(icon));
+        m_itemRelation[address]->setData(Qt::UserRole+1, origName);
+
+        if (deviceList->currentItem() == m_itemRelation[address]) {
+            itemSelected(m_itemRelation[address]);
+        }
+        return;
     }
 
-    item->setData(Qt::UserRole, device->address());
-    deviceList->addItem(item);
+    QListWidgetItem *item = new QListWidgetItem(KIcon(icon), name, deviceList);
 
-    m_itemRelation.insert(device->address(), item);
+    item->setData(Qt::UserRole, address);
+    item->setData(Qt::UserRole+1, origName);
+
+    m_itemRelation.insert(address, item);
 }
 
 void DiscoverPage::itemSelected(QListWidgetItem* item)
 {
-    Device *device = Manager::self()->defaultAdapter()->deviceForAddress(item->data(Qt::UserRole).toString());
-    if (!device->name().isEmpty()) {
-        m_wizard->setDeviceAddress(device->address().toAscii());
+    bool origName = item->data(Qt::UserRole+1).toBool();
+    if (origName) {
+        QString address = item->data(Qt::UserRole).toString();
+        m_wizard->setDeviceAddress(address.toAscii());
     } else {
         m_wizard->setDeviceAddress(QByteArray());
     }
