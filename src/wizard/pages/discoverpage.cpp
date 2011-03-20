@@ -219,6 +219,9 @@ int DiscoverPage::nextId() const
     kDebug() << "From DB: " << m_wizard->agent()->isFromDatabase();
     kDebug() << "PIN: " << m_wizard->agent()->pin();
 
-    //TODO is database page
-    return BlueWizard::LegacyPairing;
+    if (m_wizard->agent()->isFromDatabase()) {
+        return BlueWizard::LegacyPairingDatabase;
+    } else {
+        return BlueWizard::LegacyPairing;
+    }
 }

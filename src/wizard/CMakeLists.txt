@@ -9,6 +9,7 @@ set(wizard_SRCS
     pages/serviceoption.cpp
     pages/nopairing.cpp
     pages/legacypairing.cpp
+    pages/legacypairingdatabase.cpp
 )
 
 kde4_add_ui_files(wizard_SRCS

@@ -23,6 +23,7 @@
 #include "pages/servicespage.h"
 #include "pages/nopairing.h"
 #include "pages/legacypairing.h"
+#include "pages/legacypairingdatabase.h"
 #include "../actionplugins/actionplugin.h"
 
 #include <QApplication>
@@ -50,10 +51,12 @@ BlueWizard::BlueWizard(const KUrl &url) : QWizard(), m_service(0), m_manualPin(f
     if (url.fileName().length() == 36) {
         setPreselectedUuid(url.fileName().toLatin1());
     }
+
     setPage(Pairing, new PairingPage(this));
     setPage(Services, new ServicesPage(this));
     setPage(NoPairing, new NoPairingPage(this));
     setPage(LegacyPairing, new LegacyPairingPage(this));
+    setPage(LegacyPairingDatabase, new LegacyPairingPageDatabase(this));
 
     setButton(QWizard::BackButton, new KPushButton(KStandardGuiItem::back(KStandardGuiItem::UseRTL)));
     setButton(QWizard::NextButton, new KPushButton(KStandardGuiItem::forward(KStandardGuiItem::UseRTL)));
