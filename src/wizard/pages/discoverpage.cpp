@@ -201,7 +201,6 @@ int DiscoverPage::nextId() const
     if (!device->hasLegacyPairing() && pin != "NULL") {
         kDebug() << "Secure Pairing";
 //         return BlueWizard::SSPPairing;
-        return BlueWizard::Discover;
     }
 
     if (pin == "NULL") {
@@ -211,7 +210,7 @@ int DiscoverPage::nextId() const
 
     if (classToType(device->deviceClass()) == BLUETOOTH_TYPE_KEYBOARD) {
         kDebug() << "Keyboard Pairing";
-        return BlueWizard::Discover;
+        return BlueWizard::KeyboardPairing;
     }
 
     kDebug() << "Class: " << classToType(device->deviceClass());
