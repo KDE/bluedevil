@@ -44,6 +44,7 @@ void ConnectingPage::initializePage()
     Device *device = static_cast<SendFileWizard* >(wizard())->device();
     connLabel->setText(i18nc("Connecting to a bluetooth device", "Connecting to %1 ...", device->name()));
 
+    Manager::self()->defaultAdapter()->stopDiscovery();
     static_cast<SendFileWizard*>(wizard())->startTransfer();
 }
 
