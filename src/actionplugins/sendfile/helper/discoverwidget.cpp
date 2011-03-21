@@ -40,8 +40,8 @@ DiscoverWidget::DiscoverWidget(QWidget* parent)
 
     connect(deviceList, SIGNAL(itemActivated(QListWidgetItem*)), this,
             SLOT(itemSelected(QListWidgetItem*)));
-    connect(Manager::self()->defaultAdapter(), SIGNAL(deviceFound(Device*)), this,
-            SLOT(deviceFound(Device*)));
+    connect(Manager::self()->defaultAdapter(), SIGNAL(deviceFound(QVariantMap)), this,
+            SLOT(deviceFound(QVariantMap)));
 
     startScan();
 }
@@ -65,34 +65,58 @@ void DiscoverWidget::stopScan()
     }
 }
 
-void DiscoverWidget::deviceFound(Device* device)
+void DiscoverWidget::deviceFound(const QVariantMap& deviceInfo)
 {
-    if (m_itemRelation.contains(device->address()) && !device->name().isEmpty()) {
-        m_itemRelation[device->address()]->setText(device->friendlyName());
-        if (m_itemRelation[device->address()]->isSelected()) {
-            emit deviceSelected(device);
-        }
-        return;
+    QString address = deviceInfo["Address"].toString();
+    QString name = deviceInfo["Name"].toString();
+    QString icon = deviceInfo["Icon"].toString();
+    QString alias = deviceInfo["Alias"].toString();
+
+    qDebug() << "========================";
+    qDebug() << "Address: " << address;
+    qDebug() << "Name: " << name;
+    qDebug() << "Alias: " << alias;
+    qDebug() << "Icon: " << icon;
+    qDebug() << "\n";
+
+
+    bool origName = false;
+    if (!name.isEmpty()) {
+        origName = true;
     }
 
-    QString name = device->alias();
-    if (device->alias() != device->name() && !device->name().isEmpty()) {
-        name.append(" ("+device->name()+")");
+    if (!alias.isEmpty() && alias != name && !name.isEmpty()) {
+        name = QString("%1 (%2)").arg(alias).arg(name);
     }
 
-    QString icon = device->icon();
+    if (name.isEmpty()) {
+        name = address;
+    }
+
     if (icon.isEmpty()) {
         icon.append("preferences-system-bluetooth");
     }
 
+    if (m_itemRelation.contains(address)) {
+        m_itemRelation[address]->setText(name);
+        m_itemRelation[address]->setIcon(KIcon(icon));
+        m_itemRelation[address]->setData(Qt::UserRole+1, origName);
+
+        if (deviceList->currentItem() == m_itemRelation[address]) {
+            emit deviceSelected(Manager::self()->defaultAdapter()->deviceForAddress(address));
+        }
+        return;
+    }
+
     QListWidgetItem *item = new QListWidgetItem(KIcon(icon), name, deviceList);
 
-    item->setData(Qt::UserRole, qVariantFromValue<QObject*>(device));
-    m_itemRelation.insert(device->address(), item);
+    item->setData(Qt::UserRole, address);
+    item->setData(Qt::UserRole+1, origName);
+
+    m_itemRelation.insert(address, item);
 }
 
 void DiscoverWidget::itemSelected(QListWidgetItem* item)
 {
-    Device *device = qobject_cast<Device*>(item->data(Qt::UserRole).value<QObject*>());
-    emit deviceSelected(device);
+    emit deviceSelected(Manager::self()->defaultAdapter()->deviceForAddress(item->data(Qt::UserRole).toString()));
 }
