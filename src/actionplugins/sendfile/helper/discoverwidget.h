@@ -48,7 +48,7 @@ public Q_SLOTS:
     void startScan();
 
 private Q_SLOTS:
-    void deviceFound(Device *device);
+    void deviceFound(const QVariantMap &deviceInfo);
     void itemSelected(QListWidgetItem* item);
 
 private:
