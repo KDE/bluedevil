@@ -60,6 +60,8 @@ void NoPairingPage::initializePage()
 
 void NoPairingPage::registerDeviceResult(Device* device)
 {
+    Q_UNUSED(device);
+
     m_triedToregister = true;
     m_connected = true;
 

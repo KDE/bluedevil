@@ -34,10 +34,8 @@
 using namespace BlueDevil;
 
 SSPPairingPage::SSPPairingPage(BlueWizard* parent) : QWizardPage(parent)
-, m_triedToPair(false)
 , m_paired(false)
-, m_gotPin(false)
-, m_pinConfirmed(false)
+, m_buttonClicked(QWizard::NoButton)
 , m_wizard(parent)
 {
     setupUi(this);
@@ -59,8 +57,6 @@ void SSPPairingPage::initializePage()
     list << QWizard::CancelButton;
     m_wizard->setButtonLayout(list);
 
-    m_triedToPair = true;
-
     Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
     confirmLbl->setText(confirmLbl->text().arg(device->name()));
 
@@ -81,7 +77,6 @@ void SSPPairingPage::registered(Device* device)
 void SSPPairingPage::confirmationRequested(quint32 passkey, const QDBusMessage& msg)
 {
     m_msg = msg;
-    m_gotPin = true;
 
     KPushButton *matches = new KPushButton(KStandardGuiItem::apply());
     matches->setText(i18n("Matches"));
@@ -124,7 +119,7 @@ void SSPPairingPage::matchesClicked()
     wizard()->button(QWizard::CustomButton1)->setEnabled(false);
     wizard()->button(QWizard::CustomButton2)->setEnabled(false);
 
-    m_pinConfirmed = true;
+    m_buttonClicked = QWizard::CustomButton1;
     QDBusConnection::systemBus().send(m_msg.createReply());
 
     emit completeChanged();
@@ -133,26 +128,28 @@ void SSPPairingPage::matchesClicked()
 
 void SSPPairingPage::notMatchClicked()
 {
+    m_buttonClicked = QWizard::CustomButton2;
 
-}
-
-bool SSPPairingPage::isComplete() const
-{
-    if (m_gotPin && m_paired && m_pinConfirmed) {
-        return true;
-    }
-    return false;
+    emit completeChanged();
+    wizard()->next();
 }
 
 bool SSPPairingPage::validatePage()
 {
-    return isComplete();
+    if (m_buttonClicked == QWizard::CustomButton2){
+        return true;
+    }
+    if (m_paired &&  m_buttonClicked == QWizard::CustomButton1) {
+        return true;
+    }
+
+    return false;
 }
 
 int SSPPairingPage::nextId() const
 {
-    if (!m_triedToPair || !m_gotPin || !m_paired || !m_pinConfirmed) {
-        return BlueWizard::Discover;
+    if (m_buttonClicked == QWizard::CustomButton2) {
+        return BlueWizard::Fail;
     }
 
     return BlueWizard::Services;

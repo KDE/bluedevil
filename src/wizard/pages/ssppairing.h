@@ -47,7 +47,6 @@ public:
     SSPPairingPage(BlueWizard* parent = 0);
 
     virtual void initializePage();
-    virtual bool isComplete() const;
     virtual int nextId() const;
     virtual bool validatePage();
 
@@ -60,10 +59,8 @@ public Q_SLOTS:
 
 private:
     QDBusMessage                   m_msg;
-    bool                           m_triedToPair;
     bool                           m_paired;
-    bool                           m_gotPin;
-    bool                           m_pinConfirmed;
+    QWizard::WizardButton          m_buttonClicked;
     BlueWizard                    *m_wizard;
     KPixmapSequenceOverlayPainter *m_working;
 };
