@@ -51,7 +51,7 @@ void NoPairingPage::initializePage()
 
     connect(device, SIGNAL(registered(Device*)), this, SLOT(registerDeviceResult(Device*)));
 
-    device->registerDeviceAsync();
+    QMetaObject::invokeMethod(device, "registerDeviceAsync", Qt::QueuedConnection);
 }
 
 void NoPairingPage::registerDeviceResult(Device* device)
@@ -59,7 +59,6 @@ void NoPairingPage::registerDeviceResult(Device* device)
     m_triedToregister = true;
     m_connected = true;
 
-    emit completeChanged();
     m_wizard->next();
 }
 

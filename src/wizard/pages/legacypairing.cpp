@@ -57,7 +57,7 @@ void LegacyPairingPage::initializePage()
     Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
     connect(device, SIGNAL(registered(Device*)), this, SLOT(registered(Device*)));
 
-    device->registerDeviceAsync();
+    QMetaObject::invokeMethod(device, "registerDeviceAsync", Qt::QueuedConnection);
 }
 
 void LegacyPairingPage::registered(Device *device)

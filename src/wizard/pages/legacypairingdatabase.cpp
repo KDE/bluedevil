@@ -48,7 +48,7 @@ void LegacyPairingPageDatabase::initializePage()
     connecting->setText(connecting->text().arg(device->name()));
     connect(device, SIGNAL(registered(Device*)), this, SLOT(registered(Device*)));
 
-    device->registerDeviceAsync();
+    QMetaObject::invokeMethod(device, "registerDeviceAsync", Qt::QueuedConnection);
 }
 
 void LegacyPairingPageDatabase::registered(Device *device)

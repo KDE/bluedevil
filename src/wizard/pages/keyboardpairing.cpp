@@ -56,7 +56,7 @@ void KeyboardPairingPage::initializePage()
     Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
     connect(device, SIGNAL(registered(Device*)), this, SLOT(registered(Device*)));
 
-    device->registerDeviceAsync();
+    QMetaObject::invokeMethod(device, "registerDeviceAsync", Qt::QueuedConnection);
 }
 
 void KeyboardPairingPage::registered(Device *device)
