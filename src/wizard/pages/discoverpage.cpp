@@ -201,6 +201,11 @@ int DiscoverPage::nextId() const
         pin = m_wizard->agent()->getPin(device);
     }
 
+    kDebug() << "Class: " << classToType(device->deviceClass());
+    kDebug() << "Legacy: " << device->hasLegacyPairing();
+    kDebug() << "From DB: " << m_wizard->agent()->isFromDatabase();
+    kDebug() << "PIN: " << m_wizard->agent()->pin();
+
     //If pin ==  NULL means that not pairing is required
     if (!device->hasLegacyPairing() && !m_wizard->agent()->isFromDatabase()) {
         kDebug() << "Secure Pairing";
@@ -216,11 +221,6 @@ int DiscoverPage::nextId() const
         kDebug() << "Keyboard Pairing";
         return BlueWizard::KeyboardPairing;
     }
-
-    kDebug() << "Class: " << classToType(device->deviceClass());
-    kDebug() << "Legacy: " << device->hasLegacyPairing();
-    kDebug() << "From DB: " << m_wizard->agent()->isFromDatabase();
-    kDebug() << "PIN: " << m_wizard->agent()->pin();
 
     if (m_wizard->agent()->isFromDatabase()) {
         return BlueWizard::LegacyPairingDatabase;
