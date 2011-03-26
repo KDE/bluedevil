@@ -46,16 +46,18 @@ public:
     LegacyPairingPageDatabase(BlueWizard* parent = 0);
 
     virtual void initializePage();
-    virtual bool isComplete() const;
+    virtual bool validatePage();
     virtual int nextId() const;
 
 public Q_SLOTS:
     void registered(Device* device);
     void pairedChanged(bool paired);
 
+protected:
+    Device* deviceFromWizard();
+    QList <QWizard::WizardButton> wizardButtonsLayout() const;
+
 private:
-    bool                           m_triedToPair;
-    bool                           m_paired;
     BlueWizard                    *m_wizard;
     KPixmapSequenceOverlayPainter *m_working;
 };

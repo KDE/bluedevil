@@ -32,8 +32,6 @@
 using namespace BlueDevil;
 
 LegacyPairingPageDatabase::LegacyPairingPageDatabase(BlueWizard* parent) : QWizardPage(parent)
-, m_triedToPair(false)
-, m_paired(false)
 , m_wizard(parent)
 {
     setupUi(this);
@@ -44,13 +42,11 @@ LegacyPairingPageDatabase::LegacyPairingPageDatabase(BlueWizard* parent) : QWiza
 
 void LegacyPairingPageDatabase::initializePage()
 {
-    QList <QWizard::WizardButton> list;
-    list << QWizard::Stretch;
-    list << QWizard::CancelButton;
-    m_wizard->setButtonLayout(list);
+    m_wizard->setButtonLayout(wizardButtonsLayout());
 
-    Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
+    Device *device = deviceFromWizard();
     connecting->setText(connecting->text().arg(device->name()));
+
     connect(device, SIGNAL(registered(Device*)), this, SLOT(registered(Device*)));
 
     QMetaObject::invokeMethod(device, "registerDeviceAsync", Qt::QueuedConnection);
@@ -65,28 +61,29 @@ void LegacyPairingPageDatabase::registered(Device *device)
 void LegacyPairingPageDatabase::pairedChanged(bool paired)
 {
     kDebug() << paired;
-
-    m_triedToPair = true;
-    m_paired = paired;
-
-    emit completeChanged();
     m_wizard->next();
 }
 
-bool LegacyPairingPageDatabase::isComplete() const
+bool LegacyPairingPageDatabase::validatePage()
 {
-    return m_paired;
+    return deviceFromWizard()->isPaired();
 }
 
 int LegacyPairingPageDatabase::nextId() const
 {
-    if (!m_triedToPair) {
-        return BlueWizard::Discover;
-    }
-
-    if (!m_paired) {
-        return BlueWizard::Discover;
-    }
-
     return BlueWizard::Services;
+}
+
+Device* LegacyPairingPageDatabase::deviceFromWizard()
+{
+    return Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
+}
+
+QList< QWizard::WizardButton > LegacyPairingPageDatabase::wizardButtonsLayout() const
+{
+    QList <QWizard::WizardButton> list;
+    list << QWizard::Stretch;
+    list << QWizard::CancelButton;
+
+    return list;
 }
