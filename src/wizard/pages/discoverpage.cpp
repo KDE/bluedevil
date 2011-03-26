@@ -197,10 +197,11 @@ int DiscoverPage::nextId() const
         pin = m_wizard->agent()->getPin(device);
     }
 
+    qDebug() << device->hasLegacyPairing();
     //If pin ==  NULL means that not pairing is required
     if (!device->hasLegacyPairing() && pin != "NULL") {
         kDebug() << "Secure Pairing";
-//         return BlueWizard::SSPPairing;
+        return BlueWizard::SSPPairing;
     }
 
     if (pin == "NULL") {

@@ -11,6 +11,7 @@ set(wizard_SRCS
     pages/legacypairing.cpp
     pages/legacypairingdatabase.cpp
     pages/keyboardpairing.cpp
+    pages/ssppairing.cpp
 )
 
 kde4_add_ui_files(wizard_SRCS
@@ -21,6 +22,7 @@ kde4_add_ui_files(wizard_SRCS
             pages/nopairing.ui
             pages/legacypairing.ui
             pages/keyboardpairing.ui
+            pages/ssppairing.ui
 )
 
 kde4_add_executable(bluedevil-wizard ${wizard_SRCS})
