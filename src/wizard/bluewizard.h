@@ -54,6 +54,7 @@ public:
     enum {Discover, Pin, Pairing, Services, NoPairing, LegacyPairing, LegacyPairingDatabase, KeyboardPairing, SSPPairing};
 
 public Q_SLOTS:
+    void restartWizard();
     void setPin(const QString& pin);
     virtual void done(int result);
 

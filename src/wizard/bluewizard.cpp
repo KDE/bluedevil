@@ -37,6 +37,7 @@
 #include <KServiceTypeTrader>
 #include <KPushButton>
 #include <kdebug.h>
+#include <KProcess>
 
 BlueWizard::BlueWizard(const KUrl &url) : QWizard(), m_service(0), m_manualPin(false)
 {
@@ -119,6 +120,15 @@ void BlueWizard::setDeviceAddress(const QByteArray& address)
 QByteArray BlueWizard::deviceAddress() const
 {
     return m_deviceAddress;
+}
+
+void BlueWizard::restartWizard()
+{
+    KProcess proc;
+    proc.setProgram("bluedevil-wizard");
+    proc.startDetached();
+
+    qApp->quit();
 }
 
 void BlueWizard::setPin(const QByteArray& pinNum)
