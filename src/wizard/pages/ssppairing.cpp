@@ -34,7 +34,6 @@
 using namespace BlueDevil;
 
 SSPPairingPage::SSPPairingPage(BlueWizard* parent) : QWizardPage(parent)
-, m_paired(false)
 , m_buttonClicked(QWizard::NoButton)
 , m_wizard(parent)
 {
@@ -89,12 +88,7 @@ void SSPPairingPage::confirmationRequested(quint32 passkey, const QDBusMessage& 
     wizard()->setButton(QWizard::CustomButton1, matches);
     wizard()->setButton(QWizard::CustomButton2, notMatch);
 
-    QList <QWizard::WizardButton> list;
-    list << QWizard::Stretch;
-    list << QWizard::CustomButton2;
-    list << QWizard::CustomButton1;
-
-    wizard()->setButtonLayout(list);
+    wizard()->setButtonLayout(wizardButtonsLayout());
 
     m_working->stop();
     pinNumber->setText(QString::number(passkey));
@@ -102,15 +96,12 @@ void SSPPairingPage::confirmationRequested(quint32 passkey, const QDBusMessage& 
     Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
     confirmLbl->setText(i18n("Please, confirm that the pin displayed on \"%1\" matches the wizard one.").arg(device->name()));
 
-    emit completeChanged();
 }
 
 void SSPPairingPage::pairedChanged(bool paired)
 {
     kDebug() << paired;
-    m_paired = paired;
 
-    emit completeChanged();
     wizard()->next();
 }
 
@@ -122,7 +113,6 @@ void SSPPairingPage::matchesClicked()
     m_buttonClicked = QWizard::CustomButton1;
     QDBusConnection::systemBus().send(m_msg.createReply());
 
-    emit completeChanged();
     wizard()->next();
 }
 
@@ -130,7 +120,6 @@ void SSPPairingPage::notMatchClicked()
 {
     m_buttonClicked = QWizard::CustomButton2;
 
-    emit completeChanged();
     wizard()->next();
 }
 
@@ -139,7 +128,7 @@ bool SSPPairingPage::validatePage()
     if (m_buttonClicked == QWizard::CustomButton2){
         return true;
     }
-    if (m_paired &&  m_buttonClicked == QWizard::CustomButton1) {
+    if (deviceFromWizard()->isPaired() &&  m_buttonClicked == QWizard::CustomButton1) {
         return true;
     }
 
@@ -153,4 +142,19 @@ int SSPPairingPage::nextId() const
     }
 
     return BlueWizard::Services;
+}
+
+Device* SSPPairingPage::deviceFromWizard()
+{
+    return Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
+}
+
+QList<QWizard::WizardButton> SSPPairingPage::wizardButtonsLayout() const
+{
+    QList <QWizard::WizardButton> list;
+    list << QWizard::Stretch;
+    list << QWizard::CustomButton2;
+    list << QWizard::CustomButton1;
+
+    return list;
 }

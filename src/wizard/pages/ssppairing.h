@@ -57,9 +57,12 @@ public Q_SLOTS:
     void matchesClicked();
     void notMatchClicked();
 
+protected:
+    Device* deviceFromWizard();
+    QList <QWizard::WizardButton> wizardButtonsLayout() const;
+
 private:
     QDBusMessage                   m_msg;
-    bool                           m_paired;
     QWizard::WizardButton          m_buttonClicked;
     BlueWizard                    *m_wizard;
     KPixmapSequenceOverlayPainter *m_working;

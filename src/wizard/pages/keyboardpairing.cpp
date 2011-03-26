@@ -33,8 +33,6 @@
 using namespace BlueDevil;
 
 KeyboardPairingPage::KeyboardPairingPage(BlueWizard* parent) : QWizardPage(parent)
-, m_triedToPair(false)
-, m_paired(false)
 , m_wizard(parent)
 {
     setupUi(this);
@@ -51,14 +49,11 @@ KeyboardPairingPage::KeyboardPairingPage(BlueWizard* parent) : QWizardPage(paren
 void KeyboardPairingPage::initializePage()
 {
     kDebug();
-    QList <QWizard::WizardButton> list;
-    list << QWizard::Stretch;
-    list << QWizard::CancelButton;
-    m_wizard->setButtonLayout(list);
+    m_wizard->setButtonLayout(wizardButtonsLayout());
 
     connect(m_wizard->agent(), SIGNAL(pinRequested(QString)), this, SLOT(pinRequested(QString)));
 
-    Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
+    Device *device = deviceFromWizard();
     connect(device, SIGNAL(registered(Device*)), this, SLOT(registered(Device*)));
 
     QMetaObject::invokeMethod(device, "registerDeviceAsync", Qt::QueuedConnection);
@@ -79,27 +74,30 @@ void KeyboardPairingPage::pinRequested(const QString& pin)
 void KeyboardPairingPage::pairedChanged(bool paired)
 {
     kDebug() << paired;
-    m_triedToPair = true;
-    m_paired = paired;
-
-    emit completeChanged();
     m_wizard->next();
 }
 
-bool KeyboardPairingPage::isComplete() const
+bool KeyboardPairingPage::validatePage()
 {
-    return m_paired;
+    return deviceFromWizard()->isPaired();
 }
+
 
 int KeyboardPairingPage::nextId() const
 {
-    if (!m_triedToPair) {
-        return BlueWizard::Discover;
-    }
-
-    if (!m_paired) {
-        return BlueWizard::Discover;
-    }
-
     return BlueWizard::Services;
+}
+
+Device* KeyboardPairingPage::deviceFromWizard()
+{
+    return Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
+}
+
+QList<QWizard::WizardButton> KeyboardPairingPage::wizardButtonsLayout() const
+{
+    QList <QWizard::WizardButton> list;
+    list << QWizard::Stretch;
+    list << QWizard::CancelButton;
+
+    return list;
 }
