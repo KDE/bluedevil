@@ -155,11 +155,5 @@ int SSPPairingPage::nextId() const
         return BlueWizard::Discover;
     }
 
-    QList <QWizard::WizardButton> list;
-    list << QWizard::Stretch;
-    list << QWizard::BackButton;
-    list << QWizard::FinishButton;
-
-    wizard()->setButtonLayout(list);
     return BlueWizard::Services;
 }
