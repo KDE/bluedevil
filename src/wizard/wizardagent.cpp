@@ -109,8 +109,8 @@ QString WizardAgent::getPin(Device *device)
 
     QString xmlPath = KStandardDirs::locate("appdata", "pin-code-database.xml");
 
-    QFile *file = new QFile(xmlPath);
-    if(!file->open(QIODevice::ReadOnly)) {
+    QFile file(xmlPath);
+    if(!file.open(QIODevice::ReadOnly)) {
         kDebug() << "Can't open the device";
         return m_pin;
     }
@@ -121,17 +121,17 @@ QString WizardAgent::getPin(Device *device)
     }
 
     m_device = device;
-    QXmlStreamReader* m_xml = new QXmlStreamReader(file);
+    QXmlStreamReader m_xml(&file);
 
     int deviceType = classToType(device->deviceClass());
     int xmlType = 0;
 
-    while(!m_xml->atEnd()) {
-        m_xml->readNext();
-        if(m_xml->name() != "device") {
+    while(!m_xml.atEnd()) {
+        m_xml.readNext();
+        if(m_xml.name() != "device") {
             continue;
         }
-        QXmlStreamAttributes attr = m_xml->attributes();
+        QXmlStreamAttributes attr = m_xml.attributes();
 
         if(attr.count() == 0) {
             continue;

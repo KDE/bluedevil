@@ -55,7 +55,8 @@ public:
 
 private Q_SLOTS:
     void deviceSelectionChanged(const QItemSelection &selection);
-    void trustUntrustDevice();
+    void deviceDoubleClicked(const QModelIndex &index);
+    void detailsDevice();
     void renameAliasDevice();
     void removeDevice();
     void disconnectDevice();
@@ -73,8 +74,7 @@ private:
 
 private:
     QCheckBox             *m_enable;
-    KPushButton           *m_trustDevice;
-    KPushButton           *m_renameAliasDevice;
+    KPushButton           *m_detailsDevice;
     KPushButton           *m_removeDevice;
     KPushButton           *m_disconnectDevice;
     KPushButton           *m_addDevice;
