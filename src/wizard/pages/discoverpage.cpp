@@ -34,7 +34,7 @@
 
 using namespace BlueDevil;
 
-DiscoverPage::DiscoverPage(QWidget* parent): QWizardPage(parent), m_wizard(0)
+DiscoverPage::DiscoverPage(BlueWizard* parent): QWizardPage(parent), m_wizard(parent)
 {
     setTitle(i18n("Select a device"));
     setupUi(this);
@@ -54,8 +54,6 @@ DiscoverPage::~DiscoverPage()
 void DiscoverPage::initializePage()
 {
     kDebug() << "Initialize Page";
-
-    m_wizard = static_cast<BlueWizard* >(wizard());
 
     QList <QWizard::WizardButton> list;
     list << QWizard::Stretch;

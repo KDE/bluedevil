@@ -35,7 +35,7 @@ class DiscoverPage : public QWizardPage
 Q_OBJECT
 
 public:
-    DiscoverPage(QWidget* parent = 0);
+    DiscoverPage(BlueWizard* parent = 0);
     virtual ~DiscoverPage();
 
     virtual void initializePage();
