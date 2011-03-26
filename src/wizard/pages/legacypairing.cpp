@@ -57,8 +57,6 @@ void LegacyPairingPage::initializePage()
     list << QWizard::CancelButton;
     m_wizard->setButtonLayout(list);
 
-    connect(m_wizard->agent(), SIGNAL(pinRequested(QString)), this, SLOT(pinRequested(QString)));
-
     Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
     connect(device, SIGNAL(registered(Device*)), this, SLOT(registered(Device*)));
 
@@ -67,7 +65,9 @@ void LegacyPairingPage::initializePage()
 
 void LegacyPairingPage::registered(Device *device)
 {
+    connect(m_wizard->agent(), SIGNAL(pinRequested(QString)), this, SLOT(pinRequested(QString)));
     connect(device, SIGNAL(pairedChanged(bool)), this, SLOT(pairedChanged(bool)));
+
     device->pair("/wizardAgent", Adapter::DisplayYesNo);
 }
 
