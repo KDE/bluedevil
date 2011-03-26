@@ -50,6 +50,7 @@ public:
     virtual int nextId() const;
 
 public Q_SLOTS:
+    void registered(Device* device);
     void pairedChanged(bool paired);
 
 private:

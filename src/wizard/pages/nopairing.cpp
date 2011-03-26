@@ -49,21 +49,16 @@ void NoPairingPage::initializePage()
     Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
     connecting->setText(connecting->text().arg(device->name()));
 
-    connect(device, SIGNAL(registerDeviceResult(Device*,bool)), this, SLOT(registerDeviceResult(Device*,bool)));
+    connect(device, SIGNAL(registered(Device*)), this, SLOT(registerDeviceResult(Device*)));
 
-    QTimer::singleShot(0, device, SLOT(registerDevice()));
+    device->registerDeviceAsync();
 }
 
-void NoPairingPage::registerDeviceResult(Device* device, bool result)
+void NoPairingPage::registerDeviceResult(Device* device)
 {
     m_triedToregister = true;
-    kDebug() << result;
-    m_connected = result;
-    //TODO: Handle errors
+    m_connected = true;
 
-    if (!m_connected) {
-        kDebug() << "Error";
-    }
     emit completeChanged();
     m_wizard->next();
 }

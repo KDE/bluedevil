@@ -50,7 +50,7 @@ public:
     virtual int nextId() const;
 
 public Q_SLOTS:
-    void registerDeviceResult(Device* device, bool result);
+    void registerDeviceResult(Device* device);
 
 private:
     bool                           m_triedToregister;

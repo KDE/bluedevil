@@ -44,13 +44,16 @@ LegacyPairingPageDatabase::LegacyPairingPageDatabase(BlueWizard* parent) : QWiza
 
 void LegacyPairingPageDatabase::initializePage()
 {
-    kDebug();
     Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
     connecting->setText(connecting->text().arg(device->name()));
+    connect(device, SIGNAL(registered(Device*)), this, SLOT(registered(Device*)));
 
+    device->registerDeviceAsync();
+}
+
+void LegacyPairingPageDatabase::registered(Device *device)
+{
     connect(device, SIGNAL(pairedChanged(bool)), this, SLOT(pairedChanged(bool)));
-
-    device->UUIDs();//Needed to get properties updates
     device->pair("/wizardAgent", Adapter::DisplayYesNo);
 }
 

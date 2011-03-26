@@ -51,13 +51,17 @@ KeyboardPairingPage::KeyboardPairingPage(BlueWizard* parent) : QWizardPage(paren
 void KeyboardPairingPage::initializePage()
 {
     kDebug();
-    Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
-
-    kDebug() << device;
-    connect(device, SIGNAL(pairedChanged(bool)), this, SLOT(pairedChanged(bool)));
     connect(m_wizard->agent(), SIGNAL(pinRequested(QString)), this, SLOT(pinRequested(QString)));
 
-    device->UUIDs();//Needed to get properties updates
+    Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
+    connect(device, SIGNAL(registered(Device*)), this, SLOT(registered(Device*)));
+
+    device->registerDeviceAsync();
+}
+
+void KeyboardPairingPage::registered(Device *device)
+{
+    connect(device, SIGNAL(pairedChanged(bool)), this, SLOT(pairedChanged(bool)));
     device->pair("/wizardAgent", Adapter::DisplayYesNo);
 }
 
