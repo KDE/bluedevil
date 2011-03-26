@@ -51,6 +51,11 @@ KeyboardPairingPage::KeyboardPairingPage(BlueWizard* parent) : QWizardPage(paren
 void KeyboardPairingPage::initializePage()
 {
     kDebug();
+    QList <QWizard::WizardButton> list;
+    list << QWizard::Stretch;
+    list << QWizard::CancelButton;
+    m_wizard->setButtonLayout(list);
+
     connect(m_wizard->agent(), SIGNAL(pinRequested(QString)), this, SLOT(pinRequested(QString)));
 
     Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());

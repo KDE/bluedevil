@@ -37,6 +37,11 @@ void ServicesPage::initializePage()
 {
     kDebug() << "Initializing page";
     m_wizard = static_cast<BlueWizard*>(wizard());
+    QList <QWizard::WizardButton> list;
+    list << QWizard::Stretch;
+    list << QWizard::FinishButton;
+    m_wizard->setButtonLayout(list);
+
     KService::List services = m_wizard->services();
     Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
     device->setTrusted(true);

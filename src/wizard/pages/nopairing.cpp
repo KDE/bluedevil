@@ -46,6 +46,10 @@ NoPairingPage::NoPairingPage(BlueWizard* parent) : QWizardPage(parent)
 void NoPairingPage::initializePage()
 {
     kDebug();
+    QList <QWizard::WizardButton> list;
+    list << QWizard::Stretch;
+    list << QWizard::CancelButton;
+    m_wizard->setButtonLayout(list);
     Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
     connecting->setText(connecting->text().arg(device->name()));
 

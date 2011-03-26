@@ -54,6 +54,11 @@ SSPPairingPage::SSPPairingPage(BlueWizard* parent) : QWizardPage(parent)
 void SSPPairingPage::initializePage()
 {
     kDebug();
+    QList <QWizard::WizardButton> list;
+    list << QWizard::Stretch;
+    list << QWizard::CancelButton;
+    m_wizard->setButtonLayout(list);
+
     m_triedToPair = true;
 
     Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());

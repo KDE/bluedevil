@@ -57,6 +57,12 @@ void DiscoverPage::initializePage()
 
     m_wizard = static_cast<BlueWizard* >(wizard());
 
+    QList <QWizard::WizardButton> list;
+    list << QWizard::Stretch;
+    list << QWizard::NextButton;
+    list << QWizard::CancelButton;
+    m_wizard->setButtonLayout(list);
+
     connect(Manager::self()->defaultAdapter(), SIGNAL(deviceFound(QVariantMap)), this,
         SLOT(deviceFound(QVariantMap)));
     connect(manualPin, SIGNAL(toggled(bool)), pinText, SLOT(setEnabled(bool)));
