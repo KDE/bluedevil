@@ -33,8 +33,6 @@
 using namespace BlueDevil;
 
 NoPairingPage::NoPairingPage(BlueWizard* parent) : QWizardPage(parent)
-, m_triedToregister(false)
-, m_connected(false)
 , m_wizard(parent)
 {
     setupUi(this);
@@ -46,11 +44,9 @@ NoPairingPage::NoPairingPage(BlueWizard* parent) : QWizardPage(parent)
 void NoPairingPage::initializePage()
 {
     kDebug();
-    QList <QWizard::WizardButton> list;
-    list << QWizard::Stretch;
-    list << QWizard::CancelButton;
-    m_wizard->setButtonLayout(list);
-    Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
+    m_wizard->setButtonLayout(wizardButtonsLayout());
+
+    Device *device = deviceFromWizard();
     connecting->setText(connecting->text().arg(device->name()));
 
     connect(device, SIGNAL(registered(Device*)), this, SLOT(registerDeviceResult(Device*)));
@@ -61,26 +57,30 @@ void NoPairingPage::initializePage()
 void NoPairingPage::registerDeviceResult(Device* device)
 {
     Q_UNUSED(device);
-
-    m_triedToregister = true;
-    m_connected = true;
-
     m_wizard->next();
 }
 
-bool NoPairingPage::isComplete() const
+bool NoPairingPage::validatePage()
 {
-    return m_connected;
+    Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
+    return device->isRegistered();
 }
 
 int NoPairingPage::nextId() const
 {
-    if (!m_triedToregister) {
-        return BlueWizard::Discover;
-    }
-    if (!m_connected) {
-        return BlueWizard::Discover;
-    }
-
     return BlueWizard::Services;
+}
+
+Device* NoPairingPage::deviceFromWizard()
+{
+    return Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
+}
+
+QList<QWizard::WizardButton> NoPairingPage::wizardButtonsLayout() const
+{
+    QList <QWizard::WizardButton> list;
+    list << QWizard::Stretch;
+    list << QWizard::CancelButton;
+
+    return list;
 }

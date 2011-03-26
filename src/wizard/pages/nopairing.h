@@ -25,6 +25,7 @@
 #define NOPAIRING_H
 
 #include "ui_nopairing.h"
+#include <QWizard>
 #include <QWizardPage>
 
 class BlueWizard;
@@ -46,15 +47,17 @@ public:
     NoPairingPage(BlueWizard* parent = 0);
 
     virtual void initializePage();
-    virtual bool isComplete() const;
+    virtual bool validatePage();
     virtual int nextId() const;
 
 public Q_SLOTS:
     void registerDeviceResult(Device* device);
 
+protected:
+    Device* deviceFromWizard();
+    QList <QWizard::WizardButton> wizardButtonsLayout() const;
+
 private:
-    bool                           m_triedToregister;
-    bool                           m_connected;
     BlueWizard                    *m_wizard;
     KPixmapSequenceOverlayPainter *m_working;
 };
