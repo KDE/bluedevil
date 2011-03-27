@@ -4,7 +4,6 @@ set(wizard_SRCS
     wizardagent.cpp
 
     pages/discoverpage.cpp
-    pages/pairingpage.cpp
     pages/servicespage.cpp
     pages/serviceoption.cpp
     pages/nopairing.cpp
@@ -17,7 +16,6 @@ set(wizard_SRCS
 
 kde4_add_ui_files(wizard_SRCS
             pages/discover.ui
-            pages/pairing.ui
             pages/services.ui
             pages/serviceOption.ui
             pages/nopairing.ui
