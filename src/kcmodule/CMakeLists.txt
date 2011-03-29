@@ -5,7 +5,9 @@ set(kcm_bluedeviltransfer_PART_SRCS
     systemcheck.cpp
     kded.cpp
     columnresizer.cpp
-    sharedfilesdialog/sharedfilesdialog.cpp)
+    sharedfilesdialog/sharedfilesdialog.cpp
+    sharedfilesdialog/linkproxymodel.cpp
+)
 
 kde4_add_ui_files(kcm_bluedeviltransfer_PART_SRCS_UI transfer.ui sharedfilesdialog/sharedfiles.ui)
 

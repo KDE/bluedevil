@@ -20,6 +20,7 @@
 
 #include "sharedfilesdialog.h"
 #include "ui_sharedfiles.h"
+#include "linkproxymodel.h"
 
 #include <QDebug>
 #include <QFileSystemModel>
@@ -37,11 +38,13 @@ SharedFilesDialog::SharedFilesDialog(QWidget* parent, Qt::WFlags flags): KDialog
     m_ui->listView->setSelectionMode(QAbstractItemView::ExtendedSelection);
 
     QFileSystemModel *model = new QFileSystemModel();
-    qDebug() << KStandardDirs().saveLocation("data", "bluedevil/shared_files/");
     QModelIndex in = model->setRootPath(KStandardDirs().saveLocation("data", "bluedevil/shared_files/"));
 
-    m_ui->listView->setModel(model);
-    m_ui->listView->setRootIndex(in);
+    LinkProxyModel *proxy = new LinkProxyModel();
+    proxy->setSourceModel(model);
+
+    m_ui->listView->setModel(proxy);
+    m_ui->listView->setRootIndex(proxy->mapFromSource(in));
 
     m_ui->addBtn->setIcon(KIcon("list-add"));
     m_ui->removeBtn->setIcon(KIcon("list-remove"));
