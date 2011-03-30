@@ -1,3 +1,4 @@
+
 /***************************************************************************
  *   Copyright (C) 2010 Eduardo Robles Elvira <edulix@gmail.com>           *
  *   Copyright (C) 2010 Alejandro Fiestas Olivares <alex@eyeos.org>        *
@@ -112,10 +113,7 @@ void OpenObex::ServerFtp::serverCreated(const QDBusObjectPath &path)
     connect(m_dbusServer, SIGNAL(ErrorOccured(const QString&, const QString&)),
         this, SLOT(slotErrorOccured(const QString&, const QString&)));
 
-    //TODO: Check if the dir exists and create it if not
-    KStandardDirs dirs;
-    kDebug() << dirs.saveLocation("data", "bluedevil/shared_files/");
-    m_dbusServer->Start(dirs.saveLocation("data", "bluedevil/shared_files/"), FileReceiverSettings::self()->allowWrite(), true);
+    m_dbusServer->Start(FileReceiverSettings::self()->rootFolder().path(), FileReceiverSettings::self()->allowWrite(), true);
 }
 
 void OpenObex::ServerFtp::serverCreatedError(const QDBusError &error)
