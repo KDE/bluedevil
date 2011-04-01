@@ -94,7 +94,7 @@ void SSPPairingPage::confirmationRequested(quint32 passkey, const QDBusMessage& 
     pinNumber->setText(QString::number(passkey));
 
     Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
-    confirmLbl->setText(i18n("Please, confirm that the pin displayed on \"%1\" matches the wizard one.").arg(device->name()));
+    confirmLbl->setText(i18n("Please, confirm that the PIN displayed on \"%1\" matches the wizard one.", device->name()));
 
 }
 

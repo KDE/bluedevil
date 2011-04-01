@@ -86,7 +86,7 @@ void SelectDeviceAndFilesPage::selectionChanged()
     if (m_dialog->selectedUrls().isEmpty()) {
         selectLbl->setText(i18n("Select one or more files:"));
     } else {
-        selectLbl->setText(i18n("Selected files: <b>%1</b>").arg(m_dialog->selectedUrls().count()));
+        selectLbl->setText(i18n("Selected files: <b>%1</b>", m_dialog->selectedUrls().count()));
         static_cast<SendFileWizard* >(wizard())->setFiles(m_dialog->selectedFiles());
     }
     emit completeChanged();
