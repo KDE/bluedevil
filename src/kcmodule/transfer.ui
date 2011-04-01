@@ -60,6 +60,9 @@
           <height>16777215</height>
          </size>
         </property>
+        <property name="mode">
+         <set>KFile::Directory|KFile::ExistingOnly|KFile::LocalOnly</set>
+        </property>
        </widget>
       </item>
       <item row="2" column="0">
@@ -197,6 +200,9 @@
           <width>400</width>
           <height>0</height>
          </size>
+        </property>
+        <property name="mode">
+         <set>KFile::Directory|KFile::ExistingOnly|KFile::LocalOnly</set>
         </property>
        </widget>
       </item>
