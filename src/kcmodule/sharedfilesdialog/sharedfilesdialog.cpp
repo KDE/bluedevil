@@ -21,6 +21,7 @@
 #include "sharedfilesdialog.h"
 #include "ui_sharedfiles.h"
 #include "linkproxymodel.h"
+#include "filereceiversettings.h"
 
 #include <QDebug>
 #include <QFileSystemModel>
@@ -38,7 +39,7 @@ SharedFilesDialog::SharedFilesDialog(QWidget* parent, Qt::WFlags flags): KDialog
     m_ui->listView->setSelectionMode(QAbstractItemView::ExtendedSelection);
 
     QFileSystemModel *model = new QFileSystemModel();
-    QModelIndex in = model->setRootPath(KStandardDirs().saveLocation("data", "bluedevil/shared_files/"));
+    QModelIndex in = model->setRootPath(FileReceiverSettings::self()->rootFolder().path());
 
     LinkProxyModel *proxy = new LinkProxyModel();
     proxy->setSourceModel(model);
@@ -61,7 +62,7 @@ void SharedFilesDialog::slotFinished(int result)
     }
 
     KUrl url;
-    QString baseDir = KStandardDirs().saveLocation("data", "bluedevil/shared_files/");
+    QString baseDir = FileReceiverSettings::self()->rootFolder().path();
     if (!m_added.isEmpty()) {
         Q_FOREACH(const QString &filePath, m_added) {
             url.setPath(filePath);
@@ -85,7 +86,7 @@ void SharedFilesDialog::addFiles()
     QFile fileExist;
     KUrl url;
     QString linkPath;
-    QString baseDir = KStandardDirs().saveLocation("data", "bluedevil/shared_files/");
+    QString baseDir = FileReceiverSettings::self()->rootFolder().path();
 
     QStringList files = dialog->selectedFiles();
     Q_FOREACH(const QString &filePath, files) {
