@@ -111,6 +111,7 @@ void ServerSession::slotTransferStarted(const QString& filename, const QString& 
     m_totalBytes = totalBytes;
 
     //AutoAccept trusted devices
+    FileReceiverSettings::self()->readConfig();
     if (FileReceiverSettings::self()->autoAccept() == 1) {
         if (m_bluetoothDevice->isTrusted()) {
             slotAccept();
