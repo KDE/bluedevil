@@ -51,7 +51,11 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void deviceFound(const QVariantMap &deviceInfo);
+    void deviceFound(Device* device);
     void itemSelected(QListWidgetItem* item);
+
+private:
+    void deviceFoundGeneric(QString address, QString name, QString icon, QString alias);
 
 private:
     QMap<QString, QListWidgetItem*> m_itemRelation;

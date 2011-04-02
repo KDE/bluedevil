@@ -73,11 +73,19 @@ void DiscoverWidget::stopScan()
 
 void DiscoverWidget::deviceFound(const QVariantMap& deviceInfo)
 {
-    QString address = deviceInfo["Address"].toString();
-    QString name = deviceInfo["Name"].toString();
-    QString icon = deviceInfo["Icon"].toString();
-    QString alias = deviceInfo["Alias"].toString();
+    deviceFoundGeneric(deviceInfo["Address"].toString(),
+                       deviceInfo["Name"].toString(),
+                       deviceInfo["Icon"].toString(),
+                       deviceInfo["Alias"].toString());
+}
 
+void DiscoverWidget::deviceFound(Device* device)
+{
+    deviceFoundGeneric(device->address(), device->name(), device->icon(), device->alias());
+}
+
+void DiscoverWidget::deviceFoundGeneric(QString address, QString name, QString icon, QString alias)
+{
     qDebug() << "========================";
     qDebug() << "Address: " << address;
     qDebug() << "Name: " << name;
