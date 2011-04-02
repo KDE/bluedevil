@@ -58,7 +58,7 @@ void DiscoverWidget::startScan()
 //     Manager::self()->defaultAdapter()->startDiscovery();
     QList <Device *> knownDevices = Manager::self()->defaultAdapter()->devices();
     Q_FOREACH(Device *device, knownDevices) {
-        if (device->UUIDs().contains("00001105-0000-1000-8000-00805F9B34FB")) {
+        if (device->UUIDs().contains("00001105-0000-1000-8000-00805F9B34FB", Qt::CaseInsensitive)) {
             deviceFound(device);
         }
     }
