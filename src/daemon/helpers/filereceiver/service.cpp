@@ -39,6 +39,7 @@ Service::Service()
     dbus.registerService("org.kde.BlueDevil.Service");
     dbus.registerObject("/Service", this);
     m_server = 0;
+    m_serverftp = 0;
     m_watcher = 0;
 }
 
@@ -52,7 +53,7 @@ Service::~Service()
 
 void Service::launchServer()
 {
-    if (m_server) {
+    if (m_server && m_serverftp) {
         return;
     }
 
@@ -65,12 +66,16 @@ void Service::launchServer()
 
         FileReceiverSettings::self()->readConfig();
         if (FileReceiverSettings::enabled()) {
-            kDebug() << "Launching Server";
-            m_server = new OpenObex::Server(BlueDevil::Manager::self()->defaultAdapter()->address());
+            if (!m_server) {
+                kDebug() << "Launching Server";
+                m_server = new OpenObex::Server(BlueDevil::Manager::self()->defaultAdapter()->address());
+            }
         }
         if (FileReceiverSettings::shareEnabled()) {
-            kDebug() << "Launching FileSharing";
-            m_serverftp = new OpenObex::ServerFtp(BlueDevil::Manager::self()->defaultAdapter()->address());
+            if (!m_serverftp) {
+                kDebug() << "Launching FileSharing";
+                m_serverftp = new OpenObex::ServerFtp(BlueDevil::Manager::self()->defaultAdapter()->address());
+            }
         }
     } else{
         kDebug() << "No adapters found";
@@ -80,13 +85,17 @@ void Service::launchServer()
 void Service::stopServer()
 {
     kDebug() << m_server;
+    kDebug() << m_serverftp;
 
-    if (!m_server) {
+    if (!m_server && !m_serverftp) {
         return;
     }
 
-    m_server->deleteLater();
+    delete m_server;
     m_server = 0;
+
+    delete m_serverftp;
+    m_serverftp = 0;
 }
 
 bool Service::isRunning()
