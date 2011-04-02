@@ -62,7 +62,7 @@ void SharedFilesDialog::slotFinished(int result)
     }
 
     KUrl url;
-    QString baseDir = FileReceiverSettings::self()->rootFolder().path();
+    QString baseDir = FileReceiverSettings::self()->rootFolder().path().append("/");
     if (!m_added.isEmpty()) {
         Q_FOREACH(const QString &filePath, m_added) {
             url.setPath(filePath);
@@ -86,7 +86,7 @@ void SharedFilesDialog::addFiles()
     QFile fileExist;
     KUrl url;
     QString linkPath;
-    QString baseDir = FileReceiverSettings::self()->rootFolder().path();
+    QString baseDir = FileReceiverSettings::self()->rootFolder().path().append("/");
 
     QStringList files = dialog->selectedFiles();
     Q_FOREACH(const QString &filePath, files) {
