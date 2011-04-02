@@ -45,8 +45,10 @@ struct OpenObex::Server::Private
 OpenObex::Server::Server(const QString& addr)
     : QObject(0), d(new Private)
 {
-    kDebug();
+    kDebug() << "Server: " << addr;
+
     d->dbusServer = 0;
+
     QDBusConnection* dbus = new QDBusConnection("dbus");
     QDBusConnection dbusconn = dbus->connectToBus(QDBusConnection::SessionBus, "dbus");
 
@@ -54,17 +56,14 @@ OpenObex::Server::Server(const QString& addr)
     if (!dbusconn.isConnected()) {
         return;
     }
-    kDebug() << addr;
 
     QDBusInterface* manager = new QDBusInterface("org.openobex", "/org/openobex",
         "org.openobex.Manager", dbusconn);
 
     QString pattern = "opp";
-    bool require_pairing = false;
     QList<QVariant> args;
-    args << addr << pattern << require_pairing;
-    kDebug() << args;
-    kDebug() << "CallWithCallback";
+    args << addr << pattern << false;
+
     manager->callWithCallback("CreateBluetoothServer", args, this,
         SLOT(serverCreated(QDBusObjectPath)),
         SLOT(serverCreatedError(QDBusError)));
@@ -131,14 +130,12 @@ void OpenObex::Server::serverCreated(QDBusObjectPath path)
     d->dbusServer = new org::openobex::Server("org.openobex",
         path.path(), dbusconn, this);
 
-    //This interface MUST be valid too, if not is because openobex have some problem
     if (!d->dbusServer->isValid()) {
         kDebug() << "open obex error: invalid dbus server interface" << path.path();
         return;
     }
     kDebug() << "session interface created for: " << d->dbusServer->path();
 
-//  connect the DBus Signal to slots
     connect(d->dbusServer, SIGNAL(SessionCreated(QDBusObjectPath)), this,
         SLOT(slotSessionCreated(QDBusObjectPath)));
     connect(d->dbusServer, SIGNAL(SessionRemoved(QDBusObjectPath)),
