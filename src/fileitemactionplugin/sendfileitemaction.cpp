@@ -111,7 +111,7 @@ void SendFileItemAction::otherTriggered()
 
     KUrl::List fileList =  m_fileItemInfos.urlList();
     Q_FOREACH(const KUrl &url,  fileList) {
-        args.append("-f " + url.path());
+        args.append("-f" + url.path());
     }
 
     KProcess process;
