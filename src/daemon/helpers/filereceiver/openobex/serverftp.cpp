@@ -37,15 +37,16 @@
 OpenObex::ServerFtp::ServerFtp(const QString& addr)
     : QObject(0),  m_dbusServer(0)
 {
-    kDebug();
-
-    kDebug() << addr;
+    kDebug() << "ServerFtp: " << addr;
 
     QDBusInterface* manager = new QDBusInterface("org.openobex", "/org/openobex",
         "org.openobex.Manager", QDBusConnection::sessionBus());
 
+    FileReceiverSettings::self()->readConfig();
+
     QList<QVariant> args;
     args << addr << "ftp" << FileReceiverSettings::self()->requirePin();
+
     kDebug() << args;
 
     manager->callWithCallback("CreateBluetoothServer", args, this,
@@ -112,6 +113,9 @@ void OpenObex::ServerFtp::serverCreated(const QDBusObjectPath &path)
         this, SLOT(slotSessionRemoved(QDBusObjectPath)));
     connect(m_dbusServer, SIGNAL(ErrorOccured(const QString&, const QString&)),
         this, SLOT(slotErrorOccured(const QString&, const QString&)));
+
+    kDebug() << "rootFolder: " << FileReceiverSettings::self()->rootFolder().path();
+    kDebug() << "allowWrite: " << FileReceiverSettings::self()->allowWrite();
 
     m_dbusServer->Start(FileReceiverSettings::self()->rootFolder().path(), FileReceiverSettings::self()->allowWrite(), true);
 }
