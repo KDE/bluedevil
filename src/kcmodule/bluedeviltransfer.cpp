@@ -111,6 +111,8 @@ void KCMBlueDevilTransfer::save()
         return;
     }
 
+    KCModule::save();
+
     org::kde::BlueDevil::Service *service = new org::kde::BlueDevil::Service(
                                                     "org.kde.BlueDevil.Service",
                                                     "/Service",
@@ -120,8 +122,6 @@ void KCMBlueDevilTransfer::save()
     }
 
     service->launchServer();
-
-    KCModule::save();
 }
 
 void KCMBlueDevilTransfer::defaultAdapterChanged(Adapter *adapter)
