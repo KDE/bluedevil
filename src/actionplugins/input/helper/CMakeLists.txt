@@ -7,6 +7,7 @@ include_directories(
 set(inputhelper_SRCS
     main.cpp
     inputhelper.cpp
+    ../../../wizard/wizardagent.cpp
 )
 
 kde4_add_executable(bluedevil-input ${inputhelper_SRCS})
