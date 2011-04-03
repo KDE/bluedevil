@@ -23,8 +23,11 @@
 #include <QDBusMessage>
 #include <bluedevil/bluedevil.h>
 #include <KDebug>
+#include <KAboutData>
 #include <krandom.h>
 #include <kstandarddirs.h>
+#include <klocalizedstring.h>
+#include <KComponentData>
 
 using namespace BlueDevil;
 
@@ -107,7 +110,8 @@ QString WizardAgent::getPin(Device *device)
     m_pin = QString::number(KRandom::random());
     m_pin = m_pin.left(6);
 
-    QString xmlPath = KStandardDirs::locate("appdata", "pin-code-database.xml");
+    KComponentData data("bluedevilwizard");
+    QString xmlPath = KStandardDirs::locate("appdata", "pin-code-database.xml", data);
 
     QFile *file = new QFile(xmlPath);
     if(!file->open(QIODevice::ReadOnly)) {
