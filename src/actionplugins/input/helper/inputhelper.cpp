@@ -17,6 +17,7 @@
 
 #include "inputhelper.h"
 #include "../../actionplugin.h"
+#include "../../../wizard/wizardagent.h"
 
 #include <QApplication>
 #include <QDebug>
@@ -37,8 +38,11 @@ InputHelper::InputHelper(const KUrl& address) {
     }
 
     Device *device = Manager::self()->defaultAdapter()->deviceForAddress(address.host().replace("-", ":"));
+    device->UUIDs();
+    WizardAgent *agent = new WizardAgent(qApp);
 
-    if(device->isPaired()) {
+    QString pin = agent->getPin(device);
+    if(pin == "NULL" || device->isPaired()) {
         kDebug() << "Device paired, getting the service";
         QString constraint("'00001124-0000-1000-8000-00805F9B34FB' in [X-BlueDevil-UUIDS]");
 
@@ -55,4 +59,6 @@ InputHelper::InputHelper(const KUrl& address) {
         kDebug() << "Device not paired, launched wizard: " << device->friendlyName();
         KToolInvocation::kdeinitExec("bluedevil-wizard", QStringList() << address.url());
     }
+
+    delete agent;
 }
