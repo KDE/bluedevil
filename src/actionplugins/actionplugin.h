@@ -27,7 +27,7 @@
 
 #define BLUEDEVILACTION_PLUGIN_EXPORT( c ) \
   K_PLUGIN_FACTORY( BlueDevilAction, registerPlugin< c >(); ) \
-  K_EXPORT_PLUGIN( BlueDevilAction("c") )
+  K_EXPORT_PLUGIN( BlueDevilAction("c", "bluedevil") )
 
 struct Private;
 namespace BlueDevil {
