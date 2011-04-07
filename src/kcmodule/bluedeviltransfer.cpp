@@ -35,7 +35,7 @@
 #include <kconfigdialogmanager.h>
 
 K_PLUGIN_FACTORY(BlueDevilFactory, registerPlugin<KCMBlueDevilTransfer>();)
-K_EXPORT_PLUGIN(BlueDevilFactory("bluedeviltransfer"))
+K_EXPORT_PLUGIN(BlueDevilFactory("bluedeviltransfer", "bluedevil"))
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
