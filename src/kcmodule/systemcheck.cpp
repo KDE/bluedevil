@@ -25,6 +25,8 @@
 #include <bluedevil/bluedevil.h>
 
 #include <kglobal.h>
+#include <kaction.h>
+#include <kdeversion.h>
 #include <kpushbutton.h>
 #include <kconfiggroup.h>
 #include <kcolorscheme.h>
@@ -37,6 +39,10 @@
 #include <QtGui/QBoxLayout>
 #include <QtGui/QPaintEvent>
 
+#if KDE_IS_VERSION(4,6,41)
+#include <kmessagewidget.h>
+#else
+
 class ErrorWidget
     : public QWidget
 {
@@ -45,7 +51,7 @@ public:
     virtual ~ErrorWidget();
 
     void setIcon(const QString &icon);
-    void setReason(const QString &reason);
+    void setText(const QString &reason);
     void addAction(KPushButton *action);
 
 protected:
@@ -87,7 +93,7 @@ void ErrorWidget::setIcon(const QString &icon)
     m_icon->setPixmap(KIconLoader::global()->loadIcon(icon, KIconLoader::Dialog));
 }
 
-void ErrorWidget::setReason(const QString &reason)
+void ErrorWidget::setText(const QString &reason)
 {
     m_reason->setText(reason);
 }
@@ -112,7 +118,7 @@ void ErrorWidget::paintEvent(QPaintEvent *event)
 
     QWidget::paintEvent(event);
 }
-
+#endif
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 SystemCheck::SystemCheck(QWidget *parent)
@@ -139,33 +145,75 @@ void SystemCheck::createWarnings(QVBoxLayout *layout)
         return;
     }
 
+#if KDE_IS_VERSION(4,6,41)
+    m_noAdaptersError = new KMessageWidget(m_parent);
+    m_noAdaptersError->setMessageType(KMessageWidget::ErrorMessageType);
+    m_noAdaptersError->setCloseButtonVisible(false);
+#else
     m_noAdaptersError = new ErrorWidget(m_parent);
     m_noAdaptersError->setIcon("window-close");
-    m_noAdaptersError->setReason(i18n("No Bluetooth adapters have been found."));
+#endif
+    m_noAdaptersError->setText(i18n("No Bluetooth adapters have been found."));
     layout->addWidget(m_noAdaptersError);
 
+#if KDE_IS_VERSION(4,6,41)
+    m_notDiscoverableAdapterError = new KMessageWidget(m_parent);
+    m_notDiscoverableAdapterError->setMessageType(KMessageWidget::WarningMessageType);
+    m_notDiscoverableAdapterError->setCloseButtonVisible(false);
+
+    KAction *fixNotDiscoverableAdapter = new KAction(KIcon("dialog-ok-apply"), i18nc("Action to fix a problem", "Fix it"), m_notDiscoverableAdapterError);
+    connect(fixNotDiscoverableAdapter, SIGNAL(triggered(bool)), this, SLOT(fixNotDiscoverableAdapterError()));
+    m_notDiscoverableAdapterError->addAction(fixNotDiscoverableAdapter);
+#else
     m_notDiscoverableAdapterError = new ErrorWidget(m_parent);
     m_notDiscoverableAdapterError->setIcon("edit-find");
-    m_notDiscoverableAdapterError->setReason(i18n("Your default Bluetooth adapter is not visible for remote devices."));
+
     KPushButton *fixNotDiscoverableAdapter = new KPushButton(KIcon("dialog-ok-apply"), i18nc("Action to fix a problem", "Fix it"), m_notDiscoverableAdapterError);
     connect(fixNotDiscoverableAdapter, SIGNAL(clicked()), this, SLOT(fixNotDiscoverableAdapterError()));
     m_notDiscoverableAdapterError->addAction(fixNotDiscoverableAdapter);
+#endif
+    m_notDiscoverableAdapterError->setText(i18n("Your default Bluetooth adapter is not visible for remote devices."));
+
     layout->addWidget(m_notDiscoverableAdapterError);
 
+#if KDE_IS_VERSION(4,6,41)
+    m_disabledNotificationsError = new KMessageWidget(m_parent);
+    m_disabledNotificationsError->setMessageType(KMessageWidget::WarningMessageType);
+    m_disabledNotificationsError->setCloseButtonVisible(false);
+
+    KAction *fixDisabledNotifications = new KAction(KIcon("dialog-ok-apply"), i18nc("Action to fix a problem", "Fix it"), m_disabledNotificationsError);
+    connect(fixDisabledNotifications, SIGNAL(triggered(bool)), this, SLOT(fixDisabledNotificationsError()));
+    m_disabledNotificationsError->addAction(fixDisabledNotifications);
+#else
     m_disabledNotificationsError = new ErrorWidget(m_parent);
     m_disabledNotificationsError->setIcon("preferences-desktop-notification");
-    m_disabledNotificationsError->setReason(i18n("Interaction with Bluetooth system is not optimal."));
+
     KPushButton *fixDisabledNotifications = new KPushButton(KIcon("dialog-ok-apply"), i18nc("Action to fix a problem", "Fix it"), m_disabledNotificationsError);
     connect(fixDisabledNotifications, SIGNAL(clicked()), this, SLOT(fixDisabledNotificationsError()));
     m_disabledNotificationsError->addAction(fixDisabledNotifications);
+#endif
+    m_disabledNotificationsError->setText(i18n("Interaction with Bluetooth system is not optimal."));
+
     layout->addWidget(m_disabledNotificationsError);
 
+#if KDE_IS_VERSION(4,6,41)
+    m_noKDEDRunning = new KMessageWidget(m_parent);
+    m_noKDEDRunning ->setMessageType(KMessageWidget::WarningMessageType);
+    m_noKDEDRunning->setCloseButtonVisible(false);
+
+    KAction *fixNoKDEDRunning = new KAction(KIcon("dialog-ok-apply"), i18nc("Action to fix a problem", "Fix it"), m_noKDEDRunning);
+    connect(fixNoKDEDRunning, SIGNAL(triggered(bool)), this, SLOT(fixNoKDEDRunning()));
+    m_noKDEDRunning->addAction(fixNoKDEDRunning);
+#else
     m_noKDEDRunning = new ErrorWidget(m_parent);
     m_noKDEDRunning->setIcon("dialog-warning");
-    m_noKDEDRunning->setReason(i18n("Bluetooth is not completely enabled."));
+
     KPushButton *fixNoKDEDRunning = new KPushButton(KIcon("dialog-ok-apply"), i18nc("Action to fix a problem", "Fix it"), m_noKDEDRunning);
     connect(fixNoKDEDRunning, SIGNAL(clicked()), this, SLOT(fixNoKDEDRunning()));
     m_noKDEDRunning->addAction(fixNoKDEDRunning);
+#endif
+    m_noKDEDRunning->setText(i18n("Bluetooth is not completely enabled."));
+
     layout->addWidget(m_noKDEDRunning);
 }
 
