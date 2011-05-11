@@ -147,7 +147,7 @@ void SystemCheck::createWarnings(QVBoxLayout *layout)
 
 #if KDE_IS_VERSION(4,6,41)
     m_noAdaptersError = new KMessageWidget(m_parent);
-    m_noAdaptersError->setMessageType(KMessageWidget::ErrorMessageType);
+    m_noAdaptersError->setMessageType(KMessageWidget::Error);
     m_noAdaptersError->setCloseButtonVisible(false);
 #else
     m_noAdaptersError = new ErrorWidget(m_parent);
@@ -158,7 +158,7 @@ void SystemCheck::createWarnings(QVBoxLayout *layout)
 
 #if KDE_IS_VERSION(4,6,41)
     m_notDiscoverableAdapterError = new KMessageWidget(m_parent);
-    m_notDiscoverableAdapterError->setMessageType(KMessageWidget::WarningMessageType);
+    m_notDiscoverableAdapterError->setMessageType(KMessageWidget::Warning);
     m_notDiscoverableAdapterError->setCloseButtonVisible(false);
 
     KAction *fixNotDiscoverableAdapter = new KAction(KIcon("dialog-ok-apply"), i18nc("Action to fix a problem", "Fix it"), m_notDiscoverableAdapterError);
@@ -178,7 +178,7 @@ void SystemCheck::createWarnings(QVBoxLayout *layout)
 
 #if KDE_IS_VERSION(4,6,41)
     m_disabledNotificationsError = new KMessageWidget(m_parent);
-    m_disabledNotificationsError->setMessageType(KMessageWidget::WarningMessageType);
+    m_disabledNotificationsError->setMessageType(KMessageWidget::Warning);
     m_disabledNotificationsError->setCloseButtonVisible(false);
 
     KAction *fixDisabledNotifications = new KAction(KIcon("dialog-ok-apply"), i18nc("Action to fix a problem", "Fix it"), m_disabledNotificationsError);
@@ -198,7 +198,7 @@ void SystemCheck::createWarnings(QVBoxLayout *layout)
 
 #if KDE_IS_VERSION(4,6,41)
     m_noKDEDRunning = new KMessageWidget(m_parent);
-    m_noKDEDRunning ->setMessageType(KMessageWidget::WarningMessageType);
+    m_noKDEDRunning ->setMessageType(KMessageWidget::Warning);
     m_noKDEDRunning->setCloseButtonVisible(false);
 
     KAction *fixNoKDEDRunning = new KAction(KIcon("dialog-ok-apply"), i18nc("Action to fix a problem", "Fix it"), m_noKDEDRunning);
