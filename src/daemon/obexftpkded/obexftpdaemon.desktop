@@ -41,6 +41,7 @@ Name[x-test]=xxObexFTPxx
 Name[zh_TW]=ObexFTP
 
 Comment=ObexFTP helper daemon
+Comment[bs]=Pomoćni demon ObeksFTP‑a
 Comment[ca]=Dimoni d'ajuda de l'Obexftp
 Comment[cs]=Pomocný démon ObexFTP
 Comment[da]=Hjælperdæmon til ObexFTP

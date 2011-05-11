@@ -2,6 +2,7 @@
 Type=Service
 Exec=blubb
 Comment=Handles the connection and configuration of an audio device
+Comment[bs]=Rukuje povezivanjem i podešavanjem audio uređaja
 Comment[ca]=Gestiona la connexió i la configuració d'un dispositiu d'àudio
 Comment[ca@valencia]=Gestiona la connexió i la configuració d'un dispositiu d'àudio
 Comment[cs]=Stará se o připojení a nastavení audio zařízení
@@ -73,6 +74,7 @@ Name[uk]=Звук
 Name[x-test]=xxAudioxx
 Name[zh_TW]=音效
 GenericName=Audio
+GenericName[bs]=Audio
 GenericName[ca]=Àudio
 GenericName[ca@valencia]=Àudio
 GenericName[cs]=Audio

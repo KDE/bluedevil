@@ -44,6 +44,7 @@ Name[x-test]=xxBlueDevilxx
 Name[zh_TW]=BlueDevil
 
 Comment=Bluetooth Management Daemon
+Comment[bs]=Demon za upravljanje blututom
 Comment[ca]=Dimoni de gestió del Bluetooth
 Comment[ca@valencia]=Dimoni de gestió del bluetooth
 Comment[cs]=Démon pro správu Bluetooth

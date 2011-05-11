@@ -47,6 +47,7 @@ Name[x-test]=xxAdaptersxx
 Name[zh_TW]=轉接器
 
 Comment=Configure the available Bluetooth adapters
+Comment[bs]=Podesite dostupne blutut adaptere
 Comment[ca]=Configura els adaptadors Bluetooth disponibles
 Comment[cs]=Nastavte dostupné adaptéry Bluetooth
 Comment[da]=Indstil de tilgængelige Bluetooth-adaptere
