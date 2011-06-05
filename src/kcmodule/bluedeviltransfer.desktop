@@ -13,6 +13,7 @@ X-KDE-Weight=60
 
 Name=File Transfers
 Name[ca]=Transferències de fitxers
+Name[ca@valencia]=Transferències de fitxers
 Name[cs]=Přenosy souborů
 Name[da]=Filoverførsler
 Name[de]=Dateiübertragungen
@@ -45,6 +46,7 @@ Name[zh_TW]=檔案傳輸
 Comment=Configure the Bluetooth receive files
 Comment[bs]=Podesite prijem datoteka preko blututom
 Comment[ca]=Configura la recepció de fitxers per Bluetooth
+Comment[ca@valencia]=Configura la recepció de fitxers per Bluetooth
 Comment[cs]=Nastavte příjem souborů přes Bluetooth
 Comment[da]=Indstil modtagelse af filer via Bluetooth
 Comment[de]=Den Bluetooth-Dateiempfang einrichten

@@ -52,6 +52,7 @@ Name[zh_TW]=裝置
 Comment=Configure the known Bluetooth remote devices
 Comment[bs]=Podesite poznate udaljene blutut uređaje
 Comment[ca]=Configura els dispositius Bluetooth remots coneguts
+Comment[ca@valencia]=Configura els dispositius Bluetooth remots coneguts
 Comment[cs]=Nastavte známá zařízení připojované přes Bluetooth
 Comment[da]=Indstil de kendte eksterne Bluetooth-enheder
 Comment[de]=Die bekannten entfernten Bluetooth-Geräte einrichten
