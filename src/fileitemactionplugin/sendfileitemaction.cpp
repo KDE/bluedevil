@@ -77,10 +77,10 @@ QList< QAction* > SendFileItemAction::actions(const KFileItemListProperties& fil
     QAction *otherAction = new QAction(hack);
     connect(otherAction, SIGNAL(triggered(bool)), this, SLOT(otherTriggered()));
     if (menu->actions().isEmpty()) {
-        otherAction->setText(i18n("Find device"));
+        otherAction->setText(i18nc("Find Bluetooth device", "Find Device..."));
     } else {
         menu->addSeparator();
-        otherAction->setText(i18n("Other"));
+        otherAction->setText(i18nc("Other Bluetooth device", "Other..."));
     }
     menu->addAction(otherAction);
 
