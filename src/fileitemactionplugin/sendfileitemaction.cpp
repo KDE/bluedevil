@@ -38,7 +38,7 @@
 
 using namespace BlueDevil;
 K_PLUGIN_FACTORY(SendFileItemActionFactory, registerPlugin<SendFileItemAction>();)
-K_EXPORT_PLUGIN(SendFileItemActionFactory("SendFileItemAction"))
+K_EXPORT_PLUGIN(SendFileItemActionFactory("SendFileItemAction", "bluedevil"))
 
 SendFileItemAction::SendFileItemAction(QObject* parent, const QVariantList& args): KFileItemActionPlugin(parent)
 {
