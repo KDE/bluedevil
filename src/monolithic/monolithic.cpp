@@ -298,7 +298,7 @@ void Monolithic::regenerateDeviceEntries()
     connect(addDevice, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(addDevice()));
     menu->addAction(addDevice);
 
-    KAction *configBluetooth = new KAction(i18n("Configure Bluetooth"), menu);
+    KAction *configBluetooth = new KAction(KIcon("configure"), i18n("Configure Bluetooth"), menu);
     connect(configBluetooth, SIGNAL(triggered(bool)), this, SLOT(configBluetooth()));
     menu->addAction(configBluetooth);
 
