@@ -377,10 +377,16 @@ void KioFtp::copyHelper(const KUrl& src, const KUrl& dest)
         }
 
         kDebug() << "CopyingRemoteFile....";
+
+        int size = m_statMap[src.prettyUrl()].numberValue(KIO::UDSEntry::UDS_SIZE);
+        totalSize(size);
+
         blockUntilNotBusy(src.host());
         m_kded->copyRemoteFile(src.host(), src.path(), dest.path());
     } else if (dest.scheme() == "obexftp") {
         kDebug() << "Sendingfile....";
+        QFile file(dest.url());
+        totalSize(file.size());
         blockUntilNotBusy(dest.host());
         m_kded->sendFile(dest.host(), src.path(), dest.directory());
     }
