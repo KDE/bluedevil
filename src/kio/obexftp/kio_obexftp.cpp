@@ -60,8 +60,6 @@ KioFtp::KioFtp(const QByteArray &pool, const QByteArray &app)
     m_timer->setInterval(100);
 
     m_kded = new org::kde::ObexFtp("org.kde.kded", "/modules/obexftpdaemon", QDBusConnection::sessionBus(), 0);
-    connect(m_kded, SIGNAL(sessionConnected(QString)), SLOT(sessionConnected(QString)));
-    connect(m_kded, SIGNAL(sessionClosed(QString)), SLOT(sessionClosed(QString)));
 }
 
 KioFtp::~KioFtp()
@@ -163,11 +161,17 @@ void KioFtp::setHost(const QString &host, quint16 port, const QString &user, con
 
     kDebug() << "setHost: " << host;
 
+    connect(m_kded, SIGNAL(sessionConnected(QString)), this, SLOT(sessionConnected(QString)));
+    connect(m_kded, SIGNAL(sessionClosed(QString)), this, SLOT(sessionClosed(QString)));
     m_kded->stablishConnection(host);
+
     kDebug() << "Waiting to stablish the connection";
     m_settingHost = true;
     launchProgressBar();
     m_eventLoop.exec();
+
+    disconnect(m_kded, SIGNAL(sessionConnected(QString)), this, SLOT(sessionConnected(QString)));
+    disconnect(m_kded, SIGNAL(sessionClosed(QString)), this, SLOT(sessionClosed(QString)));
 
     m_settingHost = false;
     m_address = host;
@@ -377,10 +381,16 @@ void KioFtp::copyHelper(const KUrl& src, const KUrl& dest)
         }
 
         kDebug() << "CopyingRemoteFile....";
+
+        int size = m_statMap[src.prettyUrl()].numberValue(KIO::UDSEntry::UDS_SIZE);
+        totalSize(size);
+
         blockUntilNotBusy(src.host());
         m_kded->copyRemoteFile(src.host(), src.path(), dest.path());
     } else if (dest.scheme() == "obexftp") {
         kDebug() << "Sendingfile....";
+        QFile file(dest.url());
+        totalSize(file.size());
         blockUntilNotBusy(dest.host());
         m_kded->sendFile(dest.host(), src.path(), dest.directory());
     }
