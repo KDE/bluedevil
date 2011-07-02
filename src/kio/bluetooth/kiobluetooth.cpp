@@ -39,7 +39,7 @@ using namespace BlueDevil;
 
 extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
 {
-    KAboutData about("kiobluetooth", "kiobluetooth", ki18n("kiobluetooth"), 0);
+    KAboutData about("kiobluetooth", "bluedevil", ki18n("kiobluetooth"), 0);
     KCmdLineArgs::init(&about);
 
     KApplication app;

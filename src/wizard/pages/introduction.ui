@@ -24,7 +24,7 @@
        <property name="maximumSize">
         <size>
          <width>16777215</width>
-         <height>20</height>
+         <height>16777215</height>
         </size>
        </property>
        <property name="currentIndex">
@@ -34,6 +34,12 @@
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
           <widget class="QLabel" name="descText">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="text">
             <string>With this wizard you will be able to connect and configure your bluetooth devices.</string>
            </property>

@@ -58,6 +58,9 @@ BlueWizard::BlueWizard(const KUrl &url) : QWizard(), m_service(0), m_manualPin(f
 
     //We do not want "Forward" as text
     setButtonText(QWizard::NextButton, i18nc("Action to go to the next page on the wizard", "Next"));
+
+    setButtonLayout(QList<QWizard::WizardButton>() << QWizard::CancelButton << QWizard::Stretch << QWizard::BackButton << QWizard::NextButton << QWizard::FinishButton);
+
     //First show, then do the rest
     show();
 
