@@ -21,6 +21,7 @@
 */
 
 #include "kiobluetooth.h"
+#include "kdedbluedevil.h"
 
 #include <QtCore/QThread>
 
@@ -183,23 +184,16 @@ KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
     s.uuid = "00001108-0000-1000-8000-00805F9B34FB";
     m_supportedServices.insert("00001108-0000-1000-8000-00805F9B34FB", s);
 
-    connect(Manager::self(), SIGNAL(adapterAdded(Adapter*)), this,
-                    SLOT(defaultAdapterChanged(Adapter*)));
-
-    connect(Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)), this,
-                    SLOT(defaultAdapterChanged(Adapter*)));
-
     if (!Manager::self()->defaultAdapter()) {
         kDebug() << "No available interface";
         infoMessage(i18n("No Bluetooth adapters have been found."));
-        m_online = false;
         return;
     }
 
     connect(Manager::self()->defaultAdapter(), SIGNAL(deviceFound(Device*)), this, SLOT(listDevice(Device*)));
-    m_online = true;
 
     kDebug() << "Kio Bluetooth instanced!";
+    m_kded = new org::kde::BlueDevil("org.kde.kded", "/modules/bluedevil", QDBusConnection::sessionBus(), 0);
 }
 
 void KioBluetooth::listDir(const KUrl &url)
@@ -211,7 +205,8 @@ void KioBluetooth::listDir(const KUrl &url)
     Q_UNUSED(url);
 
     // If we are not online (ie. there's no working bluetooth adapter), list an empty dir
-    if (!m_online) {
+    kDebug() << m_kded->isOnline().value();
+    if (!m_kded->isOnline().value()) {
         infoMessage(i18n("No Bluetooth adapters have been found."));
         listEntry(KIO::UDSEntry(), true);
         finished();
@@ -258,19 +253,6 @@ void KioBluetooth::setHost(const QString &constHostname, quint16 port, const QSt
         m_currentHostname = constHostname;
         m_currentHostServices.clear();
     }
-}
-
-void KioBluetooth::defaultAdapterChanged(Adapter *adapter)
-{
-    kDebug() << "Default Adapter Changed: " << adapter;
-    if (adapter) {
-        kDebug() << "online is true now";
-        m_online = true;
-        return;
-    }
-
-    kDebug() << "Default Adapter Removed";
-    m_online = false;
 }
 
 

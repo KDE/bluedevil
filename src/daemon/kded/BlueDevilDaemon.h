@@ -43,6 +43,9 @@ public:
     BlueDevilDaemon(QObject *parent, const QList<QVariant>&);
     virtual ~BlueDevilDaemon();
 
+public Q_SLOTS:
+    Q_SCRIPTABLE bool isOnline();
+
 private:
     /**
      * Called by constructor or eventually by adapterAdded initialize all the helpers

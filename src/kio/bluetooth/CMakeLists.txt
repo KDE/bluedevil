@@ -1,6 +1,7 @@
 set(kio_bluetooth_PART_SRCS
    kiobluetooth.cpp)
 
+qt4_add_dbus_interface(kio_bluetooth_PART_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/kded_bluedevil.xml kdedbluedevil)
 kde4_add_plugin(kio_bluetooth ${kio_bluetooth_PART_SRCS})
 
 target_link_libraries(kio_bluetooth

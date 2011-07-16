@@ -22,6 +22,8 @@
 #ifndef KIOBLUETOOTH_H
 #define KIOBLUETOOTH_H
 
+#include "kdedbluedevil.h"
+
 #include <QObject>
 #include <kio/slavebase.h>
 
@@ -99,10 +101,6 @@ public:
     void listDevice(Device *device);
 
 private:
-     /**
-      * Specifies if we've got a working bluetooth adpater to our computer or not.
-      */
-     bool m_online;
 
     /**
      * This is set to true when @p setHost is called to list a given remote device, like for example
@@ -141,6 +139,11 @@ private:
      * given uuid represents, and a representative icon. It only contains the supported service names.
      */
     QMap<QString, Service> m_supportedServices;
+
+    /**
+     * KDED DBus interface, used to communicate to the daemon since we need some status (like connected)
+     */
+    org::kde::BlueDevil *m_kded;
 };
 
 #endif // KIOBLUETOOTH_H

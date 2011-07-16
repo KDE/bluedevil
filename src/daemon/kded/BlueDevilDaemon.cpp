@@ -94,6 +94,14 @@ BlueDevilDaemon::~BlueDevilDaemon()
     delete d;
 }
 
+bool BlueDevilDaemon::isOnline()
+{
+    if (d->m_status == Private::Offline) {
+        return false;
+    }
+    return true;
+}
+
 bool BlueDevilDaemon::isServiceStarted()
 {
     if (!d->m_service) {
