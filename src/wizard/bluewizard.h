@@ -40,9 +40,6 @@ public:
     QByteArray pin() const;
     void setPin(const QByteArray& pin);
 
-    bool manualPin() const;
-    void setManualPin(bool);
-
     QByteArray preselectedUuid() const;
     void setPreselectedUuid(const QByteArray &uuid);
 

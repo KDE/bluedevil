@@ -149,17 +149,6 @@ QByteArray BlueWizard::pin() const
     return m_pin;
 }
 
-void BlueWizard::setManualPin(bool pinManual)
-{
-    kDebug() << "Manual pin: " << pinManual;
-    m_manualPin = pinManual;
-}
-
-bool BlueWizard::manualPin() const
-{
-    return m_manualPin;
-}
-
 void BlueWizard::setPreselectedUuid(const QByteArray& uuid)
 {
     kDebug() << "Preselect UUID: " << uuid;

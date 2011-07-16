@@ -100,7 +100,12 @@ bool BlueDevilDaemon::isServiceStarted()
         d->m_service = new org::kde::BlueDevil::Service("org.kde.BlueDevil.Service",
             "/Service", QDBusConnection::sessionBus(), this);
     }
-    return d->m_service->isRunning();
+    QDBusPendingReply <bool > r = d->m_service->isRunning();
+    r.waitForFinished();
+    if (r.isError() || !r.isValid()) {
+        return false;
+    }
+    return r.value();
 }
 
 void BlueDevilDaemon::onlineMode()
