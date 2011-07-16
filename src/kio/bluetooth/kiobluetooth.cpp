@@ -24,6 +24,7 @@
 #include "kdedbluedevil.h"
 
 #include <QtCore/QThread>
+#include <QDBusMetaType>
 
 #include <KDebug>
 #include <KComponentData>
@@ -110,46 +111,26 @@ void KioBluetooth::listRemoteDeviceServices()
     finished();
 }
 
-class SleeperThread
-    : public QThread
-{
-public:
-    static void msleep(unsigned long msecs)
-    {
-        QThread::msleep(msecs);
-    }
-};
-
 void KioBluetooth::listDevices()
 {
-    infoMessage(i18n("Scanning for remote devices..."));
-    totalSize(100);
-    Manager::self()->defaultAdapter()->startDiscovery();
-    for (int i = 0; i < 100; ++i) {
-        SleeperThread::msleep(100);
-        processedSize(i + 1);
-        QApplication::processEvents();
+    kDebug() << "Asking kded for devices";
+    QListDeviceInfo devices = m_kded->knownDevices().value();
+    kDebug() << devices.length();
+    Q_FOREACH(const DeviceInfo device, devices) {
+        listDevice(device);
     }
-    Manager::self()->defaultAdapter()->stopDiscovery();
     listEntry(KIO::UDSEntry(), true);
     infoMessage("");
     finished();
 }
 
-void KioBluetooth::listDevice(Device *device)
+void KioBluetooth::listDevice(const DeviceInfo device)
 {
-    const QString target = QString("bluetooth://").append(QString(device->address()).replace(':', '-'));
-    const QString alias = device->alias();
-    QString name = device->name();
-    if (alias.isEmpty() && name.isEmpty()) {
-        name = i18n("Untitled device");
-    } else {
-        name = device->friendlyName();
-    }
+    const QString target = QString("bluetooth://").append(QString(device["address"]).replace(':', '-'));
     KIO::UDSEntry entry;
     entry.insert(KIO::UDSEntry::UDS_URL, target);
-    entry.insert(KIO::UDSEntry::UDS_NAME, name);
-    entry.insert(KIO::UDSEntry::UDS_ICON_NAME, device->icon());
+    entry.insert(KIO::UDSEntry::UDS_NAME, device["name"]);
+    entry.insert(KIO::UDSEntry::UDS_ICON_NAME, device["icon"]);
     entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
     entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRUSR | S_IRGRP | S_IROTH);
     entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, "inode/x-vnd.kde.bluedevil.device");
@@ -160,6 +141,9 @@ void KioBluetooth::listDevice(Device *device)
 KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
     : SlaveBase("bluetooth", pool, app)
 {
+    qDBusRegisterMetaType <DeviceInfo> ();
+    qDBusRegisterMetaType <QListDeviceInfo> ();
+
     m_hasCurrentHost = false;
 
     Service s;

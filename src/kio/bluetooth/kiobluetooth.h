@@ -19,6 +19,7 @@
     the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
     Boston, MA 02110-1301, USA.
 */
+
 #ifndef KIOBLUETOOTH_H
 #define KIOBLUETOOTH_H
 
@@ -99,7 +100,7 @@ public:
     void listRemoteDeviceServices();
 
 public Q_SLOTS:
-    void listDevice(Device *device);
+    void listDevice(const DeviceInfo device);
 
 private:
 
