@@ -68,8 +68,6 @@ void DiscoverPage::initializePage()
     connect(pinText, SIGNAL(textChanged(QString)), m_wizard, SLOT(setPin(QString)));
     connect(pinText, SIGNAL(textChanged(QString)), this, SIGNAL(completeChanged()));
 
-    m_wizard->setManualPin(manualPin->isChecked());
-
     startScan();
 }
 
@@ -194,7 +192,7 @@ int DiscoverPage::nextId() const
     }
 
     QString pin;
-    if (m_wizard->manualPin()) {
+    if (manualPin->isChecked()) {
         pin = m_wizard->pin();
         m_wizard->agent()->setPin(pin);
     } else {
