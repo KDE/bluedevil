@@ -98,6 +98,7 @@ public:
      */
     void listRemoteDeviceServices();
 
+public Q_SLOTS:
     void listDevice(Device *device);
 
 private:
