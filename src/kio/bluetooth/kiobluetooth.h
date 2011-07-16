@@ -43,7 +43,13 @@ class KioBluetooth : public QObject, public KIO::SlaveBase
 
 public:
     KioBluetooth(const QByteArray &pool, const QByteArray &app);
-    virtual ~KioBluetooth();
+
+    struct Service {
+        QString name;
+        QString icon;
+        QString mimetype;
+        QString uuid;
+    };
 
     /**
      * As our kio does not perform any service action, but just list devices and their services, the
@@ -71,13 +77,70 @@ public:
      */
     void setHost(const QString &constHostname, quint16 port, const QString &user, const QString &pass);
 
-private Q_SLOTS:
     void defaultAdapterChanged(Adapter *adapter);
 
-private:
-    KioBluetoothPrivate *d;
+    /**
+     * Returns a list of supported service names corresponding to the given uuids list. If an uuid is
+     * not found in the uuids list, it is not added to the list of service names.
+     */
+    QList<Service> getSupportedServices(const QStringList &uuids);
 
-    Q_PRIVATE_SLOT(d, void listDevice(Device *device))
+    /**
+     * Called by @p Bluetooth::listDir when listing root dir, bluetooth:/.
+     */
+    void listDevices();
+
+    /**
+     * Called by @p Bluetooth::listDir when listing a remote device (something like
+     * bluetoth:/00_12_34_56_6d_34) services.
+     */
+    void listRemoteDeviceServices();
+
+    void listDevice(Device *device);
+
+private:
+     /**
+      * Specifies if we've got a working bluetooth adpater to our computer or not.
+      */
+     bool m_online;
+
+    /**
+     * This is set to true when @p setHost is called to list a given remote device, like for example
+     * 00:2a:5E:8e:6e:f5. If listing the remote devices (bluetooth:/ uri), it's set back to false.
+     */
+    bool m_hasCurrentHost;
+
+    /**
+     * This is set in @p setHost when it's called to list a given remote device like for example
+     * 00:2a:5E:8e:6e:f5. We don't directly set @p currentHost in @p setHost because libbludevil might not
+     * have ready the remote bluetooth device yet ready at that time (it.s being created by the call
+     * to @p Solid::Control::BluetoothDevice::createBluetoothRemoteDevice .
+     */
+    QString m_currentHostname;
+
+    /**
+     * Represents the current host when @p hasCurrentHost is set to true. This is set in
+     * @p listRemoteDeviceServices function.
+     */
+    Device *m_currentHost;
+
+    /**
+     * When @p hasCurrentHost to true, this list holds the list of service names provided by the
+     * current host (which is a remote device we can connect to using those services).
+     */
+    QList<Service> m_currentHostServices;
+
+    /**
+     * This is an array containing as key the uuid and as value the name of the service that the
+     * given uuid represents.
+     */
+    QMap<QString, QString> m_serviceNames;
+
+    /**
+     * This is an array containing as key the uuid and as value the name of the service that the
+     * given uuid represents, and a representative icon. It only contains the supported service names.
+     */
+    QMap<QString, Service> m_supportedServices;
 };
 
 #endif // KIOBLUETOOTH_H
