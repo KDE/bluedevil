@@ -23,6 +23,12 @@
 #define BLUEDEVILDAEMON_H
 
 #include <kdedmodule.h>
+#include <QMap>
+#include <QStringList>
+
+typedef QMap <QString, QString> DeviceInfo;
+typedef QList< DeviceInfo > QListDeviceInfo;
+
 
 namespace BlueDevil {
     class Adapter;
@@ -45,6 +51,14 @@ public:
 
 public Q_SLOTS:
     Q_SCRIPTABLE bool isOnline();
+
+    /**
+     * This slot will return a list of devices made of: configured and discovered devices.
+     * Going deeper, the first time that this slot is called a discovery of X seconds will start
+     * Then if this slot is consulted again it will return configured and discovered device. Once
+     * the discovery ends it won't start a new discovery until N seconds pass.
+     */
+    Q_SCRIPTABLE QListDeviceInfo knownDevices();
 
 private:
     /**

@@ -24,6 +24,8 @@
 #include "bluedevil_service_interface.h"
 #include "filereceiversettings.h"
 
+#include <QDBusMetaType>
+
 #include <kdemacros.h>
 #include <KDebug>
 #include <KAboutData>
@@ -33,10 +35,14 @@
 
 #include <bluedevil/bluedevilmanager.h>
 #include <bluedevil/bluedeviladapter.h>
+#include <bluedevil/bluedevildevice.h>
 
 K_PLUGIN_FACTORY(BlueDevilFactory,
                  registerPlugin<BlueDevilDaemon>();)
 K_EXPORT_PLUGIN(BlueDevilFactory("bluedevildaemon", "bluedevil"))
+
+Q_DECLARE_METATYPE(DeviceInfo)
+Q_DECLARE_METATYPE(QListDeviceInfo)
 
 struct BlueDevilDaemon::Private
 {
@@ -55,6 +61,9 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     : KDEDModule(parent)
     , d(new Private)
 {
+    qDBusRegisterMetaType <DeviceInfo> ();
+    qDBusRegisterMetaType <QListDeviceInfo> ();
+
     d->m_agentListener = 0;
     d->m_adapter = 0;
     d->m_service = 0;
@@ -100,6 +109,22 @@ bool BlueDevilDaemon::isOnline()
         return false;
     }
     return true;
+}
+
+QListDeviceInfo BlueDevilDaemon::knownDevices()
+{
+    QListDeviceInfo devices;
+
+    QList <BlueDevil::Device* > list = BlueDevil::Manager::self()->defaultAdapter()->devices();
+    DeviceInfo info;
+    Q_FOREACH(const BlueDevil::Device* device, list) {
+        info["name"] = device->friendlyName();
+        info["icon"] = device->icon();
+        info["address"] = device->address();
+        devices.append(info);
+    }
+
+    return devices;
 }
 
 bool BlueDevilDaemon::isServiceStarted()

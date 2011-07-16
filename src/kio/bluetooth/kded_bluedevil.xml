@@ -5,5 +5,9 @@
     <method name="isOnline">
       <arg type="b" direction="out"/>
     </method>
+    <method name="knownDevices">
+      <arg type="aa{ss}" direction="out"/>
+      <annotation name="com.trolltech.QtDBus.QtTypeName.Out0" value="QListDeviceInfo"/>
+    </method>
   </interface>
 </node>
