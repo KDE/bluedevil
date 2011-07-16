@@ -29,7 +29,6 @@ AgentListener::AgentListener()
 AgentListener::~AgentListener()
 {
     m_worker->unregister();
-    m_worker->deleteLater();
 }
 
 

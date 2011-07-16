@@ -52,6 +52,8 @@ void AgentListenerWorker::unregister()
         defaultAdapter->unregisterAgent(AGENT_PATH);
     }
     QDBusConnection::systemBus().unregisterObject(AGENT_PATH);
+    QDBusConnection::systemBus().disconnectFromBus();
+    deleteLater();
 }
 
 void AgentListenerWorker::Release()
