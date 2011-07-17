@@ -32,10 +32,13 @@
 #include <KPluginFactory>
 #include <kfileplacesmodel.h>
 #include <kprocess.h>
+#include <kdirnotify.h>
 
 #include <bluedevil/bluedevilmanager.h>
 #include <bluedevil/bluedeviladapter.h>
 #include <bluedevil/bluedevildevice.h>
+
+using namespace BlueDevil;
 
 K_PLUGIN_FACTORY(BlueDevilFactory,
                  registerPlugin<BlueDevilDaemon>();)
@@ -53,8 +56,10 @@ struct BlueDevilDaemon::Private
 
     AgentListener                   *m_agentListener;
     KFilePlacesModel                *m_placesModel;
-    BlueDevil::Adapter              *m_adapter;
+    Adapter                         *m_adapter;
     org::kde::BlueDevil::Service    *m_service;
+    QListDeviceInfo                  m_discovered;
+    QTimer                           m_timer;
 };
 
 BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
@@ -68,6 +73,8 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     d->m_adapter = 0;
     d->m_service = 0;
     d->m_placesModel = 0;
+    d->m_timer.setInterval(20000);
+    d->m_timer.setSingleShot(true);
 
     KAboutData aboutData(
         "bluedevildaemon",
@@ -85,11 +92,14 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     aboutData.addAuthor(ki18n("Eduardo Robles Elvira"), ki18n("Maintainer"), "edulix@gmail.com",
         "http://blog.edulix.es");
 
-    connect(BlueDevil::Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)),
+    connect(Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)),
             this, SLOT(defaultAdapterChanged(Adapter*)));
 
+    connect(Manager::self()->defaultAdapter(), SIGNAL(deviceFound(Device*)), this, SLOT(deviceFound(Device*)));
+    connect(&d->m_timer, SIGNAL(timeout()), Manager::self()->defaultAdapter(), SLOT(stopDiscovery()));
+
     d->m_status = Private::Offline;
-    if (BlueDevil::Manager::self()->defaultAdapter()) {
+    if (Manager::self()->defaultAdapter()) {
         onlineMode();
     }
 }
@@ -115,16 +125,32 @@ QListDeviceInfo BlueDevilDaemon::knownDevices()
 {
     QListDeviceInfo devices;
 
-    QList <BlueDevil::Device* > list = BlueDevil::Manager::self()->defaultAdapter()->devices();
+    QList <Device* > list = Manager::self()->defaultAdapter()->devices();
+    kDebug() << "List: " << list.length();
     DeviceInfo info;
-    Q_FOREACH(const BlueDevil::Device* device, list) {
+    Q_FOREACH(const Device* device, list) {
         info["name"] = device->friendlyName();
         info["icon"] = device->icon();
         info["address"] = device->address();
         devices.append(info);
     }
 
+    if (!d->m_timer.isActive()) {
+        kDebug() << "Start Discovery";
+        Manager::self()->defaultAdapter()->startStableDiscovery();
+        d->m_discovered.clear();
+        d->m_timer.start();
+    }
+
+    devices.append(d->m_discovered);
     return devices;
+}
+
+void BlueDevilDaemon::stopDiscovering()
+{
+    kDebug() << "Stopping discovering";
+    d->m_timer.stop();
+    Manager::self()->defaultAdapter()->stopDiscovery();
 }
 
 bool BlueDevilDaemon::isServiceStarted()
@@ -153,7 +179,7 @@ void BlueDevilDaemon::onlineMode()
     connect(d->m_agentListener, SIGNAL(agentReleased()), this, SLOT(agentReleased()));
     d->m_agentListener->start();
 
-    d->m_adapter = BlueDevil::Manager::self()->defaultAdapter();
+    d->m_adapter = Manager::self()->defaultAdapter();
 
     FileReceiverSettings::self()->readConfig();
     if (!isServiceStarted() && FileReceiverSettings::self()->enabled()) {
@@ -239,7 +265,7 @@ void BlueDevilDaemon::agentThreadStopped()
     kDebug() << "agent listener deleted";
 }
 
-void BlueDevilDaemon::defaultAdapterChanged(BlueDevil::Adapter *adapter)
+void BlueDevilDaemon::defaultAdapterChanged(Adapter *adapter)
 {
     //if we have an adapter, remove it and offline the KDED for a moment
     if (d->m_adapter) {
@@ -251,4 +277,21 @@ void BlueDevilDaemon::defaultAdapterChanged(BlueDevil::Adapter *adapter)
         d->m_adapter = adapter;
         onlineMode();
     }
+}
+
+void BlueDevilDaemon::deviceFound(Device *device)
+{
+    kDebug() << "DeviceFound";
+    d->m_discovered.append(deviceToInfo(device));
+    org::kde::KDirNotify::emitFilesAdded("bluetooth:/");
+}
+
+DeviceInfo BlueDevilDaemon::deviceToInfo(const Device* device) const
+{
+    DeviceInfo info;
+    info["name"] = device->friendlyName();
+    info["icon"] = device->icon();
+    info["address"] = device->address();
+
+    return info;
 }

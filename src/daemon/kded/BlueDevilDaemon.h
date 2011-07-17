@@ -29,12 +29,11 @@
 typedef QMap <QString, QString> DeviceInfo;
 typedef QList< DeviceInfo > QListDeviceInfo;
 
-
 namespace BlueDevil {
     class Adapter;
+    class Device;
 };
-
-typedef BlueDevil::Adapter Adapter;
+using namespace BlueDevil;
 
 class KDE_EXPORT BlueDevilDaemon
     : public KDEDModule
@@ -59,6 +58,8 @@ public Q_SLOTS:
      * the discovery ends it won't start a new discovery until N seconds pass.
      */
     Q_SCRIPTABLE QListDeviceInfo knownDevices();
+
+    Q_SCRIPTABLE void stopDiscovering();
 
 private:
     /**
@@ -90,11 +91,15 @@ private Q_SLOTS:
      */
     void agentReleased();
 
+    void deviceFound(Device*);
+
 private:
     /**
      * Tries to start the helper process via dbus and returns true if successful
      */
     bool isServiceStarted();
+
+    DeviceInfo deviceToInfo (const Device *device) const;
 
 private:
     struct Private;

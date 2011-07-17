@@ -70,6 +70,7 @@ QList<KioBluetooth::Service> KioBluetooth::getSupportedServices(const QStringLis
 
 void KioBluetooth::listRemoteDeviceServices()
 {
+    m_kded->stopDiscovering();
     infoMessage(i18n("Retrieving services..."));
 
     kDebug() << "Listing remote devices";
@@ -120,7 +121,7 @@ void KioBluetooth::listDevices()
         listDevice(device);
     }
     listEntry(KIO::UDSEntry(), true);
-    infoMessage("");
+    infoMessage(i18n("Scanning for new devices..."));
     finished();
 }
 
@@ -212,6 +213,7 @@ void KioBluetooth::stat(const KUrl &url)
 
 void KioBluetooth::get(const KUrl &url)
 {
+    m_kded->stopDiscovering();
     kDebug() << "Get: " << url;
     kDebug() << m_supportedServices.value(url.fileName()).mimetype;
     mimeType(m_supportedServices.value(url.fileName()).mimetype);
