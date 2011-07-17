@@ -56,6 +56,48 @@ extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
     return 0;
 }
 
+KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
+    : SlaveBase("bluetooth", pool, app)
+{
+    qDBusRegisterMetaType <DeviceInfo> ();
+    qDBusRegisterMetaType <QMapDeviceInfo> ();
+
+    m_hasCurrentHost = false;
+
+    Service s;
+    s.name = i18n("Send File");
+    s.icon = "edit-copy";
+    s.mimetype = "virtual/bluedevil-sendfile";
+    s.uuid = "00001105-0000-1000-8000-00805F9B34FB";
+    m_supportedServices.insert("00001105-0000-1000-8000-00805F9B34FB", s);
+    s.name = i18n("Browse Files");
+    s.icon = "edit-find";
+    s.mimetype = "";
+    s.uuid = "00001106-0000-1000-8000-00805F9B34FB";
+    m_supportedServices.insert("00001106-0000-1000-8000-00805F9B34FB", s);
+    s.name = i18n("Human Interface Device");
+    s.icon = "input-mouse";
+    s.mimetype = "virtual/bluedevil-input";
+    s.uuid = "00001124-0000-1000-8000-00805F9B34FB";
+    m_supportedServices.insert("00001124-0000-1000-8000-00805F9B34FB", s);
+    s.name = i18n("Headset");
+    s.icon = "audio-headset";
+    s.mimetype = "virtual/bluedevil-audio";
+    s.uuid = "00001108-0000-1000-8000-00805F9B34FB";
+    m_supportedServices.insert("00001108-0000-1000-8000-00805F9B34FB", s);
+
+    if (!Manager::self()->defaultAdapter()) {
+        kDebug() << "No available interface";
+        infoMessage(i18n("No Bluetooth adapters have been found."));
+        return;
+    }
+
+    connect(Manager::self()->defaultAdapter(), SIGNAL(deviceFound(Device*)), this, SLOT(listDevice(Device*)));
+
+    kDebug() << "Kio Bluetooth instanced!";
+    m_kded = new org::kde::BlueDevil("org.kde.kded", "/modules/bluedevil", QDBusConnection::sessionBus(), 0);
+}
+
 QList<KioBluetooth::Service> KioBluetooth::getSupportedServices(const QStringList &uuids)
 {
     kDebug() << "supported services: " << uuids;
@@ -136,49 +178,6 @@ void KioBluetooth::listDevice(const DeviceInfo device)
     entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRUSR | S_IRGRP | S_IROTH);
     entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, "inode/x-vnd.kde.bluedevil.device");
     listEntry(entry, false);
-}
-//@endcond
-
-KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
-    : SlaveBase("bluetooth", pool, app)
-{
-    qDBusRegisterMetaType <DeviceInfo> ();
-    qDBusRegisterMetaType <QMapDeviceInfo> ();
-
-    m_hasCurrentHost = false;
-
-    Service s;
-    s.name = i18n("Send File");
-    s.icon = "edit-copy";
-    s.mimetype = "virtual/bluedevil-sendfile";
-    s.uuid = "00001105-0000-1000-8000-00805F9B34FB";
-    m_supportedServices.insert("00001105-0000-1000-8000-00805F9B34FB", s);
-    s.name = i18n("Browse Files");
-    s.icon = "edit-find";
-    s.mimetype = "";
-    s.uuid = "00001106-0000-1000-8000-00805F9B34FB";
-    m_supportedServices.insert("00001106-0000-1000-8000-00805F9B34FB", s);
-    s.name = i18n("Human Interface Device");
-    s.icon = "input-mouse";
-    s.mimetype = "virtual/bluedevil-input";
-    s.uuid = "00001124-0000-1000-8000-00805F9B34FB";
-    m_supportedServices.insert("00001124-0000-1000-8000-00805F9B34FB", s);
-    s.name = i18n("Headset");
-    s.icon = "audio-headset";
-    s.mimetype = "virtual/bluedevil-audio";
-    s.uuid = "00001108-0000-1000-8000-00805F9B34FB";
-    m_supportedServices.insert("00001108-0000-1000-8000-00805F9B34FB", s);
-
-    if (!Manager::self()->defaultAdapter()) {
-        kDebug() << "No available interface";
-        infoMessage(i18n("No Bluetooth adapters have been found."));
-        return;
-    }
-
-    connect(Manager::self()->defaultAdapter(), SIGNAL(deviceFound(Device*)), this, SLOT(listDevice(Device*)));
-
-    kDebug() << "Kio Bluetooth instanced!";
-    m_kded = new org::kde::BlueDevil("org.kde.kded", "/modules/bluedevil", QDBusConnection::sessionBus(), 0);
 }
 
 void KioBluetooth::listDir(const KUrl &url)
