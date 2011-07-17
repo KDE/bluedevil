@@ -160,16 +160,10 @@ void Monolithic::regenerateDeviceEntries()
         menu->addTitle(i18n("Known Devices"));
         qStableSort(devices.begin(), devices.end(), sortDevices);
         Device *lastDevice = 0;
-        bool first = true;
         Q_FOREACH (Device *device, devices) {
 // Create device entry
             KAction *_device = 0;
             if (!lastDevice || classToType(lastDevice->deviceClass()) != classToType(device->deviceClass())) {
-                if (!first) {
-    //                 contextMenu()->addSeparator();
-                } else {
-                    first = false;
-                }
                 _device = new KAction(KIcon(device->icon()), device->name(), menu);
             } else {
                 _device = new KAction(device->name(), menu);
