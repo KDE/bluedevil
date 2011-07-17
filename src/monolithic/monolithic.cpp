@@ -185,6 +185,18 @@ void Monolithic::regenerateDeviceEntries()
             QStringList UUIDs = device->UUIDs();
             EntryInfo info;
             info.device = device;
+            int supportedServices = 0;
+
+            if (UUIDs.contains("00001124-0000-1000-8000-00805F9B34FB")) {
+                ++supportedServices;
+            }
+            if (UUIDs.contains("00001108-0000-1000-8000-00805F9B34FB")) {
+                ++supportedServices;
+            }
+            if (UUIDs.contains("0000110B-0000-1000-8000-00805F9B34FB")) {
+                ++supportedServices;
+            }
+
             if (UUIDs.contains("00001106-0000-1000-8000-00805F9B34FB"))  {
                 KAction *_browse = new KAction(i18n("Browse device..."), _device);
                 info.service = "00001106-0000-1000-8000-00805F9B34FB";
@@ -192,6 +204,7 @@ void Monolithic::regenerateDeviceEntries()
                 _submenu->addAction(_browse);
                 connect(_browse, SIGNAL(triggered()), this, SLOT(browseTriggered()));
                 hasSupportedServices = true;
+                ++supportedServices;
             }
             if (UUIDs.contains("00001105-0000-1000-8000-00805F9B34FB")) {
                 KAction *_send = new KAction(i18n("Send files..."), _device);
@@ -200,13 +213,16 @@ void Monolithic::regenerateDeviceEntries()
                 _submenu->addAction(_send);
                 connect(_send, SIGNAL(triggered()), this, SLOT(sendTriggered()));
                 hasSupportedServices = true;
+                ++supportedServices;
             }
             if (UUIDs.contains("00001124-0000-1000-8000-00805F9B34FB")) {
                 org::bluez::Input *input = new org::bluez::Input("org.bluez", device->UBI(), QDBusConnection::systemBus());
                 connect(input, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
                 info.service = "00001124-0000-1000-8000-00805F9B34FB";
                 info.dbusService = input;
-                _submenu->addTitle("Input Service");
+                if (supportedServices > 1) {
+                    _submenu->addTitle("Input Service");
+                }
 
                 if (input->GetProperties().value()["Connected"].toBool()) {
                     KAction *_disconnect = new KAction(i18nc("Action", "Disconnect"), _device);
@@ -228,7 +244,9 @@ void Monolithic::regenerateDeviceEntries()
                 connect(audio, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
                 info.service = "00001108-0000-1000-8000-00805F9B34FB";
                 info.dbusService = audio;
-                _submenu->addTitle("Headset Service");
+                if (supportedServices > 1) {
+                    _submenu->addTitle("Headset Service");
+                }
 
                 if (audio->GetProperties().value()["State"].toString() == "connected") {
                     KAction *_disconnect = new KAction(i18nc("Action", "Disconnect"), _device);
@@ -256,7 +274,9 @@ void Monolithic::regenerateDeviceEntries()
                 connect(audio, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
                 info.service = "00001108-0000-1000-8000-00805F9B34FB";
                 info.dbusService = audio;
-                _submenu->addTitle("Audio Sink");
+                if (supportedServices > 1) {
+                    _submenu->addTitle("Audio Sink");
+                }
 
                 if (audio->GetProperties().value()["State"].toString() == "connected") {
                     KAction *_disconnect = new KAction(i18nc("Action", "Disconnect"), _device);
@@ -284,6 +304,7 @@ void Monolithic::regenerateDeviceEntries()
                 _unknown->setEnabled(false);
                 _submenu->addAction(_unknown);
             }
+
             _device->setMenu(_submenu);
             menu->addAction(_device);
             lastDevice = device;
