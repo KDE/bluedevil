@@ -27,7 +27,7 @@
 #include <QStringList>
 
 typedef QMap <QString, QString> DeviceInfo;
-typedef QList< DeviceInfo > QListDeviceInfo;
+typedef QMap<QString, DeviceInfo > QMapDeviceInfo;
 
 namespace BlueDevil {
     class Adapter;
@@ -57,7 +57,7 @@ public Q_SLOTS:
      * Then if this slot is consulted again it will return configured and discovered device. Once
      * the discovery ends it won't start a new discovery until N seconds pass.
      */
-    Q_SCRIPTABLE QListDeviceInfo knownDevices();
+    Q_SCRIPTABLE QMapDeviceInfo knownDevices();
 
     Q_SCRIPTABLE void stopDiscovering();
 

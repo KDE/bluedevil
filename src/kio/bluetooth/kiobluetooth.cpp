@@ -115,8 +115,8 @@ void KioBluetooth::listRemoteDeviceServices()
 void KioBluetooth::listDevices()
 {
     kDebug() << "Asking kded for devices";
-    QListDeviceInfo devices = m_kded->knownDevices().value();
-    kDebug() << devices.length();
+    QMapDeviceInfo devices = m_kded->knownDevices().value();
+    kDebug() << devices.keys();
     Q_FOREACH(const DeviceInfo device, devices) {
         listDevice(device);
     }
@@ -143,7 +143,7 @@ KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
     : SlaveBase("bluetooth", pool, app)
 {
     qDBusRegisterMetaType <DeviceInfo> ();
-    qDBusRegisterMetaType <QListDeviceInfo> ();
+    qDBusRegisterMetaType <QMapDeviceInfo> ();
 
     m_hasCurrentHost = false;
 

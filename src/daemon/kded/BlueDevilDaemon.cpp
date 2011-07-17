@@ -45,7 +45,7 @@ K_PLUGIN_FACTORY(BlueDevilFactory,
 K_EXPORT_PLUGIN(BlueDevilFactory("bluedevildaemon", "bluedevil"))
 
 Q_DECLARE_METATYPE(DeviceInfo)
-Q_DECLARE_METATYPE(QListDeviceInfo)
+Q_DECLARE_METATYPE(QMapDeviceInfo)
 
 struct BlueDevilDaemon::Private
 {
@@ -58,7 +58,7 @@ struct BlueDevilDaemon::Private
     KFilePlacesModel                *m_placesModel;
     Adapter                         *m_adapter;
     org::kde::BlueDevil::Service    *m_service;
-    QListDeviceInfo                  m_discovered;
+    QList <DeviceInfo>                m_discovered;
     QTimer                           m_timer;
 };
 
@@ -67,7 +67,7 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     , d(new Private)
 {
     qDBusRegisterMetaType <DeviceInfo> ();
-    qDBusRegisterMetaType <QListDeviceInfo> ();
+    qDBusRegisterMetaType <QMapDeviceInfo> ();
 
     d->m_agentListener = 0;
     d->m_adapter = 0;
@@ -121,9 +121,9 @@ bool BlueDevilDaemon::isOnline()
     return true;
 }
 
-QListDeviceInfo BlueDevilDaemon::knownDevices()
+QMapDeviceInfo BlueDevilDaemon::knownDevices()
 {
-    QListDeviceInfo devices;
+    QMapDeviceInfo devices;
 
     QList <Device* > list = Manager::self()->defaultAdapter()->devices();
     kDebug() << "List: " << list.length();
@@ -132,7 +132,7 @@ QListDeviceInfo BlueDevilDaemon::knownDevices()
         info["name"] = device->friendlyName();
         info["icon"] = device->icon();
         info["address"] = device->address();
-        devices.append(info);
+        devices[device->address()] = info;
     }
 
     if (!d->m_timer.isActive()) {
@@ -142,7 +142,11 @@ QListDeviceInfo BlueDevilDaemon::knownDevices()
         d->m_timer.start();
     }
 
-    devices.append(d->m_discovered);
+    Q_FOREACH(const DeviceInfo& info, d->m_discovered) {
+        if (!devices.contains(info["address"])) {
+            devices[info["address"]] = info;
+        }
+    }
     return devices;
 }
 
