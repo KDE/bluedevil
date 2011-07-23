@@ -65,6 +65,7 @@
 	<device oui="00:0A:95:" type="mouse" pin="0000"/>
 	<device oui="00:14:51:" type="mouse" pin="0000"/>
 	<device oui="34:15:9E:" type="mouse" pin="0000"/>
+	<device oui="C4:2C:03:" type="mouse" pin="0000"/>
 
 	<!-- Apple Magic Trackpad
 	     Note: same as above, tablet needs to be paired -->
