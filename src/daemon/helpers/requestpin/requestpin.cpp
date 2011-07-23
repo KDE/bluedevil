@@ -88,6 +88,9 @@ void RequestPin::introducePin()
         "Introduce PIN"
     ));
 
+    QObject::connect(dialogWidget->pin, SIGNAL(returnPressed()),
+                     dialog, SLOT(accept()));
+
     dialog->setButtons(KDialog::Ok | KDialog::Cancel);
     dialog->setMinimumWidth(300);
     dialog->setMinimumHeight(150);
