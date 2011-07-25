@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=BlueDevil Network connect
+Comment=BlueDevil Network connect
+GenericName=BlueDevil Network connect
+MimeType=virtual/bluedevil-audio;
+Exec=bluedevil-audio %U
+Icon=preferences-system-bluetooth
+Terminal=false
+Categories=Qt;KDE;Bluetooth;Network
+NoDisplay=true

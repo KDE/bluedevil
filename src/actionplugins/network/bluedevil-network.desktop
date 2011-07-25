@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Service
+Exec=blubb
+Comment=Handles the connection and configuration of a network device
+Name=Network
+GenericName=Network
+ServiceTypes=BlueDevil/ActionPlugin
+X-KDE-Library=bluedevilnetworkactionplugin
+X-KDE-PluginInfo-Name=Audio
+X-KDE-PluginInfo-Author=Alex Fiestas
+X-KDE-PluginInfo-Version=0.00000001
+X-KDE-PluginInfo-License=GPL
+X-BlueDevil-UUIDS=00001103-0000-1000-8000-00805F9B34FB
