@@ -16,7 +16,12 @@ Notes:
   <mime-type type="inode/vnd.kde.bluedevil.device">
     <sub-class-of type="inode/directory"/>
     <generic-icon name="video-display"/>
-    <comment>Bluetooth Device</comment>
+    <comment>Configured Device</comment>
+  </mime-type>
+  <mime-type type="inode/vnd.kde.bluedevil.device.discovered">
+    <sub-class-of type="inode/vnd.kde.bluedevil.device"/>
+    <generic-icon name="video-display"/>
+    <comment>Discovered Device</comment>
   </mime-type>
   <mime-type type="inode/vnd.kde.bluedevil.service">
     <sub-class-of type="inode/directory"/>

@@ -285,7 +285,7 @@ void BlueDevilDaemon::defaultAdapterChanged(Adapter *adapter)
 
 void BlueDevilDaemon::deviceFound(Device *device)
 {
-    kDebug() << "DeviceFound";
+    kDebug() << "DeviceFound: " << device->name();
     d->m_discovered.append(deviceToInfo(device));
     org::kde::KDirNotify::emitFilesAdded("bluetooth:/");
 }
@@ -296,6 +296,7 @@ DeviceInfo BlueDevilDaemon::deviceToInfo(const Device* device) const
     info["name"] = device->friendlyName();
     info["icon"] = device->icon();
     info["address"] = device->address();
+    info["discovered"] = "true";
 
     return info;
 }

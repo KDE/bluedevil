@@ -179,7 +179,11 @@ void KioBluetooth::listDevice(const DeviceInfo device)
     entry.insert(KIO::UDSEntry::UDS_ICON_NAME, device["icon"]);
     entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
     entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRUSR | S_IRGRP | S_IROTH);
-    entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, "inode/vnd.kde.bluedevil.device");
+    if (device.contains("discovered") && device["discovered"] == "true") {
+        entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, "inode/vnd.kde.bluedevil.device.discovered");
+    } else {
+        entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, "inode/vnd.kde.bluedevil.device");
+    }
     listEntry(entry, false);
 }
 
