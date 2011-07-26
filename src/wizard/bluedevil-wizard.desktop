@@ -114,5 +114,5 @@ Comment[x-test]=xxBlueDevil Wizardxx
 Comment[zh_TW]=BlueDevil 精靈
 Icon=preferences-system-bluetooth
 Terminal=false
-Categories=Qt;KDE;Bluetooth;Network;
+Categories=Qt;KDE;X-Bluetooth;Network;
 NoDisplay=true

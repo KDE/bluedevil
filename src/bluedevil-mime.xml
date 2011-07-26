@@ -13,23 +13,26 @@ Notes:
   the mime type there.
 -->
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
-  <mime-type type="inode/x-vnd.kde.bluedevil.device">
+  <mime-type type="inode/vnd.kde.bluedevil.device">
     <sub-class-of type="inode/directory"/>
     <generic-icon name="video-display"/>
     <comment>Bluetooth Device</comment>
   </mime-type>
-  <mime-type type="inode/x-vnd.kde.bluedevil.service">
+  <mime-type type="inode/vnd.kde.bluedevil.service">
     <sub-class-of type="inode/directory"/>
     <generic-icon name="preferences-system-bluetooth"/>
     <comment>Service</comment>
   </mime-type>
-  <mime-type type="virtual/bluedevil-input">
+  <mime-type type="application/vnd.kde.bluedevil-input">
     <comment>Service</comment>
   </mime-type>
-  <mime-type type="virtual/bluedevil-audio">
+  <mime-type type="application/vnd.kde.bluedevil-audio">
     <comment>Service</comment>
   </mime-type>
-  <mime-type type="virtual/bluedevil-sendfile">
+  <mime-type type="application/vnd.kde.bluedevil-network">
+    <comment>Service</comment>
+  </mime-type>
+  <mime-type type="application/vnd.kde.bluedevil-sendfile">
       <comment>Service</comment>
   </mime-type>
 </mime-info>

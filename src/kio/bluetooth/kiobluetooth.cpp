@@ -67,7 +67,7 @@ KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
     Service s;
     s.name = i18n("Send File");
     s.icon = "edit-copy";
-    s.mimetype = "virtual/bluedevil-sendfile";
+    s.mimetype = "application/vnd.kde.bluedevil-sendfile";
     s.uuid = "00001105-0000-1000-8000-00805F9B34FB";
     m_supportedServices.insert("00001105-0000-1000-8000-00805F9B34FB", s);
     s.name = i18n("Browse Files");
@@ -77,12 +77,12 @@ KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
     m_supportedServices.insert("00001106-0000-1000-8000-00805F9B34FB", s);
     s.name = i18n("Human Interface Device");
     s.icon = "input-mouse";
-    s.mimetype = "virtual/bluedevil-input";
+    s.mimetype = "application/vnd.kde.bluedevil-input";
     s.uuid = "00001124-0000-1000-8000-00805F9B34FB";
     m_supportedServices.insert("00001124-0000-1000-8000-00805F9B34FB", s);
     s.name = i18n("Headset");
     s.icon = "audio-headset";
-    s.mimetype = "virtual/bluedevil-audio";
+    s.mimetype = "application/vnd.kde.bluedevil-audio";
     s.uuid = "00001108-0000-1000-8000-00805F9B34FB";
     m_supportedServices.insert("00001108-0000-1000-8000-00805F9B34FB", s);
 
@@ -141,7 +141,7 @@ void KioBluetooth::listRemoteDeviceServices()
         }
 
         if (service.mimetype.isEmpty()) {
-            entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, "inode/x-vnd.kde.bluedevil.service");
+            entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, "inode/vnd.kde.bluedevil.service");
         } else {
             entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, service.mimetype);
         }
@@ -176,7 +176,7 @@ void KioBluetooth::listDevice(const DeviceInfo device)
     entry.insert(KIO::UDSEntry::UDS_ICON_NAME, device["icon"]);
     entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
     entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRUSR | S_IRGRP | S_IROTH);
-    entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, "inode/x-vnd.kde.bluedevil.device");
+    entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, "inode/vnd.kde.bluedevil.device");
     listEntry(entry, false);
 }
 

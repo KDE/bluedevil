@@ -112,4 +112,4 @@ Comment[x-test]=xxKDE Bluetooth supportxx
 Comment[zh_TW]=KDE 藍芽支援
 Icon=preferences-system-bluetooth
 Terminal=false
-Categories=Qt;KDE;Bluetooth;Network;
+Categories=Qt;KDE;X-Bluetooth;Network;
