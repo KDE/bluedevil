@@ -92,8 +92,6 @@ KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
         return;
     }
 
-    connect(Manager::self()->defaultAdapter(), SIGNAL(deviceFound(Device*)), this, SLOT(listDevice(Device*)));
-
     kDebug() << "Kio Bluetooth instanced!";
     m_kded = new org::kde::BlueDevil("org.kde.kded", "/modules/bluedevil", QDBusConnection::sessionBus(), 0);
 }
