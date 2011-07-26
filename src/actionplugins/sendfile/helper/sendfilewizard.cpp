@@ -42,7 +42,7 @@
 
 using namespace BlueDevil;
 
-SendFileWizard::SendFileWizard(const QString& deviceUBI, const QStringList& files)
+SendFileWizard::SendFileWizard(const QString& deviceInfo, const QStringList& files)
     : QWizard()
     , m_device(0)
     , m_job(0)
@@ -53,9 +53,10 @@ SendFileWizard::SendFileWizard(const QString& deviceUBI, const QStringList& file
         return;
     }
 
-    kDebug() << "DeviceUbi: " << deviceUBI;
+    kDebug() << "DeviceUbi: " << deviceInfo;
     kDebug() << "Files";
     kDebug() << files;
+    
     setWindowTitle(i18n("Bluetooth Send Files"));
 
     setButton(QWizard::NextButton, new KPushButton(KIcon("document-export"), i18n("Send Files")));
@@ -64,19 +65,29 @@ SendFileWizard::SendFileWizard(const QString& deviceUBI, const QStringList& file
     setOption(QWizard::DisabledBackButtonOnLastPage);
     setOption(QWizard::NoBackButtonOnStartPage);
 
-    if (deviceUBI.isEmpty() && files.isEmpty()) {
+    if (deviceInfo.isEmpty() && files.isEmpty()) {
         addPage(new SelectDeviceAndFilesPage());
-    } else if (deviceUBI.isEmpty()) {
+    } else if (deviceInfo.isEmpty()) {
         addPage(new SelectDevicePage());
         setFiles(files);
-    } else if (files.isEmpty()) {
-        addPage(new SelectFilesPage());
-        setMinimumSize(680, 400);
-        setDevice(Manager::self()->defaultAdapter()->deviceForUBI(deviceUBI));
     } else {
-        setFiles(files);
-        setDevice(Manager::self()->defaultAdapter()->deviceForUBI(deviceUBI));
+        Device *device = 0;
+        if (deviceInfo.startsWith("bluetooth:/")) {
+            KUrl url(deviceInfo);
+            device = Manager::self()->defaultAdapter()->deviceForAddress(url.host().replace("-", ":"));
+        } else {
+            device = Manager::self()->defaultAdapter()->deviceForUBI(deviceInfo);
+        }
+
+        setDevice(device);
+        if (files.isEmpty()) {
+            addPage(new SelectFilesPage());
+            setMinimumSize(680, 400);
+        } else {
+            setFiles(files);
+        }
     }
+
     addPage(new ConnectingPage());
 
     m_agent = new ObexAgent(qApp);
