@@ -24,6 +24,7 @@
 #include <KCmdLineArgs>
 #include <KApplication>
 #include <KAboutData>
+#include <KDebug>
 #include <bluedevil/bluedevil.h>
 
 using namespace BlueDevil;
@@ -40,6 +41,7 @@ int main(int argc, char *argv[])
     KCmdLineArgs::init(argc, argv, &aboutData);
 
     KCmdLineOptions options;
+    options.add("k").add("kio <bluetooth://mac>", ki18n("Device UUID where the files will be sent"));
     options.add("u").add("ubi <ubi>", ki18n("Device UUID where the files will be sent"));
     options.add("f").add("files <files>", ki18n("Files that will be sent"));
     KCmdLineArgs::addCmdLineOptions( options );
@@ -49,7 +51,12 @@ int main(int argc, char *argv[])
     KApplication app;
     app.setQuitOnLastWindowClosed(false);
 
-    SendFileWizard *sendFileWizard = new SendFileWizard(args->getOption("ubi"), args->getOptionList("files"));
+    QString deviceInfo = args->getOption("ubi");
+    if (deviceInfo.isEmpty()) {
+        deviceInfo = args->getOption("kio");
+    }
+
+    SendFileWizard *sendFileWizard = new SendFileWizard(deviceInfo, args->getOptionList("files"));
 
     sendFileWizard->show();
 
