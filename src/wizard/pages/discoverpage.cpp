@@ -118,6 +118,7 @@ void DiscoverPage::deviceFound(const QVariantMap &deviceInfo)
     QString name = deviceInfo["Name"].toString();
     QString icon = deviceInfo["Icon"].toString();
     QString alias = deviceInfo["Alias"].toString();
+    quint32 dClass = deviceInfo["Class"].toUInt();
 
     bool origName = false;
     if (!name.isEmpty()) {
@@ -154,6 +155,11 @@ void DiscoverPage::deviceFound(const QVariantMap &deviceInfo)
     item->setData(Qt::UserRole+1, origName);
 
     m_itemRelation.insert(address, item);
+
+    if (!deviceList->currentItem() &&  BlueDevil::classToType(dClass) == BLUETOOTH_TYPE_MOUSE) {
+        deviceList->setCurrentItem(m_itemRelation[address]);
+        itemSelected(m_itemRelation[address]);
+    }
 }
 
 void DiscoverPage::itemSelected(QListWidgetItem* item)
