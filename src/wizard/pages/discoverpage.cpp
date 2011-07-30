@@ -141,6 +141,7 @@ void DiscoverPage::deviceFound(const QVariantMap &deviceInfo)
         m_itemRelation[address]->setIcon(KIcon(icon));
         m_itemRelation[address]->setData(Qt::UserRole+1, origName);
 
+        //If the device was selected but it didn't had a name, select it again
         if (deviceList->currentItem() == m_itemRelation[address]) {
             itemSelected(m_itemRelation[address]);
         }
