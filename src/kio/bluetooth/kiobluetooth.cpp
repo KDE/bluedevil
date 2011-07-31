@@ -85,9 +85,9 @@ KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
     s.mimetype = "application/vnd.kde.bluedevil-audio";
     s.uuid = "00001108-0000-1000-8000-00805F9B34FB";
     m_supportedServices.insert("00001108-0000-1000-8000-00805F9B34FB", s);
-    s.name = i18n("Network");
+    s.name = i18n("Dial Up Network");
     s.icon = "network-wireless";
-    s.mimetype = "application/vnd.kde.bluedevil-network";
+    s.mimetype = "application/vnd.kde.bluedevil-network-dun";
     s.uuid = "00001103-0000-1000-8000-00805F9B34FB";
     m_supportedServices.insert("00001103-0000-1000-8000-00805F9B34FB", s);
 
