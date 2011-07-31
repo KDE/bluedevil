@@ -18,7 +18,6 @@
  *************************************************************************************/
 
 #include "networkdun.h"
-#include "serial_interface.h"
 #include <KLocalizedString>
 #include <KPluginFactory>
 #include <KNotification>
