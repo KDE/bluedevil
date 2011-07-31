@@ -17,16 +17,16 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA   *
  *************************************************************************************/
 
-#ifndef NETWORKHELPER_H
-#define NETWORKHELPER_H
+#ifndef NETWORKDUNHELPER_H
+#define NETWORKDUNHELPER_H
 
 #include <kurl.h>
 
-class NetworkHelper : public QObject
+class NetworkDUNHelper : public QObject
 {
 Q_OBJECT
 public:
-    NetworkHelper(const KUrl &address);
+    NetworkDUNHelper(const KUrl &address);
 };
 
-#endif // NETWORKHELPER_H
+#endif // NETWORKDUNHELPER_H

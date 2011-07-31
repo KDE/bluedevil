@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
     KApplication app;
     app.setQuitOnLastWindowClosed(false);
 
-    NetworkHelper *networkHelper = new NetworkHelper(url);
+    NetworkDUNHelper *networkDUNHelper = new NetworkDUNHelper(url);
 
     return app.exec();
 }

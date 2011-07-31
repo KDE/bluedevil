@@ -31,7 +31,7 @@
 
 using namespace BlueDevil;
 
-NetworkHelper::NetworkHelper(const KUrl& address) {
+NetworkDUNHelper::NetworkDUNHelper(const KUrl& address) {
     if (!BlueDevil::Manager::self()->defaultAdapter()) {
         qDebug() << "No Adapters found";
         qApp->exit();

@@ -30,15 +30,15 @@
 
 #include <bluedevil/bluedevildevice.h>
 
-BLUEDEVILACTION_PLUGIN_EXPORT(NetworkPlugin)
+BLUEDEVILACTION_PLUGIN_EXPORT(NetworkDUNPlugin)
 
-NetworkPlugin::NetworkPlugin(QObject* parent, const QVariantList& args)
+NetworkDUNPlugin::NetworkDUNPlugin(QObject* parent, const QVariantList& args)
     : ActionPlugin(parent)
 {
     Q_UNUSED(args);
 }
 
-void NetworkPlugin::startAction()
+void NetworkDUNPlugin::startAction()
 {
     QString deviceInfo;
     deviceInfo = deviceInfo.append("%1 %2").arg(device()->address()).arg("dun");

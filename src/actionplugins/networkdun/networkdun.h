@@ -20,11 +20,11 @@
 #include "../actionplugin.h"
 #include <QDBusVariant>
 
-class NetworkPlugin : public ActionPlugin
+class NetworkDUNPlugin : public ActionPlugin
 {
     Q_OBJECT
     Q_INTERFACES(ActionPlugin)
     public:
-        NetworkPlugin(QObject* parent, const QVariantList& args);
+        NetworkDUNPlugin(QObject* parent, const QVariantList& args);
         virtual void startAction();
 };
