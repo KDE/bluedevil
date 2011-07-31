@@ -16,7 +16,7 @@ Notes:
   <mime-type type="inode/vnd.kde.bluedevil.device">
     <sub-class-of type="inode/directory"/>
     <generic-icon name="video-display"/>
-    <comment>Configured Device</comment>
+    <comment>Known Device</comment>
   </mime-type>
   <mime-type type="inode/vnd.kde.bluedevil.device.discovered">
     <sub-class-of type="inode/vnd.kde.bluedevil.device"/>
