@@ -2,6 +2,7 @@ add_subdirectory(input)
 add_subdirectory(audio)
 add_subdirectory(sendfile)
 add_subdirectory(networkdun)
+add_subdirectory(networkpanu)
 
 kde4_add_library(bluedevilaction SHARED actionplugin.cpp)
 

@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Service
+Exec=blubb
+Comment=Connect to Personal Area Network service (PANU)
+Name=PANU
+GenericName=PANU
+ServiceTypes=BlueDevil/ActionPlugin
+X-KDE-Library=bluedevilnetworkpanuactionplugin
+X-KDE-PluginInfo-Name=Network PANU
+X-KDE-PluginInfo-Author=Alex Fiestas
+X-KDE-PluginInfo-Version=0.00000001
+X-KDE-PluginInfo-License=GPL
+X-BlueDevil-UUIDS=00001115-0000-1000-8000-00805F9B34FB
