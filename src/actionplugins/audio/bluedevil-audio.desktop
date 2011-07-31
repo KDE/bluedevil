@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Service
 Exec=blubb
-Comment=Handles the connection and configuration of an audio device
+Comment=Connect to the Audio service
 Comment[bs]=Rukuje povezivanjem i podešavanjem audio uređaja
 Comment[ca]=Gestiona la connexió i la configuració d'un dispositiu d'àudio
 Comment[ca@valencia]=Gestiona la connexió i la configuració d'un dispositiu d'àudio

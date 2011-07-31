@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Service
 Exec=blubb
-Comment=Handles the connection and configuration of an input device
+Comment=Connect to the Input service (Mouse/Keyboard/Others)
 Comment[bs]=Rukuje povezivanjem i podešavanjem ulaznih uređaja
 Comment[ca]=Gestiona la connexió i la configuració d'un dispositiu d'entrada
 Comment[ca@valencia]=Gestiona la connexió i la configuració d'un dispositiu d'entrada
