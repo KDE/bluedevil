@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Service
+Exec=blubb
+Comment=Connect to Dial Up Network service (DUN)
+Name=Dial Up Network
+GenericName=Dial Up Network
+ServiceTypes=BlueDevil/ActionPlugin
+X-KDE-Library=bluedevilnetworkdunactionplugin
+X-KDE-PluginInfo-Name=Network DUN
+X-KDE-PluginInfo-Author=Alex Fiestas
+X-KDE-PluginInfo-Version=0.00000001
+X-KDE-PluginInfo-License=GPL
+X-BlueDevil-UUIDS=00001103-0000-1000-8000-00805F9B34FB
