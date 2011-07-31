@@ -2,8 +2,8 @@
 Type=Service
 Exec=blubb
 Comment=Connect to Dial Up Network service (DUN)
-Name=Dial Up Network
-GenericName=Dial Up Network
+Name=DUN
+GenericName=DUN
 ServiceTypes=BlueDevil/ActionPlugin
 X-KDE-Library=bluedevilnetworkdunactionplugin
 X-KDE-PluginInfo-Name=Network DUN
