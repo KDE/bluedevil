@@ -2,8 +2,17 @@
 Type=Service
 Exec=blubb
 Comment=Connect to Dial Up Network service (DUN)
+Comment[pt]=Ligar ao serviço de Rede-a-Pedido (DUN)
+Comment[uk]=Встановити зв’язок з службою комутованої мережі (DUN)
+Comment[x-test]=xxConnect to Dial Up Network service (DUN)xx
 Name=DUN
+Name[pt]=DUN
+Name[uk]=DUN
+Name[x-test]=xxDUNxx
 GenericName=DUN
+GenericName[pt]=DUN
+GenericName[uk]=DUN
+GenericName[x-test]=xxDUNxx
 ServiceTypes=BlueDevil/ActionPlugin
 X-KDE-Library=bluedevilnetworkdunactionplugin
 X-KDE-PluginInfo-Name=Network DUN
