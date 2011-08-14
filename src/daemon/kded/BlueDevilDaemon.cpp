@@ -21,7 +21,7 @@
 
 #include "BlueDevilDaemon.h"
 #include "agentlistener.h"
-#include "bluedevil_service_interface.h"
+// #include "bluedevil_service_interface.h"
 #include "filereceiversettings.h"
 
 #include <QDBusMetaType>
@@ -57,7 +57,7 @@ struct BlueDevilDaemon::Private
     AgentListener                   *m_agentListener;
     KFilePlacesModel                *m_placesModel;
     Adapter                         *m_adapter;
-    org::kde::BlueDevil::Service    *m_service;
+//     org::kde::BlueDevil::Service    *m_service;
     QList <DeviceInfo>                m_discovered;
     QTimer                           m_timer;
 };
@@ -71,7 +71,7 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
 
     d->m_agentListener = 0;
     d->m_adapter = 0;
-    d->m_service = 0;
+//     d->m_service = 0;
     d->m_placesModel = 0;
     d->m_timer.setInterval(20000);
     d->m_timer.setSingleShot(true);
@@ -159,16 +159,17 @@ void BlueDevilDaemon::stopDiscovering()
 
 bool BlueDevilDaemon::isServiceStarted()
 {
-    if (!d->m_service) {
-        d->m_service = new org::kde::BlueDevil::Service("org.kde.BlueDevil.Service",
-            "/Service", QDBusConnection::sessionBus(), this);
-    }
-    QDBusPendingReply <bool > r = d->m_service->isRunning();
-    r.waitForFinished();
-    if (r.isError() || !r.isValid()) {
-        return false;
-    }
-    return r.value();
+//     if (!d->m_service) {
+//         d->m_service = new org::kde::BlueDevil::Service("org.kde.BlueDevil.Service",
+//             "/Service", QDBusConnection::sessionBus(), this);
+//     }
+//     QDBusPendingReply <bool > r = d->m_service->isRunning();
+//     r.waitForFinished();
+//     if (r.isError() || !r.isValid()) {
+//         return false;
+//     }
+//     return r.value();
+    return false;
 }
 
 void BlueDevilDaemon::onlineMode()
@@ -188,11 +189,11 @@ void BlueDevilDaemon::onlineMode()
     FileReceiverSettings::self()->readConfig();
     if (!isServiceStarted() && FileReceiverSettings::self()->enabled()) {
         kDebug() << "Launching server";
-        d->m_service->launchServer();
+//         d->m_service->launchServer();
     }
     if (isServiceStarted() && !FileReceiverSettings::self()->enabled()) {
         kDebug() << "Stoppping server";
-        d->m_service->stopServer();
+//         d->m_service->stopServer();
     }
 
     if (!d->m_placesModel) {
@@ -231,7 +232,7 @@ void BlueDevilDaemon::offlineMode()
 
     if (isServiceStarted()) {
         kDebug() << "Stoppping server";
-        d->m_service->stopServer();
+//         d->m_service->stopServer();
     }
 
     //Just to be sure that online was called

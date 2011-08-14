@@ -4,9 +4,9 @@ set(kded_bluedevil_SRCS
     agentlistenerworker.cpp
 )
 
-qt4_add_dbus_interface(kded_bluedevil_SRCS
-    ../helpers/filereceiver/org.kde.BlueDevil.Service.xml
-    bluedevil_service_interface)
+#qt4_add_dbus_interface(kded_bluedevil_SRCS
+#    ../helpers/filereceiver/org.kde.BlueDevil.Service.xml
+#    bluedevil_service_interface)
 
 kde4_add_kcfg_files(kded_bluedevil_SRCS ../../settings/filereceiversettings.kcfgc)
 
