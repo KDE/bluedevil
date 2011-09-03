@@ -40,8 +40,8 @@ public Q_SLOTS:
     void initFileTransfer(QDBusPendingCallWatcher *watcher);
     void SessionCreated(QDBusObjectPath );
     void SessionRemoved(QDBusObjectPath );
-    void TransferStarted(QDBusObjectPath);
-    void TransferCompleted(QDBusObjectPath,bool);
+    void TransferStarted(const QDBusObjectPath &path);
+    void TransferCompleted(const QDBusObjectPath& path, bool success);
 
 private:
     org::openobex::Manager *m_manager;

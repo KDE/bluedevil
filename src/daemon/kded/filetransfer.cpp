@@ -65,18 +65,19 @@ void FileTransfer::SessionCreated(QDBusObjectPath )
     kDebug() << "Session created!";
 }
 
-
 void FileTransfer::SessionRemoved(QDBusObjectPath )
 {
     kDebug() << "Session removed!";
 }
 
-void FileTransfer::TransferCompleted(QDBusObjectPath , bool )
+void FileTransfer::TransferCompleted(const QDBusObjectPath &path, bool success)
 {
     kDebug() << "Transfer Completed";
+    kDebug() << path.path();
 }
 
-void FileTransfer::TransferStarted(QDBusObjectPath )
+void FileTransfer::TransferStarted(const QDBusObjectPath &path)
 {
     kDebug() << "Transfer Started";
+    kDebug() << path.path();
 }
