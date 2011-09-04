@@ -20,14 +20,18 @@
 
 #include "filetransfer.h"
 #include "obexdagent.h"
+#include "receivejob.h"
 
 #include <QDBusObjectPath>
 #include <QDBusPendingCallWatcher>
+
 #include <KDebug>
+#include <kio/global.h>
+#include <kjobtrackerinterface.h>
 
 FileTransfer::FileTransfer(QObject* parent): QObject(parent)
 {
-    ObexdAgent *agent = new ObexdAgent(this);
+    m_agent = new ObexdAgent(this);
     m_manager = new org::openobex::Manager("org.openobex", "/", QDBusConnection::sessionBus(), this);
 
     QDBusPendingReply <void > r = m_manager->RegisterAgent(QDBusObjectPath("/BlueDevil_obexdAgent"));
@@ -74,10 +78,37 @@ void FileTransfer::TransferCompleted(const QDBusObjectPath &path, bool success)
 {
     kDebug() << "Transfer Completed";
     kDebug() << path.path();
+
+    if (!m_jobs.contains(path.path())) {
+        kDebug() << "Do nothing, we don't have this job...";
+        return;
+    }
+
+    ReceiveJob *job = m_jobs.value(path.path());
+    if (!success) {
+        job->failed();
+    } else {
+        job->completed();
+    }
 }
 
 void FileTransfer::TransferStarted(const QDBusObjectPath &path)
 {
     kDebug() << "Transfer Started";
-    kDebug() << path.path();
+
+    const QVariantMap info = m_agent->info();
+    ReceiveJob *job = new ReceiveJob(path.path(), info["dest"].toString(), info["from"].toString(), info["length"].toInt(), this);
+    KIO::getJobTracker()->registerJob(job);
+    job->start();
+
+    m_jobs[path.path()] = job;
+    connect(job, SIGNAL(destroyed(QObject*)), this, SLOT(jobDestroyed(QObject*)));
+}
+
+void FileTransfer::jobDestroyed(QObject* job)
+{
+    kDebug() << "Removing from hash: " << job;
+    ReceiveJob *receiveJob = static_cast<ReceiveJob *>(job);
+
+    m_jobs.remove(m_jobs.key(receiveJob));
 }

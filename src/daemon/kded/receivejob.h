@@ -18,39 +18,41 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA            *
  ***************************************************************************/
 
-#ifndef FILETRANSFER_H
-#define FILETRANSFER_H
 
-#include "obexd_interface.h"
+#ifndef RECEIVEJOB_H
+#define RECEIVEJOB_H
 
-#include <QObject>
+#include <KJob>
+#include <fcntl.h>
+#include <QTime>
 
-class ReceiveJob;
-class ObexdAgent;
 class QDBusObjectPath;
-class QDBusPendingCallWatcher;
-class FileTransfer : public QObject
-{
+class OrgOpenobexTransferInterface;
 
+class ReceiveJob : public KJob
+{
 Q_OBJECT
 public:
-    FileTransfer(QObject *parent);
-    virtual ~FileTransfer();
+    ReceiveJob(const QString &path, const QString &dest, const QString &from, const int length, QObject *parent);
+
+    virtual void start();
+
+    void failed();
+    void completed();
 
 public Q_SLOTS:
-    void initFileTransfer(QDBusPendingCallWatcher *watcher);
-    void SessionCreated(QDBusObjectPath );
-    void SessionRemoved(QDBusObjectPath );
-    void TransferStarted(const QDBusObjectPath &path);
-    void TransferCompleted(const QDBusObjectPath& path, bool success);
+    void Progress(int total, int transfer);
+    void doStart();
 
-private Q_SLOTS:
-    void jobDestroyed(QObject *job);
+protected:
+    virtual bool doKill();
 
 private:
-    org::openobex::Manager *m_manager;
-    ObexdAgent             *m_agent;
-    QHash<QString, ReceiveJob*> m_jobs;
+    OrgOpenobexTransferInterface *m_transfer;
+    QString m_from;
+    QString m_dest;
+    int     m_length;
+    QTime m_time;
 };
 
-#endif // FILETRANSFER_H
+#endif // RECEIVEJOB_H
