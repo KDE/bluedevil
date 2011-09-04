@@ -28,6 +28,7 @@
 #include <QDBusAbstractAdaptor>
 #include <QDBusMessage>
 #include <QDBusContext>
+#include <QVariantMap>
 
 class KNotification;
 
@@ -40,6 +41,7 @@ Q_CLASSINFO("D-Bus Interface", "org.openobex.Agent")
 public:
     ObexdAgent(QObject* parent);
 
+    QVariantMap info() const;
 public Q_SLOTS:
 
     QString Authorize(const QDBusObjectPath &transfer, const QString &bt_address,
@@ -55,6 +57,7 @@ private:
     KNotification *m_notification;
     QDBusMessage m_pendingMessage;
 
+    QVariantMap     m_info;
 };
 
 #endif // OBEXDAGENT_H

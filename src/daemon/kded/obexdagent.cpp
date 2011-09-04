@@ -47,11 +47,19 @@ ObexdAgent::ObexdAgent(QObject* parent) : QDBusAbstractAdaptor(parent)
 QString ObexdAgent::Authorize(const QDBusObjectPath &transfer, const QString &bt_address,
                     const QString &name, const QString &type, int length, int time, const QDBusMessage &msg)
 {
-    kDebug() << "Authorize";
+    kDebug() << "From: " << bt_address << " Name: " << name << " Type: " << type << " Length: " << length << " Time: " << time;
     if (FileReceiverSettings::self()->autoAccept()) {
         kDebug() << "Auto accepting";
         return FileReceiverSettings::self()->saveUrl().path();
     }
+
+    Device *device = Manager::self()->defaultAdapter()->deviceForAddress(bt_address);
+
+    m_info["from"] = QVariant(device->name());
+    m_info["dest"] = QVariant(FileReceiverSettings::self()->saveUrl().path().append(name));
+    m_info["type"] = QVariant(type);
+    m_info["length"] = QVariant(length);
+    m_info["time"] = QVariant(time);
 
     m_pendingMessage = msg;
     m_pendingMessage.setDelayedReply(true);
@@ -59,7 +67,6 @@ QString ObexdAgent::Authorize(const QDBusObjectPath &transfer, const QString &bt
     m_notification = new KNotification("bluedevilIncomingFile",
        KNotification::Persistent, this);
 
-    Device *device = Manager::self()->defaultAdapter()->deviceForAddress(bt_address);
     m_notification->setText(i18nc(
         "Show a notification asking to authorize or deny an incoming file transfer to this computer from a Bluetooth device.",
         "%1 is sending you the file %2", device->name(), name));
@@ -85,6 +92,11 @@ QString ObexdAgent::Authorize(const QDBusObjectPath &transfer, const QString &bt
 void ObexdAgent::Cancel()
 {
     kDebug() << "AAAAAAAA";
+}
+
+QVariantMap ObexdAgent::info() const
+{
+    return m_info;
 }
 
 void ObexdAgent::fileAccepted()
