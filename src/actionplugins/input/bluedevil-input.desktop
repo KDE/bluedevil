@@ -16,6 +16,7 @@ Comment[ru]=Подключение к устройству ввода (мышь,
 Comment[sv]=Anslut till indatatjänsten (mus, tangentbord, annat)
 Comment[uk]=Встановити зв’язок зі службою введення даних (миша, клавіатура, інше)
 Comment[x-test]=xxConnect to the Input service (Mouse/Keyboard/Others)xx
+Comment[zh_TW]=連線到輸入服務（滑鼠/鍵盤/其他）
 Name=Input
 Name[ca]=Entrada
 Name[ca@valencia]=Entrada

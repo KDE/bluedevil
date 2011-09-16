@@ -15,6 +15,7 @@ Comment[ru]=Подключение к аудиоустройству
 Comment[sv]=Anslut till ljudtjänsten
 Comment[uk]=Встановити зв’язок зі звуковою службою
 Comment[x-test]=xxConnect to the Audio servicexx
+Comment[zh_TW]=連線到音效服務
 Name=Audio
 Name[ca]=Àudio
 Name[ca@valencia]=Àudio
