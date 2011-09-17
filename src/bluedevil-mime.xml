@@ -34,7 +34,10 @@ Notes:
   <mime-type type="application/vnd.kde.bluedevil-audio">
     <comment>Service</comment>
   </mime-type>
-  <mime-type type="application/vnd.kde.bluedevil-network">
+  <mime-type type="application/vnd.kde.bluedevil-network-panu">
+    <comment>Service</comment>
+  </mime-type>
+  <mime-type type="application/vnd.kde.bluedevil-network-dun">
     <comment>Service</comment>
   </mime-type>
   <mime-type type="application/vnd.kde.bluedevil-sendfile">
