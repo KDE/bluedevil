@@ -1,12 +1,9 @@
 set(kded_obexftp_SRCS
     ObexFtpDaemon.cpp
-    obexsession.cpp
 )
 
-QT4_ADD_DBUS_INTERFACE(kded_obexftp_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/obexftp/session.xml obexftpsession)
-
-set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/obexftp/manager.xml PROPERTIES INCLUDE "qstringmap.h")
-QT4_ADD_DBUS_INTERFACE(kded_obexftp_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/obexftp/manager.xml obexftpmanager)
+qt4_add_dbus_interface(kded_obexftp_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/obexftp/org.openobex.xml obexdmanager)
+qt4_add_dbus_interface(kded_obexftp_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/obexftp/org.openobex.client.xml obexdclient)
 
 kde4_add_plugin(kded_obexftpdaemon
     ${kded_obexftp_SRCS}

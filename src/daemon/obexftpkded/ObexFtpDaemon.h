@@ -22,9 +22,6 @@
 #ifndef OBEXFTPDAEMON_H
 #define OBEXFTPDAEMON_H
 
-#include <obexftpmanager.h>
-#include <obexftpsession.h>
-
 #include <QDBusObjectPath>
 #include <kdedmodule.h>
 
@@ -75,9 +72,9 @@ private Q_SLOTS:
      */
     void defaultAdapterChanged(Adapter *adapter);
 
-    void SessionConnected(QDBusObjectPath path);
+    void SessionCreated(QDBusObjectPath path);
 
-    void SessionClosed(QDBusObjectPath path);
+    void SessionRemoved(QDBusObjectPath path);
 
     void sessionDisconnected();
 
