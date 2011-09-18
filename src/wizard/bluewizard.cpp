@@ -45,16 +45,15 @@ BlueWizard::BlueWizard(const KUrl &url) : QWizard(), m_service(0), m_manualPin(f
 
     setOption(QWizard::IndependentPages, true);
 
-    if (url.host().length() != 17) {
-        setPage(Discover, new DiscoverPage(this));
-    } else {
-        setDeviceAddress(url.host().replace("-", ":").toLatin1());
+    if (url.host().length() == 17) {
+        setPreselectedAddress(url.host().replace("-", ":").toLatin1());
     }
 
     if (url.fileName().length() == 36) {
         setPreselectedUuid(url.fileName().toLatin1());
     }
 
+    setPage(Discover, new DiscoverPage(this));
     setPage(Services, new ServicesPage(this));
     setPage(NoPairing, new NoPairingPage(this));
     setPage(LegacyPairing, new LegacyPairingPage(this));
@@ -159,6 +158,18 @@ QByteArray BlueWizard::preselectedUuid() const
 {
     return m_preselectedUuid;
 }
+
+void BlueWizard::setPreselectedAddress(const QByteArray& address)
+{
+    kDebug() << "Preselected Address: " << address;
+    m_preselectedAddress = address;
+}
+
+QByteArray BlueWizard::preselectedAddress() const
+{
+    return m_preselectedAddress;
+}
+
 
 WizardAgent* BlueWizard::agent() const
 {
