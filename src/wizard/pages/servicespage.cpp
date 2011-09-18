@@ -64,6 +64,7 @@ void ServicesPage::initializePage()
                     kDebug() << "Service found: " << service->name();
                     m_wizard->setService(service.data());
                     m_wizard->done(1);
+                    return;
                 }
             }
         }
