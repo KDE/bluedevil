@@ -43,6 +43,9 @@ public:
     QByteArray preselectedUuid() const;
     void setPreselectedUuid(const QByteArray &uuid);
 
+    QByteArray preselectedAddress() const;
+    void setPreselectedAddress(const QByteArray &uuid);
+
     WizardAgent* agent() const;
 
     KService::List services() const;
@@ -59,6 +62,7 @@ private:
     QByteArray m_deviceAddress;
     QByteArray m_pin;
     QByteArray m_preselectedUuid;
+    QByteArray m_preselectedAddress;
     WizardAgent *m_agent;
     KService::List m_services;
     const KService *m_service;
