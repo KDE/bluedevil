@@ -153,6 +153,12 @@ void DiscoverPage::deviceFound(const QVariantMap &deviceInfo)
     item->setData(Qt::UserRole+1, origName);
 
     m_itemRelation.insert(address, item);
+
+    //If the device has been preselected via arguments, select it
+    if (m_wizard->preselectedAddress() == address.toLower()) {
+        deviceList->setCurrentItem(m_itemRelation[address]);
+        itemSelected(m_itemRelation[address]);
+    }
 }
 
 void DiscoverPage::itemSelected(QListWidgetItem* item)
