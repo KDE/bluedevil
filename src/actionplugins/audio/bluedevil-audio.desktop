@@ -2,6 +2,7 @@
 Type=Service
 Exec=blubb
 Comment=Connect to the Audio service
+Comment[ca]=Connecta al servei d'àudio
 Comment[cs]=Připojit ke zvukové službě
 Comment[da]=Forbind til lydtjenesten
 Comment[hu]=Kapcsolódás hangszolgáltatáshoz
