@@ -20,13 +20,14 @@
  ***************************************************************************/
 
 
-#ifndef AGENTLISTENERWORKER_H
-#define AGENTLISTENERWORKER_H
+#ifndef BLUEZAGENT_H
+#define BLUEZAGENT_H
 
 #include <QtDBus/QDBusMessage>
 #include <QtDBus/QDBusObjectPath>
 #include <QtDBus/QDBusAbstractAdaptor>
 
+class QProcess;
 namespace BlueDevil {
     class Adapter;
 };
@@ -40,7 +41,7 @@ namespace BlueDevil {
  * @ref AgentListenerWorker
  * @since 1.0
  */
-class AgentListenerWorker
+class BluezAgent
     : public QDBusAbstractAdaptor
 {
     Q_OBJECT
@@ -50,7 +51,7 @@ public:
     /**
      * Register the path and initialize the  m_adapter
      */
-    AgentListenerWorker(QObject *parent);
+    BluezAgent(QObject *parent);
 
 public Q_SLOTS:
     /**
@@ -66,7 +67,7 @@ public Q_SLOTS:
     /**
      * Called by bluez to ask for a PIN
      */
-    QString RequestPinCode(const QDBusObjectPath &device, const QDBusMessage &msg);
+    QString RequestPinCode(const QDBusObjectPath& device, const QDBusMessage& msg);
 
     /**
      * Called by bluez to ask for a passkey, currently is a aslias of RequestPinCode
@@ -96,6 +97,26 @@ public Q_SLOTS:
      */
     void Cancel();
 
+    /**
+     * Slot for those calls that should return a Bool result
+     *
+     * This slot gets called when the helper process ends, and basically checks the exitCode
+     */
+    void processClosedBool(int exitCode);
+
+    /**
+     * Just like @processClosedBool but this instead returns a String (the PIN)
+     *
+     * This slot gets called when the RequestPin helper ends
+     */
+    void processClosedPin(int exitCode);
+
+    /**
+     * Just like @processClosedBool but this instead returns a quint32 (the PIN)
+     *
+     * This slot gets called when the RequestPasskey helper ends
+     */
+    void processClosedPasskey(int exitCode);
 Q_SIGNALS:
     /**
      * Emited to propagate the release call (so BlueDevil can decide what to do)
@@ -122,5 +143,8 @@ private:
      * Global adapter usually used to get information from a remote device
      */
     BlueDevil::Adapter *m_adapter;
+    QProcess           *m_process;
+    QDBusMessage        m_msg;
+    QString             m_currentHelper;
 };
 #endif

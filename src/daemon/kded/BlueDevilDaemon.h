@@ -82,11 +82,6 @@ private Q_SLOTS:
     void defaultAdapterChanged(Adapter *adapter);
 
     /**
-     * AgentListner is a QThread, so we've to delete it after call QThread::quit();
-     */
-    void agentThreadStopped();
-
-    /**
      * When the agent is released this is called to unload it
      */
     void agentReleased();
