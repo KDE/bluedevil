@@ -313,6 +313,11 @@ void ObexFtpDaemon::SessionConnected(QDBusObjectPath path)
 
     QString address = getAddressFromSession(path.path());
 
+    if (address.isEmpty() || !d->m_sessionMap.contains(address)) {
+        kDebug() << "This seasson is from another process";
+        return;
+    }
+
     d->m_sessionMap[address]->setStatus(ObexSession::Connected);
 
     connect(d->m_sessionMap[address], SIGNAL(sessionTimeout()), this, SLOT(sessionDisconnected()));
