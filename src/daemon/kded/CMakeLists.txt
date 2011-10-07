@@ -1,7 +1,6 @@
 set(kded_bluedevil_SRCS
     BlueDevilDaemon.cpp
-    agentlistener.cpp
-    agentlistenerworker.cpp
+    bluezagent.cpp
 )
 
 qt4_add_dbus_interface(kded_bluedevil_SRCS

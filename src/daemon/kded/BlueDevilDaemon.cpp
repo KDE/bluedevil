@@ -20,7 +20,7 @@
  ***************************************************************************/
 
 #include "BlueDevilDaemon.h"
-#include "agentlistener.h"
+#include "bluezagent.h"
 #include "bluedevil_service_interface.h"
 #include "filereceiversettings.h"
 
@@ -54,7 +54,7 @@ struct BlueDevilDaemon::Private
         Offline
     } m_status;
 
-    AgentListener                   *m_agentListener;
+    BluezAgent                      *m_bluezAgent;
     KFilePlacesModel                *m_placesModel;
     Adapter                         *m_adapter;
     org::kde::BlueDevil::Service    *m_service;
@@ -69,7 +69,7 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     qDBusRegisterMetaType <DeviceInfo> ();
     qDBusRegisterMetaType <QMapDeviceInfo> ();
 
-    d->m_agentListener = 0;
+    d->m_bluezAgent = 0;
     d->m_adapter = 0;
     d->m_service = 0;
     d->m_placesModel = 0;
@@ -179,9 +179,8 @@ void BlueDevilDaemon::onlineMode()
         return;
     }
 
-    d->m_agentListener = new AgentListener();
-    connect(d->m_agentListener, SIGNAL(agentReleased()), this, SLOT(agentReleased()));
-    d->m_agentListener->start();
+    d->m_bluezAgent = new BluezAgent(this);
+    connect(d->m_bluezAgent, SIGNAL(agentReleased()), this, SLOT(agentReleased()));
 
     d->m_adapter = Manager::self()->defaultAdapter();
 
@@ -224,9 +223,9 @@ void BlueDevilDaemon::offlineMode()
 
     d->m_adapter = 0;
 
-    if (d->m_agentListener) {
-        connect(d->m_agentListener, SIGNAL(finished()), this, SLOT(agentThreadStopped()));
-        d->m_agentListener->quit();
+    if (d->m_bluezAgent) {
+        delete d->m_bluezAgent;
+        d->m_bluezAgent = 0;
     }
 
     if (isServiceStarted()) {
@@ -257,16 +256,7 @@ void BlueDevilDaemon::offlineMode()
  */
 void BlueDevilDaemon::agentReleased()
 {
-    connect(d->m_agentListener,SIGNAL(finished()),this,SLOT(agentThreadStopped()));
-    d->m_agentListener->quit();
-}
-
-void BlueDevilDaemon::agentThreadStopped()
-{
-    d->m_agentListener->deleteLater();
-    d->m_agentListener = 0;
-
-    kDebug() << "agent listener deleted";
+    //TODO think what to do
 }
 
 void BlueDevilDaemon::defaultAdapterChanged(Adapter *adapter)
