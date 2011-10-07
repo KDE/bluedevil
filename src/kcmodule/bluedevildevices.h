@@ -25,6 +25,7 @@
 
 #include <kcmodule.h>
 
+class KDialog;
 class SystemCheck;
 class BluetoothDevicesModel;
 
@@ -84,6 +85,7 @@ private:
     QWidget               *m_noDevicesMessage;
 
     SystemCheck           *m_systemCheck;
+    KDialog               *m_renameAlias;
 };
 
 #endif
