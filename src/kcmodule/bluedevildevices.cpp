@@ -319,6 +319,7 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     : KCModule(BlueDevilFactory::componentData(), parent)
     , m_enable(new QCheckBox(i18n("Enable KDE Bluetooth Integration"), this))
     , m_systemCheck(new SystemCheck(this))
+    , m_deviceDetails(0)
 {
     KAboutData* ab = new KAboutData(
         "kcmbluedevildevices", "bluedevil", ki18n("Bluetooth Devices"), "1.0",
@@ -439,16 +440,20 @@ void KCMBlueDevilDevices::deviceDoubleClicked(const QModelIndex &index)
 
     Device *const device = static_cast<Device*>(index.data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
 
-    DeviceDetails deviceDetails(device, this);
-    deviceDetails.exec();
+    m_deviceDetails = new DeviceDetails(device, this);
+    m_deviceDetails->exec();
+    delete m_deviceDetails;
+    m_deviceDetails = 0;
 }
 
 void KCMBlueDevilDevices::detailsDevice()
 {
     Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
 
-    DeviceDetails deviceDetails(device, this);
-    deviceDetails.exec();
+    m_deviceDetails = new DeviceDetails(device, this);
+    m_deviceDetails->exec();
+    delete m_deviceDetails;
+    m_deviceDetails = 0;
 }
 
 
@@ -530,6 +535,10 @@ void KCMBlueDevilDevices::adapterDiscoverableChanged()
 void KCMBlueDevilDevices::adapterDevicesChanged(const QList<Device*> &devices)
 {
     Q_UNUSED(devices)
+    if (m_deviceDetails) {
+        delete m_deviceDetails;
+        m_deviceDetails = 0;
+    }
     fillRemoteDevicesModelInformation();
 }
 
