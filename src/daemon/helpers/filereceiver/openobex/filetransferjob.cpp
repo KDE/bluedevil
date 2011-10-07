@@ -167,7 +167,6 @@ void FileTransferJob::slotErrorOccured(const QString &reason1, const QString &re
     kDebug() << reason1;
     kDebug() << reason2;
     setError(UserDefinedError);
-    setErrorText(reason1 + ": " + reason2);
     emitResult();
 }
 
