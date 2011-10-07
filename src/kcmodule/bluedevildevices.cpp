@@ -312,6 +312,7 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     : KCModule(BlueDevilFactory::componentData(), parent)
     , m_enable(new QCheckBox(i18n("Enable KDE Bluetooth Integration"), this))
     , m_systemCheck(new SystemCheck(this))
+    , m_renameAlias(0)
 {
     KAboutData* ab = new KAboutData(
         "kcmbluedevildevices", "bluedevil", ki18n("Bluetooth Devices"), "1.0",
@@ -450,8 +451,8 @@ void KCMBlueDevilDevices::trustUntrustDevice()
 void KCMBlueDevilDevices::renameAliasDevice()
 {
     Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
-    KDialog *newAlias = new KDialog(this);
-    QWidget *widget = new QWidget(newAlias);
+    m_renameAlias = new KDialog(this);
+    QWidget *widget = new QWidget(m_renameAlias);
     QVBoxLayout *layout = new QVBoxLayout;
     layout->addWidget(new QLabel(i18n("Pick a new alias for %1", device->name()), widget));
     KLineEdit *lineEdit = new KLineEdit(widget);
@@ -459,9 +460,9 @@ void KCMBlueDevilDevices::renameAliasDevice()
     lineEdit->selectAll();
     layout->addWidget(lineEdit);
     widget->setLayout(layout);
-    newAlias->setMainWidget(widget);
-    newAlias->setButtons(KDialog::Ok | KDialog::Cancel);
-    if (newAlias->exec() == KDialog::Accepted) {
+    m_renameAlias->setMainWidget(widget);
+    m_renameAlias->setButtons(KDialog::Ok | KDialog::Cancel);
+    if (m_renameAlias->exec() == KDialog::Accepted) {
         if (lineEdit->text().isEmpty()) {
             device->setAlias(device->name());
         } else {
@@ -524,6 +525,10 @@ void KCMBlueDevilDevices::adapterDiscoverableChanged()
 void KCMBlueDevilDevices::adapterDevicesChanged(const QList<Device*> &devices)
 {
     Q_UNUSED(devices)
+    if (m_renameAlias) {
+        delete m_renameAlias;
+        m_renameAlias = 0;
+    }
     fillRemoteDevicesModelInformation();
 }
 
