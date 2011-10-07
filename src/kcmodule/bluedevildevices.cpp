@@ -469,7 +469,8 @@ void KCMBlueDevilDevices::renameAliasDevice()
             device->setAlias(lineEdit->text());
         }
     }
-    delete newAlias;
+    delete m_renameAlias;
+    m_renameAlias = 0;
 }
 
 void KCMBlueDevilDevices::removeDevice()
