@@ -95,10 +95,12 @@ void RequestPin::introducePin()
     dialog->setMaximumHeight(150);
 
     dialogWidget->pin->setFocus(Qt::ActiveWindowFocusReason);
-    if (dialog->exec() == KDialog::Accepted) {
+
+    if (dialog->exec()) {
         cout << dialogWidget->pin->text().toLatin1().data();
         flush(cout);
         qApp->exit(0);
+        return;
     }
 
     delete dialog;
