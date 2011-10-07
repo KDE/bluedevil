@@ -102,7 +102,9 @@ void DiscoverPage::startScan()
     deviceList->clear();
     stopScan();
 
-    Manager::self()->defaultAdapter()->startDiscovery();
+    if (Manager::self()->defaultAdapter()) {
+        Manager::self()->defaultAdapter()->startDiscovery();
+    }
 }
 
 void DiscoverPage::stopScan()
