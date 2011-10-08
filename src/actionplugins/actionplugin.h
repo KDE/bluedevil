@@ -47,6 +47,9 @@ public:
     void setDevice(Device*);
     Device* device();
 
+private Q_SLOTS:
+    void deviceDestroyed();
+
 private:
     Private *d;
 
