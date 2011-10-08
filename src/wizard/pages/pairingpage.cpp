@@ -180,6 +180,7 @@ void PairingPage::confirmationRequested(quint32 passkey, const QDBusMessage& msg
 {
     kDebug();
     m_msg = msg;
+    m_msg.setDelayedReply(true);
     m_working->stop();
     pinNumber->setText(QString::number(passkey));
     emit completeChanged();
