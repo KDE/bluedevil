@@ -31,10 +31,17 @@ ActionPlugin::ActionPlugin(QObject* parent): QObject(parent), d(new Private)
 
 void ActionPlugin::setDevice(Device* device)
 {
+    connect(device, SIGNAL(destroyed(QObject*)), this, SLOT(deviceDestroyed()));
     d->device= device;
 }
 
 Device* ActionPlugin::device()
 {
     return d->device;
+}
+
+void ActionPlugin::deviceDestroyed()
+{
+    d->device = 0;
+    emit finished();
 }
