@@ -62,5 +62,5 @@ MimeType=application/vnd.kde.bluedevil-network-panu;
 Exec=bluedevil-network-panu %U
 Icon=preferences-system-bluetooth
 Terminal=false
-Categories=Qt;KDE;X-Bluetooth;Network
+Categories=Qt;KDE;X-Bluetooth;Network;
 NoDisplay=true
