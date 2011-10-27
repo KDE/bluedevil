@@ -338,7 +338,7 @@ void ObexFtpDaemon::SessionClosed(QDBusObjectPath path)
 {
     kDebug();
     QHash<QString, ObexSession*>::iterator i = d->m_sessionMap.begin();
-    while (i != d->m_sessionMap.constEnd()) {
+    while (i != d->m_sessionMap.end()) {
         //If the session is connected, so not 0
         if (i.value()->path() == path.path()) {
             kDebug() << "Removing : " << i.key();
