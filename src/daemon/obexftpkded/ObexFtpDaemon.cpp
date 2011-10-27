@@ -337,17 +337,18 @@ void ObexFtpDaemon::SessionConnected(QDBusObjectPath path)
 void ObexFtpDaemon::SessionClosed(QDBusObjectPath path)
 {
     kDebug();
-    QHash<QString, ObexSession*>::const_iterator i = d->m_sessionMap.constBegin();
+    QHash<QString, ObexSession*>::iterator i = d->m_sessionMap.begin();
     while (i != d->m_sessionMap.constEnd()) {
         //If the session is connected, so not 0
         if (i.value()->path() == path.path()) {
             kDebug() << "Removing : " << i.key();
             emit sessionClosed(i.key());
-            d->m_sessionMap.remove(i.key());
             delete i.value();
+            i = d->m_sessionMap.erase(i);
             return;
+        } else {
+            ++i;
         }
-        ++i;
     }
 
     kDebug() << "Attempt to remove a nto existing session";
