@@ -46,6 +46,7 @@ Name[tr]=Bağdaştırıcılar
 Name[ug]=ماسلاشتۇرغۇچ
 Name[uk]=Адаптери
 Name[x-test]=xxAdaptersxx
+Name[zh_CN]=适配器
 Name[zh_TW]=轉接器
 
 Comment=Configure the available Bluetooth adapters
@@ -83,6 +84,7 @@ Comment[tr]=Kullanılabilir bluetooth bağdaştırıcılarını yapılandırın
 Comment[ug]=ئىشلەتكىلى بولىدىغان كۆكچىش ماسلاشتۇرغۇچىنى سەپلەيدۇ
 Comment[uk]=Налаштування доступних адаптерів Bluetooth
 Comment[x-test]=xxConfigure the available Bluetooth adaptersxx
+Comment[zh_CN]=配置可用蓝牙适配器
 Comment[zh_TW]=設定可用的藍芽轉接器
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth

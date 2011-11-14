@@ -42,6 +42,7 @@ Name[tr]=ObexFTP
 Name[ug]=ObexFTP
 Name[uk]=ObexFTP
 Name[x-test]=xxObexFTPxx
+Name[zh_CN]=ObexFTP
 Name[zh_TW]=ObexFTP
 
 Comment=ObexFTP helper daemon
@@ -79,4 +80,5 @@ Comment[tr]=ObexFTP yardımcı hizmeti
 Comment[ug]=obexftp ياردەمچى daemon ى
 Comment[uk]=Фонова служба допоміжної програми ObexFTP
 Comment[x-test]=xxObexFTP helper daemonxx
+Comment[zh_CN]=ObexFTP 帮助进程
 Comment[zh_TW]=ObexFTP 輔助伺服程式

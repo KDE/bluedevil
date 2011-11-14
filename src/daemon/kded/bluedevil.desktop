@@ -43,6 +43,7 @@ Name[tr]=BlueDevil
 Name[ug]=BlueDevil
 Name[uk]=BlueDevil
 Name[x-test]=xxBlueDevilxx
+Name[zh_CN]=BlueDevil
 Name[zh_TW]=BlueDevil
 
 Comment=Bluetooth Management Daemon
@@ -81,4 +82,5 @@ Comment[tr]=Bluetooth Yönetim Hizmeti
 Comment[ug]=كۆكچىش باشقۇرۇش Daemon
 Comment[uk]=Фонова служба керування Bluetooth
 Comment[x-test]=xxBluetooth Management Daemonxx
+Comment[zh_CN]=蓝牙管理守护进程
 Comment[zh_TW]=藍芽管理伺服程式

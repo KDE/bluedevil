@@ -43,6 +43,7 @@ Name[tr]=Dosya Aktarımı
 Name[ug]=ھۆججەت يوللاش
 Name[uk]=Перенесення файла
 Name[x-test]=xxFile Transfersxx
+Name[zh_CN]=文件传送
 Name[zh_TW]=檔案傳輸
 
 Comment=Configure the Bluetooth receive files
@@ -80,6 +81,7 @@ Comment[tr]=Bluetooth dosya alma yapılandırması
 Comment[ug]=كۆكچىش ھۆججەت قوبۇلاشنى سەپلەيدۇ
 Comment[uk]=Налаштування отримання файлів Bluetooth
 Comment[x-test]=xxConfigure the Bluetooth receive filesxx
+Comment[zh_CN]=配置蓝牙文件接收
 Comment[zh_TW]=設定藍芽接收檔案
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
