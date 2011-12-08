@@ -90,7 +90,9 @@ Comment[zh_CN]=配置已知蓝牙遥控设备
 Comment[zh_TW]=設定已知的藍芽遠端裝置
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
+X-KDE-Keywords[it]=Rete,Connettività,Bluetooth
 X-KDE-Keywords[nl]=Netwerkverbinding,connectiviteit,bluetooth
+X-KDE-Keywords[pt]=Rede,Conectividade,Bluetooth
 X-KDE-Keywords[pt_BR]=rede,conectividade,bluetooth
 X-KDE-Keywords[sv]=Nätverk,Anslutningar,Blåtand
 X-KDE-Keywords[uk]=Network,Connectivity,Bluetooth,мережа,з’єднання,з'єднання
