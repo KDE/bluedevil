@@ -85,6 +85,7 @@ Comment[zh_CN]=配置蓝牙文件接收
 Comment[zh_TW]=設定藍芽接收檔案
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
+X-KDE-Keywords[cs]=Síť,Konektivita,Bluetooth
 X-KDE-Keywords[da]=Netværk,forbindelse,Bluetooth
 X-KDE-Keywords[el]=Δίκτυο,Συνδεσιμότητα,Bluetooth
 X-KDE-Keywords[es]=Red,Conectividad,Bluetooth
