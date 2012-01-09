@@ -92,6 +92,7 @@ Comment[zh_TW]=設定已知的藍芽遠端裝置
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
 X-KDE-Keywords[ca]=Xarxa,Connectivitat,Bluetooth
+X-KDE-Keywords[ca@valencia]=Xarxa,Connectivitat,Bluetooth
 X-KDE-Keywords[cs]=Síť,Konektivita,Bluetooth
 X-KDE-Keywords[da]=Netværk,forbindelse,Bluetooth
 X-KDE-Keywords[de]=Netzwerk,Verbindungen,Bluetooth
@@ -104,6 +105,7 @@ X-KDE-Keywords[km]=បណ្ដាញ ការ​តភ្ជាប់ ប៊�
 X-KDE-Keywords[nb]=Nettverk,sammenkobling,blåtann
 X-KDE-Keywords[nl]=Netwerkverbinding,connectiviteit,bluetooth
 X-KDE-Keywords[pa]=ਨੈੱਟਵਰਕ,ਕੁਨੈਕਟਵਿਟੀ,ਬਲਿਊਟੁੱਥ
+X-KDE-Keywords[pl]=Sieć,Łączność,Bluetooth
 X-KDE-Keywords[pt]=Rede,Conectividade,Bluetooth
 X-KDE-Keywords[pt_BR]=rede,conectividade,bluetooth
 X-KDE-Keywords[ru]=Сеть,Соединение,Bluetooth
