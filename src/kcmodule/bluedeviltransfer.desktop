@@ -12,6 +12,7 @@ X-KDE-System-Settings-Parent-Category=bluetooth
 X-KDE-Weight=60
 
 Name=File Transfers
+Name[ar]=نقل الملفات
 Name[ca]=Transferències de fitxers
 Name[ca@valencia]=Transferències de fitxers
 Name[cs]=Přenosy souborů
@@ -47,6 +48,7 @@ Name[zh_CN]=文件传送
 Name[zh_TW]=檔案傳輸
 
 Comment=Configure the Bluetooth receive files
+Comment[ar]=اضبط ملفات المتلقاة عبر بلوتوث
 Comment[bs]=Podesite prijem datoteka preko blututom
 Comment[ca]=Configura la recepció de fitxers per Bluetooth
 Comment[ca@valencia]=Configura la recepció de fitxers per Bluetooth
@@ -85,6 +87,7 @@ Comment[zh_CN]=配置蓝牙文件接收
 Comment[zh_TW]=設定藍芽接收檔案
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
+X-KDE-Keywords[ar]=شبكة,توصيل,بلوتوث
 X-KDE-Keywords[ca]=Xarxa,Connectivitat,Bluetooth
 X-KDE-Keywords[ca@valencia]=Xarxa,Connectivitat,Bluetooth
 X-KDE-Keywords[cs]=Síť,Konektivita,Bluetooth

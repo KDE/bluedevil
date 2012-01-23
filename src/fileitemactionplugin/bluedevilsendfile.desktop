@@ -1,6 +1,7 @@
 [Desktop Entry]
 Type=Service
 Name=Send file via Bluetooth
+Name[ar]=أرسل ملف بالبلوتوث
 Name[ca]=Envia un fitxer per Bluetooth
 Name[ca@valencia]=Envia un fitxer per Bluetooth
 Name[cs]=Poslat soubor přes Bluetooth
@@ -33,6 +34,7 @@ Name[zh_CN]=通过蓝牙发送文件
 Name[zh_TW]=透過藍牙傳送檔案
 X-KDE-Library=bluetoothfiletiemaction
 X-KDE-Submenu=Bluetooth
+X-KDE-Submenu[ar]=بلوتوث
 X-KDE-Submenu[ca]=Bluetooth
 X-KDE-Submenu[ca@valencia]=Bluetooth
 X-KDE-Submenu[cs]=Bluetooth
