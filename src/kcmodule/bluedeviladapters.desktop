@@ -86,5 +86,12 @@ Comment[x-test]=xxConfigure the available Bluetooth adaptersxx
 Comment[zh_TW]=設定可用的藍芽轉接器
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
+X-KDE-Keywords[ca]=Xarxa,Connectivitat,Bluetooth
+X-KDE-Keywords[it]=Rete,Connettività,Bluetooth
+X-KDE-Keywords[pt_BR]=Rede,Conectividade,Bluetooth
+X-KDE-Keywords[sv]=Nätverk,Anslutningar,Blåtand
+X-KDE-Keywords[uk]=Network,Connectivity,Bluetooth,мережа,з’єднання,з'єднання
+X-KDE-Keywords[x-test]=xxNetwork,Connectivity,Bluetoothxx
+X-KDE-Keywords[zh_TW]=Network,Connectivity,Bluetooth
 
 Categories=Qt;KDE;X-KDE-settings-bluetooth;
