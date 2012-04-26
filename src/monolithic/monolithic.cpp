@@ -616,12 +616,9 @@ void Monolithic::poweredChanged()
         setTooltipTitleStatus(false);
         setToolTipSubTitle("");
         setOverlayIconByName("vcs-removed");
-        //TODO: Don't go passive if on battery as many bluetooth adapters still drain power if not disabled by hardware (Fn keys or such)
-        setStatus(KStatusNotifierItem::Passive);
     } else {
         setTooltipTitleStatus(true);
         setOverlayIconByName(QString());
-        setStatus(KStatusNotifierItem::Active);
     }
     regenerateDeviceEntries();
     regenerateConnectedDevices();
@@ -681,13 +678,8 @@ void Monolithic::setTooltipTitleStatus(bool status)
 {
     if (status) {
         setToolTipTitle(i18nc("When the bluetooth is enabled and powered","Bluetooth is On"));
-        setIconByName("preferences-system-bluetooth");
-        setToolTipIconByName("preferences-system-bluetooth");
     } else {
         setToolTipTitle(i18nc("When the bluetooth is disabled or not powered","Bluetooth is Off"));
-        //TODO: Don't go passive if on battery, just use the inactive icon which "dims" the bluetooth icon
-        //setIconByName("preferences-system-bluetooth-inactive");
-        setToolTipIconByName("preferences-system-bluetooth-inactive");
     }
 }
 
