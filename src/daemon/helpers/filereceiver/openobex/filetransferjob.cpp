@@ -155,7 +155,7 @@ void FileTransferJob::slotTransferCompleted()
     if (!m_customSaveUrl.isNull()) {
       // Move the file if it's already been transfered
         KIO::CopyJob *moveJob = KIO::move(KUrl(m_url),KUrl(m_customSaveUrl));
-        KIO::NetAccess::synchronousRun(moveJob, NULL);
+        moveJob->start();
     }
     m_serverSession->slotJobFinished();
     transferCompleted();
