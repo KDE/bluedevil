@@ -54,7 +54,7 @@ void BluezAgent::unregister()
         defaultAdapter->unregisterAgent(AGENT_PATH);
     }
     QDBusConnection::systemBus().unregisterObject(AGENT_PATH);
-    deleteLater();
+    parent()->deleteLater();
 }
 
 void BluezAgent::Release()

@@ -179,7 +179,7 @@ void BlueDevilDaemon::onlineMode()
         return;
     }
 
-    d->m_bluezAgent = new BluezAgent(this);
+    d->m_bluezAgent = new BluezAgent(new QObject());
     connect(d->m_bluezAgent, SIGNAL(agentReleased()), this, SLOT(agentReleased()));
 
     d->m_adapter = Manager::self()->defaultAdapter();
@@ -224,7 +224,7 @@ void BlueDevilDaemon::offlineMode()
     d->m_adapter = 0;
 
     if (d->m_bluezAgent) {
-        delete d->m_bluezAgent;
+        delete d->m_bluezAgent->parent(); // we meed to delete the parent for not leaking it
         d->m_bluezAgent = 0;
     }
 
