@@ -26,6 +26,8 @@
 #include "obexftpmanager.h"
 #include "obexftpsession.h"
 
+#include <unistd.h>
+
 #include <KUrl>
 #include <QDebug>
 #include <QVariantMap>

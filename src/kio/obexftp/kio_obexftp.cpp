@@ -23,6 +23,8 @@
 #include "kio_obexftp.h"
 #include "kdedobexftp.h"
 
+#include <unistd.h>
+
 #include <KDebug>
 #include <KComponentData>
 #include <KCmdLineArgs>
