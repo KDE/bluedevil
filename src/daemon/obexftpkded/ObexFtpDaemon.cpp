@@ -124,16 +124,13 @@ void ObexFtpDaemon::offlineMode()
         return;
     }
 
-    QHash<QString, ObexSession*>::const_iterator i = d->m_sessionMap.constBegin();
-    while (i != d->m_sessionMap.constEnd()) {
-        if (d->m_sessionMap[i.key()]) {
-            d->m_sessionMap[i.key()]->Disconnect();
-            d->m_sessionMap[i.key()]->Close();
-            d->m_sessionMap[i.key()]->deleteLater();
-        }
-        d->m_sessionMap.remove(i.key());
-        ++i;
+    Q_FOREACH(ObexSession *session, d->m_sessionMap) {
+        session->Disconnect();
+        session->Close();
+        session->deleteLater();
     }
+
+    d->m_sessionMap.clear();
 
     delete d->m_manager;
     d->m_status = Private::Offline;
