@@ -219,6 +219,12 @@ int DiscoverPage::nextId() const
     kDebug() << "From DB: " << m_wizard->agent()->isFromDatabase();
     kDebug() << "PIN: " << m_wizard->agent()->pin();
 
+    //If keyboard no matter what, we go to the keyboard page.
+    if (classToType(device->deviceClass()) == BLUETOOTH_TYPE_KEYBOARD) {
+        kDebug() << "Keyboard Pairing";
+        return BlueWizard::KeyboardPairing;
+    }
+
     //If pin ==  NULL means that not pairing is required
     if (!device->hasLegacyPairing() && !m_wizard->agent()->isFromDatabase()) {
         kDebug() << "Secure Pairing";
@@ -228,11 +234,6 @@ int DiscoverPage::nextId() const
     if (pin == "NULL") {
         kDebug() << "NO Pairing";
         return BlueWizard::NoPairing;
-    }
-
-    if (classToType(device->deviceClass()) == BLUETOOTH_TYPE_KEYBOARD) {
-        kDebug() << "Keyboard Pairing";
-        return BlueWizard::KeyboardPairing;
     }
 
     if (m_wizard->agent()->isFromDatabase()) {
