@@ -335,7 +335,7 @@ void ObexFtpDaemon::SessionClosed(QDBusObjectPath path)
 {
     kDebug();
 
-    QMapIterator<QString, ObexSession*> i(d->m_sessionMap);
+    QHashIterator<QString, ObexSession*> i(d->m_sessionMap);
     while (i.hasNext()) {
         i.next();
         if (i.value()->path() == path.path()) {
@@ -344,7 +344,7 @@ void ObexFtpDaemon::SessionClosed(QDBusObjectPath path)
 
             i.value()->deleteLater();
 
-            d->m_sessionMap.erase(i);
+            d->m_sessionMap.remove(i.key());
             return;
         }
     }
