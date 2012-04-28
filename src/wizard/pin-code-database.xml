@@ -38,7 +38,7 @@
 <!DOCTYPE devices [
     <!ELEMENT devices (device)+>
     <!ELEMENT device EMPTY>
-    <!ATTLIST device type (any|mouse|keyboard|headset|headphones|audio|printer|network) "any">
+    <!ATTLIST device type (any|mouse|tablet|keyboard|headset|headphones|audio|printer|network) "any">
     <!ATTLIST device oui CDATA #IMPLIED>
     <!ATTLIST device name CDATA #IMPLIED>
     <!ATTLIST device pin CDATA #REQUIRED>
@@ -54,16 +54,20 @@
     <!-- Sony PlayStation 3 Remote Control -->
     <device oui="00:19:C1:" name="BD Remote Control" pin="NULL"/>
     <device oui="00:1E:3D:" name="BD Remote Control" pin="NULL"/>
+    <device oui="00:06:F5:" name="BD Remote Control" pin="NULL"/>
 
     <!-- Apple Wireless and Mighty Mouse
          Note: Apple doesn't follow the specs, and requires their mice
          to be paired -->
     <device oui="00:0A:95:" type="mouse" pin="0000"/>
     <device oui="00:14:51:" type="mouse" pin="0000"/>
+    <device oui="34:15:9E:" type="mouse" pin="0000"/>
+    <device oui="C4:2C:03:" type="mouse" pin="0000"/>
 
-    <!-- Wiimote -->
-    <device oui="00:19:1D:" name="Nintendo RVL-CNT-01" pin="NULL"/>
-    <device oui="00:1F:C5:" name="Nintendo RVL-CNT-01" pin="NULL"/>
+    <!-- Apple Magic Trackpad
+         Note: same as above, tablet needs to be paired -->
+    <device oui="D8:A2:5E:" type="tablet" pin="0000"/>
+    <device oui="28:37:37:" type="tablet" pin="0000"/>
 
     <!-- BT-GPS8 JENTRO, GPS mouse -->
     <device oui="00:0D:B5:" name="BT-GPS8 JENTRO" pin="0000"/>
