@@ -128,6 +128,9 @@ bool SSPPairingPage::validatePage()
     if (m_buttonClicked == QWizard::CustomButton2){
         return true;
     }
+    if (deviceFromWizard()->isPaired() &&  m_buttonClicked == QWizard::NoButton) {
+        return true;
+    }
     if (deviceFromWizard()->isPaired() &&  m_buttonClicked == QWizard::CustomButton1) {
         return true;
     }
