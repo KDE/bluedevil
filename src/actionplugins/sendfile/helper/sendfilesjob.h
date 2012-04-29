@@ -49,6 +49,8 @@ public:
     virtual bool doKill();
 
 private Q_SLOTS:
+    void doStart();
+    void sendFileResult(QDBusPendingCallWatcher *call);
     void nextJob(OrgOpenobexTransferInterface *transferObj);
     void jobDone(QDBusObjectPath transfer);
     void progress(QDBusObjectPath transfer, quint64 transferBytes);

@@ -71,20 +71,45 @@ bool SendFilesJob::doKill()
 
 void SendFilesJob::start()
 {
+    QMetaObject::invokeMethod(this, "doStart", Qt::QueuedConnection);
+}
+
+void SendFilesJob::doStart()
+{
+    kDebug();
     QVariantMap map;
     map.insert("Destination", QVariant(m_device->address()));
-
-    OrgOpenobexClientInterface *client = new OrgOpenobexClientInterface("org.openobex.client", "/", QDBusConnection::sessionBus(), this);
-    client->SendFiles(map, m_filesToSend, QDBusObjectPath("/BlueDevil_sendAgent"));
 
     setTotalAmount(Bytes, m_totalSize);
     setProcessedAmount(Bytes, 0);
 
-    emit description(this, i18n("Sending file over bluetooth"), QPair<QString, QString>(i18nc("File transfer origin", "From"), m_filesToSend.first()), QPair<QString, QString>(i18nc("File transfer destination", "To"), m_device->name()));
+    emit description(this, i18n("Sending file over Bluetooth"), QPair<QString, QString>(i18nc("File transfer origin", "From"), m_filesToSend.first()), QPair<QString, QString>(i18nc("File transfer destination", "To"), m_device->name()));
+
+    OrgOpenobexClientInterface *client = new OrgOpenobexClientInterface("org.openobex.client", "/", QDBusConnection::sessionBus(), this);
+    QDBusPendingReply <void > reply = client->SendFiles(map, m_filesToSend, QDBusObjectPath("/BlueDevil_sendAgent"));
+
+    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(reply);
+    connect(watcher, SIGNAL(finished(QDBusPendingCallWatcher*)), this, SLOT(sendFileResult(QDBusPendingCallWatcher*)));
+}
+
+void SendFilesJob::sendFileResult(QDBusPendingCallWatcher *call)
+{
+    const QDBusPendingReply<QDBusObjectPath> reply = *call;
+    call->deleteLater();
+    if (!reply.isError()) {
+        return;
+    }
+
+    kDebug() << "Error:";
+    kDebug() << reply.error().name();
+    kDebug() << reply.error().message();
+    setError(-1);
+    emitResult();
 }
 
 void SendFilesJob::nextJob(OrgOpenobexTransferInterface *transferObj)
 {
+    kDebug();
     m_currentFile = m_filesToSend.takeFirst();
     m_currentFileProgress = 0;
     m_currentFileSize = m_filesToSendSize.takeFirst();
@@ -95,6 +120,7 @@ void SendFilesJob::nextJob(OrgOpenobexTransferInterface *transferObj)
 
 void SendFilesJob::jobDone(QDBusObjectPath transfer)
 {
+    kDebug();
     Q_UNUSED(transfer);
 
     m_currentFileProgress = 0;
@@ -106,6 +132,7 @@ void SendFilesJob::jobDone(QDBusObjectPath transfer)
 
 void SendFilesJob::progress(QDBusObjectPath transfer, quint64 transferBytes)
 {
+    kDebug();
     Q_UNUSED(transfer);
 
     quint64 toAdd = transferBytes - m_currentFileProgress;
@@ -116,7 +143,7 @@ void SendFilesJob::progress(QDBusObjectPath transfer, quint64 transferBytes)
 
 void SendFilesJob::error(QDBusObjectPath transfer, const QString& error)
 {
-    Q_UNUSED(error)
+    kDebug() << error;
 
     //if this is the last file, do not complete it
     if (!m_filesToSend.isEmpty()) {
