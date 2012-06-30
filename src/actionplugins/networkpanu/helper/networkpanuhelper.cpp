@@ -40,7 +40,7 @@ NetworkPANUHelper::NetworkPANUHelper(const KUrl& address) {
     Device *device = Manager::self()->defaultAdapter()->deviceForAddress(address.host().replace("-", ":"));
 
     if(device->isPaired()) {
-        QString constraint("'00001115-0000-1000-8000-00805F9B34FB' in [X-BlueDevil-UUIDS]");
+        QString constraint("'00001116-0000-1000-8000-00805F9B34FB' in [X-BlueDevil-UUIDS]");
 
         KPluginFactory *factory = KPluginLoader(
             KServiceTypeTrader::self()->query("BlueDevil/ActionPlugin", constraint).first().data()->library()
