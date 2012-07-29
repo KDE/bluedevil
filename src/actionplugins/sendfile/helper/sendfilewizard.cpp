@@ -48,6 +48,8 @@ SendFileWizard::SendFileWizard(const QString &deviceUri)
     } else {
         setWindowTitle(i18n("Bluetooth Send Files"));
 
+        setOption(QWizard::NoCancelButton, false);
+
         setButton(QWizard::BackButton, new KPushButton(KStandardGuiItem::back(KStandardGuiItem::UseRTL)));
         setButton(QWizard::NextButton, new KPushButton(KStandardGuiItem::forward(KStandardGuiItem::UseRTL)));
         setButton(QWizard::CancelButton, new KPushButton(KStandardGuiItem::cancel()));
