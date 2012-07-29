@@ -59,6 +59,11 @@ SendFileWizard::SendFileWizard(const QString &deviceUri)
         //We do not want "Forward" as text
         setButtonText(QWizard::NextButton, i18n("Next"));
 
+        // Configure the dialog's size to make it useful
+        setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+        setMinimumSize(680, 400);
+        updateGeometry();
+
         addPage(new SendIntroPage());
         addPage(new SelectFilesPage());
         if (deviceUri.isEmpty()) {
