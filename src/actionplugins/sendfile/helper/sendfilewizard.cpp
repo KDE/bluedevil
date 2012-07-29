@@ -59,6 +59,8 @@ SendFileWizard::SendFileWizard(const QString& deviceInfo, const QStringList& fil
     
     setWindowTitle(i18n("Bluetooth Send Files"));
 
+    setOption(NoCancelButton, false);
+
     setButton(QWizard::NextButton, new KPushButton(KIcon("document-export"), i18n("Send Files")));
     setButton(QWizard::CancelButton, new KPushButton(KStandardGuiItem::cancel()));
 
