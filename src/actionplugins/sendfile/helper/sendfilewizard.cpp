@@ -67,6 +67,12 @@ SendFileWizard::SendFileWizard(const QString& deviceInfo, const QStringList& fil
     setOption(QWizard::DisabledBackButtonOnLastPage);
     setOption(QWizard::NoBackButtonOnStartPage);
 
+    if (deviceInfo.isEmpty() || files.isEmpty()) {
+        setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+        setMinimumSize(680, 400);
+        updateGeometry();
+    }
+
     if (deviceInfo.isEmpty() && files.isEmpty()) {
         addPage(new SelectDeviceAndFilesPage());
     } else if (deviceInfo.isEmpty()) {
@@ -84,7 +90,6 @@ SendFileWizard::SendFileWizard(const QString& deviceInfo, const QStringList& fil
         setDevice(device);
         if (files.isEmpty()) {
             addPage(new SelectFilesPage());
-            setMinimumSize(680, 400);
         } else {
             setFiles(files);
         }
