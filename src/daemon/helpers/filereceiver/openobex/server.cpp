@@ -29,6 +29,7 @@
 #include <KGlobal>
 #include <KConfig>
 #include <KConfigGroup>
+#include <QtCore/QDir>
 #include <QtGui/QDesktopServices>
 
 struct OpenObex::Server::Private
@@ -152,7 +153,31 @@ void OpenObex::Server::serverCreated(QDBusObjectPath path)
 
     kDebug() << "AutoAccept: " << autoAccept;
     kDebug() << "SaveUrl: " << FileReceiverSettings::saveUrl().path();
+
+    checkDestinationDir();
+
+    kDebug() << "Final path: " << FileReceiverSettings::saveUrl().path();
     d->dbusServer->Start(FileReceiverSettings::saveUrl().path(), true, autoAccept);
+}
+
+void OpenObex::Server::checkDestinationDir()
+{
+    QFileInfo dir(FileReceiverSettings::saveUrl().path());
+    if (dir.exists() && dir.isReadable() && dir.isWritable()) {
+        return;
+    }
+
+    if (QDir().mkdir(dir.path())) {
+        return;
+    }
+
+    kDebug() << "Couldn't create dir or it is not readable, fallbacking";
+    kDebug() << dir.path();
+    kDebug() << QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation);
+
+    FileReceiverSettings::setSaveUrl(KUrl(QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation)));
+
+    QDir().mkdir(FileReceiverSettings::saveUrl().path());
 }
 
 void OpenObex::Server::serverCreatedError(QDBusError error)
