@@ -46,6 +46,7 @@ protected Q_SLOTS:
 
 private:
     bool serviceStarted();
+    void checkDestinationDir();
 
 private:
     struct Private;

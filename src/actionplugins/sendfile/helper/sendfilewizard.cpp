@@ -59,11 +59,19 @@ SendFileWizard::SendFileWizard(const QString& deviceInfo, const QStringList& fil
     
     setWindowTitle(i18n("Bluetooth Send Files"));
 
+    setOption(NoCancelButton, false);
+
     setButton(QWizard::NextButton, new KPushButton(KIcon("document-export"), i18n("Send Files")));
     setButton(QWizard::CancelButton, new KPushButton(KStandardGuiItem::cancel()));
 
     setOption(QWizard::DisabledBackButtonOnLastPage);
     setOption(QWizard::NoBackButtonOnStartPage);
+
+    if (deviceInfo.isEmpty() || files.isEmpty()) {
+        setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+        setMinimumSize(680, 400);
+        updateGeometry();
+    }
 
     if (deviceInfo.isEmpty() && files.isEmpty()) {
         addPage(new SelectDeviceAndFilesPage());
@@ -82,7 +90,6 @@ SendFileWizard::SendFileWizard(const QString& deviceInfo, const QStringList& fil
         setDevice(device);
         if (files.isEmpty()) {
             addPage(new SelectFilesPage());
-            setMinimumSize(680, 400);
         } else {
             setFiles(files);
         }
