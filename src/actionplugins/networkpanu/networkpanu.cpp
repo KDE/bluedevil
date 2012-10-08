@@ -40,7 +40,7 @@ NetworkPANUPlugin::NetworkPANUPlugin(QObject* parent, const QVariantList& args)
 void NetworkPANUPlugin::startAction()
 {
     QString deviceInfo;
-    deviceInfo = deviceInfo.append("%1 %2").arg(device()->address()).arg("panu");
+    deviceInfo = deviceInfo.append("%1 %2").arg(device()->address()).arg("nap");
 
     QStringList args;
     args << "create" << "--type" <<  "bluetooth" << "--specific-args" << deviceInfo;
