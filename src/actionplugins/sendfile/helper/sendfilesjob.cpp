@@ -91,7 +91,7 @@ void SendFilesJob::doStart()
 
 void SendFilesJob::sendFileResult(QDBusPendingCallWatcher *call)
 {
-    const QDBusPendingReply<QDBusObjectPath> reply = *call;
+    const QDBusPendingReply<> reply = *call;
     call->deleteLater();
     if (!reply.isError()) {
         return;
