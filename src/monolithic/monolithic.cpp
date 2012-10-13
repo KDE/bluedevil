@@ -613,13 +613,14 @@ void Monolithic::UUIDsChanged(const QStringList &UUIDs)
 void Monolithic::poweredChanged()
 {
     if (!poweredAdapters()) {
+        setIconByName("preferences-system-bluetooth-inactive");
         setTooltipTitleStatus(false);
         setToolTipSubTitle("");
-        setOverlayIconByName("vcs-removed");
     } else {
+        setIconByName("preferences-system-bluetooth");
         setTooltipTitleStatus(true);
-        setOverlayIconByName(QString());
     }
+    setOverlayIconByName(QString());
     regenerateDeviceEntries();
     regenerateConnectedDevices();
 }
