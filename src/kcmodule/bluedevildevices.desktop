@@ -13,6 +13,7 @@ X-KDE-Weight=50
 
 Name=Devices
 Name[ar]=الأجهزة
+Name[bs]=uređaji
 Name[ca]=Dispositius
 Name[ca@valencia]=Dispositius
 Name[cs]=Zařízení
@@ -100,6 +101,7 @@ Comment[zh_TW]=設定已知的藍芽遠端裝置
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
 X-KDE-Keywords[ar]=شبكة,توصيل,بلوتوث
+X-KDE-Keywords[bs]=Network,Connectivity,Bluetooth
 X-KDE-Keywords[ca]=Xarxa,Connectivitat,Bluetooth
 X-KDE-Keywords[ca@valencia]=Xarxa,Connectivitat,Bluetooth
 X-KDE-Keywords[cs]=Síť,Konektivita,Bluetooth

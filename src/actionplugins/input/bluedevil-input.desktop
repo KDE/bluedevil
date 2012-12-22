@@ -39,6 +39,7 @@ Comment[zh_CN]=连接到输入设备(鼠标/键盘/其它)
 Comment[zh_TW]=連線到輸入服務（滑鼠/鍵盤/其他）
 Name=Input
 Name[ar]=الإدخال
+Name[bs]=Ulaz
 Name[ca]=Entrada
 Name[ca@valencia]=Entrada
 Name[cs]=Vstup

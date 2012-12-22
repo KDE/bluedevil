@@ -44,6 +44,7 @@ Comment[zh_CN]=支持通过远程设备发送文件
 Comment[zh_TW]=允許您傳送檔案到遠端裝置
 Name=Send File
 Name[ar]=أرسل ملف
+Name[bs]=Pošalji datoteku
 Name[ca]=Envia fitxer
 Name[ca@valencia]=Envia fitxer
 Name[cs]=Poslat soubor
