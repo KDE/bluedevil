@@ -42,6 +42,7 @@ Comment[x-test]=xxHandles the connection and configuration of an audio devicexx
 Comment[zh_TW]=處理音效裝置的連線與設定
 Name=Audio
 Name[ar]=الصوت
+Name[bs]=Audio
 Name[ca]=Àudio
 Name[ca@valencia]=Àudio
 Name[cs]=Audio

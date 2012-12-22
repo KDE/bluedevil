@@ -44,6 +44,7 @@ Comment[x-test]=xxBlueDevilxx
 Comment[zh_TW]=BlueDevil
 Name=BlueDevil
 Name[ar]=بلوديفل
+Name[bs]=BlueDevil
 Name[ca]=BlueDevil
 Name[ca@valencia]=BlueDevil
 Name[cs]=BlueDevil
@@ -88,6 +89,7 @@ Ignore=true
 [Event/bluedevilAuthorize]
 Name=Access requested
 Name[ar]=طلب صلاحية الوصول
+Name[bs]=Potreban pristup
 Name[ca]=S'ha sol·licitat accés
 Name[ca@valencia]=S'ha sol·licitat accés
 Name[cs]=Vyžádán přístup
@@ -172,6 +174,7 @@ Action=Popup
 [Event/bluedevilConfirmModechange]
 Name=Access requested
 Name[ar]=طلب صلاحية الوصول
+Name[bs]=Potreban pristup
 Name[ca]=S'ha sol·licitat accés
 Name[ca@valencia]=S'ha sol·licitat accés
 Name[cs]=Vyžádán přístup
@@ -256,6 +259,7 @@ Action=Popup
 [Event/bluedevilRequestConfirmation]
 Name=Access requested
 Name[ar]=طلب صلاحية الوصول
+Name[bs]=Potreban pristup
 Name[ca]=S'ha sol·licitat accés
 Name[ca@valencia]=S'ha sol·licitat accés
 Name[cs]=Vyžádán přístup
@@ -339,6 +343,7 @@ Action=Popup
 [Event/bluedevilRequestPin]
 Name=Request PIN
 Name[ar]=اطلب PIN
+Name[bs]=Zahtijevaj PIN
 Name[ca]=Sol·licita el PIN
 Name[ca@valencia]=Sol·licita el PIN
 Name[cs]=Vyžádat PIN
@@ -421,6 +426,7 @@ Action=Popup
 [Event/bluedevilIncomingFile]
 Name=Incoming File
 Name[ar]=الملف الوارد
+Name[bs]=Dolazeća datoteka
 Name[ca]=Fitxer entrant
 Name[ca@valencia]=Fitxer entrant
 Name[cs]=Příchozí soubor

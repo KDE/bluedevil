@@ -42,6 +42,7 @@ Comment[x-test]=xxHandles the connection and configuration of an input devicexx
 Comment[zh_TW]=處理輸入裝置的連線與設定
 Name=Input
 Name[ar]=الإدخال
+Name[bs]=Ulaz
 Name[ca]=Entrada
 Name[ca@valencia]=Entrada
 Name[cs]=Vstup

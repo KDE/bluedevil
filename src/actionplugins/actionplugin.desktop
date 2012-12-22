@@ -4,6 +4,7 @@ X-KDE-ServiceType=BlueDevil/ActionPlugin
 X-KDE-Derived=KPluginInfo
 Name=BlueDevil Service Plugin
 Name[ar]=محلق خدمة بلوديفل
+Name[bs]=BlueDevil Servisni dodatak
 Name[ca]=Connector del servei BlueDevil
 Name[ca@valencia]=Connector del servei BlueDevil
 Name[cs]=Modul služby BlueDevil
