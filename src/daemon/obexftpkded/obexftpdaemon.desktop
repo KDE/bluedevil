@@ -10,7 +10,6 @@ X-KDE-Kded-phase=1
 
 Name=ObexFTP
 Name[ar]=ObexFTP
-Name[bs]=ObexFTP
 Name[ca]=ObexFTP
 Name[ca@valencia]=ObexFTP
 Name[cs]=ObexFTP
@@ -52,7 +51,6 @@ Name[zh_TW]=ObexFTP
 
 Comment=ObexFTP helper daemon
 Comment[ar]=خدمة مساعد ObexFTP
-Comment[bs]=Pomoćni demon ObeksFTP‑a
 Comment[ca]=Dimoni d'ajuda de l'ObexFTP
 Comment[ca@valencia]=Dimoni d'ajuda de l'ObexFTP
 Comment[cs]=Pomocný démon ObexFTP
