@@ -13,6 +13,7 @@ X-KDE-Weight=100
 
 Name=Adapters
 Name[ar]=المحولات
+Name[bs]=Adapteri
 Name[ca]=Adaptadors
 Name[ca@valencia]=Adaptadors
 Name[cs]=Adaptéry
@@ -54,6 +55,7 @@ Name[zh_TW]=轉接器
 
 Comment=Configure the available Bluetooth adapters
 Comment[ar]=اضبط محولات بلوتوث المتوفرة
+Comment[bs]=Podesite dostupne blutut adaptere
 Comment[ca]=Configura els adaptadors Bluetooth disponibles
 Comment[ca@valencia]=Configura els adaptadors Bluetooth disponibles
 Comment[cs]=Nastavte dostupné adaptéry Bluetooth
@@ -95,6 +97,7 @@ Comment[zh_TW]=設定可用的藍芽轉接器
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
 X-KDE-Keywords[ar]=شبكة,توصيل,بلوتوث
+X-KDE-Keywords[bs]=Network,Connectivity,Bluetooth
 X-KDE-Keywords[ca]=Xarxa,Connectivitat,Bluetooth
 X-KDE-Keywords[ca@valencia]=Xarxa,Connectivitat,Bluetooth
 X-KDE-Keywords[cs]=Síť,Konektivita,Bluetooth
