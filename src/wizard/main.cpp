@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 Alejandro Fiestas Olivares <alex@eyeos.org>        *
+ *   Copyright (C) 2010-2013 Alejandro Fiestas Olivares <afiestas@kde.org> *
  *   Copyright (C) 2010 UFO Coders <info@ufocoders.com>                    *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -19,16 +19,18 @@
  ***************************************************************************/
 
 #include "bluewizard.h"
+#include "version.h"
+
 #include <KCmdLineArgs>
 #include <KApplication>
 #include <KAboutData>
 
 int main(int argc, char *argv[])
 {
-    KAboutData aboutData("bluedevilwizard", "bluedevil", ki18n("Bluetooth Wizard"), "0.1", ki18n("Bluetooth Wizard"),
+    KAboutData aboutData("bluedevilwizard", "bluedevil", ki18n("Bluetooth Wizard"), bluedevil_version, ki18n("Bluetooth Wizard"),
         KAboutData::License_GPL, ki18n("(c) 2010, UFO Coders"));
 
-    aboutData.addAuthor(ki18n("Alejandro Fiestas Olivares"), ki18n("Developer"), "alex@ufocoders.org",
+    aboutData.addAuthor(ki18n("Alejandro Fiestas Olivares"), ki18n("Maintainer"), "afiestas@kde.org",
         "http://www.afiestas.org/");
     aboutData.setProgramIconName("preferences-system-bluetooth");
 

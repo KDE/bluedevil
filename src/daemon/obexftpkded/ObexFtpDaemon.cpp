@@ -21,6 +21,7 @@
 #include "ObexFtpDaemon.h"
 #include "obexftpmanager.h"
 #include "obexsession.h"
+#include "version.h"
 
 #include <QVariantMap>
 #include <QHash>
@@ -72,13 +73,13 @@ ObexFtpDaemon::ObexFtpDaemon(QObject *parent, const QList<QVariant>&)
         "obexftpdaemon",
         "bluedevil",
         ki18n("ObexFtp Daemon"),
-        "1.0",
+        bluedevil_version,
         ki18n("ObexFtp Daemon"),
         KAboutData::License_GPL,
         ki18n("(c) 2010, UFO Coders")
     );
 
-    aboutData.addAuthor(ki18n("Alejandro Fiestas Olivares"), ki18n("Maintainer"), "alex@ufocoders.com",
+    aboutData.addAuthor(ki18n("Alejandro Fiestas Olivares"), ki18n("Maintainer"), "afiestas@kde.org",
         "http://www.afiestas.org");
 
     connect(Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)),
