@@ -35,6 +35,7 @@ NetworkDUNHelper::NetworkDUNHelper(const KUrl& address) {
     if (!BlueDevil::Manager::self()->defaultAdapter()) {
         qDebug() << "No Adapters found";
         qApp->exit();
+        return;
     }
 
     Device *device = Manager::self()->defaultAdapter()->deviceForAddress(address.host().replace("-", ":"));
