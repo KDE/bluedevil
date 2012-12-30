@@ -93,8 +93,8 @@ KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
     s.name = i18n("Personal Area Network");
     s.icon = "network-wireless";
     s.mimetype = "application/vnd.kde.bluedevil-network-panu";
-    s.uuid = "00001115-0000-1000-8000-00805F9B34FB";
-    m_supportedServices.insert("00001115-0000-1000-8000-00805F9B34FB", s);
+    s.uuid = "00001116-0000-1000-8000-00805F9B34FB";
+    m_supportedServices.insert("00001116-0000-1000-8000-00805F9B34FB", s);
 
     if (!Manager::self()->defaultAdapter()) {
         kDebug() << "No available interface";
