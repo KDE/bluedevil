@@ -221,7 +221,15 @@ QString ObexFtpDaemon::listDir(QString dirtyAddress, QString path)
     changeCurrentFolder(address, path);
 
     d->m_sessionMap[address]->resetTimer();
-    QString ret = d->m_sessionMap[address]->RetrieveFolderListing().value();
+    QDBusPendingReply<QString> reply = d->m_sessionMap[address]->RetrieveFolderListing();
+    reply.waitForFinished();
+    if (reply.isError()) {
+        kDebug() << reply.error().message();
+        kDebug() << reply.error().name();
+        return QString();
+    }
+
+    QString ret = reply.value();
 
     kDebug() << ret;
 
