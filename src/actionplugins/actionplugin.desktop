@@ -4,6 +4,7 @@ X-KDE-ServiceType=BlueDevil/ActionPlugin
 X-KDE-Derived=KPluginInfo
 Name=BlueDevil Service Plugin
 Name[ar]=محلق خدمة بلوديفل
+Name[bs]=BlueDevil Servisni dodatak
 Name[ca]=Connector del servei BlueDevil
 Name[ca@valencia]=Connector del servei BlueDevil
 Name[cs]=Modul služby BlueDevil
@@ -17,7 +18,9 @@ Name[fi]=BlueDevil-palveluliitännäinen
 Name[fr]=Module externe du service BlueDevil
 Name[hu]=BlueDevil szolgáltatás bővítmény
 Name[it]=Estensione di servizio di BlueDevil
-Name[km]=កម្មវិធី​ជំនួយ​​​សេវាកម្ម BlueDevil​
+Name[kk]=BlueDevil қызмет плагині
+Name[km]=កម្មវិធី​ជំនួយ​​​សេវា BlueDevil​
+Name[lt]=BlueDevil tarnybos papildinys
 Name[nb]=Programtillegg for BlueDevil-tjeneste
 Name[nds]=Moduul för BlueDevil-Deensten
 Name[nl]=Plugin voor BlueDevil-service 
@@ -39,7 +42,6 @@ Name[tr]=BlueDevil Hizmet Eklentisi
 Name[ug]=BlueDevil مۇلازىمەت قىستۇرمىسى
 Name[uk]=Додаток служби BlueDevil
 Name[x-test]=xxBlueDevil Service Pluginxx
-Name[zh_CN]=BlueDevil 服务插件
 Name[zh_TW]=BlueDevil 服務外掛程式
 
 [PropertyDef::X-BlueDevil-UUIDS]
