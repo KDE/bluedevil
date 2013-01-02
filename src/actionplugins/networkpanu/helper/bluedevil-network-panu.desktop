@@ -2,8 +2,17 @@
 Type=Application
 Version=1.0
 Name=BlueDevil Network connect
+Name[pt_BR]=Conexão de rede do BlueDevil
+Name[uk]=З’єднання мережевого пристрою BlueDevil
+Name[x-test]=xxBlueDevil Network connectxx
 Comment=BlueDevil Network connect
+Comment[pt_BR]=Conexão de rede do BlueDevil
+Comment[uk]=З’єднання мережевого пристрою BlueDevil
+Comment[x-test]=xxBlueDevil Network connectxx
 GenericName=BlueDevil Network connect
+GenericName[pt_BR]=Conexão de rede do BlueDevil
+GenericName[uk]=З’єднання мережевого пристрою BlueDevil
+GenericName[x-test]=xxBlueDevil Network connectxx
 MimeType=application/vnd.kde.bluedevil-network-panu;
 Exec=bluedevil-network-panu %U
 Icon=preferences-system-bluetooth

@@ -2,8 +2,17 @@
 Type=Service
 Exec=blubb
 Comment=Connect to Personal Area Network service (PANU)
+Comment[pt_BR]=Conectar ao serviço de rede de área pessoal (PANU)
+Comment[uk]=Встановити зв’язок зі службою особистої мережі (PANU)
+Comment[x-test]=xxConnect to Personal Area Network service (PANU)xx
 Name=PANU
+Name[pt_BR]=PANU
+Name[uk]=PANU
+Name[x-test]=xxPANUxx
 GenericName=PANU
+GenericName[pt_BR]=PANU
+GenericName[uk]=PANU
+GenericName[x-test]=xxPANUxx
 ServiceTypes=BlueDevil/ActionPlugin
 X-KDE-Library=bluedevilnetworkpanuactionplugin
 X-KDE-PluginInfo-Name=Network PANU

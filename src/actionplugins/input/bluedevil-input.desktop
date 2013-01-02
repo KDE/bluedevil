@@ -2,6 +2,9 @@
 Type=Service
 Exec=blubb
 Comment=Connect to the Input service (Mouse/Keyboard/Others)
+Comment[pt_BR]=Conectar ao serviço de entrada (Mouse/Teclado/Outros)
+Comment[uk]=Встановити зв’язок зі службою введення даних (миша, клавіатура, інше)
+Comment[x-test]=xxConnect to the Input service (Mouse/Keyboard/Others)xx
 Name=Input
 Name[ar]=الإدخال
 Name[bs]=Ulaz
