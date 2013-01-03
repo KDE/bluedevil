@@ -2,6 +2,11 @@
 Type=Service
 Exec=blubb
 Comment=Connect to the Input service (Mouse/Keyboard/Others)
+Comment[bs]=Povezivanje na ulaznu uslugu (miš/tastatura/ostalo)
+Comment[cs]=Připojit ke vstupní službě (klávesnice, myš, aj.)
+Comment[da]=Forbind til input-tjenesten (mus/tastatur/andet)
+Comment[es]=Conectar con el dispositivo de entrada (ratón/teclado/otros)
+Comment[it]=Connetti al servizio di ingresso (mouse, tastiera, altro)
 Comment[pt_BR]=Conectar ao serviço de entrada (Mouse/Teclado/Outros)
 Comment[uk]=Встановити зв’язок зі службою введення даних (миша, клавіатура, інше)
 Comment[x-test]=xxConnect to the Input service (Mouse/Keyboard/Others)xx

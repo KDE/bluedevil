@@ -1,8 +1,11 @@
 [Desktop Entry]
 Type=Service
 Name=Send file via Bluetooth
+Name[bs]=Šalji datoteku preko Bluetoots
+Name[cs]=Poslat soubor přes Bluetooth
 Name[da]=Send fil via Bluetooth
 Name[el]=Αποστολή αρχείου μέσω Bluetooth
+Name[es]=Enviar archivo por Bluetooth
 Name[et]=Faili saatmine Bluetoothi kaudu
 Name[hu]=Fájl küldése Bluetoothon
 Name[it]=Invia file via Bluetooth
@@ -16,8 +19,11 @@ Name[x-test]=xxSend file via Bluetoothxx
 Name[zh_TW]=透過藍牙傳送檔案
 X-KDE-Library=bluetoothfiletiemaction
 X-KDE-Submenu=Bluetooth
+X-KDE-Submenu[bs]=Bluetooth
+X-KDE-Submenu[cs]=Bluetooth
 X-KDE-Submenu[da]=Bluetooth
 X-KDE-Submenu[el]=Bluetooth
+X-KDE-Submenu[es]=Bluetooth
 X-KDE-Submenu[et]=Bluetooth
 X-KDE-Submenu[hu]=Bluetooth
 X-KDE-Submenu[it]=Bluetooth

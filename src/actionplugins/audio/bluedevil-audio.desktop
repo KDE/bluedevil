@@ -2,6 +2,11 @@
 Type=Service
 Exec=blubb
 Comment=Connect to the Audio service
+Comment[bs]=Povezivanje na audio uslugu
+Comment[cs]=Připojit ke zvukové službě
+Comment[da]=Forbind til lydtjenesten
+Comment[es]=Conectar con el servicio de audio
+Comment[it]=Connetti al servizio dell'audio
 Comment[pt_BR]=Conectar ao serviço de áudio
 Comment[uk]=Встановити зв’язок зі звуковою службою
 Comment[x-test]=xxConnect to the Audio servicexx
