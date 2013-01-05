@@ -3,6 +3,7 @@ Type=Service
 Exec=blubb
 Comment=Connect to the Input service (Mouse/Keyboard/Others)
 Comment[ar]=وصل إلى خدمة الدخل (لوحة مفاتيح/فأرة/أخرى)
+Comment[bs]=Povezivanje na ulaznu uslugu (miš/tastatura/ostalo)
 Comment[ca]=Connecta al servei d'entrada (Ratolí/Teclat/Altres)
 Comment[ca@valencia]=Connecta al servei d'entrada (Ratolí/Teclat/Altres)
 Comment[cs]=Připojit ke vstupní službě (klávesnice, myš, aj.)
