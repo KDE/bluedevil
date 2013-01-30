@@ -4,6 +4,7 @@ Exec=blubb
 Comment=Connect to the Audio service
 Comment[bs]=Povezivanje na audio uslugu
 Comment[ca]=Connecta al servei d'àudio
+Comment[ca@valencia]=Connecta al servei d'àudio
 Comment[cs]=Připojit ke zvukové službě
 Comment[da]=Forbind til lydtjenesten
 Comment[de]=Mit Audio-Dienst verbinden

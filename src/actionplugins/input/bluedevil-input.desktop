@@ -4,6 +4,7 @@ Exec=blubb
 Comment=Connect to the Input service (Mouse/Keyboard/Others)
 Comment[bs]=Povezivanje na ulaznu uslugu (miš/tastatura/ostalo)
 Comment[ca]=Connecta al servei d'entrada (Ratolí/Teclat/Altres)
+Comment[ca@valencia]=Connecta al servei d'entrada (Ratolí/Teclat/Altres)
 Comment[cs]=Připojit ke vstupní službě (klávesnice, myš, aj.)
 Comment[da]=Forbind til input-tjenesten (mus/tastatur/andet)
 Comment[de]=Mit Eingabe-Dienst verbinden (Maus, Tastatur, Sonstige)
