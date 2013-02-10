@@ -134,5 +134,5 @@ Comment[x-test]=xxBlueDevil Audio connectxx
 Comment[zh_TW]=BlueDevil 音效連線
 Icon=preferences-system-bluetooth
 Terminal=false
-Categories=Qt;KDE;X-Bluetooth;Network;Audio;
+Categories=Qt;KDE;X-Bluetooth;Network;AudioVideo;Audio;
 NoDisplay=true
