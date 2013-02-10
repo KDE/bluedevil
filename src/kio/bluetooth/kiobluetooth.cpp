@@ -1,27 +1,27 @@
-/*  This file is part of the KDE libraries
-
-    Copyright (C) 2010 Eduardo Robles Elvira <edulix@gmail.com>
-    Copyright (C) 2010 Rafael Fernández López <ereslibre@kde.org>
-    Copyright (C) 2010 UFO Coders <info@ufocoders.com>
-
-    This library is free software; you can redistribute it and/or
-    modify it under the terms of the GNU Library General Public
-    License as published by the Free Software Foundation; either
-    version 2 of the License, or (at your option) any later version.
-
-    This library is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-    Library General Public License for more details.
-
-    You should have received a copy of the GNU Library General Public License
-    along with this library; see the file COPYING.LIB.  If not, write to
-    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
-    Boston, MA 02110-1301, USA.
-*/
+/*************************************************************************************
+ *  Copyright (C) 2010-2012 by Alejandro Fiestas Olivares <afiestas@kde.org>         *
+ *  Copyright (C) 2010 Eduardo Robles Elvira <edulix@gmail.com>                      *
+ *  Copyright (C) 2010 Rafael Fernández López <ereslibre@kde.org>                    *
+ *  Copyright (C) 2010 UFO Coders <info@ufocoders.com>                               *
+ *                                                                                   *
+ *  This program is free software; you can redistribute it and/or                    *
+ *  modify it under the terms of the GNU General Public License                      *
+ *  as published by the Free Software Foundation; either version 2                   *
+ *  of the License, or (at your option) any later version.                           *
+ *                                                                                   *
+ *  This program is distributed in the hope that it will be useful,                  *
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of                   *
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the                    *
+ *  GNU General Public License for more details.                                     *
+ *                                                                                   *
+ *  You should have received a copy of the GNU General Public License                *
+ *  along with this program; if not, write to the Free Software                      *
+ *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA   *
+ *************************************************************************************/
 
 #include "kiobluetooth.h"
 #include "kdedbluedevil.h"
+#include "version.h"
 
 #include <QtCore/QThread>
 #include <QDBusMetaType>
@@ -41,7 +41,7 @@ using namespace BlueDevil;
 
 extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
 {
-    KAboutData about("kiobluetooth", "bluedevil", ki18n("kiobluetooth"), 0);
+    KAboutData about("kiobluetooth", "bluedevil", ki18n("kiobluetooth"), bluedevil_version);
     KCmdLineArgs::init(&about);
 
     KApplication app;
@@ -93,8 +93,8 @@ KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
     s.name = i18n("Personal Area Network");
     s.icon = "network-wireless";
     s.mimetype = "application/vnd.kde.bluedevil-network-panu";
-    s.uuid = "00001115-0000-1000-8000-00805F9B34FB";
-    m_supportedServices.insert("00001115-0000-1000-8000-00805F9B34FB", s);
+    s.uuid = "00001116-0000-1000-8000-00805F9B34FB";
+    m_supportedServices.insert("00001116-0000-1000-8000-00805F9B34FB", s);
 
     if (!Manager::self()->defaultAdapter()) {
         kDebug() << "No available interface";

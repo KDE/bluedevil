@@ -21,6 +21,7 @@
 #include "ObexFtpDaemon.h"
 #include "obexftpmanager.h"
 #include "obexsession.h"
+#include "version.h"
 
 #include <QVariantMap>
 #include <QHash>
@@ -72,13 +73,13 @@ ObexFtpDaemon::ObexFtpDaemon(QObject *parent, const QList<QVariant>&)
         "obexftpdaemon",
         "bluedevil",
         ki18n("ObexFtp Daemon"),
-        "1.0",
+        bluedevil_version,
         ki18n("ObexFtp Daemon"),
         KAboutData::License_GPL,
         ki18n("(c) 2010, UFO Coders")
     );
 
-    aboutData.addAuthor(ki18n("Alejandro Fiestas Olivares"), ki18n("Maintainer"), "alex@ufocoders.com",
+    aboutData.addAuthor(ki18n("Alejandro Fiestas Olivares"), ki18n("Maintainer"), "afiestas@kde.org",
         "http://www.afiestas.org");
 
     connect(Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)),
@@ -126,7 +127,7 @@ void ObexFtpDaemon::offlineMode()
 
     QHash<QString, ObexSession*>::const_iterator i = d->m_sessionMap.constBegin();
     while (i != d->m_sessionMap.constEnd()) {
-        if (d->m_sessionMap[i.key()]) {
+        if (d->m_sessionMap.contains(i.key())) {
             d->m_sessionMap[i.key()]->Disconnect();
             d->m_sessionMap[i.key()]->Close();
             d->m_sessionMap[i.key()]->deleteLater();
@@ -220,7 +221,15 @@ QString ObexFtpDaemon::listDir(QString dirtyAddress, QString path)
     changeCurrentFolder(address, path);
 
     d->m_sessionMap[address]->resetTimer();
-    QString ret = d->m_sessionMap[address]->RetrieveFolderListing().value();
+    QDBusPendingReply<QString> reply = d->m_sessionMap[address]->RetrieveFolderListing();
+    reply.waitForFinished();
+    if (reply.isError()) {
+        kDebug() << reply.error().message();
+        kDebug() << reply.error().name();
+        return QString();
+    }
+
+    QString ret = reply.value();
 
     kDebug() << ret;
 

@@ -132,7 +132,7 @@ void BluezAgent::RequestConfirmation(const QDBusObjectPath &device, quint32 pass
 
     QStringList list;
     list.append(remote->name());
-    list.append(QString::number(passkey));
+    list.append(QString("%1").arg(passkey, 6, 10, QLatin1Char('0')));
 
     connect(m_process, SIGNAL(finished(int)), this, SLOT(processClosedBool(int)));
     m_process->start(KStandardDirs::findExe("bluedevil-requestconfirmation"), list);
