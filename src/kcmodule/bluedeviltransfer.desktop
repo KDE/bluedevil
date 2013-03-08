@@ -53,7 +53,7 @@ Name[x-test]=xxFile Transfersxx
 Name[zh_CN]=文件传送
 Name[zh_TW]=檔案傳輸
 
-Comment=Configure the Bluetooth receive files
+Comment=Configure Bluetooth file sharing and transfers
 Comment[ar]=اضبط ملفات المتلقاة عبر بلوتوث
 Comment[bs]=Podesite prijem datoteka preko blututom
 Comment[ca]=Configura la recepció de fitxers per Bluetooth

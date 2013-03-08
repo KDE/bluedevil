@@ -8,7 +8,7 @@ X-KDE-Kded-autoload=true
 X-KDE-Kded-load-on-demand=false
 X-KDE-Kded-phase=1
 
-Name=BlueDevil
+Name=Bluetooth
 Name[ar]=بلوديفل
 Name[bs]=BlueDevil
 Name[ca]=BlueDevil
@@ -53,7 +53,7 @@ Name[x-test]=xxBlueDevilxx
 Name[zh_CN]=BlueDevil
 Name[zh_TW]=BlueDevil
 
-Comment=Bluetooth Management Daemon
+Comment=Handles Bluetooth events
 Comment[ar]=مراقب إدارة بلوتوث
 Comment[bs]=Demon za upravljanje blututom
 Comment[ca]=Dimoni de gestió del Bluetooth

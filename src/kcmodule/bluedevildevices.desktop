@@ -59,7 +59,7 @@ Name[x-test]=xxDevicesxx
 Name[zh_CN]=设备
 Name[zh_TW]=裝置
 
-Comment=Configure the known Bluetooth remote devices
+Comment=Manage Bluetooth devices
 Comment[ar]=اضبط أجهزة بلوتوث البعيدة المعروفة
 Comment[bs]=Podesite poznate udaljene blutut uređaje
 Comment[ca]=Configura els dispositius Bluetooth remots coneguts

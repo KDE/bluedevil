@@ -1,6 +1,6 @@
 [Global]
 IconName=preferences-system-bluetooth
-Comment=BlueDevil
+Comment=Bluetooth notifications
 Comment[ar]=بلوديفل
 Comment[bs]=Bludevil
 Comment[ca]=BlueDevil
@@ -44,7 +44,7 @@ Comment[uk]=BlueDevil
 Comment[x-test]=xxBlueDevilxx
 Comment[zh_CN]=BlueDevil
 Comment[zh_TW]=BlueDevil
-Name=BlueDevil
+Name=Bluetooth
 Name[ar]=بلوديفل
 Name[bs]=BlueDevil
 Name[ca]=BlueDevil
@@ -91,7 +91,7 @@ Name[zh_TW]=BlueDevil
 Ignore=true
 
 [Event/bluedevilAuthorize]
-Name=Access requested
+Name=Authorization Requested
 Name[ar]=طلب صلاحية الوصول
 Name[bs]=Potreban pristup
 Name[ca]=S'ha sol·licitat accés
@@ -134,7 +134,7 @@ Name[uk]=Надійшов запит щодо доступу
 Name[x-test]=xxAccess requestedxx
 Name[zh_CN]=访问请求
 Name[zh_TW]=已要求存取
-Comment=A device wants to connect to you
+Comment=A device wants to connect
 Comment[ar]=جهاز يرغب بالاتصال بك
 Comment[bs]=Uređaj želi da se poveže na ovaj računar
 Comment[ca]=Un dispositiu es vol connectar amb vós
@@ -180,7 +180,7 @@ Comment[zh_TW]=某個裝置希望能與您連線
 Action=Popup
 
 [Event/bluedevilConfirmModechange]
-Name=Access requested
+Name=Confirm Mode Change
 Name[ar]=طلب صلاحية الوصول
 Name[bs]=Potreban pristup
 Name[ca]=S'ha sol·licitat accés
@@ -269,7 +269,7 @@ Comment[zh_TW]=即將改變藍芽模式（例如從一般模式轉換為飛航�
 Action=Popup
 
 [Event/bluedevilRequestConfirmation]
-Name=Access requested
+Name=Confirm PIN
 Name[ar]=طلب صلاحية الوصول
 Name[bs]=Potreban pristup
 Name[ca]=S'ha sol·licitat accés
@@ -312,7 +312,7 @@ Name[uk]=Надійшов запит щодо доступу
 Name[x-test]=xxAccess requestedxx
 Name[zh_CN]=访问请求
 Name[zh_TW]=已要求存取
-Comment=A device asks for confirmation
+Comment=Confirm a device request using matching PINs
 Comment[ar]=جهاز يطب التأكيد
 Comment[bs]=Uređaj traži potvrdu
 Comment[ca]=Un dispositiu demana confirmació
@@ -490,7 +490,7 @@ Name[uk]=Вхідний файл
 Name[x-test]=xxIncoming Filexx
 Name[zh_CN]=正在传入的文件
 Name[zh_TW]=要傳進來的檔案
-Comment=Incoming file
+Comment=Incoming file transfer
 Comment[ar]=الملف الوارد
 Comment[bs]=Dolazna datoteka
 Comment[ca]=Fitxer entrant
