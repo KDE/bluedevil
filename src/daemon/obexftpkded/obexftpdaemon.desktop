@@ -9,5 +9,17 @@ X-KDE-Kded-load-on-demand=false
 X-KDE-Kded-phase=1
 
 Name=Bluetooth File Transfer
+Name[nl]=Bestandsoverdracht via bluetooth
+Name[pt]=Transferência de Ficheiros por Bluetooth
+Name[pt_BR]=Transferência de arquivos por Bluetooth
+Name[sk]=Prenosy súborov Bluetooth
+Name[uk]=Перенесення файла за допомогою Bluetooth
+Name[x-test]=xxBluetooth File Transferxx
 
 Comment=Supports Bluetooth file transfer using ObexFTP
+Comment[nl]=Ondersteunt bestandsoverdracht via bluetooth met ObexFTP
+Comment[pt]=Suporta a transferência de ficheiros por Bluetooth com o ObexFTP
+Comment[pt_BR]=Suporte à transferência de arquivos por Bluetooth usando o ObexFTP
+Comment[sk]=Podporuje Bluetooth prenosy súborov pomocou ObexFTP
+Comment[uk]=Підтримує перенесення файлів Bluetooth за допомогою ObexFTP
+Comment[x-test]=xxSupports Bluetooth file transfer using ObexFTPxx

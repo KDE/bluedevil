@@ -56,6 +56,12 @@ Name[zh_CN]=适配器
 Name[zh_TW]=轉接器
 
 Comment=Configure Bluetooth adapters
+Comment[nl]=Bluetooth-adapters instellen
+Comment[pt]=Configurar os adaptadores de Bluetooth
+Comment[pt_BR]=Configura os adaptadores Bluetooth
+Comment[sk]=Nastaviť adaptéry Bluetooth
+Comment[uk]=Налаштування адаптерів Bluetooth
+Comment[x-test]=xxConfigure Bluetooth adaptersxx
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
 X-KDE-Keywords[ar]=شبكة,توصيل,بلوتوث
