@@ -40,7 +40,7 @@ DiscoverWidget::DiscoverWidget(QWidget* parent)
 
     connect(deviceList, SIGNAL(itemActivated(QListWidgetItem*)), this,
             SLOT(itemSelected(QListWidgetItem*)));
-    connect(Manager::self()->defaultAdapter(), SIGNAL(deviceFound(QVariantMap)), this,
+    connect(Manager::self()->usableAdapter(), SIGNAL(deviceFound(QVariantMap)), this,
             SLOT(deviceFound(QVariantMap)));
 
     startScan();
@@ -55,19 +55,19 @@ void DiscoverWidget::startScan()
     deviceList->clear();
     stopScan();
 
-    QList <Device *> knownDevices = Manager::self()->defaultAdapter()->devices();
+    QList <Device *> knownDevices = Manager::self()->usableAdapter()->devices();
     Q_FOREACH(Device *device, knownDevices) {
         if (device->UUIDs().contains("00001105-0000-1000-8000-00805F9B34FB", Qt::CaseInsensitive)) {
             deviceFound(device);
         }
     }
-    Manager::self()->defaultAdapter()->startDiscovery();
+    Manager::self()->usableAdapter()->startDiscovery();
 }
 
 void DiscoverWidget::stopScan()
 {
-    if (Manager::self()->defaultAdapter()) {
-        Manager::self()->defaultAdapter()->stopDiscovery();
+    if (Manager::self()->usableAdapter()) {
+        Manager::self()->usableAdapter()->stopDiscovery();
     }
 }
 
@@ -117,7 +117,7 @@ void DiscoverWidget::deviceFoundGeneric(QString address, QString name, QString i
         m_itemRelation[address]->setData(Qt::UserRole+1, origName);
 
         if (deviceList->currentItem() == m_itemRelation[address]) {
-            emit deviceSelected(Manager::self()->defaultAdapter()->deviceForAddress(address));
+            emit deviceSelected(Manager::self()->usableAdapter()->deviceForAddress(address));
         }
         return;
     }
@@ -132,5 +132,5 @@ void DiscoverWidget::deviceFoundGeneric(QString address, QString name, QString i
 
 void DiscoverWidget::itemSelected(QListWidgetItem* item)
 {
-    emit deviceSelected(Manager::self()->defaultAdapter()->deviceForAddress(item->data(Qt::UserRole).toString()));
+    emit deviceSelected(Manager::self()->usableAdapter()->deviceForAddress(item->data(Qt::UserRole).toString()));
 }

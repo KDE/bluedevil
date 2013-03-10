@@ -79,7 +79,7 @@ private Q_SLOTS:
      * Called when the default adapter changes, re-initialize the kded with the new
      * default adapter
      */
-    void defaultAdapterChanged(Adapter *adapter);
+    void usableAdapterChanged(Adapter *adapter);
 
     /**
      * When the agent is released this is called to unload it

@@ -382,14 +382,14 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     setLayout(layout);
 
 //Logic
-    connect(BlueDevil::Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)),
-            this, SLOT(defaultAdapterChanged(Adapter*)));
+    connect(BlueDevil::Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)),
+            this, SLOT(usableAdapterChanged(Adapter*)));
 
-    BlueDevil::Adapter *const defaultAdapter = BlueDevil::Manager::self()->defaultAdapter();
-    if (defaultAdapter) {
-        connect(defaultAdapter, SIGNAL(discoverableChanged(bool)),
+    BlueDevil::Adapter *const usableAdapter = BlueDevil::Manager::self()->usableAdapter();
+    if (usableAdapter) {
+        connect(usableAdapter, SIGNAL(discoverableChanged(bool)),
                 this, SLOT(adapterDiscoverableChanged()));
-        connect(defaultAdapter, SIGNAL(devicesChanged(QList<Device*>)),
+        connect(usableAdapter, SIGNAL(devicesChanged(QList<Device*>)),
                 this, SLOT(adapterDevicesChanged(QList<Device*>)));
     }
 
@@ -489,10 +489,10 @@ void KCMBlueDevilDevices::removeDevice()
     QString ubi = device->UBI();
     if (KMessageBox::questionYesNo(this, i18n("Are you sure that you want to remove device \"%1\" from the list of known devices?", device->alias()),
                                    i18nc("Title of window that asks for confirmation when removing a device", "Device removal")) == KMessageBox::Yes) {
-        QList<Device *> deviceList = BlueDevil::Manager::self()->defaultAdapter()->devices();
+        QList<Device *> deviceList = BlueDevil::Manager::self()->usableAdapter()->devices();
         Q_FOREACH(Device *item, deviceList) {
             if (item->UBI() == ubi) {
-                BlueDevil::Manager::self()->defaultAdapter()->removeDevice(device);
+                BlueDevil::Manager::self()->usableAdapter()->removeDevice(device);
                 return;
             }
         }
@@ -515,7 +515,7 @@ void KCMBlueDevilDevices::launchWizard()
     wizard.startDetached();
 }
 
-void KCMBlueDevilDevices::defaultAdapterChanged(Adapter *adapter)
+void KCMBlueDevilDevices::usableAdapterChanged(Adapter *adapter)
 {
     if (adapter) {
         connect(adapter, SIGNAL(discoverableChanged(bool)),
@@ -567,10 +567,10 @@ void KCMBlueDevilDevices::generateNoDevicesMessage()
 void KCMBlueDevilDevices::fillRemoteDevicesModelInformation()
 {
     m_devicesModel->removeRows(0, m_devicesModel->rowCount());
-    Adapter *defaultAdapter = BlueDevil::Manager::self()->defaultAdapter();
+    Adapter *usableAdapter = BlueDevil::Manager::self()->usableAdapter();
     QList<Device*> deviceList;
-    if (defaultAdapter) {
-        deviceList = defaultAdapter->devices();
+    if (usableAdapter) {
+        deviceList = usableAdapter->devices();
     }
     if (deviceList.isEmpty()) {
         generateNoDevicesMessage();
@@ -652,8 +652,8 @@ void KCMBlueDevilDevices::updateInformationState()
     m_devices->setEnabled(false);
 
     if (m_isEnabled) {
-        BlueDevil::Adapter *const defaultAdapter = BlueDevil::Manager::self()->defaultAdapter();
-        if (defaultAdapter) {
+        BlueDevil::Adapter *const usableAdapter = BlueDevil::Manager::self()->usableAdapter();
+        if (usableAdapter) {
             m_addDevice->setEnabled(true);
             m_devices->setEnabled(true);
         }

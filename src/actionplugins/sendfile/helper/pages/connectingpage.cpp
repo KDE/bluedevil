@@ -36,7 +36,7 @@ ConnectingPage::ConnectingPage(QWidget* parent): QWizardPage(parent)
 
 void ConnectingPage::initializePage()
 {
-    Manager::self()->defaultAdapter()->stopDiscovery();
+    Manager::self()->usableAdapter()->stopDiscovery();
     Device *device = static_cast<SendFileWizard* >(wizard())->device();
     connLabel->setText(i18nc("Connecting to a Bluetooth device", "Connecting to %1...", device->name()));
 

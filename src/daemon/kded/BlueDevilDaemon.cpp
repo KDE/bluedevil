@@ -92,14 +92,14 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     aboutData.addAuthor(ki18n("Eduardo Robles Elvira"), ki18n("Maintainer"), "edulix@gmail.com",
         "http://blog.edulix.es");
 
-    connect(Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)),
-            this, SLOT(defaultAdapterChanged(Adapter*)));
+    connect(Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)),
+            this, SLOT(usableAdapterChanged(Adapter*)));
 
-    connect(Manager::self()->defaultAdapter(), SIGNAL(deviceFound(Device*)), this, SLOT(deviceFound(Device*)));
-    connect(&d->m_timer, SIGNAL(timeout()), Manager::self()->defaultAdapter(), SLOT(stopDiscovery()));
+    connect(Manager::self()->usableAdapter(), SIGNAL(deviceFound(Device*)), this, SLOT(deviceFound(Device*)));
+    connect(&d->m_timer, SIGNAL(timeout()), Manager::self()->usableAdapter(), SLOT(stopDiscovery()));
 
     d->m_status = Private::Offline;
-    if (Manager::self()->defaultAdapter()) {
+    if (Manager::self()->usableAdapter()) {
         onlineMode();
     }
 }
@@ -125,7 +125,7 @@ QMapDeviceInfo BlueDevilDaemon::knownDevices()
 {
     QMapDeviceInfo devices;
 
-    QList <Device* > list = Manager::self()->defaultAdapter()->devices();
+    QList <Device* > list = Manager::self()->usableAdapter()->devices();
     kDebug() << "List: " << list.length();
     DeviceInfo info;
     Q_FOREACH(const Device* device, list) {
@@ -137,7 +137,7 @@ QMapDeviceInfo BlueDevilDaemon::knownDevices()
 
     if (!d->m_timer.isActive()) {
         kDebug() << "Start Discovery";
-        Manager::self()->defaultAdapter()->startStableDiscovery();
+        Manager::self()->usableAdapter()->startStableDiscovery();
         d->m_discovered.clear();
         d->m_timer.start();
     }
@@ -154,7 +154,7 @@ void BlueDevilDaemon::stopDiscovering()
 {
     kDebug() << "Stopping discovering";
     d->m_timer.stop();
-    Manager::self()->defaultAdapter()->stopDiscovery();
+    Manager::self()->usableAdapter()->stopDiscovery();
 }
 
 bool BlueDevilDaemon::isServiceStarted()
@@ -182,7 +182,7 @@ void BlueDevilDaemon::onlineMode()
     d->m_bluezAgent = new BluezAgent(new QObject());
     connect(d->m_bluezAgent, SIGNAL(agentReleased()), this, SLOT(agentReleased()));
 
-    d->m_adapter = Manager::self()->defaultAdapter();
+    d->m_adapter = Manager::self()->usableAdapter();
 
     FileReceiverSettings::self()->readConfig();
     if (!isServiceStarted() && FileReceiverSettings::self()->enabled()) {
@@ -259,7 +259,7 @@ void BlueDevilDaemon::agentReleased()
     //TODO think what to do
 }
 
-void BlueDevilDaemon::defaultAdapterChanged(Adapter *adapter)
+void BlueDevilDaemon::usableAdapterChanged(Adapter *adapter)
 {
     //if we have an adapter, remove it and offline the KDED for a moment
     if (d->m_adapter) {

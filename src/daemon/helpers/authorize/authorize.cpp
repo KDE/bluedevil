@@ -66,7 +66,7 @@ Authorize::Authorize()
 void Authorize::trust()
 {
     qDebug() << "Trusted";
-    BlueDevil::Manager::self()->defaultAdapter()->deviceForUBI(qApp->arguments()[2])->setTrusted(true);
+    BlueDevil::Manager::self()->usableAdapter()->deviceForUBI(qApp->arguments()[2])->setTrusted(true);
     qApp->exit(0);
 }
 

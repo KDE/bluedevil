@@ -62,19 +62,19 @@ void Service::launchServer()
         connect(m_watcher, SIGNAL(serviceUnregistered(QString)), this, SLOT(openobexUnregistered()));
     }
 
-    if (BlueDevil::Manager::self()->defaultAdapter()) {
+    if (BlueDevil::Manager::self()->usableAdapter()) {
 
         FileReceiverSettings::self()->readConfig();
         if (FileReceiverSettings::enabled()) {
             if (!m_server) {
                 kDebug() << "Launching Server";
-                m_server = new OpenObex::Server(BlueDevil::Manager::self()->defaultAdapter()->address());
+                m_server = new OpenObex::Server(BlueDevil::Manager::self()->usableAdapter()->address());
             }
         }
         if (FileReceiverSettings::shareEnabled()) {
             if (!m_serverftp) {
                 kDebug() << "Launching FileSharing";
-                m_serverftp = new OpenObex::ServerFtp(BlueDevil::Manager::self()->defaultAdapter()->address());
+                m_serverftp = new OpenObex::ServerFtp(BlueDevil::Manager::self()->usableAdapter()->address());
             }
         }
     } else{

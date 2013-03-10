@@ -268,12 +268,12 @@ void SystemCheck::updateInformationState()
         return;
     }
 
-    BlueDevil::Adapter *const defaultAdapter = BlueDevil::Manager::self()->defaultAdapter();
-    if (!defaultAdapter) {
+    BlueDevil::Adapter *const usableAdapter = BlueDevil::Manager::self()->usableAdapter();
+    if (!usableAdapter) {
         m_noAdaptersError->setVisible(true);
         return;
     }
-    if (!defaultAdapter->isDiscoverable()) {
+    if (!usableAdapter->isDiscoverable()) {
         m_notDiscoverableAdapterError->setVisible(true);
         return;
     }
@@ -296,8 +296,8 @@ void SystemCheck::fixNoKDEDRunning()
 void SystemCheck::fixNotDiscoverableAdapterError()
 {
     m_notDiscoverableAdapterError->setVisible(false);
-    BlueDevil::Manager::self()->defaultAdapter()->setDiscoverable(true);
-    BlueDevil::Manager::self()->defaultAdapter()->setDiscoverableTimeout(0);
+    BlueDevil::Manager::self()->usableAdapter()->setDiscoverable(true);
+    BlueDevil::Manager::self()->usableAdapter()->setDiscoverableTimeout(0);
     // No need to call to updateInformationState, since we are changing this property, it will be
     // triggered automatically.
 }

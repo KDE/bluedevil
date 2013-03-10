@@ -47,7 +47,7 @@ SendFileWizard::SendFileWizard(const QString& deviceInfo, const QStringList& fil
     , m_device(0)
     , m_job(0)
 {
-    if (!BlueDevil::Manager::self()->defaultAdapter()) {
+    if (!BlueDevil::Manager::self()->usableAdapter()) {
         kDebug() << "No Adapters found";
         qApp->exit();
         return;
@@ -132,9 +132,9 @@ void SendFileWizard::setDevice(QString deviceUrl)
         deviceUrl.replace(":", "-");
         deviceUrl.prepend("bluetooth:");
         KUrl url(deviceUrl);
-        device = Manager::self()->defaultAdapter()->deviceForAddress(url.host().replace("-", ":"));
+        device = Manager::self()->usableAdapter()->deviceForAddress(url.host().replace("-", ":"));
     } else {
-        device = Manager::self()->defaultAdapter()->deviceForUBI(deviceUrl);
+        device = Manager::self()->usableAdapter()->deviceForUBI(deviceUrl);
     }
 
     if (!device->isReady()) {

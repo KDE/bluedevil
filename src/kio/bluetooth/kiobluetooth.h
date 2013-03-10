@@ -80,8 +80,6 @@ public:
      */
     void setHost(const QString &constHostname, quint16 port, const QString &user, const QString &pass);
 
-    void defaultAdapterChanged(Adapter *adapter);
-
     /**
      * Returns a list of supported service names corresponding to the given uuids list. If an uuid is
      * not found in the uuids list, it is not added to the list of service names.

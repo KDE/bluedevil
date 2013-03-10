@@ -56,7 +56,7 @@ void FailPage::initializePage()
 
     m_wizard->setButtonLayout(list);
 
-    Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
+    Device *device = Manager::self()->usableAdapter()->deviceForAddress(m_wizard->deviceAddress());
     if (device->name().isEmpty()) {
         failLbl->setText(i18nc("This string is shown when the wizard fail","The setup of the device has failed"));
     } else {

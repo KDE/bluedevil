@@ -90,7 +90,7 @@ int LegacyPairingPage::nextId() const
 
 Device* LegacyPairingPage::deviceFromWizard()
 {
-    return Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
+    return Manager::self()->usableAdapter()->deviceForAddress(m_wizard->deviceAddress());
 }
 
 QList<QWizard::WizardButton> LegacyPairingPage::wizardButtonsLayout() const

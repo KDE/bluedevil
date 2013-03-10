@@ -63,7 +63,7 @@ private Q_SLOTS:
     void disconnectDevice();
     void launchWizard();
 
-    void defaultAdapterChanged(Adapter *adapter);
+    void usableAdapterChanged(Adapter *adapter);
     void adapterDiscoverableChanged();
     void adapterDevicesChanged(const QList<Device*> &devices);
 

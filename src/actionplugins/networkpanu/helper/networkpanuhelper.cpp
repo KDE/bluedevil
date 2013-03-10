@@ -32,13 +32,13 @@
 using namespace BlueDevil;
 
 NetworkPANUHelper::NetworkPANUHelper(const KUrl& address) {
-    if (!BlueDevil::Manager::self()->defaultAdapter()) {
+    if (!BlueDevil::Manager::self()->usableAdapter()) {
         qDebug() << "No Adapters found";
         qApp->exit();
         return;
     }
 
-    Device *device = Manager::self()->defaultAdapter()->deviceForAddress(address.host().replace("-", ":"));
+    Device *device = Manager::self()->usableAdapter()->deviceForAddress(address.host().replace("-", ":"));
 
     if(device->isPaired()) {
         QString constraint("'00001116-0000-1000-8000-00805F9B34FB' in [X-BlueDevil-UUIDS]");

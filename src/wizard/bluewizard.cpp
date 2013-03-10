@@ -93,7 +93,7 @@ void BlueWizard::done(int result)
             kDebug() << "Connecting to: " << m_service->name();
             KPluginFactory *factory = KPluginLoader(m_service->library()).factory();
 
-            Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_deviceAddress);
+            Device *device = Manager::self()->usableAdapter()->deviceForAddress(m_deviceAddress);
             ActionPlugin *plugin = factory->create<ActionPlugin>(this);
             connect(plugin, SIGNAL(finished()), qApp, SLOT(quit()));
 

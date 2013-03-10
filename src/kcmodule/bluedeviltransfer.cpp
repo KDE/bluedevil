@@ -84,12 +84,12 @@ KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
     addConfig(FileReceiverSettings::self(), transfer);
 
     connect(m_uiTransfer->sharedFiles, SIGNAL(clicked(bool)), this, SLOT(showSharedFilesDialog()));
-    connect(BlueDevil::Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)),
-            this, SLOT(defaultAdapterChanged(Adapter*)));
+    connect(BlueDevil::Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)),
+            this, SLOT(usableAdapterChanged(Adapter*)));
 
-    BlueDevil::Adapter *const defaultAdapter = BlueDevil::Manager::self()->defaultAdapter();
-    if (defaultAdapter) {
-        connect(defaultAdapter, SIGNAL(discoverableChanged(bool)),
+    BlueDevil::Adapter *const usableAdapter = BlueDevil::Manager::self()->usableAdapter();
+    if (usableAdapter) {
+        connect(usableAdapter, SIGNAL(discoverableChanged(bool)),
                 this, SLOT(adapterDiscoverableChanged()));
     }
 
@@ -124,7 +124,7 @@ void KCMBlueDevilTransfer::save()
     service->launchServer();
 }
 
-void KCMBlueDevilTransfer::defaultAdapterChanged(Adapter *adapter)
+void KCMBlueDevilTransfer::usableAdapterChanged(Adapter *adapter)
 {
     if (adapter) {
         connect(adapter, SIGNAL(discoverableChanged(bool)),

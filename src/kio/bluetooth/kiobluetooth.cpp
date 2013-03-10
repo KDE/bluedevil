@@ -96,7 +96,7 @@ KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
     s.uuid = "00001116-0000-1000-8000-00805F9B34FB";
     m_supportedServices.insert("00001116-0000-1000-8000-00805F9B34FB", s);
 
-    if (!Manager::self()->defaultAdapter()) {
+    if (!Manager::self()->usableAdapter()) {
         kDebug() << "No available interface";
         infoMessage(i18n("No Bluetooth adapters have been found."));
         return;
@@ -124,7 +124,7 @@ void KioBluetooth::listRemoteDeviceServices()
     infoMessage(i18n("Retrieving services..."));
 
     kDebug() << "Listing remote devices";
-    m_currentHost = Manager::self()->defaultAdapter()->deviceForAddress(m_currentHostname.replace('-', ':').toUpper());
+    m_currentHost = Manager::self()->usableAdapter()->deviceForAddress(m_currentHostname.replace('-', ':').toUpper());
     m_currentHostServices = getSupportedServices(m_currentHost->UUIDs());
 
     kDebug() << "Num of supported services: " << m_currentHostServices.size();

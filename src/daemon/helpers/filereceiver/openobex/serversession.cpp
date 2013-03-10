@@ -51,7 +51,7 @@ ServerSession::ServerSession(const QString& path, const QString& bluetoothAddres
     m_deleteLater = false;
     m_doNotDelete = false;
 
-    m_bluetoothDevice = BlueDevil::Manager::self()->defaultAdapter()->deviceForAddress(bluetoothAddress);
+    m_bluetoothDevice = BlueDevil::Manager::self()->usableAdapter()->deviceForAddress(bluetoothAddress);
     QDBusConnection* dbus = new QDBusConnection("dbus");
     QDBusConnection dbusConnection = dbus->connectToBus(QDBusConnection::SessionBus, "dbus");
     m_dbusServerSession = new org::openobex::ServerSession("org.openobex", path, dbusConnection,

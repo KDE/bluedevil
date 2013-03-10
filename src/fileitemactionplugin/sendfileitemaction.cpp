@@ -53,10 +53,10 @@ QList< QAction* > SendFileItemAction::actions(const KFileItemListProperties& fil
     hack->m_fileItemInfos = fileItemInfos;
 
     //If there is no adaptor, there is no bluetooth
-    if (!Manager::self()->defaultAdapter()) {
+    if (!Manager::self()->usableAdapter()) {
         return list;
     }
-    Adapter *adapter = Manager::self()->defaultAdapter();
+    Adapter *adapter = Manager::self()->usableAdapter();
 
     QAction *menuAction = new QAction(KIcon("preferences-system-bluetooth"), i18n("Send via Bluetooth"), hack);
     QMenu *menu = new QMenu();

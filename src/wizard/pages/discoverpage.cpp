@@ -61,7 +61,7 @@ void DiscoverPage::initializePage()
     list << QWizard::CancelButton;
     m_wizard->setButtonLayout(list);
 
-    connect(Manager::self()->defaultAdapter(), SIGNAL(deviceFound(QVariantMap)), this,
+    connect(Manager::self()->usableAdapter(), SIGNAL(deviceFound(QVariantMap)), this,
         SLOT(deviceFound(QVariantMap)));
     connect(manualPin, SIGNAL(toggled(bool)), pinText, SLOT(setEnabled(bool)));
     connect(manualPin, SIGNAL(toggled(bool)), this, SIGNAL(completeChanged()));
@@ -102,15 +102,15 @@ void DiscoverPage::startScan()
     deviceList->clear();
     stopScan();
 
-    if (Manager::self()->defaultAdapter()) {
-        Manager::self()->defaultAdapter()->startDiscovery();
+    if (Manager::self()->usableAdapter()) {
+        Manager::self()->usableAdapter()->startDiscovery();
     }
 }
 
 void DiscoverPage::stopScan()
 {
-    if (Manager::self()->defaultAdapter()) {
-        Manager::self()->defaultAdapter()->stopDiscovery();
+    if (Manager::self()->usableAdapter()) {
+        Manager::self()->usableAdapter()->stopDiscovery();
     }
 }
 
@@ -199,8 +199,8 @@ int DiscoverPage::nextId() const
 
     kDebug() << "Stopping scanning";
 
-    Manager::self()->defaultAdapter()->stopDiscovery();
-    Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
+    Manager::self()->usableAdapter()->stopDiscovery();
+    Device *device = Manager::self()->usableAdapter()->deviceForAddress(m_wizard->deviceAddress());
     if (device->isPaired()) {
         kDebug() << "Device is paired, jumping";
         return BlueWizard::Services;

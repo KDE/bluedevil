@@ -32,13 +32,13 @@
 using namespace BlueDevil;
 
 InputHelper::InputHelper(const KUrl& address) {
-    if (!BlueDevil::Manager::self()->defaultAdapter()) {
+    if (!BlueDevil::Manager::self()->usableAdapter()) {
         qDebug() << "No Adapters found";
         qApp->exit();
         return;
     }
 
-    Device *device = Manager::self()->defaultAdapter()->deviceForAddress(address.host().replace("-", ":"));
+    Device *device = Manager::self()->usableAdapter()->deviceForAddress(address.host().replace("-", ":"));
     device->UUIDs();
     WizardAgent *agent = new WizardAgent(qApp);
 

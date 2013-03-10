@@ -117,7 +117,7 @@ AdapterSettings::AdapterSettings(Adapter *adapter, KCModule *parent)
     connect(m_discoverTime, SIGNAL(valueChanged(int)), this, SLOT(slotSettingsChanged()));
     connect(m_powered, SIGNAL(stateChanged(int)), this, SLOT(slotSettingsChanged()));
 
-    if (BlueDevil::Manager::self()->defaultAdapter() == adapter) {
+    if (BlueDevil::Manager::self()->usableAdapter() == adapter) {
         setTitle(i18n("Default adapter: %1 (%2)", adapter->name(), adapter->address()));
     } else {
         setTitle(i18n("Adapter: %1 (%2)", adapter->name(), adapter->address()));
@@ -202,7 +202,7 @@ void AdapterSettings::readChanges()
     m_powered->setChecked(m_poweredOrig);
 
     m_discoverTimeLabel->setText(i18np("1 minute", "%1 minutes", m_discoverTime->value()));
-    if (BlueDevil::Manager::self()->defaultAdapter() == m_adapter) {
+    if (BlueDevil::Manager::self()->usableAdapter() == m_adapter) {
         setTitle(i18n("Default adapter: %1 (%2)", m_adapter->name(), m_adapter->address()));
     } else {
         setTitle(i18n("Adapter: %1 (%2)", m_adapter->name(), m_adapter->address()));
@@ -263,12 +263,12 @@ KCMBlueDevilAdapters::KCMBlueDevilAdapters(QWidget *parent, const QVariantList&)
             this, SLOT(updateAdapters()));
     connect(BlueDevil::Manager::self(), SIGNAL(adapterRemoved(Adapter*)),
             this, SLOT(updateAdapters()));
-    connect(BlueDevil::Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)),
-            this, SLOT(defaultAdapterChanged(Adapter*)));
+    connect(BlueDevil::Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)),
+            this, SLOT(usableAdapterChanged(Adapter*)));
 
-    BlueDevil::Adapter *const defaultAdapter = BlueDevil::Manager::self()->defaultAdapter();
-    if (defaultAdapter) {
-        connect(defaultAdapter, SIGNAL(discoverableChanged(bool)),
+    BlueDevil::Adapter *const usableAdapter = BlueDevil::Manager::self()->usableAdapter();
+    if (usableAdapter) {
+        connect(usableAdapter, SIGNAL(discoverableChanged(bool)),
                 this, SLOT(adapterDiscoverableChanged()));
     }
 
@@ -298,7 +298,7 @@ void KCMBlueDevilAdapters::updateAdapters()
     QTimer::singleShot(300, this, SLOT(updateInformationState()));
 }
 
-void KCMBlueDevilAdapters::defaultAdapterChanged(Adapter *adapter)
+void KCMBlueDevilAdapters::usableAdapterChanged(Adapter *adapter)
 {
     if (adapter) {
         connect(adapter, SIGNAL(discoverableChanged(bool)),

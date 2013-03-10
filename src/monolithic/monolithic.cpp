@@ -42,12 +42,12 @@ Monolithic::Monolithic(QObject* parent)
 
     offlineMode();
 
-    if (Manager::self()->defaultAdapter()) {
+    if (Manager::self()->usableAdapter()) {
         onlineMode();
     }
 
     connect(Manager::self(), SIGNAL(adapterAdded(Adapter*)), this, SLOT(adapterAdded()));
-    connect(Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)), this, SLOT(noAdapters(Adapter*)));
+    connect(Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)), this, SLOT(noAdapters(Adapter*)));
 
     setStandardActionsEnabled(false);
     setAssociatedWidget(contextMenu());
@@ -116,7 +116,7 @@ bool sortDevices(Device *device1, Device *device2)
 
 void Monolithic::regenerateDeviceEntries()
 {
-    if (!Manager::self()->defaultAdapter()) {
+    if (!Manager::self()->usableAdapter()) {
         return;
     }
 
@@ -155,7 +155,7 @@ void Monolithic::regenerateDeviceEntries()
     separator->setSeparator(true);
     menu->addAction(separator);
 
-    QList<Device*> devices = Manager::self()->defaultAdapter()->devices();
+    QList<Device*> devices = Manager::self()->usableAdapter()->devices();
     if (!devices.isEmpty()) {
         menu->addTitle(i18n("Known Devices"));
         qStableSort(devices.begin(), devices.end(), sortDevices);
@@ -330,7 +330,7 @@ void Monolithic::regenerateDeviceEntries()
 
     KAction *discoverable = new KAction(i18n("Discoverable"), menu);
     discoverable->setCheckable(true);
-    discoverable->setChecked(Manager::self()->defaultAdapter()->isDiscoverable());
+    discoverable->setChecked(Manager::self()->usableAdapter()->isDiscoverable());
     connect(discoverable, SIGNAL(toggled(bool)), this, SLOT(activeDiscoverable(bool)));
     menu->addAction(discoverable);
 
@@ -348,8 +348,8 @@ void Monolithic::regenerateDeviceEntries()
 void Monolithic::regenerateConnectedDevices()
 {
     unsigned int connectedDevices = 0;
-    if (Manager::self()->defaultAdapter()) {
-        QList<Device*> devices = Manager::self()->defaultAdapter()->devices();
+    if (Manager::self()->usableAdapter()) {
+        QList<Device*> devices = Manager::self()->usableAdapter()->devices();
         Q_FOREACH(Device* device, devices) {
             if (device->isConnected()) {
                 ++connectedDevices;
@@ -369,12 +369,12 @@ void Monolithic::onlineMode()
 {
     setStatus(KStatusNotifierItem::Active);
 
-    connect(Manager::self()->defaultAdapter(), SIGNAL(deviceCreated(Device*)), this, SLOT(deviceCreated(Device*)));
-    connect(Manager::self()->defaultAdapter(), SIGNAL(deviceDisappeared(Device*)), this, SLOT(regenerateDeviceEntries()));
-    connect(Manager::self()->defaultAdapter(), SIGNAL(deviceRemoved(Device*)), this, SLOT(regenerateDeviceEntries()));
-    connect(Manager::self()->defaultAdapter(), SIGNAL(poweredChanged(bool)), this, SLOT(poweredChanged()));
-    connect(Manager::self()->defaultAdapter(), SIGNAL(discoverableChanged(bool)), this, SLOT(regenerateDeviceEntries()));
-    QList<Device*> devices = Manager::self()->defaultAdapter()->devices();
+    connect(Manager::self()->usableAdapter(), SIGNAL(deviceCreated(Device*)), this, SLOT(deviceCreated(Device*)));
+    connect(Manager::self()->usableAdapter(), SIGNAL(deviceDisappeared(Device*)), this, SLOT(regenerateDeviceEntries()));
+    connect(Manager::self()->usableAdapter(), SIGNAL(deviceRemoved(Device*)), this, SLOT(regenerateDeviceEntries()));
+    connect(Manager::self()->usableAdapter(), SIGNAL(poweredChanged(bool)), this, SLOT(poweredChanged()));
+    connect(Manager::self()->usableAdapter(), SIGNAL(discoverableChanged(bool)), this, SLOT(regenerateDeviceEntries()));
+    QList<Device*> devices = Manager::self()->usableAdapter()->devices();
     Q_FOREACH(Device* device, devices) {
         connect(device, SIGNAL(propertyChanged(QString,QVariant)), this, SLOT(regenerateConnectedDevices()));
     }
@@ -638,9 +638,9 @@ void Monolithic::offlineMode()
     setStatus(KStatusNotifierItem::Passive);
     setTooltipTitleStatus(false);
 
-    disconnect(Manager::self()->defaultAdapter(), SIGNAL(deviceCreated(Device*)), this, SLOT(deviceCreated(Device*)));
-    disconnect(Manager::self()->defaultAdapter(), SIGNAL(deviceDisappeared(Device*)), this, SLOT(regenerateDeviceEntries()));
-    disconnect(Manager::self()->defaultAdapter(), SIGNAL(deviceRemoved(Device*)), this, SLOT(regenerateDeviceEntries()));
+    disconnect(Manager::self()->usableAdapter(), SIGNAL(deviceCreated(Device*)), this, SLOT(deviceCreated(Device*)));
+    disconnect(Manager::self()->usableAdapter(), SIGNAL(deviceDisappeared(Device*)), this, SLOT(regenerateDeviceEntries()));
+    disconnect(Manager::self()->usableAdapter(), SIGNAL(deviceRemoved(Device*)), this, SLOT(regenerateDeviceEntries()));
 
     KMenu *const menu = contextMenu();
 

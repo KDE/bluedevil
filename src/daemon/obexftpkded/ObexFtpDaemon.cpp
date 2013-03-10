@@ -82,11 +82,11 @@ ObexFtpDaemon::ObexFtpDaemon(QObject *parent, const QList<QVariant>&)
     aboutData.addAuthor(ki18n("Alejandro Fiestas Olivares"), ki18n("Maintainer"), "afiestas@kde.org",
         "http://www.afiestas.org");
 
-    connect(Manager::self(), SIGNAL(defaultAdapterChanged(Adapter*)),
-            this, SLOT(defaultAdapterChanged(Adapter*)));
+    connect(Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)),
+            this, SLOT(usableAdapterChanged(Adapter*)));
 
     d->m_status = Private::Offline;
-    if (Manager::self()->defaultAdapter()) {
+    if (Manager::self()->usableAdapter()) {
         onlineMode();
     }
 
@@ -140,7 +140,7 @@ void ObexFtpDaemon::offlineMode()
     d->m_status = Private::Offline;
 }
 
-void ObexFtpDaemon::defaultAdapterChanged(Adapter *adapter)
+void ObexFtpDaemon::usableAdapterChanged(Adapter *adapter)
 {
     if (adapter) {
         onlineMode();

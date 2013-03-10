@@ -56,7 +56,7 @@ void SSPPairingPage::initializePage()
     list << QWizard::CancelButton;
     m_wizard->setButtonLayout(list);
 
-    Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
+    Device *device = Manager::self()->usableAdapter()->deviceForAddress(m_wizard->deviceAddress());
     confirmLbl->setText(confirmLbl->text().arg(device->name()));
 
     connect(device, SIGNAL(registered(Device*)), this, SLOT(registered(Device*)));
@@ -93,7 +93,7 @@ void SSPPairingPage::confirmationRequested(quint32 passkey, const QDBusMessage& 
     m_working->stop();
     pinNumber->setText(QString("%1").arg(passkey, 6, 10, QLatin1Char('0')));
 
-    Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
+    Device *device = Manager::self()->usableAdapter()->deviceForAddress(m_wizard->deviceAddress());
     confirmLbl->setText(i18n("Please, confirm that the PIN displayed on \"%1\" matches the wizard one.", device->name()));
 
 }
@@ -149,7 +149,7 @@ int SSPPairingPage::nextId() const
 
 Device* SSPPairingPage::deviceFromWizard()
 {
-    return Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
+    return Manager::self()->usableAdapter()->deviceForAddress(m_wizard->deviceAddress());
 }
 
 QList<QWizard::WizardButton> SSPPairingPage::wizardButtonsLayout() const

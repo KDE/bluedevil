@@ -62,7 +62,7 @@ void NoPairingPage::registerDeviceResult(Device* device)
 
 bool NoPairingPage::validatePage()
 {
-    Device *device = Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
+    Device *device = Manager::self()->usableAdapter()->deviceForAddress(m_wizard->deviceAddress());
     return device->isRegistered();
 }
 
@@ -73,7 +73,7 @@ int NoPairingPage::nextId() const
 
 Device* NoPairingPage::deviceFromWizard()
 {
-    return Manager::self()->defaultAdapter()->deviceForAddress(m_wizard->deviceAddress());
+    return Manager::self()->usableAdapter()->deviceForAddress(m_wizard->deviceAddress());
 }
 
 QList<QWizard::WizardButton> NoPairingPage::wizardButtonsLayout() const
