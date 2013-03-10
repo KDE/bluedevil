@@ -50,6 +50,7 @@ public:
     void setFiles(const QStringList &files);
 
     void setDevice(Device *device);
+    void setDevice(QString deviceUrl);
     Device* device();
 
     void startTransfer();

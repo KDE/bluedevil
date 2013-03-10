@@ -53,41 +53,32 @@ SendFileWizard::SendFileWizard(const QString& deviceInfo, const QStringList& fil
         return;
     }
 
-    kDebug() << "DeviceUbi: " << deviceInfo;
-    kDebug() << "Files";
-    kDebug() << files;
-    
     setWindowTitle(i18n("Bluetooth Send Files"));
-
     setOption(NoCancelButton, false);
-
     setButton(QWizard::NextButton, new KPushButton(KIcon("document-export"), i18n("Send Files")));
     setButton(QWizard::CancelButton, new KPushButton(KStandardGuiItem::cancel()));
-
     setOption(QWizard::DisabledBackButtonOnLastPage);
     setOption(QWizard::NoBackButtonOnStartPage);
 
-    if (deviceInfo.isEmpty() || files.isEmpty()) {
+    kDebug() << "DeviceUbi: " << deviceInfo;
+    kDebug() << "Files";
+    kDebug() << files;
+
+    setDevice(deviceInfo);
+
+    if (!m_device || files.isEmpty()) {
         setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
         setMinimumSize(680, 400);
         updateGeometry();
     }
 
-    if (deviceInfo.isEmpty() && files.isEmpty()) {
+    if (!m_device && files.isEmpty()) {
         addPage(new SelectDeviceAndFilesPage());
-    } else if (deviceInfo.isEmpty()) {
+    } else if (!m_device) {
         addPage(new SelectDevicePage());
         setFiles(files);
     } else {
-        Device *device = 0;
-        if (deviceInfo.startsWith("bluetooth:/")) {
-            KUrl url(deviceInfo);
-            device = Manager::self()->defaultAdapter()->deviceForAddress(url.host().replace("-", ":"));
-        } else {
-            device = Manager::self()->defaultAdapter()->deviceForUBI(deviceInfo);
-        }
 
-        setDevice(device);
         if (files.isEmpty()) {
             addPage(new SelectFilesPage());
         } else {
@@ -124,6 +115,29 @@ void SendFileWizard::setFiles(const QStringList& files)
 void SendFileWizard::setDevice(Device* device)
 {
     kDebug() << device;
+    m_device = device;
+}
+
+void SendFileWizard::setDevice(QString deviceUrl)
+{
+    kDebug() << deviceUrl;
+
+    BlueDevil::Device *device = 0;
+    if (deviceUrl.startsWith("bluetooth")) {
+        deviceUrl.remove("bluetooth:");
+        deviceUrl.replace(":", "-");
+        deviceUrl.prepend("bluetooth:");
+        KUrl url(deviceUrl);
+        device = Manager::self()->defaultAdapter()->deviceForAddress(url.host().replace("-", ":"));
+    } else {
+        device = Manager::self()->defaultAdapter()->deviceForUBI(deviceUrl);
+    }
+
+    if (!device->isReady()) {
+        kDebug() << "Device is not ready";
+        return;
+    }
+
     m_device = device;
 }
 
