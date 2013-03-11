@@ -180,6 +180,7 @@ void BlueDevilDaemon::monolithicStarted()
 
 void BlueDevilDaemon::executeMonolithic()
 {
+    kDebug();
     if (d->m_monolithicStarted) {
         kDebug() << "Monolithic already running";
         return;//monolithicQuit will start it if needed
@@ -318,6 +319,7 @@ void BlueDevilDaemon::deviceFound(Device *device)
 
 void BlueDevilDaemon::monolithicQuit(QDBusPendingCallWatcher* watcher)
 {
+    kDebug();
     d->m_monolithicStarted = false;
     QDBusPendingReply<void> reply = *watcher;
     if (reply.isError()) {
