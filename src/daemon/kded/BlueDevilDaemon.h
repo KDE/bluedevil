@@ -29,6 +29,7 @@
 typedef QMap <QString, QString> DeviceInfo;
 typedef QMap<QString, DeviceInfo > QMapDeviceInfo;
 
+class QDBusPendingCallWatcher;
 namespace BlueDevil {
     class Adapter;
     class Device;
@@ -60,6 +61,7 @@ public Q_SLOTS:
     Q_SCRIPTABLE QMapDeviceInfo knownDevices();
 
     Q_SCRIPTABLE void stopDiscovering();
+    void finished(int);
 
 private:
     /**
@@ -87,12 +89,16 @@ private Q_SLOTS:
     void agentReleased();
 
     void deviceFound(Device*);
+    void monolithicQuit(QDBusPendingCallWatcher* watcher);
+    void monolithicStarted();
 
 private:
     /**
      * Tries to start the helper process via dbus and returns true if successful
      */
     bool isServiceStarted();
+    void executeMonolithic();
+    bool isMonolithicRunning();
 
     DeviceInfo deviceToInfo (const Device *device) const;
 

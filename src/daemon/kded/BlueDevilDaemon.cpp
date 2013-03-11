@@ -60,6 +60,7 @@ struct BlueDevilDaemon::Private
     org::kde::BlueDevil::Service    *m_service;
     QList <DeviceInfo>                m_discovered;
     QTimer                           m_timer;
+    bool                             m_monolithicStarted;
 };
 
 BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
@@ -73,6 +74,7 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     d->m_adapter = 0;
     d->m_service = 0;
     d->m_placesModel = 0;
+    d->m_monolithicStarted = false;
     d->m_timer.setInterval(20000);
     d->m_timer.setSingleShot(true);
 
@@ -171,6 +173,29 @@ bool BlueDevilDaemon::isServiceStarted()
     return r.value();
 }
 
+void BlueDevilDaemon::monolithicStarted()
+{
+    d->m_monolithicStarted = true;
+}
+
+void BlueDevilDaemon::executeMonolithic()
+{
+    if (d->m_monolithicStarted) {
+        kDebug() << "Monolithic already running";
+        return;//monolithicQuit will start it if needed
+    }
+
+    KProcess process;
+    process.startDetached("bluedevil-monolithic");
+    connect(&process, SIGNAL(started()), SLOT(monolithicStarted()));
+    connect(&process, SIGNAL(finished(int)), SLOT(finished(int)));
+}
+
+bool BlueDevilDaemon::isMonolithicRunning()
+{
+
+}
+
 void BlueDevilDaemon::onlineMode()
 {
     kDebug();
@@ -207,10 +232,19 @@ void BlueDevilDaemon::onlineMode()
 
     d->m_placesModel->addPlace("Bluetooth", KUrl("bluetooth:/"), "preferences-system-bluetooth");
 
-    KProcess process;
-    process.startDetached("bluedevil-monolithic");
+    executeMonolithic();
 
     d->m_status = Private::Online;
+}
+
+void BlueDevilDaemon::finished(int errorCode)
+{
+    d->m_monolithicStarted = false;
+    KProcess *proc = qobject_cast< KProcess *>(sender());
+    kDebug() << errorCode;
+    kDebug() << proc->readAllStandardOutput();
+    kDebug() << proc->readAllStandardError();
+    kDebug() << proc->readAll();
 }
 
 void BlueDevilDaemon::offlineMode()
@@ -245,7 +279,9 @@ void BlueDevilDaemon::offlineMode()
         "org.kde.KApplication",
         "quit"
     );
-    QDBusConnection::sessionBus().asyncCall(msg);
+    QDBusPendingCall pending = QDBusConnection::sessionBus().asyncCall(msg);
+    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pending);
+    connect(watcher, SIGNAL(finished(QDBusPendingCallWatcher*)), SLOT(monolithicQuit(QDBusPendingCallWatcher*)));
     d->m_status = Private::Offline;
 }
 
@@ -278,6 +314,19 @@ void BlueDevilDaemon::deviceFound(Device *device)
     kDebug() << "DeviceFound: " << device->name();
     d->m_discovered.append(deviceToInfo(device));
     org::kde::KDirNotify::emitFilesAdded("bluetooth:/");
+}
+
+void BlueDevilDaemon::monolithicQuit(QDBusPendingCallWatcher* watcher)
+{
+    d->m_monolithicStarted = false;
+    const QDBusPendingReply reply = *watcher;
+    if (reply.isError()) {
+        qDebug() << "Error response: " << reply.error().message();
+    } else {
+        if (d->m_status == Private::Online) {
+            executeMonolithic();
+        }
+    }
 }
 
 DeviceInfo BlueDevilDaemon::deviceToInfo(const Device* device) const
