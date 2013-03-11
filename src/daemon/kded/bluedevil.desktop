@@ -13,6 +13,7 @@ Name[nl]=Bluetooth
 Name[pt]=Bluetooth
 Name[pt_BR]=Bluetooth
 Name[sk]=Bluetooth
+Name[tr]=Bluetooth
 Name[uk]=Bluetooth
 Name[x-test]=xxBluetoothxx
 
@@ -21,5 +22,6 @@ Comment[nl]=Behandelt bluetooth-gebeurtenissen
 Comment[pt]=Lida com os eventos de Bluetooth
 Comment[pt_BR]=Lida com os eventos de Bluetooth
 Comment[sk]=Spracúva udalosti Bluetooth
+Comment[tr]=Bluetooth olaylarını ele alır
 Comment[uk]=Обробляє події Bluetooth
 Comment[x-test]=xxHandles Bluetooth eventsxx
