@@ -638,10 +638,6 @@ void Monolithic::offlineMode()
     setStatus(KStatusNotifierItem::Passive);
     setTooltipTitleStatus(false);
 
-    disconnect(Manager::self()->usableAdapter(), SIGNAL(deviceCreated(Device*)), this, SLOT(deviceCreated(Device*)));
-    disconnect(Manager::self()->usableAdapter(), SIGNAL(deviceDisappeared(Device*)), this, SLOT(regenerateDeviceEntries()));
-    disconnect(Manager::self()->usableAdapter(), SIGNAL(deviceRemoved(Device*)), this, SLOT(regenerateDeviceEntries()));
-
     KMenu *const menu = contextMenu();
 
     qDeleteAll(m_interfaceMap);
