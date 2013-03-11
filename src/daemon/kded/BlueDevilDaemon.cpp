@@ -193,7 +193,7 @@ void BlueDevilDaemon::executeMonolithic()
 
 bool BlueDevilDaemon::isMonolithicRunning()
 {
-
+    return true;
 }
 
 void BlueDevilDaemon::onlineMode()
@@ -319,7 +319,7 @@ void BlueDevilDaemon::deviceFound(Device *device)
 void BlueDevilDaemon::monolithicQuit(QDBusPendingCallWatcher* watcher)
 {
     d->m_monolithicStarted = false;
-    const QDBusPendingReply reply = *watcher;
+    QDBusPendingReply<void> reply = *watcher;
     if (reply.isError()) {
         qDebug() << "Error response: " << reply.error().message();
     } else {
