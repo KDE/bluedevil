@@ -69,6 +69,7 @@ void SSPPairingPage::registered(Device* device)
     connect(device, SIGNAL(pairedChanged(bool)), this, SLOT(pairedChanged(bool)));
     connect(m_wizard->agent(), SIGNAL(confirmationRequested(quint32,QDBusMessage)),
             this, SLOT(confirmationRequested(quint32,QDBusMessage)));
+    connect(m_wizard->agent(), SIGNAL(pinRequested(QString)), SLOT(pinRequested(QString)));
 
     device->pair("/wizardAgent", Adapter::DisplayYesNo);
 }
@@ -96,6 +97,13 @@ void SSPPairingPage::confirmationRequested(quint32 passkey, const QDBusMessage& 
     Device *device = Manager::self()->usableAdapter()->deviceForAddress(m_wizard->deviceAddress());
     confirmLbl->setText(i18n("Please, confirm that the PIN displayed on \"%1\" matches the wizard one.", device->name()));
 
+}
+
+void SSPPairingPage::pinRequested(const QString& pin)
+{
+    m_working->stop();
+    pinNumber->setText(pin);
+    confirmLbl->setText(i18n("Please introduce the PIN in your device when it appears"));
 }
 
 void SSPPairingPage::pairedChanged(bool paired)

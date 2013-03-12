@@ -56,6 +56,7 @@ public Q_SLOTS:
     void pairedChanged(bool paired);
     void matchesClicked();
     void notMatchClicked();
+    void pinRequested(const QString &pin);
 
 protected:
     Device* deviceFromWizard();
