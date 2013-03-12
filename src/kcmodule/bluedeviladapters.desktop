@@ -56,6 +56,9 @@ Name[zh_CN]=适配器
 Name[zh_TW]=轉接器
 
 Comment=Configure Bluetooth adapters
+Comment[cs]=Nastavte adaptéry Bluetooth
+Comment[de]=Bluetooth-Adapter einrichten
+Comment[es]=Configurar adaptadores Bluetooth
 Comment[nl]=Bluetooth-adapters instellen
 Comment[pt]=Configurar os adaptadores de Bluetooth
 Comment[pt_BR]=Configura os adaptadores Bluetooth
