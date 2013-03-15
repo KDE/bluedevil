@@ -61,7 +61,6 @@ public Q_SLOTS:
     Q_SCRIPTABLE QMapDeviceInfo knownDevices();
 
     Q_SCRIPTABLE void stopDiscovering();
-    void finished(int);
 
 private:
     /**
@@ -91,6 +90,7 @@ private Q_SLOTS:
     void deviceFound(Device*);
     void monolithicQuit(QDBusPendingCallWatcher* watcher);
     void monolithicStarted();
+    void finished(int);
 
 private:
     /**

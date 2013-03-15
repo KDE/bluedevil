@@ -24,6 +24,7 @@
 #include "filereceiversettings.h"
 #include "version.h"
 
+#include <QtCore/QProcess>
 #include <QDBusMetaType>
 
 #include <kdemacros.h>
@@ -31,7 +32,6 @@
 #include <KAboutData>
 #include <KPluginFactory>
 #include <kfileplacesmodel.h>
-#include <kprocess.h>
 #include <kdirnotify.h>
 
 #include <bluedevil/bluedevilmanager.h>
@@ -58,6 +58,7 @@ struct BlueDevilDaemon::Private
     KFilePlacesModel                *m_placesModel;
     Adapter                         *m_adapter;
     org::kde::BlueDevil::Service    *m_service;
+    QProcess                        *m_monolithicProcess;
     QList <DeviceInfo>                m_discovered;
     QTimer                           m_timer;
     bool                             m_monolithicStarted;
@@ -74,6 +75,7 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     d->m_adapter = 0;
     d->m_service = 0;
     d->m_placesModel = 0;
+    d->m_monolithicProcess = new QProcess(this);
     d->m_monolithicStarted = false;
     d->m_timer.setInterval(20000);
     d->m_timer.setSingleShot(true);
@@ -93,6 +95,9 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
 
     aboutData.addAuthor(ki18n("Eduardo Robles Elvira"), ki18n("Maintainer"), "edulix@gmail.com",
         "http://blog.edulix.es");
+
+    connect(d->m_monolithicProcess, SIGNAL(started()), SLOT(monolithicStarted()));
+    connect(d->m_monolithicProcess, SIGNAL(finished(int)), SLOT(finished(int)));
 
     connect(Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)),
             this, SLOT(usableAdapterChanged(Adapter*)));
@@ -175,6 +180,7 @@ bool BlueDevilDaemon::isServiceStarted()
 
 void BlueDevilDaemon::monolithicStarted()
 {
+    kDebug();
     d->m_monolithicStarted = true;
 }
 
@@ -186,10 +192,7 @@ void BlueDevilDaemon::executeMonolithic()
         return;//monolithicQuit will start it if needed
     }
 
-    KProcess process;
-    process.startDetached("bluedevil-monolithic");
-    connect(&process, SIGNAL(started()), SLOT(monolithicStarted()));
-    connect(&process, SIGNAL(finished(int)), SLOT(finished(int)));
+    d->m_monolithicProcess->start("bluedevil-monolithic");
 }
 
 bool BlueDevilDaemon::isMonolithicRunning()
@@ -241,7 +244,7 @@ void BlueDevilDaemon::onlineMode()
 void BlueDevilDaemon::finished(int errorCode)
 {
     d->m_monolithicStarted = false;
-    KProcess *proc = qobject_cast< KProcess *>(sender());
+    QProcess *proc = qobject_cast< QProcess *>(sender());
     kDebug() << errorCode;
     kDebug() << proc->readAllStandardOutput();
     kDebug() << proc->readAllStandardError();
