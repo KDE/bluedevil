@@ -24,6 +24,8 @@
 #include "filereceiversettings.h"
 #include "version.h"
 
+#include <QtCore/QProcess>
+#include <QDBusServiceWatcher>
 #include <QDBusMetaType>
 
 #include <kdemacros.h>
@@ -31,7 +33,6 @@
 #include <KAboutData>
 #include <KPluginFactory>
 #include <kfileplacesmodel.h>
-#include <kprocess.h>
 #include <kdirnotify.h>
 
 #include <bluedevil/bluedevilmanager.h>
@@ -58,6 +59,7 @@ struct BlueDevilDaemon::Private
     KFilePlacesModel                *m_placesModel;
     Adapter                         *m_adapter;
     org::kde::BlueDevil::Service    *m_service;
+    QDBusServiceWatcher             *m_monolithicWatcher;
     QList <DeviceInfo>                m_discovered;
     QTimer                           m_timer;
 };
@@ -73,6 +75,8 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     d->m_adapter = 0;
     d->m_service = 0;
     d->m_placesModel = 0;
+    d->m_monolithicWatcher = new QDBusServiceWatcher("org.kde.bluedevilmonolithic"
+            , QDBusConnection::sessionBus(), QDBusServiceWatcher::WatchForUnregistration, this);
     d->m_timer.setInterval(20000);
     d->m_timer.setSingleShot(true);
 
@@ -91,6 +95,8 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
 
     aboutData.addAuthor(ki18n("Eduardo Robles Elvira"), ki18n("Maintainer"), "edulix@gmail.com",
         "http://blog.edulix.es");
+
+    connect(d->m_monolithicWatcher, SIGNAL(serviceUnregistered(const QString &)), SLOT(monolithicFinished(const QString &)));
 
     connect(Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)),
             this, SLOT(usableAdapterChanged(Adapter*)));
@@ -171,6 +177,30 @@ bool BlueDevilDaemon::isServiceStarted()
     return r.value();
 }
 
+void BlueDevilDaemon::executeMonolithic()
+{
+    kDebug();
+
+    QProcess process;
+    if (!process.startDetached("bluedevil-monolithic")) {
+        kError() << "Could not start bluedevil-monolithic";
+    }
+}
+
+void BlueDevilDaemon::killMonolithic()
+{
+    kDebug();
+    QDBusMessage msg = QDBusMessage::createMethodCall(
+        "org.kde.bluedevilmonolithic",
+        "/MainApplication",
+        "org.kde.KApplication",
+        "quit"
+    );
+    QDBusPendingCall pending = QDBusConnection::sessionBus().asyncCall(msg);
+    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pending);
+    connect(watcher, SIGNAL(finished(QDBusPendingCallWatcher*)), SLOT(monolithicQuit(QDBusPendingCallWatcher*)));
+}
+
 void BlueDevilDaemon::onlineMode()
 {
     kDebug();
@@ -207,10 +237,18 @@ void BlueDevilDaemon::onlineMode()
 
     d->m_placesModel->addPlace("Bluetooth", KUrl("bluetooth:/"), "preferences-system-bluetooth");
 
-    KProcess process;
-    process.startDetached("bluedevil-monolithic");
+    executeMonolithic();
 
     d->m_status = Private::Online;
+}
+
+void BlueDevilDaemon::monolithicFinished(const QString &)
+{
+    kDebug();
+
+    if (d->m_status == Private::Online) {
+        executeMonolithic();
+    }
 }
 
 void BlueDevilDaemon::offlineMode()
@@ -239,13 +277,7 @@ void BlueDevilDaemon::offlineMode()
         d->m_placesModel->removePlace(index);
     }
 
-    QDBusMessage msg = QDBusMessage::createMethodCall(
-        "org.kde.bluedevilmonolithic",
-        "/MainApplication",
-        "org.kde.KApplication",
-        "quit"
-    );
-    QDBusConnection::sessionBus().asyncCall(msg);
+    killMonolithic();
     d->m_status = Private::Offline;
 }
 
@@ -278,6 +310,16 @@ void BlueDevilDaemon::deviceFound(Device *device)
     kDebug() << "DeviceFound: " << device->name();
     d->m_discovered.append(deviceToInfo(device));
     org::kde::KDirNotify::emitFilesAdded("bluetooth:/");
+}
+
+void BlueDevilDaemon::monolithicQuit(QDBusPendingCallWatcher* watcher)
+{
+    kDebug();
+    QDBusPendingReply<void> reply = *watcher;
+    if (reply.isError()) {
+        qDebug() << "Error response: " << reply.error().message();
+        killMonolithic();
+    }
 }
 
 DeviceInfo BlueDevilDaemon::deviceToInfo(const Device* device) const
