@@ -48,7 +48,7 @@ NetworkPANUHelper::NetworkPANUHelper(const KUrl& address) {
         ).factory();
 
         ActionPlugin *plugin = factory->create<ActionPlugin>(this);
-        connect(plugin, SIGNAL(finished()), qApp, SLOT(quit()));
+        connect(plugin, SIGNAL(finished()), qApp, SLOT(quit()), Qt::QueuedConnection);
 
         plugin->setDevice(device);
         plugin->startAction();
