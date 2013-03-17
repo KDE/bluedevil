@@ -116,10 +116,6 @@ bool sortDevices(Device *device1, Device *device2)
 
 void Monolithic::regenerateDeviceEntries()
 {
-    if (!Manager::self()->usableAdapter()) {
-        return;
-    }
-
     KMenu *const menu = contextMenu();
 
     qDeleteAll(m_interfaceMap);
