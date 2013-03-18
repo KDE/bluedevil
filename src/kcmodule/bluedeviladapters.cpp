@@ -138,9 +138,10 @@ bool AdapterSettings::isModified() const
 
 void AdapterSettings::applyChanges()
 {
-    if (m_name->text() != m_nameOrig) {
-        m_adapter->setName(m_name->text());
-    }
+     /* TODO: Find new way to set adapter name in bluez5
+        if (m_name->text() != m_nameOrig) {
+         m_adapter->setName(m_name->text());
+     } */
 
     if (m_hidden->isChecked()) {
         m_adapter->setDiscoverable(false);

@@ -62,8 +62,8 @@ void NoPairingPage::registerDeviceResult(Device* device)
 
 bool NoPairingPage::validatePage()
 {
-    Device *device = Manager::self()->usableAdapter()->deviceForAddress(m_wizard->deviceAddress());
-    return device->isRegistered();
+    // TODO: Can we just return true unconditionally here?
+    return true;
 }
 
 int NoPairingPage::nextId() const

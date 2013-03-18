@@ -137,11 +137,6 @@ void SendFileWizard::setDevice(QString deviceUrl)
         device = Manager::self()->usableAdapter()->deviceForUBI(deviceUrl);
     }
 
-    if (!device->isReady()) {
-        kDebug() << "Device is not ready";
-        return;
-    }
-
     m_device = device;
 }
 
