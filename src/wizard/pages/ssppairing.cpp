@@ -71,7 +71,7 @@ void SSPPairingPage::registered(Device* device)
             this, SLOT(confirmationRequested(quint32,QDBusMessage)));
     connect(m_wizard->agent(), SIGNAL(pinRequested(QString)), SLOT(pinRequested(QString)));
 
-    device->pair("/wizardAgent", BlueDevil::Manager::DisplayYesNo);
+    device->pair();
 }
 
 void SSPPairingPage::confirmationRequested(quint32 passkey, const QDBusMessage& msg)

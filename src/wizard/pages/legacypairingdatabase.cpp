@@ -55,7 +55,7 @@ void LegacyPairingPageDatabase::initializePage()
 void LegacyPairingPageDatabase::registered(Device *device)
 {
     connect(device, SIGNAL(pairedChanged(bool)), this, SLOT(pairedChanged(bool)));
-    device->pair("/wizardAgent", BlueDevil::Manager::DisplayYesNo);
+    device->pair();
 }
 
 void LegacyPairingPageDatabase::pairedChanged(bool paired)

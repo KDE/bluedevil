@@ -62,7 +62,7 @@ void KeyboardPairingPage::initializePage()
 void KeyboardPairingPage::registered(Device *device)
 {
     connect(device, SIGNAL(pairedChanged(bool)), this, SLOT(pairedChanged(bool)));
-    device->pair("/wizardAgent", BlueDevil::Manager::DisplayYesNo);
+    device->pair();
 }
 
 void KeyboardPairingPage::pinRequested(const QString& pin)

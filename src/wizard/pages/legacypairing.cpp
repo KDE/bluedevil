@@ -63,7 +63,7 @@ void LegacyPairingPage::registered(Device *device)
     connect(m_wizard->agent(), SIGNAL(pinRequested(QString)), this, SLOT(pinRequested(QString)));
     connect(device, SIGNAL(pairedChanged(bool)), this, SLOT(pairedChanged(bool)));
 
-    device->pair("/wizardAgent", BlueDevil::Manager::DisplayYesNo);
+    device->pair();
 }
 
 void LegacyPairingPage::pinRequested(const QString& pin)
