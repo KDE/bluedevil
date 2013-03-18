@@ -38,8 +38,7 @@ BluezAgent::BluezAgent(QObject *parent)
         return;
     }
 
-    m_adapter = BlueDevil::Manager::self()->usableAdapter();
-    m_adapter->registerAgent(AGENT_PATH, BlueDevil::Adapter::DisplayYesNo);
+    BlueDevil::Manager::self()->registerAgent(AGENT_PATH,BlueDevil::Manager::DisplayYesNo);
 
     m_process = new QProcess(this);
 
@@ -49,10 +48,7 @@ BluezAgent::BluezAgent(QObject *parent)
 void BluezAgent::unregister()
 {
     qDebug() << "Unregistering object";
-    BlueDevil::Adapter *const usableAdapter = BlueDevil::Manager::self()->usableAdapter();
-    if (usableAdapter) {
-        usableAdapter->unregisterAgent(AGENT_PATH);
-    }
+    BlueDevil::Manager::self()->unregisterAgent(AGENT_PATH);
     QDBusConnection::systemBus().unregisterObject(AGENT_PATH);
     parent()->deleteLater();
 }
