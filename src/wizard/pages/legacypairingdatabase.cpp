@@ -47,13 +47,6 @@ void LegacyPairingPageDatabase::initializePage()
     Device *device = deviceFromWizard();
     connecting->setText(connecting->text().arg(device->name()));
 
-    connect(device, SIGNAL(registered(Device*)), this, SLOT(registered(Device*)));
-
-    QMetaObject::invokeMethod(device, "registerDeviceAsync", Qt::QueuedConnection);
-}
-
-void LegacyPairingPageDatabase::registered(Device *device)
-{
     connect(device, SIGNAL(pairedChanged(bool)), this, SLOT(pairedChanged(bool)));
     device->pair();
 }
