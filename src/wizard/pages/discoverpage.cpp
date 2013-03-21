@@ -61,8 +61,8 @@ void DiscoverPage::initializePage()
     list << QWizard::CancelButton;
     m_wizard->setButtonLayout(list);
 
-    connect(Manager::self()->usableAdapter(), SIGNAL(deviceFound(QVariantMap)), this,
-        SLOT(deviceFound(QVariantMap)));
+    connect(Manager::self()->usableAdapter(), SIGNAL(unpairedDeviceFound(Device*)), this,
+        SLOT(deviceFound(Device*)));
     connect(manualPin, SIGNAL(toggled(bool)), pinText, SLOT(setEnabled(bool)));
     connect(manualPin, SIGNAL(toggled(bool)), this, SIGNAL(completeChanged()));
     connect(pinText, SIGNAL(textChanged(QString)), m_wizard, SLOT(setPin(QString)));
@@ -114,13 +114,13 @@ void DiscoverPage::stopScan()
     }
 }
 
-void DiscoverPage::deviceFound(const QVariantMap &deviceInfo)
+void DiscoverPage::deviceFound(Device* device)
 {
-    QString address = deviceInfo["Address"].toString();
-    QString name = deviceInfo["Name"].toString();
-    QString icon = deviceInfo["Icon"].toString();
-    QString alias = deviceInfo["Alias"].toString();
-    quint32 dClass = deviceInfo["Class"].toUInt();
+    QString address = device->address();
+    QString name = device->name();
+    QString icon = device->icon();
+    QString alias = device->alias();
+    quint32 dClass = device->deviceClass();
 
     bool origName = false;
     if (!name.isEmpty()) {

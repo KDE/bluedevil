@@ -43,7 +43,7 @@ public:
     virtual int nextId() const;
 private Q_SLOTS:
     void startScan();
-    void deviceFound(const QVariantMap &deviceInfo);
+    void deviceFound(Device * device);
     void itemSelected(QListWidgetItem* item);
     void nameChanged(const QString& name);
 private:
