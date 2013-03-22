@@ -50,7 +50,6 @@ public:
     virtual int nextId() const;
 
 public Q_SLOTS:
-    void registered(Device *device);
     void pinRequested(const QString &pin);
     void pairedChanged(bool paired);
 

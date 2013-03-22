@@ -59,13 +59,6 @@ void SSPPairingPage::initializePage()
     Device *device = Manager::self()->usableAdapter()->deviceForAddress(m_wizard->deviceAddress());
     confirmLbl->setText(confirmLbl->text().arg(device->name()));
 
-    connect(device, SIGNAL(registered(Device*)), this, SLOT(registered(Device*)));
-
-    QMetaObject::invokeMethod(device, "registerDeviceAsync", Qt::QueuedConnection);
-}
-
-void SSPPairingPage::registered(Device* device)
-{
     connect(device, SIGNAL(pairedChanged(bool)), this, SLOT(pairedChanged(bool)));
     connect(m_wizard->agent(), SIGNAL(confirmationRequested(quint32,QDBusMessage)),
             this, SLOT(confirmationRequested(quint32,QDBusMessage)));

@@ -50,9 +50,6 @@ public:
     virtual bool validatePage();
     virtual int nextId() const;
 
-public Q_SLOTS:
-    void registerDeviceResult(Device* device);
-
 protected:
     Device* deviceFromWizard();
     QList <QWizard::WizardButton> wizardButtonsLayout() const;

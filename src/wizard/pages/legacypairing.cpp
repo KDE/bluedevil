@@ -53,13 +53,6 @@ void LegacyPairingPage::initializePage()
     m_wizard->setButtonLayout(wizardButtonsLayout());
 
     Device *device = deviceFromWizard();
-    connect(device, SIGNAL(registered(Device*)), this, SLOT(registered(Device*)));
-
-    QMetaObject::invokeMethod(device, "registerDeviceAsync", Qt::QueuedConnection);
-}
-
-void LegacyPairingPage::registered(Device *device)
-{
     connect(m_wizard->agent(), SIGNAL(pinRequested(QString)), this, SLOT(pinRequested(QString)));
     connect(device, SIGNAL(pairedChanged(bool)), this, SLOT(pairedChanged(bool)));
 

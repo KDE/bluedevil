@@ -49,14 +49,6 @@ void NoPairingPage::initializePage()
     Device *device = deviceFromWizard();
     connecting->setText(connecting->text().arg(device->name()));
 
-    connect(device, SIGNAL(registered(Device*)), this, SLOT(registerDeviceResult(Device*)));
-
-    QMetaObject::invokeMethod(device, "registerDeviceAsync", Qt::QueuedConnection);
-}
-
-void NoPairingPage::registerDeviceResult(Device* device)
-{
-    Q_UNUSED(device);
     m_wizard->next();
 }
 
