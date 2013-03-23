@@ -43,6 +43,7 @@ public:
     virtual int nextId() const;
 public Q_SLOTS:
     void selected(const KService *);
+    void UUIDsChanged(const QStringList & uuids);
 
 private:
     void addService(const KService* service);

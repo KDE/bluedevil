@@ -42,11 +42,24 @@ void ServicesPage::initializePage()
     list << QWizard::FinishButton;
     m_wizard->setButtonLayout(list);
 
+    Device *device = m_wizard->device();
+    // check if UUIDs have already been retrieved, wait if not.
+    // TODO: UI?
+    if(device->UUIDs().isEmpty()) {
+        connect(device,SIGNAL(UUIDsChanged(QStringList)),this,SLOT(UUIDsChanged(QStringList)));
+    } else {
+        UUIDsChanged(device->UUIDs());
+    }
+}
+
+void ServicesPage::UUIDsChanged(const QStringList& uuids)
+{
+    kDebug();
+
     KService::List services = m_wizard->services();
     Device *device = m_wizard->device();
     device->setTrusted(true);
 
-    QStringList uuids = device->UUIDs();
     QByteArray preselectedUuid = m_wizard->preselectedUuid();
     Q_FOREACH(QString uuid, uuids) {
         uuid = uuid.toUpper();
