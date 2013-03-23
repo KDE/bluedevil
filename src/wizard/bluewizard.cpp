@@ -118,7 +118,7 @@ BlueWizard::~BlueWizard()
 
 void BlueWizard::setDeviceAddress(const QByteArray& address)
 {
-    kDebug() << "Device AddresS: " << address;
+    kDebug() << "Device Address: " << address;
     m_deviceAddress = address;
     m_device = Manager::self()->usableAdapter()->deviceForAddress(m_deviceAddress);
 }
