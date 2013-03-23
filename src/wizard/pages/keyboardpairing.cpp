@@ -53,7 +53,7 @@ void KeyboardPairingPage::initializePage()
 
     connect(m_wizard->agent(), SIGNAL(pinRequested(QString)), this, SLOT(pinRequested(QString)));
 
-    Device *device = deviceFromWizard();
+    Device *device = m_wizard->device();
     connect(device, SIGNAL(pairedChanged(bool)), this, SLOT(pairedChanged(bool)));
     device->pair();
 }
@@ -72,18 +72,13 @@ void KeyboardPairingPage::pairedChanged(bool paired)
 
 bool KeyboardPairingPage::validatePage()
 {
-    return deviceFromWizard()->isPaired();
+    return m_wizard->device()->isPaired();
 }
 
 
 int KeyboardPairingPage::nextId() const
 {
     return BlueWizard::Services;
-}
-
-Device* KeyboardPairingPage::deviceFromWizard()
-{
-    return Manager::self()->usableAdapter()->deviceForAddress(m_wizard->deviceAddress());
 }
 
 QList<QWizard::WizardButton> KeyboardPairingPage::wizardButtonsLayout() const

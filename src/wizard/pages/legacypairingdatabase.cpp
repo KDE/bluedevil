@@ -44,7 +44,7 @@ void LegacyPairingPageDatabase::initializePage()
 {
     m_wizard->setButtonLayout(wizardButtonsLayout());
 
-    Device *device = deviceFromWizard();
+    Device *device = m_wizard->device();
     connecting->setText(connecting->text().arg(device->name()));
 
     connect(device, SIGNAL(pairedChanged(bool)), this, SLOT(pairedChanged(bool)));
@@ -59,17 +59,12 @@ void LegacyPairingPageDatabase::pairedChanged(bool paired)
 
 bool LegacyPairingPageDatabase::validatePage()
 {
-    return deviceFromWizard()->isPaired();
+    return m_wizard->device()->isPaired();
 }
 
 int LegacyPairingPageDatabase::nextId() const
 {
     return BlueWizard::Services;
-}
-
-Device* LegacyPairingPageDatabase::deviceFromWizard()
-{
-    return Manager::self()->usableAdapter()->deviceForAddress(m_wizard->deviceAddress());
 }
 
 QList< QWizard::WizardButton > LegacyPairingPageDatabase::wizardButtonsLayout() const

@@ -39,7 +39,7 @@
 #include <kdebug.h>
 #include <KProcess>
 
-BlueWizard::BlueWizard(const KUrl &url) : QWizard(), m_service(0), m_manualPin(false)
+BlueWizard::BlueWizard(const KUrl &url) : QWizard(), m_device(0), m_service(0), m_manualPin(false)
 {
     setWindowTitle(i18n("Bluetooth Device Wizard"));
 
@@ -93,11 +93,10 @@ void BlueWizard::done(int result)
             kDebug() << "Connecting to: " << m_service->name();
             KPluginFactory *factory = KPluginLoader(m_service->library()).factory();
 
-            Device *device = Manager::self()->usableAdapter()->deviceForAddress(m_deviceAddress);
             ActionPlugin *plugin = factory->create<ActionPlugin>(this);
             connect(plugin, SIGNAL(finished()), qApp, SLOT(quit()));
 
-            plugin->setDevice(device);
+            plugin->setDevice(m_device);
             plugin->startAction();
         } else {
             qApp->quit();
@@ -105,6 +104,11 @@ void BlueWizard::done(int result)
     } else {
         qApp->quit();
     }
+}
+
+Device* BlueWizard::device() const
+{
+    return m_device;
 }
 
 BlueWizard::~BlueWizard()
@@ -116,6 +120,7 @@ void BlueWizard::setDeviceAddress(const QByteArray& address)
 {
     kDebug() << "Device AddresS: " << address;
     m_deviceAddress = address;
+    m_device = Manager::self()->usableAdapter()->deviceForAddress(m_deviceAddress);
 }
 
 QByteArray BlueWizard::deviceAddress() const

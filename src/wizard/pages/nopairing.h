@@ -51,7 +51,6 @@ public:
     virtual int nextId() const;
 
 protected:
-    Device* deviceFromWizard();
     QList <QWizard::WizardButton> wizardButtonsLayout() const;
 
 private:

@@ -46,8 +46,7 @@ void NoPairingPage::initializePage()
     kDebug();
     m_wizard->setButtonLayout(wizardButtonsLayout());
 
-    Device *device = deviceFromWizard();
-    connecting->setText(connecting->text().arg(device->name()));
+    connecting->setText(connecting->text().arg(m_wizard->device()->name()));
 
     m_wizard->next();
 }
@@ -61,11 +60,6 @@ bool NoPairingPage::validatePage()
 int NoPairingPage::nextId() const
 {
     return BlueWizard::Services;
-}
-
-Device* NoPairingPage::deviceFromWizard()
-{
-    return Manager::self()->usableAdapter()->deviceForAddress(m_wizard->deviceAddress());
 }
 
 QList<QWizard::WizardButton> NoPairingPage::wizardButtonsLayout() const

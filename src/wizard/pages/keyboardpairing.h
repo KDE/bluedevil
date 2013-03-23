@@ -54,7 +54,6 @@ public Q_SLOTS:
     void pairedChanged(bool paired);
 
 protected:
-    Device* deviceFromWizard();
     QList <QWizard::WizardButton> wizardButtonsLayout() const;
 
 private:

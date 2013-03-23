@@ -25,6 +25,10 @@
 #include <kurl.h>
 #include <kservice.h>
 
+namespace BlueDevil {
+    class Device;
+}
+
 class WizardAgent;
 class BlueWizard : public QWizard
 {
@@ -36,6 +40,8 @@ public:
 
     QByteArray deviceAddress() const;
     void setDeviceAddress(const QByteArray& address);
+
+    BlueDevil::Device *device() const;
 
     QByteArray pin() const;
     void setPin(const QByteArray& pin);
@@ -60,6 +66,7 @@ public Q_SLOTS:
 
 private:
     QByteArray m_deviceAddress;
+    BlueDevil::Device * m_device;
     QByteArray m_pin;
     QByteArray m_preselectedUuid;
     QByteArray m_preselectedAddress;

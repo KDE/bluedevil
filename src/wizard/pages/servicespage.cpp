@@ -43,7 +43,7 @@ void ServicesPage::initializePage()
     m_wizard->setButtonLayout(list);
 
     KService::List services = m_wizard->services();
-    Device *device = Manager::self()->usableAdapter()->deviceForAddress(m_wizard->deviceAddress());
+    Device *device = m_wizard->device();
     device->setTrusted(true);
 
     QStringList uuids = device->UUIDs();

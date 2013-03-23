@@ -58,7 +58,6 @@ public Q_SLOTS:
     void pinRequested(const QString &pin);
 
 protected:
-    Device* deviceFromWizard();
     QList <QWizard::WizardButton> wizardButtonsLayout() const;
 
 private:
