@@ -34,11 +34,13 @@ using namespace BlueDevil;
 WizardAgent::WizardAgent(QApplication* application) : QDBusAbstractAdaptor(application), m_fromDatabase(false)
 {
     kDebug() << "AGENT registered !";
+    BlueDevil::Manager::self()->registerAgent("/wizardAgent",BlueDevil::Manager::DisplayYesNo);
 }
 
 WizardAgent::~WizardAgent()
 {
     kDebug() << "Agent deleted";
+    BlueDevil::Manager::self()->unregisterAgent("/wizardAgent");
 }
 
 void WizardAgent::Release()

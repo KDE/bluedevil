@@ -34,7 +34,7 @@ using namespace BlueDevil;
 class WizardAgent : public QDBusAbstractAdaptor
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.bluez.Agent")
+    Q_CLASSINFO("D-Bus Interface", "org.bluez.Agent1")
 
 public:
     WizardAgent(QApplication* application);
