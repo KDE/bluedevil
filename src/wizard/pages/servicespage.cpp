@@ -62,7 +62,6 @@ void ServicesPage::UUIDsChanged(const QStringList& uuids)
 
     QByteArray preselectedUuid = m_wizard->preselectedUuid();
     Q_FOREACH(QString uuid, uuids) {
-        uuid = uuid.toUpper();
         kDebug() << "Checking uuid: " << uuid;
         Q_FOREACH(const KSharedPtr<KService> service, services) {
             if (preselectedUuid.isEmpty()) {
