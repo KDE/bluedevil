@@ -62,7 +62,7 @@ void Monolithic::noAdapters(Adapter* adapter)
 
 void Monolithic::adapterAdded()
 {
-    if (status() != KStatusNotifierItem::Active) {
+    if (status() != KStatusNotifierItem::Active && Manager::self()->usableAdapter()) {
         onlineMode();
     }
 }
