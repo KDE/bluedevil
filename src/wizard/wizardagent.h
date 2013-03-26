@@ -48,12 +48,12 @@ public:
 //D-Bus interface implementation
 public slots:
     void Release();
-    void Authorize(QDBusObjectPath device, const QString& uuid, const QDBusMessage &msg);
+    void AuthorizeService(QDBusObjectPath device, const QString& uuid, const QDBusMessage &msg);
     QString RequestPinCode(QDBusObjectPath device, const QDBusMessage &msg);
     quint32 RequestPasskey(QDBusObjectPath device, const QDBusMessage &msg);
+    void DisplayPinCode(QDBusObjectPath device, const QString & pincode);
     void DisplayPasskey(QDBusObjectPath device, quint32 passkey);
     void RequestConfirmation(QDBusObjectPath device, quint32 passkey, const QDBusMessage &msg);
-    void ConfirmModeChange(const QString& mode, const QDBusMessage &msg);
     void Cancel();
 
 private:

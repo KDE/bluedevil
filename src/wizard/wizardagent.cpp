@@ -49,7 +49,7 @@ void WizardAgent::Release()
     emit agentReleased();
 }
 
-void WizardAgent::Authorize(QDBusObjectPath device, const QString& uuid, const QDBusMessage &msg)
+void WizardAgent::AuthorizeService(QDBusObjectPath device, const QString& uuid, const QDBusMessage &msg)
 {
     Q_UNUSED(device);
     Q_UNUSED(uuid);
@@ -72,6 +72,13 @@ void WizardAgent::DisplayPasskey(QDBusObjectPath device, quint32 passkey)
     kDebug() << "AGENT-DisplayPasskey " << device.path() << ", " << QString::number(passkey);
 }
 
+void WizardAgent::DisplayPinCode(QDBusObjectPath device, const QString& pincode)
+{
+    Q_UNUSED(device);
+    Q_UNUSED(pincode);
+    kDebug() << "AGENT-DisplayPasskey " << device.path() << ", " << pincode;
+}
+
 void WizardAgent::RequestConfirmation(QDBusObjectPath device, quint32 passkey, const QDBusMessage &msg)
 {
     Q_UNUSED(device);
@@ -79,13 +86,6 @@ void WizardAgent::RequestConfirmation(QDBusObjectPath device, quint32 passkey, c
     Q_UNUSED(msg);
     kDebug() << "AGENT-RequestConfirmation " << device.path() << ", " << QString::number(passkey);
     emit confirmationRequested(passkey, msg);
-}
-
-void WizardAgent::ConfirmModeChange(const QString& mode, const QDBusMessage &msg)
-{
-    Q_UNUSED(mode);
-    Q_UNUSED(msg);
-    kDebug() << "AGENT-ConfirmModeChange " << mode;
 }
 
 void WizardAgent::Cancel()

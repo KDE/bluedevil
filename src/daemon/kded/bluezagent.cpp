@@ -60,7 +60,7 @@ void BluezAgent::Release()
     emit agentReleased();
 }
 
-void BluezAgent::Authorize(const QDBusObjectPath &device, const QString& uuid, const QDBusMessage &msg)
+void BluezAgent::AuthorizeService(const QDBusObjectPath &device, const QString& uuid, const QDBusMessage &msg)
 {
     Q_UNUSED(uuid)
     qDebug() << "Authorize called";
@@ -133,21 +133,6 @@ void BluezAgent::RequestConfirmation(const QDBusObjectPath &device, quint32 pass
 
     connect(m_process, SIGNAL(finished(int)), this, SLOT(processClosedBool(int)));
     m_process->start(KStandardDirs::findExe("bluedevil-requestconfirmation"), list);
-}
-
-void BluezAgent::ConfirmModeChange(const QString& mode, const QDBusMessage &msg)
-{
-    qDebug() << "AGENT-ConfirmModechange " << mode;
-
-    m_msg = msg;
-    m_msg.setDelayedReply(true);
-    m_currentHelper = "ConfirmModechange";
-
-    QStringList list;
-    list.append(mode);
-
-    connect(m_process, SIGNAL(finished(int)), this, SLOT(processClosedBool(int)));
-    m_process->start(KStandardDirs::findExe("bluedevil-confirmchangemode"), list);
 }
 
 void BluezAgent::Cancel()
