@@ -49,7 +49,7 @@ void WizardAgent::Release()
     emit agentReleased();
 }
 
-void WizardAgent::AuthorizeService(QDBusObjectPath device, const QString& uuid, const QDBusMessage &msg)
+void WizardAgent::AuthorizeService(const QDBusObjectPath& device, const QString& uuid, const QDBusMessage& msg)
 {
     Q_UNUSED(device);
     Q_UNUSED(uuid);
@@ -57,7 +57,7 @@ void WizardAgent::AuthorizeService(QDBusObjectPath device, const QString& uuid, 
     kDebug() << "AGENT-Authorize " << device.path() << " Service: " << uuid;
 }
 
-quint32 WizardAgent::RequestPasskey(QDBusObjectPath device, const QDBusMessage &msg)
+quint32 WizardAgent::RequestPasskey(const QDBusObjectPath& device, const QDBusMessage& msg)
 {
     Q_UNUSED(device);
     Q_UNUSED(msg);
@@ -65,21 +65,21 @@ quint32 WizardAgent::RequestPasskey(QDBusObjectPath device, const QDBusMessage &
     return 0;
 }
 
-void WizardAgent::DisplayPasskey(QDBusObjectPath device, quint32 passkey)
+void WizardAgent::DisplayPasskey(const QDBusObjectPath& device, quint32 passkey)
 {
     Q_UNUSED(device);
     Q_UNUSED(passkey);
     kDebug() << "AGENT-DisplayPasskey " << device.path() << ", " << QString::number(passkey);
 }
 
-void WizardAgent::DisplayPinCode(QDBusObjectPath device, const QString& pincode)
+void WizardAgent::DisplayPinCode(const QDBusObjectPath& device, const QString& pincode)
 {
     Q_UNUSED(device);
     Q_UNUSED(pincode);
     kDebug() << "AGENT-DisplayPasskey " << device.path() << ", " << pincode;
 }
 
-void WizardAgent::RequestConfirmation(QDBusObjectPath device, quint32 passkey, const QDBusMessage &msg)
+void WizardAgent::RequestConfirmation(const QDBusObjectPath& device, quint32 passkey, const QDBusMessage& msg)
 {
     Q_UNUSED(device);
     Q_UNUSED(passkey);
@@ -93,7 +93,7 @@ void WizardAgent::Cancel()
     kDebug() << "AGENT-Cancel";
 }
 
-QString WizardAgent::RequestPinCode(QDBusObjectPath device, const QDBusMessage &msg)
+QString WizardAgent::RequestPinCode(const QDBusObjectPath& device, const QDBusMessage& msg)
 {
     Q_UNUSED(device);
     Q_UNUSED(msg);
