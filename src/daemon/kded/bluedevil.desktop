@@ -15,6 +15,7 @@ Name[de]=Bluetooth
 Name[el]=Bluetooth
 Name[es]=Bluetooth
 Name[hu]=Bluetooth
+Name[lt]=Bluetooth
 Name[mr]=ब्लूटूथ
 Name[nb]=Blåtann
 Name[nl]=Bluetooth
@@ -34,6 +35,7 @@ Name[zh_TW]=藍牙
 
 Comment=Handles Bluetooth events
 Comment[da]=Håndterer Bluetooth-hændelser
+Comment[de]=Verarbeitung von Bluetooth-Ereignissen
 Comment[el]=Χειρίζεται γεγονότα Bluetooth
 Comment[es]=Maneja eventos de Bluetooth
 Comment[hu]=Kezeli a Bluetooth eseményeket
