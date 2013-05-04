@@ -54,6 +54,7 @@ Name[zh_CN]=文件传送
 Name[zh_TW]=檔案傳輸
 
 Comment=Configure Bluetooth file sharing and transfers
+Comment[ca]=Configura la compartició i transferència de fitxers per Bluetooth
 Comment[cs]=Nastavte sdílení souborů přes Bluetooth
 Comment[da]=Indstil fildeling og -overførsler via Bluetooth
 Comment[de]=Dateifreigaben und Dateiübertragung für Bluetooth einrichten
