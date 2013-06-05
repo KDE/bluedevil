@@ -43,7 +43,7 @@ DiscoverPage::DiscoverPage(BlueWizard* parent): QWizardPage(parent), m_wizard(pa
     workingPainter->setWidget(working);
     workingPainter->start();
 
-    connect(deviceList, SIGNAL(itemActivated(QListWidgetItem*)), this,
+    connect(deviceList, SIGNAL(currentItemChanged(QListWidgetItem*,QListWidgetItem*)), this,
             SLOT(itemSelected(QListWidgetItem*)));
 }
 
@@ -160,13 +160,11 @@ void DiscoverPage::deviceFound(const QVariantMap &deviceInfo)
 
     if (!deviceList->currentItem() &&  BlueDevil::classToType(dClass) == BLUETOOTH_TYPE_MOUSE) {
         deviceList->setCurrentItem(m_itemRelation[address]);
-        itemSelected(m_itemRelation[address]);
     }
 
     //If the device has been preselected via arguments, select it
     if (m_wizard->preselectedAddress() == address.toLower()) {
         deviceList->setCurrentItem(m_itemRelation[address]);
-        itemSelected(m_itemRelation[address]);
     }
 }
 
