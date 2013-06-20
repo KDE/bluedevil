@@ -84,5 +84,6 @@ X-KDE-Submenu[uk]=Bluetooth
 X-KDE-Submenu[x-test]=xxBluetoothxx
 X-KDE-Submenu[zh_CN]=蓝牙
 X-KDE-Submenu[zh_TW]=藍牙
+Icon=preferences-system-bluetooth
 ServiceTypes=KFileItemAction/Plugin
 MimeType=application/octet-stream;
