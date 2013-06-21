@@ -48,7 +48,7 @@
      <item>
       <widget class="QLabel" name="connecting">
        <property name="text">
-        <string>Connecting to: %1</string>
+        <string>Connecting to:</string>
        </property>
       </widget>
      </item>
