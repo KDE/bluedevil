@@ -53,7 +53,11 @@ public:
 protected:
     QList <QWizard::WizardButton> wizardButtonsLayout() const;
 
+private Q_SLOTS:
+    void connectedChanged(bool connected);
+
 private:
+    bool                          m_validPage;
     BlueWizard                    *m_wizard;
     KPixmapSequenceOverlayPainter *m_working;
 };

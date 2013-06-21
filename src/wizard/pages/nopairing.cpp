@@ -34,6 +34,7 @@ using namespace BlueDevil;
 
 NoPairingPage::NoPairingPage(BlueWizard* parent) : QWizardPage(parent)
 , m_wizard(parent)
+, m_validPage(false)
 {
     setupUi(this);
     m_working = new KPixmapSequenceOverlayPainter(this);
@@ -46,15 +47,22 @@ void NoPairingPage::initializePage()
     kDebug();
     m_wizard->setButtonLayout(wizardButtonsLayout());
 
-    connecting->setText(connecting->text().arg(m_wizard->device()->name()));
+    connecting->setText(connecting->text().append(m_wizard->device()->name()));
 
+    connect(m_wizard->device(), SIGNAL(connectedChanged(bool)), SLOT(connectedChanged(bool)));
+
+    m_wizard->device()->connectDevice();
+}
+
+void NoPairingPage::connectedChanged(bool connected)
+{
+    m_validPage = connected;
     m_wizard->next();
 }
 
 bool NoPairingPage::validatePage()
 {
-    // TODO: Can we just return true unconditionally here?
-    return true;
+    return m_validPage;
 }
 
 int NoPairingPage::nextId() const
