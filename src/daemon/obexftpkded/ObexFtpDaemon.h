@@ -110,4 +110,5 @@ Q_SIGNALS:
     Q_SCRIPTABLE void transferCompleted();
     Q_SCRIPTABLE void errorOccurred(QString,QString);
 };
+extern int dobex();
 #endif /*OBEXFTPDAEMON_H*/

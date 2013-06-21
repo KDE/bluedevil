@@ -18,6 +18,7 @@
 */
 
 #include "obexsession.h"
+#include "ObexFtpDaemon.h"
 #include <QTimer>
 #include <KDebug>
 
@@ -49,14 +50,14 @@ void ObexSession::setStatus(const ObexSession::Status& status)
 
 void ObexSession::resetTimer()
 {
-    kDebug() << "Resetting the timer";
+    kDebug(dobex()) << "Resetting the timer";
     m_timer.stop();
     m_timer.start();
 }
 
 void ObexSession::sessionTimeoutSlot()
 {
-    kDebug();
+    kDebug(dobex());
     m_status = ObexSession::Timeout;
     m_timer.stop();
     //We can't relay on the Disconnect or Close obex-data-server signals because if two sessions
