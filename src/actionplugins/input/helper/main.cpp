@@ -18,13 +18,14 @@
  *************************************************************************************/
 
 #include "inputhelper.h"
+#include "version.h"
 #include <KCmdLineArgs>
 #include <KApplication>
 #include <KAboutData>
 
 int main(int argc, char *argv[])
 {
-    KAboutData aboutData("bluedevilinputhelper", "bluedevil", ki18n("Bluetooth Input Helper"), "0.1", ki18n("Bluetooth Input Helper"),
+    KAboutData aboutData("bluedevilinputhelper", "bluedevil", ki18n("Bluetooth Input Helper"), bluedevil_version, ki18n("Bluetooth Input Helper"),
     KAboutData::License_GPL, ki18n("(c) 2010, UFO Coders"));
 
     aboutData.addAuthor(ki18n("Alejandro Fiestas Olivares"), ki18n("Maintainer"), "afiestas@kde.org",
