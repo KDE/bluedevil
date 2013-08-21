@@ -44,14 +44,11 @@ void NetworkDUNPlugin::startAction()
     const QString bdAddress = device()->address();
 
     if (QDBusConnection::sessionBus().interface()->isServiceRegistered("org.kde.plasmanm")) {
-        if (QDBusConnection::sessionBus().objectRegisteredAt("/org/kde/plasmanm")) {
-            QDBusMessage msg;
-            msg.createMethodCall("org.kde.plasmanm", "/org/kde/plasmanm", "org.kde.plasmanm", "addBluetoothConnection");
-            msg << bdAddress;
-            msg << "dun";
+        QDBusMessage msg = QDBusMessage::createMethodCall("org.kde.plasmanm", "/org/kde/plasmanm", "org.kde.plasmanm", "addBluetoothConnection");
+        msg << bdAddress;
+        msg << "dun";
 
-            QDBusConnection::sessionBus().call(msg, QDBus::NoBlock);
-        }
+        QDBusConnection::sessionBus().call(msg, QDBus::NoBlock);
     } else {
         QString deviceInfo;
         deviceInfo = deviceInfo.append("%1 %2").arg(bdAddress).arg("dun");
