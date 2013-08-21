@@ -54,7 +54,7 @@ void NetworkPANUPlugin::startAction()
         }
     } else {
         QString deviceInfo;
-        deviceInfo = deviceInfo.append("%1 %2").arg(bdAddress).arg("dun");
+        deviceInfo = deviceInfo.append("%1 %2").arg(bdAddress).arg("nap");
 
         QStringList args;
         args << "create" << "--type" <<  "bluetooth" << "--specific-args" << deviceInfo;
