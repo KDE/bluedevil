@@ -391,6 +391,8 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
                 this, SLOT(adapterDiscoverableChanged()));
         connect(usableAdapter, SIGNAL(devicesChanged(QList<Device*>)),
                 this, SLOT(adapterDevicesChanged(QList<Device*>)));
+        connect(usableAdapter, SIGNAL(deviceRemoved(Device*)),
+                this, SLOT(adapterDevicesChanged()));
     }
 
     fillRemoteDevicesModelInformation();
@@ -521,7 +523,7 @@ void KCMBlueDevilDevices::usableAdapterChanged(Adapter *adapter)
         connect(adapter, SIGNAL(discoverableChanged(bool)),
                 this, SLOT(adapterDiscoverableChanged()));
         connect(adapter, SIGNAL(devicesChanged(QList<Device*>)),
-                this, SLOT(adapterDevicesChanged(QList<Device*>)));
+                this, SLOT(adapterDevicesChanged()));
     }
     fillRemoteDevicesModelInformation();
     QTimer::singleShot(300, this, SLOT(updateInformationState()));
@@ -532,9 +534,8 @@ void KCMBlueDevilDevices::adapterDiscoverableChanged()
     QTimer::singleShot(300, this, SLOT(updateInformationState()));
 }
 
-void KCMBlueDevilDevices::adapterDevicesChanged(const QList<Device*> &devices)
+void KCMBlueDevilDevices::adapterDevicesChanged()
 {
-    Q_UNUSED(devices)
     if (m_deviceDetails) {
         delete m_deviceDetails;
         m_deviceDetails = 0;

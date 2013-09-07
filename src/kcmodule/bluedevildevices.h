@@ -65,7 +65,7 @@ private Q_SLOTS:
 
     void usableAdapterChanged(Adapter *adapter);
     void adapterDiscoverableChanged();
-    void adapterDevicesChanged(const QList<Device*> &devices);
+    void adapterDevicesChanged();
 
     void updateInformationState();
 
