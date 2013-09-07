@@ -114,7 +114,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Connecting to %1 ...</string>
+        <string/>
        </property>
        <property name="wordWrap">
         <bool>true</bool>

@@ -57,7 +57,7 @@ void SSPPairingPage::initializePage()
     m_wizard->setButtonLayout(list);
 
     Device *device = Manager::self()->usableAdapter()->deviceForAddress(m_wizard->deviceAddress());
-    confirmLbl->setText(confirmLbl->text().arg(device->name()));
+    confirmLbl->setText(i18n("Connecting to %1...", device->name()));
 
     connect(device, SIGNAL(registered(Device*)), this, SLOT(registered(Device*)));
 
