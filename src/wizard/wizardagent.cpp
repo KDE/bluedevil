@@ -77,6 +77,7 @@ void WizardAgent::DisplayPinCode(const QDBusObjectPath& device, const QString& p
     Q_UNUSED(device);
     Q_UNUSED(pincode);
     kDebug() << "AGENT-DisplayPasskey " << device.path() << ", " << pincode;
+    emit pinRequested(pincode);
 }
 
 void WizardAgent::RequestConfirmation(const QDBusObjectPath& device, quint32 passkey, const QDBusMessage& msg)
