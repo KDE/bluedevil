@@ -71,21 +71,6 @@ void DiscoverPage::initializePage()
     QMetaObject::invokeMethod(this, "startScan", Qt::QueuedConnection);
 }
 
-void DiscoverPage::nameChanged(const QString& name)
-{
-    kDebug() << name;
-    Device *device = static_cast<Device *>(sender());
-    m_itemRelation.value(device->address())->setText(name);
-    if (!device->name().isEmpty()) {
-        m_itemRelation[device->address()]->setText(device->friendlyName());
-        if (m_itemRelation[device->address()]->isSelected()) {
-            m_wizard->setDeviceAddress(device->address().toAscii());
-            emit completeChanged();
-        }
-        return;
-    }
-}
-
 bool DiscoverPage::isComplete() const
 {
     if (m_wizard->deviceAddress().isEmpty()) {
@@ -155,6 +140,8 @@ void DiscoverPage::deviceFound(Device* device)
         return;
     }
 
+    connect(device, SIGNAL(propertyChanged(QString,QVariant)), SLOT(devicePropertyChanged()));
+
     QListWidgetItem *item = new QListWidgetItem(KIcon(icon), name, deviceList);
 
     item->setData(Qt::UserRole, address);
@@ -184,6 +171,14 @@ void DiscoverPage::itemSelected(QListWidgetItem* item)
         m_wizard->setDeviceAddress(QByteArray());
     }
     emit completeChanged();
+}
+
+void DiscoverPage::devicePropertyChanged()
+{
+    Device *device = qobject_cast<Device*>(sender());
+    if (device) {
+        deviceFound(device);
+    }
 }
 
 int DiscoverPage::nextId() const

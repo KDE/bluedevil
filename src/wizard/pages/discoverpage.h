@@ -45,7 +45,7 @@ private Q_SLOTS:
     void startScan();
     void deviceFound(Device * device);
     void itemSelected(QListWidgetItem* item);
-    void nameChanged(const QString& name);
+    void devicePropertyChanged();
 private:
     void stopScan();
 
