@@ -68,7 +68,7 @@ void DiscoverPage::initializePage()
     connect(pinText, SIGNAL(textChanged(QString)), m_wizard, SLOT(setPin(QString)));
     connect(pinText, SIGNAL(textChanged(QString)), this, SIGNAL(completeChanged()));
 
-    startScan();
+    QMetaObject::invokeMethod(this, "startScan", Qt::QueuedConnection);
 }
 
 void DiscoverPage::nameChanged(const QString& name)
@@ -104,6 +104,10 @@ void DiscoverPage::startScan()
 
     if (Manager::self()->usableAdapter()) {
         Manager::self()->usableAdapter()->startDiscovery();
+        QList<Device*> devices = Manager::self()->usableAdapter()->devices();
+        Q_FOREACH(Device *device, devices) {
+            deviceFound(device);
+        }
     }
 }
 
