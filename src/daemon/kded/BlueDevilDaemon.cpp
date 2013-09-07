@@ -132,7 +132,7 @@ QMapDeviceInfo BlueDevilDaemon::knownDevices()
     QMapDeviceInfo devices;
 
     QList <Device* > list = Manager::self()->usableAdapter()->devices();
-    kDebug() << "List: " << list.length();
+    kDebug(dblue()) << "List: " << list.length();
     DeviceInfo info;
     Q_FOREACH(const Device* device, list) {
         info["name"] = device->friendlyName();
@@ -142,7 +142,7 @@ QMapDeviceInfo BlueDevilDaemon::knownDevices()
     }
 
     if (!d->m_timer.isActive()) {
-        kDebug() << "Start Discovery";
+        kDebug(dblue()) << "Start Discovery";
         Manager::self()->usableAdapter()->startStableDiscovery();
         d->m_discovered.clear();
         d->m_timer.start();
@@ -158,7 +158,7 @@ QMapDeviceInfo BlueDevilDaemon::knownDevices()
 
 void BlueDevilDaemon::stopDiscovering()
 {
-    kDebug() << "Stopping discovering";
+    kDebug(dblue()) << "Stopping discovering";
     d->m_timer.stop();
     Manager::self()->usableAdapter()->stopDiscovery();
 }
@@ -179,7 +179,7 @@ bool BlueDevilDaemon::isServiceStarted()
 
 void BlueDevilDaemon::executeMonolithic()
 {
-    kDebug();
+    kDebug(dblue());
 
     QProcess process;
     if (!process.startDetached("bluedevil-monolithic")) {
@@ -189,7 +189,7 @@ void BlueDevilDaemon::executeMonolithic()
 
 void BlueDevilDaemon::killMonolithic()
 {
-    kDebug();
+    kDebug(dblue());
     QDBusMessage msg = QDBusMessage::createMethodCall(
         "org.kde.bluedevilmonolithic",
         "/MainApplication",
@@ -203,9 +203,9 @@ void BlueDevilDaemon::killMonolithic()
 
 void BlueDevilDaemon::onlineMode()
 {
-    kDebug();
+    kDebug(dblue());
     if (d->m_status == Private::Online) {
-        kDebug() << "Already in onlineMode";
+        kDebug(dblue()) << "Already in onlineMode";
         return;
     }
 
@@ -216,11 +216,11 @@ void BlueDevilDaemon::onlineMode()
 
     FileReceiverSettings::self()->readConfig();
     if (!isServiceStarted() && FileReceiverSettings::self()->enabled()) {
-        kDebug() << "Launching server";
+        kDebug(dblue()) << "Launching server";
         d->m_service->launchServer();
     }
     if (isServiceStarted() && !FileReceiverSettings::self()->enabled()) {
-        kDebug() << "Stoppping server";
+        kDebug(dblue()) << "Stoppping server";
         d->m_service->stopServer();
     }
 
@@ -244,7 +244,7 @@ void BlueDevilDaemon::onlineMode()
 
 void BlueDevilDaemon::monolithicFinished(const QString &)
 {
-    kDebug();
+    kDebug(dblue());
 
     if (d->m_status == Private::Online) {
         executeMonolithic();
@@ -253,9 +253,9 @@ void BlueDevilDaemon::monolithicFinished(const QString &)
 
 void BlueDevilDaemon::offlineMode()
 {
-    kDebug() << "Offline mode";
+    kDebug(dblue()) << "Offline mode";
     if (d->m_status == Private::Offline) {
-        kDebug() << "Already in offlineMode";
+        kDebug(dblue()) << "Already in offlineMode";
         return;
     }
 
@@ -267,7 +267,7 @@ void BlueDevilDaemon::offlineMode()
     }
 
     if (isServiceStarted()) {
-        kDebug() << "Stoppping server";
+        kDebug(dblue()) << "Stoppping server";
         d->m_service->stopServer();
     }
 
@@ -307,14 +307,14 @@ void BlueDevilDaemon::usableAdapterChanged(Adapter *adapter)
 
 void BlueDevilDaemon::deviceFound(Device *device)
 {
-    kDebug() << "DeviceFound: " << device->name();
+    kDebug(dblue()) << "DeviceFound: " << device->name();
     d->m_discovered.append(deviceToInfo(device));
     org::kde::KDirNotify::emitFilesAdded("bluetooth:/");
 }
 
 void BlueDevilDaemon::monolithicQuit(QDBusPendingCallWatcher* watcher)
 {
-    kDebug();
+    kDebug(dblue());
     QDBusPendingReply<void> reply = *watcher;
     if (reply.isError()) {
         qDebug() << "Error response: " << reply.error().message();
@@ -332,3 +332,5 @@ DeviceInfo BlueDevilDaemon::deviceToInfo(const Device* device) const
 
     return info;
 }
+
+extern int dblue() { static int s_area = KDebug::registerArea("BlueDaemon", false); return s_area; }

@@ -26,6 +26,8 @@
 #include <KStandardDirs>
 
 #include <QDebug>
+#include <QDBusConnection>
+#include <QDBusConnectionInterface>
 
 #include <bluedevil/bluedevildevice.h>
 
@@ -39,14 +41,24 @@ NetworkPANUPlugin::NetworkPANUPlugin(QObject* parent, const QVariantList& args)
 
 void NetworkPANUPlugin::startAction()
 {
-    QString deviceInfo;
-    deviceInfo = deviceInfo.append("%1 %2").arg(device()->address()).arg("nap");
+    const QString bdAddress = device()->address();
 
-    QStringList args;
-    args << "create" << "--type" <<  "bluetooth" << "--specific-args" << deviceInfo;
-    KProcess p;
-    p.setProgram(KStandardDirs::findExe("networkmanagement_configshell"), args);
-    p.startDetached();
+    if (QDBusConnection::sessionBus().interface()->isServiceRegistered("org.kde.plasmanm")) {
+        QDBusMessage msg = QDBusMessage::createMethodCall("org.kde.plasmanm", "/org/kde/plasmanm", "org.kde.plasmanm", "addBluetoothConnection");
+        msg << bdAddress;
+        msg << "nap";
+
+        QDBusConnection::sessionBus().call(msg, QDBus::NoBlock);
+    } else {
+        QString deviceInfo;
+        deviceInfo = deviceInfo.append("%1 %2").arg(bdAddress).arg("nap");
+
+        QStringList args;
+        args << "create" << "--type" <<  "bluetooth" << "--specific-args" << deviceInfo;
+        KProcess p;
+        p.setProgram(KStandardDirs::findExe("networkmanagement_configshell"), args);
+        p.startDetached();
+    }
 
     KNotification::event(
         KNotification::Notification,

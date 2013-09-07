@@ -106,4 +106,5 @@ private:
     Private *d;
 };
 
+extern int dblue();
 #endif /*BLUEDEVILDAEMON_H*/

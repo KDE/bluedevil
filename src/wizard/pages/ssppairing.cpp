@@ -57,7 +57,7 @@ void SSPPairingPage::initializePage()
     m_wizard->setButtonLayout(list);
 
     Device *device = m_wizard->device();
-    confirmLbl->setText(confirmLbl->text().arg(device->name()));
+    confirmLbl->setText(i18n("Connecting to %1...", device->name()));
 
     connect(device, SIGNAL(pairedChanged(bool)), this, SLOT(pairedChanged(bool)));
     connect(m_wizard->agent(), SIGNAL(confirmationRequested(quint32,QDBusMessage)),
