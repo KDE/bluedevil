@@ -23,6 +23,9 @@
 #include "bluedevil_service_interface.h"
 #include "filereceiversettings.h"
 #include "version.h"
+#include "obex_agent_manager.h"
+
+#include "filereceiver/obexagent.h"
 
 #include <QtCore/QProcess>
 #include <QDBusServiceWatcher>
@@ -103,6 +106,11 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
 
     connect(Manager::self()->usableAdapter(), SIGNAL(deviceFound(Device*)), this, SLOT(deviceFound(Device*)));
     connect(&d->m_timer, SIGNAL(timeout()), Manager::self()->usableAdapter(), SLOT(stopDiscovery()));
+
+
+    ObexAgent *obexAgent = new ObexAgent(this);
+    org::bluez::obex::AgentManager1 *agent = new org::bluez::obex::AgentManager1("org.bluez.obex", "/org/bluez/obex", QDBusConnection::sessionBus());
+    QDBusPendingReply <void > r = agent->RegisterAgent(QDBusObjectPath("/BlueDevil_receiveAgent"));
 
     d->m_status = Private::Offline;
     if (Manager::self()->usableAdapter()) {
