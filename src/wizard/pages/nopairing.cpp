@@ -57,7 +57,9 @@ void NoPairingPage::initializePage()
 void NoPairingPage::connectedChanged(bool connected)
 {
     m_validPage = connected;
-    m_wizard->next();
+    if (m_validPage) {
+        m_wizard->done(0);
+    }
 }
 
 bool NoPairingPage::validatePage()
@@ -67,7 +69,7 @@ bool NoPairingPage::validatePage()
 
 int NoPairingPage::nextId() const
 {
-    return BlueWizard::Services;
+    return -1;
 }
 
 QList<QWizard::WizardButton> NoPairingPage::wizardButtonsLayout() const

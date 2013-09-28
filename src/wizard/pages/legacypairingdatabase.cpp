@@ -45,7 +45,7 @@ void LegacyPairingPageDatabase::initializePage()
     m_wizard->setButtonLayout(wizardButtonsLayout());
 
     Device *device = m_wizard->device();
-    connecting->setText(connecting->text().arg(device->name()));
+    connecting->setText(i18n("Connecting to %1...", device->name()));
 
     connect(device, SIGNAL(pairedChanged(bool)), this, SLOT(pairedChanged(bool)));
     device->pair();
