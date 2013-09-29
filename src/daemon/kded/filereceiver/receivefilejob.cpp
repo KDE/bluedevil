@@ -18,6 +18,7 @@
 
 #include "receivefilejob.h"
 #include "../BlueDevilDaemon.h"
+#include "filereceiversettings.h"
 #include "obex_transfer.h"
 #include "obex_session.h"
 
@@ -104,7 +105,11 @@ void ReceiveFileJob::showNotification()
 void ReceiveFileJob::slotAccept()
 {
     kDebug(dblue());
-    QDBusMessage msg = m_msg.createReply(QString("/tmp/meh.jpg"));
+    FileReceiverSettings::self()->readConfig();
+    KUrl savePath = FileReceiverSettings::self()->saveUrl();
+    savePath.setFileName(m_transfer->name());
+
+    QDBusMessage msg = m_msg.createReply(savePath.toLocalFile());
     QDBusConnection::sessionBus().send(msg);
 }
 
