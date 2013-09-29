@@ -24,6 +24,8 @@
 
 #include <KJob>
 
+class OrgBluezObexSession1Interface;
+class OrgBluezObexTransfer1Interface;
 class ReceiveFileJob : public KJob
 {
     Q_OBJECT
@@ -41,6 +43,8 @@ class ReceiveFileJob : public KJob
     private:
         QString m_path;
         QDBusMessage m_msg;
+        OrgBluezObexSession1Interface *m_session;
+        OrgBluezObexTransfer1Interface *m_transfer;
 };
 
 #endif //RECEIVE_FILE_JOB_H

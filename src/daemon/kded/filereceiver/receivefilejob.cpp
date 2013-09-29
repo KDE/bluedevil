@@ -55,21 +55,21 @@ void ReceiveFileJob::start()
 
 void ReceiveFileJob::showNotification()
 {
-    org::bluez::obex::Transfer1 *transfer = new org::bluez::obex::Transfer1("org.bluez.obex", m_path, QDBusConnection::sessionBus(), this);
-    kDebug(dblue()) << transfer->name();
-    kDebug(dblue()) << transfer->filename();
-    kDebug(dblue()) << transfer->status();
-    kDebug(dblue()) << transfer->type();
-    kDebug(dblue()) << transfer->size();
-    kDebug(dblue()) << transfer->transferred();
+    m_transfer = new org::bluez::obex::Transfer1("org.bluez.obex", m_path, QDBusConnection::sessionBus(), this);
+    kDebug(dblue()) << m_transfer->name();
+    kDebug(dblue()) << m_transfer->filename();
+    kDebug(dblue()) << m_transfer->status();
+    kDebug(dblue()) << m_transfer->type();
+    kDebug(dblue()) << m_transfer->size();
+    kDebug(dblue()) << m_transfer->transferred();
 
-    org::bluez::obex::Session1 *session = new org::bluez::obex::Session1("org.bluez.obex", transfer->session().path(), QDBusConnection::sessionBus(), this);
-    kDebug(dblue()) << session->destination();
+    m_session = new org::bluez::obex::Session1("org.bluez.obex", m_transfer->session().path(), QDBusConnection::sessionBus(), this);
+    kDebug(dblue()) << m_session->destination();
 
-     Device* device = Manager::self()->usableAdapter()->deviceForAddress(session->destination());
+     Device* device = Manager::self()->usableAdapter()->deviceForAddress(m_session->destination());
      kDebug(dblue()) << device;
 
-     QString name = session->destination();
+     QString name = m_session->destination();
      if (device) {
          kDebug(dblue()) << device->name();
          name = device->name();
@@ -80,7 +80,7 @@ void ReceiveFileJob::showNotification()
 
     m_notification->setText(i18nc(
         "Show a notification asking to authorize or deny an incoming file transfer to this computer from a Bluetooth device.",
-        "%1 is sending you the file %2", name, transfer->name()));
+        "%1 is sending you the file %2", name, m_transfer->name()));
 
     QStringList actions;
 
@@ -93,7 +93,7 @@ void ReceiveFileJob::showNotification()
     connect(m_notification, SIGNAL(action1Activated()), SLOT(slotAccept()));
     connect(m_notification, SIGNAL(action2Activated()), SLOT(slotSaveAs()));
     connect(m_notification, SIGNAL(action3Activated()), SLOT(slotCancel()));
-    connect(m_notification, SIGNAL(closed()), this, SLOT(slotCancel()));
+    connect(m_notification, SIGNAL(closed()), SLOT(slotCancel()));
 
     int size = IconSize(KIconLoader::Desktop);
     m_notification->setPixmap(QIcon::fromTheme("preferences-system-bluetooth").pixmap(size, size));
