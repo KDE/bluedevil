@@ -16,34 +16,40 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA   *
  *************************************************************************************/
 
-#ifndef OBEX_AGENT_H
-#define OBEX_AGENT_H
+#include "filereceiver.h"
+#include "../BlueDevilDaemon.h"
+#include "obexagent.h"
+#include "obex_agent_manager.h"
 
-#include <QDBusMessage>
-#include <QDBusAbstractAdaptor>
-#include <QDBusObjectPath>
+#include <QDBusConnection>
+#include <QDBusPendingCall>
+#include <QDBusPendingCallWatcher>
 
-class QDBusMessage;
-class ObexAgent : public QDBusAbstractAdaptor
+#include <KDebug>
+
+FileReceiver::FileReceiver(QObject* parent) : QObject(parent)
 {
-    Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.bluez.obex.Agent1")
+    kDebug(dblue());
+    ObexAgent *obexAgent = new ObexAgent(this);
+    org::bluez::obex::AgentManager1 *agent = new org::bluez::obex::AgentManager1("org.bluez.obex", "/org/bluez/obex", QDBusConnection::sessionBus(), this);
 
-    public:
-        explicit ObexAgent(QObject* parent);
-        virtual ~ObexAgent();
+    QDBusPendingReply <void > r = agent->RegisterAgent(QDBusObjectPath("/BlueDevil_receiveAgent"));
+    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(r, this);
+    connect(watcher, SIGNAL(finished(QDBusPendingCallWatcher*)), SLOT(agentRegistered(QDBusPendingCallWatcher*)));
+}
 
-    public Q_SLOTS:
-        QString AuthorizePush(const QDBusObjectPath &path, const QDBusMessage &msg);
-        void slotCancel();
-        void slotAccept();
-        void slotSaveAs();
+FileReceiver::~FileReceiver()
+{
 
-        void Release();
-        void Cancel();
+}
 
-    private:
-        QDBusMessage m_msg;
-};
+void FileReceiver::agentRegistered(QDBusPendingCallWatcher* call)
+{
+    QDBusPendingReply <void > r = *call;
+    kDebug(dblue()) << !r.isError();
+    if (r.isError()) {
+        kDebug(dblue()) << r.error().message();
+    }
 
-#endif //OBEX_AGENT_H
+    call->deleteLater();
+}

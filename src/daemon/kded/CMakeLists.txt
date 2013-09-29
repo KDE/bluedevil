@@ -2,6 +2,7 @@ set(kded_bluedevil_SRCS
     BlueDevilDaemon.cpp
     bluezagent.cpp
     filereceiver/obexagent.cpp
+    filereceiver/filereceiver.cpp
 )
 
 qt4_add_dbus_interface(kded_bluedevil_SRCS
@@ -11,6 +12,14 @@ qt4_add_dbus_interface(kded_bluedevil_SRCS
 qt4_add_dbus_interface(kded_bluedevil_SRCS
     filereceiver/org.bluez.obex.AgentManager1.xml
     obex_agent_manager)
+
+qt4_add_dbus_interface(kded_bluedevil_SRCS
+    filereceiver/org.bluez.obex.Transfer1.xml
+    obex_transfer)
+
+qt4_add_dbus_interface(kded_bluedevil_SRCS
+    filereceiver/org.bluez.obex.Session1.xml
+    obex_session)
 
 kde4_add_kcfg_files(kded_bluedevil_SRCS ../../settings/filereceiversettings.kcfgc)
 
