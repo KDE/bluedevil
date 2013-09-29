@@ -16,28 +16,32 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA   *
  *************************************************************************************/
 
-#ifndef OBEX_AGENT_H
-#define OBEX_AGENT_H
+
+#ifndef RECEIVE_FILE_JOB_H
+#define RECEIVE_FILE_JOB_H
 
 #include <QDBusMessage>
-#include <QDBusAbstractAdaptor>
-#include <QDBusObjectPath>
 
-class QDBusMessage;
-class ObexAgent : public QDBusAbstractAdaptor
+#include <KJob>
+
+class ReceiveFileJob : public KJob
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.bluez.obex.Agent1")
-
     public:
-        explicit ObexAgent(QObject* parent);
-        virtual ~ObexAgent();
+        explicit ReceiveFileJob(const QDBusMessage &msg, const QString &path, QObject* parent = 0);
+        virtual ~ReceiveFileJob();
 
-    public Q_SLOTS:
-        QString AuthorizePush(const QDBusObjectPath &path, const QDBusMessage &msg);
+        virtual void start();
+    private Q_SLOTS:
+        void showNotification();
+        void slotCancel();
+        void slotAccept();
+        void slotSaveAs();
 
-        void Release();
-        void Cancel();
+    private:
+        QString m_path;
+        QDBusMessage m_msg;
 };
 
-#endif //OBEX_AGENT_H
+#endif //RECEIVE_FILE_JOB_H
+

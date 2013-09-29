@@ -3,6 +3,7 @@ set(kded_bluedevil_SRCS
     bluezagent.cpp
     filereceiver/obexagent.cpp
     filereceiver/filereceiver.cpp
+    filereceiver/receivefilejob.cpp
 )
 
 qt4_add_dbus_interface(kded_bluedevil_SRCS
