@@ -32,6 +32,7 @@
 #include <KDebug>
 #include <KIconLoader>
 #include <KNotification>
+#include <KTemporaryFile>
 #include <KLocalizedString>
 
 using namespace BlueDevil;
@@ -115,7 +116,12 @@ void ReceiveFileJob::slotAccept()
 
 void ReceiveFileJob::slotSaveAs()
 {
+    KTemporaryFile tmpFile;
+    tmpFile.open();
+    tmpFile.close();
 
+    QDBusConnection::sessionBus().send(m_msg.createReply(tmpFile.fileName()));
+    kDebug(dblue()) << tmpFile.fileName();
 }
 
 void ReceiveFileJob::slotCancel()
