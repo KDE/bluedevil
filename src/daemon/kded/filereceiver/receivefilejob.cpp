@@ -42,7 +42,7 @@ ReceiveFileJob::ReceiveFileJob(const QDBusMessage& msg, const QString &path, QOb
     , m_path(path)
     , m_msg(msg)
 {
-
+    setCapabilities(Killable);
 }
 
 ReceiveFileJob::~ReceiveFileJob()
