@@ -30,6 +30,8 @@
 FileReceiver::FileReceiver(QObject* parent) : QObject(parent)
 {
     kDebug(dblue());
+    qDBusRegisterMetaType<QVariantMap>();
+
     ObexAgent *obexAgent = new ObexAgent(this);
     org::bluez::obex::AgentManager1 *agent = new org::bluez::obex::AgentManager1("org.bluez.obex", "/org/bluez/obex", QDBusConnection::sessionBus(), this);
 

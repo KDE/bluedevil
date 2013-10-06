@@ -22,6 +22,10 @@ qt4_add_dbus_interface(kded_bluedevil_SRCS
     filereceiver/org.bluez.obex.Session1.xml
     obex_session)
 
+qt4_add_dbus_interface(kded_bluedevil_SRCS
+    filereceiver/org.freedesktop.DBus.Properties.xml
+    dbus_properties)
+
 kde4_add_kcfg_files(kded_bluedevil_SRCS ../../settings/filereceiversettings.kcfgc)
 
 kde4_add_plugin(kded_bluedevil
