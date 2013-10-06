@@ -87,14 +87,11 @@ void ReceiveFileJob::showNotification()
     QStringList actions;
 
     actions.append(i18nc("Button to accept the incoming file transfer and download it in the default download directory", "Accept"));
-//     actions.append(i18nc("Button to accept the incoming file transfer and show a Save as... dialog that will let the user choose where will the file be downloaded to", "Save as..."));
     actions.append(i18nc("Deny the incoming file transfer", "Cancel"));
 
     m_notification->setActions(actions);
 
     connect(m_notification, SIGNAL(action1Activated()), SLOT(slotAccept()));
-//     connect(m_notification, SIGNAL(action2Activated()), SLOT(slotSaveAs()));
-//     connect(m_notification, SIGNAL(action3Activated()), SLOT(slotCancel()));
     connect(m_notification, SIGNAL(action2Activated()), SLOT(slotCancel()));
     connect(m_notification, SIGNAL(closed()), SLOT(slotCancel()));
 
