@@ -26,6 +26,7 @@
 
 class OrgBluezObexSession1Interface;
 class OrgBluezObexTransfer1Interface;
+class OrgFreedesktopDBusPropertiesInterface;
 class ReceiveFileJob : public KJob
 {
     Q_OBJECT
@@ -39,8 +40,11 @@ class ReceiveFileJob : public KJob
         void slotCancel();
         void slotAccept();
         void slotSaveAs();
+        void transferPropertiesChanged(const QString &interface, const QVariantMap &properties, const QStringList &invalidatedProperties);
 
     private:
+        void transferChanged(const QVariant &value);
+        void statusChanged(const QVariant &value);
         QString createTempPath(const QString &fileName) const;
 
         QString m_path;
@@ -49,6 +53,7 @@ class ReceiveFileJob : public KJob
         QDBusMessage m_msg;
         OrgBluezObexSession1Interface *m_session;
         OrgBluezObexTransfer1Interface *m_transfer;
+        OrgFreedesktopDBusPropertiesInterface *m_transferProps;
 };
 
 #endif //RECEIVE_FILE_JOB_H

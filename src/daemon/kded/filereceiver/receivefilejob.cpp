@@ -21,6 +21,7 @@
 #include "filereceiversettings.h"
 #include "obex_transfer.h"
 #include "obex_session.h"
+#include "dbus_properties.h"
 
 #include <QIcon>
 #include <QDBusConnection>
@@ -64,6 +65,11 @@ void ReceiveFileJob::showNotification()
     kDebug(dblue()) << m_transfer->type();
     kDebug(dblue()) << m_transfer->size();
     kDebug(dblue()) << m_transfer->transferred();
+
+    m_transferProps = new org::freedesktop::DBus::Properties("org.bluez.obex", m_path, QDBusConnection::sessionBus(), this);
+    connect(m_transferProps,
+            SIGNAL(PropertiesChanged(QString,QVariantMap,QStringList)),
+            SLOT(transferPropertiesChanged(QString,QVariantMap,QStringList)));
 
     m_session = new org::bluez::obex::Session1("org.bluez.obex", m_transfer->session().path(), QDBusConnection::sessionBus(), this);
     kDebug(dblue()) << m_session->destination();
@@ -125,6 +131,60 @@ void ReceiveFileJob::slotCancel()
     kDebug(dblue());
     QDBusMessage msg = m_msg.createErrorReply("org.bluez.obex.Error.Rejected", "org.bluez.obex.Error.Rejected");
     QDBusConnection::sessionBus().send(msg);
+}
+
+void ReceiveFileJob::transferPropertiesChanged(const QString& interface, const QVariantMap& properties, const QStringList& invalidatedProperties)
+{
+    kDebug(dblue()) << interface;
+    kDebug(dblue()) << properties;
+    kDebug(dblue()) << invalidatedProperties;
+
+    QStringList changedProps = properties.keys();
+    Q_FOREACH(const QString &prop, changedProps) {
+        if (prop == QLatin1String("Status")) {
+            statusChanged(properties.value(prop));
+        } else if (prop == QLatin1String("Transferred")) {
+            transferChanged(properties.value(prop));
+        }
+    }
+}
+
+void ReceiveFileJob::statusChanged(const QVariant& value)
+{
+    kDebug(dblue()) << value;
+    QString status = value.toString();
+    if (status == QLatin1String("active")) {
+        FileReceiverSettings::self()->readConfig();
+        KUrl savePath = FileReceiverSettings::self()->saveUrl();
+        savePath.setFileName(m_transfer->name());
+
+        emit description(this, i18n("Receiving file over Bluetooth"),
+                        QPair<QString, QString>(i18nc("File transfer origin", "From"),
+                        QString(m_deviceName)),
+                        QPair<QString, QString>(i18nc("File transfer destination", "To"), savePath.path()));
+
+        setTotalAmount(Bytes, m_transfer->size());
+        setProcessedAmount(Bytes, 0);
+        return;
+    } else if (status == QLatin1String("complete")) {
+        emitResult();
+        return;
+    }
+
+    kDebug(dblue()) << "Not implemented status: " << status;
+}
+
+void ReceiveFileJob::transferChanged(const QVariant& value)
+{
+    kDebug(dblue()) << value;
+    bool ok = false;
+    qulonglong bytes = value.toULongLong(&ok);
+    if (!ok) {
+        kWarning(dblue()) << "Couldn't cast transferChanged value" << value;
+        return;
+    }
+
+    setProcessedAmount(Bytes, bytes);
 }
 
 QString ReceiveFileJob::createTempPath(const QString &fileName) const
