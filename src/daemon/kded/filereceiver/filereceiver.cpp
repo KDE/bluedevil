@@ -46,7 +46,7 @@ FileReceiver::~FileReceiver()
 void FileReceiver::agentRegistered(QDBusPendingCallWatcher* call)
 {
     QDBusPendingReply <void > r = *call;
-    kDebug(dblue()) << !r.isError();
+    kDebug(dblue()) << "Error: " << r.isError();
     if (r.isError()) {
         kDebug(dblue()) << r.error().message();
     }
