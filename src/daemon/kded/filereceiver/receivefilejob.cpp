@@ -104,10 +104,6 @@ void ReceiveFileJob::showNotification()
 void ReceiveFileJob::slotAccept()
 {
     kDebug(dblue());
-    FileReceiverSettings::self()->readConfig();
-    KUrl savePath = FileReceiverSettings::self()->saveUrl();
-    savePath.setFileName(m_transfer->name());
-
     m_tempPath = createTempPath(m_transfer->name());
     kDebug(dblue()) << m_tempPath;
     QDBusMessage msg = m_msg.createReply(m_tempPath);
