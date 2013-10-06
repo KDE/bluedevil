@@ -41,7 +41,10 @@ class ReceiveFileJob : public KJob
         void slotSaveAs();
 
     private:
+        QString createTempPath(const QString &fileName) const;
+
         QString m_path;
+        QString m_tempPath;
         QDBusMessage m_msg;
         OrgBluezObexSession1Interface *m_session;
         OrgBluezObexTransfer1Interface *m_transfer;

@@ -111,7 +111,9 @@ void ReceiveFileJob::slotAccept()
     KUrl savePath = FileReceiverSettings::self()->saveUrl();
     savePath.setFileName(m_transfer->name());
 
-    QDBusMessage msg = m_msg.createReply(savePath.toLocalFile());
+    m_tempPath = createTempPath(m_transfer->name());
+    kDebug(dblue()) << m_tempPath;
+    QDBusMessage msg = m_msg.createReply(m_tempPath);
     QDBusConnection::sessionBus().send(msg);
 }
 
@@ -130,4 +132,18 @@ void ReceiveFileJob::slotCancel()
     kDebug(dblue());
     QDBusMessage msg = m_msg.createErrorReply("org.bluez.obex.Error.Rejected", "org.bluez.obex.Error.Rejected");
     QDBusConnection::sessionBus().send(msg);
+}
+
+QString ReceiveFileJob::createTempPath(const QString &fileName) const
+{
+    QLatin1String rootPath("/tmp/");
+    QString path =  rootPath + fileName;
+    int i = 0;
+
+    while (QFile::exists(path)) {
+        path = rootPath + fileName + QString::number(i);
+        i++;
+    }
+
+    return path;
 }
