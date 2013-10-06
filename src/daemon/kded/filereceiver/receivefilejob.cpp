@@ -71,10 +71,10 @@ void ReceiveFileJob::showNotification()
      Device* device = Manager::self()->usableAdapter()->deviceForAddress(m_session->destination());
      kDebug(dblue()) << device;
 
-     QString name = m_session->destination();
+     m_deviceName = m_session->destination();
      if (device) {
          kDebug(dblue()) << device->name();
-         name = device->name();
+         m_deviceName = device->name();
      }
 
     KNotification *m_notification = new KNotification("bluedevilIncomingFile",
@@ -82,7 +82,7 @@ void ReceiveFileJob::showNotification()
 
     m_notification->setText(i18nc(
         "Show a notification asking to authorize or deny an incoming file transfer to this computer from a Bluetooth device.",
-        "%1 is sending you the file %2", name, m_transfer->name()));
+        "%1 is sending you the file %2", m_deviceName, m_transfer->name()));
 
     QStringList actions;
 

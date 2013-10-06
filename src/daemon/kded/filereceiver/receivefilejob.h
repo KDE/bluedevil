@@ -45,6 +45,7 @@ class ReceiveFileJob : public KJob
 
         QString m_path;
         QString m_tempPath;
+        QString m_deviceName;
         QDBusMessage m_msg;
         OrgBluezObexSession1Interface *m_session;
         OrgBluezObexTransfer1Interface *m_transfer;
