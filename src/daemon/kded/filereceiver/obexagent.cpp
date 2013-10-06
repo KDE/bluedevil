@@ -24,6 +24,8 @@
 #include <QDBusConnection>
 
 #include <kdebug.h>
+#include <kio/global.h>
+#include <kjobtrackerinterface.h>
 
 ObexAgent::ObexAgent(QObject* parent) : QDBusAbstractAdaptor(parent)
 {
@@ -48,6 +50,7 @@ QString ObexAgent::AuthorizePush(const QDBusObjectPath& path, const QDBusMessage
     ReceiveFileJob *job = new ReceiveFileJob(msg, path.path(), this);
     job->start();
 
+    KIO::getJobTracker()->registerJob(job);
     return QString();
 }
 
