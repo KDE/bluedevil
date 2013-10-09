@@ -58,6 +58,7 @@ Name[zh_TW]=轉接器
 
 Comment=Configure Bluetooth adapters
 Comment[ca]=Configura els adaptadors Bluetooth
+Comment[ca@valencia]=Configura els adaptadors Bluetooth
 Comment[cs]=Nastavte adaptéry Bluetooth
 Comment[da]=Indstil Bluetooth-adaptere
 Comment[de]=Bluetooth-Adapter einrichten
