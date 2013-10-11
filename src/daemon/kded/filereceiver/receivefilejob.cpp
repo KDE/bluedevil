@@ -31,6 +31,8 @@
 #include <bluedevil/bluedevildevice.h>
 
 #include <KDebug>
+#include <KIO/Job>
+#include <kio/copyjob.h>
 #include <kio/global.h>
 #include <kjobtrackerinterface.h>
 #include <KIconLoader>
@@ -184,11 +186,12 @@ void ReceiveFileJob::statusChanged(const QVariant& value)
 {
     kDebug(dblue()) << value;
     QString status = value.toString();
-    if (status == QLatin1String("active")) {
-        FileReceiverSettings::self()->readConfig();
-        KUrl savePath = FileReceiverSettings::self()->saveUrl();
-        savePath.setFileName(m_transfer->name());
 
+    FileReceiverSettings::self()->readConfig();
+    KUrl savePath = FileReceiverSettings::self()->saveUrl();
+    savePath.setFileName(m_transfer->name());
+
+    if (status == QLatin1String("active")) {
         emit description(this, i18n("Receiving file over Bluetooth"),
                         QPair<QString, QString>(i18nc("File transfer origin", "From"),
                         QString(m_deviceName)),
@@ -199,7 +202,9 @@ void ReceiveFileJob::statusChanged(const QVariant& value)
         m_time = QTime::currentTime();
         return;
     } else if (status == QLatin1String("complete")) {
-        emitResult();
+        KIO::CopyJob* job = KIO::move(KUrl(m_tempPath), KUrl(savePath), KIO::HideProgressInfo);
+        job->setUiDelegate(0);
+        connect(job, SIGNAL(finished(KJob*)), SLOT(moveFinished(KJob*)));
         return;
     }
 
@@ -227,6 +232,18 @@ void ReceiveFileJob::transferChanged(const QVariant& value)
     }
 
     setProcessedAmount(Bytes, bytes);
+}
+
+void ReceiveFileJob::moveFinished(KJob* job)
+{
+    if (job->error()) {
+        kDebug(dblue()) << job->error();
+        kDebug(dblue()) << job->errorText();
+        setError(job->error());
+        setErrorText("Error in KIO::move");
+    }
+
+    emitResult();
 }
 
 QString ReceiveFileJob::createTempPath(const QString &fileName) const

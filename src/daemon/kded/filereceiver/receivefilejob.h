@@ -47,6 +47,7 @@ class ReceiveFileJob : public KJob
         void slotAccept();
         void slotSaveAs();
         void transferPropertiesChanged(const QString &interface, const QVariantMap &properties, const QStringList &invalidatedProperties);
+        void moveFinished(KJob* job);
 
     private:
         void transferChanged(const QVariant &value);
