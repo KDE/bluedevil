@@ -94,6 +94,16 @@ void ReceiveFileJob::init()
         m_deviceName = device->name();
     }
 
+    FileReceiverSettings::self()->readConfig();
+    kDebug(dblue()) << "Auto Accept: " << FileReceiverSettings::self()->autoAccept();
+    if (FileReceiverSettings::self()->autoAccept() == 1 && device->isTrusted()) {
+        slotAccept();
+        return;
+    } else if (FileReceiverSettings::self()->autoAccept() == 2) {
+        slotAccept();
+        return;
+    }
+
     showNotification();
 }
 
