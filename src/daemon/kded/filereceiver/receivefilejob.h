@@ -20,6 +20,7 @@
 #ifndef RECEIVE_FILE_JOB_H
 #define RECEIVE_FILE_JOB_H
 
+#include <QTime>
 #include <QDBusMessage>
 
 #include <KJob>
@@ -48,6 +49,8 @@ class ReceiveFileJob : public KJob
         void statusChanged(const QVariant &value);
         QString createTempPath(const QString &fileName) const;
 
+        QTime m_time;
+        qulonglong m_speedBytes;
         QString m_path;
         QString m_tempPath;
         QString m_deviceName;

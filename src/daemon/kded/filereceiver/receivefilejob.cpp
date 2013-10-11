@@ -42,6 +42,7 @@ using namespace BlueDevil;
 
 ReceiveFileJob::ReceiveFileJob(const QDBusMessage& msg, const QString &path, const KComponentData &componentData, QObject* parent)
     : KJob(parent)
+    , m_speedBytes(0)
     , m_path(path)
     , m_msg(msg)
     , m_componentData(componentData)
@@ -173,6 +174,7 @@ void ReceiveFileJob::statusChanged(const QVariant& value)
 
         setTotalAmount(Bytes, m_transfer->size());
         setProcessedAmount(Bytes, 0);
+        m_time = QTime::currentTime();
         return;
     } else if (status == QLatin1String("complete")) {
         emitResult();
@@ -190,6 +192,16 @@ void ReceiveFileJob::transferChanged(const QVariant& value)
     if (!ok) {
         kWarning(dblue()) << "Couldn't cast transferChanged value" << value;
         return;
+    }
+
+    //If a least 1 second has passed since last update
+    int secondsSinceLastTime = m_time.secsTo(QTime::currentTime());
+    if (secondsSinceLastTime > 0) {
+        float speed = (bytes - m_speedBytes) / secondsSinceLastTime;
+        emitSpeed(speed);
+
+        m_time = QTime::currentTime();
+        m_speedBytes = bytes;
     }
 
     setProcessedAmount(Bytes, bytes);
