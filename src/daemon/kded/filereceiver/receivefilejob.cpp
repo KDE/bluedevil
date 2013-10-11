@@ -85,14 +85,14 @@ void ReceiveFileJob::showNotification()
     m_session = new org::bluez::obex::Session1("org.bluez.obex", m_transfer->session().path(), QDBusConnection::sessionBus(), this);
     kDebug(dblue()) << m_session->destination();
 
-     Device* device = Manager::self()->usableAdapter()->deviceForAddress(m_session->destination());
-     kDebug(dblue()) << device;
+    Device* device = Manager::self()->usableAdapter()->deviceForAddress(m_session->destination());
+    kDebug(dblue()) << device;
 
-     m_deviceName = m_session->destination();
-     if (device) {
-         kDebug(dblue()) << device->name();
-         m_deviceName = device->name();
-     }
+    m_deviceName = m_session->destination();
+    if (device) {
+        kDebug(dblue()) << device->name();
+        m_deviceName = device->name();
+    }
 
     KNotification *m_notification = new KNotification("bluedevilIncomingFile",
         KNotification::Persistent, this);
