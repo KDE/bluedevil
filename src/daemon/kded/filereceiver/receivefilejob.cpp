@@ -60,6 +60,13 @@ void ReceiveFileJob::start()
     QMetaObject::invokeMethod(this, "showNotification", Qt::QueuedConnection);
 }
 
+bool ReceiveFileJob::doKill()
+{
+    kDebug(dblue());
+    m_transfer->Cancel();
+    return true;
+}
+
 void ReceiveFileJob::showNotification()
 {
     m_transfer = new org::bluez::obex::Transfer1("org.bluez.obex", m_path, QDBusConnection::sessionBus(), this);
