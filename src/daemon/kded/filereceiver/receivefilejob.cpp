@@ -206,6 +206,10 @@ void ReceiveFileJob::statusChanged(const QVariant& value)
         job->setUiDelegate(0);
         connect(job, SIGNAL(finished(KJob*)), SLOT(moveFinished(KJob*)));
         return;
+    } else if (status == QLatin1String("error")) {
+        setError(KJob::UserDefinedError);
+        emitResult();
+        return;
     }
 
     kDebug(dblue()) << "Not implemented status: " << status;
