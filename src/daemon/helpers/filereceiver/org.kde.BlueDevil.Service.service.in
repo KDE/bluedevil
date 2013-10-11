@@ -1,3 +1,0 @@
-[D-BUS Service]
-Name=org.kde.BlueDevil.Service
-Exec=@CMAKE_INSTALL_PREFIX@/bin/bluedevil-helper

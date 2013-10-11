@@ -7,10 +7,6 @@ set(kded_bluedevil_SRCS
 )
 
 qt4_add_dbus_interface(kded_bluedevil_SRCS
-    ../helpers/filereceiver/org.kde.BlueDevil.Service.xml
-    bluedevil_service_interface)
-
-qt4_add_dbus_interface(kded_bluedevil_SRCS
     filereceiver/org.bluez.obex.AgentManager1.xml
     obex_agent_manager)
 

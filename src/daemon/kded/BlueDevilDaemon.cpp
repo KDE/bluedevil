@@ -20,7 +20,6 @@
 
 #include "BlueDevilDaemon.h"
 #include "bluezagent.h"
-#include "bluedevil_service_interface.h"
 #include "filereceiversettings.h"
 #include "version.h"
 
@@ -61,8 +60,8 @@ struct BlueDevilDaemon::Private
     BluezAgent                      *m_bluezAgent;
     KFilePlacesModel                *m_placesModel;
     Adapter                         *m_adapter;
-    org::kde::BlueDevil::Service    *m_service;
     QDBusServiceWatcher             *m_monolithicWatcher;
+    FileReceiver                    *m_fileReceiver;
     QList <DeviceInfo>                m_discovered;
     QTimer                           m_timer;
     KComponentData                  m_componentData;
@@ -77,8 +76,8 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
 
     d->m_bluezAgent = 0;
     d->m_adapter = 0;
-    d->m_service = 0;
     d->m_placesModel = 0;
+    d->m_fileReceiver = 0;
     d->m_monolithicWatcher = new QDBusServiceWatcher("org.kde.bluedevilmonolithic"
             , QDBusConnection::sessionBus(), QDBusServiceWatcher::WatchForUnregistration, this);
     d->m_timer.setInterval(20000);
@@ -109,8 +108,6 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
 
     connect(Manager::self()->usableAdapter(), SIGNAL(deviceFound(Device*)), this, SLOT(deviceFound(Device*)));
     connect(&d->m_timer, SIGNAL(timeout()), Manager::self()->usableAdapter(), SLOT(stopDiscovery()));
-
-    FileReceiver *receiver = new FileReceiver(d->m_componentData, this);
 
     d->m_status = Private::Offline;
     if (Manager::self()->usableAdapter()) {
@@ -171,20 +168,6 @@ void BlueDevilDaemon::stopDiscovering()
     Manager::self()->usableAdapter()->stopDiscovery();
 }
 
-bool BlueDevilDaemon::isServiceStarted()
-{
-    if (!d->m_service) {
-        d->m_service = new org::kde::BlueDevil::Service("org.kde.BlueDevil.Service",
-            "/Service", QDBusConnection::sessionBus(), this);
-    }
-    QDBusPendingReply <bool > r = d->m_service->isRunning();
-    r.waitForFinished();
-    if (r.isError() || !r.isValid()) {
-        return false;
-    }
-    return r.value();
-}
-
 void BlueDevilDaemon::executeMonolithic()
 {
     kDebug(dblue());
@@ -223,13 +206,13 @@ void BlueDevilDaemon::onlineMode()
     d->m_adapter = Manager::self()->usableAdapter();
 
     FileReceiverSettings::self()->readConfig();
-    if (!isServiceStarted() && FileReceiverSettings::self()->enabled()) {
-        kDebug(dblue()) << "Launching server";
-        d->m_service->launchServer();
+    if (!d->m_fileReceiver && FileReceiverSettings::self()->enabled()) {
+        d->m_fileReceiver = new FileReceiver(d->m_componentData, this);
     }
-    if (isServiceStarted() && !FileReceiverSettings::self()->enabled()) {
+    if (d->m_fileReceiver && !FileReceiverSettings::self()->enabled()) {
         kDebug(dblue()) << "Stoppping server";
-        d->m_service->stopServer();
+        delete d->m_fileReceiver;
+        d->m_fileReceiver = 0;
     }
 
     if (!d->m_placesModel) {
@@ -274,9 +257,10 @@ void BlueDevilDaemon::offlineMode()
         d->m_bluezAgent = 0;
     }
 
-    if (isServiceStarted()) {
+    if (d->m_fileReceiver) {
         kDebug(dblue()) << "Stoppping server";
-        d->m_service->stopServer();
+        delete d->m_fileReceiver;
+        d->m_fileReceiver = 0;
     }
 
     //Just to be sure that online was called
