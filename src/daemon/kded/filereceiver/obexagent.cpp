@@ -24,10 +24,10 @@
 #include <QDBusConnection>
 
 #include <kdebug.h>
-#include <kio/global.h>
-#include <kjobtrackerinterface.h>
 
-ObexAgent::ObexAgent(QObject* parent) : QDBusAbstractAdaptor(parent)
+ObexAgent::ObexAgent(const KComponentData &componentData, QObject* parent)
+    : QDBusAbstractAdaptor(parent)
+    , m_componentData(componentData)
 {
     kDebug(dblue());
     if (!QDBusConnection::sessionBus().registerObject("/BlueDevil_receiveAgent", parent)) {
@@ -47,10 +47,9 @@ QString ObexAgent::AuthorizePush(const QDBusObjectPath& path, const QDBusMessage
 
     msg.setDelayedReply(true);
 
-    ReceiveFileJob *job = new ReceiveFileJob(msg, path.path(), this);
+    ReceiveFileJob *job = new ReceiveFileJob(msg, path.path(), m_componentData, this);
     job->start();
 
-    KIO::getJobTracker()->registerJob(job);
     return QString();
 }
 

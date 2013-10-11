@@ -23,6 +23,8 @@
 #include <QDBusAbstractAdaptor>
 #include <QDBusObjectPath>
 
+#include <KComponentData>
+
 class QDBusMessage;
 class ObexAgent : public QDBusAbstractAdaptor
 {
@@ -30,7 +32,7 @@ class ObexAgent : public QDBusAbstractAdaptor
     Q_CLASSINFO("D-Bus Interface", "org.bluez.obex.Agent1")
 
     public:
-        explicit ObexAgent(QObject* parent);
+        explicit ObexAgent(const KComponentData &componentData, QObject* parent);
         virtual ~ObexAgent();
 
     public Q_SLOTS:
@@ -38,6 +40,8 @@ class ObexAgent : public QDBusAbstractAdaptor
 
         void Release();
         void Cancel();
+    private:
+        KComponentData m_componentData;
 };
 
 #endif //OBEX_AGENT_H

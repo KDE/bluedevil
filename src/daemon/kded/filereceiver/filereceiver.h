@@ -20,13 +20,14 @@
 #define FILE_RECEIVER_H
 
 #include <QObject>
+#include <KComponentData>
 
 class QDBusPendingCallWatcher;
 class FileReceiver : public QObject
 {
     Q_OBJECT
     public:
-        explicit FileReceiver(QObject* parent = 0);
+        explicit FileReceiver(const KComponentData &componentData, QObject* parent = 0);
         virtual ~FileReceiver();
 
     private Q_SLOTS:

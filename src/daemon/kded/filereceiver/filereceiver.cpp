@@ -27,12 +27,12 @@
 
 #include <KDebug>
 
-FileReceiver::FileReceiver(QObject* parent) : QObject(parent)
+FileReceiver::FileReceiver(const KComponentData& componentData, QObject* parent) : QObject(parent)
 {
     kDebug(dblue());
     qDBusRegisterMetaType<QVariantMap>();
 
-    ObexAgent *obexAgent = new ObexAgent(this);
+    ObexAgent *obexAgent = new ObexAgent(componentData, this);
     org::bluez::obex::AgentManager1 *agent = new org::bluez::obex::AgentManager1("org.bluez.obex", "/org/bluez/obex", QDBusConnection::sessionBus(), this);
 
     QDBusPendingReply <void > r = agent->RegisterAgent(QDBusObjectPath("/BlueDevil_receiveAgent"));

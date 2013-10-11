@@ -23,7 +23,7 @@
 #include "obex_session.h"
 #include "dbus_properties.h"
 
-#include <QIcon>
+#include <KIcon>
 #include <QDBusConnection>
 
 #include <bluedevil/bluedevilmanager.h>
@@ -31,6 +31,8 @@
 #include <bluedevil/bluedevildevice.h>
 
 #include <KDebug>
+#include <kio/global.h>
+#include <kjobtrackerinterface.h>
 #include <KIconLoader>
 #include <KNotification>
 #include <KTemporaryFile>
@@ -38,10 +40,11 @@
 
 using namespace BlueDevil;
 
-ReceiveFileJob::ReceiveFileJob(const QDBusMessage& msg, const QString &path, QObject* parent)
+ReceiveFileJob::ReceiveFileJob(const QDBusMessage& msg, const QString &path, const KComponentData &componentData, QObject* parent)
     : KJob(parent)
     , m_path(path)
     , m_msg(msg)
+    , m_componentData(componentData)
 {
     setCapabilities(Killable);
 }
@@ -102,7 +105,7 @@ void ReceiveFileJob::showNotification()
     connect(m_notification, SIGNAL(closed()), SLOT(slotCancel()));
 
     int size = IconSize(KIconLoader::Desktop);
-    m_notification->setPixmap(QIcon::fromTheme("preferences-system-bluetooth").pixmap(size, size));
+    m_notification->setPixmap(KIcon("preferences-system-bluetooth").pixmap(size, size));
     m_notification->setComponentData(KComponentData("bluedevil"));
     m_notification->sendEvent();
 }
@@ -110,6 +113,11 @@ void ReceiveFileJob::showNotification()
 void ReceiveFileJob::slotAccept()
 {
     kDebug(dblue());
+    KComponentData data = KGlobal::mainComponent();
+    KGlobal::setActiveComponent(m_componentData);
+    KIO::getJobTracker()->registerJob(this);
+    KGlobal::setActiveComponent(data);
+
     m_tempPath = createTempPath(m_transfer->name());
     kDebug(dblue()) << m_tempPath;
     QDBusMessage msg = m_msg.createReply(m_tempPath);

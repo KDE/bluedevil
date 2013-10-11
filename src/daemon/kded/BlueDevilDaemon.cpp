@@ -33,6 +33,7 @@
 #include <kdemacros.h>
 #include <KDebug>
 #include <KAboutData>
+#include <KComponentData>
 #include <KPluginFactory>
 #include <kfileplacesmodel.h>
 #include <kdirnotify.h>
@@ -64,6 +65,7 @@ struct BlueDevilDaemon::Private
     QDBusServiceWatcher             *m_monolithicWatcher;
     QList <DeviceInfo>                m_discovered;
     QTimer                           m_timer;
+    KComponentData                  m_componentData;
 };
 
 BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
@@ -98,6 +100,8 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     aboutData.addAuthor(ki18n("Eduardo Robles Elvira"), ki18n("Maintainer"), "edulix@gmail.com",
         "http://blog.edulix.es");
 
+    aboutData.setProgramIconName("preferences-system-bluetooth");
+    d->m_componentData = KComponentData(aboutData);
     connect(d->m_monolithicWatcher, SIGNAL(serviceUnregistered(const QString &)), SLOT(monolithicFinished(const QString &)));
 
     connect(Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)),
@@ -106,7 +110,7 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     connect(Manager::self()->usableAdapter(), SIGNAL(deviceFound(Device*)), this, SLOT(deviceFound(Device*)));
     connect(&d->m_timer, SIGNAL(timeout()), Manager::self()->usableAdapter(), SLOT(stopDiscovery()));
 
-    FileReceiver *receiver = new FileReceiver(this);
+    FileReceiver *receiver = new FileReceiver(d->m_componentData, this);
 
     d->m_status = Private::Offline;
     if (Manager::self()->usableAdapter()) {
