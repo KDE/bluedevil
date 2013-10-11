@@ -57,7 +57,7 @@ ReceiveFileJob::~ReceiveFileJob()
 
 void ReceiveFileJob::start()
 {
-    QMetaObject::invokeMethod(this, "showNotification", Qt::QueuedConnection);
+    QMetaObject::invokeMethod(this, "init", Qt::QueuedConnection);
 }
 
 bool ReceiveFileJob::doKill()
@@ -67,7 +67,7 @@ bool ReceiveFileJob::doKill()
     return true;
 }
 
-void ReceiveFileJob::showNotification()
+void ReceiveFileJob::init()
 {
     m_transfer = new org::bluez::obex::Transfer1("org.bluez.obex", m_path, QDBusConnection::sessionBus(), this);
     kDebug(dblue()) << m_transfer->name();
@@ -94,6 +94,11 @@ void ReceiveFileJob::showNotification()
         m_deviceName = device->name();
     }
 
+    showNotification();
+}
+
+void ReceiveFileJob::showNotification()
+{
     KNotification *m_notification = new KNotification("bluedevilIncomingFile",
         KNotification::Persistent, this);
 

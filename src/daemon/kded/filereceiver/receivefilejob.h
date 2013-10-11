@@ -41,6 +41,7 @@ class ReceiveFileJob : public KJob
         virtual bool doKill();
 
     private Q_SLOTS:
+        void init();
         void showNotification();
         void slotCancel();
         void slotAccept();
