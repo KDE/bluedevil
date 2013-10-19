@@ -47,6 +47,7 @@ Name[zh_TW]=藍牙
 Comment=Handles Bluetooth events
 Comment[ca]=Gestiona els esdeveniments del Bluetooth
 Comment[ca@valencia]=Gestiona els esdeveniments del Bluetooth
+Comment[cs]=Ovládá události Bluetooth
 Comment[da]=Håndterer Bluetooth-hændelser
 Comment[de]=Verarbeitung von Bluetooth-Ereignissen
 Comment[el]=Χειρίζεται γεγονότα Bluetooth
