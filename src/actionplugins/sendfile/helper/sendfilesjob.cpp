@@ -208,16 +208,20 @@ void SendFilesJob::progress(quint64 transferBytes)
     setProcessedAmount(Bytes, m_progress);
 }
 
-void SendFilesJob::error(QDBusObjectPath transfer, const QString& error)
+void SendFilesJob::error(const QDBusObjectPath& transfer, const QString& error)
 {
+    Q_UNUSED(transfer)
     kDebug() << error;
 
-    //if this is the last file, do not complete it
-    if (!m_filesToSend.isEmpty()) {
-        quint64 toAdd = m_currentFileSize - m_currentFileProgress;
-        m_progress += toAdd;
-        setProcessedAmount(Bytes, m_progress);
+    //if this is the last file, just emit error
+    if (m_filesToSend.isEmpty()) {
+        setError(KJob::UserDefinedError);
+        return;
     }
 
-//     jobDone(transfer);
+    quint64 toAdd = m_currentFileSize - m_currentFileProgress;
+    m_progress += toAdd;
+    setProcessedAmount(Bytes, m_progress);
+    nextJob();
+
 }
