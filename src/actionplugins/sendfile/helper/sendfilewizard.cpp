@@ -21,7 +21,6 @@
  *****************************************************************************/
 
 #include "sendfilewizard.h"
-#include "obexagent.h"
 
 #include "pages/selectdeviceandfilespage.h"
 #include "pages/selectdevicepage.h"
@@ -29,6 +28,7 @@
 #include "pages/connectingpage.h"
 
 #include <QApplication>
+#include <QTimer>
 
 #include <kdebug.h>
 #include <kstandardguiitem.h>
@@ -91,8 +91,6 @@ SendFileWizard::SendFileWizard(const QString& deviceInfo, const QStringList& fil
     }
 
     addPage(new ConnectingPage());
-
-    m_agent = new ObexAgent(qApp);
 }
 
 SendFileWizard::~SendFileWizard()

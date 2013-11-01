@@ -23,8 +23,6 @@
 #ifndef SENDFILESJOB_H
 #define SENDFILESJOB_H
 
-#include <obex_transfer.h>
-
 #include <QList>
 #include <QStringList>
 #include <QDBusObjectPath>
@@ -37,6 +35,7 @@ namespace BlueDevil
     class Device;
 }
 class ObexAgent;
+class QDBusPendingCallWatcher;
 class OrgBluezObexClient1Interface;
 class OrgBluezObexObjectPush1Interface;
 class OrgFreedesktopDBusPropertiesInterface;
@@ -82,7 +81,6 @@ private:
     OrgBluezObexClient1Interface *m_client;
     OrgBluezObexObjectPush1Interface *m_push;
     OrgFreedesktopDBusPropertiesInterface *m_props;
-    OrgOpenobexTransferInterface *m_currentTransferJob;
 };
 
 #endif // SENDFILESJOB_H

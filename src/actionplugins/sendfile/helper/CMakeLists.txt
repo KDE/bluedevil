@@ -12,7 +12,6 @@ set(sendfilehelper_SRCS
     pages/selectdevicepage.cpp
     pages/selectfilespage.cpp
     pages/connectingpage.cpp
-    obexagent.cpp
     sendfilesjob.cpp
 )
 
@@ -22,8 +21,6 @@ kde4_add_ui_files(sendfilehelper_SRCS
     discover.ui
 )
 
-qt4_add_dbus_interface(sendfilehelper_SRCS org.openobex.Client.xml obex_client)
-qt4_add_dbus_interface(sendfilehelper_SRCS org.openobex.Transfer.xml obex_transfer)
 qt4_add_dbus_interface(sendfilehelper_SRCS org.bluez.obex.Client1.xml obexd_client)
 qt4_add_dbus_interface(sendfilehelper_SRCS org.bluez.obex.ObjectPush1.xml obexd_push)
 qt4_add_dbus_interface(sendfilehelper_SRCS org.bluez.obex.Transfer1.xml obexd_transfer)

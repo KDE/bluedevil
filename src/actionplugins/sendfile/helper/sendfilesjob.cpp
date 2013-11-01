@@ -21,9 +21,6 @@
  *****************************************************************************/
 
 #include "sendfilesjob.h"
-#include "obexagent.h"
-#include "obex_transfer.h"
-#include "obex_client.h"
 #include "obexd_client.h"
 #include "obexd_push.h"
 #include "obexd_transfer.h"
@@ -35,7 +32,6 @@
 
 using namespace BlueDevil;
 SendFilesJob::SendFilesJob(const QStringList& files, Device* device, ObexAgent* agent, QObject* parent): KJob(parent)
-,m_currentTransferJob(0)
 {
     kDebug() << files;
     m_filesToSend = files;
@@ -52,20 +48,11 @@ SendFilesJob::SendFilesJob(const QStringList& files, Device* device, ObexAgent* 
         m_totalSize += file.size();
     }
 
-    connect(m_agent, SIGNAL(request(OrgOpenobexTransferInterface *)), this, SLOT(nextJob(OrgOpenobexTransferInterface*)));
-    connect(m_agent, SIGNAL(completed(QDBusObjectPath)), this, SLOT(jobDone(QDBusObjectPath)));
-    connect(m_agent, SIGNAL(progress(QDBusObjectPath, quint64)), this, SLOT(progress(QDBusObjectPath, quint64)));
-    connect(m_agent, SIGNAL(error(QDBusObjectPath, QString)), this, SLOT(error(QDBusObjectPath, QString)));
-
     setCapabilities(Killable);
 }
 
 bool SendFilesJob::doKill()
 {
-    if(m_currentTransferJob) {
-        m_currentTransferJob->Cancel();
-    }
-    m_agent->setKilled();
     return true;
 }
 
