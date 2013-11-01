@@ -95,10 +95,8 @@ void SendFilesJob::createSessionSlot(QDBusPendingCallWatcher *call)
 
     QString path = reply.value().path();
     m_push = new OrgBluezObexObjectPush1Interface("org.bluez.obex", path, QDBusConnection::sessionBus(), this);
-    QDBusPendingReply<QDBusObjectPath, QVariantMap> fileReply = m_push->SendFile(m_filesToSend.first());
 
-    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(fileReply);
-    connect(watcher, SIGNAL(finished(QDBusPendingCallWatcher*)), SLOT(sendFileSlot(QDBusPendingCallWatcher*)));
+    nextJob();
 }
 
 void SendFilesJob::sendFileSlot(QDBusPendingCallWatcher* watcher)
@@ -179,7 +177,7 @@ void SendFilesJob::nextJob()
 
     emit description(this, i18n("Sending file over Bluetooth"), QPair<QString, QString>(i18nc("File transfer origin", "From"), m_currentFile), QPair<QString, QString>(i18nc("File transfer destination", "To"), m_device->name()));
 
-    QDBusPendingReply<QDBusObjectPath, QVariantMap> fileReply = m_push->SendFile(m_filesToSend.first());
+    QDBusPendingReply<QDBusObjectPath, QVariantMap> fileReply = m_push->SendFile(m_currentFile);
 
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(fileReply);
     connect(watcher, SIGNAL(finished(QDBusPendingCallWatcher*)), SLOT(sendFileSlot(QDBusPendingCallWatcher*)));
