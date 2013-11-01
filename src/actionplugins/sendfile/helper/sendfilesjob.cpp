@@ -45,7 +45,6 @@ SendFilesJob::SendFilesJob(const QStringList& files, Device* device, QObject* pa
 
     Q_FOREACH(const QString &filePath, files) {
         QFile file(filePath);
-        kDebug() << "Adding size : " << file.size();
         m_filesToSendSize << file.size();
         m_totalSize += file.size();
     }
