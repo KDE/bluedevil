@@ -37,8 +37,11 @@ namespace BlueDevil
     class Device;
 }
 class ObexAgent;
-using namespace BlueDevil;
+class OrgBluezObexClient1Interface;
+class OrgBluezObexObjectPush1Interface;
+class OrgFreedesktopDBusPropertiesInterface;
 
+using namespace BlueDevil;
 class SendFilesJob : public KJob
 {
 Q_OBJECT
@@ -50,13 +53,20 @@ public:
 
 private Q_SLOTS:
     void doStart();
-    void sendFileResult(QDBusPendingCallWatcher *call);
-    void nextJob(OrgOpenobexTransferInterface *transferObj);
-    void jobDone(QDBusObjectPath transfer);
-    void progress(QDBusObjectPath transfer, quint64 transferBytes);
+    void createSessionSlot(QDBusPendingCallWatcher *call);
+    void nextJob();
+    void jobDone();
+    void progress(quint64 transferBytes);
     void error(QDBusObjectPath transfer, const QString& error);
+    void propertiesChangedSlot(const QString& interface, const QVariantMap &props, const QStringList &invalidProps);
+    void sendFileSlot(QDBusPendingCallWatcher* watcher);
 
 private:
+    void transferChanged(const QVariant &value);
+    void statusChanged(const QVariant &value);
+
+    qulonglong m_speedBytes;
+    QTime m_time;
     ObexAgent       *m_agent;
     QStringList     m_filesToSend;
     QList <quint64> m_filesToSendSize;
@@ -68,6 +78,10 @@ private:
     quint64         m_currentFileProgress;
     quint64         m_currentFileSize;
 
+
+    OrgBluezObexClient1Interface *m_client;
+    OrgBluezObexObjectPush1Interface *m_push;
+    OrgFreedesktopDBusPropertiesInterface *m_props;
     OrgOpenobexTransferInterface *m_currentTransferJob;
 };
 

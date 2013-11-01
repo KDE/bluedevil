@@ -24,7 +24,9 @@ kde4_add_ui_files(sendfilehelper_SRCS
 
 qt4_add_dbus_interface(sendfilehelper_SRCS org.openobex.Client.xml obex_client)
 qt4_add_dbus_interface(sendfilehelper_SRCS org.openobex.Transfer.xml obex_transfer)
-
+qt4_add_dbus_interface(sendfilehelper_SRCS org.bluez.obex.Client1.xml obexd_client)
+qt4_add_dbus_interface(sendfilehelper_SRCS org.bluez.obex.ObjectPush1.xml obexd_push)
+qt4_add_dbus_interface(sendfilehelper_SRCS org.bluez.obex.Transfer1.xml obexd_transfer)
 
 kde4_add_executable(bluedevil-sendfile ${sendfilehelper_SRCS})
 
