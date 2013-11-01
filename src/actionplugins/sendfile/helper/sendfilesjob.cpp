@@ -56,7 +56,6 @@ bool SendFilesJob::doKill()
     return true;
 }
 
-
 void SendFilesJob::start()
 {
     QMetaObject::invokeMethod(this, "doStart", Qt::QueuedConnection);
