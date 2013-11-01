@@ -185,6 +185,7 @@ void SendFilesJob::nextJob()
 void SendFilesJob::jobDone()
 {
     m_currentFileProgress = 0;
+    m_speedBytes = 0;
     m_currentFileSize = 0;
     if (!m_filesToSend.isEmpty()) {
         nextJob();
