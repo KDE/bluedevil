@@ -31,15 +31,17 @@
 #include <bluedevil/bluedevil.h>
 
 using namespace BlueDevil;
-SendFilesJob::SendFilesJob(const QStringList& files, Device* device, ObexAgent* agent, QObject* parent): KJob(parent)
+SendFilesJob::SendFilesJob(const QStringList& files, Device* device, QObject* parent)
+    : KJob(parent)
+    , m_progress(0)
+    , m_totalSize(0)
+    , m_speedBytes(0)
+    , m_device(device)
+    , m_currentFileSize(0)
+    , m_currentFileProgress(0)
 {
     kDebug() << files;
     m_filesToSend = files;
-    m_agent = agent;
-    m_device = device;
-
-    m_totalSize = 0;
-    m_progress = 0;
 
     Q_FOREACH(const QString &filePath, files) {
         QFile file(filePath);
@@ -171,7 +173,6 @@ void SendFilesJob::nextJob()
 {
     kDebug();
     m_currentFile = m_filesToSend.takeFirst();
-    m_currentFileProgress = 0;
     m_currentFileSize = m_filesToSendSize.takeFirst();
 
     emit description(this, i18n("Sending file over Bluetooth"), QPair<QString, QString>(i18nc("File transfer origin", "From"), m_currentFile), QPair<QString, QString>(i18nc("File transfer destination", "To"), m_device->name()));
@@ -184,9 +185,11 @@ void SendFilesJob::nextJob()
 
 void SendFilesJob::jobDone()
 {
-    m_currentFileProgress = 0;
+    kDebug();
     m_speedBytes = 0;
     m_currentFileSize = 0;
+    m_currentFileProgress = 0;
+
     if (!m_filesToSend.isEmpty()) {
         nextJob();
         return;

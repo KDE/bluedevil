@@ -158,7 +158,7 @@ void SendFileWizard::startTransfer()
         kDebug() << "No device selected";
     }
 
-    m_job = new SendFilesJob(m_files, m_device, m_agent);
+    m_job = new SendFilesJob(m_files, m_device);
     connect(m_job, SIGNAL(destroyed(QObject*)), qApp, SLOT(quit()));
 
     KIO::getJobTracker()->registerJob(m_job);

@@ -30,7 +30,6 @@
 
 class WizardAgent;
 class QStringList;
-class ObexAgent;
 class SendFilesJob;
 namespace BlueDevil {
     class Device;
@@ -62,7 +61,6 @@ private:
     QStringList  m_files;
 
     Device       *m_device;
-    ObexAgent    *m_agent;
     SendFilesJob *m_job;
 };
 

@@ -34,7 +34,7 @@ namespace BlueDevil
 {
     class Device;
 }
-class ObexAgent;
+
 class QDBusPendingCallWatcher;
 class OrgBluezObexClient1Interface;
 class OrgBluezObexObjectPush1Interface;
@@ -45,7 +45,7 @@ class SendFilesJob : public KJob
 {
 Q_OBJECT
 public:
-    SendFilesJob(const QStringList &files, BlueDevil::Device* device, ObexAgent* agent, QObject* parent = 0);
+    SendFilesJob(const QStringList &files, BlueDevil::Device* device, QObject* parent = 0);
 
     virtual void start();
     virtual bool doKill();
@@ -64,18 +64,17 @@ private:
     void transferChanged(const QVariant &value);
     void statusChanged(const QVariant &value);
 
-    qulonglong m_speedBytes;
     QTime m_time;
-    ObexAgent       *m_agent;
     QStringList     m_filesToSend;
     QList <quint64> m_filesToSendSize;
-    Device          *m_device;
     QString         m_currentFile;
     QDBusObjectPath m_currentFileDBusPath;
-    quint64         m_totalSize;
     quint64         m_progress;
-    quint64         m_currentFileProgress;
+    quint64         m_totalSize;
+    qulonglong m_speedBytes;
+    Device          *m_device;
     quint64         m_currentFileSize;
+    quint64         m_currentFileProgress;
 
 
     OrgBluezObexClient1Interface *m_client;
