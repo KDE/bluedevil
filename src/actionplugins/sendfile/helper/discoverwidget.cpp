@@ -38,7 +38,7 @@ DiscoverWidget::DiscoverWidget(QWidget* parent)
 {
     setupUi(this);
 
-    connect(deviceList, SIGNAL(itemActivated(QListWidgetItem*)), this,
+    connect(deviceList, SIGNAL(currentItemChanged(QListWidgetItem*,QListWidgetItem*)), this,
             SLOT(itemSelected(QListWidgetItem*)));
     connect(Manager::self()->usableAdapter(), SIGNAL(deviceFound(QVariantMap)), this,
             SLOT(deviceFound(QVariantMap)));
