@@ -22,11 +22,11 @@
 #ifndef OBEXFTPDAEMON_H
 #define OBEXFTPDAEMON_H
 
-#include <obexftpmanager.h>
-#include <obexftpsession.h>
-
 #include <QDBusObjectPath>
 #include <kdedmodule.h>
+
+typedef QList<QVariantMap> QVariantMapList;
+Q_DECLARE_METATYPE(QVariantMapList);
 
 namespace BlueDevil {
     class Adapter;

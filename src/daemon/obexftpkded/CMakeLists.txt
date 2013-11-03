@@ -1,12 +1,14 @@
 set(kded_obexftp_SRCS
     ObexFtpDaemon.cpp
-    obexsession.cpp
 )
 
-QT4_ADD_DBUS_INTERFACE(kded_obexftp_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/obexftp/session.xml obexftpsession)
+set(SENDER_PLUGIN_PATH ${CMAKE_SOURCE_DIR}/src/actionplugins/sendfile/helper/)
+qt4_add_dbus_interface(kded_obexftp_SRCS ${SENDER_PLUGIN_PATH}org.bluez.obex.Client1.xml obexd_client)
+qt4_add_dbus_interface(kded_obexftp_SRCS ${SENDER_PLUGIN_PATH}org.bluez.obex.ObjectPush1.xml obexd_push)
 
-set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/obexftp/manager.xml PROPERTIES INCLUDE "qstringmap.h")
-QT4_ADD_DBUS_INTERFACE(kded_obexftp_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/obexftp/manager.xml obexftpmanager)
+set(FILE_TRANSFER_FILE obexftp/org.bluez.obex.FileTransfer1.xml)
+set_source_files_properties(${FILE_TRANSFER_FILE} PROPERTIES INCLUDE "ObexFtpDaemon.h")
+qt4_add_dbus_interface(kded_obexftp_SRCS ${FILE_TRANSFER_FILE} obexd_file_transfer)
 
 kde4_add_plugin(kded_obexftpdaemon
     ${kded_obexftp_SRCS}
