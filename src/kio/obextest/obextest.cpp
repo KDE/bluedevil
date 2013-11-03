@@ -20,11 +20,12 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA            *
  ***************************************************************************/
 
+#include "../../daemon/obexftpkded/obexftp/filetransfertypes.h"
+
 #include "obextest.h"
 #include "types.h"
 
-#include "obexftpmanager.h"
-#include "obexftpsession.h"
+#include <QDebug>
 
 #include <KUrl>
 #include <QDebug>
@@ -32,36 +33,40 @@
 
 #include <unistd.h>
 
+#include "obexd_client.h"
+#include "obexd_file_transfer.h"
+
+#include <bluedevil/bluedevil.h>
 ObexTest::ObexTest(QObject* parent): QObject(parent)
 {
-    m_manager = new org::openobex::Manager("org.openobex", "/org/openobex", QDBusConnection::sessionBus(), 0);
-    QDBusPendingReply <QDBusObjectPath > rep = m_manager->CreateBluetoothSession("A8:7E:33:5D:6F:4E", "00:24:2C:B0:30:84", "ftp");
-    rep.waitForFinished();
+    qDBusRegisterMetaType<QVariantMapList>();
+    OrgBluezObexClient1Interface *
+    m_client = new OrgBluezObexClient1Interface("org.bluez.obex", "/org/bluez/obex", QDBusConnection::sessionBus(), this);
 
-    qDebug() << "SessionError: " << rep.error().message();
-    qDebug() << "SessionPath: " << rep.value().path();
+     BlueDevil::Device* device = BlueDevil::Manager::self()->usableAdapter()->deviceForAddress("44:C1:5C:BB:01:42");
+    qDebug() << device->name();
+    qDebug() << device->UUIDs();
+    QVariantMap map;
+    map["Target"] = "ftp";
+    QDBusPendingReply <QDBusObjectPath > reply = m_client->CreateSession("44:C1:5C:BB:01:42", map);
+    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(reply);
+    connect(watcher, SIGNAL(finished(QDBusPendingCallWatcher*)), this, SLOT(createSessionS(QDBusPendingCallWatcher*)));
+}
 
-    const QString sessioPath = rep.value().path();
-    m_session = new org::openobex::Session("org.openobex", sessioPath, QDBusConnection::sessionBus(), 0);
-
-    QString error("Not connected");
-    while(error == "Not connected") {
-        sleep(1);
-        qDebug() << "LOOP";
-        QDBusPendingReply <QString > a =  m_session->RetrieveFolderListing();
-        a.waitForFinished();
-        error = a.error().message();
-        qDebug() << "Error: " << error;
+void ObexTest::createSessionS(QDBusPendingCallWatcher* watcher)
+{
+    const QDBusPendingReply<QDBusObjectPath> reply = *watcher;
+    watcher->deleteLater();
+    if (reply.isError()) {
+        qDebug() << "Error:";
+        qDebug() << reply.error().name();
+        qDebug() << reply.error().message();
+        return;
     }
 
-    QDBusPendingReply <QString > a =  m_session->RetrieveFolderListing();
-    qDebug() << "Outside the wheeel";
-    qDebug() << a.value();
+    QString path = reply.value().path();
+    qDebug() << "Got a patch !" << path;
+    OrgBluezObexFileTransfer1Interface* transfer = new OrgBluezObexFileTransfer1Interface("org.bluez.obex", path, QDBusConnection::sessionBus(), this);
+    qDebug() << transfer->ListFolder().value();
 
-    QDBusPendingReply <void > f = m_session->ChangeCurrentFolder(KUrl::encode_string("Imágenes"));
-//    QDBusPendingReply <void > f = m_session->ChangeCurrentFolder("Imágenes");
-   f.waitForFinished();
-   qDebug() << "Change error: " << f.error().message();
-
-    qDebug() << m_session->RetrieveFolderListing().value();
 }

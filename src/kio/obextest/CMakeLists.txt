@@ -4,10 +4,14 @@ set(obextest_SRCS
     main.cpp
     obextest.cpp)
 
-QT4_ADD_DBUS_INTERFACE(obextest_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/obexftp/manager.xml obexftpmanager)
-QT4_ADD_DBUS_INTERFACE(obextest_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/obexftp/session.xml obexftpsession)
-set(obexftpfiletransfer_xml ${CMAKE_CURRENT_SOURCE_DIR}/obexftp/filetransfer.xml)
-set_source_files_properties(${obexftpfiletransfer_xml} PROPERTIES INCLUDE "types.h")
+set(SENDER_PLUGIN_PATH ${CMAKE_SOURCE_DIR}/src/actionplugins/sendfile/helper/)
+qt4_add_dbus_interface(obextest_SRCS ${SENDER_PLUGIN_PATH}org.bluez.obex.Client1.xml obexd_client)
+qt4_add_dbus_interface(obextest_SRCS ${SENDER_PLUGIN_PATH}org.bluez.obex.ObjectPush1.xml obexd_push)
+
+set(SUPER_FILE ${CMAKE_SOURCE_DIR}/src/daemon/obexftpkded/obexftp/org.bluez.obex.FileTransfer1.xml)
+# set_source_files_properties(${SUPER_FILE} PROPERTIES INCLUDE ${CMAKE_SOURCE_DIR}/src/daemon/obexftpkded/obexftp/filetransfertypes.h)
+set_source_files_properties(${SUPER_FILE} PROPERTIES INCLUDE "types.h")
+qt4_add_dbus_interface(obextest_SRCS ${SUPER_FILE} obexd_file_transfer)
 
 kde4_add_executable(obextest ${obextest_SRCS})
 
@@ -15,6 +19,7 @@ target_link_libraries(obextest
   ${KDE4_KDECORE_LIBS}
   ${KDE4_KIO_LIBRARY}
   ${QT_QTDBUS_LIBRARY}
+  ${LibBlueDevil_LIBRARIES}
 )
 
 QT4_AUTOMOC(${kio_obexftp_SRCS})

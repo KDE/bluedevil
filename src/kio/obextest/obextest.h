@@ -25,18 +25,15 @@
 
 #include <QObject>
 
-#include "obexftpmanager.h"
-#include "obexftpsession.h"
-
+class QDBusPendingCallWatcher;
 class ObexTest : public QObject
 {
 Q_OBJECT
 public:
     ObexTest(QObject* parent = 0);
 
-private:
-    org::openobex::Manager      *m_manager;
-    org::openobex::Session      *m_session;
+private slots:
+    void createSessionS(QDBusPendingCallWatcher* watcher);
 };
 
 #endif // OBEXTEST_H
