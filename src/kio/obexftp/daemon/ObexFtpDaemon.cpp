@@ -17,6 +17,8 @@
  *************************************************************************************/
 
 #include "ObexFtpDaemon.h"
+#include "createsessionjob.h"
+
 #include "version.h"
 
 #include <QHash>
@@ -110,6 +112,28 @@ void ObexFtpDaemon::usableAdapterChanged(Adapter *adapter)
     }
 
     onlineMode();
+}
+
+QString ObexFtpDaemon::session(QString address, const QDBusMessage& msg)
+{
+    address.replace("-", ":");
+
+    if(d->m_sessionMap.contains(address)) {
+        return d->m_sessionMap[address];
+    }
+    //TODO Implement the case where the session is being created
+
+    msg.setDelayedReply(true);
+    CreateSessionJob *job = new CreateSessionJob(address, msg);
+    connect(job, SIGNAL(finished(KJob*)), SLOT(sessionCreated(KJob*)));
+    job->start();
+
+    return QString();
+}
+
+void ObexFtpDaemon::sessionCreated(KJob* job)
+{
+    CreateSessionJob* cJob = qobject_cast<CreateSessionJob*>(job);
 }
 
 extern int dobex() { static int s_area = KDebug::registerArea("ObexDaemon", false); return s_area; }

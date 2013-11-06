@@ -16,57 +16,27 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA   *
  *************************************************************************************/
 
-#ifndef OBEXFTPDAEMON_H
-#define OBEXFTPDAEMON_H
+#include "createsessionjob.h"
 
-#include <QDBusObjectPath>
-#include <kdedmodule.h>
+#include <QString>
 
-class KJob;
-class QDBusMessage;
-class QDBusPendingCallWatcher;
-
-namespace BlueDevil {
-    class Adapter;
-};
-using namespace BlueDevil;
-
-class KDE_EXPORT ObexFtpDaemon
-    : public KDEDModule
+CreateSessionJob::CreateSessionJob(const QString& address, const QDBusMessage& msg, QObject* parent)
+    : KJob(parent)
+    , m_address(address)
 {
-    Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.kde.obexftp")
+}
 
-public:
-    /**
-     * Connects to usableAdapterChanged
-     */
-    ObexFtpDaemon(QObject *parent, const QList<QVariant>&);
-    virtual ~ObexFtpDaemon();
+void CreateSessionJob::start()
+{
+    QMetaObject::invokeMethod(this, "createSession", Qt::QueuedConnection);
+}
 
-public Q_SLOTS:
-    Q_SCRIPTABLE QString session(QString address, const QDBusMessage &msg);
+QString CreateSessionJob::path()
+{
+    return m_path;
+}
 
-private Q_SLOTS:
-    void usableAdapterChanged(Adapter* adapter);
-    void sessionCreated(KJob* job);
+void CreateSessionJob::createSession()
+{
 
-private:
-    /**
-     * Called by constructor or eventually by adapterAdded initialize all the helpers
-     * @see helpers
-     */
-     void onlineMode();
-
-    /**
-     * Called eventually adapterRemoved shutdown all the helpers
-     * @see helpers
-     */
-    void offlineMode();
-
-    struct Private;
-    Private *d;
-};
-
-extern int dobex();
-#endif /*OBEXFTPDAEMON_H*/
+}
