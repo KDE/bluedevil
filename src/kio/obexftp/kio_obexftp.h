@@ -77,6 +77,7 @@ private:
     QEventLoop                   m_eventLoop;
     QMap<QString, KIO::UDSEntry> m_statMap;
     QString                      m_address;
+    QString                      m_sessionPath;
     QTimer                      *m_timer;
     org::kde::ObexFtp           *m_kded;
 };

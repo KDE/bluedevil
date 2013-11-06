@@ -18,6 +18,7 @@
  *************************************************************************************/
 
 #include "kio_obexftp.h"
+#include "obexd_file_transfer.h"
 #include "kdedobexftp.h"
 #include "version.h"
 #include <KDebug>
@@ -28,6 +29,7 @@
 #include <KTemporaryFile>
 #include <KMimeType>
 #include <KApplication>
+#include "obexdtypes.h"
 
 #include <unistd.h>
 
@@ -56,7 +58,7 @@ KioFtp::KioFtp(const QByteArray &pool, const QByteArray &app)
     m_timer = new QTimer();
     m_timer->setInterval(100);
 
-    qRegisterMetaType<QVariantMapList>();
+    qDBusRegisterMetaType<QVariantMapList>();
     m_kded = new org::kde::ObexFtp("org.kde.kded", "/modules/obexftpdaemon", QDBusConnection::sessionBus(), 0);
 }
 
@@ -89,21 +91,38 @@ void KioFtp::updateProcess()
 void KioFtp::listDir(const KUrl &url)
 {
     kDebug() << "listdir: " << url;
-/*
+
     infoMessage(i18n("Retrieving information from remote device..."));
 
-    kDebug() << "ASking KDED for stuff";
-    QDBusPendingReply<QVariantMapList> folder = m_kded->listDir(url.host(), url.path());
-//     m_eventLoop.exec();
-    folder.waitForFinished();
+    OrgBluezObexFileTransfer1Interface *transfer = new OrgBluezObexFileTransfer1Interface("org.bluez.obex", m_sessionPath, QDBusConnection::sessionBus());
+    kDebug() << "Asking for listFolder";
 
-    kDebug() << "Folder value yo";
-    kDebug() << folder.value();
+    QDBusPendingReply <QVariantMapList > reply = transfer->ListFolder();
+    reply.waitForFinished();
 
-//     int i = processXmlEntries(url, folder.value(), "listDirCallback");
-//     totalSize(i);
-//     listEntry(KIO::UDSEntry(), true);
-    finished();*/
+    kDebug() << "Got answer3";
+
+    QVariantMapList folderList = reply.value();
+    kDebug() << "Content: " << folderList;
+    Q_FOREACH(const QVariantMap folder, folderList) {
+        KIO::UDSEntry entry;
+
+        kDebug() << "Uayu: " << folder["Name"].toString();
+        entry.insert(KIO::UDSEntry::UDS_NAME, folder["Name"].toString());
+        entry.insert(KIO::UDSEntry::UDS_CREATION_TIME, folder["Created"].toString());
+        entry.insert(KIO::UDSEntry::UDS_ACCESS, 0500);
+
+        if (folder["Type"] == "folder") {
+                entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+        } else {
+            entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
+            entry.insert(KIO::UDSEntry::UDS_SIZE, 10);
+        }
+        entry.insert(KIO::UDSEntry::UDS_MODIFICATION_TIME, folder["Modified"].toString());
+        listEntry(entry, false);
+    }
+    listEntry(KIO::UDSEntry(), true);
+    finished();
 }
 
 void KioFtp::copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFlags flags)
@@ -162,16 +181,19 @@ void KioFtp::setHost(const QString &host, quint16 port, const QString &user, con
     kDebug() << "setHost: " << host;
 
     kDebug() << "Waiting to stablish the connection 2";
-    m_kded->session(host).waitForFinished();
-//     m_settingHost = true;
-//     launchProgressBar();
-//     m_eventLoop.exec();
-//
-//     disconnect(m_kded, SIGNAL(sessionConnected(QString)), this, SLOT(sessionConnected(QString)));
-//     disconnect(m_kded, SIGNAL(sessionClosed(QString)), this, SLOT(sessionClosed(QString)));
-//
-//     m_settingHost = false;
-//     m_address = host;
+    QDBusPendingReply <QString > reply = m_kded->session(host);
+    reply.waitForFinished();
+
+    kDebug() << "AFTER" << reply.isError();
+    if (reply.isError()) {
+        kDebug() << reply.error().message();
+        kDebug() << reply.error().name();
+    }
+
+    kDebug() << "Got a path" << reply.value();
+
+    m_address = host;
+    m_sessionPath = reply.value();
 //     m_statMap.clear();
 }
 
