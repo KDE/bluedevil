@@ -116,6 +116,7 @@ void ObexFtpDaemon::usableAdapterChanged(Adapter *adapter)
 
 QString ObexFtpDaemon::session(QString address, const QDBusMessage& msg)
 {
+    kDebug(dobex()) << address;
     address.replace("-", ":");
 
     if(d->m_sessionMap.contains(address)) {
@@ -134,6 +135,7 @@ QString ObexFtpDaemon::session(QString address, const QDBusMessage& msg)
 void ObexFtpDaemon::sessionCreated(KJob* job)
 {
     CreateSessionJob* cJob = qobject_cast<CreateSessionJob*>(job);
+    kDebug(dobex()) << cJob->path();
 }
 
 extern int dobex() { static int s_area = KDebug::registerArea("ObexDaemon", false); return s_area; }

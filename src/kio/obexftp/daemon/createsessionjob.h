@@ -22,6 +22,9 @@
 #include <QDBusMessage>
 
 #include <KJob>
+
+class QDBusPendingCallWatcher;
+class OrgBluezObexClient1Interface;
 class CreateSessionJob : public KJob
 {
     Q_OBJECT
@@ -33,10 +36,13 @@ public:
 
 private Q_SLOTS:
     void createSession();
+    void sessionCreated(QDBusPendingCallWatcher* watcher);
 
 private:
     QString m_path;
     QString m_address;
+
+    OrgBluezObexClient1Interface* m_client;
 };
 
 #endif //CREATE_SESSION_JOB_H

@@ -161,7 +161,7 @@ void KioFtp::setHost(const QString &host, quint16 port, const QString &user, con
 
     kDebug() << "setHost: " << host;
 
-    kDebug() << "Waiting to stablish the connection";
+    kDebug() << "Waiting to stablish the connection 2";
     m_kded->session(host).waitForFinished();
 //     m_settingHost = true;
 //     launchProgressBar();
