@@ -43,6 +43,11 @@ QString CreateSessionJob::path()
     return m_path;
 }
 
+const QString CreateSessionJob::address() const
+{
+    return m_address;
+}
+
 const QDBusMessage CreateSessionJob::msg() const
 {
     return m_msg;

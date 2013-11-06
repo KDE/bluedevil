@@ -33,6 +33,7 @@ public:
 
     virtual void start();
     QString path();
+    const QString address() const;
     const QDBusMessage msg() const;
 
 private Q_SLOTS:

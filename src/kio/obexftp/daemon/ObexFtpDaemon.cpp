@@ -137,6 +137,8 @@ void ObexFtpDaemon::sessionCreated(KJob* job)
 {
     CreateSessionJob* cJob = qobject_cast<CreateSessionJob*>(job);
     kDebug(dobex()) << cJob->path();
+
+    d->m_sessionMap.insert(cJob->address(), cJob->path());
     QDBusMessage msg = cJob->msg().createReply(cJob->path());
     QDBusConnection::sessionBus().asyncCall(msg);
 }
