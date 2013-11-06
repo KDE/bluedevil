@@ -22,6 +22,7 @@
 #include "version.h"
 
 #include <QHash>
+#include <QDBusConnection>
 
 #include <kdemacros.h>
 #include <KDebug>
@@ -136,6 +137,8 @@ void ObexFtpDaemon::sessionCreated(KJob* job)
 {
     CreateSessionJob* cJob = qobject_cast<CreateSessionJob*>(job);
     kDebug(dobex()) << cJob->path();
+    QDBusMessage msg = cJob->msg().createReply(cJob->path());
+    QDBusConnection::sessionBus().asyncCall(msg);
 }
 
 extern int dobex() { static int s_area = KDebug::registerArea("ObexDaemon", false); return s_area; }

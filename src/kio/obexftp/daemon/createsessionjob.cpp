@@ -29,6 +29,7 @@ CreateSessionJob::CreateSessionJob(const QString& address, const QDBusMessage& m
     : KJob(parent)
     , m_address(address)
     , m_client(0)
+    , m_msg(msg)
 {
 }
 
@@ -40,6 +41,11 @@ void CreateSessionJob::start()
 QString CreateSessionJob::path()
 {
     return m_path;
+}
+
+const QDBusMessage CreateSessionJob::msg() const
+{
+    return m_msg;
 }
 
 void CreateSessionJob::createSession()
