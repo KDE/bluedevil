@@ -6,9 +6,8 @@ set(kio_obexftp_SRCS
     kio_obexftp.cpp
    )
 
-set(FILE_TRANSFER_FILE ${CMAKE_CURRENT_SOURCE_DIR}/kded_obexftp.xml)
-set_source_files_properties(${FILE_TRANSFER_FILE} PROPERTIES INCLUDE "obexftp_type.h")
-QT4_ADD_DBUS_INTERFACE(kio_obexftp_SRCS ${FILE_TRANSFER_FILE} kdedobexftp)
+qt4_add_dbus_interface(kio_obexftp_SRCS kded_obexftp.xml kdedobexftp)
+
 
 set(obexftpfiletransfer_xml ${CMAKE_CURRENT_SOURCE_DIR}/obexftp/filetransfer.xml)
 
