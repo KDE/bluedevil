@@ -35,7 +35,7 @@ class KDE_EXPORT ObexFtpDaemon
     : public KDEDModule
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.kde.obexftp")
+    Q_CLASSINFO("D-Bus Interface", "org.kde.ObexFtp")
 
 public:
     /**
