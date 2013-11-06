@@ -1,5 +1,7 @@
 set(kded_obexftp_SRCS
     ObexFtpDaemon.cpp
+    obexsession.cpp
+    obexftp/listdirjob.cpp
 )
 
 set(SENDER_PLUGIN_PATH ${CMAKE_SOURCE_DIR}/src/actionplugins/sendfile/helper/)

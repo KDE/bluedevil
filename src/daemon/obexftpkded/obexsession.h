@@ -20,40 +20,52 @@
 #ifndef OBEXSESSION_H
 #define OBEXSESSION_H
 
-#include "obexftpsession.h"
-#include "obexftpmanager.h"
+#include "obexd_file_transfer.h"
 
 class QTimer;
+class QDBusPendingCallWatcher;
+class OrgBluezObexClient1Interface;
+class OrgBluezObexFileTransfer1Interface;
 
-class ObexSession : public OrgOpenobexSessionInterface
+class ObexSession : public QObject
 {
-Q_OBJECT
+    Q_OBJECT
 
 public:
-    ObexSession(const QString& service, const QString& path, const QDBusConnection& connection, QObject* parent = 0);
+    explicit ObexSession(const QString& address, OrgBluezObexClient1Interface* client, const QDBusMessage &msg, QObject* parent = 0);
 
     enum Status {
-        Connected = 0,
-        Connecting = 1,
-        Timeout     = 2
+        Connected,
+        Connecting,
+        Timeout,
+        Error,
     };
 
+    QString address() const;
     Status status() const;
-    void setStatus(const Status&);
+    void addMessage(const QDBusMessage &msg);
+    void setStatus(const Status& state);
+    OrgBluezObexFileTransfer1Interface *transfer() const;
 
 public Q_SLOTS:
     void resetTimer();
 
 private Q_SLOTS:
-
     /**
         * The session has not been used for a while, so it has to be disconnected and deleted
         */
     void sessionTimeoutSlot();
+    void sessionCreated(QDBusPendingCallWatcher* watcher);
+
 
 private:
     Status m_status;
     QTimer m_timer;
+    QString m_address;
+
+    QList<QDBusMessage> m_msgs;
+    OrgBluezObexClient1Interface *m_client;
+    OrgBluezObexFileTransfer1Interface *m_transfer;
 
 Q_SIGNALS:
     void sessionTimeout();

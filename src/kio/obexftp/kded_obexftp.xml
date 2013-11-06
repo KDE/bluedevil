@@ -24,7 +24,8 @@
       <arg name="address" type="s" direction="in"/>
     </method>
     <method name="listDir">
-      <arg type="s" direction="out"/>
+      <arg name="folderinfo" type="aa{sv}" direction="out" />
+      <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="QVariantMapList"/>
       <arg name="address" type="s" direction="in"/>
       <arg name="path" type="s" direction="in"/>
     </method>

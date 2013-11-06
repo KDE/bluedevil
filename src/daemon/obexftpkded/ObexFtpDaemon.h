@@ -25,6 +25,8 @@
 #include <QDBusObjectPath>
 #include <kdedmodule.h>
 
+class QDBusMessage;
+class QDBusPendingCallWatcher;
 typedef QList<QVariantMap> QVariantMapList;
 Q_DECLARE_METATYPE(QVariantMapList);
 
@@ -81,15 +83,17 @@ private Q_SLOTS:
 
     void sessionDisconnected();
 
+    void sessionDestroyed(QObject*);
+
 //Dbus interface
 public Q_SLOTS:
     /**
      * Stablish a connection to the given address.
      * When the session is connected, the "sessionConnected" signal will be emitted
      */
-    Q_SCRIPTABLE void stablishConnection(QString address);
+    Q_SCRIPTABLE void stablishConnection(QString dirtyAddress, const QDBusMessage &msg);
 
-    Q_SCRIPTABLE QString listDir(QString address, QString path);
+    Q_SCRIPTABLE QVariantMapList listDir(QString address, QString path, const QDBusMessage &msg);
 
     Q_SCRIPTABLE void copyRemoteFile(QString address, QString fileName, QString destPath);
 

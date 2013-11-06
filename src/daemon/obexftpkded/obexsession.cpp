@@ -19,21 +19,80 @@
 
 #include "obexsession.h"
 #include "ObexFtpDaemon.h"
+
+#include "obexd_client.h"
+#include "obexd_file_transfer.h"
+
 #include <QTimer>
 #include <KDebug>
+#include <KLocalizedString>
 
-ObexSession::ObexSession(const QString& service, const QString& path, const QDBusConnection& connection, QObject* parent)
-: OrgOpenobexSessionInterface(service, path, connection, parent)
+ObexSession::ObexSession(const QString& address, OrgBluezObexClient1Interface* client, const QDBusMessage& msg, QObject* parent)
+    : QObject(parent)
+    , m_client(client)
+    , m_address(address)
+    , m_status(ObexSession::Connecting)
 {
-    m_status = ObexSession::Connecting;
+    connect(m_client, SIGNAL(destroyed(QObject*)), SLOT(deleteLater()));
+
+    QVariantMap args;
+    args["Target"] = "ftp";
+    QDBusPendingReply <QDBusObjectPath > reply = m_client->CreateSession(address, args);
+    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(reply);
+
+    connect(watcher, SIGNAL(finished(QDBusPendingCallWatcher*)), this, SLOT(sessionCreated(QDBusPendingCallWatcher*)));
 
     connect(&m_timer, SIGNAL(timeout()), this, SLOT(sessionTimeoutSlot()));
-    connect(this, SIGNAL(TransferStarted(QString,QString,qulonglong)), this, SLOT(resetTimer()));
-    connect(this, SIGNAL(TransferProgress(qulonglong)), this, SLOT(resetTimer()));
-    connect(this, SIGNAL(TransferCompleted()), this, SLOT(resetTimer()));
     m_timer.setInterval(120000);
+
+    kDebug(dobex()) << msg.service() << msg.path();
+    msg.setDelayedReply(true);
+    m_msgs.append(msg);
+
+    kDebug(dobex()) << m_msgs.first().service() << m_msgs.first().path();
 }
 
+void ObexSession::sessionCreated(QDBusPendingCallWatcher* watcher)
+{
+    const QDBusPendingReply<QDBusObjectPath> reply = *watcher;
+    watcher->deleteLater();
+    if (reply.isError()) {
+        kDebug(dobex()) << "Error:";
+        kDebug(dobex()) << reply.error().name();
+        kDebug(dobex()) << reply.error().message();
+        Q_FOREACH(const QDBusMessage &msg, m_msgs) {
+            kDebug(dobex()) << msg.service() << msg.path();
+            QDBusMessage errorMsg = msg.createErrorReply("org.kde.kded.Error", i18n("Can't stablish connection"));
+            QDBusConnection::sessionBus().send(errorMsg);
+        }
+        m_status = Error;
+        deleteLater();
+        return;
+    }
+
+    m_status = Connected;
+    QString path = reply.value().path();
+    kDebug(dobex()) << "Got a patch !" << path;
+    m_transfer = new OrgBluezObexFileTransfer1Interface("org.bluez.obex", path, QDBusConnection::sessionBus(), this);
+
+    Q_FOREACH(const QDBusMessage &msg, m_msgs) {
+        kDebug(dobex()) << "Sending reply" << msg.service() << msg.path();
+        QDBusMessage reply = msg.createReply();
+        QDBusConnection::sessionBus().asyncCall(reply);
+        kDebug(dobex()) << "AFTER";
+    }
+}
+
+void ObexSession::addMessage(const QDBusMessage& msg)
+{
+    msg.setDelayedReply(true);
+    m_msgs.append(msg);
+}
+
+QString ObexSession::address() const
+{
+    return m_address;
+}
 
 ObexSession::Status ObexSession::status() const
 {
@@ -60,18 +119,11 @@ void ObexSession::sessionTimeoutSlot()
     kDebug(dobex());
     m_status = ObexSession::Timeout;
     m_timer.stop();
-    //We can't relay on the Disconnect or Close obex-data-server signals because if two sessions
-    //are removed in a short period of time, only 1 session will emit signals.
-    //Because of that, we're forced to implement our own.
-
-    disconnect(SIGNAL(Closed()));
-    disconnect(SIGNAL(Disconnected()));
-    disconnect(SIGNAL(Cancelled()));
-    disconnect(SIGNAL(TransferCompleted()));
-    disconnect(SIGNAL(TransferProgress(qulonglong)));
-    disconnect(SIGNAL(ErrorOccurred(QString,QString)));
-    Disconnect();
-    Close();
 
     emit sessionTimeout();
+}
+
+OrgBluezObexFileTransfer1Interface* ObexSession::transfer() const
+{
+    return m_transfer;
 }

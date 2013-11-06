@@ -20,7 +20,6 @@
 #include "kio_obexftp.h"
 #include "kdedobexftp.h"
 #include "version.h"
-
 #include <KDebug>
 #include <KComponentData>
 #include <KCmdLineArgs>
@@ -57,6 +56,7 @@ KioFtp::KioFtp(const QByteArray &pool, const QByteArray &app)
     m_timer = new QTimer();
     m_timer->setInterval(100);
 
+    qRegisterMetaType<QVariantMapList>();
     m_kded = new org::kde::ObexFtp("org.kde.kded", "/modules/obexftpdaemon", QDBusConnection::sessionBus(), 0);
 }
 
@@ -92,15 +92,17 @@ void KioFtp::listDir(const KUrl &url)
 
     infoMessage(i18n("Retrieving information from remote device..."));
 
-    blockUntilNotBusy(url.host());
-    QDBusPendingReply<QString> folder = m_kded->listDir(url.host(), url.path());
+    kDebug() << "ASking KDED for stuff";
+    QDBusPendingReply<QVariantMapList> folder = m_kded->listDir(url.host(), url.path());
+//     m_eventLoop.exec();
     folder.waitForFinished();
 
+    kDebug() << "Folder value yo";
     kDebug() << folder.value();
 
-    int i = processXmlEntries(url, folder.value(), "listDirCallback");
-    totalSize(i);
-    listEntry(KIO::UDSEntry(), true);
+//     int i = processXmlEntries(url, folder.value(), "listDirCallback");
+//     totalSize(i);
+//     listEntry(KIO::UDSEntry(), true);
     finished();
 }
 
@@ -159,21 +161,18 @@ void KioFtp::setHost(const QString &host, quint16 port, const QString &user, con
 
     kDebug() << "setHost: " << host;
 
-    connect(m_kded, SIGNAL(sessionConnected(QString)), this, SLOT(sessionConnected(QString)));
-    connect(m_kded, SIGNAL(sessionClosed(QString)), this, SLOT(sessionClosed(QString)));
-    m_kded->stablishConnection(host);
-
     kDebug() << "Waiting to stablish the connection";
-    m_settingHost = true;
-    launchProgressBar();
-    m_eventLoop.exec();
-
-    disconnect(m_kded, SIGNAL(sessionConnected(QString)), this, SLOT(sessionConnected(QString)));
-    disconnect(m_kded, SIGNAL(sessionClosed(QString)), this, SLOT(sessionClosed(QString)));
-
-    m_settingHost = false;
-    m_address = host;
-    m_statMap.clear();
+    m_kded->stablishConnection(host).waitForFinished();
+//     m_settingHost = true;
+//     launchProgressBar();
+//     m_eventLoop.exec();
+//
+//     disconnect(m_kded, SIGNAL(sessionConnected(QString)), this, SLOT(sessionConnected(QString)));
+//     disconnect(m_kded, SIGNAL(sessionClosed(QString)), this, SLOT(sessionClosed(QString)));
+//
+//     m_settingHost = false;
+//     m_address = host;
+//     m_statMap.clear();
 }
 
 void KioFtp::del(const KUrl& url, bool isfile)

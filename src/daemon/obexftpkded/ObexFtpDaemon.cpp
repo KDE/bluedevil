@@ -20,6 +20,8 @@
 
 #include "ObexFtpDaemon.h"
 #include "version.h"
+#include "obexsession.h"
+#include "obexftp/listdirjob.h"
 
 #include "obexd_client.h"
 
@@ -56,9 +58,9 @@ struct ObexFtpDaemon::Private
         Offline
     } m_status;
 
-//     QHash <QString, ObexSession*> m_sessionMap;
+    QHash <QString, ObexSession*> m_sessionMap;
+    QHash <QObject*, QString> m_sessionMapReverse;
 
-//     org::openobex::Manager  *m_manager;
     org::bluez::obex::Client1 *m_client;
 
     QEventLoop loop;
@@ -89,6 +91,8 @@ ObexFtpDaemon::ObexFtpDaemon(QObject *parent, const QList<QVariant>&)
     if (Manager::self()->usableAdapter()) {
         onlineMode();
     }
+
+    qDBusRegisterMetaType<QVariantMapList>();
 }
 
 ObexFtpDaemon::~ObexFtpDaemon()
@@ -144,39 +148,50 @@ void ObexFtpDaemon::usableAdapterChanged(Adapter *adapter)
     }
 }
 
-void ObexFtpDaemon::stablishConnection(QString dirtyAddress)
+void ObexFtpDaemon::stablishConnection(QString dirtyAddress, const QDBusMessage& msg)
 {
     QString address = cleanAddress(dirtyAddress);
 
+    kDebug(dobex()) << msg.service() << msg.path();
     kDebug(dobex()) << "Address: " << address;
-//     if (d->m_status == Private::Offline) {
-//         kDebug(dobex()) << "We're offline, so do nothing";
-//         return;
-//     }
-//
-//     if (address.isEmpty()) {
-//         kDebug(dobex()) << "Address is Empty";
-//     }
-//
-//     //We already have a session for that address
-//     if (d->m_sessionMap.contains(address)) {
-//         //But this session is waiting for being connected
-//         if (d->m_sessionMap[address]->status() == ObexSession::Connecting) {
-//             kDebug(dobex()) << "Session for this address is waiting for being connected";
-//             return;
-//         }
-//
-//         kDebug(dobex()) << "We already have a session, so do nothing";
-//         emit sessionConnected(address);
-//         return;
-//     }
-//
-//     kDebug(dobex()) << "Telling to the manager to create the session";
-//
-//     QDBusPendingReply <QDBusObjectPath > rep = d->m_manager->CreateBluetoothSession(address, "00:00:00:00:00:00", "ftp");
-//
-//     d->m_sessionMap[address] = new ObexSession("org.openobex", rep.value().path(), QDBusConnection::sessionBus(), 0);
-//     kDebug(dobex()) << "Path: " << rep.value().path();
+    if (d->m_status == Private::Offline) {
+        kDebug(dobex()) << "We're offline, so do nothing";
+        QDBusMessage error = msg.createErrorReply("Offline", i18n("No Bluetooth device found"));
+        QDBusConnection::sessionBus().send(error);
+        return;
+    }
+
+    if (address.isEmpty()) {
+        kDebug(dobex()) << "Address is Empty";
+        QDBusMessage error = msg.createErrorReply("Invalid address", i18n("Invalid address"));
+        QDBusConnection::sessionBus().send(error);
+        return;
+    }
+
+
+    //We already have a session for that address
+    if (d->m_sessionMap.contains(address)) {
+        //But this session is waiting for being connected
+        if (d->m_sessionMap[address]->status() == ObexSession::Connecting) {
+            kDebug(dobex()) << "Session for this address is waiting for being connected";
+            d->m_sessionMap[address]->addMessage(msg);
+            return;
+        }
+
+        //At this point the session should be connected, if not we have done something wrong
+        Q_ASSERT(d->m_sessionMap[address]->status() == ObexSession::Connected);
+
+        kDebug(dobex()) << "We already have a session, so do nothing";
+        QDBusConnection::sessionBus().send(msg.createReply());
+        return;
+    }
+
+    kDebug(dobex()) << "Creating a new obexSession";
+
+    ObexSession *session = new ObexSession(address, d->m_client, msg, this);
+    connect(session, SIGNAL(destroyed(QObject*)), SLOT(sessionDestroyed(QObject*)));
+    d->m_sessionMap[address] = session;
+    d->m_sessionMapReverse[session] = address;
 }
 
 void ObexFtpDaemon::changeCurrentFolder(QString address, QString path)
@@ -198,10 +213,24 @@ void ObexFtpDaemon::changeCurrentFolder(QString address, QString path)
 //     }
 }
 
-QString ObexFtpDaemon::listDir(QString dirtyAddress, QString path)
+QVariantMapList ObexFtpDaemon::listDir(QString dirtyAddress, QString path, const QDBusMessage& msg)
 {
-    kDebug(dobex());
-    return QString();
+    QString address = cleanAddress(dirtyAddress);
+    kDebug(dobex()) << "ROLFMAO !" << address;
+    if (!d->m_sessionMap.contains(address)) {
+        kDebug(dobex()) << "MA MEN";
+        return QVariantMapList();
+    }
+
+//     msg.setDelayedReply(true);
+//     ListDirJob *job = new ListDirJob(d->m_sessionMap[address], msg, this);
+//     job->start();
+
+QVariantMapList rolf;
+    QVariantMap map;
+    map["meh"] = "rolf";
+    rolf.append(map);
+    return rolf;
 //     QString address = cleanAddress(dirtyAddress);
 //     if (!d->m_sessionMap.contains(address)) {
 //         kDebug(dobex()) << "The address " << address << " doesn't has a session";
@@ -369,6 +398,13 @@ void ObexFtpDaemon::sessionDisconnected()
 //
 //     d->m_sessionMap.remove(d->m_sessionMap.key(session));
 //     delete session;
+}
+
+void ObexFtpDaemon::sessionDestroyed(QObject* obj)
+{
+    kDebug(dobex()) << obj;
+    QString address = d->m_sessionMapReverse.take(obj);
+    d->m_sessionMap.remove(address);
 }
 
 QString ObexFtpDaemon::getAddressFromSession(QString path)
