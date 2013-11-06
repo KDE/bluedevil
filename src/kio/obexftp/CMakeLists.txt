@@ -1,5 +1,7 @@
 project(kio_obexftp)
 
+add_subdirectory(obexftpkded)
+
 set(kio_obexftp_SRCS
     kio_obexftp.cpp
    )
