@@ -30,6 +30,7 @@
 
 #include <kio/slavebase.h>
 
+class OrgBluezObexFileTransfer1Interface;
 class KioFtp
     : public QObject
     , public KIO::SlaveBase
@@ -66,6 +67,7 @@ private Q_SLOTS:
 
     void wasKilledCheck();
 private:
+    void changeCurrentFolder(const KUrl &url);
     void copyHelper(const KUrl &src, const KUrl &dest);
     void statHelper(const KUrl &url);
     void launchProgressBar();
@@ -80,6 +82,8 @@ private:
     QString                      m_sessionPath;
     QTimer                      *m_timer;
     org::kde::ObexFtp           *m_kded;
+    OrgBluezObexFileTransfer1Interface *m_transfer;
+
 };
 
 #endif // KIO_OBEXFTP_H

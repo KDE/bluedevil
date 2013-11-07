@@ -52,6 +52,7 @@ extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
 
 KioFtp::KioFtp(const QByteArray &pool, const QByteArray &app)
     : SlaveBase("obexftp", pool, app)
+    , m_transfer(0)
 {
     m_settingHost = false;
 
@@ -94,10 +95,11 @@ void KioFtp::listDir(const KUrl &url)
 
     infoMessage(i18n("Retrieving information from remote device..."));
 
-    OrgBluezObexFileTransfer1Interface *transfer = new OrgBluezObexFileTransfer1Interface("org.bluez.obex", m_sessionPath, QDBusConnection::sessionBus());
     kDebug() << "Asking for listFolder";
 
-    QDBusPendingReply <QVariantMapList > reply = transfer->ListFolder();
+    changeCurrentFolder(url);
+
+    QDBusPendingReply <QVariantMapList > reply = m_transfer->ListFolder();
     reply.waitForFinished();
 
     kDebug() << "Got answer3";
@@ -120,6 +122,9 @@ void KioFtp::listDir(const KUrl &url)
         }
         entry.insert(KIO::UDSEntry::UDS_MODIFICATION_TIME, folder["Modified"].toString());
         listEntry(entry, false);
+        if (!m_statMap.contains(url.path())) {
+            m_statMap.insert(url.path(), entry);
+        }
     }
     listEntry(KIO::UDSEntry(), true);
     finished();
@@ -194,7 +199,8 @@ void KioFtp::setHost(const QString &host, quint16 port, const QString &user, con
 
     m_address = host;
     m_sessionPath = reply.value();
-//     m_statMap.clear();
+    m_transfer = new org::bluez::obex::FileTransfer1("org.bluez.obex", m_sessionPath, QDBusConnection::sessionBus());
+    m_statMap.clear();
 }
 
 void KioFtp::del(const KUrl& url, bool isfile)
@@ -220,14 +226,14 @@ void KioFtp::mkdir(const KUrl& url, int permissions)
 void KioFtp::stat(const KUrl &url)
 {
     kDebug() << "Stat: " << url.url();
-//     kDebug() << "Stat Dir: " << url.directory();
-//     kDebug() << "Stat File: " << url.fileName();
-//     kDebug() << "Empty Dir: " << url.directory().isEmpty();
-//
-//     statHelper(url);
-//
-//     kDebug() << "Finished";
-//     finished();
+    kDebug() << "Stat Dir: " << url.directory();
+    kDebug() << "Stat File: " << url.fileName();
+    kDebug() << "Empty Dir: " << url.directory().isEmpty();
+
+    statHelper(url);
+
+    kDebug() << "Finished";
+    finished();
 }
 
 int KioFtp::processXmlEntries(const KUrl& url, const QString& xml, const char* slot)
@@ -421,36 +427,56 @@ void KioFtp::copyHelper(const KUrl& src, const KUrl& dest)
 void KioFtp::statHelper(const KUrl& url)
 {
     kDebug() << url;
-//     if ((url.directory() == "/" || url.directory().isEmpty()) && url.fileName().isEmpty()) {
-//         kDebug() << "Url is root";
-//         KIO::UDSEntry entry;
-//         entry.insert(KIO::UDSEntry::UDS_NAME, QString::fromLatin1("/"));
-//         entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
-//         entry.insert( KIO::UDSEntry::UDS_MIME_TYPE, QString::fromLatin1( "inode/directory" ) );
-//         kDebug() << "Adding stat cached: " << url.prettyUrl();
-//         m_statMap[url.prettyUrl()] = entry;
-//         statEntry(entry);
-//
-//     } else {
-//         if (m_statMap.contains(url.prettyUrl())) {
-//             kDebug() << "statMap contains the url";
-//             statEntry(m_statMap[url.prettyUrl()]);
-//
-//         } else {
-//             kDebug() << "statMap NOT contains the url";
-//
-//             kDebug() << "RetrieveFolderListing";
-//             blockUntilNotBusy(url.host());
-//             QDBusPendingReply<QString> folder = m_kded->listDir(url.host(), url.directory());
-//             kDebug() << "retireve called";
-//             folder.waitForFinished();
-//             kDebug() << "RetrieveError: " << folder.error().message();
-//             kDebug() << folder.value();
-//
-//             processXmlEntries(url.upUrl(), folder.value(), "statCallback");
-//         }
-//     }
-//     kDebug() << "Finished";
+    if ((url.directory() == "/" || url.directory().isEmpty()) && url.fileName().isEmpty()) {
+        kDebug() << "Url is root";
+        KIO::UDSEntry entry;
+        entry.insert(KIO::UDSEntry::UDS_NAME, QString::fromLatin1("/"));
+        entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+        entry.insert( KIO::UDSEntry::UDS_MIME_TYPE, QString::fromLatin1( "inode/directory" ) );
+
+        kDebug() << "Adding stat cached: " << url.prettyUrl();
+        m_statMap[url.prettyUrl()] = entry;
+        statEntry(entry);
+
+        return;
+
+    }
+
+    if (m_statMap.contains(url.prettyUrl())) {
+        kDebug() << "statMap contains the url";
+        statEntry(m_statMap[url.prettyUrl()]);
+        return;
+    }
+
+    kDebug() << "statMap NOT contains the url";
+    changeCurrentFolder(url.directory());
+    QVariantMapList folderList = m_transfer->ListFolder().value();
+    Q_FOREACH(const QVariantMap folder, folderList) {
+        KIO::UDSEntry entry;
+
+        kDebug() << "Uayu: " << folder["Name"].toString();
+        entry.insert(KIO::UDSEntry::UDS_NAME, folder["Name"].toString());
+        entry.insert(KIO::UDSEntry::UDS_CREATION_TIME, folder["Created"].toString());
+        entry.insert(KIO::UDSEntry::UDS_ACCESS, 0500);
+
+        if (folder["Type"] == "folder") {
+                entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+        } else {
+            entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
+            entry.insert(KIO::UDSEntry::UDS_SIZE, 10);
+        }
+        entry.insert(KIO::UDSEntry::UDS_MODIFICATION_TIME, folder["Modified"].toString());
+        if (!m_statMap.contains(url.path())) {
+            m_statMap.insert(url.path(), entry);
+        }
+        
+        if (url.fileName() == folder["Name"].toString()) {
+            statEntry(entry);
+        }
+    }
+    finished();
+
+    kDebug() << "Finished";
 }
 
 void KioFtp::blockUntilNotBusy(QString address)
@@ -474,4 +500,25 @@ void KioFtp::wasKilledCheck()
 //         m_eventLoop.exit();
 //     }
     kDebug() << "Slave is alive";
+}
+
+void KioFtp::changeCurrentFolder(const KUrl& url)
+{
+    kDebug() << url;
+    QString path = url.path(KUrl::KUrl::RemoveTrailingSlash);
+    kDebug() << path;
+    QStringList dirList = path.split("/");
+
+    if (dirList.isEmpty()) {
+        return;
+    }
+
+    kDebug() << dirList;
+    m_transfer->ChangeFolder("/"); //Reset it back to root
+    Q_FOREACH(const QString &dir, dirList) {
+        if (dir.isEmpty()) continue;
+
+        kDebug() << "Changes" << dir;
+        m_transfer->ChangeFolder(dir);
+    }
 }
