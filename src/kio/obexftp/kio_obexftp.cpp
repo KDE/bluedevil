@@ -107,25 +107,13 @@ void KioFtp::listDir(const KUrl &url)
     QVariantMapList folderList = reply.value();
     kDebug() << "Content: " << folderList;
     Q_FOREACH(const QVariantMap folder, folderList) {
-        KIO::UDSEntry entry;
-
-        kDebug() << "Uayu: " << folder["Name"].toString();
-        entry.insert(KIO::UDSEntry::UDS_NAME, folder["Name"].toString());
-        entry.insert(KIO::UDSEntry::UDS_CREATION_TIME, folder["Created"].toString());
-        entry.insert(KIO::UDSEntry::UDS_ACCESS, 0500);
-
-        if (folder["Type"] == "folder") {
-                entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
-        } else {
-            entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
-            entry.insert(KIO::UDSEntry::UDS_SIZE, 10);
-        }
-        entry.insert(KIO::UDSEntry::UDS_MODIFICATION_TIME, folder["Modified"].toString());
+        KIO::UDSEntry entry = entryFromInfo(folder);
         listEntry(entry, false);
-        if (!m_statMap.contains(url.path())) {
-            m_statMap.insert(url.path(), entry);
+        if (!m_statMap.contains(url.prettyUrl())) {
+            m_statMap.insert(url.prettyUrl(), entry);
         }
     }
+
     listEntry(KIO::UDSEntry(), true);
     finished();
 }
@@ -234,71 +222,6 @@ void KioFtp::stat(const KUrl &url)
 
     kDebug() << "Finished";
     finished();
-}
-
-int KioFtp::processXmlEntries(const KUrl& url, const QString& xml, const char* slot)
-{
-    QXmlStreamReader* m_xml = new QXmlStreamReader(xml);
-
-    int i = 0;
-    while(!m_xml->atEnd()) {
-        m_xml->readNext();
-        if(m_xml->name() != "folder" &&  m_xml->name() != "file") {
-            kDebug() << "Skiping dir: " << m_xml->name();
-            continue;
-        }
-        QXmlStreamAttributes attr = m_xml->attributes();
-        if (!attr.hasAttribute("name")) {
-            continue;
-        }
-
-        KUrl fullKurl = url;
-        fullKurl.addPath(attr.value("name").toString());
-
-        const QString fullPath = fullKurl.prettyUrl();
-
-        KIO::UDSEntry entry;
-        if (!m_statMap.contains(fullPath)) {
-            kDebug() << "path not cached: " << fullPath;
-            entry.insert(KIO::UDSEntry::UDS_NAME, attr.value("name").toString());
-            entry.insert(KIO::UDSEntry::UDS_CREATION_TIME, attr.value("created").toString());
-            entry.insert(KIO::UDSEntry::UDS_ACCESS, 0500);
-
-            if (m_xml->name() == "folder") {
-                entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
-            } else {
-                entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
-                entry.insert(KIO::UDSEntry::UDS_SIZE, attr.value("size").toString().toUInt());
-                entry.insert(KIO::UDSEntry::UDS_MODIFICATION_TIME, attr.value("modified").toString());
-            }
-
-            kDebug() << "Adding surl to map: " << fullPath;
-            m_statMap[fullPath] = entry;
-        } else {
-            kDebug() << "Cached entry :" << fullPath;
-            entry = m_statMap.value(fullPath);
-        }
-
-        QMetaObject::invokeMethod(this, slot, Q_ARG(KIO::UDSEntry, entry), Q_ARG(KUrl, url));
-        ++i;
-    }
-    return i;
-}
-
-void KioFtp::listDirCallback(const KIO::UDSEntry& entry, const KUrl &url)
-{
-    Q_UNUSED(url)
-    kDebug();
-//     listEntry(entry, false);
-}
-
-void KioFtp::statCallback(const KIO::UDSEntry& entry, const KUrl &url)
-{
-    kDebug() << "FileName : " << url.fileName() << "  " << entry.stringValue(KIO::UDSEntry::UDS_NAME);
-//     if (entry.stringValue(KIO::UDSEntry::UDS_NAME) == url.fileName()) {
-//         kDebug() << "setting statEntry : ";
-//         statEntry(entry);
-//     }
 }
 
 void KioFtp::TransferProgress(qulonglong transfered)
@@ -427,6 +350,13 @@ void KioFtp::copyHelper(const KUrl& src, const KUrl& dest)
 void KioFtp::statHelper(const KUrl& url)
 {
     kDebug() << url;
+
+    if (m_statMap.contains(url.prettyUrl())) {
+        kDebug() << "statMap contains the url";
+        statEntry(m_statMap[url.prettyUrl()]);
+        return;
+    }
+
     if ((url.directory() == "/" || url.directory().isEmpty()) && url.fileName().isEmpty()) {
         kDebug() << "Url is root";
         KIO::UDSEntry entry;
@@ -439,42 +369,24 @@ void KioFtp::statHelper(const KUrl& url)
         statEntry(entry);
 
         return;
-
     }
 
-    if (m_statMap.contains(url.prettyUrl())) {
-        kDebug() << "statMap contains the url";
-        statEntry(m_statMap[url.prettyUrl()]);
-        return;
-    }
-
-    kDebug() << "statMap NOT contains the url";
+    kDebug() << "statMap does NOT contains the url";
     changeCurrentFolder(url.directory());
     QVariantMapList folderList = m_transfer->ListFolder().value();
     Q_FOREACH(const QVariantMap folder, folderList) {
-        KIO::UDSEntry entry;
+        KIO::UDSEntry entry = entryFromInfo(folder);
 
-        kDebug() << "Uayu: " << folder["Name"].toString();
-        entry.insert(KIO::UDSEntry::UDS_NAME, folder["Name"].toString());
-        entry.insert(KIO::UDSEntry::UDS_CREATION_TIME, folder["Created"].toString());
-        entry.insert(KIO::UDSEntry::UDS_ACCESS, 0500);
-
-        if (folder["Type"] == "folder") {
-                entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
-        } else {
-            entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
-            entry.insert(KIO::UDSEntry::UDS_SIZE, 10);
-        }
-        entry.insert(KIO::UDSEntry::UDS_MODIFICATION_TIME, folder["Modified"].toString());
-        if (!m_statMap.contains(url.path())) {
-            m_statMap.insert(url.path(), entry);
-        }
-        
         if (url.fileName() == folder["Name"].toString()) {
             statEntry(entry);
         }
+
+        //Most probably the client of the kio will stat each file
+        //so since we are on it, let's cache all of them.
+        if (!m_statMap.contains(url.path())) {
+            m_statMap.insert(url.path(), entry);
+        }
     }
-    finished();
 
     kDebug() << "Finished";
 }
@@ -500,6 +412,27 @@ void KioFtp::wasKilledCheck()
 //         m_eventLoop.exit();
 //     }
     kDebug() << "Slave is alive";
+}
+
+
+KIO::UDSEntry KioFtp::entryFromInfo(const QVariantMap& info)
+{
+    kDebug() << "Uayu: " << info;
+
+    KIO::UDSEntry entry;
+    entry.insert(KIO::UDSEntry::UDS_NAME, info["Name"].toString());
+    entry.insert(KIO::UDSEntry::UDS_CREATION_TIME, info["Created"].toString());
+    entry.insert(KIO::UDSEntry::UDS_ACCESS, 0500);
+    entry.insert(KIO::UDSEntry::UDS_MODIFICATION_TIME, info["Modified"].toString());
+
+    if (info["Type"].toString() == QLatin1String("folder")) {
+        entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+    } else {
+        entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
+        entry.insert(KIO::UDSEntry::UDS_SIZE, 10);
+    }
+
+    return entry;
 }
 
 void KioFtp::changeCurrentFolder(const KUrl& url)

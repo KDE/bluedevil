@@ -41,8 +41,6 @@ public:
     KioFtp(const QByteArray &pool, const QByteArray &app);
     virtual ~KioFtp();
 
-    int processXmlEntries(const KUrl& url, const QString& xml, const char* slot);
-
     virtual void copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFlags flags);
     virtual void listDir(const KUrl &url);
     virtual void setHost(const QString &host, quint16 port, const QString &user, const QString &pass);
@@ -58,15 +56,13 @@ private Q_SLOTS:
     void TransferCancelled();
     void ErrorOccurred(const QString&, const QString&);
 
-    void listDirCallback(const KIO::UDSEntry& entry, const KUrl& url);
-    void statCallback(const KIO::UDSEntry &entry, const KUrl& url);
-
     void updateProcess();
     void sessionConnected(QString address);
     void sessionClosed(QString address);
 
     void wasKilledCheck();
-private:
+
+    KIO::UDSEntry entryFromInfo(const QVariantMap &info);
     void changeCurrentFolder(const KUrl &url);
     void copyHelper(const KUrl &src, const KUrl &dest);
     void statHelper(const KUrl &url);

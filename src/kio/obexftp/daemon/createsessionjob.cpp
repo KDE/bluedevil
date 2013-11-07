@@ -58,7 +58,7 @@ void CreateSessionJob::createSession()
     kDebug(dobex());
     QVariantMap args;
     args["Target"] = "ftp";
-    args["Source"] = "00:02:72:D6:8F:2C";
+//     args["Source"] = "00:02:72:D6:8F:2C";
     m_client = new OrgBluezObexClient1Interface("org.bluez.obex",
                                                 "/org/bluez/obex",
                                                 QDBusConnection::sessionBus(), this);
