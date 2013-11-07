@@ -57,8 +57,6 @@ private Q_SLOTS:
     void ErrorOccurred(const QString&, const QString&);
 
     void updateProcess();
-    void sessionConnected(QString address);
-    void sessionClosed(QString address);
 
     void wasKilledCheck();
 

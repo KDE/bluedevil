@@ -268,35 +268,6 @@ void KioFtp::ErrorOccurred(const QString &name, const QString &msg)
 //     }
 }
 
-void KioFtp::sessionConnected(QString address)
-{
-    kDebug() << "Session connected: " << address;
-/*
-    if (m_settingHost) {
-        m_eventLoop.exit();
-    }*/
-}
-
-void KioFtp::sessionClosed(QString address)
-{
-    kDebug() << "Session closed: " << address;
-//     if (m_eventLoop.isRunning()) {
-//         m_eventLoop.exit();
-//     }
-//
-//     if (m_settingHost) {
-//         infoMessage(i18n("Can't connect to the device"));
-//     } else {
-//         infoMessage(i18n("Connection closed"));
-//     }
-//
-//     if (m_counter != 0) {
-//         processedSize(50);
-//         m_counter = 0;
-//     }
-}
-
-
 void KioFtp::copyHelper(const KUrl& src, const KUrl& dest)
 {
 //     connect(m_kded, SIGNAL(Cancelled()), this, SLOT(TransferCancelled()));
