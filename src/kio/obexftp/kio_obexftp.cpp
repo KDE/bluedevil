@@ -18,6 +18,7 @@
  *************************************************************************************/
 
 #include "kio_obexftp.h"
+#include "obexd_transfer.h"
 #include "obexd_file_transfer.h"
 #include "kdedobexftp.h"
 #include "version.h"
@@ -270,52 +271,50 @@ void KioFtp::ErrorOccurred(const QString &name, const QString &msg)
 
 void KioFtp::copyHelper(const KUrl& src, const KUrl& dest)
 {
-//     connect(m_kded, SIGNAL(Cancelled()), this, SLOT(TransferCancelled()));
-//     connect(m_kded, SIGNAL(transferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
-//     connect(m_kded, SIGNAL(transferCompleted()), this, SLOT(TransferCompleted()));
-//     connect(m_kded, SIGNAL(errorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
-//
-//     if (src.scheme() == "obexftp" && dest.scheme() == "obexftp") {
-//         error(KIO::ERR_UNSUPPORTED_ACTION, src.prettyUrl());
-//         return;
-//     }
-//
-//     if (src.scheme() == "obexftp") {
-//         kDebug() << "scheme is obexftp";
-//         kDebug() << src.prettyUrl();
-//         //Just in case the url is not in the stat, some times happens...
-//         if (!m_statMap.contains(src.prettyUrl())) {
-//             kDebug() << "The url is not in the cache, stating it";
-//             statHelper(src);
-//         }
-//
-//         if (m_statMap.value(src.prettyUrl()).isDir()) {
-//             kDebug() << "Skipping to copy: " << src.prettyUrl();
-//             error( KIO::ERR_IS_DIRECTORY, src.prettyUrl());
-//             disconnect(m_kded, SIGNAL(Cancelled()), this, SLOT(TransferCancelled()));
-//             disconnect(m_kded, SIGNAL(transferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
-//             disconnect(m_kded, SIGNAL(transferCompleted()), this, SLOT(TransferCompleted()));
-//             disconnect(m_kded, SIGNAL(errorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
-//             return;
-//         }
-//
-//         kDebug() << "CopyingRemoteFile....";
-//
-//         int size = m_statMap[src.prettyUrl()].numberValue(KIO::UDSEntry::UDS_SIZE);
-//         totalSize(size);
-//
+    if (src.scheme() == "obexftp" && dest.scheme() == "obexftp") {
+        error(KIO::ERR_UNSUPPORTED_ACTION, src.prettyUrl());
+        //TOOD: with obexd this seems possible, we should at least try
+        return;
+    }
+
+    if (src.scheme() == "obexftp") {
+        kDebug() << "scheme is obexftp";
+        kDebug() << src.prettyUrl();
+        //Just in case the url is not in the stat, some times happens...
+        if (!m_statMap.contains(src.prettyUrl())) {
+            kDebug() << "The url is not in the cache, stating it";
+            statHelper(src);
+        }
+
+        if (m_statMap.value(src.prettyUrl()).isDir()) {
+            kDebug() << "Skipping to copy: " << src.prettyUrl();
+            //TODO: Check if dir copying works with obexd
+            error( KIO::ERR_IS_DIRECTORY, src.prettyUrl());
+            return;
+        }
+
+        kDebug() << "CopyingRemoteFile....";
+
+        int size = m_statMap[src.prettyUrl()].numberValue(KIO::UDSEntry::UDS_SIZE);
+        totalSize(size);
+
 //         blockUntilNotBusy(src.host());
-//         m_kded->copyRemoteFile(src.host(), src.path(), dest.path());
-//     } else if (dest.scheme() == "obexftp") {
-//         kDebug() << "Sendingfile....";
-//         QFile file(dest.url());
-//         totalSize(file.size());
-//         blockUntilNotBusy(dest.host());
+        kDebug() << "From: " << src.path() << "To: " << dest.path();
+        QString dbusPath = m_transfer->GetFile(src.path(), dest.path()).value().path();
+        kDebug() << "dbusPath" << dbusPath;
+        OrgBluezObexTransfer1Interface *transfer = new OrgBluezObexTransfer1Interface("org.bluez.obex", dbusPath, QDBusConnection::sessionBus());
+       kDebug() << "Size: " <<  transfer->size();
+    } else if (dest.scheme() == "obexftp") {
+        kDebug() << "Sendingfile....";
+        QFile file(dest.url());
+        totalSize(file.size());
+        blockUntilNotBusy(dest.host());
 //         m_kded->sendFile(dest.host(), src.path(), dest.directory());
-//     }
-//
+    }
+
+    kDebug() << "Blocking all the way";
 //     m_eventLoop.exec();
-//     kDebug() << "Copy end";
+    kDebug() << "Copy end";
 }
 
 void KioFtp::statHelper(const KUrl& url)
