@@ -299,9 +299,9 @@ void KioFtp::copyHelper(const KUrl& src, const KUrl& dest)
         int size = m_statMap[src.prettyUrl()].numberValue(KIO::UDSEntry::UDS_SIZE);
         totalSize(size);
 
-//         blockUntilNotBusy(src.host());
         kDebug() << "From: " << src.path() << "To: " << dest.path();
-        QString dbusPath = m_transfer->GetFile(src.path(), dest.path()).value().path();
+        m_transfer->ChangeFolder(src.directory()).waitForFinished();
+        QString dbusPath = m_transfer->GetFile(dest.path(), src.fileName()).value().path();
         kDebug() << "dbusPath" << dbusPath;
         OrgBluezObexTransfer1Interface *transfer = new OrgBluezObexTransfer1Interface("org.bluez.obex", dbusPath, QDBusConnection::sessionBus());
        kDebug() << "Size: " <<  transfer->size();
