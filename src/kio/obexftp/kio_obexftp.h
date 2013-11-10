@@ -61,7 +61,6 @@ private Q_SLOTS:
     void wasKilledCheck();
 
     KIO::UDSEntry entryFromInfo(const QVariantMap &info);
-    void changeCurrentFolder(const KUrl &url);
     void copyHelper(const KUrl &src, const KUrl &dest);
     void statHelper(const KUrl &url);
     void launchProgressBar();

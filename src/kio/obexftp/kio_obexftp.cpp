@@ -98,7 +98,8 @@ void KioFtp::listDir(const KUrl &url)
 
     kDebug() << "Asking for listFolder";
 
-    changeCurrentFolder(url);
+    //TODO: Check if changeFolder fails
+    m_transfer->ChangeFolder(url.path()).waitForFinished();
 
     QDBusPendingReply <QVariantMapList > reply = m_transfer->ListFolder();
     reply.waitForFinished();
@@ -342,7 +343,8 @@ void KioFtp::statHelper(const KUrl& url)
     }
 
     kDebug() << "statMap does NOT contains the url";
-    changeCurrentFolder(url.directory());
+    //TODO: Check if changeFolder fails
+    m_transfer->ChangeFolder(url.directory()).waitForFinished();
     QVariantMapList folderList = m_transfer->ListFolder().value();
     Q_FOREACH(const QVariantMap folder, folderList) {
         KIO::UDSEntry entry = entryFromInfo(folder);
@@ -403,25 +405,4 @@ KIO::UDSEntry KioFtp::entryFromInfo(const QVariantMap& info)
     }
 
     return entry;
-}
-
-void KioFtp::changeCurrentFolder(const KUrl& url)
-{
-    kDebug() << url;
-    QString path = url.path(KUrl::KUrl::RemoveTrailingSlash);
-    kDebug() << path;
-    QStringList dirList = path.split("/");
-
-    if (dirList.isEmpty()) {
-        return;
-    }
-
-    kDebug() << dirList;
-    m_transfer->ChangeFolder("/"); //Reset it back to root
-    Q_FOREACH(const QString &dir, dirList) {
-        if (dir.isEmpty()) continue;
-
-        kDebug() << "Changes" << dir;
-        m_transfer->ChangeFolder(dir);
-    }
 }
