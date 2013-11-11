@@ -209,7 +209,7 @@
       <item row="4" column="0">
        <widget class="QLabel" name="label_9">
         <property name="text">
-         <string>Shared Folder</string>
+         <string>Shared Folder:</string>
         </property>
        </widget>
       </item>
