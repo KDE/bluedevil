@@ -355,8 +355,8 @@ void KioFtp::statHelper(const KUrl& url)
 
         //Most probably the client of the kio will stat each file
         //so since we are on it, let's cache all of them.
-        if (!m_statMap.contains(url.path())) {
-            m_statMap.insert(url.path(), entry);
+        if (!m_statMap.contains(url.prettyUrl())) {
+            m_statMap.insert(url.prettyUrl(), entry);
         }
     }
 
@@ -401,7 +401,7 @@ KIO::UDSEntry KioFtp::entryFromInfo(const QVariantMap& info)
         entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
     } else {
         entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
-        entry.insert(KIO::UDSEntry::UDS_SIZE, 10);
+        entry.insert(KIO::UDSEntry::UDS_SIZE, info["Size"].toLongLong());
     }
 
     return entry;
