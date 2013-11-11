@@ -4,6 +4,7 @@ add_subdirectory(daemon)
 
 set(kio_obexftp_SRCS
     kio_obexftp.cpp
+    getfilejob.cpp
    )
 
 qt4_add_dbus_interface(kio_obexftp_SRCS kded_obexftp.xml kdedobexftp)
@@ -16,6 +17,7 @@ set(obexftpfiletransfer_xml ${CMAKE_CURRENT_SOURCE_DIR}/obexftp/filetransfer.xml
 
 set(SENDER_PLUGIN_PATH ${CMAKE_SOURCE_DIR}/src/actionplugins/sendfile/helper/)
 qt4_add_dbus_interface(kio_obexftp_SRCS ${SENDER_PLUGIN_PATH}org.bluez.obex.Transfer1.xml obexd_transfer)
+
 kde4_add_plugin(kio_obexftp ${kio_obexftp_SRCS})
 
 target_link_libraries(kio_obexftp

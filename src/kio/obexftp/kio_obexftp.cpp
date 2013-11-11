@@ -31,6 +31,7 @@
 #include <KMimeType>
 #include <KApplication>
 #include "obexdtypes.h"
+#include "getfilejob.h"
 
 #include <unistd.h>
 
@@ -303,18 +304,17 @@ void KioFtp::copyHelper(const KUrl& src, const KUrl& dest)
         m_transfer->ChangeFolder(src.directory()).waitForFinished();
         QString dbusPath = m_transfer->GetFile(dest.path(), src.fileName()).value().path();
         kDebug() << "dbusPath" << dbusPath;
-        OrgBluezObexTransfer1Interface *transfer = new OrgBluezObexTransfer1Interface("org.bluez.obex", dbusPath, QDBusConnection::sessionBus());
-       kDebug() << "Size: " <<  transfer->size();
-    } else if (dest.scheme() == "obexftp") {
+
+        GetFileJob *getFile = new GetFileJob(dbusPath, this);
+        getFile->setSize(size);
+        getFile->exec();
+    }/* else if (dest.scheme() == "obexftp") {
         kDebug() << "Sendingfile....";
         QFile file(dest.url());
         totalSize(file.size());
         blockUntilNotBusy(dest.host());
 //         m_kded->sendFile(dest.host(), src.path(), dest.directory());
-    }
-
-    kDebug() << "Blocking all the way";
-//     m_eventLoop.exec();
+    }*/
     kDebug() << "Copy end";
 }
 
