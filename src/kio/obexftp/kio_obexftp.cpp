@@ -31,7 +31,7 @@
 #include <KMimeType>
 #include <KApplication>
 #include "obexdtypes.h"
-#include "getfilejob.h"
+#include "transferfilejob.h"
 
 #include <unistd.h>
 
@@ -305,7 +305,7 @@ void KioFtp::copyHelper(const KUrl& src, const KUrl& dest)
         QString dbusPath = m_transfer->GetFile(dest.path(), src.fileName()).value().path();
         kDebug() << "dbusPath" << dbusPath;
 
-        GetFileJob *getFile = new GetFileJob(dbusPath, this);
+        TransferFileJob *getFile = new TransferFileJob(dbusPath, this);
         getFile->setSize(size);
         getFile->exec();
     } else if (dest.scheme() == "obexftp") {
@@ -315,7 +315,7 @@ void KioFtp::copyHelper(const KUrl& src, const KUrl& dest)
         m_transfer->ChangeFolder(dest.directory());
         QString dbusPath = m_transfer->PutFile(src.path(), dest.fileName()).value().path();
         kDebug() << dbusPath;
-        GetFileJob *putFile = new GetFileJob(dbusPath, this);
+        TransferFileJob *putFile = new TransferFileJob(dbusPath, this);
         putFile->setSize(file.size());
         putFile->exec();
     }

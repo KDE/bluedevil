@@ -28,16 +28,16 @@ class KioFtp;
 class OrgBluezObexTransfer1Interface;
 class OrgFreedesktopDBusPropertiesInterface;
 
-class GetFileJob : public KJob
+class TransferFileJob : public KJob
 {
     Q_OBJECT
 public:
-    explicit GetFileJob(const QString &path, KioFtp* parent = 0);
+    explicit TransferFileJob(const QString &path, KioFtp* parent = 0);
 
     virtual void start();
     virtual bool doKill();
 
-    virtual ~GetFileJob();
+    virtual ~TransferFileJob();
 
     void setSize(int size);
 private Q_SLOTS:

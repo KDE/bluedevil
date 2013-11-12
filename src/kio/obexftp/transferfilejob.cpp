@@ -17,7 +17,7 @@
  *************************************************************************************/
 
 #include "kio_obexftp.h"
-#include "getfilejob.h"
+#include "transferfilejob.h"
 #include "obexd_transfer.h"
 
 #include <QDBusConnection>
@@ -28,7 +28,7 @@
 typedef OrgBluezObexTransfer1Interface TransferInterface;
 typedef OrgFreedesktopDBusPropertiesInterface PropertiesInterface;
 
-GetFileJob::GetFileJob(const QString& path, KioFtp* parent)
+TransferFileJob::TransferFileJob(const QString& path, KioFtp* parent)
     : KJob(parent)
     , m_path(path)
     , m_speedBytes(0)
@@ -37,18 +37,18 @@ GetFileJob::GetFileJob(const QString& path, KioFtp* parent)
 
 }
 
-GetFileJob::~GetFileJob()
+TransferFileJob::~TransferFileJob()
 {
     delete m_transfer;
     delete m_properties;
 }
 
-void GetFileJob::start()
+void TransferFileJob::start()
 {
     QMetaObject::invokeMethod(this, "createObjects", Qt::QueuedConnection);
 }
 
-bool GetFileJob::doKill()
+bool TransferFileJob::doKill()
 {
     QDBusPendingReply <void > reply = m_transfer->Cancel();
     reply.waitForFinished();
@@ -56,13 +56,13 @@ bool GetFileJob::doKill()
     return !reply.isError();
 }
 
-void GetFileJob::setSize(int size)
+void TransferFileJob::setSize(int size)
 {
     kDebug() << size;
     m_parent->totalSize(size);
 }
 
-void GetFileJob::createObjects()
+void TransferFileJob::createObjects()
 {
     m_transfer = new TransferInterface("org.bluez.obex", m_path, QDBusConnection::sessionBus());
     m_properties = new PropertiesInterface("org.bluez.obex", m_path, QDBusConnection::sessionBus());
@@ -70,7 +70,7 @@ void GetFileJob::createObjects()
     connect(m_properties, SIGNAL(PropertiesChanged(QString,QVariantMap,QStringList)), SLOT(propertiesChanged(QString,QVariantMap,QStringList)));
 }
 
-void GetFileJob::propertiesChanged(const QString& interface, const QVariantMap& properties, const QStringList &invalidProps)
+void TransferFileJob::propertiesChanged(const QString& interface, const QVariantMap& properties, const QStringList &invalidProps)
 {
     kDebug() << properties;
     if (interface != QLatin1String("org.bluez.obex.Transfer1")) {
@@ -87,7 +87,7 @@ void GetFileJob::propertiesChanged(const QString& interface, const QVariantMap& 
     }
 }
 
-void GetFileJob::statusChanged(const QVariant& value)
+void TransferFileJob::statusChanged(const QVariant& value)
 {
     kDebug() << value;
     QString status = value.toString();
@@ -108,7 +108,7 @@ void GetFileJob::statusChanged(const QVariant& value)
     kDebug() << "Not implemented status: " << status;
 }
 
-void GetFileJob::transferChanged(const QVariant& value)
+void TransferFileJob::transferChanged(const QVariant& value)
 {
     kDebug() << "Transferred: " << value;
     if (m_parent->wasKilled()) {

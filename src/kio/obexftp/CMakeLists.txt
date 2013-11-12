@@ -4,7 +4,7 @@ add_subdirectory(daemon)
 
 set(kio_obexftp_SRCS
     kio_obexftp.cpp
-    getfilejob.cpp
+    transferfilejob.cpp
    )
 
 qt4_add_dbus_interface(kio_obexftp_SRCS kded_obexftp.xml kdedobexftp)
