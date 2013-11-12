@@ -51,20 +51,12 @@ public:
     virtual void get(const KUrl& url);
 
 private Q_SLOTS:
-    void TransferProgress(qulonglong transfered);
-    void TransferCompleted();
-    void TransferCancelled();
-    void ErrorOccurred(const QString&, const QString&);
-
     void updateProcess();
-
-    void wasKilledCheck();
 
     KIO::UDSEntry entryFromInfo(const QVariantMap &info);
     void copyHelper(const KUrl &src, const KUrl &dest);
     void statHelper(const KUrl &url);
     void launchProgressBar();
-    void blockUntilNotBusy(QString address);
 
 private:
     int                          m_counter;

@@ -90,7 +90,6 @@ void KioFtp::updateProcess()
     m_counter++;
 }
 
-
 void KioFtp::listDir(const KUrl &url)
 {
     kDebug() << "listdir: " << url;
@@ -199,9 +198,9 @@ void KioFtp::del(const KUrl& url, bool isfile)
     Q_UNUSED(isfile)
 
     kDebug() << "Del: " << url.url();
-//     blockUntilNotBusy(url.host());
-//     m_kded->deleteRemoteFile(url.host(),  url.path()).waitForFinished();
-//     finished();
+    m_transfer->ChangeFolder(url.directory()).waitForFinished();
+    m_transfer->Delete(url.fileName()).waitForFinished();
+    finished();
 }
 
 void KioFtp::mkdir(const KUrl& url, int permissions)
@@ -225,50 +224,6 @@ void KioFtp::stat(const KUrl &url)
 
     kDebug() << "Finished";
     finished();
-}
-
-void KioFtp::TransferProgress(qulonglong transfered)
-{
-//     processedSize(transfered);
-//     wasKilledCheck();
-    kDebug() << "TransferProgress: ";
-}
-
-void KioFtp::TransferCompleted()
-{
-    kDebug() << "TransferCompleted: ";
-//     disconnect(m_kded, SIGNAL(Cancelled()), this, SLOT(TransferCancelled()));
-//     disconnect(m_kded, SIGNAL(transferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
-//     disconnect(m_kded, SIGNAL(transferCompleted()), this, SLOT(TransferCompleted()));
-//     disconnect(m_kded, SIGNAL(errorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
-//     m_eventLoop.exit();
-}
-
-void KioFtp::TransferCancelled()
-{
-    kDebug() << "TransferCancelled";
-//     disconnect(m_kded, SIGNAL(Cancelled()), this, SLOT(TransferCancelled()));
-//     disconnect(m_kded, SIGNAL(transferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
-//     disconnect(m_kded, SIGNAL(transferCompleted()), this, SLOT(TransferCompleted()));
-//     disconnect(m_kded, SIGNAL(errorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
-//     error(KIO::ERR_USER_CANCELED, "");
-//     m_eventLoop.exit();
-}
-
-
-void KioFtp::ErrorOccurred(const QString &name, const QString &msg)
-{
-//     disconnect(m_session, SIGNAL(TransferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
-//     disconnect(m_session, SIGNAL(TransferCompleted()), this, SLOT(TransferCompleted()));
-//     disconnect(m_session, SIGNAL(ErrorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
-
-    kDebug() << "ERROR ERROR: " << name;
-    kDebug() << "ERROR ERROR: " << msg;
-
-//     error(KIO::ERR_UNKNOWN, "");
-//     if (m_eventLoop.isRunning()){
-//         m_eventLoop.exit();
-//     }
 }
 
 void KioFtp::copyHelper(const KUrl& src, const KUrl& dest)
@@ -367,30 +322,6 @@ void KioFtp::statHelper(const KUrl& url)
 
     kDebug() << "Finished";
 }
-
-void KioFtp::blockUntilNotBusy(QString address)
-{
-//     if (m_kded->isBusy(address).value()) {
-//         infoMessage(i18n("The device is busy, waiting..."));
-//         while (m_kded->isBusy(address).value() == true) {
-//             kDebug() << "Blocking, kded is busy";
-//             sleep(1);
-//         }
-//         infoMessage("");
-//     }
-    kDebug() << "kded is free";
-}
-
-void KioFtp::wasKilledCheck()
-{
-//     if (wasKilled()) {
-//         kDebug() << "slave was killed!";
-//         m_kded->Cancel(m_address).waitForFinished();;
-//         m_eventLoop.exit();
-//     }
-    kDebug() << "Slave is alive";
-}
-
 
 KIO::UDSEntry KioFtp::entryFromInfo(const QVariantMap& info)
 {
