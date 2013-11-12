@@ -129,12 +129,11 @@ void GetFileJob::transferChanged(const QVariant& value)
     int secondsSinceLastTime = m_time.secsTo(QTime::currentTime());
     if (secondsSinceLastTime > 0) {
         float speed = (bytes - m_speedBytes) / secondsSinceLastTime;
-        emitSpeed(speed);
 
+        m_parent->speed(speed);
         m_time = QTime::currentTime();
         m_speedBytes = bytes;
     }
 
-    m_parent->speed(m_speedBytes);
     m_parent->processedSize(bytes);
 }
