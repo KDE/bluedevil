@@ -209,9 +209,9 @@ void KioFtp::mkdir(const KUrl& url, int permissions)
     Q_UNUSED(permissions)
 
     kDebug() << "MkDir: " << url.url();
-//     blockUntilNotBusy(url.host());
-//     m_kded->createFolder(url.host(), url.path()).waitForFinished();
-//     finished();
+    m_transfer->ChangeFolder(url.directory()).waitForFinished();
+    m_transfer->CreateFolder(url.fileName()).waitForFinished();
+    finished();
 }
 
 void KioFtp::stat(const KUrl &url)
@@ -337,6 +337,7 @@ void KioFtp::statHelper(const KUrl& url)
         KIO::UDSEntry entry;
         entry.insert(KIO::UDSEntry::UDS_NAME, QString::fromLatin1("/"));
         entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+        entry.insert(KIO::UDSEntry::UDS_ACCESS, 0700);
         entry.insert( KIO::UDSEntry::UDS_MIME_TYPE, QString::fromLatin1( "inode/directory" ) );
 
         kDebug() << "Adding stat cached: " << url.prettyUrl();
@@ -398,7 +399,7 @@ KIO::UDSEntry KioFtp::entryFromInfo(const QVariantMap& info)
     KIO::UDSEntry entry;
     entry.insert(KIO::UDSEntry::UDS_NAME, info["Name"].toString());
     entry.insert(KIO::UDSEntry::UDS_CREATION_TIME, info["Created"].toString());
-    entry.insert(KIO::UDSEntry::UDS_ACCESS, 0500);
+    entry.insert(KIO::UDSEntry::UDS_ACCESS, 0700);
     entry.insert(KIO::UDSEntry::UDS_MODIFICATION_TIME, info["Modified"].toString());
 
     if (info["Type"].toString() == QLatin1String("folder")) {
