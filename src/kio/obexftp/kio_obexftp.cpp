@@ -107,11 +107,15 @@ void KioFtp::listDir(const KUrl &url)
     QVariantMapList folderList = reply.value();
     Q_FOREACH(const QVariantMap folder, folderList) {
         KIO::UDSEntry entry = entryFromInfo(folder);
-        listEntry(entry, false);
-        if (!m_statMap.contains(url.prettyUrl())) {
-            kDebug() << "Stat: " << url.prettyUrl() << entry.listFields();
-            m_statMap.insert(url.prettyUrl(), entry);
+
+        KUrl statUrl(url);
+        statUrl.setFileName(folder["Name"].toString());
+        if (!m_statMap.contains(statUrl.prettyUrl())) {
+            kDebug() << "Stat: " << statUrl.prettyUrl() << entry.numberValue(KIO::UDSEntry::UDS_SIZE);
+            m_statMap.insert(statUrl.prettyUrl(), entry);
         }
+
+        listEntry(entry, false);
     }
 
     listEntry(KIO::UDSEntry(), true);
@@ -323,18 +327,22 @@ void KioFtp::statHelper(const KUrl& url)
     //TODO: Check if changeFolder fails
     m_transfer->ChangeFolder(url.directory()).waitForFinished();
     QVariantMapList folderList = m_transfer->ListFolder().value();
+    kDebug() << url.directory() << folderList.count();
     Q_FOREACH(const QVariantMap folder, folderList) {
         KIO::UDSEntry entry = entryFromInfo(folder);
 
-        if (url.fileName() == folder["Name"].toString()) {
+        QString fileName = folder["Name"].toString();
+        if (url.fileName() == fileName) {
             statEntry(entry);
         }
 
         //Most probably the client of the kio will stat each file
         //so since we are on it, let's cache all of them.
-        if (!m_statMap.contains(url.prettyUrl())) {
-            kDebug() << "Stat: " << url.prettyUrl() << entry.listFields();
-            m_statMap.insert(url.prettyUrl(), entry);
+        KUrl statUrl(url);
+        statUrl.setFileName(fileName);
+        if (!m_statMap.contains(statUrl.prettyUrl())) {
+            kDebug() << "Stat: " << statUrl.prettyUrl() << entry.stringValue(KIO::UDSEntry::UDS_NAME) <<  entry.numberValue(KIO::UDSEntry::UDS_SIZE);
+            m_statMap.insert(statUrl.prettyUrl(), entry);
         }
     }
 
