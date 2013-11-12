@@ -230,7 +230,7 @@ void KioFtp::copyHelper(const KUrl& src, const KUrl& dest)
 {
     if (src.scheme() == "obexftp" && dest.scheme() == "obexftp") {
         error(KIO::ERR_UNSUPPORTED_ACTION, src.prettyUrl());
-        //TOOD: with obexd this seems possible, we should at least try
+        //TODO: with obexd this seems possible, we should at least try
         return;
     }
 
