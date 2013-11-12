@@ -308,13 +308,17 @@ void KioFtp::copyHelper(const KUrl& src, const KUrl& dest)
         GetFileJob *getFile = new GetFileJob(dbusPath, this);
         getFile->setSize(size);
         getFile->exec();
-    }/* else if (dest.scheme() == "obexftp") {
+    } else if (dest.scheme() == "obexftp") {
         kDebug() << "Sendingfile....";
         QFile file(dest.url());
         totalSize(file.size());
-        blockUntilNotBusy(dest.host());
-//         m_kded->sendFile(dest.host(), src.path(), dest.directory());
-    }*/
+        m_transfer->ChangeFolder(dest.directory());
+        QString dbusPath = m_transfer->PutFile(src.path(), dest.fileName()).value().path();
+        kDebug() << dbusPath;
+        GetFileJob *putFile = new GetFileJob(dbusPath, this);
+        putFile->setSize(file.size());
+        putFile->exec();
+    }
     kDebug() << "Copy end";
 }
 
