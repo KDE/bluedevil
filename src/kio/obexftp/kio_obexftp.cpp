@@ -104,14 +104,12 @@ void KioFtp::listDir(const KUrl &url)
     QDBusPendingReply <QVariantMapList > reply = m_transfer->ListFolder();
     reply.waitForFinished();
 
-    kDebug() << "Got answer3";
-
     QVariantMapList folderList = reply.value();
-    kDebug() << "Content: " << folderList;
     Q_FOREACH(const QVariantMap folder, folderList) {
         KIO::UDSEntry entry = entryFromInfo(folder);
         listEntry(entry, false);
         if (!m_statMap.contains(url.prettyUrl())) {
+            kDebug() << "Stat: " << url.prettyUrl() << entry.listFields();
             m_statMap.insert(url.prettyUrl(), entry);
         }
     }
@@ -235,46 +233,65 @@ void KioFtp::copyHelper(const KUrl& src, const KUrl& dest)
     }
 
     if (src.scheme() == "obexftp") {
-        kDebug() << "scheme is obexftp";
-        kDebug() << src.prettyUrl();
-        //Just in case the url is not in the stat, some times happens...
-        if (!m_statMap.contains(src.prettyUrl())) {
-            kDebug() << "The url is not in the cache, stating it";
-            statHelper(src);
-        }
-
-        if (m_statMap.value(src.prettyUrl()).isDir()) {
-            kDebug() << "Skipping to copy: " << src.prettyUrl();
-            //TODO: Check if dir copying works with obexd
-            error( KIO::ERR_IS_DIRECTORY, src.prettyUrl());
-            return;
-        }
-
-        kDebug() << "CopyingRemoteFile....";
-
-        int size = m_statMap[src.prettyUrl()].numberValue(KIO::UDSEntry::UDS_SIZE);
-        totalSize(size);
-
-        kDebug() << "From: " << src.path() << "To: " << dest.path();
-        m_transfer->ChangeFolder(src.directory()).waitForFinished();
-        QString dbusPath = m_transfer->GetFile(dest.path(), src.fileName()).value().path();
-        kDebug() << "dbusPath" << dbusPath;
-
-        TransferFileJob *getFile = new TransferFileJob(dbusPath, this);
-        getFile->setSize(size);
-        getFile->exec();
-    } else if (dest.scheme() == "obexftp") {
-        kDebug() << "Sendingfile....";
-        QFile file(dest.url());
-        totalSize(file.size());
-        m_transfer->ChangeFolder(dest.directory());
-        QString dbusPath = m_transfer->PutFile(src.path(), dest.fileName()).value().path();
-        kDebug() << dbusPath;
-        TransferFileJob *putFile = new TransferFileJob(dbusPath, this);
-        putFile->setSize(file.size());
-        putFile->exec();
+        copyFromObexftp(src, dest);
+        return;
     }
-    kDebug() << "Copy end";
+
+    if (dest.scheme() == "obexftp") {
+        copyToObexftp(src, dest);
+        return;
+    }
+
+    kDebug() << "This shouldn't happen...";
+    finished();
+}
+
+void KioFtp::copyFromObexftp(const KUrl& src, const KUrl& dest)
+{
+    kDebug() << "Source: " << src << "Dest:" << dest;
+
+    //Just in case the url is not in the stat, some times happens...
+    if (!m_statMap.contains(src.prettyUrl())) {
+        kDebug() << "The url is not in the cache, stating it";
+        statHelper(src);
+    }
+
+    if (m_statMap.value(src.prettyUrl()).isDir()) {
+        kDebug() << "Skipping to copy: " << src.prettyUrl();
+        //TODO: Check if dir copying works with obexd
+        error(KIO::ERR_IS_DIRECTORY, src.prettyUrl());
+        return;
+    }
+
+    kDebug() << "Changing dir:" << src.directory();
+    m_transfer->ChangeFolder(src.directory()).waitForFinished();
+
+    QString dbusPath = m_transfer->GetFile(dest.path(), src.fileName()).value().path();
+    kDebug() << "Path from GetFile:" << dbusPath;
+
+    int size = m_statMap[src.prettyUrl()].numberValue(KIO::UDSEntry::UDS_SIZE);
+    TransferFileJob *getFile = new TransferFileJob(dbusPath, this);
+    getFile->setSize(size);
+    getFile->exec();
+
+    finished();
+}
+
+void KioFtp::copyToObexftp(const KUrl& src, const KUrl& dest)
+{
+    kDebug() << "Source:" << src << "Dest:" << dest;
+
+    kDebug() << "Changing folder: " << dest.directory();
+    m_transfer->ChangeFolder(dest.directory());
+    QString dbusPath = m_transfer->PutFile(src.path(), dest.fileName()).value().path();
+    kDebug() << "Path from PutFile: " << dbusPath;
+
+    QFile file(src.path());
+    TransferFileJob *putFile = new TransferFileJob(dbusPath, this);
+    putFile->setSize(file.size());
+    putFile->exec();
+
+    finished();
 }
 
 void KioFtp::statHelper(const KUrl& url)
@@ -316,6 +333,7 @@ void KioFtp::statHelper(const KUrl& url)
         //Most probably the client of the kio will stat each file
         //so since we are on it, let's cache all of them.
         if (!m_statMap.contains(url.prettyUrl())) {
+            kDebug() << "Stat: " << url.prettyUrl() << entry.listFields();
             m_statMap.insert(url.prettyUrl(), entry);
         }
     }

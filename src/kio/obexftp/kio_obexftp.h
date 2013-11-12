@@ -55,6 +55,8 @@ private Q_SLOTS:
 
     KIO::UDSEntry entryFromInfo(const QVariantMap &info);
     void copyHelper(const KUrl &src, const KUrl &dest);
+    void copyFromObexftp(const KUrl &src, const KUrl &dest);
+    void copyToObexftp(const KUrl &src, const KUrl &dest);
     void statHelper(const KUrl &url);
     void launchProgressBar();
 
