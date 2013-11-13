@@ -19,6 +19,8 @@
 #ifndef OBEXFTPDAEMON_H
 #define OBEXFTPDAEMON_H
 
+#include "../obexdtypes.h"
+
 #include <QDBusObjectPath>
 #include <kdedmodule.h>
 
@@ -46,6 +48,7 @@ public:
 
 public Q_SLOTS:
     Q_SCRIPTABLE QString session(QString address, const QDBusMessage &msg);
+    void interfaceRemoved(const QDBusObjectPath &path, const QStringList &interfaces);
 
 private Q_SLOTS:
     void usableAdapterChanged(Adapter* adapter);

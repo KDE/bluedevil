@@ -18,7 +18,7 @@
 
 #include "ObexFtpDaemon.h"
 #include "createsessionjob.h"
-
+#include "dbus_object_manager.h"
 #include "version.h"
 
 #include <QHash>
@@ -45,6 +45,8 @@ struct ObexFtpDaemon::Private
     } m_status;
 
     QHash <QString, QString> m_sessionMap;
+    QHash <QString, QString> m_reverseSessionMap;
+    OrgFreedesktopDBusObjectManagerInterface *m_interface;
 };
 
 ObexFtpDaemon::ObexFtpDaemon(QObject *parent, const QList<QVariant>&)
@@ -69,6 +71,12 @@ ObexFtpDaemon::ObexFtpDaemon(QObject *parent, const QList<QVariant>&)
     connect(Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)),
             SLOT(usableAdapterChanged(Adapter*)));
 
+    d->m_interface = new OrgFreedesktopDBusObjectManagerInterface("org.bluez.obex", "/", QDBusConnection::sessionBus(), this);
+    connect(d->m_interface, SIGNAL(InterfacesRemoved(QDBusObjectPath,QStringList)),
+            SLOT(interfaceRemoved(QDBusObjectPath,QStringList)));
+
+    qDBusRegisterMetaType<DBusManagerStruct>();
+    qDBusRegisterMetaType<QVariantMapMap>();
     //WARNING this blocks if org.bluez in system bus is dead
     if (Manager::self()->usableAdapter()) {
         onlineMode();
@@ -139,8 +147,25 @@ void ObexFtpDaemon::sessionCreated(KJob* job)
     kDebug(dobex()) << cJob->path();
 
     d->m_sessionMap.insert(cJob->address(), cJob->path());
+    d->m_reverseSessionMap.insert(cJob->path(), cJob->address());
     QDBusMessage msg = cJob->msg().createReply(cJob->path());
     QDBusConnection::sessionBus().asyncCall(msg);
 }
+
+void ObexFtpDaemon::interfaceRemoved(const QDBusObjectPath &dbusPath, const QStringList& interfaces)
+{
+    kDebug(dobex()) << dbusPath.path() << interfaces;
+    const QString path = dbusPath.path();
+    if (!d->m_reverseSessionMap.contains(path)) {
+        kDebug(dobex()) << d->m_reverseSessionMap;
+        return;
+    }
+
+    QString address = d->m_reverseSessionMap.take(path);
+    kDebug(dobex()) << address;
+    kDebug(dobex()) << d->m_sessionMap.remove(address);
+}
+
+
 
 extern int dobex() { static int s_area = KDebug::registerArea("ObexDaemon", false); return s_area; }

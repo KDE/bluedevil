@@ -21,9 +21,15 @@
 
 #include <QtCore/QList>
 #include <QtCore/QVariantMap>
+#include <QVariantMap>
+#include <QDBusObjectPath>
 
 typedef QList<QVariantMap> QVariantMapList;
-
 Q_DECLARE_METATYPE(QVariantMapList);
 
+typedef QMap<QString,QVariantMap> QVariantMapMap;
+Q_DECLARE_METATYPE(QVariantMapMap)
+
+typedef QMap<QDBusObjectPath, QVariantMapMap> DBusManagerStruct;
+Q_DECLARE_METATYPE(DBusManagerStruct)
 #endif //OBEXD_TYPES_H
