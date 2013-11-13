@@ -393,6 +393,8 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
                 this, SLOT(adapterDevicesChanged(QList<Device*>)));
         connect(usableAdapter, SIGNAL(deviceRemoved(Device*)),
                 this, SLOT(adapterDevicesChanged()));
+        connect(usableAdapter, SIGNAL(deviceFound(Device*)),
+                this, SLOT(adapterDevicesChanged()));
     }
 
     fillRemoteDevicesModelInformation();
