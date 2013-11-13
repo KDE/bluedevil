@@ -34,7 +34,8 @@ public:
     virtual void start();
     QString path();
     const QString address() const;
-    const QDBusMessage msg() const;
+    void addMessage(const QDBusMessage &msg);
+    const QList<QDBusMessage> messages() const;
 
 private Q_SLOTS:
     void createSession();
@@ -43,7 +44,7 @@ private Q_SLOTS:
 private:
     QString m_path;
     QString m_address;
-    const QDBusMessage m_msg;
+    QList<QDBusMessage> m_messages;
 
     OrgBluezObexClient1Interface* m_client;
 };

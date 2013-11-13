@@ -29,8 +29,8 @@ CreateSessionJob::CreateSessionJob(const QString& address, const QDBusMessage& m
     : KJob(parent)
     , m_address(address)
     , m_client(0)
-    , m_msg(msg)
 {
+    m_messages.append(msg);
 }
 
 void CreateSessionJob::start()
@@ -48,9 +48,14 @@ const QString CreateSessionJob::address() const
     return m_address;
 }
 
-const QDBusMessage CreateSessionJob::msg() const
+void CreateSessionJob::addMessage(const QDBusMessage& msg)
 {
-    return m_msg;
+    m_messages.append(msg);
+}
+
+const QList< QDBusMessage > CreateSessionJob::messages() const
+{
+    return m_messages;
 }
 
 void CreateSessionJob::createSession()
@@ -83,7 +88,7 @@ void CreateSessionJob::sessionCreated(QDBusPendingCallWatcher* watcher)
 //             kDebug(dobex()) << msg.service() << msg.path();
 //             QDBusMessage errorMsg = msg.createErrorReply("org.kde.kded.Error", i18n("Can't stablish connection"));
 //             QDBusConnection::sessionBus().send(errorMsg);
-//         }
+//         }C
 //         m_status = Error;
         setError(reply.error().type());
         setErrorText(reply.error().message());

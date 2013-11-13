@@ -46,6 +46,7 @@ struct ObexFtpDaemon::Private
 
     QHash <QString, QString> m_sessionMap;
     QHash <QString, QString> m_reverseSessionMap;
+    QHash <QString, CreateSessionJob*> m_wipSessions;
     QDBusServiceWatcher *m_serviceWatcher;
     OrgFreedesktopDBusObjectManagerInterface *m_interface;
 };
@@ -140,13 +141,19 @@ QString ObexFtpDaemon::session(QString address, const QDBusMessage& msg)
     if(d->m_sessionMap.contains(address)) {
         return d->m_sessionMap[address];
     }
-    //TODO Implement the case where the session is being created
 
+    //At this point we always want delayed reply
     msg.setDelayedReply(true);
+    if (d->m_wipSessions.contains(address)) {
+        d->m_wipSessions[address]->addMessage(msg);
+        return QString();
+    }
+
     CreateSessionJob *job = new CreateSessionJob(address, msg);
     connect(job, SIGNAL(finished(KJob*)), SLOT(sessionCreated(KJob*)));
     job->start();
 
+    d->m_wipSessions.insert(address, job);
     return QString();
 }
 
@@ -155,10 +162,15 @@ void ObexFtpDaemon::sessionCreated(KJob* job)
     CreateSessionJob* cJob = qobject_cast<CreateSessionJob*>(job);
     kDebug(dobex()) << cJob->path();
 
+    d->m_wipSessions.remove(cJob->address());
     d->m_sessionMap.insert(cJob->address(), cJob->path());
     d->m_reverseSessionMap.insert(cJob->path(), cJob->address());
-    QDBusMessage msg = cJob->msg().createReply(cJob->path());
-    QDBusConnection::sessionBus().asyncCall(msg);
+
+    const QList<QDBusMessage> messages = cJob->messages();
+    Q_FOREACH(const QDBusMessage &msg, messages) {
+        QDBusMessage reply = msg.createReply(cJob->path());
+        QDBusConnection::sessionBus().asyncCall(reply);
+    }
 }
 
 void ObexFtpDaemon::serviceUnregistered(const QString& service)
