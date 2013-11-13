@@ -351,7 +351,7 @@ void KioFtp::statHelper(const KUrl& url)
 
 KIO::UDSEntry KioFtp::entryFromInfo(const QVariantMap& info)
 {
-    kDebug() << "Uayu: " << info;
+    kDebug() << info;
 
     KIO::UDSEntry entry;
     entry.insert(KIO::UDSEntry::UDS_NAME, info["Name"].toString());
