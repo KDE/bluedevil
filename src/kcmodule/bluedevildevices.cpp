@@ -389,8 +389,8 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     if (usableAdapter) {
         connect(usableAdapter, SIGNAL(discoverableChanged(bool)),
                 this, SLOT(adapterDiscoverableChanged()));
-        connect(usableAdapter, SIGNAL(devicesChanged(QList<Device*>)),
-                this, SLOT(adapterDevicesChanged(QList<Device*>)));
+        connect(usableAdapter, SIGNAL(deviceChanged(Device*)),
+                this, SLOT(adapterDevicesChanged()));
         connect(usableAdapter, SIGNAL(deviceRemoved(Device*)),
                 this, SLOT(adapterDevicesChanged()));
         connect(usableAdapter, SIGNAL(deviceFound(Device*)),
