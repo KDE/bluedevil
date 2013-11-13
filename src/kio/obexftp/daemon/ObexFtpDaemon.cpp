@@ -46,6 +46,7 @@ struct ObexFtpDaemon::Private
 
     QHash <QString, QString> m_sessionMap;
     QHash <QString, QString> m_reverseSessionMap;
+    QDBusServiceWatcher *m_serviceWatcher;
     OrgFreedesktopDBusObjectManagerInterface *m_interface;
 };
 
@@ -74,9 +75,14 @@ ObexFtpDaemon::ObexFtpDaemon(QObject *parent, const QList<QVariant>&)
     d->m_interface = new OrgFreedesktopDBusObjectManagerInterface("org.bluez.obex", "/", QDBusConnection::sessionBus(), this);
     connect(d->m_interface, SIGNAL(InterfacesRemoved(QDBusObjectPath,QStringList)),
             SLOT(interfaceRemoved(QDBusObjectPath,QStringList)));
+    d->m_serviceWatcher = new QDBusServiceWatcher("org.bluez.obex", QDBusConnection::sessionBus(),
+                                                           QDBusServiceWatcher::WatchForUnregistration, this);
+
+    connect(d->m_serviceWatcher, SIGNAL(serviceUnregistered(QString)), SLOT(serviceUnregistered(QString)));
 
     qDBusRegisterMetaType<DBusManagerStruct>();
     qDBusRegisterMetaType<QVariantMapMap>();
+
     //WARNING this blocks if org.bluez in system bus is dead
     if (Manager::self()->usableAdapter()) {
         onlineMode();
@@ -109,6 +115,9 @@ void ObexFtpDaemon::offlineMode()
         kDebug(dobex()) << "Already in offlineMode";
         return;
     }
+
+    d->m_sessionMap.clear();
+    d->m_reverseSessionMap.clear();
 
     d->m_status = Private::Offline;
 }
@@ -152,6 +161,16 @@ void ObexFtpDaemon::sessionCreated(KJob* job)
     QDBusConnection::sessionBus().asyncCall(msg);
 }
 
+void ObexFtpDaemon::serviceUnregistered(const QString& service)
+{
+    if (service != QLatin1String("org.bluez.obex")) {
+        return;
+    }
+
+    d->m_sessionMap.clear();
+    d->m_reverseSessionMap.clear();
+}
+
 void ObexFtpDaemon::interfaceRemoved(const QDBusObjectPath &dbusPath, const QStringList& interfaces)
 {
     kDebug(dobex()) << dbusPath.path() << interfaces;
@@ -165,7 +184,5 @@ void ObexFtpDaemon::interfaceRemoved(const QDBusObjectPath &dbusPath, const QStr
     kDebug(dobex()) << address;
     kDebug(dobex()) << d->m_sessionMap.remove(address);
 }
-
-
 
 extern int dobex() { static int s_area = KDebug::registerArea("ObexDaemon", false); return s_area; }

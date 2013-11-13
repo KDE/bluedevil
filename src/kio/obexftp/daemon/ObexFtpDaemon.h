@@ -48,11 +48,12 @@ public:
 
 public Q_SLOTS:
     Q_SCRIPTABLE QString session(QString address, const QDBusMessage &msg);
-    void interfaceRemoved(const QDBusObjectPath &path, const QStringList &interfaces);
 
 private Q_SLOTS:
     void usableAdapterChanged(Adapter* adapter);
     void sessionCreated(KJob* job);
+    void serviceUnregistered(const QString &service);
+    void interfaceRemoved(const QDBusObjectPath &path, const QStringList &interfaces);
 
 private:
     /**
