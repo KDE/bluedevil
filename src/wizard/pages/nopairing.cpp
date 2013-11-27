@@ -33,8 +33,8 @@
 using namespace BlueDevil;
 
 NoPairingPage::NoPairingPage(BlueWizard* parent) : QWizardPage(parent)
-, m_wizard(parent)
 , m_validPage(false)
+, m_wizard(parent)
 {
     setupUi(this);
     m_working = new KPixmapSequenceOverlayPainter(this);
@@ -50,14 +50,27 @@ void NoPairingPage::initializePage()
     connecting->setText(connecting->text().append(m_wizard->device()->name()));
 
     connect(m_wizard->device(), SIGNAL(connectedChanged(bool)), SLOT(connectedChanged(bool)));
+    connect(m_wizard->device(), SIGNAL(trustedChanged(bool)), SLOT(connectedChanged(bool)));
 
-    m_wizard->device()->connectDevice();
+    if (m_wizard->device()->isConnected()) {
+        m_wizard->device()->setTrusted(true);
+    } else {
+        m_wizard->device()->connectDevice();
+    }
 }
 
 void NoPairingPage::connectedChanged(bool connected)
 {
+    kDebug();
+    if (!m_wizard->device()->isTrusted()) {
+        kDebug() << "Trusting";
+        m_wizard->device()->setTrusted(true);
+        return;
+    }
+
     m_validPage = connected;
     if (m_validPage) {
+        kDebug() << "Done";
         m_wizard->done(0);
     }
 }

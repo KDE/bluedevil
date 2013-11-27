@@ -78,7 +78,7 @@ bool KeyboardPairingPage::validatePage()
 
 int KeyboardPairingPage::nextId() const
 {
-    return BlueWizard::Services;
+    return BlueWizard::Connect;
 }
 
 QList<QWizard::WizardButton> KeyboardPairingPage::wizardButtonsLayout() const

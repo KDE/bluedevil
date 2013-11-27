@@ -200,7 +200,7 @@ int DiscoverPage::nextId() const
     Device *device = m_wizard->device();
     if (device->isPaired()) {
         kDebug() << "Device is paired, jumping";
-        return BlueWizard::Services;
+        return BlueWizard::Connect;
     }
 
     QString pin;

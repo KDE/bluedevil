@@ -57,7 +57,7 @@ public:
     KService::List services() const;
 
     void setService(const KService *);
-    enum {Discover, Services, NoPairing, LegacyPairing, LegacyPairingDatabase, KeyboardPairing, SSPPairing, Fail};
+    enum {Discover, NoPairing, LegacyPairing, LegacyPairingDatabase, KeyboardPairing, SSPPairing, Fail, Connect};
 
 public Q_SLOTS:
     void restartWizard();

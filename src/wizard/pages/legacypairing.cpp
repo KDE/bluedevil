@@ -78,7 +78,7 @@ bool LegacyPairingPage::validatePage()
 
 int LegacyPairingPage::nextId() const
 {
-    return BlueWizard::Services;
+    return BlueWizard::Connect;
 }
 
 QList<QWizard::WizardButton> LegacyPairingPage::wizardButtonsLayout() const

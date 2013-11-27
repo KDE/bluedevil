@@ -144,7 +144,7 @@ int SSPPairingPage::nextId() const
         return BlueWizard::Fail;
     }
 
-    return BlueWizard::Services;
+    return BlueWizard::Connect;
 }
 
 QList<QWizard::WizardButton> SSPPairingPage::wizardButtonsLayout() const
