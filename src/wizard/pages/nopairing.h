@@ -54,6 +54,7 @@ protected:
     QList <QWizard::WizardButton> wizardButtonsLayout() const;
 
 private Q_SLOTS:
+    void timeout();
     void connectedChanged(bool connected);
 
 private:

@@ -49,24 +49,25 @@ void NoPairingPage::initializePage()
 
     connecting->setText(connecting->text().append(m_wizard->device()->name()));
 
+    //It can happen that the device is technically connected and trusted but we are not connected
+    //to the profile. We have no way to know if the profile was activated or not so we have to relay
+    //on a timeout (10s)
+    QTimer::singleShot(10000, this, SLOT(timeout()));
     connect(m_wizard->device(), SIGNAL(connectedChanged(bool)), SLOT(connectedChanged(bool)));
     connect(m_wizard->device(), SIGNAL(trustedChanged(bool)), SLOT(connectedChanged(bool)));
 
-    if (m_wizard->device()->isConnected()) {
-        m_wizard->device()->setTrusted(true);
-    } else {
-        m_wizard->device()->connectDevice();
-    }
+    m_wizard->device()->connectDevice();
+    m_wizard->device()->setTrusted(true);
+}
+
+void NoPairingPage::timeout()
+{
+    connectedChanged(true);
 }
 
 void NoPairingPage::connectedChanged(bool connected)
 {
     kDebug();
-    if (!m_wizard->device()->isTrusted()) {
-        kDebug() << "Trusting";
-        m_wizard->device()->setTrusted(true);
-        return;
-    }
 
     m_validPage = connected;
     if (m_validPage) {
