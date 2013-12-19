@@ -133,11 +133,15 @@ private:
      */
     void sendBluezError(const QString& helper, const QDBusMessage &msg);
 
-private:
     /**
-     * Global adapter usually used to get information from a remote device
+     * Returns the name of the device if it is registered on the bus
+     *
+     * @param UBI of the device
+     * @return the device->name() or "Bluetooth" if device doesn't exists;
      */
-    BlueDevil::Adapter *m_adapter;
+    QString deviceName(const QString &UBI);
+
+private:
     QProcess           *m_process;
     QDBusMessage        m_msg;
     QString             m_currentHelper;
