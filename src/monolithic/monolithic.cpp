@@ -560,17 +560,12 @@ QList< QAction* > Monolithic::actionsForAdapter(Adapter* adapter)
 QAction* Monolithic::actionForDevice(Device* device, Device *lastDevice)
 {
 // Create device entry
-    QString name;
     KAction *deviceAction = 0;
-    if (!device->alias().isEmpty()) {
-        name = device->alias();
-    } else {
-        name = device->name();
-    }
+
     if (!lastDevice || classToType(lastDevice->deviceClass()) != classToType(device->deviceClass())) {
-        deviceAction = new KAction(KIcon(device->icon()), name, device);
+        deviceAction = new KAction(KIcon(device->icon()), device->friendlyName(), device);
     } else {
-        deviceAction = new KAction(name, device);
+        deviceAction = new KAction(device->friendlyName(), device);
     }
     deviceAction->setData(QVariant::fromValue<Device*>(device));
 
