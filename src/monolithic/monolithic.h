@@ -66,8 +66,9 @@ public Q_SLOTS:
     void activeDiscoverable(bool active);
 
 private Q_SLOTS:
-    void browseTriggered();
-    void sendTriggered();
+    void actionTriggered();
+    void browseTriggered(QString address);
+    void sendTriggered(const QString &ubi);
     void connectTriggered();
     void disconnectTriggered();
     void propertyChanged(const QString &key, const QDBusVariant &value);
@@ -87,6 +88,7 @@ private:
     QList<QAction*> actionsForAdapter(Adapter *adapter);
     QAction* actionForDevice(Device *device, Device *lastDevice);
 private:
+    QHash<QString, QString> m_supportedServices;
     QMap<void*, KAction*> m_interfaceMap;
     QList<QAction*>       m_actions;
 };
