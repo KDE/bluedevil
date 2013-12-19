@@ -560,14 +560,13 @@ QList< QAction* > Monolithic::actionsForAdapter(Adapter* adapter)
 QAction* Monolithic::actionForDevice(Device* device, Device *lastDevice)
 {
 // Create device entry
-    KAction *deviceAction = 0;
-
-    if (!lastDevice || classToType(lastDevice->deviceClass()) != classToType(device->deviceClass())) {
-        deviceAction = new KAction(KIcon(device->icon()), device->friendlyName(), device);
-    } else {
-        deviceAction = new KAction(device->friendlyName(), device);
-    }
+    KAction *deviceAction = new KAction(device->name(), this);
     deviceAction->setData(QVariant::fromValue<Device*>(device));
+
+    //We only show the icon for the first device of the type, less UI clutter
+    if (!lastDevice || classToType(lastDevice->deviceClass()) != classToType(device->deviceClass())) {
+        deviceAction->setIcon(KIcon(device->icon()));
+    }
 
 // Create the submenu that will hang from this device menu entry
     KMenu *const _submenu = new KMenu;
