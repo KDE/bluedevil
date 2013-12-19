@@ -252,12 +252,17 @@ void ReceiveFileJob::moveFinished(KJob* job)
 
 QString ReceiveFileJob::createTempPath(const QString &fileName) const
 {
-    QLatin1String rootPath("/tmp/");
-    QString path =  rootPath + fileName;
+    QString xdgCacheHome = QLatin1String(qgetenv("XDG_CACHE_HOME"));
+    if (xdgCacheHome.isEmpty()) {
+            xdgCacheHome = QDir::homePath() + QLatin1String("/.cache");
+    }
+
+    xdgCacheHome.append(QLatin1String("/obexd/"));
+    QString path =  xdgCacheHome + fileName;
     int i = 0;
 
     while (QFile::exists(path)) {
-        path = rootPath + fileName + QString::number(i);
+        path = xdgCacheHome + fileName + QString::number(i);
         i++;
     }
 
