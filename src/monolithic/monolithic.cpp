@@ -375,13 +375,16 @@ bool Monolithic::poweredAdapters()
 {
     QList <Adapter*> adapters = Manager::self()->adapters();
 
-    if (!adapters.isEmpty()) {
-        Q_FOREACH(Adapter* adapter, adapters) {
-            if (adapter->isPowered()) {
-                return true;
-            }
+    if (adapters.isEmpty()) {
+        return false;
+    }
+
+    Q_FOREACH(Adapter* adapter, adapters) {
+        if (adapter->isPowered()) {
+            return true;
         }
     }
+
     return false;
 }
 
