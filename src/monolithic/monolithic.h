@@ -69,8 +69,6 @@ private Q_SLOTS:
     void actionTriggered();
     void browseTriggered(QString address);
     void sendTriggered(const QString &ubi);
-    void connectTriggered();
-    void disconnectTriggered();
     void UUIDsChanged(const QStringList &UUIDs);
     void poweredChanged();
     void deviceCreated(Device *device);

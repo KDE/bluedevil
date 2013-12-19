@@ -321,34 +321,6 @@ void Monolithic::sendTriggered(const QString &UBI)
     KToolInvocation::kdeinitExec("bluedevil-sendfile", QStringList() << QString("-u%1").arg(UBI));
 }
 
-void Monolithic::connectTriggered()
-{
-    KAction *action = static_cast<KAction*>(sender());
-    EntryInfo entryInfo = action->data().value<EntryInfo>();
-    if (entryInfo.service == "00001124-0000-1000-8000-00805F9B34FB") {
-        KProcess p;
-        p.setProgram("bluedevil-input", QStringList() << QString("bluetooth://%1/%2").arg(entryInfo.device->address().replace(':', '-')).arg(entryInfo.service));
-        p.startDetached();
-    } else if (entryInfo.service == "00001108-0000-1000-8000-00805F9B34FB") {
-        KProcess p;
-        p.setProgram("bluedevil-audio", QStringList() << QString("bluetooth://%1/%2").arg(entryInfo.device->address().replace(':', '-')).arg(entryInfo.service));
-        p.startDetached();
-    }
-}
-
-void Monolithic::disconnectTriggered()
-{
-    KAction *action = static_cast<KAction*>(sender());
-    EntryInfo entryInfo = action->data().value<EntryInfo>();
-    if (entryInfo.service == "00001124-0000-1000-8000-00805F9B34FB") {
-        org::bluez::Input *input = static_cast<org::bluez::Input*>(entryInfo.dbusService);
-        input->Disconnect();
-    } else if (entryInfo.service == "00001108-0000-1000-8000-00805F9B34FB") {
-        org::bluez::Audio *audio = static_cast<org::bluez::Audio*>(entryInfo.dbusService);
-        audio->Disconnect();
-    }
-}
-
 void Monolithic::UUIDsChanged(const QStringList &UUIDs)
 {
     regenerateDeviceEntries();
