@@ -161,9 +161,7 @@ void Monolithic::regenerateDeviceEntries()
         menu->addActions(actionsForAdapter(adapter));
     }
 
-    separator = new QAction(menu);
-    separator->setSeparator(true);
-    menu->addAction(separator);
+    menu->addSeparator();
 
     KAction *addDevice = new KAction(KIcon("edit-find-project"), i18n("Add Device"), menu);
     connect(addDevice, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(addDevice()));
@@ -174,9 +172,7 @@ void Monolithic::regenerateDeviceEntries()
     menu->addAction(configBluetooth);
 
 //Shortcut configuration actions, mainly checkables for discovering and powering
-    separator = new QAction(menu);
-    separator->setSeparator(true);
-    menu->addAction(separator);
+    menu->addSeparator();
 
     KAction *discoverable = new KAction(i18n("Discoverable"), menu);
     discoverable->setCheckable(true);
@@ -188,9 +184,7 @@ void Monolithic::regenerateDeviceEntries()
     connect(activeBluetooth, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(toggleBluetooth()));
     menu->addAction(activeBluetooth);
 
-    separator = new QAction(menu);
-    separator->setSeparator(true);
-    menu->addAction(separator);
+    menu->addSeparator();
 
 //     menu->addAction(KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), menu));
 }
