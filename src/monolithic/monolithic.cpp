@@ -137,17 +137,17 @@ void Monolithic::regenerateDeviceEntries()
         menu->addAction(separator);
 
         KAction *activeBluetooth = new KAction(i18n("Turn Bluetooth On"), menu);
-        connect(activeBluetooth, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(toggleBluetooth()));
+        connect(activeBluetooth, SIGNAL(triggered()), this, SLOT(toggleBluetooth()));
         menu->addAction(activeBluetooth);
         return;
     }
 
     KAction *sendFile = new KAction(KIcon("edit-find-project"), i18n("Send File"), menu);
-    connect(sendFile, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(sendFile()));
+    connect(sendFile, SIGNAL(triggered()), this, SLOT(sendFile()));
     menu->addAction(sendFile);
 
     KAction *browseDevices = new KAction(KIcon("document-preview-archive"), i18n("Browse devices"), menu);
-    connect(browseDevices, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(browseDevices()));
+    connect(browseDevices, SIGNAL(triggered()), this, SLOT(browseDevices()));
     menu->addAction(browseDevices);
 
     QList<Adapter*> adapters = Manager::self()->adapters();
@@ -164,7 +164,7 @@ void Monolithic::regenerateDeviceEntries()
     menu->addSeparator();
 
     KAction *addDevice = new KAction(KIcon("edit-find-project"), i18n("Add Device"), menu);
-    connect(addDevice, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(addDevice()));
+    connect(addDevice, SIGNAL(triggered()), this, SLOT(addDevice()));
     menu->addAction(addDevice);
 
     KAction *configBluetooth = new KAction(KIcon("configure"), i18n("Configure Bluetooth"), menu);
@@ -181,7 +181,7 @@ void Monolithic::regenerateDeviceEntries()
     menu->addAction(discoverable);
 
     KAction *activeBluetooth = new KAction(i18n("Turn Bluetooth Off"), menu);
-    connect(activeBluetooth, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(toggleBluetooth()));
+    connect(activeBluetooth, SIGNAL(triggered()), this, SLOT(toggleBluetooth()));
     menu->addAction(activeBluetooth);
 
     menu->addSeparator();
