@@ -151,18 +151,15 @@ void Monolithic::regenerateDeviceEntries()
     separator->setSeparator(true);
     menu->addAction(separator);
 
-    QList<Device*> devices = Manager::self()->usableAdapter()->devices();
-    if (!devices.isEmpty()) {
-        menu->addTitle(i18n("Known Devices"));
-        qStableSort(devices.begin(), devices.end(), sortDevices);
-        QAction *action = 0;
-        Device *lastDevice = 0;
-        Q_FOREACH (Device *device, devices) {
-            action = actionForDevice(device, lastDevice);
-            menu->addAction(action);
-            m_actions.append(action);
-            lastDevice = device;
+    QList<Adapter*> adapters = Manager::self()->adapters();
+    Q_FOREACH(Adapter* adapter, adapters) {
+        if (adapters.count() == 1) {
+            menu->addTitle(i18n("Known Devices"));
+        } else {
+            menu->addTitle(adapter->name());
         }
+
+        menu->addActions(actionsForAdapter(adapter));
     }
 
     separator = new QAction(menu);
@@ -536,6 +533,28 @@ void Monolithic::setTooltipTitleStatus(bool status)
     } else {
         setToolTipTitle(i18nc("When the bluetooth is disabled or not powered","Bluetooth is Off"));
     }
+}
+
+QList< QAction* > Monolithic::actionsForAdapter(Adapter* adapter)
+{
+    QList<QAction*> actions;
+    QList<Device*> devices = adapter->devices();
+    if (devices.isEmpty()) {
+        return actions;
+    }
+
+    qStableSort(devices.begin(), devices.end(), sortDevices);
+    QAction *action = 0;
+    Device *lastDevice = 0;
+    Q_FOREACH (Device *device, devices) {
+        action = actionForDevice(device, lastDevice);
+        actions << action;
+        lastDevice = device;
+    }
+
+    m_actions << actions;
+
+    return actions;
 }
 
 QAction* Monolithic::actionForDevice(Device* device, Device *lastDevice)
