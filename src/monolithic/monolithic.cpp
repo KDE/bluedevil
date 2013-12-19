@@ -561,18 +561,18 @@ QAction* Monolithic::actionForDevice(Device* device, Device *lastDevice)
 {
 // Create device entry
     QString name;
-    KAction *_device = 0;
+    KAction *deviceAction = 0;
     if (!device->alias().isEmpty()) {
         name = device->alias();
     } else {
         name = device->name();
     }
     if (!lastDevice || classToType(lastDevice->deviceClass()) != classToType(device->deviceClass())) {
-        _device = new KAction(KIcon(device->icon()), name, device);
+        deviceAction = new KAction(KIcon(device->icon()), name, device);
     } else {
-        _device = new KAction(name, device);
+        deviceAction = new KAction(name, device);
     }
-    _device->setData(QVariant::fromValue<Device*>(device));
+    deviceAction->setData(QVariant::fromValue<Device*>(device));
 
 // Create the submenu that will hang from this device menu entry
     KMenu *const _submenu = new KMenu;
@@ -593,7 +593,7 @@ QAction* Monolithic::actionForDevice(Device* device, Device *lastDevice)
     }
 
     if (UUIDs.contains("00001106-0000-1000-8000-00805F9B34FB"))  {
-        KAction *_browse = new KAction(i18n("Browse device..."), _device);
+        KAction *_browse = new KAction(i18n("Browse device..."), deviceAction);
         info.service = "00001106-0000-1000-8000-00805F9B34FB";
         _browse->setData(QVariant::fromValue<EntryInfo>(info));
         _submenu->addAction(_browse);
@@ -602,7 +602,7 @@ QAction* Monolithic::actionForDevice(Device* device, Device *lastDevice)
         ++supportedServices;
     }
     if (UUIDs.contains("00001105-0000-1000-8000-00805F9B34FB")) {
-        KAction *_send = new KAction(i18n("Send files..."), _device);
+        KAction *_send = new KAction(i18n("Send files..."), deviceAction);
         info.service = "00001105-0000-1000-8000-00805F9B34FB";
         _send->setData(QVariant::fromValue<EntryInfo>(info));
         _submenu->addAction(_send);
@@ -620,13 +620,13 @@ QAction* Monolithic::actionForDevice(Device* device, Device *lastDevice)
         }
 
         if (input->GetProperties().value()["Connected"].toBool()) {
-            KAction *_disconnect = new KAction(i18nc("Action", "Disconnect"), _device);
+            KAction *_disconnect = new KAction(i18nc("Action", "Disconnect"), deviceAction);
             m_interfaceMap[input] = _disconnect;
             _disconnect->setData(QVariant::fromValue<EntryInfo>(info));
             _submenu->addAction(_disconnect);
             connect(_disconnect, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
         } else {
-            KAction *_connect = new KAction(i18nc("Action", "Connect"), _device);
+            KAction *_connect = new KAction(i18nc("Action", "Connect"), deviceAction);
             m_interfaceMap[input] = _connect;
             _connect->setData(QVariant::fromValue<EntryInfo>(info));
             _submenu->addAction(_connect);
@@ -644,19 +644,19 @@ QAction* Monolithic::actionForDevice(Device* device, Device *lastDevice)
         }
 
         if (audio->GetProperties().value()["State"].toString() == "connected") {
-            KAction *_disconnect = new KAction(i18nc("Action", "Disconnect"), _device);
+            KAction *_disconnect = new KAction(i18nc("Action", "Disconnect"), deviceAction);
             m_interfaceMap[audio] = _disconnect;
             _disconnect->setData(QVariant::fromValue<EntryInfo>(info));
             _submenu->addAction(_disconnect);
             connect(_disconnect, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
         } else if (audio->GetProperties().value()["State"].toString() == "connecting") {
-            KAction *_connecting = new KAction(i18n("Connecting..."), _device);
+            KAction *_connecting = new KAction(i18n("Connecting..."), deviceAction);
             _connecting->setEnabled(false);
             m_interfaceMap[audio] = _connecting;
             _connecting->setData(QVariant::fromValue<EntryInfo>(info));
             _submenu->addAction(_connecting);
         } else {
-            KAction *_connect = new KAction(i18nc("Action", "Connect"), _device);
+            KAction *_connect = new KAction(i18nc("Action", "Connect"), deviceAction);
             m_interfaceMap[audio] = _connect;
             _connect->setData(QVariant::fromValue<EntryInfo>(info));
             _submenu->addAction(_connect);
@@ -674,19 +674,19 @@ QAction* Monolithic::actionForDevice(Device* device, Device *lastDevice)
         }
 
         if (audio->GetProperties().value()["State"].toString() == "connected") {
-            KAction *_disconnect = new KAction(i18nc("Action", "Disconnect"), _device);
+            KAction *_disconnect = new KAction(i18nc("Action", "Disconnect"), deviceAction);
             m_interfaceMap[audio] = _disconnect;
             _disconnect->setData(QVariant::fromValue<EntryInfo>(info));
             _submenu->addAction(_disconnect);
             connect(_disconnect, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
         } else if (audio->GetProperties().value()["State"].toString() == "connecting") {
-            KAction *_connecting = new KAction(i18n("Connecting..."), _device);
+            KAction *_connecting = new KAction(i18n("Connecting..."), deviceAction);
             _connecting->setEnabled(false);
             m_interfaceMap[audio] = _connecting;
             _connecting->setData(QVariant::fromValue<EntryInfo>(info));
             _submenu->addAction(_connecting);
         } else {
-            KAction *_connect = new KAction(i18nc("Action", "Connect"), _device);
+            KAction *_connect = new KAction(i18nc("Action", "Connect"), deviceAction);
             m_interfaceMap[audio] = _connect;
             _connect->setData(QVariant::fromValue<EntryInfo>(info));
             _submenu->addAction(_connect);
@@ -695,14 +695,14 @@ QAction* Monolithic::actionForDevice(Device* device, Device *lastDevice)
         hasSupportedServices = true;
     }
     if (!hasSupportedServices) {
-        KAction *_unknown = new KAction(i18n("No supported services found"), _device);
+        KAction *_unknown = new KAction(i18n("No supported services found"), deviceAction);
         _unknown->setEnabled(false);
         _submenu->addAction(_unknown);
     }
 
-    _device->setMenu(_submenu);
+    deviceAction->setMenu(_submenu);
 
-    return _device;
+    return deviceAction;
 }
 
 Q_DECLARE_METATYPE(Device*)
