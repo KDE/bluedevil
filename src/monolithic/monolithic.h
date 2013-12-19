@@ -84,6 +84,7 @@ private:
      */
     bool poweredAdapters();
     void setTooltipTitleStatus(bool);
+    QAction* actionForDevice(Device *device, Device *lastDevice);
 private:
     QMap<void*, KAction*> m_interfaceMap;
     QList<QAction*>       m_actions;
