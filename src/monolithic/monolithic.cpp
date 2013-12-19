@@ -215,10 +215,10 @@ void Monolithic::onlineMode()
 
     QList<Adapter*> adapters = Manager::self()->adapters();
     Q_FOREACH(Adapter *adapter, adapters) {
-        connect(Manager::self()->usableAdapter(), SIGNAL(deviceFound(Device*)), this, SLOT(deviceCreated(Device*)));
-        connect(Manager::self()->usableAdapter(), SIGNAL(deviceRemoved(Device*)), this, SLOT(regenerateDeviceEntries()));
-        connect(Manager::self()->usableAdapter(), SIGNAL(poweredChanged(bool)), this, SLOT(poweredChanged()));
-        connect(Manager::self()->usableAdapter(), SIGNAL(discoverableChanged(bool)), this, SLOT(regenerateDeviceEntries()));
+        connect(adapter, SIGNAL(deviceFound(Device*)), this, SLOT(deviceCreated(Device*)));
+        connect(adapter, SIGNAL(deviceRemoved(Device*)), this, SLOT(regenerateDeviceEntries()));
+        connect(adapter, SIGNAL(poweredChanged(bool)), this, SLOT(poweredChanged()));
+        connect(adapter, SIGNAL(discoverableChanged(bool)), this, SLOT(regenerateDeviceEntries()));
     }
 
     QList<Device*> devices = Manager::self()->devices();
