@@ -279,15 +279,15 @@ void Monolithic::configBluetooth()
 
 void Monolithic::toggleBluetooth()
 {
-    bool powered = true;
+    bool powered = false;
     if (poweredAdapters()) {
-        powered = false;
+        powered = true;
     }
 
     QList <Adapter*> adapters = Manager::self()->adapters();
     if (!adapters.isEmpty()) {
         Q_FOREACH(Adapter *adapter, adapters) {
-            adapter->setPowered(powered);
+            adapter->setPowered(!powered);//If there were powered devices, unpower them.
         }
     }
 
