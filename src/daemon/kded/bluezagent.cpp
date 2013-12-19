@@ -38,6 +38,7 @@ BluezAgent::BluezAgent(QObject *parent)
         return;
     }
 
+    m_adapter = BlueDevil::Manager::self()->usableAdapter();
     BlueDevil::Manager::self()->registerAgent(AGENT_PATH,BlueDevil::Manager::DisplayYesNo);
     BlueDevil::Manager::self()->requestDefaultAgent(AGENT_PATH);
 
