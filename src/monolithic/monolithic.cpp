@@ -365,12 +365,16 @@ void Monolithic::onlineMode()
 {
     setStatus(KStatusNotifierItem::Active);
 
-    connect(Manager::self()->usableAdapter(), SIGNAL(deviceCreated(Device*)), this, SLOT(deviceCreated(Device*)));
-    connect(Manager::self()->usableAdapter(), SIGNAL(deviceDisappeared(Device*)), this, SLOT(regenerateDeviceEntries()));
-    connect(Manager::self()->usableAdapter(), SIGNAL(deviceRemoved(Device*)), this, SLOT(regenerateDeviceEntries()));
-    connect(Manager::self()->usableAdapter(), SIGNAL(poweredChanged(bool)), this, SLOT(poweredChanged()));
-    connect(Manager::self()->usableAdapter(), SIGNAL(discoverableChanged(bool)), this, SLOT(regenerateDeviceEntries()));
-    QList<Device*> devices = Manager::self()->usableAdapter()->devices();
+    QList<Adapter*> adapters = Manager::self()->adapters();
+    Q_FOREACH(Adapter *adapter, adapters) {
+        connect(Manager::self()->usableAdapter(), SIGNAL(deviceCreated(Device*)), this, SLOT(deviceCreated(Device*)));
+        connect(Manager::self()->usableAdapter(), SIGNAL(deviceDisappeared(Device*)), this, SLOT(regenerateDeviceEntries()));
+        connect(Manager::self()->usableAdapter(), SIGNAL(deviceRemoved(Device*)), this, SLOT(regenerateDeviceEntries()));
+        connect(Manager::self()->usableAdapter(), SIGNAL(poweredChanged(bool)), this, SLOT(poweredChanged()));
+        connect(Manager::self()->usableAdapter(), SIGNAL(discoverableChanged(bool)), this, SLOT(regenerateDeviceEntries()));
+    }
+
+    QList<Device*> devices = Manager::self()->devices();
     Q_FOREACH(Device* device, devices) {
         connect(device, SIGNAL(propertyChanged(QString,QVariant)), this, SLOT(regenerateConnectedDevices()));
     }
