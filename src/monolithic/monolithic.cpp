@@ -189,7 +189,7 @@ void Monolithic::regenerateConnectedDevices()
 {
     unsigned int connectedDevices = 0;
     if (Manager::self()->usableAdapter()) {
-        QList<Device*> devices = Manager::self()->usableAdapter()->devices();
+        QList<Device*> devices = Manager::self()->devices();
         Q_FOREACH(Device* device, devices) {
             if (device->isConnected()) {
                 ++connectedDevices;
