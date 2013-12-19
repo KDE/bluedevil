@@ -362,6 +362,8 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     m_detailsDevice->setEnabled(false);
     m_removeDevice = new KPushButton(KIcon("list-remove"), i18nc("Remove a device from the list of known devices", "Remove"));
     m_removeDevice->setEnabled(false);
+    m_connectDevice = new KPushButton(KIcon("network-connect"), i18n("Connect"));
+    m_connectDevice->setEnabled(false);
     m_disconnectDevice = new KPushButton(KIcon("network-disconnect"), i18n("Disconnect"));
     m_disconnectDevice->setEnabled(false);
     m_addDevice = new KPushButton(KIcon("list-add"), i18n("Add Device..."));
@@ -369,11 +371,13 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     connect(m_detailsDevice, SIGNAL(clicked()), this, SLOT(detailsDevice()));
     connect(m_removeDevice, SIGNAL(clicked()), this, SLOT(removeDevice()));
     connect(m_disconnectDevice, SIGNAL(clicked()), this, SLOT(disconnectDevice()));
+    connect(m_connectDevice, SIGNAL(clicked()), this, SLOT(connectDevice()));
     connect(m_addDevice, SIGNAL(clicked()), this, SLOT(launchWizard()));
 
     QHBoxLayout *hLayout = new QHBoxLayout;
     hLayout->addWidget(m_detailsDevice);
     hLayout->addWidget(m_removeDevice);
+    hLayout->addWidget(m_connectDevice);
     hLayout->addWidget(m_disconnectDevice);
     hLayout->addStretch();
     hLayout->addWidget(m_addDevice);
@@ -428,6 +432,7 @@ void KCMBlueDevilDevices::deviceSelectionChanged(const QItemSelection &selection
     const bool enable = !selection.isEmpty();
     m_detailsDevice->setEnabled(enable);
     m_removeDevice->setEnabled(enable);
+    m_connectDevice->setEnabled(enable);
     m_disconnectDevice->setEnabled(false);
 
     if (m_devices->currentIndex().isValid()) {
@@ -503,6 +508,12 @@ void KCMBlueDevilDevices::removeDevice()
     } else {
         m_removeDevice->setEnabled(true);
     }
+}
+
+void KCMBlueDevilDevices::connectDevice()
+{
+    Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
+    device->connectDevice();
 }
 
 void KCMBlueDevilDevices::disconnectDevice()

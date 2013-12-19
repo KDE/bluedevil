@@ -60,6 +60,7 @@ private Q_SLOTS:
     void detailsDevice();
     void renameAliasDevice();
     void removeDevice();
+    void connectDevice();
     void disconnectDevice();
     void launchWizard();
 
@@ -77,6 +78,7 @@ private:
     QCheckBox             *m_enable;
     KPushButton           *m_detailsDevice;
     KPushButton           *m_removeDevice;
+    KPushButton           *m_connectDevice;
     KPushButton           *m_disconnectDevice;
     KPushButton           *m_addDevice;
     bool                   m_isEnabled;
