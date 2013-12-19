@@ -308,8 +308,6 @@ void Monolithic::activeDiscoverable(bool active)
 
 void Monolithic::browseTriggered(QString address)
 {
-    KAction *action = static_cast<KAction*>(sender());
-
     KUrl url("obexftp:/");
     url.setHost(address.replace(':', '-'));
     KRun::runUrl(url, "inode/directory", new QWidget());
@@ -317,12 +315,12 @@ void Monolithic::browseTriggered(QString address)
 
 void Monolithic::sendTriggered(const QString &UBI)
 {
-    KAction *action = static_cast<KAction*>(sender());
     KToolInvocation::kdeinitExec("bluedevil-sendfile", QStringList() << QString("-u%1").arg(UBI));
 }
 
 void Monolithic::UUIDsChanged(const QStringList &UUIDs)
 {
+    Q_UNUSED(UUIDs);
     regenerateDeviceEntries();
 }
 
