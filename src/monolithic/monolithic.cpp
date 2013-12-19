@@ -349,46 +349,6 @@ void Monolithic::disconnectTriggered()
     }
 }
 
-void Monolithic::propertyChanged(const QString &key, const QDBusVariant &value)
-{
-    KAction *action = m_interfaceMap[static_cast<void*>(sender())];
-
-    if (!action) {
-        return;
-    }
-
-    if (key == "State") {
-        if (value.variant().toString() == "disconnected") {
-            action->setText(i18nc("Action", "Connect"));
-            action->setEnabled(true);
-            disconnect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
-            connect(action, SIGNAL(triggered()), this, SLOT(connectTriggered()));
-        } else if (value.variant().toString() == "connecting") {
-            action->setText(i18n("Connecting..."));
-            action->setEnabled(false);
-        } else {
-            action->setText(i18nc("Action", "Disconnect"));
-            action->setEnabled(true);
-            disconnect(action, SIGNAL(triggered()), this, SLOT(connectTriggered()));
-            connect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
-        }
-    } else if (key == "Connected") {
-        if (value.variant().toBool()) {
-            action->setText(i18nc("Action", "Disconnect"));
-            action->setEnabled(true);
-            disconnect(action, SIGNAL(triggered()), this, SLOT(connectTriggered()));
-            connect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
-        } else {
-            action->setText(i18nc("Action", "Connect"));
-            action->setEnabled(true);
-            disconnect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
-            connect(action, SIGNAL(triggered()), this, SLOT(connectTriggered()));
-        }
-    } else if (key == "Name") {
-        action->setText(value.variant().toString());
-    }
-}
-
 void Monolithic::UUIDsChanged(const QStringList &UUIDs)
 {
     regenerateDeviceEntries();
