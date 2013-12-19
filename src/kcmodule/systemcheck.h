@@ -18,6 +18,8 @@
  * Boston, MA 02110-1301, USA.
  */
 
+#ifndef BLUEDEVIL_SYSTEM_CHECK_H
+#define BLUEDEVIL_SYSTEM_CHECK_H
 #include <QtCore/QObject>
 
 #include <kdeversion.h>
@@ -83,3 +85,5 @@ private:
     ErrorWidget *m_disabledNotificationsError;
 #endif
 };
+
+#endif //BLUEDEVIL_SYSTEM_CHECK_H
