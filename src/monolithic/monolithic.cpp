@@ -150,10 +150,6 @@ void Monolithic::regenerateDeviceEntries()
     connect(browseDevices, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(browseDevices()));
     menu->addAction(browseDevices);
 
-    QAction *separator = new QAction(menu);
-    separator->setSeparator(true);
-    menu->addAction(separator);
-
     QList<Adapter*> adapters = Manager::self()->adapters();
     Q_FOREACH(Adapter* adapter, adapters) {
         if (adapters.count() == 1) {
