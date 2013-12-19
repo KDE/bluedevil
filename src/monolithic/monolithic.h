@@ -49,8 +49,7 @@ public:
     };
 
 public Q_SLOTS:
-    void noAdapters(Adapter *adapter);
-    void adapterAdded();
+    void adapterChanged();
 
     void regenerateDeviceEntries();
     /**

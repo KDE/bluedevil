@@ -49,23 +49,19 @@ Monolithic::Monolithic(QObject* parent)
         onlineMode();
     }
 
-    connect(Manager::self(), SIGNAL(adapterAdded(Adapter*)), this, SLOT(adapterAdded()));
-    connect(Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)), this, SLOT(noAdapters(Adapter*)));
+    connect(Manager::self(), SIGNAL(adapterRemoved(Adapter*)), this, SLOT(adapterChanged()));
+    connect(Manager::self(), SIGNAL(adapterAdded(Adapter*)), this, SLOT(adapterChanged()));
+    connect(Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)), this, SLOT(adapterChanged()));
 
     setStandardActionsEnabled(false);
     setAssociatedWidget(contextMenu());
 }
 
-void Monolithic::noAdapters(Adapter* adapter)
+void Monolithic::adapterChanged()
 {
-    if (!adapter) {
-        offlineMode();
-    }
-}
+    offlineMode();
 
-void Monolithic::adapterAdded()
-{
-    if (status() != KStatusNotifierItem::Active && Manager::self()->usableAdapter()) {
+    if (Manager::self()->usableAdapter()) {
         onlineMode();
     }
 }
