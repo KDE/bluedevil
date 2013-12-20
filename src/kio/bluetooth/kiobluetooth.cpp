@@ -157,6 +157,10 @@ void KioBluetooth::listDevices()
 
 void KioBluetooth::listDevice(const DeviceInfo device)
 {
+    kDebug() << device;
+    if (getSupportedServices(device["UUIDs"].split(",")).isEmpty()) {
+        return;
+    }
     const QString target = QString("bluetooth://").append(QString(device["address"]).replace(':', '-'));
     KIO::UDSEntry entry;
     entry.insert(KIO::UDSEntry::UDS_URL, target);
