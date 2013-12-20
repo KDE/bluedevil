@@ -7,7 +7,7 @@
     </method>
     <method name="knownDevices">
       <arg type="aa{ss}" direction="out"/>
-      <annotation name="com.trolltech.QtDBus.QtTypeName.Out0" value="QMapDeviceInfo"/>
+      <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="QMapDeviceInfo"/>
     </method>
     <method name="stopDiscovering">
     </method>
