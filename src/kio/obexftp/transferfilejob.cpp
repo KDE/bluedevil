@@ -72,6 +72,7 @@ void TransferFileJob::createObjects()
 
 void TransferFileJob::propertiesChanged(const QString& interface, const QVariantMap& properties, const QStringList &invalidProps)
 {
+    Q_UNUSED(invalidProps)
     kDebug() << properties;
     if (interface != QLatin1String("org.bluez.obex.Transfer1")) {
         return;
