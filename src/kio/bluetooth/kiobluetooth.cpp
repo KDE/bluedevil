@@ -75,11 +75,6 @@ KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
     s.mimetype = "";
     s.uuid = "00001106-0000-1000-8000-00805F9B34FB";
     m_supportedServices.insert("00001106-0000-1000-8000-00805F9B34FB", s);
-    s.name = i18n("Headset");
-    s.icon = "audio-headset";
-    s.mimetype = "application/vnd.kde.bluedevil-audio";
-    s.uuid = "00001108-0000-1000-8000-00805F9B34FB";
-    m_supportedServices.insert("00001108-0000-1000-8000-00805F9B34FB", s);
 
     if (!Manager::self()->usableAdapter()) {
         kDebug() << "No available interface";

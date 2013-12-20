@@ -1,4 +1,3 @@
-add_subdirectory(audio)
 add_subdirectory(sendfile)
 
 kde4_add_library(bluedevilaction SHARED actionplugin.cpp)
