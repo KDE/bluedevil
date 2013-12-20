@@ -28,9 +28,6 @@ Notes:
     <generic-icon name="preferences-system-bluetooth"/>
     <comment>Service</comment>
   </mime-type>
-  <mime-type type="application/vnd.kde.bluedevil-input">
-    <comment>Service</comment>
-  </mime-type>
   <mime-type type="application/vnd.kde.bluedevil-audio">
     <comment>Service</comment>
   </mime-type>

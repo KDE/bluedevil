@@ -1,4 +1,3 @@
-add_subdirectory(input)
 add_subdirectory(audio)
 add_subdirectory(sendfile)
 add_subdirectory(networkdun)
