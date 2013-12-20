@@ -33,12 +33,11 @@
 #include <QString>
 
 #include <bluedevil/bluedevil.h>
-#include <KServiceTypeTrader>
 #include <KPushButton>
 #include <kdebug.h>
 #include <KProcess>
 
-BlueWizard::BlueWizard(const KUrl &url) : QWizard(), m_device(0), m_service(0), m_manualPin(false)
+BlueWizard::BlueWizard(const KUrl &url) : QWizard(), m_device(0), m_manualPin(false)
 {
     setWindowTitle(i18n("Bluetooth Device Wizard"));
 
@@ -77,8 +76,6 @@ BlueWizard::BlueWizard(const KUrl &url) : QWizard(), m_device(0), m_service(0), 
     }
 
     m_agent = new WizardAgent(qApp);
-    m_services = KServiceTypeTrader::self()->query("BlueDevil/ActionPlugin");
-    kDebug() << "Num of found services: " << m_services.count();
 }
 
 void BlueWizard::done(int result)
@@ -86,23 +83,6 @@ void BlueWizard::done(int result)
     kDebug() << "Wizard done: " << result;
 
     QWizard::done(result);
-    if (result == 1) {
-        //If we have a service to connect with
-        if (m_service) {
-            kDebug() << "Connecting to: " << m_service->name();
-            KPluginFactory *factory = KPluginLoader(m_service->library()).factory();
-
-            ActionPlugin *plugin = factory->create<ActionPlugin>(this);
-            connect(plugin, SIGNAL(finished()), qApp, SLOT(quit()));
-
-            plugin->setDevice(m_device);
-            plugin->startAction();
-        } else {
-            qApp->quit();
-        }
-    } else {
-        qApp->quit();
-    }
 }
 
 Device* BlueWizard::device() const
@@ -178,15 +158,4 @@ QByteArray BlueWizard::preselectedAddress() const
 WizardAgent* BlueWizard::agent() const
 {
     return m_agent;
-}
-
-KService::List BlueWizard::services() const
-{
-    return m_services;
-}
-
-void BlueWizard::setService(const KService* service)
-{
-    kDebug() << "Setting service: " << (service ? service->name() : "none");
-    m_service = service;
 }
