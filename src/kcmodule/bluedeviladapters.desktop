@@ -58,6 +58,7 @@ Name[zh_TW]=轉接器
 
 Comment=Configure Bluetooth adapters
 Comment[ca]=Configura els adaptadors Bluetooth
+Comment[ca@valencia]=Configura els adaptadors Bluetooth
 Comment[cs]=Nastavte adaptéry Bluetooth
 Comment[da]=Indstil Bluetooth-adaptere
 Comment[de]=Bluetooth-Adapter einrichten
@@ -77,6 +78,7 @@ Comment[pa]=ਬਲਿਊਟੁੱਥ ਐਡਪਟਰ ਸੰਰਚਨਾ
 Comment[pl]=Konfiguruj adaptery Bluetooth
 Comment[pt]=Configurar os adaptadores de Bluetooth
 Comment[pt_BR]=Configura os adaptadores Bluetooth
+Comment[ro]=Configurează adaptoare Bluetooth
 Comment[ru]=Настройка адаптеров Bluetooth
 Comment[sk]=Nastaviť adaptéry Bluetooth
 Comment[sl]=Nastavite vmesnike Bluetooth
