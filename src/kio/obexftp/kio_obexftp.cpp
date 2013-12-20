@@ -18,9 +18,10 @@
  *************************************************************************************/
 
 #include "kio_obexftp.h"
+#include "obexd_transfer.h"
+#include "obexd_file_transfer.h"
 #include "kdedobexftp.h"
 #include "version.h"
-
 #include <KDebug>
 #include <KComponentData>
 #include <KCmdLineArgs>
@@ -29,6 +30,8 @@
 #include <KTemporaryFile>
 #include <KMimeType>
 #include <KApplication>
+#include "obexdtypes.h"
+#include "transferfilejob.h"
 
 #include <unistd.h>
 
@@ -51,12 +54,14 @@ extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
 
 KioFtp::KioFtp(const QByteArray &pool, const QByteArray &app)
     : SlaveBase("obexftp", pool, app)
+    , m_transfer(0)
 {
     m_settingHost = false;
 
     m_timer = new QTimer();
     m_timer->setInterval(100);
 
+    qDBusRegisterMetaType<QVariantMapList>();
     m_kded = new org::kde::ObexFtp("org.kde.kded", "/modules/obexftpdaemon", QDBusConnection::sessionBus(), 0);
 }
 
@@ -85,21 +90,34 @@ void KioFtp::updateProcess()
     m_counter++;
 }
 
-
 void KioFtp::listDir(const KUrl &url)
 {
     kDebug() << "listdir: " << url;
 
     infoMessage(i18n("Retrieving information from remote device..."));
 
-    blockUntilNotBusy(url.host());
-    QDBusPendingReply<QString> folder = m_kded->listDir(url.host(), url.path());
-    folder.waitForFinished();
+    kDebug() << "Asking for listFolder";
 
-    kDebug() << folder.value();
+    //TODO: Check if changeFolder fails
+    m_transfer->ChangeFolder(url.path()).waitForFinished();
 
-    int i = processXmlEntries(url, folder.value(), "listDirCallback");
-    totalSize(i);
+    QDBusPendingReply <QVariantMapList > reply = m_transfer->ListFolder();
+    reply.waitForFinished();
+
+    QVariantMapList folderList = reply.value();
+    Q_FOREACH(const QVariantMap folder, folderList) {
+        KIO::UDSEntry entry = entryFromInfo(folder);
+
+        KUrl statUrl(url);
+        statUrl.setFileName(folder["Name"].toString());
+        if (!m_statMap.contains(statUrl.prettyUrl())) {
+            kDebug() << "Stat: " << statUrl.prettyUrl() << entry.numberValue(KIO::UDSEntry::UDS_SIZE);
+            m_statMap.insert(statUrl.prettyUrl(), entry);
+        }
+
+        listEntry(entry, false);
+    }
+
     listEntry(KIO::UDSEntry(), true);
     finished();
 }
@@ -159,20 +177,21 @@ void KioFtp::setHost(const QString &host, quint16 port, const QString &user, con
 
     kDebug() << "setHost: " << host;
 
-    connect(m_kded, SIGNAL(sessionConnected(QString)), this, SLOT(sessionConnected(QString)));
-    connect(m_kded, SIGNAL(sessionClosed(QString)), this, SLOT(sessionClosed(QString)));
-    m_kded->stablishConnection(host);
+    kDebug() << "Waiting to stablish the connection 2";
+    QDBusPendingReply <QString > reply = m_kded->session(host);
+    reply.waitForFinished();
 
-    kDebug() << "Waiting to stablish the connection";
-    m_settingHost = true;
-    launchProgressBar();
-    m_eventLoop.exec();
+    kDebug() << "AFTER" << reply.isError();
+    if (reply.isError()) {
+        kDebug() << reply.error().message();
+        kDebug() << reply.error().name();
+    }
 
-    disconnect(m_kded, SIGNAL(sessionConnected(QString)), this, SLOT(sessionConnected(QString)));
-    disconnect(m_kded, SIGNAL(sessionClosed(QString)), this, SLOT(sessionClosed(QString)));
+    kDebug() << "Got a path" << reply.value();
 
-    m_settingHost = false;
     m_address = host;
+    m_sessionPath = reply.value();
+    m_transfer = new org::bluez::obex::FileTransfer1("org.bluez.obex", m_sessionPath, QDBusConnection::sessionBus());
     m_statMap.clear();
 }
 
@@ -181,8 +200,8 @@ void KioFtp::del(const KUrl& url, bool isfile)
     Q_UNUSED(isfile)
 
     kDebug() << "Del: " << url.url();
-    blockUntilNotBusy(url.host());
-    m_kded->deleteRemoteFile(url.host(),  url.path()).waitForFinished();
+    m_transfer->ChangeFolder(url.directory()).waitForFinished();
+    m_transfer->Delete(url.fileName()).waitForFinished();
     finished();
 }
 
@@ -191,8 +210,8 @@ void KioFtp::mkdir(const KUrl& url, int permissions)
     Q_UNUSED(permissions)
 
     kDebug() << "MkDir: " << url.url();
-    blockUntilNotBusy(url.host());
-    m_kded->createFolder(url.host(), url.path()).waitForFinished();
+    m_transfer->ChangeFolder(url.directory()).waitForFinished();
+    m_transfer->CreateFolder(url.fileName()).waitForFinished();
     finished();
 }
 
@@ -209,248 +228,143 @@ void KioFtp::stat(const KUrl &url)
     finished();
 }
 
-int KioFtp::processXmlEntries(const KUrl& url, const QString& xml, const char* slot)
-{
-    QXmlStreamReader* m_xml = new QXmlStreamReader(xml);
-
-    int i = 0;
-    while(!m_xml->atEnd()) {
-        m_xml->readNext();
-        if(m_xml->name() != "folder" &&  m_xml->name() != "file") {
-            kDebug() << "Skiping dir: " << m_xml->name();
-            continue;
-        }
-        QXmlStreamAttributes attr = m_xml->attributes();
-        if (!attr.hasAttribute("name")) {
-            continue;
-        }
-
-        KUrl fullKurl = url;
-        fullKurl.addPath(attr.value("name").toString());
-
-        const QString fullPath = fullKurl.prettyUrl();
-
-        KIO::UDSEntry entry;
-        if (!m_statMap.contains(fullPath)) {
-            kDebug() << "path not cached: " << fullPath;
-            entry.insert(KIO::UDSEntry::UDS_NAME, attr.value("name").toString());
-            entry.insert(KIO::UDSEntry::UDS_CREATION_TIME, attr.value("created").toString());
-            entry.insert(KIO::UDSEntry::UDS_ACCESS, 0500);
-
-            if (m_xml->name() == "folder") {
-                entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
-            } else {
-                entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
-                entry.insert(KIO::UDSEntry::UDS_SIZE, attr.value("size").toString().toUInt());
-                entry.insert(KIO::UDSEntry::UDS_MODIFICATION_TIME, attr.value("modified").toString());
-            }
-
-            kDebug() << "Adding surl to map: " << fullPath;
-            m_statMap[fullPath] = entry;
-        } else {
-            kDebug() << "Cached entry :" << fullPath;
-            entry = m_statMap.value(fullPath);
-        }
-
-        QMetaObject::invokeMethod(this, slot, Q_ARG(KIO::UDSEntry, entry), Q_ARG(KUrl, url));
-        ++i;
-    }
-    return i;
-}
-
-void KioFtp::listDirCallback(const KIO::UDSEntry& entry, const KUrl &url)
-{
-    Q_UNUSED(url)
-    kDebug();
-    listEntry(entry, false);
-}
-
-void KioFtp::statCallback(const KIO::UDSEntry& entry, const KUrl &url)
-{
-    kDebug() << "FileName : " << url.fileName() << "  " << entry.stringValue(KIO::UDSEntry::UDS_NAME);
-    if (entry.stringValue(KIO::UDSEntry::UDS_NAME) == url.fileName()) {
-        kDebug() << "setting statEntry : ";
-        statEntry(entry);
-    }
-}
-
-void KioFtp::TransferProgress(qulonglong transfered)
-{
-    processedSize(transfered);
-    wasKilledCheck();
-    kDebug() << "TransferProgress: ";
-}
-
-void KioFtp::TransferCompleted()
-{
-    kDebug() << "TransferCompleted: ";
-    disconnect(m_kded, SIGNAL(Cancelled()), this, SLOT(TransferCancelled()));
-    disconnect(m_kded, SIGNAL(transferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
-    disconnect(m_kded, SIGNAL(transferCompleted()), this, SLOT(TransferCompleted()));
-    disconnect(m_kded, SIGNAL(errorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
-    m_eventLoop.exit();
-}
-
-void KioFtp::TransferCancelled()
-{
-    kDebug() << "TransferCancelled";
-    disconnect(m_kded, SIGNAL(Cancelled()), this, SLOT(TransferCancelled()));
-    disconnect(m_kded, SIGNAL(transferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
-    disconnect(m_kded, SIGNAL(transferCompleted()), this, SLOT(TransferCompleted()));
-    disconnect(m_kded, SIGNAL(errorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
-    error(KIO::ERR_USER_CANCELED, "");
-    m_eventLoop.exit();
-}
-
-
-void KioFtp::ErrorOccurred(const QString &name, const QString &msg)
-{
-//     disconnect(m_session, SIGNAL(TransferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
-//     disconnect(m_session, SIGNAL(TransferCompleted()), this, SLOT(TransferCompleted()));
-//     disconnect(m_session, SIGNAL(ErrorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
-
-    kDebug() << "ERROR ERROR: " << name;
-    kDebug() << "ERROR ERROR: " << msg;
-
-    error(KIO::ERR_UNKNOWN, "");
-    if (m_eventLoop.isRunning()){
-        m_eventLoop.exit();
-    }
-}
-
-void KioFtp::sessionConnected(QString address)
-{
-    kDebug() << "Session connected: " << address;
-
-    if (m_settingHost) {
-        m_eventLoop.exit();
-    }
-}
-
-void KioFtp::sessionClosed(QString address)
-{
-    kDebug() << "Session closed: " << address;
-    if (m_eventLoop.isRunning()) {
-        m_eventLoop.exit();
-    }
-
-    if (m_settingHost) {
-        infoMessage(i18n("Can't connect to the device"));
-    } else {
-        infoMessage(i18n("Connection closed"));
-    }
-
-    if (m_counter != 0) {
-        processedSize(50);
-        m_counter = 0;
-    }
-}
-
-
 void KioFtp::copyHelper(const KUrl& src, const KUrl& dest)
 {
-    connect(m_kded, SIGNAL(Cancelled()), this, SLOT(TransferCancelled()));
-    connect(m_kded, SIGNAL(transferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
-    connect(m_kded, SIGNAL(transferCompleted()), this, SLOT(TransferCompleted()));
-    connect(m_kded, SIGNAL(errorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
-
     if (src.scheme() == "obexftp" && dest.scheme() == "obexftp") {
         error(KIO::ERR_UNSUPPORTED_ACTION, src.prettyUrl());
+        //TODO: with obexd this seems possible, we should at least try
         return;
     }
 
     if (src.scheme() == "obexftp") {
-        kDebug() << "scheme is obexftp";
-        kDebug() << src.prettyUrl();
-        //Just in case the url is not in the stat, some times happens...
-        if (!m_statMap.contains(src.prettyUrl())) {
-            kDebug() << "The url is not in the cache, stating it";
-            statHelper(src);
-        }
-
-        if (m_statMap.value(src.prettyUrl()).isDir()) {
-            kDebug() << "Skipping to copy: " << src.prettyUrl();
-            error( KIO::ERR_IS_DIRECTORY, src.prettyUrl());
-            disconnect(m_kded, SIGNAL(Cancelled()), this, SLOT(TransferCancelled()));
-            disconnect(m_kded, SIGNAL(transferProgress(qulonglong)), this, SLOT(TransferProgress(qulonglong)));
-            disconnect(m_kded, SIGNAL(transferCompleted()), this, SLOT(TransferCompleted()));
-            disconnect(m_kded, SIGNAL(errorOccurred(QString,QString)), this, SLOT(ErrorOccurred(QString,QString)));
-            return;
-        }
-
-        kDebug() << "CopyingRemoteFile....";
-
-        int size = m_statMap[src.prettyUrl()].numberValue(KIO::UDSEntry::UDS_SIZE);
-        totalSize(size);
-
-        blockUntilNotBusy(src.host());
-        m_kded->copyRemoteFile(src.host(), src.path(), dest.path());
-    } else if (dest.scheme() == "obexftp") {
-        kDebug() << "Sendingfile....";
-        QFile file(dest.url());
-        totalSize(file.size());
-        blockUntilNotBusy(dest.host());
-        m_kded->sendFile(dest.host(), src.path(), dest.directory());
+        copyFromObexftp(src, dest);
+        return;
     }
 
-    m_eventLoop.exec();
-    kDebug() << "Copy end";
+    if (dest.scheme() == "obexftp") {
+        copyToObexftp(src, dest);
+        return;
+    }
+
+    kDebug() << "This shouldn't happen...";
+    finished();
+}
+
+void KioFtp::copyFromObexftp(const KUrl& src, const KUrl& dest)
+{
+    kDebug() << "Source: " << src << "Dest:" << dest;
+
+    //Just in case the url is not in the stat, some times happens...
+    if (!m_statMap.contains(src.prettyUrl())) {
+        kDebug() << "The url is not in the cache, stating it";
+        statHelper(src);
+    }
+
+    if (m_statMap.value(src.prettyUrl()).isDir()) {
+        kDebug() << "Skipping to copy: " << src.prettyUrl();
+        //TODO: Check if dir copying works with obexd
+        error(KIO::ERR_IS_DIRECTORY, src.prettyUrl());
+        return;
+    }
+
+    kDebug() << "Changing dir:" << src.directory();
+    m_transfer->ChangeFolder(src.directory()).waitForFinished();
+
+    QString dbusPath = m_transfer->GetFile(dest.path(), src.fileName()).value().path();
+    kDebug() << "Path from GetFile:" << dbusPath;
+
+    int size = m_statMap[src.prettyUrl()].numberValue(KIO::UDSEntry::UDS_SIZE);
+    TransferFileJob *getFile = new TransferFileJob(dbusPath, this);
+    getFile->setSize(size);
+    getFile->exec();
+
+    finished();
+}
+
+void KioFtp::copyToObexftp(const KUrl& src, const KUrl& dest)
+{
+    kDebug() << "Source:" << src << "Dest:" << dest;
+
+    kDebug() << "Changing folder: " << dest.directory();
+    m_transfer->ChangeFolder(dest.directory());
+    QString dbusPath = m_transfer->PutFile(src.path(), dest.fileName()).value().path();
+    kDebug() << "Path from PutFile: " << dbusPath;
+
+    QFile file(src.path());
+    TransferFileJob *putFile = new TransferFileJob(dbusPath, this);
+    putFile->setSize(file.size());
+    putFile->exec();
+
+    finished();
 }
 
 void KioFtp::statHelper(const KUrl& url)
 {
     kDebug() << url;
+
+    if (m_statMap.contains(url.prettyUrl())) {
+        kDebug() << "statMap contains the url";
+        statEntry(m_statMap[url.prettyUrl()]);
+        return;
+    }
+
     if ((url.directory() == "/" || url.directory().isEmpty()) && url.fileName().isEmpty()) {
         kDebug() << "Url is root";
         KIO::UDSEntry entry;
         entry.insert(KIO::UDSEntry::UDS_NAME, QString::fromLatin1("/"));
         entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+        entry.insert(KIO::UDSEntry::UDS_ACCESS, 0700);
         entry.insert( KIO::UDSEntry::UDS_MIME_TYPE, QString::fromLatin1( "inode/directory" ) );
+
         kDebug() << "Adding stat cached: " << url.prettyUrl();
         m_statMap[url.prettyUrl()] = entry;
         statEntry(entry);
 
-    } else {
-        if (m_statMap.contains(url.prettyUrl())) {
-            kDebug() << "statMap contains the url";
-            statEntry(m_statMap[url.prettyUrl()]);
+        return;
+    }
 
-        } else {
-            kDebug() << "statMap NOT contains the url";
+    kDebug() << "statMap does NOT contains the url";
+    //TODO: Check if changeFolder fails
+    m_transfer->ChangeFolder(url.directory()).waitForFinished();
+    QVariantMapList folderList = m_transfer->ListFolder().value();
+    kDebug() << url.directory() << folderList.count();
+    Q_FOREACH(const QVariantMap folder, folderList) {
+        KIO::UDSEntry entry = entryFromInfo(folder);
 
-            kDebug() << "RetrieveFolderListing";
-            blockUntilNotBusy(url.host());
-            QDBusPendingReply<QString> folder = m_kded->listDir(url.host(), url.directory());
-            kDebug() << "retireve called";
-            folder.waitForFinished();
-            kDebug() << "RetrieveError: " << folder.error().message();
-            kDebug() << folder.value();
+        QString fileName = folder["Name"].toString();
+        if (url.fileName() == fileName) {
+            statEntry(entry);
+        }
 
-            processXmlEntries(url.upUrl(), folder.value(), "statCallback");
+        //Most probably the client of the kio will stat each file
+        //so since we are on it, let's cache all of them.
+        KUrl statUrl(url);
+        statUrl.setFileName(fileName);
+        if (!m_statMap.contains(statUrl.prettyUrl())) {
+            kDebug() << "Stat: " << statUrl.prettyUrl() << entry.stringValue(KIO::UDSEntry::UDS_NAME) <<  entry.numberValue(KIO::UDSEntry::UDS_SIZE);
+            m_statMap.insert(statUrl.prettyUrl(), entry);
         }
     }
+
     kDebug() << "Finished";
 }
 
-void KioFtp::blockUntilNotBusy(QString address)
+KIO::UDSEntry KioFtp::entryFromInfo(const QVariantMap& info)
 {
-    if (m_kded->isBusy(address).value()) {
-        infoMessage(i18n("The device is busy, waiting..."));
-        while (m_kded->isBusy(address).value() == true) {
-            kDebug() << "Blocking, kded is busy";
-            sleep(1);
-        }
-        infoMessage("");
-    }
-    kDebug() << "kded is free";
-}
+    kDebug() << info;
 
-void KioFtp::wasKilledCheck()
-{
-    if (wasKilled()) {
-        kDebug() << "slave was killed!";
-        m_kded->Cancel(m_address).waitForFinished();;
-        m_eventLoop.exit();
+    KIO::UDSEntry entry;
+    entry.insert(KIO::UDSEntry::UDS_NAME, info["Name"].toString());
+    entry.insert(KIO::UDSEntry::UDS_CREATION_TIME, info["Created"].toString());
+    entry.insert(KIO::UDSEntry::UDS_ACCESS, 0700);
+    entry.insert(KIO::UDSEntry::UDS_MODIFICATION_TIME, info["Modified"].toString());
+
+    if (info["Type"].toString() == QLatin1String("folder")) {
+        entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+    } else {
+        entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
+        entry.insert(KIO::UDSEntry::UDS_SIZE, info["Size"].toLongLong());
     }
-    kDebug() << "Slave is alive";
+
+    return entry;
 }

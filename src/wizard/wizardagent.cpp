@@ -34,11 +34,13 @@ using namespace BlueDevil;
 WizardAgent::WizardAgent(QApplication* application) : QDBusAbstractAdaptor(application), m_fromDatabase(false)
 {
     kDebug() << "AGENT registered !";
+    BlueDevil::Manager::self()->registerAgent("/wizardAgent",BlueDevil::Manager::DisplayYesNo);
 }
 
 WizardAgent::~WizardAgent()
 {
     kDebug() << "Agent deleted";
+    BlueDevil::Manager::self()->unregisterAgent("/wizardAgent");
 }
 
 void WizardAgent::Release()
@@ -47,7 +49,7 @@ void WizardAgent::Release()
     emit agentReleased();
 }
 
-void WizardAgent::Authorize(QDBusObjectPath device, const QString& uuid, const QDBusMessage &msg)
+void WizardAgent::AuthorizeService(const QDBusObjectPath& device, const QString& uuid, const QDBusMessage& msg)
 {
     Q_UNUSED(device);
     Q_UNUSED(uuid);
@@ -55,7 +57,7 @@ void WizardAgent::Authorize(QDBusObjectPath device, const QString& uuid, const Q
     kDebug() << "AGENT-Authorize " << device.path() << " Service: " << uuid;
 }
 
-quint32 WizardAgent::RequestPasskey(QDBusObjectPath device, const QDBusMessage &msg)
+quint32 WizardAgent::RequestPasskey(const QDBusObjectPath& device, const QDBusMessage& msg)
 {
     Q_UNUSED(device);
     Q_UNUSED(msg);
@@ -63,14 +65,22 @@ quint32 WizardAgent::RequestPasskey(QDBusObjectPath device, const QDBusMessage &
     return 0;
 }
 
-void WizardAgent::DisplayPasskey(QDBusObjectPath device, quint32 passkey)
+void WizardAgent::DisplayPasskey(const QDBusObjectPath& device, quint32 passkey)
 {
     Q_UNUSED(device);
     Q_UNUSED(passkey);
     kDebug() << "AGENT-DisplayPasskey " << device.path() << ", " << QString::number(passkey);
 }
 
-void WizardAgent::RequestConfirmation(QDBusObjectPath device, quint32 passkey, const QDBusMessage &msg)
+void WizardAgent::DisplayPinCode(const QDBusObjectPath& device, const QString& pincode)
+{
+    Q_UNUSED(device);
+    Q_UNUSED(pincode);
+    kDebug() << "AGENT-DisplayPasskey " << device.path() << ", " << pincode;
+    emit pinRequested(pincode);
+}
+
+void WizardAgent::RequestConfirmation(const QDBusObjectPath& device, quint32 passkey, const QDBusMessage& msg)
 {
     Q_UNUSED(device);
     Q_UNUSED(passkey);
@@ -79,19 +89,12 @@ void WizardAgent::RequestConfirmation(QDBusObjectPath device, quint32 passkey, c
     emit confirmationRequested(passkey, msg);
 }
 
-void WizardAgent::ConfirmModeChange(const QString& mode, const QDBusMessage &msg)
-{
-    Q_UNUSED(mode);
-    Q_UNUSED(msg);
-    kDebug() << "AGENT-ConfirmModeChange " << mode;
-}
-
 void WizardAgent::Cancel()
 {
     kDebug() << "AGENT-Cancel";
 }
 
-QString WizardAgent::RequestPinCode(QDBusObjectPath device, const QDBusMessage &msg)
+QString WizardAgent::RequestPinCode(const QDBusObjectPath& device, const QDBusMessage& msg)
 {
     Q_UNUSED(device);
     Q_UNUSED(msg);

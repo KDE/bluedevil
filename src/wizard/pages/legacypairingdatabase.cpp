@@ -44,18 +44,11 @@ void LegacyPairingPageDatabase::initializePage()
 {
     m_wizard->setButtonLayout(wizardButtonsLayout());
 
-    Device *device = deviceFromWizard();
-    connecting->setText(connecting->text().arg(device->name()));
+    Device *device = m_wizard->device();
+    connecting->setText(i18n("Connecting to %1...", device->name()));
 
-    connect(device, SIGNAL(registered(Device*)), this, SLOT(registered(Device*)));
-
-    QMetaObject::invokeMethod(device, "registerDeviceAsync", Qt::QueuedConnection);
-}
-
-void LegacyPairingPageDatabase::registered(Device *device)
-{
     connect(device, SIGNAL(pairedChanged(bool)), this, SLOT(pairedChanged(bool)));
-    device->pair("/wizardAgent", Adapter::DisplayYesNo);
+    device->pair();
 }
 
 void LegacyPairingPageDatabase::pairedChanged(bool paired)
@@ -66,17 +59,12 @@ void LegacyPairingPageDatabase::pairedChanged(bool paired)
 
 bool LegacyPairingPageDatabase::validatePage()
 {
-    return deviceFromWizard()->isPaired();
+    return m_wizard->device()->isPaired();
 }
 
 int LegacyPairingPageDatabase::nextId() const
 {
-    return BlueWizard::Services;
-}
-
-Device* LegacyPairingPageDatabase::deviceFromWizard()
-{
-    return Manager::self()->usableAdapter()->deviceForAddress(m_wizard->deviceAddress());
+    return BlueWizard::Connect;
 }
 
 QList< QWizard::WizardButton > LegacyPairingPageDatabase::wizardButtonsLayout() const

@@ -53,16 +53,9 @@ void KeyboardPairingPage::initializePage()
 
     connect(m_wizard->agent(), SIGNAL(pinRequested(QString)), this, SLOT(pinRequested(QString)));
 
-    Device *device = deviceFromWizard();
-    connect(device, SIGNAL(registered(Device*)), this, SLOT(registered(Device*)));
-
-    QMetaObject::invokeMethod(device, "registerDeviceAsync", Qt::QueuedConnection);
-}
-
-void KeyboardPairingPage::registered(Device *device)
-{
+    Device *device = m_wizard->device();
     connect(device, SIGNAL(pairedChanged(bool)), this, SLOT(pairedChanged(bool)));
-    device->pair("/wizardAgent", Adapter::DisplayYesNo);
+    device->pair();
 }
 
 void KeyboardPairingPage::pinRequested(const QString& pin)
@@ -79,18 +72,13 @@ void KeyboardPairingPage::pairedChanged(bool paired)
 
 bool KeyboardPairingPage::validatePage()
 {
-    return deviceFromWizard()->isPaired();
+    return m_wizard->device()->isPaired();
 }
 
 
 int KeyboardPairingPage::nextId() const
 {
-    return BlueWizard::Services;
-}
-
-Device* KeyboardPairingPage::deviceFromWizard()
-{
-    return Manager::self()->usableAdapter()->deviceForAddress(m_wizard->deviceAddress());
+    return BlueWizard::Connect;
 }
 
 QList<QWizard::WizardButton> KeyboardPairingPage::wizardButtonsLayout() const

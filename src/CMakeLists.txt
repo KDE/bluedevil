@@ -1,10 +1,11 @@
 add_subdirectory(settings)
-add_subdirectory(actionplugins)
+add_subdirectory(sendfile)
 add_subdirectory(daemon)
 add_subdirectory(kcmodule)
 add_subdirectory(kio)
 add_subdirectory(wizard)
 add_subdirectory(monolithic)
+
 if(NOT KDE_VERSION VERSION_LESS "4.6.0")
   add_subdirectory(fileitemactionplugin)
 else(NOT KDE_VERSION VERSION_LESS "4.6.0")

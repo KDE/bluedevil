@@ -34,7 +34,7 @@ using namespace BlueDevil;
 class WizardAgent : public QDBusAbstractAdaptor
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.bluez.Agent")
+    Q_CLASSINFO("D-Bus Interface", "org.bluez.Agent1")
 
 public:
     WizardAgent(QApplication* application);
@@ -48,12 +48,12 @@ public:
 //D-Bus interface implementation
 public slots:
     void Release();
-    void Authorize(QDBusObjectPath device, const QString& uuid, const QDBusMessage &msg);
-    QString RequestPinCode(QDBusObjectPath device, const QDBusMessage &msg);
-    quint32 RequestPasskey(QDBusObjectPath device, const QDBusMessage &msg);
-    void DisplayPasskey(QDBusObjectPath device, quint32 passkey);
-    void RequestConfirmation(QDBusObjectPath device, quint32 passkey, const QDBusMessage &msg);
-    void ConfirmModeChange(const QString& mode, const QDBusMessage &msg);
+    void AuthorizeService(const QDBusObjectPath &device, const QString& uuid, const QDBusMessage &msg);
+    QString RequestPinCode(const QDBusObjectPath &device, const QDBusMessage &msg);
+    quint32 RequestPasskey(const QDBusObjectPath &device, const QDBusMessage &msg);
+    void DisplayPinCode(const QDBusObjectPath &device, const QString & pincode);
+    void DisplayPasskey(const QDBusObjectPath &device, quint32 passkey);
+    void RequestConfirmation(const QDBusObjectPath &device, quint32 passkey, const QDBusMessage &msg);
     void Cancel();
 
 private:

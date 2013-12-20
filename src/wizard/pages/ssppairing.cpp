@@ -56,22 +56,15 @@ void SSPPairingPage::initializePage()
     list << QWizard::CancelButton;
     m_wizard->setButtonLayout(list);
 
-    Device *device = Manager::self()->usableAdapter()->deviceForAddress(m_wizard->deviceAddress());
+    Device *device = m_wizard->device();
     confirmLbl->setText(i18n("Connecting to %1...", device->name()));
 
-    connect(device, SIGNAL(registered(Device*)), this, SLOT(registered(Device*)));
-
-    QMetaObject::invokeMethod(device, "registerDeviceAsync", Qt::QueuedConnection);
-}
-
-void SSPPairingPage::registered(Device* device)
-{
     connect(device, SIGNAL(pairedChanged(bool)), this, SLOT(pairedChanged(bool)));
     connect(m_wizard->agent(), SIGNAL(confirmationRequested(quint32,QDBusMessage)),
             this, SLOT(confirmationRequested(quint32,QDBusMessage)));
     connect(m_wizard->agent(), SIGNAL(pinRequested(QString)), SLOT(pinRequested(QString)));
 
-    device->pair("/wizardAgent", Adapter::DisplayYesNo);
+    device->pair();
 }
 
 void SSPPairingPage::confirmationRequested(quint32 passkey, const QDBusMessage& msg)
@@ -94,8 +87,7 @@ void SSPPairingPage::confirmationRequested(quint32 passkey, const QDBusMessage& 
     m_working->stop();
     pinNumber->setText(QString("%1").arg(passkey, 6, 10, QLatin1Char('0')));
 
-    Device *device = Manager::self()->usableAdapter()->deviceForAddress(m_wizard->deviceAddress());
-    confirmLbl->setText(i18n("Please, confirm that the PIN displayed on \"%1\" matches the wizard one.", device->name()));
+    confirmLbl->setText(i18n("Please, confirm that the PIN displayed on \"%1\" matches the wizard one.", m_wizard->device()->name()));
 
 }
 
@@ -136,10 +128,10 @@ bool SSPPairingPage::validatePage()
     if (m_buttonClicked == QWizard::CustomButton2){
         return true;
     }
-    if (deviceFromWizard()->isPaired() &&  m_buttonClicked == QWizard::NoButton) {
+    if (m_wizard->device()->isPaired() &&  m_buttonClicked == QWizard::NoButton) {
         return true;
     }
-    if (deviceFromWizard()->isPaired() &&  m_buttonClicked == QWizard::CustomButton1) {
+    if (m_wizard->device()->isPaired() &&  m_buttonClicked == QWizard::CustomButton1) {
         return true;
     }
 
@@ -152,12 +144,7 @@ int SSPPairingPage::nextId() const
         return BlueWizard::Fail;
     }
 
-    return BlueWizard::Services;
-}
-
-Device* SSPPairingPage::deviceFromWizard()
-{
-    return Manager::self()->usableAdapter()->deviceForAddress(m_wizard->deviceAddress());
+    return BlueWizard::Connect;
 }
 
 QList<QWizard::WizardButton> SSPPairingPage::wizardButtonsLayout() const

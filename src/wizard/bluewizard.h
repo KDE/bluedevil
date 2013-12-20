@@ -23,7 +23,10 @@
 #include <QWizard>
 
 #include <kurl.h>
-#include <kservice.h>
+
+namespace BlueDevil {
+    class Device;
+}
 
 class WizardAgent;
 class BlueWizard : public QWizard
@@ -37,6 +40,8 @@ public:
     QByteArray deviceAddress() const;
     void setDeviceAddress(const QByteArray& address);
 
+    BlueDevil::Device *device() const;
+
     QByteArray pin() const;
     void setPin(const QByteArray& pin);
 
@@ -48,10 +53,7 @@ public:
 
     WizardAgent* agent() const;
 
-    KService::List services() const;
-
-    void setService(const KService *);
-    enum {Discover, Services, NoPairing, LegacyPairing, LegacyPairingDatabase, KeyboardPairing, SSPPairing, Fail};
+    enum {Discover, NoPairing, LegacyPairing, LegacyPairingDatabase, KeyboardPairing, SSPPairing, Fail, Connect};
 
 public Q_SLOTS:
     void restartWizard();
@@ -60,12 +62,11 @@ public Q_SLOTS:
 
 private:
     QByteArray m_deviceAddress;
+    BlueDevil::Device * m_device;
     QByteArray m_pin;
     QByteArray m_preselectedUuid;
     QByteArray m_preselectedAddress;
     WizardAgent *m_agent;
-    KService::List m_services;
-    const KService *m_service;
 
     bool m_manualPin;
 };

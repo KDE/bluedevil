@@ -18,7 +18,6 @@
 
 #include "monolithic.h"
 #include "audio_interface.h"
-#include "input_interface.h"
 
 #include <KDebug>
 #include <kmenu.h>
@@ -40,29 +39,28 @@ Monolithic::Monolithic(QObject* parent)
     setIconByName("preferences-system-bluetooth");
     setToolTip("preferences-system-bluetooth", "Bluetooth", "");
 
+    m_supportedServices.insert(i18n("Browse device"), "00001106-0000-1000-8000-00805F9B34FB");
+    m_supportedServices.insert(i18n("Send Files"), "00001105-0000-1000-8000-00805F9B34FB");
+
     offlineMode();
 
     if (Manager::self()->usableAdapter()) {
         onlineMode();
     }
 
-    connect(Manager::self(), SIGNAL(adapterAdded(Adapter*)), this, SLOT(adapterAdded()));
-    connect(Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)), this, SLOT(noAdapters(Adapter*)));
+    connect(Manager::self(), SIGNAL(adapterRemoved(Adapter*)), this, SLOT(adapterChanged()));
+    connect(Manager::self(), SIGNAL(adapterAdded(Adapter*)), this, SLOT(adapterChanged()));
+    connect(Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)), this, SLOT(adapterChanged()));
 
     setStandardActionsEnabled(false);
     setAssociatedWidget(contextMenu());
 }
 
-void Monolithic::noAdapters(Adapter* adapter)
+void Monolithic::adapterChanged()
 {
-    if (!adapter) {
-        offlineMode();
-    }
-}
+    offlineMode();
 
-void Monolithic::adapterAdded()
-{
-    if (status() != KStatusNotifierItem::Active && Manager::self()->usableAdapter()) {
+    if (Manager::self()->usableAdapter()) {
         onlineMode();
     }
 }
@@ -134,185 +132,34 @@ void Monolithic::regenerateDeviceEntries()
         menu->addAction(separator);
 
         KAction *activeBluetooth = new KAction(i18n("Turn Bluetooth On"), menu);
-        connect(activeBluetooth, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(toggleBluetooth()));
+        connect(activeBluetooth, SIGNAL(triggered()), this, SLOT(toggleBluetooth()));
         menu->addAction(activeBluetooth);
         return;
     }
 
     KAction *sendFile = new KAction(KIcon("edit-find-project"), i18n("Send File"), menu);
-    connect(sendFile, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(sendFile()));
+    connect(sendFile, SIGNAL(triggered()), this, SLOT(sendFile()));
     menu->addAction(sendFile);
 
     KAction *browseDevices = new KAction(KIcon("document-preview-archive"), i18n("Browse devices"), menu);
-    connect(browseDevices, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(browseDevices()));
+    connect(browseDevices, SIGNAL(triggered()), this, SLOT(browseDevices()));
     menu->addAction(browseDevices);
 
-    QAction *separator = new QAction(menu);
-    separator->setSeparator(true);
-    menu->addAction(separator);
-
-    QList<Device*> devices = Manager::self()->usableAdapter()->devices();
-    if (!devices.isEmpty()) {
-        menu->addTitle(i18n("Known Devices"));
-        qStableSort(devices.begin(), devices.end(), sortDevices);
-        Device *lastDevice = 0;
-        QString name;
-        Q_FOREACH (Device *device, devices) {
-// Create device entry
-            KAction *_device = 0;
-            if (!device->alias().isEmpty()) {
-                name = device->alias();
-            } else {
-                name = device->name();
-            }
-            if (!lastDevice || classToType(lastDevice->deviceClass()) != classToType(device->deviceClass())) {
-                _device = new KAction(KIcon(device->icon()), name, menu);
-            } else {
-                _device = new KAction(name, menu);
-            }
-            _device->setData(QVariant::fromValue<Device*>(device));
-
-// Add this action to the own action list
-            m_actions << _device;
-
-// Create the submenu that will hang from this device menu entry
-            KMenu *const _submenu = new KMenu;
-            bool hasSupportedServices = false;
-            QStringList UUIDs = device->UUIDs();
-            EntryInfo info;
-            info.device = device;
-            int supportedServices = 0;
-
-            if (UUIDs.contains("00001124-0000-1000-8000-00805F9B34FB")) {
-                ++supportedServices;
-            }
-            if (UUIDs.contains("00001108-0000-1000-8000-00805F9B34FB")) {
-                ++supportedServices;
-            }
-            if (UUIDs.contains("0000110B-0000-1000-8000-00805F9B34FB")) {
-                ++supportedServices;
-            }
-
-            if (UUIDs.contains("00001106-0000-1000-8000-00805F9B34FB"))  {
-                KAction *_browse = new KAction(i18n("Browse device..."), _device);
-                info.service = "00001106-0000-1000-8000-00805F9B34FB";
-                _browse->setData(QVariant::fromValue<EntryInfo>(info));
-                _submenu->addAction(_browse);
-                connect(_browse, SIGNAL(triggered()), this, SLOT(browseTriggered()));
-                hasSupportedServices = true;
-                ++supportedServices;
-            }
-            if (UUIDs.contains("00001105-0000-1000-8000-00805F9B34FB")) {
-                KAction *_send = new KAction(i18n("Send files..."), _device);
-                info.service = "00001105-0000-1000-8000-00805F9B34FB";
-                _send->setData(QVariant::fromValue<EntryInfo>(info));
-                _submenu->addAction(_send);
-                connect(_send, SIGNAL(triggered()), this, SLOT(sendTriggered()));
-                hasSupportedServices = true;
-                ++supportedServices;
-            }
-            if (UUIDs.contains("00001124-0000-1000-8000-00805F9B34FB")) {
-                org::bluez::Input *input = new org::bluez::Input("org.bluez", device->UBI(), QDBusConnection::systemBus());
-                connect(input, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
-                info.service = "00001124-0000-1000-8000-00805F9B34FB";
-                info.dbusService = input;
-                if (supportedServices > 1) {
-                    _submenu->addTitle("Input Service");
-                }
-
-                if (input->GetProperties().value()["Connected"].toBool()) {
-                    KAction *_disconnect = new KAction(i18nc("Action", "Disconnect"), _device);
-                    m_interfaceMap[input] = _disconnect;
-                    _disconnect->setData(QVariant::fromValue<EntryInfo>(info));
-                    _submenu->addAction(_disconnect);
-                    connect(_disconnect, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
-                } else {
-                    KAction *_connect = new KAction(i18nc("Action", "Connect"), _device);
-                    m_interfaceMap[input] = _connect;
-                    _connect->setData(QVariant::fromValue<EntryInfo>(info));
-                    _submenu->addAction(_connect);
-                    connect(_connect, SIGNAL(triggered()), this, SLOT(connectTriggered()));
-                }
-                hasSupportedServices = true;
-            }
-            if (UUIDs.contains("00001108-0000-1000-8000-00805F9B34FB")) {
-                org::bluez::Audio *audio = new org::bluez::Audio("org.bluez", device->UBI(), QDBusConnection::systemBus());
-                connect(audio, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
-                info.service = "00001108-0000-1000-8000-00805F9B34FB";
-                info.dbusService = audio;
-                if (supportedServices > 1) {
-                    _submenu->addTitle("Headset Service");
-                }
-
-                if (audio->GetProperties().value()["State"].toString() == "connected") {
-                    KAction *_disconnect = new KAction(i18nc("Action", "Disconnect"), _device);
-                    m_interfaceMap[audio] = _disconnect;
-                    _disconnect->setData(QVariant::fromValue<EntryInfo>(info));
-                    _submenu->addAction(_disconnect);
-                    connect(_disconnect, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
-                } else if (audio->GetProperties().value()["State"].toString() == "connecting") {
-                    KAction *_connecting = new KAction(i18n("Connecting..."), _device);
-                    _connecting->setEnabled(false);
-                    m_interfaceMap[audio] = _connecting;
-                    _connecting->setData(QVariant::fromValue<EntryInfo>(info));
-                    _submenu->addAction(_connecting);
-                } else {
-                    KAction *_connect = new KAction(i18nc("Action", "Connect"), _device);
-                    m_interfaceMap[audio] = _connect;
-                    _connect->setData(QVariant::fromValue<EntryInfo>(info));
-                    _submenu->addAction(_connect);
-                    connect(_connect, SIGNAL(triggered()), this, SLOT(connectTriggered()));
-                }
-                hasSupportedServices = true;
-            }
-            if (UUIDs.contains("0000110B-0000-1000-8000-00805F9B34FB")) {
-                org::bluez::Audio *audio = new org::bluez::Audio("org.bluez", device->UBI(), QDBusConnection::systemBus());
-                connect(audio, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
-                info.service = "00001108-0000-1000-8000-00805F9B34FB";
-                info.dbusService = audio;
-                if (supportedServices > 1) {
-                    _submenu->addTitle("Audio Sink");
-                }
-
-                if (audio->GetProperties().value()["State"].toString() == "connected") {
-                    KAction *_disconnect = new KAction(i18nc("Action", "Disconnect"), _device);
-                    m_interfaceMap[audio] = _disconnect;
-                    _disconnect->setData(QVariant::fromValue<EntryInfo>(info));
-                    _submenu->addAction(_disconnect);
-                    connect(_disconnect, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
-                } else if (audio->GetProperties().value()["State"].toString() == "connecting") {
-                    KAction *_connecting = new KAction(i18n("Connecting..."), _device);
-                    _connecting->setEnabled(false);
-                    m_interfaceMap[audio] = _connecting;
-                    _connecting->setData(QVariant::fromValue<EntryInfo>(info));
-                    _submenu->addAction(_connecting);
-                } else {
-                    KAction *_connect = new KAction(i18nc("Action", "Connect"), _device);
-                    m_interfaceMap[audio] = _connect;
-                    _connect->setData(QVariant::fromValue<EntryInfo>(info));
-                    _submenu->addAction(_connect);
-                    connect(_connect, SIGNAL(triggered()), this, SLOT(connectTriggered()));
-                }
-                hasSupportedServices = true;
-            }
-            if (!hasSupportedServices) {
-                KAction *_unknown = new KAction(i18n("No supported services found"), _device);
-                _unknown->setEnabled(false);
-                _submenu->addAction(_unknown);
-            }
-
-            _device->setMenu(_submenu);
-            menu->addAction(_device);
-            lastDevice = device;
+    QList<Adapter*> adapters = Manager::self()->adapters();
+    Q_FOREACH(Adapter* adapter, adapters) {
+        if (adapters.count() == 1) {
+            menu->addTitle(i18n("Known Devices"));
+        } else {
+            menu->addTitle(adapter->name());
         }
+
+        menu->addActions(actionsForAdapter(adapter));
     }
 
-    separator = new QAction(menu);
-    separator->setSeparator(true);
-    menu->addAction(separator);
+    menu->addSeparator();
 
     KAction *addDevice = new KAction(KIcon("edit-find-project"), i18n("Add Device"), menu);
-    connect(addDevice, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(addDevice()));
+    connect(addDevice, SIGNAL(triggered()), this, SLOT(addDevice()));
     menu->addAction(addDevice);
 
     KAction *configBluetooth = new KAction(KIcon("configure"), i18n("Configure Bluetooth"), menu);
@@ -320,9 +167,7 @@ void Monolithic::regenerateDeviceEntries()
     menu->addAction(configBluetooth);
 
 //Shortcut configuration actions, mainly checkables for discovering and powering
-    separator = new QAction(menu);
-    separator->setSeparator(true);
-    menu->addAction(separator);
+    menu->addSeparator();
 
     KAction *discoverable = new KAction(i18n("Discoverable"), menu);
     discoverable->setCheckable(true);
@@ -331,12 +176,10 @@ void Monolithic::regenerateDeviceEntries()
     menu->addAction(discoverable);
 
     KAction *activeBluetooth = new KAction(i18n("Turn Bluetooth Off"), menu);
-    connect(activeBluetooth, SIGNAL(triggered(Qt::MouseButtons,Qt::KeyboardModifiers)), this, SLOT(toggleBluetooth()));
+    connect(activeBluetooth, SIGNAL(triggered()), this, SLOT(toggleBluetooth()));
     menu->addAction(activeBluetooth);
 
-    separator = new QAction(menu);
-    separator->setSeparator(true);
-    menu->addAction(separator);
+    menu->addSeparator();
 
 //     menu->addAction(KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), menu));
 }
@@ -345,7 +188,7 @@ void Monolithic::regenerateConnectedDevices()
 {
     unsigned int connectedDevices = 0;
     if (Manager::self()->usableAdapter()) {
-        QList<Device*> devices = Manager::self()->usableAdapter()->devices();
+        QList<Device*> devices = Manager::self()->devices();
         Q_FOREACH(Device* device, devices) {
             if (device->isConnected()) {
                 ++connectedDevices;
@@ -365,12 +208,15 @@ void Monolithic::onlineMode()
 {
     setStatus(KStatusNotifierItem::Active);
 
-    connect(Manager::self()->usableAdapter(), SIGNAL(deviceCreated(Device*)), this, SLOT(deviceCreated(Device*)));
-    connect(Manager::self()->usableAdapter(), SIGNAL(deviceDisappeared(Device*)), this, SLOT(regenerateDeviceEntries()));
-    connect(Manager::self()->usableAdapter(), SIGNAL(deviceRemoved(Device*)), this, SLOT(regenerateDeviceEntries()));
-    connect(Manager::self()->usableAdapter(), SIGNAL(poweredChanged(bool)), this, SLOT(poweredChanged()));
-    connect(Manager::self()->usableAdapter(), SIGNAL(discoverableChanged(bool)), this, SLOT(regenerateDeviceEntries()));
-    QList<Device*> devices = Manager::self()->usableAdapter()->devices();
+    QList<Adapter*> adapters = Manager::self()->adapters();
+    Q_FOREACH(Adapter *adapter, adapters) {
+        connect(adapter, SIGNAL(deviceFound(Device*)), SLOT(deviceCreated(Device*)));
+        connect(adapter, SIGNAL(deviceRemoved(Device*)), SLOT(regenerateDeviceEntries()));
+        connect(adapter, SIGNAL(poweredChanged(bool)), SLOT(poweredChanged()));
+        connect(adapter, SIGNAL(discoverableChanged(bool)), SLOT(regenerateDeviceEntries()));
+    }
+
+    QList<Device*> devices = Manager::self()->devices();
     Q_FOREACH(Device* device, devices) {
         connect(device, SIGNAL(propertyChanged(QString,QVariant)), this, SLOT(regenerateConnectedDevices()));
     }
@@ -378,6 +224,22 @@ void Monolithic::onlineMode()
     regenerateDeviceEntries();
     regenerateConnectedDevices();
     poweredChanged();
+}
+
+void Monolithic::actionTriggered()
+{
+    KAction *action = qobject_cast<KAction*>(sender());
+    QString service = action->data().toString();
+    Device *device = Manager::self()->deviceForUBI(action->property("UBI").toString());
+    if (!device) {
+        return;
+    }
+
+    if (service == "00001106-0000-1000-8000-00805F9B34FB") {
+        browseTriggered(device->address());
+    } else if (service == "00001105-0000-1000-8000-00805F9B34FB") {
+        sendTriggered(device->UBI());
+    }
 }
 
 void Monolithic::sendFile()
@@ -412,15 +274,15 @@ void Monolithic::configBluetooth()
 
 void Monolithic::toggleBluetooth()
 {
-    bool powered = true;
+    bool powered = false;
     if (poweredAdapters()) {
-        powered = false;
+        powered = true;
     }
 
     QList <Adapter*> adapters = Manager::self()->adapters();
     if (!adapters.isEmpty()) {
         Q_FOREACH(Adapter *adapter, adapters) {
-            adapter->setPowered(powered);
+            adapter->setPowered(!powered);//If there were powered devices, unpower them.
         }
     }
 
@@ -439,171 +301,22 @@ void Monolithic::activeDiscoverable(bool active)
 }
 
 
-void Monolithic::browseTriggered()
+void Monolithic::browseTriggered(QString address)
 {
-    KAction *action = static_cast<KAction*>(sender());
-    EntryInfo entryInfo = action->data().value<EntryInfo>();
-
     KUrl url("obexftp:/");
-    url.setHost(entryInfo.device->address().replace(':', '-'));
+    url.setHost(address.replace(':', '-'));
     KRun::runUrl(url, "inode/directory", new QWidget());
 }
 
-void Monolithic::sendTriggered()
+void Monolithic::sendTriggered(const QString &UBI)
 {
-    KAction *action = static_cast<KAction*>(sender());
-    EntryInfo entryInfo = action->data().value<EntryInfo>();
-    KToolInvocation::kdeinitExec("bluedevil-sendfile", QStringList() << QString("-u%1").arg(entryInfo.device->UBI()));
-}
-
-void Monolithic::connectTriggered()
-{
-    KAction *action = static_cast<KAction*>(sender());
-    EntryInfo entryInfo = action->data().value<EntryInfo>();
-    if (entryInfo.service == "00001124-0000-1000-8000-00805F9B34FB") {
-        KProcess p;
-        p.setProgram("bluedevil-input", QStringList() << QString("bluetooth://%1/%2").arg(entryInfo.device->address().replace(':', '-')).arg(entryInfo.service));
-        p.startDetached();
-    } else if (entryInfo.service == "00001108-0000-1000-8000-00805F9B34FB") {
-        KProcess p;
-        p.setProgram("bluedevil-audio", QStringList() << QString("bluetooth://%1/%2").arg(entryInfo.device->address().replace(':', '-')).arg(entryInfo.service));
-        p.startDetached();
-    }
-}
-
-void Monolithic::disconnectTriggered()
-{
-    KAction *action = static_cast<KAction*>(sender());
-    EntryInfo entryInfo = action->data().value<EntryInfo>();
-    if (entryInfo.service == "00001124-0000-1000-8000-00805F9B34FB") {
-        org::bluez::Input *input = static_cast<org::bluez::Input*>(entryInfo.dbusService);
-        input->Disconnect();
-    } else if (entryInfo.service == "00001108-0000-1000-8000-00805F9B34FB") {
-        org::bluez::Audio *audio = static_cast<org::bluez::Audio*>(entryInfo.dbusService);
-        audio->Disconnect();
-    }
-}
-
-void Monolithic::propertyChanged(const QString &key, const QDBusVariant &value)
-{
-    KAction *action = m_interfaceMap[static_cast<void*>(sender())];
-
-    if (!action) {
-        return;
-    }
-
-    if (key == "State") {
-        if (value.variant().toString() == "disconnected") {
-            action->setText(i18nc("Action", "Connect"));
-            action->setEnabled(true);
-            disconnect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
-            connect(action, SIGNAL(triggered()), this, SLOT(connectTriggered()));
-        } else if (value.variant().toString() == "connecting") {
-            action->setText(i18n("Connecting..."));
-            action->setEnabled(false);
-        } else {
-            action->setText(i18nc("Action", "Disconnect"));
-            action->setEnabled(true);
-            disconnect(action, SIGNAL(triggered()), this, SLOT(connectTriggered()));
-            connect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
-        }
-    } else if (key == "Connected") {
-        if (value.variant().toBool()) {
-            action->setText(i18nc("Action", "Disconnect"));
-            action->setEnabled(true);
-            disconnect(action, SIGNAL(triggered()), this, SLOT(connectTriggered()));
-            connect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
-        } else {
-            action->setText(i18nc("Action", "Connect"));
-            action->setEnabled(true);
-            disconnect(action, SIGNAL(triggered()), this, SLOT(disconnectTriggered()));
-            connect(action, SIGNAL(triggered()), this, SLOT(connectTriggered()));
-        }
-    } else if (key == "Name") {
-        action->setText(value.variant().toString());
-    }
+    KToolInvocation::kdeinitExec("bluedevil-sendfile", QStringList() << QString("-u%1").arg(UBI));
 }
 
 void Monolithic::UUIDsChanged(const QStringList &UUIDs)
 {
-    Device *const device = static_cast<Device*>(sender());
-
-// Create the submenu that will hang from this device menu entry
-    KMenu *const _submenu = new KMenu;
-    bool hasSupportedServices = false;
-    EntryInfo info;
-    info.device = device;
-    if (UUIDs.contains("00001106-0000-1000-8000-00805F9B34FB"))  {
-        KAction *_browse = new KAction(i18n("Browse device..."), _submenu);
-        info.service = "00001106-0000-1000-8000-00805F9B34FB";
-        _browse->setData(QVariant::fromValue<EntryInfo>(info));
-        _submenu->addAction(_browse);
-        connect(_browse, SIGNAL(triggered()), this, SLOT(browseTriggered()));
-        hasSupportedServices = true;
-    }
-    if (UUIDs.contains("00001105-0000-1000-8000-00805F9B34FB")) {
-        KAction *_send = new KAction(i18n("Send files..."), _submenu);
-        info.service = "00001105-0000-1000-8000-00805F9B34FB";
-        _send->setData(QVariant::fromValue<EntryInfo>(info));
-        _submenu->addAction(_send);
-        connect(_send, SIGNAL(triggered()), this, SLOT(sendTriggered()));
-        hasSupportedServices = true;
-    }
-    if (UUIDs.contains("00001124-0000-1000-8000-00805F9B34FB")) {
-        KAction *_connect = new KAction(i18nc("Action", "Connect"), _submenu);
-        org::bluez::Input *input = new org::bluez::Input("org.bluez", device->UBI(), QDBusConnection::systemBus());
-        connect(input, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
-        m_interfaceMap[input] = _connect;
-        info.service = "00001124-0000-1000-8000-00805F9B34FB";
-        info.dbusService = input;
-        _connect->setData(QVariant::fromValue<EntryInfo>(info));
-        _submenu->addTitle("Input Service");
-        _submenu->addAction(_connect);
-        connect(_connect, SIGNAL(triggered()), this, SLOT(connectTriggered()));
-        hasSupportedServices = true;
-    }
-    if (UUIDs.contains("00001108-0000-1000-8000-00805F9B34FB")) {
-        KAction *_connect = new KAction(i18nc("Action", "Connect"), _submenu);
-        org::bluez::Audio *audio = new org::bluez::Audio("org.bluez", device->UBI(), QDBusConnection::systemBus());
-        connect(audio, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
-        m_interfaceMap[audio] = _connect;
-        info.service = "00001108-0000-1000-8000-00805F9B34FB";
-        info.dbusService = audio;
-        _connect->setData(QVariant::fromValue<EntryInfo>(info));
-        _submenu->addTitle("Headset Service");
-        _submenu->addAction(_connect);
-        connect(_connect, SIGNAL(triggered()), this, SLOT(connectTriggered()));
-        hasSupportedServices = true;
-    }
-    if (UUIDs.contains("0000110B-0000-1000-8000-00805F9B34FB")) {
-        KAction *_connect = new KAction(i18nc("Action", "Connect"), _submenu);
-        org::bluez::Audio *audio = new org::bluez::Audio("org.bluez", device->UBI(), QDBusConnection::systemBus());
-        connect(audio, SIGNAL(PropertyChanged(QString,QDBusVariant)), this, SLOT(propertyChanged(QString,QDBusVariant)));
-        m_interfaceMap[audio] = _connect;
-        info.service = "00001108-0000-1000-8000-00805F9B34FB";
-        info.dbusService = audio;
-        _connect->setData(QVariant::fromValue<EntryInfo>(info));
-        _submenu->addTitle("Audio Sink");
-        _submenu->addAction(_connect);
-        connect(_connect, SIGNAL(triggered()), this, SLOT(connectTriggered()));
-        hasSupportedServices = true;
-    }
-    if (!hasSupportedServices) {
-        KAction *_unknown = new KAction(i18n("No supported services found"), _submenu);
-        _unknown->setEnabled(false);
-        _submenu->addAction(_unknown);
-    }
-
-    QAction *_device = 0;
-    Q_FOREACH (QAction *action, m_actions) {
-        if (action->data().value<Device*>() == device) {
-            _device = action;
-            break;
-        }
-    }
-    if (_device) {
-        _device->setMenu(_submenu);
-    }
+    Q_UNUSED(UUIDs);
+    regenerateDeviceEntries();
 }
 
 void Monolithic::poweredChanged()
@@ -657,13 +370,16 @@ bool Monolithic::poweredAdapters()
 {
     QList <Adapter*> adapters = Manager::self()->adapters();
 
-    if (!adapters.isEmpty()) {
-        Q_FOREACH(Adapter* adapter, adapters) {
-            if (adapter->isPowered()) {
-                return true;
-            }
+    if (adapters.isEmpty()) {
+        return false;
+    }
+
+    Q_FOREACH(Adapter* adapter, adapters) {
+        if (adapter->isPowered()) {
+            return true;
         }
     }
+
     return false;
 }
 
@@ -674,6 +390,68 @@ void Monolithic::setTooltipTitleStatus(bool status)
     } else {
         setToolTipTitle(i18nc("When the bluetooth is disabled or not powered","Bluetooth is Off"));
     }
+}
+
+QList< QAction* > Monolithic::actionsForAdapter(Adapter* adapter)
+{
+    QList<QAction*> actions;
+    QList<Device*> devices = adapter->devices();
+    if (devices.isEmpty()) {
+        return actions;
+    }
+
+    qStableSort(devices.begin(), devices.end(), sortDevices);
+    QAction *action = 0;
+    Device *lastDevice = 0;
+    Q_FOREACH (Device *device, devices) {
+        action = actionForDevice(device, lastDevice);
+        actions << action;
+        lastDevice = device;
+    }
+
+    m_actions << actions;
+
+    return actions;
+}
+
+QAction* Monolithic::actionForDevice(Device* device, Device *lastDevice)
+{
+    // Create device entry
+    KAction *deviceAction = new KAction(device->name(), this);
+    deviceAction->setData(QVariant::fromValue<Device*>(device));
+
+    //We only show the icon for the first device of the type, less UI clutter
+    if (!lastDevice || classToType(lastDevice->deviceClass()) != classToType(device->deviceClass())) {
+        deviceAction->setIcon(KIcon(device->icon()));
+    }
+
+    // Create the submenu that will hang from this device menu entry
+    KMenu *const subMenu = new KMenu;
+    QStringList UUIDs = device->UUIDs();
+
+    QSet <QString> deviceServices = UUIDs.toSet().intersect(m_supportedServices.values().toSet());
+    Q_FOREACH(QString service, deviceServices) {
+        KAction *action = new KAction(m_supportedServices.key(service), subMenu);
+        action->setData(service);
+        action->setProperty("UBI", device->UBI());
+        connect(action, SIGNAL(triggered()), SLOT(actionTriggered()));
+        subMenu->addAction(action);
+    }
+
+    KAction *connectAction = new KAction(i18nc("Connect to a bluetooth device", "Connect"), deviceAction);
+    connect(connectAction, SIGNAL(triggered()), device, SLOT(connectDevice()));
+    subMenu->addAction(connectAction);
+
+//Enable when we can know if we should show Connect or not
+//     if (deviceServices.isEmpty()) {
+//         KAction *_unknown = new KAction(i18n("No supported services found"), deviceAction);
+//         _unknown->setEnabled(false);
+//         subMenu->addAction(_unknown);
+//     }
+
+    deviceAction->setMenu(subMenu);
+
+    return deviceAction;
 }
 
 Q_DECLARE_METATYPE(Device*)

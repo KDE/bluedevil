@@ -50,14 +50,15 @@ public:
     virtual bool validatePage();
     virtual int nextId() const;
 
-public Q_SLOTS:
-    void registerDeviceResult(Device* device);
-
 protected:
-    Device* deviceFromWizard();
     QList <QWizard::WizardButton> wizardButtonsLayout() const;
 
+private Q_SLOTS:
+    void timeout();
+    void connectedChanged(bool connected);
+
 private:
+    bool                          m_validPage;
     BlueWizard                    *m_wizard;
     KPixmapSequenceOverlayPainter *m_working;
 };

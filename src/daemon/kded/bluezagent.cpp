@@ -26,6 +26,7 @@
 #include <QtCore/QProcess>
 
 #include <KStandardDirs>
+#include <KLocalizedString>
 #include <bluedevil/bluedevil.h>
 
 #define AGENT_PATH "/blueDevil_agent"
@@ -38,8 +39,8 @@ BluezAgent::BluezAgent(QObject *parent)
         return;
     }
 
-    m_adapter = BlueDevil::Manager::self()->usableAdapter();
-    m_adapter->registerAgent(AGENT_PATH, BlueDevil::Adapter::DisplayYesNo);
+    BlueDevil::Manager::self()->registerAgent(AGENT_PATH,BlueDevil::Manager::DisplayYesNo);
+    BlueDevil::Manager::self()->requestDefaultAgent(AGENT_PATH);
 
     m_process = new QProcess(this);
 
@@ -49,10 +50,7 @@ BluezAgent::BluezAgent(QObject *parent)
 void BluezAgent::unregister()
 {
     qDebug() << "Unregistering object";
-    BlueDevil::Adapter *const usableAdapter = BlueDevil::Manager::self()->usableAdapter();
-    if (usableAdapter) {
-        usableAdapter->unregisterAgent(AGENT_PATH);
-    }
+    BlueDevil::Manager::self()->unregisterAgent(AGENT_PATH);
     QDBusConnection::systemBus().unregisterObject(AGENT_PATH);
     parent()->deleteLater();
 }
@@ -63,7 +61,7 @@ void BluezAgent::Release()
     emit agentReleased();
 }
 
-void BluezAgent::Authorize(const QDBusObjectPath &device, const QString& uuid, const QDBusMessage &msg)
+void BluezAgent::AuthorizeService(const QDBusObjectPath &device, const QString& uuid, const QDBusMessage &msg)
 {
     Q_UNUSED(uuid)
     qDebug() << "Authorize called";
@@ -72,10 +70,8 @@ void BluezAgent::Authorize(const QDBusObjectPath &device, const QString& uuid, c
     m_msg.setDelayedReply(true);
     m_currentHelper = "Authorize";
 
-    BlueDevil::Device *remote = m_adapter->deviceForUBI(device.path());
-
     QStringList list;
-    list.append(remote->name());
+    list.append(deviceName(device.path()));
     list.append(device.path());
 
     connect(m_process, SIGNAL(finished(int)), this, SLOT(processClosedBool(int)));
@@ -88,10 +84,7 @@ QString BluezAgent::RequestPinCode(const QDBusObjectPath &device, const QDBusMes
     m_msg = msg;
     m_msg.setDelayedReply(true);
 
-    BlueDevil::Device *remote = m_adapter->deviceForUBI(device.path());
-
-    QStringList list(remote->name());
-
+    QStringList list(deviceName(device.path()));
     connect(m_process, SIGNAL(finished(int)), this, SLOT(processClosedPin(int)));
     m_process->start(KStandardDirs::findExe("bluedevil-requestpin"), list);
 
@@ -105,10 +98,7 @@ quint32 BluezAgent::RequestPasskey(const QDBusObjectPath &device, const QDBusMes
     m_msg = msg;
     m_msg.setDelayedReply(true);
 
-    BlueDevil::Device *remote = m_adapter->deviceForUBI(device.path());
-
-    QStringList list(remote->name());
-
+    QStringList list(deviceName(device.path()));
     connect(m_process, SIGNAL(finished(int)), this, SLOT(processClosedPasskey(int)));
     m_process->start(KStandardDirs::findExe("bluedevil-requestpin"), list);
 
@@ -128,29 +118,12 @@ void BluezAgent::RequestConfirmation(const QDBusObjectPath &device, quint32 pass
     m_msg.setDelayedReply(true);
     m_currentHelper = "RequestConfirmation";
 
-    BlueDevil::Device *remote = m_adapter->deviceForUBI(device.path());
-
     QStringList list;
-    list.append(remote->name());
+    list.append(deviceName(device.path()));
     list.append(QString("%1").arg(passkey, 6, 10, QLatin1Char('0')));
 
     connect(m_process, SIGNAL(finished(int)), this, SLOT(processClosedBool(int)));
     m_process->start(KStandardDirs::findExe("bluedevil-requestconfirmation"), list);
-}
-
-void BluezAgent::ConfirmModeChange(const QString& mode, const QDBusMessage &msg)
-{
-    qDebug() << "AGENT-ConfirmModechange " << mode;
-
-    m_msg = msg;
-    m_msg.setDelayedReply(true);
-    m_currentHelper = "ConfirmModechange";
-
-    QStringList list;
-    list.append(mode);
-
-    connect(m_process, SIGNAL(finished(int)), this, SLOT(processClosedBool(int)));
-    m_process->start(KStandardDirs::findExe("bluedevil-confirmchangemode"), list);
 }
 
 void BluezAgent::Cancel()
@@ -209,4 +182,15 @@ void BluezAgent::sendBluezError(const QString &helper, const QDBusMessage &msg)
     qDebug() << "Sending canceled msg to bluetooth" << helper;
     QDBusMessage error = msg.createErrorReply("org.bluez.Error.Canceled", "Authorization canceled");
     QDBusConnection::systemBus().send(error);
+}
+
+QString BluezAgent::deviceName(const QString& UBI)
+{
+    BlueDevil::Device *device = BlueDevil::Manager::self()->deviceForUBI(UBI);
+    if (!device || device->name().isEmpty()) {
+        return i18nc("User will see this as: Bluetooth device is asking if the pin is correct\
+        It is mostly a fallback", "Bluetooth device");
+    }
+
+    return device->name();
 }

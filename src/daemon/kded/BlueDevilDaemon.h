@@ -92,14 +92,10 @@ private Q_SLOTS:
     void monolithicFinished(const QString &);
 
 private:
-    /**
-     * Tries to start the helper process via dbus and returns true if successful
-     */
-    bool isServiceStarted();
     void executeMonolithic();
     void killMonolithic();
 
-    DeviceInfo deviceToInfo (const Device *device) const;
+    DeviceInfo deviceToInfo (Device *const device) const;
 
 private:
     struct Private;

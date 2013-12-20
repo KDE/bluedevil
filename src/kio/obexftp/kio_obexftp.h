@@ -30,6 +30,7 @@
 
 #include <kio/slavebase.h>
 
+class OrgBluezObexFileTransfer1Interface;
 class KioFtp
     : public QObject
     , public KIO::SlaveBase
@@ -39,8 +40,6 @@ Q_OBJECT
 public:
     KioFtp(const QByteArray &pool, const QByteArray &app);
     virtual ~KioFtp();
-
-    int processXmlEntries(const KUrl& url, const QString& xml, const char* slot);
 
     virtual void copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFlags flags);
     virtual void listDir(const KUrl &url);
@@ -52,24 +51,14 @@ public:
     virtual void get(const KUrl& url);
 
 private Q_SLOTS:
-    void TransferProgress(qulonglong transfered);
-    void TransferCompleted();
-    void TransferCancelled();
-    void ErrorOccurred(const QString&, const QString&);
-
-    void listDirCallback(const KIO::UDSEntry& entry, const KUrl& url);
-    void statCallback(const KIO::UDSEntry &entry, const KUrl& url);
-
     void updateProcess();
-    void sessionConnected(QString address);
-    void sessionClosed(QString address);
 
-    void wasKilledCheck();
-private:
+    KIO::UDSEntry entryFromInfo(const QVariantMap &info);
     void copyHelper(const KUrl &src, const KUrl &dest);
+    void copyFromObexftp(const KUrl &src, const KUrl &dest);
+    void copyToObexftp(const KUrl &src, const KUrl &dest);
     void statHelper(const KUrl &url);
     void launchProgressBar();
-    void blockUntilNotBusy(QString address);
 
 private:
     int                          m_counter;
@@ -77,8 +66,11 @@ private:
     QEventLoop                   m_eventLoop;
     QMap<QString, KIO::UDSEntry> m_statMap;
     QString                      m_address;
+    QString                      m_sessionPath;
     QTimer                      *m_timer;
     org::kde::ObexFtp           *m_kded;
+    OrgBluezObexFileTransfer1Interface *m_transfer;
+
 };
 
 #endif // KIO_OBEXFTP_H

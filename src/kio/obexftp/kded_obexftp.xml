@@ -3,55 +3,9 @@
 "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
 <node>
  <interface name="org.kde.ObexFtp">
-    <signal name="sessionConnected">
-      <arg name="address" type="s" direction="out"/>
-    </signal>
-    <signal name="sessionClosed">
-      <arg name="address" type="s" direction="out"/>
-    </signal>
-    <signal name="transferProgress">
-      <arg type="t" direction="out"/>
-    </signal>
-    <signal name="transferCompleted">
-    </signal>
-    <signal name="Cancelled">
-    </signal>
-    <signal name="errorOccurred">
-      <arg type="s" direction="out"/>
-      <arg type="s" direction="out"/>
-    </signal>
-    <method name="stablishConnection">
+    <method name="session">
       <arg name="address" type="s" direction="in"/>
-    </method>
-    <method name="listDir">
-      <arg type="s" direction="out"/>
-      <arg name="address" type="s" direction="in"/>
-      <arg name="path" type="s" direction="in"/>
-    </method>
-    <method name="copyRemoteFile">
-      <arg name="address" type="s" direction="in"/>
-      <arg name="fileName" type="s" direction="in"/>
-      <arg name="destPath" type="s" direction="in"/>
-    </method>
-    <method name="sendFile">
-      <arg name="address" type="s" direction="in"/>
-      <arg name="localPath" type="s" direction="in"/>
-      <arg name="destPath" type="s" direction="in"/>
-    </method>
-    <method name="createFolder">
-      <arg name="address" type="s" direction="in"/>
-      <arg name="path" type="s" direction="in"/>
-    </method>
-    <method name="deleteRemoteFile">
-      <arg name="address" type="s" direction="in"/>
-      <arg name="path" type="s" direction="in"/>
-    </method>
-    <method name="isBusy">
-      <arg type="b" direction="out"/>
-      <arg name="address" type="s" direction="in"/>
-    </method>
-    <method name="Cancel">
-        <arg name="address" type="s" direction="in"/>
+      <arg name="sessionPath" type="s" direction="out"/>
     </method>
   </interface>
 </node>

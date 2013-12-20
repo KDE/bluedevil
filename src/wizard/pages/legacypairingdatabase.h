@@ -50,11 +50,9 @@ public:
     virtual int nextId() const;
 
 public Q_SLOTS:
-    void registered(Device* device);
     void pairedChanged(bool paired);
 
 protected:
-    Device* deviceFromWizard();
     QList <QWizard::WizardButton> wizardButtonsLayout() const;
 
 private:

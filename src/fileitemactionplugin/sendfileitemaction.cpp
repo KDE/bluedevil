@@ -47,6 +47,7 @@ SendFileItemAction::SendFileItemAction(QObject* parent, const QVariantList& args
 
 QList< QAction* > SendFileItemAction::actions(const KFileItemListProperties& fileItemInfos, QWidget* parentWidget) const
 {
+    Q_UNUSED(parentWidget)
     QList< QAction* > list;
 
     SendFileItemAction *hack = const_cast<SendFileItemAction*>(this);

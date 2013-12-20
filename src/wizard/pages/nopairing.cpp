@@ -33,6 +33,7 @@
 using namespace BlueDevil;
 
 NoPairingPage::NoPairingPage(BlueWizard* parent) : QWizardPage(parent)
+, m_validPage(false)
 , m_wizard(parent)
 {
     setupUi(this);
@@ -46,34 +47,43 @@ void NoPairingPage::initializePage()
     kDebug();
     m_wizard->setButtonLayout(wizardButtonsLayout());
 
-    Device *device = deviceFromWizard();
-    connecting->setText(connecting->text().arg(device->name()));
+    connecting->setText(connecting->text().append(m_wizard->device()->name()));
 
-    connect(device, SIGNAL(registered(Device*)), this, SLOT(registerDeviceResult(Device*)));
+    //It can happen that the device is technically connected and trusted but we are not connected
+    //to the profile. We have no way to know if the profile was activated or not so we have to relay
+    //on a timeout (10s)
+    QTimer::singleShot(10000, this, SLOT(timeout()));
+    connect(m_wizard->device(), SIGNAL(connectedChanged(bool)), SLOT(connectedChanged(bool)));
+    connect(m_wizard->device(), SIGNAL(trustedChanged(bool)), SLOT(connectedChanged(bool)));
 
-    QMetaObject::invokeMethod(device, "registerDeviceAsync", Qt::QueuedConnection);
+    m_wizard->device()->connectDevice();
+    m_wizard->device()->setTrusted(true);
 }
 
-void NoPairingPage::registerDeviceResult(Device* device)
+void NoPairingPage::timeout()
 {
-    Q_UNUSED(device);
-    m_wizard->next();
+    connectedChanged(true);
+}
+
+void NoPairingPage::connectedChanged(bool connected)
+{
+    kDebug();
+
+    m_validPage = connected;
+    if (m_validPage) {
+        kDebug() << "Done";
+        m_wizard->done(0);
+    }
 }
 
 bool NoPairingPage::validatePage()
 {
-    Device *device = Manager::self()->usableAdapter()->deviceForAddress(m_wizard->deviceAddress());
-    return device->isRegistered();
+    return m_validPage;
 }
 
 int NoPairingPage::nextId() const
 {
-    return BlueWizard::Services;
-}
-
-Device* NoPairingPage::deviceFromWizard()
-{
-    return Manager::self()->usableAdapter()->deviceForAddress(m_wizard->deviceAddress());
+    return -1;
 }
 
 QList<QWizard::WizardButton> NoPairingPage::wizardButtonsLayout() const

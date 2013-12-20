@@ -51,7 +51,6 @@ public:
     virtual bool validatePage();
 
 public Q_SLOTS:
-    void registered(Device *device);
     void confirmationRequested(quint32 passkey, const QDBusMessage &msg);
     void pairedChanged(bool paired);
     void matchesClicked();
@@ -59,7 +58,6 @@ public Q_SLOTS:
     void pinRequested(const QString &pin);
 
 protected:
-    Device* deviceFromWizard();
     QList <QWizard::WizardButton> wizardButtonsLayout() const;
 
 private:

@@ -20,9 +20,10 @@
 
 #include "BlueDevilDaemon.h"
 #include "bluezagent.h"
-#include "bluedevil_service_interface.h"
 #include "filereceiversettings.h"
 #include "version.h"
+
+#include "filereceiver/filereceiver.h"
 
 #include <QtCore/QProcess>
 #include <QDBusServiceWatcher>
@@ -31,6 +32,7 @@
 #include <kdemacros.h>
 #include <KDebug>
 #include <KAboutData>
+#include <KComponentData>
 #include <KPluginFactory>
 #include <kfileplacesmodel.h>
 #include <kdirnotify.h>
@@ -58,10 +60,11 @@ struct BlueDevilDaemon::Private
     BluezAgent                      *m_bluezAgent;
     KFilePlacesModel                *m_placesModel;
     Adapter                         *m_adapter;
-    org::kde::BlueDevil::Service    *m_service;
     QDBusServiceWatcher             *m_monolithicWatcher;
+    FileReceiver                    *m_fileReceiver;
     QList <DeviceInfo>                m_discovered;
     QTimer                           m_timer;
+    KComponentData                  m_componentData;
 };
 
 BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
@@ -73,8 +76,8 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
 
     d->m_bluezAgent = 0;
     d->m_adapter = 0;
-    d->m_service = 0;
     d->m_placesModel = 0;
+    d->m_fileReceiver = 0;
     d->m_monolithicWatcher = new QDBusServiceWatcher("org.kde.bluedevilmonolithic"
             , QDBusConnection::sessionBus(), QDBusServiceWatcher::WatchForUnregistration, this);
     d->m_timer.setInterval(20000);
@@ -96,6 +99,8 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     aboutData.addAuthor(ki18n("Eduardo Robles Elvira"), ki18n("Maintainer"), "edulix@gmail.com",
         "http://blog.edulix.es");
 
+    aboutData.setProgramIconName("preferences-system-bluetooth");
+    d->m_componentData = KComponentData(aboutData);
     connect(d->m_monolithicWatcher, SIGNAL(serviceUnregistered(const QString &)), SLOT(monolithicFinished(const QString &)));
 
     connect(Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)),
@@ -134,10 +139,11 @@ QMapDeviceInfo BlueDevilDaemon::knownDevices()
     QList <Device* > list = Manager::self()->usableAdapter()->devices();
     kDebug(dblue()) << "List: " << list.length();
     DeviceInfo info;
-    Q_FOREACH(const Device* device, list) {
+    Q_FOREACH(Device *const device, list) {
         info["name"] = device->friendlyName();
         info["icon"] = device->icon();
         info["address"] = device->address();
+        info["UUIDs"] = device->UUIDs().join(",");
         devices[device->address()] = info;
     }
 
@@ -161,20 +167,6 @@ void BlueDevilDaemon::stopDiscovering()
     kDebug(dblue()) << "Stopping discovering";
     d->m_timer.stop();
     Manager::self()->usableAdapter()->stopDiscovery();
-}
-
-bool BlueDevilDaemon::isServiceStarted()
-{
-    if (!d->m_service) {
-        d->m_service = new org::kde::BlueDevil::Service("org.kde.BlueDevil.Service",
-            "/Service", QDBusConnection::sessionBus(), this);
-    }
-    QDBusPendingReply <bool > r = d->m_service->isRunning();
-    r.waitForFinished();
-    if (r.isError() || !r.isValid()) {
-        return false;
-    }
-    return r.value();
 }
 
 void BlueDevilDaemon::executeMonolithic()
@@ -215,13 +207,13 @@ void BlueDevilDaemon::onlineMode()
     d->m_adapter = Manager::self()->usableAdapter();
 
     FileReceiverSettings::self()->readConfig();
-    if (!isServiceStarted() && FileReceiverSettings::self()->enabled()) {
-        kDebug(dblue()) << "Launching server";
-        d->m_service->launchServer();
+    if (!d->m_fileReceiver && FileReceiverSettings::self()->enabled()) {
+        d->m_fileReceiver = new FileReceiver(d->m_componentData, this);
     }
-    if (isServiceStarted() && !FileReceiverSettings::self()->enabled()) {
+    if (d->m_fileReceiver && !FileReceiverSettings::self()->enabled()) {
         kDebug(dblue()) << "Stoppping server";
-        d->m_service->stopServer();
+        delete d->m_fileReceiver;
+        d->m_fileReceiver = 0;
     }
 
     if (!d->m_placesModel) {
@@ -266,9 +258,10 @@ void BlueDevilDaemon::offlineMode()
         d->m_bluezAgent = 0;
     }
 
-    if (isServiceStarted()) {
+    if (d->m_fileReceiver) {
         kDebug(dblue()) << "Stoppping server";
-        d->m_service->stopServer();
+        delete d->m_fileReceiver;
+        d->m_fileReceiver = 0;
     }
 
     //Just to be sure that online was called
@@ -322,13 +315,14 @@ void BlueDevilDaemon::monolithicQuit(QDBusPendingCallWatcher* watcher)
     }
 }
 
-DeviceInfo BlueDevilDaemon::deviceToInfo(const Device* device) const
+DeviceInfo BlueDevilDaemon::deviceToInfo(Device *const device) const
 {
     DeviceInfo info;
     info["name"] = device->friendlyName();
     info["icon"] = device->icon();
     info["address"] = device->address();
     info["discovered"] = "true";
+    info["UUIDs"] = device->UUIDs().join(",");
 
     return info;
 }

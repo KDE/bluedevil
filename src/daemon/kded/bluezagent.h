@@ -45,7 +45,7 @@ class BluezAgent
     : public QDBusAbstractAdaptor
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.bluez.Agent")
+    Q_CLASSINFO("D-Bus Interface", "org.bluez.Agent1")
 
 public:
     /**
@@ -62,7 +62,7 @@ public Q_SLOTS:
     /**
      * Called by bluez to ask for a device authoritation
      */
-    void Authorize(const QDBusObjectPath &device, const QString& uuid, const QDBusMessage &msg);
+    void AuthorizeService(const QDBusObjectPath &device, const QString& uuid, const QDBusMessage &msg);
 
     /**
      * Called by bluez to ask for a PIN
@@ -84,11 +84,6 @@ public Q_SLOTS:
      * Called by bluez to ask for a request confirmation
      */
     void RequestConfirmation(const QDBusObjectPath &device, quint32 passkey, const QDBusMessage &msg);
-
-    /**
-     * Called by bluez to confirm the change mode
-     */
-    void ConfirmModeChange(const QString& mode, const QDBusMessage &msg);
 
     /**
      * Called by bluez to inform that a process has failed (for example when the pin is introduced
@@ -138,11 +133,15 @@ private:
      */
     void sendBluezError(const QString& helper, const QDBusMessage &msg);
 
-private:
     /**
-     * Global adapter usually used to get information from a remote device
+     * Returns the name of the device if it is registered on the bus
+     *
+     * @param UBI of the device
+     * @return the device->name() or "Bluetooth" if device doesn't exists;
      */
-    BlueDevil::Adapter *m_adapter;
+    QString deviceName(const QString &UBI);
+
+private:
     QProcess           *m_process;
     QDBusMessage        m_msg;
     QString             m_currentHelper;
