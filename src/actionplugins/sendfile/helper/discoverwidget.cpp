@@ -34,7 +34,7 @@
 
 using namespace BlueDevil;
 
-DiscoverWidget::DiscoverWidget(QWidget* parent)
+DiscoverWidget::DiscoverWidget(QWidget* parent) : QWidget(parent)
 {
     setupUi(this);
 
