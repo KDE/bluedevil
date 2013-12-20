@@ -435,9 +435,17 @@ void KCMBlueDevilDevices::deviceSelectionChanged(const QItemSelection &selection
     m_connectDevice->setEnabled(enable);
     m_disconnectDevice->setEnabled(false);
 
-    if (m_devices->currentIndex().isValid()) {
-        Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
-        m_disconnectDevice->setEnabled(device->isConnected());
+    if (!m_devices->currentIndex().isValid()) {
+        return;
+    }
+
+    Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
+    m_disconnectDevice->setEnabled(device->isConnected());
+
+    if (device->isConnected()) {
+        m_connectDevice->setText(i18n("Re-connect"));
+    } else {
+        m_connectDevice->setText(i18n("Connect"));
     }
 }
 
