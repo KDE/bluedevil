@@ -18,7 +18,6 @@
 
 #include "monolithic.h"
 #include "audio_interface.h"
-#include "input_interface.h"
 
 #include <KDebug>
 #include <kmenu.h>
