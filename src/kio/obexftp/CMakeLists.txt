@@ -15,7 +15,7 @@ qt4_add_dbus_interface(kio_obexftp_SRCS ${FILE_TRANSFER_FILE} obexd_file_transfe
 
 set(obexftpfiletransfer_xml ${CMAKE_CURRENT_SOURCE_DIR}/obexftp/filetransfer.xml)
 
-set(SENDER_PLUGIN_PATH ${CMAKE_SOURCE_DIR}/src/actionplugins/sendfile/helper/)
+set(SENDER_PLUGIN_PATH ${CMAKE_SOURCE_DIR}/src/sendfile/)
 qt4_add_dbus_interface(kio_obexftp_SRCS ${SENDER_PLUGIN_PATH}org.bluez.obex.Transfer1.xml obexd_transfer)
 
 kde4_add_plugin(kio_obexftp ${kio_obexftp_SRCS})

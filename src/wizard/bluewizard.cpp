@@ -25,7 +25,6 @@
 #include "pages/keyboardpairing.h"
 #include "pages/ssppairing.h"
 #include "pages/fail.h"
-#include "../actionplugins/actionplugin.h"
 
 #include <QApplication>
 #include <QDBusConnection>
