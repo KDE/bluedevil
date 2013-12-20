@@ -95,7 +95,7 @@ private:
     void executeMonolithic();
     void killMonolithic();
 
-    DeviceInfo deviceToInfo (const Device *device) const;
+    DeviceInfo deviceToInfo (Device *const device) const;
 
 private:
     struct Private;

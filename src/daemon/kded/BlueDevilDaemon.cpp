@@ -139,10 +139,11 @@ QMapDeviceInfo BlueDevilDaemon::knownDevices()
     QList <Device* > list = Manager::self()->usableAdapter()->devices();
     kDebug(dblue()) << "List: " << list.length();
     DeviceInfo info;
-    Q_FOREACH(const Device* device, list) {
+    Q_FOREACH(Device *const device, list) {
         info["name"] = device->friendlyName();
         info["icon"] = device->icon();
         info["address"] = device->address();
+        info["UUIDs"] = device->UUIDs().join(",");
         devices[device->address()] = info;
     }
 
@@ -314,13 +315,14 @@ void BlueDevilDaemon::monolithicQuit(QDBusPendingCallWatcher* watcher)
     }
 }
 
-DeviceInfo BlueDevilDaemon::deviceToInfo(const Device* device) const
+DeviceInfo BlueDevilDaemon::deviceToInfo(Device *const device) const
 {
     DeviceInfo info;
     info["name"] = device->friendlyName();
     info["icon"] = device->icon();
     info["address"] = device->address();
     info["discovered"] = "true";
+    info["UUIDs"] = device->UUIDs().join(",");
 
     return info;
 }
