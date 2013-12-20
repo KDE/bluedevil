@@ -15,7 +15,7 @@ class QGridLayout;
 class QLayout;
 class QWidget;
 
-struct ColumnResizerPrivate;
+class ColumnResizerPrivate;
 class ColumnResizer : public QObject
 {
     Q_OBJECT
