@@ -252,7 +252,7 @@ void ReceiveFileJob::moveFinished(KJob* job)
 
 QString ReceiveFileJob::createTempPath(const QString &fileName) const
 {
-    QString xdgCacheHome = QLatin1String(qgetenv("XDG_CACHE_HOME"));
+    QString xdgCacheHome = QFile::decodeName(qgetenv("XDG_CACHE_HOME"));
     if (xdgCacheHome.isEmpty()) {
             xdgCacheHome = QDir::homePath() + QLatin1String("/.cache");
     }
