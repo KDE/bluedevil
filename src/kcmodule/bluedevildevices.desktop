@@ -61,6 +61,7 @@ Name[zh_CN]=设备
 Name[zh_TW]=裝置
 
 Comment=Manage Bluetooth devices
+Comment[bs]=Upravljaj Bluetooth uređajima
 Comment[ca]=Gestiona els dispositius Bluetooth
 Comment[ca@valencia]=Gestiona els dispositius Bluetooth
 Comment[cs]=Spravovat zařízení Bluetooth
