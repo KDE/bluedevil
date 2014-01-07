@@ -82,6 +82,7 @@ void BlueWizard::done(int result)
     kDebug() << "Wizard done: " << result;
 
     QWizard::done(result);
+    qApp->exit(result);
 }
 
 Device* BlueWizard::device() const
