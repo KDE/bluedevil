@@ -46,6 +46,7 @@ int main(int argc, char *argv[])
     }
 
     KApplication app;
+    app.disableSessionManagement();
     app.setQuitOnLastWindowClosed(false);
     new BlueWizard(url);
 
