@@ -61,8 +61,8 @@ AdapterSettings::AdapterSettings(Adapter *adapter, KCModule *parent)
     buttonGroup->addButton(m_alwaysVisible);
     buttonGroup->addButton(m_temporaryVisible);
 
-    m_name->setText(adapter->name());
-    m_nameOrig = adapter->name();
+    m_name->setText(adapter->alias());
+    m_nameOrig = adapter->alias();
     m_hiddenOrig = false;
     m_alwaysVisibleOrig = false;
     m_temporaryVisibleOrig = false;
@@ -118,9 +118,9 @@ AdapterSettings::AdapterSettings(Adapter *adapter, KCModule *parent)
     connect(m_powered, SIGNAL(stateChanged(int)), this, SLOT(slotSettingsChanged()));
 
     if (BlueDevil::Manager::self()->usableAdapter() == adapter) {
-        setTitle(i18n("Default adapter: %1 (%2)", adapter->name(), adapter->address()));
+        setTitle(i18n("Default adapter: %1 (%2)", adapter->alias(), adapter->address()));
     } else {
-        setTitle(i18n("Adapter: %1 (%2)", adapter->name(), adapter->address()));
+        setTitle(i18n("Adapter: %1 (%2)", adapter->alias(), adapter->address()));
     }
 }
 
@@ -135,13 +135,13 @@ bool AdapterSettings::isModified() const
            m_temporaryVisible->isChecked() != m_temporaryVisibleOrig ||
            m_discoverTime->value() != m_discoverTimeOrig || m_powered->isChecked() != m_poweredOrig;
 }
-
+#include <QDebug>
 void AdapterSettings::applyChanges()
 {
-     /* TODO: Find new way to set adapter name in bluez5
-        if (m_name->text() != m_nameOrig) {
-         m_adapter->setName(m_name->text());
-     } */
+    if (m_name->text() != m_nameOrig) {
+        qDebug() << "Setting alias";
+         m_adapter->setAlias(m_name->text());
+     }
 
     if (m_hidden->isChecked()) {
         m_adapter->setDiscoverable(false);
@@ -188,7 +188,7 @@ void AdapterSettings::readChanges()
 {
     blockSignals(true);
 
-    m_nameOrig = m_adapter->name();
+    m_nameOrig = m_adapter->alias();
     m_hiddenOrig = !m_adapter->isDiscoverable();
     m_alwaysVisibleOrig = m_adapter->isDiscoverable() && !m_adapter->discoverableTimeout();
     m_temporaryVisibleOrig = m_adapter->isDiscoverable() && m_adapter->discoverableTimeout();
@@ -204,9 +204,9 @@ void AdapterSettings::readChanges()
 
     m_discoverTimeLabel->setText(i18np("1 minute", "%1 minutes", m_discoverTime->value()));
     if (BlueDevil::Manager::self()->usableAdapter() == m_adapter) {
-        setTitle(i18n("Default adapter: %1 (%2)", m_adapter->name(), m_adapter->address()));
+        setTitle(i18n("Default adapter: %1 (%2)", m_adapter->alias(), m_adapter->address()));
     } else {
-        setTitle(i18n("Adapter: %1 (%2)", m_adapter->name(), m_adapter->address()));
+        setTitle(i18n("Adapter: %1 (%2)", m_adapter->alias(), m_adapter->address()));
     }
 
     blockSignals(false);
