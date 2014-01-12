@@ -21,6 +21,7 @@ Comment[kk]=Енгізу қызметіне қосылу (Тышқан/Перн�
 Comment[km]=តភ្ជាប់​ទៅកាន់​សេវាកម្ម​ព័ត៌មាន​បញ្ចូល (កណ្ដុរ/ក្ដារចុច/ផ្សេងទៀត)
 Comment[lt]=Prisijungti prie įvesties tarnybos (Pelės/Klaviatūros/Kitų)
 Comment[mr]=इनपुट सेवेस जोडा (माऊस/कळफलक/इतर)
+Comment[nb]=Koble til inndata-tjenesten (Mus/tastatur/andre)
 Comment[nds]=Na Ingaavdeenst tokoppeln (Muus/Tastatuur/Anner)
 Comment[nl]=Met de invoer-service verbinden (muis/toetsenbord/overig)
 Comment[pa]=ਇੰਪੁੱਟ ਸਰਵਿਸ (ਮਾਊਸ/ਕੀਬੋਰਡ/ਹੋਰ) ਨਾਲ ਕੁਨੈਕਟ ਕਰੋ
@@ -65,6 +66,7 @@ Name[km]=ព័ត៌មាន​បញ្ចូល​
 Name[lt]=Įvestis
 Name[mai]=इनपुट
 Name[mr]=इनपुट
+Name[nb]=Inndata
 Name[nds]=Ingaav
 Name[nl]=Invoer
 Name[pa]=ਇੰਪੁੱਟ
@@ -110,6 +112,7 @@ GenericName[km]=ព័ត៌មាន​បញ្ចូល​
 GenericName[lt]=Įvestis
 GenericName[mai]=इनपुट
 GenericName[mr]=इनपुट
+GenericName[nb]=Inndata
 GenericName[nds]=Ingaav
 GenericName[nl]=Invoer
 GenericName[pa]=ਇੰਪੁੱਟ

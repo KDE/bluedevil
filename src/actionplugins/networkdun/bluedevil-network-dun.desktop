@@ -21,6 +21,7 @@ Comment[kk]=Желіге қашықтан қатынау (DUN) қызметін�
 Comment[km]=តភ្ជាប់​ទៅកាន់​សេវាកម្ម​ Dial Up Network (DUN)
 Comment[lt]=Prisijungti prie Dial Up tinklo tarnybos (DUN)
 Comment[mr]=डायल अप संजाळ सेवेस (DUN) जोडा
+Comment[nb]=Koble til oppringt nettverkstjeneste (DUN)
 Comment[nl]=Met de inbelnetwerkservice verbinden (DUN)
 Comment[pa]=ਡਾਇਲ ਅੱਪ ਨੈੱਟਵਰਕ ਸਰਵਿਸ (DUN) ਨਾਲ ਕੁਨੈਕਟ ਕਰੋ
 Comment[pl]=Połącz z usługą sieci z wdzwanianiem (DUN)
@@ -59,6 +60,7 @@ Name[kk]=DUN
 Name[km]=DUN
 Name[lt]=DUN
 Name[mr]=DUN
+Name[nb]=DUN
 Name[nl]=DUN
 Name[pa]=DUN
 Name[pl]=DUN
@@ -99,6 +101,7 @@ GenericName[kk]=DUN
 GenericName[km]=DUN
 GenericName[lt]=DUN
 GenericName[mr]=DUN
+GenericName[nb]=DUN
 GenericName[nl]=DUN
 GenericName[pa]=DUN
 GenericName[pl]=DUN
