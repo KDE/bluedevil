@@ -80,6 +80,7 @@ private Q_SLOTS:
     void SessionClosed(QDBusObjectPath path);
 
     void sessionDisconnected();
+    void sessionDestroyed(QObject *obj);
 
 //Dbus interface
 public Q_SLOTS:

@@ -181,6 +181,7 @@ void ObexFtpDaemon::stablishConnection(QString dirtyAddress)
     QDBusPendingReply <QDBusObjectPath > rep = d->m_manager->CreateBluetoothSession(address, "00:00:00:00:00:00", "ftp");
 
     d->m_sessionMap[address] = new ObexSession("org.openobex", rep.value().path(), QDBusConnection::sessionBus(), 0);
+    connect(d->m_sessionMap[address], SIGNAL(destroyed(QObject *)), SLOT(sessionDestroyed(QObject*)));
     kDebug(dobex()) << "Path: " << rep.value().path();
 }
 
@@ -372,6 +373,11 @@ void ObexFtpDaemon::sessionDisconnected()
 
     d->m_sessionMap.remove(d->m_sessionMap.key(session));
     delete session;
+}
+
+void ObexFtpDaemon::sessionDestroyed(QObject* obj)
+{
+    d->m_sessionMap.remove(d->m_sessionMap.key(static_cast<ObexSession*>(obj)));
 }
 
 QString ObexFtpDaemon::getAddressFromSession(QString path)
