@@ -150,7 +150,7 @@ void BluezAgent::ConfirmModeChange(const QString& mode, const QDBusMessage &msg)
     list.append(mode);
 
     connect(m_process, SIGNAL(finished(int)), this, SLOT(processClosedBool(int)));
-    m_process->start(KStandardDirs::findExe("bluedevil-confirmchangemode"), list);
+    m_process->start(KStandardDirs::findExe("bluedevil-confirmmodechange"), list);
 }
 
 void BluezAgent::Cancel()
