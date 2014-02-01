@@ -9,6 +9,7 @@ X-KDE-Kded-load-on-demand=true
 X-KDE-Kded-phase=1
 
 Name=Bluetooth File Transfer
+Name[bs]=Transfer Bluetooth Daoteke
 Name[ca]=Transferència de fitxer per Bluetooth
 Name[ca@valencia]=Transferència de fitxer per Bluetooth
 Name[cs]=Přenos souborů Bluetooth
@@ -45,6 +46,7 @@ Name[x-test]=xxBluetooth File Transferxx
 Name[zh_TW]=藍牙檔案傳輸
 
 Comment=Supports Bluetooth file transfer using ObexFTP
+Comment[bs]=Podržava Blutut prijenos datoteka koristeći ObexFTP
 Comment[ca]=Accepta transferència de fitxer per Bluetooth usant ObexFTP
 Comment[ca@valencia]=Accepta transferència de fitxer per Bluetooth usant ObexFTP
 Comment[cs]=Podporuje přenos souborů Bluetooth použitím ObexFTP
