@@ -107,6 +107,8 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     d->m_status = Private::Offline;
     if (Manager::self()->usableAdapter()) {
         onlineMode();
+    } else if (!Manager::self()->adapters().isEmpty()) {
+        executeMonolithic();
     }
 }
 
@@ -277,7 +279,9 @@ void BlueDevilDaemon::offlineMode()
         d->m_placesModel->removePlace(index);
     }
 
-    killMonolithic();
+    if (BlueDevil::Manager::self()->adapters().isEmpty()) {
+        killMonolithic();
+    }
     d->m_status = Private::Offline;
 }
 
