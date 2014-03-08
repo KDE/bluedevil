@@ -23,6 +23,9 @@
 #define REQUESTPIN_H
 
 #include <QtCore/QObject>
+#include <QTimer>
+
+class KDialog;
 class KNotification;
 
 /**
@@ -57,8 +60,11 @@ private Q_SLOTS:
      * If the notification is ignored or closed, then we have to quit the helper
      */
     void quit();
+    void checkPin(const QString &pin);
 
 private:
+    QTimer m_timer;
+    KDialog *m_dialog;
     KNotification *m_notification;
 };
 #endif //REQUESTPIN_H
