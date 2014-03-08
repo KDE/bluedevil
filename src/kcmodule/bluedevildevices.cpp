@@ -28,6 +28,7 @@
 
 #include <QtCore/QAbstractItemModel>
 
+#include <QtGui/QFontMetrics>
 #include <QtGui/QLabel>
 #include <QtGui/QPainter>
 #include <QtGui/QCheckBox>
@@ -215,6 +216,7 @@ public:
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
 
 private:
+    const int smallIconSize;
     QPixmap m_blockedPixmap;
     QPixmap m_trustedPixmap;
     QPixmap m_untrustedPixmap;
@@ -223,18 +225,19 @@ private:
 };
 
 BluetoothDevicesDelegate::BluetoothDevicesDelegate(QObject *parent)
-    : QStyledItemDelegate(parent)
+    : QStyledItemDelegate(parent),
+      smallIconSize(IconSize(KIconLoader::Toolbar))
 {
     KIcon blockedIcon("dialog-cancel");
-    m_blockedPixmap = blockedIcon.pixmap(22, 22);
+    m_blockedPixmap = blockedIcon.pixmap(smallIconSize, smallIconSize);
     KIcon trustedIcon("security-high");
-    m_trustedPixmap = trustedIcon.pixmap(22, 22);
+    m_trustedPixmap = trustedIcon.pixmap(smallIconSize, smallIconSize);
     KIcon untrustedIcon("security-low");
-    m_untrustedPixmap = untrustedIcon.pixmap(22, 22);
+    m_untrustedPixmap = untrustedIcon.pixmap(smallIconSize, smallIconSize);
     KIcon connectedIcon("user-online");
-    m_connectedPixmap = connectedIcon.pixmap(22, 22);
+    m_connectedPixmap = connectedIcon.pixmap(smallIconSize, smallIconSize);
     KIcon disconnectedIcon("user-offline");
-    m_disconnectedPixmap = disconnectedIcon.pixmap(22, 22);
+    m_disconnectedPixmap = disconnectedIcon.pixmap(smallIconSize, smallIconSize);
 }
 
 BluetoothDevicesDelegate::~BluetoothDevicesDelegate()
@@ -251,17 +254,18 @@ void BluetoothDevicesDelegate::paint(QPainter *painter, const QStyleOptionViewIt
         painter->setPen(option.palette.highlightedText().color());
     }
 
+    QRect r = option.rect;
+
 // Draw icon
     const QModelIndex iconIndex = index.model()->index(index.row(), 0);
     const QPixmap icon = iconIndex.data(BluetoothDevicesModel::IconModelRole).value<QPixmap>();
-    painter->drawPixmap(option.rect.left() + 5, option.rect.top() + 5, icon);
+    painter->drawPixmap(r.left() + 5, r.top() + (r.height() - icon.height()) / 2, icon);
 
 // Draw alias and device type
     const QModelIndex idx = index.model()->index(index.row(), 0);
-    QRect r = option.rect;
-    r.setTop(r.top() + 10);
-    r.setBottom(r.bottom() - 10);
-    r.setLeft(r.left() + KIconLoader::SizeLarge + 10);
+    r.setTop(r.top() + smallIconSize / 2);
+    r.setBottom(r.bottom() - smallIconSize / 2);
+    r.setLeft(r.left() + IconSize(KIconLoader::Dialog) * 1.8);
     QFont f = kapp->font();
     f.setBold(true);
     painter->save();
@@ -280,9 +284,9 @@ void BluetoothDevicesDelegate::paint(QPainter *painter, const QStyleOptionViewIt
     Device *const device = static_cast<Device*>(index.data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
 
     r = option.rect;
-    r.setTop(r.top() + r.height() / 2 - 11);
-    r.setLeft(r.right() - 5 - 22);
-    r.setSize(QSize(22, 22));
+    r.setTop(r.top() + r.height() / 2 - smallIconSize / 2);
+    r.setLeft(r.right() - 5 - smallIconSize);
+    r.setSize(QSize(smallIconSize, smallIconSize));
 
     if (!device->isBlocked()) {
         if (device->isConnected()) {
@@ -291,8 +295,8 @@ void BluetoothDevicesDelegate::paint(QPainter *painter, const QStyleOptionViewIt
             painter->drawPixmap(r, m_disconnectedPixmap);
         }
 
-        r.setLeft(r.right() - 5 - 22 - 22);
-        r.setSize(QSize(22, 22));
+        r.setLeft(r.right() - 5 - smallIconSize * 2);
+        r.setSize(QSize(smallIconSize, smallIconSize));
 
         if (device->isTrusted()) {
             painter->drawPixmap(r, m_trustedPixmap);
@@ -309,8 +313,9 @@ void BluetoothDevicesDelegate::paint(QPainter *painter, const QStyleOptionViewIt
 
 QSize BluetoothDevicesDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
-    const QSize res = QStyledItemDelegate::sizeHint(option, index);
-    return QSize(res.width(), KIconLoader::SizeLarge + 10);
+    const int width = QStyledItemDelegate::sizeHint(option, index).width();
+    const int height = qMax( QFontMetrics(kapp->font()).height() * 2 + QFontMetrics(kapp->font()).xHeight(), (int)(IconSize(KIconLoader::Dialog) * 1.5)) + 10;
+    return QSize(width, height);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -585,10 +590,11 @@ void KCMBlueDevilDevices::fillRemoteDevicesModelInformation()
         m_devices->setViewport(viewport);
     }
     m_devicesModel->insertRows(0, deviceList.count());
+    const QSize iconSize = QSize(IconSize(KIconLoader::Dialog) * 1.5, IconSize(KIconLoader::Dialog) * 1.5);
     int i = 0;
     Q_FOREACH (Device *const device, deviceList) {
         QModelIndex index = m_devicesModel->index(i, 0);
-        m_devicesModel->setData(index, KIcon(device->icon()).pixmap(48, 48), BluetoothDevicesModel::IconModelRole);
+        m_devicesModel->setData(index, KIcon(device->icon()).pixmap(iconSize), BluetoothDevicesModel::IconModelRole);
         QString deviceType;
         const quint32 type = BlueDevil::classToType(device->deviceClass());
         switch (type) {
