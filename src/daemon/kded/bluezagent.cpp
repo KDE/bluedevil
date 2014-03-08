@@ -39,7 +39,7 @@ BluezAgent::BluezAgent(QObject *parent)
         return;
     }
 
-    BlueDevil::Manager::self()->registerAgent(AGENT_PATH,BlueDevil::Manager::DisplayYesNo);
+    BlueDevil::Manager::self()->registerAgent(AGENT_PATH, BlueDevil::Manager::DisplayYesNo);
     BlueDevil::Manager::self()->requestDefaultAgent(AGENT_PATH);
 
     m_process = new QProcess(this);
