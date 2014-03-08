@@ -106,8 +106,8 @@ quint32 BluezAgent::RequestPasskey(const QDBusObjectPath &device, const QDBusMes
     m_msg.setDelayedReply(true);
 
     BlueDevil::Device *remote = m_adapter->deviceForUBI(device.path());
-
     QStringList list(remote->name());
+    list << QLatin1String("numeric");
 
     connect(m_process, SIGNAL(finished(int)), this, SLOT(processClosedPasskey(int)));
     m_process->start(KStandardDirs::findExe("bluedevil-requestpin"), list);

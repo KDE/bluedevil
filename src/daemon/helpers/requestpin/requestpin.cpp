@@ -27,6 +27,9 @@
 #include <QtCore/QDebug>
 #include <QtCore/QCoreApplication>
 #include <QtCore/QTimer>
+#include <QValidator>
+#include <QRegExpValidator>
+#include <QRegExp>
 
 #include <KIcon>
 #include <knotification.h>
@@ -58,15 +61,21 @@ RequestPin::RequestPin() : QObject()
     connect(m_notification, SIGNAL(ignored()), this, SLOT(quit()));
 
     //We're using persistent notifications so we have to use our own timeout (10s)
-    QTimer::singleShot(10000, m_notification, SLOT(close()));
+    m_timer.setSingleShot(true);
+    m_timer.setInterval(10000);
+    m_timer.start();
+    connect(&m_timer, SIGNAL(timeout()), m_notification, SLOT(close()));
+
     m_notification->setPixmap(KIcon("preferences-system-bluetooth").pixmap(42,42));
     m_notification->sendEvent();
 }
 
 void RequestPin::introducePin()
 {
-    disconnect(m_notification, SIGNAL(closed()), this, SLOT(quit()));
-    disconnect(m_notification, SIGNAL(ignored()), this, SLOT(quit()));
+    m_timer.stop();
+    m_notification->disconnect();
+    m_notification->close();
+    m_notification->deleteLater();
 
     KIcon icon("preferences-system-bluetooth");
 
@@ -80,34 +89,44 @@ void RequestPin::introducePin()
     );
     dialogWidget->pixmap->setPixmap(icon.pixmap(64,64));
 
-    KDialog *dialog = new KDialog();
-    dialog->setMainWidget(mainWidget);
-
-    dialog->setCaption(i18nc(
+    m_dialog = new KDialog();
+    m_dialog->setMainWidget(mainWidget);
+    m_dialog->setCaption(i18nc(
         "Shown in the caption of a dialog where the user introduce the PIN",
         "Introduce PIN"
     ));
 
-    QObject::connect(dialogWidget->pin, SIGNAL(returnPressed()),
-                     dialog, SLOT(accept()));
+    connect(dialogWidget->pin, SIGNAL(textChanged(QString)), SLOT(checkPin(QString)));
+    connect(dialogWidget->pin, SIGNAL(returnPressed()),
+                     m_dialog, SLOT(accept()));
 
-    dialog->setButtons(KDialog::Ok | KDialog::Cancel);
-    dialog->setMinimumWidth(300);
-    dialog->setMinimumHeight(150);
-    dialog->setMaximumWidth(300);
-    dialog->setMaximumHeight(150);
+    m_dialog->setButtons(KDialog::Ok | KDialog::Cancel);
 
     dialogWidget->pin->setFocus(Qt::ActiveWindowFocusReason);
+    qDebug() << qApp->arguments();
+    if (qApp->arguments().count() > 2 && qApp->arguments()[2] == QLatin1String("numeric")) {
+        dialogWidget->pin->setValidator(new QRegExpValidator(QRegExp("[0-9]{1,6}"), this ));
+    } else {
+        dialogWidget->pin->setValidator(new QRegExpValidator(QRegExp("[A-Za-z0-9]{1,16}"), this ));
+    }
 
-    if (dialog->exec()) {
-        cout << dialogWidget->pin->text().toLatin1().data();
+    m_dialog->enableButtonOk(false);
+    m_dialog->setMinimumSize(m_dialog->sizeHint());
+    m_dialog->setMaximumSize(m_dialog->sizeHint());
+    if (m_dialog->exec()) {
+        cout << dialogWidget->pin->text().toLatin1().constData();
         flush(cout);
         qApp->exit(0);
         return;
     }
 
-    delete dialog;
+    delete m_dialog;
     qApp->exit(1);
+}
+
+void RequestPin::checkPin(const QString& pin)
+{
+    m_dialog->enableButtonOk(!pin.isEmpty());
 }
 
 void RequestPin::quit()
