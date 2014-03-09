@@ -62,7 +62,8 @@ quint32 WizardAgent::RequestPasskey(const QDBusObjectPath& device, const QDBusMe
     Q_UNUSED(device);
     Q_UNUSED(msg);
     kDebug() << "AGENT-RequestPasskey " << device.path();
-    return 0;
+    emit pinRequested(m_pin);
+    return m_pin.toUInt();
 }
 
 void WizardAgent::DisplayPasskey(const QDBusObjectPath& device, quint32 passkey)
