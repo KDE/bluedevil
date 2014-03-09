@@ -104,6 +104,12 @@ void KioFtp::listDir(const KUrl &url)
     QDBusPendingReply <QVariantMapList > reply = m_transfer->ListFolder();
     reply.waitForFinished();
 
+    if (reply.isError()) {
+        kDebug() << reply.error().message();
+        error(KIO::ERR_SLAVE_DEFINED, i18n("Bluetooth is not enabled"));
+        finished();
+        return;
+    }
     QVariantMapList folderList = reply.value();
     Q_FOREACH(const QVariantMap folder, folderList) {
         KIO::UDSEntry entry = entryFromInfo(folder);
