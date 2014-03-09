@@ -51,7 +51,7 @@ public slots:
     void Authorize(QDBusObjectPath device, const QString& uuid, const QDBusMessage &msg);
     QString RequestPinCode(QDBusObjectPath device, const QDBusMessage &msg);
     quint32 RequestPasskey(QDBusObjectPath device, const QDBusMessage &msg);
-    void DisplayPasskey(QDBusObjectPath device, quint32 passkey);
+    void DisplayPasskey(QDBusObjectPath device, quint32 passkey, quint8 entered);
     void RequestConfirmation(QDBusObjectPath device, quint32 passkey, const QDBusMessage &msg);
     void ConfirmModeChange(const QString& mode, const QDBusMessage &msg);
     void Cancel();
