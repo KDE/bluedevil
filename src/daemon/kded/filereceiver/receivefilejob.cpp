@@ -189,7 +189,7 @@ void ReceiveFileJob::statusChanged(const QVariant& value)
 
     FileReceiverSettings::self()->readConfig();
     KUrl savePath = FileReceiverSettings::self()->saveUrl();
-    savePath.setFileName(m_transfer->name());
+    savePath.addPath(m_transfer->name());
 
     if (status == QLatin1String("active")) {
         emit description(this, i18n("Receiving file over Bluetooth"),
