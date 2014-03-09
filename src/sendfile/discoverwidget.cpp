@@ -40,8 +40,8 @@ DiscoverWidget::DiscoverWidget(QWidget* parent) : QWidget(parent)
 
     connect(deviceList, SIGNAL(currentItemChanged(QListWidgetItem*,QListWidgetItem*)), this,
             SLOT(itemSelected(QListWidgetItem*)));
-    connect(Manager::self()->usableAdapter(), SIGNAL(deviceFound(QVariantMap)), this,
-            SLOT(deviceFound(QVariantMap)));
+    connect(Manager::self()->usableAdapter(), SIGNAL(deviceFound(Device*)), this,
+            SLOT(deviceFound(Device*)));
 
     startScan();
 }
