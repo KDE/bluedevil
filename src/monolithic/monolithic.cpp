@@ -54,6 +54,8 @@ Monolithic::Monolithic(QObject* parent)
 
     setStandardActionsEnabled(false);
     setAssociatedWidget(contextMenu());
+
+    setStatus(KStatusNotifierItem::Active);
 }
 
 void Monolithic::adapterChanged()
@@ -206,7 +208,6 @@ void Monolithic::regenerateConnectedDevices()
 
 void Monolithic::onlineMode()
 {
-    setStatus(KStatusNotifierItem::Active);
 
     QList<Adapter*> adapters = Manager::self()->adapters();
     Q_FOREACH(Adapter *adapter, adapters) {
@@ -344,7 +345,6 @@ void Monolithic::deviceCreated(Device *device)
 
 void Monolithic::offlineMode()
 {
-    setStatus(KStatusNotifierItem::Passive);
     setTooltipTitleStatus(false);
 
     KMenu *const menu = contextMenu();
