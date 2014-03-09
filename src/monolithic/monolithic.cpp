@@ -44,7 +44,7 @@ Monolithic::Monolithic(QObject* parent)
 
     offlineMode();
 
-    if (Manager::self()->usableAdapter()) {
+    if (!Manager::self()->adapters().isEmpty()) {
         onlineMode();
     }
 
