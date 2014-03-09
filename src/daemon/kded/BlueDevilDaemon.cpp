@@ -106,13 +106,10 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     connect(Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)),
             this, SLOT(usableAdapterChanged(Adapter*)));
 
-    connect(Manager::self()->usableAdapter(), SIGNAL(deviceFound(Device*)), this, SLOT(deviceFound(Device*)));
-    connect(&d->m_timer, SIGNAL(timeout()), Manager::self()->usableAdapter(), SLOT(stopDiscovery()));
-
     d->m_status = Private::Offline;
-    if (Manager::self()->usableAdapter()) {
-        onlineMode();
-    } else if (!Manager::self()->adapters().isEmpty()) {
+    usableAdapterChanged(Manager::self()->usableAdapter());
+
+    if (!Manager::self()->adapters().isEmpty()) {
         executeMonolithic();
     }
 }
@@ -206,7 +203,8 @@ void BlueDevilDaemon::onlineMode()
     d->m_bluezAgent = new BluezAgent(new QObject());
     connect(d->m_bluezAgent, SIGNAL(agentReleased()), this, SLOT(agentReleased()));
 
-    d->m_adapter = Manager::self()->usableAdapter();
+    connect(d->m_adapter, SIGNAL(deviceFound(Device*)), this, SLOT(deviceFound(Device*)));
+    connect(&d->m_timer, SIGNAL(timeout()), d->m_adapter, SLOT(stopDiscovery()));
 
     FileReceiverSettings::self()->readConfig();
     if (!d->m_fileReceiver && FileReceiverSettings::self()->enabled()) {
