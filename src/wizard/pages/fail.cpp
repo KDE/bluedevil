@@ -60,7 +60,7 @@ void FailPage::initializePage()
     if (deviceName.isEmpty()) {
         failLbl->setText(i18nc("This string is shown when the wizard fail","The setup of the device has failed"));
     } else {
-        failLbl->setText(failLbl->text().arg(deviceName));
+        failLbl->setText(i18n("The setup of %1 has failed", deviceName));
     }
 
 }

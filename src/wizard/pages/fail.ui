@@ -32,7 +32,7 @@
      <item>
       <widget class="QLabel" name="failLbl">
        <property name="text">
-        <string>The setup of %1 has failed</string>
+        <string/>
        </property>
       </widget>
      </item>
