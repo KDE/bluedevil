@@ -196,6 +196,10 @@ int DiscoverPage::nextId() const
 
     kDebug() << "Stopping scanning";
 
+    if (!Manager::self()->usableAdapter()) {
+        return BlueWizard::Fail;
+    }
+
     Manager::self()->usableAdapter()->stopDiscovery();
     Device *device = m_wizard->device();
     if (device->isPaired()) {
