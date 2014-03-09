@@ -52,7 +52,7 @@ public slots:
     QString RequestPinCode(const QDBusObjectPath &device, const QDBusMessage &msg);
     quint32 RequestPasskey(const QDBusObjectPath &device, const QDBusMessage &msg);
     void DisplayPinCode(const QDBusObjectPath &device, const QString & pincode);
-    void DisplayPasskey(const QDBusObjectPath &device, quint32 passkey);
+    void DisplayPasskey(const QDBusObjectPath &device, quint32 passkey, quint8 entered);
     void RequestConfirmation(const QDBusObjectPath &device, quint32 passkey, const QDBusMessage &msg);
     void Cancel();
 
