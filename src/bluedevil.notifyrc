@@ -1,7 +1,7 @@
 [Global]
 IconName=preferences-system-bluetooth
 Comment=Bluetooth system
-Comment[bs]=Bluetooth sistem
+Comment[bs]=Blutut  sistem
 Comment[ca]=Sistema Bluetooth
 Comment[ca@valencia]=Sistema Bluetooth
 Comment[cs]=Systém Bluetooth
@@ -80,7 +80,6 @@ Ignore=true
 
 [Event/bluedevilAuthorize]
 Name=Authorization Requested
-Name[bs]=Zahtijevana autorizacija
 Name[bs]=Zahtijeva odobrenje
 Name[ca]=Sol·licitud d'autorització
 Name[ca@valencia]=Sol·licitud d'autorització
@@ -119,7 +118,6 @@ Name[uk]=Слід пройти розпізнавання
 Name[x-test]=xxAuthorization Requestedxx
 Name[zh_TW]=請求認證
 Comment=A device wants to connect
-Comment[bs]=Uređaj želi da se poveže
 Comment[bs]=Uređaj se zeli konektovati
 Comment[ca]=Un dispositiu es vol connectar
 Comment[ca@valencia]=Un dispositiu es vol connectar
@@ -160,7 +158,6 @@ Action=Popup
 
 [Event/bluedevilConfirmModechange]
 Name=Confirm Mode Change
-Name[bs]=Potvrdi promjenu režima
 Name[bs]=Povrdi promijene moda
 Name[ca]=Confirmació del canvi de mode
 Name[ca@valencia]=Confirmació del canvi de mode
@@ -245,7 +242,7 @@ Action=Popup
 
 [Event/bluedevilRequestConfirmation]
 Name=Confirm PIN
-Name[bs]=Potvrdi PIN
+Name[bs]=Potvrdi pin
 Name[ca]=Confirmació del PIN
 Name[ca@valencia]=Confirmació del PIN
 Name[cs]=Potvrdit PIN
@@ -283,7 +280,6 @@ Name[uk]=Підтвердження PIN
 Name[x-test]=xxConfirm PINxx
 Name[zh_TW]=確認 PIN 碼
 Comment=Confirm a device request using matching PINs
-Comment[bs]=Potvrdi zahtjev za uređajem koristeći uparene PIN
 Comment[bs]=Potvrdi zahtjev uređaja koristeci odgovarajuce pinove
 Comment[ca]=Confirma una sol·licitud d'un dispositiu usant PIN que coincideixin
 Comment[ca@valencia]=Confirma una sol·licitud d'un dispositiu usant PIN que coincidisquen
@@ -461,7 +457,6 @@ Name[x-test]=xxIncoming Filexx
 Name[zh_CN]=正在传入的文件
 Name[zh_TW]=要傳進來的檔案
 Comment=Incoming file transfer
-Comment[bs]=Dolazna datoteka za prebacivanje
 Comment[bs]=Prijenos dolazne datoteke
 Comment[ca]=Transferència de fitxer entrant
 Comment[ca@valencia]=Transferència de fitxer entrant
