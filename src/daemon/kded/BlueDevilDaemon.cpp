@@ -324,6 +324,7 @@ void BlueDevilDaemon::monolithicQuit(QDBusPendingCallWatcher* watcher)
         qDebug() << "Error response: " << reply.error().message();
         killMonolithic();
     }
+    watcher->deleteLater();
 }
 
 DeviceInfo BlueDevilDaemon::deviceToInfo(const Device* device) const
