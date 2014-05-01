@@ -23,6 +23,7 @@
 
 #include <QDBusObjectPath>
 #include <kdedmodule.h>
+#include <kdemacros.h>
 
 class KJob;
 class QDBusMessage;

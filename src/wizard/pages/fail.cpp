@@ -26,6 +26,7 @@
 
 #include <KDebug>
 #include <KPushButton>
+#include <KLocalizedString>
 #include <kpixmapsequenceoverlaypainter.h>
 
 #include <bluedevil/bluedevil.h>

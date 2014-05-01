@@ -28,7 +28,7 @@ class KDED: public QDBusAbstractInterface
     Q_OBJECT
 public:
     static inline const char *staticInterfaceName()
-    { return "org.kde.kded"; }
+    { return "org.kde.kded5"; }
 
 public:
     KDED(const QString &service, const QString &path, const QDBusConnection &connection, QObject *parent = 0);
@@ -114,7 +114,7 @@ Q_SIGNALS: // SIGNALS
 
 namespace org {
   namespace kde {
-    typedef ::KDED kded;
+    typedef ::KDED kded5;
   }
 }
 #endif

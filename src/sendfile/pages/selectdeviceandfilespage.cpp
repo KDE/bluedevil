@@ -26,9 +26,11 @@
 
 #include <QLabel>
 #include <QDesktopServices>
-#include <QtGui/QVBoxLayout>
+#include <QVBoxLayout>
 
 #include <KUrl>
+#include <KIcon>
+#include <KLocalizedString>
 #include <kfiledialog.h>
 #include <kurlrequester.h>
 #include <kpixmapsequenceoverlaypainter.h>

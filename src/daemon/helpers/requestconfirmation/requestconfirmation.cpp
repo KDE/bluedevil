@@ -21,8 +21,8 @@
 
 #include "requestconfirmation.h"
 
-#include <QtCore/QTimer>
-#include <QtCore/QCoreApplication>
+#include <QTimer>
+#include <QCoreApplication>
 
 #include <KIcon>
 #include <kiconloader.h>

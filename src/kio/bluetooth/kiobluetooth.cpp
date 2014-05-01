@@ -29,11 +29,12 @@
 #include <KDebug>
 #include <KComponentData>
 #include <KCmdLineArgs>
-#include <KAboutData>
 #include <KProcess>
 
 #include <KApplication>
 #include <KLocale>
+#include <k4aboutdata.h>
+#include <kdemacros.h>
 
 #include <bluedevil/bluedevil.h>
 
@@ -41,7 +42,7 @@ using namespace BlueDevil;
 
 extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
 {
-    KAboutData about("kiobluetooth", "bluedevil", ki18n("kiobluetooth"), bluedevil_version);
+    K4AboutData about("kiobluetooth", "bluedevil", ki18n("kiobluetooth"), bluedevil_version);
     KCmdLineArgs::init(&about);
 
     KApplication app;
@@ -83,7 +84,7 @@ KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
     }
 
     kDebug() << "Kio Bluetooth instanced!";
-    m_kded = new org::kde::BlueDevil("org.kde.kded", "/modules/bluedevil", QDBusConnection::sessionBus(), 0);
+    m_kded = new org::kde::BlueDevil("org.kde.kded5", "/modules/bluedevil", QDBusConnection::sessionBus(), 0);
 }
 
 QList<KioBluetooth::Service> KioBluetooth::getSupportedServices(const QStringList &uuids)
@@ -118,11 +119,11 @@ void KioBluetooth::listRemoteDeviceServices()
 
         //If it is browse files, act as a folder
         if (service.uuid == "00001106-0000-1000-8000-00805F9B34FB") {
-            KUrl obexUrl;
-            obexUrl.setProtocol("obexftp");
+            QUrl obexUrl;
+            obexUrl.setScheme("obexftp");
             obexUrl.setHost(m_currentHostname.replace(':', '-').toUpper());
             entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
-            entry.insert(KIO::UDSEntry::UDS_URL, obexUrl.url());
+            entry.insert(KIO::UDSEntry::UDS_URL, obexUrl.toString());
         } else {
             entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
             entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRWXU | S_IRWXG | S_IRWXO);
@@ -176,7 +177,7 @@ void KioBluetooth::listDevice(const DeviceInfo device)
     listEntry(entry, false);
 }
 
-void KioBluetooth::listDir(const KUrl &url)
+void KioBluetooth::listDir(const QUrl &url)
 {
     kDebug() << "Listing..." << url;
 
@@ -200,13 +201,13 @@ void KioBluetooth::listDir(const KUrl &url)
     }
 }
 
-void KioBluetooth::stat(const KUrl &url)
+void KioBluetooth::stat(const QUrl &url)
 {
     kDebug() << "Stat: " << url;
     finished();
 }
 
-void KioBluetooth::get(const KUrl &url)
+void KioBluetooth::get(const QUrl &url)
 {
     m_kded->stopDiscovering();
     kDebug() << "Get: " << url;

@@ -24,6 +24,7 @@
 
 #include <bluedevil/bluedevil.h>
 
+#include <kicon.h>
 #include <kglobal.h>
 #include <kaction.h>
 #include <kdeversion.h>
@@ -33,11 +34,11 @@
 #include <kstandarddirs.h>
 #include <klocalizedstring.h>
 
-#include <QtGui/QLabel>
-#include <QtGui/QWidget>
-#include <QtGui/QPainter>
-#include <QtGui/QBoxLayout>
-#include <QtGui/QPaintEvent>
+#include <QLabel>
+#include <QWidget>
+#include <QPainter>
+#include <QBoxLayout>
+#include <QPaintEvent>
 
 #if KDE_IS_VERSION(4,6,41)
 #include <kmessagewidget.h>
@@ -123,7 +124,7 @@ void ErrorWidget::paintEvent(QPaintEvent *event)
 
 SystemCheck::SystemCheck(QWidget *parent)
     : QObject(parent)
-    , m_kded(new KDED("org.kde.kded", "/kded", QDBusConnection::sessionBus()))
+    , m_kded(new KDED("org.kde.kded5", "/kded", QDBusConnection::sessionBus()))
     , m_parent(parent)
     , m_noAdaptersError(0)
     , m_notDiscoverableAdapterError(0)

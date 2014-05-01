@@ -21,7 +21,7 @@
 #ifndef _BLUEDEVILADAPTERS_H
 #define _BLUEDEVILADAPTERS_H
 
-#include <QtGui/QGroupBox>
+#include <QGroupBox>
 
 #include <kcmodule.h>
 

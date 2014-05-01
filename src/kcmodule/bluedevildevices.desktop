@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=kcmshell4 bluedevildevices
+Exec=kcmshell5 bluedevildevices
 Icon=input-mouse
 Type=Service
 

@@ -27,6 +27,7 @@
 #include <QFileSystemModel>
 #include <QDesktopServices>
 
+#include <KIcon>
 #include <KFileDialog>
 #include <kstandarddirs.h>
 

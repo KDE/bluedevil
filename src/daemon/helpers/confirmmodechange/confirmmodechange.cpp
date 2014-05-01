@@ -21,9 +21,9 @@
 
 #include "confirmmodechange.h"
 
-#include <QtCore/QDebug>
-#include <QtCore/QCoreApplication>
-#include <QtCore/QTimer>
+#include <QDebug>
+#include <QCoreApplication>
+#include <QTimer>
 
 #include <KIcon>
 #include <kiconloader.h>

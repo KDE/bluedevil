@@ -27,7 +27,9 @@
 #include <QLabel>
 #include <QTimer>
 
+#include <KIcon>
 #include <KDebug>
+#include <KLocalizedString>
 #include <kpixmapsequenceoverlaypainter.h>
 
 #include <bluedevil/bluedevil.h>

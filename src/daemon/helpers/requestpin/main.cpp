@@ -20,7 +20,7 @@
 
 #include "requestpin.h"
 
-#include <QtGui/QApplication>
+#include <QApplication>
 
 #include <kcomponentdata.h>
 #include <kaboutdata.h>

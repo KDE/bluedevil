@@ -21,7 +21,7 @@
 
 #include "authorize.h"
 
-#include <QtGui/QApplication>
+#include <QApplication>
 
 #include <KGlobal>
 #include <kaboutdata.h>

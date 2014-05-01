@@ -26,9 +26,9 @@
 
 #include <QLabel>
 #include <QDesktopServices>
-#include <QtGui/QVBoxLayout>
+#include <QVBoxLayout>
 
-#include <KUrl>
+#include <KIcon>
 #include <kfiledialog.h>
 #include <kpixmapsequenceoverlaypainter.h>
 #include <KDebug>

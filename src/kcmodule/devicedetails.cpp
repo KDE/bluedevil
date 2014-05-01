@@ -22,9 +22,9 @@
 
 #include <bluedevil/bluedevildevice.h>
 
-#include <QtGui/QLabel>
-#include <QtGui/QCheckBox>
-#include <QtGui/QFormLayout>
+#include <QLabel>
+#include <QCheckBox>
+#include <QFormLayout>
 
 #include <kled.h>
 #include <klineedit.h>

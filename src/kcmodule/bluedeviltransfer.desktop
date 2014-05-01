@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=kcmshell4 bluedeviltransfer
+Exec=kcmshell5 bluedeviltransfer
 Icon=folder-tar
 Type=Service
 

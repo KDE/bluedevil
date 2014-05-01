@@ -24,9 +24,9 @@
 
 #include <iostream>
 
-#include <QtCore/QDebug>
-#include <QtCore/QCoreApplication>
-#include <QtCore/QTimer>
+#include <QDebug>
+#include <QCoreApplication>
+#include <QTimer>
 #include <QValidator>
 #include <QRegExpValidator>
 #include <QRegExp>

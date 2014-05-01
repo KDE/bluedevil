@@ -23,12 +23,12 @@
 
 #include <KCmdLineArgs>
 #include <KApplication>
-#include <KAboutData>
+#include <k4aboutdata.h>
 
 int main(int argc, char *argv[])
 {
-    KAboutData aboutData("bluedevilwizard", "bluedevil", ki18n("Bluetooth Wizard"), bluedevil_version, ki18n("Bluetooth Wizard"),
-        KAboutData::License_GPL, ki18n("(c) 2010, UFO Coders"));
+    K4AboutData aboutData("bluedevilwizard", "bluedevil", ki18n("Bluetooth Wizard"), bluedevil_version, ki18n("Bluetooth Wizard"),
+        K4AboutData::License_GPL, ki18n("(c) 2010, UFO Coders"));
 
     aboutData.addAuthor(ki18n("Alejandro Fiestas Olivares"), ki18n("Maintainer"), "afiestas@kde.org",
         "http://www.afiestas.org/");

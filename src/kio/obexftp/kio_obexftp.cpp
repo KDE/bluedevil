@@ -25,11 +25,12 @@
 #include <KDebug>
 #include <KComponentData>
 #include <KCmdLineArgs>
-#include <KAboutData>
 #include <KLocale>
 #include <KTemporaryFile>
 #include <KMimeType>
 #include <KApplication>
+#include <k4aboutdata.h>
+#include <kdemacros.h>
 #include "obexdtypes.h"
 #include "transferfilejob.h"
 
@@ -37,7 +38,7 @@
 
 extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
 {
-    KAboutData about("kioobexftp", "bluedevil", ki18n("kioobexftp"), bluedevil_version);
+    K4AboutData about("kioobexftp", "bluedevil", ki18n("kioobexftp"), bluedevil_version);
     KCmdLineArgs::init(&about);
 
     KApplication app;
@@ -52,6 +53,18 @@ extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
     return 0;
 }
 
+static QString urlDirectory(const QUrl &url)
+{
+    const QUrl &u = url.adjusted(QUrl::StripTrailingSlash);
+    return u.adjusted(QUrl::RemoveFilename).path();
+}
+
+static QString urlFileName(const QUrl &url)
+{
+    const QUrl &u = url.adjusted(QUrl::StripTrailingSlash);
+    return u.fileName();
+}
+
 KioFtp::KioFtp(const QByteArray &pool, const QByteArray &app)
     : SlaveBase("obexftp", pool, app)
     , m_transfer(0)
@@ -62,7 +75,7 @@ KioFtp::KioFtp(const QByteArray &pool, const QByteArray &app)
     m_timer->setInterval(100);
 
     qDBusRegisterMetaType<QVariantMapList>();
-    m_kded = new org::kde::ObexFtp("org.kde.kded", "/modules/obexftpdaemon", QDBusConnection::sessionBus(), 0);
+    m_kded = new org::kde::ObexFtp("org.kde.kded5", "/modules/obexftpdaemon", QDBusConnection::sessionBus(), 0);
 }
 
 KioFtp::~KioFtp()
@@ -90,7 +103,7 @@ void KioFtp::updateProcess()
     m_counter++;
 }
 
-void KioFtp::listDir(const KUrl &url)
+void KioFtp::listDir(const QUrl &url)
 {
     kDebug() << "listdir: " << url;
 
@@ -114,11 +127,11 @@ void KioFtp::listDir(const KUrl &url)
     Q_FOREACH(const QVariantMap folder, folderList) {
         KIO::UDSEntry entry = entryFromInfo(folder);
 
-        KUrl statUrl(url);
-        statUrl.setFileName(folder["Name"].toString());
-        if (!m_statMap.contains(statUrl.prettyUrl())) {
-            kDebug() << "Stat: " << statUrl.prettyUrl() << entry.numberValue(KIO::UDSEntry::UDS_SIZE);
-            m_statMap.insert(statUrl.prettyUrl(), entry);
+        QUrl statUrl = url.adjusted(QUrl::RemoveFilename);
+        statUrl.setPath(statUrl.path() + folder["Name"].toString());
+        if (!m_statMap.contains(statUrl.toDisplayString())) {
+            kDebug() << "Stat: " << statUrl.toDisplayString() << entry.numberValue(KIO::UDSEntry::UDS_SIZE);
+            m_statMap.insert(statUrl.toDisplayString(), entry);
         }
 
         listEntry(entry, false);
@@ -128,7 +141,7 @@ void KioFtp::listDir(const KUrl &url)
     finished();
 }
 
-void KioFtp::copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFlags flags)
+void KioFtp::copy(const QUrl &src, const QUrl &dest, int permissions, KIO::JobFlags flags)
 {
     Q_UNUSED(permissions)
     Q_UNUSED(flags)
@@ -140,24 +153,24 @@ void KioFtp::copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFl
     finished();
 }
 
-void KioFtp::rename(const KUrl& src, const KUrl& dest, KIO::JobFlags flags)
+void KioFtp::rename(const QUrl& src, const QUrl& dest, KIO::JobFlags flags)
 {
     Q_UNUSED(src)
     Q_UNUSED(dest)
     Q_UNUSED(flags)
 
-    error(KIO::ERR_UNSUPPORTED_ACTION, src.prettyUrl());
+    error(KIO::ERR_UNSUPPORTED_ACTION, src.toDisplayString());
     finished();
 }
 
-void KioFtp::get(const KUrl& url)
+void KioFtp::get(const QUrl& url)
 {
     KTemporaryFile tempFile;
-    tempFile.setSuffix(url.fileName());
+    tempFile.setSuffix(urlFileName(url));
     tempFile.open();//Create the file
     kDebug() << tempFile.fileName();
 
-    copyHelper(url, KUrl(tempFile.fileName()));
+    copyHelper(url, QUrl(tempFile.fileName()));
 
     kDebug() << "Getting mimetype";
     KMimeType::Ptr mime = KMimeType::findByPath(tempFile.fileName());
@@ -201,32 +214,32 @@ void KioFtp::setHost(const QString &host, quint16 port, const QString &user, con
     m_statMap.clear();
 }
 
-void KioFtp::del(const KUrl& url, bool isfile)
+void KioFtp::del(const QUrl& url, bool isfile)
 {
     Q_UNUSED(isfile)
 
     kDebug() << "Del: " << url.url();
-    m_transfer->ChangeFolder(url.directory()).waitForFinished();
-    m_transfer->Delete(url.fileName()).waitForFinished();
+    m_transfer->ChangeFolder(urlDirectory(url)).waitForFinished();
+    m_transfer->Delete(urlFileName(url)).waitForFinished();
     finished();
 }
 
-void KioFtp::mkdir(const KUrl& url, int permissions)
+void KioFtp::mkdir(const QUrl& url, int permissions)
 {
     Q_UNUSED(permissions)
 
     kDebug() << "MkDir: " << url.url();
-    m_transfer->ChangeFolder(url.directory()).waitForFinished();
-    m_transfer->CreateFolder(url.fileName()).waitForFinished();
+    m_transfer->ChangeFolder(urlDirectory(url)).waitForFinished();
+    m_transfer->CreateFolder(urlFileName(url)).waitForFinished();
     finished();
 }
 
-void KioFtp::stat(const KUrl &url)
+void KioFtp::stat(const QUrl &url)
 {
     kDebug() << "Stat: " << url.url();
-    kDebug() << "Stat Dir: " << url.directory();
-    kDebug() << "Stat File: " << url.fileName();
-    kDebug() << "Empty Dir: " << url.directory().isEmpty();
+    kDebug() << "Stat Dir: " << urlDirectory(url);
+    kDebug() << "Stat File: " << urlFileName(url);
+    kDebug() << "Empty Dir: " << urlDirectory(url).isEmpty();
 
     statHelper(url);
 
@@ -234,10 +247,10 @@ void KioFtp::stat(const KUrl &url)
     finished();
 }
 
-void KioFtp::copyHelper(const KUrl& src, const KUrl& dest)
+void KioFtp::copyHelper(const QUrl& src, const QUrl& dest)
 {
     if (src.scheme() == "obexftp" && dest.scheme() == "obexftp") {
-        error(KIO::ERR_UNSUPPORTED_ACTION, src.prettyUrl());
+        error(KIO::ERR_UNSUPPORTED_ACTION, src.toDisplayString());
         //TODO: with obexd this seems possible, we should at least try
         return;
     }
@@ -256,30 +269,30 @@ void KioFtp::copyHelper(const KUrl& src, const KUrl& dest)
     finished();
 }
 
-void KioFtp::copyFromObexftp(const KUrl& src, const KUrl& dest)
+void KioFtp::copyFromObexftp(const QUrl& src, const QUrl& dest)
 {
     kDebug() << "Source: " << src << "Dest:" << dest;
 
     //Just in case the url is not in the stat, some times happens...
-    if (!m_statMap.contains(src.prettyUrl())) {
+    if (!m_statMap.contains(src.toDisplayString())) {
         kDebug() << "The url is not in the cache, stating it";
         statHelper(src);
     }
 
-    if (m_statMap.value(src.prettyUrl()).isDir()) {
-        kDebug() << "Skipping to copy: " << src.prettyUrl();
+    if (m_statMap.value(src.toDisplayString()).isDir()) {
+        kDebug() << "Skipping to copy: " << src.toDisplayString();
         //TODO: Check if dir copying works with obexd
-        error(KIO::ERR_IS_DIRECTORY, src.prettyUrl());
+        error(KIO::ERR_IS_DIRECTORY, src.toDisplayString());
         return;
     }
 
-    kDebug() << "Changing dir:" << src.directory();
-    m_transfer->ChangeFolder(src.directory()).waitForFinished();
+    kDebug() << "Changing dir:" << urlDirectory(src);
+    m_transfer->ChangeFolder(urlDirectory(src)).waitForFinished();
 
-    QString dbusPath = m_transfer->GetFile(dest.path(), src.fileName()).value().path();
+    QString dbusPath = m_transfer->GetFile(dest.path(), urlFileName(src)).value().path();
     kDebug() << "Path from GetFile:" << dbusPath;
 
-    int size = m_statMap[src.prettyUrl()].numberValue(KIO::UDSEntry::UDS_SIZE);
+    int size = m_statMap[src.toDisplayString()].numberValue(KIO::UDSEntry::UDS_SIZE);
     TransferFileJob *getFile = new TransferFileJob(dbusPath, this);
     getFile->setSize(size);
     getFile->exec();
@@ -287,13 +300,13 @@ void KioFtp::copyFromObexftp(const KUrl& src, const KUrl& dest)
     finished();
 }
 
-void KioFtp::copyToObexftp(const KUrl& src, const KUrl& dest)
+void KioFtp::copyToObexftp(const QUrl& src, const QUrl& dest)
 {
     kDebug() << "Source:" << src << "Dest:" << dest;
 
-    kDebug() << "Changing folder: " << dest.directory();
-    m_transfer->ChangeFolder(dest.directory());
-    QString dbusPath = m_transfer->PutFile(src.path(), dest.fileName()).value().path();
+    kDebug() << "Changing folder: " << urlDirectory(dest);
+    m_transfer->ChangeFolder(urlDirectory(dest));
+    QString dbusPath = m_transfer->PutFile(src.path(), urlFileName(dest)).value().path();
     kDebug() << "Path from PutFile: " << dbusPath;
 
     QFile file(src.path());
@@ -304,17 +317,17 @@ void KioFtp::copyToObexftp(const KUrl& src, const KUrl& dest)
     finished();
 }
 
-void KioFtp::statHelper(const KUrl& url)
+void KioFtp::statHelper(const QUrl& url)
 {
     kDebug() << url;
 
-    if (m_statMap.contains(url.prettyUrl())) {
+    if (m_statMap.contains(url.toDisplayString())) {
         kDebug() << "statMap contains the url";
-        statEntry(m_statMap[url.prettyUrl()]);
+        statEntry(m_statMap[url.toDisplayString()]);
         return;
     }
 
-    if ((url.directory() == "/" || url.directory().isEmpty()) && url.fileName().isEmpty()) {
+    if ((urlDirectory(url) == "/" || urlDirectory(url).isEmpty()) && urlFileName(url).isEmpty()) {
         kDebug() << "Url is root";
         KIO::UDSEntry entry;
         entry.insert(KIO::UDSEntry::UDS_NAME, QString::fromLatin1("/"));
@@ -322,8 +335,8 @@ void KioFtp::statHelper(const KUrl& url)
         entry.insert(KIO::UDSEntry::UDS_ACCESS, 0700);
         entry.insert( KIO::UDSEntry::UDS_MIME_TYPE, QString::fromLatin1( "inode/directory" ) );
 
-        kDebug() << "Adding stat cached: " << url.prettyUrl();
-        m_statMap[url.prettyUrl()] = entry;
+        kDebug() << "Adding stat cached: " << url.toDisplayString();
+        m_statMap[url.toDisplayString()] = entry;
         statEntry(entry);
 
         return;
@@ -331,24 +344,24 @@ void KioFtp::statHelper(const KUrl& url)
 
     kDebug() << "statMap does NOT contains the url";
     //TODO: Check if changeFolder fails
-    m_transfer->ChangeFolder(url.directory()).waitForFinished();
+    m_transfer->ChangeFolder(urlDirectory(url)).waitForFinished();
     QVariantMapList folderList = m_transfer->ListFolder().value();
-    kDebug() << url.directory() << folderList.count();
+    kDebug() << urlDirectory(url) << folderList.count();
     Q_FOREACH(const QVariantMap folder, folderList) {
         KIO::UDSEntry entry = entryFromInfo(folder);
 
         QString fileName = folder["Name"].toString();
-        if (url.fileName() == fileName) {
+        if (urlFileName(url) == fileName) {
             statEntry(entry);
         }
 
         //Most probably the client of the kio will stat each file
         //so since we are on it, let's cache all of them.
-        KUrl statUrl(url);
-        statUrl.setFileName(fileName);
-        if (!m_statMap.contains(statUrl.prettyUrl())) {
-            kDebug() << "Stat: " << statUrl.prettyUrl() << entry.stringValue(KIO::UDSEntry::UDS_NAME) <<  entry.numberValue(KIO::UDSEntry::UDS_SIZE);
-            m_statMap.insert(statUrl.prettyUrl(), entry);
+        QUrl statUrl = url.adjusted(QUrl::RemoveFilename);
+        statUrl.setPath(statUrl.path() + fileName);
+        if (!m_statMap.contains(statUrl.toDisplayString())) {
+            kDebug() << "Stat: " << statUrl.toDisplayString() << entry.stringValue(KIO::UDSEntry::UDS_NAME) <<  entry.numberValue(KIO::UDSEntry::UDS_SIZE);
+            m_statMap.insert(statUrl.toDisplayString(), entry);
         }
     }
 

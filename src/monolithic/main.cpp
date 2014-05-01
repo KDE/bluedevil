@@ -21,12 +21,12 @@
 #include "version.h"
 #include <KCmdLineArgs>
 #include <kuniqueapplication.h>
-#include <KAboutData>
+#include <k4aboutdata.h>
 
 int main(int argc, char *argv[])
 {
-    KAboutData aboutData("bluedevilmonolithic", "bluedevil", ki18n("Bluetooth"), bluedevil_version, ki18n("Bluetooth"),
-    KAboutData::License_GPL, ki18n("(c) 2010, UFO Coders"));
+    K4AboutData aboutData("bluedevilmonolithic", "bluedevil", ki18n("Bluetooth"), bluedevil_version, ki18n("Bluetooth"),
+    K4AboutData::License_GPL, ki18n("(c) 2010, UFO Coders"));
 
     aboutData.addAuthor(ki18n("Alejandro Fiestas Olivares"), ki18n("Maintainer"), "afiestas@kde.org", "http://www.afiestas.org/");
     aboutData.addAuthor(ki18n("Rafael Fernández López"), ki18n("Developer"), "ereslibre@kde.org", "http://www.ereslibre.es/");

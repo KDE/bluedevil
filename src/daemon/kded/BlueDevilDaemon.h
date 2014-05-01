@@ -22,6 +22,7 @@
 #ifndef BLUEDEVILDAEMON_H
 #define BLUEDEVILDAEMON_H
 
+#include <kdemacros.h>
 #include <kdedmodule.h>
 #include <QMap>
 #include <QStringList>

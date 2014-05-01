@@ -30,6 +30,8 @@
 #include <QTimer>
 #include <QDebug>
 
+#include <KIcon>
+
 #include <bluedevil/bluedevil.h>
 
 using namespace BlueDevil;

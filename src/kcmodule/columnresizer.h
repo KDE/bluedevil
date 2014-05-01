@@ -5,10 +5,10 @@
 #ifndef COLUMNRESIZER_H
 #define COLUMNRESIZER_H
 
-#include <QtGui/QFormLayout>
+#include <QFormLayout>
 
-#include <QtCore/QObject>
-#include <QtCore/QList>
+#include <QObject>
+#include <QList>
 
 class QEvent;
 class QGridLayout;

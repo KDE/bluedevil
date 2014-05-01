@@ -115,8 +115,7 @@ QString WizardAgent::getPin(Device *device)
     m_pin = QString::number(KRandom::random());
     m_pin = m_pin.left(6);
 
-    KComponentData data("bluedevilwizard");
-    QString xmlPath = KStandardDirs::locate("appdata", "pin-code-database.xml", data);
+    QString xmlPath = KStandardDirs::locate("appdata", "pin-code-database.xml");
 
     QFile file(xmlPath);
     if(!file.open(QIODevice::ReadOnly)) {

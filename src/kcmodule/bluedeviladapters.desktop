@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=kcmshell4 bluedeviladapters
+Exec=kcmshell5 bluedeviladapters
 Icon=audio-card
 Type=Service
 

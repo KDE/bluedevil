@@ -22,7 +22,7 @@
 #ifndef REQUESTPIN_H
 #define REQUESTPIN_H
 
-#include <QtCore/QObject>
+#include <QObject>
 #include <QTimer>
 
 class KDialog;

@@ -21,7 +21,7 @@
 #include "version.h"
 #include <KCmdLineArgs>
 #include <KApplication>
-#include <KAboutData>
+#include <k4aboutdata.h>
 #include <KDebug>
 #include <bluedevil/bluedevil.h>
 
@@ -29,8 +29,8 @@ using namespace BlueDevil;
 
 int main(int argc, char *argv[])
 {
-    KAboutData aboutData("bluedevilsendfile", "bluedevil", ki18n("Bluetooth Send File Helper"), bluedevil_version, ki18n("Bluetooth Send File Helper"),
-    KAboutData::License_GPL, ki18n("(c) 2010, UFO Coders"));
+    K4AboutData aboutData("bluedevilsendfile", "bluedevil", ki18n("Bluetooth Send File Helper"), bluedevil_version, ki18n("Bluetooth Send File Helper"),
+    K4AboutData::License_GPL, ki18n("(c) 2010, UFO Coders"));
 
     aboutData.addAuthor(ki18n("Alejandro Fiestas Olivares"), ki18n("Maintainer"), "afiestas@kde.org",
     "http://www.afiestas.org/");

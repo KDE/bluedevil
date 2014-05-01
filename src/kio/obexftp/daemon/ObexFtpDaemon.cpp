@@ -28,14 +28,15 @@
 #include <KDebug>
 #include <KAboutData>
 #include <KPluginFactory>
+#include <KLocalizedString>
 
 #include <bluedevil/bluedevilmanager.h>
 #include <bluedevil/bluedeviladapter.h>
 
 using namespace BlueDevil;
-K_PLUGIN_FACTORY(ObexFtpFactory,
-                 registerPlugin<ObexFtpDaemon>();)
-K_EXPORT_PLUGIN(ObexFtpFactory("obexftpdaemon", "obexftpdaemon"))
+K_PLUGIN_FACTORY_WITH_JSON(ObexFtpFactory,
+                           "obexftpdaemon.json",
+                           registerPlugin<ObexFtpDaemon>();)
 
 struct ObexFtpDaemon::Private
 {
@@ -60,14 +61,14 @@ ObexFtpDaemon::ObexFtpDaemon(QObject *parent, const QList<QVariant>&)
     KAboutData aboutData(
         "obexftpdaemon",
         "bluedevil",
-        ki18n("ObexFtp Daemon"),
+        i18n("ObexFtp Daemon"),
         bluedevil_version,
-        ki18n("ObexFtp Daemon"),
+        i18n("ObexFtp Daemon"),
         KAboutData::License_GPL,
-        ki18n("(c) 2010, UFO Coders")
+        i18n("(c) 2010, UFO Coders")
     );
 
-    aboutData.addAuthor(ki18n("Alejandro Fiestas Olivares"), ki18n("Maintainer"), "afiestas@kde.org",
+    aboutData.addAuthor(i18n("Alejandro Fiestas Olivares"), i18n("Maintainer"), "afiestas@kde.org",
         "http://www.afiestas.org");
 
     connect(Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)),
@@ -198,3 +199,5 @@ void ObexFtpDaemon::interfaceRemoved(const QDBusObjectPath &dbusPath, const QStr
 }
 
 extern int dobex() { static int s_area = KDebug::registerArea("ObexDaemon", false); return s_area; }
+
+#include "ObexFtpDaemon.moc"

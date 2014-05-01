@@ -26,16 +26,16 @@
 
 #include <bluedevil/bluedevil.h>
 
-#include <QtCore/QAbstractItemModel>
+#include <QAbstractItemModel>
 
-#include <QtGui/QFontMetrics>
-#include <QtGui/QLabel>
-#include <QtGui/QPainter>
-#include <QtGui/QCheckBox>
-#include <QtGui/QListView>
-#include <QtGui/QBoxLayout>
-#include <QtGui/QHeaderView>
-#include <QtGui/QStyledItemDelegate>
+#include <QFontMetrics>
+#include <QLabel>
+#include <QPainter>
+#include <QCheckBox>
+#include <QListView>
+#include <QBoxLayout>
+#include <QHeaderView>
+#include <QStyledItemDelegate>
 
 #include <kicon.h>
 #include <kdialog.h>
@@ -49,8 +49,9 @@
 #include <kpluginfactory.h>
 #include <klocalizedstring.h>
 
-K_PLUGIN_FACTORY(BlueDevilFactory, registerPlugin<KCMBlueDevilDevices>();)
-K_EXPORT_PLUGIN(BlueDevilFactory("bluedevildevices", "bluedevil"))
+K_PLUGIN_FACTORY_WITH_JSON(BlueDevilFactory,
+                           "bluedevildevices.json",
+                           registerPlugin<KCMBlueDevilDevices>();)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -321,17 +322,17 @@ QSize BluetoothDevicesDelegate::sizeHint(const QStyleOptionViewItem &option, con
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
-    : KCModule(BlueDevilFactory::componentData(), parent)
+    : KCModule(parent)
     , m_enable(new QCheckBox(i18n("Enable KDE Bluetooth Integration"), this))
     , m_systemCheck(new SystemCheck(this))
     , m_deviceDetails(0)
 {
     KAboutData* ab = new KAboutData(
-        "kcmbluedevildevices", "bluedevil", ki18n("Bluetooth Devices"), "1.0",
-        ki18n("Bluetooth Devices Control Panel Module"),
-        KAboutData::License_GPL, ki18n("(c) 2010 Rafael Fernández López"));
+        "kcmbluedevildevices", "bluedevil", i18n("Bluetooth Devices"), "1.0",
+        i18n("Bluetooth Devices Control Panel Module"),
+        KAboutData::License_GPL, i18n("(c) 2010 Rafael Fernández López"));
 
-    ab->addAuthor(ki18n("Rafael Fernández López"), ki18n("Developer and Maintainer"), "ereslibre@kde.org");
+    ab->addAuthor(i18n("Rafael Fernández López"), i18n("Developer and Maintainer"), "ereslibre@kde.org");
     setAboutData(ab);
 
     connect(m_systemCheck, SIGNAL(updateInformationStateRequest()),
@@ -687,3 +688,5 @@ void KCMBlueDevilDevices::updateInformationState()
         }
     }
 }
+
+#include "bluedevildevices.moc"

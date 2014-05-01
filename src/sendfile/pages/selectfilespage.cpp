@@ -29,8 +29,8 @@
 #include <kfileitem.h>
 
 #include <QDesktopServices>
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QLabel>
+#include <QVBoxLayout>
+#include <QLabel>
 
 SelectFilesPage::SelectFilesPage(QWidget* parent): QWizardPage(parent)
 {

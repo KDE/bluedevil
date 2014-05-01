@@ -20,6 +20,7 @@
 #include "audio_interface.h"
 
 #include <KDebug>
+#include <KIcon>
 #include <kmenu.h>
 #include <kaction.h>
 #include <kprocess.h>
@@ -116,7 +117,7 @@ bool sortDevices(Device *device1, Device *device2)
 
 void Monolithic::regenerateDeviceEntries()
 {
-    KMenu *const menu = contextMenu();
+    QMenu *const menu = contextMenu();
 
     qDeleteAll(m_interfaceMap);
     m_interfaceMap.clear();
@@ -127,7 +128,8 @@ void Monolithic::regenerateDeviceEntries()
 
     //If there are adapters (because we're in this function) but any of them is powered
     if (!poweredAdapters()) {
-        menu->addTitle(i18n("Bluetooth is Off"));
+        //FIXME
+        //menu->addTitle(i18n("Bluetooth is Off"));
 
         QAction *separator = new QAction(menu);
         separator->setSeparator(true);
@@ -149,11 +151,12 @@ void Monolithic::regenerateDeviceEntries()
 
     QList<Adapter*> adapters = Manager::self()->adapters();
     Q_FOREACH(Adapter* adapter, adapters) {
-        if (adapters.count() == 1) {
-            menu->addTitle(i18n("Known Devices"));
-        } else {
-            menu->addTitle(adapter->name());
-        }
+        //FIXME
+        //if (adapters.count() == 1) {
+        //    menu->addTitle(i18n("Known Devices"));
+        //} else {
+        //    menu->addTitle(adapter->name());
+        //}
 
         menu->addActions(actionsForAdapter(adapter));
     }
@@ -252,7 +255,7 @@ void Monolithic::sendFile()
 
 void Monolithic::browseDevices()
 {
-    KUrl url("bluetooth://");
+    QUrl url("bluetooth://");
     KRun::runUrl(url, "inode/directory", new QWidget());
 }
 
@@ -270,7 +273,7 @@ void Monolithic::configBluetooth()
     args << "bluedevildevices";
     args << "bluedeviltransfer";
     args << "bluedeviladapters";
-    process.startDetached("kcmshell4", args);
+    process.startDetached("kcmshell5", args);
 }
 
 void Monolithic::toggleBluetooth()
@@ -304,7 +307,7 @@ void Monolithic::activeDiscoverable(bool active)
 
 void Monolithic::browseTriggered(QString address)
 {
-    KUrl url("obexftp:/");
+    QUrl url("obexftp:/");
     url.setHost(address.replace(':', '-'));
     KRun::runUrl(url, "inode/directory", new QWidget());
 }
@@ -347,7 +350,7 @@ void Monolithic::offlineMode()
 {
     setTooltipTitleStatus(false);
 
-    KMenu *const menu = contextMenu();
+    QMenu *const menu = contextMenu();
 
     qDeleteAll(m_interfaceMap);
     m_interfaceMap.clear();

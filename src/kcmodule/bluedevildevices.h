@@ -21,7 +21,7 @@
 #ifndef _BLUEDEVILDEVICES_H
 #define _BLUEDEVILDEVICES_H
 
-#include <QtGui/QItemSelection>
+#include <QItemSelection>
 
 #include <kcmodule.h>
 

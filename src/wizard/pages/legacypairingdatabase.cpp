@@ -25,6 +25,7 @@
 #include "../wizardagent.h"
 
 #include <KDebug>
+#include <KLocalizedString>
 #include <kpixmapsequenceoverlaypainter.h>
 
 #include <bluedevil/bluedevil.h>

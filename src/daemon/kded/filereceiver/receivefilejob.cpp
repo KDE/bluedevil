@@ -131,7 +131,7 @@ void ReceiveFileJob::showNotification()
 
     int size = IconSize(KIconLoader::Desktop);
     m_notification->setPixmap(KIcon("preferences-system-bluetooth").pixmap(size, size));
-    m_notification->setComponentData(KComponentData("bluedevil"));
+    m_notification->setComponentName("bluedevil");
     m_notification->sendEvent();
 }
 

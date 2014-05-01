@@ -21,16 +21,16 @@
 #include "bluedeviladapters.h"
 #include "systemcheck.h"
 
-#include <QtCore/QTimer>
+#include <QTimer>
 
-#include <QtGui/QScrollArea>
-#include <QtGui/QBoxLayout>
-#include <QtGui/QRadioButton>
-#include <QtGui/QCheckBox>
-#include <QtGui/QSlider>
-#include <QtGui/QLabel>
-#include <QtGui/QFormLayout>
-#include <QtGui/QButtonGroup>
+#include <QScrollArea>
+#include <QBoxLayout>
+#include <QRadioButton>
+#include <QCheckBox>
+#include <QSlider>
+#include <QLabel>
+#include <QFormLayout>
+#include <QButtonGroup>
 
 #include <bluedevil/bluedevil.h>
 
@@ -38,9 +38,11 @@
 #include <klineedit.h>
 #include <kaboutdata.h>
 #include <kpluginfactory.h>
+#include <klocalizedstring.h>
 
-K_PLUGIN_FACTORY(BlueDevilFactory, registerPlugin<KCMBlueDevilAdapters>();)
-K_EXPORT_PLUGIN(BlueDevilFactory("bluedeviladapters", "bluedevil"))
+K_PLUGIN_FACTORY_WITH_JSON(BlueDevilFactory,
+                           "bluedeviladapters.json",
+                           registerPlugin<KCMBlueDevilAdapters>();)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -234,16 +236,16 @@ void AdapterSettings::slotSettingsChanged()
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 KCMBlueDevilAdapters::KCMBlueDevilAdapters(QWidget *parent, const QVariantList&)
-    : KCModule(BlueDevilFactory::componentData(), parent)
+    : KCModule(parent)
     , m_noAdaptersMessage(0)
     , m_systemCheck(new SystemCheck(this))
 {
     KAboutData* ab = new KAboutData(
-        "kcmbluedeviladapters", "bluedevil", ki18n("Bluetooth Adapters"), "1.0",
-        ki18n("Bluetooth Adapters Control Panel Module"),
-        KAboutData::License_GPL, ki18n("(c) 2010 Rafael Fernández López"));
+        "kcmbluedeviladapters", "bluedevil", i18n("Bluetooth Adapters"), "1.0",
+        i18n("Bluetooth Adapters Control Panel Module"),
+        KAboutData::License_GPL, i18n("(c) 2010 Rafael Fernández López"));
 
-    ab->addAuthor(ki18n("Rafael Fernández López"), ki18n("Developer and Maintainer"), "ereslibre@kde.org");
+    ab->addAuthor(i18n("Rafael Fernández López"), i18n("Developer and Maintainer"), "ereslibre@kde.org");
     setAboutData(ab);
 
     connect(m_systemCheck, SIGNAL(updateInformationStateRequest()),
@@ -378,3 +380,5 @@ void KCMBlueDevilAdapters::fillAdaptersInformation()
 
     m_layout->addStretch();
 }
+
+#include "bluedeviladapters.moc"

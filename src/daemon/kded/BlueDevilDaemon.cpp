@@ -27,11 +27,13 @@
 
 #include <QtCore/QProcess>
 #include <QDBusServiceWatcher>
+#include <QDBusPendingReply>
 #include <QDBusMetaType>
+#include <QTimer>
 
 #include <kdemacros.h>
 #include <KDebug>
-#include <KAboutData>
+#include <k4aboutdata.h>
 #include <KComponentData>
 #include <KPluginFactory>
 #include <kfileplacesmodel.h>
@@ -43,9 +45,9 @@
 
 using namespace BlueDevil;
 
-K_PLUGIN_FACTORY(BlueDevilFactory,
-                 registerPlugin<BlueDevilDaemon>();)
-K_EXPORT_PLUGIN(BlueDevilFactory("bluedevildaemon", "bluedevil"))
+K_PLUGIN_FACTORY_WITH_JSON(BlueDevilFactory,
+                           "bluedevil.json",
+                           registerPlugin<BlueDevilDaemon>();)
 
 Q_DECLARE_METATYPE(DeviceInfo)
 Q_DECLARE_METATYPE(QMapDeviceInfo)
@@ -83,13 +85,13 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     d->m_timer.setInterval(20000);
     d->m_timer.setSingleShot(true);
 
-    KAboutData aboutData(
+    K4AboutData aboutData(
         "bluedevildaemon",
         "bluedevil",
         ki18n("Bluetooth Daemon"),
         bluedevil_version,
         ki18n("Bluetooth Daemon"),
-        KAboutData::License_GPL,
+        K4AboutData::License_GPL,
         ki18n("(c) 2010, UFO Coders")
     );
 
@@ -304,7 +306,7 @@ void BlueDevilDaemon::deviceFound(Device *device)
 {
     kDebug(dblue()) << "DeviceFound: " << device->name();
     d->m_discovered.append(deviceToInfo(device));
-    org::kde::KDirNotify::emitFilesAdded("bluetooth:/");
+    org::kde::KDirNotify::emitFilesAdded(QUrl("bluetooth:/"));
 }
 
 void BlueDevilDaemon::monolithicQuit(QDBusPendingCallWatcher* watcher)
@@ -330,3 +332,5 @@ DeviceInfo BlueDevilDaemon::deviceToInfo(Device *const device) const
 }
 
 extern int dblue() { static int s_area = KDebug::registerArea("BlueDaemon", false); return s_area; }
+
+#include "BlueDevilDaemon.moc"

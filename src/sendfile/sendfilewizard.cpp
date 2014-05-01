@@ -36,6 +36,7 @@
 #include <kpushbutton.h>
 #include <kstatusbarjobtracker.h>
 #include <kfiledialog.h>
+#include <kicon.h>
 
 #include <bluedevil/bluedevil.h>
 #include <sendfilesjob.h>
@@ -129,7 +130,7 @@ void SendFileWizard::setDevice(QString deviceUrl)
         deviceUrl.remove("bluetooth:");
         deviceUrl.replace(":", "-");
         deviceUrl.prepend("bluetooth:");
-        KUrl url(deviceUrl);
+        QUrl url(deviceUrl);
         device = Manager::self()->usableAdapter()->deviceForAddress(url.host().replace("-", ":"));
     } else {
         device = Manager::self()->usableAdapter()->deviceForUBI(deviceUrl);
