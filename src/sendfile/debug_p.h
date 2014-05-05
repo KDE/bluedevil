@@ -1,8 +1,7 @@
 /*****************************************************************************
  * This file is part of the KDE project                                      *
  *                                                                           *
- * Copyright (C) 2010-2011 Alejandro Fiestas Olivares <afiestas@kde.org>     *
- * Copyright (C) 2010-2011 UFO Coders <info@ufocoders.com>                   *
+ * Copyright (C) 2014 David Rosca <nowrep@gmail.com>                         *
  *                                                                           *
  * This library is free software; you can redistribute it and/or             *
  * modify it under the terms of the GNU Library General Public               *
@@ -20,38 +19,11 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-#ifndef SELECTDEVICEANDFILESPAGE_H
-#define SELECTDEVICEANDFILESPAGE_H
+#ifndef DEBUG_P_H
+#define DEBUG_P_H
 
-#include "ui_selectfilediscover.h"
+#include <QLoggingCategory>
 
-#include <QWizardPage>
+Q_DECLARE_LOGGING_CATEGORY(SENDFILE)
 
-class KUrl;
-class QWizard;
-class QFileDialog;
-
-namespace BlueDevil {
-    class Device;
-}
-using namespace BlueDevil;
-
-class SelectDeviceAndFilesPage : public QWizardPage ,
-        public Ui::SelectFileDiscover
-{
-Q_OBJECT
-public:
-    SelectDeviceAndFilesPage(QWidget* parent = 0);
-
-    virtual bool isComplete() const;
-
-private Q_SLOTS:
-    void deviceSelected(Device*);
-    void openFileDialog();
-    void selectionChanged();
-
-private:
-    QFileDialog *m_dialog;
-};
-
-#endif // SELECTDEVICEANDFILESPAGE_H
+#endif // DEBUG_P_H

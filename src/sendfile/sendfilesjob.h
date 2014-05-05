@@ -27,8 +27,8 @@
 #include <QStringList>
 #include <QDBusObjectPath>
 
-#include <kcompositejob.h>
-#include <KFileItemList>
+#include <KFileItem>
+#include <KCompositeJob>
 
 namespace BlueDevil
 {

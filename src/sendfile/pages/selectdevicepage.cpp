@@ -27,11 +27,9 @@
 #include <QLabel>
 #include <QDesktopServices>
 #include <QVBoxLayout>
+#include <QIcon>
 
-#include <KIcon>
-#include <kfiledialog.h>
 #include <kpixmapsequenceoverlaypainter.h>
-#include <KDebug>
 
 #include <bluedevil/bluedevil.h>
 

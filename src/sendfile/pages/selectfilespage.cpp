@@ -23,7 +23,6 @@
 #include "selectfilespage.h"
 #include "../sendfilewizard.h"
 
-#include <kurl.h>
 #include <kfilewidget.h>
 #include <kdiroperator.h>
 #include <kfileitem.h>
@@ -34,7 +33,7 @@
 
 SelectFilesPage::SelectFilesPage(QWidget* parent): QWizardPage(parent)
 {
-    m_files = new KFileWidget(KUrl(QDesktopServices::storageLocation(QDesktopServices::HomeLocation)), this);
+    m_files = new KFileWidget(QUrl(QDesktopServices::storageLocation(QDesktopServices::HomeLocation)), this);
     m_files->setMode(KFile::Files);
     m_files->setContentsMargins(0, 0, 0, 0);
     setContentsMargins(0, 0, 0, 0);

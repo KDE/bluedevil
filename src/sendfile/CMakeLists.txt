@@ -12,6 +12,7 @@ set(sendfilehelper_SRCS
     pages/selectfilespage.cpp
     pages/connectingpage.cpp
     sendfilesjob.cpp
+    debug_p.cpp
 )
 
 qt5_wrap_ui(sendfilehelper_SRCS
@@ -27,7 +28,11 @@ qt5_add_dbus_interface(sendfilehelper_SRCS org.bluez.obex.Transfer1.xml obexd_tr
 add_executable(bluedevil-sendfile ${sendfilehelper_SRCS})
 
 target_link_libraries(bluedevil-sendfile
-    KF5::KDELibs4Support
+    Qt5::Widgets
+    Qt5::DBus
+    KF5::I18n
+    KF5::CoreAddons
+    KF5::KIOFileWidgets
     ${LibBlueDevil_LIBRARIES}
 )
 

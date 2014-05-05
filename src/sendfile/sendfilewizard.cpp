@@ -21,6 +21,8 @@
  *****************************************************************************/
 
 #include "sendfilewizard.h"
+#include "sendfilesjob.h"
+#include "debug_p.h"
 
 #include "pages/selectdeviceandfilespage.h"
 #include "pages/selectdevicepage.h"
@@ -28,18 +30,14 @@
 #include "pages/connectingpage.h"
 
 #include <QApplication>
+#include <QPushButton>
 #include <QTimer>
 
-#include <kdebug.h>
 #include <kstandardguiitem.h>
 #include <klocalizedstring.h>
-#include <kpushbutton.h>
 #include <kstatusbarjobtracker.h>
-#include <kfiledialog.h>
-#include <kicon.h>
 
 #include <bluedevil/bluedevil.h>
-#include <sendfilesjob.h>
 
 using namespace BlueDevil;
 
@@ -49,25 +47,25 @@ SendFileWizard::SendFileWizard(const QString& deviceInfo, const QStringList& fil
     , m_job(0)
 {
     if (!BlueDevil::Manager::self()->usableAdapter()) {
-        kDebug() << "No Adapters found";
+        qCDebug(SENDFILE) << "No Adapters found";
         qApp->exit();
         return;
     }
 
-    kDebug() << "DeviceUbi: " << deviceInfo;
-    kDebug() << "Files";
-    kDebug() << files;
+    qCDebug(SENDFILE) << "DeviceUbi: " << deviceInfo;
+    qCDebug(SENDFILE) << "Files";
+    qCDebug(SENDFILE) << files;
 
     setWindowTitle(i18n("Bluetooth Send Files"));
     setOption(NoCancelButton, false);
-    setButton(QWizard::NextButton, new KPushButton(KIcon("document-export"), i18n("Send Files")));
-    setButton(QWizard::CancelButton, new KPushButton(KStandardGuiItem::cancel()));
+    setButton(QWizard::NextButton, new QPushButton(QIcon::fromTheme(QStringLiteral("document-export")), i18n("Send Files")));
+    setButton(QWizard::CancelButton, new QPushButton(QIcon::fromTheme(QStringLiteral("dialog-cancel")), i18n("Cancel")));
     setOption(QWizard::DisabledBackButtonOnLastPage);
     setOption(QWizard::NoBackButtonOnStartPage);
 
-    kDebug() << "DeviceUbi: " << deviceInfo;
-    kDebug() << "Files";
-    kDebug() << files;
+    qCDebug(SENDFILE) << "DeviceUbi: " << deviceInfo;
+    qCDebug(SENDFILE) << "Files";
+    qCDebug(SENDFILE) << files;
 
     setDevice(deviceInfo);
 
@@ -83,7 +81,6 @@ SendFileWizard::SendFileWizard(const QString& deviceInfo, const QStringList& fil
         addPage(new SelectDevicePage());
         setFiles(files);
     } else {
-
         if (files.isEmpty()) {
             addPage(new SelectFilesPage());
         } else {
@@ -111,27 +108,27 @@ void SendFileWizard::done(int result)
 
 void SendFileWizard::setFiles(const QStringList& files)
 {
-    kDebug() << files;
+    qCDebug(SENDFILE) << files;
     m_files = files;
 }
 
 void SendFileWizard::setDevice(Device* device)
 {
-    kDebug() << device;
+    qCDebug(SENDFILE) << device;
     m_device = device;
 }
 
 void SendFileWizard::setDevice(QString deviceUrl)
 {
-    kDebug() << deviceUrl;
+    qCDebug(SENDFILE) << deviceUrl;
 
     BlueDevil::Device *device = 0;
-    if (deviceUrl.startsWith("bluetooth")) {
-        deviceUrl.remove("bluetooth:");
-        deviceUrl.replace(":", "-");
-        deviceUrl.prepend("bluetooth:");
+    if (deviceUrl.startsWith(QLatin1String("bluetooth"))) {
+        deviceUrl.remove(QStringLiteral("bluetooth:"));
+        deviceUrl.replace(QLatin1Char(':'), QLatin1Char('-'));
+        deviceUrl.prepend(QLatin1String("bluetooth:"));
         QUrl url(deviceUrl);
-        device = Manager::self()->usableAdapter()->deviceForAddress(url.host().replace("-", ":"));
+        device = Manager::self()->usableAdapter()->deviceForAddress(url.host().replace(QLatin1Char('-'), QLatin1Char(':')));
     } else {
         device = Manager::self()->usableAdapter()->deviceForUBI(deviceUrl);
     }
@@ -152,11 +149,11 @@ void SendFileWizard::wizardDone()
 void SendFileWizard::startTransfer()
 {
     if (m_files.isEmpty()) {
-        kDebug() << "No files to send";
+        qCDebug(SENDFILE) << "No files to send";
         return;
     }
     if (!m_device) {
-        kDebug() << "No device selected";
+        qCDebug(SENDFILE) << "No device selected";
     }
 
     m_job = new SendFilesJob(m_files, m_device);
@@ -167,3 +164,4 @@ void SendFileWizard::startTransfer()
 
     QTimer::singleShot(2000, this, SLOT(wizardDone()));
 }
+

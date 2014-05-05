@@ -27,14 +27,12 @@
 #include <QLabel>
 #include <QDesktopServices>
 #include <QVBoxLayout>
+#include <QUrl>
+#include <QIcon>
+#include <QFileDialog>
 
-#include <KUrl>
-#include <KIcon>
 #include <KLocalizedString>
-#include <kfiledialog.h>
-#include <kurlrequester.h>
 #include <kpixmapsequenceoverlaypainter.h>
-#include <KDebug>
 
 #include <bluedevil/bluedevil.h>
 
@@ -53,7 +51,7 @@ SelectDeviceAndFilesPage::SelectDeviceAndFilesPage(QWidget* parent): QWizardPage
 
     int buttonSize = selectBtn->sizeHint().height();
     selectBtn->setFixedSize(buttonSize, buttonSize);
-    selectBtn->setIcon(KIcon("document-open"));
+    selectBtn->setIcon(QIcon::fromTheme(QStringLiteral("document-open")));
 
     connect(widget, SIGNAL(deviceSelected(Device*)), this, SLOT(deviceSelected(Device*)));
     connect(selectBtn, SIGNAL(clicked(bool)), this, SLOT(openFileDialog()));
@@ -75,10 +73,12 @@ void SelectDeviceAndFilesPage::openFileDialog()
     //Don't worry MLaurent, I'm not going to check the pointer before delete it :)
     delete m_dialog;
 
-    m_dialog = new KFileDialog(KUrl(QDesktopServices::storageLocation(QDesktopServices::HomeLocation)), "*", this);
-    m_dialog->setMode(KFile::Files);
+    m_dialog = new QFileDialog(this, i18n("Open file..."),
+                               QDesktopServices::storageLocation(QDesktopServices::HomeLocation),
+                               QStringLiteral("*"));
+    m_dialog->setFileMode(QFileDialog::ExistingFiles);
 
-    connect(m_dialog, SIGNAL(selectionChanged()), this, SLOT(selectionChanged()));
+    connect(m_dialog, SIGNAL(accepted()), this, SLOT(selectionChanged()));
 
     m_dialog->exec();
 }

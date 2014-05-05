@@ -29,8 +29,7 @@
 #include <QLabel>
 #include <QTimer>
 #include <QDebug>
-
-#include <KIcon>
+#include <QIcon>
 
 #include <bluedevil/bluedevil.h>
 
@@ -59,7 +58,7 @@ void DiscoverWidget::startScan()
 
     QList <Device *> knownDevices = Manager::self()->usableAdapter()->devices();
     Q_FOREACH(Device *device, knownDevices) {
-        if (device->UUIDs().contains("00001105-0000-1000-8000-00805F9B34FB", Qt::CaseInsensitive)) {
+        if (device->UUIDs().contains(QLatin1String("00001105-0000-1000-8000-00805F9B34FB"), Qt::CaseInsensitive)) {
             deviceFound(device);
         }
     }
@@ -75,10 +74,10 @@ void DiscoverWidget::stopScan()
 
 void DiscoverWidget::deviceFound(const QVariantMap& deviceInfo)
 {
-    deviceFoundGeneric(deviceInfo["Address"].toString(),
-                       deviceInfo["Name"].toString(),
-                       deviceInfo["Icon"].toString(),
-                       deviceInfo["Alias"].toString());
+    deviceFoundGeneric(deviceInfo[QStringLiteral("Address")].toString(),
+                       deviceInfo[QStringLiteral("Name")].toString(),
+                       deviceInfo[QStringLiteral("Icon")].toString(),
+                       deviceInfo[QStringLiteral("Alias")].toString());
 }
 
 void DiscoverWidget::deviceFound(Device* device)
@@ -110,12 +109,12 @@ void DiscoverWidget::deviceFoundGeneric(QString address, QString name, QString i
     }
 
     if (icon.isEmpty()) {
-        icon.append("preferences-system-bluetooth");
+        icon.append(QLatin1String("preferences-system-bluetooth"));
     }
 
     if (m_itemRelation.contains(address)) {
         m_itemRelation[address]->setText(name);
-        m_itemRelation[address]->setIcon(KIcon(icon));
+        m_itemRelation[address]->setIcon(QIcon::fromTheme(icon));
         m_itemRelation[address]->setData(Qt::UserRole+1, origName);
 
         if (deviceList->currentItem() == m_itemRelation[address]) {
@@ -124,7 +123,7 @@ void DiscoverWidget::deviceFoundGeneric(QString address, QString name, QString i
         return;
     }
 
-    QListWidgetItem *item = new QListWidgetItem(KIcon(icon), name, deviceList);
+    QListWidgetItem *item = new QListWidgetItem(QIcon::fromTheme(icon), name, deviceList);
 
     item->setData(Qt::UserRole, address);
     item->setData(Qt::UserRole+1, origName);
