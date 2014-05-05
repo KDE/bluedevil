@@ -19,24 +19,43 @@
 
 #include "monolithic.h"
 #include "version.h"
-#include <KCmdLineArgs>
-#include <kuniqueapplication.h>
-#include <k4aboutdata.h>
+
+#include <QApplication>
+#include <QCommandLineParser>
+
+#include <KAboutData>
+#include <KDBusService>
+#include <KLocalizedString>
 
 int main(int argc, char *argv[])
 {
-    K4AboutData aboutData("bluedevilmonolithic", "bluedevil", ki18n("Bluetooth"), bluedevil_version, ki18n("Bluetooth"),
-    K4AboutData::License_GPL, ki18n("(c) 2010, UFO Coders"));
+    KAboutData aboutData(QStringLiteral("bluedevilmonolithic"),
+                         i18n("Bluetooth"),
+                         bluedevil_version,
+                         i18n("Bluetooth"),
+                         KAboutData::License_GPL,
+                         i18n("(c) 2010, UFO Coders"));
 
-    aboutData.addAuthor(ki18n("Alejandro Fiestas Olivares"), ki18n("Maintainer"), "afiestas@kde.org", "http://www.afiestas.org/");
-    aboutData.addAuthor(ki18n("Rafael Fernández López"), ki18n("Developer"), "ereslibre@kde.org", "http://www.ereslibre.es/");
-    aboutData.setProgramIconName("preferences-system-bluetooth");
+    aboutData.addAuthor(i18n("Alejandro Fiestas Olivares"), i18n("Maintainer"),
+                        QStringLiteral("afiestas@kde.org"), QStringLiteral("http://www.afiestas.org/"));
+    aboutData.addAuthor(i18n("Rafael Fernández López"), i18n("Developer"),
+                        QStringLiteral("ereslibre@kde.org"), QStringLiteral("http://www.ereslibre.es/"));
 
-    KCmdLineArgs::init(argc, argv, &aboutData);
-
-    KUniqueApplication app;
+    QApplication app(argc, argv);
+    app.setApplicationName(QStringLiteral("bluedevilmonolithic"));
+    app.setApplicationVersion(bluedevil_version);
+    app.setOrganizationDomain(QStringLiteral("kde.org"));
     app.setQuitOnLastWindowClosed(false);
-    new Monolithic;
+
+    QCommandLineParser parser;
+    parser.setApplicationDescription(i18n("Bluetooth"));
+    parser.addVersionOption();
+    parser.addHelpOption();
+
+    parser.process(app);
+
+    KDBusService service(KDBusService::Unique);
+    Monolithic monolithic;
 
     return app.exec();
 }
