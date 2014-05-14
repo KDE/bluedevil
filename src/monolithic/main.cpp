@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
                          i18n("Bluetooth"),
                          bluedevil_version,
                          i18n("Bluetooth"),
-                         KAboutData::License_GPL,
+                         KAboutLicense::GPL,
                          i18n("(c) 2010, UFO Coders"));
 
     aboutData.addAuthor(i18n("Alejandro Fiestas Olivares"), i18n("Maintainer"),

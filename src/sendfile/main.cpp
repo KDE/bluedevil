@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
                          i18n("Bluetooth Send File Helper"),
                          bluedevil_version,
                          i18n("Bluetooth Send File Helper"),
-                         KAboutData::License_GPL,
+                         KAboutLicense::GPL,
                          i18n("(c) 2010, UFO Coders"));
 
     aboutData.addAuthor(i18n("Alejandro Fiestas Olivares"), i18n("Maintainer"),
