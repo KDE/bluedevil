@@ -21,17 +21,15 @@
 #include "../BlueDevilDaemon.h"
 
 #include <QIcon>
+#include <QDebug>
 #include <QDBusConnection>
 
-#include <kdebug.h>
-
-ObexAgent::ObexAgent(const KComponentData &componentData, QObject* parent)
+ObexAgent::ObexAgent(QObject* parent)
     : QDBusAbstractAdaptor(parent)
-    , m_componentData(componentData)
 {
-    kDebug(dblue());
-    if (!QDBusConnection::sessionBus().registerObject("/BlueDevil_receiveAgent", parent)) {
-        kDebug() << "The dbus object can't be registered";
+    qCDebug(BLUEDAEMON);
+    if (!QDBusConnection::sessionBus().registerObject(QStringLiteral("/BlueDevil_receiveAgent"), parent)) {
+        qDebug() << "The dbus object can't be registered";
         return;
     }
 }
@@ -43,11 +41,11 @@ ObexAgent::~ObexAgent()
 
 QString ObexAgent::AuthorizePush(const QDBusObjectPath& path, const QDBusMessage &msg)
 {
-    kDebug(dblue());
+    qCDebug(BLUEDAEMON);
 
     msg.setDelayedReply(true);
 
-    ReceiveFileJob *job = new ReceiveFileJob(msg, path.path(), m_componentData, this);
+    ReceiveFileJob *job = new ReceiveFileJob(msg, path.path(), this);
     job->start();
 
     return QString();
@@ -55,11 +53,11 @@ QString ObexAgent::AuthorizePush(const QDBusObjectPath& path, const QDBusMessage
 
 void ObexAgent::Cancel()
 {
-    kDebug(dblue());
+    qCDebug(BLUEDAEMON);
 }
 
 
 void ObexAgent::Release()
 {
-    kDebug(dblue());
+    qCDebug(BLUEDAEMON);
 }

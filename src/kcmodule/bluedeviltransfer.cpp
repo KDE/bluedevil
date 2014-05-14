@@ -37,6 +37,7 @@
 #include <kurlrequester.h>
 #include <kpluginfactory.h>
 #include <kconfigdialogmanager.h>
+#include <klocalizedstring.h>
 
 K_PLUGIN_FACTORY_WITH_JSON(BlueDevilFactory,
                            "bluedeviltransfer.json",

@@ -6,7 +6,9 @@ set(authorize_SRCS
 add_executable(bluedevil-authorize ${authorize_SRCS})
 
 target_link_libraries(bluedevil-authorize
-    KF5::KDELibs4Support
+    Qt5::Core
+    KF5::I18n
+    KF5::Notifications
     ${LibBlueDevil_LIBRARIES})
 
 install(TARGETS bluedevil-authorize

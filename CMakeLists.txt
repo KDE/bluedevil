@@ -21,6 +21,9 @@ find_package(KF5 CONFIG REQUIRED COMPONENTS
     CoreAddons
     WidgetsAddons
     DBusAddons
+    Notifications
+    IconThemes
+    I18n
     KIO
     KCMUtils
     KDELibs4Support)
@@ -32,6 +35,8 @@ include(KDECMakeSettings)
 include(KDECompilerSettings)
 include(ECMOptionalAddSubdirectory)
 include(FeatureSummary)
+
+configure_file(config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config.h)
 
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules ${CMAKE_MODULE_PATH})
 find_package(LibBlueDevil 2.0 REQUIRED)

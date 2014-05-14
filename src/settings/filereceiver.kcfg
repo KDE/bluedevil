@@ -4,16 +4,11 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
     http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
     <!-- Includes -->
-    <include>QDesktopServices</include>
     <kcfgfile name="bluedevilreceiverrc"/>
-    <include>kglobalsettings.h</include>
     <include>QFile</include>
     <include>QDir</include>
-    <include>kdebug.h</include>
-    <include>KUrl</include>
-    <include>KGlobal</include>
-    <include>KConfig</include>
-    <include>kstandarddirs.h</include>
+    <include>QStandardPaths</include>
+    <include>KIO/Global</include>
 
     <group name="General">
 <!--    File Receiving      -->
@@ -23,7 +18,7 @@ xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
         </entry>
         <entry name="saveUrl" type="Url" key="saveUrl">
             <label>Save received files to:</label>
-            <default code="true">QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation)</default>
+            <default code="true">QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation)</default>
         </entry>
         <entry name="autoAccept" type="int" key="autoAccept">
             <label>Whether allow to modify shared files</label>
@@ -45,28 +40,29 @@ xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
         <entry key="rootFolder" type="Url" key="rootFolder">
             <code>
                 QString downloadPath;
-                const QString xdgUserDirs = KGlobal::dirs()->localxdgconfdir() + QLatin1String( "user-dirs.dirs" );
+                const QString xdgUserDirs = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation) + QLatin1String( "/user-dirs.dirs" );
                 if( QFile::exists( xdgUserDirs ) ) {
                     KConfig xdgUserConf( xdgUserDirs, KConfig::SimpleConfig );
                     KConfigGroup g( &amp;xdgUserConf, "" );
                     downloadPath  = g.readPathEntry( "XDG_PUBLICSHARE_DIR", downloadPath ).remove(  '"' );
                     if ( downloadPath.isEmpty() ) {
-                        downloadPath = KStandardDirs().saveLocation("data", "bluedevil/shared_files/");
+                        downloadPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/bluedevil/shared_files/");
                     }
                 }
 
                 downloadPath = QDir::cleanPath( downloadPath );
                 QDir dir(downloadPath);
                 if (!dir.exists()) {
-                    KUrl url(downloadPath);
+                    QUrl url(downloadPath);
                     QString dirname = dir.dirName();
-                    dir.setPath(url.upUrl().path());
+                    dir.setPath(KIO::upUrl(url).path());
                     if (!dir.mkdir(dirname)) {
-                        downloadPath = KStandardDirs().saveLocation("data", "bluedevil/shared_files/");
+                        downloadPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/bluedevil/shared_files/");
                     }
                 }
 
-                KUrl rootFolderUrl(downloadPath);
+                QDir().mkpath(downloadPath);
+                QUrl rootFolderUrl = QUrl::fromLocalFile(downloadPath);
             </code>
             <default code="true">rootFolderUrl</default>
         </entry>

@@ -22,18 +22,16 @@
 
 #include <QApplication>
 
-#include <kcomponentdata.h>
-#include <kaboutdata.h>
-#include <kcmdlineargs.h>
-#include <kglobal.h>
+#include <KLocalizedString>
 
 static const KLocalizedString description = ki18n("KDE Bluetooth System");
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    KComponentData data("bluedevil", "bluedevilrequestpinhelper");
-    KGlobal::setActiveComponent(data);
+    app.setApplicationName(QStringLiteral("bluedevil"));
+    app.setOrganizationDomain(QStringLiteral("kde.org"));
+
     RequestPin request;
 
     return app.exec();

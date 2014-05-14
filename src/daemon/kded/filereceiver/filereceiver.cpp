@@ -25,17 +25,19 @@
 #include <QDBusPendingCall>
 #include <QDBusPendingCallWatcher>
 
-#include <KDebug>
-
-FileReceiver::FileReceiver(const KComponentData& componentData, QObject* parent) : QObject(parent)
+FileReceiver::FileReceiver(QObject* parent)
+    : QObject(parent)
 {
-    kDebug(dblue());
+    qCDebug(BLUEDAEMON);
     qDBusRegisterMetaType<QVariantMap>();
 
-    new ObexAgent(componentData, this);
-    org::bluez::obex::AgentManager1 *agent = new org::bluez::obex::AgentManager1("org.bluez.obex", "/org/bluez/obex", QDBusConnection::sessionBus(), this);
+    new ObexAgent(this);
+    org::bluez::obex::AgentManager1 *agent = new org::bluez::obex::AgentManager1(QStringLiteral("org.bluez.obex"),
+                                                                                 QStringLiteral("/org/bluez/obex"),
+                                                                                 QDBusConnection::sessionBus(),
+                                                                                 this);
 
-    QDBusPendingReply <void > r = agent->RegisterAgent(QDBusObjectPath("/BlueDevil_receiveAgent"));
+    QDBusPendingReply <void > r = agent->RegisterAgent(QDBusObjectPath(QStringLiteral("/BlueDevil_receiveAgent")));
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(r, this);
     connect(watcher, SIGNAL(finished(QDBusPendingCallWatcher*)), SLOT(agentRegistered(QDBusPendingCallWatcher*)));
 }
@@ -48,9 +50,9 @@ FileReceiver::~FileReceiver()
 void FileReceiver::agentRegistered(QDBusPendingCallWatcher* call)
 {
     QDBusPendingReply <void > r = *call;
-    kDebug(dblue()) << "Error: " << r.isError();
+    qCDebug(BLUEDAEMON) << "Error: " << r.isError();
     if (r.isError()) {
-        kDebug(dblue()) << r.error().message();
+        qCDebug(BLUEDAEMON) << r.error().message();
     }
 
     call->deleteLater();

@@ -23,31 +23,30 @@
 #include "obex_session.h"
 #include "dbus_properties.h"
 
-#include <KIcon>
+#include <QIcon>
+#include <QDebug>
 #include <QDBusConnection>
+#include <QTemporaryFile>
 
 #include <bluedevil/bluedevilmanager.h>
 #include <bluedevil/bluedeviladapter.h>
 #include <bluedevil/bluedevildevice.h>
 
-#include <KDebug>
 #include <KIO/Job>
 #include <kio/copyjob.h>
 #include <kio/global.h>
 #include <kjobtrackerinterface.h>
-#include <KIconLoader>
 #include <KNotification>
-#include <KTemporaryFile>
 #include <KLocalizedString>
+#include <KIconLoader>
 
 using namespace BlueDevil;
 
-ReceiveFileJob::ReceiveFileJob(const QDBusMessage& msg, const QString &path, const KComponentData &componentData, QObject* parent)
+ReceiveFileJob::ReceiveFileJob(const QDBusMessage& msg, const QString &path, QObject* parent)
     : KJob(parent)
     , m_speedBytes(0)
     , m_path(path)
     , m_msg(msg)
-    , m_componentData(componentData)
 {
     setCapabilities(Killable);
 }
@@ -64,40 +63,49 @@ void ReceiveFileJob::start()
 
 bool ReceiveFileJob::doKill()
 {
-    kDebug(dblue());
+    qCDebug(BLUEDAEMON);
     m_transfer->Cancel();
     return true;
 }
 
 void ReceiveFileJob::init()
 {
-    m_transfer = new org::bluez::obex::Transfer1("org.bluez.obex", m_path, QDBusConnection::sessionBus(), this);
-    kDebug(dblue()) << m_transfer->name();
-    kDebug(dblue()) << m_transfer->filename();
-    kDebug(dblue()) << m_transfer->status();
-    kDebug(dblue()) << m_transfer->type();
-    kDebug(dblue()) << m_transfer->size();
-    kDebug(dblue()) << m_transfer->transferred();
+    m_transfer = new org::bluez::obex::Transfer1(QStringLiteral("org.bluez.obex"),
+                                                 m_path,
+                                                 QDBusConnection::sessionBus(),
+                                                 this);
+    qCDebug(BLUEDAEMON) << m_transfer->name();
+    qCDebug(BLUEDAEMON) << m_transfer->filename();
+    qCDebug(BLUEDAEMON) << m_transfer->status();
+    qCDebug(BLUEDAEMON) << m_transfer->type();
+    qCDebug(BLUEDAEMON) << m_transfer->size();
+    qCDebug(BLUEDAEMON) << m_transfer->transferred();
 
-    m_transferProps = new org::freedesktop::DBus::Properties("org.bluez.obex", m_path, QDBusConnection::sessionBus(), this);
+    m_transferProps = new org::freedesktop::DBus::Properties(QStringLiteral("org.bluez.obex"),
+                                                             m_path,
+                                                             QDBusConnection::sessionBus(),
+                                                             this);
     connect(m_transferProps,
             SIGNAL(PropertiesChanged(QString,QVariantMap,QStringList)),
             SLOT(transferPropertiesChanged(QString,QVariantMap,QStringList)));
 
-    m_session = new org::bluez::obex::Session1("org.bluez.obex", m_transfer->session().path(), QDBusConnection::sessionBus(), this);
-    kDebug(dblue()) << m_session->destination();
+    m_session = new org::bluez::obex::Session1(QStringLiteral("org.bluez.obex"),
+                                               m_transfer->session().path(),
+                                               QDBusConnection::sessionBus(),
+                                               this);
+    qCDebug(BLUEDAEMON) << m_session->destination();
 
     Device* device = Manager::self()->usableAdapter()->deviceForAddress(m_session->destination());
-    kDebug(dblue()) << device;
+    qCDebug(BLUEDAEMON) << device;
 
     m_deviceName = m_session->destination();
     if (device) {
-        kDebug(dblue()) << device->name();
+        qCDebug(BLUEDAEMON) << device->name();
         m_deviceName = device->name();
     }
 
     FileReceiverSettings::self()->readConfig();
-    kDebug(dblue()) << "Auto Accept: " << FileReceiverSettings::self()->autoAccept();
+    qCDebug(BLUEDAEMON) << "Auto Accept: " << FileReceiverSettings::self()->autoAccept();
     if (FileReceiverSettings::self()->autoAccept() == 1 && device->isTrusted()) {
         slotAccept();
         return;
@@ -111,7 +119,7 @@ void ReceiveFileJob::init()
 
 void ReceiveFileJob::showNotification()
 {
-    KNotification *m_notification = new KNotification("bluedevilIncomingFile",
+    KNotification *m_notification = new KNotification(QStringLiteral("bluedevilIncomingFile"),
         KNotification::Persistent, this);
 
     m_notification->setText(i18nc(
@@ -130,47 +138,44 @@ void ReceiveFileJob::showNotification()
     connect(m_notification, SIGNAL(closed()), SLOT(slotCancel()));
 
     int size = IconSize(KIconLoader::Desktop);
-    m_notification->setPixmap(KIcon("preferences-system-bluetooth").pixmap(size, size));
-    m_notification->setComponentName("bluedevil");
+    m_notification->setPixmap(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")).pixmap(size, size));
+    m_notification->setComponentName(QStringLiteral("bluedevil"));
     m_notification->sendEvent();
 }
 
 void ReceiveFileJob::slotAccept()
 {
-    kDebug(dblue());
-    KComponentData data = KGlobal::mainComponent();
-    KGlobal::setActiveComponent(m_componentData);
+    qCDebug(BLUEDAEMON);
     KIO::getJobTracker()->registerJob(this);
-    KGlobal::setActiveComponent(data);
 
     m_tempPath = createTempPath(m_transfer->name());
-    kDebug(dblue()) << m_tempPath;
+    qCDebug(BLUEDAEMON) << m_tempPath;
     QDBusMessage msg = m_msg.createReply(m_tempPath);
     QDBusConnection::sessionBus().send(msg);
 }
 
 void ReceiveFileJob::slotSaveAs()
 {
-    KTemporaryFile tmpFile;
+    QTemporaryFile tmpFile;
     tmpFile.open();
-    tmpFile.close();
 
     QDBusConnection::sessionBus().send(m_msg.createReply(tmpFile.fileName()));
-    kDebug(dblue()) << tmpFile.fileName();
+    qCDebug(BLUEDAEMON) << tmpFile.fileName();
 }
 
 void ReceiveFileJob::slotCancel()
 {
-    kDebug(dblue());
-    QDBusMessage msg = m_msg.createErrorReply("org.bluez.obex.Error.Rejected", "org.bluez.obex.Error.Rejected");
+    qCDebug(BLUEDAEMON);
+    QDBusMessage msg = m_msg.createErrorReply(QStringLiteral("org.bluez.obex.Error.Rejected"),
+                                              QStringLiteral("org.bluez.obex.Error.Rejected"));
     QDBusConnection::sessionBus().send(msg);
 }
 
 void ReceiveFileJob::transferPropertiesChanged(const QString& interface, const QVariantMap& properties, const QStringList& invalidatedProperties)
 {
-    kDebug(dblue()) << interface;
-    kDebug(dblue()) << properties;
-    kDebug(dblue()) << invalidatedProperties;
+    qCDebug(BLUEDAEMON) << interface;
+    qCDebug(BLUEDAEMON) << properties;
+    qCDebug(BLUEDAEMON) << invalidatedProperties;
 
     QStringList changedProps = properties.keys();
     Q_FOREACH(const QString &prop, changedProps) {
@@ -184,12 +189,12 @@ void ReceiveFileJob::transferPropertiesChanged(const QString& interface, const Q
 
 void ReceiveFileJob::statusChanged(const QVariant& value)
 {
-    kDebug(dblue()) << value;
+    qCDebug(BLUEDAEMON) << value;
     QString status = value.toString();
 
     FileReceiverSettings::self()->readConfig();
-    KUrl savePath = FileReceiverSettings::self()->saveUrl();
-    savePath.addPath(m_transfer->name());
+    QUrl savePath = FileReceiverSettings::self()->saveUrl().adjusted(QUrl::StripTrailingSlash);
+    savePath.setPath(savePath.path() + QLatin1Char('/') + m_transfer->name());
 
     if (status == QLatin1String("active")) {
         emit description(this, i18n("Receiving file over Bluetooth"),
@@ -202,7 +207,7 @@ void ReceiveFileJob::statusChanged(const QVariant& value)
         m_time = QTime::currentTime();
         return;
     } else if (status == QLatin1String("complete")) {
-        KIO::CopyJob* job = KIO::move(KUrl(m_tempPath), KUrl(savePath), KIO::HideProgressInfo);
+        KIO::CopyJob* job = KIO::move(QUrl::fromLocalFile(m_tempPath), savePath, KIO::HideProgressInfo);
         job->setUiDelegate(0);
         connect(job, SIGNAL(finished(KJob*)), SLOT(moveFinished(KJob*)));
         return;
@@ -212,16 +217,16 @@ void ReceiveFileJob::statusChanged(const QVariant& value)
         return;
     }
 
-    kDebug(dblue()) << "Not implemented status: " << status;
+    qCDebug(BLUEDAEMON) << "Not implemented status: " << status;
 }
 
 void ReceiveFileJob::transferChanged(const QVariant& value)
 {
-    kDebug(dblue()) << value;
+    qCDebug(BLUEDAEMON) << value;
     bool ok = false;
     qulonglong bytes = value.toULongLong(&ok);
     if (!ok) {
-        kWarning(dblue()) << "Couldn't cast transferChanged value" << value;
+        qCWarning(BLUEDAEMON) << "Couldn't cast transferChanged value" << value;
         return;
     }
 
@@ -241,10 +246,10 @@ void ReceiveFileJob::transferChanged(const QVariant& value)
 void ReceiveFileJob::moveFinished(KJob* job)
 {
     if (job->error()) {
-        kDebug(dblue()) << job->error();
-        kDebug(dblue()) << job->errorText();
+        qCDebug(BLUEDAEMON) << job->error();
+        qCDebug(BLUEDAEMON) << job->errorText();
         setError(job->error());
-        setErrorText("Error in KIO::move");
+        setErrorText(QStringLiteral("Error in KIO::move"));
     }
 
     emitResult();

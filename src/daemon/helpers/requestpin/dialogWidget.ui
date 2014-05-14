@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>259</width>
-    <height>113</height>
+    <height>127</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -70,14 +70,15 @@
      <property name="placeholderText">
       <string>1234</string>
      </property>
-     <property name="urlDropsEnabled">
-      <bool>false</bool>
-     </property>
      <property name="trapEnterKeyEvent" stdset="0">
       <bool>true</bool>
      </property>
-     <property name="clickMessage">
-      <string extracomment="Introduce PIN"/>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
     </widget>
    </item>

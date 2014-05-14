@@ -9,7 +9,10 @@ qt5_wrap_ui(requestpin_UI
 add_executable(bluedevil-requestpin ${requestpin_SRCS} ${requestpin_UI})
 
 target_link_libraries(bluedevil-requestpin
-    KF5::KDELibs4Support)
+    Qt5::Core
+    KF5::I18n
+    KF5::Notifications
+    KF5::Completion)
 
 install(TARGETS bluedevil-requestpin
         DESTINATION ${LIBEXEC_INSTALL_DIR})

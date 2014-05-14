@@ -24,8 +24,7 @@
 
 #include <kdemacros.h>
 #include <kdedmodule.h>
-#include <QMap>
-#include <QStringList>
+#include <QLoggingCategory>
 
 typedef QMap <QString, QString> DeviceInfo;
 typedef QMap<QString, DeviceInfo > QMapDeviceInfo;
@@ -103,5 +102,5 @@ private:
     Private *d;
 };
 
-extern int dblue();
+Q_DECLARE_LOGGING_CATEGORY(BLUEDAEMON)
 #endif /*BLUEDEVILDAEMON_H*/

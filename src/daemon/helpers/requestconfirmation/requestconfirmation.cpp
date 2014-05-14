@@ -23,15 +23,14 @@
 
 #include <QTimer>
 #include <QCoreApplication>
+#include <QIcon>
 
-#include <KIcon>
-#include <kiconloader.h>
-#include <knotification.h>
-#include <klocale.h>
+#include <KNotification>
+#include <KLocalizedString>
 
 RequestConfirmation::RequestConfirmation() : QObject()
 {
-    KNotification *notification = new KNotification("bluedevilRequestConfirmation",
+    KNotification *notification = new KNotification(QStringLiteral("bluedevilRequestConfirmation"),
                                                     KNotification::Persistent, this);
 
     notification->setText(i18nc(
@@ -52,7 +51,7 @@ RequestConfirmation::RequestConfirmation() : QObject()
 
     //We're using persistent notifications so we have to use our own timeout (10s)
     QTimer::singleShot(10000, notification, SLOT(close()));
-    notification->setPixmap(KIcon("preferences-system-bluetooth").pixmap(42,42));
+    notification->setPixmap(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")).pixmap(42,42));
     notification->sendEvent();
 }
 

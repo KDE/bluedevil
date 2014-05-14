@@ -25,7 +25,10 @@
 #include <QObject>
 #include <QTimer>
 
-class KDialog;
+namespace Ui {
+class dialogWidget;
+}
+
 class KNotification;
 
 /**
@@ -64,7 +67,7 @@ private Q_SLOTS:
 
 private:
     QTimer m_timer;
-    KDialog *m_dialog;
+    Ui::dialogWidget *m_dialogWidget;
     KNotification *m_notification;
 };
 #endif //REQUESTPIN_H

@@ -23,19 +23,17 @@
 
 #include <QApplication>
 
-#include <KGlobal>
-#include <kaboutdata.h>
-#include <kcmdlineargs.h>
-#include <kcomponentdata.h>
-#include <kglobal.h>
+#include <KLocalizedString>
 
 static const KLocalizedString description = ki18n("KDE Bluetooth System");
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    KComponentData data("bluedevil", "bluedevilauthorizehelper");
-    KGlobal::setActiveComponent(data);
+    app.setApplicationName(QStringLiteral("bluedevil"));
+    app.setOrganizationDomain(QStringLiteral("kde.org"));
+
     Authorize auth;
+
     return app.exec();
 }

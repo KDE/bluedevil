@@ -24,7 +24,6 @@
 #include <QDBusMessage>
 
 #include <KJob>
-#include <KComponentData>
 
 class OrgBluezObexSession1Interface;
 class OrgBluezObexTransfer1Interface;
@@ -33,7 +32,7 @@ class ReceiveFileJob : public KJob
 {
     Q_OBJECT
     public:
-        explicit ReceiveFileJob(const QDBusMessage &msg, const QString &path, const KComponentData &componentData, QObject* parent = 0);
+        explicit ReceiveFileJob(const QDBusMessage &msg, const QString &path, QObject* parent = 0);
         virtual ~ReceiveFileJob();
 
         virtual void start();
@@ -60,7 +59,6 @@ class ReceiveFileJob : public KJob
         QString m_tempPath;
         QString m_deviceName;
         QDBusMessage m_msg;
-        KComponentData m_componentData;
         OrgBluezObexSession1Interface *m_session;
         OrgBluezObexTransfer1Interface *m_transfer;
         OrgFreedesktopDBusPropertiesInterface *m_transferProps;
