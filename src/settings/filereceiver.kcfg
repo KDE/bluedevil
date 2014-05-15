@@ -53,9 +53,9 @@ xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
                 downloadPath = QDir::cleanPath( downloadPath );
                 QDir dir(downloadPath);
                 if (!dir.exists()) {
-                    QUrl url(downloadPath);
+                    QUrl url = QUrl::fromLocalFile(downloadPath);
                     QString dirname = dir.dirName();
-                    dir.setPath(KIO::upUrl(url).path());
+                    dir.setPath(KIO::upUrl(url).toLocalFile());
                     if (!dir.mkdir(dirname)) {
                         downloadPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/bluedevil/shared_files/");
                     }
