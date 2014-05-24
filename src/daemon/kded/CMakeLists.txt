@@ -34,6 +34,7 @@ target_link_libraries(kded_bluedevil
     KF5::CoreAddons
     KF5::DBusAddons
     KF5::Notifications
+    KF5::KDELibs4Support
     KF5::KIOCore
     KF5::KIOFileWidgets
     KF5::IconThemes
