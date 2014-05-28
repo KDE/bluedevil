@@ -32,6 +32,8 @@
 #include <QFileDialog>
 
 #include <KLocalizedString>
+#include <kiconloader.h>
+#include <kpixmapsequence.h>
 #include <kpixmapsequenceoverlaypainter.h>
 
 #include <bluedevil/bluedevil.h>
@@ -46,6 +48,7 @@ SelectDeviceAndFilesPage::SelectDeviceAndFilesPage(QWidget* parent): QWizardPage
     discoverLayout->addWidget(widget);
 
     KPixmapSequenceOverlayPainter *workingPainter = new KPixmapSequenceOverlayPainter(this);
+    workingPainter->setSequence(KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), 22));
     workingPainter->setWidget(working);
     workingPainter->start();
 
