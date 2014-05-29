@@ -23,7 +23,6 @@
 
 #include <QDBusObjectPath>
 #include <kdedmodule.h>
-#include <kdemacros.h>
 
 class KJob;
 class QDBusMessage;
@@ -34,7 +33,7 @@ namespace BlueDevil {
 };
 using namespace BlueDevil;
 
-class KDE_EXPORT ObexFtpDaemon
+class Q_DECL_EXPORT ObexFtpDaemon
     : public KDEDModule
 {
     Q_OBJECT

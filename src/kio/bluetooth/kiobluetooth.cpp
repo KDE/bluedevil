@@ -34,13 +34,12 @@
 #include <KApplication>
 #include <KLocale>
 #include <k4aboutdata.h>
-#include <kdemacros.h>
 
 #include <bluedevil/bluedevil.h>
 
 using namespace BlueDevil;
 
-extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
+extern "C" int Q_DECL_EXPORT kdemain(int argc, char **argv)
 {
     K4AboutData about("kiobluetooth", "bluedevil", ki18n("kiobluetooth"), bluedevil_version);
     KCmdLineArgs::init(&about);

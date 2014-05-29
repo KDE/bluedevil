@@ -22,7 +22,6 @@
 #ifndef BLUEDEVILDAEMON_H
 #define BLUEDEVILDAEMON_H
 
-#include <kdemacros.h>
 #include <kdedmodule.h>
 #include <QLoggingCategory>
 
@@ -33,10 +32,10 @@ class QDBusPendingCallWatcher;
 namespace BlueDevil {
     class Adapter;
     class Device;
-};
+}
 using namespace BlueDevil;
 
-class KDE_EXPORT BlueDevilDaemon
+class Q_DECL_EXPORT BlueDevilDaemon
     : public KDEDModule
 {
     Q_OBJECT

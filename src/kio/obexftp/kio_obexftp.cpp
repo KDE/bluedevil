@@ -30,13 +30,12 @@
 #include <KMimeType>
 #include <KApplication>
 #include <k4aboutdata.h>
-#include <kdemacros.h>
 #include "obexdtypes.h"
 #include "transferfilejob.h"
 
 #include <unistd.h>
 
-extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
+extern "C" int Q_DECL_EXPORT kdemain(int argc, char **argv)
 {
     K4AboutData about("kioobexftp", "bluedevil", ki18n("kioobexftp"), bluedevil_version);
     KCmdLineArgs::init(&about);

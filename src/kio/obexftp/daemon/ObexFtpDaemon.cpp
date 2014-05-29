@@ -24,7 +24,6 @@
 #include <QHash>
 #include <QDBusConnection>
 
-#include <kdemacros.h>
 #include <KDebug>
 #include <KAboutData>
 #include <KPluginFactory>
