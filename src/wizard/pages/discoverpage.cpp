@@ -30,6 +30,8 @@
 #include <KIcon>
 #include <KDebug>
 #include <KLocalizedString>
+#include <kiconloader.h>
+#include <kpixmapsequence.h>
 #include <kpixmapsequenceoverlaypainter.h>
 
 #include <bluedevil/bluedevil.h>
@@ -42,6 +44,7 @@ DiscoverPage::DiscoverPage(BlueWizard* parent): QWizardPage(parent), m_wizard(pa
     setupUi(this);
 
     KPixmapSequenceOverlayPainter *workingPainter = new KPixmapSequenceOverlayPainter(this);
+    workingPainter->setSequence(KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), 22));
     workingPainter->setWidget(working);
     workingPainter->start();
 

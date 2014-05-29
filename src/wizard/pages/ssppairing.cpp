@@ -27,6 +27,8 @@
 #include <KDebug>
 #include <KPushButton>
 #include <KLocalizedString>
+#include <kiconloader.h>
+#include <kpixmapsequence.h>
 #include <kpixmapsequenceoverlaypainter.h>
 
 #include <bluedevil/bluedevil.h>
@@ -40,6 +42,7 @@ SSPPairingPage::SSPPairingPage(BlueWizard* parent) : QWizardPage(parent)
 {
     setupUi(this);
     m_working = new KPixmapSequenceOverlayPainter(this);
+    m_working->setSequence(KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), 22));
     m_working->setWidget(pinNumber);
     m_working->start();
 

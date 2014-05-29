@@ -29,6 +29,8 @@
 #include <QVBoxLayout>
 #include <QIcon>
 
+#include <kiconloader.h>
+#include <kpixmapsequence.h>
 #include <kpixmapsequenceoverlaypainter.h>
 
 #include <bluedevil/bluedevil.h>
@@ -43,6 +45,7 @@ SelectDevicePage::SelectDevicePage(QWidget* parent): QWizardPage(parent), m_dial
     discoverLayout->addWidget(widget);
 
     KPixmapSequenceOverlayPainter *workingPainter = new KPixmapSequenceOverlayPainter(this);
+    workingPainter->setSequence(KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), 22));
     workingPainter->setWidget(working);
     workingPainter->start();
 
