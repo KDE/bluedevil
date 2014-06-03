@@ -25,7 +25,6 @@ find_package(KF5 CONFIG REQUIRED COMPONENTS
     IconThemes
     I18n
     KIO
-    KCMUtils
     KDELibs4Support)
 
 add_definitions(-Wno-deprecated-declarations)
