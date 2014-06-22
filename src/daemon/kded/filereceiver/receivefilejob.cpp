@@ -143,6 +143,7 @@ void ReceiveFileJob::slotAccept()
     KIO::getJobTracker()->registerJob(this);
     KGlobal::setActiveComponent(data);
 
+    m_originalFileName = m_transfer->name();
     m_tempPath = createTempPath(m_transfer->name());
     kDebug(dblue()) << m_tempPath;
     QDBusMessage msg = m_msg.createReply(m_tempPath);
@@ -189,7 +190,7 @@ void ReceiveFileJob::statusChanged(const QVariant& value)
 
     FileReceiverSettings::self()->readConfig();
     KUrl savePath = FileReceiverSettings::self()->saveUrl();
-    savePath.addPath(m_transfer->name());
+    savePath.addPath(m_originalFileName);
 
     if (status == QLatin1String("active")) {
         emit description(this, i18n("Receiving file over Bluetooth"),
