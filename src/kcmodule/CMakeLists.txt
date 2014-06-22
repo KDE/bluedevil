@@ -32,13 +32,24 @@ kservice_desktop_to_json(kcm_bluedeviladapters bluedeviladapters.desktop)
 kservice_desktop_to_json(kcm_bluedeviltransfer bluedeviltransfer.desktop)
 
 target_link_libraries(kcm_bluedevildevices
-    KF5::KDELibs4Support
+    Qt5::Widgets
+    Qt5::DBus
+    KF5::I18n
+    KF5::IconThemes
+    KF5::ConfigWidgets
     ${LibBlueDevil_LIBRARIES})
 target_link_libraries(kcm_bluedeviladapters
-    KF5::KDELibs4Support
+    Qt5::Widgets
+    Qt5::DBus
+    KF5::I18n
+    KF5::ConfigWidgets
     ${LibBlueDevil_LIBRARIES})
 target_link_libraries(kcm_bluedeviltransfer
-    KF5::KDELibs4Support
+    Qt5::Widgets
+    Qt5::DBus
+    KF5::I18n
+    KF5::KIOWidgets
+    KF5::ConfigWidgets
     ${LibBlueDevil_LIBRARIES})
 
 install(TARGETS kcm_bluedevildevices

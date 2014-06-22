@@ -21,10 +21,10 @@
 #ifndef SHAREDFILESDIALOG_H
 #define SHAREDFILESDIALOG_H
 
-#include <kdialog.h>
+#include <QDialog>
 
 class Ui_sharedFiles;
-class SharedFilesDialog : public KDialog
+class SharedFilesDialog : public QDialog
 {
     Q_OBJECT
 public:

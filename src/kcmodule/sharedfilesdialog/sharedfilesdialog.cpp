@@ -23,21 +23,19 @@
 #include "linkproxymodel.h"
 #include "filereceiversettings.h"
 
-#include <QDebug>
+#include <QVBoxLayout>
+#include <QFileDialog>
+#include <QStandardPaths>
 #include <QFileSystemModel>
-#include <QDesktopServices>
+#include <QDialogButtonBox>
 
-#include <KUrl>
-#include <KIcon>
-#include <KFileDialog>
-#include <kstandarddirs.h>
+#include <KLocalizedString>
 
-SharedFilesDialog::SharedFilesDialog(QWidget* parent, Qt::WFlags flags): KDialog(parent, flags)
+SharedFilesDialog::SharedFilesDialog(QWidget* parent, Qt::WFlags flags)
+    : QDialog(parent, flags)
 {
-    QWidget *sharedFiles = new QWidget(this);
     m_ui = new Ui::sharedFiles();
-    m_ui->setupUi(sharedFiles);
-    setMainWidget(sharedFiles);
+    m_ui->setupUi(this);
     m_ui->listView->setSelectionMode(QAbstractItemView::ExtendedSelection);
 
     QFileSystemModel *model = new QFileSystemModel();
@@ -49,8 +47,8 @@ SharedFilesDialog::SharedFilesDialog(QWidget* parent, Qt::WFlags flags): KDialog
     m_ui->listView->setModel(proxy);
     m_ui->listView->setRootIndex(proxy->mapFromSource(in));
 
-    m_ui->addBtn->setIcon(KIcon("list-add"));
-    m_ui->removeBtn->setIcon(KIcon("list-remove"));
+    m_ui->addBtn->setIcon(QIcon::fromTheme(QStringLiteral("list-add")));
+    m_ui->removeBtn->setIcon(QIcon::fromTheme(QStringLiteral("list-remove")));
 
     connect(this, SIGNAL(finished(int)), this, SLOT(slotFinished(int)));
     connect(m_ui->addBtn, SIGNAL(clicked(bool)), this, SLOT(addFiles()));
@@ -63,8 +61,8 @@ void SharedFilesDialog::slotFinished(int result)
         return;
     }
 
-    KUrl url;
-    QString baseDir = FileReceiverSettings::self()->rootFolder().path().append("/");
+    QUrl url;
+    QString baseDir = FileReceiverSettings::self()->rootFolder().path().append(QLatin1Char('/'));
     if (!m_added.isEmpty()) {
         Q_FOREACH(const QString &filePath, m_added) {
             url.setPath(filePath);
@@ -81,14 +79,16 @@ void SharedFilesDialog::slotFinished(int result)
 
 void SharedFilesDialog::addFiles()
 {
-    KFileDialog *dialog = new KFileDialog(QDesktopServices::storageLocation(QDesktopServices::HomeLocation), "*", this);
-    dialog->setMode(KFile::Directory | KFile::Files | KFile::LocalOnly);
+    QFileDialog *dialog = new QFileDialog(this, i18n("Add files..."));
+    dialog->setFileMode(QFileDialog::FileMode(QFileDialog::Directory| QFileDialog::ExistingFiles));
+    dialog->setDirectory(QStandardPaths::writableLocation(QStandardPaths::HomeLocation));
+    dialog->setNameFilter(QStringLiteral("*"));
     dialog->exec();
 
     QFile fileExist;
-    KUrl url;
+    QUrl url;
     QString linkPath;
-    QString baseDir = FileReceiverSettings::self()->rootFolder().path().append("/");
+    QString baseDir = FileReceiverSettings::self()->rootFolder().path().append(QLatin1Char('/'));
 
     QStringList files = dialog->selectedFiles();
     Q_FOREACH(const QString &filePath, files) {
@@ -123,9 +123,7 @@ void SharedFilesDialog::removeFiles()
         file.setFileName(linkPath);
         if (m_added.contains(file.symLinkTarget())) {
             m_added.removeOne(file.symLinkTarget());
-            continue;
-        }
-        if (!m_removed.contains(file.symLinkTarget())) {
+        } else if (!m_removed.contains(file.symLinkTarget())) {
             m_removed.append(file.symLinkTarget());
         }
 

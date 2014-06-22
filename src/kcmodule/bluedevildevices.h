@@ -21,8 +21,6 @@
 #ifndef _BLUEDEVILDEVICES_H
 #define _BLUEDEVILDEVICES_H
 
-#include <QItemSelection>
-
 #include <kcmodule.h>
 
 class SystemCheck;
@@ -31,8 +29,8 @@ class BluetoothDevicesModel;
 
 class QListView;
 class QCheckBox;
-
-class KPushButton;
+class QPushButton;
+class QItemSelection;
 
 namespace BlueDevil {
     class Adapter;
@@ -42,8 +40,7 @@ namespace BlueDevil {
 typedef BlueDevil::Adapter Adapter;
 typedef BlueDevil::Device Device;
 
-class KCMBlueDevilDevices
-    : public KCModule
+class KCMBlueDevilDevices : public KCModule
 {
     Q_OBJECT
 
@@ -58,7 +55,6 @@ private Q_SLOTS:
     void deviceSelectionChanged(const QItemSelection &selection);
     void deviceDoubleClicked(const QModelIndex &index);
     void detailsDevice();
-    void renameAliasDevice();
     void removeDevice();
     void connectDevice();
     void disconnectDevice();
@@ -76,11 +72,11 @@ private:
 
 private:
     QCheckBox             *m_enable;
-    KPushButton           *m_detailsDevice;
-    KPushButton           *m_removeDevice;
-    KPushButton           *m_connectDevice;
-    KPushButton           *m_disconnectDevice;
-    KPushButton           *m_addDevice;
+    QPushButton           *m_detailsDevice;
+    QPushButton           *m_removeDevice;
+    QPushButton           *m_connectDevice;
+    QPushButton           *m_disconnectDevice;
+    QPushButton           *m_addDevice;
     bool                   m_isEnabled;
     BluetoothDevicesModel *m_devicesModel;
     QListView             *m_devices;

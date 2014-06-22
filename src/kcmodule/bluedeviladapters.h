@@ -31,8 +31,7 @@ class QSlider;
 class QLabel;
 class QCheckBox;
 class QFormLayout;
-
-class KLineEdit;
+class QLineEdit;
 
 class SystemCheck;
 class AdapterSettings;
@@ -43,8 +42,7 @@ namespace BlueDevil {
 
 typedef BlueDevil::Adapter Adapter;
 
-class AdapterSettings
-    : public QGroupBox
+class AdapterSettings : public QGroupBox
 {
     Q_OBJECT
 
@@ -76,7 +74,7 @@ Q_SIGNALS:
 
 private:
     Adapter      *m_adapter;
-    KLineEdit    *m_name;
+    QLineEdit    *m_name;
     QString       m_nameOrig;
     QRadioButton *m_hidden;
     bool          m_hiddenOrig;
@@ -94,8 +92,7 @@ private:
     QFormLayout  *m_layout;
 };
 
-class KCMBlueDevilAdapters
-    : public KCModule
+class KCMBlueDevilAdapters : public KCModule
 {
     Q_OBJECT
 

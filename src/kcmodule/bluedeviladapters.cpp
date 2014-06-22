@@ -22,7 +22,6 @@
 #include "systemcheck.h"
 
 #include <QTimer>
-
 #include <QScrollArea>
 #include <QBoxLayout>
 #include <QRadioButton>
@@ -31,11 +30,11 @@
 #include <QLabel>
 #include <QFormLayout>
 #include <QButtonGroup>
+#include <QLineEdit>
+#include <QIcon>
 
 #include <bluedevil/bluedevil.h>
 
-#include <kicon.h>
-#include <klineedit.h>
 #include <kaboutdata.h>
 #include <kpluginfactory.h>
 #include <klocalizedstring.h>
@@ -49,7 +48,7 @@ K_PLUGIN_FACTORY_WITH_JSON(BlueDevilFactory,
 AdapterSettings::AdapterSettings(Adapter *adapter, KCModule *parent)
     : QGroupBox(parent)
     , m_adapter(adapter)
-    , m_name(new KLineEdit(this))
+    , m_name(new QLineEdit(this))
     , m_hidden(new QRadioButton(i18nc("Radio widget to set if we want the adapter to be hidden", "Hidden"), this))
     , m_alwaysVisible(new QRadioButton(i18nc("Radio widget to set if we want the adapter to be always visible", "Always visible"), this))
     , m_temporaryVisible(new QRadioButton(i18nc("Radio widget to set if we want the adapter to be temporarily visible", "Temporarily visible"), this))
@@ -137,13 +136,12 @@ bool AdapterSettings::isModified() const
            m_temporaryVisible->isChecked() != m_temporaryVisibleOrig ||
            m_discoverTime->value() != m_discoverTimeOrig || m_powered->isChecked() != m_poweredOrig;
 }
-#include <QDebug>
+
 void AdapterSettings::applyChanges()
 {
     if (m_name->text() != m_nameOrig) {
-        qDebug() << "Setting alias";
-         m_adapter->setAlias(m_name->text());
-     }
+        m_adapter->setAlias(m_name->text());
+    }
 
     if (m_hidden->isChecked()) {
         m_adapter->setDiscoverable(false);
@@ -240,12 +238,14 @@ KCMBlueDevilAdapters::KCMBlueDevilAdapters(QWidget *parent, const QVariantList&)
     , m_noAdaptersMessage(0)
     , m_systemCheck(new SystemCheck(this))
 {
-    KAboutData* ab = new KAboutData(
-        "kcmbluedeviladapters", i18n("Bluetooth Adapters"), "1.0",
-        i18n("Bluetooth Adapters Control Panel Module"),
-        KAboutLicense::GPL, i18n("(c) 2010 Rafael Fernández López"));
+    KAboutData* ab = new KAboutData(QStringLiteral("kcmbluedeviladapters"),
+                                    i18n("Bluetooth Adapters"),
+                                    QStringLiteral("1.0"),
+                                    i18n("Bluetooth Adapters Control Panel Module"),
+                                    KAboutLicense::GPL,
+                                    i18n("(c) 2010 Rafael Fernández López"));
 
-    ab->addAuthor(i18n("Rafael Fernández López"), i18n("Developer and Maintainer"), "ereslibre@kde.org");
+    ab->addAuthor(i18n("Rafael Fernández López"), i18n("Developer and Maintainer"), QStringLiteral("ereslibre@kde.org"));
     setAboutData(ab);
 
     connect(m_systemCheck, SIGNAL(updateInformationStateRequest()),
@@ -320,7 +320,7 @@ void KCMBlueDevilAdapters::generateNoAdaptersMessage()
     QGridLayout *layout = new QGridLayout;
     m_noAdaptersMessage = new QWidget(this);
     QLabel *label = new QLabel(m_noAdaptersMessage);
-    label->setPixmap(KIcon("dialog-information").pixmap(128, 128));
+    label->setPixmap(QIcon::fromTheme(QStringLiteral("dialog-information")).pixmap(128, 128));
     layout->addWidget(label, 0, 1, Qt::AlignHCenter);
     layout->addWidget(new QLabel(i18n("No adapters found. Please connect one."), m_noAdaptersMessage),
                                  1, 1, Qt::AlignHCenter);

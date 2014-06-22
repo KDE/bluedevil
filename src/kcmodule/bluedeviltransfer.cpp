@@ -27,7 +27,6 @@
 #include "sharedfilesdialog/sharedfilesdialog.h"
 
 #include <QTimer>
-
 #include <QBoxLayout>
 
 #include <bluedevil/bluedevil.h>
@@ -50,12 +49,14 @@ KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
     , m_systemCheck(new SystemCheck(this))
     , m_restartNeeded(false)
 {
-    KAboutData* ab = new KAboutData(
-        "kcmbluedeviltransfer", i18n("Bluetooth Transfer"), "1.0",
-        i18n("Bluetooth Transfer Control Panel Module"),
-        KAboutLicense::GPL, i18n("(c) 2010 Rafael Fernández López"));
+    KAboutData* ab = new KAboutData(QStringLiteral("kcmbluedeviltransfer"),
+                                    i18n("Bluetooth Transfer"),
+                                    QStringLiteral("1.0"),
+                                    i18n("Bluetooth Transfer Control Panel Module"),
+                                    KAboutLicense::GPL,
+                                    i18n("(c) 2010 Rafael Fernández López"));
 
-    ab->addAuthor(i18n("Rafael Fernández López"), i18n("Developer and Maintainer"), "ereslibre@kde.org");
+    ab->addAuthor(i18n("Rafael Fernández López"), i18n("Developer and Maintainer"), QStringLiteral("ereslibre@kde.org"));
     setAboutData(ab);
 
     connect(m_systemCheck, SIGNAL(updateInformationStateRequest()),
@@ -95,7 +96,6 @@ KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
                 this, SLOT(adapterDiscoverableChanged()));
     }
 
-
     updateInformationState();
 
     ColumnResizer *resizer = new ColumnResizer(this);
@@ -116,8 +116,8 @@ void KCMBlueDevilTransfer::save()
     KCModule::save();
 
     org::kde::BlueDevil::Service *service = new org::kde::BlueDevil::Service(
-                                                    "org.kde.BlueDevil.Service",
-                                                    "/Service",
+                                                    QStringLiteral("org.kde.BlueDevil.Service"),
+                                                    QStringLiteral("/Service"),
                                                     QDBusConnection::sessionBus(), this);
     if (service->isRunning()) {
         service->stopServer();

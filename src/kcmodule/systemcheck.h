@@ -20,21 +20,15 @@
 
 #ifndef BLUEDEVIL_SYSTEM_CHECK_H
 #define BLUEDEVIL_SYSTEM_CHECK_H
-#include <QtCore/QObject>
 
-#include <kdeversion.h>
+#include <QObject>
 
 class QVBoxLayout;
 
 class KDED;
-#if KDE_IS_VERSION(4,6,41)
 class KMessageWidget;
-#else
-class ErrorWidget;
-#endif
 
-class SystemCheck
-    : public QObject
+class SystemCheck : public QObject
 {
     Q_OBJECT
 
@@ -73,17 +67,10 @@ private Q_SLOTS:
 private:
     KDED        *m_kded;
     QWidget     *m_parent;
-#if KDE_IS_VERSION(4,6,41)
     KMessageWidget *m_noAdaptersError;
     KMessageWidget *m_noKDEDRunning;
     KMessageWidget *m_notDiscoverableAdapterError;
     KMessageWidget *m_disabledNotificationsError;
-#else
-    ErrorWidget *m_noAdaptersError;
-    ErrorWidget *m_noKDEDRunning;
-    ErrorWidget *m_notDiscoverableAdapterError;
-    ErrorWidget *m_disabledNotificationsError;
-#endif
 };
 
 #endif //BLUEDEVIL_SYSTEM_CHECK_H

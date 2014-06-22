@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "linkproxymodel.h"
-#include <QDebug>
+
 #include <QModelIndex>
 #include <QFileSystemModel>
 
