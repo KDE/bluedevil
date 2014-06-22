@@ -148,6 +148,7 @@ void ReceiveFileJob::slotAccept()
     qCDebug(BLUEDAEMON);
     KIO::getJobTracker()->registerJob(this);
 
+    m_originalFileName = m_transfer->name();
     m_tempPath = createTempPath(m_transfer->name());
     qCDebug(BLUEDAEMON) << m_tempPath;
     QDBusMessage msg = m_msg.createReply(m_tempPath);
@@ -194,7 +195,7 @@ void ReceiveFileJob::statusChanged(const QVariant& value)
 
     FileReceiverSettings::self()->readConfig();
     QUrl savePath = FileReceiverSettings::self()->saveUrl().adjusted(QUrl::StripTrailingSlash);
-    savePath.setPath(savePath.path() + QLatin1Char('/') + m_transfer->name());
+    savePath.setPath(savePath.path() + QLatin1Char('/') + m_originalFileName);
 
     if (status == QLatin1String("active")) {
         emit description(this, i18n("Receiving file over Bluetooth"),
