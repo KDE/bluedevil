@@ -15,7 +15,6 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 #include "bluewizard.h"
 #include "wizardagent.h"
 #include "pages/discoverpage.h"
@@ -25,26 +24,30 @@
 #include "pages/keyboardpairing.h"
 #include "pages/ssppairing.h"
 #include "pages/fail.h"
+#include "debug_p.h"
 
 #include <QApplication>
 #include <QDBusConnection>
-#include <QWizard>
+#include <QPushButton>
 #include <QString>
 
-#include <bluedevil/bluedevil.h>
-#include <KPushButton>
-#include <KDebug>
+#include <KStandardGuiItem>
 #include <KLocalizedString>
 #include <KProcess>
 
-BlueWizard::BlueWizard(const KUrl &url) : QWizard(), m_device(0), m_manualPin(false)
+#include <bluedevil/bluedevil.h>
+
+BlueWizard::BlueWizard(const QUrl &url)
+    : QWizard()
+    , m_device(0)
+    , m_manualPin(false)
 {
     setWindowTitle(i18n("Bluetooth Device Wizard"));
 
     setOption(QWizard::IndependentPages, true);
 
     if (url.host().length() == 17) {
-        setPreselectedAddress(url.host().replace("-", ":").toLatin1());
+        setPreselectedAddress(url.host().replace(QLatin1Char('-'), QLatin1Char(':')).toLatin1());
     }
 
     if (url.fileName().length() == 36) {
@@ -60,27 +63,44 @@ BlueWizard::BlueWizard(const KUrl &url) : QWizard(), m_device(0), m_manualPin(fa
     setPage(SSPPairing, new SSPPairingPage(this));
     setPage(Fail, new FailPage(this));
 
-    setButton(QWizard::BackButton, new KPushButton(KStandardGuiItem::back(KStandardGuiItem::UseRTL)));
-    setButton(QWizard::NextButton, new KPushButton(KStandardGuiItem::forward(KStandardGuiItem::UseRTL)));
-    setButton(QWizard::FinishButton, new KPushButton(KStandardGuiItem::apply()));
-    setButton(QWizard::CancelButton, new KPushButton(KStandardGuiItem::cancel()));
+    QPushButton *backButton = new QPushButton(this);
+    KGuiItem::assign(backButton, KStandardGuiItem::back(KStandardGuiItem::UseRTL));
 
-    //We do not want "Forward" as text
+    QPushButton *forwardButton = new QPushButton(this);
+    KGuiItem::assign(forwardButton, KStandardGuiItem::forward(KStandardGuiItem::UseRTL));
+
+    QPushButton *applyButton = new QPushButton(this);
+    KGuiItem::assign(applyButton, KStandardGuiItem::apply());
+
+    QPushButton *cancelButton = new QPushButton(this);
+    KGuiItem::assign(cancelButton, KStandardGuiItem::cancel());
+
+    setButton(QWizard::BackButton, backButton);
+    setButton(QWizard::NextButton, forwardButton);
+    setButton(QWizard::FinishButton, applyButton);
+    setButton(QWizard::CancelButton, cancelButton);
+
+    // We do not want "Forward" as text
     setButtonText(QWizard::NextButton, i18nc("Action to go to the next page on the wizard", "Next"));
     setButtonText(QWizard::FinishButton, i18nc("Action to finish the wizard", "Finish"));
-    //First show, then do the rest
+
+    // First show, then do the rest
     show();
 
-    if(!QDBusConnection::systemBus().registerObject("/wizardAgent", qApp)) {
-        qDebug() << "The dbus object can't be registered";
+    if (!QDBusConnection::systemBus().registerObject(QStringLiteral("/wizardAgent"), qApp)) {
+        qCDebug(WIZARD) << "The dbus object can't be registered";
     }
 
     m_agent = new WizardAgent(qApp);
 }
 
+BlueWizard::~BlueWizard()
+{
+}
+
 void BlueWizard::done(int result)
 {
-    kDebug() << "Wizard done: " << result;
+    qCDebug(WIZARD) << "Wizard done: " << result;
 
     QWizard::done(result);
     qApp->exit(result);
@@ -91,16 +111,11 @@ Device* BlueWizard::device() const
     return m_device;
 }
 
-BlueWizard::~BlueWizard()
-{
-
-}
-
 void BlueWizard::setDeviceAddress(const QByteArray& address)
 {
-    kDebug() << "Device Address: " << address;
+    qCDebug(WIZARD) << "Device Address: " << address;
     if (!Manager::self()->usableAdapter()) {
-        kDebug() << "No usable adapter available";
+        qCDebug(WIZARD) << "No usable adapter available";
         return;
     }
 
@@ -116,7 +131,7 @@ QByteArray BlueWizard::deviceAddress() const
 void BlueWizard::restartWizard()
 {
     KProcess proc;
-    proc.setProgram("bluedevil-wizard");
+    proc.setProgram(QStringLiteral("bluedevil-wizard"));
     proc.startDetached();
 
     qApp->quit();
@@ -124,7 +139,7 @@ void BlueWizard::restartWizard()
 
 void BlueWizard::setPin(const QByteArray& pinNum)
 {
-    kDebug() << "Setting pin: :" << pinNum;
+    qCDebug(WIZARD) << "Setting pin: :" << pinNum;
     m_pin = pinNum;
 }
 
@@ -140,7 +155,7 @@ QByteArray BlueWizard::pin() const
 
 void BlueWizard::setPreselectedUuid(const QByteArray& uuid)
 {
-    kDebug() << "Preselect UUID: " << uuid;
+    qCDebug(WIZARD) << "Preselect UUID: " << uuid;
     m_preselectedUuid = uuid;
 }
 
@@ -151,7 +166,7 @@ QByteArray BlueWizard::preselectedUuid() const
 
 void BlueWizard::setPreselectedAddress(const QByteArray& address)
 {
-    kDebug() << "Preselected Address: " << address;
+    qCDebug(WIZARD) << "Preselected Address: " << address;
     m_preselectedAddress = address;
 }
 
@@ -159,7 +174,6 @@ QByteArray BlueWizard::preselectedAddress() const
 {
     return m_preselectedAddress;
 }
-
 
 WizardAgent* BlueWizard::agent() const
 {

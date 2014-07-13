@@ -20,25 +20,28 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-
 #include "ssppairing.h"
 #include "bluewizard.h"
+#include "wizardagent.h"
+#include "debug_p.h"
 
-#include <KDebug>
-#include <KPushButton>
+#include <QDebug>
+#include <QPushButton>
+
+#include <KStandardGuiItem>
 #include <KLocalizedString>
 #include <kiconloader.h>
 #include <kpixmapsequence.h>
 #include <kpixmapsequenceoverlaypainter.h>
 
 #include <bluedevil/bluedevil.h>
-#include <wizardagent.h>
 
 using namespace BlueDevil;
 
-SSPPairingPage::SSPPairingPage(BlueWizard* parent) : QWizardPage(parent)
-, m_buttonClicked(QWizard::NoButton)
-, m_wizard(parent)
+SSPPairingPage::SSPPairingPage(BlueWizard* parent)
+    : QWizardPage(parent)
+    , m_buttonClicked(QWizard::NoButton)
+    , m_wizard(parent)
 {
     setupUi(this);
     m_working = new KPixmapSequenceOverlayPainter(this);
@@ -54,7 +57,7 @@ SSPPairingPage::SSPPairingPage(BlueWizard* parent) : QWizardPage(parent)
 
 void SSPPairingPage::initializePage()
 {
-    kDebug();
+    qCDebug(WIZARD);
     QList <QWizard::WizardButton> list;
     list << QWizard::Stretch;
     list << QWizard::CancelButton;
@@ -75,9 +78,12 @@ void SSPPairingPage::confirmationRequested(quint32 passkey, const QDBusMessage& 
 {
     m_msg = msg;
 
-    KPushButton *matches = new KPushButton(KStandardGuiItem::apply());
+    QPushButton *matches = new QPushButton(this);
+    KGuiItem::assign(matches, KStandardGuiItem::apply());
     matches->setText(i18n("Matches"));
-    KPushButton *notMatch = new KPushButton(KStandardGuiItem::cancel());
+
+    QPushButton *notMatch = new QPushButton(this);
+    KGuiItem::assign(notMatch, KStandardGuiItem::cancel());
     notMatch->setText(i18n("Does not match"));
 
     connect(matches, SIGNAL(clicked(bool)), this, SLOT(matchesClicked()));
@@ -89,7 +95,7 @@ void SSPPairingPage::confirmationRequested(quint32 passkey, const QDBusMessage& 
     wizard()->setButtonLayout(wizardButtonsLayout());
 
     m_working->stop();
-    pinNumber->setText(QString("%1").arg(passkey, 6, 10, QLatin1Char('0')));
+    pinNumber->setText(QString(QStringLiteral("%1")).arg(passkey, 6, 10, QLatin1Char('0')));
 
     confirmLbl->setText(i18n("Please, confirm that the PIN displayed on \"%1\" matches the wizard one.", m_wizard->device()->name()));
 
@@ -104,7 +110,7 @@ void SSPPairingPage::pinRequested(const QString& pin)
 
 void SSPPairingPage::pairedChanged(bool paired)
 {
-    kDebug() << paired;
+    qCDebug(WIZARD) << paired;
 
     wizard()->next();
 }

@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
 
     aboutData.addAuthor(i18n("Alejandro Fiestas Olivares"), i18n("Maintainer"),
                         QStringLiteral("afiestas@kde.org"), QStringLiteral("http://www.afiestas.org/"));
-    aboutData.setProgramIconName("preferences-system-bluetooth");
+    aboutData.setProgramIconName(QStringLiteral("preferences-system-bluetooth"));
 
     QApplication app(argc, argv);
     app.setApplicationName(QStringLiteral("bluedevilsendfile"));

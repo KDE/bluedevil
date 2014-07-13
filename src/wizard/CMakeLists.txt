@@ -2,6 +2,7 @@ set(wizard_SRCS
     main.cpp
     bluewizard.cpp
     wizardagent.cpp
+    debug_p.cpp
 
     pages/discoverpage.cpp
     pages/nopairing.cpp
@@ -24,7 +25,13 @@ qt5_wrap_ui(wizard_SRCS
 add_executable(bluedevil-wizard ${wizard_SRCS})
 
 target_link_libraries(bluedevil-wizard
-    KF5::KDELibs4Support
+    Qt5::Widgets
+    Qt5::DBus
+    KF5::I18n
+    KF5::CoreAddons
+    KF5::DBusAddons
+    KF5::WidgetsAddons
+    KF5::IconThemes
     ${LibBlueDevil_LIBRARIES})
 
 install(TARGETS bluedevil-wizard ${INSTALL_TARGETS_DEFAULT_ARGS})

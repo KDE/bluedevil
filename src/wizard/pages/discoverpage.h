@@ -15,7 +15,6 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 #ifndef DISCOVERPAGE_H
 #define DISCOVERPAGE_H
 
@@ -29,8 +28,7 @@ namespace BlueDevil {
 }
 using namespace BlueDevil;
 
-class DiscoverPage : public QWizardPage
-, public Ui::Discover
+class DiscoverPage : public QWizardPage, public Ui::Discover
 {
 Q_OBJECT
 

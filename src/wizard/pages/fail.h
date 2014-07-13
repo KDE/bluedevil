@@ -20,7 +20,6 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-
 #ifndef FAIL_H
 #define FAIL_H
 
@@ -37,8 +36,7 @@ namespace BlueDevil {
 
 using namespace BlueDevil;
 
-class FailPage : public QWizardPage
-, Ui::Fail
+class FailPage : public QWizardPage, Ui::Fail
 {
 Q_OBJECT
 

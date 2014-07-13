@@ -16,19 +16,17 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 #include "discoverpage.h"
 #include "ui_discover.h"
 #include "../bluewizard.h"
 #include "../wizardagent.h"
+#include "../debug_p.h"
 
 #include <QListWidgetItem>
 #include <QListView>
 #include <QLabel>
 #include <QTimer>
 
-#include <KIcon>
-#include <KDebug>
 #include <KLocalizedString>
 #include <kiconloader.h>
 #include <kpixmapsequence.h>
@@ -58,7 +56,7 @@ DiscoverPage::~DiscoverPage()
 
 void DiscoverPage::initializePage()
 {
-    kDebug() << "Initialize Page";
+    qCDebug(WIZARD) << "Initialize Page";
 
     QList <QWizard::WizardButton> list;
     list << QWizard::Stretch;
@@ -122,7 +120,7 @@ void DiscoverPage::deviceFound(Device* device)
     }
 
     if (!alias.isEmpty() && alias != name && !name.isEmpty()) {
-        name = QString("%1 (%2)").arg(alias).arg(name);
+        name = QString(QStringLiteral("%1 (%2)")).arg(alias).arg(name);
     }
 
     if (name.isEmpty()) {
@@ -130,13 +128,13 @@ void DiscoverPage::deviceFound(Device* device)
     }
 
     if (icon.isEmpty()) {
-        icon.append("preferences-system-bluetooth");
+        icon = QStringLiteral("preferences-system-bluetooth");
     }
 
     if (m_itemRelation.contains(address)) {
         m_itemRelation[address]->setText(name);
-        m_itemRelation[address]->setIcon(KIcon(icon));
-        m_itemRelation[address]->setData(Qt::UserRole+1, origName);
+        m_itemRelation[address]->setIcon(QIcon::fromTheme(icon));
+        m_itemRelation[address]->setData(Qt::UserRole + 1, origName);
 
         //If the device was selected but it didn't had a name, select it again
         if (deviceList->currentItem() == m_itemRelation[address]) {
@@ -147,14 +145,14 @@ void DiscoverPage::deviceFound(Device* device)
 
     connect(device, SIGNAL(propertyChanged(QString,QVariant)), SLOT(devicePropertyChanged()));
 
-    QListWidgetItem *item = new QListWidgetItem(KIcon(icon), name, deviceList);
+    QListWidgetItem *item = new QListWidgetItem(QIcon::fromTheme(icon), name, deviceList);
 
     item->setData(Qt::UserRole, address);
-    item->setData(Qt::UserRole+1, origName);
+    item->setData(Qt::UserRole + 1, origName);
 
     m_itemRelation.insert(address, item);
 
-    if (!deviceList->currentItem() &&  BlueDevil::classToType(dClass) == BLUETOOTH_TYPE_MOUSE) {
+    if (!deviceList->currentItem() && BlueDevil::classToType(dClass) == BLUETOOTH_TYPE_MOUSE) {
         deviceList->setCurrentItem(m_itemRelation[address]);
     }
 
@@ -186,7 +184,7 @@ void DiscoverPage::devicePropertyChanged()
 
 int DiscoverPage::nextId() const
 {
-    kDebug();
+    qCDebug(WIZARD);
     if (!isComplete()) {
         return BlueWizard::Discover;
     }
@@ -199,7 +197,7 @@ int DiscoverPage::nextId() const
         return BlueWizard::Discover;
     }
 
-    kDebug() << "Stopping scanning";
+    qCDebug(WIZARD) << "Stopping scanning";
 
     if (!Manager::self()->usableAdapter()) {
         return BlueWizard::Fail;
@@ -208,7 +206,7 @@ int DiscoverPage::nextId() const
     Manager::self()->usableAdapter()->stopDiscovery();
     Device *device = m_wizard->device();
     if (device->isPaired()) {
-        kDebug() << "Device is paired, jumping";
+        qCDebug(WIZARD) << "Device is paired, jumping";
         return BlueWizard::Connect;
     }
 
@@ -220,25 +218,25 @@ int DiscoverPage::nextId() const
         pin = m_wizard->agent()->getPin(device);
     }
 
-    kDebug() << "Class: " << classToType(device->deviceClass());
-    kDebug() << "Legacy: " << device->hasLegacyPairing();
-    kDebug() << "From DB: " << m_wizard->agent()->isFromDatabase();
-    kDebug() << "PIN: " << m_wizard->agent()->pin();
+    qCDebug(WIZARD) << "Class: " << classToType(device->deviceClass());
+    qCDebug(WIZARD) << "Legacy: " << device->hasLegacyPairing();
+    qCDebug(WIZARD) << "From DB: " << m_wizard->agent()->isFromDatabase();
+    qCDebug(WIZARD) << "PIN: " << m_wizard->agent()->pin();
 
     //If keyboard no matter what, we go to the keyboard page.
     if (classToType(device->deviceClass()) == BLUETOOTH_TYPE_KEYBOARD) {
-        kDebug() << "Keyboard Pairing";
+        qCDebug(WIZARD) << "Keyboard Pairing";
         return BlueWizard::KeyboardPairing;
     }
 
     //If pin ==  NULL means that not pairing is required
     if (!device->hasLegacyPairing() && !m_wizard->agent()->isFromDatabase()) {
-        kDebug() << "Secure Pairing";
+        qCDebug(WIZARD) << "Secure Pairing";
         return BlueWizard::SSPPairing;
     }
 
-    if (pin == "NULL") {
-        kDebug() << "NO Pairing";
+    if (pin == QLatin1String("NULL")) {
+        qCDebug(WIZARD) << "NO Pairing";
         return BlueWizard::NoPairing;
     }
 

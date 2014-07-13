@@ -20,7 +20,6 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-
 #ifndef LEGACYPAIRING_H
 #define LEGACYPAIRING_H
 
@@ -37,8 +36,7 @@ namespace BlueDevil {
 
 using namespace BlueDevil;
 
-class LegacyPairingPage : public QWizardPage
-, Ui::LegacyPairing
+class LegacyPairingPage : public QWizardPage, Ui::LegacyPairing
 {
 Q_OBJECT
 

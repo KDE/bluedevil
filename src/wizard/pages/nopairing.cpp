@@ -20,17 +20,18 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-
 #include "nopairing.h"
 #include "bluewizard.h"
+#include "debug_p.h"
 
-#include <KDebug>
+#include <QDebug>
+#include <QTimer>
+
 #include <kiconloader.h>
 #include <kpixmapsequence.h>
 #include <kpixmapsequenceoverlaypainter.h>
 
 #include <bluedevil/bluedevil.h>
-#include <QTimer>
 
 using namespace BlueDevil;
 
@@ -47,7 +48,7 @@ NoPairingPage::NoPairingPage(BlueWizard* parent) : QWizardPage(parent)
 
 void NoPairingPage::initializePage()
 {
-    kDebug();
+    qCDebug(WIZARD);
     m_wizard->setButtonLayout(wizardButtonsLayout());
 
     connecting->setText(connecting->text().append(m_wizard->device()->name()));
@@ -70,11 +71,11 @@ void NoPairingPage::timeout()
 
 void NoPairingPage::connectedChanged(bool connected)
 {
-    kDebug();
+    qCDebug(WIZARD);
 
     m_validPage = connected;
     if (m_validPage) {
-        kDebug() << "Done";
+        qCDebug(WIZARD) << "Done";
         m_wizard->done(0);
     }
 }

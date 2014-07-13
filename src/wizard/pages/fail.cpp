@@ -20,35 +20,38 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-
 #include "fail.h"
 #include "bluewizard.h"
+#include "debug_p.h"
 
-#include <KDebug>
-#include <KPushButton>
+#include <QDebug>
+#include <QPushButton>
+
+#include <KStandardGuiItem>
 #include <KLocalizedString>
 #include <kpixmapsequenceoverlaypainter.h>
 
 #include <bluedevil/bluedevil.h>
-#include <QTimer>
 
 using namespace BlueDevil;
 
-FailPage::FailPage(BlueWizard* parent) : QWizardPage(parent)
-, m_wizard(parent)
+FailPage::FailPage(BlueWizard* parent)
+    : QWizardPage(parent)
+    , m_wizard(parent)
 {
     setupUi(this);
 }
 
 void FailPage::initializePage()
 {
-    kDebug();
-    KPushButton *reset = new KPushButton(KStandardGuiItem::reset());
-    reset->setText(i18nc("Button offered when the wizard fail. This button will restart the wizard","Restart the wizard"));
+    qCDebug(WIZARD);
+    QPushButton *reset = new QPushButton(this);
+    KGuiItem::assign(reset, KStandardGuiItem::reset());
+    reset->setText(i18nc("Button offered when the wizard fail. This button will restart the wizard", "Restart the wizard"));
     connect(reset, SIGNAL(clicked(bool)), m_wizard, SLOT(restartWizard()));
 
     m_wizard->setButton(QWizard::CustomButton3, reset);
-    m_wizard->setButtonText(QWizard::CancelButton, i18nc("Button that closes the wizard","Close"));
+    m_wizard->setButtonText(QWizard::CancelButton, i18nc("Button that closes the wizard", "Close"));
 
     QList<QWizard::WizardButton> list;
     list << QWizard::Stretch;

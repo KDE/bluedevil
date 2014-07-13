@@ -20,22 +20,24 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-
 #include "keyboardpairing.h"
+#include "wizardagent.h"
 #include "bluewizard.h"
+#include "debug_p.h"
 
-#include <KDebug>
+#include <QDebug>
+
 #include <kiconloader.h>
 #include <kpixmapsequence.h>
 #include <kpixmapsequenceoverlaypainter.h>
 
 #include <bluedevil/bluedevil.h>
-#include <wizardagent.h>
 
 using namespace BlueDevil;
 
-KeyboardPairingPage::KeyboardPairingPage(BlueWizard* parent) : QWizardPage(parent)
-, m_wizard(parent)
+KeyboardPairingPage::KeyboardPairingPage(BlueWizard* parent)
+    : QWizardPage(parent)
+    , m_wizard(parent)
 {
     setupUi(this);
     m_working = new KPixmapSequenceOverlayPainter(this);
@@ -51,7 +53,7 @@ KeyboardPairingPage::KeyboardPairingPage(BlueWizard* parent) : QWizardPage(paren
 
 void KeyboardPairingPage::initializePage()
 {
-    kDebug();
+    qCDebug(WIZARD);
     m_wizard->setButtonLayout(wizardButtonsLayout());
 
     connect(m_wizard->agent(), SIGNAL(pinRequested(QString)), this, SLOT(pinRequested(QString)));
@@ -69,7 +71,7 @@ void KeyboardPairingPage::pinRequested(const QString& pin)
 
 void KeyboardPairingPage::pairedChanged(bool paired)
 {
-    kDebug() << paired;
+    qCDebug(WIZARD) << paired;
     m_wizard->next();
 }
 
@@ -77,7 +79,6 @@ bool KeyboardPairingPage::validatePage()
 {
     return m_wizard->device()->isPaired();
 }
-
 
 int KeyboardPairingPage::nextId() const
 {

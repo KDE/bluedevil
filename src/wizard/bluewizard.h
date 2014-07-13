@@ -22,8 +22,6 @@
 #include <QObject>
 #include <QWizard>
 
-#include <kurl.h>
-
 namespace BlueDevil {
     class Device;
 }
@@ -34,7 +32,7 @@ class BlueWizard : public QWizard
 Q_OBJECT
 
 public:
-    BlueWizard(const KUrl& url);
+    BlueWizard(const QUrl& url);
     virtual ~BlueWizard();
 
     QByteArray deviceAddress() const;
