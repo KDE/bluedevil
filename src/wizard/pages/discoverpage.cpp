@@ -167,7 +167,7 @@ void DiscoverPage::itemSelected(QListWidgetItem* item)
     bool origName = item->data(Qt::UserRole+1).toBool();
     if (origName) {
         QString address = item->data(Qt::UserRole).toString();
-        m_wizard->setDeviceAddress(address.toAscii());
+        m_wizard->setDeviceAddress(address.toUtf8());
     } else {
         m_wizard->setDeviceAddress(QByteArray());
     }

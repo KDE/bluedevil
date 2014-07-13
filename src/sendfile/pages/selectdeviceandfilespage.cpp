@@ -25,7 +25,7 @@
 #include "../sendfilewizard.h"
 
 #include <QLabel>
-#include <QDesktopServices>
+#include <QStandardPaths>
 #include <QVBoxLayout>
 #include <QUrl>
 #include <QIcon>
@@ -77,7 +77,7 @@ void SelectDeviceAndFilesPage::openFileDialog()
     delete m_dialog;
 
     m_dialog = new QFileDialog(this, i18n("Open file..."),
-                               QDesktopServices::storageLocation(QDesktopServices::HomeLocation),
+                               QStandardPaths::writableLocation(QStandardPaths::HomeLocation),
                                QStringLiteral("*"));
     m_dialog->setFileMode(QFileDialog::ExistingFiles);
 

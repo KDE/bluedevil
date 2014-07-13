@@ -145,7 +145,7 @@ void BlueWizard::setPin(const QByteArray& pinNum)
 
 void BlueWizard::setPin(const QString& pin)
 {
-    setPin(pin.toAscii());
+    setPin(pin.toUtf8());
 }
 
 QByteArray BlueWizard::pin() const

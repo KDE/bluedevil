@@ -24,10 +24,7 @@ find_package(KF5 CONFIG REQUIRED COMPONENTS
     Notifications
     IconThemes
     I18n
-    KIO
-    KDELibs4Support)
-
-add_definitions(-Wno-deprecated-declarations)
+    KIO)
 
 include(KDEInstallDirs)
 include(KDECMakeSettings)

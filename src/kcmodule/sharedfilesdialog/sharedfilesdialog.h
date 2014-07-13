@@ -28,7 +28,7 @@ class SharedFilesDialog : public QDialog
 {
     Q_OBJECT
 public:
-    SharedFilesDialog(QWidget* parent = 0, Qt::WFlags flags = 0);
+    SharedFilesDialog(QWidget* parent = 0, Qt::WindowFlags flags = 0);
 
 private Q_SLOTS:
     void slotFinished(int result);

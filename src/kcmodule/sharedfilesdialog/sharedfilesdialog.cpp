@@ -31,7 +31,7 @@
 
 #include <KLocalizedString>
 
-SharedFilesDialog::SharedFilesDialog(QWidget* parent, Qt::WFlags flags)
+SharedFilesDialog::SharedFilesDialog(QWidget* parent, Qt::WindowFlags flags)
     : QDialog(parent, flags)
 {
     m_ui = new Ui::sharedFiles();

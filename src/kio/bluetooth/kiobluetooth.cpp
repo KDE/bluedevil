@@ -126,12 +126,11 @@ void KioBluetooth::listRemoteDeviceServices()
         } else {
             entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, service.mimetype);
         }
-        listEntry(entry, false);
+        listEntry(entry);
         processedSize(i++);
     }
 
-    listEntry(KIO::UDSEntry(), true);
-    infoMessage("");
+    infoMessage(QString());
     finished();
 }
 
@@ -143,7 +142,6 @@ void KioBluetooth::listDevices()
     Q_FOREACH(const DeviceInfo device, devices) {
         listDevice(device);
     }
-    listEntry(KIO::UDSEntry(), true);
     infoMessage(i18n("Scanning for new devices..."));
     finished();
 }
@@ -168,7 +166,7 @@ void KioBluetooth::listDevice(const DeviceInfo device)
     } else {
         entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, QStringLiteral("inode/vnd.kde.bluedevil.device"));
     }
-    listEntry(entry, false);
+    listEntry(entry);
 }
 
 void KioBluetooth::listDir(const QUrl &url)
@@ -183,7 +181,6 @@ void KioBluetooth::listDir(const QUrl &url)
     qCDebug(BLUETOOTH) << m_kded->isOnline().value();
     if (!m_kded->isOnline().value()) {
         infoMessage(i18n("No Bluetooth adapters have been found."));
-        listEntry(KIO::UDSEntry(), true);
         finished();
         return;
     }

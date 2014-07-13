@@ -208,7 +208,7 @@ void BlueDevilDaemon::onlineMode()
     connect(d->m_adapter, SIGNAL(deviceFound(Device*)), this, SLOT(deviceFound(Device*)));
     connect(&d->m_timer, SIGNAL(timeout()), d->m_adapter, SLOT(stopDiscovery()));
 
-    FileReceiverSettings::self()->readConfig();
+    FileReceiverSettings::self()->load();
     if (!d->m_fileReceiver && FileReceiverSettings::self()->enabled()) {
         d->m_fileReceiver = new FileReceiver(this);
     }

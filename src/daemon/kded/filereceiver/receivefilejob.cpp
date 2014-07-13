@@ -104,7 +104,7 @@ void ReceiveFileJob::init()
         m_deviceName = device->name();
     }
 
-    FileReceiverSettings::self()->readConfig();
+    FileReceiverSettings::self()->load();
     qCDebug(BLUEDAEMON) << "Auto Accept: " << FileReceiverSettings::self()->autoAccept();
     if (FileReceiverSettings::self()->autoAccept() == 1 && device->isTrusted()) {
         slotAccept();
@@ -193,7 +193,7 @@ void ReceiveFileJob::statusChanged(const QVariant& value)
     qCDebug(BLUEDAEMON) << value;
     QString status = value.toString();
 
-    FileReceiverSettings::self()->readConfig();
+    FileReceiverSettings::self()->load();
     QUrl savePath = FileReceiverSettings::self()->saveUrl().adjusted(QUrl::StripTrailingSlash);
     savePath.setPath(savePath.path() + QLatin1Char('/') + m_originalFileName);
 

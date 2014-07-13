@@ -27,13 +27,13 @@
 #include <kdiroperator.h>
 #include <kfileitem.h>
 
-#include <QDesktopServices>
+#include <QStandardPaths>
 #include <QVBoxLayout>
 #include <QLabel>
 
 SelectFilesPage::SelectFilesPage(QWidget* parent): QWizardPage(parent)
 {
-    m_files = new KFileWidget(QUrl(QDesktopServices::storageLocation(QDesktopServices::HomeLocation)), this);
+    m_files = new KFileWidget(QUrl(QStandardPaths::writableLocation(QStandardPaths::HomeLocation)), this);
     m_files->setMode(KFile::Files);
     m_files->setContentsMargins(0, 0, 0, 0);
     setContentsMargins(0, 0, 0, 0);

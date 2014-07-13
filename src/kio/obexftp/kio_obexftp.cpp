@@ -117,7 +117,6 @@ void KioFtp::listDir(const QUrl &url)
     if (reply.isError()) {
         qCDebug(OBEXFTP) << reply.error().message();
         error(KIO::ERR_SLAVE_DEFINED, i18n("Bluetooth is not enabled"));
-        finished();
         return;
     }
     QVariantMapList folderList = reply.value();
@@ -131,10 +130,9 @@ void KioFtp::listDir(const QUrl &url)
             m_statMap.insert(statUrl.toDisplayString(), entry);
         }
 
-        listEntry(entry, false);
+        listEntry(entry);
     }
 
-    listEntry(KIO::UDSEntry(), true);
     finished();
 }
 
@@ -157,7 +155,6 @@ void KioFtp::rename(const QUrl& src, const QUrl& dest, KIO::JobFlags flags)
     Q_UNUSED(flags)
 
     error(KIO::ERR_UNSUPPORTED_ACTION, src.toDisplayString());
-    finished();
 }
 
 void KioFtp::get(const QUrl& url)
