@@ -375,6 +375,7 @@ KIO::UDSEntry KioFtp::entryFromInfo(const QVariantMap& info)
 
     if (info[QStringLiteral("Type")].toString() == QLatin1String("folder")) {
         entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+        entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, QStringLiteral("inode/directory"));
     } else {
         entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
         entry.insert(KIO::UDSEntry::UDS_SIZE, info[QStringLiteral("Size")].toLongLong());
