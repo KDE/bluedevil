@@ -22,12 +22,10 @@
 
 #ifndef KIO_OBEXFTP_H
 #define KIO_OBEXFTP_H
+
 #include "kdedobexftp.h"
 
-#include <QtCore/QObject>
-#include <QDBusObjectPath>
-#include <QEventLoop>
-#include <QUrl>
+#include <QObject>
 
 #include <kio/slavebase.h>
 
@@ -64,7 +62,6 @@ private Q_SLOTS:
 private:
     int                          m_counter;
     bool                         m_settingHost;
-    QEventLoop                   m_eventLoop;
     QMap<QString, KIO::UDSEntry> m_statMap;
     QString                      m_address;
     QString                      m_sessionPath;

@@ -15,8 +15,10 @@ add_library(kded_obexftpdaemon MODULE ${kded_obexftp_SRCS})
 kservice_desktop_to_json(kded_obexftpdaemon obexftpdaemon.desktop)
 
 target_link_libraries(kded_obexftpdaemon
+    Qt5::Core
+    KF5::I18n
     KF5::DBusAddons
-    KF5::KDELibs4Support
+    KF5::KIOCore
     ${LibBlueDevil_LIBRARIES}
 )
 

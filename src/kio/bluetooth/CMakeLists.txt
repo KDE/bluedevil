@@ -8,7 +8,11 @@ qt5_add_dbus_interface(kio_bluetooth_PART_SRCS ${kded_bluedevil.xml} kdedbluedev
 add_library(kio_bluetooth MODULE ${kio_bluetooth_PART_SRCS})
 
 target_link_libraries(kio_bluetooth
-    KF5::KDELibs4Support
+    Qt5::Core
+    Qt5::DBus
+    KF5::I18n
+    KF5::KIOCore
+    KF5::CoreAddons
     ${LibBlueDevil_LIBRARIES}
 )
 

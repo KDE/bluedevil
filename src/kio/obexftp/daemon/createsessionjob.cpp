@@ -21,8 +21,7 @@
 #include "ObexFtpDaemon.h"
 
 #include <QString>
-
-#include <KDebug>
+#include <QDebug>
 
 // class
 CreateSessionJob::CreateSessionJob(const QString& address, const QDBusMessage& msg, QObject* parent)
@@ -60,32 +59,32 @@ const QList< QDBusMessage > CreateSessionJob::messages() const
 
 void CreateSessionJob::createSession()
 {
-    kDebug(dobex());
+    qCDebug(OBEXDAEMON);
     QVariantMap args;
-    args["Target"] = "ftp";
+    args[QStringLiteral("Target")] = QStringLiteral("ftp");
 //     args["Source"] = "00:02:72:D6:8F:2C";
-    m_client = new OrgBluezObexClient1Interface("org.bluez.obex",
-                                                "/org/bluez/obex",
+    m_client = new OrgBluezObexClient1Interface(QStringLiteral("org.bluez.obex"),
+                                                QStringLiteral("/org/bluez/obex"),
                                                 QDBusConnection::sessionBus(), this);
 
     QDBusPendingReply <QDBusObjectPath > reply = m_client->CreateSession(m_address, args);
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(reply);
 
-    kDebug(dobex()) << "DROGUES";
+    qCDebug(OBEXDAEMON) << "DROGUES";
     connect(watcher, SIGNAL(finished(QDBusPendingCallWatcher*)), this, SLOT(sessionCreated(QDBusPendingCallWatcher*)));
 }
 
 void CreateSessionJob::sessionCreated(QDBusPendingCallWatcher* watcher)
 {
-    kDebug(dobex());
+    qCDebug(OBEXDAEMON);
     QDBusPendingReply <QDBusObjectPath > reply = *watcher;
     watcher->deleteLater();
     if (reply.isError()) {
-        kDebug(dobex()) << "Error:";
-        kDebug(dobex()) << reply.error().name();
-        kDebug(dobex()) << reply.error().message();
+        qCDebug(OBEXDAEMON) << "Error:";
+        qCDebug(OBEXDAEMON) << reply.error().name();
+        qCDebug(OBEXDAEMON) << reply.error().message();
 //         Q_FOREACH(const QDBusMessage &msg, m_msgs) {
-//             kDebug(dobex()) << msg.service() << msg.path();
+//             qCDebug(OBEXDAEMON) << msg.service() << msg.path();
 //             QDBusMessage errorMsg = msg.createErrorReply("org.kde.kded.Error", i18n("Can't stablish connection"));
 //             QDBusConnection::sessionBus().send(errorMsg);
 //         }C

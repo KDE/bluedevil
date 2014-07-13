@@ -27,6 +27,8 @@
 
 #include <QObject>
 #include <QUrl>
+#include <QLoggingCategory>
+
 #include <kio/slavebase.h>
 
 /**
@@ -146,5 +148,7 @@ private:
      */
     org::kde::BlueDevil *m_kded;
 };
+
+Q_DECLARE_LOGGING_CATEGORY(BLUETOOTH)
 
 #endif // KIOBLUETOOTH_H
