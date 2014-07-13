@@ -114,13 +114,7 @@
            <height>40</height>
           </size>
          </property>
-         <property name="inputMask">
-          <string>999999999; </string>
-         </property>
-         <property name="readOnly">
-          <bool>false</bool>
-         </property>
-         <property name="placeholderText" stdset="0">
+         <property name="placeholderText">
           <string>0000</string>
          </property>
         </widget>

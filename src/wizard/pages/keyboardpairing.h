@@ -29,34 +29,31 @@
 class BlueWizard;
 class KPixmapSequenceOverlayPainter;
 
-namespace BlueDevil {
-    class Device;
-    class Adapter;
+namespace QBluez {
+    class PendingCall;
 }
-
-using namespace BlueDevil;
 
 class KeyboardPairingPage : public QWizardPage, Ui::KeyboardPairing
 {
-Q_OBJECT
+    Q_OBJECT
 
 public:
-    KeyboardPairingPage(BlueWizard* parent = 0);
+    KeyboardPairingPage(BlueWizard *parent = 0);
 
-    virtual void initializePage();
-    virtual bool validatePage();
-    virtual int nextId() const;
+    void initializePage() Q_DECL_OVERRIDE;
+    int nextId() const Q_DECL_OVERRIDE;
 
 public Q_SLOTS:
     void pinRequested(const QString &pin);
-    void pairedChanged(bool paired);
+    void pairingFinished(QBluez::PendingCall *call);
 
 protected:
-    QList <QWizard::WizardButton> wizardButtonsLayout() const;
+    QList<QWizard::WizardButton> wizardButtonsLayout() const;
 
 private:
-    BlueWizard                    *m_wizard;
+    BlueWizard *m_wizard;
     KPixmapSequenceOverlayPainter *m_working;
+    bool m_success;
 };
 
 #endif // KEYBOARDPAIRING_H

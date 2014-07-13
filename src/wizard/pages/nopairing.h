@@ -30,34 +30,27 @@
 class BlueWizard;
 class KPixmapSequenceOverlayPainter;
 
-namespace BlueDevil {
-    class Device;
-    class Adapter;
-}
-
-using namespace BlueDevil;
-
 class NoPairingPage : public QWizardPage, Ui::NoPairing
 {
-Q_OBJECT
+    Q_OBJECT
 
 public:
-    NoPairingPage(BlueWizard* parent = 0);
+    NoPairingPage(BlueWizard *parent = 0);
 
-    virtual void initializePage();
-    virtual bool validatePage();
-    virtual int nextId() const;
+    void initializePage() Q_DECL_OVERRIDE;
+    bool validatePage() Q_DECL_OVERRIDE;
+    int nextId() const Q_DECL_OVERRIDE;
 
 protected:
-    QList <QWizard::WizardButton> wizardButtonsLayout() const;
+    QList<QWizard::WizardButton> wizardButtonsLayout() const;
 
 private Q_SLOTS:
     void timeout();
     void connectedChanged(bool connected);
 
 private:
-    bool                          m_validPage;
-    BlueWizard                    *m_wizard;
+    bool m_validPage;
+    BlueWizard *m_wizard;
     KPixmapSequenceOverlayPainter *m_working;
 };
 

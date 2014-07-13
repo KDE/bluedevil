@@ -10,6 +10,7 @@ set(wizard_SRCS
     pages/legacypairingdatabase.cpp
     pages/keyboardpairing.cpp
     pages/ssppairing.cpp
+    pages/success.cpp
     pages/fail.cpp
 )
 
@@ -19,6 +20,7 @@ qt5_wrap_ui(wizard_SRCS
             pages/legacypairing.ui
             pages/keyboardpairing.ui
             pages/ssppairing.ui
+            pages/success.ui
             pages/fail.ui
 )
 
@@ -32,7 +34,7 @@ target_link_libraries(bluedevil-wizard
     KF5::DBusAddons
     KF5::WidgetsAddons
     KF5::IconThemes
-    ${LibBlueDevil_LIBRARIES})
+    KF5::QBluez)
 
 install(TARGETS bluedevil-wizard ${INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES bluedevil-wizard.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})

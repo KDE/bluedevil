@@ -31,20 +31,21 @@
 #include <KLocalizedString>
 #include <kpixmapsequenceoverlaypainter.h>
 
-#include <bluedevil/bluedevil.h>
+#include <QBluez/Device>
 
-using namespace BlueDevil;
-
-FailPage::FailPage(BlueWizard* parent)
+FailPage::FailPage(BlueWizard *parent)
     : QWizardPage(parent)
     , m_wizard(parent)
 {
     setupUi(this);
+
+    failIcon->setPixmap(QIcon::fromTheme(QStringLiteral("task-reject")).pixmap(48));
 }
 
 void FailPage::initializePage()
 {
-    qCDebug(WIZARD);
+    qCDebug(WIZARD) << "Initialize Fail Page";
+
     QPushButton *reset = new QPushButton(this);
     KGuiItem::assign(reset, KStandardGuiItem::reset());
     reset->setText(i18nc("Button offered when the wizard fail. This button will restart the wizard", "Restart the wizard"));

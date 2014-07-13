@@ -27,6 +27,7 @@
 
 #include <QDebug>
 #include <QPushButton>
+#include <QDBusConnection>
 
 #include <KStandardGuiItem>
 #include <KLocalizedString>
@@ -34,14 +35,13 @@
 #include <kpixmapsequence.h>
 #include <kpixmapsequenceoverlaypainter.h>
 
-#include <bluedevil/bluedevil.h>
+#include <QBluez/Adapter>
+#include <QBluez/Device>
 
-using namespace BlueDevil;
-
-SSPPairingPage::SSPPairingPage(BlueWizard* parent)
+SSPPairingPage::SSPPairingPage(BlueWizard *parent)
     : QWizardPage(parent)
-    , m_buttonClicked(QWizard::NoButton)
     , m_wizard(parent)
+    , m_success(false)
 {
     setupUi(this);
     m_working = new KPixmapSequenceOverlayPainter(this);
@@ -57,26 +57,36 @@ SSPPairingPage::SSPPairingPage(BlueWizard* parent)
 
 void SSPPairingPage::initializePage()
 {
-    qCDebug(WIZARD);
+    qCDebug(WIZARD) << "Initialize Secure Simple Pairing Page";
+
     QList <QWizard::WizardButton> list;
     list << QWizard::Stretch;
-    list << QWizard::CancelButton;
+    list << QWizard::CustomButton1;
     m_wizard->setButtonLayout(list);
 
-    Device *device = m_wizard->device();
+    QPushButton *cancel = new QPushButton(this);
+    KGuiItem::assign(cancel, KStandardGuiItem::cancel());
+
+    connect(cancel, &QPushButton::clicked, this, &SSPPairingPage::cancelClicked);
+    wizard()->setButton(QWizard::CustomButton1, cancel);
+
+    QBluez::Device *device = m_wizard->device();
     confirmLbl->setText(i18n("Connecting to %1...", device->name()));
 
-    connect(device, SIGNAL(pairedChanged(bool)), this, SLOT(pairedChanged(bool)));
-    connect(m_wizard->agent(), SIGNAL(confirmationRequested(quint32,QDBusMessage)),
-            this, SLOT(confirmationRequested(quint32,QDBusMessage)));
-    connect(m_wizard->agent(), SIGNAL(pinRequested(QString)), SLOT(pinRequested(QString)));
+    connect(m_wizard->agent(), &WizardAgent::confirmationRequested, this, &SSPPairingPage::confirmationRequested);
+    connect(m_wizard->agent(), &WizardAgent::pinRequested, this, &SSPPairingPage::pinRequested);
 
-    device->pair();
+    // Adapter must be pairable, otherwise pairing would fail
+    QBluez::PendingCall *call = device->adapter()->setPairable(true);
+    connect(call, &QBluez::PendingCall::finished, [ this, device ]() {
+        QBluez::PendingCall *call = device->pair();
+        connect(call, &QBluez::PendingCall::finished, this, &SSPPairingPage::pairingFinished);
+    });
 }
 
-void SSPPairingPage::confirmationRequested(quint32 passkey, const QDBusMessage& msg)
+void SSPPairingPage::confirmationRequested(const QString &passkey, const QBluez::Request<void> &req)
 {
-    m_msg = msg;
+    m_req = req;
 
     QPushButton *matches = new QPushButton(this);
     KGuiItem::assign(matches, KStandardGuiItem::apply());
@@ -86,8 +96,8 @@ void SSPPairingPage::confirmationRequested(quint32 passkey, const QDBusMessage& 
     KGuiItem::assign(notMatch, KStandardGuiItem::cancel());
     notMatch->setText(i18n("Does not match"));
 
-    connect(matches, SIGNAL(clicked(bool)), this, SLOT(matchesClicked()));
-    connect(notMatch, SIGNAL(clicked(bool)), this, SLOT(notMatchClicked()));
+    connect(matches, &QPushButton::clicked, this, &SSPPairingPage::matchesClicked);
+    connect(notMatch, &QPushButton::clicked, this, &SSPPairingPage::notMatchClicked);
 
     wizard()->setButton(QWizard::CustomButton1, matches);
     wizard()->setButton(QWizard::CustomButton2, notMatch);
@@ -95,10 +105,25 @@ void SSPPairingPage::confirmationRequested(quint32 passkey, const QDBusMessage& 
     wizard()->setButtonLayout(wizardButtonsLayout());
 
     m_working->stop();
-    pinNumber->setText(QString(QStringLiteral("%1")).arg(passkey, 6, 10, QLatin1Char('0')));
+    pinNumber->setText(passkey);
 
     confirmLbl->setText(i18n("Please, confirm that the PIN displayed on \"%1\" matches the wizard one.", m_wizard->device()->name()));
+}
 
+void SSPPairingPage::pairingFinished(QBluez::PendingCall *call)
+{
+    qCDebug(WIZARD) << "Secure Pairing finished:";
+    qCDebug(WIZARD) << "\t error     : " << (bool) call->error();
+    qCDebug(WIZARD) << "\t errorText : " << call->errorText();
+
+    // TODO: We can show the error message to user here
+    m_success = !call->error();
+    wizard()->next();
+}
+
+void SSPPairingPage::cancelClicked()
+{
+    m_wizard->device()->cancelPairing();
 }
 
 void SSPPairingPage::pinRequested(const QString& pin)
@@ -108,53 +133,25 @@ void SSPPairingPage::pinRequested(const QString& pin)
     confirmLbl->setText(i18n("Please introduce the PIN in your device when it appears"));
 }
 
-void SSPPairingPage::pairedChanged(bool paired)
-{
-    qCDebug(WIZARD) << paired;
-
-    wizard()->next();
-}
-
 void SSPPairingPage::matchesClicked()
 {
     wizard()->button(QWizard::CustomButton1)->setEnabled(false);
     wizard()->button(QWizard::CustomButton2)->setEnabled(false);
 
-    m_buttonClicked = QWizard::CustomButton1;
-    QDBusConnection::systemBus().send(m_msg.createReply());
-
-    wizard()->next();
+    m_req.accept();
 }
 
 void SSPPairingPage::notMatchClicked()
 {
-    m_buttonClicked = QWizard::CustomButton2;
-
-    wizard()->next();
-}
-
-bool SSPPairingPage::validatePage()
-{
-    if (m_buttonClicked == QWizard::CustomButton2){
-        return true;
-    }
-    if (m_wizard->device()->isPaired() &&  m_buttonClicked == QWizard::NoButton) {
-        return true;
-    }
-    if (m_wizard->device()->isPaired() &&  m_buttonClicked == QWizard::CustomButton1) {
-        return true;
-    }
-
-    return false;
+    m_req.reject();
 }
 
 int SSPPairingPage::nextId() const
 {
-    if (m_buttonClicked == QWizard::CustomButton2) {
-        return BlueWizard::Fail;
+    if (m_success) {
+        return BlueWizard::Connect;
     }
-
-    return BlueWizard::Connect;
+    return BlueWizard::Fail;
 }
 
 QList<QWizard::WizardButton> SSPPairingPage::wizardButtonsLayout() const

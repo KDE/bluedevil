@@ -18,52 +18,49 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA            *
  ***************************************************************************/
 
-
 #ifndef WIZARDAGENT_H
 #define WIZARDAGENT_H
 
-#include <QtDBus>
 #include <QApplication>
-#include <QXmlStreamReader>
 
-namespace BlueDevil {
+#include <QBluez/Agent>
+
+namespace QBluez {
     class Device;
 }
 
-using namespace BlueDevil;
-class WizardAgent : public QDBusAbstractAdaptor
+class WizardAgent : public QBluez::Agent
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.bluez.Agent1")
 
 public:
-    WizardAgent(QApplication* application);
+    WizardAgent(QObject* parent);
     ~WizardAgent();
 
     void setPin(const QString& pin);
-    QString getPin(Device* device);
+    QString getPin(QBluez::Device* device);
     QString pin();
     bool isFromDatabase();
 
-//D-Bus interface implementation
-public slots:
-    void Release();
-    void AuthorizeService(const QDBusObjectPath &device, const QString& uuid, const QDBusMessage &msg);
-    QString RequestPinCode(const QDBusObjectPath &device, const QDBusMessage &msg);
-    quint32 RequestPasskey(const QDBusObjectPath &device, const QDBusMessage &msg);
-    void DisplayPinCode(const QDBusObjectPath &device, const QString & pincode);
-    void DisplayPasskey(const QDBusObjectPath &device, quint32 passkey, quint8 entered);
-    void RequestConfirmation(const QDBusObjectPath &device, quint32 passkey, const QDBusMessage &msg);
-    void Cancel();
+    QDBusObjectPath objectPath() const Q_DECL_OVERRIDE;
+
+    void requestPinCode(QBluez::Device *device, const QBluez::Request<QString> &req) Q_DECL_OVERRIDE;
+    void displayPinCode(QBluez::Device *device, const QString &pinCode) Q_DECL_OVERRIDE;
+    void requestPasskey(QBluez::Device *device, const QBluez::Request<quint32> &req) Q_DECL_OVERRIDE;
+    void displayPasskey(QBluez::Device *device, const QString &passkey, const QString &entered) Q_DECL_OVERRIDE;
+    void requestConfirmation(QBluez::Device *device, const QString &passkey, const QBluez::Request<void> &req) Q_DECL_OVERRIDE;
+    void requestAuthorization(QBluez::Device *device, const QBluez::Request<void> &req) Q_DECL_OVERRIDE;
+    void authorizeService(QBluez::Device *device, const QString &uuid, const QBluez::Request<void> &req) Q_DECL_OVERRIDE;
+    void cancel() Q_DECL_OVERRIDE;
+    void release() Q_DECL_OVERRIDE;
 
 private:
-    bool    m_fromDatabase;
+    bool m_fromDatabase;
     QString m_pin;
-    Device *m_device;
 
 Q_SIGNALS:
-    void pinRequested(const QString&);
-    void confirmationRequested(quint32 passkey, const QDBusMessage &msg);
+    void pinRequested(const QString &pin);
+    void confirmationRequested(const QString &passkey, const QBluez::Request<void> &req);
     void agentReleased();
 };
 

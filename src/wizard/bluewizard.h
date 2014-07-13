@@ -22,50 +22,57 @@
 #include <QObject>
 #include <QWizard>
 
-namespace BlueDevil {
+namespace QBluez {
+    class Manager;
     class Device;
 }
 
 class WizardAgent;
 class BlueWizard : public QWizard
 {
-Q_OBJECT
+    Q_OBJECT
 
 public:
     BlueWizard(const QUrl& url);
     virtual ~BlueWizard();
 
-    QByteArray deviceAddress() const;
-    void setDeviceAddress(const QByteArray& address);
+    QBluez::Manager *manager() const;
 
-    BlueDevil::Device *device() const;
+    QBluez::Device *device() const;
+    void setDevice(QBluez::Device *device);
 
     QByteArray pin() const;
     void setPin(const QByteArray& pin);
 
-    QByteArray preselectedUuid() const;
-    void setPreselectedUuid(const QByteArray &uuid);
-
     QByteArray preselectedAddress() const;
     void setPreselectedAddress(const QByteArray &uuid);
 
-    WizardAgent* agent() const;
+    WizardAgent *agent() const;
 
-    enum {Discover, NoPairing, LegacyPairing, LegacyPairingDatabase, KeyboardPairing, SSPPairing, Fail, Connect};
+    enum {
+        Discover,
+        NoPairing,
+        LegacyPairing,
+        LegacyPairingDatabase,
+        KeyboardPairing,
+        SSPPairing,
+        Connect,
+        Success,
+        Fail
+    };
 
 public Q_SLOTS:
     void restartWizard();
-    void setPin(const QString& pin);
+    void slotSetPin(const QString &pin);
     virtual void done(int result);
 
 private:
-    QByteArray m_deviceAddress;
-    BlueDevil::Device * m_device;
-    QByteArray m_pin;
-    QByteArray m_preselectedUuid;
-    QByteArray m_preselectedAddress;
+    QBluez::Manager *m_manager;
+    QBluez::Device *m_device;
     WizardAgent *m_agent;
 
+    QByteArray m_pin;
+    QByteArray m_preselectedAddress;
     bool m_manualPin;
 };
 

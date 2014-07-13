@@ -3,6 +3,7 @@
  *                                                                           *
  * Copyright (C) 2010 Alejandro Fiestas Olivares <afiestas@kde.org>          *
  * Copyright (C) 2010-2011 UFO Coders <info@ufocoders.com>                   *
+ * Copyright (C) 2014 David Rosca <nowrep@gmail.com>                         *
  *                                                                           *
  * This library is free software; you can redistribute it and/or             *
  * modify it under the terms of the GNU Library General Public               *
@@ -20,40 +21,26 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-#ifndef LEGACYPAIRING_H
-#define LEGACYPAIRING_H
+#ifndef SUCCESS_H
+#define SUCCESS_H
 
-#include "ui_legacypairing.h"
+#include "ui_success.h"
 #include <QWizardPage>
 
 class BlueWizard;
-class KPixmapSequenceOverlayPainter;
 
-namespace QBluez {
-    class PendingCall;
-}
-
-class LegacyPairingPage : public QWizardPage, Ui::LegacyPairing
+class SuccessPage : public QWizardPage, Ui::Success
 {
     Q_OBJECT
 
 public:
-    LegacyPairingPage(BlueWizard *parent = 0);
+    SuccessPage(BlueWizard *parent = 0);
 
     void initializePage() Q_DECL_OVERRIDE;
     int nextId() const Q_DECL_OVERRIDE;
 
-public Q_SLOTS:
-    void pinRequested(const QString &pin);
-    void pairingFinished(QBluez::PendingCall *call);
-
-protected:
-    QList <QWizard::WizardButton> wizardButtonsLayout() const;
-
 private:
     BlueWizard *m_wizard;
-    KPixmapSequenceOverlayPainter *m_working;
-    bool m_success;
 };
 
-#endif // LEGACYPAIRING_H
+#endif // SUCCESS_H

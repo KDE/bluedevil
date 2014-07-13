@@ -29,24 +29,17 @@
 class BlueWizard;
 class KPixmapSequenceOverlayPainter;
 
-namespace BlueDevil {
-    class Device;
-    class Adapter;
-}
-
-using namespace BlueDevil;
-
 class FailPage : public QWizardPage, Ui::Fail
 {
 Q_OBJECT
 
 public:
-    FailPage(BlueWizard* parent = 0);
+    FailPage(BlueWizard *parent = 0);
 
-    virtual void initializePage();
+    void initializePage() Q_DECL_OVERRIDE;
 
 private:
-    BlueWizard  *m_wizard;
+    BlueWizard *m_wizard;
 };
 
 #endif // FAIL_H

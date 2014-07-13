@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Fail</class>
- <widget class="QWidget" name="Fail">
+ <class>Success</class>
+ <widget class="QWidget" name="Success">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -30,7 +30,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QLabel" name="failIcon">
+      <widget class="QLabel" name="successIcon">
        <property name="maximumSize">
         <size>
          <width>48</width>
@@ -40,7 +40,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="failLbl">
+      <widget class="QLabel" name="successLbl">
        <property name="text">
         <string/>
        </property>

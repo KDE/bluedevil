@@ -32,15 +32,16 @@
 #include <kpixmapsequence.h>
 #include <kpixmapsequenceoverlaypainter.h>
 
-#include <bluedevil/bluedevil.h>
+#include <QBluez/Adapter>
+#include <QBluez/Device>
 
-using namespace BlueDevil;
-
-LegacyPairingPageDatabase::LegacyPairingPageDatabase(BlueWizard* parent)
+LegacyPairingPageDatabase::LegacyPairingPageDatabase(BlueWizard *parent)
     : QWizardPage(parent)
     , m_wizard(parent)
+    , m_success(false)
 {
     setupUi(this);
+
     m_working = new KPixmapSequenceOverlayPainter(this);
     m_working->setSequence(KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), 22));
     m_working->setWidget(working);
@@ -49,29 +50,35 @@ LegacyPairingPageDatabase::LegacyPairingPageDatabase(BlueWizard* parent)
 
 void LegacyPairingPageDatabase::initializePage()
 {
+    qCDebug(WIZARD) << "Initialize Legacy Database Pairing Page";
+
     m_wizard->setButtonLayout(wizardButtonsLayout());
 
-    Device *device = m_wizard->device();
+    QBluez::Device *device = m_wizard->device();
     connecting->setText(i18n("Connecting to %1...", device->name()));
 
-    connect(device, SIGNAL(pairedChanged(bool)), this, SLOT(pairedChanged(bool)));
-    device->pair();
-}
-
-void LegacyPairingPageDatabase::pairedChanged(bool paired)
-{
-    qCDebug(WIZARD) << paired;
-    m_wizard->next();
-}
-
-bool LegacyPairingPageDatabase::validatePage()
-{
-    return m_wizard->device()->isPaired();
+    // Adapter must be pairable, otherwise pairing would fail
+    QBluez::PendingCall *call = device->adapter()->setPairable(true);
+    connect(call, &QBluez::PendingCall::finished, [ this, device ]() {
+        QBluez::PendingCall *call = device->pair();
+        connect(call, &QBluez::PendingCall::finished, this, &LegacyPairingPageDatabase::pairingFinished);
+    });
 }
 
 int LegacyPairingPageDatabase::nextId() const
 {
     return BlueWizard::Connect;
+}
+
+void LegacyPairingPageDatabase::pairingFinished(QBluez::PendingCall *call)
+{
+    qCDebug(WIZARD) << "Legacy Database Pairing finished:";
+    qCDebug(WIZARD) << "\t error     : " << (bool) call->error();
+    qCDebug(WIZARD) << "\t errorText : " << call->errorText();
+
+    // TODO: We can show the error message to user here
+    m_success = !call->error();
+    wizard()->next();
 }
 
 QList< QWizard::WizardButton > LegacyPairingPageDatabase::wizardButtonsLayout() const

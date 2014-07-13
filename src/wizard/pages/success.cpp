@@ -3,6 +3,7 @@
  *                                                                           *
  * Copyright (C) 2010 Alejandro Fiestas Olivares <afiestas@kde.org>          *
  * Copyright (C) 2010-2011 UFO Coders <info@ufocoders.com>                   *
+ * Copyright (C) 2014 David Rosca <nowrep@gmail.com>                         *
  *                                                                           *
  * This library is free software; you can redistribute it and/or             *
  * modify it under the terms of the GNU Library General Public               *
@@ -20,40 +21,46 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-#ifndef LEGACYPAIRING_H
-#define LEGACYPAIRING_H
+#include "success.h"
+#include "bluewizard.h"
+#include "debug_p.h"
 
-#include "ui_legacypairing.h"
-#include <QWizardPage>
+#include <QDebug>
 
-class BlueWizard;
-class KPixmapSequenceOverlayPainter;
+#include <KLocalizedString>
 
-namespace QBluez {
-    class PendingCall;
+#include <QBluez/Device>
+
+SuccessPage::SuccessPage(BlueWizard *parent)
+    : QWizardPage(parent)
+    , m_wizard(parent)
+{
+    setupUi(this);
+
+    successIcon->setPixmap(QIcon::fromTheme(QStringLiteral("task-complete")).pixmap(48));
 }
 
-class LegacyPairingPage : public QWizardPage, Ui::LegacyPairing
+void SuccessPage::initializePage()
 {
-    Q_OBJECT
+    qCDebug(WIZARD) << "Initialize Success Page";
 
-public:
-    LegacyPairingPage(BlueWizard *parent = 0);
+    QList<QWizard::WizardButton> list;
+    list << QWizard::Stretch;
+    list << QWizard::FinishButton;
 
-    void initializePage() Q_DECL_OVERRIDE;
-    int nextId() const Q_DECL_OVERRIDE;
+    m_wizard->setButtonLayout(list);
 
-public Q_SLOTS:
-    void pinRequested(const QString &pin);
-    void pairingFinished(QBluez::PendingCall *call);
+    setFinalPage(true);
 
-protected:
-    QList <QWizard::WizardButton> wizardButtonsLayout() const;
+    QString deviceName = m_wizard->device()->name();
+    if (deviceName.isEmpty()) {
+        successLbl->setText(i18nc("This string is shown when the wizard succeeds", "The setup of the device has succeeded"));
+    } else {
+        successLbl->setText(i18n("The setup of %1 has succeeded", deviceName));
+    }
+}
 
-private:
-    BlueWizard *m_wizard;
-    KPixmapSequenceOverlayPainter *m_working;
-    bool m_success;
-};
-
-#endif // LEGACYPAIRING_H
+int SuccessPage::nextId() const
+{
+    return -1;
+}

@@ -23,35 +23,36 @@
 #include "pages/legacypairingdatabase.h"
 #include "pages/keyboardpairing.h"
 #include "pages/ssppairing.h"
+#include "pages/success.h"
 #include "pages/fail.h"
 #include "debug_p.h"
 
 #include <QApplication>
-#include <QDBusConnection>
 #include <QPushButton>
 #include <QString>
+#include <QUrl>
 
 #include <KStandardGuiItem>
 #include <KLocalizedString>
 #include <KProcess>
 
-#include <bluedevil/bluedevil.h>
+#include <QBluez/Manager>
+#include <QBluez/Device>
 
 BlueWizard::BlueWizard(const QUrl &url)
     : QWizard()
+    , m_manager(0)
     , m_device(0)
+    , m_agent(new WizardAgent(this))
     , m_manualPin(false)
 {
     setWindowTitle(i18n("Bluetooth Device Wizard"));
+    setWindowIcon(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")));
 
     setOption(QWizard::IndependentPages, true);
 
     if (url.host().length() == 17) {
         setPreselectedAddress(url.host().replace(QLatin1Char('-'), QLatin1Char(':')).toLatin1());
-    }
-
-    if (url.fileName().length() == 36) {
-        setPreselectedUuid(url.fileName().toLatin1());
     }
 
     setPage(Discover, new DiscoverPage(this));
@@ -61,6 +62,7 @@ BlueWizard::BlueWizard(const QUrl &url)
     setPage(LegacyPairingDatabase, new LegacyPairingPageDatabase(this));
     setPage(KeyboardPairing, new KeyboardPairingPage(this));
     setPage(SSPPairing, new SSPPairingPage(this));
+    setPage(Success, new SuccessPage(this));
     setPage(Fail, new FailPage(this));
 
     QPushButton *backButton = new QPushButton(this);
@@ -86,16 +88,44 @@ BlueWizard::BlueWizard(const QUrl &url)
 
     // First show, then do the rest
     show();
+    raise();
+    activateWindow();
 
-    if (!QDBusConnection::systemBus().registerObject(QStringLiteral("/wizardAgent"), qApp)) {
-        qCDebug(WIZARD) << "The dbus object can't be registered";
-    }
+    // Initialize QBluez
+    QBluez::GetManagerJob *managerJob = QBluez::Manager::get();
+    managerJob->start();
+    connect(managerJob, &QBluez::GetManagerJob::result, [ this ](QBluez::GetManagerJob *job) {
+        Q_ASSERT(!job->error());
+        if (job->error()) {
+            qCDebug(WIZARD) << "Error getting manager:" << job->errorText();
+            return;
+        }
+        m_manager = job->manager();
 
-    m_agent = new WizardAgent(qApp);
+        // Register our agent
+        m_manager->registerAgent(m_agent, QBluez::Manager::DisplayYesNo);
+        qCDebug(WIZARD) << "Agent registered";
+
+        QBluez::LoadAdaptersJob *adaptersJob = m_manager->loadAdapters();
+        adaptersJob->start();
+        connect(adaptersJob, &QBluez::LoadAdaptersJob::result, [ this ](QBluez::LoadAdaptersJob *job) {
+            Q_ASSERT(!job->error());
+            if (job->error()) {
+                qCDebug(WIZARD) << "Error loading adapters:" << job->errorText();
+                return;
+            }
+            static_cast<DiscoverPage*>(page(Discover))->startDiscovery();
+        });
+    });
 }
 
 BlueWizard::~BlueWizard()
 {
+}
+
+QBluez::Manager *BlueWizard::manager() const
+{
+    return m_manager;
 }
 
 void BlueWizard::done(int result)
@@ -106,26 +136,14 @@ void BlueWizard::done(int result)
     qApp->exit(result);
 }
 
-Device* BlueWizard::device() const
+QBluez::Device* BlueWizard::device() const
 {
     return m_device;
 }
 
-void BlueWizard::setDeviceAddress(const QByteArray& address)
+void BlueWizard::setDevice(QBluez::Device *device)
 {
-    qCDebug(WIZARD) << "Device Address: " << address;
-    if (!Manager::self()->usableAdapter()) {
-        qCDebug(WIZARD) << "No usable adapter available";
-        return;
-    }
-
-    m_deviceAddress = address;
-    m_device = Manager::self()->usableAdapter()->deviceForAddress(m_deviceAddress);
-}
-
-QByteArray BlueWizard::deviceAddress() const
-{
-    return m_deviceAddress;
+    m_device = device;
 }
 
 void BlueWizard::restartWizard()
@@ -143,7 +161,7 @@ void BlueWizard::setPin(const QByteArray& pinNum)
     m_pin = pinNum;
 }
 
-void BlueWizard::setPin(const QString& pin)
+void BlueWizard::slotSetPin(const QString& pin)
 {
     setPin(pin.toUtf8());
 }
@@ -151,17 +169,6 @@ void BlueWizard::setPin(const QString& pin)
 QByteArray BlueWizard::pin() const
 {
     return m_pin;
-}
-
-void BlueWizard::setPreselectedUuid(const QByteArray& uuid)
-{
-    qCDebug(WIZARD) << "Preselect UUID: " << uuid;
-    m_preselectedUuid = uuid;
-}
-
-QByteArray BlueWizard::preselectedUuid() const
-{
-    return m_preselectedUuid;
 }
 
 void BlueWizard::setPreselectedAddress(const QByteArray& address)
@@ -175,7 +182,7 @@ QByteArray BlueWizard::preselectedAddress() const
     return m_preselectedAddress;
 }
 
-WizardAgent* BlueWizard::agent() const
+WizardAgent *BlueWizard::agent() const
 {
     return m_agent;
 }

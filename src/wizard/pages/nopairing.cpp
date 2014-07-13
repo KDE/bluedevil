@@ -31,15 +31,15 @@
 #include <kpixmapsequence.h>
 #include <kpixmapsequenceoverlaypainter.h>
 
-#include <bluedevil/bluedevil.h>
+#include <QBluez/Device>
 
-using namespace BlueDevil;
-
-NoPairingPage::NoPairingPage(BlueWizard* parent) : QWizardPage(parent)
-, m_validPage(false)
-, m_wizard(parent)
+NoPairingPage::NoPairingPage(BlueWizard *parent)
+    : QWizardPage(parent)
+    , m_validPage(false)
+    , m_wizard(parent)
 {
     setupUi(this);
+
     m_working = new KPixmapSequenceOverlayPainter(this);
     m_working->setSequence(KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), 22));
     m_working->setWidget(working);
@@ -48,19 +48,20 @@ NoPairingPage::NoPairingPage(BlueWizard* parent) : QWizardPage(parent)
 
 void NoPairingPage::initializePage()
 {
-    qCDebug(WIZARD);
+    qCDebug(WIZARD) << "Initialize No Pairing Page";
+
     m_wizard->setButtonLayout(wizardButtonsLayout());
 
     connecting->setText(connecting->text().append(m_wizard->device()->name()));
 
-    //It can happen that the device is technically connected and trusted but we are not connected
-    //to the profile. We have no way to know if the profile was activated or not so we have to relay
-    //on a timeout (10s)
+    // It can happen that the device is technically connected and trusted but we are not connected
+    // to the profile. We have no way to know if the profile was activated or not so we have to relay
+    // on a timeout (10s)
     QTimer::singleShot(10000, this, SLOT(timeout()));
-    connect(m_wizard->device(), SIGNAL(connectedChanged(bool)), SLOT(connectedChanged(bool)));
-    connect(m_wizard->device(), SIGNAL(trustedChanged(bool)), SLOT(connectedChanged(bool)));
+    connect(m_wizard->device(), &QBluez::Device::connectedChanged, this , &NoPairingPage::connectedChanged);
+    connect(m_wizard->device(), &QBluez::Device::trustedChanged, this, &NoPairingPage::connectedChanged);
 
-    m_wizard->device()->connectDevice();
+    m_wizard->device()->connect();
     m_wizard->device()->setTrusted(true);
 }
 
@@ -71,12 +72,12 @@ void NoPairingPage::timeout()
 
 void NoPairingPage::connectedChanged(bool connected)
 {
-    qCDebug(WIZARD);
+    qCDebug(WIZARD) << "NoPairingPage::connectedChanged" << connected;
 
     m_validPage = connected;
     if (m_validPage) {
-        qCDebug(WIZARD) << "Done";
-        m_wizard->done(0);
+        qCDebug(WIZARD) << "Connected";
+        m_wizard->next();
     }
 }
 
@@ -87,7 +88,7 @@ bool NoPairingPage::validatePage()
 
 int NoPairingPage::nextId() const
 {
-    return -1;
+    return BlueWizard::Success;
 }
 
 QList<QWizard::WizardButton> NoPairingPage::wizardButtonsLayout() const

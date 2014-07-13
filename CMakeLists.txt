@@ -24,7 +24,8 @@ find_package(KF5 CONFIG REQUIRED COMPONENTS
     Notifications
     IconThemes
     I18n
-    KIO)
+    KIO
+    QBluez)
 
 include(KDEInstallDirs)
 include(KDECMakeSettings)

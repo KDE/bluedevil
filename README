@@ -1,3 +1,5 @@
+QBluez is available at: git://anongit.kde.org/scratch/drosca/qbluez.git
+
 BlueDevil runtime dependencies:
     -obex-data-server
         -Be able to "Browse File" aka kio_obexftp

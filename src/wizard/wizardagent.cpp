@@ -22,95 +22,37 @@
 #include "debug_p.h"
 
 #include <QDebug>
+#include <QUrl>
+#include <QFile>
 #include <QDBusMessage>
+#include <QDBusObjectPath>
 #include <QStandardPaths>
+#include <QXmlStreamReader>
 
-#include <KAboutData>
 #include <krandom.h>
 #include <klocalizedstring.h>
 
-#include <bluedevil/bluedevil.h>
+#include <QBluez/Manager>
+#include <QBluez/Device>
+#include <QBluez/Utils>
 
-using namespace BlueDevil;
-
-WizardAgent::WizardAgent(QApplication* application)
-    : QDBusAbstractAdaptor(application)
+WizardAgent::WizardAgent(QObject *parent)
+    : QBluez::Agent(parent)
     , m_fromDatabase(false)
 {
-    qCDebug(WIZARD) << "AGENT registered !";
-    BlueDevil::Manager::self()->registerAgent(QStringLiteral("/wizardAgent"), BlueDevil::Manager::DisplayYesNo);
 }
 
 WizardAgent::~WizardAgent()
 {
     qCDebug(WIZARD) << "Agent deleted";
-    BlueDevil::Manager::self()->unregisterAgent(QStringLiteral("/wizardAgent"));
 }
 
-void WizardAgent::Release()
+void WizardAgent::setPin(const QString& pin)
 {
-    qCDebug(WIZARD) << "Agent Release";
-    emit agentReleased();
+    m_pin = pin;
 }
 
-void WizardAgent::AuthorizeService(const QDBusObjectPath& device, const QString& uuid, const QDBusMessage& msg)
-{
-    Q_UNUSED(device);
-    Q_UNUSED(uuid);
-    Q_UNUSED(msg);
-    qCDebug(WIZARD) << "AGENT-Authorize " << device.path() << " Service: " << uuid;
-}
-
-quint32 WizardAgent::RequestPasskey(const QDBusObjectPath& device, const QDBusMessage& msg)
-{
-    Q_UNUSED(device);
-    Q_UNUSED(msg);
-    qCDebug(WIZARD) << "AGENT-RequestPasskey " << device.path();
-    emit pinRequested(m_pin);
-    return m_pin.toUInt();
-}
-
-void WizardAgent::DisplayPasskey(const QDBusObjectPath& device, quint32 passkey, quint8 entered)
-{
-    Q_UNUSED(device);
-    Q_UNUSED(entered);
-    qCDebug(WIZARD) << "AGENT-DisplayPasskey " << device.path() << ", " << QString::number(passkey);
-    emit pinRequested(QString(QStringLiteral("%1")).arg(passkey, 6, 10, QLatin1Char('0')));
-}
-
-void WizardAgent::DisplayPinCode(const QDBusObjectPath& device, const QString& pincode)
-{
-    Q_UNUSED(device);
-    Q_UNUSED(pincode);
-    qCDebug(WIZARD) << "AGENT-DisplayPasskey " << device.path() << ", " << pincode;
-    emit pinRequested(pincode);
-}
-
-void WizardAgent::RequestConfirmation(const QDBusObjectPath& device, quint32 passkey, const QDBusMessage& msg)
-{
-    Q_UNUSED(device);
-    Q_UNUSED(passkey);
-    Q_UNUSED(msg);
-    qCDebug(WIZARD) << "AGENT-RequestConfirmation " << device.path() << ", " << QString::number(passkey);
-    emit confirmationRequested(passkey, msg);
-}
-
-void WizardAgent::Cancel()
-{
-    qCDebug(WIZARD) << "AGENT-Cancel";
-}
-
-QString WizardAgent::RequestPinCode(const QDBusObjectPath& device, const QDBusMessage& msg)
-{
-    Q_UNUSED(device);
-    Q_UNUSED(msg);
-    qCDebug(WIZARD) << "AGENT-RequestPinCode " << device.path();
-
-    emit pinRequested(m_pin);
-    return m_pin;
-}
-
-QString WizardAgent::getPin(Device *device)
+QString WizardAgent::getPin(QBluez::Device *device)
 {
     if (!m_pin.isEmpty()) {
         return m_pin;
@@ -133,10 +75,9 @@ QString WizardAgent::getPin(Device *device)
         return m_pin;
     }
 
-    m_device = device;
     QXmlStreamReader m_xml(&file);
 
-    int deviceType = classToType(device->deviceClass());
+    int deviceType = device->deviceType();
     int xmlType = 0;
 
     while (!m_xml.atEnd()) {
@@ -151,7 +92,7 @@ QString WizardAgent::getPin(Device *device)
         }
 
         if (attr.hasAttribute(QLatin1String("type")) && attr.value(QLatin1String("type")) != QLatin1String("any")) {
-            xmlType = stringToType(attr.value(QLatin1String("type")).toString());
+            xmlType = QBluez::stringToType(attr.value(QLatin1String("type")).toString());
             if (deviceType != xmlType) {
                 xmlType = 0; //This is not needed but I like restart the bucle in each interation
                 continue;
@@ -184,11 +125,6 @@ QString WizardAgent::getPin(Device *device)
     return m_pin;
 }
 
-void WizardAgent::setPin(const QString& pin)
-{
-    m_pin = pin;
-}
-
 QString WizardAgent::pin()
 {
     return m_pin;
@@ -197,4 +133,87 @@ QString WizardAgent::pin()
 bool WizardAgent::isFromDatabase()
 {
     return m_fromDatabase;
+}
+
+QDBusObjectPath WizardAgent::objectPath() const
+{
+    return QDBusObjectPath(QStringLiteral("/wizardAgent"));
+}
+
+void WizardAgent::requestPinCode(QBluez::Device *device, const QBluez::Request<QString> &req)
+{
+    Q_UNUSED(device);
+
+    qCDebug(WIZARD) << "AGENT-RequestPinCode" << device->path();
+
+    emit pinRequested(m_pin);
+    req.accept(m_pin);
+}
+
+void WizardAgent::displayPinCode(QBluez::Device *device, const QString &pinCode)
+{
+    Q_UNUSED(device);
+    Q_UNUSED(pinCode);
+
+    qCDebug(WIZARD) << "AGENT-DisplayPinCode" << device->path() << "," << pinCode;
+
+    emit pinRequested(pinCode);
+}
+
+void WizardAgent::requestPasskey(QBluez::Device *device, const QBluez::Request<quint32> &req)
+{
+    Q_UNUSED(device);
+
+    qCDebug(WIZARD) << "AGENT-RequestPasskey" << device->path();
+
+    emit pinRequested(m_pin);
+    req.accept(m_pin.toUInt());
+}
+
+void WizardAgent::displayPasskey(QBluez::Device *device, const QString &passkey, const QString &entered)
+{
+    Q_UNUSED(device);
+    Q_UNUSED(entered);
+
+    qCDebug(WIZARD) << "AGENT-DisplayPasskey" << device->path() << "," << passkey;
+
+    emit pinRequested(passkey);
+}
+
+void WizardAgent::requestConfirmation(QBluez::Device *device, const QString &passkey, const QBluez::Request<void> &req)
+{
+    Q_UNUSED(device);
+    Q_UNUSED(passkey);
+
+    qCDebug(WIZARD) << "AGENT-RequestConfirmation " << device->path() << ", " << passkey;
+
+    emit confirmationRequested(passkey, req);
+}
+
+void WizardAgent::requestAuthorization(QBluez::Device *device, const QBluez::Request<void> &req)
+{
+    Q_UNUSED(device);
+    Q_UNUSED(req);
+
+    qCDebug(WIZARD) << "AGENT-RequestAuthorization" << device->path();
+}
+
+void WizardAgent::authorizeService(QBluez::Device *device, const QString &uuid, const QBluez::Request<void> &req)
+{
+    Q_UNUSED(device);
+    Q_UNUSED(uuid);
+    Q_UNUSED(req);
+
+    qCDebug(WIZARD) << "AGENT-AuthorizeService" << device->path() << "Service:" << uuid;
+}
+
+void WizardAgent::cancel()
+{
+    qCDebug(WIZARD) << "AGENT-Cancel";
+}
+
+void WizardAgent::release()
+{
+    qCDebug(WIZARD) << "AGENT-Release";
+    emit agentReleased();
 }

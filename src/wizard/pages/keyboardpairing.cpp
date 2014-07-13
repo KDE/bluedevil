@@ -31,15 +31,16 @@
 #include <kpixmapsequence.h>
 #include <kpixmapsequenceoverlaypainter.h>
 
-#include <bluedevil/bluedevil.h>
+#include <QBluez/Adapter>
+#include <QBluez/Device>
 
-using namespace BlueDevil;
-
-KeyboardPairingPage::KeyboardPairingPage(BlueWizard* parent)
+KeyboardPairingPage::KeyboardPairingPage(BlueWizard *parent)
     : QWizardPage(parent)
     , m_wizard(parent)
+    , m_success(false)
 {
     setupUi(this);
+
     m_working = new KPixmapSequenceOverlayPainter(this);
     m_working->setSequence(KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), 22));
     m_working->setWidget(pinNumber);
@@ -53,14 +54,18 @@ KeyboardPairingPage::KeyboardPairingPage(BlueWizard* parent)
 
 void KeyboardPairingPage::initializePage()
 {
-    qCDebug(WIZARD);
+    qCDebug(WIZARD) << "Initialize Keyboard Pairing Page";
+
     m_wizard->setButtonLayout(wizardButtonsLayout());
 
-    connect(m_wizard->agent(), SIGNAL(pinRequested(QString)), this, SLOT(pinRequested(QString)));
+    connect(m_wizard->agent(), &WizardAgent::pinRequested, this, &KeyboardPairingPage::pinRequested);
 
-    Device *device = m_wizard->device();
-    connect(device, SIGNAL(pairedChanged(bool)), this, SLOT(pairedChanged(bool)));
-    device->pair();
+    // Adapter must be pairable, otherwise pairing would fail
+    QBluez::PendingCall *call = m_wizard->device()->adapter()->setPairable(true);
+    connect(call, &QBluez::PendingCall::finished, [ this ]() {
+        QBluez::PendingCall *call = m_wizard->device()->pair();
+        connect(call, &QBluez::PendingCall::finished, this, &KeyboardPairingPage::pairingFinished);
+    });
 }
 
 void KeyboardPairingPage::pinRequested(const QString& pin)
@@ -69,20 +74,23 @@ void KeyboardPairingPage::pinRequested(const QString& pin)
     pinNumber->setText(pin);
 }
 
-void KeyboardPairingPage::pairedChanged(bool paired)
+void KeyboardPairingPage::pairingFinished(QBluez::PendingCall *call)
 {
-    qCDebug(WIZARD) << paired;
-    m_wizard->next();
-}
+    qCDebug(WIZARD) << "Keyboard Pairing finished:";
+    qCDebug(WIZARD) << "\t error     : " << (bool) call->error();
+    qCDebug(WIZARD) << "\t errorText : " << call->errorText();
 
-bool KeyboardPairingPage::validatePage()
-{
-    return m_wizard->device()->isPaired();
+    // TODO: We can show the error message to user here
+    m_success = !call->error();
+    wizard()->next();
 }
 
 int KeyboardPairingPage::nextId() const
 {
-    return BlueWizard::Connect;
+    if (m_success) {
+        return BlueWizard::Connect;
+    }
+    return BlueWizard::Fail;
 }
 
 QList<QWizard::WizardButton> KeyboardPairingPage::wizardButtonsLayout() const

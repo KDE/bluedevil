@@ -25,44 +25,42 @@
 
 #include "ui_ssppairing.h"
 #include <QWizardPage>
-#include <QDBusMessage>
+
+#include <QBluez/Agent>
 
 class BlueWizard;
 class KPixmapSequenceOverlayPainter;
 
-namespace BlueDevil {
-    class Device;
-    class Adapter;
+namespace QBluez {
+    class PendingCall;
 }
-
-using namespace BlueDevil;
 
 class SSPPairingPage : public QWizardPage, Ui::SSPPairing
 {
-Q_OBJECT
+    Q_OBJECT
 
 public:
-    SSPPairingPage(BlueWizard* parent = 0);
+    SSPPairingPage(BlueWizard *parent = 0);
 
-    virtual void initializePage();
-    virtual int nextId() const;
-    virtual bool validatePage();
+    void initializePage() Q_DECL_OVERRIDE;
+    int nextId() const Q_DECL_OVERRIDE;
 
 public Q_SLOTS:
-    void confirmationRequested(quint32 passkey, const QDBusMessage &msg);
-    void pairedChanged(bool paired);
+    void confirmationRequested(const QString &passkey, const QBluez::Request<void> &req);
+    void pairingFinished(QBluez::PendingCall *call);
+    void cancelClicked();
     void matchesClicked();
     void notMatchClicked();
     void pinRequested(const QString &pin);
 
 protected:
-    QList <QWizard::WizardButton> wizardButtonsLayout() const;
+    QList<QWizard::WizardButton> wizardButtonsLayout() const;
 
 private:
-    QDBusMessage                   m_msg;
-    QWizard::WizardButton          m_buttonClicked;
-    BlueWizard                    *m_wizard;
+    QBluez::Request<void> m_req;
+    BlueWizard *m_wizard;
     KPixmapSequenceOverlayPainter *m_working;
+    bool m_success;
 };
 
 #endif // SSPPAIRINGPAGE_H
