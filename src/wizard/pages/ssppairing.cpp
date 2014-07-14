@@ -37,6 +37,7 @@
 
 #include <QBluez/Adapter>
 #include <QBluez/Device>
+#include <QBluez/PendingCall>
 
 SSPPairingPage::SSPPairingPage(BlueWizard *parent)
     : QWizardPage(parent)

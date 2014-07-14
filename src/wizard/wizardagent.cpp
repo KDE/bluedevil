@@ -144,7 +144,7 @@ void WizardAgent::requestPinCode(QBluez::Device *device, const QBluez::Request<Q
 {
     Q_UNUSED(device);
 
-    qCDebug(WIZARD) << "AGENT-RequestPinCode" << device->path();
+    qCDebug(WIZARD) << "AGENT-RequestPinCode" << device->ubi();
 
     emit pinRequested(m_pin);
     req.accept(m_pin);
@@ -155,7 +155,7 @@ void WizardAgent::displayPinCode(QBluez::Device *device, const QString &pinCode)
     Q_UNUSED(device);
     Q_UNUSED(pinCode);
 
-    qCDebug(WIZARD) << "AGENT-DisplayPinCode" << device->path() << "," << pinCode;
+    qCDebug(WIZARD) << "AGENT-DisplayPinCode" << device->ubi() << "," << pinCode;
 
     emit pinRequested(pinCode);
 }
@@ -164,7 +164,7 @@ void WizardAgent::requestPasskey(QBluez::Device *device, const QBluez::Request<q
 {
     Q_UNUSED(device);
 
-    qCDebug(WIZARD) << "AGENT-RequestPasskey" << device->path();
+    qCDebug(WIZARD) << "AGENT-RequestPasskey" << device->ubi();
 
     emit pinRequested(m_pin);
     req.accept(m_pin.toUInt());
@@ -175,7 +175,7 @@ void WizardAgent::displayPasskey(QBluez::Device *device, const QString &passkey,
     Q_UNUSED(device);
     Q_UNUSED(entered);
 
-    qCDebug(WIZARD) << "AGENT-DisplayPasskey" << device->path() << "," << passkey;
+    qCDebug(WIZARD) << "AGENT-DisplayPasskey" << device->ubi() << "," << passkey;
 
     emit pinRequested(passkey);
 }
@@ -185,7 +185,7 @@ void WizardAgent::requestConfirmation(QBluez::Device *device, const QString &pas
     Q_UNUSED(device);
     Q_UNUSED(passkey);
 
-    qCDebug(WIZARD) << "AGENT-RequestConfirmation " << device->path() << ", " << passkey;
+    qCDebug(WIZARD) << "AGENT-RequestConfirmation " << device->ubi() << ", " << passkey;
 
     emit confirmationRequested(passkey, req);
 }
@@ -195,7 +195,7 @@ void WizardAgent::requestAuthorization(QBluez::Device *device, const QBluez::Req
     Q_UNUSED(device);
     Q_UNUSED(req);
 
-    qCDebug(WIZARD) << "AGENT-RequestAuthorization" << device->path();
+    qCDebug(WIZARD) << "AGENT-RequestAuthorization" << device->ubi();
 }
 
 void WizardAgent::authorizeService(QBluez::Device *device, const QString &uuid, const QBluez::Request<void> &req)
@@ -204,7 +204,7 @@ void WizardAgent::authorizeService(QBluez::Device *device, const QString &uuid, 
     Q_UNUSED(uuid);
     Q_UNUSED(req);
 
-    qCDebug(WIZARD) << "AGENT-AuthorizeService" << device->path() << "Service:" << uuid;
+    qCDebug(WIZARD) << "AGENT-AuthorizeService" << device->ubi() << "Service:" << uuid;
 }
 
 void WizardAgent::cancel()

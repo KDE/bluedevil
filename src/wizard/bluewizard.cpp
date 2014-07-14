@@ -37,6 +37,7 @@
 #include <KProcess>
 
 #include <QBluez/Manager>
+#include <QBluez/InitManagerJob>
 #include <QBluez/Device>
 
 BlueWizard::BlueWizard(const QUrl &url)
@@ -92,30 +93,22 @@ BlueWizard::BlueWizard(const QUrl &url)
     activateWindow();
 
     // Initialize QBluez
-    QBluez::GetManagerJob *managerJob = QBluez::Manager::get();
-    managerJob->start();
-    connect(managerJob, &QBluez::GetManagerJob::result, [ this ](QBluez::GetManagerJob *job) {
+    m_manager = new QBluez::Manager(this);
+    QBluez::InitManagerJob *initJob = m_manager->init(QBluez::Manager::InitManagerAndAdapters);
+    initJob->start();
+    connect(initJob, &QBluez::InitManagerJob::result, [ this ](QBluez::InitManagerJob *job) {
         Q_ASSERT(!job->error());
         if (job->error()) {
-            qCDebug(WIZARD) << "Error getting manager:" << job->errorText();
+            qCDebug(WIZARD) << "Error initializing manager:" << job->errorText();
             return;
         }
-        m_manager = job->manager();
 
         // Register our agent
         m_manager->registerAgent(m_agent, QBluez::Manager::DisplayYesNo);
         qCDebug(WIZARD) << "Agent registered";
 
-        QBluez::LoadAdaptersJob *adaptersJob = m_manager->loadAdapters();
-        adaptersJob->start();
-        connect(adaptersJob, &QBluez::LoadAdaptersJob::result, [ this ](QBluez::LoadAdaptersJob *job) {
-            Q_ASSERT(!job->error());
-            if (job->error()) {
-                qCDebug(WIZARD) << "Error loading adapters:" << job->errorText();
-                return;
-            }
-            static_cast<DiscoverPage*>(page(Discover))->startDiscovery();
-        });
+        // Start discovery
+        static_cast<DiscoverPage*>(page(Discover))->startDiscovery();
     });
 }
 

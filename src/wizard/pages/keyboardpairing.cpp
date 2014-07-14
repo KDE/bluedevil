@@ -33,6 +33,7 @@
 
 #include <QBluez/Adapter>
 #include <QBluez/Device>
+#include <QBluez/PendingCall>
 
 KeyboardPairingPage::KeyboardPairingPage(BlueWizard *parent)
     : QWizardPage(parent)

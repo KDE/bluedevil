@@ -35,6 +35,7 @@
 #include <QBluez/Manager>
 #include <QBluez/Adapter>
 #include <QBluez/Device>
+#include <QBluez/LoadDeviceJob>
 
 DiscoverPage::DiscoverPage(BlueWizard *parent)
     : QWizardPage(parent)

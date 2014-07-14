@@ -34,6 +34,7 @@
 
 #include <QBluez/Adapter>
 #include <QBluez/Device>
+#include <QBluez/PendingCall>
 
 LegacyPairingPageDatabase::LegacyPairingPageDatabase(BlueWizard *parent)
     : QWizardPage(parent)
