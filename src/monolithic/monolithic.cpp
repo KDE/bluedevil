@@ -17,9 +17,7 @@
  */
 
 #include "monolithic.h"
-#include "audio_interface.h"
 
-#include <QDebug>
 #include <QIcon>
 #include <QMenu>
 #include <QAction>
@@ -31,11 +29,13 @@
 #include <klocalizedstring.h>
 #include <ktoolinvocation.h>
 
-#include <bluedevil/bluedevil.h>
+#include <QBluez/Manager>
+#include <QBluez/InitManagerJob>
+#include <QBluez/Adapter>
+#include <QBluez/Device>
+#include <QBluez/LoadDeviceJob>
 
-using namespace BlueDevil;
-
-Monolithic::Monolithic(QObject* parent)
+Monolithic::Monolithic(QObject *parent)
     : KStatusNotifierItem(parent)
 {
     setCategory(KStatusNotifierItem::Hardware);
@@ -47,59 +47,67 @@ Monolithic::Monolithic(QObject* parent)
 
     offlineMode();
 
-    if (!Manager::self()->adapters().isEmpty()) {
-        onlineMode();
-    }
-
-    connect(Manager::self(), SIGNAL(adapterRemoved(Adapter*)), this, SLOT(adapterChanged()));
-    connect(Manager::self(), SIGNAL(adapterAdded(Adapter*)), this, SLOT(adapterChanged()));
-    connect(Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)), this, SLOT(adapterChanged()));
-
     setStandardActionsEnabled(false);
     setAssociatedWidget(contextMenu());
-
     setStatus(KStatusNotifierItem::Active);
+
+    // Initialize QBluez
+    m_manager = new QBluez::Manager(this);
+    connect(m_manager, &QBluez::Manager::usableAdapterChanged, this, &Monolithic::usableAdapterChanged);
+
+    QBluez::InitManagerJob *initJob = m_manager->init(QBluez::Manager::InitManagerAndAdapters);
+    initJob->start();
+    connect(initJob, &QBluez::InitManagerJob::result, [ this ](QBluez::InitManagerJob *job) {
+        if (job->error()) {
+            qCDebug(MONOLITHIC) << "Error initializing manager:" << job->errorText();
+            return;
+        }
+
+        if (m_manager->isBluetoothOperational()) {
+            onlineMode();
+        }
+    });
 }
 
-void Monolithic::adapterChanged()
+void Monolithic::usableAdapterChanged()
 {
-    offlineMode();
-
-    if (Manager::self()->usableAdapter()) {
+    if (m_manager->isBluetoothOperational()) {
         onlineMode();
+    } else {
+        offlineMode();
     }
 }
 
-quint32 sortHelper(quint32 type)
+static quint32 sortHelper(QBluez::DeviceType type)
 {
     switch (type) {
-        case BLUETOOTH_TYPE_ANY:
+        case QBluez::Any:
             return 100;
-        case BLUETOOTH_TYPE_PHONE:
+        case QBluez::Phone:
             return 0;
-        case BLUETOOTH_TYPE_MODEM:
+        case QBluez::Modem:
             return 99;
-        case BLUETOOTH_TYPE_COMPUTER:
+        case QBluez::Computer:
             return 1;
-        case BLUETOOTH_TYPE_NETWORK:
+        case QBluez::Network:
             return 98;
-        case BLUETOOTH_TYPE_HEADSET:
+        case QBluez::Headset:
             return 2;
-        case BLUETOOTH_TYPE_HEADPHONES:
+        case QBluez::Headphones:
             return 3;
-        case BLUETOOTH_TYPE_OTHER_AUDIO:
+        case QBluez::OtherAudio:
             return 4;
-        case BLUETOOTH_TYPE_KEYBOARD:
+        case QBluez::Keyboard:
             return 5;
-        case BLUETOOTH_TYPE_MOUSE:
+        case QBluez::Mouse:
             return 6;
-        case BLUETOOTH_TYPE_CAMERA:
+        case QBluez::Camera:
             return 7;
-        case BLUETOOTH_TYPE_PRINTER:
+        case QBluez::Printer:
             return 8;
-        case BLUETOOTH_TYPE_JOYPAD:
+        case QBluez::Joypad:
             return 9;
-        case BLUETOOTH_TYPE_TABLET:
+        case QBluez::Tablet:
             return 10;
         default:
             break;
@@ -107,10 +115,10 @@ quint32 sortHelper(quint32 type)
     return 1000;
 }
 
-bool sortDevices(Device *device1, Device *device2)
+bool sortDevices(QBluez::Device *device1, QBluez::Device *device2)
 {
-    quint32 type1 = sortHelper(classToType(device1->deviceClass()));
-    quint32 type2 = sortHelper(classToType(device2->deviceClass()));
+    quint32 type1 = sortHelper(device1->deviceType());
+    quint32 type2 = sortHelper(device2->deviceType());
     if (type1 != type2) {
         return type1 < type2;
     }
@@ -126,8 +134,7 @@ void Monolithic::regenerateDeviceEntries()
     qDeleteAll(menu->actions());
     menu->clear();
 
-    //If there are adapters (because we're in this function) but any of them is powered
-    if (!poweredAdapters()) {
+    if (!m_manager->isBluetoothOperational()) {
         menu->addSection(i18n("Bluetooth is Off"));
 
         QAction *separator = new QAction(menu);
@@ -148,8 +155,8 @@ void Monolithic::regenerateDeviceEntries()
     connect(browseDevices, SIGNAL(triggered()), this, SLOT(browseDevices()));
     menu->addAction(browseDevices);
 
-    QList<Adapter*> adapters = Manager::self()->adapters();
-    Q_FOREACH(Adapter* adapter, adapters) {
+    QList<QBluez::Adapter*> adapters = m_manager->adapters();
+    Q_FOREACH(QBluez::Adapter *adapter, adapters) {
         if (adapters.count() == 1) {
             menu->addSection(i18n("Known Devices"));
         } else {
@@ -169,30 +176,27 @@ void Monolithic::regenerateDeviceEntries()
     connect(configBluetooth, SIGNAL(triggered(bool)), this, SLOT(configBluetooth()));
     menu->addAction(configBluetooth);
 
-//Shortcut configuration actions, mainly checkables for discovering and powering
+    // Shortcut configuration actions, mainly checkables for discovering and powering
     menu->addSeparator();
 
     QAction *discoverable = new QAction(i18n("Discoverable"), menu);
     discoverable->setCheckable(true);
-    discoverable->setChecked(Manager::self()->usableAdapter()->isDiscoverable());
+    discoverable->setChecked(m_manager->usableAdapter()->isDiscoverable());
     connect(discoverable, SIGNAL(toggled(bool)), this, SLOT(activeDiscoverable(bool)));
     menu->addAction(discoverable);
 
     QAction *activeBluetooth = new QAction(i18n("Turn Bluetooth Off"), menu);
     connect(activeBluetooth, SIGNAL(triggered()), this, SLOT(toggleBluetooth()));
     menu->addAction(activeBluetooth);
-
-    menu->addSeparator();
-
-//     menu->addAction(KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), menu));
 }
 
 void Monolithic::regenerateConnectedDevices()
 {
     unsigned int connectedDevices = 0;
-    if (Manager::self()->usableAdapter()) {
-        QList<Device*> devices = Manager::self()->devices();
-        Q_FOREACH(Device* device, devices) {
+
+    if (m_manager->isBluetoothOperational()) {
+        QList<QBluez::Device*> devices = m_manager->devices();
+        Q_FOREACH(QBluez::Device *device, devices) {
             if (device->isConnected()) {
                 ++connectedDevices;
             }
@@ -209,18 +213,17 @@ void Monolithic::regenerateConnectedDevices()
 
 void Monolithic::onlineMode()
 {
-
-    QList<Adapter*> adapters = Manager::self()->adapters();
-    Q_FOREACH(Adapter *adapter, adapters) {
-        connect(adapter, SIGNAL(deviceFound(Device*)), SLOT(deviceCreated(Device*)));
-        connect(adapter, SIGNAL(deviceRemoved(Device*)), SLOT(regenerateDeviceEntries()));
-        connect(adapter, SIGNAL(poweredChanged(bool)), SLOT(poweredChanged()));
-        connect(adapter, SIGNAL(discoverableChanged(bool)), SLOT(regenerateDeviceEntries()));
+    QList<QBluez::Adapter*> adapters = m_manager->adapters();
+    Q_FOREACH(QBluez::Adapter *adapter, adapters) {
+        connect(adapter, &QBluez::Adapter::deviceFound, this, &Monolithic::deviceCreated);
+        connect(adapter, &QBluez::Adapter::deviceRemoved, this, &Monolithic::regenerateDeviceEntries);
+        connect(adapter, &QBluez::Adapter::poweredChanged, this, &Monolithic::poweredChanged);
+        connect(adapter, &QBluez::Adapter::discoverableChanged, this, &Monolithic::regenerateDeviceEntries);
     }
 
-    QList<Device*> devices = Manager::self()->devices();
-    Q_FOREACH(Device* device, devices) {
-        connect(device, SIGNAL(propertyChanged(QString,QVariant)), this, SLOT(regenerateConnectedDevices()));
+    QList<QBluez::Device*> devices = m_manager->devices();
+    Q_FOREACH(QBluez::Device *device, devices) {
+        deviceCreated(device);
     }
 
     regenerateDeviceEntries();
@@ -232,7 +235,7 @@ void Monolithic::actionTriggered()
 {
     QAction *action = qobject_cast<QAction*>(sender());
     QString service = action->data().toString();
-    Device *device = Manager::self()->deviceForUBI(action->property("UBI").toString());
+    QBluez::Device *device = action->property("QBluez::Device").value<QBluez::Device*>();
     if (!device) {
         return;
     }
@@ -240,7 +243,7 @@ void Monolithic::actionTriggered()
     if (service == QLatin1String("00001106-0000-1000-8000-00805F9B34FB")) {
         browseTriggered(device->address());
     } else if (service == QLatin1String("00001105-0000-1000-8000-00805F9B34FB")) {
-        sendTriggered(device->UBI());
+        sendTriggered(device->ubi());
     }
 }
 
@@ -268,40 +271,37 @@ void Monolithic::configBluetooth()
 {
     KProcess process;
     QStringList args;
-    args << QLatin1String("bluedevildevices");
-    args << QLatin1String("bluedeviltransfer");
-    args << QLatin1String("bluedeviladapters");
+    args << QStringLiteral("bluedevildevices");
+    args << QStringLiteral("bluedeviltransfer");
+    args << QStringLiteral("bluedeviladapters");
     process.startDetached(QStringLiteral("kcmshell5"), args);
 }
 
 void Monolithic::toggleBluetooth()
 {
-    bool powered = false;
-    if (poweredAdapters()) {
-        powered = true;
-    }
+    bool powered = poweredAdapters();
 
-    QList <Adapter*> adapters = Manager::self()->adapters();
+    QList <QBluez::Adapter*> adapters = m_manager->adapters();
     if (!adapters.isEmpty()) {
-        Q_FOREACH(Adapter *adapter, adapters) {
-            adapter->setPowered(!powered);//If there were powered devices, unpower them.
+        // Invert the powered state of all adapters
+        Q_FOREACH(QBluez::Adapter *adapter, adapters) {
+            adapter->setPowered(!powered);
         }
     }
 
-    //We do not call regenerateDeviceEntries because we assume that the adapter proprety powered will change
-    //and then, poweredChange will be emitted
+    // We do not call regenerateDeviceEntries because we assume that the adapter
+    // proprety powered will change and then, poweredChange will be emitted
 }
 
 void Monolithic::activeDiscoverable(bool active)
 {
-    QList <Adapter*> adapters = Manager::self()->adapters();
+    QList<QBluez::Adapter*> adapters = m_manager->adapters();
     if (!adapters.isEmpty()) {
-        Q_FOREACH(Adapter *adapter, adapters) {
+        Q_FOREACH(QBluez::Adapter *adapter, adapters) {
             adapter->setDiscoverable(active);
         }
     }
 }
-
 
 void Monolithic::browseTriggered(QString address)
 {
@@ -326,7 +326,7 @@ void Monolithic::poweredChanged()
     if (!poweredAdapters()) {
         setIconByName(QStringLiteral("preferences-system-bluetooth-inactive"));
         setTooltipTitleStatus(false);
-        setToolTipSubTitle("");
+        setToolTipSubTitle(QString());
     } else {
         setIconByName(QStringLiteral("preferences-system-bluetooth"));
         setTooltipTitleStatus(true);
@@ -336,12 +336,22 @@ void Monolithic::poweredChanged()
     regenerateConnectedDevices();
 }
 
-void Monolithic::deviceCreated(Device *device)
+void Monolithic::deviceCreated(QBluez::Device *device)
 {
-    connect(device, SIGNAL(propertyChanged(QString,QVariant)), this, SLOT(regenerateConnectedDevices()));
-    connect(device, SIGNAL(UUIDsChanged(QStringList)), this, SLOT(UUIDsChanged(QStringList)));
-    regenerateDeviceEntries();
-    regenerateConnectedDevices();
+    QBluez::LoadDeviceJob *job = device->load();
+    job->start();
+    connect(job, &QBluez::LoadDeviceJob::result, [ this ](QBluez::LoadDeviceJob *job) {
+        if (job->error()) {
+            qCDebug(MONOLITHIC) << "Error loading device" << job->errorText();
+            return;
+        }
+
+        connect(job->device(), &QBluez::Device::deviceChanged, this, &Monolithic::regenerateConnectedDevices);
+        connect(job->device(), &QBluez::Device::uuidsChanged, this, &Monolithic::UUIDsChanged);
+
+        regenerateDeviceEntries();
+        regenerateConnectedDevices();
+    });
 }
 
 void Monolithic::offlineMode()
@@ -358,22 +368,17 @@ void Monolithic::offlineMode()
     QAction *noAdaptersFound = new QAction(i18n("No adapters found"), menu);
     noAdaptersFound->setEnabled(false);
     menu->addAction(noAdaptersFound);
-
-    QAction *separator = new QAction(menu);
-    separator->setSeparator(true);
-    menu->addAction(separator);
-//     menu->addAction(KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), menu));
 }
 
 bool Monolithic::poweredAdapters()
 {
-    QList <Adapter*> adapters = Manager::self()->adapters();
+    QList<QBluez::Adapter*> adapters = m_manager->adapters();
 
     if (adapters.isEmpty()) {
         return false;
     }
 
-    Q_FOREACH(Adapter* adapter, adapters) {
+    Q_FOREACH(QBluez::Adapter *adapter, adapters) {
         if (adapter->isPowered()) {
             return true;
         }
@@ -385,24 +390,24 @@ bool Monolithic::poweredAdapters()
 void Monolithic::setTooltipTitleStatus(bool status)
 {
     if (status) {
-        setToolTipTitle(i18nc("When the bluetooth is enabled and powered","Bluetooth is On"));
+        setToolTipTitle(i18nc("When the bluetooth is enabled and powered", "Bluetooth is On"));
     } else {
-        setToolTipTitle(i18nc("When the bluetooth is disabled or not powered","Bluetooth is Off"));
+        setToolTipTitle(i18nc("When the bluetooth is disabled or not powered", "Bluetooth is Off"));
     }
 }
 
-QList< QAction* > Monolithic::actionsForAdapter(Adapter* adapter)
+QList<QAction*> Monolithic::actionsForAdapter(QBluez::Adapter *adapter)
 {
     QList<QAction*> actions;
-    QList<Device*> devices = adapter->devices();
+    QList<QBluez::Device*> devices = adapter->devices();
     if (devices.isEmpty()) {
         return actions;
     }
 
     qStableSort(devices.begin(), devices.end(), sortDevices);
     QAction *action = 0;
-    Device *lastDevice = 0;
-    Q_FOREACH (Device *device, devices) {
+    QBluez::Device *lastDevice = 0;
+    Q_FOREACH (QBluez::Device *device, devices) {
         action = actionForDevice(device, lastDevice);
         actions << action;
         lastDevice = device;
@@ -413,32 +418,32 @@ QList< QAction* > Monolithic::actionsForAdapter(Adapter* adapter)
     return actions;
 }
 
-QAction* Monolithic::actionForDevice(Device* device, Device *lastDevice)
+QAction* Monolithic::actionForDevice(QBluez::Device* device, QBluez::Device *lastDevice)
 {
     // Create device entry
     QAction *deviceAction = new QAction(device->name(), this);
-    deviceAction->setData(QVariant::fromValue<Device*>(device));
+    deviceAction->setData(QVariant::fromValue<QBluez::Device*>(device));
 
-    //We only show the icon for the first device of the type, less UI clutter
-    if (!lastDevice || classToType(lastDevice->deviceClass()) != classToType(device->deviceClass())) {
+    // We only show the icon for the first device of the type, less UI clutter
+    if (!lastDevice || lastDevice->deviceType() != device->deviceType()) {
         deviceAction->setIcon(QIcon::fromTheme(device->icon()));
     }
 
     // Create the submenu that will hang from this device menu entry
     QMenu *const subMenu = new QMenu;
-    QStringList UUIDs = device->UUIDs();
+    QStringList UUIDs = device->uuids();
 
-    QSet <QString> deviceServices = UUIDs.toSet().intersect(m_supportedServices.values().toSet());
+    QSet<QString> deviceServices = UUIDs.toSet().intersect(m_supportedServices.values().toSet());
     Q_FOREACH(QString service, deviceServices) {
         QAction *action = new QAction(m_supportedServices.key(service), subMenu);
         action->setData(service);
-        action->setProperty("UBI", device->UBI());
-        connect(action, SIGNAL(triggered()), SLOT(actionTriggered()));
+        action->setProperty("QBluez::Device", QVariant::fromValue<QBluez::Device*>(device));
+        connect(action, &QAction::triggered, this, &Monolithic::actionTriggered);
         subMenu->addAction(action);
     }
 
     QAction *connectAction = new QAction(i18nc("Connect to a bluetooth device", "Connect"), deviceAction);
-    connect(connectAction, SIGNAL(triggered()), device, SLOT(connectDevice()));
+    connect(connectAction, &QAction::triggered, device, &QBluez::Device::connect);
     subMenu->addAction(connectAction);
 
 //Enable when we can know if we should show Connect or not
@@ -453,4 +458,4 @@ QAction* Monolithic::actionForDevice(Device* device, Device *lastDevice)
     return deviceAction;
 }
 
-Q_DECLARE_METATYPE(Device*)
+Q_LOGGING_CATEGORY(MONOLITHIC, "BlueMonolithic")

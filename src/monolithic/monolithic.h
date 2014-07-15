@@ -16,31 +16,30 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 #ifndef MONOLITHIC_H
 #define MONOLITHIC_H
 
+#include <QLoggingCategory>
+
 #include <kstatusnotifieritem.h>
 
-namespace BlueDevil {
+namespace QBluez {
+    class Manager;
     class Adapter;
     class Device;
 }
 
 class QAction;
 
-using namespace BlueDevil;
-
-class Monolithic
-    : public KStatusNotifierItem
+class Monolithic : public KStatusNotifierItem
 {
+    Q_OBJECT
 
-Q_OBJECT
 public:
     Monolithic(QObject* parent = 0);
 
 public Q_SLOTS:
-    void adapterChanged();
+    void usableAdapterChanged();
 
     void regenerateDeviceEntries();
     /**
@@ -61,7 +60,7 @@ private Q_SLOTS:
     void sendTriggered(const QString &ubi);
     void UUIDsChanged(const QStringList &UUIDs);
     void poweredChanged();
-    void deviceCreated(Device *device);
+    void deviceCreated(QBluez::Device *device);
 
 private:
     void onlineMode();
@@ -72,11 +71,15 @@ private:
      */
     bool poweredAdapters();
     void setTooltipTitleStatus(bool);
-    QList<QAction*> actionsForAdapter(Adapter *adapter);
-    QAction* actionForDevice(Device *device, Device *lastDevice);
+    QList<QAction*> actionsForAdapter(QBluez::Adapter *adapter);
+    QAction *actionForDevice(QBluez::Device *device, QBluez::Device *lastDevice);
+
 private:
+    QBluez::Manager *m_manager;
     QHash<QString, QString> m_supportedServices;
     QList<QAction*> m_actions;
 };
+
+Q_DECLARE_LOGGING_CATEGORY(MONOLITHIC)
 
 #endif // MONOLITHIC_H
