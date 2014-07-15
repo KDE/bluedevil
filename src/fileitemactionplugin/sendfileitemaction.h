@@ -21,25 +21,36 @@
 #ifndef SENDFILEITEMACTION_H
 #define SENDFILEITEMACTION_H
 
+#include <QLoggingCategory>
+
 #include <KAbstractFileItemActionPlugin>
 #include <KFileItemListProperties>
 
 class QAction;
 class QWidget;
 
+namespace QBluez {
+    class Manager;
+}
+
 class SendFileItemAction : public KAbstractFileItemActionPlugin
 {
-Q_OBJECT
+    Q_OBJECT
+
 public:
-    SendFileItemAction(QObject* parent, const QVariantList &args);
-    virtual QList< QAction* > actions(const KFileItemListProperties& fileItemInfos, QWidget* parentWidget);
+    SendFileItemAction(QObject *parent, const QVariantList &args);
+    QList<QAction*> actions(const KFileItemListProperties &fileItemInfos, QWidget *parentWidget) Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
     void deviceTriggered();
     void otherTriggered();
 
 private:
+    QBluez::Manager *m_manager;
+    bool m_initialized;
     KFileItemListProperties m_fileItemInfos;
 };
+
+Q_DECLARE_LOGGING_CATEGORY(FILEITEMACTION)
 
 #endif // SENDFILEITEMACTION_H
