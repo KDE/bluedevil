@@ -22,31 +22,30 @@
 #ifndef BLUEDEVILDAEMON_H
 #define BLUEDEVILDAEMON_H
 
-#include <kdedmodule.h>
+#include <KDEDModule>
 #include <QLoggingCategory>
 
-typedef QMap <QString, QString> DeviceInfo;
-typedef QMap<QString, DeviceInfo > QMapDeviceInfo;
+typedef QMap<QString, QString> DeviceInfo;
+typedef QMap<QString, DeviceInfo> QMapDeviceInfo;
 
 class QDBusPendingCallWatcher;
-namespace BlueDevil {
+
+namespace QBluez {
     class Adapter;
     class Device;
 }
-using namespace BlueDevil;
 
-class Q_DECL_EXPORT BlueDevilDaemon
-    : public KDEDModule
+class Q_DECL_EXPORT BlueDevilDaemon : public KDEDModule
 {
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.kde.BlueDevil")
 
 public:
     /**
-     * Stablish basics connections with libbluedevil signals and calls online if interfaces are availables
+     * Establish basics connections with QBluez signals and calls online if interfaces are availables
      */
     BlueDevilDaemon(QObject *parent, const QList<QVariant>&);
-    virtual ~BlueDevilDaemon();
+    ~BlueDevilDaemon();
 
 public Q_SLOTS:
     Q_SCRIPTABLE bool isOnline();
@@ -58,6 +57,11 @@ public Q_SLOTS:
      * the discovery ends it won't start a new discovery until N seconds pass.
      */
     Q_SCRIPTABLE QMapDeviceInfo knownDevices();
+
+    /**
+     * Returns DeviceInfo for one device.
+     */
+    Q_SCRIPTABLE DeviceInfo deviceInfo(const QString &address);
 
     Q_SCRIPTABLE void stopDiscovering();
 
@@ -79,27 +83,26 @@ private Q_SLOTS:
      * Called when the default adapter changes, re-initialize the kded with the new
      * default adapter
      */
-    void usableAdapterChanged(Adapter *adapter);
+    void usableAdapterChanged(QBluez::Adapter *adapter);
 
     /**
      * When the agent is released this is called to unload it
      */
     void agentReleased();
 
-    void deviceFound(Device*);
-    void monolithicQuit(QDBusPendingCallWatcher* watcher);
+    void deviceFound(QBluez::Device*);
+    void monolithicQuit(QDBusPendingCallWatcher *watcher);
     void monolithicFinished(const QString &);
 
 private:
     void executeMonolithic();
     void killMonolithic();
 
-    DeviceInfo deviceToInfo (Device *const device) const;
+    DeviceInfo deviceToInfo (QBluez::Device *const device) const;
 
 private:
     struct Private;
     Private *d;
 };
 
-Q_DECLARE_LOGGING_CATEGORY(BLUEDAEMON)
 #endif /*BLUEDEVILDAEMON_H*/

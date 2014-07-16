@@ -35,5 +35,8 @@ int main(int argc, char *argv[])
 
     Authorize auth;
 
+    // 0 - accept
+    // 1 - accept & trust
+    // 2 - reject
     return app.exec();
 }

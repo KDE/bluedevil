@@ -21,16 +21,28 @@
 
 #include <QObject>
 
-class QDBusPendingCallWatcher;
+namespace QBluez {
+    class ObexManager;
+    class PendingCall;
+}
+
+class ObexAgent;
+
 class FileReceiver : public QObject
 {
     Q_OBJECT
-    public:
-        explicit FileReceiver(QObject* parent = 0);
-        virtual ~FileReceiver();
 
-    private Q_SLOTS:
-        void agentRegistered(QDBusPendingCallWatcher* call);
+public:
+    explicit FileReceiver(QObject *parent = 0);
+    ~FileReceiver();
+
+private Q_SLOTS:
+    void agentRegistered(QBluez::PendingCall* call);
+    void operationalChanged(bool operational);
+
+private:
+    QBluez::ObexManager *m_manager;
+    ObexAgent *m_agent;
 };
 
 #endif //FILE_RECEIVER_H

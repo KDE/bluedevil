@@ -17,43 +17,59 @@
  *************************************************************************************/
 
 #include "filereceiver.h"
-#include "../BlueDevilDaemon.h"
 #include "obexagent.h"
-#include "obex_agent_manager.h"
+#include "debug_p.h"
 
-#include <QDBusConnection>
-#include <QDBusPendingCall>
-#include <QDBusPendingCallWatcher>
+#include <QBluez/ObexManager>
+#include <QBluez/InitObexManagerJob>
+#include <QBluez/PendingCall>
 
-FileReceiver::FileReceiver(QObject* parent)
+FileReceiver::FileReceiver(QObject *parent)
     : QObject(parent)
+    , m_agent(0)
 {
-    qCDebug(BLUEDAEMON);
-    qDBusRegisterMetaType<QVariantMap>();
+    qCDebug(BLUEDAEMON) << "FileReceiver created";
 
-    new ObexAgent(this);
-    org::bluez::obex::AgentManager1 *agent = new org::bluez::obex::AgentManager1(QStringLiteral("org.bluez.obex"),
-                                                                                 QStringLiteral("/org/bluez/obex"),
-                                                                                 QDBusConnection::sessionBus(),
-                                                                                 this);
+    m_manager = new QBluez::ObexManager(this);
+    QBluez::InitObexManagerJob *initJob = m_manager->init();
+    initJob->start();
+    connect(initJob, &QBluez::InitObexManagerJob::result, [ this ](QBluez::InitObexManagerJob *job) {
+        if (job->error()) {
+            qCWarning(BLUEDAEMON) << "Error initializing ObexManager!";
+            return;
+        }
 
-    QDBusPendingReply <void > r = agent->RegisterAgent(QDBusObjectPath(QStringLiteral("/BlueDevil_receiveAgent")));
-    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(r, this);
-    connect(watcher, SIGNAL(finished(QDBusPendingCallWatcher*)), SLOT(agentRegistered(QDBusPendingCallWatcher*)));
+        m_agent = new ObexAgent(this);
+
+        // Make sure to register agent when obex daemon starts
+        connect(m_manager, &QBluez::ObexManager::operationalChanged, this, &FileReceiver::operationalChanged);
+        operationalChanged(m_manager->isOperational());
+    });
 }
 
 FileReceiver::~FileReceiver()
 {
-
+    if (m_agent) {
+        qCDebug(BLUEDAEMON) << "Unregistering ObexAgent";
+        m_manager->unregisterAgent(m_agent);
+    }
 }
 
-void FileReceiver::agentRegistered(QDBusPendingCallWatcher* call)
+void FileReceiver::agentRegistered(QBluez::PendingCall *call)
 {
-    QDBusPendingReply <void > r = *call;
-    qCDebug(BLUEDAEMON) << "Error: " << r.isError();
-    if (r.isError()) {
-        qCDebug(BLUEDAEMON) << r.error().message();
+    if (call->error()) {
+        qCWarning(BLUEDAEMON) << "Error registering ObexAgent" << call->errorText();
+    } else {
+        qCDebug(BLUEDAEMON) << "ObexAgent registered";
     }
+}
 
-    call->deleteLater();
+void FileReceiver::operationalChanged(bool operational)
+{
+    qCDebug(BLUEDAEMON) << "ObexManager operational changed" << operational;
+
+    if (operational) {
+        QBluez::PendingCall *call = m_manager->registerAgent(m_agent);
+        connect(call, &QBluez::PendingCall::finished, this, &FileReceiver::agentRegistered);
+    }
 }

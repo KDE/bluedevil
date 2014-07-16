@@ -1,26 +1,11 @@
 set(kded_bluedevil_SRCS
     BlueDevilDaemon.cpp
     bluezagent.cpp
+    debug_p.cpp
     filereceiver/obexagent.cpp
     filereceiver/filereceiver.cpp
     filereceiver/receivefilejob.cpp
 )
-
-qt5_add_dbus_interface(kded_bluedevil_SRCS
-    filereceiver/org.bluez.obex.AgentManager1.xml
-    obex_agent_manager)
-
-qt5_add_dbus_interface(kded_bluedevil_SRCS
-    filereceiver/org.bluez.obex.Transfer1.xml
-    obex_transfer)
-
-qt5_add_dbus_interface(kded_bluedevil_SRCS
-    filereceiver/org.bluez.obex.Session1.xml
-    obex_session)
-
-qt5_add_dbus_interface(kded_bluedevil_SRCS
-    filereceiver/org.freedesktop.DBus.Properties.xml
-    dbus_properties)
 
 kconfig_add_kcfg_files(kded_bluedevil_SRCS ../../settings/filereceiversettings.kcfgc)
 
@@ -37,7 +22,7 @@ target_link_libraries(kded_bluedevil
     KF5::KIOCore
     KF5::KIOFileWidgets
     KF5::IconThemes
-    ${LibBlueDevil_LIBRARIES}
+    KF5::QBluez
 )
 
 install(TARGETS kded_bluedevil DESTINATION ${PLUGIN_INSTALL_DIR})

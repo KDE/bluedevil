@@ -21,93 +21,76 @@
 
 #include "bluezagent.h"
 #include "config.h"
+#include "debug_p.h"
 
-#include <QDBusConnection>
-#include <QStandardPaths>
-#include <QDebug>
 #include <QProcess>
+#include <QDBusObjectPath>
+#include <QStandardPaths>
 
 #include <KLocalizedString>
 
-#include <bluedevil/bluedevil.h>
-
-#define AGENT_PATH QStringLiteral("/blueDevil_agent")
+#include <QBluez/Device>
+#include <QBluez/LoadDeviceJob>
 
 BluezAgent::BluezAgent(QObject *parent)
-    : QDBusAbstractAdaptor(parent)
+    : QBluez::Agent(parent)
+    , m_device(0)
 {
-    if (!QDBusConnection::systemBus().registerObject(AGENT_PATH, parent)) {
-        qDebug() << "The dbus object can't be registered";
-        return;
-    }
-
-    BlueDevil::Manager::self()->registerAgent(AGENT_PATH, BlueDevil::Manager::DisplayYesNo);
-    BlueDevil::Manager::self()->requestDefaultAgent(AGENT_PATH);
-
     m_process = new QProcess(this);
-
-    qDebug() << "Agent registered";
 }
 
-void BluezAgent::unregister()
+QDBusObjectPath BluezAgent::objectPath() const
 {
-    qDebug() << "Unregistering object";
-    BlueDevil::Manager::self()->unregisterAgent(AGENT_PATH);
-    QDBusConnection::systemBus().unregisterObject(AGENT_PATH);
-    parent()->deleteLater();
+    return QDBusObjectPath(QStringLiteral("/BlueDevilAgent"));
 }
 
-void BluezAgent::Release()
+void BluezAgent::release()
 {
-    qDebug() << "Agent Release";
+    qCDebug(BLUEDAEMON) << "AGENT-Release";
     emit agentReleased();
 }
 
-void BluezAgent::AuthorizeService(const QDBusObjectPath &device, const QString& uuid, const QDBusMessage &msg)
+void BluezAgent::authorizeService(QBluez::Device *device, const QString &uuid, const QBluez::Request<void> &request)
 {
     Q_UNUSED(uuid)
-    qDebug() << "Authorize called";
 
-    m_msg = msg;
-    m_msg.setDelayedReply(true);
-    m_currentHelper = QLatin1String("Authorize");
+    qCDebug(BLUEDAEMON) << "AGENT-AuthorizeService";
+
+    m_boolRequest = request;
 
     QStringList list;
-    list.append(deviceName(device.path()));
-    list.append(device.path());
+    list.append(device->name());
+    list.append(device->ubi());
 
     const QString &exe = QStandardPaths::findExecutable(QStringLiteral("bluedevil-authorize"),
                                                         QStringList(HELPER_INSTALL_PATH));
 
-    connect(m_process, SIGNAL(finished(int)), this, SLOT(processClosedBool(int)));
     m_process->start(exe, list);
+    connect(m_process, SIGNAL(finished(int)), this, SLOT(processClosedAuthorize(int)));
 }
 
-QString BluezAgent::RequestPinCode(const QDBusObjectPath &device, const QDBusMessage &msg)
+void BluezAgent::requestPinCode(QBluez::Device *device, const QBluez::Request<QString> &request)
 {
-    qDebug() << "AGENT-RequestPinCode " << device.path();
-    m_msg = msg;
-    m_msg.setDelayedReply(true);
+    qCDebug(BLUEDAEMON) << "AGENT-RequestPinCode " << device->name();
 
-    QStringList list(deviceName(device.path()));
+    m_pinRequest = request;
+
+    QStringList list(device->name());
 
     const QString &exe = QStandardPaths::findExecutable(QStringLiteral("bluedevil-requestpin"),
                                                         QStringList(HELPER_INSTALL_PATH));
 
     connect(m_process, SIGNAL(finished(int)), this, SLOT(processClosedPin(int)));
     m_process->start(exe, list);
-
-    return QString();
 }
 
-quint32 BluezAgent::RequestPasskey(const QDBusObjectPath &device, const QDBusMessage &msg)
+void BluezAgent::requestPasskey(QBluez::Device *device, const QBluez::Request<quint32> &request)
 {
-    qDebug() << "AGENT-RequestPasskey " << device.path();
+    qCDebug(BLUEDAEMON) << "AGENT-RequestPasskey " << device->name();
 
-    m_msg = msg;
-    m_msg.setDelayedReply(true);
+    m_passkeyRequest = request;
 
-    QStringList list(deviceName(device.path()));
+    QStringList list(device->name());
     list << QStringLiteral("numeric");
 
     const QString &exe = QStandardPaths::findExecutable(QStringLiteral("bluedevil-requestpin"),
@@ -115,26 +98,22 @@ quint32 BluezAgent::RequestPasskey(const QDBusObjectPath &device, const QDBusMes
 
     connect(m_process, SIGNAL(finished(int)), this, SLOT(processClosedPasskey(int)));
     m_process->start(exe, list);
-
-    return 0;
 }
 
-void BluezAgent::DisplayPasskey(const QDBusObjectPath &device, quint32 passkey)
+void BluezAgent::displayPasskey(QBluez::Device *device, const QString &passkey, const QString &entered)
 {
-    qDebug() << "AGENT-DisplayPasskey " << device.path() << ", " << QString::number(passkey);
+    qCDebug(BLUEDAEMON) << "AGENT-DisplayPasskey " << device->name() << ", " << passkey << "entered" << entered;
 }
 
-void BluezAgent::RequestConfirmation(const QDBusObjectPath &device, quint32 passkey, const QDBusMessage &msg)
+void BluezAgent::requestConfirmation(QBluez::Device *device, const QString &passkey, const QBluez::Request<void> &request)
 {
-    qDebug() << "AGENT-RequestConfirmation " << device.path() << ", " << QString::number(passkey);
+    qCDebug(BLUEDAEMON) << "AGENT-RequestConfirmation " << device->name() << ", " << passkey;
 
-    m_msg = msg;
-    m_msg.setDelayedReply(true);
-    m_currentHelper = QLatin1String("RequestConfirmation");
+    m_boolRequest = request;
 
     QStringList list;
-    list.append(deviceName(device.path()));
-    list.append(QString("%1").arg(passkey, 6, 10, QLatin1Char('0')));
+    list.append(device->name());
+    list.append(passkey);
 
     const QString &exe = QStandardPaths::findExecutable(QStringLiteral("bluedevil-requestconfirmation"),
                                                         QStringList(HELPER_INSTALL_PATH));
@@ -143,41 +122,62 @@ void BluezAgent::RequestConfirmation(const QDBusObjectPath &device, quint32 pass
     m_process->start(exe, list);
 }
 
-void BluezAgent::Cancel()
+void BluezAgent::cancel()
 {
-    qDebug() << "AGENT-Cancel";
+    qCDebug(BLUEDAEMON) << "AGENT-Cancel";
 }
 
 void BluezAgent::processClosedBool(int exitCode)
 {
-    qDebug() << "ProcessClosed: " << exitCode;
+    qCDebug(BLUEDAEMON) << "ProcessClosed: " << exitCode;
     disconnect(m_process, SIGNAL(finished(int)), this, SLOT(processClosedBool(int)));
 
     if (!exitCode) {
-        qDebug() << "Sending empty reply";
-        QDBusConnection::systemBus().send(m_msg.createReply());
+        qCDebug(BLUEDAEMON) << "Accepting request";
+        m_boolRequest.accept();
         return;
     }
 
-    qDebug() << "Sending error";
-    sendBluezError(m_currentHelper, m_msg);
+    qCDebug(BLUEDAEMON) << "Rejecting request";
+    m_boolRequest.reject();
+}
+
+void BluezAgent::processClosedAuthorize(int exitCode)
+{
+    qCDebug(BLUEDAEMON) << "ProcessClosedAuthorize: " << exitCode;
+    disconnect(m_process, SIGNAL(finished(int)), this, SLOT(processClosedBool(int)));
+
+    switch (exitCode) {
+    case 0:
+        qCDebug(BLUEDAEMON) << "Accepting request";
+        m_boolRequest.accept();
+        break;
+
+    case 1:
+        qCDebug(BLUEDAEMON) << "Accepting request and trusting device";
+        m_boolRequest.accept();
+        m_device->setTrusted(true);
+        break;
+
+    default:
+        qCDebug(BLUEDAEMON) << "Rejecting request";
+        m_boolRequest.reject();
+        break;
+    }
 }
 
 void BluezAgent::processClosedPin(int exitCode)
 {
-    qDebug() << "ProcessClosedPin: " << exitCode;
+    qCDebug(BLUEDAEMON) << "ProcessClosedPin: " << exitCode;
     disconnect(m_process, SIGNAL(finished(int)), this, SLOT(processClosedPin(int)));
 
     if (!exitCode) {
-        QVariant arg = QVariant::fromValue<QString>(m_process->readAllStandardOutput());
-        QDBusMessage reply = m_msg.createReply(arg);
-        QDBusConnection::systemBus().send(reply);
+        const QString &arg = m_process->readAllStandardOutput();
+        m_pinRequest.accept(arg);
         return;
     }
 
-    QDBusMessage error = m_msg.createErrorReply(QStringLiteral("org.bluez.Error.Canceled"),
-                                                QStringLiteral("Pincode request failed"));
-    QDBusConnection::systemBus().send(error);
+    m_pinRequest.reject();
 }
 
 void BluezAgent::processClosedPasskey(int exitCode)
@@ -185,32 +185,10 @@ void BluezAgent::processClosedPasskey(int exitCode)
     disconnect(m_process, SIGNAL(finished(int)), this, SLOT(processClosedPasskey(int)));
 
     if (!exitCode) {
-        QVariant arg = QVariant::fromValue<quint32>(m_process->readAllStandardOutput().toInt());
-        QDBusMessage reply = m_msg.createReply(arg);
-        QDBusConnection::systemBus().send(reply);
+        quint32 arg = m_process->readAllStandardOutput().toInt();
+        m_passkeyRequest.accept(arg);
         return;
     }
 
-    QDBusMessage error = m_msg.createErrorReply(QStringLiteral("org.bluez.Error.Canceled"),
-                                                QStringLiteral("Pincode request failed"));
-    QDBusConnection::systemBus().send(error);
-}
-
-void BluezAgent::sendBluezError(const QString &helper, const QDBusMessage &msg)
-{
-    qDebug() << "Sending canceled msg to bluetooth" << helper;
-    QDBusMessage error = msg.createErrorReply(QStringLiteral("org.bluez.Error.Canceled"),
-                                              QStringLiteral("Authorization canceled"));
-    QDBusConnection::systemBus().send(error);
-}
-
-QString BluezAgent::deviceName(const QString& UBI)
-{
-    BlueDevil::Device *device = BlueDevil::Manager::self()->deviceForUBI(UBI);
-    if (!device || device->name().isEmpty()) {
-        return i18nc("User will see this as: Bluetooth device is asking if the pin is correct\
-        It is mostly a fallback", "Bluetooth device");
-    }
-
-    return device->name();
+    m_passkeyRequest.reject();
 }

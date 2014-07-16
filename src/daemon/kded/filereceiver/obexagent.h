@@ -19,25 +19,22 @@
 #ifndef OBEX_AGENT_H
 #define OBEX_AGENT_H
 
-#include <QDBusMessage>
-#include <QDBusAbstractAdaptor>
-#include <QDBusObjectPath>
+#include <QBluez/ObexAgent>
 
-class QDBusMessage;
-class ObexAgent : public QDBusAbstractAdaptor
+class ObexAgent : public QBluez::ObexAgent
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.bluez.obex.Agent1")
 
-    public:
-        explicit ObexAgent(QObject* parent);
-        virtual ~ObexAgent();
+public:
+    explicit ObexAgent(QObject *parent);
+    virtual ~ObexAgent();
 
-    public Q_SLOTS:
-        QString AuthorizePush(const QDBusObjectPath &path, const QDBusMessage &msg);
+    QDBusObjectPath objectPath() const Q_DECL_OVERRIDE;
 
-        void Release();
-        void Cancel();
+public Q_SLOTS:
+    void authorizePush(QBluez::ObexTransfer *transfer, const QBluez::Request<QString> &request) Q_DECL_OVERRIDE;
+    void release();
+    void cancel();
 };
 
 #endif //OBEX_AGENT_H
