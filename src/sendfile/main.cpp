@@ -27,10 +27,6 @@
 #include <KAboutData>
 #include <KLocalizedString>
 
-#include <bluedevil/bluedevil.h>
-
-using namespace BlueDevil;
-
 int main(int argc, char *argv[])
 {
     KAboutData aboutData(QStringLiteral("bluedevilsendfile"),
@@ -75,8 +71,7 @@ int main(int argc, char *argv[])
         deviceInfo = parser.value(kioOption);
     }
 
-    SendFileWizard *sendFileWizard = new SendFileWizard(deviceInfo, parser.values(filesOption));
-    sendFileWizard->show();
+    new SendFileWizard(deviceInfo, parser.values(filesOption));
 
     return app.exec();
 }

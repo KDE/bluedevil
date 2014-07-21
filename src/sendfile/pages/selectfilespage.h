@@ -25,12 +25,12 @@
 
 #include <QWizardPage>
 
-class QWizard;
 class KFileWidget;
 
 class SelectFilesPage : public QWizardPage
 {
-Q_OBJECT
+    Q_OBJECT
+
 public:
     SelectFilesPage(QWidget* parent = 0);
 

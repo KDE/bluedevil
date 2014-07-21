@@ -31,7 +31,8 @@
 #include <QVBoxLayout>
 #include <QLabel>
 
-SelectFilesPage::SelectFilesPage(QWidget* parent): QWizardPage(parent)
+SelectFilesPage::SelectFilesPage(QWidget* parent)
+    : QWizardPage(parent)
 {
     m_files = new KFileWidget(QUrl(QStandardPaths::writableLocation(QStandardPaths::HomeLocation)), this);
     m_files->setMode(KFile::Files);

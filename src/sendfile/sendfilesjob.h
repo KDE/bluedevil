@@ -23,63 +23,53 @@
 #ifndef SENDFILESJOB_H
 #define SENDFILESJOB_H
 
+#include <QTime>
 #include <QList>
 #include <QStringList>
-#include <QDBusObjectPath>
 
-#include <KFileItem>
-#include <KCompositeJob>
+#include <KJob>
 
-namespace BlueDevil
-{
+#include <QBluez/ObexTransfer>
+
+namespace QBluez {
     class Device;
+    class ObexTransfer;
+    class ObexObjectPush;
 }
 
-class QDBusPendingCallWatcher;
-class OrgBluezObexClient1Interface;
-class OrgBluezObexObjectPush1Interface;
-class OrgFreedesktopDBusPropertiesInterface;
-
-using namespace BlueDevil;
 class SendFilesJob : public KJob
 {
-Q_OBJECT
-public:
-    SendFilesJob(const QStringList &files, BlueDevil::Device* device, QObject* parent = 0);
+    Q_OBJECT
 
-    virtual void start();
-    virtual bool doKill();
+public:
+    SendFilesJob(const QStringList &files, QBluez::Device *device, QObject *parent = 0);
+
+    void start() Q_DECL_OVERRIDE;
+    bool doKill() Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
     void doStart();
-    void createSessionSlot(QDBusPendingCallWatcher *call);
     void nextJob();
     void jobDone();
-    void progress(quint64 transferBytes);
-    void error(const QDBusObjectPath& transfer, const QString& error);
-    void propertiesChangedSlot(const QString& interface, const QVariantMap &props, const QStringList &invalidProps);
-    void sendFileSlot(QDBusPendingCallWatcher* watcher);
+    void transferredChanged(quint64 transferred);
+    void statusChanged(QBluez::ObexTransfer::Status status);
 
 private:
-    void transferChanged(const QVariant &value);
-    void statusChanged(const QVariant &value);
+    void progress(quint64 transferBytes);
 
     QTime m_time;
-    QStringList     m_filesToSend;
+    QStringList m_filesToSend;
     QList <quint64> m_filesToSendSize;
-    QString         m_currentFile;
-    QDBusObjectPath m_currentFileDBusPath;
-    quint64         m_progress;
-    quint64         m_totalSize;
+    QString m_currentFile;
+    quint64 m_progress;
+    quint64 m_totalSize;
     qulonglong m_speedBytes;
-    Device          *m_device;
-    quint64         m_currentFileSize;
-    quint64         m_currentFileProgress;
+    quint64 m_currentFileSize;
+    quint64 m_currentFileProgress;
 
-
-    OrgBluezObexClient1Interface *m_client;
-    OrgBluezObexObjectPush1Interface *m_push;
-    OrgFreedesktopDBusPropertiesInterface *m_props;
+    QBluez::Device *m_device;
+    QBluez::ObexTransfer *m_transfer;
+    QBluez::ObexObjectPush *m_objectPush;
 };
 
 #endif // SENDFILESJOB_H

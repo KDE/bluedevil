@@ -21,10 +21,6 @@ qt5_wrap_ui(sendfilehelper_SRCS
     discover.ui
 )
 
-qt5_add_dbus_interface(sendfilehelper_SRCS org.bluez.obex.Client1.xml obexd_client)
-qt5_add_dbus_interface(sendfilehelper_SRCS org.bluez.obex.ObjectPush1.xml obexd_push)
-qt5_add_dbus_interface(sendfilehelper_SRCS org.bluez.obex.Transfer1.xml obexd_transfer)
-
 add_executable(bluedevil-sendfile ${sendfilehelper_SRCS})
 
 target_link_libraries(bluedevil-sendfile
@@ -34,7 +30,7 @@ target_link_libraries(bluedevil-sendfile
     KF5::CoreAddons
     KF5::IconThemes
     KF5::KIOFileWidgets
-    ${LibBlueDevil_LIBRARIES}
+    KF5::QBluez
 )
 
 install(TARGETS bluedevil-sendfile DESTINATION ${INSTALL_TARGETS_DEFAULT_ARGS})

@@ -36,14 +36,16 @@
 #include <kpixmapsequence.h>
 #include <kpixmapsequenceoverlaypainter.h>
 
-#include <bluedevil/bluedevil.h>
+#include <QBluez/Device>
 
-using namespace BlueDevil;
-SelectDeviceAndFilesPage::SelectDeviceAndFilesPage(QWidget* parent): QWizardPage(parent), m_dialog(0)
+SelectDeviceAndFilesPage::SelectDeviceAndFilesPage(SendFileWizard *parent)
+    : QWizardPage(parent)
+    , m_dialog(0)
+    , m_wizard(parent)
 {
     setupUi(this);
 
-    DiscoverWidget *widget = new DiscoverWidget(this);
+    DiscoverWidget *widget = new DiscoverWidget(m_wizard->manager(), this);
     widget->setContentsMargins(0, 0, 0, 0);
     discoverLayout->addWidget(widget);
 
@@ -56,24 +58,23 @@ SelectDeviceAndFilesPage::SelectDeviceAndFilesPage(QWidget* parent): QWizardPage
     selectBtn->setFixedSize(buttonSize, buttonSize);
     selectBtn->setIcon(QIcon::fromTheme(QStringLiteral("document-open")));
 
-    connect(widget, SIGNAL(deviceSelected(Device*)), this, SLOT(deviceSelected(Device*)));
-    connect(selectBtn, SIGNAL(clicked(bool)), this, SLOT(openFileDialog()));
+    connect(widget, &DiscoverWidget::deviceSelected, this, &SelectDeviceAndFilesPage::deviceSelected);
+    connect(selectBtn, &QPushButton::clicked, this, &SelectDeviceAndFilesPage::openFileDialog);
 }
 
-
-void SelectDeviceAndFilesPage::deviceSelected(Device* device)
+void SelectDeviceAndFilesPage::deviceSelected(QBluez::Device *device)
 {
     if (!device->name().isEmpty()) {
-        static_cast<SendFileWizard* >(wizard())->setDevice(device);
+        m_wizard->setDevice(device);
     } else {
-        static_cast<SendFileWizard* >(wizard())->setDevice(0);
+        m_wizard->setDevice(0);
     }
     emit completeChanged();
 }
 
 void SelectDeviceAndFilesPage::openFileDialog()
 {
-    //Don't worry MLaurent, I'm not going to check the pointer before delete it :)
+    // Don't worry MLaurent, I'm not going to check the pointer before delete it :)
     delete m_dialog;
 
     m_dialog = new QFileDialog(this, i18n("Open file..."),
@@ -92,14 +93,14 @@ void SelectDeviceAndFilesPage::selectionChanged()
         selectLbl->setText(i18n("Select one or more files:"));
     } else {
         selectLbl->setText(i18n("Selected files: <b>%1</b>", m_dialog->selectedUrls().count()));
-        static_cast<SendFileWizard* >(wizard())->setFiles(m_dialog->selectedFiles());
+        m_wizard->setFiles(m_dialog->selectedFiles());
     }
     emit completeChanged();
 }
 
 bool SelectDeviceAndFilesPage::isComplete() const
 {
-    if (!static_cast<SendFileWizard* >(wizard())->device()) {
+    if (!m_wizard->device()) {
         return false;
     }
 

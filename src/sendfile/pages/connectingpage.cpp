@@ -25,22 +25,28 @@
 
 #include "klocalizedstring.h"
 
-#include <bluedevil/bluedevil.h>
+#include <QBluez/Manager>
+#include <QBluez/Adapter>
+#include <QBluez/Device>
+#include <QBluez/LoadDeviceJob>
 
-using namespace BlueDevil;
-
-ConnectingPage::ConnectingPage(QWidget* parent): QWizardPage(parent)
+ConnectingPage::ConnectingPage(QWidget *parent)
+    : QWizardPage(parent)
 {
     setupUi(this);
 }
 
 void ConnectingPage::initializePage()
 {
-    Manager::self()->usableAdapter()->stopDiscovery();
-    Device *device = static_cast<SendFileWizard* >(wizard())->device();
-    connLabel->setText(i18nc("Connecting to a Bluetooth device", "Connecting to %1...", device->name()));
+    connLabel->setText(i18nc("Connecting to a Bluetooth device", "Connecting..."));
 
-    static_cast<SendFileWizard*>(wizard())->startTransfer();
+    SendFileWizard *sendWizard = static_cast<SendFileWizard* >(wizard());
+    QBluez::LoadDeviceJob *job = sendWizard->device()->load();
+    job->start();
+    connect(job, &QBluez::LoadDeviceJob::result, [ this, sendWizard ]() {
+        connLabel->setText(i18nc("Connecting to a Bluetooth device", "Connecting to %1...", sendWizard->device()->name()));
+        sendWizard->startTransfer();
+    });
 }
 
 bool ConnectingPage::isComplete() const

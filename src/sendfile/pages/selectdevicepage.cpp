@@ -24,23 +24,20 @@
 #include "discoverwidget.h"
 #include "../sendfilewizard.h"
 
-#include <QLabel>
-#include <QDesktopServices>
-#include <QVBoxLayout>
-#include <QIcon>
-
 #include <kiconloader.h>
 #include <kpixmapsequence.h>
 #include <kpixmapsequenceoverlaypainter.h>
 
-#include <bluedevil/bluedevil.h>
+#include <QBluez/Device>
 
-using namespace BlueDevil;
-SelectDevicePage::SelectDevicePage(QWidget* parent): QWizardPage(parent), m_dialog(0)
+SelectDevicePage::SelectDevicePage(SendFileWizard *parent)
+    : QWizardPage(parent)
+    , m_dialog(0)
+    , m_wizard(parent)
 {
     setupUi(this);
 
-    DiscoverWidget *widget = new DiscoverWidget(this);
+    DiscoverWidget *widget = new DiscoverWidget(m_wizard->manager(), this);
     widget->setContentsMargins(0, 0, 0, 0);
     discoverLayout->addWidget(widget);
 
@@ -51,22 +48,22 @@ SelectDevicePage::SelectDevicePage(QWidget* parent): QWizardPage(parent), m_dial
 
     selectBtn->setHidden(true);
     selectLbl->setHidden(true);
-    connect(widget, SIGNAL(deviceSelected(Device*)), this, SLOT(deviceSelected(Device*)));
+    connect(widget, &DiscoverWidget::deviceSelected, this, &SelectDevicePage::deviceSelected);
 }
 
-void SelectDevicePage::deviceSelected(Device* device)
+void SelectDevicePage::deviceSelected(QBluez::Device *device)
 {
     if (!device->name().isEmpty()) {
-        static_cast<SendFileWizard* >(wizard())->setDevice(device);
+        m_wizard->setDevice(device);
     } else {
-        static_cast<SendFileWizard* >(wizard())->setDevice(0);
+        m_wizard->setDevice(0);
     }
     emit completeChanged();
 }
 
 bool SelectDevicePage::isComplete() const
 {
-    if (!static_cast<SendFileWizard* >(wizard())->device()) {
+    if (!m_wizard->device()) {
         return false;
     }
 

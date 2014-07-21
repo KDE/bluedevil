@@ -21,29 +21,34 @@
  *****************************************************************************/
 
 #include "sendfilesjob.h"
-#include "obexd_client.h"
-#include "obexd_push.h"
-#include "obexd_transfer.h"
 #include "debug_p.h"
+
+#include <QUrl>
+#include <QFile>
 
 #include <KLocalizedString>
 
-#include <bluedevil/bluedevil.h>
+#include <QBluez/Device>
+#include <QBluez/PendingCall>
+#include <QBluez/ObexManager>
+#include <QBluez/ObexObjectPush>
+#include <QBluez/InitObexManagerJob>
 
-using namespace BlueDevil;
-SendFilesJob::SendFilesJob(const QStringList& files, Device* device, QObject* parent)
+SendFilesJob::SendFilesJob(const QStringList &files, QBluez::Device *device, QObject *parent)
     : KJob(parent)
+    , m_filesToSend(files)
     , m_progress(0)
     , m_totalSize(0)
     , m_speedBytes(0)
-    , m_device(device)
     , m_currentFileSize(0)
     , m_currentFileProgress(0)
+    , m_device(device)
+    , m_transfer(0)
+    , m_objectPush(0)
 {
-    qCDebug(SENDFILE) << files;
-    m_filesToSend = files;
+    qCDebug(SENDFILE) << "SendFilesJob:" << m_filesToSend;
 
-    Q_FOREACH(const QString &filePath, files) {
+    Q_FOREACH (const QString &filePath, m_filesToSend) {
         QFile file(filePath);
         m_filesToSendSize << file.size();
         m_totalSize += file.size();
@@ -54,6 +59,9 @@ SendFilesJob::SendFilesJob(const QStringList& files, Device* device, QObject* pa
 
 bool SendFilesJob::doKill()
 {
+    if (m_transfer) {
+        m_transfer->cancel();
+    }
     return true;
 }
 
@@ -64,130 +72,79 @@ void SendFilesJob::start()
 
 void SendFilesJob::doStart()
 {
-    qCDebug(SENDFILE);
-    QVariantMap map;
-    map["Target"] = "opp";
+    qCDebug(SENDFILE) << "SendFilesJob-DoStart";
 
     setTotalAmount(Bytes, m_totalSize);
     setProcessedAmount(Bytes, 0);
 
     emit description(this, i18n("Sending file over Bluetooth"), QPair<QString, QString>(i18nc("File transfer origin", "From"), m_filesToSend.first()), QPair<QString, QString>(i18nc("File transfer destination", "To"), m_device->name()));
 
-    m_client = new OrgBluezObexClient1Interface(QStringLiteral("org.bluez.obex"),
-                                                QStringLiteral("/org/bluez/obex"),
-                                                QDBusConnection::sessionBus(),
-                                                this);
-
-    QDBusPendingReply <QDBusObjectPath > reply = m_client->CreateSession(m_device->address(), map);
-    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(reply);
-    connect(watcher, SIGNAL(finished(QDBusPendingCallWatcher*)), this, SLOT(createSessionSlot(QDBusPendingCallWatcher*)));
-}
-
-void SendFilesJob::createSessionSlot(QDBusPendingCallWatcher *call)
-{
-    const QDBusPendingReply<QDBusObjectPath> reply = *call;
-    call->deleteLater();
-    if (reply.isError()) {
-        qCDebug(SENDFILE) << "Error:";
-        qCDebug(SENDFILE) << reply.error().name();
-        qCDebug(SENDFILE) << reply.error().message();
-        setError(-1);
-        emitResult();
-        return;
-    }
-
-    QString path = reply.value().path();
-    m_push = new OrgBluezObexObjectPush1Interface(QStringLiteral("org.bluez.obex"), path, QDBusConnection::sessionBus(), this);
-
-    nextJob();
-}
-
-void SendFilesJob::sendFileSlot(QDBusPendingCallWatcher* watcher)
-{
-    const QDBusPendingReply<QDBusObjectPath> reply = *watcher;
-    watcher->deleteLater();
-    QString path = reply.value().path();
-
-    m_props = new OrgFreedesktopDBusPropertiesInterface(QStringLiteral("org.bluez.obex"), path, QDBusConnection::sessionBus(), this);
-    connect(m_props, SIGNAL(PropertiesChanged(QString,QVariantMap,QStringList)), SLOT(propertiesChangedSlot(QString,QVariantMap,QStringList)));
-}
-
-void SendFilesJob::propertiesChangedSlot(const QString& interface, const QVariantMap& props, const QStringList& invalidProps)
-{
-    qCDebug(SENDFILE) << interface;
-    qCDebug(SENDFILE) << props;
-    qCDebug(SENDFILE) << invalidProps;
-
-    QStringList changedProps = props.keys();
-    Q_FOREACH(const QString &prop, changedProps) {
-        if (prop == QLatin1String("Status")) {
-            statusChanged(props.value(prop));
-        } else if (prop == QLatin1String("Transferred")) {
-            transferChanged(props.value(prop));
+    // Init QBluez
+    QBluez::ObexManager *manager = new QBluez::ObexManager(this);
+    QBluez::InitObexManagerJob *job = manager->init();
+    job->start();
+    connect(job, &QBluez::InitObexManagerJob::result, [ this ](QBluez::InitObexManagerJob *job) {
+        if (job->error()) {
+            qCDebug(SENDFILE) << "Error initializing obex manager" << job->errorText();
+            setError(UserDefinedError);
+            setErrorText(job->errorText());
+            emitResult();
+            return;
         }
-    }
-}
 
-void SendFilesJob::statusChanged(const QVariant& value)
-{
-    qCDebug(SENDFILE) << value;
-    QString status = value.toString();
+        // Create ObjectPush session
+        QVariantMap map;
+        map["Target"] = "opp";
+        QBluez::PendingCall *call = job->manager()->createSession(m_device->address(), map);
+        connect(call, &QBluez::PendingCall::finished, [ this ](QBluez::PendingCall *call) {
+            if (call->error()) {
+                qCDebug(SENDFILE) << "Error creating session" << call->errorText();
+                setError(UserDefinedError);
+                setErrorText(call->errorText());
+                emitResult();
+                return;
+            }
 
-    if (status == QLatin1String("active")) {
-        m_time = QTime::currentTime();
-        return;
-    } else if (status == QLatin1String("complete")) {
-        jobDone();
-        return;
-    } else if (status == QLatin1String("error")) {
-        setError(KJob::UserDefinedError);
-        emitResult();
-        return;
-    }
-
-    qCDebug(SENDFILE) << "Not implemented status: " << status;
-}
-
-void SendFilesJob::transferChanged(const QVariant& value)
-{
-    qCDebug(SENDFILE) << value;
-    bool ok = false;
-    qulonglong bytes = value.toULongLong(&ok);
-    if (!ok) {
-        qCWarning(SENDFILE) << "Couldn't cast transferChanged value" << value;
-        return;
-    }
-
-    //If a least 1 second has passed since last update
-    int secondsSinceLastTime = m_time.secsTo(QTime::currentTime());
-    if (secondsSinceLastTime > 0) {
-        float speed = (bytes - m_speedBytes) / secondsSinceLastTime;
-        emitSpeed(speed);
-
-        m_time = QTime::currentTime();
-        m_speedBytes = bytes;
-    }
-
-    progress(bytes);
+            m_objectPush = new QBluez::ObexObjectPush(call->value().value<QDBusObjectPath>(), this);
+            nextJob();
+        });
+    });
 }
 
 void SendFilesJob::nextJob()
 {
-    qCDebug(SENDFILE);
+    qCDebug(SENDFILE) << "SendFilesJob-NextJob";
+
+    if (m_transfer) {
+        m_transfer->deleteLater();
+        m_transfer = 0;
+    }
+
     m_currentFile = m_filesToSend.takeFirst();
     m_currentFileSize = m_filesToSendSize.takeFirst();
 
     emit description(this, i18n("Sending file over Bluetooth"), QPair<QString, QString>(i18nc("File transfer origin", "From"), m_currentFile), QPair<QString, QString>(i18nc("File transfer destination", "To"), m_device->name()));
 
-    QDBusPendingReply<QDBusObjectPath, QVariantMap> fileReply = m_push->SendFile(m_currentFile);
+    QBluez::PendingCall *call = m_objectPush->sendFile(m_currentFile);
+    connect(call, &QBluez::PendingCall::finished, [ this ](QBluez::PendingCall *call) {
+        if (call->error()) {
+            qCDebug(SENDFILE) << "Error sending file" << call->errorText();
+            setError(UserDefinedError);
+            setErrorText(call->errorText());
+            emitResult();
+            return;
+        }
 
-    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(fileReply);
-    connect(watcher, SIGNAL(finished(QDBusPendingCallWatcher*)), SLOT(sendFileSlot(QDBusPendingCallWatcher*)));
+        m_transfer = call->value().value<QBluez::ObexTransfer*>();
+        connect(m_transfer, &QBluez::ObexTransfer::statusChanged, this, &SendFilesJob::statusChanged);
+        connect(m_transfer, &QBluez::ObexTransfer::transferredChanged, this, &SendFilesJob::transferredChanged);
+    });
 }
 
 void SendFilesJob::jobDone()
 {
-    qCDebug(SENDFILE);
+    qCDebug(SENDFILE) << "SendFilesJob-JobDone";
+
     m_speedBytes = 0;
     m_currentFileSize = 0;
     m_currentFileProgress = 0;
@@ -200,30 +157,51 @@ void SendFilesJob::jobDone()
     emitResult();
 }
 
+void SendFilesJob::transferredChanged(quint64 transferred)
+{
+    qCDebug(SENDFILE) << "SendFilesJob-Transferred" << transferred;
+
+    // If a least 1 second has passed since last update
+    int secondsSinceLastTime = m_time.secsTo(QTime::currentTime());
+    if (secondsSinceLastTime > 0) {
+        float speed = (transferred - m_speedBytes) / secondsSinceLastTime;
+        emitSpeed(speed);
+
+        m_time = QTime::currentTime();
+        m_speedBytes = transferred;
+    }
+
+    progress(transferred);
+}
+
+void SendFilesJob::statusChanged(QBluez::ObexTransfer::Status status)
+{
+    qCDebug(SENDFILE) << "SendFilesJob-StatusChanged" << status;
+
+    switch (status) {
+    case QBluez::ObexTransfer::Active:
+        m_time = QTime::currentTime();
+        break;
+
+    case QBluez::ObexTransfer::Complete:
+        jobDone();
+        break;
+
+    case QBluez::ObexTransfer::Error:
+        setError(UserDefinedError);
+        emitResult();
+        break;
+
+    default:
+        qCDebug(SENDFILE) << "Not implemented status: " << status;
+        break;
+    }
+}
+
 void SendFilesJob::progress(quint64 transferBytes)
 {
-    qCDebug(SENDFILE);
-
     quint64 toAdd = transferBytes - m_currentFileProgress;
     m_currentFileProgress = transferBytes;
     m_progress += toAdd;
     setProcessedAmount(Bytes, m_progress);
-}
-
-void SendFilesJob::error(const QDBusObjectPath& transfer, const QString& error)
-{
-    Q_UNUSED(transfer)
-    qCDebug(SENDFILE) << error;
-
-    //if this is the last file, just emit error
-    if (m_filesToSend.isEmpty()) {
-        setError(KJob::UserDefinedError);
-        return;
-    }
-
-    quint64 toAdd = m_currentFileSize - m_currentFileProgress;
-    m_progress += toAdd;
-    setProcessedAmount(Bytes, m_progress);
-    nextJob();
-
 }

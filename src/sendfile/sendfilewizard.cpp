@@ -32,30 +32,26 @@
 #include <QApplication>
 #include <QPushButton>
 #include <QTimer>
+#include <QUrl>
 
+#include <kio/jobclasses.h>
 #include <kstandardguiitem.h>
 #include <klocalizedstring.h>
 #include <kstatusbarjobtracker.h>
 
-#include <bluedevil/bluedevil.h>
+#include <QBluez/Manager>
+#include <QBluez/InitManagerJob>
+#include <QBluez/Adapter>
+#include <QBluez/Device>
 
-using namespace BlueDevil;
-
-SendFileWizard::SendFileWizard(const QString& deviceInfo, const QStringList& files)
+SendFileWizard::SendFileWizard(const QString &deviceUrl, const QStringList &files)
     : QWizard()
+    , m_deviceUrl(deviceUrl)
+    , m_files(files)
+    , m_manager(0)
     , m_device(0)
     , m_job(0)
 {
-    if (!BlueDevil::Manager::self()->usableAdapter()) {
-        qCDebug(SENDFILE) << "No Adapters found";
-        qApp->exit();
-        return;
-    }
-
-    qCDebug(SENDFILE) << "DeviceUbi: " << deviceInfo;
-    qCDebug(SENDFILE) << "Files";
-    qCDebug(SENDFILE) << files;
-
     setWindowTitle(i18n("Bluetooth Send Files"));
     setOption(NoCancelButton, false);
     setButton(QWizard::NextButton, new QPushButton(QIcon::fromTheme(QStringLiteral("document-export")), i18n("Send Files")));
@@ -63,32 +59,55 @@ SendFileWizard::SendFileWizard(const QString& deviceInfo, const QStringList& fil
     setOption(QWizard::DisabledBackButtonOnLastPage);
     setOption(QWizard::NoBackButtonOnStartPage);
 
-    qCDebug(SENDFILE) << "DeviceUbi: " << deviceInfo;
-    qCDebug(SENDFILE) << "Files";
-    qCDebug(SENDFILE) << files;
+    qCDebug(SENDFILE) << "DeviceUrl: " << m_deviceUrl;
+    qCDebug(SENDFILE) << "Files" << m_files;
 
-    setDevice(deviceInfo);
-
-    if (!m_device || files.isEmpty()) {
-        setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-        setMinimumSize(680, 400);
-        updateGeometry();
-    }
-
-    if (!m_device && files.isEmpty()) {
-        addPage(new SelectDeviceAndFilesPage());
-    } else if (!m_device) {
-        addPage(new SelectDevicePage());
-        setFiles(files);
-    } else {
-        if (files.isEmpty()) {
-            addPage(new SelectFilesPage());
-        } else {
-            setFiles(files);
+    // Initialize QBluez
+    m_manager = new QBluez::Manager(this);
+    QBluez::InitManagerJob *initJob = m_manager->init(QBluez::Manager::InitManagerAndAdapters);
+    initJob->start();
+    connect(initJob, &QBluez::InitManagerJob::result, [ this ](QBluez::InitManagerJob *job) {
+        if (job->error()) {
+            qCDebug(SENDFILE) << "Error initializing manager:" << job->errorText();
+            return;
         }
-    }
 
-    addPage(new ConnectingPage());
+        if (!m_manager->isBluetoothOperational()) {
+            qCDebug(SENDFILE) << "Bluetooth not operational!";
+            qApp->exit();
+            return;
+        }
+
+        if (m_deviceUrl.startsWith(QLatin1String("bluetooth"))) {
+            m_deviceUrl.remove(QStringLiteral("bluetooth:"));
+            m_deviceUrl.replace(QLatin1Char(':'), QLatin1Char('-'));
+            m_deviceUrl.prepend(QLatin1String("bluetooth:"));
+            QUrl url(m_deviceUrl);
+            m_device = m_manager->deviceForAddress(url.host().replace(QLatin1Char('-'), QLatin1Char(':')));
+        } else {
+            m_device = m_manager->deviceForUbi(m_deviceUrl);
+        }
+
+        if (m_device) {
+            if (m_files.isEmpty()) {
+                addPage(new SelectFilesPage(this));
+            } else {
+                setFiles(m_files);
+            }
+        } else {
+            if (m_files.isEmpty()) {
+                addPage(new SelectDeviceAndFilesPage(this));
+            } else {
+                addPage(new SelectDevicePage(this));
+                setFiles(m_files);
+            }
+        }
+
+        addPage(new ConnectingPage(this));
+
+        // Only show wizard after QBluez is initialized
+        show();
+    });
 }
 
 SendFileWizard::~SendFileWizard()
@@ -106,37 +125,24 @@ void SendFileWizard::done(int result)
     }
 }
 
-void SendFileWizard::setFiles(const QStringList& files)
+void SendFileWizard::setFiles(const QStringList &files)
 {
     qCDebug(SENDFILE) << files;
     m_files = files;
 }
 
-void SendFileWizard::setDevice(Device* device)
+QBluez::Manager *SendFileWizard::manager() const
+{
+    return m_manager;
+}
+
+void SendFileWizard::setDevice(QBluez::Device* device)
 {
     qCDebug(SENDFILE) << device;
     m_device = device;
 }
 
-void SendFileWizard::setDevice(QString deviceUrl)
-{
-    qCDebug(SENDFILE) << deviceUrl;
-
-    BlueDevil::Device *device = 0;
-    if (deviceUrl.startsWith(QLatin1String("bluetooth"))) {
-        deviceUrl.remove(QStringLiteral("bluetooth:"));
-        deviceUrl.replace(QLatin1Char(':'), QLatin1Char('-'));
-        deviceUrl.prepend(QLatin1String("bluetooth:"));
-        QUrl url(deviceUrl);
-        device = Manager::self()->usableAdapter()->deviceForAddress(url.host().replace(QLatin1Char('-'), QLatin1Char(':')));
-    } else {
-        device = Manager::self()->usableAdapter()->deviceForUBI(deviceUrl);
-    }
-
-    m_device = device;
-}
-
-Device* SendFileWizard::device()
+QBluez::Device* SendFileWizard::device() const
 {
     return m_device;
 }
@@ -155,6 +161,8 @@ void SendFileWizard::startTransfer()
     if (!m_device) {
         qCDebug(SENDFILE) << "No device selected";
     }
+
+    m_device->adapter()->stopDiscovery();
 
     m_job = new SendFilesJob(m_files, m_device);
     connect(m_job, SIGNAL(destroyed(QObject*)), qApp, SLOT(quit()));

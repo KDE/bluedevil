@@ -20,7 +20,6 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-
 #ifndef DISCOVERWIDGET_H
 #define DISCOVERWIDGET_H
 
@@ -28,41 +27,40 @@
 
 #include <QWidget>
 
-class QTimer;
-class BlueWizard;
-
-namespace BlueDevil {
+namespace QBluez {
+    class Manager;
+    class Adapter;
     class Device;
 }
-using namespace BlueDevil;
 
-class DiscoverWidget : public QWidget
-, public Ui::Discover
+class DiscoverWidget : public QWidget, Ui::Discover
 {
-Q_OBJECT
+    Q_OBJECT
 
 public:
-    DiscoverWidget(QWidget* parent = 0);
-    virtual ~DiscoverWidget();
-    void stopScan();
+    DiscoverWidget(QBluez::Manager *manager, QWidget *parent = 0);
+    ~DiscoverWidget();
 
 public Q_SLOTS:
     void startScan();
+    void stopScan();
 
 private Q_SLOTS:
-    void deviceFound(const QVariantMap &deviceInfo);
-    void deviceFound(Device* device);
-    void itemSelected(QListWidgetItem* item);
+    void deviceFound(QBluez::Device *device);
+    void deviceRemoved(QBluez::Device *device);
+    void deviceChanged(QBluez::Device *device);
+    void itemSelected(QListWidgetItem *item);
 
 private:
     void deviceFoundGeneric(QString address, QString name, QString icon, QString alias);
 
 private:
-    QMap<QString, QListWidgetItem*> m_itemRelation;
-    BlueWizard *m_wizard;
+    QMap<QBluez::Device*, QListWidgetItem*> m_itemRelation;
+    QBluez::Manager *m_manager;
+    QBluez::Adapter *m_adapter;
 
 Q_SIGNALS:
-    void deviceSelected(Device *device);
+    void deviceSelected(QBluez::Device *device);
 };
 
 #endif // DISCOVERWIDGET_H

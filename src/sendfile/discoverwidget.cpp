@@ -20,118 +20,115 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-
 #include "discoverwidget.h"
 #include "ui_discover.h"
+#include "debug_p.h"
 
 #include <QListWidgetItem>
 #include <QListView>
 #include <QLabel>
-#include <QTimer>
-#include <QDebug>
 #include <QIcon>
 
-#include <bluedevil/bluedevil.h>
+#include <QBluez/Manager>
+#include <QBluez/Adapter>
+#include <QBluez/Device>
+#include <QBluez/LoadDeviceJob>
 
-using namespace BlueDevil;
-
-DiscoverWidget::DiscoverWidget(QWidget* parent) : QWidget(parent)
+DiscoverWidget::DiscoverWidget(QBluez::Manager *manager, QWidget *parent)
+    : QWidget(parent)
+    , m_manager(manager)
+    , m_adapter(0)
 {
     setupUi(this);
 
-    connect(deviceList, SIGNAL(currentItemChanged(QListWidgetItem*,QListWidgetItem*)), this,
-            SLOT(itemSelected(QListWidgetItem*)));
-    connect(Manager::self()->usableAdapter(), SIGNAL(deviceFound(Device*)), this,
-            SLOT(deviceFound(Device*)));
+    connect(deviceList, &QListWidget::currentItemChanged, this, &DiscoverWidget::itemSelected);
+
+    // Re-start scan if usable adapter changes
+    connect(m_manager, &QBluez::Manager::usableAdapterChanged, this, &DiscoverWidget::startScan);
 
     startScan();
 }
 
 DiscoverWidget::~DiscoverWidget()
 {
+    stopScan();
 }
 
 void DiscoverWidget::startScan()
 {
+    m_itemRelation.clear();
     deviceList->clear();
     stopScan();
 
-    QList <Device *> knownDevices = Manager::self()->usableAdapter()->devices();
-    Q_FOREACH(Device *device, knownDevices) {
-        if (device->UUIDs().contains(QLatin1String("00001105-0000-1000-8000-00805F9B34FB"), Qt::CaseInsensitive)) {
+    m_adapter = m_manager->usableAdapter();
+
+    if (m_adapter) {
+        m_adapter->startDiscovery();
+        connect(m_adapter, &QBluez::Adapter::deviceFound, this, &DiscoverWidget::deviceFound);
+        connect(m_adapter, &QBluez::Adapter::deviceRemoved, this, &DiscoverWidget::deviceRemoved);
+
+        QList<QBluez::Device*> devices = m_adapter->devices();
+        Q_FOREACH (QBluez::Device *device, devices) {
             deviceFound(device);
         }
     }
-    Manager::self()->usableAdapter()->startDiscovery();
 }
 
 void DiscoverWidget::stopScan()
 {
-    if (Manager::self()->usableAdapter()) {
-        Manager::self()->usableAdapter()->stopDiscovery();
+    if (m_adapter) {
+        m_adapter->stopDiscovery();
     }
 }
 
-void DiscoverWidget::deviceFound(const QVariantMap& deviceInfo)
+void DiscoverWidget::deviceFound(QBluez::Device *device)
 {
-    deviceFoundGeneric(deviceInfo[QStringLiteral("Address")].toString(),
-                       deviceInfo[QStringLiteral("Name")].toString(),
-                       deviceInfo[QStringLiteral("Icon")].toString(),
-                       deviceInfo[QStringLiteral("Alias")].toString());
-}
-
-void DiscoverWidget::deviceFound(Device* device)
-{
-    deviceFoundGeneric(device->address(), device->name(), device->icon(), device->alias());
-}
-
-void DiscoverWidget::deviceFoundGeneric(QString address, QString name, QString icon, QString alias)
-{
-    qDebug() << "========================";
-    qDebug() << "Address: " << address;
-    qDebug() << "Name: " << name;
-    qDebug() << "Alias: " << alias;
-    qDebug() << "Icon: " << icon;
-    qDebug() << "\n";
-
-
-    bool origName = false;
-    if (!name.isEmpty()) {
-        origName = true;
-    }
-
-    if (!alias.isEmpty() && alias != name && !name.isEmpty()) {
-        name = QString("%1 (%2)").arg(alias).arg(name);
-    }
-
-    if (name.isEmpty()) {
-        name = address;
-    }
-
-    if (icon.isEmpty()) {
-        icon.append(QLatin1String("preferences-system-bluetooth"));
-    }
-
-    if (m_itemRelation.contains(address)) {
-        m_itemRelation[address]->setText(name);
-        m_itemRelation[address]->setIcon(QIcon::fromTheme(icon));
-        m_itemRelation[address]->setData(Qt::UserRole+1, origName);
-
-        if (deviceList->currentItem() == m_itemRelation[address]) {
-            emit deviceSelected(Manager::self()->usableAdapter()->deviceForAddress(address));
+    QBluez::LoadDeviceJob *deviceJob = device->load();
+    deviceJob->start();
+    connect(deviceJob, &QBluez::LoadDeviceJob::result, [ this, device ](QBluez::LoadDeviceJob *job) {
+        if (job->error()) {
+            qCDebug(SENDFILE) << "Error loading device" << job->errorText();
+            return;
         }
-        return;
-    }
 
-    QListWidgetItem *item = new QListWidgetItem(QIcon::fromTheme(icon), name, deviceList);
+        Q_ASSERT_X(!m_itemRelation.contains(device), "DeviceFound", "Device already in item relation!");
 
-    item->setData(Qt::UserRole, address);
-    item->setData(Qt::UserRole+1, origName);
+        const QString &name = device->friendlyName().isEmpty() ? device->address() : device->friendlyName();
+        const QString &icon = device->icon().isEmpty() ? QStringLiteral("preferences-system-bluetooth") : device->icon();
 
-    m_itemRelation.insert(address, item);
+        connect(device, &QBluez::Device::deviceChanged, this, &DiscoverWidget::deviceChanged);
+
+        QListWidgetItem *item = new QListWidgetItem(QIcon::fromTheme(icon), name, deviceList);
+        m_itemRelation.insert(device, item);
+    });
 }
 
-void DiscoverWidget::itemSelected(QListWidgetItem* item)
+void DiscoverWidget::deviceRemoved(QBluez::Device *device)
 {
-    emit deviceSelected(Manager::self()->usableAdapter()->deviceForAddress(item->data(Qt::UserRole).toString()));
+    if (m_itemRelation.contains(device)) {
+        delete m_itemRelation.value(device);
+        m_itemRelation.remove(device);
+    }
+}
+
+void DiscoverWidget::deviceChanged(QBluez::Device *device)
+{
+    if (m_itemRelation.contains(device)) {
+        const QString &name = device->friendlyName().isEmpty() ? device->address() : device->friendlyName();
+        const QString &icon = device->icon().isEmpty() ? QStringLiteral("preferences-system-bluetooth") : device->icon();
+
+        QListWidgetItem *item = m_itemRelation.value(device);
+        item->setText(name);
+        item->setIcon(QIcon::fromTheme(icon));
+
+        // If the device was selected but it didn't had a name, select it again
+        if (deviceList->currentItem() == item) {
+            itemSelected(item);
+        }
+    }
+}
+
+void DiscoverWidget::itemSelected(QListWidgetItem *item)
+{
+    emit deviceSelected(m_itemRelation.key(item));
 }
