@@ -20,40 +20,33 @@
 #define KIO_GET_FILE_JOB_H
 
 #include <QTime>
-#include <QVariant>
+#include <QDBusObjectPath>
 
 #include <KJob>
 
+#include <QBluez/ObexTransfer>
+
 class KioFtp;
-class OrgBluezObexTransfer1Interface;
-class OrgFreedesktopDBusPropertiesInterface;
 
 class TransferFileJob : public KJob
 {
     Q_OBJECT
 public:
-    explicit TransferFileJob(const QString &path, KioFtp* parent = 0);
+    explicit TransferFileJob(QBluez::ObexTransfer *transfer, KioFtp *parent = 0);
 
-    virtual void start();
-    virtual bool doKill();
+    void start() Q_DECL_OVERRIDE;
+    bool doKill() Q_DECL_OVERRIDE;
 
-    virtual ~TransferFileJob();
-
-    void setSize(int size);
 private Q_SLOTS:
-    void createObjects();
-    void propertiesChanged(const QString &interface , const QVariantMap &properties , const QStringList &invalidProps);
-    void statusChanged(const QVariant& value);
-    void transferChanged(const QVariant& value);
+    void doStart();
+    void statusChanged(QBluez::ObexTransfer::Status status);
+    void transferredChanged(quint64 transferred);
 
 private:
     QTime m_time;
-    const QString m_path;
     qlonglong m_speedBytes;
     KioFtp *m_parent;
-    OrgBluezObexTransfer1Interface *m_transfer;
-    OrgFreedesktopDBusPropertiesInterface *m_properties;
-
+    QBluez::ObexTransfer *m_transfer;
 };
 
 #endif //KIO_GET_FILE_JOB_H

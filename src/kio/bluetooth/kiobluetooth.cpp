@@ -30,10 +30,6 @@
 #include <KProcess>
 #include <KLocalizedString>
 
-#include <bluedevil/bluedevil.h>
-
-using namespace BlueDevil;
-
 extern "C" int Q_DECL_EXPORT kdemain(int argc, char **argv)
 {
     QCoreApplication app(argc, argv);
@@ -62,26 +58,27 @@ KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
     s.mimetype = QStringLiteral("application/vnd.kde.bluedevil-sendfile");
     s.uuid = QStringLiteral("00001105-0000-1000-8000-00805F9B34FB");
     m_supportedServices.insert(QStringLiteral("00001105-0000-1000-8000-00805F9B34FB"), s);
+
     s.name = i18n("Browse Files");
     s.icon = QStringLiteral("edit-find");
     s.mimetype = QString();
     s.uuid = QStringLiteral("00001106-0000-1000-8000-00805F9B34FB");
     m_supportedServices.insert(QStringLiteral("00001106-0000-1000-8000-00805F9B34FB"), s);
 
-    if (!Manager::self()->usableAdapter()) {
-        qCDebug(BLUETOOTH) << "No available interface";
-        infoMessage(i18n("No Bluetooth adapters have been found."));
-        return;
-    }
-
     qCDebug(BLUETOOTH) << "Kio Bluetooth instanced!";
     m_kded = new org::kde::BlueDevil(QStringLiteral("org.kde.kded5"), QStringLiteral("/modules/bluedevil"),
                                      QDBusConnection::sessionBus(), 0);
+
+    if (!m_kded->isOnline()) {
+        qCDebug(BLUETOOTH) << "Bluetooth is offline";
+        infoMessage(i18n("No Bluetooth adapters have been found."));
+    }
 }
 
 QList<KioBluetooth::Service> KioBluetooth::getSupportedServices(const QStringList &uuids)
 {
     qCDebug(BLUETOOTH) << "supported services: " << uuids;
+
     QList<Service> retValue;
     Q_FOREACH (const QString &uuid, uuids) {
         if (m_supportedServices.contains(uuid)) {
@@ -97,10 +94,18 @@ void KioBluetooth::listRemoteDeviceServices()
     infoMessage(i18n("Retrieving services..."));
 
     qCDebug(BLUETOOTH) << "Listing remote devices";
-    m_currentHost = Manager::self()->usableAdapter()->deviceForAddress(m_currentHostname.replace('-', ':').toUpper());
-    m_currentHostServices = getSupportedServices(m_currentHost->UUIDs());
 
+    const DeviceInfo &info = m_kded->deviceInfo(m_currentHostAddress);
+    if (info.isEmpty()) {
+        qCDebug(BLUETOOTH) << "Invalid hostname!";
+        infoMessage(i18n("This address is unavailable."));
+        finished();
+        return;
+    }
+
+    m_currentHostServices = getSupportedServices(info.value(QStringLiteral("UUIDs")).split(QLatin1Char(',')));
     qCDebug(BLUETOOTH) << "Num of supported services: " << m_currentHostServices.size();
+
     totalSize(m_currentHostServices.count());
     int i = 1;
     Q_FOREACH (const Service &service, m_currentHostServices) {
@@ -109,11 +114,11 @@ void KioBluetooth::listRemoteDeviceServices()
         entry.insert(KIO::UDSEntry::UDS_DISPLAY_NAME, service.name);
         entry.insert(KIO::UDSEntry::UDS_ICON_NAME, service.icon);
 
-        //If it is browse files, act as a folder
+        // If it is browse files, act as a folder
         if (service.uuid == QLatin1String("00001106-0000-1000-8000-00805F9B34FB")) {
             QUrl obexUrl;
             obexUrl.setScheme(QStringLiteral("obexftp"));
-            obexUrl.setHost(m_currentHostname.replace(QLatin1Char(':'), QLatin1Char('-')).toUpper());
+            obexUrl.setHost(m_currentHostname);
             entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
             entry.insert(KIO::UDSEntry::UDS_URL, obexUrl.toString());
         } else {
@@ -207,24 +212,25 @@ void KioBluetooth::get(const QUrl &url)
     finished();
 }
 
-void KioBluetooth::setHost(const QString &constHostname, quint16 port, const QString &user,
+void KioBluetooth::setHost(const QString &hostname, quint16 port, const QString &user,
                            const QString &pass)
 {
-    qCDebug(BLUETOOTH) << "Setting host: " << constHostname;
+    qCDebug(BLUETOOTH) << "Setting host: " << hostname;
 
     // In this kio only the hostname (constHostname) is used
     Q_UNUSED(port)
     Q_UNUSED(user)
     Q_UNUSED(pass)
 
-    QString hostname = constHostname;
-    hostname = hostname.replace(QLatin1Char('-'), QLatin1Char(':')).toUpper();
     if (hostname.isEmpty()) {
         m_hasCurrentHost = false;
     } else {
         m_hasCurrentHost = true;
-        m_currentHostname = constHostname;
         m_currentHostServices.clear();
+
+        m_currentHostname = hostname;
+        m_currentHostAddress = hostname.toUpper();
+        m_currentHostAddress.replace(QLatin1Char('-'), QLatin1Char(':'));
     }
 }
 

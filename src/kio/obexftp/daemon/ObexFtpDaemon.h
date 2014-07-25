@@ -19,57 +19,31 @@
 #ifndef OBEXFTPDAEMON_H
 #define OBEXFTPDAEMON_H
 
-#include "../obexdtypes.h"
-
+#include <QDBusObjectPath>
 #include <QLoggingCategory>
 
-#include <kdedmodule.h>
+#include <KDEDModule>
 
-class KJob;
 class QDBusMessage;
-class QDBusObjectPath;
-class QDBusPendingCallWatcher;
 
-namespace BlueDevil {
-    class Adapter;
-};
-using namespace BlueDevil;
-
-class Q_DECL_EXPORT ObexFtpDaemon
-    : public KDEDModule
+class Q_DECL_EXPORT ObexFtpDaemon : public KDEDModule
 {
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.kde.ObexFtp")
 
 public:
-    /**
-     * Connects to usableAdapterChanged
-     */
     ObexFtpDaemon(QObject *parent, const QList<QVariant>&);
-    virtual ~ObexFtpDaemon();
+    ~ObexFtpDaemon();
 
 public Q_SLOTS:
     Q_SCRIPTABLE QString session(QString address, const QDBusMessage &msg);
+    Q_SCRIPTABLE bool isOnline();
 
 private Q_SLOTS:
-    void usableAdapterChanged(Adapter* adapter);
-    void sessionCreated(KJob* job);
-    void serviceUnregistered(const QString &service);
-    void interfaceRemoved(const QDBusObjectPath &path, const QStringList &interfaces);
+    void operationalChanged(bool operational);
+    void sessionRemoved(const QDBusObjectPath &session);
 
 private:
-    /**
-     * Called by constructor or eventually by adapterAdded initialize all the helpers
-     * @see helpers
-     */
-     void onlineMode();
-
-    /**
-     * Called eventually adapterRemoved shutdown all the helpers
-     * @see helpers
-     */
-    void offlineMode();
-
     struct Private;
     Private *d;
 };

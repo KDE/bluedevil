@@ -17,49 +17,37 @@
  *************************************************************************************/
 
 #include "ObexFtpDaemon.h"
-#include "createsessionjob.h"
-#include "dbus_object_manager.h"
 #include "version.h"
 
 #include <QHash>
-#include <QDebug>
+#include <QDBusMessage>
 #include <QDBusConnection>
 
 #include <KAboutData>
 #include <KPluginFactory>
 #include <KLocalizedString>
 
-#include <bluedevil/bluedevilmanager.h>
-#include <bluedevil/bluedeviladapter.h>
+#include <QBluez/ObexManager>
+#include <QBluez/InitObexManagerJob>
+#include <QBluez/ObexFileTransfer>
+#include <QBluez/PendingCall>
 
-using namespace BlueDevil;
 K_PLUGIN_FACTORY_WITH_JSON(ObexFtpFactory,
                            "obexftpdaemon.json",
                            registerPlugin<ObexFtpDaemon>();)
 
 struct ObexFtpDaemon::Private
 {
-    enum Status {
-        Online = 0,
-        Offline
-    } m_status;
-
-    QHash <QString, QString> m_sessionMap;
-    QHash <QString, QString> m_reverseSessionMap;
-    QHash <QString, CreateSessionJob*> m_wipSessions;
-    QDBusServiceWatcher *m_serviceWatcher;
-    OrgFreedesktopDBusObjectManagerInterface *m_interface;
+    QBluez::ObexManager *m_manager;
+    QHash<QString, QString> m_sessionMap;
+    QHash<QString, QString> m_reverseSessionMap;
+    QHash<QString, QList<QDBusMessage> > m_wipSessions;
 };
 
 ObexFtpDaemon::ObexFtpDaemon(QObject *parent, const QList<QVariant>&)
     : KDEDModule(parent)
     , d(new Private)
 {
-    qDBusRegisterMetaType<DBusManagerStruct>();
-    qDBusRegisterMetaType<QVariantMapMap>();
-
-    d->m_status = Private::Offline;
-
     KAboutData aboutData(QStringLiteral("obexftpdaemon"),
                          i18n("ObexFtp Daemon"),
                          bluedevil_version,
@@ -70,131 +58,104 @@ ObexFtpDaemon::ObexFtpDaemon(QObject *parent, const QList<QVariant>&)
     aboutData.addAuthor(i18n("Alejandro Fiestas Olivares"), i18n("Maintainer"),
                         QStringLiteral("afiestas@kde.org"), QStringLiteral("http://www.afiestas.org"));
 
-    connect(Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)),
-            SLOT(usableAdapterChanged(Adapter*)));
+    // Initialize QBluez
+    d->m_manager = new QBluez::ObexManager(this);
+    QBluez::InitObexManagerJob *job = d->m_manager->init();
+    job->start();
+    connect(job, &QBluez::InitObexManagerJob::result, [ this ](QBluez::InitObexManagerJob *job) {
+        if (job->error()) {
+            qCDebug(OBEXDAEMON) << "Error initializing manager" << job->errorText();
+            return;
+        }
 
-    d->m_interface = new OrgFreedesktopDBusObjectManagerInterface(QStringLiteral("org.bluez.obex"),
-                                                                  QStringLiteral("/"),
-                                                                  QDBusConnection::sessionBus(), this);
-
-    connect(d->m_interface, SIGNAL(InterfacesRemoved(QDBusObjectPath,QStringList)),
-            SLOT(interfaceRemoved(QDBusObjectPath,QStringList)));
-
-    d->m_serviceWatcher = new QDBusServiceWatcher(QStringLiteral("org.bluez.obex"),
-                                                  QDBusConnection::sessionBus(),
-                                                  QDBusServiceWatcher::WatchForUnregistration, this);
-
-    connect(d->m_serviceWatcher, SIGNAL(serviceUnregistered(QString)), SLOT(serviceUnregistered(QString)));
-
-    //WARNING this blocks if org.bluez in system bus is dead
-    if (Manager::self()->usableAdapter()) {
-        onlineMode();
-    }
+        connect(d->m_manager, &QBluez::ObexManager::operationalChanged, this, &ObexFtpDaemon::operationalChanged);
+        connect(d->m_manager, &QBluez::ObexManager::sessionRemoved, this, &ObexFtpDaemon::sessionRemoved);
+    });
+    // FIXME: Delayed init is an issue with on-demand KDED module. First call to session() will fail
 }
 
 ObexFtpDaemon::~ObexFtpDaemon()
 {
-    if (d->m_status == Private::Online) {
-        offlineMode();
-    }
     delete d;
 }
 
-void ObexFtpDaemon::onlineMode()
+QString ObexFtpDaemon::session(QString address, const QDBusMessage &msg)
 {
-    qCDebug(OBEXDAEMON);
-    if (d->m_status == Private::Online) {
-        qCDebug(OBEXDAEMON) << "Already in onlineMode";
-        return;
+    if (!d->m_manager->isOperational()) {
+        return QString();
     }
 
-    d->m_status = Private::Online;
-}
-
-void ObexFtpDaemon::offlineMode()
-{
-    qCDebug(OBEXDAEMON) << "Offline mode";
-    if (d->m_status == Private::Offline) {
-        qCDebug(OBEXDAEMON) << "Already in offlineMode";
-        return;
-    }
-
-    d->m_sessionMap.clear();
-    d->m_reverseSessionMap.clear();
-
-    d->m_status = Private::Offline;
-}
-
-void ObexFtpDaemon::usableAdapterChanged(Adapter *adapter)
-{
-    if (!adapter) {
-        offlineMode();
-        return;
-    }
-
-    onlineMode();
-}
-
-QString ObexFtpDaemon::session(QString address, const QDBusMessage& msg)
-{
-    qCDebug(OBEXDAEMON) << address;
     address.replace(QLatin1Char('-'), QLatin1Char(':'));
+    address = address.toUpper();
 
     if (d->m_sessionMap.contains(address)) {
         return d->m_sessionMap[address];
     }
 
-    //At this point we always want delayed reply
+    qCDebug(OBEXDAEMON) << "Creating session for" << address;
+
+    // At this point we always want delayed reply
     msg.setDelayedReply(true);
+
     if (d->m_wipSessions.contains(address)) {
-        d->m_wipSessions[address]->addMessage(msg);
+        d->m_wipSessions[address].append(msg);
         return QString();
     }
 
-    CreateSessionJob *job = new CreateSessionJob(address, msg);
-    connect(job, SIGNAL(finished(KJob*)), SLOT(sessionCreated(KJob*)));
-    job->start();
+    d->m_wipSessions.insert(address, QList<QDBusMessage>() << msg);
 
-    d->m_wipSessions.insert(address, job);
+    QVariantMap args;
+    args[QStringLiteral("Target")] = QStringLiteral("ftp");
+    QBluez::PendingCall *call = d->m_manager->createSession(address, args);
+
+    connect(call, &QBluez::PendingCall::finished, [ this, address ](QBluez::PendingCall *call) {
+        QString path;
+        if (call->error()) {
+            qCDebug(OBEXDAEMON) << "Error creating session" << call->errorText();
+        } else {
+            path = call->value().value<QDBusObjectPath>().path();
+            qCDebug(OBEXDAEMON) << "Created session" << path;
+        }
+        // Send reply (empty session path in case of error)
+        Q_FOREACH (const QDBusMessage &msg, d->m_wipSessions[address]) {
+            QDBusMessage reply = msg.createReply(path);
+            QDBusConnection::sessionBus().send(reply);
+        }
+        d->m_wipSessions.remove(address);
+        if (!call->error()) {
+            d->m_sessionMap.insert(address, path);
+            d->m_reverseSessionMap.insert(path, address);
+        }
+    });
+
     return QString();
 }
 
-void ObexFtpDaemon::sessionCreated(KJob* job)
+bool ObexFtpDaemon::isOnline()
 {
-    CreateSessionJob* cJob = qobject_cast<CreateSessionJob*>(job);
-    qCDebug(OBEXDAEMON) << cJob->path();
+    return d->m_manager->isOperational();
+}
 
-    d->m_wipSessions.remove(cJob->address());
-    d->m_sessionMap.insert(cJob->address(), cJob->path());
-    d->m_reverseSessionMap.insert(cJob->path(), cJob->address());
+void ObexFtpDaemon::operationalChanged(bool operational)
+{
+    qCDebug(OBEXDAEMON) << "Operational changed" << operational;
 
-    const QList<QDBusMessage> messages = cJob->messages();
-    Q_FOREACH(const QDBusMessage &msg, messages) {
-        QDBusMessage reply = msg.createReply(cJob->path());
-        QDBusConnection::sessionBus().asyncCall(reply);
+    if (!operational) {
+        d->m_sessionMap.clear();
+        d->m_reverseSessionMap.clear();
+        d->m_wipSessions.clear();
     }
 }
 
-void ObexFtpDaemon::serviceUnregistered(const QString& service)
+void ObexFtpDaemon::sessionRemoved(const QDBusObjectPath &session)
 {
-    if (service != QLatin1String("org.bluez.obex")) {
-        return;
-    }
-
-    d->m_sessionMap.clear();
-    d->m_reverseSessionMap.clear();
-}
-
-void ObexFtpDaemon::interfaceRemoved(const QDBusObjectPath &dbusPath, const QStringList& interfaces)
-{
-    qCDebug(OBEXDAEMON) << dbusPath.path() << interfaces;
-    const QString path = dbusPath.path();
+    const QString &path = session.path();
     if (!d->m_reverseSessionMap.contains(path)) {
-        qCDebug(OBEXDAEMON) << d->m_reverseSessionMap;
+        qCDebug(OBEXDAEMON) << "Removed session not ours" << d->m_reverseSessionMap;
         return;
     }
 
-    QString address = d->m_reverseSessionMap.take(path);
+    const QString &address = d->m_reverseSessionMap.take(path);
     qCDebug(OBEXDAEMON) << address;
     qCDebug(OBEXDAEMON) << d->m_sessionMap.remove(address);
 }

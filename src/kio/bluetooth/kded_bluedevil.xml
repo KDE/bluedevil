@@ -9,6 +9,11 @@
       <arg type="aa{ss}" direction="out"/>
       <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="QMapDeviceInfo"/>
     </method>
+    <method name="deviceInfo">
+      <arg name="address" type="s" direction="in"/>
+      <arg type="a{ss}" direction="out"/>
+      <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="DeviceInfo"/>
+    </method>
     <method name="stopDiscovering">
     </method>
   </interface>
