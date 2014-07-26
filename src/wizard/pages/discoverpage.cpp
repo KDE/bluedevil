@@ -94,6 +94,7 @@ bool DiscoverPage::isComplete() const
 
 void DiscoverPage::startScan()
 {
+    m_itemRelation.clear();
     deviceList->clear();
     stopScan();
 
@@ -123,13 +124,10 @@ void DiscoverPage::deviceFound(QBluez::Device* device)
     QBluez::LoadDeviceJob *deviceJob = device->load();
     deviceJob->start();
     connect(deviceJob, &QBluez::LoadDeviceJob::result, [ this, device ](QBluez::LoadDeviceJob *job) {
-        Q_ASSERT(!job->error());
         if (job->error()) {
             qCDebug(WIZARD) << "Error loading device" << job->errorText();
             return;
         }
-
-        Q_ASSERT_X(!m_itemRelation.contains(device), "DeviceFound", "Device already in item relation!");
 
         const QString &name = device->friendlyName().isEmpty() ? device->address() : device->friendlyName();
         const QString &icon = device->icon().isEmpty() ? QStringLiteral("preferences-system-bluetooth") : device->icon();

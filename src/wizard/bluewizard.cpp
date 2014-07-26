@@ -97,7 +97,6 @@ BlueWizard::BlueWizard(const QUrl &url)
     QBluez::InitManagerJob *initJob = m_manager->init(QBluez::Manager::InitManagerAndAdapters);
     initJob->start();
     connect(initJob, &QBluez::InitManagerJob::result, [ this ](QBluez::InitManagerJob *job) {
-        Q_ASSERT(!job->error());
         if (job->error()) {
             qCDebug(WIZARD) << "Error initializing manager:" << job->errorText();
             return;
