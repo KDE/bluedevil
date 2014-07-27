@@ -117,7 +117,6 @@ void SSPPairingPage::pairingFinished(QBluez::PendingCall *call)
     qCDebug(WIZARD) << "\t error     : " << (bool) call->error();
     qCDebug(WIZARD) << "\t errorText : " << call->errorText();
 
-    // TODO: We can show the error message to user here
     m_success = !call->error();
     wizard()->next();
 }

@@ -110,6 +110,7 @@ QString ObexFtpDaemon::session(QString address, const QDBusMessage &msg)
 
     connect(call, &QBluez::PendingCall::finished, [ this, address ](QBluez::PendingCall *call) {
         QString path;
+        // NOTE: It will fail if the session already exists, but wasn't created by us
         if (call->error()) {
             qCDebug(OBEXDAEMON) << "Error creating session" << call->errorText();
         } else {

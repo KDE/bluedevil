@@ -1,16 +1,11 @@
 QBluez is available at: git://anongit.kde.org/scratch/drosca/qbluez.git
 
 BlueDevil runtime dependencies:
-    -obex-data-server
+    -Bluez5 obexd
         -Be able to "Browse File" aka kio_obexftp
         -Be able to receive files
-
-    -obexd-client
         -Be able to Send files (bluedevil-sendfile)
 
     -If you're using Alsa:
         The best way of having "automagical headset configuration" is having the bluetooth.conf hook
         enabled
-
-    NOTE: Be sure to install only obexd-client and not obexd-server, since the last will conflic
-    with obex-data-server.
