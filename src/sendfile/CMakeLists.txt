@@ -15,7 +15,7 @@ set(sendfilehelper_SRCS
     debug_p.cpp
 )
 
-qt5_wrap_ui(sendfilehelper_SRCS
+ki18n_wrap_ui(sendfilehelper_SRCS
     pages/connecting.ui
     pages/selectfilediscover.ui
     discover.ui

@@ -3,7 +3,7 @@ set(requestpin_SRCS
     requestpin.cpp
 )
 
-qt5_wrap_ui(requestpin_UI
+ki18n_wrap_ui(requestpin_UI
     dialogWidget.ui)
 
 add_executable(bluedevil-requestpin ${requestpin_SRCS} ${requestpin_UI})

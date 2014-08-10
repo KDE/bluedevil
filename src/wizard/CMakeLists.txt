@@ -13,7 +13,7 @@ set(wizard_SRCS
     pages/fail.cpp
 )
 
-qt5_wrap_ui(wizard_SRCS
+ki18n_wrap_ui(wizard_SRCS
             pages/discover.ui
             pages/nopairing.ui
             pages/legacypairing.ui

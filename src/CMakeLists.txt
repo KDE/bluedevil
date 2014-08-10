@@ -1,3 +1,5 @@
+add_definitions(-DTRANSLATION_DOMAIN="bluedevil")
+
 add_subdirectory(settings)
 add_subdirectory(sendfile)
 add_subdirectory(daemon)
