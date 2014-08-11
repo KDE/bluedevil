@@ -17,7 +17,7 @@ find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Widgets
     DBus)
 
-find_package(KF5 CONFIG REQUIRED COMPONENTS
+find_package(KF5 MODULE REQUIRED COMPONENTS
     CoreAddons
     WidgetsAddons
     DBusAddons
