@@ -90,12 +90,11 @@ QList<KioBluetooth::Service> KioBluetooth::getSupportedServices(const QStringLis
 
 void KioBluetooth::listRemoteDeviceServices()
 {
-    m_kded->stopDiscovering();
     infoMessage(i18n("Retrieving services..."));
 
     qCDebug(BLUETOOTH) << "Listing remote devices";
 
-    const DeviceInfo &info = m_kded->deviceInfo(m_currentHostAddress);
+    const DeviceInfo &info = m_kded->device(m_currentHostAddress).value();
     if (info.isEmpty()) {
         qCDebug(BLUETOOTH) << "Invalid hostname!";
         infoMessage(i18n("This address is unavailable."));
@@ -142,11 +141,14 @@ void KioBluetooth::listRemoteDeviceServices()
 void KioBluetooth::listDevices()
 {
     qCDebug(BLUETOOTH) << "Asking kded for devices";
-    QMapDeviceInfo devices = m_kded->knownDevices().value();
+    QMapDeviceInfo devices = m_kded->allDevices().value();
     qCDebug(BLUETOOTH) << devices.keys();
+
     Q_FOREACH(const DeviceInfo device, devices) {
         listDevice(device);
     }
+
+    m_kded->startDiscovering(10);
     infoMessage(i18n("Scanning for new devices..."));
     finished();
 }

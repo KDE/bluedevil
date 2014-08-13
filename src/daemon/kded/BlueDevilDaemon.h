@@ -48,21 +48,30 @@ public:
     ~BlueDevilDaemon();
 
 public Q_SLOTS:
+    /**
+     * Returns whether the daemon is in online mode (eg. Bluez services are running and we have
+     * a usable adapter)
+     */
     Q_SCRIPTABLE bool isOnline();
 
     /**
-     * This slot will return a list of devices made of: configured and discovered devices.
-     * Going deeper, the first time that this slot is called a discovery of X seconds will start
-     * Then if this slot is consulted again it will return configured and discovered device. Once
-     * the discovery ends it won't start a new discovery until N seconds pass.
+     * Returns QMap<Address, DeviceInfo> with all known devices
      */
-    Q_SCRIPTABLE QMapDeviceInfo knownDevices();
+    Q_SCRIPTABLE QMapDeviceInfo allDevices();
 
     /**
      * Returns DeviceInfo for one device.
      */
-    Q_SCRIPTABLE DeviceInfo deviceInfo(const QString &address);
+    Q_SCRIPTABLE DeviceInfo device(const QString &address);
 
+    /**
+     * Starts discovery for timeout seconds (0 = forever)
+     */
+    Q_SCRIPTABLE void startDiscovering(quint32 timeout);
+
+    /**
+     * Stops discovery (if it was previously started)
+     */
     Q_SCRIPTABLE void stopDiscovering();
 
 private:
