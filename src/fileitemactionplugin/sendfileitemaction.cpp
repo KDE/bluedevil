@@ -31,12 +31,6 @@
 #include <KPluginFactory>
 #include <KLocalizedString>
 
-#include <QBluez/Manager>
-#include <QBluez/InitManagerJob>
-#include <QBluez/Adapter>
-#include <QBluez/Device>
-#include <QBluez/LoadDeviceJob>
-
 K_PLUGIN_FACTORY_WITH_JSON(SendFileItemActionFactory,
                            "bluedevilsendfile.json",
                            registerPlugin<SendFileItemAction>();)
@@ -46,12 +40,11 @@ SendFileItemAction::SendFileItemAction(QObject *parent, const QVariantList &args
 {
     Q_UNUSED(args)
 
-    // FIXME: This uses synchronous job->exec()
+    qDBusRegisterMetaType<DeviceInfo>();
+    qDBusRegisterMetaType<QMapDeviceInfo>();
 
-    // Initialize QBluez
-    m_manager = new QBluez::Manager(this);
-    QBluez::InitManagerJob *initJob = m_manager->init(QBluez::Manager::InitManagerAndAdapters);
-    initJob->exec();
+    m_kded = new org::kde::BlueDevil(QStringLiteral("org.kde.kded5"), QStringLiteral("/modules/bluedevil"),
+                                     QDBusConnection::sessionBus(), this);
 }
 
 QList<QAction*> SendFileItemAction::actions(const KFileItemListProperties &fileItemInfos, QWidget *parentWidget)
@@ -62,24 +55,19 @@ QList<QAction*> SendFileItemAction::actions(const KFileItemListProperties &fileI
 
     m_fileItemInfos = fileItemInfos;
 
-    if (!m_manager->isBluetoothOperational()) {
+    if (!m_kded->isOnline()) {
         return list;
     }
-
-    QBluez::Adapter *adapter = m_manager->usableAdapter();
 
     QAction *menuAction = new QAction(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")), i18n("Send via Bluetooth"), this);
     QMenu *menu = new QMenu();
 
-    // If we have configured devices, put them first
-    Q_FOREACH (QBluez::Device *device, adapter->devices()) {
-        if (!device->isLoaded()) {
-            device->load()->exec();
-        }
-        if (device->uuids().contains(QLatin1String("00001105-0000-1000-8000-00805F9B34FB"), Qt::CaseInsensitive)) {
-            QAction *action = new QAction(QIcon::fromTheme(device->icon()), device->name(), this);
+    const QMapDeviceInfo &devices = m_kded->allDevices().value();
+    Q_FOREACH (const DeviceInfo &device, devices) {
+        if (device.value(QStringLiteral("UUIDs")).contains(QLatin1String("00001105-0000-1000-8000-00805F9B34FB"))) {
+            QAction *action = new QAction(QIcon::fromTheme(device.value(QStringLiteral("icon"))), device.value(QStringLiteral("name")), this);
             connect(action, SIGNAL(triggered(bool)), this, SLOT(deviceTriggered()));
-            action->setData(device->ubi());
+            action->setData(device.value(QStringLiteral("ubi")));
             menu->addAction(action);
         }
     }

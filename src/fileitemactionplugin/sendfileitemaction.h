@@ -21,6 +21,8 @@
 #ifndef SENDFILEITEMACTION_H
 #define SENDFILEITEMACTION_H
 
+#include "kdedbluedevil.h"
+
 #include <QLoggingCategory>
 
 #include <KAbstractFileItemActionPlugin>
@@ -28,10 +30,6 @@
 
 class QAction;
 class QWidget;
-
-namespace QBluez {
-    class Manager;
-}
 
 class SendFileItemAction : public KAbstractFileItemActionPlugin
 {
@@ -46,8 +44,7 @@ private Q_SLOTS:
     void otherTriggered();
 
 private:
-    QBluez::Manager *m_manager;
-    bool m_initialized;
+    org::kde::BlueDevil *m_kded;
     KFileItemListProperties m_fileItemInfos;
 };
 
