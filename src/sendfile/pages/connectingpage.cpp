@@ -25,10 +25,8 @@
 
 #include "klocalizedstring.h"
 
-#include <QBluez/Manager>
 #include <QBluez/Adapter>
 #include <QBluez/Device>
-#include <QBluez/LoadDeviceJob>
 
 ConnectingPage::ConnectingPage(QWidget *parent)
     : QWizardPage(parent)
@@ -41,12 +39,8 @@ void ConnectingPage::initializePage()
     connLabel->setText(i18nc("Connecting to a Bluetooth device", "Connecting..."));
 
     SendFileWizard *sendWizard = static_cast<SendFileWizard* >(wizard());
-    QBluez::LoadDeviceJob *job = sendWizard->device()->load();
-    job->start();
-    connect(job, &QBluez::LoadDeviceJob::result, [ this, sendWizard ]() {
-        connLabel->setText(i18nc("Connecting to a Bluetooth device", "Connecting to %1...", sendWizard->device()->name()));
-        sendWizard->startTransfer();
-    });
+    connLabel->setText(i18nc("Connecting to a Bluetooth device", "Connecting to %1...", sendWizard->device()->name()));
+    sendWizard->startTransfer();
 }
 
 bool ConnectingPage::isComplete() const

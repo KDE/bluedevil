@@ -32,7 +32,6 @@
 #include <QBluez/Manager>
 #include <QBluez/Adapter>
 #include <QBluez/Device>
-#include <QBluez/LoadDeviceJob>
 
 DiscoverWidget::DiscoverWidget(QBluez::Manager *manager, QWidget *parent)
     : QWidget(parent)
@@ -83,24 +82,15 @@ void DiscoverWidget::stopScan()
 
 void DiscoverWidget::deviceFound(QBluez::Device *device)
 {
-    QBluez::LoadDeviceJob *deviceJob = device->load();
-    deviceJob->start();
-    connect(deviceJob, &QBluez::LoadDeviceJob::result, [ this, device ](QBluez::LoadDeviceJob *job) {
-        if (job->error()) {
-            qCDebug(SENDFILE) << "Error loading device" << job->errorText();
-            return;
-        }
+    Q_ASSERT_X(!m_itemRelation.contains(device), "DeviceFound", "Device already in item relation!");
 
-        Q_ASSERT_X(!m_itemRelation.contains(device), "DeviceFound", "Device already in item relation!");
+    const QString &name = device->friendlyName().isEmpty() ? device->address() : device->friendlyName();
+    const QString &icon = device->icon().isEmpty() ? QStringLiteral("preferences-system-bluetooth") : device->icon();
 
-        const QString &name = device->friendlyName().isEmpty() ? device->address() : device->friendlyName();
-        const QString &icon = device->icon().isEmpty() ? QStringLiteral("preferences-system-bluetooth") : device->icon();
+    connect(device, &QBluez::Device::deviceChanged, this, &DiscoverWidget::deviceChanged);
 
-        connect(device, &QBluez::Device::deviceChanged, this, &DiscoverWidget::deviceChanged);
-
-        QListWidgetItem *item = new QListWidgetItem(QIcon::fromTheme(icon), name, deviceList);
-        m_itemRelation.insert(device, item);
-    });
+    QListWidgetItem *item = new QListWidgetItem(QIcon::fromTheme(icon), name, deviceList);
+    m_itemRelation.insert(device, item);
 }
 
 void DiscoverWidget::deviceRemoved(QBluez::Device *device)

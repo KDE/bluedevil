@@ -64,50 +64,9 @@ SendFileWizard::SendFileWizard(const QString &deviceUrl, const QStringList &file
 
     // Initialize QBluez
     m_manager = new QBluez::Manager(this);
-    QBluez::InitManagerJob *initJob = m_manager->init(QBluez::Manager::InitManagerAndAdapters);
+    QBluez::InitManagerJob *initJob = m_manager->init();
     initJob->start();
-    connect(initJob, &QBluez::InitManagerJob::result, [ this ](QBluez::InitManagerJob *job) {
-        if (job->error()) {
-            qCDebug(SENDFILE) << "Error initializing manager:" << job->errorText();
-            return;
-        }
-
-        if (!m_manager->isBluetoothOperational()) {
-            qCDebug(SENDFILE) << "Bluetooth not operational!";
-            qApp->exit();
-            return;
-        }
-
-        if (m_deviceUrl.startsWith(QLatin1String("bluetooth"))) {
-            m_deviceUrl.remove(QStringLiteral("bluetooth:"));
-            m_deviceUrl.replace(QLatin1Char(':'), QLatin1Char('-'));
-            m_deviceUrl.prepend(QLatin1String("bluetooth:"));
-            QUrl url(m_deviceUrl);
-            m_device = m_manager->deviceForAddress(url.host().replace(QLatin1Char('-'), QLatin1Char(':')));
-        } else {
-            m_device = m_manager->deviceForUbi(m_deviceUrl);
-        }
-
-        if (m_device) {
-            if (m_files.isEmpty()) {
-                addPage(new SelectFilesPage(this));
-            } else {
-                setFiles(m_files);
-            }
-        } else {
-            if (m_files.isEmpty()) {
-                addPage(new SelectDeviceAndFilesPage(this));
-            } else {
-                addPage(new SelectDevicePage(this));
-                setFiles(m_files);
-            }
-        }
-
-        addPage(new ConnectingPage(this));
-
-        // Only show wizard after QBluez is initialized
-        show();
-    });
+    connect(initJob, &QBluez::InitManagerJob::result, this, &SendFileWizard::initResult);
 }
 
 SendFileWizard::~SendFileWizard()
@@ -147,11 +106,6 @@ QBluez::Device* SendFileWizard::device() const
     return m_device;
 }
 
-void SendFileWizard::wizardDone()
-{
-    done(1);
-}
-
 void SendFileWizard::startTransfer()
 {
     if (m_files.isEmpty()) {
@@ -173,3 +127,52 @@ void SendFileWizard::startTransfer()
     QTimer::singleShot(2000, this, SLOT(wizardDone()));
 }
 
+void SendFileWizard::initResult(QBluez::InitManagerJob *job)
+{
+    if (job->error()) {
+        qCDebug(SENDFILE) << "Error initializing manager:" << job->errorText();
+        qApp->exit();
+        return;
+    }
+
+    if (!m_manager->isBluetoothOperational()) {
+        qCDebug(SENDFILE) << "Bluetooth not operational!";
+        qApp->exit();
+        return;
+    }
+
+    if (m_deviceUrl.startsWith(QLatin1String("bluetooth"))) {
+        m_deviceUrl.remove(QStringLiteral("bluetooth:"));
+        m_deviceUrl.replace(QLatin1Char(':'), QLatin1Char('-'));
+        m_deviceUrl.prepend(QLatin1String("bluetooth:"));
+        QUrl url(m_deviceUrl);
+        m_device = m_manager->deviceForAddress(url.host().replace(QLatin1Char('-'), QLatin1Char(':')));
+    } else {
+        m_device = m_manager->deviceForUbi(m_deviceUrl);
+    }
+
+    if (m_device) {
+        if (m_files.isEmpty()) {
+            addPage(new SelectFilesPage(this));
+        } else {
+            setFiles(m_files);
+        }
+    } else {
+        if (m_files.isEmpty()) {
+            addPage(new SelectDeviceAndFilesPage(this));
+        } else {
+            addPage(new SelectDevicePage(this));
+            setFiles(m_files);
+        }
+    }
+
+    addPage(new ConnectingPage(this));
+
+    // Only show wizard after init is completed
+    show();
+}
+
+void SendFileWizard::wizardDone()
+{
+    done(1);
+}

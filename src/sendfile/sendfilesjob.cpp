@@ -57,6 +57,11 @@ SendFilesJob::SendFilesJob(const QStringList &files, QBluez::Device *device, QOb
     setCapabilities(Killable);
 }
 
+void SendFilesJob::start()
+{
+    QMetaObject::invokeMethod(this, "doStart", Qt::QueuedConnection);
+}
+
 bool SendFilesJob::doKill()
 {
     if (m_transfer) {
@@ -65,9 +70,35 @@ bool SendFilesJob::doKill()
     return true;
 }
 
-void SendFilesJob::start()
+void SendFilesJob::initResult(QBluez::InitObexManagerJob *job)
 {
-    QMetaObject::invokeMethod(this, "doStart", Qt::QueuedConnection);
+    if (job->error()) {
+        qCDebug(SENDFILE) << "Error initializing obex manager" << job->errorText();
+        setError(UserDefinedError);
+        setErrorText(job->errorText());
+        emitResult();
+        return;
+    }
+
+    // Create ObjectPush session
+    QVariantMap map;
+    map["Target"] = "opp";
+    QBluez::PendingCall *call = job->manager()->createSession(m_device->address(), map);
+    connect(call, &QBluez::PendingCall::finished, this, &SendFilesJob::createSessionFinished);
+}
+
+void SendFilesJob::createSessionFinished(QBluez::PendingCall *call)
+{
+    if (call->error()) {
+        qCDebug(SENDFILE) << "Error creating session" << call->errorText();
+        setError(UserDefinedError);
+        setErrorText(call->errorText());
+        emitResult();
+        return;
+    }
+
+    m_objectPush = new QBluez::ObexObjectPush(call->value().value<QDBusObjectPath>(), this);
+    nextJob();
 }
 
 void SendFilesJob::doStart()
@@ -83,32 +114,7 @@ void SendFilesJob::doStart()
     QBluez::ObexManager *manager = new QBluez::ObexManager(this);
     QBluez::InitObexManagerJob *job = manager->init();
     job->start();
-    connect(job, &QBluez::InitObexManagerJob::result, [ this ](QBluez::InitObexManagerJob *job) {
-        if (job->error()) {
-            qCDebug(SENDFILE) << "Error initializing obex manager" << job->errorText();
-            setError(UserDefinedError);
-            setErrorText(job->errorText());
-            emitResult();
-            return;
-        }
-
-        // Create ObjectPush session
-        QVariantMap map;
-        map["Target"] = "opp";
-        QBluez::PendingCall *call = job->manager()->createSession(m_device->address(), map);
-        connect(call, &QBluez::PendingCall::finished, [ this ](QBluez::PendingCall *call) {
-            if (call->error()) {
-                qCDebug(SENDFILE) << "Error creating session" << call->errorText();
-                setError(UserDefinedError);
-                setErrorText(call->errorText());
-                emitResult();
-                return;
-            }
-
-            m_objectPush = new QBluez::ObexObjectPush(call->value().value<QDBusObjectPath>(), this);
-            nextJob();
-        });
-    });
+    connect(job, &QBluez::InitObexManagerJob::result, this, &SendFilesJob::initResult);
 }
 
 void SendFilesJob::nextJob()
@@ -126,19 +132,22 @@ void SendFilesJob::nextJob()
     emit description(this, i18n("Sending file over Bluetooth"), QPair<QString, QString>(i18nc("File transfer origin", "From"), m_currentFile), QPair<QString, QString>(i18nc("File transfer destination", "To"), m_device->name()));
 
     QBluez::PendingCall *call = m_objectPush->sendFile(m_currentFile);
-    connect(call, &QBluez::PendingCall::finished, [ this ](QBluez::PendingCall *call) {
-        if (call->error()) {
-            qCDebug(SENDFILE) << "Error sending file" << call->errorText();
-            setError(UserDefinedError);
-            setErrorText(call->errorText());
-            emitResult();
-            return;
-        }
+    connect(call, &QBluez::PendingCall::finished, this, &SendFilesJob::sendFileFinished);
+}
 
-        m_transfer = call->value().value<QBluez::ObexTransfer*>();
-        connect(m_transfer, &QBluez::ObexTransfer::statusChanged, this, &SendFilesJob::statusChanged);
-        connect(m_transfer, &QBluez::ObexTransfer::transferredChanged, this, &SendFilesJob::transferredChanged);
-    });
+void SendFilesJob::sendFileFinished(QBluez::PendingCall *call)
+{
+    if (call->error()) {
+        qCDebug(SENDFILE) << "Error sending file" << call->errorText();
+        setError(UserDefinedError);
+        setErrorText(call->errorText());
+        emitResult();
+        return;
+    }
+
+    m_transfer = call->value().value<QBluez::ObexTransfer*>();
+    connect(m_transfer, &QBluez::ObexTransfer::statusChanged, this, &SendFilesJob::statusChanged);
+    connect(m_transfer, &QBluez::ObexTransfer::transferredChanged, this, &SendFilesJob::transferredChanged);
 }
 
 void SendFilesJob::jobDone()

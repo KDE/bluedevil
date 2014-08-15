@@ -35,6 +35,8 @@ namespace QBluez {
     class Device;
     class ObexTransfer;
     class ObexObjectPush;
+    class InitObexManagerJob;
+    class PendingCall;
 }
 
 class SendFilesJob : public KJob
@@ -48,8 +50,11 @@ public:
     bool doKill() Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
+    void initResult(QBluez::InitObexManagerJob *job);
+    void createSessionFinished(QBluez::PendingCall *call);
     void doStart();
     void nextJob();
+    void sendFileFinished(QBluez::PendingCall *call);
     void jobDone();
     void transferredChanged(quint64 transferred);
     void statusChanged(QBluez::ObexTransfer::Status status);

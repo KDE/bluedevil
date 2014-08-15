@@ -35,6 +35,7 @@ class SendFilesJob;
 namespace QBluez {
     class Manager;
     class Device;
+    class InitManagerJob;
 }
 
 class SendFileWizard : public QWizard
@@ -57,6 +58,7 @@ public:
     void startTransfer();
 
 private Q_SLOTS:
+    void initResult(QBluez::InitManagerJob *job);
     void wizardDone();
 
 private:
