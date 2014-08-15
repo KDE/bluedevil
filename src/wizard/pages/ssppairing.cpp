@@ -56,6 +56,14 @@ SSPPairingPage::SSPPairingPage(BlueWizard *parent)
     pinNumber->setFont(font);
 }
 
+int SSPPairingPage::nextId() const
+{
+    if (m_success) {
+        return BlueWizard::Connect;
+    }
+    return BlueWizard::Fail;
+}
+
 void SSPPairingPage::initializePage()
 {
     qCDebug(WIZARD) << "Initialize Secure Simple Pairing Page";
@@ -79,10 +87,25 @@ void SSPPairingPage::initializePage()
 
     // Adapter must be pairable, otherwise pairing would fail
     QBluez::PendingCall *call = device->adapter()->setPairable(true);
-    connect(call, &QBluez::PendingCall::finished, [ this, device ]() {
-        QBluez::PendingCall *call = device->pair();
-        connect(call, &QBluez::PendingCall::finished, this, &SSPPairingPage::pairingFinished);
-    });
+    connect(call, &QBluez::PendingCall::finished, this, &SSPPairingPage::setPairableFinished);
+}
+
+void SSPPairingPage::setPairableFinished(QBluez::PendingCall *call)
+{
+    Q_UNUSED(call)
+
+    QBluez::PendingCall *pairCall = m_wizard->device()->pair();
+    connect(pairCall, &QBluez::PendingCall::finished, this, &SSPPairingPage::pairingFinished);
+}
+
+void SSPPairingPage::pairingFinished(QBluez::PendingCall *call)
+{
+    qCDebug(WIZARD) << "Secure Pairing finished:";
+    qCDebug(WIZARD) << "\t error     : " << (bool) call->error();
+    qCDebug(WIZARD) << "\t errorText : " << call->errorText();
+
+    m_success = !call->error();
+    wizard()->next();
 }
 
 void SSPPairingPage::confirmationRequested(const QString &passkey, const QBluez::Request<void> &req)
@@ -111,21 +134,6 @@ void SSPPairingPage::confirmationRequested(const QString &passkey, const QBluez:
     confirmLbl->setText(i18n("Please, confirm that the PIN displayed on \"%1\" matches the wizard one.", m_wizard->device()->name()));
 }
 
-void SSPPairingPage::pairingFinished(QBluez::PendingCall *call)
-{
-    qCDebug(WIZARD) << "Secure Pairing finished:";
-    qCDebug(WIZARD) << "\t error     : " << (bool) call->error();
-    qCDebug(WIZARD) << "\t errorText : " << call->errorText();
-
-    m_success = !call->error();
-    wizard()->next();
-}
-
-void SSPPairingPage::cancelClicked()
-{
-    m_wizard->device()->cancelPairing();
-}
-
 void SSPPairingPage::pinRequested(const QString& pin)
 {
     m_working->stop();
@@ -146,12 +154,9 @@ void SSPPairingPage::notMatchClicked()
     m_req.reject();
 }
 
-int SSPPairingPage::nextId() const
+void SSPPairingPage::cancelClicked()
 {
-    if (m_success) {
-        return BlueWizard::Connect;
-    }
-    return BlueWizard::Fail;
+    m_wizard->device()->cancelPairing();
 }
 
 QList<QWizard::WizardButton> SSPPairingPage::wizardButtonsLayout() const
@@ -160,6 +165,5 @@ QList<QWizard::WizardButton> SSPPairingPage::wizardButtonsLayout() const
     list << QWizard::Stretch;
     list << QWizard::CustomButton2;
     list << QWizard::CustomButton1;
-
     return list;
 }

@@ -94,21 +94,9 @@ BlueWizard::BlueWizard(const QUrl &url)
 
     // Initialize QBluez
     m_manager = new QBluez::Manager(this);
-    QBluez::InitManagerJob *initJob = m_manager->init(QBluez::Manager::InitManagerAndAdapters);
+    QBluez::InitManagerJob *initJob = m_manager->init();
     initJob->start();
-    connect(initJob, &QBluez::InitManagerJob::result, [ this ](QBluez::InitManagerJob *job) {
-        if (job->error()) {
-            qCDebug(WIZARD) << "Error initializing manager:" << job->errorText();
-            return;
-        }
-
-        // Register our agent
-        m_manager->registerAgent(m_agent, QBluez::Manager::DisplayYesNo);
-        qCDebug(WIZARD) << "Agent registered";
-
-        // Start discovery
-        static_cast<DiscoverPage*>(page(Discover))->startDiscovery();
-    });
+    connect(initJob, &QBluez::InitManagerJob::result, this, &BlueWizard::initJobResult);
 }
 
 BlueWizard::~BlueWizard()
@@ -126,6 +114,21 @@ void BlueWizard::done(int result)
 
     QWizard::done(result);
     qApp->exit(result);
+}
+
+void BlueWizard::initJobResult(QBluez::InitManagerJob *job)
+{
+    if (job->error()) {
+        qCDebug(WIZARD) << "Error initializing manager:" << job->errorText();
+        return;
+    }
+
+    // Register our agent
+    m_manager->registerAgent(m_agent, QBluez::Manager::DisplayYesNo);
+    qCDebug(WIZARD) << "Agent registered";
+
+    // Start discovery
+    static_cast<DiscoverPage*>(page(Discover))->startDiscovery();
 }
 
 QBluez::Device* BlueWizard::device() const

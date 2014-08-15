@@ -53,9 +53,8 @@ void FileReceiver::initJobResult(QBluez::InitObexManagerJob *job)
 
     m_agent = new ObexAgent(this);
 
-    // Make sure to register agent when obex daemon starts
+    // Make sure to register agent when obex daemon starts (or right away, if already running)
     connect(m_manager, &QBluez::ObexManager::operationalChanged, this, &FileReceiver::operationalChanged);
-    operationalChanged(m_manager->isOperational());
 }
 
 void FileReceiver::agentRegistered(QBluez::PendingCall *call)

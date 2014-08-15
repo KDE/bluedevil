@@ -42,16 +42,17 @@ class SSPPairingPage : public QWizardPage, Ui::SSPPairing
 public:
     SSPPairingPage(BlueWizard *parent = 0);
 
-    void initializePage() Q_DECL_OVERRIDE;
     int nextId() const Q_DECL_OVERRIDE;
+    void initializePage() Q_DECL_OVERRIDE;
 
 public Q_SLOTS:
-    void confirmationRequested(const QString &passkey, const QBluez::Request<void> &req);
+    void setPairableFinished(QBluez::PendingCall *call);
     void pairingFinished(QBluez::PendingCall *call);
-    void cancelClicked();
+    void confirmationRequested(const QString &passkey, const QBluez::Request<void> &req);
+    void pinRequested(const QString &pin);
     void matchesClicked();
     void notMatchClicked();
-    void pinRequested(const QString &pin);
+    void cancelClicked();
 
 protected:
     QList<QWizard::WizardButton> wizardButtonsLayout() const;

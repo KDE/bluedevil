@@ -40,10 +40,11 @@ class LegacyPairingPageDatabase : public QWizardPage, Ui::NoPairing
 public:
     LegacyPairingPageDatabase(BlueWizard *parent = 0);
 
-    void initializePage() Q_DECL_OVERRIDE;
     int nextId() const Q_DECL_OVERRIDE;
+    void initializePage() Q_DECL_OVERRIDE;
 
 public Q_SLOTS:
+    void setPairableFinished(QBluez::PendingCall *call);
     void pairingFinished(QBluez::PendingCall *call);
 
 protected:

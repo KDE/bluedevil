@@ -49,6 +49,11 @@ LegacyPairingPageDatabase::LegacyPairingPageDatabase(BlueWizard *parent)
     m_working->start();
 }
 
+int LegacyPairingPageDatabase::nextId() const
+{
+    return BlueWizard::Connect;
+}
+
 void LegacyPairingPageDatabase::initializePage()
 {
     qCDebug(WIZARD) << "Initialize Legacy Database Pairing Page";
@@ -60,15 +65,15 @@ void LegacyPairingPageDatabase::initializePage()
 
     // Adapter must be pairable, otherwise pairing would fail
     QBluez::PendingCall *call = device->adapter()->setPairable(true);
-    connect(call, &QBluez::PendingCall::finished, [ this, device ]() {
-        QBluez::PendingCall *call = device->pair();
-        connect(call, &QBluez::PendingCall::finished, this, &LegacyPairingPageDatabase::pairingFinished);
-    });
+    connect(call, &QBluez::PendingCall::finished, this, &LegacyPairingPageDatabase::setPairableFinished);
 }
 
-int LegacyPairingPageDatabase::nextId() const
+void LegacyPairingPageDatabase::setPairableFinished(QBluez::PendingCall *call)
 {
-    return BlueWizard::Connect;
+    Q_UNUSED(call)
+
+    QBluez::PendingCall *pairCall = m_wizard->device()->pair();
+    connect(pairCall, &QBluez::PendingCall::finished, this, &LegacyPairingPageDatabase::pairingFinished);
 }
 
 void LegacyPairingPageDatabase::pairingFinished(QBluez::PendingCall *call)
@@ -86,6 +91,5 @@ QList< QWizard::WizardButton > LegacyPairingPageDatabase::wizardButtonsLayout() 
     QList <QWizard::WizardButton> list;
     list << QWizard::Stretch;
     list << QWizard::CancelButton;
-
     return list;
 }

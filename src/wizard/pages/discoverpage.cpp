@@ -35,7 +35,6 @@
 #include <QBluez/Manager>
 #include <QBluez/Adapter>
 #include <QBluez/Device>
-#include <QBluez/LoadDeviceJob>
 
 DiscoverPage::DiscoverPage(BlueWizard *parent)
     : QWizardPage(parent)
@@ -119,33 +118,24 @@ void DiscoverPage::stopScan()
     }
 }
 
-void DiscoverPage::deviceFound(QBluez::Device* device)
+void DiscoverPage::deviceFound(QBluez::Device *device)
 {
-    QBluez::LoadDeviceJob *deviceJob = device->load();
-    deviceJob->start();
-    connect(deviceJob, &QBluez::LoadDeviceJob::result, [ this, device ](QBluez::LoadDeviceJob *job) {
-        if (job->error()) {
-            qCDebug(WIZARD) << "Error loading device" << job->errorText();
-            return;
-        }
+    const QString &name = device->friendlyName().isEmpty() ? device->address() : device->friendlyName();
+    const QString &icon = device->icon().isEmpty() ? QStringLiteral("preferences-system-bluetooth") : device->icon();
 
-        const QString &name = device->friendlyName().isEmpty() ? device->address() : device->friendlyName();
-        const QString &icon = device->icon().isEmpty() ? QStringLiteral("preferences-system-bluetooth") : device->icon();
+    connect(device, &QBluez::Device::deviceChanged, this, &DiscoverPage::deviceChanged);
 
-        connect(device, &QBluez::Device::deviceChanged, this, &DiscoverPage::deviceChanged);
+    QListWidgetItem *item = new QListWidgetItem(QIcon::fromTheme(icon), name, deviceList);
+    m_itemRelation.insert(device, item);
 
-        QListWidgetItem *item = new QListWidgetItem(QIcon::fromTheme(icon), name, deviceList);
-        m_itemRelation.insert(device, item);
+    if (!deviceList->currentItem() && device->deviceType() == QBluez::Mouse) {
+        deviceList->setCurrentItem(item);
+    }
 
-        if (!deviceList->currentItem() && device->deviceType() == QBluez::Mouse) {
-            deviceList->setCurrentItem(item);
-        }
-
-        // If the device has been preselected via arguments, select it
-        if (m_wizard->preselectedAddress() == device->address().toLower()) {
-            deviceList->setCurrentItem(item);
-        }
-    });
+    // If the device has been preselected via arguments, select it
+    if (m_wizard->preselectedAddress() == device->address().toLower()) {
+        deviceList->setCurrentItem(item);
+    }
 }
 
 void DiscoverPage::deviceRemoved(QBluez::Device *device)

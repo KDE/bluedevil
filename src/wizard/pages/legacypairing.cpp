@@ -53,6 +53,14 @@ LegacyPairingPage::LegacyPairingPage(BlueWizard *parent)
     pinNumber->setFont(font);
 }
 
+int LegacyPairingPage::nextId() const
+{
+    if (m_success) {
+        return BlueWizard::Connect;
+    }
+    return BlueWizard::Fail;
+}
+
 void LegacyPairingPage::initializePage()
 {
     qCDebug(WIZARD) << "Initialize Legacy Pairing Page";
@@ -63,16 +71,15 @@ void LegacyPairingPage::initializePage()
 
     // Adapter must be pairable, otherwise pairing would fail
     QBluez::PendingCall *call = m_wizard->device()->adapter()->setPairable(true);
-    connect(call, &QBluez::PendingCall::finished, [ this ]() {
-        QBluez::PendingCall *call = m_wizard->device()->pair();
-        connect(call, &QBluez::PendingCall::finished, this, &LegacyPairingPage::pairingFinished);
-    });
+    connect(call, &QBluez::PendingCall::finished, this, &LegacyPairingPage::setPairableFinished);
 }
 
-void LegacyPairingPage::pinRequested(const QString& pin)
+void LegacyPairingPage::setPairableFinished(QBluez::PendingCall *call)
 {
-    m_working->stop();
-    pinNumber->setText(pin);
+    Q_UNUSED(call)
+
+    QBluez::PendingCall *pairCall = m_wizard->device()->pair();
+    connect(pairCall, &QBluez::PendingCall::finished, this, &LegacyPairingPage::pairingFinished);
 }
 
 void LegacyPairingPage::pairingFinished(QBluez::PendingCall *call)
@@ -85,12 +92,10 @@ void LegacyPairingPage::pairingFinished(QBluez::PendingCall *call)
     wizard()->next();
 }
 
-int LegacyPairingPage::nextId() const
+void LegacyPairingPage::pinRequested(const QString& pin)
 {
-    if (m_success) {
-        return BlueWizard::Connect;
-    }
-    return BlueWizard::Fail;
+    m_working->stop();
+    pinNumber->setText(pin);
 }
 
 QList<QWizard::WizardButton> LegacyPairingPage::wizardButtonsLayout() const
@@ -98,6 +103,5 @@ QList<QWizard::WizardButton> LegacyPairingPage::wizardButtonsLayout() const
     QList <QWizard::WizardButton> list;
     list << QWizard::Stretch;
     list << QWizard::CancelButton;
-
     return list;
 }

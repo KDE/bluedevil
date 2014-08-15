@@ -40,12 +40,13 @@ class LegacyPairingPage : public QWizardPage, Ui::LegacyPairing
 public:
     LegacyPairingPage(BlueWizard *parent = 0);
 
-    void initializePage() Q_DECL_OVERRIDE;
     int nextId() const Q_DECL_OVERRIDE;
+    void initializePage() Q_DECL_OVERRIDE;
 
 public Q_SLOTS:
-    void pinRequested(const QString &pin);
+    void setPairableFinished(QBluez::PendingCall *call);
     void pairingFinished(QBluez::PendingCall *call);
+    void pinRequested(const QString &pin);
 
 protected:
     QList <QWizard::WizardButton> wizardButtonsLayout() const;

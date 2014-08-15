@@ -53,6 +53,14 @@ KeyboardPairingPage::KeyboardPairingPage(BlueWizard *parent)
     pinNumber->setFont(font);
 }
 
+int KeyboardPairingPage::nextId() const
+{
+    if (m_success) {
+        return BlueWizard::Connect;
+    }
+    return BlueWizard::Fail;
+}
+
 void KeyboardPairingPage::initializePage()
 {
     qCDebug(WIZARD) << "Initialize Keyboard Pairing Page";
@@ -63,16 +71,15 @@ void KeyboardPairingPage::initializePage()
 
     // Adapter must be pairable, otherwise pairing would fail
     QBluez::PendingCall *call = m_wizard->device()->adapter()->setPairable(true);
-    connect(call, &QBluez::PendingCall::finished, [ this ]() {
-        QBluez::PendingCall *call = m_wizard->device()->pair();
-        connect(call, &QBluez::PendingCall::finished, this, &KeyboardPairingPage::pairingFinished);
-    });
+    connect(call, &QBluez::PendingCall::finished, this, &KeyboardPairingPage::setPairableFinished);
 }
 
-void KeyboardPairingPage::pinRequested(const QString& pin)
+void KeyboardPairingPage::setPairableFinished(QBluez::PendingCall *call)
 {
-    m_working->stop();
-    pinNumber->setText(pin);
+    Q_UNUSED(call)
+
+    QBluez::PendingCall *pairCall = m_wizard->device()->pair();
+    connect(pairCall, &QBluez::PendingCall::finished, this, &KeyboardPairingPage::pairingFinished);
 }
 
 void KeyboardPairingPage::pairingFinished(QBluez::PendingCall *call)
@@ -85,12 +92,10 @@ void KeyboardPairingPage::pairingFinished(QBluez::PendingCall *call)
     wizard()->next();
 }
 
-int KeyboardPairingPage::nextId() const
+void KeyboardPairingPage::pinRequested(const QString& pin)
 {
-    if (m_success) {
-        return BlueWizard::Connect;
-    }
-    return BlueWizard::Fail;
+    m_working->stop();
+    pinNumber->setText(pin);
 }
 
 QList<QWizard::WizardButton> KeyboardPairingPage::wizardButtonsLayout() const
@@ -98,6 +103,5 @@ QList<QWizard::WizardButton> KeyboardPairingPage::wizardButtonsLayout() const
     QList <QWizard::WizardButton> list;
     list << QWizard::Stretch;
     list << QWizard::CancelButton;
-
     return list;
 }

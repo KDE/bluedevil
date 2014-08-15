@@ -25,6 +25,7 @@
 namespace QBluez {
     class Manager;
     class Device;
+    class InitManagerJob;
 }
 
 class WizardAgent;
@@ -64,7 +65,10 @@ public:
 public Q_SLOTS:
     void restartWizard();
     void slotSetPin(const QString &pin);
-    virtual void done(int result);
+    void done(int result) Q_DECL_OVERRIDE;
+
+private Q_SLOTS:
+    void initJobResult(QBluez::InitManagerJob *job);
 
 private:
     QBluez::Manager *m_manager;
