@@ -24,6 +24,11 @@
 
 #include <KDEDModule>
 
+namespace QBluez {
+    class InitObexManagerJob;
+    class PendingCall;
+}
+
 class QDBusMessage;
 
 class Q_DECL_EXPORT ObexFtpDaemon : public KDEDModule
@@ -40,6 +45,9 @@ public Q_SLOTS:
     Q_SCRIPTABLE bool isOnline();
 
 private Q_SLOTS:
+    void initJobResult(QBluez::InitObexManagerJob *job);
+    void createSessionFinished(QBluez::PendingCall *call);
+
     void operationalChanged(bool operational);
     void sessionRemoved(const QDBusObjectPath &session);
 

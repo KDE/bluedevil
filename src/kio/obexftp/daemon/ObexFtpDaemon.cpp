@@ -59,19 +59,11 @@ ObexFtpDaemon::ObexFtpDaemon(QObject *parent, const QList<QVariant>&)
                         QStringLiteral("afiestas@kde.org"), QStringLiteral("http://www.afiestas.org"));
 
     // Initialize QBluez
+    // FIXME: Delayed init is an issue with on-demand KDED module. First call to session() will fail
     d->m_manager = new QBluez::ObexManager(this);
     QBluez::InitObexManagerJob *job = d->m_manager->init();
     job->start();
-    connect(job, &QBluez::InitObexManagerJob::result, [ this ](QBluez::InitObexManagerJob *job) {
-        if (job->error()) {
-            qCDebug(OBEXDAEMON) << "Error initializing manager" << job->errorText();
-            return;
-        }
-
-        connect(d->m_manager, &QBluez::ObexManager::operationalChanged, this, &ObexFtpDaemon::operationalChanged);
-        connect(d->m_manager, &QBluez::ObexManager::sessionRemoved, this, &ObexFtpDaemon::sessionRemoved);
-    });
-    // FIXME: Delayed init is an issue with on-demand KDED module. First call to session() will fail
+    connect(job, &QBluez::InitObexManagerJob::result, this, &ObexFtpDaemon::initJobResult);
 }
 
 ObexFtpDaemon::~ObexFtpDaemon()
@@ -106,28 +98,10 @@ QString ObexFtpDaemon::session(QString address, const QDBusMessage &msg)
 
     QVariantMap args;
     args[QStringLiteral("Target")] = QStringLiteral("ftp");
-    QBluez::PendingCall *call = d->m_manager->createSession(address, args);
 
-    connect(call, &QBluez::PendingCall::finished, [ this, address ](QBluez::PendingCall *call) {
-        QString path;
-        // NOTE: It will fail if the session already exists, but wasn't created by us
-        if (call->error()) {
-            qCDebug(OBEXDAEMON) << "Error creating session" << call->errorText();
-        } else {
-            path = call->value().value<QDBusObjectPath>().path();
-            qCDebug(OBEXDAEMON) << "Created session" << path;
-        }
-        // Send reply (empty session path in case of error)
-        Q_FOREACH (const QDBusMessage &msg, d->m_wipSessions[address]) {
-            QDBusMessage reply = msg.createReply(path);
-            QDBusConnection::sessionBus().send(reply);
-        }
-        d->m_wipSessions.remove(address);
-        if (!call->error()) {
-            d->m_sessionMap.insert(address, path);
-            d->m_reverseSessionMap.insert(path, address);
-        }
-    });
+    QBluez::PendingCall *call = d->m_manager->createSession(address, args);
+    call->setUserData(address);
+    connect(call, &QBluez::PendingCall::finished, this, &ObexFtpDaemon::createSessionFinished);
 
     return QString();
 }
@@ -135,6 +109,45 @@ QString ObexFtpDaemon::session(QString address, const QDBusMessage &msg)
 bool ObexFtpDaemon::isOnline()
 {
     return d->m_manager->isOperational();
+}
+
+void ObexFtpDaemon::initJobResult(QBluez::InitObexManagerJob *job)
+{
+    if (job->error()) {
+        qCDebug(OBEXDAEMON) << "Error initializing manager" << job->errorText();
+        return;
+    }
+
+    connect(d->m_manager, &QBluez::ObexManager::operationalChanged, this, &ObexFtpDaemon::operationalChanged);
+    connect(d->m_manager, &QBluez::ObexManager::sessionRemoved, this, &ObexFtpDaemon::sessionRemoved);
+}
+
+void ObexFtpDaemon::createSessionFinished(QBluez::PendingCall *call)
+{
+    QString path;
+
+    // NOTE: It will fail if the session already exists, but wasn't created by us
+    if (call->error()) {
+        qCDebug(OBEXDAEMON) << "Error creating session" << call->errorText();
+    } else {
+        path = call->value().value<QDBusObjectPath>().path();
+        qCDebug(OBEXDAEMON) << "Created session" << path;
+    }
+
+    const QString &address = call->userData().toString();
+
+    // Send reply (empty session path in case of error)
+    Q_FOREACH (const QDBusMessage &msg, d->m_wipSessions[address]) {
+        QDBusMessage reply = msg.createReply(path);
+        QDBusConnection::sessionBus().send(reply);
+    }
+
+    d->m_wipSessions.remove(address);
+
+    if (!call->error()) {
+        d->m_sessionMap.insert(address, path);
+        d->m_reverseSessionMap.insert(path, address);
+    }
 }
 
 void ObexFtpDaemon::operationalChanged(bool operational)
