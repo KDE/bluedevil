@@ -33,6 +33,7 @@ class QDBusPendingCallWatcher;
 namespace QBluez {
     class Adapter;
     class Device;
+    class InitManagerJob;
 }
 
 class Q_DECL_EXPORT BlueDevilDaemon : public KDEDModule
@@ -88,6 +89,8 @@ private:
     void offlineMode();
 
 private Q_SLOTS:
+    void initJobResult(QBluez::InitManagerJob *job);
+
     /**
      * Called when the default adapter changes, re-initialize the kded with the new
      * default adapter

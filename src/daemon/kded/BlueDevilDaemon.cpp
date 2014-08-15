@@ -44,7 +44,6 @@
 #include <QBluez/InitManagerJob>
 #include <QBluez/Adapter>
 #include <QBluez/Device>
-#include <QBluez/LoadDeviceJob>
 
 K_PLUGIN_FACTORY_WITH_JSON(BlueDevilFactory,
                            "bluedevil.json",
@@ -109,25 +108,9 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     d->m_status = Private::Offline;
 
     // Initialize QBluez
-    QBluez::InitManagerJob *initJob = d->m_manager->init(QBluez::Manager::InitManagerAndAdapters);
+    QBluez::InitManagerJob *initJob = d->m_manager->init();
     initJob->start();
-    connect(initJob, &QBluez::InitManagerJob::result, [ this ](QBluez::InitManagerJob *job) {
-        if (job->error()) {
-            qCDebug(BLUEDAEMON) << "Error initializing manager:" << job->errorText();
-            return;
-        }
-
-        usableAdapterChanged(d->m_manager->usableAdapter());
-        connect(d->m_manager, &QBluez::Manager::usableAdapterChanged, this, &BlueDevilDaemon::usableAdapterChanged);
-
-        Q_FOREACH (QBluez::Device *device, d->m_manager->devices()) {
-            deviceFound(device);
-        }
-
-        if (!d->m_manager->adapters().isEmpty()) {
-            executeMonolithic();
-        }
-    });
+    connect(initJob, &QBluez::InitManagerJob::result, this, &BlueDevilDaemon::initJobResult);
 }
 
 BlueDevilDaemon::~BlueDevilDaemon()
@@ -150,22 +133,16 @@ bool BlueDevilDaemon::isOnline()
 QMapDeviceInfo BlueDevilDaemon::allDevices()
 {
     QMapDeviceInfo devices;
+    const QList<QBluez::Device*> &list = d->m_adapter->devices();
 
-    QList<QBluez::Device*>list = d->m_adapter->devices();
-    qCDebug(BLUEDAEMON) << "List: " << list.length();
-    DeviceInfo info;
     Q_FOREACH(QBluez::Device *const device, list) {
-        if (device->isLoaded()) {
-            info[QStringLiteral("name")] = device->friendlyName();
-            info[QStringLiteral("icon")] = device->icon();
-            info[QStringLiteral("address")] = device->address();
-            info[QStringLiteral("ubi")] = device->ubi();
-            info[QStringLiteral("UUIDs")] = device->uuids().join(QStringLiteral(","));
-            devices[device->address()] = info;
-        }
-        else {
-            device->load()->start();
-        }
+        DeviceInfo info;
+        info[QStringLiteral("name")] = device->friendlyName();
+        info[QStringLiteral("icon")] = device->icon();
+        info[QStringLiteral("address")] = device->address();
+        info[QStringLiteral("ubi")] = device->ubi();
+        info[QStringLiteral("UUIDs")] = device->uuids().join(QStringLiteral(","));
+        devices[device->address()] = info;
     }
 
     return devices;
@@ -320,6 +297,25 @@ void BlueDevilDaemon::offlineMode()
     d->m_status = Private::Offline;
 }
 
+void BlueDevilDaemon::initJobResult(QBluez::InitManagerJob *job)
+{
+    if (job->error()) {
+        qCDebug(BLUEDAEMON) << "Error initializing manager:" << job->errorText();
+        return;
+    }
+
+    usableAdapterChanged(d->m_manager->usableAdapter());
+    connect(d->m_manager, &QBluez::Manager::usableAdapterChanged, this, &BlueDevilDaemon::usableAdapterChanged);
+
+    Q_FOREACH (QBluez::Device *device, d->m_manager->devices()) {
+        deviceFound(device);
+    }
+
+    if (!d->m_manager->adapters().isEmpty()) {
+        executeMonolithic();
+    }
+}
+
 /*
  * The agent is released by another agents, for example if an user wants to use
  * blueman agent in kde, we've to respect the user decision here, so ATM until we have
@@ -348,11 +344,7 @@ void BlueDevilDaemon::deviceFound(QBluez::Device *device)
 {
     qCDebug(BLUEDAEMON) << "DeviceFound: " << device->ubi();
 
-    QBluez::LoadDeviceJob *job = device->load();
-    job->start();
-    connect(job, &QBluez::LoadDeviceJob::result, [ this, device ]() {
-        org::kde::KDirNotify::emitFilesAdded(QUrl(QStringLiteral("bluetooth:/")));
-    });
+    org::kde::KDirNotify::emitFilesAdded(QUrl(QStringLiteral("bluetooth:/")));
 }
 
 void BlueDevilDaemon::monolithicQuit(QDBusPendingCallWatcher* watcher)

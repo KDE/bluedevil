@@ -24,6 +24,7 @@
 namespace QBluez {
     class ObexManager;
     class PendingCall;
+    class InitObexManagerJob;
 }
 
 class ObexAgent;
@@ -37,6 +38,7 @@ public:
     ~FileReceiver();
 
 private Q_SLOTS:
+    void initJobResult(QBluez::InitObexManagerJob *job);
     void agentRegistered(QBluez::PendingCall* call);
     void operationalChanged(bool operational);
 

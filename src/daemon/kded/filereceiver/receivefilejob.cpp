@@ -33,7 +33,6 @@
 #include <QBluez/InitManagerJob>
 #include <QBluez/Adapter>
 #include <QBluez/Device>
-#include <QBluez/LoadDeviceJob>
 #include <QBluez/ObexSession>
 
 ReceiveFileJob::ReceiveFileJob(const QBluez::Request<QString> &req, QBluez::ObexTransfer *transfer, QObject* parent)
@@ -83,71 +82,69 @@ void ReceiveFileJob::init()
 
     // We need to get device (session->destination) from adapter (session->source) for its name and paired property
     QBluez::Manager *manager = new QBluez::Manager(this);
-    QBluez::InitManagerJob *job = manager->init(QBluez::Manager::InitManagerAndAdapters);
+    QBluez::InitManagerJob *job = manager->init();
     job->start();
-    connect(job, &QBluez::InitManagerJob::result, [ this, manager ](QBluez::InitManagerJob *job) {
-        if (job->error()) {
-            manager->deleteLater();
+    connect(job, &QBluez::InitManagerJob::result, this, &ReceiveFileJob::initJobResult);
+}
+
+void ReceiveFileJob::initJobResult(QBluez::InitManagerJob *job)
+{
+    QBluez::Manager *manager = job->manager();
+
+    if (job->error()) {
+        manager->deleteLater();
+        showNotification();
+        return;
+    }
+
+    QBluez::Adapter *adapter = manager->adapterForAddress(m_transfer->session()->source());
+    if (!adapter) {
+        qCDebug(BLUEDAEMON) << "No adapter for" << m_transfer->session()->source();
+        manager->deleteLater();
+        showNotification();
+        return;
+    }
+
+    QBluez::Device *device = adapter->deviceForAddress(m_transfer->session()->destination());
+    if (!device) {
+        qCDebug(BLUEDAEMON) << "No device for" << m_transfer->session()->destination();
+        manager->deleteLater();
+        showNotification();
+        return;
+    }
+
+    m_deviceName = device->name();
+
+    FileReceiverSettings::self()->load();
+    switch (FileReceiverSettings::self()->autoAccept()) {
+    case 0:
+        // Never auto-accept transfers
+        showNotification();
+        break;
+
+    case 1:
+        // Auto-accept only from trusted devices
+        if (device->isTrusted()) {
+            qCDebug(BLUEDAEMON) << "Auto-accepting transfer for trusted device";
+            slotAccept();
+        } else {
             showNotification();
-            return;
         }
-        QBluez::Adapter *adapter = job->manager()->adapterForAddress(m_transfer->session()->source());
-        if (!adapter) {
-            qCDebug(BLUEDAEMON) << "No adapter for" << m_transfer->session()->source();
-            manager->deleteLater();
-            showNotification();
-            return;
-        }
-        QBluez::Device *device = adapter->deviceForAddress(m_transfer->session()->destination());
-        if (!device) {
-            qCDebug(BLUEDAEMON) << "No device for" << m_transfer->session()->destination();
-            manager->deleteLater();
-            showNotification();
-            return;
-        }
-        QBluez::LoadDeviceJob *deviceJob = device->load();
-        deviceJob->start();
-        connect(deviceJob, &QBluez::LoadDeviceJob::result, [ this, manager ](QBluez::LoadDeviceJob *job) {
-            if (job->error()) {
-                manager->deleteLater();
-                showNotification();
-                return;
-            }
+        break;
 
-            m_deviceName = job->device()->name();
+    case 2:
+        // Auto-accept all transfers
+        qCDebug(BLUEDAEMON) << "Auto-accepting transfers for all devices";
+        slotAccept();
+        break;
 
-            FileReceiverSettings::self()->load();
-            switch (FileReceiverSettings::self()->autoAccept()) {
-            case 0:
-                // Never auto-accept transfers
-                showNotification();
-                break;
+    default:
+        // Unknown
+        showNotification();
+        break;
+    }
 
-            case 1:
-                // Auto-accept only from trusted devices
-                if (job->device()->isTrusted()) {
-                    qCDebug(BLUEDAEMON) << "Auto-accepting transfer for trusted device";
-                    slotAccept();
-                } else {
-                    showNotification();
-                }
-                break;
-
-            case 2:
-                // Auto-accept all transfers
-                qCDebug(BLUEDAEMON) << "Auto-accepting transfers for all devices";
-                slotAccept();
-                break;
-
-            default:
-                // Unknown
-                showNotification();
-                break;
-            }
-
-            manager->deleteLater();
-        });
-    });
+    manager->deleteLater();
 }
 
 void ReceiveFileJob::showNotification()

@@ -30,7 +30,6 @@
 #include <KLocalizedString>
 
 #include <QBluez/Device>
-#include <QBluez/LoadDeviceJob>
 
 BluezAgent::BluezAgent(QObject *parent)
     : QBluez::Agent(parent)

@@ -33,18 +33,7 @@ FileReceiver::FileReceiver(QObject *parent)
     m_manager = new QBluez::ObexManager(this);
     QBluez::InitObexManagerJob *initJob = m_manager->init();
     initJob->start();
-    connect(initJob, &QBluez::InitObexManagerJob::result, [ this ](QBluez::InitObexManagerJob *job) {
-        if (job->error()) {
-            qCWarning(BLUEDAEMON) << "Error initializing ObexManager!";
-            return;
-        }
-
-        m_agent = new ObexAgent(this);
-
-        // Make sure to register agent when obex daemon starts
-        connect(m_manager, &QBluez::ObexManager::operationalChanged, this, &FileReceiver::operationalChanged);
-        operationalChanged(m_manager->isOperational());
-    });
+    connect(initJob, &QBluez::InitObexManagerJob::result, this, &FileReceiver::initJobResult);
 }
 
 FileReceiver::~FileReceiver()
@@ -53,6 +42,20 @@ FileReceiver::~FileReceiver()
         qCDebug(BLUEDAEMON) << "Unregistering ObexAgent";
         m_manager->unregisterAgent(m_agent);
     }
+}
+
+void FileReceiver::initJobResult(QBluez::InitObexManagerJob *job)
+{
+    if (job->error()) {
+        qCWarning(BLUEDAEMON) << "Error initializing ObexManager!";
+        return;
+    }
+
+    m_agent = new ObexAgent(this);
+
+    // Make sure to register agent when obex daemon starts
+    connect(m_manager, &QBluez::ObexManager::operationalChanged, this, &FileReceiver::operationalChanged);
+    operationalChanged(m_manager->isOperational());
 }
 
 void FileReceiver::agentRegistered(QBluez::PendingCall *call)

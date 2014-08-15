@@ -26,6 +26,10 @@
 #include <QBluez/Request>
 #include <QBluez/ObexTransfer>
 
+namespace QBluez {
+    class InitManagerJob;
+}
+
 class ReceiveFileJob : public KJob
 {
     Q_OBJECT
@@ -40,6 +44,7 @@ protected:
 
 private Q_SLOTS:
     void init();
+    void initJobResult(QBluez::InitManagerJob *job);
     void showNotification();
     void slotCancel();
     void slotAccept();
