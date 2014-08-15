@@ -31,6 +31,10 @@
 
 #include <QBluez/ObexFileTransfer>
 
+namespace QBluez {
+    class ObexTransfer;
+}
+
 class KioFtp : public QObject, public KIO::SlaveBase
 {
     Q_OBJECT
@@ -47,6 +51,8 @@ public:
     void mkdir(const QUrl &url, int permissions) Q_DECL_OVERRIDE;
     void rename(const QUrl &src, const QUrl &dest, KIO::JobFlags flags) Q_DECL_OVERRIDE;
     void get(const QUrl &url) Q_DECL_OVERRIDE;
+
+    bool cancelTransfer(QBluez::ObexTransfer *transfer);
 
 private Q_SLOTS:
     void updateProcess();

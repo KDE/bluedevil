@@ -3,12 +3,16 @@
 "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
 <node>
  <interface name="org.kde.ObexFtp">
+    <method name="isOnline">
+      <arg name="online" type="b" direction="out"/>
+    </method>
     <method name="session">
       <arg name="address" type="s" direction="in"/>
       <arg name="sessionPath" type="s" direction="out"/>
     </method>
-    <method name="isOnline">
-      <arg name="online" type="b" direction="out"/>
+    <method name="cancelTransfer">
+      <arg name="transfer" type="o" direction="in"/>
+      <arg name="success" type="b" direction="out"/>
     </method>
   </interface>
 </node>

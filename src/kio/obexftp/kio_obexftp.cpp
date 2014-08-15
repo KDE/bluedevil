@@ -223,6 +223,11 @@ void KioFtp::get(const QUrl &url)
     finished();
 }
 
+bool KioFtp::cancelTransfer(QBluez::ObexTransfer *transfer)
+{
+    return m_kded->cancelTransfer(transfer->objectPath()).value();
+}
+
 void KioFtp::setHost(const QString &host, quint16 port, const QString &user, const QString &pass)
 {
     Q_UNUSED(port)
@@ -311,14 +316,11 @@ void KioFtp::copyHelper(const QUrl &src, const QUrl &dest)
     }
 
     qCDebug(OBEXFTP) << "This shouldn't happen...";
-    finished();
 }
 
 void KioFtp::copyWithinObexftp(const QUrl &src, const QUrl &dest)
 {
     qCDebug(OBEXFTP) << "Source: " << src << "Dest:" << dest;
-
-    finished();
 }
 
 void KioFtp::copyFromObexftp(const QUrl &src, const QUrl &dest)
@@ -338,8 +340,6 @@ void KioFtp::copyFromObexftp(const QUrl &src, const QUrl &dest)
     QBluez::ObexTransfer *transfer = call->value().value<QBluez::ObexTransfer*>();
     TransferFileJob *getFile = new TransferFileJob(transfer, this);
     getFile->exec();
-
-    finished();
 }
 
 void KioFtp::copyToObexftp(const QUrl &src, const QUrl &dest)
@@ -359,8 +359,6 @@ void KioFtp::copyToObexftp(const QUrl &src, const QUrl &dest)
     QBluez::ObexTransfer *transfer = call->value().value<QBluez::ObexTransfer*>();
     TransferFileJob *putFile = new TransferFileJob(transfer, this);
     putFile->exec();
-
-    finished();
 }
 
 void KioFtp::statHelper(const QUrl &url)

@@ -40,10 +40,7 @@ void TransferFileJob::start()
 
 bool TransferFileJob::doKill()
 {
-    // FIXME: Call to cancel will fail with NotAuthorized because obexftp deamon is owner of this transfer
-    QBluez::PendingCall *call = m_transfer->cancel();
-    call->waitForFinished();
-    return !call->error();
+    return m_parent->cancelTransfer(m_transfer);
 }
 
 void TransferFileJob::doStart()
@@ -82,7 +79,7 @@ void TransferFileJob::transferredChanged(quint64 transferred)
 
     if (m_parent->wasKilled()) {
         qCDebug(OBEXFTP) << "Kio was killed, aborting task";
-        m_transfer->cancel()->waitForFinished();
+        doKill();
         emitResult();
         return;
     }

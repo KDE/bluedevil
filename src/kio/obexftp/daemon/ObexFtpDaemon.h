@@ -30,6 +30,7 @@ namespace QBluez {
 }
 
 class QDBusMessage;
+class QDBusPendingCallWatcher;
 
 class Q_DECL_EXPORT ObexFtpDaemon : public KDEDModule
 {
@@ -41,12 +42,14 @@ public:
     ~ObexFtpDaemon();
 
 public Q_SLOTS:
-    Q_SCRIPTABLE QString session(QString address, const QDBusMessage &msg);
     Q_SCRIPTABLE bool isOnline();
+    Q_SCRIPTABLE QString session(QString address, const QDBusMessage &msg);
+    Q_SCRIPTABLE bool cancelTransfer(const QDBusObjectPath &transfer, const QDBusMessage &msg);
 
 private Q_SLOTS:
     void initJobResult(QBluez::InitObexManagerJob *job);
     void createSessionFinished(QBluez::PendingCall *call);
+    void cancelTransferFinished(QDBusPendingCallWatcher *watcher);
 
     void operationalChanged(bool operational);
     void sessionRemoved(const QDBusObjectPath &session);

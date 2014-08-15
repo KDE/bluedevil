@@ -71,6 +71,11 @@ ObexFtpDaemon::~ObexFtpDaemon()
     delete d;
 }
 
+bool ObexFtpDaemon::isOnline()
+{
+    return d->m_manager->isOperational();
+}
+
 QString ObexFtpDaemon::session(QString address, const QDBusMessage &msg)
 {
     if (!d->m_manager->isOperational()) {
@@ -106,9 +111,23 @@ QString ObexFtpDaemon::session(QString address, const QDBusMessage &msg)
     return QString();
 }
 
-bool ObexFtpDaemon::isOnline()
+bool ObexFtpDaemon::cancelTransfer(const QDBusObjectPath &transfer, const QDBusMessage &msg)
 {
-    return d->m_manager->isOperational();
+    // We need this function because kio_obexftp is not owner of the transfer,
+    // and thus cannot cancel it.
+
+    msg.setDelayedReply(true);
+
+    QDBusMessage call = QDBusMessage::createMethodCall(QStringLiteral("org.bluez.obex"),
+                            transfer.path(),
+                            QStringLiteral("org.bluez.obex.Transfer1"),
+                            QStringLiteral("Cancel"));
+
+    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(QDBusConnection::sessionBus().asyncCall(call));
+    watcher->setProperty("ObexFtpDaemon-msg", QVariant::fromValue(msg));
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, &ObexFtpDaemon::cancelTransferFinished);
+
+    return false;
 }
 
 void ObexFtpDaemon::initJobResult(QBluez::InitObexManagerJob *job)
@@ -148,6 +167,15 @@ void ObexFtpDaemon::createSessionFinished(QBluez::PendingCall *call)
         d->m_sessionMap.insert(address, path);
         d->m_reverseSessionMap.insert(path, address);
     }
+}
+
+void ObexFtpDaemon::cancelTransferFinished(QDBusPendingCallWatcher *watcher)
+{
+    const QDBusPendingReply<> &reply = *watcher;
+    QDBusMessage msg = watcher->property("ObexFtpDaemon-msg").value<QDBusMessage>();
+
+    bool success = !reply.isError();
+    QDBusConnection::sessionBus().send(msg.createReply(QVariant(success)));
 }
 
 void ObexFtpDaemon::operationalChanged(bool operational)
