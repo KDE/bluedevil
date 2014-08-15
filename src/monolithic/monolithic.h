@@ -27,6 +27,7 @@ namespace QBluez {
     class Manager;
     class Adapter;
     class Device;
+    class InitManagerJob;
 }
 
 class QAction;
@@ -55,6 +56,7 @@ public Q_SLOTS:
     void activeDiscoverable(bool active);
 
 private Q_SLOTS:
+    void initJobResult(QBluez::InitManagerJob *job);
     void actionTriggered();
     void browseTriggered(QString address);
     void sendTriggered(const QString &ubi);

@@ -33,7 +33,6 @@
 #include <QBluez/InitManagerJob>
 #include <QBluez/Adapter>
 #include <QBluez/Device>
-#include <QBluez/LoadDeviceJob>
 
 Monolithic::Monolithic(QObject *parent)
     : KStatusNotifierItem(parent)
@@ -42,8 +41,8 @@ Monolithic::Monolithic(QObject *parent)
     setIconByName(QStringLiteral("preferences-system-bluetooth"));
     setToolTip(QStringLiteral("preferences-system-bluetooth"), QStringLiteral("Bluetooth"), QString());
 
-    m_supportedServices.insert(i18n("Browse device"), QStringLiteral("00001106-0000-1000-8000-00805F9B34FB"));
-    m_supportedServices.insert(i18n("Send Files"), QStringLiteral("00001105-0000-1000-8000-00805F9B34FB"));
+    m_supportedServices.insert(i18n("Browse device"), QBluez::Services::ObexFileTransfer);
+    m_supportedServices.insert(i18n("Send Files"), QBluez::Services::ObexObjectPush);
 
     offlineMode();
 
@@ -55,18 +54,9 @@ Monolithic::Monolithic(QObject *parent)
     m_manager = new QBluez::Manager(this);
     connect(m_manager, &QBluez::Manager::usableAdapterChanged, this, &Monolithic::usableAdapterChanged);
 
-    QBluez::InitManagerJob *initJob = m_manager->init(QBluez::Manager::InitManagerAndAdapters);
+    QBluez::InitManagerJob *initJob = m_manager->init();
     initJob->start();
-    connect(initJob, &QBluez::InitManagerJob::result, [ this ](QBluez::InitManagerJob *job) {
-        if (job->error()) {
-            qCDebug(MONOLITHIC) << "Error initializing manager:" << job->errorText();
-            return;
-        }
-
-        if (m_manager->isBluetoothOperational()) {
-            onlineMode();
-        }
-    });
+    connect(initJob, &QBluez::InitManagerJob::result, this, &Monolithic::initJobResult);
 }
 
 void Monolithic::usableAdapterChanged()
@@ -240,9 +230,9 @@ void Monolithic::actionTriggered()
         return;
     }
 
-    if (service == QLatin1String("00001106-0000-1000-8000-00805F9B34FB")) {
+    if (service == QBluez::Services::ObexFileTransfer) {
         browseTriggered(device->address());
-    } else if (service == QLatin1String("00001105-0000-1000-8000-00805F9B34FB")) {
+    } else if (service == QBluez::Services::ObexObjectPush) {
         sendTriggered(device->ubi());
     }
 }
@@ -303,6 +293,18 @@ void Monolithic::activeDiscoverable(bool active)
     }
 }
 
+void Monolithic::initJobResult(QBluez::InitManagerJob *job)
+{
+    if (job->error()) {
+        qCDebug(MONOLITHIC) << "Error initializing manager:" << job->errorText();
+        return;
+    }
+
+    if (m_manager->isBluetoothOperational()) {
+        onlineMode();
+    }
+}
+
 void Monolithic::browseTriggered(QString address)
 {
     QUrl url(QStringLiteral("obexftp:/"));
@@ -338,20 +340,11 @@ void Monolithic::poweredChanged()
 
 void Monolithic::deviceCreated(QBluez::Device *device)
 {
-    QBluez::LoadDeviceJob *job = device->load();
-    job->start();
-    connect(job, &QBluez::LoadDeviceJob::result, [ this ](QBluez::LoadDeviceJob *job) {
-        if (job->error()) {
-            qCDebug(MONOLITHIC) << "Error loading device" << job->errorText();
-            return;
-        }
+    connect(device, &QBluez::Device::deviceChanged, this, &Monolithic::regenerateConnectedDevices);
+    connect(device, &QBluez::Device::uuidsChanged, this, &Monolithic::UUIDsChanged);
 
-        connect(job->device(), &QBluez::Device::deviceChanged, this, &Monolithic::regenerateConnectedDevices);
-        connect(job->device(), &QBluez::Device::uuidsChanged, this, &Monolithic::UUIDsChanged);
-
-        regenerateDeviceEntries();
-        regenerateConnectedDevices();
-    });
+    regenerateDeviceEntries();
+    regenerateConnectedDevices();
 }
 
 void Monolithic::offlineMode()
