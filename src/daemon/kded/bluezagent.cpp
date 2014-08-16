@@ -55,6 +55,7 @@ void BluezAgent::authorizeService(QBluez::Device *device, const QString &uuid, c
 
     qCDebug(BLUEDAEMON) << "AGENT-AuthorizeService";
 
+    m_device = device;
     m_boolRequest = request;
 
     QStringList list;
@@ -119,6 +120,24 @@ void BluezAgent::requestConfirmation(QBluez::Device *device, const QString &pass
 
     connect(m_process, SIGNAL(finished(int)), this, SLOT(processClosedBool(int)));
     m_process->start(exe, list);
+}
+
+void BluezAgent::requestAuthorization(QBluez::Device *device, const QBluez::Request<> &request)
+{
+    qCDebug(BLUEDAEMON) << "AGENT-RequestAuthorization";
+
+    m_device = device;
+    m_boolRequest = request;
+
+    QStringList list;
+    list.append(device->name());
+    list.append(device->ubi());
+
+    const QString &exe = QStandardPaths::findExecutable(QStringLiteral("bluedevil-authorize"),
+                                                        QStringList(HELPER_INSTALL_PATH));
+
+    m_process->start(exe, list);
+    connect(m_process, SIGNAL(finished(int)), this, SLOT(processClosedAuthorize(int)));
 }
 
 void BluezAgent::cancel()

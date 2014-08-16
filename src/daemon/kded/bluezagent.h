@@ -71,6 +71,11 @@ public Q_SLOTS:
     void requestConfirmation(QBluez::Device *device, const QString &passkey, const QBluez::Request<void> &request) Q_DECL_OVERRIDE;
 
     /**
+     * Called by bluez to ask for a request authorization
+     */
+    void requestAuthorization(QBluez::Device *device, const QBluez::Request<> &request) Q_DECL_OVERRIDE;
+
+    /**
      * Called by bluez to inform that a process has failed (for example when the pin is introduced
      * too late and the device which ask for the pin is no longer listening).
      * We do anything here, since is not needed

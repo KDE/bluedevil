@@ -77,4 +77,3 @@ void Authorize::deny()
     qDebug() << "Rejected";
     qApp->exit(2);
 }
-

@@ -1,4 +1,3 @@
-add_subdirectory(confirmmodechange)
 add_subdirectory(requestconfirmation)
 add_subdirectory(requestpin)
 add_subdirectory(authorize)
