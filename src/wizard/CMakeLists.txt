@@ -5,7 +5,7 @@ set(wizard_SRCS
     debug_p.cpp
 
     pages/discoverpage.cpp
-    pages/nopairing.cpp
+    pages/connect.cpp
     pages/legacypairing.cpp
     pages/legacypairingdatabase.cpp
     pages/keyboardpairing.cpp
@@ -16,7 +16,7 @@ set(wizard_SRCS
 
 qt5_wrap_ui(wizard_SRCS
             pages/discover.ui
-            pages/nopairing.ui
+            pages/connect.ui
             pages/legacypairing.ui
             pages/keyboardpairing.ui
             pages/ssppairing.ui

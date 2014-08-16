@@ -436,7 +436,7 @@ QAction* Monolithic::actionForDevice(QBluez::Device* device, QBluez::Device *las
     }
 
     QAction *connectAction = new QAction(i18nc("Connect to a bluetooth device", "Connect"), deviceAction);
-    connect(connectAction, &QAction::triggered, device, &QBluez::Device::connect);
+    connect(connectAction, &QAction::triggered, device, &QBluez::Device::connectDevice);
     subMenu->addAction(connectAction);
 
 //Enable when we can know if we should show Connect or not

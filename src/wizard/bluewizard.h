@@ -52,7 +52,6 @@ public:
 
     enum {
         Discover,
-        NoPairing,
         LegacyPairing,
         LegacyPairingDatabase,
         KeyboardPairing,

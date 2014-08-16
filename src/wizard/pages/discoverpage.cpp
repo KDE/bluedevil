@@ -195,7 +195,7 @@ int DiscoverPage::nextId() const
 
     QBluez::Device *device = m_wizard->device();
     if (device->isPaired()) {
-        qCDebug(WIZARD) << "Device is paired, jumping to Connect page";
+        qCDebug(WIZARD) << "Device is paired, jumping to connect page";
         return BlueWizard::Connect;
     }
 
@@ -226,7 +226,7 @@ int DiscoverPage::nextId() const
     // If pin == NULL means that not pairing is required
     if (pin == QLatin1String("NULL")) {
         qCDebug(WIZARD) << "NO Pairing";
-        return BlueWizard::NoPairing;
+        return BlueWizard::Connect;
     }
 
     if (m_wizard->agent()->isFromDatabase()) {

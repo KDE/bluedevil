@@ -18,7 +18,7 @@
 #include "bluewizard.h"
 #include "wizardagent.h"
 #include "pages/discoverpage.h"
-#include "pages/nopairing.h"
+#include "pages/connect.h"
 #include "pages/legacypairing.h"
 #include "pages/legacypairingdatabase.h"
 #include "pages/keyboardpairing.h"
@@ -57,8 +57,7 @@ BlueWizard::BlueWizard(const QUrl &url)
     }
 
     setPage(Discover, new DiscoverPage(this));
-    setPage(NoPairing, new NoPairingPage(this));
-    setPage(Connect, new NoPairingPage(this));
+    setPage(Connect, new ConnectPage(this));
     setPage(LegacyPairing, new LegacyPairingPage(this));
     setPage(LegacyPairingDatabase, new LegacyPairingPageDatabase(this));
     setPage(KeyboardPairing, new KeyboardPairingPage(this));

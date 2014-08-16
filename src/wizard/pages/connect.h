@@ -20,38 +20,41 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-#ifndef NOPAIRING_H
-#define NOPAIRING_H
+#ifndef CONNECT_H
+#define CONNECT_H
 
-#include "ui_nopairing.h"
+#include "ui_connect.h"
 #include <QWizard>
 #include <QWizardPage>
+
+namespace QBluez {
+    class PendingCall;
+}
 
 class BlueWizard;
 class KPixmapSequenceOverlayPainter;
 
-class NoPairingPage : public QWizardPage, Ui::NoPairing
+class ConnectPage : public QWizardPage, Ui::Connect
 {
     Q_OBJECT
 
 public:
-    NoPairingPage(BlueWizard *parent = 0);
+    ConnectPage(BlueWizard *parent = 0);
 
-    void initializePage() Q_DECL_OVERRIDE;
-    bool validatePage() Q_DECL_OVERRIDE;
     int nextId() const Q_DECL_OVERRIDE;
+    void initializePage() Q_DECL_OVERRIDE;
+
+private Q_SLOTS:
+    void setTrustedFinished(QBluez::PendingCall *call);
 
 protected:
     QList<QWizard::WizardButton> wizardButtonsLayout() const;
-
-private Q_SLOTS:
-    void timeout();
-    void connectedChanged(bool connected);
 
 private:
     bool m_validPage;
     BlueWizard *m_wizard;
     KPixmapSequenceOverlayPainter *m_working;
+    bool m_success;
 };
 
-#endif // NOPAIRING_H
+#endif // CONNECT_H

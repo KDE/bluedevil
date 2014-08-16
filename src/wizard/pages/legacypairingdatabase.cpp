@@ -51,7 +51,10 @@ LegacyPairingPageDatabase::LegacyPairingPageDatabase(BlueWizard *parent)
 
 int LegacyPairingPageDatabase::nextId() const
 {
-    return BlueWizard::Connect;
+    if (m_success) {
+        return BlueWizard::Connect;
+    }
+    return BlueWizard::Fail;
 }
 
 void LegacyPairingPageDatabase::initializePage()
