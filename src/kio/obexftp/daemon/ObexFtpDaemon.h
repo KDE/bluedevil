@@ -42,7 +42,7 @@ public:
     ~ObexFtpDaemon();
 
 public Q_SLOTS:
-    Q_SCRIPTABLE bool isOnline();
+    Q_SCRIPTABLE bool isOnline(const QDBusMessage &msg);
     Q_SCRIPTABLE QString session(QString address, const QDBusMessage &msg);
     Q_SCRIPTABLE bool cancelTransfer(const QDBusObjectPath &transfer, const QDBusMessage &msg);
 

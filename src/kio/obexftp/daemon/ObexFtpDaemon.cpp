@@ -42,6 +42,8 @@ struct ObexFtpDaemon::Private
     QHash<QString, QString> m_sessionMap;
     QHash<QString, QString> m_reverseSessionMap;
     QHash<QString, QList<QDBusMessage> > m_wipSessions;
+    QList<QDBusMessage> m_pendingIsOnlineCalls;
+    bool m_initializing;
 };
 
 ObexFtpDaemon::ObexFtpDaemon(QObject *parent, const QList<QVariant>&)
@@ -59,7 +61,7 @@ ObexFtpDaemon::ObexFtpDaemon(QObject *parent, const QList<QVariant>&)
                         QStringLiteral("afiestas@kde.org"), QStringLiteral("http://www.afiestas.org"));
 
     // Initialize QBluez
-    // FIXME: Delayed init is an issue with on-demand KDED module. First call to session() will fail
+    d->m_initializing = true;
     d->m_manager = new QBluez::ObexManager(this);
     QBluez::InitObexManagerJob *job = d->m_manager->init();
     job->start();
@@ -71,8 +73,14 @@ ObexFtpDaemon::~ObexFtpDaemon()
     delete d;
 }
 
-bool ObexFtpDaemon::isOnline()
+bool ObexFtpDaemon::isOnline(const QDBusMessage &msg)
 {
+    if (d->m_initializing) {
+        msg.setDelayedReply(true);
+        d->m_pendingIsOnlineCalls.append(msg);
+        return false;
+    }
+
     return d->m_manager->isOperational();
 }
 
@@ -132,6 +140,14 @@ bool ObexFtpDaemon::cancelTransfer(const QDBusObjectPath &transfer, const QDBusM
 
 void ObexFtpDaemon::initJobResult(QBluez::InitObexManagerJob *job)
 {
+    d->m_initializing = false;
+
+    Q_FOREACH (const QDBusMessage &msg, d->m_pendingIsOnlineCalls) {
+        QDBusMessage reply = msg.createReply(d->m_manager->isOperational());
+        QDBusConnection::sessionBus().send(reply);
+    }
+    d->m_pendingIsOnlineCalls.clear();
+
     if (job->error()) {
         qCDebug(OBEXDAEMON) << "Error initializing manager" << job->errorText();
         return;
@@ -145,8 +161,11 @@ void ObexFtpDaemon::createSessionFinished(QBluez::PendingCall *call)
 {
     QString path;
 
-    // NOTE: It will fail if the session already exists, but wasn't created by us
-    if (call->error()) {
+    if (call->error() == QBluez::PendingCall::AlreadyExists) {
+        // It may happen when kded crashes, or the session was created by different app
+        // What to do here? We are not owners of the session...
+        qCDebug(OBEXDAEMON) << "Session already exists but it was created by different process!";
+    } else if (call->error()) {
         qCDebug(OBEXDAEMON) << "Error creating session" << call->errorText();
     } else {
         path = call->value().value<QDBusObjectPath>().path();
