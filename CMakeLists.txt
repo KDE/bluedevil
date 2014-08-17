@@ -36,9 +36,6 @@ include(FeatureSummary)
 configure_file(config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config.h)
 
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules ${CMAKE_MODULE_PATH})
-find_package(LibBlueDevil 2.0 REQUIRED)
 find_package(SharedMimeInfo REQUIRED)
-
-include_directories(${LibBlueDevil_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
 
 add_subdirectory(src)
