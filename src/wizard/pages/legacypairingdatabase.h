@@ -23,7 +23,7 @@
 #ifndef LEGACYPAIRINGDATABASE_H
 #define LEGACYPAIRINGDATABASE_H
 
-#include "ui_nopairing.h"
+#include "ui_connect.h"
 #include <QWizardPage>
 
 class BlueWizard;
@@ -33,7 +33,7 @@ namespace QBluez {
     class PendingCall;
 }
 
-class LegacyPairingPageDatabase : public QWizardPage, Ui::NoPairing
+class LegacyPairingPageDatabase : public QWizardPage, Ui::Connect
 {
     Q_OBJECT
 
