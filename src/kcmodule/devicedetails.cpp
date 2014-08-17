@@ -20,8 +20,6 @@
 
 #include "devicedetails.h"
 
-#include <bluedevil/bluedevildevice.h>
-
 #include <QLabel>
 #include <QCheckBox>
 #include <QLineEdit>
@@ -31,7 +29,9 @@
 #include <kled.h>
 #include <klocalizedstring.h>
 
-DeviceDetails::DeviceDetails(Device* device, QWidget* parent)
+#include <QBluez/Device>
+
+DeviceDetails::DeviceDetails(QBluez::Device *device, QWidget *parent)
     : QDialog(parent)
     , m_device(device)
     , m_alias(new QLineEdit(this))
@@ -60,12 +60,8 @@ DeviceDetails::DeviceDetails(Device* device, QWidget* parent)
     layout->addRow(m_buttonBox);
     setLayout(layout);
 
-    connect(m_blocked, SIGNAL(toggled(bool)), this, SLOT(blockToggled(bool)));
-    connect(m_buttonBox, SIGNAL(clicked(QAbstractButton*)), this, SLOT(buttonClicked(QAbstractButton*)));
-}
-
-DeviceDetails::~DeviceDetails()
-{
+    connect(m_blocked, &QCheckBox::toggled, this, &DeviceDetails::blockToggled);
+    connect(m_buttonBox, &QDialogButtonBox::clicked, this, &DeviceDetails::buttonClicked);
 }
 
 void DeviceDetails::buttonClicked(QAbstractButton *button)

@@ -31,7 +31,7 @@
 
 #include <KLocalizedString>
 
-SharedFilesDialog::SharedFilesDialog(QWidget* parent, Qt::WindowFlags flags)
+SharedFilesDialog::SharedFilesDialog(QWidget *parent, Qt::WindowFlags flags)
     : QDialog(parent, flags)
 {
     m_ui = new Ui::sharedFiles();
@@ -50,9 +50,9 @@ SharedFilesDialog::SharedFilesDialog(QWidget* parent, Qt::WindowFlags flags)
     m_ui->addBtn->setIcon(QIcon::fromTheme(QStringLiteral("list-add")));
     m_ui->removeBtn->setIcon(QIcon::fromTheme(QStringLiteral("list-remove")));
 
-    connect(this, SIGNAL(finished(int)), this, SLOT(slotFinished(int)));
-    connect(m_ui->addBtn, SIGNAL(clicked(bool)), this, SLOT(addFiles()));
-    connect(m_ui->removeBtn, SIGNAL(clicked(bool)), this, SLOT(removeFiles()));
+    connect(this, &QDialog::finished, this, &SharedFilesDialog::slotFinished);
+    connect(m_ui->addBtn, &QPushButton::clicked, this, &SharedFilesDialog::addFiles);
+    connect(m_ui->removeBtn, &QPushButton::clicked, this, &SharedFilesDialog::removeFiles);
 }
 
 void SharedFilesDialog::slotFinished(int result)
@@ -64,13 +64,13 @@ void SharedFilesDialog::slotFinished(int result)
     QUrl url;
     QString baseDir = FileReceiverSettings::self()->rootFolder().path().append(QLatin1Char('/'));
     if (!m_added.isEmpty()) {
-        Q_FOREACH(const QString &filePath, m_added) {
+        Q_FOREACH (const QString &filePath, m_added) {
             url.setPath(filePath);
             QFile::remove(baseDir + url.fileName());
         }
     }
     if (!m_removed.isEmpty()) {
-        Q_FOREACH(const QString &filePath, m_removed) {
+        Q_FOREACH (const QString &filePath, m_removed) {
             url.setPath(filePath);
             QFile::link(filePath, baseDir + url.fileName());
         }
@@ -91,7 +91,7 @@ void SharedFilesDialog::addFiles()
     QString baseDir = FileReceiverSettings::self()->rootFolder().path().append(QLatin1Char('/'));
 
     QStringList files = dialog->selectedFiles();
-    Q_FOREACH(const QString &filePath, files) {
+    Q_FOREACH (const QString &filePath, files) {
         url.setPath(filePath);
 
         linkPath = baseDir + url.fileName();

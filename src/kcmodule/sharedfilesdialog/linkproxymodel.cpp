@@ -23,7 +23,7 @@
 #include <QModelIndex>
 #include <QFileSystemModel>
 
-bool LinkProxyModel::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const
+bool LinkProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
 {
     QFileSystemModel *model = qobject_cast< QFileSystemModel *>(sourceModel());
     QModelIndex in = model->index(source_row, source_parent.column(), source_parent);

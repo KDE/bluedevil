@@ -25,11 +25,10 @@
 #include "filereceiversettings.h"
 #include "bluedevil_service.h"
 #include "sharedfilesdialog/sharedfilesdialog.h"
+#include "debug_p.h"
 
 #include <QTimer>
 #include <QBoxLayout>
-
-#include <bluedevil/bluedevil.h>
 
 #include <kaboutdata.h>
 #include <klineedit.h>
@@ -37,6 +36,10 @@
 #include <kpluginfactory.h>
 #include <kconfigdialogmanager.h>
 #include <klocalizedstring.h>
+
+#include <QBluez/Manager>
+#include <QBluez/InitManagerJob>
+#include <QBluez/Adapter>
 
 K_PLUGIN_FACTORY_WITH_JSON(BlueDevilFactory,
                            "bluedeviltransfer.json",
@@ -46,10 +49,10 @@ K_PLUGIN_FACTORY_WITH_JSON(BlueDevilFactory,
 
 KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
     : KCModule(parent)
-    , m_systemCheck(new SystemCheck(this))
+    , m_systemCheck(0)
     , m_restartNeeded(false)
 {
-    KAboutData* ab = new KAboutData(QStringLiteral("kcmbluedeviltransfer"),
+    KAboutData *ab = new KAboutData(QStringLiteral("kcmbluedeviltransfer"),
                                     i18n("Bluetooth Transfer"),
                                     QStringLiteral("1.0"),
                                     i18n("Bluetooth Transfer Control Panel Module"),
@@ -59,13 +62,9 @@ KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
     ab->addAuthor(i18n("Rafael Fernández López"), i18n("Developer and Maintainer"), QStringLiteral("ereslibre@kde.org"));
     setAboutData(ab);
 
-    connect(m_systemCheck, SIGNAL(updateInformationStateRequest()),
-            this, SLOT(updateInformationState()));
-    connect(this, SIGNAL(changed(bool)), this, SLOT(changed(bool)));
+    connect(this, SIGNAL(changed(bool)), this, SLOT(slotChanged(bool)));
 
     QVBoxLayout *layout = new QVBoxLayout;
-    m_systemCheck->createWarnings(layout);
-
     QWidget *transfer = new QWidget(this);
     m_uiTransfer = new Ui::Transfer();
     m_uiTransfer->setupUi(transfer);
@@ -86,25 +85,13 @@ KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
 
     addConfig(FileReceiverSettings::self(), transfer);
 
-    connect(m_uiTransfer->sharedFiles, SIGNAL(clicked(bool)), this, SLOT(showSharedFilesDialog()));
-    connect(BlueDevil::Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)),
-            this, SLOT(usableAdapterChanged(Adapter*)));
+    connect(m_uiTransfer->sharedFiles, &QPushButton::clicked, this, &KCMBlueDevilTransfer::showSharedFilesDialog);
 
-    BlueDevil::Adapter *const usableAdapter = BlueDevil::Manager::self()->usableAdapter();
-    if (usableAdapter) {
-        connect(usableAdapter, SIGNAL(discoverableChanged(bool)),
-                this, SLOT(adapterDiscoverableChanged()));
-    }
-
-    updateInformationState();
-
-    ColumnResizer *resizer = new ColumnResizer(this);
-    resizer->addWidgetsFromFormLayout(m_uiTransfer->formLayout, QFormLayout::LabelRole);
-    resizer->addWidgetsFromFormLayout(m_uiTransfer->formLayout_2, QFormLayout::LabelRole);
-}
-
-KCMBlueDevilTransfer::~KCMBlueDevilTransfer()
-{
+    // Initialize QBluez
+    m_manager = new QBluez::Manager(this);
+    QBluez::InitManagerJob *job = m_manager->init();
+    job->start();
+    connect(job, &QBluez::InitManagerJob::result, this, &KCMBlueDevilTransfer::initJobResult);
 }
 
 void KCMBlueDevilTransfer::save()
@@ -126,12 +113,44 @@ void KCMBlueDevilTransfer::save()
     service->launchServer();
 }
 
-void KCMBlueDevilTransfer::usableAdapterChanged(Adapter *adapter)
+void KCMBlueDevilTransfer::initJobResult(QBluez::InitManagerJob *job)
+{
+    if (job->error()) {
+        qCWarning(KCMBLUETOOTH) << "Error initializing manager" << job->errorText();
+        return;
+    }
+
+    QVBoxLayout *l = static_cast<QVBoxLayout*>(layout());
+
+    m_systemCheck = new SystemCheck(m_manager, this);
+    m_systemCheck->createWarnings(l);
+
+    connect(m_systemCheck, &SystemCheck::updateInformationStateRequest,
+            this, &KCMBlueDevilTransfer::updateInformationState);
+
+    connect(m_manager, &QBluez::Manager::usableAdapterChanged,
+            this, &KCMBlueDevilTransfer::usableAdapterChanged);
+
+    QBluez::Adapter *usableAdapter = m_manager->usableAdapter();
+    if (usableAdapter) {
+        connect(usableAdapter, &QBluez::Adapter::discoverableChanged,
+                this, &KCMBlueDevilTransfer::adapterDiscoverableChanged);
+    }
+
+    updateInformationState();
+
+    ColumnResizer *resizer = new ColumnResizer(this);
+    resizer->addWidgetsFromFormLayout(m_uiTransfer->formLayout, QFormLayout::LabelRole);
+    resizer->addWidgetsFromFormLayout(m_uiTransfer->formLayout_2, QFormLayout::LabelRole);
+}
+
+void KCMBlueDevilTransfer::usableAdapterChanged(QBluez::Adapter *adapter)
 {
     if (adapter) {
-        connect(adapter, SIGNAL(discoverableChanged(bool)),
-                this, SLOT(adapterDiscoverableChanged()));
+        connect(adapter, &QBluez::Adapter::discoverableChanged,
+                this, &KCMBlueDevilTransfer::adapterDiscoverableChanged);
     }
+
     QTimer::singleShot(300, this, SLOT(updateInformationState()));
 }
 
@@ -151,7 +170,7 @@ void KCMBlueDevilTransfer::showSharedFilesDialog()
     d->exec();
 }
 
-void KCMBlueDevilTransfer::changed(bool changed)
+void KCMBlueDevilTransfer::slotChanged(bool changed)
 {
     m_restartNeeded = changed;
 }

@@ -27,29 +27,31 @@ class SystemCheck;
 namespace Ui {
     class Transfer;
 }
-namespace BlueDevil {
+namespace QBluez {
+    class Manager;
     class Adapter;
+    class InitManagerJob;
 }
-
-typedef BlueDevil::Adapter Adapter;
 
 class KCMBlueDevilTransfer : public KCModule
 {
     Q_OBJECT
 
 public:
-    KCMBlueDevilTransfer(QWidget *parent, const QVariantList&);
-    virtual ~KCMBlueDevilTransfer();
+    explicit KCMBlueDevilTransfer(QWidget *parent, const QVariantList&);
 
-    virtual void save();
+    void save() Q_DECL_OVERRIDE;
+
 private Q_SLOTS:
-    void usableAdapterChanged(Adapter *adapter);
+    void initJobResult(QBluez::InitManagerJob *job);
+    void usableAdapterChanged(QBluez::Adapter *adapter);
     void adapterDiscoverableChanged();
     void updateInformationState();
     void showSharedFilesDialog();
-    void changed(bool);
+    void slotChanged(bool);
 
 private:
+    QBluez::Manager *m_manager;
     SystemCheck *m_systemCheck;
     Ui::Transfer *m_uiTransfer;
     bool m_restartNeeded;

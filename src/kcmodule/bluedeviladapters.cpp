@@ -20,6 +20,7 @@
 
 #include "bluedeviladapters.h"
 #include "systemcheck.h"
+#include "debug_p.h"
 
 #include <QTimer>
 #include <QScrollArea>
@@ -33,11 +34,13 @@
 #include <QLineEdit>
 #include <QIcon>
 
-#include <bluedevil/bluedevil.h>
-
 #include <kaboutdata.h>
 #include <kpluginfactory.h>
 #include <klocalizedstring.h>
+
+#include <QBluez/Manager>
+#include <QBluez/InitManagerJob>
+#include <QBluez/Adapter>
 
 K_PLUGIN_FACTORY_WITH_JSON(BlueDevilFactory,
                            "bluedeviladapters.json",
@@ -45,7 +48,7 @@ K_PLUGIN_FACTORY_WITH_JSON(BlueDevilFactory,
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-AdapterSettings::AdapterSettings(Adapter *adapter, KCModule *parent)
+AdapterSettings::AdapterSettings(QBluez::Adapter *adapter, KCModule *parent)
     : QGroupBox(parent)
     , m_adapter(adapter)
     , m_name(new QLineEdit(this))
@@ -107,26 +110,18 @@ AdapterSettings::AdapterSettings(Adapter *adapter, KCModule *parent)
 
     m_layout->labelForField(m_discoverTimeWidget)->setEnabled(m_temporaryVisibleOrig);
 
-    connect(m_adapter, SIGNAL(propertyChanged(QString,QVariant)), this, SLOT(readChanges()));
-    connect(m_name, SIGNAL(textEdited(QString)), this, SLOT(slotSettingsChanged()));
-    connect(m_hidden, SIGNAL(toggled(bool)), this, SLOT(visibilityChanged()));
-    connect(m_hidden, SIGNAL(toggled(bool)), this, SLOT(slotSettingsChanged()));
-    connect(m_alwaysVisible, SIGNAL(toggled(bool)), this, SLOT(visibilityChanged()));
-    connect(m_alwaysVisible, SIGNAL(toggled(bool)), this, SLOT(slotSettingsChanged()));
-    connect(m_temporaryVisible, SIGNAL(toggled(bool)), this, SLOT(visibilityChanged()));
-    connect(m_temporaryVisible, SIGNAL(toggled(bool)), this, SLOT(slotSettingsChanged()));
-    connect(m_discoverTime, SIGNAL(valueChanged(int)), this, SLOT(slotSettingsChanged()));
-    connect(m_powered, SIGNAL(stateChanged(int)), this, SLOT(slotSettingsChanged()));
+    connect(m_adapter, &QBluez::Adapter::adapterChanged, this, &AdapterSettings::readChanges);
+    connect(m_name, &QLineEdit::textEdited, this, &AdapterSettings::slotSettingsChanged);
+    connect(m_hidden, &QRadioButton::toggled, this, &AdapterSettings::visibilityChanged);
+    connect(m_hidden, &QRadioButton::toggled, this, &AdapterSettings::slotSettingsChanged);
+    connect(m_alwaysVisible, &QRadioButton::toggled, this, &AdapterSettings::visibilityChanged);
+    connect(m_alwaysVisible, &QRadioButton::toggled, this, &AdapterSettings::slotSettingsChanged);
+    connect(m_temporaryVisible, &QRadioButton::toggled, this, &AdapterSettings::visibilityChanged);
+    connect(m_temporaryVisible, &QRadioButton::toggled, this, &AdapterSettings::slotSettingsChanged);
+    connect(m_discoverTime, &QSlider::valueChanged, this, &AdapterSettings::slotSettingsChanged);
+    connect(m_powered, &QCheckBox::stateChanged, this, &AdapterSettings::slotSettingsChanged);
 
-    if (BlueDevil::Manager::self()->usableAdapter() == adapter) {
-        setTitle(i18n("Default adapter: %1 (%2)", adapter->alias(), adapter->address()));
-    } else {
-        setTitle(i18n("Adapter: %1 (%2)", adapter->alias(), adapter->address()));
-    }
-}
-
-AdapterSettings::~AdapterSettings()
-{
+    setTitle(i18n("Adapter: %1 (%2)", adapter->alias(), adapter->address()));
 }
 
 bool AdapterSettings::isModified() const
@@ -203,11 +198,7 @@ void AdapterSettings::readChanges()
     m_powered->setChecked(m_poweredOrig);
 
     m_discoverTimeLabel->setText(i18np("1 minute", "%1 minutes", m_discoverTime->value()));
-    if (BlueDevil::Manager::self()->usableAdapter() == m_adapter) {
-        setTitle(i18n("Default adapter: %1 (%2)", m_adapter->alias(), m_adapter->address()));
-    } else {
-        setTitle(i18n("Adapter: %1 (%2)", m_adapter->alias(), m_adapter->address()));
-    }
+    setTitle(i18n("Adapter: %1 (%2)", m_adapter->alias(), m_adapter->address()));
 
     blockSignals(false);
 
@@ -236,9 +227,9 @@ void AdapterSettings::slotSettingsChanged()
 KCMBlueDevilAdapters::KCMBlueDevilAdapters(QWidget *parent, const QVariantList&)
     : KCModule(parent)
     , m_noAdaptersMessage(0)
-    , m_systemCheck(new SystemCheck(this))
+    , m_systemCheck(0)
 {
-    KAboutData* ab = new KAboutData(QStringLiteral("kcmbluedeviladapters"),
+    KAboutData *ab = new KAboutData(QStringLiteral("kcmbluedeviladapters"),
                                     i18n("Bluetooth Adapters"),
                                     QStringLiteral("1.0"),
                                     i18n("Bluetooth Adapters Control Panel Module"),
@@ -248,11 +239,7 @@ KCMBlueDevilAdapters::KCMBlueDevilAdapters(QWidget *parent, const QVariantList&)
     ab->addAuthor(i18n("Rafael Fernández López"), i18n("Developer and Maintainer"), QStringLiteral("ereslibre@kde.org"));
     setAboutData(ab);
 
-    connect(m_systemCheck, SIGNAL(updateInformationStateRequest()),
-            this, SLOT(updateInformationState()));
-
     QVBoxLayout *layout = new QVBoxLayout;
-    m_systemCheck->createWarnings(layout);
     QScrollArea *mainArea = new QScrollArea(this);
     QWidget *widget = new QWidget(mainArea);
     m_layout = new QVBoxLayout;
@@ -262,29 +249,11 @@ KCMBlueDevilAdapters::KCMBlueDevilAdapters(QWidget *parent, const QVariantList&)
     layout->addWidget(mainArea);
     setLayout(layout);
 
-    connect(BlueDevil::Manager::self(), SIGNAL(adapterAdded(Adapter*)),
-            this, SLOT(updateAdapters()));
-    connect(BlueDevil::Manager::self(), SIGNAL(adapterRemoved(Adapter*)),
-            this, SLOT(updateAdapters()));
-    connect(BlueDevil::Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)),
-            this, SLOT(usableAdapterChanged(Adapter*)));
-
-    BlueDevil::Adapter *const usableAdapter = BlueDevil::Manager::self()->usableAdapter();
-    if (usableAdapter) {
-        connect(usableAdapter, SIGNAL(discoverableChanged(bool)),
-                this, SLOT(adapterDiscoverableChanged()));
-    }
-
-    fillAdaptersInformation();
-    updateInformationState();
-}
-
-KCMBlueDevilAdapters::~KCMBlueDevilAdapters()
-{
-}
-
-void KCMBlueDevilAdapters::defaults()
-{
+    // Initialize QBluez
+    m_manager = new QBluez::Manager(this);
+    QBluez::InitManagerJob *job = m_manager->init();
+    job->start();
+    connect(job, &QBluez::InitManagerJob::result, this, &KCMBlueDevilAdapters::initJobResult);
 }
 
 void KCMBlueDevilAdapters::save()
@@ -295,17 +264,49 @@ void KCMBlueDevilAdapters::save()
     QTimer::singleShot(300, this, SLOT(updateInformationState()));
 }
 
+void KCMBlueDevilAdapters::initJobResult(QBluez::InitManagerJob *job)
+{
+    if (job->error()) {
+        qCWarning(KCMBLUETOOTH) << "Error initializing manager" << job->errorText();
+        return;
+    }
+
+    QVBoxLayout *l = static_cast<QVBoxLayout*>(layout());
+
+    m_systemCheck = new SystemCheck(m_manager, this);
+    m_systemCheck->createWarnings(l);
+
+    connect(m_systemCheck, &SystemCheck::updateInformationStateRequest,
+            this, &KCMBlueDevilAdapters::updateInformationState);
+
+    connect(m_manager, &QBluez::Manager::adapterAdded,
+            this, &KCMBlueDevilAdapters::updateAdapters);
+    connect(m_manager, &QBluez::Manager::adapterRemoved,
+            this, &KCMBlueDevilAdapters::updateAdapters);
+    connect(m_manager, &QBluez::Manager::usableAdapterChanged,
+            this, &KCMBlueDevilAdapters::usableAdapterChanged);
+
+    QBluez::Adapter *const usableAdapter = m_manager->usableAdapter();
+    if (usableAdapter) {
+        connect(usableAdapter, &QBluez::Adapter::discoverableChanged,
+                this, &KCMBlueDevilAdapters::adapterDiscoverableChanged);
+    }
+
+    fillAdaptersInformation();
+    updateInformationState();
+}
+
 void KCMBlueDevilAdapters::updateAdapters()
 {
     fillAdaptersInformation();
     QTimer::singleShot(300, this, SLOT(updateInformationState()));
 }
 
-void KCMBlueDevilAdapters::usableAdapterChanged(Adapter *adapter)
+void KCMBlueDevilAdapters::usableAdapterChanged(QBluez::Adapter *adapter)
 {
     if (adapter) {
-        connect(adapter, SIGNAL(discoverableChanged(bool)),
-                this, SLOT(adapterDiscoverableChanged()));
+        connect(adapter, &QBluez::Adapter::discoverableChanged,
+                this, &KCMBlueDevilAdapters::adapterDiscoverableChanged);
     }
     QTimer::singleShot(300, this, SLOT(updateInformationState()));
 }
@@ -359,7 +360,7 @@ void KCMBlueDevilAdapters::fillAdaptersInformation()
         m_layout->takeAt(0);
     }
 
-    if (BlueDevil::Manager::self()->adapters().isEmpty()) {
+    if (m_manager->adapters().isEmpty()) {
         generateNoAdaptersMessage();
         m_layout->addWidget(m_noAdaptersMessage);
         m_noAdaptersMessage->setVisible(true);
@@ -370,10 +371,10 @@ void KCMBlueDevilAdapters::fillAdaptersInformation()
         m_noAdaptersMessage->setVisible(false);
     }
 
-    Q_FOREACH (Adapter *const adapter, BlueDevil::Manager::self()->adapters()) {
-        AdapterSettings *const adapterSettings = new AdapterSettings(adapter, this);
-        connect(adapterSettings, SIGNAL(settingsChanged(bool)),
-                this, SLOT(adapterConfigurationChanged(bool)));
+    Q_FOREACH (QBluez::Adapter *adapter, m_manager->adapters()) {
+        AdapterSettings *adapterSettings = new AdapterSettings(adapter, this);
+        connect(adapterSettings, &AdapterSettings::settingsChanged,
+                this, &KCMBlueDevilAdapters::adapterConfigurationChanged);
         m_adapterSettingsMap.insert(adapter, adapterSettings);
         m_layout->addWidget(adapterSettings);
     }

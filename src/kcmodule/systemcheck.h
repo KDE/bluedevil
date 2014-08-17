@@ -28,24 +28,17 @@ class QVBoxLayout;
 class KDED;
 class KMessageWidget;
 
+namespace QBluez {
+    class Manager;
+}
+
 class SystemCheck : public QObject
 {
     Q_OBJECT
 
 public:
-    SystemCheck(QWidget *parent);
-    virtual ~SystemCheck();
-
-    struct SystemCheckResult {
-        enum Result {
-            NoWarnings = 0,
-            BluetoothDisabled,
-            NoAdapters,
-            NotificationsDisabled,
-            DefaultAdapterHidden
-        } result;
-        QWidget *warningWidget;
-    };
+    explicit SystemCheck(QBluez::Manager *manager, QWidget *parent);
+    ~SystemCheck();
 
     void createWarnings(QVBoxLayout *layout);
 
@@ -61,16 +54,19 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void fixNoKDEDRunning();
+    void fixNoUsableAdapterError();
     void fixNotDiscoverableAdapterError();
     void fixDisabledNotificationsError();
 
 private:
-    KDED        *m_kded;
-    QWidget     *m_parent;
+    KDED *m_kded;
+    QWidget *m_parent;
+    QBluez::Manager *m_manager;
     KMessageWidget *m_noAdaptersError;
+    KMessageWidget *m_noUsableAdapterError;
     KMessageWidget *m_noKDEDRunning;
     KMessageWidget *m_notDiscoverableAdapterError;
     KMessageWidget *m_disabledNotificationsError;
 };
 
-#endif //BLUEDEVIL_SYSTEM_CHECK_H
+#endif // BLUEDEVIL_SYSTEM_CHECK_H

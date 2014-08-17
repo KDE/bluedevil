@@ -23,8 +23,7 @@
 #include "kded.h"
 #include "globalsettings.h"
 #include "devicedetails.h"
-
-#include <bluedevil/bluedevil.h>
+#include "debug_p.h"
 
 #include <QLabel>
 #include <QDialog>
@@ -36,6 +35,7 @@
 #include <QHeaderView>
 #include <QPushButton>
 #include <QFontMetrics>
+#include <QApplication>
 #include <QDialogButtonBox>
 #include <QAbstractItemModel>
 #include <QStyledItemDelegate>
@@ -47,174 +47,30 @@
 #include <kpluginfactory.h>
 #include <klocalizedstring.h>
 
+#include <QBluez/Manager>
+#include <QBluez/InitManagerJob>
+#include <QBluez/Adapter>
+#include <QBluez/Device>
+#include <QBluez/DevicesModel>
+
 K_PLUGIN_FACTORY_WITH_JSON(BlueDevilFactory,
                            "bluedevildevices.json",
                            registerPlugin<KCMBlueDevilDevices>();)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class BluetoothDevicesModel : public QAbstractItemModel
+class BluetoothDevicesDelegate : public QStyledItemDelegate
 {
 public:
-    enum ModelRoles {
-        IconModelRole = 0,
-        NameModelRole,
-        AliasModelRole,
-        DeviceTypeModelRole,
-        DeviceModelRole,
-        LastModelRole
-    };
+    explicit BluetoothDevicesDelegate(QObject *parent = 0);
 
-    BluetoothDevicesModel(QObject *parent = 0);
-    virtual ~BluetoothDevicesModel();
-
-    virtual int columnCount(const QModelIndex &parent = QModelIndex()) const;
-    virtual QVariant data(const QModelIndex &index, int role) const;
-    virtual bool setData(const QModelIndex &index, const QVariant &value, int role);
-    virtual QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const;
-    virtual QModelIndex parent(const QModelIndex &index) const;
-    virtual int rowCount(const QModelIndex &parent = QModelIndex()) const;
-    virtual bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex());
-    virtual bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex());
+    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const Q_DECL_OVERRIDE;
+    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const Q_DECL_OVERRIDE;
 
 private:
-    struct BluetoothDevice {
-        QPixmap m_icon;
-        QString m_deviceType;
-        Device *m_device;
-    };
-    QList<BluetoothDevice> m_deviceList;
-};
+    QString deviceTypeString(int type) const;
 
-BluetoothDevicesModel::BluetoothDevicesModel(QObject *parent)
-    : QAbstractItemModel(parent)
-{
-}
-
-BluetoothDevicesModel::~BluetoothDevicesModel()
-{
-}
-
-int BluetoothDevicesModel::columnCount(const QModelIndex &parent) const
-{
-    Q_UNUSED(parent);
-
-    return 1;
-}
-
-QVariant BluetoothDevicesModel::data(const QModelIndex &index, int role) const
-{
-    if (!index.isValid() || index.row() < 0 || index.row() >= m_deviceList.count()) {
-        return QVariant();
-    }
-    switch (role) {
-            case IconModelRole:
-                return m_deviceList[index.row()].m_icon;
-            case NameModelRole:
-                return m_deviceList[index.row()].m_device->name();
-            case AliasModelRole:
-                return m_deviceList[index.row()].m_device->alias();
-            case DeviceTypeModelRole:
-                return m_deviceList[index.row()].m_deviceType;
-            case DeviceModelRole:
-                return QVariant::fromValue<void*>(m_deviceList[index.row()].m_device);
-            default:
-                break;
-    }
-    return QVariant();
-}
-
-bool BluetoothDevicesModel::setData(const QModelIndex &index, const QVariant &value, int role)
-{
-    if (!index.isValid() || index.row() < 0 || index.row() >= m_deviceList.count()) {
-        return false;
-    }
-    switch (role) {
-            case IconModelRole:
-                m_deviceList[index.row()].m_icon = value.value<QPixmap>();
-                break;
-            case DeviceTypeModelRole:
-                m_deviceList[index.row()].m_deviceType = value.toString();
-                break;
-            case DeviceModelRole: {
-                    Device *const device = static_cast<Device*>(value.value<void*>());
-                    m_deviceList[index.row()].m_device = device;
-                    connect(device, SIGNAL(propertyChanged(QString,QVariant)),
-                            this, SIGNAL(layoutChanged()));
-                }
-                break;
-            default:
-                return false;
-    }
-    emit dataChanged(index, index);
-    return true;
-}
-
-QModelIndex BluetoothDevicesModel::index(int row, int column, const QModelIndex &parent) const
-{
-    Q_UNUSED(parent);
-
-    if (row < 0 || row >= m_deviceList.count() || column != 0) {
-        return QModelIndex();
-    }
-
-    return createIndex(row, column);
-}
-
-QModelIndex BluetoothDevicesModel::parent(const QModelIndex &index) const
-{
-    Q_UNUSED(index);
-
-    return QModelIndex();
-}
-
-int BluetoothDevicesModel::rowCount(const QModelIndex &parent) const
-{
-    Q_UNUSED(parent);
-
-    return m_deviceList.count();
-}
-
-bool BluetoothDevicesModel::insertRows(int row, int count, const QModelIndex &parent)
-{
-    if (row < 0 || row > m_deviceList.count() || count < 1) {
-        return false;
-    }
-    beginInsertRows(parent, row, row + count - 1);
-    for (int i = row; i < row + count; ++i) {
-        m_deviceList.insert(i, BluetoothDevice());
-    }
-    endInsertRows();
-    return true;
-}
-
-bool BluetoothDevicesModel::removeRows(int row, int count, const QModelIndex &parent)
-{
-    if (row < 0 || row > m_deviceList.count() || count < 1) {
-        return false;
-    }
-    beginRemoveRows(parent, row, row + count - 1);
-    for (int i = row; i < row + count; ++i) {
-        m_deviceList.removeAt(row);
-    }
-    endRemoveRows();
-    return true;
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-class BluetoothDevicesDelegate
-    : public QStyledItemDelegate
-{
-public:
-    BluetoothDevicesDelegate(QObject *parent = 0);
-    virtual ~BluetoothDevicesDelegate();
-
-    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
-    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
-
-private:
-    const int smallIconSize;
+    int smallIconSize;
     QPixmap m_blockedPixmap;
     QPixmap m_trustedPixmap;
     QPixmap m_untrustedPixmap;
@@ -233,15 +89,11 @@ BluetoothDevicesDelegate::BluetoothDevicesDelegate(QObject *parent)
     m_disconnectedPixmap = QIcon::fromTheme(QStringLiteral("user-offline")).pixmap(smallIconSize, smallIconSize);
 }
 
-BluetoothDevicesDelegate::~BluetoothDevicesDelegate()
-{
-}
-
 void BluetoothDevicesDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
-    QStyledItemDelegate::paint(painter, option, index);
-
     painter->save();
+
+    QApplication::style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &option, painter, 0);
 
     if (option.state & QStyle::State_Selected) {
         painter->setPen(option.palette.highlightedText().color());
@@ -250,12 +102,12 @@ void BluetoothDevicesDelegate::paint(QPainter *painter, const QStyleOptionViewIt
     QRect r = option.rect;
 
     // Draw icon
-    const QModelIndex iconIndex = index.model()->index(index.row(), 0);
-    const QPixmap icon = iconIndex.data(BluetoothDevicesModel::IconModelRole).value<QPixmap>();
-    painter->drawPixmap(r.left() + 5, r.top() + (r.height() - icon.height()) / 2, icon);
+    const int iconSize = IconSize(KIconLoader::Dialog) * 1.5;
+    const QIcon &icon = QIcon::fromTheme(index.data(QBluez::DevicesModel::IconRole).toString(),
+                                         QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")));
+    painter->drawPixmap(r.left() + 5, r.top() + (r.height() - iconSize) / 2, icon.pixmap(iconSize));
 
     // Draw alias and device type
-    const QModelIndex idx = index.model()->index(index.row(), 0);
     r.setTop(r.top() + smallIconSize / 2);
     r.setBottom(r.bottom() - smallIconSize / 2);
     r.setLeft(r.left() + IconSize(KIconLoader::Dialog) * 1.8);
@@ -263,26 +115,18 @@ void BluetoothDevicesDelegate::paint(QPainter *painter, const QStyleOptionViewIt
     f.setBold(true);
     painter->save();
     painter->setFont(f);
-    const QString name = idx.data(BluetoothDevicesModel::NameModelRole).toString();
-    const QString alias = idx.data(BluetoothDevicesModel::AliasModelRole).toString();
-    if (name == alias) {
-        painter->drawText(r, Qt::AlignLeft | Qt::AlignTop, name);
-    } else {
-        painter->drawText(r, Qt::AlignLeft | Qt::AlignTop, QString(QStringLiteral("%1 (%2)")).arg(alias).arg(name));
-    }
+    painter->drawText(r, Qt::AlignLeft | Qt::AlignTop, index.data(QBluez::DevicesModel::FriendlyNameRole).toString());
     painter->restore();
-    painter->drawText(r, Qt::AlignLeft | Qt::AlignBottom, idx.data(BluetoothDevicesModel::DeviceTypeModelRole).toString());
+    painter->drawText(r, Qt::AlignLeft | Qt::AlignBottom, deviceTypeString(index.data(QBluez::DevicesModel::DeviceTypeRole).toInt()));
 
     // Draw state
-    Device *const device = static_cast<Device*>(index.data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
-
     r = option.rect;
     r.setTop(r.top() + r.height() / 2 - smallIconSize / 2);
     r.setLeft(r.right() - 5 - smallIconSize);
     r.setSize(QSize(smallIconSize, smallIconSize));
 
-    if (!device->isBlocked()) {
-        if (device->isConnected()) {
+    if (!index.data(QBluez::DevicesModel::BlockedRole).toBool()) {
+        if (index.data(QBluez::DevicesModel::ConnectedRole).toBool()) {
             painter->drawPixmap(r, m_connectedPixmap);
         } else {
             painter->drawPixmap(r, m_disconnectedPixmap);
@@ -291,7 +135,7 @@ void BluetoothDevicesDelegate::paint(QPainter *painter, const QStyleOptionViewIt
         r.setLeft(r.right() - 5 - smallIconSize * 2);
         r.setSize(QSize(smallIconSize, smallIconSize));
 
-        if (device->isTrusted()) {
+        if (index.data(QBluez::DevicesModel::TrustedRole).toBool()) {
             painter->drawPixmap(r, m_trustedPixmap);
         } else {
             painter->drawPixmap(r, m_untrustedPixmap);
@@ -311,12 +155,47 @@ QSize BluetoothDevicesDelegate::sizeHint(const QStyleOptionViewItem &option, con
     return QSize(width, height);
 }
 
+QString BluetoothDevicesDelegate::deviceTypeString(int type) const
+{
+    switch (type) {
+        case QBluez::Phone:
+            return i18nc("This device is a Phone", "Phone");
+        case QBluez::Modem:
+            return i18nc("This device is a Modem", "Modem");
+        case QBluez::Computer:
+            return i18nc("This device is a Computer", "Computer");
+        case QBluez::Network:
+            return i18nc("This device is of type Network", "Network");
+        case QBluez::Headset:
+            return i18nc("This device is a Headset", "Headset");
+        case QBluez::Headphones:
+            return i18nc("This device are Headphones", "Headphones");
+        case QBluez::OtherAudio:
+            return i18nc("This device is of type Audio", "Audio");
+        case QBluez::Keyboard:
+            return i18nc("This device is a Keyboard", "Keyboard");
+        case QBluez::Mouse:
+            return i18nc("This device is a Mouse", "Mouse");
+        case QBluez::Camera:
+            return i18nc("This device is a Camera", "Camera");
+        case QBluez::Printer:
+            return i18nc("This device is a Printer", "Printer");
+        case QBluez::Joypad:
+            return i18nc("This device is a Joypad", "Joypad");
+        case QBluez::Tablet:
+            return i18nc("This device is a Tablet", "Tablet");
+        default:
+            return i18nc("Type of device: could not be determined", "Unknown");
+    }
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     : KCModule(parent)
     , m_enable(new QCheckBox(i18n("Enable KDE Bluetooth Integration"), this))
-    , m_systemCheck(new SystemCheck(this))
+    , m_devicesModel(0)
+    , m_systemCheck(0)
     , m_deviceDetails(0)
 {
     KAboutData* ab = new KAboutData(QStringLiteral("kcmbluedevildevices"),
@@ -329,9 +208,6 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     ab->addAuthor(i18n("Rafael Fernández López"), i18n("Developer and Maintainer"), QStringLiteral("ereslibre@kde.org"));
     setAboutData(ab);
 
-    connect(m_systemCheck, SIGNAL(updateInformationStateRequest()),
-            this, SLOT(updateInformationState()));
-
     QVBoxLayout *layout = new QVBoxLayout;
     layout->addWidget(m_enable);
 
@@ -340,20 +216,12 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
 
     m_isEnabled = m_enable->isChecked();
 
-    m_systemCheck->createWarnings(layout);
-
-    // Bluetooth device list
-    m_devicesModel = new BluetoothDevicesModel(this);
-
     m_devices = new QListView(this);
     m_devices->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
     m_devices->setItemDelegate(new BluetoothDevicesDelegate(this));
-    m_devices->setModel(m_devicesModel);
 
-    connect(m_devices->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
-            this, SLOT(deviceSelectionChanged(QItemSelection)));
-    connect(m_devices, SIGNAL(doubleClicked(QModelIndex)),
-            this, SLOT(deviceDoubleClicked(QModelIndex)));
+    connect(m_devices, &QListView::doubleClicked,
+            this, &KCMBlueDevilDevices::deviceDoubleClicked);
 
     layout->addWidget(m_devices);
 
@@ -368,11 +236,11 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     m_disconnectDevice->setEnabled(false);
     m_addDevice = new QPushButton(QIcon::fromTheme(QStringLiteral("list-add")), i18n("Add Device..."));
 
-    connect(m_detailsDevice, SIGNAL(clicked()), this, SLOT(detailsDevice()));
-    connect(m_removeDevice, SIGNAL(clicked()), this, SLOT(removeDevice()));
-    connect(m_disconnectDevice, SIGNAL(clicked()), this, SLOT(disconnectDevice()));
-    connect(m_connectDevice, SIGNAL(clicked()), this, SLOT(connectDevice()));
-    connect(m_addDevice, SIGNAL(clicked()), this, SLOT(launchWizard()));
+    connect(m_detailsDevice, &QPushButton::clicked, this, &KCMBlueDevilDevices::detailsDevice);
+    connect(m_removeDevice, &QPushButton::clicked, this, &KCMBlueDevilDevices::removeDevice);
+    connect(m_disconnectDevice, &QPushButton::clicked, this, &KCMBlueDevilDevices::disconnectDevice);
+    connect(m_connectDevice, &QPushButton::clicked, this, &KCMBlueDevilDevices::connectDevice);
+    connect(m_addDevice, &QPushButton::clicked, this, &KCMBlueDevilDevices::launchWizard);
 
     QHBoxLayout *hLayout = new QHBoxLayout;
     hLayout->addWidget(m_detailsDevice);
@@ -382,35 +250,13 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     hLayout->addStretch();
     hLayout->addWidget(m_addDevice);
     layout->addLayout(hLayout);
-
     setLayout(layout);
 
-    // Logic
-    connect(BlueDevil::Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)),
-            this, SLOT(usableAdapterChanged(Adapter*)));
-
-    BlueDevil::Adapter *const usableAdapter = BlueDevil::Manager::self()->usableAdapter();
-    if (usableAdapter) {
-        connect(usableAdapter, SIGNAL(discoverableChanged(bool)),
-                this, SLOT(adapterDiscoverableChanged()));
-        connect(usableAdapter, SIGNAL(deviceChanged(Device*)),
-                this, SLOT(adapterDevicesChanged()));
-        connect(usableAdapter, SIGNAL(deviceRemoved(Device*)),
-                this, SLOT(adapterDevicesChanged()));
-        connect(usableAdapter, SIGNAL(deviceFound(Device*)),
-                this, SLOT(adapterDevicesChanged()));
-    }
-
-    fillRemoteDevicesModelInformation();
-    updateInformationState();
-}
-
-KCMBlueDevilDevices::~KCMBlueDevilDevices()
-{
-}
-
-void KCMBlueDevilDevices::defaults()
-{
+    // Initialize QBluez
+    m_manager = new QBluez::Manager(this);
+    QBluez::InitManagerJob *job = m_manager->init();
+    job->start();
+    connect(job, &QBluez::InitManagerJob::result, this, &KCMBlueDevilDevices::initJobResult);
 }
 
 void KCMBlueDevilDevices::save()
@@ -427,6 +273,45 @@ void KCMBlueDevilDevices::save()
     updateInformationState();
 }
 
+void KCMBlueDevilDevices::initJobResult(QBluez::InitManagerJob *job)
+{
+    if (job->error()) {
+        qCWarning(KCMBLUETOOTH) << "Error initializing manager" << job->errorText();
+        return;
+    }
+
+    QVBoxLayout *l = static_cast<QVBoxLayout*>(layout());
+
+    m_systemCheck = new SystemCheck(m_manager, this);
+    m_systemCheck->createWarnings(l);
+
+    connect(m_systemCheck, &SystemCheck::updateInformationStateRequest,
+            this, &KCMBlueDevilDevices::updateInformationState);
+
+    m_devicesModel = new QBluez::DevicesModel(m_manager, this);
+    m_devices->setModel(m_devicesModel);
+
+    connect(m_devices->selectionModel(), &QItemSelectionModel::selectionChanged,
+            this, &KCMBlueDevilDevices::deviceSelectionChanged);
+
+    connect(m_manager, &QBluez::Manager::usableAdapterChanged,
+            this, &KCMBlueDevilDevices::usableAdapterChanged);
+
+    QBluez::Adapter *usableAdapter = m_manager->usableAdapter();
+    if (usableAdapter) {
+        connect(usableAdapter, &QBluez::Adapter::discoverableChanged,
+                this, &KCMBlueDevilDevices::adapterDiscoverableChanged);
+        connect(usableAdapter, &QBluez::Adapter::deviceChanged,
+                this, &KCMBlueDevilDevices::adapterDevicesChanged);
+        connect(usableAdapter, &QBluez::Adapter::deviceRemoved,
+                this, &KCMBlueDevilDevices::adapterDevicesChanged);
+        connect(usableAdapter, &QBluez::Adapter::deviceFound,
+                this, &KCMBlueDevilDevices::adapterDevicesChanged);
+    }
+
+    updateInformationState();
+}
+
 void KCMBlueDevilDevices::deviceSelectionChanged(const QItemSelection &selection)
 {
     const bool enable = !selection.isEmpty();
@@ -439,10 +324,10 @@ void KCMBlueDevilDevices::deviceSelectionChanged(const QItemSelection &selection
         return;
     }
 
-    Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
-    m_disconnectDevice->setEnabled(device->isConnected());
+    bool connected = m_devices->currentIndex().data(QBluez::DevicesModel::ConnectedRole).toBool();
+    m_disconnectDevice->setEnabled(connected);
 
-    if (device->isConnected()) {
+    if (connected) {
         m_connectDevice->setText(i18n("Re-connect"));
     } else {
         m_connectDevice->setText(i18n("Connect"));
@@ -455,9 +340,7 @@ void KCMBlueDevilDevices::deviceDoubleClicked(const QModelIndex &index)
         return;
     }
 
-    Device *const device = static_cast<Device*>(index.data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
-
-    m_deviceDetails = new DeviceDetails(device, this);
+    m_deviceDetails = new DeviceDetails(m_devicesModel->device(index), this);
     m_deviceDetails->exec();
     delete m_deviceDetails;
     m_deviceDetails = 0;
@@ -465,9 +348,7 @@ void KCMBlueDevilDevices::deviceDoubleClicked(const QModelIndex &index)
 
 void KCMBlueDevilDevices::detailsDevice()
 {
-    Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
-
-    m_deviceDetails = new DeviceDetails(device, this);
+    m_deviceDetails = new DeviceDetails(m_devicesModel->device(m_devices->currentIndex()), this);
     m_deviceDetails->exec();
     delete m_deviceDetails;
     m_deviceDetails = 0;
@@ -476,18 +357,11 @@ void KCMBlueDevilDevices::detailsDevice()
 void KCMBlueDevilDevices::removeDevice()
 {
     m_removeDevice->setEnabled(false);
-    Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
+    QBluez::Device *device = m_devicesModel->device(m_devices->currentIndex());
 
-    QString ubi = device->UBI();
-    if (KMessageBox::questionYesNo(this, i18n("Are you sure that you want to remove device \"%1\" from the list of known devices?", device->alias()),
+    if (KMessageBox::questionYesNo(this, i18n("Are you sure that you want to remove device \"%1\" from the list of known devices?", device->friendlyName()),
                                    i18nc("Title of window that asks for confirmation when removing a device", "Device removal")) == KMessageBox::Yes) {
-        QList<Device *> deviceList = BlueDevil::Manager::self()->usableAdapter()->devices();
-        Q_FOREACH(Device *item, deviceList) {
-            if (item->UBI() == ubi) {
-                BlueDevil::Manager::self()->usableAdapter()->removeDevice(device);
-                return;
-            }
-        }
+        device->adapter()->removeDevice(device);
     } else {
         m_removeDevice->setEnabled(true);
     }
@@ -495,15 +369,15 @@ void KCMBlueDevilDevices::removeDevice()
 
 void KCMBlueDevilDevices::connectDevice()
 {
-    Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
+    QBluez::Device *device = m_devicesModel->device(m_devices->currentIndex());
     device->connectDevice();
 }
 
 void KCMBlueDevilDevices::disconnectDevice()
 {
     m_disconnectDevice->setEnabled(false);
-    Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
-    device->disconnect();
+    QBluez::Device *device = m_devicesModel->device(m_devices->currentIndex());
+    device->disconnectDevice();
 }
 
 void KCMBlueDevilDevices::launchWizard()
@@ -513,15 +387,14 @@ void KCMBlueDevilDevices::launchWizard()
     wizard.startDetached();
 }
 
-void KCMBlueDevilDevices::usableAdapterChanged(Adapter *adapter)
+void KCMBlueDevilDevices::usableAdapterChanged(QBluez::Adapter *adapter)
 {
     if (adapter) {
-        connect(adapter, SIGNAL(discoverableChanged(bool)),
-                this, SLOT(adapterDiscoverableChanged()));
-        connect(adapter, SIGNAL(devicesChanged(QList<Device*>)),
-                this, SLOT(adapterDevicesChanged()));
+        connect(adapter, &QBluez::Adapter::discoverableChanged,
+                this, &KCMBlueDevilDevices::adapterDiscoverableChanged);
+        connect(adapter, &QBluez::Adapter::deviceChanged,
+                this, &KCMBlueDevilDevices::adapterDevicesChanged);
     }
-    fillRemoteDevicesModelInformation();
     QTimer::singleShot(300, this, SLOT(updateInformationState()));
 }
 
@@ -536,7 +409,6 @@ void KCMBlueDevilDevices::adapterDevicesChanged()
         delete m_deviceDetails;
         m_deviceDetails = 0;
     }
-    fillRemoteDevicesModelInformation();
 }
 
 void KCMBlueDevilDevices::generateNoDevicesMessage()
@@ -561,87 +433,6 @@ void KCMBlueDevilDevices::generateNoDevicesMessage()
     m_noDevicesMessage->setVisible(false);
 }
 
-void KCMBlueDevilDevices::fillRemoteDevicesModelInformation()
-{
-    m_devicesModel->removeRows(0, m_devicesModel->rowCount());
-    Adapter *usableAdapter = BlueDevil::Manager::self()->usableAdapter();
-    QList<Device*> deviceList;
-    if (usableAdapter) {
-        deviceList = usableAdapter->devices();
-    }
-    if (deviceList.isEmpty()) {
-        generateNoDevicesMessage();
-        m_devices->setViewport(m_noDevicesMessage);
-        m_noDevicesMessage->setVisible(true);
-        return;
-    } else if (m_devices->viewport() == m_noDevicesMessage) {
-        QWidget *viewport = new QWidget(this);
-        viewport->setMouseTracking(true);
-        viewport->setBackgroundRole(QPalette::Base);
-        viewport->setAutoFillBackground(true);
-        m_devices->setViewport(viewport);
-    }
-    m_devicesModel->insertRows(0, deviceList.count());
-    const QSize iconSize = QSize(IconSize(KIconLoader::Dialog) * 1.5, IconSize(KIconLoader::Dialog) * 1.5);
-    int i = 0;
-    Q_FOREACH (Device *const device, deviceList) {
-        QModelIndex index = m_devicesModel->index(i, 0);
-        m_devicesModel->setData(index, QIcon::fromTheme(device->icon()).pixmap(iconSize), BluetoothDevicesModel::IconModelRole);
-        QString deviceType;
-        const quint32 type = BlueDevil::classToType(device->deviceClass());
-        switch (type) {
-            case BlueDevil::BLUETOOTH_TYPE_ANY:
-                deviceType = i18nc("Type of device: could not be determined", "Unknown");
-                break;
-            case BlueDevil::BLUETOOTH_TYPE_PHONE:
-                deviceType = i18nc("This device is a Phone", "Phone");
-                break;
-            case BlueDevil::BLUETOOTH_TYPE_MODEM:
-                deviceType = i18nc("This device is a Modem", "Modem");
-                break;
-            case BlueDevil::BLUETOOTH_TYPE_COMPUTER:
-                deviceType = i18nc("This device is a Computer", "Computer");
-                break;
-            case BlueDevil::BLUETOOTH_TYPE_NETWORK:
-                deviceType = i18nc("This device is of type Network", "Network");
-                break;
-            case BlueDevil::BLUETOOTH_TYPE_HEADSET:
-                deviceType = i18nc("This device is a Headset", "Headset");
-                break;
-            case BlueDevil::BLUETOOTH_TYPE_HEADPHONES:
-                deviceType = i18nc("This device are Headphones", "Headphones");
-                break;
-            case BlueDevil::BLUETOOTH_TYPE_OTHER_AUDIO:
-                deviceType = i18nc("This device is of type Audio", "Audio");
-                break;
-            case BlueDevil::BLUETOOTH_TYPE_KEYBOARD:
-                deviceType = i18nc("This device is a Keyboard", "Keyboard");
-                break;
-            case BlueDevil::BLUETOOTH_TYPE_MOUSE:
-                deviceType = i18nc("This device is a Mouse", "Mouse");
-                break;
-            case BlueDevil::BLUETOOTH_TYPE_CAMERA:
-                deviceType = i18nc("This device is a Camera", "Camera");
-                break;
-            case BlueDevil::BLUETOOTH_TYPE_PRINTER:
-                deviceType = i18nc("This device is a Printer", "Printer");
-                break;
-            case BlueDevil::BLUETOOTH_TYPE_JOYPAD:
-                deviceType = i18nc("This device is a Joypad", "Joypad");
-                break;
-            case BlueDevil::BLUETOOTH_TYPE_TABLET:
-                deviceType = i18nc("This device is a Tablet", "Tablet");
-                break;
-            default:
-                deviceType = i18nc("Type of device: could not be determined", "Unknown");
-                break;
-        }
-        m_devicesModel->setData(index, i18nc("Type of remote device (e.g. Camera, Mouse, Headset...)", "Type: %1", deviceType), BluetoothDevicesModel::DeviceTypeModelRole);
-        m_devicesModel->setData(index, QVariant::fromValue<void*>(device), BluetoothDevicesModel::DeviceModelRole);
-        ++i;
-    }
-}
-
 void KCMBlueDevilDevices::updateInformationState()
 {
     m_systemCheck->updateInformationState();
@@ -650,7 +441,7 @@ void KCMBlueDevilDevices::updateInformationState()
     m_devices->setEnabled(false);
 
     if (m_isEnabled) {
-        BlueDevil::Adapter *const usableAdapter = BlueDevil::Manager::self()->usableAdapter();
+        QBluez::Adapter *usableAdapter = m_manager->usableAdapter();
         if (usableAdapter) {
             m_addDevice->setEnabled(true);
             m_devices->setEnabled(true);

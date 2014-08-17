@@ -36,11 +36,11 @@ class QLineEdit;
 class SystemCheck;
 class AdapterSettings;
 
-namespace BlueDevil {
+namespace QBluez {
+    class Manager;
     class Adapter;
+    class InitManagerJob;
 }
-
-typedef BlueDevil::Adapter Adapter;
 
 class AdapterSettings : public QGroupBox
 {
@@ -53,8 +53,7 @@ public:
         TemporaryVisible
     };
 
-    AdapterSettings(Adapter *adapter, KCModule *parent);
-    virtual ~AdapterSettings();
+    explicit AdapterSettings(QBluez::Adapter *adapter, KCModule *parent);
 
     bool isModified() const;
     void applyChanges();
@@ -73,23 +72,23 @@ Q_SIGNALS:
     void settingsChanged(bool changed);
 
 private:
-    Adapter      *m_adapter;
-    QLineEdit    *m_name;
-    QString       m_nameOrig;
+    QBluez::Adapter *m_adapter;
+    QLineEdit *m_name;
+    QString m_nameOrig;
     QRadioButton *m_hidden;
-    bool          m_hiddenOrig;
+    bool m_hiddenOrig;
     QRadioButton *m_alwaysVisible;
-    bool          m_alwaysVisibleOrig;
+    bool m_alwaysVisibleOrig;
     QRadioButton *m_temporaryVisible;
-    bool          m_temporaryVisibleOrig;
-    QSlider      *m_discoverTime;
-    QLabel       *m_discoverTimeLabel;
-    QWidget      *m_discoverTimeWidget;
-    int           m_discoverTimeOrig;
-    QCheckBox    *m_powered;
-    bool          m_poweredOrig;
+    bool m_temporaryVisibleOrig;
+    QSlider *m_discoverTime;
+    QLabel *m_discoverTimeLabel;
+    QWidget *m_discoverTimeWidget;
+    int m_discoverTimeOrig;
+    QCheckBox *m_powered;
+    bool m_poweredOrig;
 
-    QFormLayout  *m_layout;
+    QFormLayout *m_layout;
 };
 
 class KCMBlueDevilAdapters : public KCModule
@@ -97,15 +96,14 @@ class KCMBlueDevilAdapters : public KCModule
     Q_OBJECT
 
 public:
-    KCMBlueDevilAdapters(QWidget *parent, const QVariantList&);
-    virtual ~KCMBlueDevilAdapters();
+    explicit KCMBlueDevilAdapters(QWidget *parent, const QVariantList&);
 
-    virtual void defaults();
-    virtual void save();
+    void save() Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
+    void initJobResult(QBluez::InitManagerJob *job);
     void updateAdapters();
-    void usableAdapterChanged(Adapter *adapter);
+    void usableAdapterChanged(QBluez::Adapter *adapter);
     void adapterDiscoverableChanged();
     void generateNoAdaptersMessage();
     void updateInformationState();
@@ -115,9 +113,10 @@ private:
     void fillAdaptersInformation();
 
 private:
-    QVBoxLayout                     *m_layout;
-    QMap<Adapter*, AdapterSettings*> m_adapterSettingsMap;
-    QWidget                         *m_noAdaptersMessage;
+    QVBoxLayout *m_layout;
+    QMap<QBluez::Adapter*, AdapterSettings*> m_adapterSettingsMap;
+    QWidget *m_noAdaptersMessage;
+    QBluez::Manager *m_manager;
 
     SystemCheck *m_systemCheck;
 };
