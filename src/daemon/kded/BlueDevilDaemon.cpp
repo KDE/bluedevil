@@ -99,7 +99,6 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     aboutData.addAuthor(i18n("Eduardo Robles Elvira"), i18n("Maintainer"),
                         QStringLiteral("edulix@gmail.com"), QStringLiteral("http://blog.edulix.es"));
 
-    aboutData.setProgramIconName(QStringLiteral("preferences-system-bluetooth"));
     aboutData.setComponentName(QStringLiteral("bluedevil"));
     KAboutData::registerPluginData(aboutData);
 

@@ -123,7 +123,7 @@ void BlueWizard::initJobResult(QBluez::InitManagerJob *job)
     }
 
     // Register our agent
-    m_manager->registerAgent(m_agent, QBluez::Manager::DisplayYesNo);
+    m_manager->registerAgent(m_agent);
     qCDebug(WIZARD) << "Agent registered";
 
     // Start discovery

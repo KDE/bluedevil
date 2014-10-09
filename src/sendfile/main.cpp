@@ -38,13 +38,13 @@ int main(int argc, char *argv[])
 
     aboutData.addAuthor(i18n("Alejandro Fiestas Olivares"), i18n("Maintainer"),
                         QStringLiteral("afiestas@kde.org"), QStringLiteral("http://www.afiestas.org/"));
-    aboutData.setProgramIconName(QStringLiteral("preferences-system-bluetooth"));
 
     QApplication app(argc, argv);
     app.setApplicationName(QStringLiteral("bluedevilsendfile"));
     app.setApplicationVersion(bluedevil_version);
     app.setApplicationDisplayName(i18n("Bluetooth Send File Helper"));
     app.setOrganizationDomain(QStringLiteral("kde.org"));
+    app.setWindowIcon(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")));
     app.setQuitOnLastWindowClosed(false);
 
     QCommandLineOption kioOption({QLatin1String("kio"), QLatin1String("k")}, i18n("Device UUID where the files will be sent"));
