@@ -75,6 +75,7 @@ private Q_SLOTS:
 private:
     void onlineMode();
     void offlineMode();
+    void setupDevice(Device *device);
 
     /**
      * Returns true or false wether there are powered adapters
