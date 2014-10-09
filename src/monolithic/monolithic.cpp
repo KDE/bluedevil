@@ -59,6 +59,7 @@ Monolithic::Monolithic(QObject* parent)
     setAssociatedWidget(contextMenu());
 
     setStatus(KStatusNotifierItem::Active);
+    poweredChanged();
 }
 
 void Monolithic::adapterChanged()
@@ -68,6 +69,8 @@ void Monolithic::adapterChanged()
     if (Manager::self()->usableAdapter()) {
         onlineMode();
     }
+
+    poweredChanged();
 }
 
 quint32 sortHelper(quint32 type)
@@ -207,9 +210,15 @@ void Monolithic::regenerateConnectedDevices()
     }
 }
 
+void Monolithic::setupDevice(Device *device)
+{
+    connect(device, SIGNAL(propertyChanged(QString,QVariant)), this, SLOT(regenerateConnectedDevices()));
+    connect(device, SIGNAL(connectedChanged(bool)), this, SLOT(regenerateDeviceEntries()));
+    connect(device, SIGNAL(UUIDsChanged(QStringList)), this, SLOT(UUIDsChanged(QStringList)));
+}
+
 void Monolithic::onlineMode()
 {
-
     QList<Adapter*> adapters = Manager::self()->adapters();
     Q_FOREACH(Adapter *adapter, adapters) {
         connect(adapter, SIGNAL(deviceFound(Device*)), SLOT(deviceCreated(Device*)));
@@ -220,12 +229,8 @@ void Monolithic::onlineMode()
 
     QList<Device*> devices = Manager::self()->devices();
     Q_FOREACH(Device* device, devices) {
-        connect(device, SIGNAL(propertyChanged(QString,QVariant)), this, SLOT(regenerateConnectedDevices()));
+        setupDevice(device);
     }
-
-    regenerateDeviceEntries();
-    regenerateConnectedDevices();
-    poweredChanged();
 }
 
 void Monolithic::actionTriggered()
@@ -338,8 +343,7 @@ void Monolithic::poweredChanged()
 
 void Monolithic::deviceCreated(Device *device)
 {
-    connect(device, SIGNAL(propertyChanged(QString,QVariant)), this, SLOT(regenerateConnectedDevices()));
-    connect(device, SIGNAL(UUIDsChanged(QStringList)), this, SLOT(UUIDsChanged(QStringList)));
+    setupDevice(device);
     regenerateDeviceEntries();
     regenerateConnectedDevices();
 }
@@ -363,6 +367,16 @@ void Monolithic::offlineMode()
     separator->setSeparator(true);
     menu->addAction(separator);
 //     menu->addAction(KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), menu));
+
+    QList<Adapter*> adapters = Manager::self()->adapters();
+    Q_FOREACH(Adapter *adapter, adapters) {
+        adapter->disconnect(this);
+    }
+
+    QList<Device*> devices = Manager::self()->devices();
+    Q_FOREACH(Device* device, devices) {
+        device->QObject::disconnect(this);
+    }
 }
 
 bool Monolithic::poweredAdapters()
@@ -437,9 +451,18 @@ QAction* Monolithic::actionForDevice(Device* device, Device *lastDevice)
         subMenu->addAction(action);
     }
 
-    QAction *connectAction = new QAction(i18nc("Connect to a bluetooth device", "Connect"), deviceAction);
-    connect(connectAction, SIGNAL(triggered()), device, SLOT(connectDevice()));
-    subMenu->addAction(connectAction);
+    if (device->isConnected()) {
+        QAction *reconnectAction = new QAction(i18nc("Re-connect to a bluetooth device", "Re-connect"), deviceAction);
+        QAction* disconnectAction = new QAction(i18nc("Disconnect to a bluetooth device", "Disconnect"), deviceAction);
+        connect(reconnectAction, SIGNAL(triggered()), device, SLOT(connectDevice()));
+        connect(disconnectAction, SIGNAL(triggered()), device, SLOT(disconnect()));
+        subMenu->addAction(reconnectAction);
+        subMenu->addAction(disconnectAction);
+    } else {
+        QAction *connectAction = new QAction(i18nc("Connect to a bluetooth device", "Connect"), deviceAction);
+        connect(connectAction, SIGNAL(triggered()), device, SLOT(connectDevice()));
+        subMenu->addAction(connectAction);
+    }
 
 //Enable when we can know if we should show Connect or not
 //     if (deviceServices.isEmpty()) {
