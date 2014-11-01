@@ -17,27 +17,69 @@ Notes:
     <sub-class-of type="inode/directory"/>
     <generic-icon name="video-display"/>
     <comment>Known Device</comment>
+    <comment xml:lang="ca">Dispositiu conegut</comment>
+    <comment xml:lang="cs">Známé zařízení</comment>
+    <comment xml:lang="en_GB">Known Device</comment>
+    <comment xml:lang="nl">Bekend apparaat</comment>
+    <comment xml:lang="pt">Dispositivo Conhecido</comment>
+    <comment xml:lang="uk">Відомий пристрій</comment>
   </mime-type>
   <mime-type type="inode/vnd.kde.bluedevil.device.discovered">
     <sub-class-of type="inode/vnd.kde.bluedevil.device"/>
     <generic-icon name="video-display"/>
     <comment>Discovered Device</comment>
+    <comment xml:lang="ca">Dispositiu descobert</comment>
+    <comment xml:lang="cs">Objevené zařízení</comment>
+    <comment xml:lang="en_GB">Discovered Device</comment>
+    <comment xml:lang="nl">Gevonden apparaat</comment>
+    <comment xml:lang="pt">Dispositivo Descoberto</comment>
+    <comment xml:lang="uk">Виявлений пристрій</comment>
   </mime-type>
   <mime-type type="inode/vnd.kde.bluedevil.service">
     <sub-class-of type="inode/directory"/>
     <generic-icon name="preferences-system-bluetooth"/>
     <comment>Service</comment>
+    <comment xml:lang="ca">Servei</comment>
+    <comment xml:lang="cs">Služba</comment>
+    <comment xml:lang="en_GB">Service</comment>
+    <comment xml:lang="nl">Service</comment>
+    <comment xml:lang="pt">Serviço</comment>
+    <comment xml:lang="uk">Служба</comment>
   </mime-type>
   <mime-type type="application/vnd.kde.bluedevil-audio">
     <comment>Service</comment>
+    <comment xml:lang="ca">Servei</comment>
+    <comment xml:lang="cs">Služba</comment>
+    <comment xml:lang="en_GB">Service</comment>
+    <comment xml:lang="nl">Service</comment>
+    <comment xml:lang="pt">Serviço</comment>
+    <comment xml:lang="uk">Служба</comment>
   </mime-type>
   <mime-type type="application/vnd.kde.bluedevil-network-panu">
     <comment>Service</comment>
+    <comment xml:lang="ca">Servei</comment>
+    <comment xml:lang="cs">Služba</comment>
+    <comment xml:lang="en_GB">Service</comment>
+    <comment xml:lang="nl">Service</comment>
+    <comment xml:lang="pt">Serviço</comment>
+    <comment xml:lang="uk">Служба</comment>
   </mime-type>
   <mime-type type="application/vnd.kde.bluedevil-network-dun">
     <comment>Service</comment>
+    <comment xml:lang="ca">Servei</comment>
+    <comment xml:lang="cs">Služba</comment>
+    <comment xml:lang="en_GB">Service</comment>
+    <comment xml:lang="nl">Service</comment>
+    <comment xml:lang="pt">Serviço</comment>
+    <comment xml:lang="uk">Служба</comment>
   </mime-type>
   <mime-type type="application/vnd.kde.bluedevil-sendfile">
       <comment>Service</comment>
+      <comment xml:lang="ca">Servei</comment>
+      <comment xml:lang="cs">Služba</comment>
+      <comment xml:lang="en_GB">Service</comment>
+      <comment xml:lang="nl">Service</comment>
+      <comment xml:lang="pt">Serviço</comment>
+      <comment xml:lang="uk">Служба</comment>
   </mime-type>
 </mime-info>
