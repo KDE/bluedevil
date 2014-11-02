@@ -18,7 +18,7 @@ xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
         </entry>
         <entry name="saveUrl" type="Url" key="saveUrl">
             <label>Save received files to:</label>
-            <default code="true">QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation)</default>
+            <default code="true">QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation))</default>
         </entry>
         <entry name="autoAccept" type="int" key="autoAccept">
             <label>Whether allow to modify shared files</label>
