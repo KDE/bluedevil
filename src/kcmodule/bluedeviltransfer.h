@@ -46,7 +46,6 @@ private Q_SLOTS:
     void usableAdapterChanged(Adapter *adapter);
     void adapterDiscoverableChanged();
     void updateInformationState();
-    void showSharedFilesDialog();
     void changed(bool);
 
 private:

@@ -4,12 +4,9 @@ set(kcm_bluedeviltransfer_PART_SRCS
     bluedeviltransfer.cpp
     systemcheck.cpp
     kded.cpp
-    columnresizer.cpp
-    sharedfilesdialog/sharedfilesdialog.cpp
-    sharedfilesdialog/linkproxymodel.cpp
 )
 
-ki18n_wrap_ui(kcm_bluedeviltransfer_PART_SRCS_UI transfer.ui sharedfilesdialog/sharedfiles.ui)
+ki18n_wrap_ui(kcm_bluedeviltransfer_PART_SRCS_UI transfer.ui)
 
 kconfig_add_kcfg_files(kcm_bluedeviltransfer_PART_SRCS
                     ../settings/filereceiversettings.kcfgc
