@@ -33,6 +33,7 @@
 #include <QBluez/InitManagerJob>
 #include <QBluez/Adapter>
 #include <QBluez/Device>
+#include <QBluez/Services>
 
 Monolithic::Monolithic(QObject *parent)
     : KStatusNotifierItem(parent)
@@ -68,36 +69,36 @@ void Monolithic::usableAdapterChanged()
     }
 }
 
-static quint32 sortHelper(QBluez::DeviceType type)
+static quint32 sortHelper(QBluez::Device::DeviceType type)
 {
     switch (type) {
-        case QBluez::Any:
+        case QBluez::Device::Any:
             return 100;
-        case QBluez::Phone:
+        case QBluez::Device::Phone:
             return 0;
-        case QBluez::Modem:
+        case QBluez::Device::Modem:
             return 99;
-        case QBluez::Computer:
+        case QBluez::Device::Computer:
             return 1;
-        case QBluez::Network:
+        case QBluez::Device::Network:
             return 98;
-        case QBluez::Headset:
+        case QBluez::Device::Headset:
             return 2;
-        case QBluez::Headphones:
+        case QBluez::Device::Headphones:
             return 3;
-        case QBluez::OtherAudio:
+        case QBluez::Device::OtherAudio:
             return 4;
-        case QBluez::Keyboard:
+        case QBluez::Device::Keyboard:
             return 5;
-        case QBluez::Mouse:
+        case QBluez::Device::Mouse:
             return 6;
-        case QBluez::Camera:
+        case QBluez::Device::Camera:
             return 7;
-        case QBluez::Printer:
+        case QBluez::Device::Printer:
             return 8;
-        case QBluez::Joypad:
+        case QBluez::Device::Joypad:
             return 9;
-        case QBluez::Tablet:
+        case QBluez::Device::Tablet:
             return 10;
         default:
             break;

@@ -128,7 +128,7 @@ void DiscoverPage::deviceFound(QBluez::Device *device)
     QListWidgetItem *item = new QListWidgetItem(QIcon::fromTheme(icon), name, deviceList);
     m_itemRelation.insert(device, item);
 
-    if (!deviceList->currentItem() && device->deviceType() == QBluez::Mouse) {
+    if (!deviceList->currentItem() && device->deviceType() == QBluez::Device::Mouse) {
         deviceList->setCurrentItem(item);
     }
 
@@ -207,13 +207,13 @@ int DiscoverPage::nextId() const
         pin = m_wizard->agent()->getPin(device);
     }
 
-    qCDebug(WIZARD) << "Type: " << QBluez::typeToString(device->deviceType());
+    qCDebug(WIZARD) << "Type: " << QBluez::Device::typeToString(device->deviceType());
     qCDebug(WIZARD) << "Legacy: " << device->hasLegacyPairing();
     qCDebug(WIZARD) << "From DB: " << m_wizard->agent()->isFromDatabase();
     qCDebug(WIZARD) << "PIN: " << m_wizard->agent()->pin();
 
     // If keyboard no matter what, we go to the keyboard page.
-    if (device->deviceType() == QBluez::Keyboard) {
+    if (device->deviceType() == QBluez::Device::Keyboard) {
         qCDebug(WIZARD) << "Keyboard Pairing";
         return BlueWizard::KeyboardPairing;
     }

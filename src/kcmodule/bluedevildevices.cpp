@@ -158,31 +158,31 @@ QSize BluetoothDevicesDelegate::sizeHint(const QStyleOptionViewItem &option, con
 QString BluetoothDevicesDelegate::deviceTypeString(int type) const
 {
     switch (type) {
-        case QBluez::Phone:
+        case QBluez::Device::Phone:
             return i18nc("This device is a Phone", "Phone");
-        case QBluez::Modem:
+        case QBluez::Device::Modem:
             return i18nc("This device is a Modem", "Modem");
-        case QBluez::Computer:
+        case QBluez::Device::Computer:
             return i18nc("This device is a Computer", "Computer");
-        case QBluez::Network:
+        case QBluez::Device::Network:
             return i18nc("This device is of type Network", "Network");
-        case QBluez::Headset:
+        case QBluez::Device::Headset:
             return i18nc("This device is a Headset", "Headset");
-        case QBluez::Headphones:
+        case QBluez::Device::Headphones:
             return i18nc("This device are Headphones", "Headphones");
-        case QBluez::OtherAudio:
+        case QBluez::Device::OtherAudio:
             return i18nc("This device is of type Audio", "Audio");
-        case QBluez::Keyboard:
+        case QBluez::Device::Keyboard:
             return i18nc("This device is a Keyboard", "Keyboard");
-        case QBluez::Mouse:
+        case QBluez::Device::Mouse:
             return i18nc("This device is a Mouse", "Mouse");
-        case QBluez::Camera:
+        case QBluez::Device::Camera:
             return i18nc("This device is a Camera", "Camera");
-        case QBluez::Printer:
+        case QBluez::Device::Printer:
             return i18nc("This device is a Printer", "Printer");
-        case QBluez::Joypad:
+        case QBluez::Device::Joypad:
             return i18nc("This device is a Joypad", "Joypad");
-        case QBluez::Tablet:
+        case QBluez::Device::Tablet:
             return i18nc("This device is a Tablet", "Tablet");
         default:
             return i18nc("Type of device: could not be determined", "Unknown");

@@ -92,7 +92,7 @@ QString WizardAgent::getPin(QBluez::Device *device)
         }
 
         if (attr.hasAttribute(QLatin1String("type")) && attr.value(QLatin1String("type")) != QLatin1String("any")) {
-            xmlType = QBluez::stringToType(attr.value(QLatin1String("type")).toString());
+            xmlType = QBluez::Device::stringToType(attr.value(QLatin1String("type")).toString());
             if (deviceType != xmlType) {
                 xmlType = 0; //This is not needed but I like restart the bucle in each interation
                 continue;
