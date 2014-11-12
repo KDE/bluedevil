@@ -24,6 +24,7 @@ Notes:
     <comment xml:lang="en_GB">Known Device</comment>
     <comment xml:lang="es">Dispositivo conocido</comment>
     <comment xml:lang="fi">Tunnettu laite</comment>
+    <comment xml:lang="it">Dispositivo conosciuto</comment>
     <comment xml:lang="nl">Bekend apparaat</comment>
     <comment xml:lang="pl">Znane urządzenie</comment>
     <comment xml:lang="pt">Dispositivo Conhecido</comment>
@@ -47,6 +48,7 @@ Notes:
     <comment xml:lang="en_GB">Discovered Device</comment>
     <comment xml:lang="es">Dispositivo descubierto</comment>
     <comment xml:lang="fi">Löydetty palvelu</comment>
+    <comment xml:lang="it">Dispositivo scoperto</comment>
     <comment xml:lang="nl">Gevonden apparaat</comment>
     <comment xml:lang="pl">Odkryte urządzenie</comment>
     <comment xml:lang="pt">Dispositivo Descoberto</comment>
@@ -70,6 +72,7 @@ Notes:
     <comment xml:lang="en_GB">Service</comment>
     <comment xml:lang="es">Servicio</comment>
     <comment xml:lang="fi">Palvelu</comment>
+    <comment xml:lang="it">Servizio</comment>
     <comment xml:lang="nl">Service</comment>
     <comment xml:lang="pl">Usługa</comment>
     <comment xml:lang="pt">Serviço</comment>
@@ -91,6 +94,7 @@ Notes:
     <comment xml:lang="en_GB">Service</comment>
     <comment xml:lang="es">Servicio</comment>
     <comment xml:lang="fi">Palvelu</comment>
+    <comment xml:lang="it">Servizio</comment>
     <comment xml:lang="nl">Service</comment>
     <comment xml:lang="pl">Usługa</comment>
     <comment xml:lang="pt">Serviço</comment>
@@ -112,6 +116,7 @@ Notes:
     <comment xml:lang="en_GB">Service</comment>
     <comment xml:lang="es">Servicio</comment>
     <comment xml:lang="fi">Palvelu</comment>
+    <comment xml:lang="it">Servizio</comment>
     <comment xml:lang="nl">Service</comment>
     <comment xml:lang="pl">Usługa</comment>
     <comment xml:lang="pt">Serviço</comment>
@@ -133,6 +138,7 @@ Notes:
     <comment xml:lang="en_GB">Service</comment>
     <comment xml:lang="es">Servicio</comment>
     <comment xml:lang="fi">Palvelu</comment>
+    <comment xml:lang="it">Servizio</comment>
     <comment xml:lang="nl">Service</comment>
     <comment xml:lang="pl">Usługa</comment>
     <comment xml:lang="pt">Serviço</comment>
@@ -154,6 +160,7 @@ Notes:
       <comment xml:lang="en_GB">Service</comment>
       <comment xml:lang="es">Servicio</comment>
       <comment xml:lang="fi">Palvelu</comment>
+      <comment xml:lang="it">Servizio</comment>
       <comment xml:lang="nl">Service</comment>
       <comment xml:lang="pl">Usługa</comment>
       <comment xml:lang="pt">Serviço</comment>
