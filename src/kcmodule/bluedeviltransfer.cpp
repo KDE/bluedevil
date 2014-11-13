@@ -20,11 +20,9 @@
 
 #include "bluedeviltransfer.h"
 #include "systemcheck.h"
-#include "columnresizer.h"
 #include "ui_transfer.h"
 #include "filereceiversettings.h"
 #include "bluedevil_service.h"
-#include "sharedfilesdialog/sharedfilesdialog.h"
 
 #include <QtCore/QTimer>
 
@@ -75,15 +73,8 @@ KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
     m_uiTransfer->kcfg_autoAccept->addItem(i18nc("'Auto accept' option value", "Trusted devices"), QVariant(1));
     m_uiTransfer->kcfg_autoAccept->addItem(i18nc("'Auto accept' option value", "All devices"), QVariant(2));
 
-    m_uiTransfer->kcfg_requirePin->addItem(i18nc("'Require PIN' option value", "Never"), QVariant(false));
-    m_uiTransfer->kcfg_requirePin->addItem(i18nc("'Require PIN' option value", "Always"), QVariant(true));
-
-    m_uiTransfer->kcfg_allowWrite->addItem(i18nc("'Permissions' option value", "Read Only"), QVariant(false));
-    m_uiTransfer->kcfg_allowWrite->addItem(i18nc("'Permissions' option value", "Modify and Read"), QVariant(true));
-
     addConfig(FileReceiverSettings::self(), transfer);
 
-    connect(m_uiTransfer->sharedFiles, SIGNAL(clicked(bool)), this, SLOT(showSharedFilesDialog()));
     connect(BlueDevil::Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)),
             this, SLOT(usableAdapterChanged(Adapter*)));
 
@@ -95,10 +86,6 @@ KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
 
 
     updateInformationState();
-
-    ColumnResizer *resizer = new ColumnResizer(this);
-    resizer->addWidgetsFromFormLayout(m_uiTransfer->formLayout, QFormLayout::LabelRole);
-    resizer->addWidgetsFromFormLayout(m_uiTransfer->formLayout_2, QFormLayout::LabelRole);
 }
 
 KCMBlueDevilTransfer::~KCMBlueDevilTransfer()
@@ -141,12 +128,6 @@ void KCMBlueDevilTransfer::adapterDiscoverableChanged()
 void KCMBlueDevilTransfer::updateInformationState()
 {
     m_systemCheck->updateInformationState();
-}
-
-void KCMBlueDevilTransfer::showSharedFilesDialog()
-{
-    SharedFilesDialog *d = new SharedFilesDialog();
-    d->exec();
 }
 
 void KCMBlueDevilTransfer::changed(bool changed)
