@@ -548,7 +548,11 @@ void KCMBlueDevilDevices::usableAdapterChanged(Adapter *adapter)
     if (adapter) {
         connect(adapter, SIGNAL(discoverableChanged(bool)),
                 this, SLOT(adapterDiscoverableChanged()));
-        connect(adapter, SIGNAL(devicesChanged(QList<Device*>)),
+        connect(adapter, SIGNAL(deviceChanged(Device*)),
+                this, SLOT(adapterDevicesChanged()));
+        connect(adapter, SIGNAL(deviceRemoved(Device*)),
+                this, SLOT(adapterDevicesChanged()));
+        connect(adapter, SIGNAL(deviceFound(Device*)),
                 this, SLOT(adapterDevicesChanged()));
     }
     fillRemoteDevicesModelInformation();
