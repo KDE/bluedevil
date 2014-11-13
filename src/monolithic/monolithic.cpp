@@ -174,9 +174,11 @@ void Monolithic::regenerateDeviceEntries()
 //Shortcut configuration actions, mainly checkables for discovering and powering
     menu->addSeparator();
 
+    Adapter *usableAdapter = Manager::self()->usableAdapter();
+
     KAction *discoverable = new KAction(i18n("Discoverable"), menu);
     discoverable->setCheckable(true);
-    discoverable->setChecked(Manager::self()->usableAdapter()->isDiscoverable());
+    discoverable->setChecked(usableAdapter && usableAdapter->isDiscoverable());
     connect(discoverable, SIGNAL(toggled(bool)), this, SLOT(activeDiscoverable(bool)));
     menu->addAction(discoverable);
 
