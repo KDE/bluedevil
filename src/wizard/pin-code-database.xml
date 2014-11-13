@@ -52,9 +52,9 @@
     <device type="keyboard" oui="00:13:6C:" name="TomTom Remote" pin="0000"/>
 
     <!-- Sony PlayStation 3 Remote Control -->
-    <device oui="00:19:C1:" name="BD Remote Control" pin="NULL"/>
-    <device oui="00:1E:3D:" name="BD Remote Control" pin="NULL"/>
-    <device oui="00:06:F5:" name="BD Remote Control" pin="NULL"/>
+    <device oui="00:19:C1:" name="PLAYSTATION(R)3 Controller" pin="NULL"/>
+    <device oui="00:1E:3D:" name="PLAYSTATION(R)3 Controller" pin="NULL"/>
+    <device oui="00:06:F5:" name="PLAYSTATION(R)3 Controller" pin="NULL"/>
 
     <!-- Apple Wireless and Mighty Mouse
          Note: Apple doesn't follow the specs, and requires their mice
