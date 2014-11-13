@@ -73,7 +73,7 @@ void DiscoverPage::initializePage()
 
 bool DiscoverPage::isComplete() const
 {
-    if (m_wizard->deviceAddress().isEmpty()) {
+    if (m_wizard->deviceAddress().isEmpty() || !m_wizard->device()) {
         return false;
     }
     if (manualPin->isChecked() && pinText->text().isEmpty()) {
@@ -190,7 +190,7 @@ int DiscoverPage::nextId() const
         return BlueWizard::Discover;
     }
 
-    if (m_wizard->deviceAddress().isEmpty()) {
+    if (m_wizard->deviceAddress().isEmpty() || !m_wizard->device()) {
         return BlueWizard::Discover;
     }
 
