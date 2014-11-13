@@ -76,14 +76,14 @@ KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
     s.uuid = "00001106-0000-1000-8000-00805F9B34FB";
     m_supportedServices.insert("00001106-0000-1000-8000-00805F9B34FB", s);
 
+    kDebug() << "Kio Bluetooth instanced!";
+    m_kded = new org::kde::BlueDevil("org.kde.kded", "/modules/bluedevil", QDBusConnection::sessionBus(), 0);
+
     if (!Manager::self()->usableAdapter()) {
         kDebug() << "No available interface";
         infoMessage(i18n("No Bluetooth adapters have been found."));
         return;
     }
-
-    kDebug() << "Kio Bluetooth instanced!";
-    m_kded = new org::kde::BlueDevil("org.kde.kded", "/modules/bluedevil", QDBusConnection::sessionBus(), 0);
 }
 
 QList<KioBluetooth::Service> KioBluetooth::getSupportedServices(const QStringList &uuids)
