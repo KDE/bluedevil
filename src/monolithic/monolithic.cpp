@@ -220,6 +220,8 @@ void Monolithic::setupDevice(Device *device)
 
 void Monolithic::onlineMode()
 {
+    setStatus(Active);
+
     QList<Adapter*> adapters = Manager::self()->adapters();
     Q_FOREACH(Adapter *adapter, adapters) {
         connect(adapter, SIGNAL(deviceFound(Device*)), SLOT(deviceCreated(Device*)));
@@ -351,6 +353,7 @@ void Monolithic::deviceCreated(Device *device)
 
 void Monolithic::offlineMode()
 {
+    setStatus(Passive);
     setTooltipTitleStatus(false);
 
     KMenu *const menu = contextMenu();
