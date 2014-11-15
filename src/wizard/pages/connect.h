@@ -45,7 +45,7 @@ public:
     void initializePage() Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
-    void setTrustedFinished(QBluez::PendingCall *call);
+    void connectFinished(QBluez::PendingCall *call);
 
 protected:
     QList<QWizard::WizardButton> wizardButtonsLayout() const;

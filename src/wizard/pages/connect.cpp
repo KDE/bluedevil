@@ -62,20 +62,23 @@ void ConnectPage::initializePage()
     m_wizard->setButtonLayout(wizardButtonsLayout());
     connecting->setText(connecting->text().append(m_wizard->device()->name()));
 
-    m_wizard->device()->connectDevice();
+    m_wizard->device()->setTrusted(true);
 
-    QBluez::PendingCall *call = m_wizard->device()->setTrusted(true);
-    connect(call, &QBluez::PendingCall::finished, this, &ConnectPage::setTrustedFinished);
+    QBluez::PendingCall *call = m_wizard->device()->connectDevice();
+    connect(call, &QBluez::PendingCall::finished, this, &ConnectPage::connectFinished);
 }
 
-void ConnectPage::setTrustedFinished(QBluez::PendingCall *call)
+void ConnectPage::connectFinished(QBluez::PendingCall *call)
 {
-    qCDebug(WIZARD) << "SetTrusted finished:";
+    qCDebug(WIZARD) << "Connect finished:";
     qCDebug(WIZARD) << "\t error     : " << (bool) call->error();
     qCDebug(WIZARD) << "\t errorText : " << call->errorText();
 
-    m_success = !call->error();
-    QTimer::singleShot(1000, m_wizard, SLOT(next()));
+    // Connect may fail but that doesn't really mean the device was setup incorrectly
+    // Device::connectDevice will fail eg. when A2DP profile could not be connected due to missing pulseaudio plugin
+    // FIXME: Think what to do
+    m_success = true;
+    QTimer::singleShot(500, m_wizard, SLOT(next()));
 }
 
 QList<QWizard::WizardButton> ConnectPage::wizardButtonsLayout() const
