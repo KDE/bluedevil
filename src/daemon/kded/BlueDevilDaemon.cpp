@@ -65,6 +65,7 @@ struct BlueDevilDaemon::Private
     QList <DeviceInfo>                m_discovered;
     QTimer                           m_timer;
     KComponentData                  m_componentData;
+    QHash<QString, bool>            m_adapterPoweredHash;
 };
 
 BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
@@ -106,6 +107,15 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     connect(Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)),
             this, SLOT(usableAdapterChanged(Adapter*)));
 
+    // Catch suspend/resume events
+    QDBusConnection::systemBus().connect("org.freedesktop.login1",
+                                         "/org/freedesktop/login1",
+                                         "org.freedesktop.login1.Manager",
+                                         "PrepareForSleep",
+                                         this,
+                                         SLOT(login1PrepareForSleep(bool))
+                                         );
+
     d->m_status = Private::Offline;
     usableAdapterChanged(Manager::self()->usableAdapter());
 
@@ -121,6 +131,40 @@ BlueDevilDaemon::~BlueDevilDaemon()
     }
 
     delete d;
+}
+
+static Adapter *adapterForAddress(const QString &address)
+{
+    Q_FOREACH (Adapter *adapter, Manager::self()->adapters()) {
+        if (adapter->address() == address) {
+            return adapter;
+        }
+    }
+    return 0;
+}
+
+void BlueDevilDaemon::login1PrepareForSleep(bool active)
+{
+    if (active) {
+        kDebug(dblue()) << "About to suspend";
+        d->m_adapterPoweredHash.clear();
+        Q_FOREACH (Adapter *adapter, Manager::self()->adapters()) {
+            kDebug(dblue()) << "Saving" << adapter->address() << adapter->isPowered();
+            d->m_adapterPoweredHash.insert(adapter->address(), adapter->isPowered());
+        }
+    } else {
+        kDebug(dblue()) << "About to resume";
+        QHashIterator<QString, bool> it(d->m_adapterPoweredHash);
+        while (it.hasNext()) {
+            it.next();
+            Adapter *adapter = adapterForAddress(it.key());
+            if (adapter) {
+                kDebug(dblue()) << "Restoring" << adapter->address() << it.value();
+                adapter->setPowered(it.value());
+            }
+        }
+        d->m_adapterPoweredHash.clear();
+    }
 }
 
 bool BlueDevilDaemon::isOnline()

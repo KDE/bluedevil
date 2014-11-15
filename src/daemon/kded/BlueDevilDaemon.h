@@ -87,6 +87,8 @@ private Q_SLOTS:
      */
     void agentReleased();
 
+    void login1PrepareForSleep(bool active);
+
     void deviceFound(Device*);
     void monolithicQuit(QDBusPendingCallWatcher* watcher);
     void monolithicFinished(const QString &);
