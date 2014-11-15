@@ -22,6 +22,8 @@
 #include <QObject>
 #include <KComponentData>
 
+#include "obex_agent_manager.h"
+
 class QDBusPendingCallWatcher;
 class FileReceiver : public QObject
 {
@@ -31,7 +33,11 @@ class FileReceiver : public QObject
         virtual ~FileReceiver();
 
     private Q_SLOTS:
+        void registerAgent();
         void agentRegistered(QDBusPendingCallWatcher* call);
+
+    private:
+        org::bluez::obex::AgentManager1 *m_agentManager;
 };
 
 #endif //FILE_RECEIVER_H

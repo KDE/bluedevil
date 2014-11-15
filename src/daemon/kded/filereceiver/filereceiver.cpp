@@ -19,30 +19,41 @@
 #include "filereceiver.h"
 #include "../BlueDevilDaemon.h"
 #include "obexagent.h"
-#include "obex_agent_manager.h"
 
 #include <QDBusConnection>
 #include <QDBusPendingCall>
 #include <QDBusPendingCallWatcher>
+#include <QDBusServiceWatcher>
 
 #include <KDebug>
 
-FileReceiver::FileReceiver(const KComponentData& componentData, QObject* parent) : QObject(parent)
+FileReceiver::FileReceiver(const KComponentData& componentData, QObject* parent)
+    : QObject(parent)
+    , m_agentManager(0)
 {
     kDebug(dblue());
     qDBusRegisterMetaType<QVariantMap>();
 
     new ObexAgent(componentData, this);
-    org::bluez::obex::AgentManager1 *agent = new org::bluez::obex::AgentManager1("org.bluez.obex", "/org/bluez/obex", QDBusConnection::sessionBus(), this);
+    m_agentManager = new org::bluez::obex::AgentManager1("org.bluez.obex", "/org/bluez/obex", QDBusConnection::sessionBus(), this);
+    registerAgent();
 
-    QDBusPendingReply <void > r = agent->RegisterAgent(QDBusObjectPath("/BlueDevil_receiveAgent"));
-    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(r, this);
-    connect(watcher, SIGNAL(finished(QDBusPendingCallWatcher*)), SLOT(agentRegistered(QDBusPendingCallWatcher*)));
+    // obexd should be set to auto-start by D-Bus (D-Bus activation), so this should restart it in case of crash
+    QDBusServiceWatcher *serviceWatcher = new QDBusServiceWatcher("org.bluez.obex", QDBusConnection::sessionBus(),
+            QDBusServiceWatcher::WatchForUnregistration, this);
+    connect(serviceWatcher, SIGNAL(serviceUnregistered(QString)), this, SLOT(registerAgent()));
 }
 
 FileReceiver::~FileReceiver()
 {
 
+}
+
+void FileReceiver::registerAgent()
+{
+    QDBusPendingReply <void > r = m_agentManager->RegisterAgent(QDBusObjectPath("/BlueDevil_receiveAgent"));
+    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(r, this);
+    connect(watcher, SIGNAL(finished(QDBusPendingCallWatcher*)), SLOT(agentRegistered(QDBusPendingCallWatcher*)));
 }
 
 void FileReceiver::agentRegistered(QDBusPendingCallWatcher* call)
