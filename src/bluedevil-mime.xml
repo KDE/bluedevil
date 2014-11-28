@@ -19,6 +19,7 @@ Notes:
     <comment>Known Device</comment>
     <comment xml:lang="ca">Dispositiu conegut</comment>
     <comment xml:lang="cs">Známé zařízení</comment>
+    <comment xml:lang="da">Kendt enhed</comment>
     <comment xml:lang="de">Bekanntes Gerät</comment>
     <comment xml:lang="el">Γνωστή συσκευή</comment>
     <comment xml:lang="en_GB">Known Device</comment>
@@ -43,6 +44,7 @@ Notes:
     <comment>Discovered Device</comment>
     <comment xml:lang="ca">Dispositiu descobert</comment>
     <comment xml:lang="cs">Objevené zařízení</comment>
+    <comment xml:lang="da">Opdaget enhed</comment>
     <comment xml:lang="de">Erkanntes Gerät</comment>
     <comment xml:lang="el">Ευρεθείσα συσκευή</comment>
     <comment xml:lang="en_GB">Discovered Device</comment>
@@ -67,6 +69,7 @@ Notes:
     <comment>Service</comment>
     <comment xml:lang="ca">Servei</comment>
     <comment xml:lang="cs">Služba</comment>
+    <comment xml:lang="da">Tjeneste</comment>
     <comment xml:lang="de">Dienst</comment>
     <comment xml:lang="el">Υπηρεσία</comment>
     <comment xml:lang="en_GB">Service</comment>
@@ -89,6 +92,7 @@ Notes:
     <comment>Service</comment>
     <comment xml:lang="ca">Servei</comment>
     <comment xml:lang="cs">Služba</comment>
+    <comment xml:lang="da">Tjeneste</comment>
     <comment xml:lang="de">Dienst</comment>
     <comment xml:lang="el">Υπηρεσία</comment>
     <comment xml:lang="en_GB">Service</comment>
@@ -111,6 +115,7 @@ Notes:
     <comment>Service</comment>
     <comment xml:lang="ca">Servei</comment>
     <comment xml:lang="cs">Služba</comment>
+    <comment xml:lang="da">Tjeneste</comment>
     <comment xml:lang="de">Dienst</comment>
     <comment xml:lang="el">Υπηρεσία</comment>
     <comment xml:lang="en_GB">Service</comment>
@@ -133,6 +138,7 @@ Notes:
     <comment>Service</comment>
     <comment xml:lang="ca">Servei</comment>
     <comment xml:lang="cs">Služba</comment>
+    <comment xml:lang="da">Tjeneste</comment>
     <comment xml:lang="de">Dienst</comment>
     <comment xml:lang="el">Υπηρεσία</comment>
     <comment xml:lang="en_GB">Service</comment>
@@ -155,6 +161,7 @@ Notes:
       <comment>Service</comment>
       <comment xml:lang="ca">Servei</comment>
       <comment xml:lang="cs">Služba</comment>
+      <comment xml:lang="da">Tjeneste</comment>
       <comment xml:lang="de">Dienst</comment>
       <comment xml:lang="el">Υπηρεσία</comment>
       <comment xml:lang="en_GB">Service</comment>
