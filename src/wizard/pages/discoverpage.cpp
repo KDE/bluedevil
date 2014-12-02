@@ -26,6 +26,7 @@
 #include <QListView>
 #include <QLabel>
 #include <QTimer>
+#include <QRegExpValidator>
 
 #include <KDebug>
 #include <kpixmapsequenceoverlaypainter.h>
@@ -60,6 +61,10 @@ void DiscoverPage::initializePage()
     list << QWizard::NextButton;
     list << QWizard::CancelButton;
     m_wizard->setButtonLayout(list);
+
+    QRegExp rx("[0-9]{0,9}");
+    QRegExpValidator *validator = new QRegExpValidator(rx);
+    pinText->setValidator(validator);
 
     connect(Manager::self()->usableAdapter(), SIGNAL(unpairedDeviceFound(Device*)), this,
         SLOT(deviceFound(Device*)));
