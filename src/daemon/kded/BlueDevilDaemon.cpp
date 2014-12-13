@@ -36,6 +36,7 @@
 #include <KPluginFactory>
 #include <kfileplacesmodel.h>
 #include <kdirnotify.h>
+#include <ksharedconfig.h>
 
 #include <bluedevil/bluedevilmanager.h>
 #include <bluedevil/bluedeviladapter.h>
@@ -66,6 +67,7 @@ struct BlueDevilDaemon::Private
     QTimer                           m_timer;
     KComponentData                  m_componentData;
     QHash<QString, bool>            m_adapterPoweredHash;
+    KSharedConfig::Ptr              m_config;
 };
 
 BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
@@ -83,6 +85,7 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
             , QDBusConnection::sessionBus(), QDBusServiceWatcher::WatchForUnregistration, this);
     d->m_timer.setInterval(20000);
     d->m_timer.setSingleShot(true);
+    d->m_config = KSharedConfig::openConfig("bluedevilglobalrc");
 
     KAboutData aboutData(
         "bluedevildaemon",
@@ -106,6 +109,8 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
 
     connect(Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)),
             this, SLOT(usableAdapterChanged(Adapter*)));
+    connect(Manager::self(), SIGNAL(adapterAdded(Adapter*)),
+            this, SLOT(adapterAdded(Adapter*)));
 
     // Catch suspend/resume events
     QDBusConnection::systemBus().connect("org.freedesktop.login1",
@@ -117,6 +122,8 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
                                          );
 
     d->m_status = Private::Offline;
+
+    restoreAdaptersState();
     usableAdapterChanged(Manager::self()->usableAdapter());
 
     if (!Manager::self()->adapters().isEmpty()) {
@@ -126,6 +133,8 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
 
 BlueDevilDaemon::~BlueDevilDaemon()
 {
+    saveAdaptersState();
+
     if (d->m_status == Private::Online) {
         offlineMode();
     }
@@ -344,6 +353,11 @@ void BlueDevilDaemon::usableAdapterChanged(Adapter *adapter)
     }
 }
 
+void BlueDevilDaemon::adapterAdded(Adapter *adapter)
+{
+    restoreAdapterState(adapter);
+}
+
 void BlueDevilDaemon::deviceFound(Device *device)
 {
     kDebug(dblue()) << "DeviceFound: " << device->name();
@@ -359,6 +373,47 @@ void BlueDevilDaemon::monolithicQuit(QDBusPendingCallWatcher* watcher)
         qDebug() << "Error response: " << reply.error().message();
         killMonolithic();
     }
+}
+
+void BlueDevilDaemon::saveAdaptersState()
+{
+    Manager *manager = Manager::self();
+    if (!manager) {
+        return;
+    }
+
+    KConfigGroup adaptersGroup = d->m_config->group("Adapters");
+
+    Q_FOREACH (Adapter *adapter, manager->adapters()) {
+        const QString key = QString("%1_powered").arg(adapter->address());
+        adaptersGroup.writeEntry<bool>(key, adapter->isPowered());
+    }
+
+    d->m_config->sync();
+}
+
+// New adapters are automatically powered on
+void BlueDevilDaemon::restoreAdaptersState()
+{
+    Manager *manager = Manager::self();
+    if (!manager) {
+        return;
+    }
+
+    KConfigGroup adaptersGroup = d->m_config->group("Adapters");
+
+    Q_FOREACH (Adapter *adapter, manager->adapters()) {
+        const QString key = QString("%1_powered").arg(adapter->address());
+        adapter->setPowered(adaptersGroup.readEntry<bool>(key, true));
+    }
+}
+
+void BlueDevilDaemon::restoreAdapterState(Adapter *adapter)
+{
+    KConfigGroup adaptersGroup = d->m_config->group("Adapters");
+
+    const QString key = QString("%1_powered").arg(adapter->address());
+    adapter->setPowered(adaptersGroup.readEntry<bool>(key, true));
 }
 
 DeviceInfo BlueDevilDaemon::deviceToInfo(Device *const device) const

@@ -82,6 +82,8 @@ private Q_SLOTS:
      */
     void usableAdapterChanged(Adapter *adapter);
 
+    void adapterAdded(Adapter *adapter);
+
     /**
      * When the agent is released this is called to unload it
      */
@@ -96,6 +98,10 @@ private Q_SLOTS:
 private:
     void executeMonolithic();
     void killMonolithic();
+
+    void saveAdaptersState();
+    void restoreAdaptersState();
+    void restoreAdapterState(Adapter *adapter);
 
     DeviceInfo deviceToInfo (Device *const device) const;
 
