@@ -66,7 +66,6 @@ struct BlueDevilDaemon::Private
     QList <DeviceInfo>                m_discovered;
     QTimer                           m_timer;
     KComponentData                  m_componentData;
-    QHash<QString, bool>            m_adapterPoweredHash;
     KSharedConfig::Ptr              m_config;
 };
 
@@ -156,23 +155,10 @@ void BlueDevilDaemon::login1PrepareForSleep(bool active)
 {
     if (active) {
         kDebug(dblue()) << "About to suspend";
-        d->m_adapterPoweredHash.clear();
-        Q_FOREACH (Adapter *adapter, Manager::self()->adapters()) {
-            kDebug(dblue()) << "Saving" << adapter->address() << adapter->isPowered();
-            d->m_adapterPoweredHash.insert(adapter->address(), adapter->isPowered());
-        }
+        saveAdaptersState();
     } else {
         kDebug(dblue()) << "About to resume";
-        QHashIterator<QString, bool> it(d->m_adapterPoweredHash);
-        while (it.hasNext()) {
-            it.next();
-            Adapter *adapter = adapterForAddress(it.key());
-            if (adapter) {
-                kDebug(dblue()) << "Restoring" << adapter->address() << it.value();
-                adapter->setPowered(it.value());
-            }
-        }
-        d->m_adapterPoweredHash.clear();
+        restoreAdaptersState();
     }
 }
 
