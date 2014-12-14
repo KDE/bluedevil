@@ -44,7 +44,7 @@ Monolithic::Monolithic(QObject* parent)
 
     offlineMode();
 
-    if (!Manager::self()->adapters().isEmpty()) {
+    if (Manager::self()->usableAdapter()) {
         onlineMode();
     }
 
@@ -55,7 +55,6 @@ Monolithic::Monolithic(QObject* parent)
     setStandardActionsEnabled(false);
     setAssociatedWidget(contextMenu());
 
-    setStatus(KStatusNotifierItem::Active);
     poweredChanged();
 }
 
