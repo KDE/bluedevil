@@ -70,6 +70,7 @@ void SSPPairingPage::initializePage()
 void SSPPairingPage::confirmationRequested(quint32 passkey, const QDBusMessage& msg)
 {
     m_msg = msg;
+    m_msg.setDelayedReply(true);
 
     KPushButton *matches = new KPushButton(KStandardGuiItem::apply());
     matches->setText(i18n("Matches"));
@@ -119,6 +120,7 @@ void SSPPairingPage::matchesClicked()
 void SSPPairingPage::notMatchClicked()
 {
     m_buttonClicked = QWizard::CustomButton2;
+    QDBusConnection::systemBus().send(m_msg.createErrorReply("org.bluez.Rejected", "Rejected"));
 
     wizard()->next();
 }
