@@ -83,6 +83,7 @@ private Q_SLOTS:
     void usableAdapterChanged(Adapter *adapter);
 
     void adapterAdded(Adapter *adapter);
+    void adapterRemoved(Adapter *adapter);
 
     /**
      * When the agent is released this is called to unload it

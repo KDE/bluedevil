@@ -110,6 +110,8 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
             this, SLOT(usableAdapterChanged(Adapter*)));
     connect(Manager::self(), SIGNAL(adapterAdded(Adapter*)),
             this, SLOT(adapterAdded(Adapter*)));
+    connect(Manager::self(), SIGNAL(adapterRemoved(Adapter*)),
+            this, SLOT(adapterRemoved(Adapter*)));
 
     // Catch suspend/resume events
     QDBusConnection::systemBus().connect("org.freedesktop.login1",
@@ -309,9 +311,6 @@ void BlueDevilDaemon::offlineMode()
         d->m_placesModel->removePlace(index);
     }
 
-    if (BlueDevil::Manager::self()->adapters().isEmpty()) {
-        killMonolithic();
-    }
     d->m_status = Private::Offline;
 }
 
@@ -342,6 +341,15 @@ void BlueDevilDaemon::usableAdapterChanged(Adapter *adapter)
 void BlueDevilDaemon::adapterAdded(Adapter *adapter)
 {
     restoreAdapterState(adapter);
+}
+
+void BlueDevilDaemon::adapterRemoved(Adapter *adapter)
+{
+    Q_UNUSED(adapter)
+
+    if (BlueDevil::Manager::self()->adapters().isEmpty()) {
+        killMonolithic();
+    }
 }
 
 void BlueDevilDaemon::deviceFound(Device *device)
