@@ -29,10 +29,6 @@
 #include <KAboutData>
 #include <KPluginFactory>
 
-#include <bluedevil/bluedevilmanager.h>
-#include <bluedevil/bluedeviladapter.h>
-
-using namespace BlueDevil;
 K_PLUGIN_FACTORY(ObexFtpFactory,
                  registerPlugin<ObexFtpDaemon>();)
 K_EXPORT_PLUGIN(ObexFtpFactory("obexftpdaemon", "obexftpdaemon"))
@@ -55,7 +51,8 @@ ObexFtpDaemon::ObexFtpDaemon(QObject *parent, const QList<QVariant>&)
     : KDEDModule(parent)
     , d(new Private)
 {
-    d->m_status = Private::Offline;
+    qDBusRegisterMetaType<DBusManagerStruct>();
+    qDBusRegisterMetaType<QVariantMapMap>();
 
     KAboutData aboutData(
         "obexftpdaemon",
@@ -70,23 +67,21 @@ ObexFtpDaemon::ObexFtpDaemon(QObject *parent, const QList<QVariant>&)
     aboutData.addAuthor(ki18n("Alejandro Fiestas Olivares"), ki18n("Maintainer"), "afiestas@kde.org",
         "http://www.afiestas.org");
 
-    connect(Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)),
-            SLOT(usableAdapterChanged(Adapter*)));
-
+    d->m_status = Private::Offline;
     d->m_interface = new OrgFreedesktopDBusObjectManagerInterface("org.bluez.obex", "/", QDBusConnection::sessionBus(), this);
     connect(d->m_interface, SIGNAL(InterfacesRemoved(QDBusObjectPath,QStringList)),
             SLOT(interfaceRemoved(QDBusObjectPath,QStringList)));
+
     d->m_serviceWatcher = new QDBusServiceWatcher("org.bluez.obex", QDBusConnection::sessionBus(),
-                                                           QDBusServiceWatcher::WatchForUnregistration, this);
+            QDBusServiceWatcher::WatchForRegistration | QDBusServiceWatcher::WatchForUnregistration, this);
 
-    connect(d->m_serviceWatcher, SIGNAL(serviceUnregistered(QString)), SLOT(serviceUnregistered(QString)));
+    connect(d->m_serviceWatcher, SIGNAL(serviceRegistered(QString)), SLOT(serviceRegistered()));
+    connect(d->m_serviceWatcher, SIGNAL(serviceUnregistered(QString)), SLOT(serviceUnregistered()));
 
-    qDBusRegisterMetaType<DBusManagerStruct>();
-    qDBusRegisterMetaType<QVariantMapMap>();
-
-    //WARNING this blocks if org.bluez in system bus is dead
-    if (Manager::self()->usableAdapter()) {
+    if (QDBusConnection::sessionBus().interface()->isServiceRegistered("org.bluez.obex")) {
         onlineMode();
+    } else {
+        offlineMode();
     }
 }
 
@@ -111,7 +106,7 @@ void ObexFtpDaemon::onlineMode()
 
 void ObexFtpDaemon::offlineMode()
 {
-    kDebug(dobex()) << "Offline mode";
+    kDebug(dobex());
     if (d->m_status == Private::Offline) {
         kDebug(dobex()) << "Already in offlineMode";
         return;
@@ -123,27 +118,24 @@ void ObexFtpDaemon::offlineMode()
     d->m_status = Private::Offline;
 }
 
-void ObexFtpDaemon::usableAdapterChanged(Adapter *adapter)
+bool ObexFtpDaemon::isOnline()
 {
-    if (!adapter) {
-        offlineMode();
-        return;
-    }
-
-    onlineMode();
+    return d->m_status == Private::Online;
 }
 
 QString ObexFtpDaemon::session(QString address, const QDBusMessage& msg)
 {
-    kDebug(dobex()) << address;
     address.replace("-", ":");
 
-    if(d->m_sessionMap.contains(address)) {
+    if (d->m_sessionMap.contains(address)) {
         return d->m_sessionMap[address];
     }
 
-    //At this point we always want delayed reply
+    kDebug(dobex()) << "Creating session for" << address;
+
+    // At this point we always want delayed reply
     msg.setDelayedReply(true);
+
     if (d->m_wipSessions.contains(address)) {
         d->m_wipSessions[address]->addMessage(msg);
         return QString();
@@ -163,24 +155,26 @@ void ObexFtpDaemon::sessionCreated(KJob* job)
     kDebug(dobex()) << cJob->path();
 
     d->m_wipSessions.remove(cJob->address());
-    d->m_sessionMap.insert(cJob->address(), cJob->path());
-    d->m_reverseSessionMap.insert(cJob->path(), cJob->address());
 
-    const QList<QDBusMessage> messages = cJob->messages();
-    Q_FOREACH(const QDBusMessage &msg, messages) {
+    Q_FOREACH (const QDBusMessage &msg, cJob->messages()) {
         QDBusMessage reply = msg.createReply(cJob->path());
-        QDBusConnection::sessionBus().asyncCall(reply);
+        QDBusConnection::sessionBus().send(reply);
+    }
+
+    if (!cJob->error()) {
+        d->m_sessionMap.insert(cJob->address(), cJob->path());
+        d->m_reverseSessionMap.insert(cJob->path(), cJob->address());
     }
 }
 
-void ObexFtpDaemon::serviceUnregistered(const QString& service)
+void ObexFtpDaemon::serviceRegistered()
 {
-    if (service != QLatin1String("org.bluez.obex")) {
-        return;
-    }
+    onlineMode();
+}
 
-    d->m_sessionMap.clear();
-    d->m_reverseSessionMap.clear();
+void ObexFtpDaemon::serviceUnregistered()
+{
+    offlineMode();
 }
 
 void ObexFtpDaemon::interfaceRemoved(const QDBusObjectPath &dbusPath, const QStringList& interfaces)

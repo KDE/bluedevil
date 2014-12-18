@@ -28,44 +28,27 @@ class KJob;
 class QDBusMessage;
 class QDBusPendingCallWatcher;
 
-namespace BlueDevil {
-    class Adapter;
-};
-using namespace BlueDevil;
-
-class KDE_EXPORT ObexFtpDaemon
-    : public KDEDModule
+class KDE_EXPORT ObexFtpDaemon : public KDEDModule
 {
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.kde.ObexFtp")
 
 public:
-    /**
-     * Connects to usableAdapterChanged
-     */
     ObexFtpDaemon(QObject *parent, const QList<QVariant>&);
     virtual ~ObexFtpDaemon();
 
 public Q_SLOTS:
+    Q_SCRIPTABLE bool isOnline();
     Q_SCRIPTABLE QString session(QString address, const QDBusMessage &msg);
 
 private Q_SLOTS:
-    void usableAdapterChanged(Adapter* adapter);
     void sessionCreated(KJob* job);
-    void serviceUnregistered(const QString &service);
+    void serviceRegistered();
+    void serviceUnregistered();
     void interfaceRemoved(const QDBusObjectPath &path, const QStringList &interfaces);
 
 private:
-    /**
-     * Called by constructor or eventually by adapterAdded initialize all the helpers
-     * @see helpers
-     */
-     void onlineMode();
-
-    /**
-     * Called eventually adapterRemoved shutdown all the helpers
-     * @see helpers
-     */
+    void onlineMode();
     void offlineMode();
 
     struct Private;
