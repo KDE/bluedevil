@@ -53,24 +53,32 @@ public:
 private Q_SLOTS:
     void updateProcess();
 
-    KIO::UDSEntry entryFromInfo(const QVariantMap &info);
+private:
     void copyHelper(const KUrl &src, const KUrl &dest);
+    void copyWithinObexftp(const KUrl &src, const KUrl &dest);
     void copyFromObexftp(const KUrl &src, const KUrl &dest);
     void copyToObexftp(const KUrl &src, const KUrl &dest);
     void statHelper(const KUrl &url);
+
+    QList<KIO::UDSEntry> listFolder(const KUrl &url, bool *ok);
+    bool changeFolder(const QString &folder);
+    bool createFolder(const QString &folder);
+    bool copyFile(const QString &src, const QString &dest);
+    bool deleteFile(const QString &file);
+
+    void updateRootEntryIcon(KIO::UDSEntry &entry, const QString &memoryType);
     void launchProgressBar();
+    void connectToHost();
+    bool testConnection();
 
 private:
-    int                          m_counter;
-    bool                         m_settingHost;
-    QEventLoop                   m_eventLoop;
+    int m_counter;
     QMap<QString, KIO::UDSEntry> m_statMap;
-    QString                      m_address;
-    QString                      m_sessionPath;
-    QTimer                      *m_timer;
-    org::kde::ObexFtp           *m_kded;
+    QString m_host;
+    QString m_sessionPath;
+    QTimer *m_timer;
+    org::kde::ObexFtp *m_kded;
     OrgBluezObexFileTransfer1Interface *m_transfer;
-
 };
 
 #endif // KIO_OBEXFTP_H

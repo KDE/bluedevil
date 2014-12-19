@@ -39,7 +39,6 @@ public:
 
     virtual ~TransferFileJob();
 
-    void setSize(int size);
 private Q_SLOTS:
     void createObjects();
     void propertiesChanged(const QString &interface , const QVariantMap &properties , const QStringList &invalidProps);

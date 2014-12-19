@@ -56,12 +56,6 @@ bool TransferFileJob::doKill()
     return !reply.isError();
 }
 
-void TransferFileJob::setSize(int size)
-{
-    kDebug() << size;
-    m_parent->totalSize(size);
-}
-
 void TransferFileJob::createObjects()
 {
     m_transfer = new TransferInterface("org.bluez.obex", m_path, QDBusConnection::sessionBus());
@@ -97,7 +91,6 @@ void TransferFileJob::statusChanged(const QVariant& value)
         m_time = QTime::currentTime();
         return;
     } else if (status == QLatin1String("complete")) {
-        m_parent->finished();
         emitResult();
         return;
     } else if (status == QLatin1String("error")) {
@@ -114,7 +107,7 @@ void TransferFileJob::transferChanged(const QVariant& value)
     kDebug() << "Transferred: " << value;
     if (m_parent->wasKilled()) {
         kDebug() << "Kio was killed, aborting task";
-        m_transfer->Cancel().waitForFinished();
+        doKill();
         emitResult();
         return;
     }
