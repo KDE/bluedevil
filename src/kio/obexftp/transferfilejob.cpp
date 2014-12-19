@@ -34,7 +34,6 @@ TransferFileJob::TransferFileJob(const QString& path, KioFtp* parent)
     , m_speedBytes(0)
     , m_parent(parent)
 {
-
 }
 
 TransferFileJob::~TransferFileJob()
@@ -50,10 +49,7 @@ void TransferFileJob::start()
 
 bool TransferFileJob::doKill()
 {
-    QDBusPendingReply <void > reply = m_transfer->Cancel();
-    reply.waitForFinished();
-
-    return !reply.isError();
+    return m_parent->cancelTransfer(m_path);
 }
 
 void TransferFileJob::createObjects()

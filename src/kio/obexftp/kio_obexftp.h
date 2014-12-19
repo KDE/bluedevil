@@ -50,6 +50,8 @@ public:
     virtual void rename(const KUrl& src, const KUrl& dest, KIO::JobFlags flags);
     virtual void get(const KUrl& url);
 
+    bool cancelTransfer(const QString &transfer);
+
 private Q_SLOTS:
     void updateProcess();
 

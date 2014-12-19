@@ -213,6 +213,11 @@ void KioFtp::get(const KUrl& url)
     finished();
 }
 
+bool KioFtp::cancelTransfer(const QString &transfer)
+{
+    return m_kded->cancelTransfer(transfer);
+}
+
 void KioFtp::setHost(const QString &host, quint16 port, const QString &user, const QString &pass)
 {
     Q_UNUSED(port)

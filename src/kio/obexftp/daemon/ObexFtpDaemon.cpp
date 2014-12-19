@@ -149,6 +149,20 @@ QString ObexFtpDaemon::session(QString address, const QDBusMessage& msg)
     return QString();
 }
 
+bool ObexFtpDaemon::cancelTransfer(const QString &transfer)
+{
+    // We need this function because kio_obexftp is not owner of the transfer,
+    // and thus cannot cancel it.
+
+    QDBusMessage call = QDBusMessage::createMethodCall("org.bluez.obex",
+                            transfer,
+                            "org.bluez.obex.Transfer1",
+                            "Cancel");
+
+    QDBusReply<void> reply = QDBusConnection::sessionBus().call(call);
+    return reply.isValid();
+}
+
 void ObexFtpDaemon::sessionCreated(KJob* job)
 {
     CreateSessionJob* cJob = qobject_cast<CreateSessionJob*>(job);

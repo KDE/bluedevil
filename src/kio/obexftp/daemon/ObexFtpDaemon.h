@@ -40,6 +40,7 @@ public:
 public Q_SLOTS:
     Q_SCRIPTABLE bool isOnline();
     Q_SCRIPTABLE QString session(QString address, const QDBusMessage &msg);
+    Q_SCRIPTABLE bool cancelTransfer(const QString &transfer);
 
 private Q_SLOTS:
     void sessionCreated(KJob* job);

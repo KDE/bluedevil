@@ -10,5 +10,9 @@
       <arg name="address" type="s" direction="in"/>
       <arg name="sessionPath" type="s" direction="out"/>
     </method>
+    <method name="cancelTransfer">
+      <arg name="transfer" type="s" direction="in"/>
+      <arg name="success" type="b" direction="out"/>
+    </method>
   </interface>
 </node>
