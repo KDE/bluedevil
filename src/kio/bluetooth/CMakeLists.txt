@@ -11,7 +11,6 @@ target_link_libraries(kio_bluetooth
   ${KDE4_KDECORE_LIBS}
   ${KDE4_KIO_LIBRARY}
   ${KDE4_KDEUI_LIBS}
-  ${LibBlueDevil_LIBRARIES}
 )
 
 ########### install files ###############

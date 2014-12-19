@@ -33,13 +33,6 @@
  */
 class KioBluetoothPrivate;
 
-namespace BlueDevil {
-    class Device;
-    class Adapter;
-}
-
-using namespace BlueDevil;
-
 class KioBluetooth : public QObject, public KIO::SlaveBase
 {
   Q_OBJECT
@@ -78,7 +71,7 @@ public:
      * difference with @p listDir
      *
      */
-    void setHost(const QString &constHostname, quint16 port, const QString &user, const QString &pass);
+    void setHost(const QString &hostname, quint16 port, const QString &user, const QString &pass);
 
     /**
      * Returns a list of supported service names corresponding to the given uuids list. If an uuid is
@@ -117,22 +110,15 @@ private:
     QString m_currentHostname;
 
     /**
-     * Represents the current host when @p hasCurrentHost is set to true. This is set in
-     * @p listRemoteDeviceServices function.
+     * Uppercase colon separated address (ex. 00:2A:5E:8E:6E:F5)
      */
-    Device *m_currentHost;
+    QString m_currentHostAddress;
 
     /**
      * When @p hasCurrentHost to true, this list holds the list of service names provided by the
      * current host (which is a remote device we can connect to using those services).
      */
     QList<Service> m_currentHostServices;
-
-    /**
-     * This is an array containing as key the uuid and as value the name of the service that the
-     * given uuid represents.
-     */
-    QMap<QString, QString> m_serviceNames;
 
     /**
      * This is an array containing as key the uuid and as value the name of the service that the
