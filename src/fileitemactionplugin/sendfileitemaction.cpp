@@ -55,7 +55,8 @@ QList<QAction*> SendFileItemAction::actions(const KFileItemListProperties &fileI
 
     QList<QAction*> list;
 
-    if (!m_kded->isOnline()) {
+    // Don't show the action for files that we can't send or when Bluetooth is offline.
+    if (!fileItemInfos.isLocal() || !m_kded->isOnline()) {
         return list;
     }
 
