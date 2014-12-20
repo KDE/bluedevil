@@ -34,44 +34,44 @@
 #include <KProcess>
 #include <KLocalizedString>
 
-#include <bluedevil/bluedevil.h>
-
-using namespace BlueDevil;
 K_PLUGIN_FACTORY(SendFileItemActionFactory, registerPlugin<SendFileItemAction>();)
 K_EXPORT_PLUGIN(SendFileItemActionFactory("SendFileItemAction", "bluedevil"))
 
-SendFileItemAction::SendFileItemAction(QObject* parent, const QVariantList& args): KFileItemActionPlugin(parent)
+SendFileItemAction::SendFileItemAction(QObject *parent, const QVariantList &args)
+    : KFileItemActionPlugin(parent)
 {
     Q_UNUSED(args)
+
+    qDBusRegisterMetaType<DeviceInfo>();
+    qDBusRegisterMetaType<QMapDeviceInfo>();
+
+    m_kded = new org::kde::BlueDevil("org.kde.kded", "/modules/bluedevil",
+                                     QDBusConnection::sessionBus(), this);
 }
 
-QList< QAction* > SendFileItemAction::actions(const KFileItemListProperties& fileItemInfos, QWidget* parentWidget) const
+QList<QAction*> SendFileItemAction::actions(const KFileItemListProperties &fileItemInfos, QWidget *parentWidget) const
 {
     Q_UNUSED(parentWidget)
-    QList< QAction* > list;
+
+    QList<QAction*> list;
+
+    if (!m_kded->isOnline()) {
+        return list;
+    }
 
     SendFileItemAction *hack = const_cast<SendFileItemAction*>(this);
     hack->m_fileItemInfos = fileItemInfos;
 
-    //If there is no adaptor, there is no bluetooth
-    if (!Manager::self()->usableAdapter()) {
-        return list;
-    }
-    Adapter *adapter = Manager::self()->usableAdapter();
-
     QAction *menuAction = new QAction(KIcon("preferences-system-bluetooth"), i18n("Send via Bluetooth"), hack);
     QMenu *menu = new QMenu();
 
-    //If we have configured devices, put them first
-    QList< Device * > devices = adapter->devices();
-    if (!devices.isEmpty()) {
-        Q_FOREACH(Device *device, devices) {
-            if (device->UUIDs().contains("00001105-0000-1000-8000-00805F9B34FB", Qt::CaseInsensitive)) {
-                QAction *action = new QAction(KIcon(device->icon()), device->name(), hack);
-                connect(action, SIGNAL(triggered(bool)), this, SLOT(deviceTriggered()));
-                action->setData(device->UBI());
-                menu->addAction(action);
-            }
+    const QMapDeviceInfo &devices = m_kded->allDevices().value();
+    Q_FOREACH (const DeviceInfo &device, devices) {
+        if (device["UUIDs"].contains("00001105-0000-1000-8000-00805F9B34FB")) {
+            QAction *action = new QAction(KIcon(device["icon"]), device["name"], hack);
+            connect(action, SIGNAL(triggered(bool)), this, SLOT(deviceTriggered()));
+            action->setData(device["UBI"]);
+            menu->addAction(action);
         }
     }
 
