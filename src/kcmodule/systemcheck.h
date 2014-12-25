@@ -22,36 +22,18 @@
 #define BLUEDEVIL_SYSTEM_CHECK_H
 #include <QtCore/QObject>
 
-#include <kdeversion.h>
-
 class QVBoxLayout;
 
 class KDED;
-#if KDE_IS_VERSION(4,6,41)
 class KMessageWidget;
-#else
-class ErrorWidget;
-#endif
 
-class SystemCheck
-    : public QObject
+class SystemCheck : public QObject
 {
     Q_OBJECT
 
 public:
     SystemCheck(QWidget *parent);
     virtual ~SystemCheck();
-
-    struct SystemCheckResult {
-        enum Result {
-            NoWarnings = 0,
-            BluetoothDisabled,
-            NoAdapters,
-            NotificationsDisabled,
-            DefaultAdapterHidden
-        } result;
-        QWidget *warningWidget;
-    };
 
     void createWarnings(QVBoxLayout *layout);
 
@@ -67,23 +49,18 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void fixNoKDEDRunning();
+    void fixNoUsableAdapterError();
     void fixNotDiscoverableAdapterError();
     void fixDisabledNotificationsError();
 
 private:
     KDED        *m_kded;
     QWidget     *m_parent;
-#if KDE_IS_VERSION(4,6,41)
     KMessageWidget *m_noAdaptersError;
+    KMessageWidget *m_noUsableAdapterError;
     KMessageWidget *m_noKDEDRunning;
     KMessageWidget *m_notDiscoverableAdapterError;
     KMessageWidget *m_disabledNotificationsError;
-#else
-    ErrorWidget *m_noAdaptersError;
-    ErrorWidget *m_noKDEDRunning;
-    ErrorWidget *m_notDiscoverableAdapterError;
-    ErrorWidget *m_disabledNotificationsError;
-#endif
 };
 
 #endif //BLUEDEVIL_SYSTEM_CHECK_H
