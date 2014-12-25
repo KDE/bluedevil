@@ -48,7 +48,6 @@ Name[sv]=Blåtand
 Name[tr]=Bluetooth
 Name[ug]=كۆكچىش
 Name[uk]=Bluetooth
-Name[x-test]=xxBluetoothxx
 Name[zh_TW]=藍牙
 
 Comment=Handles Bluetooth events
@@ -89,5 +88,4 @@ Comment[sr@latin]=Rukuje bluetooth događajima
 Comment[sv]=Hanterar Blåtandhändelser
 Comment[tr]=Bluetooth olaylarını ele alır
 Comment[uk]=Обробляє події Bluetooth
-Comment[x-test]=xxHandles Bluetooth eventsxx
 Comment[zh_TW]=處理藍牙事件
