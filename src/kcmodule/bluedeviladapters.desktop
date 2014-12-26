@@ -54,6 +54,7 @@ Name[th]=อุปกรณ์
 Name[tr]=Bağdaştırıcılar
 Name[ug]=ماسلاشتۇرغۇچ
 Name[uk]=Адаптери
+Name[x-test]=xxAdaptersxx
 Name[zh_CN]=适配器
 Name[zh_TW]=轉接器
 
@@ -95,6 +96,7 @@ Comment[sr@latin]=Podesite bluetooth adaptere
 Comment[sv]=Anpassa Blåtandanslutningar
 Comment[tr]=Bluetooth bağdaştırıcılarını yapılandır
 Comment[uk]=Налаштування адаптерів Bluetooth
+Comment[x-test]=xxConfigure Bluetooth adaptersxx
 Comment[zh_TW]=設定藍牙轉接器
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
@@ -137,6 +139,7 @@ X-KDE-Keywords[sr@latin]=Network,Connectivity,Bluetooth,mreža,povezivanje,Bluet
 X-KDE-Keywords[sv]=Nätverk,Anslutningar,Blåtand
 X-KDE-Keywords[tr]=Ağ, Bağlanılabilirlik, Bluetooth
 X-KDE-Keywords[uk]=Network,Connectivity,Bluetooth,мережа,з’єднання,з'єднання
+X-KDE-Keywords[x-test]=xxNetwork,Connectivity,Bluetoothxx
 X-KDE-Keywords[zh_CN]=Network,Connectivity,Bluetooth,网络,连接,蓝牙
 X-KDE-Keywords[zh_TW]=Network,Connectivity,Bluetooth
 

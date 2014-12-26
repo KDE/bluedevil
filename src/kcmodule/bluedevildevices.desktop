@@ -58,6 +58,7 @@ Name[th]=อุปกรณ์ต่างๆ
 Name[tr]=Aygıtlar
 Name[ug]=ئۈسكۈنىلەر
 Name[uk]=Пристрої
+Name[x-test]=xxDevicesxx
 Name[zh_CN]=设备
 Name[zh_TW]=裝置
 
@@ -101,6 +102,7 @@ Comment[sv]=Hantera Blåtandenheter
 Comment[tr]=Bluetooth aygıtlarını yönet
 Comment[ug]=كۆكچىش ئۈسكۈنىلىرىنى باشقۇرۇش
 Comment[uk]=Керування пристроями Bluetooth
+Comment[x-test]=xxManage Bluetooth devicesxx
 Comment[zh_TW]=管理藍牙裝置
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
@@ -143,6 +145,7 @@ X-KDE-Keywords[sr@latin]=Network,Connectivity,Bluetooth,mreža,povezivanje,Bluet
 X-KDE-Keywords[sv]=Nätverk,Anslutningar,Blåtand
 X-KDE-Keywords[tr]=Ağ, Bağlanılabilirlik, Bluetooth
 X-KDE-Keywords[uk]=Network,Connectivity,Bluetooth,мережа,з’єднання,з'єднання
+X-KDE-Keywords[x-test]=xxNetwork,Connectivity,Bluetoothxx
 X-KDE-Keywords[zh_CN]=Network,Connectivity,Bluetooth,网络,连接,蓝牙
 X-KDE-Keywords[zh_TW]=Network,Connectivity,Bluetooth
 

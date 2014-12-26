@@ -46,6 +46,7 @@ Name[sr@latin]=Bluetooth prenos fajla
 Name[sv]=Filöverföring med Blåtand
 Name[tr]=Bluetooth Dosya Aktarımı
 Name[uk]=Перенесення файла за допомогою Bluetooth
+Name[x-test]=xxBluetooth File Transferxx
 Name[zh_TW]=藍牙檔案傳輸
 
 Comment=Supports Bluetooth file transfer using ObexFTP
@@ -85,4 +86,5 @@ Comment[sr@latin]=Podrška za bluetooth prenose fajlova pomoću ObexFTP‑a
 Comment[sv]=Stöder filöverföringar för Blåtand med ObexFTP
 Comment[tr]=ObexFTP kullanarak Bluetooth dosya transferlerini destekler
 Comment[uk]=Підтримує перенесення файлів Bluetooth за допомогою ObexFTP
+Comment[x-test]=xxSupports Bluetooth file transfer using ObexFTPxx
 Comment[zh_TW]=使用 ObexFTP 支援藍牙檔案傳輸
