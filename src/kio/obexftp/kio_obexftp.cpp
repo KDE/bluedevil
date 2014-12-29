@@ -35,6 +35,8 @@
 
 #include <unistd.h>
 
+Q_DECLARE_METATYPE(DeviceInfo)
+
 extern "C" int KDE_EXPORT kdemain(int argc, char **argv)
 {
     KAboutData about("kioobexftp", "bluedevil", ki18n("kioobexftp"), bluedevil_version);
@@ -64,6 +66,7 @@ KioFtp::KioFtp(const QByteArray &pool, const QByteArray &app)
     m_timer = new QTimer();
     m_timer->setInterval(100);
 
+    qDBusRegisterMetaType<DeviceInfo>();
     qDBusRegisterMetaType<QVariantMapList>();
     m_kded = new org::kde::ObexFtp("org.kde.kded", "/modules/obexftpdaemon", QDBusConnection::sessionBus(), 0);
 }
@@ -83,27 +86,15 @@ void KioFtp::launchProgressBar()
 
 void KioFtp::connectToHost()
 {
-    QDBusPendingReply<QString> reply = m_kded->session(m_host, "ftp");
-    reply.waitForFinished();
-
-    const QString &sessionPath = reply.value();
-
-    if (reply.isError() || sessionPath.isEmpty()) {
-        kDebug() << reply.error().message();
-        kDebug() << reply.error().name();
-
-        delete m_transfer;
-        m_transfer = 0;
-        m_sessionPath.clear();
-        return;
+    // Prefer pcsuite target on S60 devices
+    if (m_uuids.contains(QLatin1String("00005005-0000-1000-8000-0002EE000001"))) {
+        if (createSession("pcsuite")) {
+            return;
+        }
+        // Fallback to ftp
     }
 
-    if (m_sessionPath != sessionPath) {
-        m_statMap.clear();
-        delete m_transfer;
-        m_transfer = new org::bluez::obex::FileTransfer1("org.bluez.obex", sessionPath, QDBusConnection::sessionBus());
-        m_sessionPath = sessionPath;
-    }
+    createSession("ftp");
 }
 
 bool KioFtp::testConnection()
@@ -121,6 +112,34 @@ bool KioFtp::testConnection()
     }
     return true;
 }
+
+bool KioFtp::createSession(const QString &target)
+{
+    QDBusPendingReply<QString> reply = m_kded->session(m_host, target);
+    reply.waitForFinished();
+
+    const QString &sessionPath = reply.value();
+
+    if (reply.isError() || sessionPath.isEmpty()) {
+        kDebug() << reply.error().message();
+        kDebug() << reply.error().name();
+
+        delete m_transfer;
+        m_transfer = 0;
+        m_sessionPath.clear();
+        return false;
+    }
+
+    if (m_sessionPath != sessionPath) {
+        m_statMap.clear();
+        delete m_transfer;
+        m_transfer = new org::bluez::obex::FileTransfer1("org.bluez.obex", sessionPath, QDBusConnection::sessionBus());
+        m_sessionPath = sessionPath;
+    }
+
+    return true;
+}
+
 
 void KioFtp::updateProcess()
 {
@@ -226,6 +245,16 @@ void KioFtp::setHost(const QString &host, quint16 port, const QString &user, con
 
     m_host = host;
     m_host = m_host.replace(QLatin1Char('-'), QLatin1Char(':')).toUpper();
+
+    QDBusMessage call = QDBusMessage::createMethodCall("org.kde.kded",
+                            "/modules/bluedevil",
+                            "org.kde.BlueDevil",
+                            "device");
+    call << m_host;
+    QDBusReply<DeviceInfo> reply = QDBusConnection::sessionBus().call(call);
+    DeviceInfo info = reply.value();
+
+    m_uuids = info["UUIDs"];
 
     infoMessage(i18n("Connecting to the device"));
 

@@ -30,6 +30,8 @@
 
 #include <kio/slavebase.h>
 
+typedef QMap<QString, QString> DeviceInfo;
+
 class OrgBluezObexFileTransfer1Interface;
 class KioFtp
     : public QObject
@@ -72,11 +74,13 @@ private:
     void launchProgressBar();
     void connectToHost();
     bool testConnection();
+    bool createSession(const QString &target);
 
 private:
     int m_counter;
     QMap<QString, KIO::UDSEntry> m_statMap;
     QString m_host;
+    QString m_uuids;
     QString m_sessionPath;
     QTimer *m_timer;
     org::kde::ObexFtp *m_kded;
