@@ -83,7 +83,7 @@ void KioFtp::launchProgressBar()
 
 void KioFtp::connectToHost()
 {
-    QDBusPendingReply<QString> reply = m_kded->session(m_host);
+    QDBusPendingReply<QString> reply = m_kded->session(m_host, "ftp");
     reply.waitForFinished();
 
     const QString &sessionPath = reply.value();
@@ -225,6 +225,7 @@ void KioFtp::setHost(const QString &host, quint16 port, const QString &user, con
     Q_UNUSED(pass)
 
     m_host = host;
+    m_host = m_host.replace(QLatin1Char('-'), QLatin1Char(':')).toUpper();
 
     infoMessage(i18n("Connecting to the device"));
 

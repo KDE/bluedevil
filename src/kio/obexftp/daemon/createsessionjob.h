@@ -29,7 +29,7 @@ class CreateSessionJob : public KJob
 {
     Q_OBJECT
 public:
-    explicit CreateSessionJob(const QString &address, const QDBusMessage &msg, QObject* parent = 0);
+    explicit CreateSessionJob(const QString &address, const QString &target, const QDBusMessage &msg, QObject *parent = 0);
 
     virtual void start();
     QString path();
@@ -44,6 +44,7 @@ private Q_SLOTS:
 private:
     QString m_path;
     QString m_address;
+    QString m_target;
     QList<QDBusMessage> m_messages;
 
     OrgBluezObexClient1Interface* m_client;

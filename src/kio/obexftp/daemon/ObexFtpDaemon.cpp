@@ -123,15 +123,13 @@ bool ObexFtpDaemon::isOnline()
     return d->m_status == Private::Online;
 }
 
-QString ObexFtpDaemon::session(QString address, const QDBusMessage& msg)
+QString ObexFtpDaemon::session(const QString &address, const QString &target, const QDBusMessage& msg)
 {
-    address.replace("-", ":");
-
     if (d->m_sessionMap.contains(address)) {
         return d->m_sessionMap[address];
     }
 
-    kDebug(dobex()) << "Creating session for" << address;
+    kDebug(dobex()) << "Creating session for" << address << "target" << target;
 
     // At this point we always want delayed reply
     msg.setDelayedReply(true);
@@ -141,7 +139,7 @@ QString ObexFtpDaemon::session(QString address, const QDBusMessage& msg)
         return QString();
     }
 
-    CreateSessionJob *job = new CreateSessionJob(address, msg);
+    CreateSessionJob *job = new CreateSessionJob(address, target, msg);
     connect(job, SIGNAL(finished(KJob*)), SLOT(sessionCreated(KJob*)));
     job->start();
 

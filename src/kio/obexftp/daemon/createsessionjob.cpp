@@ -25,9 +25,10 @@
 #include <KDebug>
 
 // class
-CreateSessionJob::CreateSessionJob(const QString& address, const QDBusMessage& msg, QObject* parent)
+CreateSessionJob::CreateSessionJob(const QString &address, const QString &target, const QDBusMessage &msg, QObject *parent)
     : KJob(parent)
     , m_address(address)
+    , m_target(target)
     , m_client(0)
 {
     m_messages.append(msg);
@@ -53,7 +54,7 @@ void CreateSessionJob::addMessage(const QDBusMessage& msg)
     m_messages.append(msg);
 }
 
-const QList< QDBusMessage > CreateSessionJob::messages() const
+const QList<QDBusMessage> CreateSessionJob::messages() const
 {
     return m_messages;
 }
@@ -62,7 +63,7 @@ void CreateSessionJob::createSession()
 {
     kDebug(dobex());
     QVariantMap args;
-    args["Target"] = "ftp";
+    args["Target"] = m_target;
     m_client = new OrgBluezObexClient1Interface("org.bluez.obex",
                                                 "/org/bluez/obex",
                                                 QDBusConnection::sessionBus(), this);

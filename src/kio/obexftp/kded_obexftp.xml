@@ -8,6 +8,7 @@
     </method>
     <method name="session">
       <arg name="address" type="s" direction="in"/>
+      <arg name="target" type="s" direction="in"/>
       <arg name="sessionPath" type="s" direction="out"/>
     </method>
     <method name="cancelTransfer">
