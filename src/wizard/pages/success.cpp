@@ -3,6 +3,7 @@
  *                                                                           *
  * Copyright (C) 2010 Alejandro Fiestas Olivares <afiestas@kde.org>          *
  * Copyright (C) 2010-2011 UFO Coders <info@ufocoders.com>                   *
+ * Copyright (C) 2014 David Rosca <nowrep@gmail.com>                         *
  *                                                                           *
  * This library is free software; you can redistribute it and/or             *
  * modify it under the terms of the GNU Library General Public               *
@@ -20,65 +21,44 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-
-#include "nopairing.h"
+#include "success.h"
 #include "bluewizard.h"
 
 #include <KDebug>
-#include <kpixmapsequenceoverlaypainter.h>
+#include <KLocalizedString>
 
-#include <bluedevil/bluedevil.h>
-#include <QTimer>
+#include <bluedevil/bluedevildevice.h>
 
-using namespace BlueDevil;
-
-NoPairingPage::NoPairingPage(BlueWizard *parent)
+SuccessPage::SuccessPage(BlueWizard *parent)
     : QWizardPage(parent)
-    , m_success(false)
     , m_wizard(parent)
 {
     setupUi(this);
-    m_working = new KPixmapSequenceOverlayPainter(this);
-    m_working->setWidget(working);
-    m_working->start();
+
+    successIcon->setPixmap(KIcon("task-complete").pixmap(48));
 }
 
-int NoPairingPage::nextId() const
+void SuccessPage::initializePage()
 {
-    if (m_success) {
-        return BlueWizard::Success;
-    }
-    return BlueWizard::Fail;
-}
+    kDebug() << "Initialize Success Page";
 
-void NoPairingPage::initializePage()
-{
-    kDebug();
-    m_wizard->setButtonLayout(wizardButtonsLayout());
-
-    connecting->setText(connecting->text().append(m_wizard->device()->name()));
-
-    connect(m_wizard->device(), SIGNAL(connectedChanged(bool)), SLOT(connectedChanged(bool)));
-    connect(m_wizard->device(), SIGNAL(trustedChanged(bool)), SLOT(connectedChanged(bool)));
-
-    m_wizard->device()->connectDevice();
-    m_wizard->device()->setTrusted(true);
-}
-
-void NoPairingPage::connectedChanged(bool connected)
-{
-    kDebug() << "Connect finished" << connected;
-
-    // Connect may fail but that doesn't really mean the device was setup incorrectly
-    // Device::connectDevice will fail eg. when A2DP profile could not be connected due to missing pulseaudio plugin
-    m_success = true;
-    QTimer::singleShot(500, m_wizard, SLOT(next()));
-}
-
-QList<QWizard::WizardButton> NoPairingPage::wizardButtonsLayout() const
-{
-    QList <QWizard::WizardButton> list;
+    QList<QWizard::WizardButton> list;
     list << QWizard::Stretch;
-    list << QWizard::CancelButton;
-    return list;
+    list << QWizard::FinishButton;
+
+    m_wizard->setButtonLayout(list);
+
+    setFinalPage(true);
+
+    QString deviceName = m_wizard->device()->name();
+    if (deviceName.isEmpty()) {
+        successLbl->setText(i18nc("This string is shown when the wizard succeeds", "The setup of the device has succeeded"));
+    } else {
+        successLbl->setText(i18n("The setup of %1 has succeeded", deviceName));
+    }
+}
+
+int SuccessPage::nextId() const
+{
+    return -1;
 }

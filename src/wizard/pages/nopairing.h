@@ -46,20 +46,18 @@ Q_OBJECT
 public:
     NoPairingPage(BlueWizard* parent = 0);
 
-    virtual void initializePage();
-    virtual bool validatePage();
     virtual int nextId() const;
+    virtual void initializePage();
 
 protected:
     QList <QWizard::WizardButton> wizardButtonsLayout() const;
 
 private Q_SLOTS:
-    void timeout();
     void connectedChanged(bool connected);
 
 private:
-    bool                          m_validPage;
-    BlueWizard                    *m_wizard;
+    bool m_success;
+    BlueWizard *m_wizard;
     KPixmapSequenceOverlayPainter *m_working;
 };
 

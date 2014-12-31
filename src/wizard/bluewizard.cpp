@@ -24,6 +24,7 @@
 #include "pages/legacypairingdatabase.h"
 #include "pages/keyboardpairing.h"
 #include "pages/ssppairing.h"
+#include "pages/success.h"
 #include "pages/fail.h"
 
 #include <QApplication>
@@ -57,6 +58,7 @@ BlueWizard::BlueWizard(const KUrl &url) : QWizard(), m_device(0), m_manualPin(fa
     setPage(LegacyPairingDatabase, new LegacyPairingPageDatabase(this));
     setPage(KeyboardPairing, new KeyboardPairingPage(this));
     setPage(SSPPairing, new SSPPairingPage(this));
+    setPage(Success, new SuccessPage(this));
     setPage(Fail, new FailPage(this));
 
     setButton(QWizard::BackButton, new KPushButton(KStandardGuiItem::back(KStandardGuiItem::UseRTL)));

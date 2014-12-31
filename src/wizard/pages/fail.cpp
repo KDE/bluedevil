@@ -37,6 +37,8 @@ FailPage::FailPage(BlueWizard* parent) : QWizardPage(parent)
 , m_wizard(parent)
 {
     setupUi(this);
+
+    failIcon->setPixmap(KIcon("task-reject").pixmap(48));
 }
 
 void FailPage::initializePage()

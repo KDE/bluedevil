@@ -53,7 +53,7 @@ public:
 
     WizardAgent* agent() const;
 
-    enum {Discover, NoPairing, LegacyPairing, LegacyPairingDatabase, KeyboardPairing, SSPPairing, Fail, Connect};
+    enum {Discover, NoPairing, LegacyPairing, LegacyPairingDatabase, KeyboardPairing, SSPPairing, Success, Fail, Connect};
 
 public Q_SLOTS:
     void restartWizard();
