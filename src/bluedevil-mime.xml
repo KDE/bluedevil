@@ -36,6 +36,7 @@ Notes:
     <comment xml:lang="sr@ijekavian">познати уређај</comment>
     <comment xml:lang="sr@ijekavianlatin">poznati uređaj</comment>
     <comment xml:lang="sr@latin">poznati uređaj</comment>
+    <comment xml:lang="sv">Känd enhet</comment>
     <comment xml:lang="uk">Відомий пристрій</comment>
   </mime-type>
   <mime-type type="inode/vnd.kde.bluedevil.device.discovered">
@@ -61,6 +62,7 @@ Notes:
     <comment xml:lang="sr@ijekavian">откривени уређај</comment>
     <comment xml:lang="sr@ijekavianlatin">otkriveni uređaj</comment>
     <comment xml:lang="sr@latin">otkriveni uređaj</comment>
+    <comment xml:lang="sv">Upptäckt enhet</comment>
     <comment xml:lang="uk">Виявлений пристрій</comment>
   </mime-type>
   <mime-type type="inode/vnd.kde.bluedevil.service">
@@ -86,6 +88,7 @@ Notes:
     <comment xml:lang="sr@ijekavian">сервис</comment>
     <comment xml:lang="sr@ijekavianlatin">servis</comment>
     <comment xml:lang="sr@latin">servis</comment>
+    <comment xml:lang="sv">Tjänst</comment>
     <comment xml:lang="uk">Служба</comment>
   </mime-type>
   <mime-type type="application/vnd.kde.bluedevil-audio">
@@ -109,6 +112,7 @@ Notes:
     <comment xml:lang="sr@ijekavian">сервис</comment>
     <comment xml:lang="sr@ijekavianlatin">servis</comment>
     <comment xml:lang="sr@latin">servis</comment>
+    <comment xml:lang="sv">Tjänst</comment>
     <comment xml:lang="uk">Служба</comment>
   </mime-type>
   <mime-type type="application/vnd.kde.bluedevil-network-panu">
@@ -132,6 +136,7 @@ Notes:
     <comment xml:lang="sr@ijekavian">сервис</comment>
     <comment xml:lang="sr@ijekavianlatin">servis</comment>
     <comment xml:lang="sr@latin">servis</comment>
+    <comment xml:lang="sv">Tjänst</comment>
     <comment xml:lang="uk">Служба</comment>
   </mime-type>
   <mime-type type="application/vnd.kde.bluedevil-network-dun">
@@ -155,6 +160,7 @@ Notes:
     <comment xml:lang="sr@ijekavian">сервис</comment>
     <comment xml:lang="sr@ijekavianlatin">servis</comment>
     <comment xml:lang="sr@latin">servis</comment>
+    <comment xml:lang="sv">Tjänst</comment>
     <comment xml:lang="uk">Служба</comment>
   </mime-type>
   <mime-type type="application/vnd.kde.bluedevil-sendfile">
@@ -178,6 +184,7 @@ Notes:
       <comment xml:lang="sr@ijekavian">сервис</comment>
       <comment xml:lang="sr@ijekavianlatin">servis</comment>
       <comment xml:lang="sr@latin">servis</comment>
+      <comment xml:lang="sv">Tjänst</comment>
       <comment xml:lang="uk">Служба</comment>
   </mime-type>
 </mime-info>
