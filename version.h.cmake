@@ -1,4 +1,4 @@
 #ifndef BLUEDEVILVERSION_H
 #define BLUEDEVILVERSION_H
-static const char bluedevil_version[] = "${CMAKE_BLUEDEVIL_VERSION_STRING}";
+static const char bluedevil_version[] = "${PROJECT_VERSION}";
 #endif
