@@ -24,9 +24,9 @@ add_library(kcm_bluedevildevices MODULE ${kcm_bluedevildevices_PART_SRCS})
 add_library(kcm_bluedeviladapters MODULE ${kcm_bluedeviladapters_PART_SRCS})
 add_library(kcm_bluedeviltransfer MODULE ${kcm_bluedeviltransfer_PART_SRCS} ${kcm_bluedeviltransfer_PART_SRCS_UI})
 
-kservice_desktop_to_json(kcm_bluedevildevices bluedevildevices.desktop)
-kservice_desktop_to_json(kcm_bluedeviladapters bluedeviladapters.desktop)
-kservice_desktop_to_json(kcm_bluedeviltransfer bluedeviltransfer.desktop)
+kcoreaddons_desktop_to_json(kcm_bluedevildevices bluedevildevices.desktop)
+kcoreaddons_desktop_to_json(kcm_bluedeviladapters bluedeviladapters.desktop)
+kcoreaddons_desktop_to_json(kcm_bluedeviltransfer bluedeviltransfer.desktop)
 
 target_link_libraries(kcm_bluedevildevices
     Qt5::Widgets

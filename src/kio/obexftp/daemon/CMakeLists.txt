@@ -12,7 +12,7 @@ qt5_add_dbus_interface(kded_obexftp_SRCS org.freedesktop.DBus.ObjectManager.xml 
 
 add_library(kded_obexftpdaemon MODULE ${kded_obexftp_SRCS})
 
-kservice_desktop_to_json(kded_obexftpdaemon obexftpdaemon.desktop)
+kcoreaddons_desktop_to_json(kded_obexftpdaemon obexftpdaemon.desktop)
 
 target_link_libraries(kded_obexftpdaemon
     Qt5::Core

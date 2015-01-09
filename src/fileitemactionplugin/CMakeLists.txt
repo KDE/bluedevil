@@ -1,5 +1,5 @@
 add_library(bluetoothfileitemaction MODULE sendfileitemaction.cpp)
-kservice_desktop_to_json(bluetoothfileitemaction bluedevilsendfile.desktop)
+kcoreaddons_desktop_to_json(bluetoothfileitemaction bluedevilsendfile.desktop)
 target_link_libraries(bluetoothfileitemaction
     Qt5::Widgets
     KF5::I18n

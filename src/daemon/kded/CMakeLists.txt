@@ -26,7 +26,7 @@ kconfig_add_kcfg_files(kded_bluedevil_SRCS ../../settings/filereceiversettings.k
 
 add_library(kded_bluedevil MODULE ${kded_bluedevil_SRCS})
 
-kservice_desktop_to_json(kded_bluedevil bluedevil.desktop)
+kcoreaddons_desktop_to_json(kded_bluedevil bluedevil.desktop)
 
 target_link_libraries(kded_bluedevil
     Qt5::Gui
