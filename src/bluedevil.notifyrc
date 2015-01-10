@@ -1,30 +1,90 @@
 [Global]
 IconName=preferences-system-bluetooth
 Comment=Bluetooth system
+Comment[fr]=Système Bluetooth
+Comment[nl]=Bluetooth-systeem
+Comment[sk]=Systém Bluetooth
+Comment[uk]=Система Bluetooth
+Comment[x-test]=xxBluetooth systemxx
 Name=Bluetooth
+Name[fr]=Bluetooth
+Name[nl]=Bluetooth
+Name[sk]=Bluetooth
+Name[uk]=Bluetooth
+Name[x-test]=xxBluetoothxx
 Ignore=true
 
 [Event/bluedevilAuthorize]
 Name=Authorization Requested
+Name[fr]=Autorisation demandée
+Name[nl]=Autorisatie gevraagd
+Name[sk]=Vyžaduje sa overenie
+Name[uk]=Слід пройти розпізнавання
+Name[x-test]=xxAuthorization Requestedxx
 Comment=A device wants to connect
+Comment[fr]=Un périphérique veut se connecter
+Comment[nl]=Een apparaat wil een verbinding maken
+Comment[sk]=Zariadenie sa chce pripojiť
+Comment[uk]=Отримано запит щодо з’єднання пристрою з комп’ютером
+Comment[x-test]=xxA device wants to connectxx
 Action=Popup
 
 [Event/bluedevilConfirmModechange]
 Name=Confirm Mode Change
+Name[fr]=Confirmer le changement de mode
+Name[nl]=Moduswisseling bevestigen
+Name[sk]=Potvrdiť zmenu režimu
+Name[uk]=Підтвердження зміни режиму
+Name[x-test]=xxConfirm Mode Changexx
 Comment=Bluetooth mode is about to be changed (normal to flight for example)
+Comment[fr]=Le mode Bluetooth est sur le point d'être modifié (par exemple, de « Normal » à « Survol » )
+Comment[nl]=Bluetooth-modus staat op het punt te wijzigen (bijvoorbeeld: normaal naar vlucht)
+Comment[sk]=Režim Bluetooth sa ide zmeniť (napríklad normálny na letecký)
+Comment[uk]=Зміна режиму роботи Bluetooth (наприклад, зі звичайного на автономний)
+Comment[x-test]=xxBluetooth mode is about to be changed (normal to flight for example)xx
 Action=Popup
 
 [Event/bluedevilRequestConfirmation]
 Name=Confirm PIN
+Name[fr]=Confirmer le code « PIN »
+Name[nl]=PIN bevestigen
+Name[sk]=Potvrdiť PIN
+Name[uk]=Підтвердження PIN
+Name[x-test]=xxConfirm PINxx
 Comment=Confirm a device request using matching PINs
+Comment[fr]=Confirme une demande d'un périphérique utilisant une correspondance de codes « PIN »
+Comment[nl]=Een apparaataanvraag bevestigen met overeenkomstige PIN's
+Comment[sk]=Potvrdiť požiadavku zariadenia pomocou zhodných PINov
+Comment[uk]=Підтвердження запиту пристрою відповідними PIN-кодами
+Comment[x-test]=xxConfirm a device request using matching PINsxx
 Action=Popup
 
 [Event/bluedevilRequestPin]
 Name=Request PIN
+Name[fr]=Demande de code « PIN »
+Name[nl]=Om PIN verzoeken
+Name[sk]=Vyžadovať PIN
+Name[uk]=Запит щодо PIN-коду
+Name[x-test]=xxRequest PINxx
 Comment=A PIN is needed
+Comment[fr]=Un code « PIN » est nécessaire
+Comment[nl]=Er is een PIN nodig
+Comment[sk]=Vyžaduje sa PIN
+Comment[uk]=Потрібен PIN-код
+Comment[x-test]=xxA PIN is neededxx
 Action=Popup
 
 [Event/bluedevilIncomingFile]
 Name=Incoming File
+Name[fr]=Fichier entrant
+Name[nl]=Bestand aangeboden
+Name[sk]=Prichádzajúci súbor
+Name[uk]=Вхідний файл
+Name[x-test]=xxIncoming Filexx
 Comment=Incoming file transfer
+Comment[fr]=Transfert de fichier entrant
+Comment[nl]=Inkomende bestandsoverdracht
+Comment[sk]=Prichádzajúci prenos súboru
+Comment[uk]=Вхідне перенесення файла
+Comment[x-test]=xxIncoming file transferxx
 Action=Popup

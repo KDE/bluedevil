@@ -12,9 +12,24 @@ X-KDE-System-Settings-Parent-Category=bluetooth
 X-KDE-Weight=50
 
 Name=Devices
+Name[fr]=Périphériques
+Name[nl]=Apparaten
+Name[sk]=Zariadenia
+Name[uk]=Пристрої
+Name[x-test]=xxDevicesxx
 
 Comment=Manage Bluetooth devices
+Comment[fr]=Gère les périphériques Bluetooth
+Comment[nl]=Bluetooth-apparaten beheren
+Comment[sk]=Spravovať Bluetooth zariadenia
+Comment[uk]=Керування пристроями Bluetooth
+Comment[x-test]=xxManage Bluetooth devicesxx
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
+X-KDE-Keywords[fr]=Réseau, connectivité, Bluetooth
+X-KDE-Keywords[nl]=Netwerkverbinding,connectiviteit,bluetooth
+X-KDE-Keywords[sk]=Sieť,Konektivita,Bluetooth
+X-KDE-Keywords[uk]=Network,Connectivity,Bluetooth,мережа,з’єднання,з'єднання
+X-KDE-Keywords[x-test]=xxNetwork,Connectivity,Bluetoothxx
 
 Categories=Qt;KDE;X-KDE-settings-bluetooth;

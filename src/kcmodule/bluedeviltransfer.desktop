@@ -12,9 +12,24 @@ X-KDE-System-Settings-Parent-Category=bluetooth
 X-KDE-Weight=60
 
 Name=File Transfers
+Name[fr]=Transferts de fichiers
+Name[nl]=Bestandsoverdrachten
+Name[sk]=Prenosy súborov
+Name[uk]=Перенесення файла
+Name[x-test]=xxFile Transfersxx
 
 Comment=Configure Bluetooth file sharing and transfers
+Comment[fr]=Configure le partage et les transferts de fichiers par Bluetooth
+Comment[nl]=Bestandsdeling en -overdracht via bluetooth instellen
+Comment[sk]=Nastaviť zdieľanie súborov a prenosy Bluetooth
+Comment[uk]=Налаштування надсилання та отримання файлів Bluetooth
+Comment[x-test]=xxConfigure Bluetooth file sharing and transfersxx
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
+X-KDE-Keywords[fr]=Réseau, connectivité, Bluetooth
+X-KDE-Keywords[nl]=Netwerkverbinding,connectiviteit,bluetooth
+X-KDE-Keywords[sk]=Sieť,Konektivita,Bluetooth
+X-KDE-Keywords[uk]=Network,Connectivity,Bluetooth,мережа,з’єднання,з'єднання
+X-KDE-Keywords[x-test]=xxNetwork,Connectivity,Bluetoothxx
 
 Categories=Qt;KDE;X-KDE-settings-bluetooth;

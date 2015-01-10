@@ -9,5 +9,15 @@ X-KDE-Kded-load-on-demand=false
 X-KDE-Kded-phase=1
 
 Name=Bluetooth
+Name[fr]=Bluetooth
+Name[nl]=Bluetooth
+Name[sk]=Bluetooth
+Name[uk]=Bluetooth
+Name[x-test]=xxBluetoothxx
 
 Comment=Handles Bluetooth events
+Comment[fr]=Gère les évènements Bluetooth
+Comment[nl]=Behandelt bluetooth-gebeurtenissen
+Comment[sk]=Spracúva udalosti Bluetooth
+Comment[uk]=Обробляє події Bluetooth
+Comment[x-test]=xxHandles Bluetooth eventsxx

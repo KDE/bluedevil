@@ -1,8 +1,18 @@
 [Desktop Entry]
 Type=Service
 Name=Send file via Bluetooth
+Name[fr]=Envoi de fichiers via Bluetooth
+Name[nl]=Verzendt bestand over bluetooth
+Name[sk]=Poslať súbor cez Bluetooth
+Name[uk]=Надіслати файл за допомогою Bluetooth
+Name[x-test]=xxSend file via Bluetoothxx
 X-KDE-Library=bluetoothfiletiemaction
 X-KDE-Submenu=Bluetooth
+X-KDE-Submenu[fr]=Bluetooth
+X-KDE-Submenu[nl]=Bluetooth
+X-KDE-Submenu[sk]=Bluetooth
+X-KDE-Submenu[uk]=Bluetooth
+X-KDE-Submenu[x-test]=xxBluetoothxx
 Icon=preferences-system-bluetooth
 ServiceTypes=KFileItemAction/Plugin
 MimeType=application/octet-stream;
