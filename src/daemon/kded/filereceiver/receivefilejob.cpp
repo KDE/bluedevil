@@ -85,20 +85,31 @@ void ReceiveFileJob::init()
             SLOT(transferPropertiesChanged(QString,QVariantMap,QStringList)));
 
     m_session = new org::bluez::obex::Session1("org.bluez.obex", m_transfer->session().path(), QDBusConnection::sessionBus(), this);
-    kDebug(dblue()) << m_session->destination();
 
-    Device* device = Manager::self()->usableAdapter()->deviceForAddress(m_session->destination());
-    kDebug(dblue()) << device;
+    kDebug(dblue()) << "Source:" << m_session->source();
+    kDebug(dblue()) << "Destination:" << m_session->destination();
+
+    Device *device = 0;
+    bool isDeviceTrusted = false;
+
+    Q_FOREACH (Adapter *adapter, Manager::self()->adapters()) {
+        if (adapter->address() == m_session->source()) {
+            device = adapter->deviceForAddress(m_session->destination());
+            break;
+        }
+    }
 
     m_deviceName = m_session->destination();
+
     if (device) {
         kDebug(dblue()) << device->name();
         m_deviceName = device->name();
+        isDeviceTrusted = device->isTrusted();
     }
 
     FileReceiverSettings::self()->readConfig();
     kDebug(dblue()) << "Auto Accept: " << FileReceiverSettings::self()->autoAccept();
-    if (FileReceiverSettings::self()->autoAccept() == 1 && device->isTrusted()) {
+    if (FileReceiverSettings::self()->autoAccept() == 1 && isDeviceTrusted) {
         slotAccept();
         return;
     } else if (FileReceiverSettings::self()->autoAccept() == 2) {
