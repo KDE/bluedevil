@@ -195,6 +195,7 @@ void KioFtp::copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFl
     kDebug() << "copy: " << src.url() << " to " << dest.url();
 
     copyHelper(src, dest);
+    finished();
 }
 
 void KioFtp::rename(const KUrl& src, const KUrl& dest, KIO::JobFlags flags)
@@ -342,8 +343,6 @@ void KioFtp::copyWithinObexftp(const KUrl &src, const KUrl &dest)
     if (!copyFile(src.path(), dest.path())) {
         return;
     }
-
-    finished();
 }
 
 void KioFtp::copyFromObexftp(const KUrl& src, const KUrl& dest)
@@ -362,8 +361,6 @@ void KioFtp::copyFromObexftp(const KUrl& src, const KUrl& dest)
 
     TransferFileJob *getFile = new TransferFileJob(dbusPath, this);
     getFile->exec();
-
-    finished();
 }
 
 void KioFtp::copyToObexftp(const KUrl& src, const KUrl& dest)
@@ -382,8 +379,6 @@ void KioFtp::copyToObexftp(const KUrl& src, const KUrl& dest)
 
     TransferFileJob *putFile = new TransferFileJob(dbusPath, this);
     putFile->exec();
-
-    finished();
 }
 
 void KioFtp::statHelper(const KUrl& url)
