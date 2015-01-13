@@ -13,6 +13,7 @@ X-KDE-Weight=60
 
 Name=File Transfers
 Name[ca]=Transferències de fitxers
+Name[cs]=Přenosy souborů
 Name[es]=Transferencias de archivos
 Name[fi]=Tiedostonsiirto
 Name[fr]=Transferts de fichiers
@@ -32,6 +33,7 @@ Name[x-test]=xxFile Transfersxx
 
 Comment=Configure Bluetooth file sharing and transfers
 Comment[ca]=Configura la compartició i transferència de fitxers per Bluetooth
+Comment[cs]=Nastavte sdílení souborů přes Bluetooth
 Comment[fi]=Bluetooth-tiedostonjaon ja -siirron asetukset
 Comment[fr]=Configure le partage et les transferts de fichiers par Bluetooth
 Comment[nb]=Sett opp deling og overføring av filer over Blåtann
@@ -50,6 +52,7 @@ Comment[x-test]=xxConfigure Bluetooth file sharing and transfersxx
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
 X-KDE-Keywords[ca]=Xarxa,Connectivitat,Bluetooth
+X-KDE-Keywords[cs]=Síť,Konektivita,Bluetooth
 X-KDE-Keywords[es]=Red,Conectividad,Bluetooth
 X-KDE-Keywords[fi]=Verkko,Yhteydet,Bluetooth
 X-KDE-Keywords[fr]=Réseau, connectivité, Bluetooth
