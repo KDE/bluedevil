@@ -375,7 +375,6 @@ void BlueDevilDaemon::monolithicQuit(QDBusPendingCallWatcher* watcher)
     QDBusPendingReply<void> reply = *watcher;
     if (reply.isError()) {
         qDebug() << "Error response: " << reply.error().message();
-        killMonolithic();
     }
 }
 
