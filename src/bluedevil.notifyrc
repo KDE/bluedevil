@@ -27,6 +27,7 @@ Comment[tr]=Bluetooth sistemi
 Comment[uk]=Система Bluetooth
 Comment[x-test]=xxBluetooth systemxx
 Comment[zh_CN]=蓝牙系统
+Comment[zh_TW]=藍牙系統
 Name=Bluetooth
 Name[ca]=Bluetooth
 Name[cs]=Bluetooth
@@ -54,6 +55,7 @@ Name[tr]=Bluetooth
 Name[uk]=Bluetooth
 Name[x-test]=xxBluetoothxx
 Name[zh_CN]=蓝牙
+Name[zh_TW]=藍牙
 Ignore=true
 
 [Event/bluedevilAuthorize]
@@ -83,6 +85,7 @@ Name[tr]=Yetkilendirme Gerekli
 Name[uk]=Слід пройти розпізнавання
 Name[x-test]=xxAuthorization Requestedxx
 Name[zh_CN]=要求认证
+Name[zh_TW]=請求認證
 Comment=A device wants to connect
 Comment[ca]=Un dispositiu es vol connectar
 Comment[cs]=Zařízení se chce připojit
@@ -109,6 +112,7 @@ Comment[tr]=Bir aygıt bağlanmak istiyor
 Comment[uk]=Отримано запит щодо з’єднання пристрою з комп’ютером
 Comment[x-test]=xxA device wants to connectxx
 Comment[zh_CN]=一个设备想要连接
+Comment[zh_TW]=某個裝置希望能與您連線
 Action=Popup
 
 [Event/bluedevilConfirmModechange]
@@ -138,6 +142,7 @@ Name[tr]=Kip Değişikliğini Onayla
 Name[uk]=Підтвердження зміни режиму
 Name[x-test]=xxConfirm Mode Changexx
 Name[zh_CN]=确认模式变更
+Name[zh_TW]=確認模式變更
 Comment=Bluetooth mode is about to be changed (normal to flight for example)
 Comment[ca]=El mode Bluetooth és a punt de canviar (de mode normal a mode avió per exemple)
 Comment[cs]=Bude změněn režim Bluetooth  (např. Normální na V letadle)
@@ -164,6 +169,7 @@ Comment[tr]=Bluetooth kipi değiştirilmek üzere (örn. normal -> uçuş kipi)
 Comment[uk]=Зміна режиму роботи Bluetooth (наприклад, зі звичайного на автономний)
 Comment[x-test]=xxBluetooth mode is about to be changed (normal to flight for example)xx
 Comment[zh_CN]=蓝牙模式即将更改(例如从正常变到飞行模式)
+Comment[zh_TW]=即將改變藍牙模式（例如從一般模式轉換為飛航模式）
 Action=Popup
 
 [Event/bluedevilRequestConfirmation]
@@ -194,6 +200,7 @@ Name[tr]=PIN'i Onaylayın
 Name[uk]=Підтвердження PIN
 Name[x-test]=xxConfirm PINxx
 Name[zh_CN]=确认 PIN
+Name[zh_TW]=確認 PIN 碼
 Comment=Confirm a device request using matching PINs
 Comment[ca]=Confirma una sol·licitud d'un dispositiu usant PIN que coincideixin
 Comment[cs]=Potvrďte požadavek zařízení použitím odpovídajících PINů
@@ -220,6 +227,7 @@ Comment[tr]=Eşleştirme PIN'i kullanarak bir aygıt isteğini onaylayın
 Comment[uk]=Підтвердження запиту пристрою відповідними PIN-кодами
 Comment[x-test]=xxConfirm a device request using matching PINsxx
 Comment[zh_CN]=确认设备请求使用了匹配的 PIN
+Comment[zh_TW]=利用比對 PIN 碼確認裝置的要求
 Action=Popup
 
 [Event/bluedevilRequestPin]
@@ -250,6 +258,7 @@ Name[tr]=PIN iste
 Name[uk]=Запит щодо PIN-коду
 Name[x-test]=xxRequest PINxx
 Name[zh_CN]=请求 PIN
+Name[zh_TW]=需要 PIN 碼
 Comment=A PIN is needed
 Comment[ca]=Es necessita un PIN
 Comment[cs]=Je potřeba PIN
@@ -277,6 +286,7 @@ Comment[tr]=PIN gerekiyor
 Comment[uk]=Потрібен PIN-код
 Comment[x-test]=xxA PIN is neededxx
 Comment[zh_CN]=需要 PIN
+Comment[zh_TW]=需要 PIN 碼
 Action=Popup
 
 [Event/bluedevilIncomingFile]
@@ -307,6 +317,7 @@ Name[tr]=Gelen Dosya
 Name[uk]=Вхідний файл
 Name[x-test]=xxIncoming Filexx
 Name[zh_CN]=正在传入的文件
+Name[zh_TW]=要傳進來的檔案
 Comment=Incoming file transfer
 Comment[ca]=Transferència de fitxer entrant
 Comment[cs]=Příchozí přenos souboru
@@ -334,4 +345,5 @@ Comment[tr]=Gelen dosya aktarımı
 Comment[uk]=Вхідне перенесення файла
 Comment[x-test]=xxIncoming file transferxx
 Comment[zh_CN]=收到文件传输
+Comment[zh_TW]=進來的檔案傳輸
 Action=Popup

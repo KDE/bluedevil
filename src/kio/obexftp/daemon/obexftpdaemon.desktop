@@ -35,6 +35,7 @@ Name[tr]=Bluetooth Dosya Aktarımı
 Name[uk]=Перенесення файла за допомогою Bluetooth
 Name[x-test]=xxBluetooth File Transferxx
 Name[zh_CN]=蓝牙文件传输
+Name[zh_TW]=藍牙檔案傳輸
 
 Comment=Supports Bluetooth file transfer using ObexFTP
 Comment[ca]=Accepta transferència de fitxer per Bluetooth usant ObexFTP
@@ -62,3 +63,4 @@ Comment[tr]=ObexFTP kullanarak Bluetooth dosya transferlerini destekler
 Comment[uk]=Підтримує перенесення файлів Bluetooth за допомогою ObexFTP
 Comment[x-test]=xxSupports Bluetooth file transfer using ObexFTPxx
 Comment[zh_CN]=支持使用 ObexFTP 进行蓝牙文件传输
+Comment[zh_TW]=使用 ObexFTP 支援藍牙檔案傳輸
