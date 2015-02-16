@@ -39,6 +39,7 @@ Notes:
     <comment xml:lang="sr@latin">poznati uređaj</comment>
     <comment xml:lang="sv">Känd enhet</comment>
     <comment xml:lang="uk">Відомий пристрій</comment>
+    <comment xml:lang="zh_TW">已知的裝置</comment>
   </mime-type>
   <mime-type type="inode/vnd.kde.bluedevil.device.discovered">
     <sub-class-of type="inode/vnd.kde.bluedevil.device"/>
@@ -66,6 +67,7 @@ Notes:
     <comment xml:lang="sr@latin">otkriveni uređaj</comment>
     <comment xml:lang="sv">Upptäckt enhet</comment>
     <comment xml:lang="uk">Виявлений пристрій</comment>
+    <comment xml:lang="zh_TW">已發現的裝置</comment>
   </mime-type>
   <mime-type type="inode/vnd.kde.bluedevil.service">
     <sub-class-of type="inode/directory"/>
@@ -93,6 +95,7 @@ Notes:
     <comment xml:lang="sr@latin">servis</comment>
     <comment xml:lang="sv">Tjänst</comment>
     <comment xml:lang="uk">Служба</comment>
+    <comment xml:lang="zh_TW">服務</comment>
   </mime-type>
   <mime-type type="application/vnd.kde.bluedevil-audio">
     <comment>Service</comment>
@@ -118,6 +121,7 @@ Notes:
     <comment xml:lang="sr@latin">servis</comment>
     <comment xml:lang="sv">Tjänst</comment>
     <comment xml:lang="uk">Служба</comment>
+    <comment xml:lang="zh_TW">服務</comment>
   </mime-type>
   <mime-type type="application/vnd.kde.bluedevil-network-panu">
     <comment>Service</comment>
@@ -143,6 +147,7 @@ Notes:
     <comment xml:lang="sr@latin">servis</comment>
     <comment xml:lang="sv">Tjänst</comment>
     <comment xml:lang="uk">Служба</comment>
+    <comment xml:lang="zh_TW">服務</comment>
   </mime-type>
   <mime-type type="application/vnd.kde.bluedevil-network-dun">
     <comment>Service</comment>
@@ -168,6 +173,7 @@ Notes:
     <comment xml:lang="sr@latin">servis</comment>
     <comment xml:lang="sv">Tjänst</comment>
     <comment xml:lang="uk">Служба</comment>
+    <comment xml:lang="zh_TW">服務</comment>
   </mime-type>
   <mime-type type="application/vnd.kde.bluedevil-sendfile">
       <comment>Service</comment>
@@ -193,5 +199,6 @@ Notes:
       <comment xml:lang="sr@latin">servis</comment>
       <comment xml:lang="sv">Tjänst</comment>
       <comment xml:lang="uk">Служба</comment>
+      <comment xml:lang="zh_TW">服務</comment>
   </mime-type>
 </mime-info>
