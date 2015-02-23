@@ -17,6 +17,7 @@ Notes:
     <sub-class-of type="inode/directory"/>
     <generic-icon name="video-display"/>
     <comment>Known Device</comment>
+    <comment xml:lang="bs">Poznat uređaj</comment>
     <comment xml:lang="ca">Dispositiu conegut</comment>
     <comment xml:lang="cs">Známé zařízení</comment>
     <comment xml:lang="da">Kendt enhed</comment>
@@ -45,6 +46,7 @@ Notes:
     <sub-class-of type="inode/vnd.kde.bluedevil.device"/>
     <generic-icon name="video-display"/>
     <comment>Discovered Device</comment>
+    <comment xml:lang="bs">Otkriven uređaj</comment>
     <comment xml:lang="ca">Dispositiu descobert</comment>
     <comment xml:lang="cs">Objevené zařízení</comment>
     <comment xml:lang="da">Opdaget enhed</comment>
@@ -73,6 +75,7 @@ Notes:
     <sub-class-of type="inode/directory"/>
     <generic-icon name="preferences-system-bluetooth"/>
     <comment>Service</comment>
+    <comment xml:lang="bs">Usluga</comment>
     <comment xml:lang="ca">Servei</comment>
     <comment xml:lang="cs">Služba</comment>
     <comment xml:lang="da">Tjeneste</comment>
@@ -99,6 +102,7 @@ Notes:
   </mime-type>
   <mime-type type="application/vnd.kde.bluedevil-audio">
     <comment>Service</comment>
+    <comment xml:lang="bs">Usluga</comment>
     <comment xml:lang="ca">Servei</comment>
     <comment xml:lang="cs">Služba</comment>
     <comment xml:lang="da">Tjeneste</comment>
@@ -125,6 +129,7 @@ Notes:
   </mime-type>
   <mime-type type="application/vnd.kde.bluedevil-network-panu">
     <comment>Service</comment>
+    <comment xml:lang="bs">Usluga</comment>
     <comment xml:lang="ca">Servei</comment>
     <comment xml:lang="cs">Služba</comment>
     <comment xml:lang="da">Tjeneste</comment>
@@ -151,6 +156,7 @@ Notes:
   </mime-type>
   <mime-type type="application/vnd.kde.bluedevil-network-dun">
     <comment>Service</comment>
+    <comment xml:lang="bs">Usluga</comment>
     <comment xml:lang="ca">Servei</comment>
     <comment xml:lang="cs">Služba</comment>
     <comment xml:lang="da">Tjeneste</comment>
@@ -177,6 +183,7 @@ Notes:
   </mime-type>
   <mime-type type="application/vnd.kde.bluedevil-sendfile">
       <comment>Service</comment>
+      <comment xml:lang="bs">Usluga</comment>
       <comment xml:lang="ca">Servei</comment>
       <comment xml:lang="cs">Služba</comment>
       <comment xml:lang="da">Tjeneste</comment>
