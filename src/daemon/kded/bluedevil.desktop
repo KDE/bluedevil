@@ -9,6 +9,7 @@ X-KDE-Kded-load-on-demand=false
 X-KDE-Kded-phase=1
 
 Name=Bluetooth
+Name[bs]=Blutut
 Name[ca]=Bluetooth
 Name[cs]=Bluetooth
 Name[de]=Bluetooth
@@ -17,6 +18,7 @@ Name[es]=Bluetooth
 Name[fi]=Bluetooth
 Name[fr]=Bluetooth
 Name[it]=Bluetooth
+Name[ja]=Bluetooth
 Name[nb]=Blåtann
 Name[nl]=Bluetooth
 Name[pl]=Bluetooth
@@ -34,6 +36,7 @@ Name[x-test]=xxBluetoothxx
 Name[zh_CN]=蓝牙
 
 Comment=Handles Bluetooth events
+Comment[bs]=Obrađuje Bluetooth događaje
 Comment[ca]=Gestiona els esdeveniments del Bluetooth
 Comment[cs]=Ovládá události Bluetooth
 Comment[de]=Verarbeitung von Bluetooth-Ereignissen
