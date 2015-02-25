@@ -35,6 +35,7 @@ Name[sv]=Filöverföringar
 Name[uk]=Перенесення файла
 Name[x-test]=xxFile Transfersxx
 Name[zh_CN]=文件传送
+Name[zh_TW]=檔案傳輸
 
 Comment=Configure Bluetooth file sharing and transfers
 Comment[ca]=Configura la compartició i transferència de fitxers per Bluetooth
@@ -60,6 +61,7 @@ Comment[sv]=Anpassa fildelning och överföringar med Blåtand
 Comment[uk]=Налаштування надсилання та отримання файлів Bluetooth
 Comment[x-test]=xxConfigure Bluetooth file sharing and transfersxx
 Comment[zh_CN]=配置蓝牙文件共享和传输
+Comment[zh_TW]=設定藍牙檔案共用與傳輸
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
 X-KDE-Keywords[ca]=Xarxa,Connectivitat,Bluetooth
@@ -85,5 +87,6 @@ X-KDE-Keywords[sv]=Nätverk,Anslutningar,Blåtand
 X-KDE-Keywords[uk]=Network,Connectivity,Bluetooth,мережа,з’єднання,з'єднання
 X-KDE-Keywords[x-test]=xxNetworkxx,xxConnectivityxx,xxBluetoothxx
 X-KDE-Keywords[zh_CN]=Network,Connectivity,Bluetooth,网络,连接,蓝牙
+X-KDE-Keywords[zh_TW]=Network,Connectivity,Bluetooth
 
 Categories=Qt;KDE;X-KDE-settings-bluetooth;

@@ -36,6 +36,7 @@ Name[sv]=Enheter
 Name[uk]=Пристрої
 Name[x-test]=xxDevicesxx
 Name[zh_CN]=设备
+Name[zh_TW]=裝置
 
 Comment=Manage Bluetooth devices
 Comment[ca]=Gestiona els dispositius Bluetooth
@@ -62,6 +63,7 @@ Comment[sv]=Hantera Blåtandenheter
 Comment[uk]=Керування пристроями Bluetooth
 Comment[x-test]=xxManage Bluetooth devicesxx
 Comment[zh_CN]=管理蓝牙设备
+Comment[zh_TW]=管理藍牙裝置
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
 X-KDE-Keywords[ca]=Xarxa,Connectivitat,Bluetooth
@@ -87,5 +89,6 @@ X-KDE-Keywords[sv]=Nätverk,Anslutningar,Blåtand
 X-KDE-Keywords[uk]=Network,Connectivity,Bluetooth,мережа,з’єднання,з'єднання
 X-KDE-Keywords[x-test]=xxNetworkxx,xxConnectivityxx,xxBluetoothxx
 X-KDE-Keywords[zh_CN]=Network,Connectivity,Bluetooth,网络,连接,蓝牙
+X-KDE-Keywords[zh_TW]=Network,Connectivity,Bluetooth
 
 Categories=Qt;KDE;X-KDE-settings-bluetooth;
