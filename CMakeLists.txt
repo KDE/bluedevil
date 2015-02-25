@@ -8,7 +8,7 @@ configure_file(version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/version.h)
 find_package(ECM REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
-set(QT_MIN_VERSION "5.2.0")
+set(QT_MIN_VERSION "5.4.0")
 find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Core
     Widgets
