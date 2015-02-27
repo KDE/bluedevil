@@ -1,6 +1,7 @@
 [Global]
 IconName=preferences-system-bluetooth
 Comment=Bluetooth system
+Comment[ast]=Sistema Bluetooth
 Comment[bs]=Bluetooth sistem
 Comment[ca]=Sistema Bluetooth
 Comment[cs]=Systém Bluetooth
