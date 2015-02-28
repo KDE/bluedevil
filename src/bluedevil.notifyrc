@@ -1,7 +1,6 @@
 [Global]
 IconName=preferences-system-bluetooth
 Comment=Bluetooth system
-Comment[bs]=Blutut  sistem
 Comment[ca]=Sistema Bluetooth
 Comment[cs]=Systém Bluetooth
 Comment[de]=Bluetooth-System
@@ -113,6 +112,7 @@ Action=Popup
 
 [Event/bluedevilConfirmModechange]
 Name=Confirm Mode Change
+Name[bs]=Povrdi promijene moda
 Name[ca]=Confirmació del canvi de mode
 Name[cs]=Potvrdit změnu režimu
 Name[de]=Moduswechsel bestätigen

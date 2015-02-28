@@ -12,6 +12,7 @@ X-KDE-System-Settings-Parent-Category=bluetooth
 X-KDE-Weight=100
 
 Name=Adapters
+Name[bs]=Adapteri
 Name[ca]=Adaptadors
 Name[cs]=Adaptéry
 Name[de]=Adapter
@@ -39,6 +40,7 @@ Name[zh_CN]=适配器
 Name[zh_TW]=轉接器
 
 Comment=Configure Bluetooth adapters
+Comment[bs]=Konfigurisanje Blutut adaptera
 Comment[ca]=Configura els adaptadors Bluetooth
 Comment[cs]=Nastavte adaptéry Bluetooth
 Comment[de]=Bluetooth-Adapter einrichten
@@ -65,6 +67,7 @@ Comment[zh_CN]=配置蓝牙适配器
 Comment[zh_TW]=設定藍牙轉接器
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
+X-KDE-Keywords[bs]=Mreža,Povezivost,Bluetooth
 X-KDE-Keywords[ca]=Xarxa,Connectivitat,Bluetooth
 X-KDE-Keywords[cs]=Síť,Konektivita,Bluetooth
 X-KDE-Keywords[de]=Netzwerk,Verbindungen,Bluetooth
