@@ -1,5 +1,3 @@
-project(kio_obexftp)
-
 add_subdirectory(daemon)
 
 set(kio_obexftp_SRCS
