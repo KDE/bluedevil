@@ -19,8 +19,8 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA            *
  ***************************************************************************/
 
-#ifndef AUTHORIZE_H
-#define AUTHORIZE_H
+#ifndef CONFIRM_MODE_CHANGE_H
+#define CONFIRM_MODE_CHANGE_H
 
 #include <QObject>
 
@@ -32,8 +32,7 @@
  * Deny quits the app with 1 (which means denied)
  * @internal
  */
-class ConfirmModeChange
-    : public QObject
+class ConfirmModeChange : public QObject
 {
     Q_OBJECT
 
@@ -42,7 +41,7 @@ public:
      * Launch the KNotification which the respective actions, also makes the needed connection
      * between those actions and the slots
      */
-    ConfirmModeChange();
+    explicit ConfirmModeChange();
 
 private Q_SLOTS:
     /**
@@ -55,4 +54,5 @@ private Q_SLOTS:
      */
     void deny();
 };
-#endif
+
+#endif // CONFIRM_MODE_CHANGE_H

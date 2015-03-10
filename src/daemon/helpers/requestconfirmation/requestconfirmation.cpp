@@ -35,7 +35,7 @@ RequestConfirmation::RequestConfirmation() : QObject()
 
     notification->setText(i18nc(
         "The text is shown in a notification to know if the PIN is correct, %1 is the remote bluetooth device and %2 is the pin",
-        "%1 is asking if the PIN is correct: %2", qApp->arguments()[1], qApp->arguments()[2])
+        "%1 is asking if the PIN is correct: %2", qApp->arguments().at(1), qApp->arguments().at(2))
     );
 
     QStringList actions;
@@ -44,14 +44,14 @@ RequestConfirmation::RequestConfirmation() : QObject()
 
     notification->setActions(actions);
 
-    connect(notification, SIGNAL(action1Activated()),this, SLOT(pinCorrect()));
-    connect(notification, SIGNAL(action2Activated()),this, SLOT(pinWrong()));
-    connect(notification, SIGNAL(closed()), this, SLOT(pinWrong()));
-    connect(notification, SIGNAL(ignored()), this, SLOT(pinWrong()));
+    connect(notification, &KNotification::action1Activated, this, &RequestConfirmation::pinCorrect);
+    connect(notification, &KNotification::action2Activated, this, &RequestConfirmation::pinWrong);
+    connect(notification, &KNotification::closed, this, &RequestConfirmation::pinWrong);
+    connect(notification, &KNotification::ignored, this, &RequestConfirmation::pinWrong);
 
-    //We're using persistent notifications so we have to use our own timeout (10s)
-    QTimer::singleShot(10000, notification, SLOT(close()));
-    notification->setPixmap(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")).pixmap(42,42));
+    // We're using persistent notifications so we have to use our own timeout (10s)
+    QTimer::singleShot(10000, notification, &KNotification::close);
+    notification->setPixmap(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")).pixmap(42));
     notification->sendEvent();
 }
 

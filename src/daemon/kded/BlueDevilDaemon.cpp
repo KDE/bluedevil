@@ -60,21 +60,21 @@ struct BlueDevilDaemon::Private
         Offline
     } m_status;
 
-    BluezAgent                      *m_bluezAgent;
-    KFilePlacesModel                *m_placesModel;
-    Adapter                         *m_adapter;
-    QDBusServiceWatcher             *m_monolithicWatcher;
-    FileReceiver                    *m_fileReceiver;
-    KSharedConfig::Ptr               m_config;
-    QTimer                           m_timer;
+    BluezAgent *m_bluezAgent;
+    KFilePlacesModel *m_placesModel;
+    Adapter *m_adapter;
+    QDBusServiceWatcher *m_monolithicWatcher;
+    FileReceiver *m_fileReceiver;
+    KSharedConfig::Ptr m_config;
+    QTimer m_timer;
 };
 
 BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     : KDEDModule(parent)
     , d(new Private)
 {
-    qDBusRegisterMetaType <DeviceInfo> ();
-    qDBusRegisterMetaType <QMapDeviceInfo> ();
+    qDBusRegisterMetaType<DeviceInfo>();
+    qDBusRegisterMetaType<QMapDeviceInfo>();
 
     d->m_bluezAgent = 0;
     d->m_adapter = 0;
@@ -83,7 +83,7 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     d->m_monolithicWatcher = new QDBusServiceWatcher(QStringLiteral("org.kde.bluedevilmonolithic")
             , QDBusConnection::sessionBus(), QDBusServiceWatcher::WatchForUnregistration, this);
     d->m_timer.setSingleShot(true);
-    d->m_config = KSharedConfig::openConfig("bluedevilglobalrc");
+    d->m_config = KSharedConfig::openConfig(QStringLiteral("bluedevilglobalrc"));
 
     KAboutData aboutData(
         QStringLiteral("bluedevildaemon"),
@@ -103,15 +103,12 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     aboutData.setComponentName(QStringLiteral("bluedevil"));
     KAboutData::registerPluginData(aboutData);
 
-    connect(d->m_monolithicWatcher, SIGNAL(serviceUnregistered(const QString &)), SLOT(monolithicFinished(const QString &)));
-    connect(&d->m_timer, SIGNAL(timeout()), SLOT(stopDiscovering()));
+    connect(d->m_monolithicWatcher, &QDBusServiceWatcher::serviceUnregistered, this, &BlueDevilDaemon::monolithicFinished);
+    connect(&d->m_timer, &QTimer::timeout, this, &BlueDevilDaemon::stopDiscovering);
 
-    connect(Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)),
-            this, SLOT(usableAdapterChanged(Adapter*)));
-    connect(Manager::self(), SIGNAL(adapterAdded(Adapter*)),
-            this, SLOT(adapterAdded(Adapter*)));
-    connect(Manager::self(), SIGNAL(adapterRemoved(Adapter*)),
-            this, SLOT(adapterRemoved(Adapter*)));
+    connect(Manager::self(), &Manager::usableAdapterChanged, this, &BlueDevilDaemon::usableAdapterChanged);
+    connect(Manager::self(), &Manager::adapterAdded, this, &BlueDevilDaemon::adapterAdded);
+    connect(Manager::self(), &Manager::adapterRemoved, this, &BlueDevilDaemon::adapterRemoved);
 
     // Catch suspend/resume events
     QDBusConnection::systemBus().connect(QStringLiteral("org.freedesktop.login1"),
@@ -143,16 +140,6 @@ BlueDevilDaemon::~BlueDevilDaemon()
     delete d;
 }
 
-static Adapter *adapterForAddress(const QString &address)
-{
-    Q_FOREACH (Adapter *adapter, Manager::self()->adapters()) {
-        if (adapter->address() == address) {
-            return adapter;
-        }
-    }
-    return 0;
-}
-
 void BlueDevilDaemon::login1PrepareForSleep(bool active)
 {
     if (active) {
@@ -166,10 +153,7 @@ void BlueDevilDaemon::login1PrepareForSleep(bool active)
 
 bool BlueDevilDaemon::isOnline()
 {
-    if (d->m_status == Private::Offline) {
-        return false;
-    }
-    return true;
+    return d->m_status == Private::Online;
 }
 
 QMapDeviceInfo BlueDevilDaemon::allDevices()
@@ -225,44 +209,42 @@ void BlueDevilDaemon::stopDiscovering()
 
 void BlueDevilDaemon::executeMonolithic()
 {
-    qCDebug(BLUEDAEMON);
-
     QProcess process;
     if (!process.startDetached(QStringLiteral("bluedevil-monolithic"))) {
-        qCritical() << "Could not start bluedevil-monolithic";
+        qCCritical(BLUEDAEMON) << "Could not start bluedevil-monolithic";
     }
 }
 
 void BlueDevilDaemon::killMonolithic()
 {
-    qCDebug(BLUEDAEMON);
     QDBusMessage msg = QDBusMessage::createMethodCall(
         QStringLiteral("org.kde.bluedevilmonolithic"),
         QStringLiteral("/MainApplication"),
         QStringLiteral("org.kde.KApplication"),
         QStringLiteral("quit")
     );
+
     QDBusPendingCall pending = QDBusConnection::sessionBus().asyncCall(msg);
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pending);
-    connect(watcher, SIGNAL(finished(QDBusPendingCallWatcher*)), SLOT(monolithicQuit(QDBusPendingCallWatcher*)));
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, &BlueDevilDaemon::monolithicQuit);
 }
 
 void BlueDevilDaemon::onlineMode()
 {
-    qCDebug(BLUEDAEMON);
     if (d->m_status == Private::Online) {
         qCDebug(BLUEDAEMON) << "Already in onlineMode";
         return;
     }
 
     d->m_bluezAgent = new BluezAgent(new QObject());
-    connect(d->m_bluezAgent, SIGNAL(agentReleased()), this, SLOT(agentReleased()));
-    connect(d->m_adapter, SIGNAL(deviceFound(Device*)), this, SLOT(deviceFound(Device*)));
+    connect(d->m_bluezAgent, &BluezAgent::agentReleased, this, &BlueDevilDaemon::agentReleased);
+    connect(d->m_adapter, &Adapter::deviceFound, this, &BlueDevilDaemon::deviceFound);
 
     FileReceiverSettings::self()->load();
     if (!d->m_fileReceiver && FileReceiverSettings::self()->enabled()) {
         d->m_fileReceiver = new FileReceiver(this);
     }
+
     if (d->m_fileReceiver && !FileReceiverSettings::self()->enabled()) {
         qCDebug(BLUEDAEMON) << "Stoppping server";
         delete d->m_fileReceiver;
@@ -273,7 +255,7 @@ void BlueDevilDaemon::onlineMode()
         d->m_placesModel = new KFilePlacesModel();
     }
 
-    //Just in case kded was killed or crashed
+    // Just in case kded was killed or crashed
     QModelIndex index = d->m_placesModel->closestItem(QUrl(QStringLiteral("bluetooth:/")));
     while (index.row() != -1) {
         d->m_placesModel->removePlace(index);
@@ -289,8 +271,6 @@ void BlueDevilDaemon::onlineMode()
 
 void BlueDevilDaemon::monolithicFinished(const QString &)
 {
-    qCDebug(BLUEDAEMON);
-
     if (d->m_status == Private::Online) {
         executeMonolithic();
     }
@@ -299,6 +279,7 @@ void BlueDevilDaemon::monolithicFinished(const QString &)
 void BlueDevilDaemon::offlineMode()
 {
     qCDebug(BLUEDAEMON) << "Offline mode";
+
     if (d->m_status == Private::Offline) {
         qCDebug(BLUEDAEMON) << "Already in offlineMode";
         return;
@@ -307,7 +288,7 @@ void BlueDevilDaemon::offlineMode()
     d->m_adapter = 0;
 
     if (d->m_bluezAgent) {
-        delete d->m_bluezAgent->parent(); // we meed to delete the parent for not leaking it
+        delete d->m_bluezAgent->parent(); // we need to delete the parent for not leaking it
         d->m_bluezAgent = 0;
     }
 
@@ -317,7 +298,7 @@ void BlueDevilDaemon::offlineMode()
         d->m_fileReceiver = 0;
     }
 
-    //Just to be sure that online was called
+    // Just to be sure that online was called
     if (d->m_placesModel)  {
         QModelIndex index = d->m_placesModel->closestItem(QUrl(QStringLiteral("bluetooth:/")));
         d->m_placesModel->removePlace(index);
@@ -370,12 +351,11 @@ void BlueDevilDaemon::deviceFound(Device *device)
     org::kde::KDirNotify::emitFilesAdded(QUrl(QStringLiteral("bluetooth:/")));
 }
 
-void BlueDevilDaemon::monolithicQuit(QDBusPendingCallWatcher* watcher)
+void BlueDevilDaemon::monolithicQuit(QDBusPendingCallWatcher *watcher)
 {
-    qCDebug(BLUEDAEMON);
     QDBusPendingReply<void> reply = *watcher;
     if (reply.isError()) {
-        qDebug() << "Error response: " << reply.error().message();
+        qCDebug(BLUEDAEMON) << "Error response: " << reply.error().message();
     }
 }
 
@@ -389,7 +369,7 @@ void BlueDevilDaemon::saveAdaptersState()
     KConfigGroup adaptersGroup = d->m_config->group("Adapters");
 
     Q_FOREACH (Adapter *adapter, manager->adapters()) {
-        const QString key = QString("%1_powered").arg(adapter->address());
+        const QString key = QString(QStringLiteral("%1_powered")).arg(adapter->address());
         adaptersGroup.writeEntry<bool>(key, adapter->isPowered());
     }
 
@@ -407,7 +387,7 @@ void BlueDevilDaemon::restoreAdaptersState()
     KConfigGroup adaptersGroup = d->m_config->group("Adapters");
 
     Q_FOREACH (Adapter *adapter, manager->adapters()) {
-        const QString key = QString("%1_powered").arg(adapter->address());
+        const QString key = QString(QStringLiteral("%1_powered")).arg(adapter->address());
         adapter->setPowered(adaptersGroup.readEntry<bool>(key, true));
     }
 }
@@ -416,7 +396,7 @@ void BlueDevilDaemon::restoreAdapterState(Adapter *adapter)
 {
     KConfigGroup adaptersGroup = d->m_config->group("Adapters");
 
-    const QString key = QString("%1_powered").arg(adapter->address());
+    const QString key = QString(QStringLiteral("%1_powered")).arg(adapter->address());
     adapter->setPowered(adaptersGroup.readEntry<bool>(key, true));
 }
 

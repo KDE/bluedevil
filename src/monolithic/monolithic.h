@@ -22,7 +22,8 @@
 
 #include <kstatusnotifieritem.h>
 
-namespace BlueDevil {
+namespace BlueDevil
+{
     class Adapter;
     class Device;
 }
@@ -31,8 +32,7 @@ class QAction;
 
 using namespace BlueDevil;
 
-class Monolithic
-    : public KStatusNotifierItem
+class Monolithic : public KStatusNotifierItem
 {
 
 Q_OBJECT

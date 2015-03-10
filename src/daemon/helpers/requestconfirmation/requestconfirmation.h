@@ -19,8 +19,8 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA            *
  ***************************************************************************/
 
-#ifndef AUTHORIZE_H
-#define AUTHORIZE_H
+#ifndef REQUEST_CONFIRMATION_H
+#define REQUEST_CONFIRMATION_H
 
 #include <QObject>
 
@@ -32,8 +32,7 @@
  * Deny quits the app with 1 (which means denied)
  * @internal
  */
-class RequestConfirmation
-    : public QObject
+class RequestConfirmation : public QObject
 {
     Q_OBJECT
 
@@ -42,7 +41,7 @@ public:
      * Launch the KNotification which the respective actions, also makes the needed connection
      * between those actions and the slots
      */
-    RequestConfirmation();
+    explicit RequestConfirmation();
 
 private Q_SLOTS:
     /**
@@ -55,4 +54,5 @@ private Q_SLOTS:
      */
     void pinWrong();
 };
-#endif
+
+#endif // REQUEST_CONFIRMATION_H

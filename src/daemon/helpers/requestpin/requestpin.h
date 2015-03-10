@@ -19,14 +19,15 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA            *
  ***************************************************************************/
 
-#ifndef REQUESTPIN_H
-#define REQUESTPIN_H
+#ifndef REQUEST_PIN_H
+#define REQUEST_PIN_H
 
 #include <QObject>
 #include <QTimer>
 
-namespace Ui {
-class dialogWidget;
+namespace Ui
+{
+    class dialogWidget;
 }
 
 class KNotification;
@@ -39,8 +40,7 @@ class KNotification;
  * Deny quits the app with 1 (which means denied)
  * @internal
  */
-class RequestPin
-    : public QObject
+class RequestPin : public QObject
 {
     Q_OBJECT
 
@@ -49,7 +49,7 @@ public:
      * Launch the KNotification which the respective actions, also makes the needed connection
      * between those actions and the slots
      */
-    RequestPin();
+    explicit RequestPin();
 
 private Q_SLOTS:
     /**
@@ -70,4 +70,5 @@ private:
     Ui::dialogWidget *m_dialogWidget;
     KNotification *m_notification;
 };
-#endif //REQUESTPIN_H
+
+#endif // REQUEST_PIN_H

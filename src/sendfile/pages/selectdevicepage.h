@@ -30,22 +30,23 @@
 class KUrl;
 class QWizard;
 class KFileDialog;
-namespace BlueDevil {
+
+namespace BlueDevil
+{
     class Device;
 }
-using namespace BlueDevil;
 
-class SelectDevicePage : public QWizardPage ,
-        public Ui::SelectFileDiscover
+class SelectDevicePage : public QWizardPage, public Ui::SelectFileDiscover
 {
-Q_OBJECT
-public:
-    SelectDevicePage(QWidget* parent = 0);
+    Q_OBJECT
 
-    virtual bool isComplete() const;
+public:
+    explicit SelectDevicePage(QWidget *parent = 0);
+
+    bool isComplete() const Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
-    void deviceSelected(Device*);
+    void deviceSelected(BlueDevil::Device *device);
 
 private:
     KFileDialog *m_dialog;

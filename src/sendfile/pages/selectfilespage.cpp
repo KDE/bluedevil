@@ -31,14 +31,15 @@
 #include <QVBoxLayout>
 #include <QLabel>
 
-SelectFilesPage::SelectFilesPage(QWidget* parent): QWizardPage(parent)
+SelectFilesPage::SelectFilesPage(QWidget *parent)
+    : QWizardPage(parent)
 {
     m_files = new KFileWidget(QUrl(QStandardPaths::writableLocation(QStandardPaths::HomeLocation)), this);
     m_files->setMode(KFile::Files);
     m_files->setContentsMargins(0, 0, 0, 0);
     setContentsMargins(0, 0, 0, 0);
 
-    connect(m_files, SIGNAL(selectionChanged()), this, SLOT(selectionChanged()));
+    connect(m_files, &KFileWidget::selectionChanged, this, &SelectFilesPage::selectionChanged);
 
     QVBoxLayout *layout = new QVBoxLayout(this);
     layout->addWidget(m_files);
@@ -48,10 +49,12 @@ void SelectFilesPage::selectionChanged()
 {
     QStringList fileList;
     KFileItemList itemList = m_files->dirOperator()->selectedItems();
-    Q_FOREACH(const KFileItem &file, itemList) {
+
+    Q_FOREACH (const KFileItem &file, itemList) {
         fileList << file.localPath();
     }
-    static_cast<SendFileWizard* >(wizard())->setFiles(fileList);
+
+    static_cast<SendFileWizard*>(wizard())->setFiles(fileList);
     emit completeChanged();
 }
 

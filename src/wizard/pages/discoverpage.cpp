@@ -37,7 +37,9 @@
 
 using namespace BlueDevil;
 
-DiscoverPage::DiscoverPage(BlueWizard* parent): QWizardPage(parent), m_wizard(parent)
+DiscoverPage::DiscoverPage(BlueWizard *parent)
+    : QWizardPage(parent)
+    , m_wizard(parent)
 {
     setTitle(i18n("Select a device"));
     setupUi(this);
@@ -47,12 +49,7 @@ DiscoverPage::DiscoverPage(BlueWizard* parent): QWizardPage(parent), m_wizard(pa
     workingPainter->setWidget(working);
     workingPainter->start();
 
-    connect(deviceList, SIGNAL(currentItemChanged(QListWidgetItem*,QListWidgetItem*)), this,
-            SLOT(itemSelected(QListWidgetItem*)));
-}
-
-DiscoverPage::~DiscoverPage()
-{
+    connect(deviceList, &QListWidget::currentItemChanged, this, &DiscoverPage::itemSelected);
 }
 
 void DiscoverPage::initializePage()
@@ -65,16 +62,15 @@ void DiscoverPage::initializePage()
     list << QWizard::CancelButton;
     m_wizard->setButtonLayout(list);
 
-    QRegExp rx("[0-9]{0,9}");
+    QRegExp rx(QStringLiteral("[0-9]{0,9}"));
     QRegExpValidator *validator = new QRegExpValidator(rx);
     pinText->setValidator(validator);
 
-    connect(Manager::self()->usableAdapter(), SIGNAL(unpairedDeviceFound(Device*)), this,
-        SLOT(deviceFound(Device*)));
-    connect(manualPin, SIGNAL(toggled(bool)), pinText, SLOT(setEnabled(bool)));
-    connect(manualPin, SIGNAL(toggled(bool)), this, SIGNAL(completeChanged()));
-    connect(pinText, SIGNAL(textChanged(QString)), m_wizard, SLOT(setPin(QString)));
-    connect(pinText, SIGNAL(textChanged(QString)), this, SIGNAL(completeChanged()));
+    connect(Manager::self()->usableAdapter(), &Adapter::unpairedDeviceFound, this, &DiscoverPage::deviceFound);
+    connect(manualPin, &QCheckBox::toggled, pinText, &QLineEdit::setEnabled);
+    connect(manualPin, &QCheckBox::toggled, this, &DiscoverPage::completeChanged);
+    connect(pinText, &QLineEdit::textChanged, m_wizard, &BlueWizard::setPin);
+    connect(pinText, &QLineEdit::textChanged, this, &DiscoverPage::completeChanged);
 
     QMetaObject::invokeMethod(this, "startScan", Qt::QueuedConnection);
 }
@@ -111,7 +107,7 @@ void DiscoverPage::stopScan()
     }
 }
 
-void DiscoverPage::deviceFound(Device* device)
+void DiscoverPage::deviceFound(Device *device)
 {
     QString address = device->address();
     QString name = device->name();
@@ -141,14 +137,14 @@ void DiscoverPage::deviceFound(Device* device)
         m_itemRelation[address]->setIcon(QIcon::fromTheme(icon));
         m_itemRelation[address]->setData(Qt::UserRole + 1, origName);
 
-        //If the device was selected but it didn't had a name, select it again
+        // If the device was selected but it didn't had a name, select it again
         if (deviceList->currentItem() == m_itemRelation[address]) {
             itemSelected(m_itemRelation[address]);
         }
         return;
     }
 
-    connect(device, SIGNAL(propertyChanged(QString,QVariant)), SLOT(devicePropertyChanged()));
+    connect(device, &Device::propertyChanged, this, &DiscoverPage::devicePropertyChanged);
 
     QListWidgetItem *item = new QListWidgetItem(QIcon::fromTheme(icon), name, deviceList);
 
@@ -161,20 +157,20 @@ void DiscoverPage::deviceFound(Device* device)
         deviceList->setCurrentItem(m_itemRelation[address]);
     }
 
-    //If the device has been preselected via arguments, select it
+    // If the device has been preselected via arguments, select it
     if (m_wizard->preselectedAddress() == address.toLower()) {
         deviceList->setCurrentItem(m_itemRelation[address]);
     }
 }
 
-void DiscoverPage::itemSelected(QListWidgetItem* item)
+void DiscoverPage::itemSelected(QListWidgetItem *item)
 {
     bool origName = item->data(Qt::UserRole+1).toBool();
     if (origName) {
         QString address = item->data(Qt::UserRole).toString();
-        m_wizard->setDeviceAddress(address.toUtf8());
+        m_wizard->setDeviceAddress(address);
     } else {
-        m_wizard->setDeviceAddress(QByteArray());
+        m_wizard->setDeviceAddress(QString());
     }
     emit completeChanged();
 }
@@ -189,7 +185,6 @@ void DiscoverPage::devicePropertyChanged()
 
 int DiscoverPage::nextId() const
 {
-    qCDebug(WIZARD);
     if (!isComplete()) {
         return BlueWizard::Discover;
     }
@@ -228,20 +223,20 @@ int DiscoverPage::nextId() const
     qCDebug(WIZARD) << "From DB: " << m_wizard->agent()->isFromDatabase();
     qCDebug(WIZARD) << "PIN: " << m_wizard->agent()->pin();
 
-    //If keyboard no matter what, we go to the keyboard page.
+    // If keyboard no matter what, we go to the keyboard page.
     if (classToType(device->deviceClass()) == BLUETOOTH_TYPE_KEYBOARD) {
         qCDebug(WIZARD) << "Keyboard Pairing";
         return BlueWizard::KeyboardPairing;
     }
 
-    //If pin ==  NULL means that not pairing is required
+    // If pin ==  NULL means that not pairing is required
     if (!device->hasLegacyPairing() && !m_wizard->agent()->isFromDatabase()) {
         qCDebug(WIZARD) << "Secure Pairing";
         return BlueWizard::SSPPairing;
     }
 
     if (pin == QLatin1String("NULL")) {
-        qCDebug(WIZARD) << "NO Pairing";
+        qCDebug(WIZARD) << "No Pairing";
         return BlueWizard::NoPairing;
     }
 

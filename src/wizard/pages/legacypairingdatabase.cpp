@@ -36,11 +36,12 @@
 
 using namespace BlueDevil;
 
-LegacyPairingPageDatabase::LegacyPairingPageDatabase(BlueWizard* parent)
+LegacyPairingPageDatabase::LegacyPairingPageDatabase(BlueWizard *parent)
     : QWizardPage(parent)
     , m_wizard(parent)
 {
     setupUi(this);
+
     m_working = new KPixmapSequenceOverlayPainter(this);
     m_working->setSequence(KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), 22));
     m_working->setWidget(working);
@@ -54,13 +55,14 @@ void LegacyPairingPageDatabase::initializePage()
     Device *device = m_wizard->device();
     connecting->setText(i18n("Connecting to %1...", device->name()));
 
-    connect(device, SIGNAL(pairedChanged(bool)), this, SLOT(pairedChanged(bool)));
+    connect(device, &Device::pairedChanged, this, &LegacyPairingPageDatabase::pairedChanged);
     device->pair();
 }
 
 void LegacyPairingPageDatabase::pairedChanged(bool paired)
 {
     qCDebug(WIZARD) << paired;
+
     m_wizard->next();
 }
 
@@ -79,6 +81,5 @@ QList< QWizard::WizardButton > LegacyPairingPageDatabase::wizardButtonsLayout() 
     QList <QWizard::WizardButton> list;
     list << QWizard::Stretch;
     list << QWizard::CancelButton;
-
     return list;
 }

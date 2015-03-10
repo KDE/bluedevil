@@ -36,7 +36,10 @@
 #include <bluedevil/bluedevil.h>
 
 using namespace BlueDevil;
-SelectDevicePage::SelectDevicePage(QWidget* parent): QWizardPage(parent), m_dialog(0)
+
+SelectDevicePage::SelectDevicePage(QWidget *parent) :
+    QWizardPage(parent),
+    m_dialog(0)
 {
     setupUi(this);
 
@@ -51,22 +54,22 @@ SelectDevicePage::SelectDevicePage(QWidget* parent): QWizardPage(parent), m_dial
 
     selectBtn->setHidden(true);
     selectLbl->setHidden(true);
-    connect(widget, SIGNAL(deviceSelected(Device*)), this, SLOT(deviceSelected(Device*)));
+    connect(widget, &DiscoverWidget::deviceSelected, this, &SelectDevicePage::deviceSelected);
 }
 
-void SelectDevicePage::deviceSelected(Device* device)
+void SelectDevicePage::deviceSelected(Device *device)
 {
     if (!device->name().isEmpty()) {
-        static_cast<SendFileWizard* >(wizard())->setDevice(device);
+        static_cast<SendFileWizard*>(wizard())->setDevice(device);
     } else {
-        static_cast<SendFileWizard* >(wizard())->setDevice(0);
+        static_cast<SendFileWizard*>(wizard())->setDevice(0);
     }
     emit completeChanged();
 }
 
 bool SelectDevicePage::isComplete() const
 {
-    if (!static_cast<SendFileWizard* >(wizard())->device()) {
+    if (!static_cast<SendFileWizard*>(wizard())->device()) {
         return false;
     }
 

@@ -37,9 +37,7 @@
 #include <KNotification>
 #include <KLocalizedString>
 
-using namespace std;
-RequestPin::RequestPin()
-    : QObject()
+RequestPin::RequestPin() : QObject()
     , m_dialogWidget(0)
 {
     m_notification = new KNotification(QStringLiteral("bluedevilRequestPin"),
@@ -47,7 +45,7 @@ RequestPin::RequestPin()
 
     m_notification->setText(i18nc(
         "Shown in a notification to announce that a PIN is needed to accomplish a pair action, %1 is the name of the bluetooth device",
-        "PIN needed to pair with %1",qApp->arguments()[1])
+        "PIN needed to pair with %1", qApp->arguments().at(1))
     );
 
     QStringList actions;
@@ -58,17 +56,17 @@ RequestPin::RequestPin()
 
     m_notification->setActions(actions);
 
-    connect(m_notification, SIGNAL(action1Activated()),this, SLOT(introducePin()));
-    connect(m_notification, SIGNAL(closed()), this, SLOT(quit()));
-    connect(m_notification, SIGNAL(ignored()), this, SLOT(quit()));
+    connect(m_notification, &KNotification::action1Activated,this, &RequestPin::introducePin);
+    connect(m_notification, &KNotification::closed, this, &RequestPin::quit);
+    connect(m_notification, &KNotification::ignored, this, &RequestPin::quit);
 
-    //We're using persistent notifications so we have to use our own timeout (10s)
+    // We're using persistent notifications so we have to use our own timeout (10s)
     m_timer.setSingleShot(true);
     m_timer.setInterval(10000);
     m_timer.start();
-    connect(&m_timer, SIGNAL(timeout()), m_notification, SLOT(close()));
+    connect(&m_timer, &QTimer::timeout, m_notification, &KNotification::close);
 
-    m_notification->setPixmap(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")).pixmap(42,42));
+    m_notification->setPixmap(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")).pixmap(42));
     m_notification->sendEvent();
 }
 
@@ -90,27 +88,27 @@ void RequestPin::introducePin()
     m_dialogWidget->descLabel->setText(i18nc(
         "Shown in a dialog which asks to introduce a PIN that will be used to pair a Bluetooth device, %1 is the name of the Bluetooth device",
         "In order to pair this computer with %1, you have to enter a PIN. Please do it below.",
-        qApp->arguments()[1])
+        qApp->arguments().at(1))
     );
-    m_dialogWidget->pixmap->setPixmap(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")).pixmap(64,64));
+    m_dialogWidget->pixmap->setPixmap(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")).pixmap(64));
 
-    connect(m_dialogWidget->pin, SIGNAL(textChanged(QString)), SLOT(checkPin(QString)));
-    connect(m_dialogWidget->pin, SIGNAL(returnPressed()), dialog, SLOT(accept()));
+    connect(m_dialogWidget->pin, &KLineEdit::textChanged, this, &RequestPin::checkPin);
+    connect(m_dialogWidget->pin, &KLineEdit::returnPressed, dialog, &QDialog::accept);
 
     m_dialogWidget->pin->setFocus(Qt::ActiveWindowFocusReason);
-    qDebug() << qApp->arguments();
-    if (qApp->arguments().count() > 2 && qApp->arguments()[2] == QLatin1String("numeric")) {
-        m_dialogWidget->pin->setValidator(new QRegExpValidator(QRegExp(QStringLiteral("[0-9]{1,6}")), this ));
+
+    if (qApp->arguments().count() > 2 && qApp->arguments().at(2) == QLatin1String("numeric")) {
+        m_dialogWidget->pin->setValidator(new QRegExpValidator(QRegExp(QStringLiteral("[0-9]{1,6}")), this));
     } else {
-        m_dialogWidget->pin->setValidator(new QRegExpValidator(QRegExp(QStringLiteral("[A-Za-z0-9]{1,16}")), this ));
+        m_dialogWidget->pin->setValidator(new QRegExpValidator(QRegExp(QStringLiteral("[A-Za-z0-9]{1,16}")), this));
     }
 
     m_dialogWidget->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
     dialog->setMinimumSize(dialog->sizeHint());
     dialog->setMaximumSize(dialog->sizeHint());
     if (dialog->exec()) {
-        cout << m_dialogWidget->pin->text().toLatin1().constData();
-        flush(cout);
+        std::cout << m_dialogWidget->pin->text().toLatin1().constData();
+        std::flush(std::cout);
         delete dialog;
         qApp->exit(0);
         return;
@@ -120,7 +118,7 @@ void RequestPin::introducePin()
     qApp->exit(1);
 }
 
-void RequestPin::checkPin(const QString& pin)
+void RequestPin::checkPin(const QString &pin)
 {
     m_dialogWidget->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(!pin.isEmpty());
 }

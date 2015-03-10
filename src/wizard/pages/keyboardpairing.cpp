@@ -35,11 +35,12 @@
 
 using namespace BlueDevil;
 
-KeyboardPairingPage::KeyboardPairingPage(BlueWizard* parent)
+KeyboardPairingPage::KeyboardPairingPage(BlueWizard *parent)
     : QWizardPage(parent)
     , m_wizard(parent)
 {
     setupUi(this);
+
     m_working = new KPixmapSequenceOverlayPainter(this);
     m_working->setSequence(KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), 22));
     m_working->setWidget(pinNumber);
@@ -53,13 +54,12 @@ KeyboardPairingPage::KeyboardPairingPage(BlueWizard* parent)
 
 void KeyboardPairingPage::initializePage()
 {
-    qCDebug(WIZARD);
     m_wizard->setButtonLayout(wizardButtonsLayout());
 
-    connect(m_wizard->agent(), SIGNAL(pinRequested(QString)), this, SLOT(pinRequested(QString)));
+    connect(m_wizard->agent(), &WizardAgent::pinRequested, this, &KeyboardPairingPage::pinRequested);
 
     Device *device = m_wizard->device();
-    connect(device, SIGNAL(pairedChanged(bool)), this, SLOT(pairedChanged(bool)));
+    connect(device, &Device::pairedChanged, this, &KeyboardPairingPage::pairedChanged);
     device->pair();
 }
 
@@ -72,6 +72,7 @@ void KeyboardPairingPage::pinRequested(const QString& pin)
 void KeyboardPairingPage::pairedChanged(bool paired)
 {
     qCDebug(WIZARD) << paired;
+
     m_wizard->next();
 }
 
@@ -90,6 +91,5 @@ QList<QWizard::WizardButton> KeyboardPairingPage::wizardButtonsLayout() const
     QList <QWizard::WizardButton> list;
     list << QWizard::Stretch;
     list << QWizard::CancelButton;
-
     return list;
 }

@@ -41,6 +41,7 @@ NoPairingPage::NoPairingPage(BlueWizard *parent)
     , m_wizard(parent)
 {
     setupUi(this);
+
     m_working = new KPixmapSequenceOverlayPainter(this);
     m_working->setSequence(KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), 22));
     m_working->setWidget(working);
@@ -57,16 +58,19 @@ int NoPairingPage::nextId() const
 
 void NoPairingPage::initializePage()
 {
-    qCDebug(WIZARD);
     m_wizard->setButtonLayout(wizardButtonsLayout());
 
     connecting->setText(connecting->text().append(m_wizard->device()->name()));
 
-    connect(m_wizard->device(), SIGNAL(connectedChanged(bool)), SLOT(connectedChanged(bool)));
-    connect(m_wizard->device(), SIGNAL(trustedChanged(bool)), SLOT(connectedChanged(bool)));
+    connect(m_wizard->device(), &Device::connectedChanged, this, &NoPairingPage::connectedChanged);
+    connect(m_wizard->device(), &Device::trustedChanged, this, &NoPairingPage::connectedChanged);
 
     m_wizard->device()->connectDevice();
     m_wizard->device()->setTrusted(true);
+
+    QTimer::singleShot(10 * 1000, this, [this]() {
+        connectedChanged(true);
+    });
 }
 
 void NoPairingPage::connectedChanged(bool connected)
@@ -76,7 +80,7 @@ void NoPairingPage::connectedChanged(bool connected)
     // Connect may fail but that doesn't really mean the device was setup incorrectly
     // Device::connectDevice will fail eg. when A2DP profile could not be connected due to missing pulseaudio plugin
     m_success = true;
-    QTimer::singleShot(500, m_wizard, SLOT(next()));
+    QTimer::singleShot(500, m_wizard, &BlueWizard::next);
 }
 
 QList<QWizard::WizardButton> NoPairingPage::wizardButtonsLayout() const

@@ -20,7 +20,6 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-
 #ifndef DISCOVERWIDGET_H
 #define DISCOVERWIDGET_H
 
@@ -31,28 +30,26 @@
 class QTimer;
 class BlueWizard;
 
-namespace BlueDevil {
+namespace BlueDevil
+{
     class Device;
 }
-using namespace BlueDevil;
 
-class DiscoverWidget : public QWidget
-, public Ui::Discover
+class DiscoverWidget : public QWidget, public Ui::Discover
 {
-Q_OBJECT
+    Q_OBJECT
 
 public:
-    DiscoverWidget(QWidget* parent = 0);
-    virtual ~DiscoverWidget();
+    explicit DiscoverWidget(QWidget *parent = 0);
+
     void stopScan();
 
 public Q_SLOTS:
     void startScan();
 
 private Q_SLOTS:
-    void deviceFound(const QVariantMap &deviceInfo);
-    void deviceFound(Device* device);
-    void itemSelected(QListWidgetItem* item);
+    void deviceFound(BlueDevil::Device *device);
+    void itemSelected(QListWidgetItem *item);
 
 private:
     void deviceFoundGeneric(QString address, QString name, QString icon, QString alias);
@@ -62,7 +59,7 @@ private:
     BlueWizard *m_wizard;
 
 Q_SIGNALS:
-    void deviceSelected(Device *device);
+    void deviceSelected(BlueDevil::Device *device);
 };
 
 #endif // DISCOVERWIDGET_H

@@ -32,8 +32,7 @@
  * Deny quits the app with 1 (which means denied)
  * @internal
  */
-class Authorize
-    : public QObject
+class Authorize : public QObject
 {
     Q_OBJECT
 
@@ -42,7 +41,7 @@ public:
      * Launch the KNotification which the respective actions, also makes the needed connection
      * between those actions and the slots
      */
-    Authorize();
+    explicit Authorize();
 
 private Q_SLOTS:
     /**
@@ -60,4 +59,5 @@ private Q_SLOTS:
      */
     void deny();
 };
-#endif
+
+#endif // AUTHORIZE_H

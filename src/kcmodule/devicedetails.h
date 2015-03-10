@@ -28,7 +28,8 @@ class QLineEdit;
 class QAbstractButton;
 class QDialogButtonBox;
 
-namespace BlueDevil {
+namespace BlueDevil
+{
     class Device;
 }
 

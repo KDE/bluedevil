@@ -24,20 +24,19 @@
 #include <QDBusObjectPath>
 
 class QDBusMessage;
+
 class ObexAgent : public QDBusAbstractAdaptor
 {
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.bluez.obex.Agent1")
 
-    public:
-        explicit ObexAgent(QObject* parent);
-        virtual ~ObexAgent();
+public:
+    explicit ObexAgent(QObject *parent);
 
-    public Q_SLOTS:
-        QString AuthorizePush(const QDBusObjectPath &path, const QDBusMessage &msg);
-
-        void Release();
-        void Cancel();
+public Q_SLOTS:
+    QString AuthorizePush(const QDBusObjectPath &path, const QDBusMessage &msg);
+    void Release();
+    void Cancel();
 };
 
-#endif //OBEX_AGENT_H
+#endif // OBEX_AGENT_H

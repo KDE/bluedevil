@@ -30,11 +30,12 @@ class KFileWidget;
 
 class SelectFilesPage : public QWizardPage
 {
-Q_OBJECT
-public:
-    SelectFilesPage(QWidget* parent = 0);
+    Q_OBJECT
 
-    virtual bool isComplete() const;
+public:
+    explicit SelectFilesPage(QWidget *parent = 0);
+
+    bool isComplete() const Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
     void selectionChanged();

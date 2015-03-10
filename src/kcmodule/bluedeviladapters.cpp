@@ -320,7 +320,7 @@ void KCMBlueDevilAdapters::generateNoAdaptersMessage()
     QGridLayout *layout = new QGridLayout;
     m_noAdaptersMessage = new QWidget(this);
     QLabel *label = new QLabel(m_noAdaptersMessage);
-    label->setPixmap(QIcon::fromTheme(QStringLiteral("dialog-information")).pixmap(128, 128));
+    label->setPixmap(QIcon::fromTheme(QStringLiteral("dialog-information")).pixmap(128));
     layout->addWidget(label, 0, 1, Qt::AlignHCenter);
     layout->addWidget(new QLabel(i18n("No adapters found. Please connect one."), m_noAdaptersMessage),
                                  1, 1, Qt::AlignHCenter);

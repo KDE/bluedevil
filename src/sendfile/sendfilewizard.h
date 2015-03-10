@@ -31,26 +31,27 @@
 class WizardAgent;
 class QStringList;
 class SendFilesJob;
-namespace BlueDevil {
+
+namespace BlueDevil
+{
     class Device;
 }
-using namespace BlueDevil;
 
 class SendFileWizard : public QWizard
 {
-Q_OBJECT
+    Q_OBJECT
 
 public:
-    SendFileWizard(const QString &deviceUBI, const QStringList &files);
-    virtual ~SendFileWizard();
+    explicit SendFileWizard(const QString &deviceUBI, const QStringList &files);
+    ~SendFileWizard();
 
-    virtual void done(int result);
+    void done(int result) Q_DECL_OVERRIDE;
 
     void setFiles(const QStringList &files);
 
-    void setDevice(Device *device);
+    void setDevice(BlueDevil::Device *device);
     void setDevice(QString deviceUrl);
-    Device* device();
+    BlueDevil::Device *device();
 
     void startTransfer();
 
@@ -58,9 +59,8 @@ private Q_SLOTS:
     void wizardDone();
 
 private:
-    QStringList  m_files;
-
-    Device       *m_device;
+    QStringList m_files;
+    BlueDevil::Device *m_device;
     SendFilesJob *m_job;
 };
 

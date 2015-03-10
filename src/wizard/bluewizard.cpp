@@ -48,11 +48,11 @@ BlueWizard::BlueWizard(const QUrl &url)
     setOption(QWizard::IndependentPages, true);
 
     if (url.host().length() == 17) {
-        setPreselectedAddress(url.host().replace(QLatin1Char('-'), QLatin1Char(':')).toLatin1());
+        setPreselectedAddress(url.host().replace(QLatin1Char('-'), QLatin1Char(':')));
     }
 
     if (url.fileName().length() == 36) {
-        setPreselectedUuid(url.fileName().toLatin1());
+        setPreselectedUuid(url.fileName());
     }
 
     setPage(Discover, new DiscoverPage(this));
@@ -96,10 +96,6 @@ BlueWizard::BlueWizard(const QUrl &url)
     m_agent = new WizardAgent(qApp);
 }
 
-BlueWizard::~BlueWizard()
-{
-}
-
 void BlueWizard::done(int result)
 {
     qCDebug(WIZARD) << "Wizard done: " << result;
@@ -113,9 +109,10 @@ Device* BlueWizard::device() const
     return m_device;
 }
 
-void BlueWizard::setDeviceAddress(const QByteArray& address)
+void BlueWizard::setDeviceAddress(const QString &address)
 {
     qCDebug(WIZARD) << "Device Address: " << address;
+
     if (!Manager::self()->usableAdapter()) {
         qCDebug(WIZARD) << "No usable adapter available";
         return;
@@ -125,7 +122,7 @@ void BlueWizard::setDeviceAddress(const QByteArray& address)
     m_device = Manager::self()->usableAdapter()->deviceForAddress(m_deviceAddress);
 }
 
-QByteArray BlueWizard::deviceAddress() const
+QString BlueWizard::deviceAddress() const
 {
     return m_deviceAddress;
 }
@@ -139,45 +136,43 @@ void BlueWizard::restartWizard()
     qApp->quit();
 }
 
-void BlueWizard::setPin(const QByteArray& pinNum)
+void BlueWizard::setPin(const QString &pin)
 {
-    qCDebug(WIZARD) << "Setting pin: :" << pinNum;
-    m_pin = pinNum;
+    qCDebug(WIZARD) << "Setting pin:" << pin;
+
+    m_pin = pin;
 }
 
-void BlueWizard::setPin(const QString& pin)
-{
-    setPin(pin.toUtf8());
-}
-
-QByteArray BlueWizard::pin() const
+QString BlueWizard::pin() const
 {
     return m_pin;
 }
 
-void BlueWizard::setPreselectedUuid(const QByteArray& uuid)
+void BlueWizard::setPreselectedUuid(const QString &uuid)
 {
     qCDebug(WIZARD) << "Preselect UUID: " << uuid;
+
     m_preselectedUuid = uuid;
 }
 
-QByteArray BlueWizard::preselectedUuid() const
+QString BlueWizard::preselectedUuid() const
 {
     return m_preselectedUuid;
 }
 
-void BlueWizard::setPreselectedAddress(const QByteArray& address)
+void BlueWizard::setPreselectedAddress(const QString &address)
 {
     qCDebug(WIZARD) << "Preselected Address: " << address;
+
     m_preselectedAddress = address;
 }
 
-QByteArray BlueWizard::preselectedAddress() const
+QString BlueWizard::preselectedAddress() const
 {
     return m_preselectedAddress;
 }
 
-WizardAgent* BlueWizard::agent() const
+WizardAgent *BlueWizard::agent() const
 {
     return m_agent;
 }

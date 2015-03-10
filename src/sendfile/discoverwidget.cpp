@@ -20,9 +20,9 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-
 #include "discoverwidget.h"
 #include "ui_discover.h"
+#include "debug_p.h"
 
 #include <QListWidgetItem>
 #include <QListView>
@@ -35,20 +35,15 @@
 
 using namespace BlueDevil;
 
-DiscoverWidget::DiscoverWidget(QWidget* parent) : QWidget(parent)
+DiscoverWidget::DiscoverWidget(QWidget* parent)
+    : QWidget(parent)
 {
     setupUi(this);
 
-    connect(deviceList, SIGNAL(currentItemChanged(QListWidgetItem*,QListWidgetItem*)), this,
-            SLOT(itemSelected(QListWidgetItem*)));
-    connect(Manager::self()->usableAdapter(), SIGNAL(deviceFound(Device*)), this,
-            SLOT(deviceFound(Device*)));
+    connect(deviceList, &QListWidget::currentItemChanged, this, &DiscoverWidget::itemSelected);
+    connect(Manager::self()->usableAdapter(), &Adapter::deviceFound, this, &DiscoverWidget::deviceFound);
 
     startScan();
-}
-
-DiscoverWidget::~DiscoverWidget()
-{
 }
 
 void DiscoverWidget::startScan()
@@ -56,7 +51,7 @@ void DiscoverWidget::startScan()
     deviceList->clear();
     stopScan();
 
-    QList <Device *> knownDevices = Manager::self()->usableAdapter()->devices();
+    QList<Device*> knownDevices = Manager::self()->usableAdapter()->devices();
     Q_FOREACH(Device *device, knownDevices) {
         if (device->UUIDs().contains(QLatin1String("00001105-0000-1000-8000-00805F9B34FB"), Qt::CaseInsensitive)) {
             deviceFound(device);
@@ -72,27 +67,19 @@ void DiscoverWidget::stopScan()
     }
 }
 
-void DiscoverWidget::deviceFound(const QVariantMap& deviceInfo)
-{
-    deviceFoundGeneric(deviceInfo[QStringLiteral("Address")].toString(),
-                       deviceInfo[QStringLiteral("Name")].toString(),
-                       deviceInfo[QStringLiteral("Icon")].toString(),
-                       deviceInfo[QStringLiteral("Alias")].toString());
-}
-
-void DiscoverWidget::deviceFound(Device* device)
+void DiscoverWidget::deviceFound(Device *device)
 {
     deviceFoundGeneric(device->address(), device->name(), device->icon(), device->alias());
 }
 
 void DiscoverWidget::deviceFoundGeneric(QString address, QString name, QString icon, QString alias)
 {
-    qDebug() << "========================";
-    qDebug() << "Address: " << address;
-    qDebug() << "Name: " << name;
-    qDebug() << "Alias: " << alias;
-    qDebug() << "Icon: " << icon;
-    qDebug() << "\n";
+    qCDebug(SENDFILE) << "========================";
+    qCDebug(SENDFILE) << "Address: " << address;
+    qCDebug(SENDFILE) << "Name: " << name;
+    qCDebug(SENDFILE) << "Alias: " << alias;
+    qCDebug(SENDFILE) << "Icon: " << icon;
+    qCDebug(SENDFILE) << "\n";
 
 
     bool origName = false;
@@ -101,7 +88,7 @@ void DiscoverWidget::deviceFoundGeneric(QString address, QString name, QString i
     }
 
     if (!alias.isEmpty() && alias != name && !name.isEmpty()) {
-        name = QString("%1 (%2)").arg(alias).arg(name);
+        name = QString(QStringLiteral("%1 (%2)")).arg(alias).arg(name);
     }
 
     if (name.isEmpty()) {
@@ -131,7 +118,7 @@ void DiscoverWidget::deviceFoundGeneric(QString address, QString name, QString i
     m_itemRelation.insert(address, item);
 }
 
-void DiscoverWidget::itemSelected(QListWidgetItem* item)
+void DiscoverWidget::itemSelected(QListWidgetItem *item)
 {
     emit deviceSelected(Manager::self()->usableAdapter()->deviceForAddress(item->data(Qt::UserRole).toString()));
 }

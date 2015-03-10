@@ -23,33 +23,34 @@
 
 class BlueWizard;
 
-namespace BlueDevil {
+namespace BlueDevil
+{
     class Device;
 }
-using namespace BlueDevil;
 
 class DiscoverPage : public QWizardPage, public Ui::Discover
 {
-Q_OBJECT
+    Q_OBJECT
 
 public:
-    DiscoverPage(BlueWizard* parent = 0);
-    virtual ~DiscoverPage();
+    explicit DiscoverPage(BlueWizard *parent = 0);
 
-    virtual void initializePage();
-    virtual bool isComplete() const;
-    virtual int nextId() const;
+    void initializePage() Q_DECL_OVERRIDE;
+    bool isComplete() const Q_DECL_OVERRIDE;
+    int nextId() const Q_DECL_OVERRIDE;
+
 private Q_SLOTS:
     void startScan();
-    void deviceFound(Device * device);
-    void itemSelected(QListWidgetItem* item);
+    void deviceFound(BlueDevil::Device *device);
+    void itemSelected(QListWidgetItem *item);
     void devicePropertyChanged();
+
 private:
     void stopScan();
 
 private:
     QMap<QString, QListWidgetItem*> m_itemRelation;
-    Device     *m_selectedDevice;
+    BlueDevil::Device *m_selectedDevice;
     BlueWizard *m_wizard;
 };
 

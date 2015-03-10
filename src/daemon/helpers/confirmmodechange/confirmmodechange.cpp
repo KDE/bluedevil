@@ -37,7 +37,7 @@ ConfirmModeChange::ConfirmModeChange()
 
     notification->setText(i18nc(
         "Showed in a notification when the Bluetooth mode is going to be changed (for example to flight mode), the %1 is the name of the mode",
-        "Change Bluetooth mode to '%1'?", qApp->arguments()[1])
+        "Change Bluetooth mode to '%1'?", qApp->arguments().at(1))
     );
 
     QStringList actions;
@@ -46,14 +46,14 @@ ConfirmModeChange::ConfirmModeChange()
 
     notification->setActions(actions);
 
-    connect(notification, SIGNAL(action1Activated()),this, SLOT(confirm()));
-    connect(notification, SIGNAL(action2Activated()),this, SLOT(deny()));
-    connect(notification, SIGNAL(closed()), this, SLOT(deny()));
-    connect(notification, SIGNAL(ignored()), this, SLOT(deny()));
+    connect(notification, &KNotification::action1Activated,this, &ConfirmModeChange::confirm);
+    connect(notification, &KNotification::action2Activated,this, &ConfirmModeChange::deny);
+    connect(notification, &KNotification::closed, this, &ConfirmModeChange::deny);
+    connect(notification, &KNotification::ignored, this, &ConfirmModeChange::deny);
 
     // We're using persistent notifications so we have to use our own timeout (10s)
-    QTimer::singleShot(10000, notification, SLOT(close()));
-    notification->setPixmap(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")).pixmap(42, 42));
+    QTimer::singleShot(10000, notification, &KNotification::close);
+    notification->setPixmap(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")).pixmap(42));
     notification->sendEvent();
 }
 
@@ -68,4 +68,3 @@ void ConfirmModeChange::deny()
     qDebug() << "Denied";
     qApp->exit(1);
 }
-

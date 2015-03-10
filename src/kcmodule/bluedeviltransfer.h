@@ -24,14 +24,16 @@
 #include <kcmodule.h>
 
 class SystemCheck;
-namespace Ui {
+
+namespace Ui
+{
     class Transfer;
 }
-namespace BlueDevil {
+
+namespace BlueDevil
+{
     class Adapter;
 }
-
-typedef BlueDevil::Adapter Adapter;
 
 class KCMBlueDevilTransfer : public KCModule
 {
@@ -39,11 +41,11 @@ class KCMBlueDevilTransfer : public KCModule
 
 public:
     KCMBlueDevilTransfer(QWidget *parent, const QVariantList&);
-    virtual ~KCMBlueDevilTransfer();
 
-    virtual void save();
+    void save() Q_DECL_OVERRIDE;
+
 private Q_SLOTS:
-    void usableAdapterChanged(Adapter *adapter);
+    void usableAdapterChanged(BlueDevil::Adapter *adapter);
     void adapterDiscoverableChanged();
     void updateInformationState();
     void changed(bool);
@@ -54,4 +56,4 @@ private:
     bool m_restartNeeded;
 };
 
-#endif
+#endif // _BLUEDEVILTRANSFER_H

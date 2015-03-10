@@ -15,57 +15,66 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 #ifndef BLUEWIZARD_H
 #define BLUEWIZARD_H
 
 #include <QObject>
 #include <QWizard>
 
-namespace BlueDevil {
+namespace BlueDevil
+{
     class Device;
 }
 
 class WizardAgent;
+
 class BlueWizard : public QWizard
 {
-Q_OBJECT
+    Q_OBJECT
 
 public:
-    BlueWizard(const QUrl& url);
-    virtual ~BlueWizard();
+    explicit BlueWizard(const QUrl &url);
 
-    QByteArray deviceAddress() const;
-    void setDeviceAddress(const QByteArray& address);
+    QString deviceAddress() const;
+    void setDeviceAddress(const QString &address);
 
     BlueDevil::Device *device() const;
 
-    QByteArray pin() const;
-    void setPin(const QByteArray& pin);
+    QString pin() const;
+    void setPin(const QString &pin);
 
-    QByteArray preselectedUuid() const;
-    void setPreselectedUuid(const QByteArray &uuid);
+    QString preselectedUuid() const;
+    void setPreselectedUuid(const QString &uuid);
 
-    QByteArray preselectedAddress() const;
-    void setPreselectedAddress(const QByteArray &uuid);
+    QString preselectedAddress() const;
+    void setPreselectedAddress(const QString &uuid);
 
-    WizardAgent* agent() const;
+    WizardAgent *agent() const;
 
-    enum {Discover, NoPairing, LegacyPairing, LegacyPairingDatabase, KeyboardPairing, SSPPairing, Success, Fail, Connect};
+    enum {
+        Discover,
+        NoPairing,
+        LegacyPairing,
+        LegacyPairingDatabase,
+        KeyboardPairing,
+        SSPPairing,
+        Success,
+        Fail,
+        Connect
+    };
 
 public Q_SLOTS:
     void restartWizard();
-    void setPin(const QString& pin);
-    virtual void done(int result);
+    void done(int result) Q_DECL_OVERRIDE;
 
 private:
-    QByteArray m_deviceAddress;
-    BlueDevil::Device * m_device;
-    QByteArray m_pin;
-    QByteArray m_preselectedUuid;
-    QByteArray m_preselectedAddress;
+    BlueDevil::Device *m_device;
     WizardAgent *m_agent;
 
+    QString m_pin;
+    QString m_deviceAddress;
+    QString m_preselectedUuid;
+    QString m_preselectedAddress;
     bool m_manualPin;
 };
 

@@ -36,7 +36,8 @@ class QLineEdit;
 class SystemCheck;
 class AdapterSettings;
 
-namespace BlueDevil {
+namespace BlueDevil
+{
     class Adapter;
 }
 

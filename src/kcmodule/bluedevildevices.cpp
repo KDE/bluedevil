@@ -226,11 +226,11 @@ BluetoothDevicesDelegate::BluetoothDevicesDelegate(QObject *parent)
     : QStyledItemDelegate(parent)
     , smallIconSize(IconSize(KIconLoader::Toolbar))
 {
-    m_blockedPixmap = QIcon::fromTheme(QStringLiteral("dialog-cancel")).pixmap(smallIconSize, smallIconSize);
-    m_trustedPixmap = QIcon::fromTheme(QStringLiteral("security-high")).pixmap(smallIconSize, smallIconSize);
-    m_untrustedPixmap = QIcon::fromTheme(QStringLiteral("security-low")).pixmap(smallIconSize, smallIconSize);
-    m_connectedPixmap = QIcon::fromTheme(QStringLiteral("user-online")).pixmap(smallIconSize, smallIconSize);
-    m_disconnectedPixmap = QIcon::fromTheme(QStringLiteral("user-offline")).pixmap(smallIconSize, smallIconSize);
+    m_blockedPixmap = QIcon::fromTheme(QStringLiteral("dialog-cancel")).pixmap(smallIconSize);
+    m_trustedPixmap = QIcon::fromTheme(QStringLiteral("security-high")).pixmap(smallIconSize);
+    m_untrustedPixmap = QIcon::fromTheme(QStringLiteral("security-low")).pixmap(smallIconSize);
+    m_connectedPixmap = QIcon::fromTheme(QStringLiteral("user-online")).pixmap(smallIconSize);
+    m_disconnectedPixmap = QIcon::fromTheme(QStringLiteral("user-offline")).pixmap(smallIconSize);
 }
 
 BluetoothDevicesDelegate::~BluetoothDevicesDelegate()
@@ -551,7 +551,7 @@ void KCMBlueDevilDevices::generateNoDevicesMessage()
     m_noDevicesMessage->setBackgroundRole(QPalette::Base);
     m_noDevicesMessage->setAutoFillBackground(true);
     QLabel *label = new QLabel(m_noDevicesMessage);
-    label->setPixmap(QIcon::fromTheme(QStringLiteral("dialog-information")).pixmap(128, 128));
+    label->setPixmap(QIcon::fromTheme(QStringLiteral("dialog-information")).pixmap(128));
     layout->addWidget(label, 0, 1, Qt::AlignHCenter);
     layout->addWidget(new QLabel(i18n("No remote devices have been added"), m_noDevicesMessage),
                                  1, 1, Qt::AlignHCenter);

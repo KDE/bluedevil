@@ -39,7 +39,10 @@
 #include <bluedevil/bluedevil.h>
 
 using namespace BlueDevil;
-SelectDeviceAndFilesPage::SelectDeviceAndFilesPage(QWidget* parent): QWizardPage(parent), m_dialog(0)
+
+SelectDeviceAndFilesPage::SelectDeviceAndFilesPage(QWidget *parent)
+    : QWizardPage(parent)
+    , m_dialog(0)
 {
     setupUi(this);
 
@@ -56,24 +59,22 @@ SelectDeviceAndFilesPage::SelectDeviceAndFilesPage(QWidget* parent): QWizardPage
     selectBtn->setFixedSize(buttonSize, buttonSize);
     selectBtn->setIcon(QIcon::fromTheme(QStringLiteral("document-open")));
 
-    connect(widget, SIGNAL(deviceSelected(Device*)), this, SLOT(deviceSelected(Device*)));
-    connect(selectBtn, SIGNAL(clicked(bool)), this, SLOT(openFileDialog()));
+    connect(widget, &DiscoverWidget::deviceSelected, this, &SelectDeviceAndFilesPage::deviceSelected);
+    connect(selectBtn, &QPushButton::clicked, this, &SelectDeviceAndFilesPage::openFileDialog);
 }
 
-
-void SelectDeviceAndFilesPage::deviceSelected(Device* device)
+void SelectDeviceAndFilesPage::deviceSelected(Device *device)
 {
     if (!device->name().isEmpty()) {
-        static_cast<SendFileWizard* >(wizard())->setDevice(device);
+        static_cast<SendFileWizard*>(wizard())->setDevice(device);
     } else {
-        static_cast<SendFileWizard* >(wizard())->setDevice(0);
+        static_cast<SendFileWizard*>(wizard())->setDevice(0);
     }
     emit completeChanged();
 }
 
 void SelectDeviceAndFilesPage::openFileDialog()
 {
-    //Don't worry MLaurent, I'm not going to check the pointer before delete it :)
     delete m_dialog;
 
     m_dialog = new QFileDialog(this, i18n("Open file..."),
@@ -99,7 +100,7 @@ void SelectDeviceAndFilesPage::selectionChanged()
 
 bool SelectDeviceAndFilesPage::isComplete() const
 {
-    if (!static_cast<SendFileWizard* >(wizard())->device()) {
+    if (!static_cast<SendFileWizard*>(wizard())->device()) {
         return false;
     }
 

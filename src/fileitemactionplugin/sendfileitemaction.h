@@ -32,9 +32,10 @@ class QWidget;
 class SendFileItemAction : public KAbstractFileItemActionPlugin
 {
     Q_OBJECT
+
 public:
-    SendFileItemAction(QObject* parent, const QVariantList &args);
-    virtual QList< QAction* > actions(const KFileItemListProperties& fileItemInfos, QWidget* parentWidget);
+    SendFileItemAction(QObject *parent, const QVariantList &args);
+    QList<QAction*> actions(const KFileItemListProperties &infos, QWidget *parent) Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
     void deviceTriggered();
@@ -42,7 +43,7 @@ private Q_SLOTS:
 
 private:
     org::kde::BlueDevil *m_kded;
-    KFileItemListProperties m_fileItemInfos;
+    KFileItemListProperties m_infos;
 };
 
 #endif // SENDFILEITEMACTION_H

@@ -41,7 +41,7 @@
 
 using namespace BlueDevil;
 
-SendFileWizard::SendFileWizard(const QString& deviceInfo, const QStringList& files)
+SendFileWizard::SendFileWizard(const QString &deviceInfo, const QStringList &files)
     : QWizard()
     , m_device(0)
     , m_job(0)
@@ -52,7 +52,7 @@ SendFileWizard::SendFileWizard(const QString& deviceInfo, const QStringList& fil
         return;
     }
 
-    qCDebug(SENDFILE) << "DeviceUbi: " << deviceInfo;
+    qCDebug(SENDFILE) << "DeviceUbi:" << deviceInfo;
     qCDebug(SENDFILE) << "Files";
     qCDebug(SENDFILE) << files;
 
@@ -106,13 +106,13 @@ void SendFileWizard::done(int result)
     }
 }
 
-void SendFileWizard::setFiles(const QStringList& files)
+void SendFileWizard::setFiles(const QStringList &files)
 {
     qCDebug(SENDFILE) << files;
     m_files = files;
 }
 
-void SendFileWizard::setDevice(Device* device)
+void SendFileWizard::setDevice(Device *device)
 {
     qCDebug(SENDFILE) << device;
     m_device = device;
@@ -136,7 +136,7 @@ void SendFileWizard::setDevice(QString deviceUrl)
     m_device = device;
 }
 
-Device* SendFileWizard::device()
+Device *SendFileWizard::device()
 {
     return m_device;
 }
@@ -157,11 +157,10 @@ void SendFileWizard::startTransfer()
     }
 
     m_job = new SendFilesJob(m_files, m_device);
-    connect(m_job, SIGNAL(destroyed(QObject*)), qApp, SLOT(quit()));
+    connect(m_job, &SendFilesJob::destroyed, qApp, &QCoreApplication::quit);
 
     KIO::getJobTracker()->registerJob(m_job);
     m_job->start();
 
-    QTimer::singleShot(2000, this, SLOT(wizardDone()));
+    QTimer::singleShot(2000, this, &SendFileWizard::wizardDone);
 }
-

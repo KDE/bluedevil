@@ -42,18 +42,13 @@
 
 using namespace BlueDevil;
 
-ReceiveFileJob::ReceiveFileJob(const QDBusMessage& msg, const QString &path, QObject* parent)
+ReceiveFileJob::ReceiveFileJob(const QDBusMessage &msg, const QString &path, QObject *parent)
     : KJob(parent)
     , m_speedBytes(0)
     , m_path(path)
     , m_msg(msg)
 {
     setCapabilities(Killable);
-}
-
-ReceiveFileJob::~ReceiveFileJob()
-{
-
 }
 
 void ReceiveFileJob::start()
@@ -63,7 +58,6 @@ void ReceiveFileJob::start()
 
 bool ReceiveFileJob::doKill()
 {
-    qCDebug(BLUEDAEMON);
     m_transfer->Cancel();
     return true;
 }
@@ -85,14 +79,14 @@ void ReceiveFileJob::init()
                                                              m_path,
                                                              QDBusConnection::sessionBus(),
                                                              this);
-    connect(m_transferProps,
-            SIGNAL(PropertiesChanged(QString,QVariantMap,QStringList)),
-            SLOT(transferPropertiesChanged(QString,QVariantMap,QStringList)));
+    connect(m_transferProps, &org::freedesktop::DBus::Properties::PropertiesChanged,
+            this, &ReceiveFileJob::transferPropertiesChanged);
 
     m_session = new org::bluez::obex::Session1(QStringLiteral("org.bluez.obex"),
                                                m_transfer->session().path(),
                                                QDBusConnection::sessionBus(),
                                                this);
+
     qCDebug(BLUEDAEMON) << m_session->destination();
 
     Device *device = 0;
@@ -117,6 +111,7 @@ void ReceiveFileJob::init()
 
     FileReceiverSettings::self()->load();
     qCDebug(BLUEDAEMON) << "Auto Accept: " << FileReceiverSettings::self()->autoAccept();
+
     if (FileReceiverSettings::self()->autoAccept() == 1 && isDeviceTrusted) {
         slotAccept();
         return;
@@ -144,9 +139,9 @@ void ReceiveFileJob::showNotification()
 
     m_notification->setActions(actions);
 
-    connect(m_notification, SIGNAL(action1Activated()), SLOT(slotAccept()));
-    connect(m_notification, SIGNAL(action2Activated()), SLOT(slotCancel()));
-    connect(m_notification, SIGNAL(closed()), SLOT(slotCancel()));
+    connect(m_notification, &KNotification::action1Activated, this, &ReceiveFileJob::slotAccept);
+    connect(m_notification, &KNotification::action2Activated, this, &ReceiveFileJob::slotCancel);
+    connect(m_notification, &KNotification::closed, this, &ReceiveFileJob::slotCancel);
 
     int size = IconSize(KIconLoader::Desktop);
     m_notification->setPixmap(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")).pixmap(size, size));
@@ -156,12 +151,13 @@ void ReceiveFileJob::showNotification()
 
 void ReceiveFileJob::slotAccept()
 {
-    qCDebug(BLUEDAEMON);
     KIO::getJobTracker()->registerJob(this);
 
     m_originalFileName = m_transfer->name();
     m_tempPath = createTempPath(m_transfer->name());
+
     qCDebug(BLUEDAEMON) << m_tempPath;
+
     QDBusMessage msg = m_msg.createReply(m_tempPath);
     QDBusConnection::sessionBus().send(msg);
 }
@@ -177,13 +173,12 @@ void ReceiveFileJob::slotSaveAs()
 
 void ReceiveFileJob::slotCancel()
 {
-    qCDebug(BLUEDAEMON);
     QDBusMessage msg = m_msg.createErrorReply(QStringLiteral("org.bluez.obex.Error.Rejected"),
                                               QStringLiteral("org.bluez.obex.Error.Rejected"));
     QDBusConnection::sessionBus().send(msg);
 }
 
-void ReceiveFileJob::transferPropertiesChanged(const QString& interface, const QVariantMap& properties, const QStringList& invalidatedProperties)
+void ReceiveFileJob::transferPropertiesChanged(const QString &interface, const QVariantMap &properties, const QStringList &invalidatedProperties)
 {
     qCDebug(BLUEDAEMON) << interface;
     qCDebug(BLUEDAEMON) << properties;
@@ -199,9 +194,10 @@ void ReceiveFileJob::transferPropertiesChanged(const QString& interface, const Q
     }
 }
 
-void ReceiveFileJob::statusChanged(const QVariant& value)
+void ReceiveFileJob::statusChanged(const QVariant &value)
 {
     qCDebug(BLUEDAEMON) << value;
+
     QString status = value.toString();
 
     FileReceiverSettings::self()->load();
@@ -221,7 +217,7 @@ void ReceiveFileJob::statusChanged(const QVariant& value)
     } else if (status == QLatin1String("complete")) {
         KIO::CopyJob* job = KIO::move(QUrl::fromLocalFile(m_tempPath), savePath, KIO::HideProgressInfo);
         job->setUiDelegate(0);
-        connect(job, SIGNAL(finished(KJob*)), SLOT(moveFinished(KJob*)));
+        connect(job, &KIO::CopyJob::finished, this, &ReceiveFileJob::moveFinished);
         return;
     } else if (status == QLatin1String("error")) {
         setError(KJob::UserDefinedError);
@@ -235,6 +231,7 @@ void ReceiveFileJob::statusChanged(const QVariant& value)
 void ReceiveFileJob::transferChanged(const QVariant& value)
 {
     qCDebug(BLUEDAEMON) << value;
+
     bool ok = false;
     qulonglong bytes = value.toULongLong(&ok);
     if (!ok) {
@@ -242,7 +239,7 @@ void ReceiveFileJob::transferChanged(const QVariant& value)
         return;
     }
 
-    //If a least 1 second has passed since last update
+    // If a least 1 second has passed since last update
     int secondsSinceLastTime = m_time.secsTo(QTime::currentTime());
     if (secondsSinceLastTime > 0) {
         float speed = (bytes - m_speedBytes) / secondsSinceLastTime;
@@ -271,13 +268,13 @@ QString ReceiveFileJob::createTempPath(const QString &fileName) const
 {
     QString xdgCacheHome = QFile::decodeName(qgetenv("XDG_CACHE_HOME"));
     if (xdgCacheHome.isEmpty()) {
-            xdgCacheHome = QDir::homePath() + QLatin1String("/.cache");
+        xdgCacheHome = QDir::homePath() + QLatin1String("/.cache");
     }
 
     xdgCacheHome.append(QLatin1String("/obexd/"));
-    QString path =  xdgCacheHome + fileName;
-    int i = 0;
+    QString path = xdgCacheHome + fileName;
 
+    int i = 0;
     while (QFile::exists(path)) {
         path = xdgCacheHome + fileName + QString::number(i);
         i++;

@@ -35,7 +35,7 @@
 
 using namespace BlueDevil;
 
-FailPage::FailPage(BlueWizard* parent)
+FailPage::FailPage(BlueWizard *parent)
     : QWizardPage(parent)
     , m_wizard(parent)
 {
@@ -46,11 +46,10 @@ FailPage::FailPage(BlueWizard* parent)
 
 void FailPage::initializePage()
 {
-    qCDebug(WIZARD);
     QPushButton *reset = new QPushButton(this);
     KGuiItem::assign(reset, KStandardGuiItem::reset());
     reset->setText(i18nc("Button offered when the wizard fail. This button will restart the wizard", "Restart the wizard"));
-    connect(reset, SIGNAL(clicked(bool)), m_wizard, SLOT(restartWizard()));
+    connect(reset, &QPushButton::clicked, m_wizard, &BlueWizard::restartWizard);
 
     m_wizard->setButton(QWizard::CustomButton3, reset);
     m_wizard->setButtonText(QWizard::CancelButton, i18nc("Button that closes the wizard", "Close"));
@@ -62,11 +61,10 @@ void FailPage::initializePage()
 
     m_wizard->setButtonLayout(list);
 
-    QString deviceName = m_wizard->device()->name();
+    const QString &deviceName = m_wizard->device()->name();
     if (deviceName.isEmpty()) {
         failLbl->setText(i18nc("This string is shown when the wizard fail","The setup of the device has failed"));
     } else {
         failLbl->setText(i18n("The setup of %1 has failed", deviceName));
     }
-
 }

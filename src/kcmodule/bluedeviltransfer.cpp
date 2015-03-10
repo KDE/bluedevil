@@ -40,6 +40,8 @@ K_PLUGIN_FACTORY_WITH_JSON(BlueDevilFactory,
                            "bluedeviltransfer.json",
                            registerPlugin<KCMBlueDevilTransfer>();)
 
+using namespace BlueDevil;
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
@@ -78,8 +80,7 @@ KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
 
     addConfig(FileReceiverSettings::self(), transfer);
 
-    connect(BlueDevil::Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)),
-            this, SLOT(usableAdapterChanged(Adapter*)));
+    connect(BlueDevil::Manager::self(), &Manager::usableAdapterChanged, this, &KCMBlueDevilTransfer::usableAdapterChanged);
 
     BlueDevil::Adapter *const usableAdapter = BlueDevil::Manager::self()->usableAdapter();
     if (usableAdapter) {
@@ -88,10 +89,6 @@ KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
     }
 
     updateInformationState();
-}
-
-KCMBlueDevilTransfer::~KCMBlueDevilTransfer()
-{
 }
 
 void KCMBlueDevilTransfer::save()

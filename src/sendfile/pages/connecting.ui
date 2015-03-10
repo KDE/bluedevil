@@ -12,11 +12,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QLabel" name="connLabel">
-     <property name="text">
-      <string>Connecting to: %1</string>
-     </property>
-    </widget>
+    <widget class="QLabel" name="connLabel"/>
    </item>
    <item>
     <widget class="QProgressBar" name="progressBar">

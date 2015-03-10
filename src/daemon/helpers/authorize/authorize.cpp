@@ -39,33 +39,33 @@ Authorize::Authorize()
 
     notification->setText(i18nc(
         "Show a notification asking to authorize or deny access to this computer from Bluetooth. The %1 is the name of the bluetooth device",
-        "%1 is requesting access to this computer", qApp->arguments()[1])
+        "%1 is requesting access to this computer", qApp->arguments().at(1))
     );
 
     QStringList actions;
     actions.append(i18nc("Button to trust a bluetooth remote device and authorize it to connect", "Trust and Authorize"));
-    actions.append(i18nc("Button to authorize a bluetooth remote device to connect ", "Authorize Only"));
+    actions.append(i18nc("Button to authorize a bluetooth remote device to connect", "Authorize Only"));
     actions.append(i18nc("Deny access to a remote bluetooth device", "Deny"));
 
     notification->setActions(actions);
 
-    connect(notification, SIGNAL(action1Activated()),this, SLOT(trust()));
-    connect(notification, SIGNAL(action2Activated()),this, SLOT(authorize()));
-    connect(notification, SIGNAL(action3Activated()),this, SLOT(deny()));
-    connect(notification, SIGNAL(closed()), this, SLOT(deny()));
-    connect(notification, SIGNAL(ignored()), this, SLOT(deny()));
+    connect(notification, &KNotification::action1Activated, this, &Authorize::trust);
+    connect(notification, &KNotification::action2Activated, this, &Authorize::authorize);
+    connect(notification, &KNotification::action3Activated, this, &Authorize::deny);
+    connect(notification, &KNotification::closed, this, &Authorize::deny);
+    connect(notification, &KNotification::ignored, this, &Authorize::deny);
 
-    notification->setPixmap(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")).pixmap(42, 42));
+    notification->setPixmap(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")).pixmap(42));
 
     // We're using persistent notifications so we have to use our own timeout (10s)
-    QTimer::singleShot(10000, notification, SLOT(close()));
+    QTimer::singleShot(10000, notification, &KNotification::close);
     notification->sendEvent();
 }
 
 void Authorize::trust()
 {
     qDebug() << "Trusted";
-    BlueDevil::Manager::self()->usableAdapter()->deviceForUBI(qApp->arguments()[2])->setTrusted(true);
+    BlueDevil::Manager::self()->usableAdapter()->deviceForUBI(qApp->arguments().at(2))->setTrusted(true);
     qApp->exit(0);
 }
 

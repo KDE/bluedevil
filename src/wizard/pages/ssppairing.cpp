@@ -38,12 +38,13 @@
 
 using namespace BlueDevil;
 
-SSPPairingPage::SSPPairingPage(BlueWizard* parent)
+SSPPairingPage::SSPPairingPage(BlueWizard *parent)
     : QWizardPage(parent)
     , m_buttonClicked(QWizard::NoButton)
     , m_wizard(parent)
 {
     setupUi(this);
+
     m_working = new KPixmapSequenceOverlayPainter(this);
     m_working->setSequence(KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), 22));
     m_working->setWidget(pinNumber);
@@ -57,7 +58,6 @@ SSPPairingPage::SSPPairingPage(BlueWizard* parent)
 
 void SSPPairingPage::initializePage()
 {
-    qCDebug(WIZARD);
     QList <QWizard::WizardButton> list;
     list << QWizard::Stretch;
     list << QWizard::CancelButton;
@@ -66,15 +66,14 @@ void SSPPairingPage::initializePage()
     Device *device = m_wizard->device();
     confirmLbl->setText(i18n("Connecting to %1...", device->name()));
 
-    connect(device, SIGNAL(pairedChanged(bool)), this, SLOT(pairedChanged(bool)));
-    connect(m_wizard->agent(), SIGNAL(confirmationRequested(quint32,QDBusMessage)),
-            this, SLOT(confirmationRequested(quint32,QDBusMessage)));
-    connect(m_wizard->agent(), SIGNAL(pinRequested(QString)), SLOT(pinRequested(QString)));
+    connect(device, &Device::pairedChanged, this, &SSPPairingPage::pairedChanged);
+    connect(m_wizard->agent(), &WizardAgent::confirmationRequested, this, &SSPPairingPage::confirmationRequested);
+    connect(m_wizard->agent(), &WizardAgent::pinRequested, this, &SSPPairingPage::pinRequested);
 
     device->pair();
 }
 
-void SSPPairingPage::confirmationRequested(quint32 passkey, const QDBusMessage& msg)
+void SSPPairingPage::confirmationRequested(quint32 passkey, const QDBusMessage &msg)
 {
     m_msg = msg;
     m_msg.setDelayedReply(true);
@@ -87,8 +86,8 @@ void SSPPairingPage::confirmationRequested(quint32 passkey, const QDBusMessage& 
     KGuiItem::assign(notMatch, KStandardGuiItem::cancel());
     notMatch->setText(i18n("Does not match"));
 
-    connect(matches, SIGNAL(clicked(bool)), this, SLOT(matchesClicked()));
-    connect(notMatch, SIGNAL(clicked(bool)), this, SLOT(notMatchClicked()));
+    connect(matches, &QPushButton::clicked, this, &SSPPairingPage::matchesClicked);
+    connect(notMatch, &QPushButton::clicked, this, &SSPPairingPage::notMatchClicked);
 
     wizard()->setButton(QWizard::CustomButton1, matches);
     wizard()->setButton(QWizard::CustomButton2, notMatch);
@@ -102,7 +101,7 @@ void SSPPairingPage::confirmationRequested(quint32 passkey, const QDBusMessage& 
 
 }
 
-void SSPPairingPage::pinRequested(const QString& pin)
+void SSPPairingPage::pinRequested(const QString &pin)
 {
     m_working->stop();
     pinNumber->setText(pin);
@@ -130,7 +129,7 @@ void SSPPairingPage::matchesClicked()
 void SSPPairingPage::notMatchClicked()
 {
     m_buttonClicked = QWizard::CustomButton2;
-    QDBusConnection::systemBus().send(m_msg.createErrorReply("org.bluez.Rejected", "Rejected"));
+    QDBusConnection::systemBus().send(m_msg.createErrorReply(QStringLiteral("org.bluez.Rejected"), QStringLiteral("Rejected")));
 
     wizard()->next();
 }
@@ -165,6 +164,5 @@ QList<QWizard::WizardButton> SSPPairingPage::wizardButtonsLayout() const
     list << QWizard::Stretch;
     list << QWizard::CustomButton2;
     list << QWizard::CustomButton1;
-
     return list;
 }

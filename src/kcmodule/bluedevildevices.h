@@ -32,7 +32,8 @@ class QCheckBox;
 class QPushButton;
 class QItemSelection;
 
-namespace BlueDevil {
+namespace BlueDevil
+{
     class Adapter;
     class Device;
 }

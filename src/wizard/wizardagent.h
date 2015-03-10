@@ -26,7 +26,8 @@
 #include <QApplication>
 #include <QXmlStreamReader>
 
-namespace BlueDevil {
+namespace BlueDevil
+{
     class Device;
 }
 

@@ -24,24 +24,17 @@
 #include <QDebug>
 #include <QDBusConnection>
 
-ObexAgent::ObexAgent(QObject* parent)
+ObexAgent::ObexAgent(QObject *parent)
     : QDBusAbstractAdaptor(parent)
 {
-    qCDebug(BLUEDAEMON);
     if (!QDBusConnection::sessionBus().registerObject(QStringLiteral("/BlueDevil_receiveAgent"), parent)) {
-        qDebug() << "The dbus object can't be registered";
-        return;
+        qCWarning(BLUEDAEMON) << "The DBus object can't be registered";
     }
-}
-
-ObexAgent::~ObexAgent()
-{
-
 }
 
 QString ObexAgent::AuthorizePush(const QDBusObjectPath& path, const QDBusMessage &msg)
 {
-    qCDebug(BLUEDAEMON);
+    qCDebug(BLUEDAEMON) << "AuthorizePush" << path.path();
 
     msg.setDelayedReply(true);
 
@@ -53,11 +46,10 @@ QString ObexAgent::AuthorizePush(const QDBusObjectPath& path, const QDBusMessage
 
 void ObexAgent::Cancel()
 {
-    qCDebug(BLUEDAEMON);
+    qCDebug(BLUEDAEMON) << "Cancel";
 }
-
 
 void ObexAgent::Release()
 {
-    qCDebug(BLUEDAEMON);
+    qCDebug(BLUEDAEMON) << "Release";
 }

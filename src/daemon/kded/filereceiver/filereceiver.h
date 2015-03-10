@@ -24,19 +24,20 @@
 #include "obex_agent_manager.h"
 
 class QDBusPendingCallWatcher;
+
 class FileReceiver : public QObject
 {
     Q_OBJECT
-    public:
-        explicit FileReceiver(QObject* parent = 0);
-        virtual ~FileReceiver();
 
-    private Q_SLOTS:
-        void registerAgent();
-        void agentRegistered(QDBusPendingCallWatcher* call);
+public:
+    explicit FileReceiver(QObject *parent = 0);
 
-    private:
-        org::bluez::obex::AgentManager1 *m_agentManager;
+private Q_SLOTS:
+    void registerAgent();
+    void agentRegistered(QDBusPendingCallWatcher *call);
+
+private:
+    org::bluez::obex::AgentManager1 *m_agentManager;
 };
 
-#endif //FILE_RECEIVER_H
+#endif // FILE_RECEIVER_H

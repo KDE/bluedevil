@@ -59,10 +59,7 @@ int main(int argc, char *argv[])
     parser.process(app);
 
     const QStringList &args = parser.positionalArguments();
-    QUrl url;
-    if (!args.isEmpty()) {
-        url = args.first();
-    }
+    const QUrl &url = !args.isEmpty() ? args.first() : QUrl();
 
     new BlueWizard(url);
 

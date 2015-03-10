@@ -57,17 +57,18 @@ KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
     s.icon = QStringLiteral("edit-copy");
     s.mimetype = QStringLiteral("application/vnd.kde.bluedevil-sendfile");
     s.uuid = QStringLiteral("00001105-0000-1000-8000-00805F9B34FB");
-    m_supportedServices.insert(QStringLiteral("00001105-0000-1000-8000-00805F9B34FB"), s);
+    m_supportedServices.insert(s.uuid, s);
 
     s.name = i18n("Browse Files");
     s.icon = QStringLiteral("edit-find");
     s.mimetype = QString();
     s.uuid = QStringLiteral("00001106-0000-1000-8000-00805F9B34FB");
-    m_supportedServices.insert(QStringLiteral("00001106-0000-1000-8000-00805F9B34FB"), s);
+    m_supportedServices.insert(s.uuid, s);
 
     qCDebug(BLUETOOTH) << "Kio Bluetooth instanced!";
+
     m_kded = new org::kde::BlueDevil(QStringLiteral("org.kde.kded5"), QStringLiteral("/modules/bluedevil"),
-                                     QDBusConnection::sessionBus(), 0);
+                                     QDBusConnection::sessionBus());
 
     if (!m_kded->isOnline()) {
         qCDebug(BLUETOOTH) << "Bluetooth is offline";
@@ -79,6 +80,7 @@ KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
 QList<KioBluetooth::Service> KioBluetooth::getSupportedServices(const QStringList &uuids)
 {
     qCDebug(BLUETOOTH) << "supported services: " << uuids;
+
     QList<Service> retValue;
     Q_FOREACH (const QString &uuid, uuids) {
         if (m_supportedServices.contains(uuid)) {
@@ -114,7 +116,7 @@ void KioBluetooth::listRemoteDeviceServices()
         entry.insert(KIO::UDSEntry::UDS_DISPLAY_NAME, service.name);
         entry.insert(KIO::UDSEntry::UDS_ICON_NAME, service.icon);
 
-        //If it is browse files, act as a folder
+        // If it is browse files, act as a folder
         if (service.uuid == QLatin1String("00001106-0000-1000-8000-00805F9B34FB")) {
             QUrl obexUrl;
             obexUrl.setScheme(QStringLiteral("obexftp"));
@@ -182,8 +184,8 @@ void KioBluetooth::listDir(const QUrl &url)
 {
     qCDebug(BLUETOOTH) << "Listing..." << url;
 
-    /// Url is not used here becuase all we could care about the url is the host, and that's already
-    /// handled in @p setHost
+    // Url is not used here becuase all we could care about the url is the host, and that's already
+    // handled in @p setHost
     Q_UNUSED(url);
 
     // If we are not online (ie. there's no working bluetooth adapter), list an empty dir
@@ -216,8 +218,7 @@ void KioBluetooth::get(const QUrl &url)
     finished();
 }
 
-void KioBluetooth::setHost(const QString &hostname, quint16 port, const QString &user,
-                           const QString &pass)
+void KioBluetooth::setHost(const QString &hostname, quint16 port, const QString &user, const QString &pass)
 {
     qCDebug(BLUETOOTH) << "Setting host: " << hostname;
 

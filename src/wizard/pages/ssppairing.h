@@ -30,23 +30,22 @@
 class BlueWizard;
 class KPixmapSequenceOverlayPainter;
 
-namespace BlueDevil {
+namespace BlueDevil
+{
     class Device;
     class Adapter;
 }
 
-using namespace BlueDevil;
-
 class SSPPairingPage : public QWizardPage, Ui::SSPPairing
 {
-Q_OBJECT
+    Q_OBJECT
 
 public:
-    SSPPairingPage(BlueWizard* parent = 0);
+    explicit SSPPairingPage(BlueWizard *parent = 0);
 
-    virtual void initializePage();
-    virtual int nextId() const;
-    virtual bool validatePage();
+    void initializePage() Q_DECL_OVERRIDE;
+    int nextId() const Q_DECL_OVERRIDE;
+    bool validatePage() Q_DECL_OVERRIDE;
 
 public Q_SLOTS:
     void confirmationRequested(quint32 passkey, const QDBusMessage &msg);
@@ -56,12 +55,12 @@ public Q_SLOTS:
     void pinRequested(const QString &pin);
 
 protected:
-    QList <QWizard::WizardButton> wizardButtonsLayout() const;
+    QList<QWizard::WizardButton> wizardButtonsLayout() const;
 
 private:
-    QDBusMessage                   m_msg;
-    QWizard::WizardButton          m_buttonClicked;
-    BlueWizard                    *m_wizard;
+    QDBusMessage m_msg;
+    QWizard::WizardButton m_buttonClicked;
+    BlueWizard *m_wizard;
     KPixmapSequenceOverlayPainter *m_working;
 };
 

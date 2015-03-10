@@ -29,32 +29,31 @@
 class BlueWizard;
 class KPixmapSequenceOverlayPainter;
 
-namespace BlueDevil {
+namespace BlueDevil
+{
     class Device;
     class Adapter;
 }
 
-using namespace BlueDevil;
-
 class LegacyPairingPageDatabase : public QWizardPage, Ui::NoPairing
 {
-Q_OBJECT
+    Q_OBJECT
 
 public:
-    LegacyPairingPageDatabase(BlueWizard* parent = 0);
+    explicit LegacyPairingPageDatabase(BlueWizard *parent = 0);
 
-    virtual void initializePage();
-    virtual bool validatePage();
-    virtual int nextId() const;
+    void initializePage() Q_DECL_OVERRIDE;
+    bool validatePage() Q_DECL_OVERRIDE;
+    int nextId() const Q_DECL_OVERRIDE;
 
 public Q_SLOTS:
     void pairedChanged(bool paired);
 
 protected:
-    QList <QWizard::WizardButton> wizardButtonsLayout() const;
+    QList<QWizard::WizardButton> wizardButtonsLayout() const;
 
 private:
-    BlueWizard                    *m_wizard;
+    BlueWizard *m_wizard;
     KPixmapSequenceOverlayPainter *m_working;
 };
 

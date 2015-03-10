@@ -22,10 +22,6 @@
 
 #include <QApplication>
 
-#include <KLocalizedString>
-
-static const KLocalizedString description = ki18n("KDE Bluetooth System");
-
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);

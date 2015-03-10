@@ -25,10 +25,9 @@
 #include <QDBusPendingCallWatcher>
 #include <QDBusServiceWatcher>
 
-FileReceiver::FileReceiver(QObject* parent)
+FileReceiver::FileReceiver(QObject *parent)
     : QObject(parent)
 {
-    qCDebug(BLUEDAEMON);
     qDBusRegisterMetaType<QVariantMap>();
 
     new ObexAgent(this);
@@ -42,27 +41,24 @@ FileReceiver::FileReceiver(QObject* parent)
     // obexd should be set to auto-start by D-Bus (D-Bus activation), so this should restart it in case of crash
     QDBusServiceWatcher *serviceWatcher = new QDBusServiceWatcher(QStringLiteral("org.bluez.obex"), QDBusConnection::sessionBus(),
             QDBusServiceWatcher::WatchForUnregistration, this);
-    connect(serviceWatcher, SIGNAL(serviceUnregistered(QString)), this, SLOT(registerAgent()));
-}
-
-FileReceiver::~FileReceiver()
-{
-
+    connect(serviceWatcher, &QDBusServiceWatcher::serviceUnregistered, this, &FileReceiver::registerAgent);
 }
 
 void FileReceiver::registerAgent()
 {
-    QDBusPendingReply <void > r = m_agentManager->RegisterAgent(QDBusObjectPath(QStringLiteral("/BlueDevil_receiveAgent")));
+    QDBusPendingReply<void> r = m_agentManager->RegisterAgent(QDBusObjectPath(QStringLiteral("/BlueDevil_receiveAgent")));
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(r, this);
-    connect(watcher, SIGNAL(finished(QDBusPendingCallWatcher*)), SLOT(agentRegistered(QDBusPendingCallWatcher*)));
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, &FileReceiver::agentRegistered);
 }
 
-void FileReceiver::agentRegistered(QDBusPendingCallWatcher* call)
+void FileReceiver::agentRegistered(QDBusPendingCallWatcher *call)
 {
-    QDBusPendingReply <void > r = *call;
-    qCDebug(BLUEDAEMON) << "Error: " << r.isError();
+    QDBusPendingReply<void> r = *call;
+
     if (r.isError()) {
-        qCDebug(BLUEDAEMON) << r.error().message();
+        qCWarning(BLUEDAEMON) << "Error registering agent" << r.error().message();
+    } else {
+        qCDebug(BLUEDAEMON) << "Agent registered";
     }
 
     call->deleteLater();

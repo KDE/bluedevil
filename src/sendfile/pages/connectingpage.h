@@ -27,15 +27,14 @@
 
 #include <QWizardPage>
 
-class ConnectingPage : public QWizardPage,
-public Ui::Connecting
+class ConnectingPage : public QWizardPage, public Ui::Connecting
 {
-Q_OBJECT
+    Q_OBJECT
 public:
-    ConnectingPage(QWidget* parent = 0);
+    explicit ConnectingPage(QWidget *parent = 0);
 
-    virtual void initializePage();
-    virtual bool isComplete() const;
+    void initializePage() Q_DECL_OVERRIDE;
+    bool isComplete() const Q_DECL_OVERRIDE;
 };
 
 #endif // CONNECTINGPAGE_H

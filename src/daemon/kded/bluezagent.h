@@ -19,7 +19,6 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA            *
  ***************************************************************************/
 
-
 #ifndef BLUEZAGENT_H
 #define BLUEZAGENT_H
 
@@ -28,7 +27,9 @@
 #include <QDBusAbstractAdaptor>
 
 class QProcess;
-namespace BlueDevil {
+
+namespace BlueDevil
+{
     class Adapter;
 }
 
@@ -41,8 +42,7 @@ namespace BlueDevil {
  * @ref AgentListenerWorker
  * @since 1.0
  */
-class BluezAgent
-    : public QDBusAbstractAdaptor
+class BluezAgent : public QDBusAbstractAdaptor
 {
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.bluez.Agent1")
@@ -51,7 +51,7 @@ public:
     /**
      * Register the path and initialize the  m_adapter
      */
-    BluezAgent(QObject *parent);
+    explicit BluezAgent(QObject *parent);
 
 public Q_SLOTS:
     /**
@@ -62,12 +62,12 @@ public Q_SLOTS:
     /**
      * Called by bluez to ask for a device authoritation
      */
-    void AuthorizeService(const QDBusObjectPath &device, const QString& uuid, const QDBusMessage &msg);
+    void AuthorizeService(const QDBusObjectPath &device, const QString &uuid, const QDBusMessage &msg);
 
     /**
      * Called by bluez to ask for a PIN
      */
-    QString RequestPinCode(const QDBusObjectPath& device, const QDBusMessage& msg);
+    QString RequestPinCode(const QDBusObjectPath &device, const QDBusMessage &msg);
 
     /**
      * Called by bluez to ask for a passkey, currently is a aslias of RequestPinCode
@@ -112,6 +112,7 @@ public Q_SLOTS:
      * This slot gets called when the RequestPasskey helper ends
      */
     void processClosedPasskey(int exitCode);
+
 Q_SIGNALS:
     /**
      * Emited to propagate the release call (so BlueDevil can decide what to do)
@@ -131,7 +132,7 @@ private:
      * @param helper Name of the helper
      * @param msg The msg got from bluez
      */
-    void sendBluezError(const QString& helper, const QDBusMessage &msg);
+    void sendBluezError(const QString &helper, const QDBusMessage &msg);
 
     /**
      * Returns the name of the device if it is registered on the bus
@@ -142,8 +143,9 @@ private:
     QString deviceName(const QString &UBI);
 
 private:
-    QProcess           *m_process;
-    QDBusMessage        m_msg;
-    QString             m_currentHelper;
+    QProcess *m_process;
+    QDBusMessage m_msg;
+    QString m_currentHelper;
 };
-#endif
+
+#endif // BLUEZAGENT_H

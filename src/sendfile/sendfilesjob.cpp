@@ -31,7 +31,8 @@
 #include <bluedevil/bluedevil.h>
 
 using namespace BlueDevil;
-SendFilesJob::SendFilesJob(const QStringList& files, Device* device, QObject* parent)
+
+SendFilesJob::SendFilesJob(const QStringList &files, Device *device, QObject *parent)
     : KJob(parent)
     , m_progress(0)
     , m_totalSize(0)
@@ -41,6 +42,7 @@ SendFilesJob::SendFilesJob(const QStringList& files, Device* device, QObject* pa
     , m_currentFileProgress(0)
 {
     qCDebug(SENDFILE) << files;
+
     m_filesToSend = files;
 
     Q_FOREACH(const QString &filePath, files) {
@@ -64,14 +66,15 @@ void SendFilesJob::start()
 
 void SendFilesJob::doStart()
 {
-    qCDebug(SENDFILE);
     QVariantMap map;
-    map["Target"] = "opp";
+    map[QStringLiteral("Target")] = QStringLiteral("opp");
 
     setTotalAmount(Bytes, m_totalSize);
     setProcessedAmount(Bytes, 0);
 
-    emit description(this, i18n("Sending file over Bluetooth"), QPair<QString, QString>(i18nc("File transfer origin", "From"), m_filesToSend.first()), QPair<QString, QString>(i18nc("File transfer destination", "To"), m_device->name()));
+    emit description(this, i18n("Sending file over Bluetooth"),
+                     QPair<QString, QString>(i18nc("File transfer origin", "From"), m_filesToSend.first()),
+                     QPair<QString, QString>(i18nc("File transfer destination", "To"), m_device->name()));
 
     m_client = new OrgBluezObexClient1Interface(QStringLiteral("org.bluez.obex"),
                                                 QStringLiteral("/org/bluez/obex"),
@@ -80,7 +83,7 @@ void SendFilesJob::doStart()
 
     QDBusPendingReply <QDBusObjectPath > reply = m_client->CreateSession(m_device->address(), map);
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(reply);
-    connect(watcher, SIGNAL(finished(QDBusPendingCallWatcher*)), this, SLOT(createSessionSlot(QDBusPendingCallWatcher*)));
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, &SendFilesJob::createSessionSlot);
 }
 
 void SendFilesJob::createSessionSlot(QDBusPendingCallWatcher *call)
@@ -102,14 +105,14 @@ void SendFilesJob::createSessionSlot(QDBusPendingCallWatcher *call)
     nextJob();
 }
 
-void SendFilesJob::sendFileSlot(QDBusPendingCallWatcher* watcher)
+void SendFilesJob::sendFileSlot(QDBusPendingCallWatcher *watcher)
 {
     const QDBusPendingReply<QDBusObjectPath> reply = *watcher;
     watcher->deleteLater();
     QString path = reply.value().path();
 
     m_props = new OrgFreedesktopDBusPropertiesInterface(QStringLiteral("org.bluez.obex"), path, QDBusConnection::sessionBus(), this);
-    connect(m_props, SIGNAL(PropertiesChanged(QString,QVariantMap,QStringList)), SLOT(propertiesChangedSlot(QString,QVariantMap,QStringList)));
+    connect(m_props, &OrgFreedesktopDBusPropertiesInterface::PropertiesChanged, this, &SendFilesJob::propertiesChangedSlot);
 }
 
 void SendFilesJob::propertiesChangedSlot(const QString& interface, const QVariantMap& props, const QStringList& invalidProps)
@@ -131,7 +134,8 @@ void SendFilesJob::propertiesChangedSlot(const QString& interface, const QVarian
 void SendFilesJob::statusChanged(const QVariant& value)
 {
     qCDebug(SENDFILE) << value;
-    QString status = value.toString();
+
+    const QString &status = value.toString();
 
     if (status == QLatin1String("active")) {
         m_time = QTime::currentTime();
@@ -151,6 +155,7 @@ void SendFilesJob::statusChanged(const QVariant& value)
 void SendFilesJob::transferChanged(const QVariant& value)
 {
     qCDebug(SENDFILE) << value;
+
     bool ok = false;
     qulonglong bytes = value.toULongLong(&ok);
     if (!ok) {
@@ -158,7 +163,7 @@ void SendFilesJob::transferChanged(const QVariant& value)
         return;
     }
 
-    //If a least 1 second has passed since last update
+    // If a least 1 second has passed since last update
     int secondsSinceLastTime = m_time.secsTo(QTime::currentTime());
     if (secondsSinceLastTime > 0) {
         float speed = (bytes - m_speedBytes) / secondsSinceLastTime;
@@ -177,17 +182,18 @@ void SendFilesJob::nextJob()
     m_currentFile = m_filesToSend.takeFirst();
     m_currentFileSize = m_filesToSendSize.takeFirst();
 
-    emit description(this, i18n("Sending file over Bluetooth"), QPair<QString, QString>(i18nc("File transfer origin", "From"), m_currentFile), QPair<QString, QString>(i18nc("File transfer destination", "To"), m_device->name()));
+    emit description(this, i18n("Sending file over Bluetooth"),
+                     QPair<QString, QString>(i18nc("File transfer origin", "From"), m_currentFile),
+                     QPair<QString, QString>(i18nc("File transfer destination", "To"), m_device->name()));
 
     QDBusPendingReply<QDBusObjectPath, QVariantMap> fileReply = m_push->SendFile(m_currentFile);
 
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(fileReply);
-    connect(watcher, SIGNAL(finished(QDBusPendingCallWatcher*)), SLOT(sendFileSlot(QDBusPendingCallWatcher*)));
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, &SendFilesJob::sendFileSlot);
 }
 
 void SendFilesJob::jobDone()
 {
-    qCDebug(SENDFILE);
     m_speedBytes = 0;
     m_currentFileSize = 0;
     m_currentFileProgress = 0;
@@ -202,8 +208,6 @@ void SendFilesJob::jobDone()
 
 void SendFilesJob::progress(quint64 transferBytes)
 {
-    qCDebug(SENDFILE);
-
     quint64 toAdd = transferBytes - m_currentFileProgress;
     m_currentFileProgress = transferBytes;
     m_progress += toAdd;
@@ -213,9 +217,10 @@ void SendFilesJob::progress(quint64 transferBytes)
 void SendFilesJob::error(const QDBusObjectPath& transfer, const QString& error)
 {
     Q_UNUSED(transfer)
+
     qCDebug(SENDFILE) << error;
 
-    //if this is the last file, just emit error
+    // If this is the last file, just emit error
     if (m_filesToSend.isEmpty()) {
         setError(KJob::UserDefinedError);
         return;
@@ -225,5 +230,4 @@ void SendFilesJob::error(const QDBusObjectPath& transfer, const QString& error)
     m_progress += toAdd;
     setProcessedAmount(Bytes, m_progress);
     nextJob();
-
 }

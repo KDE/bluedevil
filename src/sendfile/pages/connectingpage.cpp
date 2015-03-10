@@ -29,7 +29,8 @@
 
 using namespace BlueDevil;
 
-ConnectingPage::ConnectingPage(QWidget* parent): QWizardPage(parent)
+ConnectingPage::ConnectingPage(QWidget *parent)
+    : QWizardPage(parent)
 {
     setupUi(this);
 }

@@ -22,31 +22,33 @@
 #ifndef BLUEDEVILDAEMON_H
 #define BLUEDEVILDAEMON_H
 
-#include <kdedmodule.h>
+#include <KDEDModule>
 #include <QLoggingCategory>
 
-typedef QMap <QString, QString> DeviceInfo;
+typedef QMap<QString, QString> DeviceInfo;
 typedef QMap<QString, DeviceInfo > QMapDeviceInfo;
 
 class QDBusPendingCallWatcher;
-namespace BlueDevil {
+
+namespace BlueDevil
+{
     class Adapter;
     class Device;
 }
+
 using namespace BlueDevil;
 
-class Q_DECL_EXPORT BlueDevilDaemon
-    : public KDEDModule
+class Q_DECL_EXPORT BlueDevilDaemon : public KDEDModule
 {
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.kde.BlueDevil")
 
 public:
     /**
-     * Stablish basics connections with libbluedevil signals and calls online if interfaces are availables
+     * Establish basics connections with libbluedevil signals and calls online if interfaces are availables
      */
     BlueDevilDaemon(QObject *parent, const QList<QVariant>&);
-    virtual ~BlueDevilDaemon();
+    ~BlueDevilDaemon();
 
 public Q_SLOTS:
     /**
@@ -105,8 +107,8 @@ private Q_SLOTS:
 
     void login1PrepareForSleep(bool active);
 
-    void deviceFound(Device*);
-    void monolithicQuit(QDBusPendingCallWatcher* watcher);
+    void deviceFound(Device *device);
+    void monolithicQuit(QDBusPendingCallWatcher *watcher);
     void monolithicFinished(const QString &);
 
 private:

@@ -35,11 +35,12 @@
 
 using namespace BlueDevil;
 
-LegacyPairingPage::LegacyPairingPage(BlueWizard* parent)
+LegacyPairingPage::LegacyPairingPage(BlueWizard *parent)
     : QWizardPage(parent)
     , m_wizard(parent)
 {
     setupUi(this);
+
     m_working = new KPixmapSequenceOverlayPainter(this);
     m_working->setSequence(KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), 22));
     m_working->setWidget(pinNumber);
@@ -53,17 +54,16 @@ LegacyPairingPage::LegacyPairingPage(BlueWizard* parent)
 
 void LegacyPairingPage::initializePage()
 {
-    qCDebug(WIZARD);
     m_wizard->setButtonLayout(wizardButtonsLayout());
 
     Device *device = m_wizard->device();
-    connect(m_wizard->agent(), SIGNAL(pinRequested(QString)), this, SLOT(pinRequested(QString)));
-    connect(device, SIGNAL(pairedChanged(bool)), this, SLOT(pairedChanged(bool)));
+    connect(m_wizard->agent(), &WizardAgent::pinRequested, this, &LegacyPairingPage::pinRequested);
+    connect(device, &Device::pairedChanged, this, &LegacyPairingPage::pairedChanged);
 
     device->pair();
 }
 
-void LegacyPairingPage::pinRequested(const QString& pin)
+void LegacyPairingPage::pinRequested(const QString &pin)
 {
     m_working->stop();
     pinNumber->setText(pin);
@@ -72,6 +72,7 @@ void LegacyPairingPage::pinRequested(const QString& pin)
 void LegacyPairingPage::pairedChanged(bool paired)
 {
     qCDebug(WIZARD) << paired;
+
     m_wizard->next();
 }
 
@@ -90,6 +91,5 @@ QList<QWizard::WizardButton> LegacyPairingPage::wizardButtonsLayout() const
     QList <QWizard::WizardButton> list;
     list << QWizard::Stretch;
     list << QWizard::CancelButton;
-
     return list;
 }
