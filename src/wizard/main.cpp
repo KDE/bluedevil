@@ -28,6 +28,7 @@
 #include <QCommandLineOption>
 
 #include <KAboutData>
+#include <KDBusService>
 #include <KLocalizedString>
 
 int main(int argc, char *argv[])
@@ -43,12 +44,11 @@ int main(int argc, char *argv[])
                         QStringLiteral("afiestas@kde.org"), QStringLiteral("http://www.afiestas.org/"));
 
     QApplication app(argc, argv);
-    app.setApplicationName(QStringLiteral("bluedevilwizard"));
-    app.setApplicationVersion(bluedevil_version);
-    app.setApplicationDisplayName(i18n("Bluetooth Wizard"));
-    app.setOrganizationDomain(QStringLiteral("kde.org"));
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")));
     app.setQuitOnLastWindowClosed(false);
+
+    KAboutData::setApplicationData(aboutData);
+    KDBusService service(KDBusService::Unique);
 
     QCommandLineParser parser;
     parser.setApplicationDescription(i18n("Bluetooth Wizard"));
@@ -61,7 +61,11 @@ int main(int argc, char *argv[])
     const QStringList &args = parser.positionalArguments();
     const QUrl &url = !args.isEmpty() ? args.first() : QUrl();
 
-    new BlueWizard(url);
+    BlueWizard *wizard = new BlueWizard(url);
+
+    QObject::connect(&service, &KDBusService::activateRequested, wizard, [wizard]() {
+        wizard->setWindowState((wizard->windowState() & ~Qt::WindowMinimized) | Qt::WindowActive);
+    });
 
     return app.exec();
 }

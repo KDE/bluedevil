@@ -37,5 +37,5 @@ target_link_libraries(bluedevil-wizard
     ${LibBlueDevil_LIBRARIES})
 
 install(TARGETS bluedevil-wizard ${INSTALL_TARGETS_DEFAULT_ARGS})
-install(FILES bluedevil-wizard.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
+install(FILES org.kde.bluedevilwizard.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
 install(FILES pin-code-database.xml DESTINATION ${DATA_INSTALL_DIR}/bluedevilwizard)

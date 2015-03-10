@@ -32,10 +32,11 @@ target_link_libraries(bluedevil-sendfile
     Qt5::DBus
     KF5::I18n
     KF5::CoreAddons
+    KF5::DBusAddons
     KF5::IconThemes
     KF5::KIOFileWidgets
     ${LibBlueDevil_LIBRARIES}
 )
 
 install(TARGETS bluedevil-sendfile DESTINATION ${INSTALL_TARGETS_DEFAULT_ARGS})
-install(FILES bluedevil-sendfile.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
+install(FILES org.kde.bluedevilsendfile.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})

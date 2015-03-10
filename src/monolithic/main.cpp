@@ -42,10 +42,10 @@ int main(int argc, char *argv[])
                         QStringLiteral("ereslibre@kde.org"), QStringLiteral("http://www.ereslibre.es/"));
 
     QApplication app(argc, argv);
-    app.setApplicationName(QStringLiteral("bluedevilmonolithic"));
-    app.setApplicationVersion(bluedevil_version);
-    app.setOrganizationDomain(QStringLiteral("kde.org"));
     app.setQuitOnLastWindowClosed(false);
+
+    KAboutData::setApplicationData(aboutData);
+    KDBusService service(KDBusService::Unique);
 
     QCommandLineParser parser;
     parser.setApplicationDescription(i18n("Bluetooth"));
@@ -54,7 +54,6 @@ int main(int argc, char *argv[])
 
     parser.process(app);
 
-    KDBusService service(KDBusService::Unique);
     Monolithic monolithic;
 
     return app.exec();

@@ -25,6 +25,7 @@
 #include <QCommandLineOption>
 
 #include <KAboutData>
+#include <KDBusService>
 #include <KLocalizedString>
 
 #include <bluedevil/bluedevil.h>
@@ -44,12 +45,11 @@ int main(int argc, char *argv[])
                         QStringLiteral("afiestas@kde.org"), QStringLiteral("http://www.afiestas.org/"));
 
     QApplication app(argc, argv);
-    app.setApplicationName(QStringLiteral("bluedevilsendfile"));
-    app.setApplicationVersion(bluedevil_version);
-    app.setApplicationDisplayName(i18n("Bluetooth Send File Helper"));
-    app.setOrganizationDomain(QStringLiteral("kde.org"));
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")));
     app.setQuitOnLastWindowClosed(false);
+
+    KAboutData::setApplicationData(aboutData);
+    KDBusService service;
 
     QCommandLineOption kioOption({QLatin1String("kio"), QLatin1String("k")}, i18n("Device UUID where the files will be sent"));
     kioOption.setValueName(QStringLiteral("bluetooth://mac"));
@@ -75,8 +75,12 @@ int main(int argc, char *argv[])
         deviceInfo = parser.value(kioOption);
     }
 
-    SendFileWizard *sendFileWizard = new SendFileWizard(deviceInfo, parser.values(filesOption));
-    sendFileWizard->show();
+    SendFileWizard *wizard = new SendFileWizard(deviceInfo, parser.values(filesOption));
+    wizard->show();
+
+    QObject::connect(&service, &KDBusService::activateRequested, wizard, [wizard]() {
+        wizard->setWindowState((wizard->windowState() & ~Qt::WindowMinimized) | Qt::WindowActive);
+    });
 
     return app.exec();
 }
