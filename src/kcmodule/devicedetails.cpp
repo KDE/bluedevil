@@ -22,22 +22,24 @@
 
 #include <bluedevil/bluedevildevice.h>
 
-#include <QtGui/QLabel>
-#include <QtGui/QCheckBox>
-#include <QtGui/QFormLayout>
+#include <QLabel>
+#include <QCheckBox>
+#include <QLineEdit>
+#include <QFormLayout>
+#include <QDialogButtonBox>
 
 #include <kled.h>
-#include <klineedit.h>
 #include <klocalizedstring.h>
 
 DeviceDetails::DeviceDetails(Device* device, QWidget* parent)
-    : KDialog(parent)
+    : QDialog(parent)
     , m_device(device)
-    , m_alias(new KLineEdit(this))
+    , m_alias(new QLineEdit(this))
     , m_blocked(new QCheckBox(this))
     , m_trusted(new QCheckBox(this))
+    , m_buttonBox(new QDialogButtonBox(this))
 {
-    m_alias->setClearButtonShown(true);
+    m_alias->setClearButtonEnabled(true);
     m_alias->setText(device->alias());
 
     QFormLayout *layout = new QFormLayout;
@@ -54,37 +56,38 @@ DeviceDetails::DeviceDetails(Device* device, QWidget* parent)
     layout->addRow(i18nc("Device is blocked", "Blocked"), m_blocked);
     m_trusted->setChecked(device->isTrusted());
     layout->addRow(i18nc("Device is trusted", "Trusted"), m_trusted);
-    QWidget *widget = new QWidget(this);
-    widget->setLayout(layout);
-    setMainWidget(widget);
-    setButtons(Ok | Reset | Cancel);
+    m_buttonBox->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Reset | QDialogButtonBox::Cancel);
+    layout->addRow(m_buttonBox);
+    setLayout(layout);
 
     connect(m_blocked, SIGNAL(toggled(bool)), this, SLOT(blockToggled(bool)));
-    connect(this, SIGNAL(resetClicked()), this, SLOT(resetClickedSlot()));
+    connect(m_buttonBox, SIGNAL(clicked(QAbstractButton*)), this, SLOT(buttonClicked(QAbstractButton*)));
 }
 
 DeviceDetails::~DeviceDetails()
 {
 }
 
-void DeviceDetails::slotButtonClicked(int button)
+void DeviceDetails::buttonClicked(QAbstractButton *button)
 {
-    if (button == KDialog::Ok) {
+    switch (m_buttonBox->buttonRole(button)) {
+    case QDialogButtonBox::AcceptRole:
         m_device->setAlias(m_alias->text());
         m_device->setTrusted(m_trusted->isChecked());
         m_device->setBlocked(m_blocked->isChecked());
         accept();
-    } else {
-        KDialog::slotButtonClicked(button);
+        break;
+    case QDialogButtonBox::ResetRole:
+        m_alias->setText(m_device->alias());
+        m_blocked->setChecked(m_device->isBlocked());
+        m_trusted->setChecked(m_device->isTrusted());
+        break;
+    case QDialogButtonBox::RejectRole:
+        reject();
+        break;
+    default:
+        break;
     }
-}
-
-
-void DeviceDetails::resetClickedSlot()
-{
-    m_alias->setText(m_device->alias());
-    m_blocked->setChecked(m_device->isBlocked());
-    m_trusted->setChecked(m_device->isTrusted());
 }
 
 void DeviceDetails::blockToggled(bool checked)

@@ -29,7 +29,8 @@
 
 class KUrl;
 class QWizard;
-class KFileDialog;
+class QFileDialog;
+
 namespace BlueDevil {
     class Device;
 }
@@ -50,7 +51,7 @@ private Q_SLOTS:
     void selectionChanged();
 
 private:
-    KFileDialog *m_dialog;
+    QFileDialog *m_dialog;
 };
 
 #endif // SELECTDEVICEANDFILESPAGE_H

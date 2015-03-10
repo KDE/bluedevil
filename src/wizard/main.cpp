@@ -21,33 +21,49 @@
 #include "bluewizard.h"
 #include "version.h"
 
-#include <KCmdLineArgs>
-#include <KApplication>
+#include <QUrl>
+#include <QIcon>
+#include <QApplication>
+#include <QCommandLineParser>
+#include <QCommandLineOption>
+
 #include <KAboutData>
+#include <KLocalizedString>
 
 int main(int argc, char *argv[])
 {
-    KAboutData aboutData("bluedevilwizard", "bluedevil", ki18n("Bluetooth Wizard"), bluedevil_version, ki18n("Bluetooth Wizard"),
-        KAboutData::License_GPL, ki18n("(c) 2010, UFO Coders"));
+    KAboutData aboutData(QStringLiteral("bluedevilwizard"),
+                         i18n("Bluetooth Wizard"),
+                         bluedevil_version,
+                         i18n("Bluetooth Wizard"),
+                         KAboutLicense::GPL,
+                         i18n("(c) 2010, UFO Coders"));
 
-    aboutData.addAuthor(ki18n("Alejandro Fiestas Olivares"), ki18n("Maintainer"), "afiestas@kde.org",
-        "http://www.afiestas.org/");
-    aboutData.setProgramIconName("preferences-system-bluetooth");
+    aboutData.addAuthor(i18n("Alejandro Fiestas Olivares"), i18n("Maintainer"),
+                        QStringLiteral("afiestas@kde.org"), QStringLiteral("http://www.afiestas.org/"));
 
-    KCmdLineArgs::init(argc, argv, &aboutData);
-    KCmdLineOptions options;
-    options.add("+[URL]", ki18n("Device to pair with"));
-    KCmdLineArgs::addCmdLineOptions( options );
+    QApplication app(argc, argv);
+    app.setApplicationName(QStringLiteral("bluedevilwizard"));
+    app.setApplicationVersion(bluedevil_version);
+    app.setApplicationDisplayName(i18n("Bluetooth Wizard"));
+    app.setOrganizationDomain(QStringLiteral("kde.org"));
+    app.setWindowIcon(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")));
+    app.setQuitOnLastWindowClosed(false);
 
-    KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
-    KUrl url;
-    if (args->count()) {
-        url = args->arg(0);
+    QCommandLineParser parser;
+    parser.setApplicationDescription(i18n("Bluetooth Wizard"));
+    parser.addVersionOption();
+    parser.addHelpOption();
+    parser.addPositionalArgument(QStringLiteral("URL"), i18n("Device to pair with"), QStringLiteral("[URL]"));
+
+    parser.process(app);
+
+    const QStringList &args = parser.positionalArguments();
+    QUrl url;
+    if (!args.isEmpty()) {
+        url = args.first();
     }
 
-    KApplication app;
-    app.disableSessionManagement();
-    app.setQuitOnLastWindowClosed(false);
     new BlueWizard(url);
 
     return app.exec();

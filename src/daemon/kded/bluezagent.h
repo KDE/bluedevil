@@ -23,14 +23,14 @@
 #ifndef BLUEZAGENT_H
 #define BLUEZAGENT_H
 
-#include <QtDBus/QDBusMessage>
-#include <QtDBus/QDBusObjectPath>
-#include <QtDBus/QDBusAbstractAdaptor>
+#include <QDBusMessage>
+#include <QDBusObjectPath>
+#include <QDBusAbstractAdaptor>
 
 class QProcess;
 namespace BlueDevil {
     class Adapter;
-};
+}
 
 /**
  * @internal

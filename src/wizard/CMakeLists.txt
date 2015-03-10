@@ -2,6 +2,7 @@ set(wizard_SRCS
     main.cpp
     bluewizard.cpp
     wizardagent.cpp
+    debug_p.cpp
 
     pages/discoverpage.cpp
     pages/nopairing.cpp
@@ -13,7 +14,7 @@ set(wizard_SRCS
     pages/success.cpp
 )
 
-kde4_add_ui_files(wizard_SRCS
+ki18n_wrap_ui(wizard_SRCS
             pages/discover.ui
             pages/nopairing.ui
             pages/legacypairing.ui
@@ -23,10 +24,17 @@ kde4_add_ui_files(wizard_SRCS
             pages/success.ui
 )
 
-kde4_add_executable(bluedevil-wizard ${wizard_SRCS})
+add_executable(bluedevil-wizard ${wizard_SRCS})
 
 target_link_libraries(bluedevil-wizard
-                      ${KDE4_KIO_LIBRARY} ${KDE4_KDEUI_LIBS} ${LibBlueDevil_LIBRARIES})
+    Qt5::Widgets
+    Qt5::DBus
+    KF5::I18n
+    KF5::CoreAddons
+    KF5::DBusAddons
+    KF5::WidgetsAddons
+    KF5::IconThemes
+    ${LibBlueDevil_LIBRARIES})
 
 install(TARGETS bluedevil-wizard ${INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES bluedevil-wizard.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})

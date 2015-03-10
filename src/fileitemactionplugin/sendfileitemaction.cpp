@@ -22,34 +22,34 @@
 
 #include <QList>
 #include <QMenu>
+#include <QDebug>
 #include <QAction>
 #include <QWidget>
 #include <QVariantList>
+#include <QStringBuilder>
 
-#include <KIcon>
 #include <KPluginFactory>
-#include <KPluginLoader>
 
-#include <KDebug>
 #include <KProcess>
 #include <KLocalizedString>
 
-K_PLUGIN_FACTORY(SendFileItemActionFactory, registerPlugin<SendFileItemAction>();)
-K_EXPORT_PLUGIN(SendFileItemActionFactory("SendFileItemAction", "bluedevil"))
+K_PLUGIN_FACTORY_WITH_JSON(SendFileItemActionFactory,
+                           "bluedevilsendfile.json",
+                           registerPlugin<SendFileItemAction>();)
 
-SendFileItemAction::SendFileItemAction(QObject *parent, const QVariantList &args)
-    : KFileItemActionPlugin(parent)
+SendFileItemAction::SendFileItemAction(QObject* parent, const QVariantList& args)
+    : KAbstractFileItemActionPlugin(parent)
 {
     Q_UNUSED(args)
 
     qDBusRegisterMetaType<DeviceInfo>();
     qDBusRegisterMetaType<QMapDeviceInfo>();
 
-    m_kded = new org::kde::BlueDevil("org.kde.kded", "/modules/bluedevil",
+    m_kded = new org::kde::BlueDevil(QStringLiteral("org.kde.kded5"), QStringLiteral("/modules/bluedevil"),
                                      QDBusConnection::sessionBus(), this);
 }
 
-QList<QAction*> SendFileItemAction::actions(const KFileItemListProperties &fileItemInfos, QWidget *parentWidget) const
+QList< QAction* > SendFileItemAction::actions(const KFileItemListProperties& fileItemInfos, QWidget* parentWidget)
 {
     Q_UNUSED(parentWidget)
 
@@ -60,23 +60,22 @@ QList<QAction*> SendFileItemAction::actions(const KFileItemListProperties &fileI
         return list;
     }
 
-    SendFileItemAction *hack = const_cast<SendFileItemAction*>(this);
-    hack->m_fileItemInfos = fileItemInfos;
+    m_fileItemInfos = fileItemInfos;
 
-    QAction *menuAction = new QAction(KIcon("preferences-system-bluetooth"), i18n("Send via Bluetooth"), hack);
+    QAction *menuAction = new QAction(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")), i18n("Send via Bluetooth"), this);
     QMenu *menu = new QMenu();
 
     const QMapDeviceInfo &devices = m_kded->allDevices().value();
     Q_FOREACH (const DeviceInfo &device, devices) {
-        if (device["UUIDs"].contains("00001105-0000-1000-8000-00805F9B34FB")) {
-            QAction *action = new QAction(KIcon(device["icon"]), device["name"], hack);
+        if (device[QStringLiteral("UUIDs")].contains(QLatin1String("00001105-0000-1000-8000-00805F9B34FB"))) {
+            QAction *action = new QAction(QIcon::fromTheme(device[QStringLiteral("icon")]), device[QStringLiteral("name")], this);
             connect(action, SIGNAL(triggered(bool)), this, SLOT(deviceTriggered()));
             action->setData(device["UBI"]);
             menu->addAction(action);
         }
     }
 
-    QAction *otherAction = new QAction(hack);
+    QAction *otherAction = new QAction(this);
     connect(otherAction, SIGNAL(triggered(bool)), this, SLOT(otherTriggered()));
     if (menu->actions().isEmpty()) {
         otherAction->setText(i18nc("Find Bluetooth device", "Find Device..."));
@@ -94,29 +93,31 @@ QList<QAction*> SendFileItemAction::actions(const KFileItemListProperties &fileI
 void SendFileItemAction::deviceTriggered()
 {
     QStringList args;
-    args.append("-u" + static_cast<QAction *>(sender())->data().toString());
+    args.append(QLatin1String("-u") % static_cast<QAction *>(sender())->data().toString());
 
-    KUrl::List fileList =  m_fileItemInfos.urlList();
-    Q_FOREACH(const KUrl &url,  fileList) {
-        args.append("-f" + url.path());
+    const QList<QUrl> &fileList = m_fileItemInfos.urlList();
+    Q_FOREACH(const QUrl &url, fileList) {
+        args.append(QLatin1String("-f") % url.path());
     }
-    kDebug() << args;
+    qDebug() << args;
     KProcess process;
-    process.setProgram("bluedevil-sendfile", args);
+    process.setProgram(QStringLiteral("bluedevil-sendfile"), args);
     process.startDetached();
 }
 
 void SendFileItemAction::otherTriggered()
 {
-    kDebug();
+    qDebug();
     QStringList args;
 
-    KUrl::List fileList =  m_fileItemInfos.urlList();
-    Q_FOREACH(const KUrl &url,  fileList) {
-        args.append("-f" + url.path());
+    const QList<QUrl> &fileList = m_fileItemInfos.urlList();
+    Q_FOREACH(const QUrl &url, fileList) {
+        args.append(QLatin1String("-f") % url.path());
     }
 
     KProcess process;
-    process.setProgram("bluedevil-sendfile", args);
+    process.setProgram(QStringLiteral("bluedevil-sendfile"), args);
     process.startDetached();
 }
+
+#include "sendfileitemaction.moc"

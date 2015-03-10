@@ -20,7 +20,8 @@
 
 #ifndef BLUEDEVIL_SYSTEM_CHECK_H
 #define BLUEDEVIL_SYSTEM_CHECK_H
-#include <QtCore/QObject>
+
+#include <QObject>
 
 class QVBoxLayout;
 

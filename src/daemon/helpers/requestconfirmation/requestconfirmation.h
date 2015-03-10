@@ -22,7 +22,7 @@
 #ifndef AUTHORIZE_H
 #define AUTHORIZE_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 /**
  * @short Small class which send a KNotificaton to know if the Bluetooth device is authorized or not

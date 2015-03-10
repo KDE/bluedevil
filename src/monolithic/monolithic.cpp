@@ -19,16 +19,19 @@
 #include "monolithic.h"
 #include "audio_interface.h"
 
-#include <KDebug>
-#include <kmenu.h>
-#include <kaction.h>
-#include <kprocess.h>
-#include <ktoolinvocation.h>
-#include <klocalizedstring.h>
+#include <QDebug>
+#include <QIcon>
+#include <QMenu>
+#include <QAction>
+#include <QWidgetAction>
+#include <QLabel>
+
 #include <krun.h>
+#include <kprocess.h>
+#include <klocalizedstring.h>
+#include <ktoolinvocation.h>
 
 #include <bluedevil/bluedevil.h>
-#include <kactioncollection.h>
 
 using namespace BlueDevil;
 
@@ -36,11 +39,11 @@ Monolithic::Monolithic(QObject* parent)
     : KStatusNotifierItem(parent)
 {
     setCategory(KStatusNotifierItem::Hardware);
-    setIconByName("preferences-system-bluetooth");
-    setToolTip("preferences-system-bluetooth", "Bluetooth", "");
+    setIconByName(QStringLiteral("preferences-system-bluetooth"));
+    setToolTip(QStringLiteral("preferences-system-bluetooth"), QStringLiteral("Bluetooth"), QString());
 
-    m_supportedServices.insert(i18n("Browse device"), "00001106-0000-1000-8000-00805F9B34FB");
-    m_supportedServices.insert(i18n("Send Files"), "00001105-0000-1000-8000-00805F9B34FB");
+    m_supportedServices.insert(i18n("Browse device"), QStringLiteral("00001106-0000-1000-8000-00805F9B34FB"));
+    m_supportedServices.insert(i18n("Send Files"), QStringLiteral("00001105-0000-1000-8000-00805F9B34FB"));
 
     offlineMode();
 
@@ -118,10 +121,8 @@ bool sortDevices(Device *device1, Device *device2)
 
 void Monolithic::regenerateDeviceEntries()
 {
-    KMenu *const menu = contextMenu();
+    QMenu *const menu = contextMenu();
 
-    qDeleteAll(m_interfaceMap);
-    m_interfaceMap.clear();
     qDeleteAll(m_actions);
     m_actions.clear();
     qDeleteAll(menu->actions());
@@ -129,32 +130,32 @@ void Monolithic::regenerateDeviceEntries()
 
     //If there are adapters (because we're in this function) but any of them is powered
     if (!poweredAdapters()) {
-        menu->addTitle(i18n("Bluetooth is Off"));
+        menu->addSection(i18n("Bluetooth is Off"));
 
         QAction *separator = new QAction(menu);
         separator->setSeparator(true);
         menu->addAction(separator);
 
-        KAction *activeBluetooth = new KAction(i18n("Turn Bluetooth On"), menu);
+        QAction *activeBluetooth = new QAction(i18n("Turn Bluetooth On"), menu);
         connect(activeBluetooth, SIGNAL(triggered()), this, SLOT(toggleBluetooth()));
         menu->addAction(activeBluetooth);
         return;
     }
 
-    KAction *sendFile = new KAction(KIcon("edit-find-project"), i18n("Send File"), menu);
+    QAction *sendFile = new QAction(QIcon::fromTheme(QStringLiteral("edit-find-project")), i18n("Send File"), menu);
     connect(sendFile, SIGNAL(triggered()), this, SLOT(sendFile()));
     menu->addAction(sendFile);
 
-    KAction *browseDevices = new KAction(KIcon("document-preview-archive"), i18n("Browse devices"), menu);
+    QAction *browseDevices = new QAction(QIcon::fromTheme(QStringLiteral("document-preview-archive")), i18n("Browse devices"), menu);
     connect(browseDevices, SIGNAL(triggered()), this, SLOT(browseDevices()));
     menu->addAction(browseDevices);
 
     QList<Adapter*> adapters = Manager::self()->adapters();
     Q_FOREACH(Adapter* adapter, adapters) {
         if (adapters.count() == 1) {
-            menu->addTitle(i18n("Known Devices"));
+            menu->addSection(i18n("Known Devices"));
         } else {
-            menu->addTitle(adapter->name());
+            menu->addSection(adapter->name());
         }
 
         menu->addActions(actionsForAdapter(adapter));
@@ -162,11 +163,11 @@ void Monolithic::regenerateDeviceEntries()
 
     menu->addSeparator();
 
-    KAction *addDevice = new KAction(KIcon("edit-find-project"), i18n("Add Device"), menu);
+    QAction *addDevice = new QAction(QIcon::fromTheme(QStringLiteral("edit-find-project")), i18n("Add Device"), menu);
     connect(addDevice, SIGNAL(triggered()), this, SLOT(addDevice()));
     menu->addAction(addDevice);
 
-    KAction *configBluetooth = new KAction(KIcon("configure"), i18n("Configure Bluetooth"), menu);
+    QAction *configBluetooth = new QAction(QIcon::fromTheme(QStringLiteral("configure")), i18n("Configure Bluetooth"), menu);
     connect(configBluetooth, SIGNAL(triggered(bool)), this, SLOT(configBluetooth()));
     menu->addAction(configBluetooth);
 
@@ -175,13 +176,13 @@ void Monolithic::regenerateDeviceEntries()
 
     Adapter *usableAdapter = Manager::self()->usableAdapter();
 
-    KAction *discoverable = new KAction(i18n("Discoverable"), menu);
+    QAction *discoverable = new QAction(i18n("Discoverable"), menu);
     discoverable->setCheckable(true);
     discoverable->setChecked(usableAdapter && usableAdapter->isDiscoverable());
     connect(discoverable, SIGNAL(toggled(bool)), this, SLOT(activeDiscoverable(bool)));
     menu->addAction(discoverable);
 
-    KAction *activeBluetooth = new KAction(i18n("Turn Bluetooth Off"), menu);
+    QAction *activeBluetooth = new QAction(i18n("Turn Bluetooth Off"), menu);
     connect(activeBluetooth, SIGNAL(triggered()), this, SLOT(toggleBluetooth()));
     menu->addAction(activeBluetooth);
 
@@ -202,11 +203,11 @@ void Monolithic::regenerateConnectedDevices()
         }
     }
     if (connectedDevices > 0) {
-        setOverlayIconByName("emblem-link");
+        setOverlayIconByName(QStringLiteral("emblem-link"));
         setToolTipSubTitle(i18ncp("Number of Bluetooth connected devices", "%1 connected device", "%1 connected devices", int(connectedDevices)));
     } else if(poweredAdapters()) {
         setOverlayIconByName(QString());
-        setToolTipSubTitle("");
+        setToolTipSubTitle(QString());
     }
 }
 
@@ -237,16 +238,16 @@ void Monolithic::onlineMode()
 
 void Monolithic::actionTriggered()
 {
-    KAction *action = qobject_cast<KAction*>(sender());
+    QAction *action = qobject_cast<QAction*>(sender());
     QString service = action->data().toString();
     Device *device = Manager::self()->deviceForUBI(action->property("UBI").toString());
     if (!device) {
         return;
     }
 
-    if (service == "00001106-0000-1000-8000-00805F9B34FB") {
+    if (service == QLatin1String("00001106-0000-1000-8000-00805F9B34FB")) {
         browseTriggered(device->address());
-    } else if (service == "00001105-0000-1000-8000-00805F9B34FB") {
+    } else if (service == QLatin1String("00001105-0000-1000-8000-00805F9B34FB")) {
         sendTriggered(device->UBI());
     }
 }
@@ -254,20 +255,20 @@ void Monolithic::actionTriggered()
 void Monolithic::sendFile()
 {
     KProcess process;
-    process.setProgram("bluedevil-sendfile");
+    process.setProgram(QStringLiteral("bluedevil-sendfile"));
     process.startDetached();
 }
 
 void Monolithic::browseDevices()
 {
-    KUrl url("bluetooth://");
-    KRun::runUrl(url, "inode/directory", new QWidget());
+    QUrl url(QStringLiteral("bluetooth://"));
+    KRun::runUrl(url, QStringLiteral("inode/directory"), new QWidget());
 }
 
 void Monolithic::addDevice()
 {
     KProcess process;
-    process.setProgram("bluedevil-wizard");
+    process.setProgram(QStringLiteral("bluedevil-wizard"));
     process.startDetached();
 }
 
@@ -275,10 +276,10 @@ void Monolithic::configBluetooth()
 {
     KProcess process;
     QStringList args;
-    args << "bluedevildevices";
-    args << "bluedeviltransfer";
-    args << "bluedeviladapters";
-    process.startDetached("kcmshell4", args);
+    args << QLatin1String("bluedevildevices");
+    args << QLatin1String("bluedeviltransfer");
+    args << QLatin1String("bluedeviladapters");
+    process.startDetached(QStringLiteral("kcmshell5"), args);
 }
 
 void Monolithic::toggleBluetooth()
@@ -312,14 +313,14 @@ void Monolithic::activeDiscoverable(bool active)
 
 void Monolithic::browseTriggered(QString address)
 {
-    KUrl url("obexftp:/");
-    url.setHost(address.replace(':', '-'));
-    KRun::runUrl(url, "inode/directory", new QWidget());
+    QUrl url(QStringLiteral("obexftp:/"));
+    url.setHost(address.replace(QLatin1Char(':'), QLatin1Char('-')));
+    KRun::runUrl(url, QStringLiteral("inode/directory"), new QWidget());
 }
 
 void Monolithic::sendTriggered(const QString &UBI)
 {
-    KToolInvocation::kdeinitExec("bluedevil-sendfile", QStringList() << QString("-u%1").arg(UBI));
+    KToolInvocation::kdeinitExec(QStringLiteral("bluedevil-sendfile"), QStringList() << QString("-u%1").arg(UBI));
 }
 
 void Monolithic::UUIDsChanged(const QStringList &UUIDs)
@@ -331,11 +332,11 @@ void Monolithic::UUIDsChanged(const QStringList &UUIDs)
 void Monolithic::poweredChanged()
 {
     if (!poweredAdapters()) {
-        setIconByName("preferences-system-bluetooth-inactive");
+        setIconByName(QStringLiteral("preferences-system-bluetooth-inactive"));
         setTooltipTitleStatus(false);
         setToolTipSubTitle("");
     } else {
-        setIconByName("preferences-system-bluetooth");
+        setIconByName(QStringLiteral("preferences-system-bluetooth"));
         setTooltipTitleStatus(true);
     }
     setOverlayIconByName(QString());
@@ -355,16 +356,14 @@ void Monolithic::offlineMode()
     setStatus(Passive);
     setTooltipTitleStatus(false);
 
-    KMenu *const menu = contextMenu();
+    QMenu *const menu = contextMenu();
 
-    qDeleteAll(m_interfaceMap);
-    m_interfaceMap.clear();
     qDeleteAll(m_actions);
     m_actions.clear();
     qDeleteAll(menu->actions());
     menu->clear();
 
-    KAction *noAdaptersFound = new KAction(i18n("No adapters found"), menu);
+    QAction *noAdaptersFound = new QAction(i18n("No adapters found"), menu);
     noAdaptersFound->setEnabled(false);
     menu->addAction(noAdaptersFound);
 
@@ -435,21 +434,21 @@ QList< QAction* > Monolithic::actionsForAdapter(Adapter* adapter)
 QAction* Monolithic::actionForDevice(Device* device, Device *lastDevice)
 {
     // Create device entry
-    KAction *deviceAction = new KAction(device->name(), this);
+    QAction *deviceAction = new QAction(device->name(), this);
     deviceAction->setData(QVariant::fromValue<Device*>(device));
 
     //We only show the icon for the first device of the type, less UI clutter
     if (!lastDevice || classToType(lastDevice->deviceClass()) != classToType(device->deviceClass())) {
-        deviceAction->setIcon(KIcon(device->icon()));
+        deviceAction->setIcon(QIcon::fromTheme(device->icon()));
     }
 
     // Create the submenu that will hang from this device menu entry
-    KMenu *const subMenu = new KMenu;
+    QMenu *const subMenu = new QMenu;
     QStringList UUIDs = device->UUIDs();
 
     QSet <QString> deviceServices = UUIDs.toSet().intersect(m_supportedServices.values().toSet());
     Q_FOREACH(QString service, deviceServices) {
-        KAction *action = new KAction(m_supportedServices.key(service), subMenu);
+        QAction *action = new QAction(m_supportedServices.key(service), subMenu);
         action->setData(service);
         action->setProperty("UBI", device->UBI());
         connect(action, SIGNAL(triggered()), SLOT(actionTriggered()));
@@ -457,21 +456,21 @@ QAction* Monolithic::actionForDevice(Device* device, Device *lastDevice)
     }
 
     if (device->isConnected()) {
-        KAction *reconnectAction = new KAction(i18nc("Re-connect to a bluetooth device", "Re-connect"), deviceAction);
-        KAction* disconnectAction = new KAction(i18nc("Disconnect to a bluetooth device", "Disconnect"), deviceAction);
+        QAction *reconnectAction = new QAction(i18nc("Re-connect to a bluetooth device", "Re-connect"), deviceAction);
+        QAction* disconnectAction = new QAction(i18nc("Disconnect to a bluetooth device", "Disconnect"), deviceAction);
         connect(reconnectAction, SIGNAL(triggered()), device, SLOT(connectDevice()));
         connect(disconnectAction, SIGNAL(triggered()), device, SLOT(disconnect()));
         subMenu->addAction(reconnectAction);
         subMenu->addAction(disconnectAction);
     } else {
-        KAction *connectAction = new KAction(i18nc("Connect to a bluetooth device", "Connect"), deviceAction);
+        QAction *connectAction = new QAction(i18nc("Connect to a bluetooth device", "Connect"), deviceAction);
         connect(connectAction, SIGNAL(triggered()), device, SLOT(connectDevice()));
         subMenu->addAction(connectAction);
     }
 
 //Enable when we can know if we should show Connect or not
 //     if (deviceServices.isEmpty()) {
-//         KAction *_unknown = new KAction(i18n("No supported services found"), deviceAction);
+//         QAction *_unknown = new QAction(i18n("No supported services found"), deviceAction);
 //         _unknown->setEnabled(false);
 //         subMenu->addAction(_unknown);
 //     }

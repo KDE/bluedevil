@@ -19,10 +19,11 @@
 #include "kio_obexftp.h"
 #include "transferfilejob.h"
 #include "obexd_transfer.h"
+#include "debug_p.h"
 
+#include <QDebug>
 #include <QDBusConnection>
 
-#include <KDebug>
 #include <KLocalizedString>
 
 typedef OrgBluezObexTransfer1Interface TransferInterface;
@@ -54,8 +55,8 @@ bool TransferFileJob::doKill()
 
 void TransferFileJob::createObjects()
 {
-    m_transfer = new TransferInterface("org.bluez.obex", m_path, QDBusConnection::sessionBus());
-    m_properties = new PropertiesInterface("org.bluez.obex", m_path, QDBusConnection::sessionBus());
+    m_transfer = new TransferInterface(QStringLiteral("org.bluez.obex"), m_path, QDBusConnection::sessionBus());
+    m_properties = new PropertiesInterface(QStringLiteral("org.bluez.obex"), m_path, QDBusConnection::sessionBus());
 
     connect(m_properties, SIGNAL(PropertiesChanged(QString,QVariantMap,QStringList)), SLOT(propertiesChanged(QString,QVariantMap,QStringList)));
 }
@@ -63,7 +64,7 @@ void TransferFileJob::createObjects()
 void TransferFileJob::propertiesChanged(const QString& interface, const QVariantMap& properties, const QStringList &invalidProps)
 {
     Q_UNUSED(invalidProps)
-    kDebug() << properties;
+    qCDebug(OBEXFTP) << properties;
     if (interface != QLatin1String("org.bluez.obex.Transfer1")) {
         return;
     }
@@ -80,7 +81,7 @@ void TransferFileJob::propertiesChanged(const QString& interface, const QVariant
 
 void TransferFileJob::statusChanged(const QVariant& value)
 {
-    kDebug() << value;
+    qCDebug(OBEXFTP) << value;
     QString status = value.toString();
 
     if (status == QLatin1String("active")) {
@@ -95,14 +96,14 @@ void TransferFileJob::statusChanged(const QVariant& value)
         return;
     }
 
-    kDebug() << "Not implemented status: " << status;
+    qCDebug(OBEXFTP) << "Not implemented status: " << status;
 }
 
 void TransferFileJob::transferChanged(const QVariant& value)
 {
-    kDebug() << "Transferred: " << value;
+    qCDebug(OBEXFTP) << "Transferred: " << value;
     if (m_parent->wasKilled()) {
-        kDebug() << "Kio was killed, aborting task";
+        qCDebug(OBEXFTP) << "Kio was killed, aborting task";
         doKill();
         emitResult();
         return;
@@ -111,11 +112,11 @@ void TransferFileJob::transferChanged(const QVariant& value)
     bool ok = false;
     qulonglong bytes = value.toULongLong(&ok);
     if (!ok) {
-        kWarning() << "Couldn't cast transferChanged value" << value;
+        qCWarning(OBEXFTP) << "Couldn't cast transferChanged value" << value;
         return;
     }
 
-    //If a least 1 second has passed since last update
+    // If at least 1 second has passed since last update
     int secondsSinceLastTime = m_time.secsTo(QTime::currentTime());
     if (secondsSinceLastTime > 0) {
         float speed = (bytes - m_speedBytes) / secondsSinceLastTime;

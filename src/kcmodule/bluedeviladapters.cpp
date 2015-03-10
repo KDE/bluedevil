@@ -21,33 +21,34 @@
 #include "bluedeviladapters.h"
 #include "systemcheck.h"
 
-#include <QtCore/QTimer>
-
-#include <QtGui/QScrollArea>
-#include <QtGui/QBoxLayout>
-#include <QtGui/QRadioButton>
-#include <QtGui/QCheckBox>
-#include <QtGui/QSlider>
-#include <QtGui/QLabel>
-#include <QtGui/QFormLayout>
-#include <QtGui/QButtonGroup>
+#include <QTimer>
+#include <QScrollArea>
+#include <QBoxLayout>
+#include <QRadioButton>
+#include <QCheckBox>
+#include <QSlider>
+#include <QLabel>
+#include <QFormLayout>
+#include <QButtonGroup>
+#include <QLineEdit>
+#include <QIcon>
 
 #include <bluedevil/bluedevil.h>
 
-#include <kicon.h>
-#include <klineedit.h>
 #include <kaboutdata.h>
 #include <kpluginfactory.h>
+#include <klocalizedstring.h>
 
-K_PLUGIN_FACTORY(BlueDevilFactory, registerPlugin<KCMBlueDevilAdapters>();)
-K_EXPORT_PLUGIN(BlueDevilFactory("bluedeviladapters", "bluedevil"))
+K_PLUGIN_FACTORY_WITH_JSON(BlueDevilFactory,
+                           "bluedeviladapters.json",
+                           registerPlugin<KCMBlueDevilAdapters>();)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 AdapterSettings::AdapterSettings(Adapter *adapter, KCModule *parent)
     : QGroupBox(parent)
     , m_adapter(adapter)
-    , m_name(new KLineEdit(this))
+    , m_name(new QLineEdit(this))
     , m_hidden(new QRadioButton(i18nc("Radio widget to set if we want the adapter to be hidden", "Hidden"), this))
     , m_alwaysVisible(new QRadioButton(i18nc("Radio widget to set if we want the adapter to be always visible", "Always visible"), this))
     , m_temporaryVisible(new QRadioButton(i18nc("Radio widget to set if we want the adapter to be temporarily visible", "Temporarily visible"), this))
@@ -118,9 +119,9 @@ AdapterSettings::AdapterSettings(Adapter *adapter, KCModule *parent)
     connect(m_powered, SIGNAL(stateChanged(int)), this, SLOT(slotSettingsChanged()));
 
     if (BlueDevil::Manager::self()->usableAdapter() == adapter) {
-        setTitle(i18n("Default adapter: %1 (%2)", adapter->systemName(), adapter->address()));
+        setTitle(i18n("Default adapter: %1 (%2)", adapter->name(), adapter->address()));
     } else {
-        setTitle(i18n("Adapter: %1 (%2)", adapter->systemName(), adapter->address()));
+        setTitle(i18n("Adapter: %1 (%2)", adapter->name(), adapter->address()));
     }
 }
 
@@ -139,7 +140,7 @@ bool AdapterSettings::isModified() const
 void AdapterSettings::applyChanges()
 {
     if (m_name->text() != m_nameOrig) {
-        m_adapter->setName(m_name->text());
+        m_adapter->setAlias(m_name->text());
     }
 
     if (m_hidden->isChecked()) {
@@ -203,9 +204,9 @@ void AdapterSettings::readChanges()
 
     m_discoverTimeLabel->setText(i18np("1 minute", "%1 minutes", m_discoverTime->value()));
     if (BlueDevil::Manager::self()->usableAdapter() == m_adapter) {
-        setTitle(i18n("Default adapter: %1 (%2)", m_adapter->systemName(), m_adapter->address()));
+        setTitle(i18n("Default adapter: %1 (%2)", m_adapter->name(), m_adapter->address()));
     } else {
-        setTitle(i18n("Adapter: %1 (%2)", m_adapter->systemName(), m_adapter->address()));
+        setTitle(i18n("Adapter: %1 (%2)", m_adapter->name(), m_adapter->address()));
     }
 
     blockSignals(false);
@@ -233,16 +234,18 @@ void AdapterSettings::slotSettingsChanged()
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 KCMBlueDevilAdapters::KCMBlueDevilAdapters(QWidget *parent, const QVariantList&)
-    : KCModule(BlueDevilFactory::componentData(), parent)
+    : KCModule(parent)
     , m_noAdaptersMessage(0)
     , m_systemCheck(new SystemCheck(this))
 {
-    KAboutData* ab = new KAboutData(
-        "kcmbluedeviladapters", "bluedevil", ki18n("Bluetooth Adapters"), "1.0",
-        ki18n("Bluetooth Adapters Control Panel Module"),
-        KAboutData::License_GPL, ki18n("(c) 2010 Rafael Fernández López"));
+    KAboutData* ab = new KAboutData(QStringLiteral("kcmbluedeviladapters"),
+                                    i18n("Bluetooth Adapters"),
+                                    QStringLiteral("1.0"),
+                                    i18n("Bluetooth Adapters Control Panel Module"),
+                                    KAboutLicense::GPL,
+                                    i18n("(c) 2010 Rafael Fernández López"));
 
-    ab->addAuthor(ki18n("Rafael Fernández López"), ki18n("Developer and Maintainer"), "ereslibre@kde.org");
+    ab->addAuthor(i18n("Rafael Fernández López"), i18n("Developer and Maintainer"), QStringLiteral("ereslibre@kde.org"));
     setAboutData(ab);
 
     connect(m_systemCheck, SIGNAL(updateInformationStateRequest()),
@@ -317,7 +320,7 @@ void KCMBlueDevilAdapters::generateNoAdaptersMessage()
     QGridLayout *layout = new QGridLayout;
     m_noAdaptersMessage = new QWidget(this);
     QLabel *label = new QLabel(m_noAdaptersMessage);
-    label->setPixmap(KIcon("dialog-information").pixmap(128, 128));
+    label->setPixmap(QIcon::fromTheme(QStringLiteral("dialog-information")).pixmap(128, 128));
     layout->addWidget(label, 0, 1, Qt::AlignHCenter);
     layout->addWidget(new QLabel(i18n("No adapters found. Please connect one."), m_noAdaptersMessage),
                                  1, 1, Qt::AlignHCenter);
@@ -377,3 +380,5 @@ void KCMBlueDevilAdapters::fillAdaptersInformation()
 
     m_layout->addStretch();
 }
+
+#include "bluedeviladapters.moc"

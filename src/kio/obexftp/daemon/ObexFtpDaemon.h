@@ -21,14 +21,16 @@
 
 #include "../obexdtypes.h"
 
-#include <QDBusObjectPath>
+#include <QLoggingCategory>
+
 #include <kdedmodule.h>
 
 class KJob;
 class QDBusMessage;
+class QDBusObjectPath;
 class QDBusPendingCallWatcher;
 
-class KDE_EXPORT ObexFtpDaemon : public KDEDModule
+class Q_DECL_EXPORT ObexFtpDaemon : public KDEDModule
 {
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.kde.ObexFtp")
@@ -56,5 +58,6 @@ private:
     Private *d;
 };
 
-extern int dobex();
+Q_DECLARE_LOGGING_CATEGORY(OBEXDAEMON)
+
 #endif /*OBEXFTPDAEMON_H*/

@@ -21,8 +21,7 @@
 #include "ObexFtpDaemon.h"
 
 #include <QString>
-
-#include <KDebug>
+#include <QDebug>
 
 // class
 CreateSessionJob::CreateSessionJob(const QString &address, const QString &target, const QDBusMessage &msg, QObject *parent)
@@ -61,27 +60,29 @@ const QList<QDBusMessage> CreateSessionJob::messages() const
 
 void CreateSessionJob::createSession()
 {
-    kDebug(dobex());
+    qCDebug(OBEXDAEMON);
     QVariantMap args;
-    args["Target"] = m_target;
-    m_client = new OrgBluezObexClient1Interface("org.bluez.obex",
-                                                "/org/bluez/obex",
+    args[QStringLiteral("Target")] = m_target;
+    m_client = new OrgBluezObexClient1Interface(QStringLiteral("org.bluez.obex"),
+                                                QStringLiteral("/org/bluez/obex"),
                                                 QDBusConnection::sessionBus(), this);
 
     QDBusPendingReply <QDBusObjectPath > reply = m_client->CreateSession(m_address, args);
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(reply);
+
     connect(watcher, SIGNAL(finished(QDBusPendingCallWatcher*)), this, SLOT(sessionCreated(QDBusPendingCallWatcher*)));
 }
 
 void CreateSessionJob::sessionCreated(QDBusPendingCallWatcher* watcher)
 {
-    kDebug(dobex());
+    qCDebug(OBEXDAEMON);
     QDBusPendingReply <QDBusObjectPath > reply = *watcher;
     watcher->deleteLater();
     if (reply.isError()) {
-        kDebug(dobex()) << "Error:";
-        kDebug(dobex()) << reply.error().name();
-        kDebug(dobex()) << reply.error().message();
+        qCDebug(OBEXDAEMON) << "Error:";
+        qCDebug(OBEXDAEMON) << reply.error().name();
+        qCDebug(OBEXDAEMON) << reply.error().message();
+
         setError(reply.error().type());
         setErrorText(reply.error().message());
         emitResult();

@@ -3,10 +3,13 @@ set(authorize_SRCS
     authorize.cpp
 )
 
-kde4_add_executable(bluedevil-authorize ${authorize_SRCS})
+add_executable(bluedevil-authorize ${authorize_SRCS})
 
 target_link_libraries(bluedevil-authorize
-                      ${KDE4_KIO_LIBRARY} ${KDE4_KDEUI_LIBS} ${LibBlueDevil_LIBRARIES})
+    Qt5::Core
+    KF5::I18n
+    KF5::Notifications
+    ${LibBlueDevil_LIBRARIES})
 
 install(TARGETS bluedevil-authorize
         DESTINATION ${LIBEXEC_INSTALL_DIR})

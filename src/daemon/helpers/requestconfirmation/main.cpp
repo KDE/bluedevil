@@ -20,21 +20,19 @@
 
 #include "requestconfirmation.h"
 
-#include <QtGui/QApplication>
+#include <QApplication>
 
-#include <kcomponentdata.h>
-#include <kaboutdata.h>
-#include <kcmdlineargs.h>
-#include <kglobal.h>
+#include <KLocalizedString>
 
 static const KLocalizedString description = ki18n("KDE Bluetooth System");
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    KComponentData data("bluedevil", "bluedevilrequestconfirmationhelper");
-    KGlobal::setActiveComponent(data);
-    RequestConfirmation confirmation;
+    app.setApplicationName(QStringLiteral("bluedevil"));
+    app.setOrganizationDomain(QStringLiteral("kde.org"));
+
+    RequestConfirmation request;
 
     return app.exec();
 }

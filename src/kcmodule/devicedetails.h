@@ -21,10 +21,12 @@
 #ifndef _DEVICEDETAILS_H
 #define _DEVICEDETAILS_H
 
-#include <kdialog.h>
+#include <QDialog>
 
 class QCheckBox;
-class KLineEdit;
+class QLineEdit;
+class QAbstractButton;
+class QDialogButtonBox;
 
 namespace BlueDevil {
     class Device;
@@ -32,8 +34,7 @@ namespace BlueDevil {
 
 typedef BlueDevil::Device Device;
 
-class DeviceDetails
-    : public KDialog
+class DeviceDetails : public QDialog
 {
     Q_OBJECT
 
@@ -41,18 +42,16 @@ public:
     DeviceDetails(Device *device, QWidget *parent = 0);
     virtual ~DeviceDetails();
 
-protected Q_SLOTS:
-    virtual void slotButtonClicked(int button);
-
 private Q_SLOTS:
-    void resetClickedSlot();
+    void buttonClicked(QAbstractButton *button);
     void blockToggled(bool checked);
 
 private:
-    Device    *m_device;
-    KLineEdit *m_alias;
+    Device *m_device;
+    QLineEdit *m_alias;
     QCheckBox *m_blocked;
     QCheckBox *m_trusted;
+    QDialogButtonBox *m_buttonBox;
 };
 
 #endif

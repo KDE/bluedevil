@@ -20,7 +20,6 @@
 #define FILE_RECEIVER_H
 
 #include <QObject>
-#include <KComponentData>
 
 #include "obex_agent_manager.h"
 
@@ -29,7 +28,7 @@ class FileReceiver : public QObject
 {
     Q_OBJECT
     public:
-        explicit FileReceiver(const KComponentData &componentData, QObject* parent = 0);
+        explicit FileReceiver(QObject* parent = 0);
         virtual ~FileReceiver();
 
     private Q_SLOTS:

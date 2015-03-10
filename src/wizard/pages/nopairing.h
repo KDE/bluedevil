@@ -20,7 +20,6 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-
 #ifndef NOPAIRING_H
 #define NOPAIRING_H
 
@@ -38,8 +37,7 @@ namespace BlueDevil {
 
 using namespace BlueDevil;
 
-class NoPairingPage : public QWizardPage
-, Ui::NoPairing
+class NoPairingPage : public QWizardPage, Ui::NoPairing
 {
 Q_OBJECT
 

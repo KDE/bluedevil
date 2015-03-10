@@ -26,12 +26,12 @@
 
 #include <QLabel>
 #include <QDesktopServices>
-#include <QtGui/QVBoxLayout>
+#include <QVBoxLayout>
+#include <QIcon>
 
-#include <KUrl>
-#include <kfiledialog.h>
+#include <kiconloader.h>
+#include <kpixmapsequence.h>
 #include <kpixmapsequenceoverlaypainter.h>
-#include <KDebug>
 
 #include <bluedevil/bluedevil.h>
 
@@ -45,6 +45,7 @@ SelectDevicePage::SelectDevicePage(QWidget* parent): QWizardPage(parent), m_dial
     discoverLayout->addWidget(widget);
 
     KPixmapSequenceOverlayPainter *workingPainter = new KPixmapSequenceOverlayPainter(this);
+    workingPainter->setSequence(KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), 22));
     workingPainter->setWidget(working);
     workingPainter->start();
 

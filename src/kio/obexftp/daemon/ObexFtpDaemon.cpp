@@ -22,16 +22,16 @@
 #include "version.h"
 
 #include <QHash>
+#include <QDebug>
 #include <QDBusConnection>
 
-#include <kdemacros.h>
-#include <KDebug>
 #include <KAboutData>
 #include <KPluginFactory>
+#include <KLocalizedString>
 
-K_PLUGIN_FACTORY(ObexFtpFactory,
-                 registerPlugin<ObexFtpDaemon>();)
-K_EXPORT_PLUGIN(ObexFtpFactory("obexftpdaemon", "obexftpdaemon"))
+K_PLUGIN_FACTORY_WITH_JSON(ObexFtpFactory,
+                           "obexftpdaemon.json",
+                           registerPlugin<ObexFtpDaemon>();)
 
 struct ObexFtpDaemon::Private
 {
@@ -54,31 +54,31 @@ ObexFtpDaemon::ObexFtpDaemon(QObject *parent, const QList<QVariant>&)
     qDBusRegisterMetaType<DBusManagerStruct>();
     qDBusRegisterMetaType<QVariantMapMap>();
 
-    KAboutData aboutData(
-        "obexftpdaemon",
-        "bluedevil",
-        ki18n("ObexFtp Daemon"),
-        bluedevil_version,
-        ki18n("ObexFtp Daemon"),
-        KAboutData::License_GPL,
-        ki18n("(c) 2010, UFO Coders")
-    );
+    KAboutData aboutData(QStringLiteral("obexftpdaemon"),
+                         i18n("ObexFtp Daemon"),
+                         bluedevil_version,
+                         i18n("ObexFtp Daemon"),
+                         KAboutLicense::GPL,
+                         i18n("(c) 2010, UFO Coders"));
 
-    aboutData.addAuthor(ki18n("Alejandro Fiestas Olivares"), ki18n("Maintainer"), "afiestas@kde.org",
-        "http://www.afiestas.org");
+    aboutData.addAuthor(i18n("Alejandro Fiestas Olivares"), i18n("Maintainer"),
+                        QStringLiteral("afiestas@kde.org"), QStringLiteral("http://www.afiestas.org"));
 
     d->m_status = Private::Offline;
-    d->m_interface = new OrgFreedesktopDBusObjectManagerInterface("org.bluez.obex", "/", QDBusConnection::sessionBus(), this);
+    d->m_interface = new OrgFreedesktopDBusObjectManagerInterface(QStringLiteral("org.bluez.obex"),
+                                                                  QStringLiteral("/"),
+                                                                  QDBusConnection::sessionBus(), this);
     connect(d->m_interface, SIGNAL(InterfacesRemoved(QDBusObjectPath,QStringList)),
             SLOT(interfaceRemoved(QDBusObjectPath,QStringList)));
 
-    d->m_serviceWatcher = new QDBusServiceWatcher("org.bluez.obex", QDBusConnection::sessionBus(),
-            QDBusServiceWatcher::WatchForRegistration | QDBusServiceWatcher::WatchForUnregistration, this);
+    d->m_serviceWatcher = new QDBusServiceWatcher(QStringLiteral("org.bluez.obex"),
+                                                  QDBusConnection::sessionBus(),
+                                                  QDBusServiceWatcher::WatchForUnregistration, this);
 
     connect(d->m_serviceWatcher, SIGNAL(serviceRegistered(QString)), SLOT(serviceRegistered()));
     connect(d->m_serviceWatcher, SIGNAL(serviceUnregistered(QString)), SLOT(serviceUnregistered()));
 
-    if (QDBusConnection::sessionBus().interface()->isServiceRegistered("org.bluez.obex")) {
+    if (QDBusConnection::sessionBus().interface()->isServiceRegistered(QStringLiteral("org.bluez.obex"))) {
         onlineMode();
     } else {
         offlineMode();
@@ -95,9 +95,9 @@ ObexFtpDaemon::~ObexFtpDaemon()
 
 void ObexFtpDaemon::onlineMode()
 {
-    kDebug(dobex());
+    qCDebug(OBEXDAEMON);
     if (d->m_status == Private::Online) {
-        kDebug(dobex()) << "Already in onlineMode";
+        qCDebug(OBEXDAEMON) << "Already in onlineMode";
         return;
     }
 
@@ -106,9 +106,10 @@ void ObexFtpDaemon::onlineMode()
 
 void ObexFtpDaemon::offlineMode()
 {
-    kDebug(dobex());
+    qCDebug(OBEXDAEMON) << "Offline mode";
+
     if (d->m_status == Private::Offline) {
-        kDebug(dobex()) << "Already in offlineMode";
+        qCDebug(OBEXDAEMON) << "Already in offlineMode";
         return;
     }
 
@@ -129,7 +130,7 @@ QString ObexFtpDaemon::session(const QString &address, const QString &target, co
         return d->m_sessionMap[address];
     }
 
-    kDebug(dobex()) << "Creating session for" << address << "target" << target;
+    qCDebug(OBEXDAEMON) << "Creating session for" << address << "target" << target;
 
     // At this point we always want delayed reply
     msg.setDelayedReply(true);
@@ -152,10 +153,10 @@ bool ObexFtpDaemon::cancelTransfer(const QString &transfer)
     // We need this function because kio_obexftp is not owner of the transfer,
     // and thus cannot cancel it.
 
-    QDBusMessage call = QDBusMessage::createMethodCall("org.bluez.obex",
+    QDBusMessage call = QDBusMessage::createMethodCall(QStringLiteral("org.bluez.obex"),
                             transfer,
-                            "org.bluez.obex.Transfer1",
-                            "Cancel");
+                            QStringLiteral("org.bluez.obex.Transfer1"),
+                            QStringLiteral("Cancel"));
 
     QDBusReply<void> reply = QDBusConnection::sessionBus().call(call);
     return reply.isValid();
@@ -164,7 +165,7 @@ bool ObexFtpDaemon::cancelTransfer(const QString &transfer)
 void ObexFtpDaemon::sessionCreated(KJob* job)
 {
     CreateSessionJob* cJob = qobject_cast<CreateSessionJob*>(job);
-    kDebug(dobex()) << cJob->path();
+    qCDebug(OBEXDAEMON) << cJob->path();
 
     d->m_wipSessions.remove(cJob->address());
 
@@ -191,16 +192,18 @@ void ObexFtpDaemon::serviceUnregistered()
 
 void ObexFtpDaemon::interfaceRemoved(const QDBusObjectPath &dbusPath, const QStringList& interfaces)
 {
-    kDebug(dobex()) << dbusPath.path() << interfaces;
+    qCDebug(OBEXDAEMON) << dbusPath.path() << interfaces;
     const QString path = dbusPath.path();
     if (!d->m_reverseSessionMap.contains(path)) {
-        kDebug(dobex()) << d->m_reverseSessionMap;
+        qCDebug(OBEXDAEMON) << d->m_reverseSessionMap;
         return;
     }
 
     QString address = d->m_reverseSessionMap.take(path);
-    kDebug(dobex()) << address;
-    kDebug(dobex()) << d->m_sessionMap.remove(address);
+    qCDebug(OBEXDAEMON) << address;
+    qCDebug(OBEXDAEMON) << d->m_sessionMap.remove(address);
 }
 
-extern int dobex() { static int s_area = KDebug::registerArea("ObexDaemon", false); return s_area; }
+Q_LOGGING_CATEGORY(OBEXDAEMON, "ObexDaemon")
+
+#include "ObexFtpDaemon.moc"

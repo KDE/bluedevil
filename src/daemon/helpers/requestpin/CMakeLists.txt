@@ -3,13 +3,16 @@ set(requestpin_SRCS
     requestpin.cpp
 )
 
-kde4_add_ui_files(requestpin_UI
-                  dialogWidget.ui)
+ki18n_wrap_ui(requestpin_UI
+    dialogWidget.ui)
 
-kde4_add_executable(bluedevil-requestpin ${requestpin_SRCS} ${requestpin_UI})
+add_executable(bluedevil-requestpin ${requestpin_SRCS} ${requestpin_UI})
 
 target_link_libraries(bluedevil-requestpin
-                      ${KDE4_KIO_LIBRARY} ${KDE4_KDEUI_LIBS})
+    Qt5::Core
+    KF5::I18n
+    KF5::Notifications
+    KF5::Completion)
 
 install(TARGETS bluedevil-requestpin
         DESTINATION ${LIBEXEC_INSTALL_DIR})

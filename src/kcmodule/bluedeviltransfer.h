@@ -33,8 +33,7 @@ namespace BlueDevil {
 
 typedef BlueDevil::Adapter Adapter;
 
-class KCMBlueDevilTransfer
-    : public KCModule
+class KCMBlueDevilTransfer : public KCModule
 {
     Q_OBJECT
 

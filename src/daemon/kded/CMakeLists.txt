@@ -6,32 +6,37 @@ set(kded_bluedevil_SRCS
     filereceiver/receivefilejob.cpp
 )
 
-qt4_add_dbus_interface(kded_bluedevil_SRCS
+qt5_add_dbus_interface(kded_bluedevil_SRCS
     filereceiver/org.bluez.obex.AgentManager1.xml
     obex_agent_manager)
 
-qt4_add_dbus_interface(kded_bluedevil_SRCS
+qt5_add_dbus_interface(kded_bluedevil_SRCS
     filereceiver/org.bluez.obex.Transfer1.xml
     obex_transfer)
 
-qt4_add_dbus_interface(kded_bluedevil_SRCS
+qt5_add_dbus_interface(kded_bluedevil_SRCS
     filereceiver/org.bluez.obex.Session1.xml
     obex_session)
 
-qt4_add_dbus_interface(kded_bluedevil_SRCS
+qt5_add_dbus_interface(kded_bluedevil_SRCS
     filereceiver/org.freedesktop.DBus.Properties.xml
     dbus_properties)
 
-kde4_add_kcfg_files(kded_bluedevil_SRCS ../../settings/filereceiversettings.kcfgc)
+kconfig_add_kcfg_files(kded_bluedevil_SRCS ../../settings/filereceiversettings.kcfgc)
 
-kde4_add_plugin(kded_bluedevil
-    ${kded_bluedevil_SRCS}
-)
+add_library(kded_bluedevil MODULE ${kded_bluedevil_SRCS})
+
+kcoreaddons_desktop_to_json(kded_bluedevil bluedevil.desktop)
 
 target_link_libraries(kded_bluedevil
-    ${KDE4_KDECORE_LIBS}
-    ${KDE4_KDEUI_LIBS}
-    ${KDE4_KFILE_LIBS}
+    Qt5::Gui
+    KF5::I18n
+    KF5::CoreAddons
+    KF5::DBusAddons
+    KF5::Notifications
+    KF5::KIOCore
+    KF5::KIOFileWidgets
+    KF5::IconThemes
     ${LibBlueDevil_LIBRARIES}
 )
 

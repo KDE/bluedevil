@@ -23,8 +23,7 @@
 #define BLUEDEVILDAEMON_H
 
 #include <kdedmodule.h>
-#include <QMap>
-#include <QStringList>
+#include <QLoggingCategory>
 
 typedef QMap <QString, QString> DeviceInfo;
 typedef QMap<QString, DeviceInfo > QMapDeviceInfo;
@@ -33,10 +32,10 @@ class QDBusPendingCallWatcher;
 namespace BlueDevil {
     class Adapter;
     class Device;
-};
+}
 using namespace BlueDevil;
 
-class KDE_EXPORT BlueDevilDaemon
+class Q_DECL_EXPORT BlueDevilDaemon
     : public KDEDModule
 {
     Q_OBJECT
@@ -125,5 +124,5 @@ private:
     Private *d;
 };
 
-extern int dblue();
+Q_DECLARE_LOGGING_CATEGORY(BLUEDAEMON)
 #endif /*BLUEDEVILDAEMON_H*/

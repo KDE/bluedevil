@@ -20,7 +20,6 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-
 #ifndef SSPPAIRINGPAGE_H
 #define SSPPAIRINGPAGE_H
 
@@ -38,8 +37,7 @@ namespace BlueDevil {
 
 using namespace BlueDevil;
 
-class SSPPairingPage : public QWizardPage
-, Ui::SSPPairing
+class SSPPairingPage : public QWizardPage, Ui::SSPPairing
 {
 Q_OBJECT
 

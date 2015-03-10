@@ -22,11 +22,10 @@
 
 #ifndef KIO_OBEXFTP_H
 #define KIO_OBEXFTP_H
+
 #include "kdedobexftp.h"
 
-#include <QtCore/QObject>
-#include <QDBusObjectPath>
-#include <QEventLoop>
+#include <QObject>
 
 #include <kio/slavebase.h>
 
@@ -43,14 +42,14 @@ public:
     KioFtp(const QByteArray &pool, const QByteArray &app);
     virtual ~KioFtp();
 
-    virtual void copy(const KUrl &src, const KUrl &dest, int permissions, KIO::JobFlags flags);
-    virtual void listDir(const KUrl &url);
+    virtual void copy(const QUrl &src, const QUrl &dest, int permissions, KIO::JobFlags flags);
+    virtual void listDir(const QUrl &url);
     virtual void setHost(const QString &host, quint16 port, const QString &user, const QString &pass);
-    virtual void stat(const KUrl &url);
-    virtual void del(const KUrl &url, bool isfile);
-    virtual void mkdir(const KUrl&url, int permissions);
-    virtual void rename(const KUrl& src, const KUrl& dest, KIO::JobFlags flags);
-    virtual void get(const KUrl& url);
+    virtual void stat(const QUrl &url);
+    virtual void del(const QUrl &url, bool isfile);
+    virtual void mkdir(const QUrl&url, int permissions);
+    virtual void rename(const QUrl& src, const QUrl& dest, KIO::JobFlags flags);
+    virtual void get(const QUrl& url);
 
     bool cancelTransfer(const QString &transfer);
 
@@ -58,13 +57,13 @@ private Q_SLOTS:
     void updateProcess();
 
 private:
-    void copyHelper(const KUrl &src, const KUrl &dest);
-    void copyWithinObexftp(const KUrl &src, const KUrl &dest);
-    void copyFromObexftp(const KUrl &src, const KUrl &dest);
-    void copyToObexftp(const KUrl &src, const KUrl &dest);
-    void statHelper(const KUrl &url);
+    void copyHelper(const QUrl &src, const QUrl &dest);
+    void copyWithinObexftp(const QUrl &src, const QUrl &dest);
+    void copyFromObexftp(const QUrl &src, const QUrl &dest);
+    void copyToObexftp(const QUrl &src, const QUrl &dest);
+    void statHelper(const QUrl &url);
 
-    QList<KIO::UDSEntry> listFolder(const KUrl &url, bool *ok);
+    QList<KIO::UDSEntry> listFolder(const QUrl &url, bool *ok);
     bool changeFolder(const QString &folder);
     bool createFolder(const QString &folder);
     bool copyFile(const QString &src, const QString &dest);

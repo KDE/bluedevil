@@ -21,19 +21,18 @@
 
 #include "confirmmodechange.h"
 
-#include <QtCore/QDebug>
-#include <QtCore/QCoreApplication>
-#include <QtCore/QTimer>
+#include <QDebug>
+#include <QCoreApplication>
+#include <QTimer>
+#include <QIcon>
 
-#include <KIcon>
-#include <kiconloader.h>
-#include <knotification.h>
-#include <klocale.h>
+#include <KNotification>
+#include <KLocalizedString>
 
 ConfirmModeChange::ConfirmModeChange()
     : QObject()
 {
-    KNotification *notification = new KNotification("bluedevilConfirmModechange",
+    KNotification *notification = new KNotification(QStringLiteral("bluedevilConfirmModechange"),
                                                     KNotification::Persistent, this);
 
     notification->setText(i18nc(
@@ -54,7 +53,7 @@ ConfirmModeChange::ConfirmModeChange()
 
     // We're using persistent notifications so we have to use our own timeout (10s)
     QTimer::singleShot(10000, notification, SLOT(close()));
-    notification->setPixmap(KIcon("preferences-system-bluetooth").pixmap(42, 42));
+    notification->setPixmap(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")).pixmap(42, 42));
     notification->sendEvent();
 }
 

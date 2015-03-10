@@ -20,16 +20,18 @@
  ***************************************************************************/
 
 #include "bluezagent.h"
+#include "config.h"
 
-#include <QtDBus/QDBusConnection>
-#include <QtCore/QDebug>
-#include <QtCore/QProcess>
+#include <QDBusConnection>
+#include <QStandardPaths>
+#include <QDebug>
+#include <QProcess>
 
-#include <KStandardDirs>
 #include <KLocalizedString>
+
 #include <bluedevil/bluedevil.h>
 
-#define AGENT_PATH "/blueDevil_agent"
+#define AGENT_PATH QStringLiteral("/blueDevil_agent")
 
 BluezAgent::BluezAgent(QObject *parent)
     : QDBusAbstractAdaptor(parent)
@@ -68,14 +70,17 @@ void BluezAgent::AuthorizeService(const QDBusObjectPath &device, const QString& 
 
     m_msg = msg;
     m_msg.setDelayedReply(true);
-    m_currentHelper = "Authorize";
+    m_currentHelper = QLatin1String("Authorize");
 
     QStringList list;
     list.append(deviceName(device.path()));
     list.append(device.path());
 
+    const QString &exe = QStandardPaths::findExecutable(QStringLiteral("bluedevil-authorize"),
+                                                        QStringList(HELPER_INSTALL_PATH));
+
     connect(m_process, SIGNAL(finished(int)), this, SLOT(processClosedBool(int)));
-    m_process->start(KStandardDirs::findExe("bluedevil-authorize"), list);
+    m_process->start(exe, list);
 }
 
 QString BluezAgent::RequestPinCode(const QDBusObjectPath &device, const QDBusMessage &msg)
@@ -85,8 +90,12 @@ QString BluezAgent::RequestPinCode(const QDBusObjectPath &device, const QDBusMes
     m_msg.setDelayedReply(true);
 
     QStringList list(deviceName(device.path()));
+
+    const QString &exe = QStandardPaths::findExecutable(QStringLiteral("bluedevil-requestpin"),
+                                                        QStringList(HELPER_INSTALL_PATH));
+
     connect(m_process, SIGNAL(finished(int)), this, SLOT(processClosedPin(int)));
-    m_process->start(KStandardDirs::findExe("bluedevil-requestpin"), list);
+    m_process->start(exe, list);
 
     return QString();
 }
@@ -99,10 +108,13 @@ quint32 BluezAgent::RequestPasskey(const QDBusObjectPath &device, const QDBusMes
     m_msg.setDelayedReply(true);
 
     QStringList list(deviceName(device.path()));
-    list << QLatin1String("numeric");
+    list << QStringLiteral("numeric");
+
+    const QString &exe = QStandardPaths::findExecutable(QStringLiteral("bluedevil-requestpin"),
+                                                        QStringList(HELPER_INSTALL_PATH));
 
     connect(m_process, SIGNAL(finished(int)), this, SLOT(processClosedPasskey(int)));
-    m_process->start(KStandardDirs::findExe("bluedevil-requestpin"), list);
+    m_process->start(exe, list);
 
     return 0;
 }
@@ -118,14 +130,17 @@ void BluezAgent::RequestConfirmation(const QDBusObjectPath &device, quint32 pass
 
     m_msg = msg;
     m_msg.setDelayedReply(true);
-    m_currentHelper = "RequestConfirmation";
+    m_currentHelper = QLatin1String("RequestConfirmation");
 
     QStringList list;
     list.append(deviceName(device.path()));
     list.append(QString("%1").arg(passkey, 6, 10, QLatin1Char('0')));
 
+    const QString &exe = QStandardPaths::findExecutable(QStringLiteral("bluedevil-requestconfirmation"),
+                                                        QStringList(HELPER_INSTALL_PATH));
+
     connect(m_process, SIGNAL(finished(int)), this, SLOT(processClosedBool(int)));
-    m_process->start(KStandardDirs::findExe("bluedevil-requestconfirmation"), list);
+    m_process->start(exe, list);
 }
 
 void BluezAgent::Cancel()
@@ -160,7 +175,8 @@ void BluezAgent::processClosedPin(int exitCode)
         return;
     }
 
-    QDBusMessage error = m_msg.createErrorReply("org.bluez.Error.Canceled", "Pincode request failed");
+    QDBusMessage error = m_msg.createErrorReply(QStringLiteral("org.bluez.Error.Canceled"),
+                                                QStringLiteral("Pincode request failed"));
     QDBusConnection::systemBus().send(error);
 }
 
@@ -175,14 +191,16 @@ void BluezAgent::processClosedPasskey(int exitCode)
         return;
     }
 
-    QDBusMessage error = m_msg.createErrorReply("org.bluez.Error.Canceled", "Pincode request failed");
+    QDBusMessage error = m_msg.createErrorReply(QStringLiteral("org.bluez.Error.Canceled"),
+                                                QStringLiteral("Pincode request failed"));
     QDBusConnection::systemBus().send(error);
 }
 
 void BluezAgent::sendBluezError(const QString &helper, const QDBusMessage &msg)
 {
     qDebug() << "Sending canceled msg to bluetooth" << helper;
-    QDBusMessage error = msg.createErrorReply("org.bluez.Error.Canceled", "Authorization canceled");
+    QDBusMessage error = msg.createErrorReply(QStringLiteral("org.bluez.Error.Canceled"),
+                                              QStringLiteral("Authorization canceled"));
     QDBusConnection::systemBus().send(error);
 }
 

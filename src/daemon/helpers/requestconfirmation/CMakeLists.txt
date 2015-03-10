@@ -3,10 +3,12 @@ set(requestconfirmation_SRCS
     requestconfirmation.cpp
 )
 
-kde4_add_executable(bluedevil-requestconfirmation ${requestconfirmation_SRCS})
+add_executable(bluedevil-requestconfirmation ${requestconfirmation_SRCS})
 
 target_link_libraries(bluedevil-requestconfirmation
-                      ${KDE4_KIO_LIBRARY} ${KDE4_KDEUI_LIBS})
+    Qt5::Core
+    KF5::I18n
+    KF5::Notifications)
 
 install(TARGETS bluedevil-requestconfirmation
         DESTINATION ${LIBEXEC_INSTALL_DIR})

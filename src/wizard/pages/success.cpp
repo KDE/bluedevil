@@ -23,8 +23,10 @@
 
 #include "success.h"
 #include "bluewizard.h"
+#include "debug_p.h"
 
-#include <KDebug>
+#include <QIcon>
+
 #include <KLocalizedString>
 
 #include <bluedevil/bluedevildevice.h>
@@ -35,12 +37,12 @@ SuccessPage::SuccessPage(BlueWizard *parent)
 {
     setupUi(this);
 
-    successIcon->setPixmap(KIcon("task-complete").pixmap(48));
+    successIcon->setPixmap(QIcon::fromTheme(QStringLiteral("task-complete")).pixmap(48));
 }
 
 void SuccessPage::initializePage()
 {
-    kDebug() << "Initialize Success Page";
+    qCDebug(WIZARD) << "Initialize Success Page";
 
     QList<QWizard::WizardButton> list;
     list << QWizard::Stretch;

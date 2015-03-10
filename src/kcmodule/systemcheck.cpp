@@ -24,25 +24,21 @@
 
 #include <bluedevil/bluedevil.h>
 
-#include <kglobal.h>
-#include <kaction.h>
-#include <kdeversion.h>
-#include <kpushbutton.h>
 #include <kconfiggroup.h>
 #include <kcolorscheme.h>
-#include <kstandarddirs.h>
 #include <klocalizedstring.h>
 #include <kmessagewidget.h>
 
-#include <QtGui/QLabel>
-#include <QtGui/QWidget>
-#include <QtGui/QPainter>
-#include <QtGui/QBoxLayout>
-#include <QtGui/QPaintEvent>
+#include <QLabel>
+#include <QAction>
+#include <QWidget>
+#include <QPainter>
+#include <QBoxLayout>
+#include <QPaintEvent>
 
 SystemCheck::SystemCheck(QWidget *parent)
     : QObject(parent)
-    , m_kded(new KDED("org.kde.kded", "/kded", QDBusConnection::sessionBus()))
+    , m_kded(new KDED(QStringLiteral("org.kde.kded5"), QStringLiteral("/kded"), QDBusConnection::sessionBus()))
     , m_parent(parent)
     , m_noAdaptersError(0)
     , m_noUsableAdapterError(0)
@@ -73,7 +69,7 @@ void SystemCheck::createWarnings(QVBoxLayout *layout)
     m_noUsableAdapterError->setCloseButtonVisible(false);
     m_noUsableAdapterError->setText(i18n("Your Bluetooth adapter is powered off."));
 
-    KAction *fixNoUsableAdapter = new KAction(KIcon("dialog-ok-apply"), i18nc("Action to fix a problem", "Fix it"), m_noUsableAdapterError);
+    QAction *fixNoUsableAdapter = new QAction(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")), i18nc("Action to fix a problem", "Fix it"), m_noUsableAdapterError);
     connect(fixNoUsableAdapter, SIGNAL(triggered(bool)), this, SLOT(fixNoUsableAdapterError()));
     m_noUsableAdapterError->addAction(fixNoUsableAdapter);
     layout->addWidget(m_noUsableAdapterError);
@@ -82,7 +78,7 @@ void SystemCheck::createWarnings(QVBoxLayout *layout)
     m_notDiscoverableAdapterError->setMessageType(KMessageWidget::Warning);
     m_notDiscoverableAdapterError->setCloseButtonVisible(false);
 
-    KAction *fixNotDiscoverableAdapter = new KAction(KIcon("dialog-ok-apply"), i18nc("Action to fix a problem", "Fix it"), m_notDiscoverableAdapterError);
+    QAction *fixNotDiscoverableAdapter = new QAction(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")), i18nc("Action to fix a problem", "Fix it"), m_notDiscoverableAdapterError);
     connect(fixNotDiscoverableAdapter, SIGNAL(triggered(bool)), this, SLOT(fixNotDiscoverableAdapterError()));
     m_notDiscoverableAdapterError->addAction(fixNotDiscoverableAdapter);
     m_notDiscoverableAdapterError->setText(i18n("Your default Bluetooth adapter is not visible for remote devices."));
@@ -93,7 +89,7 @@ void SystemCheck::createWarnings(QVBoxLayout *layout)
     m_disabledNotificationsError->setMessageType(KMessageWidget::Warning);
     m_disabledNotificationsError->setCloseButtonVisible(false);
 
-    KAction *fixDisabledNotifications = new KAction(KIcon("dialog-ok-apply"), i18nc("Action to fix a problem", "Fix it"), m_disabledNotificationsError);
+    QAction *fixDisabledNotifications = new QAction(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")), i18nc("Action to fix a problem", "Fix it"), m_disabledNotificationsError);
     connect(fixDisabledNotifications, SIGNAL(triggered(bool)), this, SLOT(fixDisabledNotificationsError()));
     m_disabledNotificationsError->addAction(fixDisabledNotifications);
     m_disabledNotificationsError->setText(i18n("Interaction with Bluetooth system is not optimal."));
@@ -104,7 +100,7 @@ void SystemCheck::createWarnings(QVBoxLayout *layout)
     m_noKDEDRunning ->setMessageType(KMessageWidget::Warning);
     m_noKDEDRunning->setCloseButtonVisible(false);
 
-    KAction *fixNoKDEDRunning = new KAction(KIcon("dialog-ok-apply"), i18nc("Action to fix a problem", "Fix it"), m_noKDEDRunning);
+    QAction *fixNoKDEDRunning = new QAction(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")), i18nc("Action to fix a problem", "Fix it"), m_noKDEDRunning);
     connect(fixNoKDEDRunning, SIGNAL(triggered(bool)), this, SLOT(fixNoKDEDRunning()));
     m_noKDEDRunning->addAction(fixNoKDEDRunning);
     m_noKDEDRunning->setText(i18n("Bluetooth is not completely enabled."));
@@ -117,7 +113,7 @@ bool SystemCheck::checkKDEDModuleLoaded()
     const QStringList res = m_kded->loadedModules();
     bool moduleLoaded = false;
     foreach (const QString &module, res) {
-        if (module == "bluedevil") {
+        if (module == QLatin1String("bluedevil")) {
             moduleLoaded = true;
             break;
         }
@@ -127,17 +123,17 @@ bool SystemCheck::checkKDEDModuleLoaded()
 
 bool SystemCheck::checkNotificationsOK()
 {
-    KConfig config("bluedevil.notifyrc", KConfig::NoGlobals);
-    config.addConfigSources(KGlobal::dirs()->findAllResources("data", "bluedevil/bluedevil.notifyrc"));
+    KConfig config(QStringLiteral("bluedevil.notifyrc"), KConfig::NoGlobals);
+    config.addConfigSources(QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QStringLiteral("bluedevil/bluedevil.notifyrc")));
 
     QStringList confList = config.groupList();
-    QRegExp rx("^Event/([^/]*)$");
+    QRegExp rx(QStringLiteral("^Event/([^/]*)$"));
     confList = confList.filter(rx);
 
     Q_FOREACH (const QString &group , confList) {
         KConfigGroup cg(&config, group);
         const QString action = cg.readEntry("Action");
-        if (!action.contains("Popup")) {
+        if (!action.contains(QLatin1String("Popup"))) {
             return false;
         }
     }
@@ -191,7 +187,7 @@ void SystemCheck::updateInformationState()
 void SystemCheck::fixNoKDEDRunning()
 {
     m_noKDEDRunning->setVisible(false);
-    m_kded->loadModule("bluedevil");
+    m_kded->loadModule(QStringLiteral("bluedevil"));
 }
 
 void SystemCheck::fixNoUsableAdapterError()
@@ -213,11 +209,11 @@ void SystemCheck::fixDisabledNotificationsError()
 {
     m_disabledNotificationsError->setVisible(false);
 
-    KConfig config("bluedevil.notifyrc", KConfig::NoGlobals);
-    config.addConfigSources(KGlobal::dirs()->findAllResources("data", "bluedevil/bluedevil.notifyrc"));
+    KConfig config(QStringLiteral("bluedevil.notifyrc"), KConfig::NoGlobals);
+    config.addConfigSources(QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QStringLiteral("bluedevil/bluedevil.notifyrc")));
 
     QStringList confList = config.groupList();
-    QRegExp rx("^Event/([^/]*)$");
+    QRegExp rx(QStringLiteral("^Event/([^/]*)$"));
     confList = confList.filter(rx);
 
     Q_FOREACH (const QString &group , confList) {

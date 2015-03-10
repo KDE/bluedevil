@@ -21,21 +21,20 @@
 
 #include "authorize.h"
 
-#include <QtCore/QDebug>
-#include <QtCore/QCoreApplication>
-#include <QtCore/QTimer>
+#include <QDebug>
+#include <QCoreApplication>
+#include <QTimer>
+#include <QIcon>
 
-#include <KIcon>
-#include <klocale.h>
-#include <kiconloader.h>
-#include <knotification.h>
+#include <KNotification>
+#include <KLocalizedString>
 
 #include <bluedevil/bluedevil.h>
 
 Authorize::Authorize()
     : QObject()
 {
-    KNotification *notification = new KNotification("bluedevilAuthorize",
+    KNotification *notification = new KNotification(QStringLiteral("bluedevilAuthorize"),
                                                     KNotification::Persistent, this);
 
     notification->setText(i18nc(
@@ -56,7 +55,7 @@ Authorize::Authorize()
     connect(notification, SIGNAL(closed()), this, SLOT(deny()));
     connect(notification, SIGNAL(ignored()), this, SLOT(deny()));
 
-    notification->setPixmap(KIcon("preferences-system-bluetooth").pixmap(42, 42));
+    notification->setPixmap(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")).pixmap(42, 42));
 
     // We're using persistent notifications so we have to use our own timeout (10s)
     QTimer::singleShot(10000, notification, SLOT(close()));

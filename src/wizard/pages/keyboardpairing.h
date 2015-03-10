@@ -20,7 +20,6 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-
 #ifndef KEYBOARDPAIRING_H
 #define KEYBOARDPAIRING_H
 
@@ -37,8 +36,7 @@ namespace BlueDevil {
 
 using namespace BlueDevil;
 
-class KeyboardPairingPage : public QWizardPage
-, Ui::KeyboardPairing
+class KeyboardPairingPage : public QWizardPage, Ui::KeyboardPairing
 {
 Q_OBJECT
 

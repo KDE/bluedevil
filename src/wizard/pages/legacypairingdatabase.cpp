@@ -23,19 +23,26 @@
 #include "legacypairingdatabase.h"
 #include "bluewizard.h"
 #include "../wizardagent.h"
+#include "../debug_p.h"
 
-#include <KDebug>
+#include <QDebug>
+
+#include <KLocalizedString>
+#include <kiconloader.h>
+#include <kpixmapsequence.h>
 #include <kpixmapsequenceoverlaypainter.h>
 
 #include <bluedevil/bluedevil.h>
 
 using namespace BlueDevil;
 
-LegacyPairingPageDatabase::LegacyPairingPageDatabase(BlueWizard* parent) : QWizardPage(parent)
-, m_wizard(parent)
+LegacyPairingPageDatabase::LegacyPairingPageDatabase(BlueWizard* parent)
+    : QWizardPage(parent)
+    , m_wizard(parent)
 {
     setupUi(this);
     m_working = new KPixmapSequenceOverlayPainter(this);
+    m_working->setSequence(KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), 22));
     m_working->setWidget(working);
     m_working->start();
 }
@@ -53,7 +60,7 @@ void LegacyPairingPageDatabase::initializePage()
 
 void LegacyPairingPageDatabase::pairedChanged(bool paired)
 {
-    kDebug() << paired;
+    qCDebug(WIZARD) << paired;
     m_wizard->next();
 }
 

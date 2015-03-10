@@ -25,14 +25,16 @@
 #include "../sendfilewizard.h"
 
 #include <QLabel>
-#include <QDesktopServices>
-#include <QtGui/QVBoxLayout>
+#include <QStandardPaths>
+#include <QVBoxLayout>
+#include <QUrl>
+#include <QIcon>
+#include <QFileDialog>
 
-#include <KUrl>
-#include <kfiledialog.h>
-#include <kurlrequester.h>
+#include <KLocalizedString>
+#include <kiconloader.h>
+#include <kpixmapsequence.h>
 #include <kpixmapsequenceoverlaypainter.h>
-#include <KDebug>
 
 #include <bluedevil/bluedevil.h>
 
@@ -46,12 +48,13 @@ SelectDeviceAndFilesPage::SelectDeviceAndFilesPage(QWidget* parent): QWizardPage
     discoverLayout->addWidget(widget);
 
     KPixmapSequenceOverlayPainter *workingPainter = new KPixmapSequenceOverlayPainter(this);
+    workingPainter->setSequence(KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), 22));
     workingPainter->setWidget(working);
     workingPainter->start();
 
     int buttonSize = selectBtn->sizeHint().height();
     selectBtn->setFixedSize(buttonSize, buttonSize);
-    selectBtn->setIcon(KIcon("document-open"));
+    selectBtn->setIcon(QIcon::fromTheme(QStringLiteral("document-open")));
 
     connect(widget, SIGNAL(deviceSelected(Device*)), this, SLOT(deviceSelected(Device*)));
     connect(selectBtn, SIGNAL(clicked(bool)), this, SLOT(openFileDialog()));
@@ -73,10 +76,12 @@ void SelectDeviceAndFilesPage::openFileDialog()
     //Don't worry MLaurent, I'm not going to check the pointer before delete it :)
     delete m_dialog;
 
-    m_dialog = new KFileDialog(KUrl(QDesktopServices::storageLocation(QDesktopServices::HomeLocation)), "*", this);
-    m_dialog->setMode(KFile::Files);
+    m_dialog = new QFileDialog(this, i18n("Open file..."),
+                               QStandardPaths::writableLocation(QStandardPaths::HomeLocation),
+                               QStringLiteral("*"));
+    m_dialog->setFileMode(QFileDialog::ExistingFiles);
 
-    connect(m_dialog, SIGNAL(selectionChanged()), this, SLOT(selectionChanged()));
+    connect(m_dialog, SIGNAL(accepted()), this, SLOT(selectionChanged()));
 
     m_dialog->exec();
 }

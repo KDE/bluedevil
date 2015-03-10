@@ -26,36 +26,34 @@
 
 #include <bluedevil/bluedevil.h>
 
-#include <QtCore/QAbstractItemModel>
+#include <QLabel>
+#include <QDialog>
+#include <QPainter>
+#include <QCheckBox>
+#include <QListView>
+#include <QLineEdit>
+#include <QBoxLayout>
+#include <QHeaderView>
+#include <QPushButton>
+#include <QFontMetrics>
+#include <QDialogButtonBox>
+#include <QAbstractItemModel>
+#include <QStyledItemDelegate>
 
-#include <QtGui/QFontMetrics>
-#include <QtGui/QLabel>
-#include <QtGui/QPainter>
-#include <QtGui/QCheckBox>
-#include <QtGui/QListView>
-#include <QtGui/QBoxLayout>
-#include <QtGui/QHeaderView>
-#include <QtGui/QStyledItemDelegate>
-
-#include <kicon.h>
-#include <kdialog.h>
 #include <kprocess.h>
-#include <klineedit.h>
 #include <kaboutdata.h>
 #include <kmessagebox.h>
 #include <kiconloader.h>
-#include <kpushbutton.h>
-#include <kapplication.h>
 #include <kpluginfactory.h>
 #include <klocalizedstring.h>
 
-K_PLUGIN_FACTORY(BlueDevilFactory, registerPlugin<KCMBlueDevilDevices>();)
-K_EXPORT_PLUGIN(BlueDevilFactory("bluedevildevices", "bluedevil"))
+K_PLUGIN_FACTORY_WITH_JSON(BlueDevilFactory,
+                           "bluedevildevices.json",
+                           registerPlugin<KCMBlueDevilDevices>();)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class BluetoothDevicesModel
-    : public QAbstractItemModel
+class BluetoothDevicesModel : public QAbstractItemModel
 {
 public:
     enum ModelRoles {
@@ -225,19 +223,14 @@ private:
 };
 
 BluetoothDevicesDelegate::BluetoothDevicesDelegate(QObject *parent)
-    : QStyledItemDelegate(parent),
-      smallIconSize(IconSize(KIconLoader::Toolbar))
+    : QStyledItemDelegate(parent)
+    , smallIconSize(IconSize(KIconLoader::Toolbar))
 {
-    KIcon blockedIcon("dialog-cancel");
-    m_blockedPixmap = blockedIcon.pixmap(smallIconSize, smallIconSize);
-    KIcon trustedIcon("security-high");
-    m_trustedPixmap = trustedIcon.pixmap(smallIconSize, smallIconSize);
-    KIcon untrustedIcon("security-low");
-    m_untrustedPixmap = untrustedIcon.pixmap(smallIconSize, smallIconSize);
-    KIcon connectedIcon("user-online");
-    m_connectedPixmap = connectedIcon.pixmap(smallIconSize, smallIconSize);
-    KIcon disconnectedIcon("user-offline");
-    m_disconnectedPixmap = disconnectedIcon.pixmap(smallIconSize, smallIconSize);
+    m_blockedPixmap = QIcon::fromTheme(QStringLiteral("dialog-cancel")).pixmap(smallIconSize, smallIconSize);
+    m_trustedPixmap = QIcon::fromTheme(QStringLiteral("security-high")).pixmap(smallIconSize, smallIconSize);
+    m_untrustedPixmap = QIcon::fromTheme(QStringLiteral("security-low")).pixmap(smallIconSize, smallIconSize);
+    m_connectedPixmap = QIcon::fromTheme(QStringLiteral("user-online")).pixmap(smallIconSize, smallIconSize);
+    m_disconnectedPixmap = QIcon::fromTheme(QStringLiteral("user-offline")).pixmap(smallIconSize, smallIconSize);
 }
 
 BluetoothDevicesDelegate::~BluetoothDevicesDelegate()
@@ -256,17 +249,17 @@ void BluetoothDevicesDelegate::paint(QPainter *painter, const QStyleOptionViewIt
 
     QRect r = option.rect;
 
-// Draw icon
+    // Draw icon
     const QModelIndex iconIndex = index.model()->index(index.row(), 0);
     const QPixmap icon = iconIndex.data(BluetoothDevicesModel::IconModelRole).value<QPixmap>();
     painter->drawPixmap(r.left() + 5, r.top() + (r.height() - icon.height()) / 2, icon);
 
-// Draw alias and device type
+    // Draw alias and device type
     const QModelIndex idx = index.model()->index(index.row(), 0);
     r.setTop(r.top() + smallIconSize / 2);
     r.setBottom(r.bottom() - smallIconSize / 2);
     r.setLeft(r.left() + IconSize(KIconLoader::Dialog) * 1.8);
-    QFont f = kapp->font();
+    QFont f = option.font;
     f.setBold(true);
     painter->save();
     painter->setFont(f);
@@ -275,12 +268,12 @@ void BluetoothDevicesDelegate::paint(QPainter *painter, const QStyleOptionViewIt
     if (name == alias) {
         painter->drawText(r, Qt::AlignLeft | Qt::AlignTop, name);
     } else {
-        painter->drawText(r, Qt::AlignLeft | Qt::AlignTop, QString("%1 (%2)").arg(alias).arg(name));
+        painter->drawText(r, Qt::AlignLeft | Qt::AlignTop, QString(QStringLiteral("%1 (%2)")).arg(alias).arg(name));
     }
     painter->restore();
     painter->drawText(r, Qt::AlignLeft | Qt::AlignBottom, idx.data(BluetoothDevicesModel::DeviceTypeModelRole).toString());
 
-// Draw state
+    // Draw state
     Device *const device = static_cast<Device*>(index.data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
 
     r = option.rect;
@@ -307,31 +300,33 @@ void BluetoothDevicesDelegate::paint(QPainter *painter, const QStyleOptionViewIt
         painter->drawPixmap(r, m_blockedPixmap);
     }
 
-//restore
+    // Restore
     painter->restore();
 }
 
 QSize BluetoothDevicesDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     const int width = QStyledItemDelegate::sizeHint(option, index).width();
-    const int height = qMax( QFontMetrics(kapp->font()).height() * 2 + QFontMetrics(kapp->font()).xHeight(), (int)(IconSize(KIconLoader::Dialog) * 1.5)) + 10;
+    const int height = qMax(option.fontMetrics.height() * 2 + option.fontMetrics.xHeight(), (int)(IconSize(KIconLoader::Dialog) * 1.5)) + 10;
     return QSize(width, height);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
-    : KCModule(BlueDevilFactory::componentData(), parent)
+    : KCModule(parent)
     , m_enable(new QCheckBox(i18n("Enable KDE Bluetooth Integration"), this))
     , m_systemCheck(new SystemCheck(this))
     , m_deviceDetails(0)
 {
-    KAboutData* ab = new KAboutData(
-        "kcmbluedevildevices", "bluedevil", ki18n("Bluetooth Devices"), "1.0",
-        ki18n("Bluetooth Devices Control Panel Module"),
-        KAboutData::License_GPL, ki18n("(c) 2010 Rafael Fernández López"));
+    KAboutData* ab = new KAboutData(QStringLiteral("kcmbluedevildevices"),
+                                    i18n("Bluetooth Devices"),
+                                    QStringLiteral("1.0"),
+                                    i18n("Bluetooth Devices Control Panel Module"),
+                                    KAboutLicense::GPL,
+                                    i18n("(c) 2010 Rafael Fernández López"));
 
-    ab->addAuthor(ki18n("Rafael Fernández López"), ki18n("Developer and Maintainer"), "ereslibre@kde.org");
+    ab->addAuthor(i18n("Rafael Fernández López"), i18n("Developer and Maintainer"), QStringLiteral("ereslibre@kde.org"));
     setAboutData(ab);
 
     connect(m_systemCheck, SIGNAL(updateInformationStateRequest()),
@@ -340,14 +335,14 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     QVBoxLayout *layout = new QVBoxLayout;
     layout->addWidget(m_enable);
 
-    m_enable->setObjectName(QString::fromUtf8("kcfg_enableGlobalBluetooth"));
+    m_enable->setObjectName(QStringLiteral("kcfg_enableGlobalBluetooth"));
     addConfig(GlobalSettings::self(), this);
 
     m_isEnabled = m_enable->isChecked();
 
     m_systemCheck->createWarnings(layout);
 
-// Bluetooth device list
+    // Bluetooth device list
     m_devicesModel = new BluetoothDevicesModel(this);
 
     m_devices = new QListView(this);
@@ -362,16 +357,16 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
 
     layout->addWidget(m_devices);
 
-// Actions buttons
-    m_detailsDevice = new KPushButton(KIcon("document-properties"), i18nc("Details of the device", "Details"));
+    // Actions buttons
+    m_detailsDevice = new QPushButton(QIcon::fromTheme(QStringLiteral("document-properties")), i18nc("Details of the device", "Details"));
     m_detailsDevice->setEnabled(false);
-    m_removeDevice = new KPushButton(KIcon("list-remove"), i18nc("Remove a device from the list of known devices", "Remove"));
+    m_removeDevice = new QPushButton(QIcon::fromTheme(QStringLiteral("list-remove")), i18nc("Remove a device from the list of known devices", "Remove"));
     m_removeDevice->setEnabled(false);
-    m_connectDevice = new KPushButton(KIcon("network-connect"), i18n("Connect"));
+    m_connectDevice = new QPushButton(QIcon::fromTheme(QStringLiteral("network-connect")), i18n("Connect"));
     m_connectDevice->setEnabled(false);
-    m_disconnectDevice = new KPushButton(KIcon("network-disconnect"), i18n("Disconnect"));
+    m_disconnectDevice = new QPushButton(QIcon::fromTheme(QStringLiteral("network-disconnect")), i18n("Disconnect"));
     m_disconnectDevice->setEnabled(false);
-    m_addDevice = new KPushButton(KIcon("list-add"), i18n("Add Device..."));
+    m_addDevice = new QPushButton(QIcon::fromTheme(QStringLiteral("list-add")), i18n("Add Device..."));
 
     connect(m_detailsDevice, SIGNAL(clicked()), this, SLOT(detailsDevice()));
     connect(m_removeDevice, SIGNAL(clicked()), this, SLOT(removeDevice()));
@@ -390,7 +385,7 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
 
     setLayout(layout);
 
-//Logic
+    // Logic
     connect(BlueDevil::Manager::self(), SIGNAL(usableAdapterChanged(Adapter*)),
             this, SLOT(usableAdapterChanged(Adapter*)));
 
@@ -422,11 +417,11 @@ void KCMBlueDevilDevices::save()
 {
     KCModule::save();
     if (!m_isEnabled && m_enable->isChecked()) {
-        m_systemCheck->kded()->setModuleAutoloading("bluedevil", true);
-        m_systemCheck->kded()->loadModule("bluedevil");
+        m_systemCheck->kded()->setModuleAutoloading(QStringLiteral("bluedevil"), true);
+        m_systemCheck->kded()->loadModule(QStringLiteral("bluedevil"));
     } else if (m_isEnabled && !m_enable->isChecked()) {
-        m_systemCheck->kded()->setModuleAutoloading("bluedevil", false);
-        m_systemCheck->kded()->unloadModule("bluedevil");
+        m_systemCheck->kded()->setModuleAutoloading(QStringLiteral("bluedevil"), false);
+        m_systemCheck->kded()->unloadModule(QStringLiteral("bluedevil"));
     }
     m_isEnabled = m_enable->isChecked();
     updateInformationState();
@@ -478,31 +473,6 @@ void KCMBlueDevilDevices::detailsDevice()
     m_deviceDetails = 0;
 }
 
-
-void KCMBlueDevilDevices::renameAliasDevice()
-{
-    Device *const device = static_cast<Device*>(m_devices->currentIndex().data(BluetoothDevicesModel::DeviceModelRole).value<void*>());
-    KDialog *newAlias = new KDialog(this);
-    QWidget *widget = new QWidget(newAlias);
-    QVBoxLayout *layout = new QVBoxLayout;
-    layout->addWidget(new QLabel(i18n("Pick a new alias for %1", device->name()), widget));
-    KLineEdit *lineEdit = new KLineEdit(widget);
-    lineEdit->setText(device->alias());
-    lineEdit->selectAll();
-    layout->addWidget(lineEdit);
-    widget->setLayout(layout);
-    newAlias->setMainWidget(widget);
-    newAlias->setButtons(KDialog::Ok | KDialog::Cancel);
-    if (newAlias->exec() == KDialog::Accepted) {
-        if (lineEdit->text().isEmpty()) {
-            device->setAlias(device->name());
-        } else {
-            device->setAlias(lineEdit->text());
-        }
-    }
-    delete newAlias;
-}
-
 void KCMBlueDevilDevices::removeDevice()
 {
     m_removeDevice->setEnabled(false);
@@ -539,7 +509,7 @@ void KCMBlueDevilDevices::disconnectDevice()
 void KCMBlueDevilDevices::launchWizard()
 {
     KProcess wizard;
-    wizard.setProgram("bluedevil-wizard");
+    wizard.setProgram(QStringLiteral("bluedevil-wizard"));
     wizard.startDetached();
 }
 
@@ -581,11 +551,11 @@ void KCMBlueDevilDevices::generateNoDevicesMessage()
     m_noDevicesMessage->setBackgroundRole(QPalette::Base);
     m_noDevicesMessage->setAutoFillBackground(true);
     QLabel *label = new QLabel(m_noDevicesMessage);
-    label->setPixmap(KIcon("dialog-information").pixmap(128, 128));
+    label->setPixmap(QIcon::fromTheme(QStringLiteral("dialog-information")).pixmap(128, 128));
     layout->addWidget(label, 0, 1, Qt::AlignHCenter);
     layout->addWidget(new QLabel(i18n("No remote devices have been added"), m_noDevicesMessage),
                                  1, 1, Qt::AlignHCenter);
-    KPushButton *const addDevice = new KPushButton(KIcon("list-add"), i18n("Click here to add a remote device"));
+    QPushButton *const addDevice = new QPushButton(QIcon::fromTheme(QStringLiteral("list-add")), i18n("Click here to add a remote device"));
     connect(addDevice, SIGNAL(clicked()), this, SLOT(launchWizard()));
     layout->addWidget(addDevice, 2, 1, Qt::AlignHCenter);
     layout->setRowStretch(3, 1);
@@ -620,7 +590,7 @@ void KCMBlueDevilDevices::fillRemoteDevicesModelInformation()
     int i = 0;
     Q_FOREACH (Device *const device, deviceList) {
         QModelIndex index = m_devicesModel->index(i, 0);
-        m_devicesModel->setData(index, KIcon(device->icon()).pixmap(iconSize), BluetoothDevicesModel::IconModelRole);
+        m_devicesModel->setData(index, QIcon::fromTheme(device->icon()).pixmap(iconSize), BluetoothDevicesModel::IconModelRole);
         QString deviceType;
         const quint32 type = BlueDevil::classToType(device->deviceClass());
         switch (type) {
@@ -691,3 +661,5 @@ void KCMBlueDevilDevices::updateInformationState()
         }
     }
 }
+
+#include "bluedevildevices.moc"

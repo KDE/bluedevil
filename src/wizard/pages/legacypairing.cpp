@@ -20,24 +20,28 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-
 #include "legacypairing.h"
 #include "bluewizard.h"
+#include "wizardagent.h"
+#include "debug_p.h"
 
-#include <KDebug>
+#include <QDebug>
+
+#include <kiconloader.h>
+#include <kpixmapsequence.h>
 #include <kpixmapsequenceoverlaypainter.h>
 
 #include <bluedevil/bluedevil.h>
-#include <QTimer>
-#include <wizardagent.h>
 
 using namespace BlueDevil;
 
-LegacyPairingPage::LegacyPairingPage(BlueWizard* parent) : QWizardPage(parent)
-, m_wizard(parent)
+LegacyPairingPage::LegacyPairingPage(BlueWizard* parent)
+    : QWizardPage(parent)
+    , m_wizard(parent)
 {
     setupUi(this);
     m_working = new KPixmapSequenceOverlayPainter(this);
+    m_working->setSequence(KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), 22));
     m_working->setWidget(pinNumber);
     m_working->start();
 
@@ -49,7 +53,7 @@ LegacyPairingPage::LegacyPairingPage(BlueWizard* parent) : QWizardPage(parent)
 
 void LegacyPairingPage::initializePage()
 {
-    kDebug();
+    qCDebug(WIZARD);
     m_wizard->setButtonLayout(wizardButtonsLayout());
 
     Device *device = m_wizard->device();
@@ -67,7 +71,7 @@ void LegacyPairingPage::pinRequested(const QString& pin)
 
 void LegacyPairingPage::pairedChanged(bool paired)
 {
-    kDebug() << paired;
+    qCDebug(WIZARD) << paired;
     m_wizard->next();
 }
 

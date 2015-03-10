@@ -1,8 +1,7 @@
 /*****************************************************************************
  * This file is part of the KDE project                                      *
  *                                                                           *
- * Copyright (C) 2010 Alejandro Fiestas Olivares <afiestas@kde.org>          *
- * Copyright (C) 2010-2011 UFO Coders <info@ufocoders.com>                   *
+ * Copyright (C) 2014 David Rosca <nowrep@gmail.com>                         *
  *                                                                           *
  * This library is free software; you can redistribute it and/or             *
  * modify it under the terms of the GNU Library General Public               *
@@ -20,42 +19,11 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-#ifndef LEGACYPAIRINGDATABASE_H
-#define LEGACYPAIRINGDATABASE_H
+#ifndef DEBUG_P_H
+#define DEBUG_P_H
 
-#include "ui_nopairing.h"
-#include <QWizardPage>
+#include <QLoggingCategory>
 
-class BlueWizard;
-class KPixmapSequenceOverlayPainter;
+Q_DECLARE_LOGGING_CATEGORY(WIZARD)
 
-namespace BlueDevil {
-    class Device;
-    class Adapter;
-}
-
-using namespace BlueDevil;
-
-class LegacyPairingPageDatabase : public QWizardPage, Ui::NoPairing
-{
-Q_OBJECT
-
-public:
-    LegacyPairingPageDatabase(BlueWizard* parent = 0);
-
-    virtual void initializePage();
-    virtual bool validatePage();
-    virtual int nextId() const;
-
-public Q_SLOTS:
-    void pairedChanged(bool paired);
-
-protected:
-    QList <QWizard::WizardButton> wizardButtonsLayout() const;
-
-private:
-    BlueWizard                    *m_wizard;
-    KPixmapSequenceOverlayPainter *m_working;
-};
-
-#endif // LEGACYPAIRINGDATABASE_H
+#endif // DEBUG_P_H

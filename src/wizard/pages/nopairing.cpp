@@ -20,15 +20,18 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-
 #include "nopairing.h"
 #include "bluewizard.h"
+#include "debug_p.h"
 
-#include <KDebug>
+#include <QDebug>
+#include <QTimer>
+
+#include <kiconloader.h>
+#include <kpixmapsequence.h>
 #include <kpixmapsequenceoverlaypainter.h>
 
 #include <bluedevil/bluedevil.h>
-#include <QTimer>
 
 using namespace BlueDevil;
 
@@ -39,6 +42,7 @@ NoPairingPage::NoPairingPage(BlueWizard *parent)
 {
     setupUi(this);
     m_working = new KPixmapSequenceOverlayPainter(this);
+    m_working->setSequence(KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), 22));
     m_working->setWidget(working);
     m_working->start();
 }
@@ -53,7 +57,7 @@ int NoPairingPage::nextId() const
 
 void NoPairingPage::initializePage()
 {
-    kDebug();
+    qCDebug(WIZARD);
     m_wizard->setButtonLayout(wizardButtonsLayout());
 
     connecting->setText(connecting->text().append(m_wizard->device()->name()));
@@ -67,7 +71,7 @@ void NoPairingPage::initializePage()
 
 void NoPairingPage::connectedChanged(bool connected)
 {
-    kDebug() << "Connect finished" << connected;
+    qCDebug(WIZARD) << "Connect finished" << connected;
 
     // Connect may fail but that doesn't really mean the device was setup incorrectly
     // Device::connectDevice will fail eg. when A2DP profile could not be connected due to missing pulseaudio plugin

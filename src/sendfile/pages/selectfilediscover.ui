@@ -114,14 +114,8 @@
        </widget>
       </item>
       <item>
-       <widget class="KPushButton" name="selectBtn">
-        <property name="toolTip">
-         <string extracomment="Open file dialog"/>
-        </property>
+       <widget class="QPushButton" name="selectBtn">
         <property name="flat">
-         <bool>true</bool>
-        </property>
-        <property name="isDragEnabled" stdset="0">
          <bool>true</bool>
         </property>
        </widget>
@@ -131,13 +125,6 @@
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>KPushButton</class>
-   <extends>QPushButton</extends>
-   <header>kpushbutton.h</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

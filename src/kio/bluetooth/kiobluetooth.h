@@ -26,6 +26,9 @@
 #include "kdedbluedevil.h"
 
 #include <QObject>
+#include <QUrl>
+#include <QLoggingCategory>
+
 #include <kio/slavebase.h>
 
 /**
@@ -52,7 +55,7 @@ public:
      * get function shall not do much other than setting a mimetype and returning some data that
      * could be useful for the mimetype handler.
      */
-    void get(const KUrl &url);
+    void get(const QUrl &url);
 
     /**
      * List current directory. There are two types of current directories in this kio:
@@ -62,9 +65,9 @@ public:
      * 2. Remote device directory (something like bluetoth:/00_12_34_56_6d_34). This directory lists
      *    the services provided by the given remote device.
      */
-    void listDir(const KUrl &url);
+    void listDir(const QUrl &url);
 
-    void stat(const KUrl &url);
+    void stat(const QUrl &url);
 
     /**
      * As at the momento we don't handle more than one level url paths, @p setHost has not much
@@ -131,5 +134,7 @@ private:
      */
     org::kde::BlueDevil *m_kded;
 };
+
+Q_DECLARE_LOGGING_CATEGORY(BLUETOOTH)
 
 #endif // KIOBLUETOOTH_H
