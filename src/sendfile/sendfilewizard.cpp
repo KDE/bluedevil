@@ -118,22 +118,18 @@ void SendFileWizard::setDevice(Device *device)
     m_device = device;
 }
 
-void SendFileWizard::setDevice(QString deviceUrl)
+void SendFileWizard::setDevice(const QString &deviceUrl)
 {
     qCDebug(SENDFILE) << deviceUrl;
 
-    BlueDevil::Device *device = 0;
+    // KIO address: bluetooth://40-87-2b-1a-39-28/00001105-0000-1000-8000-00805F9B34FB
     if (deviceUrl.startsWith(QLatin1String("bluetooth"))) {
-        deviceUrl.remove(QStringLiteral("bluetooth:"));
-        deviceUrl.replace(QLatin1Char(':'), QLatin1Char('-'));
-        deviceUrl.prepend(QLatin1String("bluetooth:"));
-        QUrl url(deviceUrl);
-        device = Manager::self()->usableAdapter()->deviceForAddress(url.host().replace(QLatin1Char('-'), QLatin1Char(':')));
+        QString address = QUrl(deviceUrl).host();
+        address.replace(QLatin1Char('-'), QLatin1Char(':'));
+        m_device = Manager::self()->usableAdapter()->deviceForAddress(address.toUpper());
     } else {
-        device = Manager::self()->usableAdapter()->deviceForUBI(deviceUrl);
+        m_device = Manager::self()->usableAdapter()->deviceForUBI(deviceUrl);
     }
-
-    m_device = device;
 }
 
 Device *SendFileWizard::device()

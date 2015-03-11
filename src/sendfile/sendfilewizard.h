@@ -42,7 +42,7 @@ class SendFileWizard : public QWizard
     Q_OBJECT
 
 public:
-    explicit SendFileWizard(const QString &deviceUBI, const QStringList &files);
+    explicit SendFileWizard(const QString &deviceInfo, const QStringList &files);
     ~SendFileWizard();
 
     void done(int result) Q_DECL_OVERRIDE;
@@ -50,7 +50,7 @@ public:
     void setFiles(const QStringList &files);
 
     void setDevice(BlueDevil::Device *device);
-    void setDevice(QString deviceUrl);
+    void setDevice(const QString &deviceUrl);
     BlueDevil::Device *device();
 
     void startTransfer();
