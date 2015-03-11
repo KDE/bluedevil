@@ -404,7 +404,6 @@ void KioFtp::statHelper(const QUrl& url)
         entry.insert(KIO::UDSEntry::UDS_NAME, QStringLiteral("/"));
         entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
         entry.insert(KIO::UDSEntry::UDS_ACCESS, 0700);
-        entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, QStringLiteral("inode/directory"));
 
         qCDebug(OBEXFTP) << "Adding stat cached: " << url.toDisplayString();
         m_statMap[url.toDisplayString()] = entry;
@@ -453,7 +452,6 @@ QList<KIO::UDSEntry> KioFtp::listFolder(const QUrl &url, bool *ok)
         entry.insert(KIO::UDSEntry::UDS_SIZE, item[QStringLiteral("Size")].toLongLong());
         if (item[QStringLiteral("Type")] == QLatin1String("folder")) {
             entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
-            entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, QStringLiteral("inode/directory"));
         } else {
             entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
         }
