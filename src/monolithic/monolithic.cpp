@@ -17,7 +17,6 @@
  */
 
 #include "monolithic.h"
-#include "audio_interface.h"
 
 #include <QDebug>
 #include <QIcon>
