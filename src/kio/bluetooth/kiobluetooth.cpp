@@ -104,17 +104,19 @@ void KioBluetooth::listRemoteDeviceServices()
         return;
     }
 
-    m_currentHostServices = getSupportedServices(info.value(QStringLiteral("UUIDs")).split(QLatin1Char(',')));
+    const QList<Service> &services = getSupportedServices(info.value(QStringLiteral("UUIDs")).split(QLatin1Char(',')));
 
-    qCDebug(BLUETOOTH) << "Num of supported services: " << m_currentHostServices.size();
+    qCDebug(BLUETOOTH) << "Num of supported services: " << services.size();
 
-    totalSize(m_currentHostServices.count());
     int i = 1;
-    Q_FOREACH (const Service &service, m_currentHostServices) {
+    totalSize(services.count());
+
+    Q_FOREACH (const Service &service, services) {
         KIO::UDSEntry entry;
         entry.insert(KIO::UDSEntry::UDS_NAME, service.uuid);
         entry.insert(KIO::UDSEntry::UDS_DISPLAY_NAME, service.name);
         entry.insert(KIO::UDSEntry::UDS_ICON_NAME, service.icon);
+        entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRUSR | S_IRGRP | S_IROTH);
 
         // If it is browse files, act as a folder
         if (service.uuid == QLatin1String("00001106-0000-1000-8000-00805F9B34FB")) {
@@ -125,7 +127,6 @@ void KioBluetooth::listRemoteDeviceServices()
             entry.insert(KIO::UDSEntry::UDS_URL, obexUrl.toString());
         } else {
             entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
-            entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRWXU | S_IRWXG | S_IRWXO);
         }
 
         if (service.mimetype.isEmpty()) {
@@ -133,6 +134,7 @@ void KioBluetooth::listRemoteDeviceServices()
         } else {
             entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, service.mimetype);
         }
+
         listEntry(entry);
         processedSize(i++);
     }
@@ -227,7 +229,6 @@ void KioBluetooth::setHost(const QString &hostname, quint16 port, const QString 
         m_hasCurrentHost = false;
     } else {
         m_hasCurrentHost = true;
-        m_currentHostServices.clear();
 
         m_currentHostname = hostname;
         m_currentHostAddress = hostname.toUpper();

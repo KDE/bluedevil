@@ -117,12 +117,6 @@ private:
     QString m_currentHostAddress;
 
     /**
-     * When @p hasCurrentHost to true, this list holds the list of service names provided by the
-     * current host (which is a remote device we can connect to using those services).
-     */
-    QList<Service> m_currentHostServices;
-
-    /**
      * This is an array containing as key the uuid and as value the name of the service that the
      * given uuid represents, and a representative icon. It only contains the supported service names.
      */
