@@ -3,8 +3,6 @@ set(monolithic_SRCS
     monolithic.cpp
 )
 
-qt5_add_dbus_interface(monolithic_SRCS org.bluez.Audio.xml audio_interface)
-
 add_executable(bluedevil-monolithic ${monolithic_SRCS})
 
 target_link_libraries(bluedevil-monolithic
