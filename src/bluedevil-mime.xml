@@ -17,30 +17,6 @@ Notes:
     <sub-class-of type="inode/directory"/>
     <generic-icon name="video-display"/>
     <comment>Device</comment>
-    <comment xml:lang="bs">Poznat uređaj</comment>
-    <comment xml:lang="ca">Dispositiu conegut</comment>
-    <comment xml:lang="cs">Známé zařízení</comment>
-    <comment xml:lang="da">Kendt enhed</comment>
-    <comment xml:lang="de">Bekanntes Gerät</comment>
-    <comment xml:lang="el">Γνωστή συσκευή</comment>
-    <comment xml:lang="en_GB">Known Device</comment>
-    <comment xml:lang="es">Dispositivo conocido</comment>
-    <comment xml:lang="fi">Tunnettu laite</comment>
-    <comment xml:lang="fr">Périphérique connu</comment>
-    <comment xml:lang="it">Dispositivo conosciuto</comment>
-    <comment xml:lang="nl">Bekend apparaat</comment>
-    <comment xml:lang="pl">Znane urządzenie</comment>
-    <comment xml:lang="pt">Dispositivo Conhecido</comment>
-    <comment xml:lang="pt_BR">Dispositivo conhecido</comment>
-    <comment xml:lang="sk">Známe zariadenie</comment>
-    <comment xml:lang="sl">Znana naprava</comment>
-    <comment xml:lang="sr">познати уређај</comment>
-    <comment xml:lang="sr@ijekavian">познати уређај</comment>
-    <comment xml:lang="sr@ijekavianlatin">poznati uređaj</comment>
-    <comment xml:lang="sr@latin">poznati uređaj</comment>
-    <comment xml:lang="sv">Känd enhet</comment>
-    <comment xml:lang="uk">Відомий пристрій</comment>
-    <comment xml:lang="zh_TW">已知的裝置</comment>
   </mime-type>
   <mime-type type="inode/vnd.kde.bluedevil.service">
     <sub-class-of type="inode/directory"/>
