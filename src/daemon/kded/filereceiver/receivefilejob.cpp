@@ -221,6 +221,7 @@ void ReceiveFileJob::statusChanged(const QVariant &value)
         return;
     } else if (status == QLatin1String("error")) {
         setError(KJob::UserDefinedError);
+        setErrorText(i18n("Bluetooth transfer failed"));
         emitResult();
         return;
     }
@@ -258,6 +259,8 @@ void ReceiveFileJob::moveFinished(KJob *job)
         qCDebug(BLUEDAEMON) << job->error();
         qCDebug(BLUEDAEMON) << job->errorText();
         setError(job->error());
+        setErrorText(i18n("Saving file failed"));
+
         QFile::remove(m_tempPath);
     }
 

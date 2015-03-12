@@ -94,7 +94,8 @@ void SendFilesJob::createSessionSlot(QDBusPendingCallWatcher *call)
         qCDebug(SENDFILE) << "Error:";
         qCDebug(SENDFILE) << reply.error().name();
         qCDebug(SENDFILE) << reply.error().message();
-        setError(-1);
+        setError(KJob::UserDefinedError);
+        setErrorText(i18n("Creating OBEX session failed"));
         emitResult();
         return;
     }
@@ -145,6 +146,7 @@ void SendFilesJob::statusChanged(const QVariant& value)
         return;
     } else if (status == QLatin1String("error")) {
         setError(KJob::UserDefinedError);
+        setErrorText(i18n("Bluetooth transfer failed"));
         emitResult();
         return;
     }
@@ -212,22 +214,4 @@ void SendFilesJob::progress(quint64 transferBytes)
     m_currentFileProgress = transferBytes;
     m_progress += toAdd;
     setProcessedAmount(Bytes, m_progress);
-}
-
-void SendFilesJob::error(const QDBusObjectPath& transfer, const QString& error)
-{
-    Q_UNUSED(transfer)
-
-    qCDebug(SENDFILE) << error;
-
-    // If this is the last file, just emit error
-    if (m_filesToSend.isEmpty()) {
-        setError(KJob::UserDefinedError);
-        return;
-    }
-
-    quint64 toAdd = m_currentFileSize - m_currentFileProgress;
-    m_progress += toAdd;
-    setProcessedAmount(Bytes, m_progress);
-    nextJob();
 }

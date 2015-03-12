@@ -55,7 +55,6 @@ private Q_SLOTS:
     void nextJob();
     void jobDone();
     void progress(quint64 transferBytes);
-    void error(const QDBusObjectPath &transfer, const QString &error);
     void propertiesChangedSlot(const QString &interface, const QVariantMap &props, const QStringList &invalidProps);
     void sendFileSlot(QDBusPendingCallWatcher *watcher);
 

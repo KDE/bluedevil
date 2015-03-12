@@ -92,6 +92,7 @@ void TransferFileJob::statusChanged(const QVariant& value)
         return;
     } else if (status == QLatin1String("error")) {
         setError(KJob::UserDefinedError);
+        setErrorText(i18n("Bluetooth transfer failed"));
         emitResult();
         return;
     }
