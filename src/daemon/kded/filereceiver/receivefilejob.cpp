@@ -33,9 +33,9 @@
 #include <bluedevil/bluedevildevice.h>
 
 #include <KIO/Job>
-#include <kio/copyjob.h>
-#include <kio/global.h>
-#include <kjobtrackerinterface.h>
+#include <KIO/Global>
+#include <KIO/CopyJob>
+#include <KJobTrackerInterface>
 #include <KNotification>
 #include <KLocalizedString>
 #include <KIconLoader>
@@ -205,10 +205,10 @@ void ReceiveFileJob::statusChanged(const QVariant &value)
     savePath.setPath(savePath.path() + QLatin1Char('/') + m_originalFileName);
 
     if (status == QLatin1String("active")) {
-        emit description(this, i18n("Receiving file over Bluetooth"),
-                        QPair<QString, QString>(i18nc("File transfer origin", "From"),
-                        QString(m_deviceName)),
-                        QPair<QString, QString>(i18nc("File transfer destination", "To"), savePath.path()));
+        Q_EMIT description(this, i18n("Receiving file over Bluetooth"),
+                           QPair<QString, QString>(i18nc("File transfer origin", "From"),
+                           QString(m_deviceName)),
+                           QPair<QString, QString>(i18nc("File transfer destination", "To"), savePath.path()));
 
         setTotalAmount(Bytes, m_transfer->size());
         setProcessedAmount(Bytes, 0);
@@ -228,7 +228,7 @@ void ReceiveFileJob::statusChanged(const QVariant &value)
     qCDebug(BLUEDAEMON) << "Not implemented status: " << status;
 }
 
-void ReceiveFileJob::transferChanged(const QVariant& value)
+void ReceiveFileJob::transferChanged(const QVariant &value)
 {
     qCDebug(BLUEDAEMON) << value;
 
@@ -252,16 +252,20 @@ void ReceiveFileJob::transferChanged(const QVariant& value)
     setProcessedAmount(Bytes, bytes);
 }
 
-void ReceiveFileJob::moveFinished(KJob* job)
+void ReceiveFileJob::moveFinished(KJob *job)
 {
     if (job->error()) {
         qCDebug(BLUEDAEMON) << job->error();
         qCDebug(BLUEDAEMON) << job->errorText();
         setError(job->error());
-        setErrorText(QStringLiteral("Error in KIO::move"));
+        QFile::remove(m_tempPath);
     }
 
-    emitResult();
+    // Delay emitResult to make sure notification is displayed even
+    // for very small files that are received instantly
+    QTimer::singleShot(500, this, [this]() {
+        emitResult();
+    });
 }
 
 QString ReceiveFileJob::createTempPath(const QString &fileName) const
