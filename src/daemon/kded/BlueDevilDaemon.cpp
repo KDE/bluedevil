@@ -251,19 +251,6 @@ void BlueDevilDaemon::onlineMode()
         d->m_fileReceiver = 0;
     }
 
-    if (!d->m_placesModel) {
-        d->m_placesModel = new KFilePlacesModel();
-    }
-
-    // Just in case kded was killed or crashed
-    QModelIndex index = d->m_placesModel->closestItem(QUrl(QStringLiteral("bluetooth:/")));
-    while (index.row() != -1) {
-        d->m_placesModel->removePlace(index);
-        index = d->m_placesModel->closestItem(QUrl(QStringLiteral("bluetooth:/")));
-    }
-
-    d->m_placesModel->addPlace(QStringLiteral("Bluetooth"), QUrl(QStringLiteral("bluetooth:/")), QStringLiteral("preferences-system-bluetooth"));
-
     executeMonolithic();
 
     d->m_status = Private::Online;
@@ -296,12 +283,6 @@ void BlueDevilDaemon::offlineMode()
         qCDebug(BLUEDAEMON) << "Stoppping server";
         delete d->m_fileReceiver;
         d->m_fileReceiver = 0;
-    }
-
-    // Just to be sure that online was called
-    if (d->m_placesModel)  {
-        QModelIndex index = d->m_placesModel->closestItem(QUrl(QStringLiteral("bluetooth:/")));
-        d->m_placesModel->removePlace(index);
     }
 
     d->m_status = Private::Offline;

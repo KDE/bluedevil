@@ -19,3 +19,4 @@ target_link_libraries(kio_bluetooth
 ########### install files ###############
 install(TARGETS kio_bluetooth DESTINATION ${PLUGIN_INSTALL_DIR})
 install(FILES bluetooth.protocol DESTINATION ${SERVICES_INSTALL_DIR})
+install(FILES bluetooth-network.desktop DESTINATION  ${DATA_INSTALL_DIR}/remoteview)

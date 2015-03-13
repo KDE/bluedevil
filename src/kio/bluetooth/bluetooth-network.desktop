@@ -1,0 +1,7 @@
+[Desktop Entry]
+Icon=preferences-system-bluetooth
+Name=Bluetooth
+
+Open=false
+Type=Link
+URL=bluetooth:/
