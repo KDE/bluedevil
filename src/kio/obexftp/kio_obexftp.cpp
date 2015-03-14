@@ -540,10 +540,11 @@ void KioFtp::updateRootEntryIcon(KIO::UDSEntry &entry, const QString &memoryType
             entry.insert(KIO::UDSEntry::UDS_ICON_NAME, QStringLiteral("media-flash-sd-mmc"));
         }
     }
+
     // Android
     if (entry.stringValue(KIO::UDSEntry::UDS_NAME) == QLatin1String("PHONE_MEMORY")) {
         entry.insert(KIO::UDSEntry::UDS_DISPLAY_NAME, i18n("Phone memory"));
-        entry.insert(KIO::UDSEntry::UDS_ICON_NAME, QStringLiteral("smartphone"));
+        entry.insert(KIO::UDSEntry::UDS_ICON_NAME, QStringLiteral("drive-removable-media"));
     } else if (entry.stringValue(KIO::UDSEntry::UDS_NAME) == QLatin1String("EXTERNAL_MEMORY")) {
         entry.insert(KIO::UDSEntry::UDS_DISPLAY_NAME, i18n("External memory"));
         entry.insert(KIO::UDSEntry::UDS_ICON_NAME, QStringLiteral("media-flash-sd-mmc"));
