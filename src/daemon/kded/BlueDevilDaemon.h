@@ -100,6 +100,9 @@ private Q_SLOTS:
     void adapterAdded(Adapter *adapter);
     void adapterRemoved(Adapter *adapter);
 
+    void deviceFound(Device *device);
+    void deviceConnectedChanged(bool connected);
+
     /**
      * When the agent is released this is called to unload it
      */
@@ -107,7 +110,6 @@ private Q_SLOTS:
 
     void login1PrepareForSleep(bool active);
 
-    void deviceFound(Device *device);
     void monolithicQuit(QDBusPendingCallWatcher *watcher);
     void monolithicFinished(const QString &);
 
@@ -118,6 +120,9 @@ private:
     void saveAdaptersState();
     void restoreAdaptersState();
     void restoreAdapterState(Adapter *adapter);
+
+    void removeDevicePlaces();
+    void updateDevicePlace(Device *device);
 
     DeviceInfo deviceToInfo(Device *const device) const;
 

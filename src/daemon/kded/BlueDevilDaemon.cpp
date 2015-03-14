@@ -78,8 +78,8 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
 
     d->m_bluezAgent = 0;
     d->m_adapter = 0;
-    d->m_placesModel = 0;
     d->m_fileReceiver = 0;
+    d->m_placesModel = new KFilePlacesModel(this);
     d->m_monolithicWatcher = new QDBusServiceWatcher(QStringLiteral("org.kde.bluedevilmonolithic")
             , QDBusConnection::sessionBus(), QDBusServiceWatcher::WatchForUnregistration, this);
     d->m_timer.setSingleShot(true);
@@ -240,6 +240,11 @@ void BlueDevilDaemon::onlineMode()
     connect(d->m_bluezAgent, &BluezAgent::agentReleased, this, &BlueDevilDaemon::agentReleased);
     connect(d->m_adapter, &Adapter::deviceFound, this, &BlueDevilDaemon::deviceFound);
 
+    Q_FOREACH (Device *device, d->m_adapter->devices()) {
+        updateDevicePlace(device);
+        connect(device, &Device::connectedChanged, this, &BlueDevilDaemon::deviceConnectedChanged);
+    }
+
     FileReceiverSettings::self()->load();
     if (!d->m_fileReceiver && FileReceiverSettings::self()->enabled()) {
         d->m_fileReceiver = new FileReceiver(this);
@@ -285,6 +290,9 @@ void BlueDevilDaemon::offlineMode()
         d->m_fileReceiver = 0;
     }
 
+    // Remove all device shortcuts
+    removeDevicePlaces();
+
     d->m_status = Private::Offline;
 }
 
@@ -329,7 +337,19 @@ void BlueDevilDaemon::adapterRemoved(Adapter *adapter)
 void BlueDevilDaemon::deviceFound(Device *device)
 {
     qCDebug(BLUEDAEMON) << "DeviceFound: " << device->name();
+
+    connect(device, &Device::connectedChanged, this, &BlueDevilDaemon::deviceConnectedChanged);
+
     org::kde::KDirNotify::emitFilesAdded(QUrl(QStringLiteral("bluetooth:/")));
+}
+
+void BlueDevilDaemon::deviceConnectedChanged(bool connected)
+{
+    Q_UNUSED(connected)
+    Q_ASSERT(qobject_cast<Device*>(sender()));
+
+    Device *device = static_cast<Device*>(sender());
+    updateDevicePlace(device);
 }
 
 void BlueDevilDaemon::monolithicQuit(QDBusPendingCallWatcher *watcher)
@@ -379,6 +399,47 @@ void BlueDevilDaemon::restoreAdapterState(Adapter *adapter)
 
     const QString key = QString(QStringLiteral("%1_powered")).arg(adapter->address());
     adapter->setPowered(adaptersGroup.readEntry<bool>(key, true));
+}
+
+void BlueDevilDaemon::removeDevicePlaces()
+{
+    for (int i = 0; i < d->m_placesModel->rowCount(); ++i) {
+        const QModelIndex &index = d->m_placesModel->index(i, 0);
+        if (d->m_placesModel->url(index).scheme() == QLatin1String("obexftp")) {
+            d->m_placesModel->removePlace(index);
+            i--;
+        }
+    }
+}
+
+void BlueDevilDaemon::updateDevicePlace(Device *device)
+{
+    // OBEX File Transfer Protocol
+    if (!device->UUIDs().contains(QStringLiteral("00001106-0000-1000-8000-00805F9B34FB"))) {
+        return;
+    }
+
+    QUrl url;
+    url.setScheme(QStringLiteral("obexftp"));
+    url.setHost(device->address().replace(QLatin1Char(':'), QLatin1Char('-')));
+
+    const QModelIndex &index = d->m_placesModel->closestItem(url);
+
+    if (device->isConnected()) {
+        if (d->m_placesModel->url(index) != url) {
+            qCDebug(BLUEDAEMON) << "Adding place" << url;
+            QString icon = device->icon();
+            if (icon == QLatin1String("phone")) {
+                icon.prepend(QLatin1String("smart")); // Better breeze icon
+            }
+            d->m_placesModel->addPlace(device->name(), url, icon);
+        }
+    } else {
+        if (d->m_placesModel->url(index) == url) {
+            qCDebug(BLUEDAEMON) << "Removing place" << url;
+            d->m_placesModel->removePlace(index);
+        }
+    }
 }
 
 DeviceInfo BlueDevilDaemon::deviceToInfo(Device *const device) const
