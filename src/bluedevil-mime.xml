@@ -18,6 +18,7 @@ Notes:
     <generic-icon name="video-display"/>
     <comment>Device</comment>
     <comment xml:lang="cs">Zařízení</comment>
+    <comment xml:lang="de">Gerät</comment>
     <comment xml:lang="es">Dispositivo</comment>
     <comment xml:lang="nl">Apparaat</comment>
     <comment xml:lang="pt">Dispositivo</comment>
