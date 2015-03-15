@@ -22,11 +22,11 @@
 #ifndef BLUEDEVILDAEMON_H
 #define BLUEDEVILDAEMON_H
 
+#include <QMap>
 #include <KDEDModule>
-#include <QLoggingCategory>
 
 typedef QMap<QString, QString> DeviceInfo;
-typedef QMap<QString, DeviceInfo > QMapDeviceInfo;
+typedef QMap<QString, DeviceInfo> QMapDeviceInfo;
 
 class QDBusPendingCallWatcher;
 
@@ -96,19 +96,12 @@ private Q_SLOTS:
      * default adapter
      */
     void usableAdapterChanged(Adapter *adapter);
-
-    void adapterAdded(Adapter *adapter);
     void adapterRemoved(Adapter *adapter);
-
-    void deviceFound(Device *device);
-    void deviceConnectedChanged(bool connected);
 
     /**
      * When the agent is released this is called to unload it
      */
     void agentReleased();
-
-    void login1PrepareForSleep(bool active);
 
     void monolithicQuit(QDBusPendingCallWatcher *watcher);
     void monolithicFinished(const QString &);
@@ -117,13 +110,6 @@ private:
     void executeMonolithic();
     void killMonolithic();
 
-    void saveAdaptersState();
-    void restoreAdaptersState();
-    void restoreAdapterState(Adapter *adapter);
-
-    void removeDevicePlaces();
-    void updateDevicePlace(Device *device);
-
     DeviceInfo deviceToInfo(Device *const device) const;
 
 private:
@@ -131,5 +117,4 @@ private:
     Private *d;
 };
 
-Q_DECLARE_LOGGING_CATEGORY(BLUEDAEMON)
-#endif /*BLUEDEVILDAEMON_H*/
+#endif // BLUEDEVILDAEMON_H

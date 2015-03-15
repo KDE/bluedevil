@@ -21,6 +21,8 @@
 #include "BlueDevilDaemon.h"
 #include "bluezagent.h"
 #include "filereceiversettings.h"
+#include "devicemonitor.h"
+#include "debug_p.h"
 #include "version.h"
 
 #include "filereceiver/filereceiver.h"
@@ -28,17 +30,11 @@
 #include <QProcess>
 #include <QDBusServiceWatcher>
 #include <QDBusPendingReply>
-#include <QDBusMetaType>
 #include <QTimer>
-#include <QDebug>
-#include <QUrl>
 
 #include <KAboutData>
 #include <KPluginFactory>
 #include <KLocalizedString>
-#include <kfileplacesmodel.h>
-#include <kdirnotify.h>
-#include <ksharedconfig.h>
 
 #include <bluedevil/bluedevilmanager.h>
 #include <bluedevil/bluedeviladapter.h>
@@ -61,11 +57,10 @@ struct BlueDevilDaemon::Private
     } m_status;
 
     BluezAgent *m_bluezAgent;
-    KFilePlacesModel *m_placesModel;
     Adapter *m_adapter;
     QDBusServiceWatcher *m_monolithicWatcher;
     FileReceiver *m_fileReceiver;
-    KSharedConfig::Ptr m_config;
+    DeviceMonitor *m_deviceMonitor;
     QTimer m_timer;
 };
 
@@ -79,11 +74,10 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     d->m_bluezAgent = 0;
     d->m_adapter = 0;
     d->m_fileReceiver = 0;
-    d->m_placesModel = new KFilePlacesModel(this);
+    d->m_deviceMonitor = new DeviceMonitor(this);
     d->m_monolithicWatcher = new QDBusServiceWatcher(QStringLiteral("org.kde.bluedevilmonolithic")
             , QDBusConnection::sessionBus(), QDBusServiceWatcher::WatchForUnregistration, this);
     d->m_timer.setSingleShot(true);
-    d->m_config = KSharedConfig::openConfig(QStringLiteral("bluedevilglobalrc"));
 
     KAboutData aboutData(
         QStringLiteral("bluedevildaemon"),
@@ -107,21 +101,10 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     connect(&d->m_timer, &QTimer::timeout, this, &BlueDevilDaemon::stopDiscovering);
 
     connect(Manager::self(), &Manager::usableAdapterChanged, this, &BlueDevilDaemon::usableAdapterChanged);
-    connect(Manager::self(), &Manager::adapterAdded, this, &BlueDevilDaemon::adapterAdded);
     connect(Manager::self(), &Manager::adapterRemoved, this, &BlueDevilDaemon::adapterRemoved);
-
-    // Catch suspend/resume events
-    QDBusConnection::systemBus().connect(QStringLiteral("org.freedesktop.login1"),
-                                         QStringLiteral("/org/freedesktop/login1"),
-                                         QStringLiteral("org.freedesktop.login1.Manager"),
-                                         QStringLiteral("PrepareForSleep"),
-                                         this,
-                                         SLOT(login1PrepareForSleep(bool))
-                                         );
 
     d->m_status = Private::Offline;
 
-    restoreAdaptersState();
     usableAdapterChanged(Manager::self()->usableAdapter());
 
     if (!Manager::self()->adapters().isEmpty()) {
@@ -131,24 +114,11 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
 
 BlueDevilDaemon::~BlueDevilDaemon()
 {
-    saveAdaptersState();
-
     if (d->m_status == Private::Online) {
         offlineMode();
     }
 
     delete d;
-}
-
-void BlueDevilDaemon::login1PrepareForSleep(bool active)
-{
-    if (active) {
-        qCDebug(BLUEDAEMON) << "About to suspend";
-        saveAdaptersState();
-    } else {
-        qCDebug(BLUEDAEMON) << "About to resume";
-        restoreAdaptersState();
-    }
 }
 
 bool BlueDevilDaemon::isOnline()
@@ -238,12 +208,6 @@ void BlueDevilDaemon::onlineMode()
 
     d->m_bluezAgent = new BluezAgent(new QObject());
     connect(d->m_bluezAgent, &BluezAgent::agentReleased, this, &BlueDevilDaemon::agentReleased);
-    connect(d->m_adapter, &Adapter::deviceFound, this, &BlueDevilDaemon::deviceFound);
-
-    Q_FOREACH (Device *device, d->m_adapter->devices()) {
-        updateDevicePlace(device);
-        connect(device, &Device::connectedChanged, this, &BlueDevilDaemon::deviceConnectedChanged);
-    }
 
     FileReceiverSettings::self()->load();
     if (!d->m_fileReceiver && FileReceiverSettings::self()->enabled()) {
@@ -290,9 +254,6 @@ void BlueDevilDaemon::offlineMode()
         d->m_fileReceiver = 0;
     }
 
-    // Remove all device shortcuts
-    removeDevicePlaces();
-
     d->m_status = Private::Offline;
 }
 
@@ -320,11 +281,6 @@ void BlueDevilDaemon::usableAdapterChanged(Adapter *adapter)
     }
 }
 
-void BlueDevilDaemon::adapterAdded(Adapter *adapter)
-{
-    restoreAdapterState(adapter);
-}
-
 void BlueDevilDaemon::adapterRemoved(Adapter *adapter)
 {
     Q_UNUSED(adapter)
@@ -334,111 +290,11 @@ void BlueDevilDaemon::adapterRemoved(Adapter *adapter)
     }
 }
 
-void BlueDevilDaemon::deviceFound(Device *device)
-{
-    qCDebug(BLUEDAEMON) << "DeviceFound: " << device->name();
-
-    connect(device, &Device::connectedChanged, this, &BlueDevilDaemon::deviceConnectedChanged);
-
-    org::kde::KDirNotify::emitFilesAdded(QUrl(QStringLiteral("bluetooth:/")));
-}
-
-void BlueDevilDaemon::deviceConnectedChanged(bool connected)
-{
-    Q_UNUSED(connected)
-    Q_ASSERT(qobject_cast<Device*>(sender()));
-
-    Device *device = static_cast<Device*>(sender());
-    updateDevicePlace(device);
-}
-
 void BlueDevilDaemon::monolithicQuit(QDBusPendingCallWatcher *watcher)
 {
     QDBusPendingReply<void> reply = *watcher;
     if (reply.isError()) {
         qCDebug(BLUEDAEMON) << "Error response: " << reply.error().message();
-    }
-}
-
-void BlueDevilDaemon::saveAdaptersState()
-{
-    Manager *manager = Manager::self();
-    if (!manager) {
-        return;
-    }
-
-    KConfigGroup adaptersGroup = d->m_config->group("Adapters");
-
-    Q_FOREACH (Adapter *adapter, manager->adapters()) {
-        const QString key = QString(QStringLiteral("%1_powered")).arg(adapter->address());
-        adaptersGroup.writeEntry<bool>(key, adapter->isPowered());
-    }
-
-    d->m_config->sync();
-}
-
-// New adapters are automatically powered on
-void BlueDevilDaemon::restoreAdaptersState()
-{
-    Manager *manager = Manager::self();
-    if (!manager) {
-        return;
-    }
-
-    KConfigGroup adaptersGroup = d->m_config->group("Adapters");
-
-    Q_FOREACH (Adapter *adapter, manager->adapters()) {
-        const QString key = QString(QStringLiteral("%1_powered")).arg(adapter->address());
-        adapter->setPowered(adaptersGroup.readEntry<bool>(key, true));
-    }
-}
-
-void BlueDevilDaemon::restoreAdapterState(Adapter *adapter)
-{
-    KConfigGroup adaptersGroup = d->m_config->group("Adapters");
-
-    const QString key = QString(QStringLiteral("%1_powered")).arg(adapter->address());
-    adapter->setPowered(adaptersGroup.readEntry<bool>(key, true));
-}
-
-void BlueDevilDaemon::removeDevicePlaces()
-{
-    for (int i = 0; i < d->m_placesModel->rowCount(); ++i) {
-        const QModelIndex &index = d->m_placesModel->index(i, 0);
-        if (d->m_placesModel->url(index).scheme() == QLatin1String("obexftp")) {
-            d->m_placesModel->removePlace(index);
-            i--;
-        }
-    }
-}
-
-void BlueDevilDaemon::updateDevicePlace(Device *device)
-{
-    // OBEX File Transfer Protocol
-    if (!device->UUIDs().contains(QStringLiteral("00001106-0000-1000-8000-00805F9B34FB"))) {
-        return;
-    }
-
-    QUrl url;
-    url.setScheme(QStringLiteral("obexftp"));
-    url.setHost(device->address().replace(QLatin1Char(':'), QLatin1Char('-')));
-
-    const QModelIndex &index = d->m_placesModel->closestItem(url);
-
-    if (device->isConnected()) {
-        if (d->m_placesModel->url(index) != url) {
-            qCDebug(BLUEDAEMON) << "Adding place" << url;
-            QString icon = device->icon();
-            if (icon == QLatin1String("phone")) {
-                icon.prepend(QLatin1String("smart")); // Better breeze icon
-            }
-            d->m_placesModel->addPlace(device->name(), url, icon);
-        }
-    } else {
-        if (d->m_placesModel->url(index) == url) {
-            qCDebug(BLUEDAEMON) << "Removing place" << url;
-            d->m_placesModel->removePlace(index);
-        }
     }
 }
 
@@ -454,7 +310,5 @@ DeviceInfo BlueDevilDaemon::deviceToInfo(Device *const device) const
 
     return info;
 }
-
-Q_LOGGING_CATEGORY(BLUEDAEMON, "BlueDaemon")
 
 #include "BlueDevilDaemon.moc"

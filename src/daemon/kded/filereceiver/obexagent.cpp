@@ -18,7 +18,7 @@
 
 #include "obexagent.h"
 #include "receivefilejob.h"
-#include "../BlueDevilDaemon.h"
+#include "debug_p.h"
 
 #include <QIcon>
 #include <QDebug>

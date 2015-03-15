@@ -17,11 +17,11 @@
  *************************************************************************************/
 
 #include "receivefilejob.h"
-#include "../BlueDevilDaemon.h"
 #include "filereceiversettings.h"
 #include "obex_transfer.h"
 #include "obex_session.h"
 #include "dbus_properties.h"
+#include "debug_p.h"
 
 #include <QIcon>
 #include <QDebug>

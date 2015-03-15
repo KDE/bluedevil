@@ -1,6 +1,8 @@
 set(kded_bluedevil_SRCS
     BlueDevilDaemon.cpp
+    devicemonitor.cpp
     bluezagent.cpp
+    debug_p.cpp
     filereceiver/obexagent.cpp
     filereceiver/filereceiver.cpp
     filereceiver/receivefilejob.cpp

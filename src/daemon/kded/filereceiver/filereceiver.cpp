@@ -17,8 +17,8 @@
  *************************************************************************************/
 
 #include "filereceiver.h"
-#include "../BlueDevilDaemon.h"
 #include "obexagent.h"
+#include "debug_p.h"
 
 #include <QDBusConnection>
 #include <QDBusPendingCall>
