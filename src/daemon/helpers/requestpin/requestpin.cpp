@@ -40,7 +40,7 @@
 RequestPin::RequestPin() : QObject()
     , m_dialogWidget(0)
 {
-    m_notification = new KNotification(QStringLiteral("bluedevilRequestPin"),
+    m_notification = new KNotification(QStringLiteral("RequestPin"),
                                        KNotification::Persistent, this);
 
     m_notification->setText(i18nc(

@@ -125,8 +125,8 @@ void ReceiveFileJob::init()
 
 void ReceiveFileJob::showNotification()
 {
-    KNotification *m_notification = new KNotification(QStringLiteral("bluedevilIncomingFile"),
-        KNotification::Persistent, this);
+    KNotification *m_notification = new KNotification(QStringLiteral("IncomingFile"),
+                                                      KNotification::Persistent, this);
 
     m_notification->setText(i18nc(
         "Show a notification asking to authorize or deny an incoming file transfer to this computer from a Bluetooth device.",

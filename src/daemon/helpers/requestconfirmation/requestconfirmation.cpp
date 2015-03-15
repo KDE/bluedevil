@@ -30,7 +30,7 @@
 
 RequestConfirmation::RequestConfirmation() : QObject()
 {
-    KNotification *notification = new KNotification(QStringLiteral("bluedevilRequestConfirmation"),
+    KNotification *notification = new KNotification(QStringLiteral("RequestConfirmation"),
                                                     KNotification::Persistent, this);
 
     notification->setText(i18nc(

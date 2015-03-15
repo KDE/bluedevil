@@ -34,7 +34,7 @@
 Authorize::Authorize()
     : QObject()
 {
-    KNotification *notification = new KNotification(QStringLiteral("bluedevilAuthorize"),
+    KNotification *notification = new KNotification(QStringLiteral("Authorize"),
                                                     KNotification::Persistent, this);
 
     notification->setText(i18nc(

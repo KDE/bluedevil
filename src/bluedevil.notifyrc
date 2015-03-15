@@ -86,7 +86,7 @@ Name[x-test]=xxBluetoothxx
 Name[zh_TW]=藍牙
 Ignore=true
 
-[Event/bluedevilAuthorize]
+[Event/Authorize]
 Name=Authorization Requested
 Name[bs]=Zahtijeva odobrenje
 Name[ca]=Sol·licitud d'autorització
@@ -170,7 +170,7 @@ Comment[x-test]=xxA device wants to connectxx
 Comment[zh_TW]=某個裝置希望能與您連線
 Action=Popup
 
-[Event/bluedevilRequestConfirmation]
+[Event/RequestConfirmation]
 Name=Confirm PIN
 Name[bs]=Potvrdi pin
 Name[ca]=Confirmació del PIN
@@ -253,7 +253,7 @@ Comment[x-test]=xxConfirm a device request using matching PINsxx
 Comment[zh_TW]=利用比對 PIN 碼確認裝置的要求
 Action=Popup
 
-[Event/bluedevilRequestPin]
+[Event/RequestPin]
 Name=Request PIN
 Name[ar]=اطلب PIN
 Name[bs]=Zahtijevaj PIN
@@ -347,7 +347,7 @@ Comment[zh_CN]=需要 PIN
 Comment[zh_TW]=需要 PIN 碼
 Action=Popup
 
-[Event/bluedevilIncomingFile]
+[Event/IncomingFile]
 Name=Incoming File
 Name[ar]=الملف الوارد
 Name[bs]=Dolazeća datoteka
