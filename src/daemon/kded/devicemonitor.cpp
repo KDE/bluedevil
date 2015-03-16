@@ -113,6 +113,17 @@ void DeviceMonitor::saveState()
         adaptersGroup.writeEntry<bool>(key, adapter->isPowered());
     }
 
+    QStringList connectedDevices;
+
+    Q_FOREACH (Device *device, m_manager->devices()) {
+        if (device->isConnected()) {
+            connectedDevices.append(device->address());
+        }
+    }
+
+    KConfigGroup devicesGroup = m_config->group("Devices");
+    devicesGroup.writeEntry<QStringList>(QStringLiteral("connectedDevices"), connectedDevices);
+
     m_config->sync();
 }
 
@@ -123,6 +134,16 @@ void DeviceMonitor::restoreState()
     Q_FOREACH (Adapter *adapter, m_manager->adapters()) {
         const QString key = QString(QStringLiteral("%1_powered")).arg(adapter->address());
         adapter->setPowered(adaptersGroup.readEntry<bool>(key, true));
+    }
+
+    KConfigGroup devicesGroup = m_config->group("Devices");
+    const QStringList &connectedDevices = devicesGroup.readEntry<QStringList>(QStringLiteral("connectedDevices"), QStringList());
+
+    Q_FOREACH (const QString &addr, connectedDevices) {
+        Device *device = deviceForAddress(addr);
+        if (device) {
+            device->connectDevice();
+        }
     }
 }
 
@@ -173,4 +194,22 @@ void DeviceMonitor::updateDevicePlace(Device *device)
             m_places->removePlace(index);
         }
     }
+}
+
+Device *DeviceMonitor::deviceForAddress(const QString &address) const
+{
+    Device *device = 0;
+
+    Q_FOREACH (Adapter *adapter, m_manager->adapters()) {
+        if (!adapter->isPowered()) {
+            continue;
+        }
+
+        device = adapter->deviceForAddress(address);
+        if (device) {
+            break;
+        }
+    }
+
+    return device;
 }

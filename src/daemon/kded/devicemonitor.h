@@ -57,6 +57,8 @@ private:
     void clearPlaces();
     void updateDevicePlace(BlueDevil::Device *device);
 
+    BlueDevil::Device *deviceForAddress(const QString &address) const;
+
     BlueDevil::Manager *m_manager;
     KFilePlacesModel *m_places;
     KSharedConfig::Ptr m_config;
