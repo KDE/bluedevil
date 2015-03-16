@@ -1,8 +1,7 @@
 [Desktop Entry]
 Type=Service
-Icon=preferences-system-bluetooth
 X-KDE-ServiceTypes=KDEDModule
-X-KDE-Library=obexftpdaemon
+X-KDE-Library=kf5/kded/obexftpdaemon
 X-KDE-DBus-ModuleName=obexftpdaemon
 X-KDE-Kded-autoload=false
 X-KDE-Kded-load-on-demand=true
