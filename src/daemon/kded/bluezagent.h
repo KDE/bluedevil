@@ -22,130 +22,41 @@
 #ifndef BLUEZAGENT_H
 #define BLUEZAGENT_H
 
-#include <QDBusMessage>
-#include <QDBusObjectPath>
-#include <QDBusAbstractAdaptor>
+#include <BluezQt/Agent>
 
 class QProcess;
 
-namespace BlueDevil
-{
-    class Adapter;
-}
-
-/**
- * @internal
- * @short This class is only a delegate to be able to use agentlistener on a QThread (We can't inherit
- *        from 2 QObjects
- * This class is only a delegate to be able to use agentlistener on a QThread (We can't inherit
- * from 2 QObjects, so we had to create a new Class only to do the threading stuff
- * @ref AgentListenerWorker
- * @since 1.0
- */
-class BluezAgent : public QDBusAbstractAdaptor
+class BluezAgent : public BluezQt::Agent
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.bluez.Agent1")
 
 public:
-    /**
-     * Register the path and initialize the  m_adapter
-     */
     explicit BluezAgent(QObject *parent);
 
-public Q_SLOTS:
-    /**
-     * Called by bluez when another agent try to replace us as an agent
-     */
-    void Release();
+    QDBusObjectPath objectPath() const Q_DECL_OVERRIDE;
 
-    /**
-     * Called by bluez to ask for a device authoritation
-     */
-    void AuthorizeService(const QDBusObjectPath &device, const QString &uuid, const QDBusMessage &msg);
+    void authorizeService(BluezQt::DevicePtr device, const QString &uuid, const BluezQt::Request<> &request) Q_DECL_OVERRIDE;
+    void requestPinCode(BluezQt::DevicePtr device, const BluezQt::Request<QString> &request) Q_DECL_OVERRIDE;
+    void requestPasskey(BluezQt::DevicePtr device, const BluezQt::Request<quint32> &request) Q_DECL_OVERRIDE;
+    void requestConfirmation(BluezQt::DevicePtr device, const QString &passkey, const BluezQt::Request<> &request) Q_DECL_OVERRIDE;
+    void requestAuthorization(BluezQt::DevicePtr device, const BluezQt::Request<> &request) Q_DECL_OVERRIDE;
+    void release() Q_DECL_OVERRIDE;
 
-    /**
-     * Called by bluez to ask for a PIN
-     */
-    QString RequestPinCode(const QDBusObjectPath &device, const QDBusMessage &msg);
-
-    /**
-     * Called by bluez to ask for a passkey, currently is a aslias of RequestPinCode
-     */
-    quint32 RequestPasskey(const QDBusObjectPath &device, const QDBusMessage &msg);
-
-    /**
-     * Called by bluez to display the passkey (Currently it's not implemented because we don't know
-     * what to do with it).
-     */
-    void DisplayPasskey(const QDBusObjectPath &device, quint32 passkey);
-
-    /**
-     * Called by bluez to ask for a request confirmation
-     */
-    void RequestConfirmation(const QDBusObjectPath &device, quint32 passkey, const QDBusMessage &msg);
-
-    /**
-     * Called by bluez to inform that a process has failed (for example when the pin is introduced
-     * too late and the device which ask for the pin is no longer listening).
-     * We do anything here, since is not needed
-     */
-    void Cancel();
-
-    /**
-     * Slot for those calls that should return a Bool result
-     *
-     * This slot gets called when the helper process ends, and basically checks the exitCode
-     */
+private Q_SLOTS:
     void processClosedBool(int exitCode);
-
-    /**
-     * Just like @processClosedBool but this instead returns a String (the PIN)
-     *
-     * This slot gets called when the RequestPin helper ends
-     */
+    void processClosedAuthorize(int exitCode);
     void processClosedPin(int exitCode);
-
-    /**
-     * Just like @processClosedBool but this instead returns a quint32 (the PIN)
-     *
-     * This slot gets called when the RequestPasskey helper ends
-     */
     void processClosedPasskey(int exitCode);
 
 Q_SIGNALS:
-    /**
-     * Emited to propagate the release call (so BlueDevil can decide what to do)
-     */
     void agentReleased();
-
-public:
-    /**
-     * Called by agentListener just before delete. This is needed because ~QDBusAbstractAdaptor is
-     * not virtual
-     */
-    void unregister();
-
-private:
-    /**
-     * Unified method to return the bluez exception.
-     * @param helper Name of the helper
-     * @param msg The msg got from bluez
-     */
-    void sendBluezError(const QString &helper, const QDBusMessage &msg);
-
-    /**
-     * Returns the name of the device if it is registered on the bus
-     *
-     * @param UBI of the device
-     * @return the device->name() or "Bluetooth" if device doesn't exists;
-     */
-    QString deviceName(const QString &UBI);
 
 private:
     QProcess *m_process;
-    QDBusMessage m_msg;
-    QString m_currentHelper;
+    BluezQt::DevicePtr m_device;
+    BluezQt::Request<> m_boolRequest;
+    BluezQt::Request<quint32> m_passkeyRequest;
+    BluezQt::Request<QString> m_pinRequest;
 };
 
 #endif // BLUEZAGENT_H

@@ -17,8 +17,8 @@
 
 #include "bluewizard.h"
 #include "wizardagent.h"
-#include "pages/discoverpage.h"
-#include "pages/nopairing.h"
+#include "pages/discover.h"
+#include "pages/connect.h"
 #include "pages/legacypairing.h"
 #include "pages/legacypairingdatabase.h"
 #include "pages/keyboardpairing.h"
@@ -30,34 +30,24 @@
 #include <QApplication>
 #include <QDBusConnection>
 #include <QPushButton>
+#include <QProcess>
 #include <QString>
 
 #include <KStandardGuiItem>
 #include <KLocalizedString>
-#include <KProcess>
 
-#include <bluedevil/bluedevil.h>
+#include <BluezQt/InitManagerJob>
 
-BlueWizard::BlueWizard(const QUrl &url)
+BlueWizard::BlueWizard()
     : QWizard()
-    , m_device(0)
-    , m_manualPin(false)
+    , m_agent(new WizardAgent(this))
 {
     setWindowTitle(i18n("Bluetooth Device Wizard"));
 
     setOption(QWizard::IndependentPages, true);
 
-    if (url.host().length() == 17) {
-        setPreselectedAddress(url.host().replace(QLatin1Char('-'), QLatin1Char(':')));
-    }
-
-    if (url.fileName().length() == 36) {
-        setPreselectedUuid(url.fileName());
-    }
-
     setPage(Discover, new DiscoverPage(this));
-    setPage(NoPairing, new NoPairingPage(this));
-    setPage(Connect, new NoPairingPage(this));
+    setPage(Connect, new ConnectPage(this));
     setPage(LegacyPairing, new LegacyPairingPage(this));
     setPage(LegacyPairingDatabase, new LegacyPairingPageDatabase(this));
     setPage(KeyboardPairing, new KeyboardPairingPage(this));
@@ -86,54 +76,21 @@ BlueWizard::BlueWizard(const QUrl &url)
     setButtonText(QWizard::NextButton, i18nc("Action to go to the next page on the wizard", "Next"));
     setButtonText(QWizard::FinishButton, i18nc("Action to finish the wizard", "Finish"));
 
-    // First show, then do the rest
-    show();
-
-    if (!QDBusConnection::systemBus().registerObject(QStringLiteral("/wizardAgent"), qApp)) {
-        qCDebug(WIZARD) << "The dbus object can't be registered";
-    }
-
-    m_agent = new WizardAgent(qApp);
+    // Initialize BluezQt
+    m_manager = new BluezQt::Manager(this);
+    BluezQt::InitManagerJob *initJob = m_manager->init();
+    initJob->start();
+    connect(initJob, &BluezQt::InitManagerJob::result, this, &BlueWizard::initJobResult);
 }
 
-void BlueWizard::done(int result)
-{
-    qCDebug(WIZARD) << "Wizard done: " << result;
-
-    QWizard::done(result);
-    qApp->exit(result);
-}
-
-Device* BlueWizard::device() const
+BluezQt::DevicePtr BlueWizard::device() const
 {
     return m_device;
 }
 
-void BlueWizard::setDeviceAddress(const QString &address)
+void BlueWizard::setDevice(BluezQt::DevicePtr device)
 {
-    qCDebug(WIZARD) << "Device Address: " << address;
-
-    if (!Manager::self()->usableAdapter()) {
-        qCDebug(WIZARD) << "No usable adapter available";
-        return;
-    }
-
-    m_deviceAddress = address;
-    m_device = Manager::self()->usableAdapter()->deviceForAddress(m_deviceAddress);
-}
-
-QString BlueWizard::deviceAddress() const
-{
-    return m_deviceAddress;
-}
-
-void BlueWizard::restartWizard()
-{
-    KProcess proc;
-    proc.setProgram(QStringLiteral("bluedevil-wizard"));
-    proc.startDetached();
-
-    qApp->quit();
+    m_device = device;
 }
 
 void BlueWizard::setPin(const QString &pin)
@@ -148,31 +105,47 @@ QString BlueWizard::pin() const
     return m_pin;
 }
 
-void BlueWizard::setPreselectedUuid(const QString &uuid)
-{
-    qCDebug(WIZARD) << "Preselect UUID: " << uuid;
-
-    m_preselectedUuid = uuid;
-}
-
-QString BlueWizard::preselectedUuid() const
-{
-    return m_preselectedUuid;
-}
-
-void BlueWizard::setPreselectedAddress(const QString &address)
-{
-    qCDebug(WIZARD) << "Preselected Address: " << address;
-
-    m_preselectedAddress = address;
-}
-
-QString BlueWizard::preselectedAddress() const
-{
-    return m_preselectedAddress;
-}
-
 WizardAgent *BlueWizard::agent() const
 {
     return m_agent;
 }
+
+BluezQt::Manager *BlueWizard::manager() const
+{
+    return m_manager;
+}
+
+void BlueWizard::restartWizard()
+{
+    QProcess::startDetached(QStringLiteral("bluedevil-wizard"));
+
+    qApp->quit();
+}
+
+void BlueWizard::initJobResult(BluezQt::InitManagerJob *job)
+{
+    if (job->error()) {
+        qCDebug(WIZARD) << "Error initializing manager:" << job->errorText();
+        return;
+    }
+
+    qCDebug(WIZARD) << "Manager initialized";
+
+    // Register our agent
+    m_manager->registerAgent(m_agent);
+
+    // Start discovery
+    static_cast<DiscoverPage*>(page(Discover))->startDiscovery();
+
+    // Only show wizard after init is completed
+    show();
+}
+
+void BlueWizard::done(int result)
+{
+    qCDebug(WIZARD) << "Wizard done: " << result;
+
+    QWizard::done(result);
+    qApp->exit(result);
+}
+

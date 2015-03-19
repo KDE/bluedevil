@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010  Alex Fiestas <alex@eyeos.org>                     *
+ *   Copyright (C) 2010 Alex Fiestas <alex@eyeos.org>                      *
  *   Copyright (C) 2010 UFO Coders <info@ufocoders.com>                    *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,54 +18,41 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA            *
  ***************************************************************************/
 
-
 #ifndef WIZARDAGENT_H
 #define WIZARDAGENT_H
 
-#include <QtDBus>
-#include <QApplication>
-#include <QXmlStreamReader>
+#include <BluezQt/Agent>
 
-namespace BlueDevil
-{
-    class Device;
-}
-
-using namespace BlueDevil;
-class WizardAgent : public QDBusAbstractAdaptor
+class WizardAgent : public BluezQt::Agent
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.bluez.Agent1")
 
 public:
-    WizardAgent(QApplication* application);
-    ~WizardAgent();
+    explicit WizardAgent(QObject *parent = 0);
 
-    void setPin(const QString& pin);
-    QString getPin(Device* device);
     QString pin();
+    void setPin(const QString &pin);
+
     bool isFromDatabase();
+    QString getPin(BluezQt::DevicePtr device);
 
-//D-Bus interface implementation
-public slots:
-    void Release();
-    void AuthorizeService(const QDBusObjectPath &device, const QString& uuid, const QDBusMessage &msg);
-    QString RequestPinCode(const QDBusObjectPath &device, const QDBusMessage &msg);
-    quint32 RequestPasskey(const QDBusObjectPath &device, const QDBusMessage &msg);
-    void DisplayPinCode(const QDBusObjectPath &device, const QString & pincode);
-    void DisplayPasskey(const QDBusObjectPath &device, quint32 passkey, quint8 entered);
-    void RequestConfirmation(const QDBusObjectPath &device, quint32 passkey, const QDBusMessage &msg);
-    void Cancel();
+    QDBusObjectPath objectPath() const Q_DECL_OVERRIDE;
 
-private:
-    bool    m_fromDatabase;
-    QString m_pin;
-    Device *m_device;
+    void requestPinCode(BluezQt::DevicePtr device, const BluezQt::Request<QString> &req) Q_DECL_OVERRIDE;
+    void displayPinCode(BluezQt::DevicePtr device, const QString &pinCode) Q_DECL_OVERRIDE;
+    void requestPasskey(BluezQt::DevicePtr device, const BluezQt::Request<quint32> &req) Q_DECL_OVERRIDE;
+    void displayPasskey(BluezQt::DevicePtr device, const QString &passkey, const QString &entered) Q_DECL_OVERRIDE;
+    void requestConfirmation(BluezQt::DevicePtr device, const QString &passkey, const BluezQt::Request<> &req) Q_DECL_OVERRIDE;
+    void release() Q_DECL_OVERRIDE;
 
 Q_SIGNALS:
-    void pinRequested(const QString&);
-    void confirmationRequested(quint32 passkey, const QDBusMessage &msg);
+    void pinRequested(const QString &pin);
+    void confirmationRequested(const QString &passkey, const BluezQt::Request<> &req);
     void agentReleased();
+
+private:
+    bool m_fromDatabase;
+    QString m_pin;
 };
 
-#endif
+#endif // WIZARDAGENT_H

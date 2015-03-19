@@ -23,9 +23,12 @@
 
 #include <QObject>
 
+#include <BluezQt/Manager>
+
+#include "kded.h"
+
 class QVBoxLayout;
 
-class KDED;
 class KMessageWidget;
 
 class SystemCheck : public QObject
@@ -33,35 +36,33 @@ class SystemCheck : public QObject
     Q_OBJECT
 
 public:
-    SystemCheck(QWidget *parent);
-    virtual ~SystemCheck();
+    explicit SystemCheck(BluezQt::Manager *manager, QWidget *parent);
+
+    org::kde::kded5 *kded();
 
     void createWarnings(QVBoxLayout *layout);
-
-    bool checkKDEDModuleLoaded();
-    bool checkNotificationsOK();
-    KDED *kded();
-
-Q_SIGNALS:
-    void updateInformationStateRequest();
-
-public Q_SLOTS:
     void updateInformationState();
 
 private Q_SLOTS:
+    void usableAdapterChanged(BluezQt::AdapterPtr adapter);
+    void adapterDiscoverableChanged(bool discoverable);
+
     void fixNoKDEDRunning();
     void fixNoUsableAdapterError();
     void fixNotDiscoverableAdapterError();
     void fixDisabledNotificationsError();
 
 private:
-    KDED        *m_kded;
-    QWidget     *m_parent;
+    bool checkNotificationsOK();
+
+    QWidget *m_parent;
+    org::kde::kded5 *m_kded;
+    BluezQt::Manager *m_manager;
     KMessageWidget *m_noAdaptersError;
+    KMessageWidget *m_noKdedRunningError;
     KMessageWidget *m_noUsableAdapterError;
-    KMessageWidget *m_noKDEDRunning;
-    KMessageWidget *m_notDiscoverableAdapterError;
     KMessageWidget *m_disabledNotificationsError;
+    KMessageWidget *m_notDiscoverableAdapterError;
 };
 
-#endif //BLUEDEVIL_SYSTEM_CHECK_H
+#endif // BLUEDEVIL_SYSTEM_CHECK_H

@@ -45,17 +45,17 @@ public:
 
 private Q_SLOTS:
     /**
-     * Mark the remote device as trust and quit the application as success
-     */
-    void trust();
-
-    /**
-     * Quits the application as success
+     * 0 return value
      */
     void authorize();
 
     /**
-     * Quits the application as error
+     * 1 return value
+     */
+    void trust();
+
+    /**
+     * 2 return value
      */
     void deny();
 };

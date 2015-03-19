@@ -31,94 +31,82 @@
 #include <QDebug>
 #include <QIcon>
 
-#include <bluedevil/bluedevil.h>
+#include <QSortFilterProxyModel>
 
-using namespace BlueDevil;
+#include <BluezQt/Device>
+#include <BluezQt/Adapter>
+#include <BluezQt/Services>
+#include <BluezQt/DevicesModel>
 
-DiscoverWidget::DiscoverWidget(QWidget* parent)
+class DevicesProxyModel : public QSortFilterProxyModel
+{
+public:
+    explicit DevicesProxyModel(QObject *parent);
+
+    void setDevicesModel(BluezQt::DevicesModel *model);
+
+    QVariant data(const QModelIndex &index, int role) const Q_DECL_OVERRIDE;
+    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const Q_DECL_OVERRIDE;
+
+    BluezQt::DevicePtr device(const QModelIndex &index) const;
+
+private:
+    BluezQt::DevicesModel *m_devicesModel;
+};
+
+DevicesProxyModel::DevicesProxyModel(QObject *parent)
+    : QSortFilterProxyModel(parent)
+    , m_devicesModel(0)
+{
+    setDynamicSortFilter(true);
+    sort(0, Qt::DescendingOrder);
+}
+
+void DevicesProxyModel::setDevicesModel(BluezQt::DevicesModel *model)
+{
+    m_devicesModel = model;
+    setSourceModel(model);
+}
+
+QVariant DevicesProxyModel::data(const QModelIndex &index, int role) const
+{
+    switch (role) {
+    case Qt::DecorationRole:
+        return QIcon::fromTheme(index.data(BluezQt::DevicesModel::IconRole).toString());
+
+    default:
+        return QSortFilterProxyModel::data(index, role);
+    }
+}
+
+bool DevicesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
+{
+    QModelIndex index = sourceModel()->index(sourceRow, 0, sourceParent);
+
+    const QStringList &uuids = index.data(BluezQt::DevicesModel::UuidsRole).toStringList();
+    return uuids.contains(BluezQt::Services::ObexObjectPush);
+}
+
+DiscoverWidget::DiscoverWidget(BluezQt::Manager *manager, QWidget* parent)
     : QWidget(parent)
+    , m_manager(manager)
 {
     setupUi(this);
 
-    connect(deviceList, &QListWidget::currentItemChanged, this, &DiscoverWidget::itemSelected);
-    connect(Manager::self()->usableAdapter(), &Adapter::deviceFound, this, &DiscoverWidget::deviceFound);
+    m_model = new DevicesProxyModel(this);
+    m_model->setDevicesModel(new BluezQt::DevicesModel(manager, this));
+    devices->setModel(m_model);
 
-    startScan();
+    connect(devices->selectionModel(), &QItemSelectionModel::currentChanged, this, &DiscoverWidget::indexSelected);
 }
 
-void DiscoverWidget::startScan()
+BluezQt::DevicePtr DevicesProxyModel::device(const QModelIndex &index) const
 {
-    deviceList->clear();
-    stopScan();
-
-    QList<Device*> knownDevices = Manager::self()->usableAdapter()->devices();
-    Q_FOREACH(Device *device, knownDevices) {
-        if (device->UUIDs().contains(QLatin1String("00001105-0000-1000-8000-00805F9B34FB"), Qt::CaseInsensitive)) {
-            deviceFound(device);
-        }
-    }
-    Manager::self()->usableAdapter()->startDiscovery();
+    Q_ASSERT(m_devicesModel);
+    return m_devicesModel->device(mapToSource(index));
 }
 
-void DiscoverWidget::stopScan()
+void DiscoverWidget::indexSelected(const QModelIndex index)
 {
-    if (Manager::self()->usableAdapter()) {
-        Manager::self()->usableAdapter()->stopDiscovery();
-    }
-}
-
-void DiscoverWidget::deviceFound(Device *device)
-{
-    deviceFoundGeneric(device->address(), device->name(), device->icon(), device->alias());
-}
-
-void DiscoverWidget::deviceFoundGeneric(QString address, QString name, QString icon, QString alias)
-{
-    qCDebug(SENDFILE) << "========================";
-    qCDebug(SENDFILE) << "Address: " << address;
-    qCDebug(SENDFILE) << "Name: " << name;
-    qCDebug(SENDFILE) << "Alias: " << alias;
-    qCDebug(SENDFILE) << "Icon: " << icon;
-    qCDebug(SENDFILE) << "\n";
-
-
-    bool origName = false;
-    if (!name.isEmpty()) {
-        origName = true;
-    }
-
-    if (!alias.isEmpty() && alias != name && !name.isEmpty()) {
-        name = QString(QStringLiteral("%1 (%2)")).arg(alias).arg(name);
-    }
-
-    if (name.isEmpty()) {
-        name = address;
-    }
-
-    if (icon.isEmpty()) {
-        icon.append(QLatin1String("preferences-system-bluetooth"));
-    }
-
-    if (m_itemRelation.contains(address)) {
-        m_itemRelation[address]->setText(name);
-        m_itemRelation[address]->setIcon(QIcon::fromTheme(icon));
-        m_itemRelation[address]->setData(Qt::UserRole+1, origName);
-
-        if (deviceList->currentItem() == m_itemRelation[address]) {
-            emit deviceSelected(Manager::self()->usableAdapter()->deviceForAddress(address));
-        }
-        return;
-    }
-
-    QListWidgetItem *item = new QListWidgetItem(QIcon::fromTheme(icon), name, deviceList);
-
-    item->setData(Qt::UserRole, address);
-    item->setData(Qt::UserRole+1, origName);
-
-    m_itemRelation.insert(address, item);
-}
-
-void DiscoverWidget::itemSelected(QListWidgetItem *item)
-{
-    emit deviceSelected(Manager::self()->usableAdapter()->deviceForAddress(item->data(Qt::UserRole).toString()));
+    Q_EMIT deviceSelected(m_model->device(index));
 }

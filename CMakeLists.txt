@@ -22,7 +22,11 @@ find_package(KF5 MODULE REQUIRED COMPONENTS
     Notifications
     IconThemes
     I18n
-    KIO)
+    KIO
+    BluezQt)
+
+find_package(KDED REQUIRED)
+find_package(SharedMimeInfo REQUIRED)
 
 include(KDEInstallDirs)
 include(KDECMakeSettings)
@@ -32,11 +36,7 @@ include(FeatureSummary)
 
 configure_file(config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config.h)
 
-set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules ${CMAKE_MODULE_PATH})
-find_package(LibBlueDevil 5.0 REQUIRED)
-find_package(SharedMimeInfo REQUIRED)
-
-include_directories(${LibBlueDevil_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 add_subdirectory(src)
 

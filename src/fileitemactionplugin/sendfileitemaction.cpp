@@ -28,20 +28,20 @@
 #include <QVariantList>
 #include <QStringBuilder>
 
-#include <KPluginFactory>
+#include <QProcess>
 
-#include <KProcess>
+#include <KPluginFactory>
 #include <KLocalizedString>
+
+#include <BluezQt/Services>
 
 K_PLUGIN_FACTORY_WITH_JSON(SendFileItemActionFactory,
                            "bluedevilsendfile.json",
                            registerPlugin<SendFileItemAction>();)
 
-SendFileItemAction::SendFileItemAction(QObject *parent, const QVariantList &args)
+SendFileItemAction::SendFileItemAction(QObject *parent, const QVariantList&)
     : KAbstractFileItemActionPlugin(parent)
 {
-    Q_UNUSED(args)
-
     qDBusRegisterMetaType<DeviceInfo>();
     qDBusRegisterMetaType<QMapDeviceInfo>();
 
@@ -67,7 +67,7 @@ QList<QAction*> SendFileItemAction::actions(const KFileItemListProperties &infos
 
     const QMapDeviceInfo &devices = m_kded->allDevices().value();
     Q_FOREACH (const DeviceInfo &device, devices) {
-        if (device.value(QStringLiteral("UUIDs")).contains(QLatin1String("00001105-0000-1000-8000-00805F9B34FB"))) {
+        if (device.value(QStringLiteral("UUIDs")).contains(BluezQt::Services::ObexObjectPush)) {
             QAction *action = new QAction(QIcon::fromTheme(device[QStringLiteral("icon")]), device.value(QStringLiteral("name")), this);
             connect(action, &QAction::triggered, this, &SendFileItemAction::deviceTriggered);
             action->setData(device.value(QStringLiteral("UBI")));
@@ -100,9 +100,7 @@ void SendFileItemAction::deviceTriggered()
         args.append(QStringLiteral("-f") % url.path());
     }
 
-    KProcess process;
-    process.setProgram(QStringLiteral("bluedevil-sendfile"), args);
-    process.startDetached();
+    QProcess::startDetached(QStringLiteral("bluedevil-sendfile"), args);
 }
 
 void SendFileItemAction::otherTriggered()
@@ -114,9 +112,7 @@ void SendFileItemAction::otherTriggered()
         args.append(QStringLiteral("-f") % url.path());
     }
 
-    KProcess process;
-    process.setProgram(QStringLiteral("bluedevil-sendfile"), args);
-    process.startDetached();
+    QProcess::startDetached(QStringLiteral("bluedevil-sendfile"), args);
 }
 
 #include "sendfileitemaction.moc"

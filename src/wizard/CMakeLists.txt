@@ -4,8 +4,8 @@ set(wizard_SRCS
     wizardagent.cpp
     debug_p.cpp
 
-    pages/discoverpage.cpp
-    pages/nopairing.cpp
+    pages/discover.cpp
+    pages/connect.cpp
     pages/legacypairing.cpp
     pages/legacypairingdatabase.cpp
     pages/keyboardpairing.cpp
@@ -16,7 +16,7 @@ set(wizard_SRCS
 
 ki18n_wrap_ui(wizard_SRCS
             pages/discover.ui
-            pages/nopairing.ui
+            pages/connect.ui
             pages/legacypairing.ui
             pages/keyboardpairing.ui
             pages/ssppairing.ui
@@ -34,7 +34,7 @@ target_link_libraries(bluedevil-wizard
     KF5::DBusAddons
     KF5::WidgetsAddons
     KF5::IconThemes
-    ${LibBlueDevil_LIBRARIES})
+    KF5::BluezQt)
 
 install(TARGETS bluedevil-wizard ${INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES org.kde.bluedevilwizard.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})

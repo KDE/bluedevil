@@ -24,7 +24,7 @@
 #include <KAbstractFileItemActionPlugin>
 #include <KFileItemListProperties>
 
-#include "kded_bluedevil.h"
+#include "kdedbluedevil.h"
 
 class QAction;
 class QWidget;
@@ -34,7 +34,7 @@ class SendFileItemAction : public KAbstractFileItemActionPlugin
     Q_OBJECT
 
 public:
-    SendFileItemAction(QObject *parent, const QVariantList &args);
+    SendFileItemAction(QObject *parent, const QVariantList&);
     QList<QAction*> actions(const KFileItemListProperties &infos, QWidget *parent) Q_DECL_OVERRIDE;
 
 private Q_SLOTS:

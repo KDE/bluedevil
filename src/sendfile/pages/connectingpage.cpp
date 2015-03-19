@@ -23,11 +23,11 @@
 #include "connectingpage.h"
 #include "../sendfilewizard.h"
 
-#include "klocalizedstring.h"
+#include <QTimer>
 
-#include <bluedevil/bluedevil.h>
+#include <KLocalizedString>
 
-using namespace BlueDevil;
+#include <BluezQt/Device>
 
 ConnectingPage::ConnectingPage(QWidget *parent)
     : QWizardPage(parent)
@@ -37,11 +37,15 @@ ConnectingPage::ConnectingPage(QWidget *parent)
 
 void ConnectingPage::initializePage()
 {
-    Manager::self()->usableAdapter()->stopDiscovery();
-    Device *device = static_cast<SendFileWizard* >(wizard())->device();
+    SendFileWizard *w = static_cast<SendFileWizard*>(wizard());
+    w->stopDiscovery();
+
+    BluezQt::DevicePtr device = w->device();
     connLabel->setText(i18nc("Connecting to a Bluetooth device", "Connecting to %1...", device->name()));
 
-    static_cast<SendFileWizard*>(wizard())->startTransfer();
+    QTimer::singleShot(1000, this, [w]() {
+        w->startTransfer();
+    });
 }
 
 bool ConnectingPage::isComplete() const

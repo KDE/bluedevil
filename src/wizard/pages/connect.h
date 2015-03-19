@@ -23,25 +23,23 @@
 #ifndef NOPAIRING_H
 #define NOPAIRING_H
 
-#include "ui_nopairing.h"
-#include <QWizard>
+#include "ui_connect.h"
+
 #include <QWizardPage>
 
-class BlueWizard;
-class KPixmapSequenceOverlayPainter;
-
-namespace BlueDevil
+namespace BluezQt
 {
-    class Device;
-    class Adapter;
+    class PendingCall;
 }
 
-class NoPairingPage : public QWizardPage, Ui::NoPairing
+class BlueWizard;
+
+class ConnectPage : public QWizardPage, Ui::Connect
 {
     Q_OBJECT
 
 public:
-    explicit NoPairingPage(BlueWizard *parent = 0);
+    explicit ConnectPage(BlueWizard *parent = 0);
 
     int nextId() const Q_DECL_OVERRIDE;
     void initializePage() Q_DECL_OVERRIDE;
@@ -50,12 +48,11 @@ protected:
     QList<QWizard::WizardButton> wizardButtonsLayout() const;
 
 private Q_SLOTS:
-    void connectedChanged(bool connected);
+    void connectFinished(BluezQt::PendingCall *call);
 
 private:
-    bool m_success;
     BlueWizard *m_wizard;
-    KPixmapSequenceOverlayPainter *m_working;
+    bool m_success;
 };
 
 #endif // NOPAIRING_H

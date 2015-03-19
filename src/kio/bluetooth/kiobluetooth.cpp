@@ -27,8 +27,9 @@
 #include <QCoreApplication>
 #include <QDBusMetaType>
 
-#include <KProcess>
 #include <KLocalizedString>
+
+#include <BluezQt/Services>
 
 extern "C" int Q_DECL_EXPORT kdemain(int argc, char **argv)
 {
@@ -52,18 +53,20 @@ KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
 
     m_hasCurrentHost = false;
 
-    Service s;
-    s.name = i18n("Send File");
-    s.icon = QStringLiteral("edit-copy");
-    s.mimetype = QStringLiteral("application/vnd.kde.bluedevil-sendfile");
-    s.uuid = QStringLiteral("00001105-0000-1000-8000-00805F9B34FB");
-    m_supportedServices.insert(s.uuid, s);
+    Service sendFile;
+    sendFile.name = i18n("Send File");
+    sendFile.icon = QStringLiteral("edit-copy");
+    sendFile.mimetype = QStringLiteral("application/vnd.kde.bluedevil-sendfile");
+    sendFile.uuid = BluezQt::Services::ObexObjectPush;
 
-    s.name = i18n("Browse Files");
-    s.icon = QStringLiteral("edit-find");
-    s.mimetype = QString();
-    s.uuid = QStringLiteral("00001106-0000-1000-8000-00805F9B34FB");
-    m_supportedServices.insert(s.uuid, s);
+    Service browseFiles;
+    browseFiles.name = i18n("Browse Files");
+    browseFiles.icon = QStringLiteral("edit-find");
+    browseFiles.mimetype = QString();
+    browseFiles.uuid = BluezQt::Services::ObexFileTransfer;
+
+    m_supportedServices.insert(sendFile.uuid, sendFile);
+    m_supportedServices.insert(browseFiles.uuid, browseFiles);
 
     qCDebug(BLUETOOTH) << "Kio Bluetooth instanced!";
 
@@ -119,7 +122,7 @@ void KioBluetooth::listRemoteDeviceServices()
         entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRUSR | S_IRGRP | S_IROTH);
 
         // If it is browse files, act as a folder
-        if (service.uuid == QLatin1String("00001106-0000-1000-8000-00805F9B34FB")) {
+        if (service.uuid == BluezQt::Services::ObexFileTransfer) {
             QUrl obexUrl;
             obexUrl.setScheme(QStringLiteral("obexftp"));
             obexUrl.setHost(m_currentHostname.replace(QLatin1Char(':'), QLatin1Char('-')).toUpper());

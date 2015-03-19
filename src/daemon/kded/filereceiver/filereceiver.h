@@ -21,23 +21,32 @@
 
 #include <QObject>
 
-#include "obex_agent_manager.h"
+#include <BluezQt/ObexManager>
 
-class QDBusPendingCallWatcher;
+namespace BluezQt
+{
+    class Manager;
+    class PendingCall;
+}
+
+class ObexAgent;
 
 class FileReceiver : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit FileReceiver(QObject *parent = 0);
+    explicit FileReceiver(BluezQt::Manager *manager, QObject *parent = 0);
+    ~FileReceiver();
 
 private Q_SLOTS:
-    void registerAgent();
-    void agentRegistered(QDBusPendingCallWatcher *call);
+    void initJobResult(BluezQt::InitObexManagerJob *job);
+    void agentRegistered(BluezQt::PendingCall *call);
+    void operationalChanged(bool operational);
 
 private:
-    org::bluez::obex::AgentManager1 *m_agentManager;
+    BluezQt::ObexManager *m_manager;
+    ObexAgent *m_agent;
 };
 
 #endif // FILE_RECEIVER_H

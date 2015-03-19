@@ -14,12 +14,15 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QListWidget" name="deviceList">
+      <widget class="QListView" name="devices">
        <property name="iconSize">
         <size>
          <width>48</width>
          <height>48</height>
         </size>
+       </property>
+       <property name="verticalScrollMode">
+        <enum>QAbstractItemView::ScrollPerPixel</enum>
        </property>
       </widget>
      </item>

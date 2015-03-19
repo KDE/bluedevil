@@ -15,18 +15,15 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef DISCOVERPAGE_H
-#define DISCOVERPAGE_H
+#ifndef DISCOVER_H
+#define DISCOVER_H
 
 #include "ui_discover.h"
+
 #include <QWizardPage>
 
 class BlueWizard;
-
-namespace BlueDevil
-{
-    class Device;
-}
+class DevicesProxyModel;
 
 class DiscoverPage : public QWizardPage, public Ui::Discover
 {
@@ -35,23 +32,18 @@ class DiscoverPage : public QWizardPage, public Ui::Discover
 public:
     explicit DiscoverPage(BlueWizard *parent = 0);
 
+    void startDiscovery();
+
     void initializePage() Q_DECL_OVERRIDE;
     bool isComplete() const Q_DECL_OVERRIDE;
     int nextId() const Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
-    void startScan();
-    void deviceFound(BlueDevil::Device *device);
-    void itemSelected(QListWidgetItem *item);
-    void devicePropertyChanged();
+    void indexSelected(const QModelIndex &index);
 
 private:
-    void stopScan();
-
-private:
-    QMap<QString, QListWidgetItem*> m_itemRelation;
-    BlueDevil::Device *m_selectedDevice;
     BlueWizard *m_wizard;
+    DevicesProxyModel *m_model;
 };
 
-#endif // DISCOVERPAGE_H
+#endif // DISCOVER_H

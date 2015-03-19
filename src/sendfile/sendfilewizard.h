@@ -26,41 +26,45 @@
 #include <QObject>
 #include <QWizard>
 #include <QStringList>
+
+#include <BluezQt/Manager>
+
 #include "discoverwidget.h"
 
-class WizardAgent;
-class QStringList;
 class SendFilesJob;
-
-namespace BlueDevil
-{
-    class Device;
-}
 
 class SendFileWizard : public QWizard
 {
     Q_OBJECT
 
 public:
-    explicit SendFileWizard(const QString &deviceInfo, const QStringList &files);
+    explicit SendFileWizard(const QString &device, const QStringList &files);
     ~SendFileWizard();
 
     void done(int result) Q_DECL_OVERRIDE;
 
+    BluezQt::Manager *manager() const;
+
+    QStringList files() const;
     void setFiles(const QStringList &files);
 
-    void setDevice(BlueDevil::Device *device);
-    void setDevice(const QString &deviceUrl);
-    BlueDevil::Device *device();
+    BluezQt::DevicePtr device() const;
+    void setDevice(BluezQt::DevicePtr device);
+
+    void startDiscovery();
+    void stopDiscovery();
 
     void startTransfer();
 
 private Q_SLOTS:
-    void wizardDone();
+    void initJobResult(BluezQt::InitManagerJob *job);
 
 private:
+    QString m_deviceUrl;
     QStringList m_files;
-    BlueDevil::Device *m_device;
+
+    BluezQt::Manager *m_manager;
+    BluezQt::DevicePtr m_device;
     SendFilesJob *m_job;
 };
 

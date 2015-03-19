@@ -20,36 +20,28 @@
 #include "receivefilejob.h"
 #include "debug_p.h"
 
-#include <QIcon>
-#include <QDebug>
-#include <QDBusConnection>
+#include <QDBusObjectPath>
 
-ObexAgent::ObexAgent(QObject *parent)
-    : QDBusAbstractAdaptor(parent)
+ObexAgent::ObexAgent(BluezQt::Manager *manager, QObject *parent)
+    : BluezQt::ObexAgent(parent)
+    , m_manager(manager)
 {
-    if (!QDBusConnection::sessionBus().registerObject(QStringLiteral("/BlueDevil_receiveAgent"), parent)) {
-        qCWarning(BLUEDAEMON) << "The DBus object can't be registered";
-    }
 }
 
-QString ObexAgent::AuthorizePush(const QDBusObjectPath& path, const QDBusMessage &msg)
+BluezQt::Manager *ObexAgent::manager() const
 {
-    qCDebug(BLUEDAEMON) << "AuthorizePush" << path.path();
+    return m_manager;
+}
 
-    msg.setDelayedReply(true);
+QDBusObjectPath ObexAgent::objectPath() const
+{
+    return QDBusObjectPath(QStringLiteral("/BlueDevilObexAgent"));
+}
 
-    ReceiveFileJob *job = new ReceiveFileJob(msg, path.path(), this);
+void ObexAgent::authorizePush(BluezQt::ObexTransferPtr transfer, const BluezQt::Request<QString> &request)
+{
+    qCDebug(BLUEDAEMON) << "Agent-AuthorizePush";
+
+    ReceiveFileJob *job = new ReceiveFileJob(request, transfer, this);
     job->start();
-
-    return QString();
-}
-
-void ObexAgent::Cancel()
-{
-    qCDebug(BLUEDAEMON) << "Cancel";
-}
-
-void ObexAgent::Release()
-{
-    qCDebug(BLUEDAEMON) << "Release";
 }

@@ -22,14 +22,10 @@
  *****************************************************************************/
 
 #include "success.h"
-#include "bluewizard.h"
+#include "../bluewizard.h"
 #include "debug_p.h"
 
-#include <QIcon>
-
-#include <KLocalizedString>
-
-#include <bluedevil/bluedevildevice.h>
+#include <BluezQt/Device>
 
 SuccessPage::SuccessPage(BlueWizard *parent)
     : QWizardPage(parent)
@@ -38,6 +34,11 @@ SuccessPage::SuccessPage(BlueWizard *parent)
     setupUi(this);
 
     successIcon->setPixmap(QIcon::fromTheme(QStringLiteral("task-complete")).pixmap(48));
+}
+
+int SuccessPage::nextId() const
+{
+    return -1;
 }
 
 void SuccessPage::initializePage()
@@ -52,15 +53,11 @@ void SuccessPage::initializePage()
 
     setFinalPage(true);
 
-    QString deviceName = m_wizard->device()->name();
-    if (deviceName.isEmpty()) {
+    BluezQt::DevicePtr device = m_wizard->device();
+
+    if (device->name().isEmpty()) {
         successLbl->setText(i18nc("This string is shown when the wizard succeeds", "The setup of the device has succeeded"));
     } else {
-        successLbl->setText(i18n("The setup of %1 has succeeded", deviceName));
+        successLbl->setText(i18n("The setup of %1 has succeeded", device->name()));
     }
-}
-
-int SuccessPage::nextId() const
-{
-    return -1;
 }

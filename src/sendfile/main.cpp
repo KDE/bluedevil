@@ -28,10 +28,6 @@
 #include <KDBusService>
 #include <KLocalizedString>
 
-#include <bluedevil/bluedevil.h>
-
-using namespace BlueDevil;
-
 int main(int argc, char *argv[])
 {
     KAboutData aboutData(QStringLiteral("bluedevilsendfile"),
@@ -51,13 +47,13 @@ int main(int argc, char *argv[])
     KAboutData::setApplicationData(aboutData);
     KDBusService service;
 
-    QCommandLineOption kioOption({QLatin1String("kio"), QLatin1String("k")}, i18n("Device UUID where the files will be sent"));
+    QCommandLineOption kioOption(QStringList() << QStringLiteral("kio") << QStringLiteral("k"));
     kioOption.setValueName(QStringLiteral("bluetooth://mac"));
 
-    QCommandLineOption ubiOption({QLatin1String("ubi"), QLatin1String("u")}, i18n("Device UUID where the files will be sent"));
+    QCommandLineOption ubiOption(QStringList() << QStringLiteral("ubi") << QStringLiteral("u"));
     ubiOption.setValueName(QStringLiteral("ubi"));
 
-    QCommandLineOption filesOption({QLatin1String("files"), QLatin1String("f")}, i18n("Files that will be sent"));
+    QCommandLineOption filesOption(QStringList() << QStringLiteral("files") << QStringLiteral("f"));
     filesOption.setValueName(QStringLiteral("files"));
 
     QCommandLineParser parser;
@@ -76,7 +72,6 @@ int main(int argc, char *argv[])
     }
 
     SendFileWizard *wizard = new SendFileWizard(deviceInfo, parser.values(filesOption));
-    wizard->show();
 
     QObject::connect(&service, &KDBusService::activateRequested, wizard, [wizard]() {
         wizard->setWindowState((wizard->windowState() & ~Qt::WindowMinimized) | Qt::WindowActive);

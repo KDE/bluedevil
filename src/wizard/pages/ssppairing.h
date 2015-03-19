@@ -24,17 +24,18 @@
 #define SSPPAIRINGPAGE_H
 
 #include "ui_ssppairing.h"
+
 #include <QWizardPage>
-#include <QDBusMessage>
+
+#include <BluezQt/Request>
+
+namespace BluezQt
+{
+    class PendingCall;
+}
 
 class BlueWizard;
 class KPixmapSequenceOverlayPainter;
-
-namespace BlueDevil
-{
-    class Device;
-    class Adapter;
-}
 
 class SSPPairingPage : public QWizardPage, Ui::SSPPairing
 {
@@ -43,25 +44,25 @@ class SSPPairingPage : public QWizardPage, Ui::SSPPairing
 public:
     explicit SSPPairingPage(BlueWizard *parent = 0);
 
-    void initializePage() Q_DECL_OVERRIDE;
     int nextId() const Q_DECL_OVERRIDE;
-    bool validatePage() Q_DECL_OVERRIDE;
+    void initializePage() Q_DECL_OVERRIDE;
 
 public Q_SLOTS:
-    void confirmationRequested(quint32 passkey, const QDBusMessage &msg);
-    void pairedChanged(bool paired);
+    void setPairableFinished(BluezQt::PendingCall *call);
+    void pairingFinished(BluezQt::PendingCall *call);
+    void confirmationRequested(const QString &passkey, const BluezQt::Request<> &req);
+    void pinRequested(const QString &pin);
     void matchesClicked();
     void notMatchClicked();
-    void pinRequested(const QString &pin);
-
-protected:
-    QList<QWizard::WizardButton> wizardButtonsLayout() const;
+    void cancelClicked();
 
 private:
-    QDBusMessage m_msg;
-    QWizard::WizardButton m_buttonClicked;
+    QList<QWizard::WizardButton> wizardButtonsLayout() const;
+
     BlueWizard *m_wizard;
     KPixmapSequenceOverlayPainter *m_working;
+    BluezQt::Request<> m_req;
+    bool m_success;
 };
 
 #endif // SSPPAIRINGPAGE_H

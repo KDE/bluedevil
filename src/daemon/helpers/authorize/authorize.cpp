@@ -29,8 +29,6 @@
 #include <KNotification>
 #include <KLocalizedString>
 
-#include <bluedevil/bluedevil.h>
-
 Authorize::Authorize()
     : QObject()
 {
@@ -62,17 +60,16 @@ Authorize::Authorize()
     notification->sendEvent();
 }
 
-void Authorize::trust()
-{
-    qDebug() << "Trusted";
-    BlueDevil::Manager::self()->usableAdapter()->deviceForUBI(qApp->arguments().at(2))->setTrusted(true);
-    qApp->exit(0);
-}
-
 void Authorize::authorize()
 {
     qDebug() << "Accepted";
     qApp->exit(0);
+}
+
+void Authorize::trust()
+{
+    qDebug() << "Trusted";
+    qApp->exit(1);
 }
 
 void Authorize::deny()

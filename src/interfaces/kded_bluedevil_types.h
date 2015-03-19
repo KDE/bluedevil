@@ -1,8 +1,7 @@
 /*****************************************************************************
  * This file is part of the KDE project                                      *
  *                                                                           *
- * Copyright (C) 2010 Alejandro Fiestas Olivares <afiestas@kde.org>          *
- * Copyright (C) 2010-2011 UFO Coders <info@ufocoders.com>                   *
+ * Copyright (C) 2015 David Rosca <nowrep@gmail.com>                         *
  *                                                                           *
  * This library is free software; you can redistribute it and/or             *
  * modify it under the terms of the GNU Library General Public               *
@@ -20,26 +19,14 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-#ifndef FAIL_H
-#define FAIL_H
+#ifndef KDED_BLUEDEVIL_TYPES_H
+#define KDED_BLUEDEVIL_TYPES_H
 
-#include "ui_fail.h"
+#include <QMetaType>
 
-#include <QWizardPage>
+typedef QMap<QString, QString> DeviceInfo;
+typedef QMap<QString, DeviceInfo> QMapDeviceInfo;
+Q_DECLARE_METATYPE(DeviceInfo)
+Q_DECLARE_METATYPE(QMapDeviceInfo)
 
-class BlueWizard;
-
-class FailPage : public QWizardPage, Ui::Fail
-{
-    Q_OBJECT
-
-public:
-    explicit FailPage(BlueWizard *parent = 0);
-
-    void initializePage() Q_DECL_OVERRIDE;
-
-private:
-    BlueWizard *m_wizard;
-};
-
-#endif // FAIL_H
+#endif // KDED_BLUEDEVIL_TYPES_H

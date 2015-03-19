@@ -17,14 +17,14 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA   *
  *************************************************************************************/
 
-#include "kio_obexftp.h"
-#include "obexd_transfer.h"
-#include "obexd_file_transfer.h"
+#include "kioobexftp.h"
 #include "kdedobexftp.h"
+#include "kdedbluedevil.h"
 #include "version.h"
-#include "obexdtypes.h"
 #include "transferfilejob.h"
 #include "debug_p.h"
+
+#include <unistd.h>
 
 #include <QMimeData>
 #include <QTemporaryFile>
@@ -33,7 +33,8 @@
 
 #include <KLocalizedString>
 
-#include <unistd.h>
+#include <BluezQt/PendingCall>
+#include <BluezQt/ObexTransfer>
 
 extern "C" int Q_DECL_EXPORT kdemain(int argc, char **argv)
 {
@@ -71,26 +72,11 @@ KioFtp::KioFtp(const QByteArray &pool, const QByteArray &app)
     : SlaveBase(QByteArrayLiteral("obexftp"), pool, app)
     , m_transfer(0)
 {
-    m_timer = new QTimer();
-    m_timer->setInterval(100);
-
     qDBusRegisterMetaType<DeviceInfo>();
-    qDBusRegisterMetaType<QVariantMapList>();
+    qDBusRegisterMetaType<QMapDeviceInfo>();
+
     m_kded = new org::kde::ObexFtp(QStringLiteral("org.kde.kded5"), QStringLiteral("/modules/obexftpdaemon"),
-                                   QDBusConnection::sessionBus(), 0);
-}
-
-KioFtp::~KioFtp()
-{
-    delete m_kded;
-}
-
-void KioFtp::launchProgressBar()
-{
-    connect(m_timer, SIGNAL(timeout()), this, SLOT(updateProcess()));
-    totalSize(50);
-    m_counter = 0;
-    m_timer->start();
+                                   QDBusConnection::sessionBus(), this);
 }
 
 void KioFtp::connectToHost()
@@ -142,24 +128,11 @@ bool KioFtp::createSession(const QString &target)
     if (m_sessionPath != sessionPath) {
         m_statMap.clear();
         delete m_transfer;
-        m_transfer = new org::bluez::obex::FileTransfer1(QStringLiteral("org.bluez.obex"), sessionPath, QDBusConnection::sessionBus());
+        m_transfer = new BluezQt::ObexFileTransfer(QDBusObjectPath(sessionPath));
         m_sessionPath = sessionPath;
     }
 
     return true;
-}
-
-
-void KioFtp::updateProcess()
-{
-    if (m_counter == 49) {
-        disconnect(m_timer, SIGNAL(timeout()), this, SLOT(updateProcess()));
-        m_timer->stop();
-        return;
-    }
-
-    processedSize(m_counter);
-    m_counter++;
 }
 
 void KioFtp::listDir(const QUrl &url)
@@ -203,6 +176,7 @@ void KioFtp::copy(const QUrl &src, const QUrl &dest, int permissions, KIO::JobFl
     qCDebug(OBEXFTP) << "copy: " << src.url() << " to " << dest.url();
 
     copyHelper(src, dest);
+
     finished();
 }
 
@@ -222,7 +196,7 @@ void KioFtp::get(const QUrl& url)
     }
 
     QTemporaryFile tempFile(QString(QStringLiteral("%1/kioftp_XXXXXX.%2")).arg(QDir::tempPath(), urlFileName(url)));
-    tempFile.open();//Create the file
+    tempFile.open();
     qCDebug(OBEXFTP) << tempFile.fileName();
 
     copyHelper(url, QUrl(tempFile.fileName()));
@@ -256,15 +230,10 @@ void KioFtp::setHost(const QString &host, quint16 port, const QString &user, con
     m_host = host;
     m_host = m_host.replace(QLatin1Char('-'), QLatin1Char(':')).toUpper();
 
-    QDBusMessage call = QDBusMessage::createMethodCall(QStringLiteral("org.kde.kded5"),
-                            QStringLiteral("/modules/bluedevil"),
-                            QStringLiteral("org.kde.BlueDevil"),
-                            QStringLiteral("device"));
-    call << m_host;
-    QDBusReply<DeviceInfo> reply = QDBusConnection::sessionBus().call(call);
-    DeviceInfo info = reply.value();
+    org::kde::BlueDevil kded(QStringLiteral("org.kde.kded5"), QStringLiteral("/modules/bluedevil"), QDBusConnection::sessionBus());
+    const DeviceInfo &info = kded.device(m_host);
 
-    m_uuids = info[QStringLiteral("UUIDs")];
+    m_uuids = info.value(QStringLiteral("UUIDs"));
 
     infoMessage(i18n("Connecting to the device"));
 
@@ -278,9 +247,13 @@ void KioFtp::del(const QUrl& url, bool isfile)
     if (!testConnection()) {
         return;
     }
+
+    qCDebug(OBEXFTP) << "Del: " << url.url();
+
     if (!changeFolder(urlDirectory(url))) {
         return;
     }
+
     if (!deleteFile(urlFileName(url))) {
         return;
     }
@@ -301,6 +274,7 @@ void KioFtp::mkdir(const QUrl& url, int permissions)
     if (!changeFolder(urlDirectory(url))) {
         return;
     }
+
     if (!createFolder(urlFileName(url))) {
         return;
     }
@@ -349,10 +323,27 @@ void KioFtp::copyWithinObexftp(const QUrl &src, const QUrl &dest)
 {
     qCDebug(OBEXFTP) << "Source: " << src << "Dest:" << dest;
 
-    copyFile(src.path(), dest.path());
+    if (!changeFolder(urlDirectory(src))) {
+        return;
+    }
+
+    BluezQt::PendingCall *call = m_transfer->copyFile(src.path(), dest.path());
+    call->waitForFinished();
+
+    if (call->error()) {
+        // Copying files within obexftp is currently not implemented in obexd
+        if (call->errorText() == QLatin1String("Not Implemented")) {
+            error(KIO::ERR_UNSUPPORTED_ACTION, src.path());
+        } else {
+            error(KIO::ERR_COULD_NOT_WRITE, src.path());
+        }
+        return;
+    }
+
+    finished();
 }
 
-void KioFtp::copyFromObexftp(const QUrl& src, const QUrl& dest)
+void KioFtp::copyFromObexftp(const QUrl &src, const QUrl &dest)
 {
     qCDebug(OBEXFTP) << "Source: " << src << "Dest:" << dest;
 
@@ -360,13 +351,14 @@ void KioFtp::copyFromObexftp(const QUrl& src, const QUrl& dest)
         return;
     }
 
-    const QString &dbusPath = m_transfer->GetFile(dest.path(), urlFileName(src)).value().path();
-    qCDebug(OBEXFTP) << "Path from GetFile:" << dbusPath;
+    BluezQt::PendingCall *call = m_transfer->getFile(dest.path(), urlFileName(src));
+    call->waitForFinished();
 
     int size = m_statMap[src.toDisplayString()].numberValue(KIO::UDSEntry::UDS_SIZE);
     totalSize(size);
 
-    TransferFileJob *getFile = new TransferFileJob(dbusPath, this);
+    BluezQt::ObexTransferPtr transfer = call->value().value<BluezQt::ObexTransferPtr>();
+    TransferFileJob *getFile = new TransferFileJob(transfer, this);
     getFile->exec();
 }
 
@@ -378,13 +370,15 @@ void KioFtp::copyToObexftp(const QUrl& src, const QUrl& dest)
         return;
     }
 
-    const QString &dbusPath = m_transfer->PutFile(src.path(), urlFileName(dest)).value().path();
-    qCDebug(OBEXFTP) << "Path from PutFile: " << dbusPath;
+    BluezQt::PendingCall *call = m_transfer->putFile(src.path(), urlFileName(dest));
+    call->waitForFinished();
 
     int size = QFile(src.path()).size();
     totalSize(size);
 
-    TransferFileJob *putFile = new TransferFileJob(dbusPath, this);
+    BluezQt::ObexTransferPtr transfer = call->value().value<BluezQt::ObexTransferPtr>();
+    qCDebug(OBEXFTP) << transfer;
+    TransferFileJob *putFile = new TransferFileJob(transfer, this);
     putFile->exec();
 }
 
@@ -405,7 +399,7 @@ void KioFtp::statHelper(const QUrl& url)
         entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
         entry.insert(KIO::UDSEntry::UDS_ACCESS, 0700);
 
-        qCDebug(OBEXFTP) << "Adding stat cached: " << url.toDisplayString();
+        qCDebug(OBEXFTP) << "Adding stat cache" << url.toDisplayString();
         m_statMap[url.toDisplayString()] = entry;
         statEntry(entry);
         return;
@@ -434,38 +428,44 @@ QList<KIO::UDSEntry> KioFtp::listFolder(const QUrl &url, bool *ok)
 {
     QList<KIO::UDSEntry> list;
 
-    QDBusPendingReply<QVariantMapList> reply = m_transfer->ListFolder();
-    reply.waitForFinished();
+    BluezQt::PendingCall *call = m_transfer->listFolder();
+    call->waitForFinished();
 
-    if (reply.isError()) {
+    if (call->error()) {
+        qCDebug(OBEXFTP) << call->errorText();
         error(KIO::ERR_CANNOT_OPEN_FOR_READING, urlDirectory(url));
         *ok = false;
         return list;
     }
 
-    Q_FOREACH (const QVariantMap &item, reply.value()) {
+    const QList<BluezQt::ObexFileTransfer::Item> &items = call->value().value<QList<BluezQt::ObexFileTransfer::Item> >();
+
+    Q_FOREACH (const BluezQt::ObexFileTransfer::Item &item, items) {
         KIO::UDSEntry entry;
-        entry.insert(KIO::UDSEntry::UDS_NAME, item[QStringLiteral("Name")].toString());
-        entry.insert(KIO::UDSEntry::UDS_DISPLAY_NAME, item[QStringLiteral("Label")].toString());
+        entry.insert(KIO::UDSEntry::UDS_NAME, item.name);
+        entry.insert(KIO::UDSEntry::UDS_DISPLAY_NAME, item.label);
         entry.insert(KIO::UDSEntry::UDS_ACCESS, 0700);
-        entry.insert(KIO::UDSEntry::UDS_MODIFICATION_TIME, QDateTime::fromString(item[QStringLiteral("Modified")].toString(), "yyyyMMddThhmmssZ").toTime_t());
-        entry.insert(KIO::UDSEntry::UDS_SIZE, item[QStringLiteral("Size")].toLongLong());
-        if (item[QStringLiteral("Type")] == QLatin1String("folder")) {
+        entry.insert(KIO::UDSEntry::UDS_MODIFICATION_TIME, item.modified.toTime_t());
+        entry.insert(KIO::UDSEntry::UDS_SIZE, item.size);
+
+        if (item.type == BluezQt::ObexFileTransfer::Item::Folder) {
             entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
         } else {
             entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
         }
+
         if (urlIsRoot(url)) {
-            updateRootEntryIcon(entry, item[QStringLiteral("Mem-type")].toString());
+            updateRootEntryIcon(entry, item.memoryType);
         }
+
         list.append(entry);
 
-        //Most probably the client of the kio will stat each file
-        //so since we are on it, let's cache all of them.
+        // Most probably the client of the kio will stat each file
+        // so since we are on it, let's cache all of them.
         QUrl statUrl = url.adjusted(QUrl::RemoveFilename);
-        statUrl.setPath(statUrl.path() + item[QStringLiteral("Name")].toString());
+        statUrl.setPath(statUrl.path() + item.name);
         if (!m_statMap.contains(statUrl.toDisplayString())) {
-            qCDebug(OBEXFTP) << "Stat: " << statUrl.toDisplayString() << entry.stringValue(KIO::UDSEntry::UDS_NAME) <<  entry.numberValue(KIO::UDSEntry::UDS_SIZE);
+            qCDebug(OBEXFTP) << "Stat: " << statUrl.toDisplayString() << entry.stringValue(KIO::UDSEntry::UDS_NAME) << entry.numberValue(KIO::UDSEntry::UDS_SIZE);
             m_statMap.insert(statUrl.toDisplayString(), entry);
         }
     }
@@ -476,10 +476,10 @@ QList<KIO::UDSEntry> KioFtp::listFolder(const QUrl &url, bool *ok)
 
 bool KioFtp::changeFolder(const QString &folder)
 {
-    QDBusPendingReply<> reply = m_transfer->ChangeFolder(folder);
-    reply.waitForFinished();
+    BluezQt::PendingCall *call = m_transfer->changeFolder(folder);
+    call->waitForFinished();
 
-    if (reply.isError()) {
+    if (call->error()) {
         error(KIO::ERR_CANNOT_ENTER_DIRECTORY, folder);
         return false;
     }
@@ -488,29 +488,12 @@ bool KioFtp::changeFolder(const QString &folder)
 
 bool KioFtp::createFolder(const QString &folder)
 {
-    QDBusPendingReply<> reply = m_transfer->CreateFolder(folder);
-    reply.waitForFinished();
 
-    if (reply.isError()) {
-        error(KIO::ERR_COULD_NOT_MKDIR, folder);
-        return false;
-    }
-    return true;
-}
+    BluezQt::PendingCall *call = m_transfer->createFolder(folder);
+    call->waitForFinished();
 
-bool KioFtp::copyFile(const QString &src, const QString &dest)
-{
-    QDBusPendingReply<> reply = m_transfer->CopyFile(src, dest);
-    reply.waitForFinished();
-
-    if (reply.isError()) {
-        qCDebug(OBEXFTP) << reply.error().message();
-        // Copying files within obexftp is currently not implemented in obexd
-        if (reply.error().message() == QLatin1String("Not Implemented")) {
-            error(KIO::ERR_UNSUPPORTED_ACTION, src);
-        } else {
-            error(KIO::ERR_COULD_NOT_WRITE, src);
-        }
+    if (call->error()) {
+        error(KIO::ERR_CANNOT_MKDIR, folder);
         return false;
     }
     return true;
@@ -518,10 +501,10 @@ bool KioFtp::copyFile(const QString &src, const QString &dest)
 
 bool KioFtp::deleteFile(const QString &file)
 {
-    QDBusPendingReply<> reply = m_transfer->Delete(file);
-    reply.waitForFinished();
+    BluezQt::PendingCall *call = m_transfer->deleteFile(file);
+    call->waitForFinished();
 
-    if (reply.isError()) {
+    if (call->error()) {
         error(KIO::ERR_CANNOT_DELETE, file);
         return false;
     }

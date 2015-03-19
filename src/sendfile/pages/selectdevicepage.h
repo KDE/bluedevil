@@ -27,29 +27,24 @@
 
 #include <QWizardPage>
 
-class KUrl;
-class QWizard;
-class KFileDialog;
+#include <BluezQt/Types>
 
-namespace BlueDevil
-{
-    class Device;
-}
+class SendFileWizard;
 
 class SelectDevicePage : public QWizardPage, public Ui::SelectFileDiscover
 {
     Q_OBJECT
 
 public:
-    explicit SelectDevicePage(QWidget *parent = 0);
+    explicit SelectDevicePage(SendFileWizard *wizard);
 
     bool isComplete() const Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
-    void deviceSelected(BlueDevil::Device *device);
+    void deviceSelected(BluezQt::DevicePtr device);
 
 private:
-    KFileDialog *m_dialog;
+    SendFileWizard *m_wizard;
 };
 
 #endif // SELECTDEVICEPAGE_H

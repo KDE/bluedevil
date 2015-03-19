@@ -23,18 +23,17 @@
 #include "selectfilespage.h"
 #include "../sendfilewizard.h"
 
-#include <kfilewidget.h>
-#include <kdiroperator.h>
-#include <kfileitem.h>
+#include <KFileItem>
+#include <KFileWidget>
+#include <KDirOperator>
 
-#include <QStandardPaths>
 #include <QVBoxLayout>
-#include <QLabel>
+#include <QStandardPaths>
 
 SelectFilesPage::SelectFilesPage(QWidget *parent)
     : QWizardPage(parent)
 {
-    m_files = new KFileWidget(QUrl(QStandardPaths::writableLocation(QStandardPaths::HomeLocation)), this);
+    m_files = new KFileWidget(QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::HomeLocation)), this);
     m_files->setMode(KFile::Files);
     m_files->setContentsMargins(0, 0, 0, 0);
     setContentsMargins(0, 0, 0, 0);
@@ -55,7 +54,7 @@ void SelectFilesPage::selectionChanged()
     }
 
     static_cast<SendFileWizard*>(wizard())->setFiles(fileList);
-    emit completeChanged();
+    Q_EMIT completeChanged();
 }
 
 bool SelectFilesPage::isComplete() const

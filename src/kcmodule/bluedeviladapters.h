@@ -23,7 +23,9 @@
 
 #include <QGroupBox>
 
-#include <kcmodule.h>
+#include <KCModule>
+
+#include <BluezQt/Manager>
 
 class QVBoxLayout;
 class QRadioButton;
@@ -36,13 +38,6 @@ class QLineEdit;
 class SystemCheck;
 class AdapterSettings;
 
-namespace BlueDevil
-{
-    class Adapter;
-}
-
-typedef BlueDevil::Adapter Adapter;
-
 class AdapterSettings : public QGroupBox
 {
     Q_OBJECT
@@ -54,8 +49,7 @@ public:
         TemporaryVisible
     };
 
-    AdapterSettings(Adapter *adapter, KCModule *parent);
-    virtual ~AdapterSettings();
+    AdapterSettings(BluezQt::AdapterPtr adapter, KCModule *parent);
 
     bool isModified() const;
     void applyChanges();
@@ -74,23 +68,23 @@ Q_SIGNALS:
     void settingsChanged(bool changed);
 
 private:
-    Adapter      *m_adapter;
-    QLineEdit    *m_name;
-    QString       m_nameOrig;
+    BluezQt::AdapterPtr m_adapter;
+    QLineEdit *m_name;
+    QString m_nameOrig;
     QRadioButton *m_hidden;
-    bool          m_hiddenOrig;
+    bool m_hiddenOrig;
     QRadioButton *m_alwaysVisible;
-    bool          m_alwaysVisibleOrig;
+    bool m_alwaysVisibleOrig;
     QRadioButton *m_temporaryVisible;
-    bool          m_temporaryVisibleOrig;
-    QSlider      *m_discoverTime;
-    QLabel       *m_discoverTimeLabel;
-    QWidget      *m_discoverTimeWidget;
-    int           m_discoverTimeOrig;
-    QCheckBox    *m_powered;
-    bool          m_poweredOrig;
+    bool m_temporaryVisibleOrig;
+    QSlider *m_discoverTime;
+    QLabel *m_discoverTimeLabel;
+    QWidget *m_discoverTimeWidget;
+    int m_discoverTimeOrig;
+    QCheckBox *m_powered;
+    bool m_poweredOrig;
 
-    QFormLayout  *m_layout;
+    QFormLayout *m_layout;
 };
 
 class KCMBlueDevilAdapters : public KCModule
@@ -99,26 +93,23 @@ class KCMBlueDevilAdapters : public KCModule
 
 public:
     KCMBlueDevilAdapters(QWidget *parent, const QVariantList&);
-    virtual ~KCMBlueDevilAdapters();
 
-    virtual void defaults();
-    virtual void save();
+    void save() Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
+    void initJobResult(BluezQt::InitManagerJob *job);
     void updateAdapters();
-    void usableAdapterChanged(Adapter *adapter);
-    void adapterDiscoverableChanged();
     void generateNoAdaptersMessage();
-    void updateInformationState();
     void adapterConfigurationChanged(bool modified);
 
 private:
     void fillAdaptersInformation();
 
 private:
-    QVBoxLayout                     *m_layout;
-    QMap<Adapter*, AdapterSettings*> m_adapterSettingsMap;
-    QWidget                         *m_noAdaptersMessage;
+    QVBoxLayout *m_layout;
+    QMap<BluezQt::AdapterPtr, AdapterSettings*> m_adapterSettingsMap;
+    QWidget *m_noAdaptersMessage;
+    BluezQt::Manager *m_manager;
 
     SystemCheck *m_systemCheck;
 };

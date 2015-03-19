@@ -21,7 +21,7 @@
  *****************************************************************************/
 
 #include "selectdeviceandfilespage.h"
-#include "discoverwidget.h"
+#include "../discoverwidget.h"
 #include "../sendfilewizard.h"
 
 #include <QLabel>
@@ -31,22 +31,21 @@
 #include <QIcon>
 #include <QFileDialog>
 
+#include <KIconLoader>
+#include <KPixmapSequence>
 #include <KLocalizedString>
-#include <kiconloader.h>
-#include <kpixmapsequence.h>
-#include <kpixmapsequenceoverlaypainter.h>
+#include <KPixmapSequenceOverlayPainter>
 
-#include <bluedevil/bluedevil.h>
+#include <BluezQt/Device>
 
-using namespace BlueDevil;
-
-SelectDeviceAndFilesPage::SelectDeviceAndFilesPage(QWidget *parent)
-    : QWizardPage(parent)
+SelectDeviceAndFilesPage::SelectDeviceAndFilesPage(SendFileWizard *wizard)
+    : QWizardPage(wizard)
     , m_dialog(0)
+    , m_wizard(wizard)
 {
     setupUi(this);
 
-    DiscoverWidget *widget = new DiscoverWidget(this);
+    DiscoverWidget *widget = new DiscoverWidget(m_wizard->manager(), this);
     widget->setContentsMargins(0, 0, 0, 0);
     discoverLayout->addWidget(widget);
 
@@ -63,48 +62,37 @@ SelectDeviceAndFilesPage::SelectDeviceAndFilesPage(QWidget *parent)
     connect(selectBtn, &QPushButton::clicked, this, &SelectDeviceAndFilesPage::openFileDialog);
 }
 
-void SelectDeviceAndFilesPage::deviceSelected(Device *device)
+void SelectDeviceAndFilesPage::deviceSelected(BluezQt::DevicePtr device)
 {
-    if (!device->name().isEmpty()) {
-        static_cast<SendFileWizard*>(wizard())->setDevice(device);
-    } else {
-        static_cast<SendFileWizard*>(wizard())->setDevice(0);
-    }
-    emit completeChanged();
+    static_cast<SendFileWizard*>(wizard())->setDevice(device);
+
+    Q_EMIT completeChanged();
 }
 
 void SelectDeviceAndFilesPage::openFileDialog()
 {
-    delete m_dialog;
+    const QStringList &files = QFileDialog::getOpenFileNames(this, i18n("Open file..."),
+                                                             QStandardPaths::writableLocation(QStandardPaths::HomeLocation),
+                                                             QStringLiteral("*"));
 
-    m_dialog = new QFileDialog(this, i18n("Open file..."),
-                               QStandardPaths::writableLocation(QStandardPaths::HomeLocation),
-                               QStringLiteral("*"));
-    m_dialog->setFileMode(QFileDialog::ExistingFiles);
-
-    connect(m_dialog, SIGNAL(accepted()), this, SLOT(selectionChanged()));
-
-    m_dialog->exec();
-}
-
-void SelectDeviceAndFilesPage::selectionChanged()
-{
-    if (m_dialog->selectedUrls().isEmpty()) {
+    if (files.isEmpty()) {
         selectLbl->setText(i18n("Select one or more files:"));
     } else {
-        selectLbl->setText(i18n("Selected files: <b>%1</b>", m_dialog->selectedUrls().count()));
-        static_cast<SendFileWizard* >(wizard())->setFiles(m_dialog->selectedFiles());
+        selectLbl->setText(i18n("Selected files: <b>%1</b>", files.count()));
     }
-    emit completeChanged();
+
+    m_wizard->setFiles(files);
+
+    Q_EMIT completeChanged();
 }
 
 bool SelectDeviceAndFilesPage::isComplete() const
 {
-    if (!static_cast<SendFileWizard*>(wizard())->device()) {
+    if (!m_wizard->device()) {
         return false;
     }
 
-    if (!m_dialog || m_dialog->selectedUrls().isEmpty()) {
+    if (m_wizard->files().isEmpty()) {
         return false;
     }
 

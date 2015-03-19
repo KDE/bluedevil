@@ -23,20 +23,13 @@
 #define BLUEDEVILDAEMON_H
 
 #include <QMap>
+
 #include <KDEDModule>
+
+#include <BluezQt/Manager>
 
 typedef QMap<QString, QString> DeviceInfo;
 typedef QMap<QString, DeviceInfo> QMapDeviceInfo;
-
-class QDBusPendingCallWatcher;
-
-namespace BlueDevil
-{
-    class Adapter;
-    class Device;
-}
-
-using namespace BlueDevil;
 
 class Q_DECL_EXPORT BlueDevilDaemon : public KDEDModule
 {
@@ -44,13 +37,9 @@ class Q_DECL_EXPORT BlueDevilDaemon : public KDEDModule
     Q_CLASSINFO("D-Bus Interface", "org.kde.BlueDevil")
 
 public:
-    /**
-     * Establish basics connections with libbluedevil signals and calls online if interfaces are availables
-     */
     BlueDevilDaemon(QObject *parent, const QList<QVariant>&);
     ~BlueDevilDaemon();
 
-public Q_SLOTS:
     /**
      * Returns whether the daemon is in online mode (eg. Bluez services are
      * running and we have usable adapter)
@@ -77,40 +66,15 @@ public Q_SLOTS:
      */
     Q_SCRIPTABLE void stopDiscovering();
 
-private:
-    /**
-     * Called by constructor or eventually by adapterAdded initialize all the helpers
-     * @see helpers
-     */
-    void onlineMode();
+private Q_SLOTS:
+    void initJobResult(BluezQt::InitManagerJob *job);
+    void bluetoothOperationalChanged(bool operational);
 
-    /**
-     * Called eventually adapterRemoved shutdown all the helpers
-     * @see helpers
-     */
+private:
+    void onlineMode();
     void offlineMode();
 
-private Q_SLOTS:
-    /**
-     * Called when the default adapter changes, re-initialize the kded with the new
-     * default adapter
-     */
-    void usableAdapterChanged(Adapter *adapter);
-    void adapterRemoved(Adapter *adapter);
-
-    /**
-     * When the agent is released this is called to unload it
-     */
-    void agentReleased();
-
-    void monolithicQuit(QDBusPendingCallWatcher *watcher);
-    void monolithicFinished(const QString &);
-
-private:
-    void executeMonolithic();
-    void killMonolithic();
-
-    DeviceInfo deviceToInfo(Device *const device) const;
+    DeviceInfo deviceToInfo(BluezQt::DevicePtr device) const;
 
 private:
     struct Private;

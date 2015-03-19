@@ -21,59 +21,70 @@
  *****************************************************************************/
 
 #include "legacypairingdatabase.h"
-#include "bluewizard.h"
+#include "../bluewizard.h"
 #include "../wizardagent.h"
-#include "../debug_p.h"
+#include "debug_p.h"
 
-#include <QDebug>
-
+#include <KIconLoader>
 #include <KLocalizedString>
-#include <kiconloader.h>
-#include <kpixmapsequence.h>
-#include <kpixmapsequenceoverlaypainter.h>
+#include <KPixmapSequence>
+#include <KPixmapSequenceOverlayPainter>
 
-#include <bluedevil/bluedevil.h>
-
-using namespace BlueDevil;
+#include <BluezQt/Device>
+#include <BluezQt/Adapter>
+#include <BluezQt/PendingCall>
 
 LegacyPairingPageDatabase::LegacyPairingPageDatabase(BlueWizard *parent)
     : QWizardPage(parent)
     , m_wizard(parent)
+    , m_success(false)
 {
     setupUi(this);
 
-    m_working = new KPixmapSequenceOverlayPainter(this);
-    m_working->setSequence(KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), 22));
-    m_working->setWidget(working);
-    m_working->start();
-}
-
-void LegacyPairingPageDatabase::initializePage()
-{
-    m_wizard->setButtonLayout(wizardButtonsLayout());
-
-    Device *device = m_wizard->device();
-    connecting->setText(i18n("Connecting to %1...", device->name()));
-
-    connect(device, &Device::pairedChanged, this, &LegacyPairingPageDatabase::pairedChanged);
-    device->pair();
-}
-
-void LegacyPairingPageDatabase::pairedChanged(bool paired)
-{
-    qCDebug(WIZARD) << paired;
-
-    m_wizard->next();
-}
-
-bool LegacyPairingPageDatabase::validatePage()
-{
-    return m_wizard->device()->isPaired();
+    KPixmapSequenceOverlayPainter *painter = new KPixmapSequenceOverlayPainter(this);
+    painter->setSequence(KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), 22));
+    painter->setWidget(working);
+    painter->start();
 }
 
 int LegacyPairingPageDatabase::nextId() const
 {
-    return BlueWizard::Connect;
+    if (m_success) {
+        return BlueWizard::Connect;
+    }
+    return BlueWizard::Fail;
+}
+
+void LegacyPairingPageDatabase::initializePage()
+{
+    qCDebug(WIZARD) << "Initialize Legacy Database Pairing Page";
+
+    m_wizard->setButtonLayout(wizardButtonsLayout());
+
+    BluezQt::DevicePtr device = m_wizard->device();
+    connecting->setText(i18n("Connecting to %1...", device->name()));
+
+    // Adapter must be pairable, otherwise pairing would fail
+    BluezQt::PendingCall *call = device->adapter()->setPairable(true);
+    connect(call, &BluezQt::PendingCall::finished, this, &LegacyPairingPageDatabase::setPairableFinished);
+}
+
+void LegacyPairingPageDatabase::setPairableFinished(BluezQt::PendingCall *call)
+{
+    Q_UNUSED(call)
+
+    BluezQt::PendingCall *pairCall = m_wizard->device()->pair();
+    connect(pairCall, &BluezQt::PendingCall::finished, this, &LegacyPairingPageDatabase::pairingFinished);
+}
+
+void LegacyPairingPageDatabase::pairingFinished(BluezQt::PendingCall *call)
+{
+    qCDebug(WIZARD) << "Legacy Database Pairing finished:";
+    qCDebug(WIZARD) << "\t error     : " << (bool) call->error();
+    qCDebug(WIZARD) << "\t errorText : " << call->errorText();
+
+    m_success = !call->error();
+    wizard()->next();
 }
 
 QList< QWizard::WizardButton > LegacyPairingPageDatabase::wizardButtonsLayout() const

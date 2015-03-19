@@ -30,6 +30,7 @@
 class ConnectingPage : public QWizardPage, public Ui::Connecting
 {
     Q_OBJECT
+
 public:
     explicit ConnectingPage(QWidget *parent = 0);
 

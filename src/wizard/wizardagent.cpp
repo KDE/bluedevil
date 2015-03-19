@@ -21,98 +21,40 @@
 #include "wizardagent.h"
 #include "debug_p.h"
 
-#include <QDebug>
-#include <QDBusMessage>
+#include <QFile>
 #include <QStandardPaths>
+#include <QDBusObjectPath>
+#include <QXmlStreamReader>
 
-#include <KAboutData>
-#include <krandom.h>
-#include <klocalizedstring.h>
+#include <KRandom>
+#include <KLocalizedString>
 
-#include <bluedevil/bluedevil.h>
+#include <BluezQt/Device>
 
-using namespace BlueDevil;
-
-WizardAgent::WizardAgent(QApplication* application)
-    : QDBusAbstractAdaptor(application)
+WizardAgent::WizardAgent(QObject *parent)
+    : BluezQt::Agent(parent)
     , m_fromDatabase(false)
 {
-    qCDebug(WIZARD) << "AGENT registered !";
-    BlueDevil::Manager::self()->registerAgent(QStringLiteral("/wizardAgent"), BlueDevil::Manager::DisplayYesNo);
 }
 
-WizardAgent::~WizardAgent()
+QString WizardAgent::pin()
 {
-    qCDebug(WIZARD) << "Agent deleted";
-    BlueDevil::Manager::self()->unregisterAgent(QStringLiteral("/wizardAgent"));
-}
-
-void WizardAgent::Release()
-{
-    qCDebug(WIZARD) << "Agent Release";
-    emit agentReleased();
-}
-
-void WizardAgent::AuthorizeService(const QDBusObjectPath& device, const QString& uuid, const QDBusMessage& msg)
-{
-    Q_UNUSED(device);
-    Q_UNUSED(uuid);
-    Q_UNUSED(msg);
-    qCDebug(WIZARD) << "AGENT-Authorize " << device.path() << " Service: " << uuid;
-}
-
-quint32 WizardAgent::RequestPasskey(const QDBusObjectPath& device, const QDBusMessage& msg)
-{
-    Q_UNUSED(device);
-    Q_UNUSED(msg);
-    qCDebug(WIZARD) << "AGENT-RequestPasskey " << device.path();
-    emit pinRequested(m_pin);
-    return m_pin.toUInt();
-}
-
-void WizardAgent::DisplayPasskey(const QDBusObjectPath& device, quint32 passkey, quint8 entered)
-{
-    Q_UNUSED(device);
-    Q_UNUSED(entered);
-    qCDebug(WIZARD) << "AGENT-DisplayPasskey " << device.path() << ", " << QString::number(passkey);
-    emit pinRequested(QString(QStringLiteral("%1")).arg(passkey, 6, 10, QLatin1Char('0')));
-}
-
-void WizardAgent::DisplayPinCode(const QDBusObjectPath& device, const QString& pincode)
-{
-    Q_UNUSED(device);
-    Q_UNUSED(pincode);
-    qCDebug(WIZARD) << "AGENT-DisplayPasskey " << device.path() << ", " << pincode;
-    emit pinRequested(pincode);
-}
-
-void WizardAgent::RequestConfirmation(const QDBusObjectPath& device, quint32 passkey, const QDBusMessage& msg)
-{
-    Q_UNUSED(device);
-    Q_UNUSED(passkey);
-    Q_UNUSED(msg);
-    qCDebug(WIZARD) << "AGENT-RequestConfirmation " << device.path() << ", " << QString::number(passkey);
-    emit confirmationRequested(passkey, msg);
-}
-
-void WizardAgent::Cancel()
-{
-    qCDebug(WIZARD) << "AGENT-Cancel";
-}
-
-QString WizardAgent::RequestPinCode(const QDBusObjectPath& device, const QDBusMessage& msg)
-{
-    Q_UNUSED(device);
-    Q_UNUSED(msg);
-    qCDebug(WIZARD) << "AGENT-RequestPinCode " << device.path();
-
-    emit pinRequested(m_pin);
     return m_pin;
 }
 
-QString WizardAgent::getPin(Device *device)
+void WizardAgent::setPin(const QString &pin)
 {
-    if (!m_pin.isEmpty()) {
+    m_pin = pin;
+}
+
+bool WizardAgent::isFromDatabase()
+{
+    return m_fromDatabase;
+}
+
+QString WizardAgent::getPin(BluezQt::DevicePtr device)
+{
+    if (!m_pin.isEmpty() || !device) {
         return m_pin;
     }
 
@@ -124,36 +66,30 @@ QString WizardAgent::getPin(Device *device)
 
     QFile file(xmlPath);
     if (!file.open(QIODevice::ReadOnly)) {
-        qCDebug(WIZARD) << "Can't open the device";
+        qCDebug(WIZARD) << "Can't open the pin-code-database.xml";
         return m_pin;
     }
 
-    if (!device) {
-        qCDebug(WIZARD) << "could not found the device";
-        return m_pin;
-    }
+    QXmlStreamReader xml(&file);
 
-    m_device = device;
-    QXmlStreamReader m_xml(&file);
-
-    int deviceType = classToType(device->deviceClass());
+    int deviceType = device->deviceType();
     int xmlType = 0;
 
-    while (!m_xml.atEnd()) {
-        m_xml.readNext();
-        if (m_xml.name() != QLatin1String("device")) {
+    while (!xml.atEnd()) {
+        xml.readNext();
+        if (xml.name() != QLatin1String("device")) {
             continue;
         }
-        QXmlStreamAttributes attr = m_xml.attributes();
+        QXmlStreamAttributes attr = xml.attributes();
 
         if (attr.count() == 0) {
             continue;
         }
 
         if (attr.hasAttribute(QLatin1String("type")) && attr.value(QLatin1String("type")) != QLatin1String("any")) {
-            xmlType = stringToType(attr.value(QLatin1String("type")).toString());
+            xmlType = BluezQt::Device::stringToType(attr.value(QLatin1String("type")).toString());
             if (deviceType != xmlType) {
-                xmlType = 0; //This is not needed but I like restart the bucle in each interation
+                xmlType = 0;
                 continue;
             }
         }
@@ -177,6 +113,7 @@ QString WizardAgent::getPin(Device *device)
             int num = m_pin.right(m_pin.length() - 4).toInt();
             m_pin = QString::number(KRandom::random()).left(num);
         }
+
         qCDebug(WIZARD) << "PIN: " << m_pin;
         return m_pin;
     }
@@ -184,17 +121,51 @@ QString WizardAgent::getPin(Device *device)
     return m_pin;
 }
 
-void WizardAgent::setPin(const QString& pin)
+QDBusObjectPath WizardAgent::objectPath() const
 {
-    m_pin = pin;
+    return QDBusObjectPath(QStringLiteral("/agent"));
 }
 
-QString WizardAgent::pin()
+void WizardAgent::requestPinCode(BluezQt::DevicePtr device, const BluezQt::Request<QString> &req)
 {
-    return m_pin;
+    qCDebug(WIZARD) << "AGENT-RequestPinCode" << device->ubi();
+
+    Q_EMIT pinRequested(m_pin);
+    req.accept(m_pin);
 }
 
-bool WizardAgent::isFromDatabase()
+void WizardAgent::displayPinCode(BluezQt::DevicePtr device, const QString &pinCode)
 {
-    return m_fromDatabase;
+    qCDebug(WIZARD) << "AGENT-DisplayPinCode" << device->ubi() << pinCode;
+
+    Q_EMIT pinRequested(pinCode);
+}
+
+void WizardAgent::requestPasskey(BluezQt::DevicePtr device, const BluezQt::Request<quint32> &req)
+{
+    qCDebug(WIZARD) << "AGENT-RequestPasskey" << device->ubi();
+
+    Q_EMIT pinRequested(m_pin);
+    req.accept(m_pin.toUInt());
+}
+
+void WizardAgent::displayPasskey(BluezQt::DevicePtr device, const QString &passkey, const QString &entered)
+{
+    Q_UNUSED(entered);
+
+    qCDebug(WIZARD) << "AGENT-DisplayPasskey" << device->ubi() << passkey;
+
+    Q_EMIT pinRequested(passkey);
+}
+
+void WizardAgent::requestConfirmation(BluezQt::DevicePtr device, const QString &passkey, const BluezQt::Request<> &req)
+{
+    qCDebug(WIZARD) << "AGENT-RequestConfirmation " << device->ubi() << passkey;
+
+    Q_EMIT confirmationRequested(passkey, req);
+}
+
+void WizardAgent::release()
+{
+    Q_EMIT agentReleased();
 }

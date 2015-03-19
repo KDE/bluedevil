@@ -27,39 +27,26 @@
 
 #include <QWidget>
 
-class QTimer;
-class BlueWizard;
+#include <BluezQt/Manager>
 
-namespace BlueDevil
-{
-    class Device;
-}
+class DevicesProxyModel;
 
 class DiscoverWidget : public QWidget, public Ui::Discover
 {
     Q_OBJECT
 
 public:
-    explicit DiscoverWidget(QWidget *parent = 0);
-
-    void stopScan();
-
-public Q_SLOTS:
-    void startScan();
-
-private Q_SLOTS:
-    void deviceFound(BlueDevil::Device *device);
-    void itemSelected(QListWidgetItem *item);
-
-private:
-    void deviceFoundGeneric(QString address, QString name, QString icon, QString alias);
-
-private:
-    QMap<QString, QListWidgetItem*> m_itemRelation;
-    BlueWizard *m_wizard;
+    explicit DiscoverWidget(BluezQt::Manager *manager, QWidget *parent = 0);
 
 Q_SIGNALS:
-    void deviceSelected(BlueDevil::Device *device);
+    void deviceSelected(BluezQt::DevicePtr device);
+
+private Q_SLOTS:
+    void indexSelected(const QModelIndex index);
+
+private:
+    BluezQt::Manager *m_manager;
+    DevicesProxyModel *m_model;
 };
 
 #endif // DISCOVERWIDGET_H

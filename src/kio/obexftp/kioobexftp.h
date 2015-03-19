@@ -27,34 +27,28 @@
 
 #include <QObject>
 
-#include <kio/slavebase.h>
+#include <KIO/SlaveBase>
 
-typedef QMap<QString, QString> DeviceInfo;
+#include <BluezQt/ObexFileTransfer>
 
-class OrgBluezObexFileTransfer1Interface;
-class KioFtp
-    : public QObject
-    , public KIO::SlaveBase
+class KioFtp : public QObject, public KIO::SlaveBase
 {
 
-Q_OBJECT
+    Q_OBJECT
+
 public:
     KioFtp(const QByteArray &pool, const QByteArray &app);
-    virtual ~KioFtp();
 
-    virtual void copy(const QUrl &src, const QUrl &dest, int permissions, KIO::JobFlags flags);
-    virtual void listDir(const QUrl &url);
-    virtual void setHost(const QString &host, quint16 port, const QString &user, const QString &pass);
-    virtual void stat(const QUrl &url);
-    virtual void del(const QUrl &url, bool isfile);
-    virtual void mkdir(const QUrl&url, int permissions);
-    virtual void rename(const QUrl& src, const QUrl& dest, KIO::JobFlags flags);
-    virtual void get(const QUrl& url);
+    void copy(const QUrl &src, const QUrl &dest, int permissions, KIO::JobFlags flags) Q_DECL_OVERRIDE;
+    void listDir(const QUrl &url) Q_DECL_OVERRIDE;
+    void setHost(const QString &host, quint16 port, const QString &user, const QString &pass) Q_DECL_OVERRIDE;
+    void stat(const QUrl &url) Q_DECL_OVERRIDE;
+    void del(const QUrl &url, bool isfile) Q_DECL_OVERRIDE;
+    void mkdir(const QUrl &url, int permissions) Q_DECL_OVERRIDE;
+    void rename(const QUrl &src, const QUrl &dest, KIO::JobFlags flags) Q_DECL_OVERRIDE;
+    void get(const QUrl &url) Q_DECL_OVERRIDE;
 
     bool cancelTransfer(const QString &transfer);
-
-private Q_SLOTS:
-    void updateProcess();
 
 private:
     void copyHelper(const QUrl &src, const QUrl &dest);
@@ -66,24 +60,20 @@ private:
     QList<KIO::UDSEntry> listFolder(const QUrl &url, bool *ok);
     bool changeFolder(const QString &folder);
     bool createFolder(const QString &folder);
-    bool copyFile(const QString &src, const QString &dest);
     bool deleteFile(const QString &file);
 
     void updateRootEntryIcon(KIO::UDSEntry &entry, const QString &memoryType);
-    void launchProgressBar();
+    bool createSession(const QString &target);
     void connectToHost();
     bool testConnection();
-    bool createSession(const QString &target);
 
 private:
-    int m_counter;
     QMap<QString, KIO::UDSEntry> m_statMap;
     QString m_host;
     QString m_uuids;
     QString m_sessionPath;
-    QTimer *m_timer;
     org::kde::ObexFtp *m_kded;
-    OrgBluezObexFileTransfer1Interface *m_transfer;
+    BluezQt::ObexFileTransfer *m_transfer;
 };
 
 #endif // KIO_OBEXFTP_H

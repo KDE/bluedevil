@@ -14,12 +14,15 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QListWidget" name="deviceList">
+      <widget class="QListView" name="deviceView">
        <property name="iconSize">
         <size>
          <width>48</width>
          <height>48</height>
         </size>
+       </property>
+       <property name="verticalScrollMode">
+        <enum>QAbstractItemView::ScrollPerPixel</enum>
        </property>
       </widget>
      </item>
@@ -117,7 +120,7 @@
          <property name="readOnly">
           <bool>false</bool>
          </property>
-         <property name="placeholderText" stdset="0">
+         <property name="placeholderText">
           <string>0000</string>
          </property>
         </widget>

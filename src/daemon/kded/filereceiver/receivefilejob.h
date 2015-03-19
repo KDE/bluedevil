@@ -19,25 +19,24 @@
 #ifndef RECEIVE_FILE_JOB_H
 #define RECEIVE_FILE_JOB_H
 
+#include <QUrl>
 #include <QTime>
-#include <QDBusMessage>
 
 #include <KJob>
 
-class OrgBluezObexSession1Interface;
-class OrgBluezObexTransfer1Interface;
-class OrgFreedesktopDBusPropertiesInterface;
+#include <BluezQt/Request>
+#include <BluezQt/ObexTransfer>
+
+class ObexAgent;
 
 class ReceiveFileJob : public KJob
 {
     Q_OBJECT
 
 public:
-    explicit ReceiveFileJob(const QDBusMessage &msg, const QString &path, QObject *parent = 0);
+    explicit ReceiveFileJob(const BluezQt::Request<QString> &req, BluezQt::ObexTransferPtr transfer, ObexAgent *parent);
 
     void start() Q_DECL_OVERRIDE;
-
-protected:
     bool doKill() Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
@@ -45,25 +44,23 @@ private Q_SLOTS:
     void showNotification();
     void slotCancel();
     void slotAccept();
-    void slotSaveAs();
-    void transferPropertiesChanged(const QString &interface, const QVariantMap &properties, const QStringList &invalidatedProperties);
     void moveFinished(KJob *job);
 
+    void statusChanged(BluezQt::ObexTransfer::Status status);
+    void transferredChanged(quint64 transferred);
+
 private:
-    void transferChanged(const QVariant &value);
-    void statusChanged(const QVariant &value);
     QString createTempPath(const QString &fileName) const;
 
     QTime m_time;
     qulonglong m_speedBytes;
-    QString m_path;
     QString m_tempPath;
-    QString m_originalFileName;
     QString m_deviceName;
-    QDBusMessage m_msg;
-    OrgBluezObexSession1Interface *m_session;
-    OrgBluezObexTransfer1Interface *m_transfer;
-    OrgFreedesktopDBusPropertiesInterface *m_transferProps;
+    QUrl m_targetPath;
+
+    ObexAgent *m_agent;
+    BluezQt::ObexTransferPtr m_transfer;
+    BluezQt::Request<QString> m_request;
 };
 
 #endif // RECEIVE_FILE_JOB_H

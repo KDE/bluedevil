@@ -16,93 +16,67 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA   *
  *************************************************************************************/
 
-#include "kio_obexftp.h"
+#include "kioobexftp.h"
 #include "transferfilejob.h"
-#include "obexd_transfer.h"
 #include "debug_p.h"
-
-#include <QDebug>
-#include <QDBusConnection>
 
 #include <KLocalizedString>
 
-typedef OrgBluezObexTransfer1Interface TransferInterface;
-typedef OrgFreedesktopDBusPropertiesInterface PropertiesInterface;
+#include <BluezQt/PendingCall>
 
-TransferFileJob::TransferFileJob(const QString& path, KioFtp* parent)
+TransferFileJob::TransferFileJob(BluezQt::ObexTransferPtr transfer, KioFtp *parent)
     : KJob(parent)
-    , m_path(path)
     , m_speedBytes(0)
     , m_parent(parent)
+    , m_transfer(transfer)
 {
-}
-
-TransferFileJob::~TransferFileJob()
-{
-    delete m_transfer;
-    delete m_properties;
 }
 
 void TransferFileJob::start()
 {
-    QMetaObject::invokeMethod(this, "createObjects", Qt::QueuedConnection);
+    QMetaObject::invokeMethod(this, "doStart", Qt::QueuedConnection);
 }
 
 bool TransferFileJob::doKill()
 {
-    return m_parent->cancelTransfer(m_path);
+    return m_parent->cancelTransfer(m_transfer->objectPath().path());
 }
 
-void TransferFileJob::createObjects()
+void TransferFileJob::doStart()
 {
-    m_transfer = new TransferInterface(QStringLiteral("org.bluez.obex"), m_path, QDBusConnection::sessionBus());
-    m_properties = new PropertiesInterface(QStringLiteral("org.bluez.obex"), m_path, QDBusConnection::sessionBus());
-
-    connect(m_properties, SIGNAL(PropertiesChanged(QString,QVariantMap,QStringList)), SLOT(propertiesChanged(QString,QVariantMap,QStringList)));
+    connect(m_transfer.data(), &BluezQt::ObexTransfer::statusChanged, this, &TransferFileJob::statusChanged);
+    connect(m_transfer.data(), &BluezQt::ObexTransfer::transferredChanged, this, &TransferFileJob::transferredChanged);
 }
 
-void TransferFileJob::propertiesChanged(const QString& interface, const QVariantMap& properties, const QStringList &invalidProps)
+void TransferFileJob::statusChanged(BluezQt::ObexTransfer::Status status)
 {
-    Q_UNUSED(invalidProps)
-    qCDebug(OBEXFTP) << properties;
-    if (interface != QLatin1String("org.bluez.obex.Transfer1")) {
-        return;
-    }
+    qCDebug(OBEXFTP) << status;
 
-    QStringList changedProps = properties.keys();
-    Q_FOREACH(const QString &prop, changedProps) {
-        if (prop == QLatin1String("Status")) {
-            statusChanged(properties.value(prop));
-        } else if (prop == QLatin1String("Transferred")) {
-            transferChanged(properties.value(prop));
-        }
-    }
-}
-
-void TransferFileJob::statusChanged(const QVariant& value)
-{
-    qCDebug(OBEXFTP) << value;
-    QString status = value.toString();
-
-    if (status == QLatin1String("active")) {
+    switch (status) {
+    case BluezQt::ObexTransfer::Active:
         m_time = QTime::currentTime();
-        return;
-    } else if (status == QLatin1String("complete")) {
+        break;
+
+    case BluezQt::ObexTransfer::Complete:
         emitResult();
-        return;
-    } else if (status == QLatin1String("error")) {
+        break;
+
+    case BluezQt::ObexTransfer::Error:
         setError(KJob::UserDefinedError);
         setErrorText(i18n("Bluetooth transfer failed"));
         emitResult();
-        return;
-    }
+        break;
 
-    qCDebug(OBEXFTP) << "Not implemented status: " << status;
+    default:
+        qCWarning(OBEXFTP) << "Not implemented status: " << status;
+        break;
+    }
 }
 
-void TransferFileJob::transferChanged(const QVariant& value)
+void TransferFileJob::transferredChanged(quint64 transferred)
 {
-    qCDebug(OBEXFTP) << "Transferred: " << value;
+    // qCDebug(OBEXFTP) << "Transferred: " << transferred;
+
     if (m_parent->wasKilled()) {
         qCDebug(OBEXFTP) << "Kio was killed, aborting task";
         doKill();
@@ -110,22 +84,15 @@ void TransferFileJob::transferChanged(const QVariant& value)
         return;
     }
 
-    bool ok = false;
-    qulonglong bytes = value.toULongLong(&ok);
-    if (!ok) {
-        qCWarning(OBEXFTP) << "Couldn't cast transferChanged value" << value;
-        return;
-    }
-
     // If at least 1 second has passed since last update
     int secondsSinceLastTime = m_time.secsTo(QTime::currentTime());
     if (secondsSinceLastTime > 0) {
-        float speed = (bytes - m_speedBytes) / secondsSinceLastTime;
+        float speed = (transferred - m_speedBytes) / secondsSinceLastTime;
 
         m_parent->speed(speed);
         m_time = QTime::currentTime();
-        m_speedBytes = bytes;
+        m_speedBytes = transferred;
     }
 
-    m_parent->processedSize(bytes);
+    m_parent->processedSize(transferred);
 }

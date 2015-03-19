@@ -19,13 +19,16 @@
 #ifndef OBEXFTPDAEMON_H
 #define OBEXFTPDAEMON_H
 
-#include "../obexdtypes.h"
-
 #include <QLoggingCategory>
 
-#include <kdedmodule.h>
+#include <KDEDModule>
 
-class KJob;
+namespace BluezQt
+{
+    class InitObexManagerJob;
+    class PendingCall;
+}
+
 class QDBusMessage;
 class QDBusObjectPath;
 class QDBusPendingCallWatcher;
@@ -37,27 +40,25 @@ class Q_DECL_EXPORT ObexFtpDaemon : public KDEDModule
 
 public:
     ObexFtpDaemon(QObject *parent, const QList<QVariant>&);
-    virtual ~ObexFtpDaemon();
+    ~ObexFtpDaemon();
 
-public Q_SLOTS:
-    Q_SCRIPTABLE bool isOnline();
+    Q_SCRIPTABLE bool isOnline(const QDBusMessage &msg);
     Q_SCRIPTABLE QString session(const QString &address, const QString &target, const QDBusMessage &msg);
-    Q_SCRIPTABLE bool cancelTransfer(const QString &transfer);
+    Q_SCRIPTABLE bool cancelTransfer(const QString &transfer, const QDBusMessage &msg);
 
 private Q_SLOTS:
-    void sessionCreated(KJob* job);
-    void serviceRegistered();
-    void serviceUnregistered();
-    void interfaceRemoved(const QDBusObjectPath &path, const QStringList &interfaces);
+    void initJobResult(BluezQt::InitObexManagerJob *job);
+    void createSessionFinished(BluezQt::PendingCall *call);
+    void cancelTransferFinished(QDBusPendingCallWatcher *watcher);
+
+    void operationalChanged(bool operational);
+    void sessionRemoved(const QDBusObjectPath &session);
 
 private:
-    void onlineMode();
-    void offlineMode();
-
     struct Private;
     Private *d;
 };
 
 Q_DECLARE_LOGGING_CATEGORY(OBEXDAEMON)
 
-#endif /*OBEXFTPDAEMON_H*/
+#endif // OBEXFTPDAEMON_H

@@ -20,46 +20,59 @@
 #include "obexagent.h"
 #include "debug_p.h"
 
-#include <QDBusConnection>
-#include <QDBusPendingCall>
-#include <QDBusPendingCallWatcher>
-#include <QDBusServiceWatcher>
+#include <BluezQt/PendingCall>
+#include <BluezQt/InitObexManagerJob>
 
-FileReceiver::FileReceiver(QObject *parent)
+FileReceiver::FileReceiver(BluezQt::Manager *manager, QObject *parent)
     : QObject(parent)
 {
-    qDBusRegisterMetaType<QVariantMap>();
+    m_agent = new ObexAgent(manager, this);
 
-    new ObexAgent(this);
-    m_agentManager = new org::bluez::obex::AgentManager1(QStringLiteral("org.bluez.obex"),
-                                                         QStringLiteral("/org/bluez/obex"),
-                                                         QDBusConnection::sessionBus(),
-                                                         this);
-
-    registerAgent();
-
-    // obexd should be set to auto-start by D-Bus (D-Bus activation), so this should restart it in case of crash
-    QDBusServiceWatcher *serviceWatcher = new QDBusServiceWatcher(QStringLiteral("org.bluez.obex"), QDBusConnection::sessionBus(),
-            QDBusServiceWatcher::WatchForUnregistration, this);
-    connect(serviceWatcher, &QDBusServiceWatcher::serviceUnregistered, this, &FileReceiver::registerAgent);
+    m_manager = new BluezQt::ObexManager(this);
+    BluezQt::InitObexManagerJob *initJob = m_manager->init();
+    initJob->start();
+    connect(initJob, &BluezQt::InitObexManagerJob::result, this, &FileReceiver::initJobResult);
 }
 
-void FileReceiver::registerAgent()
+FileReceiver::~FileReceiver()
 {
-    QDBusPendingReply<void> r = m_agentManager->RegisterAgent(QDBusObjectPath(QStringLiteral("/BlueDevil_receiveAgent")));
-    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(r, this);
-    connect(watcher, &QDBusPendingCallWatcher::finished, this, &FileReceiver::agentRegistered);
+    if (m_agent) {
+        qCDebug(BLUEDAEMON) << "Unregistering ObexAgent";
+        m_manager->unregisterAgent(m_agent);
+    }
 }
 
-void FileReceiver::agentRegistered(QDBusPendingCallWatcher *call)
+void FileReceiver::initJobResult(BluezQt::InitObexManagerJob *job)
 {
-    QDBusPendingReply<void> r = *call;
-
-    if (r.isError()) {
-        qCWarning(BLUEDAEMON) << "Error registering agent" << r.error().message();
-    } else {
-        qCDebug(BLUEDAEMON) << "Agent registered";
+    if (job->error()) {
+        qCWarning(BLUEDAEMON) << "Error initializing ObexManager!";
+        return;
     }
 
-    call->deleteLater();
+
+    // Make sure to register agent when obexd starts
+    operationalChanged(m_manager->isOperational());
+    connect(m_manager, &BluezQt::ObexManager::operationalChanged, this, &FileReceiver::operationalChanged);
+}
+
+void FileReceiver::agentRegistered(BluezQt::PendingCall *call)
+{
+    if (call->error()) {
+        qCWarning(BLUEDAEMON) << "Error registering ObexAgent" << call->errorText();
+    } else {
+        qCDebug(BLUEDAEMON) << "ObexAgent registered";
+    }
+}
+
+void FileReceiver::operationalChanged(bool operational)
+{
+    qCDebug(BLUEDAEMON) << "ObexManager operational changed" << operational;
+
+    if (operational) {
+        BluezQt::PendingCall *call = m_manager->registerAgent(m_agent);
+        connect(call, &BluezQt::PendingCall::finished, this, &FileReceiver::agentRegistered);
+    } else {
+        // Attempt to restart obexd
+        BluezQt::ObexManager::startService();
+    }
 }
