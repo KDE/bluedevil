@@ -35,7 +35,6 @@ public:
     explicit TransferFileJob(BluezQt::ObexTransferPtr transfer, KioFtp *parent = 0);
 
     void start() Q_DECL_OVERRIDE;
-    bool doKill() Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
     void doStart();

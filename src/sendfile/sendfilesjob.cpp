@@ -186,18 +186,19 @@ void SendFilesJob::transferredChanged(quint64 transferred)
 
 void SendFilesJob::statusChanged(BluezQt::ObexTransfer::Status status)
 {
-    qCDebug(SENDFILE) << "SendFilesJob-StatusChanged" << status;
-
     switch (status) {
     case BluezQt::ObexTransfer::Active:
+        qCDebug(SENDFILE) << "SendFilesJob-Transfer Active";
         m_time = QTime::currentTime();
         break;
 
     case BluezQt::ObexTransfer::Complete:
+        qCDebug(SENDFILE) << "SendFilesJob-Transfer Complete";
         jobDone();
         break;
 
     case BluezQt::ObexTransfer::Error:
+        qCDebug(SENDFILE) << "SendFilesJob-Transfer Error";
         setError(UserDefinedError);
         setErrorText(i18n("Bluetooth transfer failed"));
         emitResult();

@@ -62,6 +62,12 @@ static QString urlFileName(const QUrl &url)
     return u.fileName();
 }
 
+static QUrl urlUpDir(const QUrl &url)
+{
+    const QUrl &u = url.adjusted(QUrl::StripTrailingSlash);
+    return u.adjusted(QUrl::RemoveFilename);
+}
+
 static bool urlIsRoot(const QUrl &url)
 {
     const QString &directory = urlDirectory(url);
@@ -83,13 +89,13 @@ void KioFtp::connectToHost()
 {
     // Prefer pcsuite target on S60 devices
     if (m_uuids.contains(QLatin1String("00005005-0000-1000-8000-0002EE000001"))) {
-        if (createSession("pcsuite")) {
+        if (createSession(QStringLiteral("pcsuite"))) {
             return;
         }
         // Fallback to ftp
     }
 
-    createSession("ftp");
+    createSession(QStringLiteral("ftp"));
 }
 
 bool KioFtp::testConnection()
@@ -102,7 +108,7 @@ bool KioFtp::testConnection()
     connectToHost();
 
     if (!m_transfer) {
-        error(KIO::ERR_COULD_NOT_CONNECT, m_host);
+        error(KIO::ERR_CANNOT_CONNECT, m_host);
         return false;
     }
     return true;
@@ -116,9 +122,7 @@ bool KioFtp::createSession(const QString &target)
     const QString &sessionPath = reply.value();
 
     if (reply.isError() || sessionPath.isEmpty()) {
-        qCDebug(OBEXFTP) << reply.error().message();
-        qCDebug(OBEXFTP) << reply.error().name();
-
+        qCDebug(OBEXFTP) << "Create session error" << reply.error().name() << reply.error().message();
         delete m_transfer;
         m_transfer = 0;
         m_sessionPath.clear();
@@ -180,7 +184,7 @@ void KioFtp::copy(const QUrl &src, const QUrl &dest, int permissions, KIO::JobFl
     finished();
 }
 
-void KioFtp::rename(const QUrl& src, const QUrl& dest, KIO::JobFlags flags)
+void KioFtp::rename(const QUrl &src, const QUrl &dest, KIO::JobFlags flags)
 {
     Q_UNUSED(src)
     Q_UNUSED(dest)
@@ -189,30 +193,26 @@ void KioFtp::rename(const QUrl& src, const QUrl& dest, KIO::JobFlags flags)
     error(KIO::ERR_UNSUPPORTED_ACTION, QString());
 }
 
-void KioFtp::get(const QUrl& url)
+void KioFtp::get(const QUrl &url)
 {
     if (!testConnection()) {
         return;
     }
 
+    qCDebug(OBEXFTP) << "get" << url;
+
     QTemporaryFile tempFile(QString(QStringLiteral("%1/kioftp_XXXXXX.%2")).arg(QDir::tempPath(), urlFileName(url)));
     tempFile.open();
-    qCDebug(OBEXFTP) << tempFile.fileName();
 
-    copyHelper(url, QUrl(tempFile.fileName()));
-
-    qCDebug(OBEXFTP) << "Getting mimetype";
+    copyHelper(url, QUrl::fromLocalFile(tempFile.fileName()));
 
     QMimeDatabase mimeDatabase;
     const QMimeType &mime = mimeDatabase.mimeTypeForFile(tempFile.fileName());
     mimeType(mime.name());
     qCDebug(OBEXFTP) << "Mime: " << mime.name();
 
-    qCDebug(OBEXFTP) << tempFile.size();
     totalSize(tempFile.size());
-
     data(tempFile.readAll());
-
     finished();
 }
 
@@ -230,7 +230,9 @@ void KioFtp::setHost(const QString &host, quint16 port, const QString &user, con
     m_host = host;
     m_host = m_host.replace(QLatin1Char('-'), QLatin1Char(':')).toUpper();
 
-    org::kde::BlueDevil kded(QStringLiteral("org.kde.kded5"), QStringLiteral("/modules/bluedevil"), QDBusConnection::sessionBus());
+    org::kde::BlueDevil kded(QStringLiteral("org.kde.kded5"),
+                             QStringLiteral("/modules/bluedevil"),
+                             QDBusConnection::sessionBus());
     const DeviceInfo &info = kded.device(m_host);
 
     m_uuids = info.value(QStringLiteral("UUIDs"));
@@ -240,7 +242,7 @@ void KioFtp::setHost(const QString &host, quint16 port, const QString &user, con
     connectToHost();
 }
 
-void KioFtp::del(const QUrl& url, bool isfile)
+void KioFtp::del(const QUrl &url, bool isfile)
 {
     Q_UNUSED(isfile)
 
@@ -261,7 +263,7 @@ void KioFtp::del(const QUrl& url, bool isfile)
     finished();
 }
 
-void KioFtp::mkdir(const QUrl& url, int permissions)
+void KioFtp::mkdir(const QUrl &url, int permissions)
 {
     Q_UNUSED(permissions)
 
@@ -299,7 +301,7 @@ void KioFtp::stat(const QUrl &url)
     finished();
 }
 
-void KioFtp::copyHelper(const QUrl& src, const QUrl& dest)
+void KioFtp::copyHelper(const QUrl &src, const QUrl &dest)
 {
     if (src.scheme() == QLatin1String("obexftp") && dest.scheme() == QLatin1String("obexftp")) {
         copyWithinObexftp(src, dest);
@@ -335,7 +337,7 @@ void KioFtp::copyWithinObexftp(const QUrl &src, const QUrl &dest)
         if (call->errorText() == QLatin1String("Not Implemented")) {
             error(KIO::ERR_UNSUPPORTED_ACTION, src.path());
         } else {
-            error(KIO::ERR_COULD_NOT_WRITE, src.path());
+            error(KIO::ERR_CANNOT_WRITE, src.path());
         }
         return;
     }
@@ -351,10 +353,15 @@ void KioFtp::copyFromObexftp(const QUrl &src, const QUrl &dest)
         return;
     }
 
+    if (!m_statMap.contains(src.toDisplayString())) {
+        bool ok;
+        listFolder(urlUpDir(src), &ok);
+    }
+
     BluezQt::PendingCall *call = m_transfer->getFile(dest.path(), urlFileName(src));
     call->waitForFinished();
 
-    int size = m_statMap[src.toDisplayString()].numberValue(KIO::UDSEntry::UDS_SIZE);
+    int size = m_statMap.value(src.toDisplayString()).numberValue(KIO::UDSEntry::UDS_SIZE);
     totalSize(size);
 
     BluezQt::ObexTransferPtr transfer = call->value().value<BluezQt::ObexTransferPtr>();
@@ -362,7 +369,7 @@ void KioFtp::copyFromObexftp(const QUrl &src, const QUrl &dest)
     getFile->exec();
 }
 
-void KioFtp::copyToObexftp(const QUrl& src, const QUrl& dest)
+void KioFtp::copyToObexftp(const QUrl &src, const QUrl &dest)
 {
     qCDebug(OBEXFTP) << "Source:" << src << "Dest:" << dest;
 
@@ -377,18 +384,15 @@ void KioFtp::copyToObexftp(const QUrl& src, const QUrl& dest)
     totalSize(size);
 
     BluezQt::ObexTransferPtr transfer = call->value().value<BluezQt::ObexTransferPtr>();
-    qCDebug(OBEXFTP) << transfer;
     TransferFileJob *putFile = new TransferFileJob(transfer, this);
     putFile->exec();
 }
 
-void KioFtp::statHelper(const QUrl& url)
+void KioFtp::statHelper(const QUrl &url)
 {
-    qCDebug(OBEXFTP) << url;
-
     if (m_statMap.contains(url.toDisplayString())) {
         qCDebug(OBEXFTP) << "statMap contains the url";
-        statEntry(m_statMap[url.toDisplayString()]);
+        statEntry(m_statMap.value(url.toDisplayString()));
         return;
     }
 
@@ -400,28 +404,28 @@ void KioFtp::statHelper(const QUrl& url)
         entry.insert(KIO::UDSEntry::UDS_ACCESS, 0700);
 
         qCDebug(OBEXFTP) << "Adding stat cache" << url.toDisplayString();
-        m_statMap[url.toDisplayString()] = entry;
+        m_statMap.insert(url.toDisplayString(), entry);
         statEntry(entry);
         return;
     }
 
-    qCDebug(OBEXFTP) << "statMap does NOT contains the url";
+    qCDebug(OBEXFTP) << "statMap does not contains the url";
 
     if (!changeFolder(urlDirectory(url))) {
         return;
     }
 
     bool ok;
-    const QList<KIO::UDSEntry> &list = listFolder(url, &ok);
+    listFolder(urlUpDir(url), &ok);
     if (!ok) {
         return;
     }
 
-    Q_FOREACH (const KIO::UDSEntry &entry, list) {
-        statEntry(entry);
+    if (!m_statMap.contains(url.toDisplayString())) {
+        qCWarning(OBEXFTP) << "statMap still does not contains the url!";
     }
 
-    qCDebug(OBEXFTP) << "Finished";
+    statEntry(m_statMap.value(url.toDisplayString()));
 }
 
 QList<KIO::UDSEntry> KioFtp::listFolder(const QUrl &url, bool *ok)
@@ -432,8 +436,8 @@ QList<KIO::UDSEntry> KioFtp::listFolder(const QUrl &url, bool *ok)
     call->waitForFinished();
 
     if (call->error()) {
-        qCDebug(OBEXFTP) << call->errorText();
-        error(KIO::ERR_CANNOT_OPEN_FOR_READING, urlDirectory(url));
+        qCDebug(OBEXFTP) << "List folder error" << call->errorText();
+        error(KIO::ERR_CANNOT_OPEN_FOR_READING, url.path());
         *ok = false;
         return list;
     }
@@ -462,10 +466,14 @@ QList<KIO::UDSEntry> KioFtp::listFolder(const QUrl &url, bool *ok)
 
         // Most probably the client of the kio will stat each file
         // so since we are on it, let's cache all of them.
-        QUrl statUrl = url.adjusted(QUrl::RemoveFilename);
-        statUrl.setPath(statUrl.path() + item.name);
+        QUrl statUrl = url;
+        statUrl.setPath(statUrl.path() + QLatin1Char('/') + item.name);
+
         if (!m_statMap.contains(statUrl.toDisplayString())) {
-            qCDebug(OBEXFTP) << "Stat: " << statUrl.toDisplayString() << entry.stringValue(KIO::UDSEntry::UDS_NAME) << entry.numberValue(KIO::UDSEntry::UDS_SIZE);
+            qCDebug(OBEXFTP) << "Stat:"
+                             << statUrl.toDisplayString()
+                             << entry.stringValue(KIO::UDSEntry::UDS_NAME)
+                             << entry.numberValue(KIO::UDSEntry::UDS_SIZE);
             m_statMap.insert(statUrl.toDisplayString(), entry);
         }
     }

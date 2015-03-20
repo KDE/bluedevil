@@ -190,10 +190,9 @@ void ReceiveFileJob::moveFinished(KJob *job)
 
 void ReceiveFileJob::statusChanged(BluezQt::ObexTransfer::Status status)
 {
-    qCDebug(BLUEDAEMON) << "ReceiveFileJob-StatusChanged" << status;
-
     switch (status) {
     case BluezQt::ObexTransfer::Active:
+        qCDebug(BLUEDAEMON) << "ReceiveFileJob-Transfer Active";
         Q_EMIT description(this, i18n("Receiving file over Bluetooth"),
                         QPair<QString, QString>(i18nc("File transfer origin", "From"), QString(m_deviceName)),
                         QPair<QString, QString>(i18nc("File transfer destination", "To"), m_targetPath.path()));
@@ -204,6 +203,7 @@ void ReceiveFileJob::statusChanged(BluezQt::ObexTransfer::Status status)
         break;
 
     case BluezQt::ObexTransfer::Complete: {
+        qCDebug(BLUEDAEMON) << "ReceiveFileJob-Transfer Complete";
         KIO::CopyJob *job = KIO::move(QUrl::fromLocalFile(m_tempPath), m_targetPath, KIO::HideProgressInfo);
         job->setUiDelegate(0);
         connect(job, &KIO::CopyJob::finished, this, &ReceiveFileJob::moveFinished);
@@ -211,6 +211,7 @@ void ReceiveFileJob::statusChanged(BluezQt::ObexTransfer::Status status)
     }
 
     case BluezQt::ObexTransfer::Error:
+        qCDebug(BLUEDAEMON) << "ReceiveFileJob-Transfer Error";
         setError(KJob::UserDefinedError);
         setErrorText(i18n("Bluetooth transfer failed"));
         emitResult();

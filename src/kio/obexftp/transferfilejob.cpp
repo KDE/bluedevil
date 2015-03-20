@@ -37,11 +37,6 @@ void TransferFileJob::start()
     QMetaObject::invokeMethod(this, "doStart", Qt::QueuedConnection);
 }
 
-bool TransferFileJob::doKill()
-{
-    return m_parent->cancelTransfer(m_transfer->objectPath().path());
-}
-
 void TransferFileJob::doStart()
 {
     connect(m_transfer.data(), &BluezQt::ObexTransfer::statusChanged, this, &TransferFileJob::statusChanged);
@@ -50,18 +45,19 @@ void TransferFileJob::doStart()
 
 void TransferFileJob::statusChanged(BluezQt::ObexTransfer::Status status)
 {
-    qCDebug(OBEXFTP) << status;
-
     switch (status) {
     case BluezQt::ObexTransfer::Active:
+        qCDebug(OBEXFTP) << "Transfer Active";
         m_time = QTime::currentTime();
         break;
 
     case BluezQt::ObexTransfer::Complete:
+        qCDebug(OBEXFTP) << "Transfer Complete";
         emitResult();
         break;
 
     case BluezQt::ObexTransfer::Error:
+        qCDebug(OBEXFTP) << "Transfer Error";
         setError(KJob::UserDefinedError);
         setErrorText(i18n("Bluetooth transfer failed"));
         emitResult();
@@ -79,7 +75,7 @@ void TransferFileJob::transferredChanged(quint64 transferred)
 
     if (m_parent->wasKilled()) {
         qCDebug(OBEXFTP) << "Kio was killed, aborting task";
-        doKill();
+        m_parent->cancelTransfer(m_transfer->objectPath().path());
         emitResult();
         return;
     }

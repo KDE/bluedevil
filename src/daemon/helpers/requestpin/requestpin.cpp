@@ -94,6 +94,7 @@ void RequestPin::introducePin()
 
     connect(m_dialogWidget->pin, &KLineEdit::textChanged, this, &RequestPin::checkPin);
     connect(m_dialogWidget->pin, &KLineEdit::returnPressed, dialog, &QDialog::accept);
+    connect(m_dialogWidget->buttonBox, &QDialogButtonBox::accepted, dialog, &QDialog::accept);
 
     m_dialogWidget->pin->setFocus(Qt::ActiveWindowFocusReason);
 

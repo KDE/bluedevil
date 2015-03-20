@@ -33,7 +33,6 @@
 
 class KioFtp : public QObject, public KIO::SlaveBase
 {
-
     Q_OBJECT
 
 public:
