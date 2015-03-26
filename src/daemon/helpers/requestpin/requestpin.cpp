@@ -37,7 +37,8 @@
 #include <KNotification>
 #include <KLocalizedString>
 
-RequestPin::RequestPin() : QObject()
+RequestPin::RequestPin()
+    : QObject()
     , m_dialogWidget(0)
 {
     m_notification = new KNotification(QStringLiteral("RequestPin"),
@@ -60,19 +61,12 @@ RequestPin::RequestPin() : QObject()
     connect(m_notification, &KNotification::closed, this, &RequestPin::quit);
     connect(m_notification, &KNotification::ignored, this, &RequestPin::quit);
 
-    // We're using persistent notifications so we have to use our own timeout (10s)
-    m_timer.setSingleShot(true);
-    m_timer.setInterval(10000);
-    m_timer.start();
-    connect(&m_timer, &QTimer::timeout, m_notification, &KNotification::close);
-
     m_notification->setPixmap(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")).pixmap(42));
     m_notification->sendEvent();
 }
 
 void RequestPin::introducePin()
 {
-    m_timer.stop();
     m_notification->disconnect();
     m_notification->close();
     m_notification->deleteLater();

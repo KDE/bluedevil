@@ -201,7 +201,7 @@ void KioFtp::get(const QUrl &url)
 
     qCDebug(OBEXFTP) << "get" << url;
 
-    QTemporaryFile tempFile(QString(QStringLiteral("%1/kioftp_XXXXXX.%2")).arg(QDir::tempPath(), urlFileName(url)));
+    QTemporaryFile tempFile(QStringLiteral("%1/kioftp_XXXXXX.%2").arg(QDir::tempPath(), urlFileName(url)));
     tempFile.open();
 
     copyHelper(url, QUrl::fromLocalFile(tempFile.fileName()));

@@ -23,7 +23,6 @@
 
 #include <QDebug>
 #include <QCoreApplication>
-#include <QTimer>
 #include <QIcon>
 
 #include <KNotification>
@@ -54,9 +53,6 @@ Authorize::Authorize()
     connect(notification, &KNotification::ignored, this, &Authorize::deny);
 
     notification->setPixmap(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")).pixmap(42));
-
-    // We're using persistent notifications so we have to use our own timeout (10s)
-    QTimer::singleShot(10000, notification, &KNotification::close);
     notification->sendEvent();
 }
 

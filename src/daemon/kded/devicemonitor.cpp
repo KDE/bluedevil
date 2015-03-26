@@ -108,7 +108,7 @@ void DeviceMonitor::saveState()
     KConfigGroup adaptersGroup = m_config->group("Adapters");
 
     Q_FOREACH (BluezQt::AdapterPtr adapter, m_manager->adapters()) {
-        const QString key = QString(QStringLiteral("%1_powered")).arg(adapter->address());
+        const QString key = QStringLiteral("%1_powered").arg(adapter->address());
         adaptersGroup.writeEntry<bool>(key, adapter->isPowered());
     }
 
@@ -131,7 +131,7 @@ void DeviceMonitor::restoreState()
     KConfigGroup adaptersGroup = m_config->group("Adapters");
 
     Q_FOREACH (BluezQt::AdapterPtr adapter, m_manager->adapters()) {
-        const QString key = QString(QStringLiteral("%1_powered")).arg(adapter->address());
+        const QString key = QStringLiteral("%1_powered").arg(adapter->address());
         adapter->setPowered(adaptersGroup.readEntry<bool>(key, true));
     }
 
@@ -150,7 +150,7 @@ void DeviceMonitor::restoreAdapter(BluezQt::AdapterPtr adapter)
 {
     KConfigGroup adaptersGroup = m_config->group("Adapters");
 
-    const QString &key = QString(QStringLiteral("%1_powered")).arg(adapter->address());
+    const QString &key = QStringLiteral("%1_powered").arg(adapter->address());
     adapter->setPowered(adaptersGroup.readEntry<bool>(key, true));
 }
 

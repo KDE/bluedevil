@@ -21,7 +21,6 @@
 
 #include "requestconfirmation.h"
 
-#include <QTimer>
 #include <QCoreApplication>
 #include <QIcon>
 
@@ -49,8 +48,6 @@ RequestConfirmation::RequestConfirmation() : QObject()
     connect(notification, &KNotification::closed, this, &RequestConfirmation::pinWrong);
     connect(notification, &KNotification::ignored, this, &RequestConfirmation::pinWrong);
 
-    // We're using persistent notifications so we have to use our own timeout (10s)
-    QTimer::singleShot(10000, notification, &KNotification::close);
     notification->setPixmap(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")).pixmap(42));
     notification->sendEvent();
 }
