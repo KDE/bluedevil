@@ -24,6 +24,11 @@
 
 int main(int argc, char *argv[])
 {
+    if (argc != 2) {
+        fprintf(stderr, "Usage: bluedevil-authorize device-name\n");
+        return 2;
+    }
+
     QApplication app(argc, argv);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps);
     app.setApplicationName(QStringLiteral("bluedevil"));

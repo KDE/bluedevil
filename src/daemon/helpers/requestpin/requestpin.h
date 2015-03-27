@@ -23,6 +23,7 @@
 #define REQUEST_PIN_H
 
 #include <QObject>
+#include <QStringList>
 
 namespace Ui
 {
@@ -67,6 +68,7 @@ private Q_SLOTS:
 private:
     Ui::dialogWidget *m_dialogWidget;
     KNotification *m_notification;
+    QStringList m_args;
 };
 
 #endif // REQUEST_PIN_H

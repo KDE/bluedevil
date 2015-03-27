@@ -21,8 +21,9 @@
 
 #include "requestconfirmation.h"
 
-#include <QCoreApplication>
 #include <QIcon>
+#include <QDebug>
+#include <QCoreApplication>
 
 #include <KNotification>
 #include <KLocalizedString>
@@ -30,12 +31,14 @@
 RequestConfirmation::RequestConfirmation()
     : QObject()
 {
+    const QStringList &args = QCoreApplication::arguments();
+
     KNotification *notification = new KNotification(QStringLiteral("RequestConfirmation"),
                                                     KNotification::Persistent, this);
 
     notification->setText(i18nc(
         "The text is shown in a notification to know if the PIN is correct, %1 is the remote bluetooth device and %2 is the pin",
-        "%1 is asking if the PIN is correct: %2", qApp->arguments().at(1), qApp->arguments().at(2))
+        "%1 is asking if the PIN is correct: %2", args.at(1), args.at(2))
     );
 
     QStringList actions;
@@ -55,10 +58,12 @@ RequestConfirmation::RequestConfirmation()
 
 void RequestConfirmation::pinCorrect()
 {
-    qApp->exit(0);
+    qDebug() << "Pin Correct";
+    QCoreApplication::exit(0);
 }
 
 void RequestConfirmation::pinWrong()
 {
-    qApp->exit(1);
+    qDebug() << "Pin Wrong";
+    QCoreApplication::exit(1);
 }

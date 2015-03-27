@@ -31,12 +31,14 @@
 Authorize::Authorize()
     : QObject()
 {
+    const QStringList &args = QCoreApplication::arguments();
+
     KNotification *notification = new KNotification(QStringLiteral("Authorize"),
                                                     KNotification::Persistent, this);
 
     notification->setText(i18nc(
         "Show a notification asking to authorize or deny access to this computer from Bluetooth. The %1 is the name of the bluetooth device",
-        "%1 is requesting access to this computer", qApp->arguments().at(1))
+        "%1 is requesting access to this computer", args.at(1))
     );
 
     QStringList actions;
@@ -59,18 +61,18 @@ Authorize::Authorize()
 void Authorize::authorize()
 {
     qDebug() << "Accepted";
-    qApp->exit(0);
+    QCoreApplication::exit(0);
 }
 
 void Authorize::trust()
 {
     qDebug() << "Trusted";
-    qApp->exit(1);
+    QCoreApplication::exit(1);
 }
 
 void Authorize::deny()
 {
     qDebug() << "Rejected";
-    qApp->exit(1);
+    QCoreApplication::exit(2);
 }
 
