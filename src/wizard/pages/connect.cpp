@@ -26,10 +26,6 @@
 
 #include <QTimer>
 
-#include <KIconLoader>
-#include <KPixmapSequence>
-#include <KPixmapSequenceOverlayPainter>
-
 #include <BluezQt/Device>
 #include <BluezQt/PendingCall>
 
@@ -39,11 +35,6 @@ ConnectPage::ConnectPage(BlueWizard *parent)
     , m_success(false)
 {
     setupUi(this);
-
-    KPixmapSequenceOverlayPainter *painter = new KPixmapSequenceOverlayPainter(this);
-    painter->setSequence(KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), 22));
-    painter->setWidget(working);
-    painter->start();
 }
 
 int ConnectPage::nextId() const
@@ -59,7 +50,7 @@ void ConnectPage::initializePage()
     qCDebug(WIZARD) << "Initialize Connect Page";
 
     m_wizard->setButtonLayout(wizardButtonsLayout());
-    connecting->setText(connecting->text().append(m_wizard->device()->name()));
+    connecting->setText(i18nc("Connecting to a Bluetooth device", "Connecting to %1...", m_wizard->device()->name()));
 
     m_wizard->device()->setTrusted(true);
 

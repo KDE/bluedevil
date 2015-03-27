@@ -27,7 +27,8 @@
 #include <KNotification>
 #include <KLocalizedString>
 
-RequestConfirmation::RequestConfirmation() : QObject()
+RequestConfirmation::RequestConfirmation()
+    : QObject()
 {
     KNotification *notification = new KNotification(QStringLiteral("RequestConfirmation"),
                                                     KNotification::Persistent, this);
@@ -61,4 +62,3 @@ void RequestConfirmation::pinWrong()
 {
     qApp->exit(1);
 }
-

@@ -25,10 +25,7 @@
 #include "../wizardagent.h"
 #include "debug_p.h"
 
-#include <KIconLoader>
 #include <KLocalizedString>
-#include <KPixmapSequence>
-#include <KPixmapSequenceOverlayPainter>
 
 #include <BluezQt/Device>
 #include <BluezQt/Adapter>
@@ -40,11 +37,6 @@ LegacyPairingPageDatabase::LegacyPairingPageDatabase(BlueWizard *parent)
     , m_success(false)
 {
     setupUi(this);
-
-    KPixmapSequenceOverlayPainter *painter = new KPixmapSequenceOverlayPainter(this);
-    painter->setSequence(KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), 22));
-    painter->setWidget(working);
-    painter->start();
 }
 
 int LegacyPairingPageDatabase::nextId() const
@@ -62,7 +54,7 @@ void LegacyPairingPageDatabase::initializePage()
     m_wizard->setButtonLayout(wizardButtonsLayout());
 
     BluezQt::DevicePtr device = m_wizard->device();
-    connecting->setText(i18n("Connecting to %1...", device->name()));
+    connecting->setText(i18nc("Connecting to a Bluetooth device", "Connecting to %1...", device->name()));
 
     // Adapter must be pairable, otherwise pairing would fail
     BluezQt::PendingCall *call = device->adapter()->setPairable(true);

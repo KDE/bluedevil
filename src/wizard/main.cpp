@@ -42,6 +42,7 @@ int main(int argc, char *argv[])
                         QStringLiteral("afiestas@kde.org"), QStringLiteral("http://www.afiestas.org/"));
 
     QApplication app(argc, argv);
+    app.setAttribute(Qt::AA_UseHighDpiPixmaps);
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")));
     app.setQuitOnLastWindowClosed(false);
 
