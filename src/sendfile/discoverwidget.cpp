@@ -84,7 +84,9 @@ bool DevicesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
     QModelIndex index = sourceModel()->index(sourceRow, 0, sourceParent);
 
     const QStringList &uuids = index.data(BluezQt::DevicesModel::UuidsRole).toStringList();
-    return uuids.contains(BluezQt::Services::ObexObjectPush);
+    bool adapterPowered = index.data(BluezQt::DevicesModel::AdapterPoweredRole).toBool();
+
+    return adapterPowered && uuids.contains(BluezQt::Services::ObexObjectPush);
 }
 
 DiscoverWidget::DiscoverWidget(BluezQt::Manager *manager, QWidget* parent)

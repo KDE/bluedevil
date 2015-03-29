@@ -43,6 +43,7 @@ public:
 
     QVariant data(const QModelIndex &index, int role) const Q_DECL_OVERRIDE;
     bool lessThan(const QModelIndex &left, const QModelIndex &right) const Q_DECL_OVERRIDE;
+    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const Q_DECL_OVERRIDE;
 
     BluezQt::DevicePtr device(const QModelIndex &index) const;
 
@@ -92,6 +93,13 @@ bool DevicesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &rig
     }
 
     return QString::localeAwareCompare(leftName, rightName) > 0;
+}
+
+bool DevicesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
+{
+    QModelIndex index = sourceModel()->index(sourceRow, 0, sourceParent);
+
+    return index.data(BluezQt::DevicesModel::AdapterPoweredRole).toBool();
 }
 
 BluezQt::DevicePtr DevicesProxyModel::device(const QModelIndex &index) const
