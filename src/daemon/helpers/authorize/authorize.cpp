@@ -54,7 +54,6 @@ Authorize::Authorize()
     connect(notification, &KNotification::closed, this, &Authorize::deny);
     connect(notification, &KNotification::ignored, this, &Authorize::deny);
 
-    notification->setPixmap(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")).pixmap(42));
     notification->sendEvent();
 }
 

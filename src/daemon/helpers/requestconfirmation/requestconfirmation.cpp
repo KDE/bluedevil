@@ -52,7 +52,6 @@ RequestConfirmation::RequestConfirmation()
     connect(notification, &KNotification::closed, this, &RequestConfirmation::pinWrong);
     connect(notification, &KNotification::ignored, this, &RequestConfirmation::pinWrong);
 
-    notification->setPixmap(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")).pixmap(42));
     notification->sendEvent();
 }
 

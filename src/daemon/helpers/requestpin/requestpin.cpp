@@ -62,7 +62,6 @@ RequestPin::RequestPin()
     connect(m_notification, &KNotification::closed, this, &RequestPin::quit);
     connect(m_notification, &KNotification::ignored, this, &RequestPin::quit);
 
-    m_notification->setPixmap(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")).pixmap(42));
     m_notification->sendEvent();
 }
 

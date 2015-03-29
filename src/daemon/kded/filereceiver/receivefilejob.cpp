@@ -27,7 +27,6 @@
 #include <QTemporaryFile>
 
 #include <KIO/CopyJob>
-#include <KIconLoader>
 #include <KNotification>
 #include <KLocalizedString>
 #include <KJobTrackerInterface>
@@ -140,8 +139,6 @@ void ReceiveFileJob::showNotification()
     connect(notification, &KNotification::action2Activated, this, &ReceiveFileJob::slotCancel);
     connect(notification, &KNotification::closed, this, &ReceiveFileJob::slotCancel);
 
-    int size = IconSize(KIconLoader::Desktop);
-    notification->setPixmap(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")).pixmap(size, size));
     notification->setComponentName(QStringLiteral("bluedevil"));
     notification->sendEvent();
 }
