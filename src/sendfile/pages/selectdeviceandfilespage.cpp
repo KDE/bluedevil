@@ -31,10 +31,7 @@
 #include <QIcon>
 #include <QFileDialog>
 
-#include <KIconLoader>
-#include <KPixmapSequence>
 #include <KLocalizedString>
-#include <KPixmapSequenceOverlayPainter>
 
 #include <BluezQt/Device>
 
@@ -48,11 +45,6 @@ SelectDeviceAndFilesPage::SelectDeviceAndFilesPage(SendFileWizard *wizard)
     DiscoverWidget *widget = new DiscoverWidget(m_wizard->manager(), this);
     widget->setContentsMargins(0, 0, 0, 0);
     discoverLayout->addWidget(widget);
-
-    KPixmapSequenceOverlayPainter *workingPainter = new KPixmapSequenceOverlayPainter(this);
-    workingPainter->setSequence(KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), 22));
-    workingPainter->setWidget(working);
-    workingPainter->start();
 
     int buttonSize = selectBtn->sizeHint().height();
     selectBtn->setFixedSize(buttonSize, buttonSize);

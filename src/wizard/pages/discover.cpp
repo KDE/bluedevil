@@ -26,6 +26,7 @@
 #include <QSortFilterProxyModel>
 
 #include <KIconLoader>
+#include <KMessageWidget>
 #include <KLocalizedString>
 #include <KPixmapSequence>
 #include <KPixmapSequenceOverlayPainter>
@@ -81,16 +82,16 @@ bool DevicesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &rig
     // Move non-paired devices to the top
 
     bool leftPaired = left.data(BluezQt::DevicesModel::PairedRole).toBool();
-    const QString &leftName = left.data(BluezQt::DevicesModel::FriendlyNameRole).toString();
-
     bool rightPaired = right.data(BluezQt::DevicesModel::PairedRole).toBool();
-    const QString &rightName = right.data(BluezQt::DevicesModel::FriendlyNameRole).toString();
 
     if (leftPaired > rightPaired) {
         return true;
     } else if (leftPaired < rightPaired) {
         return false;
     }
+
+    const QString &leftName = left.data(BluezQt::DevicesModel::FriendlyNameRole).toString();
+    const QString &rightName = right.data(BluezQt::DevicesModel::FriendlyNameRole).toString();
 
     return QString::localeAwareCompare(leftName, rightName) > 0;
 }
@@ -99,7 +100,9 @@ bool DevicesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
 {
     QModelIndex index = sourceModel()->index(sourceRow, 0, sourceParent);
 
-    return index.data(BluezQt::DevicesModel::AdapterPoweredRole).toBool();
+    bool adapterPowered = index.data(BluezQt::DevicesModel::AdapterPoweredRole).toBool();
+    bool adapterPairable = index.data(BluezQt::DevicesModel::AdapterPairableRole).toBool();
+    return adapterPowered && adapterPairable;
 }
 
 BluezQt::DevicePtr DevicesProxyModel::device(const QModelIndex &index) const
@@ -112,9 +115,10 @@ DiscoverPage::DiscoverPage(BlueWizard *parent)
     : QWizardPage(parent)
     , m_wizard(parent)
     , m_model(0)
+    , m_warningWidget(0)
 {
-    setTitle(i18n("Select a device"));
     setupUi(this);
+    setTitle(i18n("Select a device"));
 
     KPixmapSequenceOverlayPainter *painter = new KPixmapSequenceOverlayPainter(this);
     painter->setSequence(KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), 22));
@@ -129,12 +133,12 @@ DiscoverPage::DiscoverPage(BlueWizard *parent)
 
 void DiscoverPage::startDiscovery()
 {
-    BluezQt::AdapterPtr adapter = m_wizard->manager()->usableAdapter();
-    if (adapter) {
-        adapter->startDiscovery();
-    }
-
     m_model->setDevicesModel(new BluezQt::DevicesModel(m_wizard->manager(), this));
+
+    checkAdapters();
+    connect(m_wizard->manager(), &BluezQt::Manager::adapterAdded, this, &DiscoverPage::checkAdapters);
+    connect(m_wizard->manager(), &BluezQt::Manager::adapterChanged, this, &DiscoverPage::checkAdapters);
+    connect(m_wizard->manager(), &BluezQt::Manager::usableAdapterChanged, this, &DiscoverPage::usableAdapterChanged);
 }
 
 void DiscoverPage::initializePage()
@@ -240,3 +244,48 @@ void DiscoverPage::indexSelected(const QModelIndex &index)
     Q_EMIT completeChanged();
 }
 
+void DiscoverPage::usableAdapterChanged(BluezQt::AdapterPtr adapter)
+{
+    if (adapter && !adapter->isDiscovering()) {
+        adapter->startDiscovery();
+    }
+
+    checkAdapters();
+}
+
+void DiscoverPage::checkAdapters()
+{
+    bool error = false;
+
+    Q_FOREACH (BluezQt::AdapterPtr adapter, m_wizard->manager()->adapters()) {
+        if (!adapter->isPowered() || !adapter->isPairable()) {
+            error = true;
+            break;
+        }
+    }
+
+    delete m_warningWidget;
+    m_warningWidget = 0;
+
+    if (!error) {
+        return;
+    }
+
+    m_warningWidget = new KMessageWidget(this);
+    m_warningWidget->setMessageType(KMessageWidget::Warning);
+    m_warningWidget->setCloseButtonVisible(false);
+    m_warningWidget->setText(i18n("Your Bluetooth adapter is not pairable."));
+
+    QAction *fixAdapters = new QAction(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")), i18nc("Action to fix a problem", "Fix it"), m_warningWidget);
+    connect(fixAdapters, &QAction::triggered, this, &DiscoverPage::fixAdaptersError);
+    m_warningWidget->addAction(fixAdapters);
+    verticalLayout->insertWidget(0, m_warningWidget);
+}
+
+void DiscoverPage::fixAdaptersError()
+{
+    Q_FOREACH (BluezQt::AdapterPtr adapter, m_wizard->manager()->adapters()) {
+        adapter->setPowered(true);
+        adapter->setPairable(true);
+    }
+}

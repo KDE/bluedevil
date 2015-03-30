@@ -51,9 +51,6 @@ public:
     BluezQt::DevicePtr device() const;
     void setDevice(BluezQt::DevicePtr device);
 
-    void startDiscovery();
-    void stopDiscovery();
-
     void startTransfer();
 
 private Q_SLOTS:

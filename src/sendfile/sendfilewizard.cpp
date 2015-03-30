@@ -74,7 +74,10 @@ SendFileWizard::~SendFileWizard()
 
 void SendFileWizard::done(int result)
 {
+    qCDebug(SENDFILE) << "Wizard done: " << result;
+
     QWizard::done(result);
+
     if (!m_job) {
         qApp->quit();
     }
@@ -105,22 +108,6 @@ void SendFileWizard::setDevice(BluezQt::DevicePtr device)
     m_device = device;
 }
 
-void SendFileWizard::startDiscovery()
-{
-    BluezQt::AdapterPtr adapter = m_manager->usableAdapter();
-    if (adapter) {
-        adapter->startDiscovery();
-    }
-}
-
-void SendFileWizard::stopDiscovery()
-{
-    BluezQt::AdapterPtr adapter = m_manager->usableAdapter();
-    if (adapter && adapter->isDiscovering()) {
-        adapter->stopDiscovery();
-    }
-}
-
 void SendFileWizard::startTransfer()
 {
     if (m_files.isEmpty()) {
@@ -149,11 +136,7 @@ void SendFileWizard::initJobResult(BluezQt::InitManagerJob *job)
         return;
     }
 
-    if (!m_manager->isBluetoothOperational()) {
-        qCWarning(SENDFILE) << "Bluetooth not operational!";
-        qApp->exit();
-        return;
-    }
+    qCDebug(SENDFILE) << "Manager initialized";
 
     // KIO address: bluetooth://40-87-2b-1a-39-28/00001105-0000-1000-8000-00805F9B34FB
     if (m_deviceUrl.startsWith(QLatin1String("bluetooth"))) {
@@ -162,6 +145,12 @@ void SendFileWizard::initJobResult(BluezQt::InitManagerJob *job)
         m_device = m_manager->deviceForAddress(address.toUpper());
     } else {
         m_device = m_manager->deviceForUbi(m_deviceUrl);
+    }
+
+    // If the device's adapter is powered off, sending file would fail.
+    // Let the user know about it!
+    if (m_device && !m_device->adapter()->isPowered()) {
+        m_device.clear();
     }
 
     if (m_device) {

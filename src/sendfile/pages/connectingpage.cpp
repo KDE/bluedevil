@@ -38,7 +38,6 @@ ConnectingPage::ConnectingPage(QWidget *parent)
 void ConnectingPage::initializePage()
 {
     SendFileWizard *w = static_cast<SendFileWizard*>(wizard());
-    w->stopDiscovery();
 
     BluezQt::DevicePtr device = w->device();
     connLabel->setText(i18nc("Connecting to a Bluetooth device", "Connecting to %1...", device->name()));

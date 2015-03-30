@@ -24,6 +24,7 @@
 #include "ui_discover.h"
 #include "debug_p.h"
 
+#include <QSortFilterProxyModel>
 #include <QListWidgetItem>
 #include <QListView>
 #include <QLabel>
@@ -31,7 +32,7 @@
 #include <QDebug>
 #include <QIcon>
 
-#include <QSortFilterProxyModel>
+#include <KMessageWidget>
 
 #include <BluezQt/Device>
 #include <BluezQt/Adapter>
@@ -89,26 +90,68 @@ bool DevicesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
     return adapterPowered && uuids.contains(BluezQt::Services::ObexObjectPush);
 }
 
-DiscoverWidget::DiscoverWidget(BluezQt::Manager *manager, QWidget* parent)
-    : QWidget(parent)
-    , m_manager(manager)
-{
-    setupUi(this);
-
-    m_model = new DevicesProxyModel(this);
-    m_model->setDevicesModel(new BluezQt::DevicesModel(manager, this));
-    devices->setModel(m_model);
-
-    connect(devices->selectionModel(), &QItemSelectionModel::currentChanged, this, &DiscoverWidget::indexSelected);
-}
-
 BluezQt::DevicePtr DevicesProxyModel::device(const QModelIndex &index) const
 {
     Q_ASSERT(m_devicesModel);
     return m_devicesModel->device(mapToSource(index));
 }
 
+DiscoverWidget::DiscoverWidget(BluezQt::Manager *manager, QWidget* parent)
+    : QWidget(parent)
+    , m_manager(manager)
+    , m_warningWidget(0)
+{
+    setupUi(this);
+
+    m_model = new DevicesProxyModel(this);
+    m_model->setDevicesModel(new BluezQt::DevicesModel(m_manager, this));
+    devices->setModel(m_model);
+
+    checkAdapters();
+    connect(m_manager, &BluezQt::Manager::adapterAdded, this, &DiscoverWidget::checkAdapters);
+    connect(m_manager, &BluezQt::Manager::adapterChanged, this, &DiscoverWidget::checkAdapters);
+    connect(m_manager, &BluezQt::Manager::usableAdapterChanged, this, &DiscoverWidget::checkAdapters);
+
+    connect(devices->selectionModel(), &QItemSelectionModel::currentChanged, this, &DiscoverWidget::indexSelected);
+}
+
 void DiscoverWidget::indexSelected(const QModelIndex index)
 {
     Q_EMIT deviceSelected(m_model->device(index));
+}
+
+void DiscoverWidget::checkAdapters()
+{
+    bool error = false;
+
+    Q_FOREACH (BluezQt::AdapterPtr adapter, m_manager->adapters()) {
+        if (!adapter->isPowered()) {
+            error = true;
+            break;
+        }
+    }
+
+    delete m_warningWidget;
+    m_warningWidget = 0;
+
+    if (!error) {
+        return;
+    }
+
+    m_warningWidget = new KMessageWidget(this);
+    m_warningWidget->setMessageType(KMessageWidget::Warning);
+    m_warningWidget->setCloseButtonVisible(false);
+    m_warningWidget->setText(i18n("Your Bluetooth adapter is powered off."));
+
+    QAction *fixAdapters = new QAction(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")), i18nc("Action to fix a problem", "Fix it"), m_warningWidget);
+    connect(fixAdapters, &QAction::triggered, this, &DiscoverWidget::fixAdaptersError);
+    m_warningWidget->addAction(fixAdapters);
+    verticalLayout->insertWidget(0, m_warningWidget);
+}
+
+void DiscoverWidget::fixAdaptersError()
+{
+    Q_FOREACH (BluezQt::AdapterPtr adapter, m_manager->adapters()) {
+        adapter->setPowered(true);
+    }
 }

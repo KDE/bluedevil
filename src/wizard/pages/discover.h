@@ -22,6 +22,10 @@
 
 #include <QWizardPage>
 
+#include <BluezQt/Types>
+
+class KMessageWidget;
+
 class BlueWizard;
 class DevicesProxyModel;
 
@@ -41,9 +45,14 @@ public:
 private Q_SLOTS:
     void indexSelected(const QModelIndex &index);
 
+    void usableAdapterChanged(BluezQt::AdapterPtr adapter);
+    void checkAdapters();
+    void fixAdaptersError();
+
 private:
     BlueWizard *m_wizard;
     DevicesProxyModel *m_model;
+    KMessageWidget *m_warningWidget;
 };
 
 #endif // DISCOVER_H

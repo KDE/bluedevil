@@ -125,7 +125,8 @@ void BlueWizard::restartWizard()
 void BlueWizard::initJobResult(BluezQt::InitManagerJob *job)
 {
     if (job->error()) {
-        qCDebug(WIZARD) << "Error initializing manager:" << job->errorText();
+        qCWarning(WIZARD) << "Error initializing manager:" << job->errorText();
+        qApp->exit(1);
         return;
     }
 

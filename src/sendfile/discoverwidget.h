@@ -29,6 +29,8 @@
 
 #include <BluezQt/Manager>
 
+class KMessageWidget;
+
 class DevicesProxyModel;
 
 class DiscoverWidget : public QWidget, public Ui::Discover
@@ -44,9 +46,13 @@ Q_SIGNALS:
 private Q_SLOTS:
     void indexSelected(const QModelIndex index);
 
+    void checkAdapters();
+    void fixAdaptersError();
+
 private:
     BluezQt::Manager *m_manager;
     DevicesProxyModel *m_model;
+    KMessageWidget *m_warningWidget;
 };
 
 #endif // DISCOVERWIDGET_H

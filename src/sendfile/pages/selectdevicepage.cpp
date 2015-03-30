@@ -29,10 +29,6 @@
 #include <QVBoxLayout>
 #include <QIcon>
 
-#include <KIconLoader>
-#include <KPixmapSequence>
-#include <KPixmapSequenceOverlayPainter>
-
 #include <BluezQt/Device>
 
 SelectDevicePage::SelectDevicePage(SendFileWizard *wizard)
@@ -44,11 +40,6 @@ SelectDevicePage::SelectDevicePage(SendFileWizard *wizard)
     DiscoverWidget *widget = new DiscoverWidget(m_wizard->manager(), this);
     widget->setContentsMargins(0, 0, 0, 0);
     discoverLayout->addWidget(widget);
-
-    KPixmapSequenceOverlayPainter *painter = new KPixmapSequenceOverlayPainter(this);
-    painter->setSequence(KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), 22));
-    painter->setWidget(working);
-    painter->start();
 
     selectBtn->setHidden(true);
     selectLbl->setHidden(true);
