@@ -133,6 +133,11 @@ DiscoverPage::DiscoverPage(BlueWizard *parent)
 
 void DiscoverPage::startDiscovery()
 {
+    BluezQt::AdapterPtr adapter = m_wizard->manager()->usableAdapter();
+    if (adapter && !adapter->isDiscovering()) {
+        adapter->startDiscovery();
+    }
+
     m_model->setDevicesModel(new BluezQt::DevicesModel(m_wizard->manager(), this));
 
     checkAdapters();
@@ -211,7 +216,7 @@ int DiscoverPage::nextId() const
     qCDebug(WIZARD) << "From DB: " << m_wizard->agent()->isFromDatabase();
     qCDebug(WIZARD) << "PIN: " << m_wizard->agent()->pin();
 
-    // If keyboard no matter what, we go to the keyboard page.
+    // If keyboard no matter what, we go to the keyboard page
     if (device->deviceType() == BluezQt::Device::Keyboard) {
         qCDebug(WIZARD) << "Keyboard Pairing";
         return BlueWizard::KeyboardPairing;

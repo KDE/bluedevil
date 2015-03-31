@@ -64,9 +64,7 @@ void ConnectPage::connectFinished(BluezQt::PendingCall *call)
     qCDebug(WIZARD) << "\t error     : " << (bool) call->error();
     qCDebug(WIZARD) << "\t errorText : " << call->errorText();
 
-    // Connect may fail but that doesn't really mean the device was setup incorrectly
-    // Device::connectDevice will fail eg. when A2DP profile could not be connected due to missing pulseaudio plugin
-    m_success = true;
+    m_success = !call->error();
     QTimer::singleShot(500, m_wizard, &BlueWizard::next);
 }
 
