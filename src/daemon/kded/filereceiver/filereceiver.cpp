@@ -49,7 +49,6 @@ void FileReceiver::initJobResult(BluezQt::InitObexManagerJob *job)
         return;
     }
 
-
     // Make sure to register agent when obexd starts
     operationalChanged(m_manager->isOperational());
     connect(m_manager, &BluezQt::ObexManager::operationalChanged, this, &FileReceiver::operationalChanged);
@@ -72,7 +71,7 @@ void FileReceiver::operationalChanged(bool operational)
         BluezQt::PendingCall *call = m_manager->registerAgent(m_agent);
         connect(call, &BluezQt::PendingCall::finished, this, &FileReceiver::agentRegistered);
     } else {
-        // Attempt to restart obexd
+        // Attempt to start obexd
         BluezQt::ObexManager::startService();
     }
 }

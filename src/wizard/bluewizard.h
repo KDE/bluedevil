@@ -54,7 +54,10 @@ public:
 
 public Q_SLOTS:
     void restartWizard();
+
+private Q_SLOTS:
     void initJobResult(BluezQt::InitManagerJob *job);
+    void operationalChanged(bool operational);
 
 private:
     void done(int result) Q_DECL_OVERRIDE;

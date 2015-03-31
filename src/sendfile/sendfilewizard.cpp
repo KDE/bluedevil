@@ -39,6 +39,7 @@
 
 #include <BluezQt/Device>
 #include <BluezQt/Adapter>
+#include <BluezQt/ObexManager>
 #include <BluezQt/PendingCall>
 #include <BluezQt/InitManagerJob>
 

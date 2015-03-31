@@ -132,14 +132,25 @@ void BlueWizard::initJobResult(BluezQt::InitManagerJob *job)
 
     qCDebug(WIZARD) << "Manager initialized";
 
-    // Register our agent
-    m_manager->registerAgent(m_agent);
+    // Make sure to register agent when bluetoothd starts
+    operationalChanged(m_manager->isOperational());
+    connect(m_manager, &BluezQt::Manager::operationalChanged, this, &BlueWizard::operationalChanged);
 
     // Start discovery
     static_cast<DiscoverPage*>(page(Discover))->startDiscovery();
 
     // Only show wizard after init is completed
     show();
+}
+
+void BlueWizard::operationalChanged(bool operational)
+{
+    if (operational) {
+        m_manager->registerAgent(m_agent);
+    } else {
+        // Attempt to start bluetoothd
+        BluezQt::Manager::startService();
+    }
 }
 
 void BlueWizard::done(int result)
@@ -149,4 +160,3 @@ void BlueWizard::done(int result)
     QWizard::done(result);
     qApp->exit(result);
 }
-
