@@ -64,6 +64,9 @@ SendFileWizard::SendFileWizard(const QString &device, const QStringList &files)
     BluezQt::InitManagerJob *initJob = m_manager->init();
     initJob->start();
     connect(initJob, &BluezQt::InitManagerJob::result, this, &SendFileWizard::initJobResult);
+
+    // Make sure that obexd is running
+    BluezQt::ObexManager::startService();
 }
 
 SendFileWizard::~SendFileWizard()
