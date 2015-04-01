@@ -36,6 +36,8 @@ class ReceiveFileJob : public KJob
 public:
     explicit ReceiveFileJob(const BluezQt::Request<QString> &req, BluezQt::ObexTransferPtr transfer, ObexAgent *parent);
 
+    QString deviceAddress() const;
+
     void start() Q_DECL_OVERRIDE;
     bool doKill() Q_DECL_OVERRIDE;
 
@@ -56,6 +58,7 @@ private:
     qulonglong m_speedBytes;
     QString m_tempPath;
     QString m_deviceName;
+    QString m_deviceAddress;
     QUrl m_targetPath;
 
     ObexAgent *m_agent;

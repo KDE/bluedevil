@@ -26,6 +26,8 @@ namespace BluezQt
     class Manager;
 }
 
+class KJob;
+
 class ObexAgent : public BluezQt::ObexAgent
 {
     Q_OBJECT
@@ -35,11 +37,17 @@ public:
 
     BluezQt::Manager *manager() const;
 
+    bool shouldAutoAcceptTransfer(const QString &address) const;
+
     QDBusObjectPath objectPath() const Q_DECL_OVERRIDE;
     void authorizePush(BluezQt::ObexTransferPtr transfer, const BluezQt::Request<QString> &request) Q_DECL_OVERRIDE;
 
+private Q_SLOTS:
+    void receiveFileJobFinished(KJob *job);
+
 private:
     BluezQt::Manager *m_manager;
+    QHash<QString, QDateTime> m_transferTimes;
 };
 
 #endif // OBEX_AGENT_H

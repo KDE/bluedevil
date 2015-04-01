@@ -33,6 +33,17 @@ BluezQt::Manager *ObexAgent::manager() const
     return m_manager;
 }
 
+bool ObexAgent::shouldAutoAcceptTransfer(const QString &address) const
+{
+    if (!m_transferTimes.contains(address)) {
+        return false;
+    }
+
+    // Auto-accept transfers from the same device within 2 seconds from last finished transfer
+    const int timeout = 2;
+    return m_transferTimes.value(address).secsTo(QDateTime::currentDateTime()) < timeout;
+}
+
 QDBusObjectPath ObexAgent::objectPath() const
 {
     return QDBusObjectPath(QStringLiteral("/BlueDevilObexAgent"));
@@ -43,5 +54,19 @@ void ObexAgent::authorizePush(BluezQt::ObexTransferPtr transfer, const BluezQt::
     qCDebug(BLUEDAEMON) << "Agent-AuthorizePush";
 
     ReceiveFileJob *job = new ReceiveFileJob(request, transfer, this);
+    connect(job, &ReceiveFileJob::finished, this, &ObexAgent::receiveFileJobFinished);
     job->start();
+}
+
+void ObexAgent::receiveFileJobFinished(KJob *job)
+{
+    Q_ASSERT(qobject_cast<ReceiveFileJob*>(job));
+    ReceiveFileJob *j = static_cast<ReceiveFileJob*>(job);
+
+    if (j->error()) {
+        m_transferTimes.remove(j->deviceAddress());
+        return;
+    }
+
+    m_transferTimes[j->deviceAddress()] = QDateTime::currentDateTime();
 }

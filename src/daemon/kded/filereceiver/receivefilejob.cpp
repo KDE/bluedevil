@@ -46,6 +46,11 @@ ReceiveFileJob::ReceiveFileJob(const BluezQt::Request<QString> &req, BluezQt::Ob
     setCapabilities(Killable);
 }
 
+QString ReceiveFileJob::deviceAddress() const
+{
+    return m_deviceAddress;
+}
+
 void ReceiveFileJob::start()
 {
     QMetaObject::invokeMethod(this, "init", Qt::QueuedConnection);
@@ -92,6 +97,12 @@ void ReceiveFileJob::init()
     }
 
     m_deviceName = device->name();
+    m_deviceAddress = device->address();
+
+    if (m_agent->shouldAutoAcceptTransfer(m_deviceAddress)) {
+        slotAccept();
+        return;
+    }
 
     FileReceiverSettings::self()->load();
     switch (FileReceiverSettings::self()->autoAccept()) {
@@ -164,6 +175,8 @@ void ReceiveFileJob::slotCancel()
     if (m_transfer->status() == BluezQt::ObexTransfer::Queued) {
         qCDebug(BLUEDAEMON) << "Cancel Push";
         m_request.cancel();
+        setError(KJob::UserDefinedError);
+        emitResult();
     }
 }
 
