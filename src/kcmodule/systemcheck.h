@@ -47,6 +47,7 @@ private Q_SLOTS:
     void usableAdapterChanged(BluezQt::AdapterPtr adapter);
     void adapterDiscoverableChanged(bool discoverable);
 
+    void fixBlockedError();
     void fixNoKDEDRunning();
     void fixNoUsableAdapterError();
     void fixNotDiscoverableAdapterError();
@@ -58,6 +59,7 @@ private:
     QWidget *m_parent;
     org::kde::kded5 *m_kded;
     BluezQt::Manager *m_manager;
+    KMessageWidget *m_blockedError;
     KMessageWidget *m_noAdaptersError;
     KMessageWidget *m_noKdedRunningError;
     KMessageWidget *m_noUsableAdapterError;

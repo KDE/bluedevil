@@ -39,6 +39,7 @@ SystemCheck::SystemCheck(BluezQt::Manager *manager, QWidget *parent)
     : QObject(parent)
     , m_parent(parent)
     , m_manager(manager)
+    , m_blockedError(0)
     , m_noAdaptersError(0)
     , m_noKdedRunningError(0)
     , m_noUsableAdapterError(0)
@@ -48,6 +49,7 @@ SystemCheck::SystemCheck(BluezQt::Manager *manager, QWidget *parent)
     m_kded = new org::kde::kded5(QStringLiteral("org.kde.kded5"), QStringLiteral("/kded"), QDBusConnection::sessionBus(), this);
 
     connect(manager, &BluezQt::Manager::usableAdapterChanged, this, &SystemCheck::usableAdapterChanged);
+    connect(manager, &BluezQt::Manager::bluetoothBlockedChanged, this, &SystemCheck::updateInformationState);
 }
 
 org::kde::kded5 *SystemCheck::kded()
@@ -65,7 +67,19 @@ void SystemCheck::createWarnings(QVBoxLayout *layout)
     m_noAdaptersError->setMessageType(KMessageWidget::Error);
     m_noAdaptersError->setCloseButtonVisible(false);
     m_noAdaptersError->setText(i18n("No Bluetooth adapters have been found."));
+
     layout->insertWidget(0, m_noAdaptersError);
+
+    m_blockedError = new KMessageWidget(m_parent);
+    m_blockedError->setMessageType(KMessageWidget::Error);
+    m_blockedError->setCloseButtonVisible(false);
+    m_blockedError->setText(i18n("Bluetooth is disabled."));
+
+    QAction *fixBlocked = new QAction(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")), i18nc("Action to fix a problem", "Fix it"), m_blockedError);
+    connect(fixBlocked, SIGNAL(triggered(bool)), this, SLOT(fixBlockedError()));
+    m_blockedError->addAction(fixBlocked);
+
+    layout->insertWidget(0, m_blockedError);
 
     m_noUsableAdapterError = new KMessageWidget(m_parent);
     m_noUsableAdapterError->setMessageType(KMessageWidget::Warning);
@@ -75,6 +89,7 @@ void SystemCheck::createWarnings(QVBoxLayout *layout)
     QAction *fixNoUsableAdapter = new QAction(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")), i18nc("Action to fix a problem", "Fix it"), m_noUsableAdapterError);
     connect(fixNoUsableAdapter, SIGNAL(triggered(bool)), this, SLOT(fixNoUsableAdapterError()));
     m_noUsableAdapterError->addAction(fixNoUsableAdapter);
+
     layout->insertWidget(0, m_noUsableAdapterError);
 
     m_notDiscoverableAdapterError = new KMessageWidget(m_parent);
@@ -115,6 +130,7 @@ void SystemCheck::createWarnings(QVBoxLayout *layout)
 
 void SystemCheck::updateInformationState()
 {
+    m_blockedError->setVisible(false);
     m_noAdaptersError->setVisible(false);
     m_noUsableAdapterError->setVisible(false);
     m_notDiscoverableAdapterError->setVisible(false);
@@ -122,6 +138,11 @@ void SystemCheck::updateInformationState()
     m_noKdedRunningError->setVisible(false);
 
     if (!GlobalSettings::self()->enableGlobalBluetooth()) {
+        return;
+    }
+
+    if (m_manager->isBluetoothBlocked()) {
+        m_blockedError->setVisible(true);
         return;
     }
 
@@ -168,10 +189,17 @@ void SystemCheck::adapterDiscoverableChanged(bool discoverable)
     updateInformationState();
 }
 
+void SystemCheck::fixBlockedError()
+{
+    m_manager->setBluetoothBlocked(false);
+}
+
 void SystemCheck::fixNoKDEDRunning()
 {
     m_noKdedRunningError->setVisible(false);
     m_kded->loadModule(QStringLiteral("bluedevil"));
+
+    updateInformationState();
 }
 
 void SystemCheck::fixNoUsableAdapterError()
