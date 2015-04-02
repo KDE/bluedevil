@@ -111,6 +111,7 @@ DiscoverWidget::DiscoverWidget(BluezQt::Manager *manager, QWidget* parent)
     connect(m_manager, &BluezQt::Manager::adapterAdded, this, &DiscoverWidget::checkAdapters);
     connect(m_manager, &BluezQt::Manager::adapterChanged, this, &DiscoverWidget::checkAdapters);
     connect(m_manager, &BluezQt::Manager::usableAdapterChanged, this, &DiscoverWidget::checkAdapters);
+    connect(m_manager, &BluezQt::Manager::bluetoothBlockedChanged, this, &DiscoverWidget::checkAdapters);
 
     connect(devices->selectionModel(), &QItemSelectionModel::currentChanged, this, &DiscoverWidget::indexSelected);
 }
@@ -134,14 +135,18 @@ void DiscoverWidget::checkAdapters()
     delete m_warningWidget;
     m_warningWidget = 0;
 
-    if (!error) {
+    if (!error && !m_manager->isBluetoothBlocked()) {
         return;
     }
 
     m_warningWidget = new KMessageWidget(this);
     m_warningWidget->setMessageType(KMessageWidget::Warning);
     m_warningWidget->setCloseButtonVisible(false);
-    m_warningWidget->setText(i18n("Your Bluetooth adapter is powered off."));
+    if (m_manager->isBluetoothBlocked()) {
+        m_warningWidget->setText(i18n("Bluetooth is disabled."));
+    } else {
+        m_warningWidget->setText(i18n("Your Bluetooth adapter is powered off."));
+    }
 
     QAction *fixAdapters = new QAction(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")), i18nc("Action to fix a problem", "Fix it"), m_warningWidget);
     connect(fixAdapters, &QAction::triggered, this, &DiscoverWidget::fixAdaptersError);
@@ -151,6 +156,8 @@ void DiscoverWidget::checkAdapters()
 
 void DiscoverWidget::fixAdaptersError()
 {
+    m_manager->setBluetoothBlocked(false);
+
     Q_FOREACH (BluezQt::AdapterPtr adapter, m_manager->adapters()) {
         adapter->setPowered(true);
     }

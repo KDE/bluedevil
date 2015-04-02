@@ -22,7 +22,7 @@
 
 #include <QWizardPage>
 
-#include <BluezQt/Types>
+#include <BluezQt/Manager>
 
 class KMessageWidget;
 
@@ -52,6 +52,7 @@ private Q_SLOTS:
 private:
     BlueWizard *m_wizard;
     DevicesProxyModel *m_model;
+    BluezQt::Manager *m_manager;
     KMessageWidget *m_warningWidget;
 };
 

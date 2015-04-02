@@ -115,6 +115,7 @@ DiscoverPage::DiscoverPage(BlueWizard *parent)
     : QWizardPage(parent)
     , m_wizard(parent)
     , m_model(0)
+    , m_manager(0)
     , m_warningWidget(0)
 {
     setupUi(this);
@@ -133,17 +134,20 @@ DiscoverPage::DiscoverPage(BlueWizard *parent)
 
 void DiscoverPage::startDiscovery()
 {
-    BluezQt::AdapterPtr adapter = m_wizard->manager()->usableAdapter();
+    m_manager = m_wizard->manager();
+
+    BluezQt::AdapterPtr adapter = m_manager->usableAdapter();
     if (adapter && !adapter->isDiscovering()) {
         adapter->startDiscovery();
     }
 
-    m_model->setDevicesModel(new BluezQt::DevicesModel(m_wizard->manager(), this));
+    m_model->setDevicesModel(new BluezQt::DevicesModel(m_manager, this));
 
     checkAdapters();
-    connect(m_wizard->manager(), &BluezQt::Manager::adapterAdded, this, &DiscoverPage::checkAdapters);
-    connect(m_wizard->manager(), &BluezQt::Manager::adapterChanged, this, &DiscoverPage::checkAdapters);
-    connect(m_wizard->manager(), &BluezQt::Manager::usableAdapterChanged, this, &DiscoverPage::usableAdapterChanged);
+    connect(m_manager, &BluezQt::Manager::adapterAdded, this, &DiscoverPage::checkAdapters);
+    connect(m_manager, &BluezQt::Manager::adapterChanged, this, &DiscoverPage::checkAdapters);
+    connect(m_manager, &BluezQt::Manager::bluetoothBlockedChanged, this, &DiscoverPage::checkAdapters);
+    connect(m_manager, &BluezQt::Manager::usableAdapterChanged, this, &DiscoverPage::usableAdapterChanged);
 }
 
 void DiscoverPage::initializePage()
@@ -262,7 +266,7 @@ void DiscoverPage::checkAdapters()
 {
     bool error = false;
 
-    Q_FOREACH (BluezQt::AdapterPtr adapter, m_wizard->manager()->adapters()) {
+    Q_FOREACH (BluezQt::AdapterPtr adapter, m_manager->adapters()) {
         if (!adapter->isPowered() || !adapter->isPairable()) {
             error = true;
             break;
@@ -272,14 +276,18 @@ void DiscoverPage::checkAdapters()
     delete m_warningWidget;
     m_warningWidget = 0;
 
-    if (!error) {
+    if (!error && !m_manager->isBluetoothBlocked()) {
         return;
     }
 
     m_warningWidget = new KMessageWidget(this);
     m_warningWidget->setMessageType(KMessageWidget::Warning);
     m_warningWidget->setCloseButtonVisible(false);
-    m_warningWidget->setText(i18n("Your Bluetooth adapter is not pairable."));
+    if (m_manager->isBluetoothBlocked()) {
+        m_warningWidget->setText(i18n("Bluetooth is disabled."));
+    } else {
+        m_warningWidget->setText(i18n("Your Bluetooth adapter is not pairable."));
+    }
 
     QAction *fixAdapters = new QAction(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")), i18nc("Action to fix a problem", "Fix it"), m_warningWidget);
     connect(fixAdapters, &QAction::triggered, this, &DiscoverPage::fixAdaptersError);
@@ -289,7 +297,9 @@ void DiscoverPage::checkAdapters()
 
 void DiscoverPage::fixAdaptersError()
 {
-    Q_FOREACH (BluezQt::AdapterPtr adapter, m_wizard->manager()->adapters()) {
+    m_manager->setBluetoothBlocked(false);
+
+    Q_FOREACH (BluezQt::AdapterPtr adapter, m_manager->adapters()) {
         adapter->setPowered(true);
         adapter->setPairable(true);
     }
