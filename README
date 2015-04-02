@@ -9,3 +9,6 @@ BlueDevil runtime dependencies:
 
     -pulseaudio-module-bluetooth
         -Be able to connect A2DP profile
+
+    -read/write access to /dev/rfkill
+        -Be able to block/unblock Bluetooth
