@@ -36,7 +36,7 @@ class FileReceiver : public QObject
     Q_OBJECT
 
 public:
-    explicit FileReceiver(BluezQt::Manager *manager, QObject *parent = 0);
+    explicit FileReceiver(QSharedPointer<BluezQt::Manager> manager, QObject *parent = Q_NULLPTR);
     ~FileReceiver();
 
 private Q_SLOTS:

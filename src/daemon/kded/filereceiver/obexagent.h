@@ -33,9 +33,9 @@ class ObexAgent : public BluezQt::ObexAgent
     Q_OBJECT
 
 public:
-    explicit ObexAgent(BluezQt::Manager *manager, QObject *parent = 0);
+    explicit ObexAgent(QSharedPointer<BluezQt::Manager> manager, QObject *parent = Q_NULLPTR);
 
-    BluezQt::Manager *manager() const;
+    QSharedPointer<BluezQt::Manager> manager() const;
 
     bool shouldAutoAcceptTransfer(const QString &address) const;
 
@@ -46,7 +46,7 @@ private Q_SLOTS:
     void receiveFileJobFinished(KJob *job);
 
 private:
-    BluezQt::Manager *m_manager;
+    QSharedPointer<BluezQt::Manager> m_manager;
     QHash<QString, QDateTime> m_transferTimes;
 };
 

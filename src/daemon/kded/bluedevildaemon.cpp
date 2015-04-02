@@ -52,11 +52,11 @@ struct BlueDevilDaemon::Private
         Offline
     } m_status;
 
+    QTimer m_timer;
     BluezAgent *m_bluezAgent;
-    BluezQt::Manager *m_manager;
     FileReceiver *m_fileReceiver;
     DeviceMonitor *m_deviceMonitor;
-    QTimer m_timer;
+    QSharedPointer<BluezQt::Manager> m_manager;
 };
 
 BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
@@ -68,8 +68,8 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
 
     d->m_status = Private::Offline;
     d->m_bluezAgent = new BluezAgent(this);
-    d->m_fileReceiver = 0;
-    d->m_deviceMonitor = 0;
+    d->m_fileReceiver = Q_NULLPTR;
+    d->m_deviceMonitor = Q_NULLPTR;
     d->m_timer.setSingleShot(true);
     connect(&d->m_timer, &QTimer::timeout, this, &BlueDevilDaemon::stopDiscovering);
 
@@ -92,7 +92,7 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     KAboutData::registerPluginData(aboutData);
 
     // Initialize BluezQt
-    d->m_manager = new BluezQt::Manager(this);
+    d->m_manager = QSharedPointer<BluezQt::Manager>(new BluezQt::Manager);
     BluezQt::InitManagerJob *job = d->m_manager->init();
     job->start();
     connect(job, &BluezQt::InitManagerJob::result, this, &BlueDevilDaemon::initJobResult);
@@ -104,7 +104,6 @@ BlueDevilDaemon::~BlueDevilDaemon()
         offlineMode();
     }
 
-    delete d->m_deviceMonitor;
     delete d;
 }
 
@@ -166,10 +165,10 @@ void BlueDevilDaemon::initJobResult(BluezQt::InitManagerJob *job)
     }
 
     bluetoothOperationalChanged(d->m_manager->isBluetoothOperational());
-    connect(d->m_manager, &BluezQt::Manager::bluetoothOperationalChanged,
+    connect(d->m_manager.data(), &BluezQt::Manager::bluetoothOperationalChanged,
             this, &BlueDevilDaemon::bluetoothOperationalChanged);
 
-    d->m_deviceMonitor = new DeviceMonitor(d->m_manager);
+    d->m_deviceMonitor = new DeviceMonitor(d->m_manager, this);
 }
 
 void BlueDevilDaemon::bluetoothOperationalChanged(bool operational)

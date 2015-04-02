@@ -28,7 +28,7 @@
 #include <BluezQt/Device>
 #include <BluezQt/Services>
 
-DeviceMonitor::DeviceMonitor(BluezQt::Manager *manager, QObject *parent)
+DeviceMonitor::DeviceMonitor(QSharedPointer<BluezQt::Manager> manager, QObject *parent)
     : QObject(parent)
     , m_manager(manager)
     , m_places(new KFilePlacesModel(this))
@@ -42,9 +42,9 @@ DeviceMonitor::DeviceMonitor(BluezQt::Manager *manager, QObject *parent)
         deviceAdded(device);
     }
 
-    connect(m_manager, &BluezQt::Manager::adapterAdded, this, &DeviceMonitor::adapterAdded);
-    connect(m_manager, &BluezQt::Manager::deviceAdded, this, &DeviceMonitor::deviceAdded);
-    connect(m_manager, &BluezQt::Manager::bluetoothOperationalChanged, this, &DeviceMonitor::bluetoothOperationalChanged);
+    connect(m_manager.data(), &BluezQt::Manager::adapterAdded, this, &DeviceMonitor::adapterAdded);
+    connect(m_manager.data(), &BluezQt::Manager::deviceAdded, this, &DeviceMonitor::deviceAdded);
+    connect(m_manager.data(), &BluezQt::Manager::bluetoothOperationalChanged, this, &DeviceMonitor::bluetoothOperationalChanged);
 
     // Catch suspend/resume events
     QDBusConnection::systemBus().connect(QStringLiteral("org.freedesktop.login1"),

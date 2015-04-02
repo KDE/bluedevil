@@ -22,13 +22,13 @@
 
 #include <QDBusObjectPath>
 
-ObexAgent::ObexAgent(BluezQt::Manager *manager, QObject *parent)
+ObexAgent::ObexAgent(QSharedPointer<BluezQt::Manager> manager, QObject *parent)
     : BluezQt::ObexAgent(parent)
     , m_manager(manager)
 {
 }
 
-BluezQt::Manager *ObexAgent::manager() const
+QSharedPointer<BluezQt::Manager> ObexAgent::manager() const
 {
     return m_manager;
 }
