@@ -17,11 +17,13 @@ Notes:
     <sub-class-of type="inode/directory"/>
     <generic-icon name="video-display"/>
     <comment>Device</comment>
+    <comment xml:lang="ast">Preséu</comment>
     <comment xml:lang="ca">Dispositiu</comment>
     <comment xml:lang="cs">Zařízení</comment>
     <comment xml:lang="de">Gerät</comment>
     <comment xml:lang="en_GB">Device</comment>
     <comment xml:lang="es">Dispositivo</comment>
+    <comment xml:lang="fi">Laite</comment>
     <comment xml:lang="nl">Apparaat</comment>
     <comment xml:lang="pl">Urządzenie</comment>
     <comment xml:lang="pt">Dispositivo</comment>
