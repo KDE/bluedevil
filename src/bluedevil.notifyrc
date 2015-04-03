@@ -43,6 +43,7 @@ Comment[uk]=Система Bluetooth
 Comment[x-test]=xxBluetooth systemxx
 Comment[zh_TW]=藍牙系統
 Name=Bluetooth
+Name[ast]=Bluetooth
 Name[bs]=Bluetooth
 Name[ca]=Bluetooth
 Name[ca@valencia]=Bluetooth

@@ -8,6 +8,7 @@ X-KDE-Kded-load-on-demand=false
 X-KDE-Kded-phase=1
 
 Name=Bluetooth
+Name[ast]=Bluetooth
 Name[bs]=Bluetooth
 Name[ca]=Bluetooth
 Name[ca@valencia]=Bluetooth
