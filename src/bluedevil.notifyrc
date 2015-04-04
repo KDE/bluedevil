@@ -439,3 +439,9 @@ Comment[x-test]=xxIncoming file transferxx
 Comment[zh_TW]=進來的檔案傳輸
 Icon=preferences-system-bluetooth
 Action=Popup
+
+[Event/ConnectionFailed]
+Name=Connection Failed
+Comment=Connection to device failed
+Icon=preferences-system-bluetooth
+Action=Popup

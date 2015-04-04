@@ -1,0 +1,25 @@
+[Desktop Entry]
+Name=Bluetooth
+Name[x-test]=xxBluetoothxx
+
+Comment=Bluetooth status and control
+Comment[x-test]=xxBluetooth status and controlxx
+
+Icon=preferences-system-bluetooth
+Type=Service
+X-KDE-ServiceTypes=Plasma/Applet,Plasma/PopupApplet
+
+X-Plasma-API=declarativeappletscript
+X-Plasma-MainScript=ui/BluetoothApplet.qml
+
+X-Plasma-NotificationArea=true
+X-Plasma-DBusActivationService=org.bluez
+
+X-KDE-PluginInfo-Name=org.kde.plasma.bluetooth
+X-KDE-PluginInfo-Category=System Information
+X-KDE-PluginInfo-Author=David Rosca
+X-KDE-PluginInfo-Email=nowrep@gmail.com
+X-KDE-PluginInfo-Version=1.0.0
+X-KDE-PluginInfo-Website=https://projects.kde.org/projects/kde/workspace/bluedevil
+X-KDE-PluginInfo-License=GPL
+X-KDE-PluginInfo-EnabledByDefault=true

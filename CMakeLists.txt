@@ -13,6 +13,7 @@ set(QT_MIN_VERSION "5.4.0")
 find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Core
     Widgets
+    Qml
     DBus)
 
 find_package(KF5 MODULE REQUIRED COMPONENTS
@@ -21,6 +22,7 @@ find_package(KF5 MODULE REQUIRED COMPONENTS
     DBusAddons
     Notifications
     IconThemes
+    Plasma
     I18n
     KIO
     BluezQt)
