@@ -17,43 +17,26 @@ Notes:
     <sub-class-of type="inode/directory"/>
     <generic-icon name="video-display"/>
     <comment>Device</comment>
-    <comment xml:lang="ast">Preséu</comment>
-    <comment xml:lang="ca">Dispositiu</comment>
-    <comment xml:lang="cs">Zařízení</comment>
-    <comment xml:lang="de">Gerät</comment>
-    <comment xml:lang="en_GB">Device</comment>
-    <comment xml:lang="es">Dispositivo</comment>
-    <comment xml:lang="fi">Laite</comment>
-    <comment xml:lang="nl">Apparaat</comment>
-    <comment xml:lang="pl">Urządzenie</comment>
-    <comment xml:lang="pt">Dispositivo</comment>
-    <comment xml:lang="pt_BR">Dispositivo</comment>
-    <comment xml:lang="ru">Устройство</comment>
-    <comment xml:lang="sk">Zariadenie</comment>
-    <comment xml:lang="sl">Naprava</comment>
-    <comment xml:lang="sr">уређај</comment>
-    <comment xml:lang="sr@ijekavian">уређај</comment>
-    <comment xml:lang="sr@ijekavianlatin">uređaj</comment>
-    <comment xml:lang="sr@latin">uređaj</comment>
-    <comment xml:lang="sv">Enhet</comment>
-    <comment xml:lang="uk">Пристрій</comment>
   </mime-type>
   <mime-type type="inode/vnd.kde.bluedevil.service">
     <sub-class-of type="inode/directory"/>
     <generic-icon name="preferences-system-bluetooth"/>
     <comment>Service</comment>
+    <comment xml:lang="ast">Serviciu</comment>
     <comment xml:lang="bs">Usluga</comment>
     <comment xml:lang="ca">Servei</comment>
     <comment xml:lang="cs">Služba</comment>
-    <comment xml:lang="da">Tjeneste</comment>
     <comment xml:lang="de">Dienst</comment>
     <comment xml:lang="el">Υπηρεσία</comment>
     <comment xml:lang="en_GB">Service</comment>
     <comment xml:lang="es">Servicio</comment>
     <comment xml:lang="fi">Palvelu</comment>
     <comment xml:lang="fr">Service</comment>
+    <comment xml:lang="gl">Servizo</comment>
+    <comment xml:lang="hu">Szolgáltatás</comment>
     <comment xml:lang="it">Servizio</comment>
     <comment xml:lang="nl">Service</comment>
+    <comment xml:lang="pa">ਸਰਵਿਸ</comment>
     <comment xml:lang="pl">Usługa</comment>
     <comment xml:lang="pt">Serviço</comment>
     <comment xml:lang="pt_BR">Serviço</comment>
@@ -65,23 +48,28 @@ Notes:
     <comment xml:lang="sr@ijekavianlatin">servis</comment>
     <comment xml:lang="sr@latin">servis</comment>
     <comment xml:lang="sv">Tjänst</comment>
+    <comment xml:lang="tr">Hizmet</comment>
     <comment xml:lang="uk">Служба</comment>
+    <comment xml:lang="zh_CN">服务</comment>
     <comment xml:lang="zh_TW">服務</comment>
   </mime-type>
   <mime-type type="application/vnd.kde.bluedevil-sendfile">
     <comment>Service</comment>
+    <comment xml:lang="ast">Serviciu</comment>
     <comment xml:lang="bs">Usluga</comment>
     <comment xml:lang="ca">Servei</comment>
     <comment xml:lang="cs">Služba</comment>
-    <comment xml:lang="da">Tjeneste</comment>
     <comment xml:lang="de">Dienst</comment>
     <comment xml:lang="el">Υπηρεσία</comment>
     <comment xml:lang="en_GB">Service</comment>
     <comment xml:lang="es">Servicio</comment>
     <comment xml:lang="fi">Palvelu</comment>
     <comment xml:lang="fr">Service</comment>
+    <comment xml:lang="gl">Servizo</comment>
+    <comment xml:lang="hu">Szolgáltatás</comment>
     <comment xml:lang="it">Servizio</comment>
     <comment xml:lang="nl">Service</comment>
+    <comment xml:lang="pa">ਸਰਵਿਸ</comment>
     <comment xml:lang="pl">Usługa</comment>
     <comment xml:lang="pt">Serviço</comment>
     <comment xml:lang="pt_BR">Serviço</comment>
@@ -93,7 +81,9 @@ Notes:
     <comment xml:lang="sr@ijekavianlatin">servis</comment>
     <comment xml:lang="sr@latin">servis</comment>
     <comment xml:lang="sv">Tjänst</comment>
+    <comment xml:lang="tr">Hizmet</comment>
     <comment xml:lang="uk">Служба</comment>
+    <comment xml:lang="zh_CN">服务</comment>
     <comment xml:lang="zh_TW">服務</comment>
   </mime-type>
 </mime-info>
