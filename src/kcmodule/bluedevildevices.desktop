@@ -1,6 +1,6 @@
 [Desktop Entry]
 Exec=kcmshell5 bluedevildevices
-Icon=input-mouse
+Icon=preferences-system-bluetooth
 Type=Service
 
 X-KDE-ServiceTypes=KCModule

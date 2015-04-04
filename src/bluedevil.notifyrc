@@ -85,6 +85,7 @@ Name[ug]=كۆكچىش
 Name[uk]=Bluetooth
 Name[x-test]=xxBluetoothxx
 Name[zh_TW]=藍牙
+Icon=preferences-system-bluetooth
 Ignore=true
 
 [Event/Authorize]
@@ -169,6 +170,7 @@ Comment[tr]=Bir aygıt bağlanmak istiyor
 Comment[uk]=Отримано запит щодо з’єднання пристрою з комп’ютером
 Comment[x-test]=xxA device wants to connectxx
 Comment[zh_TW]=某個裝置希望能與您連線
+Icon=preferences-system-bluetooth
 Action=Popup
 
 [Event/RequestConfirmation]
@@ -252,6 +254,7 @@ Comment[tr]=Eşleştirme PIN'i kullanarak bir aygıt isteğini onaylayın
 Comment[uk]=Підтвердження запиту пристрою відповідними PIN-кодами
 Comment[x-test]=xxConfirm a device request using matching PINsxx
 Comment[zh_TW]=利用比對 PIN 碼確認裝置的要求
+Icon=preferences-system-bluetooth
 Action=Popup
 
 [Event/RequestPin]
@@ -346,6 +349,7 @@ Comment[uk]=Потрібен PIN-код
 Comment[x-test]=xxA PIN is neededxx
 Comment[zh_CN]=需要 PIN
 Comment[zh_TW]=需要 PIN 碼
+Icon=preferences-system-bluetooth
 Action=Popup
 
 [Event/IncomingFile]
@@ -434,4 +438,11 @@ Comment[tr]=Gelen dosya aktarımı
 Comment[uk]=Вхідне перенесення файла
 Comment[x-test]=xxIncoming file transferxx
 Comment[zh_TW]=進來的檔案傳輸
+Icon=preferences-system-bluetooth
+Action=Popup
+
+[Event/ConnectionFailed]
+Name=Connection Failed
+Comment=Connection to device failed
+Icon=preferences-system-bluetooth
 Action=Popup

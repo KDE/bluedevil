@@ -23,38 +23,37 @@
 #ifndef LEGACYPAIRINGDATABASE_H
 #define LEGACYPAIRINGDATABASE_H
 
-#include "ui_nopairing.h"
+#include "ui_connect.h"
+
 #include <QWizardPage>
 
-class BlueWizard;
-class KPixmapSequenceOverlayPainter;
-
-namespace BlueDevil
+namespace BluezQt
 {
-    class Device;
-    class Adapter;
+    class PendingCall;
 }
 
-class LegacyPairingPageDatabase : public QWizardPage, Ui::NoPairing
+class BlueWizard;
+
+class LegacyPairingPageDatabase : public QWizardPage, Ui::Connect
 {
     Q_OBJECT
 
 public:
     explicit LegacyPairingPageDatabase(BlueWizard *parent = 0);
 
-    void initializePage() Q_DECL_OVERRIDE;
-    bool validatePage() Q_DECL_OVERRIDE;
     int nextId() const Q_DECL_OVERRIDE;
+    void initializePage() Q_DECL_OVERRIDE;
 
 public Q_SLOTS:
-    void pairedChanged(bool paired);
+    void setPairableFinished(BluezQt::PendingCall *call);
+    void pairingFinished(BluezQt::PendingCall *call);
 
 protected:
     QList<QWizard::WizardButton> wizardButtonsLayout() const;
 
 private:
     BlueWizard *m_wizard;
-    KPixmapSequenceOverlayPainter *m_working;
+    bool m_success;
 };
 
 #endif // LEGACYPAIRINGDATABASE_H

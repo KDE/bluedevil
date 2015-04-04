@@ -23,7 +23,7 @@
 #define REQUEST_PIN_H
 
 #include <QObject>
-#include <QTimer>
+#include <QStringList>
 
 namespace Ui
 {
@@ -66,9 +66,9 @@ private Q_SLOTS:
     void checkPin(const QString &pin);
 
 private:
-    QTimer m_timer;
     Ui::dialogWidget *m_dialogWidget;
     KNotification *m_notification;
+    QStringList m_args;
 };
 
 #endif // REQUEST_PIN_H

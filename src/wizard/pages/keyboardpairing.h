@@ -24,18 +24,16 @@
 #define KEYBOARDPAIRING_H
 
 #include "ui_keyboardpairing.h"
+
 #include <QWizardPage>
+
+namespace BluezQt
+{
+    class PendingCall;
+}
 
 class BlueWizard;
 class KPixmapSequenceOverlayPainter;
-
-namespace BlueDevil
-{
-    class Device;
-    class Adapter;
-}
-
-using namespace BlueDevil;
 
 class KeyboardPairingPage : public QWizardPage, Ui::KeyboardPairing
 {
@@ -44,13 +42,13 @@ class KeyboardPairingPage : public QWizardPage, Ui::KeyboardPairing
 public:
     explicit KeyboardPairingPage(BlueWizard *parent = 0);
 
-    void initializePage() Q_DECL_OVERRIDE;
-    bool validatePage() Q_DECL_OVERRIDE;
     int nextId() const Q_DECL_OVERRIDE;
+    void initializePage() Q_DECL_OVERRIDE;
 
-public Q_SLOTS:
+private Q_SLOTS:
+    void setPairableFinished(BluezQt::PendingCall *call);
+    void pairingFinished(BluezQt::PendingCall *call);
     void pinRequested(const QString &pin);
-    void pairedChanged(bool paired);
 
 protected:
     QList<QWizard::WizardButton> wizardButtonsLayout() const;
@@ -58,6 +56,7 @@ protected:
 private:
     BlueWizard *m_wizard;
     KPixmapSequenceOverlayPainter *m_working;
+    bool m_success;
 };
 
 #endif // KEYBOARDPAIRING_H

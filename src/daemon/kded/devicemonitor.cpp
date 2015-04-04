@@ -24,26 +24,27 @@
 #include <KConfigGroup>
 #include <KFilePlacesModel>
 
-#include <bluedevil/bluedevil.h>
+#include <BluezQt/Adapter>
+#include <BluezQt/Device>
+#include <BluezQt/Services>
 
-using namespace BlueDevil;
-
-DeviceMonitor::DeviceMonitor(QObject *parent)
+DeviceMonitor::DeviceMonitor(QSharedPointer<BluezQt::Manager> manager, QObject *parent)
     : QObject(parent)
-    , m_manager(Manager::self())
+    , m_manager(manager)
     , m_places(new KFilePlacesModel(this))
     , m_config(KSharedConfig::openConfig(QStringLiteral("bluedevilglobalrc")))
 {
-    Q_FOREACH (Adapter *adapter, m_manager->adapters()) {
+    Q_FOREACH (BluezQt::AdapterPtr adapter, m_manager->adapters()) {
         adapterAdded(adapter);
     }
 
-    Q_FOREACH (Device *device, m_manager->devices()) {
+    Q_FOREACH (BluezQt::DevicePtr device, m_manager->devices()) {
         deviceAdded(device);
     }
 
-    connect(m_manager, &Manager::adapterAdded, this, &DeviceMonitor::adapterAdded);
-    connect(m_manager, &Manager::usableAdapterChanged, this, &DeviceMonitor::usableAdapterChanged);
+    connect(m_manager.data(), &BluezQt::Manager::adapterAdded, this, &DeviceMonitor::adapterAdded);
+    connect(m_manager.data(), &BluezQt::Manager::deviceAdded, this, &DeviceMonitor::deviceAdded);
+    connect(m_manager.data(), &BluezQt::Manager::bluetoothOperationalChanged, this, &DeviceMonitor::bluetoothOperationalChanged);
 
     // Catch suspend/resume events
     QDBusConnection::systemBus().connect(QStringLiteral("org.freedesktop.login1"),
@@ -62,34 +63,32 @@ DeviceMonitor::~DeviceMonitor()
     saveState();
 }
 
-void DeviceMonitor::usableAdapterChanged(Adapter *adapter)
+void DeviceMonitor::bluetoothOperationalChanged(bool operational)
 {
-    if (!adapter) {
+    if (!operational) {
         clearPlaces();
     }
 }
 
-void DeviceMonitor::adapterAdded(Adapter *adapter)
+void DeviceMonitor::adapterAdded(BluezQt::AdapterPtr adapter)
 {
     restoreAdapter(adapter);
-
-    connect(adapter, &Adapter::deviceFound, this, &DeviceMonitor::deviceAdded);
 }
 
-void DeviceMonitor::deviceAdded(Device *device)
+void DeviceMonitor::deviceAdded(BluezQt::DevicePtr device)
 {
     updateDevicePlace(device);
     org::kde::KDirNotify::emitFilesAdded(QUrl(QStringLiteral("bluetooth:/")));
 
-    connect(device, &Device::connectedChanged, this, &DeviceMonitor::deviceConnectedChanged);
+    connect(device.data(), &BluezQt::Device::connectedChanged, this, &DeviceMonitor::deviceConnectedChanged);
 }
 
 void DeviceMonitor::deviceConnectedChanged(bool connected)
 {
     Q_UNUSED(connected)
-    Q_ASSERT(qobject_cast<Device*>(sender()));
+    Q_ASSERT(qobject_cast<BluezQt::Device*>(sender()));
 
-    Device *device = static_cast<Device*>(sender());
+    BluezQt::DevicePtr device = static_cast<BluezQt::Device*>(sender())->toSharedPtr();
     updateDevicePlace(device);
 }
 
@@ -106,16 +105,19 @@ void DeviceMonitor::login1PrepareForSleep(bool active)
 
 void DeviceMonitor::saveState()
 {
+    KConfigGroup globalGroup = m_config->group("Global");
+    globalGroup.writeEntry<bool>(QStringLiteral("bluetoothBlocked"), m_manager->isBluetoothBlocked());
+
     KConfigGroup adaptersGroup = m_config->group("Adapters");
 
-    Q_FOREACH (Adapter *adapter, m_manager->adapters()) {
-        const QString key = QString(QStringLiteral("%1_powered")).arg(adapter->address());
+    Q_FOREACH (BluezQt::AdapterPtr adapter, m_manager->adapters()) {
+        const QString key = QStringLiteral("%1_powered").arg(adapter->address());
         adaptersGroup.writeEntry<bool>(key, adapter->isPowered());
     }
 
     QStringList connectedDevices;
 
-    Q_FOREACH (Device *device, m_manager->devices()) {
+    Q_FOREACH (BluezQt::DevicePtr device, m_manager->devices()) {
         if (device->isConnected()) {
             connectedDevices.append(device->address());
         }
@@ -129,10 +131,13 @@ void DeviceMonitor::saveState()
 
 void DeviceMonitor::restoreState()
 {
+    KConfigGroup globalGroup = m_config->group("Global");
+    m_manager->setBluetoothBlocked(globalGroup.readEntry<bool>(QStringLiteral("bluetoothBlocked"), false));
+
     KConfigGroup adaptersGroup = m_config->group("Adapters");
 
-    Q_FOREACH (Adapter *adapter, m_manager->adapters()) {
-        const QString key = QString(QStringLiteral("%1_powered")).arg(adapter->address());
+    Q_FOREACH (BluezQt::AdapterPtr adapter, m_manager->adapters()) {
+        const QString key = QStringLiteral("%1_powered").arg(adapter->address());
         adapter->setPowered(adaptersGroup.readEntry<bool>(key, true));
     }
 
@@ -140,18 +145,18 @@ void DeviceMonitor::restoreState()
     const QStringList &connectedDevices = devicesGroup.readEntry<QStringList>(QStringLiteral("connectedDevices"), QStringList());
 
     Q_FOREACH (const QString &addr, connectedDevices) {
-        Device *device = deviceForAddress(addr);
+        BluezQt::DevicePtr device = m_manager->deviceForAddress(addr);
         if (device) {
             device->connectDevice();
         }
     }
 }
 
-void DeviceMonitor::restoreAdapter(Adapter *adapter)
+void DeviceMonitor::restoreAdapter(BluezQt::AdapterPtr adapter)
 {
     KConfigGroup adaptersGroup = m_config->group("Adapters");
 
-    const QString &key = QString(QStringLiteral("%1_powered")).arg(adapter->address());
+    const QString &key = QStringLiteral("%1_powered").arg(adapter->address());
     adapter->setPowered(adaptersGroup.readEntry<bool>(key, true));
 }
 
@@ -166,10 +171,9 @@ void DeviceMonitor::clearPlaces()
     }
 }
 
-void DeviceMonitor::updateDevicePlace(Device *device)
+void DeviceMonitor::updateDevicePlace(BluezQt::DevicePtr device)
 {
-    // OBEX File Transfer Protocol
-    if (!device->UUIDs().contains(QStringLiteral("00001106-0000-1000-8000-00805F9B34FB"))) {
+    if (!device->uuids().contains(BluezQt::Services::ObexFileTransfer)) {
         return;
     }
 
@@ -194,22 +198,4 @@ void DeviceMonitor::updateDevicePlace(Device *device)
             m_places->removePlace(index);
         }
     }
-}
-
-Device *DeviceMonitor::deviceForAddress(const QString &address) const
-{
-    Device *device = 0;
-
-    Q_FOREACH (Adapter *adapter, m_manager->adapters()) {
-        if (!adapter->isPowered()) {
-            continue;
-        }
-
-        device = adapter->deviceForAddress(address);
-        if (device) {
-            break;
-        }
-    }
-
-    return device;
 }

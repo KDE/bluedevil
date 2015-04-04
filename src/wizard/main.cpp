@@ -24,8 +24,6 @@
 #include <QUrl>
 #include <QIcon>
 #include <QApplication>
-#include <QCommandLineParser>
-#include <QCommandLineOption>
 
 #include <KAboutData>
 #include <KDBusService>
@@ -44,24 +42,14 @@ int main(int argc, char *argv[])
                         QStringLiteral("afiestas@kde.org"), QStringLiteral("http://www.afiestas.org/"));
 
     QApplication app(argc, argv);
+    app.setAttribute(Qt::AA_UseHighDpiPixmaps);
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")));
     app.setQuitOnLastWindowClosed(false);
 
     KAboutData::setApplicationData(aboutData);
     KDBusService service(KDBusService::Unique);
 
-    QCommandLineParser parser;
-    parser.setApplicationDescription(i18n("Bluetooth Wizard"));
-    parser.addVersionOption();
-    parser.addHelpOption();
-    parser.addPositionalArgument(QStringLiteral("URL"), i18n("Device to pair with"), QStringLiteral("[URL]"));
-
-    parser.process(app);
-
-    const QStringList &args = parser.positionalArguments();
-    const QUrl &url = !args.isEmpty() ? args.first() : QUrl();
-
-    BlueWizard *wizard = new BlueWizard(url);
+    BlueWizard *wizard = new BlueWizard;
 
     QObject::connect(&service, &KDBusService::activateRequested, wizard, [wizard]() {
         wizard->setWindowState((wizard->windowState() & ~Qt::WindowMinimized) | Qt::WindowActive);

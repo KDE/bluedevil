@@ -20,8 +20,6 @@
 
 #include "devicedetails.h"
 
-#include <bluedevil/bluedevildevice.h>
-
 #include <QLabel>
 #include <QCheckBox>
 #include <QLineEdit>
@@ -31,7 +29,9 @@
 #include <kled.h>
 #include <klocalizedstring.h>
 
-DeviceDetails::DeviceDetails(Device* device, QWidget* parent)
+#include <BluezQt/Device>
+
+DeviceDetails::DeviceDetails(BluezQt::DevicePtr device, QWidget* parent)
     : QDialog(parent)
     , m_device(device)
     , m_alias(new QLineEdit(this))
@@ -40,10 +40,10 @@ DeviceDetails::DeviceDetails(Device* device, QWidget* parent)
     , m_buttonBox(new QDialogButtonBox(this))
 {
     m_alias->setClearButtonEnabled(true);
-    m_alias->setText(device->alias());
+    m_alias->setText(device->name());
 
     QFormLayout *layout = new QFormLayout;
-    layout->addRow(i18nc("Name of the device", "Name"), new QLabel(device->name()));
+    layout->addRow(i18nc("Name of the device", "Name"), new QLabel(device->remoteName()));
     layout->addRow(i18nc("Alias of the device", "Alias"), m_alias);
     QLineEdit *address = new QLineEdit(this);
     address->setReadOnly(true);
@@ -64,21 +64,17 @@ DeviceDetails::DeviceDetails(Device* device, QWidget* parent)
     connect(m_buttonBox, SIGNAL(clicked(QAbstractButton*)), this, SLOT(buttonClicked(QAbstractButton*)));
 }
 
-DeviceDetails::~DeviceDetails()
-{
-}
-
 void DeviceDetails::buttonClicked(QAbstractButton *button)
 {
     switch (m_buttonBox->buttonRole(button)) {
     case QDialogButtonBox::AcceptRole:
-        m_device->setAlias(m_alias->text());
+        m_device->setName(m_alias->text());
         m_device->setTrusted(m_trusted->isChecked());
         m_device->setBlocked(m_blocked->isChecked());
         accept();
         break;
     case QDialogButtonBox::ResetRole:
-        m_alias->setText(m_device->alias());
+        m_alias->setText(m_device->name());
         m_blocked->setChecked(m_device->isBlocked());
         m_trusted->setChecked(m_device->isTrusted());
         break;

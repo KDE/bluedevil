@@ -24,6 +24,7 @@
 #include "ui_discover.h"
 #include "debug_p.h"
 
+#include <QSortFilterProxyModel>
 #include <QListWidgetItem>
 #include <QListView>
 #include <QLabel>
@@ -31,94 +32,133 @@
 #include <QDebug>
 #include <QIcon>
 
-#include <bluedevil/bluedevil.h>
+#include <KMessageWidget>
 
-using namespace BlueDevil;
+#include <BluezQt/Device>
+#include <BluezQt/Adapter>
+#include <BluezQt/Services>
+#include <BluezQt/DevicesModel>
 
-DiscoverWidget::DiscoverWidget(QWidget* parent)
+class DevicesProxyModel : public QSortFilterProxyModel
+{
+public:
+    explicit DevicesProxyModel(QObject *parent);
+
+    void setDevicesModel(BluezQt::DevicesModel *model);
+
+    QVariant data(const QModelIndex &index, int role) const Q_DECL_OVERRIDE;
+    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const Q_DECL_OVERRIDE;
+
+    BluezQt::DevicePtr device(const QModelIndex &index) const;
+
+private:
+    BluezQt::DevicesModel *m_devicesModel;
+};
+
+DevicesProxyModel::DevicesProxyModel(QObject *parent)
+    : QSortFilterProxyModel(parent)
+    , m_devicesModel(0)
+{
+    setDynamicSortFilter(true);
+    sort(0, Qt::DescendingOrder);
+}
+
+void DevicesProxyModel::setDevicesModel(BluezQt::DevicesModel *model)
+{
+    m_devicesModel = model;
+    setSourceModel(model);
+}
+
+QVariant DevicesProxyModel::data(const QModelIndex &index, int role) const
+{
+    switch (role) {
+    case Qt::DecorationRole:
+        return QIcon::fromTheme(index.data(BluezQt::DevicesModel::IconRole).toString());
+
+    default:
+        return QSortFilterProxyModel::data(index, role);
+    }
+}
+
+bool DevicesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
+{
+    QModelIndex index = sourceModel()->index(sourceRow, 0, sourceParent);
+
+    const QStringList &uuids = index.data(BluezQt::DevicesModel::UuidsRole).toStringList();
+    bool adapterPowered = index.data(BluezQt::DevicesModel::AdapterPoweredRole).toBool();
+
+    return adapterPowered && uuids.contains(BluezQt::Services::ObexObjectPush);
+}
+
+BluezQt::DevicePtr DevicesProxyModel::device(const QModelIndex &index) const
+{
+    Q_ASSERT(m_devicesModel);
+    return m_devicesModel->device(mapToSource(index));
+}
+
+DiscoverWidget::DiscoverWidget(BluezQt::Manager *manager, QWidget* parent)
     : QWidget(parent)
+    , m_manager(manager)
+    , m_warningWidget(0)
 {
     setupUi(this);
 
-    connect(deviceList, &QListWidget::currentItemChanged, this, &DiscoverWidget::itemSelected);
-    connect(Manager::self()->usableAdapter(), &Adapter::deviceFound, this, &DiscoverWidget::deviceFound);
+    m_model = new DevicesProxyModel(this);
+    m_model->setDevicesModel(new BluezQt::DevicesModel(m_manager, this));
+    devices->setModel(m_model);
 
-    startScan();
+    checkAdapters();
+    connect(m_manager, &BluezQt::Manager::adapterAdded, this, &DiscoverWidget::checkAdapters);
+    connect(m_manager, &BluezQt::Manager::adapterChanged, this, &DiscoverWidget::checkAdapters);
+    connect(m_manager, &BluezQt::Manager::usableAdapterChanged, this, &DiscoverWidget::checkAdapters);
+    connect(m_manager, &BluezQt::Manager::bluetoothBlockedChanged, this, &DiscoverWidget::checkAdapters);
+
+    connect(devices->selectionModel(), &QItemSelectionModel::currentChanged, this, &DiscoverWidget::indexSelected);
 }
 
-void DiscoverWidget::startScan()
+void DiscoverWidget::indexSelected(const QModelIndex index)
 {
-    deviceList->clear();
-    stopScan();
+    Q_EMIT deviceSelected(m_model->device(index));
+}
 
-    QList<Device*> knownDevices = Manager::self()->usableAdapter()->devices();
-    Q_FOREACH(Device *device, knownDevices) {
-        if (device->UUIDs().contains(QLatin1String("00001105-0000-1000-8000-00805F9B34FB"), Qt::CaseInsensitive)) {
-            deviceFound(device);
+void DiscoverWidget::checkAdapters()
+{
+    bool error = false;
+
+    Q_FOREACH (BluezQt::AdapterPtr adapter, m_manager->adapters()) {
+        if (!adapter->isPowered()) {
+            error = true;
+            break;
         }
     }
-    Manager::self()->usableAdapter()->startDiscovery();
-}
 
-void DiscoverWidget::stopScan()
-{
-    if (Manager::self()->usableAdapter()) {
-        Manager::self()->usableAdapter()->stopDiscovery();
-    }
-}
+    delete m_warningWidget;
+    m_warningWidget = 0;
 
-void DiscoverWidget::deviceFound(Device *device)
-{
-    deviceFoundGeneric(device->address(), device->name(), device->icon(), device->alias());
-}
-
-void DiscoverWidget::deviceFoundGeneric(QString address, QString name, QString icon, QString alias)
-{
-    qCDebug(SENDFILE) << "========================";
-    qCDebug(SENDFILE) << "Address: " << address;
-    qCDebug(SENDFILE) << "Name: " << name;
-    qCDebug(SENDFILE) << "Alias: " << alias;
-    qCDebug(SENDFILE) << "Icon: " << icon;
-    qCDebug(SENDFILE) << "\n";
-
-
-    bool origName = false;
-    if (!name.isEmpty()) {
-        origName = true;
-    }
-
-    if (!alias.isEmpty() && alias != name && !name.isEmpty()) {
-        name = QString(QStringLiteral("%1 (%2)")).arg(alias).arg(name);
-    }
-
-    if (name.isEmpty()) {
-        name = address;
-    }
-
-    if (icon.isEmpty()) {
-        icon.append(QLatin1String("preferences-system-bluetooth"));
-    }
-
-    if (m_itemRelation.contains(address)) {
-        m_itemRelation[address]->setText(name);
-        m_itemRelation[address]->setIcon(QIcon::fromTheme(icon));
-        m_itemRelation[address]->setData(Qt::UserRole+1, origName);
-
-        if (deviceList->currentItem() == m_itemRelation[address]) {
-            emit deviceSelected(Manager::self()->usableAdapter()->deviceForAddress(address));
-        }
+    if (!error && !m_manager->isBluetoothBlocked()) {
         return;
     }
 
-    QListWidgetItem *item = new QListWidgetItem(QIcon::fromTheme(icon), name, deviceList);
+    m_warningWidget = new KMessageWidget(this);
+    m_warningWidget->setMessageType(KMessageWidget::Warning);
+    m_warningWidget->setCloseButtonVisible(false);
+    if (m_manager->isBluetoothBlocked()) {
+        m_warningWidget->setText(i18n("Bluetooth is disabled."));
+    } else {
+        m_warningWidget->setText(i18n("Your Bluetooth adapter is powered off."));
+    }
 
-    item->setData(Qt::UserRole, address);
-    item->setData(Qt::UserRole+1, origName);
-
-    m_itemRelation.insert(address, item);
+    QAction *fixAdapters = new QAction(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")), i18nc("Action to fix a problem", "Fix it"), m_warningWidget);
+    connect(fixAdapters, &QAction::triggered, this, &DiscoverWidget::fixAdaptersError);
+    m_warningWidget->addAction(fixAdapters);
+    verticalLayout->insertWidget(0, m_warningWidget);
 }
 
-void DiscoverWidget::itemSelected(QListWidgetItem *item)
+void DiscoverWidget::fixAdaptersError()
 {
-    emit deviceSelected(Manager::self()->usableAdapter()->deviceForAddress(item->data(Qt::UserRole).toString()));
+    m_manager->setBluetoothBlocked(false);
+
+    Q_FOREACH (BluezQt::AdapterPtr adapter, m_manager->adapters()) {
+        adapter->setPowered(true);
+    }
 }

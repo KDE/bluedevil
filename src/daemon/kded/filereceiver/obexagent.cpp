@@ -20,36 +20,53 @@
 #include "receivefilejob.h"
 #include "debug_p.h"
 
-#include <QIcon>
-#include <QDebug>
-#include <QDBusConnection>
+#include <QDBusObjectPath>
 
-ObexAgent::ObexAgent(QObject *parent)
-    : QDBusAbstractAdaptor(parent)
+ObexAgent::ObexAgent(QSharedPointer<BluezQt::Manager> manager, QObject *parent)
+    : BluezQt::ObexAgent(parent)
+    , m_manager(manager)
 {
-    if (!QDBusConnection::sessionBus().registerObject(QStringLiteral("/BlueDevil_receiveAgent"), parent)) {
-        qCWarning(BLUEDAEMON) << "The DBus object can't be registered";
+}
+
+QSharedPointer<BluezQt::Manager> ObexAgent::manager() const
+{
+    return m_manager;
+}
+
+bool ObexAgent::shouldAutoAcceptTransfer(const QString &address) const
+{
+    if (!m_transferTimes.contains(address)) {
+        return false;
     }
+
+    // Auto-accept transfers from the same device within 2 seconds from last finished transfer
+    const int timeout = 2;
+    return m_transferTimes.value(address).secsTo(QDateTime::currentDateTime()) < timeout;
 }
 
-QString ObexAgent::AuthorizePush(const QDBusObjectPath& path, const QDBusMessage &msg)
+QDBusObjectPath ObexAgent::objectPath() const
 {
-    qCDebug(BLUEDAEMON) << "AuthorizePush" << path.path();
+    return QDBusObjectPath(QStringLiteral("/BlueDevilObexAgent"));
+}
 
-    msg.setDelayedReply(true);
+void ObexAgent::authorizePush(BluezQt::ObexTransferPtr transfer, const BluezQt::Request<QString> &request)
+{
+    qCDebug(BLUEDAEMON) << "Agent-AuthorizePush";
 
-    ReceiveFileJob *job = new ReceiveFileJob(msg, path.path(), this);
+    ReceiveFileJob *job = new ReceiveFileJob(request, transfer, this);
+    connect(job, &ReceiveFileJob::finished, this, &ObexAgent::receiveFileJobFinished);
     job->start();
-
-    return QString();
 }
 
-void ObexAgent::Cancel()
+void ObexAgent::receiveFileJobFinished(KJob *job)
 {
-    qCDebug(BLUEDAEMON) << "Cancel";
-}
+    Q_ASSERT(qobject_cast<ReceiveFileJob*>(job));
+    ReceiveFileJob *j = static_cast<ReceiveFileJob*>(job);
 
-void ObexAgent::Release()
-{
-    qCDebug(BLUEDAEMON) << "Release";
+    if (j->error()) {
+        m_transferTimes.remove(j->deviceAddress());
+        return;
+    }
+
+    m_transferTimes[j->deviceAddress()] = QDateTime::currentDateTime();
 }

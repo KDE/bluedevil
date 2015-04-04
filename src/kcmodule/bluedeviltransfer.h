@@ -21,19 +21,16 @@
 #ifndef _BLUEDEVILTRANSFER_H
 #define _BLUEDEVILTRANSFER_H
 
-#include <kcmodule.h>
+#include <KCModule>
 
-class SystemCheck;
+#include <BluezQt/Manager>
 
 namespace Ui
 {
     class Transfer;
 }
 
-namespace BlueDevil
-{
-    class Adapter;
-}
+class SystemCheck;
 
 class KCMBlueDevilTransfer : public KCModule
 {
@@ -42,18 +39,13 @@ class KCMBlueDevilTransfer : public KCModule
 public:
     KCMBlueDevilTransfer(QWidget *parent, const QVariantList&);
 
-    void save() Q_DECL_OVERRIDE;
-
 private Q_SLOTS:
-    void usableAdapterChanged(BlueDevil::Adapter *adapter);
-    void adapterDiscoverableChanged();
-    void updateInformationState();
-    void changed(bool);
+    void initJobResult(BluezQt::InitManagerJob *job);
 
 private:
     SystemCheck *m_systemCheck;
     Ui::Transfer *m_uiTransfer;
-    bool m_restartNeeded;
+    BluezQt::Manager *m_manager;
 };
 
 #endif // _BLUEDEVILTRANSFER_H

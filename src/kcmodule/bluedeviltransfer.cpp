@@ -22,32 +22,25 @@
 #include "systemcheck.h"
 #include "ui_transfer.h"
 #include "filereceiversettings.h"
-#include "bluedevil_service.h"
 
-#include <QTimer>
-#include <QBoxLayout>
-
-#include <bluedevil/bluedevil.h>
+#include <QVBoxLayout>
 
 #include <kaboutdata.h>
 #include <klineedit.h>
-#include <kurlrequester.h>
 #include <kpluginfactory.h>
-#include <kconfigdialogmanager.h>
 #include <klocalizedstring.h>
+
+#include <BluezQt/InitManagerJob>
 
 K_PLUGIN_FACTORY_WITH_JSON(BlueDevilFactory,
                            "bluedeviltransfer.json",
                            registerPlugin<KCMBlueDevilTransfer>();)
 
-using namespace BlueDevil;
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
     : KCModule(parent)
-    , m_systemCheck(new SystemCheck(this))
-    , m_restartNeeded(false)
+    , m_systemCheck(0)
 {
     KAboutData* ab = new KAboutData(QStringLiteral("kcmbluedeviltransfer"),
                                     i18n("Bluetooth Transfer"),
@@ -59,13 +52,7 @@ KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
     ab->addAuthor(i18n("Rafael Fernández López"), i18n("Developer and Maintainer"), QStringLiteral("ereslibre@kde.org"));
     setAboutData(ab);
 
-    connect(m_systemCheck, SIGNAL(updateInformationStateRequest()),
-            this, SLOT(updateInformationState()));
-    connect(this, SIGNAL(changed(bool)), this, SLOT(changed(bool)));
-
     QVBoxLayout *layout = new QVBoxLayout;
-    m_systemCheck->createWarnings(layout);
-
     QWidget *transfer = new QWidget(this);
     m_uiTransfer = new Ui::Transfer();
     m_uiTransfer->setupUi(transfer);
@@ -80,58 +67,23 @@ KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
 
     addConfig(FileReceiverSettings::self(), transfer);
 
-    connect(BlueDevil::Manager::self(), &Manager::usableAdapterChanged, this, &KCMBlueDevilTransfer::usableAdapterChanged);
-
-    BlueDevil::Adapter *const usableAdapter = BlueDevil::Manager::self()->usableAdapter();
-    if (usableAdapter) {
-        connect(usableAdapter, SIGNAL(discoverableChanged(bool)),
-                this, SLOT(adapterDiscoverableChanged()));
-    }
-
-    updateInformationState();
+    // Initialize BluezQt
+    m_manager = new BluezQt::Manager(this);
+    BluezQt::InitManagerJob *job = m_manager->init();
+    job->start();
+    connect(job, &BluezQt::InitManagerJob::result, this, &KCMBlueDevilTransfer::initJobResult);
 }
 
-void KCMBlueDevilTransfer::save()
+void KCMBlueDevilTransfer::initJobResult(BluezQt::InitManagerJob *job)
 {
-    if (!m_restartNeeded) {
+    if (job->error()) {
         return;
     }
 
-    KCModule::save();
+    QVBoxLayout *l = static_cast<QVBoxLayout*>(layout());
 
-    org::kde::BlueDevil::Service *service = new org::kde::BlueDevil::Service(
-                                                    QStringLiteral("org.kde.BlueDevil.Service"),
-                                                    QStringLiteral("/Service"),
-                                                    QDBusConnection::sessionBus(), this);
-    if (service->isRunning()) {
-        service->stopServer();
-    }
-
-    service->launchServer();
-}
-
-void KCMBlueDevilTransfer::usableAdapterChanged(Adapter *adapter)
-{
-    if (adapter) {
-        connect(adapter, SIGNAL(discoverableChanged(bool)),
-                this, SLOT(adapterDiscoverableChanged()));
-    }
-    QTimer::singleShot(300, this, SLOT(updateInformationState()));
-}
-
-void KCMBlueDevilTransfer::adapterDiscoverableChanged()
-{
-    QTimer::singleShot(300, this, SLOT(updateInformationState()));
-}
-
-void KCMBlueDevilTransfer::updateInformationState()
-{
-    m_systemCheck->updateInformationState();
-}
-
-void KCMBlueDevilTransfer::changed(bool changed)
-{
-    m_restartNeeded = changed;
+    m_systemCheck = new SystemCheck(m_manager, this);
+    m_systemCheck->createWarnings(l);
 }
 
 #include "bluedeviltransfer.moc"

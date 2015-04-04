@@ -19,24 +19,35 @@
 #ifndef OBEX_AGENT_H
 #define OBEX_AGENT_H
 
-#include <QDBusMessage>
-#include <QDBusAbstractAdaptor>
-#include <QDBusObjectPath>
+#include <BluezQt/ObexAgent>
 
-class QDBusMessage;
+namespace BluezQt
+{
+    class Manager;
+}
 
-class ObexAgent : public QDBusAbstractAdaptor
+class KJob;
+
+class ObexAgent : public BluezQt::ObexAgent
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.bluez.obex.Agent1")
 
 public:
-    explicit ObexAgent(QObject *parent);
+    explicit ObexAgent(QSharedPointer<BluezQt::Manager> manager, QObject *parent = Q_NULLPTR);
 
-public Q_SLOTS:
-    QString AuthorizePush(const QDBusObjectPath &path, const QDBusMessage &msg);
-    void Release();
-    void Cancel();
+    QSharedPointer<BluezQt::Manager> manager() const;
+
+    bool shouldAutoAcceptTransfer(const QString &address) const;
+
+    QDBusObjectPath objectPath() const Q_DECL_OVERRIDE;
+    void authorizePush(BluezQt::ObexTransferPtr transfer, const BluezQt::Request<QString> &request) Q_DECL_OVERRIDE;
+
+private Q_SLOTS:
+    void receiveFileJobFinished(KJob *job);
+
+private:
+    QSharedPointer<BluezQt::Manager> m_manager;
+    QHash<QString, QDateTime> m_transferTimes;
 };
 
 #endif // OBEX_AGENT_H

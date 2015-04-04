@@ -25,6 +25,7 @@
 #define SUCCESS_H
 
 #include "ui_success.h"
+
 #include <QWizardPage>
 
 class BlueWizard;
@@ -36,8 +37,8 @@ class SuccessPage : public QWizardPage, Ui::Success
 public:
     explicit SuccessPage(BlueWizard *parent = 0);
 
-    void initializePage() Q_DECL_OVERRIDE;
     int nextId() const Q_DECL_OVERRIDE;
+    void initializePage() Q_DECL_OVERRIDE;
 
 private:
     BlueWizard *m_wizard;

@@ -21,19 +21,16 @@
  *****************************************************************************/
 
 #include "fail.h"
-#include "bluewizard.h"
+#include "../bluewizard.h"
 #include "debug_p.h"
 
-#include <QDebug>
 #include <QPushButton>
 
 #include <KStandardGuiItem>
 #include <KLocalizedString>
-#include <kpixmapsequenceoverlaypainter.h>
+#include <KPixmapSequenceOverlayPainter>
 
-#include <bluedevil/bluedevil.h>
-
-using namespace BlueDevil;
+#include <BluezQt/Device>
 
 FailPage::FailPage(BlueWizard *parent)
     : QWizardPage(parent)
@@ -46,6 +43,8 @@ FailPage::FailPage(BlueWizard *parent)
 
 void FailPage::initializePage()
 {
+    qCDebug(WIZARD) << "Initialize Fail Page";
+
     QPushButton *reset = new QPushButton(this);
     KGuiItem::assign(reset, KStandardGuiItem::reset());
     reset->setText(i18nc("Button offered when the wizard fail. This button will restart the wizard", "Restart the wizard"));
@@ -61,10 +60,11 @@ void FailPage::initializePage()
 
     m_wizard->setButtonLayout(list);
 
-    const QString &deviceName = m_wizard->device()->name();
-    if (deviceName.isEmpty()) {
+    BluezQt::DevicePtr device = m_wizard->device();
+
+    if (device->name().isEmpty()) {
         failLbl->setText(i18nc("This string is shown when the wizard fail","The setup of the device has failed"));
     } else {
-        failLbl->setText(i18n("The setup of %1 has failed", deviceName));
+        failLbl->setText(i18n("The setup of %1 has failed", device->name()));
     }
 }

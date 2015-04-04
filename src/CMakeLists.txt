@@ -5,7 +5,7 @@ add_subdirectory(daemon)
 add_subdirectory(kcmodule)
 add_subdirectory(kio)
 add_subdirectory(wizard)
-add_subdirectory(monolithic)
+add_subdirectory(applet)
 add_subdirectory(fileitemactionplugin)
 
 install(FILES bluedevil.notifyrc DESTINATION ${KNOTIFYRC_INSTALL_DIR})

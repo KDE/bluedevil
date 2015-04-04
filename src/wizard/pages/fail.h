@@ -24,18 +24,10 @@
 #define FAIL_H
 
 #include "ui_fail.h"
+
 #include <QWizardPage>
 
 class BlueWizard;
-class KPixmapSequenceOverlayPainter;
-
-namespace BlueDevil
-{
-    class Device;
-    class Adapter;
-}
-
-using namespace BlueDevil;
 
 class FailPage : public QWizardPage, Ui::Fail
 {
@@ -47,7 +39,7 @@ public:
     void initializePage() Q_DECL_OVERRIDE;
 
 private:
-    BlueWizard  *m_wizard;
+    BlueWizard *m_wizard;
 };
 
 #endif // FAIL_H

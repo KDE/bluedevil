@@ -23,32 +23,26 @@
 
 #include <QDialog>
 
+#include <BluezQt/Types>
+
 class QCheckBox;
 class QLineEdit;
 class QAbstractButton;
 class QDialogButtonBox;
-
-namespace BlueDevil
-{
-    class Device;
-}
-
-typedef BlueDevil::Device Device;
 
 class DeviceDetails : public QDialog
 {
     Q_OBJECT
 
 public:
-    DeviceDetails(Device *device, QWidget *parent = 0);
-    virtual ~DeviceDetails();
+    DeviceDetails(BluezQt::DevicePtr device, QWidget *parent = 0);
 
 private Q_SLOTS:
     void buttonClicked(QAbstractButton *button);
     void blockToggled(bool checked);
 
 private:
-    Device *m_device;
+    BluezQt::DevicePtr m_device;
     QLineEdit *m_alias;
     QCheckBox *m_blocked;
     QCheckBox *m_trusted;

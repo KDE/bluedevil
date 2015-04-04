@@ -24,12 +24,7 @@
 
 #include <KSharedConfig>
 
-namespace BlueDevil
-{
-    class Manager;
-    class Adapter;
-    class Device;
-}
+#include <BluezQt/Manager>
 
 class KFilePlacesModel;
 
@@ -38,13 +33,13 @@ class DeviceMonitor : public QObject
     Q_OBJECT
 
 public:
-    explicit DeviceMonitor(QObject *parent = 0);
+    explicit DeviceMonitor(QSharedPointer<BluezQt::Manager> manager, QObject *parent = Q_NULLPTR);
     ~DeviceMonitor();
 
 private Q_SLOTS:
-    void usableAdapterChanged(BlueDevil::Adapter *adapter);
-    void adapterAdded(BlueDevil::Adapter *adapter);
-    void deviceAdded(BlueDevil::Device *device);
+    void bluetoothOperationalChanged(bool operational);
+    void adapterAdded(BluezQt::AdapterPtr adapter);
+    void deviceAdded(BluezQt::DevicePtr device);
 
     void deviceConnectedChanged(bool connected);
     void login1PrepareForSleep(bool active);
@@ -52,14 +47,12 @@ private Q_SLOTS:
 private:
     void saveState();
     void restoreState();
-    void restoreAdapter(BlueDevil::Adapter *adapter);
+    void restoreAdapter(BluezQt::AdapterPtr adapter);
 
     void clearPlaces();
-    void updateDevicePlace(BlueDevil::Device *device);
+    void updateDevicePlace(BluezQt::DevicePtr device);
 
-    BlueDevil::Device *deviceForAddress(const QString &address) const;
-
-    BlueDevil::Manager *m_manager;
+    QSharedPointer<BluezQt::Manager> m_manager;
     KFilePlacesModel *m_places;
     KSharedConfig::Ptr m_config;
 };

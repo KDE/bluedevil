@@ -24,7 +24,13 @@
 
 int main(int argc, char *argv[])
 {
+    if (argc != 3) {
+        fprintf(stderr, "Usage: bluedevil-requestconfirmation device-name pin\n");
+        return 2;
+    }
+
     QApplication app(argc, argv);
+    app.setAttribute(Qt::AA_UseHighDpiPixmaps);
     app.setApplicationName(QStringLiteral("bluedevil"));
     app.setOrganizationDomain(QStringLiteral("kde.org"));
 

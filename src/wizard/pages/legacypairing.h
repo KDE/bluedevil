@@ -24,16 +24,16 @@
 #define LEGACYPAIRING_H
 
 #include "ui_legacypairing.h"
+
 #include <QWizardPage>
+
+namespace BluezQt
+{
+    class PendingCall;
+}
 
 class BlueWizard;
 class KPixmapSequenceOverlayPainter;
-
-namespace BlueDevil
-{
-    class Device;
-    class Adapter;
-}
 
 class LegacyPairingPage : public QWizardPage, Ui::LegacyPairing
 {
@@ -42,20 +42,20 @@ class LegacyPairingPage : public QWizardPage, Ui::LegacyPairing
 public:
     explicit LegacyPairingPage(BlueWizard *parent = 0);
 
-    void initializePage() Q_DECL_OVERRIDE;
-    bool validatePage() Q_DECL_OVERRIDE;
     int nextId() const Q_DECL_OVERRIDE;
+    void initializePage() Q_DECL_OVERRIDE;
 
 public Q_SLOTS:
+    void setPairableFinished(BluezQt::PendingCall *call);
+    void pairingFinished(BluezQt::PendingCall *call);
     void pinRequested(const QString &pin);
-    void pairedChanged(bool paired);
-
-protected:
-    QList <QWizard::WizardButton> wizardButtonsLayout() const;
 
 private:
+    QList <QWizard::WizardButton> wizardButtonsLayout() const;
+
     BlueWizard *m_wizard;
     KPixmapSequenceOverlayPainter *m_working;
+    bool m_success;
 };
 
 #endif // LEGACYPAIRING_H

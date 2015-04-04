@@ -23,23 +23,20 @@
 
 #include <kcmodule.h>
 
+#include <BluezQt/Manager>
+
+namespace BluezQt
+{
+    class DevicesModel;
+}
+
 class SystemCheck;
 class DeviceDetails;
-class BluetoothDevicesModel;
 
 class QListView;
 class QCheckBox;
 class QPushButton;
 class QItemSelection;
-
-namespace BlueDevil
-{
-    class Adapter;
-    class Device;
-}
-
-typedef BlueDevil::Adapter Adapter;
-typedef BlueDevil::Device Device;
 
 class KCMBlueDevilDevices : public KCModule
 {
@@ -47,12 +44,11 @@ class KCMBlueDevilDevices : public KCModule
 
 public:
     KCMBlueDevilDevices(QWidget *parent, const QVariantList&);
-    virtual ~KCMBlueDevilDevices();
 
-    virtual void defaults();
-    virtual void save();
+    void save() Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
+    void initJobResult(BluezQt::InitManagerJob *job);
     void deviceSelectionChanged(const QItemSelection &selection);
     void deviceDoubleClicked(const QModelIndex &index);
     void detailsDevice();
@@ -61,30 +57,24 @@ private Q_SLOTS:
     void disconnectDevice();
     void launchWizard();
 
-    void usableAdapterChanged(Adapter *adapter);
-    void adapterDiscoverableChanged();
-    void adapterDevicesChanged();
-
-    void updateInformationState();
-
 private:
     void generateNoDevicesMessage();
-    void fillRemoteDevicesModelInformation();
 
 private:
-    QCheckBox             *m_enable;
-    QPushButton           *m_detailsDevice;
-    QPushButton           *m_removeDevice;
-    QPushButton           *m_connectDevice;
-    QPushButton           *m_disconnectDevice;
-    QPushButton           *m_addDevice;
-    bool                   m_isEnabled;
-    BluetoothDevicesModel *m_devicesModel;
-    QListView             *m_devices;
-    QWidget               *m_noDevicesMessage;
+    QCheckBox *m_enable;
+    QPushButton *m_detailsDevice;
+    QPushButton *m_removeDevice;
+    QPushButton *m_connectDevice;
+    QPushButton *m_disconnectDevice;
+    QPushButton *m_addDevice;
+    bool m_isEnabled;
+    BluezQt::Manager *m_manager;
+    BluezQt::DevicesModel *m_devicesModel;
+    QListView *m_devices;
+    QWidget *m_noDevicesMessage;
 
-    SystemCheck           *m_systemCheck;
-    DeviceDetails         *m_deviceDetails;
+    SystemCheck *m_systemCheck;
+    DeviceDetails *m_deviceDetails;
 };
 
 #endif

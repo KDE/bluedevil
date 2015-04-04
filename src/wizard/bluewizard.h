@@ -21,10 +21,7 @@
 #include <QObject>
 #include <QWizard>
 
-namespace BlueDevil
-{
-    class Device;
-}
+#include <BluezQt/Manager>
 
 class WizardAgent;
 
@@ -33,27 +30,19 @@ class BlueWizard : public QWizard
     Q_OBJECT
 
 public:
-    explicit BlueWizard(const QUrl &url);
+    explicit BlueWizard();
 
-    QString deviceAddress() const;
-    void setDeviceAddress(const QString &address);
-
-    BlueDevil::Device *device() const;
+    BluezQt::DevicePtr device() const;
+    void setDevice(BluezQt::DevicePtr device);
 
     QString pin() const;
     void setPin(const QString &pin);
 
-    QString preselectedUuid() const;
-    void setPreselectedUuid(const QString &uuid);
-
-    QString preselectedAddress() const;
-    void setPreselectedAddress(const QString &uuid);
-
     WizardAgent *agent() const;
+    BluezQt::Manager *manager() const;
 
     enum {
         Discover,
-        NoPairing,
         LegacyPairing,
         LegacyPairingDatabase,
         KeyboardPairing,
@@ -65,17 +54,19 @@ public:
 
 public Q_SLOTS:
     void restartWizard();
-    void done(int result) Q_DECL_OVERRIDE;
+
+private Q_SLOTS:
+    void initJobResult(BluezQt::InitManagerJob *job);
+    void operationalChanged(bool operational);
 
 private:
-    BlueDevil::Device *m_device;
+    void done(int result) Q_DECL_OVERRIDE;
+
+    BluezQt::Manager *m_manager;
     WizardAgent *m_agent;
 
+    BluezQt::DevicePtr m_device;
     QString m_pin;
-    QString m_deviceAddress;
-    QString m_preselectedUuid;
-    QString m_preselectedAddress;
-    bool m_manualPin;
 };
 
 #endif // BLUEWIZARD_H
