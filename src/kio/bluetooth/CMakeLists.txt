@@ -13,8 +13,10 @@ target_link_libraries(kio_bluetooth
     KF5::I18n
     KF5::KIOCore
     KF5::CoreAddons
-    KF5::BluezQt
 )
+
+target_include_directories(kio_bluetooth SYSTEM
+    PUBLIC $<TARGET_PROPERTY:KF5::BluezQt,INTERFACE_INCLUDE_DIRECTORIES>)
 
 ########### install files ###############
 install(TARGETS kio_bluetooth DESTINATION ${PLUGIN_INSTALL_DIR})
