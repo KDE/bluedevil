@@ -349,6 +349,24 @@ Action=Popup
 
 [Event/ConnectionFailed]
 Name=Connection Failed
+Name[de]=Verbindung fehlgeschlagen
+Name[es]=La conexión ha fallado
+Name[gl]=Non foi posíbel establecer a conexión
+Name[nl]=Verbinding is mislukt
+Name[pl]=Połączenie nieudane
+Name[pt]=Ligação Mal-Sucedida
+Name[pt_BR]=Falha na conexão
+Name[uk]=Невдала спроба з’єднатися
+Name[x-test]=xxConnection Failedxx
 Comment=Connection to device failed
+Comment[de]=Die Verbindung zum Gerät ist fehlgeschlagen
+Comment[es]=La conexión con el dispositivo ha fallado
+Comment[gl]=Non foi posíbel establecer a conexión co dispositivo
+Comment[nl]=Verbinding met het apparaat is mislukt
+Comment[pl]=Połączenie do urządzenia nie udało się
+Comment[pt]=A ligação ao dispositivo foi mal-sucedida
+Comment[pt_BR]=Falha na conexão do dispositivo
+Comment[uk]=Не вдалося встановити з’єднання із пристроєм
+Comment[x-test]=xxConnection to device failedxx
 Icon=preferences-system-bluetooth
 Action=Popup

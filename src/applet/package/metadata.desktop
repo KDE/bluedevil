@@ -35,6 +35,15 @@ Name[zh_CN]=蓝牙
 Name[zh_TW]=藍牙
 
 Comment=Bluetooth status and control
+Comment[de]=Bluetooth-Status und -steuerung
+Comment[es]=Estado y control de Bluetooth
+Comment[gl]=Control e estado de Bluetooth
+Comment[nl]=Status en besturing van bluetooth
+Comment[pl]=Stan i sterowanie Bluetooth
+Comment[pt]=Estado e controlo do Bluetooth
+Comment[pt_BR]=Status e controle do Bluetooth
+Comment[uk]=Стан Bluetooth і керування ним
+Comment[x-test]=xxBluetooth status and controlxx
 
 Icon=preferences-system-bluetooth
 Type=Service
