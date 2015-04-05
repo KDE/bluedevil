@@ -13,6 +13,7 @@ target_link_libraries(kio_bluetooth
     KF5::I18n
     KF5::KIOCore
     KF5::CoreAddons
+    KF5::BluezQt
 )
 
 ########### install files ###############
