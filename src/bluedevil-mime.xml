@@ -17,6 +17,14 @@ Notes:
     <sub-class-of type="inode/directory"/>
     <generic-icon name="video-display"/>
     <comment>Device</comment>
+    <comment xml:lang="de">Gerät</comment>
+    <comment xml:lang="es">Dispositivo</comment>
+    <comment xml:lang="gl">Dispositivo</comment>
+    <comment xml:lang="nl">Apparaat</comment>
+    <comment xml:lang="pl">Urządzenie</comment>
+    <comment xml:lang="pt">Dispositivo</comment>
+    <comment xml:lang="pt_BR">Dispositivo</comment>
+    <comment xml:lang="uk">Пристрій</comment>
   </mime-type>
   <mime-type type="inode/vnd.kde.bluedevil.service">
     <sub-class-of type="inode/directory"/>
