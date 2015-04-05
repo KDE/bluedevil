@@ -17,11 +17,49 @@ Notes:
     <sub-class-of type="inode/directory"/>
     <generic-icon name="video-display"/>
     <comment>Known Device</comment>
+    <comment xml:lang="bs">Poznat uređaj</comment>
+    <comment xml:lang="ca">Dispositiu conegut</comment>
+    <comment xml:lang="da">Kendt enhed</comment>
+    <comment xml:lang="de">Bekanntes Gerät</comment>
+    <comment xml:lang="el">Γνωστή συσκευή</comment>
+    <comment xml:lang="en_GB">Known Device</comment>
+    <comment xml:lang="es">Dispositivo conocido</comment>
+    <comment xml:lang="fi">Tunnettu laite</comment>
+    <comment xml:lang="fr">Périphérique connu</comment>
+    <comment xml:lang="it">Dispositivo conosciuto</comment>
+    <comment xml:lang="nl">Bekend apparaat</comment>
+    <comment xml:lang="pl">Znane urządzenie</comment>
+    <comment xml:lang="pt">Dispositivo Conhecido</comment>
+    <comment xml:lang="pt_BR">Dispositivo conhecido</comment>
+    <comment xml:lang="sk">Známe zariadenie</comment>
+    <comment xml:lang="sl">Znana naprava</comment>
+    <comment xml:lang="sv">Känd enhet</comment>
+    <comment xml:lang="uk">Відомий пристрій</comment>
+    <comment xml:lang="zh_TW">已知的裝置</comment>
   </mime-type>
   <mime-type type="inode/vnd.kde.bluedevil.device.discovered">
     <sub-class-of type="inode/vnd.kde.bluedevil.device"/>
     <generic-icon name="video-display"/>
     <comment>Discovered Device</comment>
+    <comment xml:lang="bs">Otkriven uređaj</comment>
+    <comment xml:lang="ca">Dispositiu descobert</comment>
+    <comment xml:lang="da">Opdaget enhed</comment>
+    <comment xml:lang="de">Erkanntes Gerät</comment>
+    <comment xml:lang="el">Ευρεθείσα συσκευή</comment>
+    <comment xml:lang="en_GB">Discovered Device</comment>
+    <comment xml:lang="es">Dispositivo descubierto</comment>
+    <comment xml:lang="fi">Löydetty palvelu</comment>
+    <comment xml:lang="fr">Périphérique découvert</comment>
+    <comment xml:lang="it">Dispositivo scoperto</comment>
+    <comment xml:lang="nl">Gevonden apparaat</comment>
+    <comment xml:lang="pl">Odkryte urządzenie</comment>
+    <comment xml:lang="pt">Dispositivo Descoberto</comment>
+    <comment xml:lang="pt_BR">Dispositivo descoberto</comment>
+    <comment xml:lang="sk">Objavené zariadenie</comment>
+    <comment xml:lang="sl">Odkrita naprava</comment>
+    <comment xml:lang="sv">Upptäckt enhet</comment>
+    <comment xml:lang="uk">Виявлений пристрій</comment>
+    <comment xml:lang="zh_TW">已發現的裝置</comment>
   </mime-type>
   <mime-type type="inode/vnd.kde.bluedevil.service">
     <sub-class-of type="inode/directory"/>
