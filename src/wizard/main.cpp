@@ -38,7 +38,10 @@ int main(int argc, char *argv[])
                          KAboutLicense::GPL,
                          i18n("(c) 2010, UFO Coders"));
 
-    aboutData.addAuthor(i18n("Alejandro Fiestas Olivares"), i18n("Maintainer"),
+    aboutData.addAuthor(QStringLiteral("David Rosca"), i18n("Maintainer"),
+                        QStringLiteral("nowrep@gmail.com"), QStringLiteral("http://david.rosca.cz"));
+
+    aboutData.addAuthor(QStringLiteral("Alejandro Fiestas Olivares"), i18n("Previous Maintainer"),
                         QStringLiteral("afiestas@kde.org"), QStringLiteral("http://www.afiestas.org/"));
 
     QApplication app(argc, argv);

@@ -49,7 +49,11 @@ KCMBlueDevilTransfer::KCMBlueDevilTransfer(QWidget *parent, const QVariantList&)
                                     KAboutLicense::GPL,
                                     i18n("(c) 2010 Rafael Fernández López"));
 
-    ab->addAuthor(i18n("Rafael Fernández López"), i18n("Developer and Maintainer"), QStringLiteral("ereslibre@kde.org"));
+    ab->addAuthor(QStringLiteral("David Rosca"), i18n("Maintainer"),
+                  QStringLiteral("nowrep@gmail.com"), QStringLiteral("http://david.rosca.cz"));
+
+    ab->addAuthor(QStringLiteral("Rafael Fernández López"), i18n("Previous Developer and Maintainer"), QStringLiteral("ereslibre@kde.org"));
+
     setAboutData(ab);
 
     QVBoxLayout *layout = new QVBoxLayout;
