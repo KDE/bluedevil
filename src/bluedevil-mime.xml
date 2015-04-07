@@ -36,7 +36,6 @@ Notes:
     <sub-class-of type="inode/directory"/>
     <generic-icon name="preferences-system-bluetooth"/>
     <comment>Service</comment>
-    <comment xml:lang="ast">Serviciu</comment>
     <comment xml:lang="bs">Usluga</comment>
     <comment xml:lang="ca">Servei</comment>
     <comment xml:lang="cs">Služba</comment>
@@ -69,7 +68,6 @@ Notes:
   </mime-type>
   <mime-type type="application/vnd.kde.bluedevil-sendfile">
     <comment>Service</comment>
-    <comment xml:lang="ast">Serviciu</comment>
     <comment xml:lang="bs">Usluga</comment>
     <comment xml:lang="ca">Servei</comment>
     <comment xml:lang="cs">Služba</comment>
