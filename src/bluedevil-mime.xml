@@ -19,6 +19,7 @@ Notes:
     <comment>Known Device</comment>
     <comment xml:lang="bs">Poznat uređaj</comment>
     <comment xml:lang="ca">Dispositiu conegut</comment>
+    <comment xml:lang="cs">Známé zařízení</comment>
     <comment xml:lang="da">Kendt enhed</comment>
     <comment xml:lang="de">Bekanntes Gerät</comment>
     <comment xml:lang="el">Γνωστή συσκευή</comment>
@@ -43,6 +44,7 @@ Notes:
     <comment>Discovered Device</comment>
     <comment xml:lang="bs">Otkriven uređaj</comment>
     <comment xml:lang="ca">Dispositiu descobert</comment>
+    <comment xml:lang="cs">Objevené zařízení</comment>
     <comment xml:lang="da">Opdaget enhed</comment>
     <comment xml:lang="de">Erkanntes Gerät</comment>
     <comment xml:lang="el">Ευρεθείσα συσκευή</comment>
