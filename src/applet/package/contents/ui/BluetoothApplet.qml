@@ -33,7 +33,7 @@ Item {
     property int runningActions : 0
 
     Plasmoid.toolTipMainText: i18n("Bluetooth")
-    Plasmoid.icon: "preferences-system-bluetooth"
+    Plasmoid.icon: Logic.icon()
 
     Plasmoid.switchWidth: units.gridUnit * 15
     Plasmoid.switchHeight: units.gridUnit * 10

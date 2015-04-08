@@ -22,6 +22,8 @@ import QtQuick 2.2
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PlasmaComponents
 
+import "plasmapackage:/code/logic.js" as Logic
+
 MouseArea {
     id: panelIconWidget
     anchors.fill: parent
@@ -30,30 +32,13 @@ MouseArea {
     PlasmaCore.IconItem {
         id: bluetoothIcon
         anchors.fill: parent
-        source: "preferences-system-bluetooth"
-        enabled: btManager.bluetoothOperational
-        width: units.roundToIconSize(Math.min(parent.width, parent.height))
-        height: width
+        source: Logic.icon()
 
         PlasmaComponents.BusyIndicator {
             id: busyIndicator
             anchors.fill: parent
             running: runningActions > 0
             visible: running
-        }
-
-        PlasmaCore.IconItem {
-            id: connectedIndicator
-
-            anchors {
-                bottom: parent.bottom
-                right: parent.right
-            }
-
-            source: "emblem-symbolic-link"
-            width: parent.width / 2
-            height: width
-            visible: deviceConnected
         }
     }
 }

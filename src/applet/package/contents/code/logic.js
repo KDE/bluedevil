@@ -70,3 +70,13 @@ function updateStatus()
         plasmoid.status = PlasmaCore.Types.PassiveStatus;
     }
 }
+
+function icon()
+{
+    if (deviceConnected) {
+        return "preferences-system-bluetooth-activated";
+    } else if (!btManager.bluetoothOperational) {
+        return "preferences-system-bluetooth-inactive";
+    }
+    return "preferences-system-bluetooth";
+}
