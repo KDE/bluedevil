@@ -20,7 +20,6 @@
 
 #include "launchapp.h"
 
-#include <KRun>
 #include <QProcess>
 
 LaunchApp::LaunchApp(QObject *parent)
@@ -31,10 +30,5 @@ LaunchApp::LaunchApp(QObject *parent)
 bool LaunchApp::runCommand(const QString &exe, const QStringList &args)
 {
     return QProcess::startDetached(exe, args);
-}
-
-bool LaunchApp::runUrl(const QString &url, const QString &mimeType)
-{
-    return KRun::runUrl(QUrl::fromEncoded(url.toUtf8()), mimeType, Q_NULLPTR);
 }
 

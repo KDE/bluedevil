@@ -9,7 +9,6 @@ target_link_libraries(bluetoothplugin
     Qt5::Core
     Qt5::Qml
     KF5::Notifications
-    KF5::KIOWidgets
     KF5::BluezQt)
 
 install(TARGETS bluetoothplugin DESTINATION ${QML_INSTALL_DIR}/org/kde/plasma/private/bluetooth)

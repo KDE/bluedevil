@@ -189,8 +189,8 @@ PlasmaComponents.ListItem {
                     visible: Uuids.indexOf(BluezQt.Services.ObexFileTransfer) != -1
 
                     onClicked: {
-                        var url = "obexftp://%1".arg(Address.replace(/:/g, "-"));
-                        PlasmaBt.LaunchApp.runUrl(url, "inode/directory");
+                        var url = "obexftp://%1/".arg(Address.replace(/:/g, "-"));
+                        kRun.openUrl(url);
                     }
                 }
 

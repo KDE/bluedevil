@@ -33,7 +33,6 @@ public:
 
 public Q_SLOTS:
     bool runCommand(const QString &exe, const QStringList &args = QStringList());
-    bool runUrl(const QString &url, const QString &mimeType);
 };
 
 #endif // LAUNCHAPP_H
