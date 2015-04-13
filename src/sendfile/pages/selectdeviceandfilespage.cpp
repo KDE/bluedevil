@@ -37,7 +37,6 @@
 
 SelectDeviceAndFilesPage::SelectDeviceAndFilesPage(SendFileWizard *wizard)
     : QWizardPage(wizard)
-    , m_dialog(0)
     , m_wizard(wizard)
 {
     setupUi(this);

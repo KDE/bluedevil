@@ -29,7 +29,6 @@
 
 #include <BluezQt/Types>
 
-class QFileDialog;
 class SendFileWizard;
 
 class SelectDeviceAndFilesPage : public QWizardPage, public Ui::SelectFileDiscover
@@ -46,7 +45,6 @@ private Q_SLOTS:
     void openFileDialog();
 
 private:
-    QFileDialog *m_dialog;
     SendFileWizard *m_wizard;
 };
 
