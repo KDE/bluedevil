@@ -32,6 +32,7 @@ Notes:
     <comment xml:lang="pl">Znane urządzenie</comment>
     <comment xml:lang="pt">Dispositivo Conhecido</comment>
     <comment xml:lang="pt_BR">Dispositivo conhecido</comment>
+    <comment xml:lang="ru">Известное устройство</comment>
     <comment xml:lang="sk">Známe zariadenie</comment>
     <comment xml:lang="sl">Znana naprava</comment>
     <comment xml:lang="sv">Känd enhet</comment>
@@ -57,6 +58,7 @@ Notes:
     <comment xml:lang="pl">Odkryte urządzenie</comment>
     <comment xml:lang="pt">Dispositivo Descoberto</comment>
     <comment xml:lang="pt_BR">Dispositivo descoberto</comment>
+    <comment xml:lang="ru">Обнаруженное устройство</comment>
     <comment xml:lang="sk">Objavené zariadenie</comment>
     <comment xml:lang="sl">Odkrita naprava</comment>
     <comment xml:lang="sv">Upptäckt enhet</comment>
