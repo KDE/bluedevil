@@ -35,7 +35,7 @@ class DeviceDetails : public QDialog
     Q_OBJECT
 
 public:
-    DeviceDetails(BluezQt::DevicePtr device, QWidget *parent = 0);
+    explicit DeviceDetails(BluezQt::DevicePtr device, QWidget *parent = Q_NULLPTR);
 
 private Q_SLOTS:
     void buttonClicked(QAbstractButton *button);

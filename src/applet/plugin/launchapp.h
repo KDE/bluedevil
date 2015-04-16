@@ -29,7 +29,7 @@ class LaunchApp : public QObject
     Q_OBJECT
 
 public:
-    LaunchApp(QObject *parent = Q_NULLPTR);
+    explicit LaunchApp(QObject *parent = Q_NULLPTR);
 
 public Q_SLOTS:
     bool runCommand(const QString &exe, const QStringList &args = QStringList());

@@ -35,6 +35,5 @@ Name[x-test]=xxBluetoothxx
 Name[zh_CN]=蓝牙
 Name[zh_TW]=藍牙
 
-Open=false
 Type=Link
 URL=bluetooth:/

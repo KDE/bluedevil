@@ -20,8 +20,8 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-#ifndef NOPAIRING_H
-#define NOPAIRING_H
+#ifndef CONNECT_H
+#define CONNECT_H
 
 #include "ui_connect.h"
 
@@ -55,4 +55,4 @@ private:
     bool m_success;
 };
 
-#endif // NOPAIRING_H
+#endif // CONNECT_H

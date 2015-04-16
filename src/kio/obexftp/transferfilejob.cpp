@@ -16,8 +16,8 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA   *
  *************************************************************************************/
 
-#include "kioobexftp.h"
 #include "transferfilejob.h"
+#include "kioobexftp.h"
 #include "debug_p.h"
 
 #include <KLocalizedString>

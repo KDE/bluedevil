@@ -5,7 +5,7 @@ xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
     http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
     <kcfgfile name="bluedevilglobalrc"/>
     <group name="General">
-        <entry name="enableGlobalBluetooth" type="bool" key="enableGlobalBluetooth">
+        <entry name="enableGlobalBluetooth" type="Bool" key="enableGlobalBluetooth">
             <label>Enable or disable the global KDE Bluetooth integration</label>
             <default>true</default>
         </entry>

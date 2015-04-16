@@ -185,7 +185,7 @@ void KioBluetooth::listDir(const QUrl &url)
 {
     qCDebug(BLUETOOTH) << "Listing..." << url;
 
-    // Url is not used here becuase all we could care about the url is the host, and that's already
+    // Url is not used here because all we could care about the url is the host, and that's already
     // handled in @p setHost
     Q_UNUSED(url);
 

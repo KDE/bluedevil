@@ -16,8 +16,8 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA   *
  *************************************************************************************/
 
-#ifndef KIO_GET_FILE_JOB_H
-#define KIO_GET_FILE_JOB_H
+#ifndef TRANSFERFILEJOB_H
+#define TRANSFERFILEJOB_H
 
 #include <QTime>
 
@@ -48,4 +48,4 @@ private:
     BluezQt::ObexTransferPtr m_transfer;
 };
 
-#endif // KIO_GET_FILE_JOB_H
+#endif // TRANSFERFILEJOB_H

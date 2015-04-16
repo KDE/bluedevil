@@ -49,18 +49,18 @@ SendFileItemAction::SendFileItemAction(QObject *parent, const QVariantList&)
                                      QDBusConnection::sessionBus(), this);
 }
 
-QList<QAction*> SendFileItemAction::actions(const KFileItemListProperties &infos, QWidget *parent)
+QList<QAction*> SendFileItemAction::actions(const KFileItemListProperties &fileItemInfos, QWidget *parent)
 {
     Q_UNUSED(parent)
 
     QList<QAction*> list;
 
     // Don't show the action for files that we can't send or when Bluetooth is offline.
-    if (!infos.isLocal() || !m_kded->isOnline()) {
+    if (!fileItemInfos.isLocal() || !m_kded->isOnline()) {
         return list;
     }
 
-    m_infos = infos;
+    m_infos = fileItemInfos;
 
     QAction *menuAction = new QAction(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")), i18n("Send via Bluetooth"), this);
     QMenu *menu = new QMenu();
