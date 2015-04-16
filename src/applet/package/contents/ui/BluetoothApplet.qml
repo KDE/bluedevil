@@ -24,6 +24,7 @@ import org.kde.kio 1.0 as Kio
 import org.kde.plasma.plasmoid 2.0
 import org.kde.bluezqt 1.0 as BluezQt
 import org.kde.plasma.core 2.0 as PlasmaCore
+import org.kde.kquickcontrolsaddons 2.0
 
 import "plasmapackage:/code/logic.js" as Logic
 
@@ -55,5 +56,14 @@ Item {
 
     Kio.KRun {
         id: kRun
+    }
+
+    function action_bluedevilkcm() {
+        KCMShell.open(["bluedevildevices", "bluedeviltransfer", "bluedeviladapters"]);
+    }
+
+    Component.onCompleted: {
+        plasmoid.removeAction("configure");
+        plasmoid.setAction("bluedevilkcm", i18n("Configure &Bluetooth..."), "preferences-system-bluetooth");
     }
 }
