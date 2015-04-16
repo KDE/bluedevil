@@ -412,7 +412,7 @@ PlasmaComponents.ListItem {
             profiles.push(i18n("Network"));
         }
 
-        if (profiles.length == 0) {
+        if (!profiles.length) {
             return i18n("Other device");
         }
 

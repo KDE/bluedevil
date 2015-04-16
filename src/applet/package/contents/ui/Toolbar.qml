@@ -44,7 +44,7 @@ Item {
         }
 
         checked: btManager.bluetoothOperational
-        enabled: btManager.bluetoothBlocked || btManager.adapters.length > 0
+        enabled: btManager.bluetoothBlocked || btManager.adapters.length
         icon: "preferences-system-bluetooth"
 
         onClicked: toggleBluetooth()

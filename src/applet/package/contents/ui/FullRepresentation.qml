@@ -155,15 +155,15 @@ FocusScope {
         },
         State {
             name: "DevicesState"
-            when: btManager.devices.length > 0
+            when: btManager.devices.length
         },
         State {
             name: "NoDevicesState"
-            when: btManager.adapters.length > 0 && btManager.devices.length == 0
+            when: btManager.adapters.length && !btManager.devices.length
         },
         State {
             name: "NoAdaptersState"
-            when: btManager.adapters.length == 0
+            when: !btManager.adapters.length
         }
     ]
 

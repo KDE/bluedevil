@@ -46,12 +46,12 @@ function updateStatus()
     if (btManager.bluetoothBlocked) {
         text = i18n("Bluetooth is disabled");
     } else if (!btManager.bluetoothOperational) {
-        if (btManager.adapters.length == 0) {
+        if (!btManager.adapters.length) {
             text = i18n("No adapters available");
         } else {
             text = i18n("Bluetooth is offline");
         }
-    } else if (connectedDevices.length > 0) {
+    } else if (connectedDevices.length) {
         text = i18ncp("Number of connected devices", "%1 connected device", "%1 connected devices", connectedDevices.length);
         for (var i = 0; i < connectedDevices.length; ++i) {
             var device = connectedDevices[i];
@@ -62,7 +62,7 @@ function updateStatus()
     }
 
     plasmoid.toolTipSubText = text;
-    deviceConnected = connectedDevices.length > 0;
+    deviceConnected = connectedDevices.length;
 
     if (btManager.bluetoothOperational) {
         plasmoid.status = PlasmaCore.Types.ActiveStatus;
