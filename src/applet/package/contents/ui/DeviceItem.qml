@@ -216,10 +216,58 @@ PlasmaComponents.ListItem {
                 }
 
                 visible: browseFilesButton.visible || sendFileButton.visible
-                height: lineSvg.elementSize("horizontal-line").height
+                height: visible ? lineSvg.elementSize("horizontal-line").height : 0
                 width: parent.width
                 elementId: "horizontal-line"
                 svg: lineSvg
+            }
+
+            Loader {
+                id: mediaPlayerLoader
+
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    top: actionsSeparator.bottom
+                }
+
+                sourceComponent: MediaPlayer ? mediaPlayerComponent : undefined
+            }
+
+            Component {
+                id: mediaPlayerComponent
+
+                Item {
+                    height: childrenRect.height + units.smallSpacing
+
+                    MediaPlayer {
+                        id: mediaPlayer
+
+                        anchors {
+                            left: parent.left
+                            leftMargin: units.iconSizes.medium + units.smallSpacing
+                            right: parent.right
+                            top: parent.top
+                            topMargin: units.smallSpacing
+                        }
+                    }
+
+                    PlasmaCore.SvgItem {
+                        id: mediaPlayerSeparator
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                            top: mediaPlayer.bottom
+                        }
+
+                        visible: mediaPlayer.visible
+                        height: lineSvg.elementSize("horizontal-line").height
+                        width: parent.width
+                        elementId: "horizontal-line"
+                        svg: lineSvg
+                    }
+                }
             }
 
             Column {
@@ -229,8 +277,8 @@ PlasmaComponents.ListItem {
                     left: parent.left
                     leftMargin: units.iconSizes.medium
                     right: parent.right
-                    top: actionsSeparator.bottom
-                    topMargin: Math.round(units.gridUnit / 3)
+                    top: mediaPlayerLoader.bottom
+                    topMargin: units.smallSpacing
                 }
 
                 Repeater {
