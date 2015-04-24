@@ -34,6 +34,7 @@
 
 #include <KMessageWidget>
 
+#include <BluezQt/Manager>
 #include <BluezQt/Device>
 #include <BluezQt/Adapter>
 #include <BluezQt/Services>

@@ -56,7 +56,7 @@ struct BlueDevilDaemon::Private
     BluezAgent *m_bluezAgent;
     FileReceiver *m_fileReceiver;
     DeviceMonitor *m_deviceMonitor;
-    QSharedPointer<BluezQt::Manager> m_manager;
+    BluezQt::ManagerPtr m_manager;
 };
 
 BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
@@ -95,7 +95,7 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     KAboutData::registerPluginData(aboutData);
 
     // Initialize BluezQt
-    d->m_manager = QSharedPointer<BluezQt::Manager>(new BluezQt::Manager);
+    d->m_manager = BluezQt::ManagerPtr(new BluezQt::Manager);
     BluezQt::InitManagerJob *job = d->m_manager->init();
     job->start();
     connect(job, &BluezQt::InitManagerJob::result, this, &BlueDevilDaemon::initJobResult);

@@ -36,11 +36,12 @@
 #include <BluezQt/Device>
 #include <BluezQt/ObexSession>
 
-ReceiveFileJob::ReceiveFileJob(const BluezQt::Request<QString> &req, BluezQt::ObexTransferPtr transfer, ObexAgent *parent)
+ReceiveFileJob::ReceiveFileJob(const BluezQt::Request<QString> &req, BluezQt::ObexTransferPtr transfer, BluezQt::ObexSessionPtr session, ObexAgent *parent)
     : KJob(parent)
     , m_speedBytes(0)
     , m_agent(parent)
     , m_transfer(transfer)
+    , m_session(session)
     , m_request(req)
 {
     setCapabilities(Killable);
@@ -74,24 +75,24 @@ void ReceiveFileJob::init()
     qCDebug(BLUEDAEMON) << "\tTransferred:" << m_transfer->transferred();
 
     qCDebug(BLUEDAEMON) << "ObexSession:";
-    qCDebug(BLUEDAEMON) << "\tSource:" << m_transfer->session()->source();
-    qCDebug(BLUEDAEMON) << "\tDestination:" << m_transfer->session()->destination();
+    qCDebug(BLUEDAEMON) << "\tSource:" << m_session->source();
+    qCDebug(BLUEDAEMON) << "\tDestination:" << m_session->destination();
 
     connect(m_transfer.data(), &BluezQt::ObexTransfer::statusChanged, this, &ReceiveFileJob::statusChanged);
     connect(m_transfer.data(), &BluezQt::ObexTransfer::transferredChanged, this, &ReceiveFileJob::transferredChanged);
 
-    m_deviceName = m_transfer->session()->destination();
+    m_deviceName = m_session->destination();
 
-    BluezQt::AdapterPtr adapter = m_agent->manager()->adapterForAddress(m_transfer->session()->source());
+    BluezQt::AdapterPtr adapter = m_agent->manager()->adapterForAddress(m_session->source());
     if (!adapter) {
-        qCDebug(BLUEDAEMON) << "No adapter for" << m_transfer->session()->source();
+        qCDebug(BLUEDAEMON) << "No adapter for" << m_session->source();
         showNotification();
         return;
     }
 
-    BluezQt::DevicePtr device = adapter->deviceForAddress(m_transfer->session()->destination());
+    BluezQt::DevicePtr device = adapter->deviceForAddress(m_session->destination());
     if (!device) {
-        qCDebug(BLUEDAEMON) << "No device for" << m_transfer->session()->destination();
+        qCDebug(BLUEDAEMON) << "No device for" << m_session->destination();
         showNotification();
         return;
     }

@@ -31,6 +31,7 @@
 #include <KPixmapSequence>
 #include <KPixmapSequenceOverlayPainter>
 
+#include <BluezQt/Manager>
 #include <BluezQt/Device>
 #include <BluezQt/Adapter>
 #include <BluezQt/DevicesModel>

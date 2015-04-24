@@ -23,7 +23,7 @@
 #include <BluezQt/PendingCall>
 #include <BluezQt/InitObexManagerJob>
 
-FileReceiver::FileReceiver(QSharedPointer<BluezQt::Manager> manager, QObject *parent)
+FileReceiver::FileReceiver(BluezQt::ManagerPtr manager, QObject *parent)
     : QObject(parent)
 {
     m_agent = new ObexAgent(manager, this);

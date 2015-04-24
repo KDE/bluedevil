@@ -24,7 +24,7 @@
 
 #include <KSharedConfig>
 
-#include <BluezQt/Manager>
+#include <BluezQt/Types>
 
 class KFilePlacesModel;
 
@@ -33,7 +33,7 @@ class DeviceMonitor : public QObject
     Q_OBJECT
 
 public:
-    explicit DeviceMonitor(QSharedPointer<BluezQt::Manager> manager, QObject *parent = Q_NULLPTR);
+    explicit DeviceMonitor(BluezQt::ManagerPtr manager, QObject *parent = Q_NULLPTR);
     ~DeviceMonitor();
 
 private Q_SLOTS:
@@ -52,7 +52,7 @@ private:
     void clearPlaces();
     void updateDevicePlace(BluezQt::DevicePtr device);
 
-    QSharedPointer<BluezQt::Manager> m_manager;
+    BluezQt::ManagerPtr m_manager;
     KFilePlacesModel *m_places;
     KSharedConfig::Ptr m_config;
 };

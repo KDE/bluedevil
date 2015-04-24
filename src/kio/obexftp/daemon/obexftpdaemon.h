@@ -23,6 +23,8 @@
 
 #include <KDEDModule>
 
+#include <BluezQt/Types>
+
 namespace BluezQt
 {
     class InitObexManagerJob;
@@ -52,7 +54,7 @@ private Q_SLOTS:
     void cancelTransferFinished(QDBusPendingCallWatcher *watcher);
 
     void operationalChanged(bool operational);
-    void sessionRemoved(const QDBusObjectPath &session);
+    void sessionRemoved(BluezQt::ObexSessionPtr session);
 
 private:
     struct Private;

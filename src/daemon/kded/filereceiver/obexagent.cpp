@@ -22,13 +22,13 @@
 
 #include <QDBusObjectPath>
 
-ObexAgent::ObexAgent(QSharedPointer<BluezQt::Manager> manager, QObject *parent)
+ObexAgent::ObexAgent(BluezQt::ManagerPtr manager, QObject *parent)
     : BluezQt::ObexAgent(parent)
     , m_manager(manager)
 {
 }
 
-QSharedPointer<BluezQt::Manager> ObexAgent::manager() const
+BluezQt::ManagerPtr ObexAgent::manager() const
 {
     return m_manager;
 }
@@ -49,11 +49,11 @@ QDBusObjectPath ObexAgent::objectPath() const
     return QDBusObjectPath(QStringLiteral("/BlueDevilObexAgent"));
 }
 
-void ObexAgent::authorizePush(BluezQt::ObexTransferPtr transfer, const BluezQt::Request<QString> &request)
+void ObexAgent::authorizePush(BluezQt::ObexTransferPtr transfer, BluezQt::ObexSessionPtr session, const BluezQt::Request<QString> &request)
 {
     qCDebug(BLUEDAEMON) << "Agent-AuthorizePush";
 
-    ReceiveFileJob *job = new ReceiveFileJob(request, transfer, this);
+    ReceiveFileJob *job = new ReceiveFileJob(request, transfer, session, this);
     connect(job, &ReceiveFileJob::finished, this, &ObexAgent::receiveFileJobFinished);
     job->start();
 }

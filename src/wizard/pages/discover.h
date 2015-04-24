@@ -22,7 +22,7 @@
 
 #include <QWizardPage>
 
-#include <BluezQt/Manager>
+#include <BluezQt/Types>
 
 class KMessageWidget;
 

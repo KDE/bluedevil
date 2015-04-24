@@ -34,7 +34,7 @@ class ReceiveFileJob : public KJob
     Q_OBJECT
 
 public:
-    explicit ReceiveFileJob(const BluezQt::Request<QString> &req, BluezQt::ObexTransferPtr transfer, ObexAgent *parent);
+    explicit ReceiveFileJob(const BluezQt::Request<QString> &req, BluezQt::ObexTransferPtr transfer, BluezQt::ObexSessionPtr session, ObexAgent *parent);
 
     QString deviceAddress() const;
 
@@ -63,6 +63,7 @@ private:
 
     ObexAgent *m_agent;
     BluezQt::ObexTransferPtr m_transfer;
+    BluezQt::ObexSessionPtr m_session;
     BluezQt::Request<QString> m_request;
 };
 

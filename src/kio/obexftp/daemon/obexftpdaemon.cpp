@@ -33,6 +33,7 @@
 #include <BluezQt/ObexManager>
 #include <BluezQt/InitObexManagerJob>
 #include <BluezQt/ObexFileTransfer>
+#include <BluezQt/ObexSession>
 #include <BluezQt/PendingCall>
 
 K_PLUGIN_FACTORY_WITH_JSON(ObexFtpFactory,
@@ -208,9 +209,9 @@ void ObexFtpDaemon::operationalChanged(bool operational)
     }
 }
 
-void ObexFtpDaemon::sessionRemoved(const QDBusObjectPath &session)
+void ObexFtpDaemon::sessionRemoved(BluezQt::ObexSessionPtr session)
 {
-    const QString &path = session.path();
+    const QString &path = session->objectPath().path();
     const QString &key = d->m_sessionMap.key(path);
 
     if (!d->m_sessionMap.contains(key)) {

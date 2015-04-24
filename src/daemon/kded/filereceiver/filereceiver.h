@@ -25,7 +25,6 @@
 
 namespace BluezQt
 {
-    class Manager;
     class PendingCall;
 }
 
@@ -36,7 +35,7 @@ class FileReceiver : public QObject
     Q_OBJECT
 
 public:
-    explicit FileReceiver(QSharedPointer<BluezQt::Manager> manager, QObject *parent = Q_NULLPTR);
+    explicit FileReceiver(BluezQt::ManagerPtr manager, QObject *parent = Q_NULLPTR);
     ~FileReceiver();
 
 private Q_SLOTS:

@@ -27,7 +27,7 @@
 
 #include <QWidget>
 
-#include <BluezQt/Manager>
+#include <BluezQt/Types>
 
 class KMessageWidget;
 

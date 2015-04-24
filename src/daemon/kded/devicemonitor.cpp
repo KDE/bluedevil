@@ -24,11 +24,12 @@
 #include <KConfigGroup>
 #include <KFilePlacesModel>
 
+#include <BluezQt/Manager>
 #include <BluezQt/Adapter>
 #include <BluezQt/Device>
 #include <BluezQt/Services>
 
-DeviceMonitor::DeviceMonitor(QSharedPointer<BluezQt::Manager> manager, QObject *parent)
+DeviceMonitor::DeviceMonitor(BluezQt::ManagerPtr manager, QObject *parent)
     : QObject(parent)
     , m_manager(manager)
     , m_places(new KFilePlacesModel(this))
