@@ -441,7 +441,7 @@ PlasmaComponents.ListItem {
     function infoText()
     {
         if (connecting) {
-            return i18n("Connecting");
+            return Connected ? i18n("Disconnecting") : i18n("Connecting");
         }
 
         switch (DeviceType) {
@@ -487,11 +487,6 @@ PlasmaComponents.ListItem {
 
     function connectToDevice()
     {
-        if (Connected) {
-            Device.disconnectDevice();
-            return;
-        }
-
         if (connecting) {
             return;
         }
@@ -499,6 +494,16 @@ PlasmaComponents.ListItem {
         connecting = true;
         runningActions++;
 
+        // Disconnect device
+        if (Connected) {
+            Device.disconnectDevice().finished.connect(function(call) {
+                connecting = false;
+                runningActions--;
+            });
+            return;
+        }
+
+        // Connect device
         Device.connectDevice().finished.connect(function(call) {
             connecting = false;
             runningActions--;
