@@ -347,9 +347,11 @@ PlasmaComponents.ListItem {
             when: !visibleDetails
 
             StateChangeScript {
-                script: if (expandableComponentLoader.status == Loader.Ready) {
-                            expandableComponentLoader.sourceComponent = undefined;
-                        }
+                script: {
+                    if (expandableComponentLoader.status == Loader.Ready) {
+                        expandableComponentLoader.sourceComponent = undefined;
+                    }
+                }
             }
         },
 
@@ -358,7 +360,10 @@ PlasmaComponents.ListItem {
             when: visibleDetails
 
             StateChangeScript {
-                script: createContent();
+                script: {
+                    createContent();
+                    expandableComponentLoader.sourceComponent = detailsComponent;
+                }
             }
         }
     ]
@@ -373,6 +378,22 @@ PlasmaComponents.ListItem {
         visibleDetails = !visibleDetails;
 
         if (!visibleDetails) {
+            ListView.view.currentIndex = -1;
+        }
+    }
+
+    // Hide device details when the device for this delegate changes
+    // This happens eg. when device connects/disconnects
+    property var __dev
+    readonly property var dev : Device
+    onDevChanged: {
+        if (__dev == dev) {
+            return;
+        }
+        __dev = dev;
+
+        if (visibleDetails) {
+            visibleDetails = false;
             ListView.view.currentIndex = -1;
         }
     }
@@ -395,29 +416,26 @@ PlasmaComponents.ListItem {
     }
 
     function createContent() {
-        if (visibleDetails) {
-            var details = [];
+        var details = [];
 
-            if (Name != RemoteName) {
-                details.push(i18n("Remote Name"));
-                details.push(RemoteName);
-            }
-
-            details.push(i18n("Address"));
-            details.push(Address);
-
-            details.push(i18n("Paired"));
-            details.push(boolToString(Paired));
-
-            details.push(i18n("Trusted"));
-            details.push(boolToString(Trusted));
-
-            details.push(i18n("Adapter"));
-            details.push(adapterName(Adapter));
-
-            currentDeviceDetails = details;
-            expandableComponentLoader.sourceComponent = detailsComponent;
+        if (Name != RemoteName) {
+            details.push(i18n("Remote Name"));
+            details.push(RemoteName);
         }
+
+        details.push(i18n("Address"));
+        details.push(Address);
+
+        details.push(i18n("Paired"));
+        details.push(boolToString(Paired));
+
+        details.push(i18n("Trusted"));
+        details.push(boolToString(Trusted));
+
+        details.push(i18n("Adapter"));
+        details.push(adapterName(Adapter));
+
+        currentDeviceDetails = details;
     }
 
     function infoText()
