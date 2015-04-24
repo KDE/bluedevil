@@ -19,24 +19,21 @@
 */
 
 import QtQuick 2.2
+import QtQuick.Layouts 1.1
 import org.kde.bluezqt 1.0 as BluezQt
 import org.kde.plasma.components 2.0 as PlasmaComponents
 
-Column {
+ColumnLayout {
     id: mediaPlayer
+
+    spacing: 0
 
     PlasmaComponents.Label {
         id: trackTitleLabel
-
-        anchors {
-            left: parent.left
-            right: parent.right
-        }
-
-        height: paintedHeight
+        Layout.fillWidth: true
         elide: Text.ElideRight
-        font.weight: MediaPlayer.track.title ? Font.DemiBold : Font.Normal
-        font.italic: MediaPlayer.status == BluezQt.MediaPlayer.Playing
+        font.weight: MediaPlayer && MediaPlayer.track.title ? Font.DemiBold : Font.Normal
+        font.italic: MediaPlayer && MediaPlayer.status == BluezQt.MediaPlayer.Playing
         font.pointSize: theme.smallestFont.pointSize
         opacity: 0.6
         text: trackTitleText()
@@ -46,40 +43,28 @@ Column {
 
     PlasmaComponents.Label {
         id: trackArtistLabel
-
-        anchors {
-            left: parent.left
-            right: parent.right
-        }
-
-        height: paintedHeight
+        Layout.fillWidth: true
         elide: Text.ElideRight
         font.pointSize: theme.smallestFont.pointSize
         opacity: 0.6
-        text: MediaPlayer.track.artist
+        text: MediaPlayer ? MediaPlayer.track.artist : ""
         textFormat: Text.PlainText
         visible: text.length
     }
 
     PlasmaComponents.Label {
         id: trackAlbumLabel
-
-        anchors {
-            left: parent.left
-            right: parent.right
-        }
-
-        height: paintedHeight
+        Layout.fillWidth: true
         elide: Text.ElideRight
         font.pointSize: theme.smallestFont.pointSize
         opacity: 0.6
-        text: MediaPlayer.track.album
+        text: MediaPlayer ? MediaPlayer.track.album : ""
         textFormat: Text.PlainText
         visible: text.length
     }
 
-    Row {
-        id: mediaControlsRow
+    RowLayout {
+        spacing: 0
 
         PlasmaComponents.ToolButton {
             id: previousButton
@@ -98,7 +83,7 @@ Column {
         PlasmaComponents.ToolButton {
             id: stopButton
             iconSource: "media-playback-stop"
-            enabled: MediaPlayer.status != BluezQt.MediaPlayer.Stopped
+            enabled: MediaPlayer && MediaPlayer.status != BluezQt.MediaPlayer.Stopped
 
             onClicked: MediaPlayer.stop()
         }
@@ -113,6 +98,10 @@ Column {
 
     function trackTitleText()
     {
+        if (!MediaPlayer) {
+            return "";
+        }
+
         var play = "\u25B6";
 
         if (MediaPlayer.status == BluezQt.MediaPlayer.Playing) {
@@ -123,6 +112,10 @@ Column {
 
     function playPauseButtonIcon()
     {
+        if (!MediaPlayer) {
+            return "";
+        }
+
         if (MediaPlayer.status != BluezQt.MediaPlayer.Playing) {
             return "media-playback-start";
         } else {

@@ -20,6 +20,7 @@
 */
 
 import QtQuick 2.2
+import QtQuick.Layouts 1.1
 import org.kde.bluezqt 1.0 as BluezQt
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PlasmaComponents
@@ -151,20 +152,13 @@ PlasmaComponents.ListItem {
     Component {
         id: detailsComponent
 
-        Item {
-            height: childrenRect.height
+        ColumnLayout {
+            spacing: 0
 
             PlasmaCore.SvgItem {
                 id: detailsSeparator
-
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    top: parent.top
-                }
-
-                height: lineSvg.elementSize("horizontal-line").height
-                width: parent.width
+                Layout.fillWidth: true
+                Layout.preferredHeight: lineSvg.elementSize("horizontal-line").height
                 elementId: "horizontal-line"
                 svg: PlasmaCore.Svg {
                     id: lineSvg
@@ -172,14 +166,14 @@ PlasmaComponents.ListItem {
                 }
             }
 
-            Column {
-                id: actionsColumn
+            // Actions
+            GridLayout {
+                columns: 2
+                rowSpacing: 0
 
-                anchors {
-                    left: parent.left
-                    leftMargin: units.iconSizes.medium
-                    right: parent.right
-                    top: detailsSeparator.bottom
+                Item {
+                    width: units.iconSizes.medium
+                    Layout.rowSpan: 2
                 }
 
                 PlasmaComponents.ToolButton {
@@ -208,133 +202,67 @@ PlasmaComponents.ListItem {
 
             PlasmaCore.SvgItem {
                 id: actionsSeparator
-
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    top: actionsColumn.bottom
-                }
-
+                Layout.fillWidth: true
+                Layout.preferredHeight: lineSvg.elementSize("horizontal-line").height
                 visible: browseFilesButton.visible || sendFileButton.visible
-                height: visible ? lineSvg.elementSize("horizontal-line").height : 0
-                width: parent.width
                 elementId: "horizontal-line"
                 svg: lineSvg
             }
 
-            Loader {
-                id: mediaPlayerLoader
-
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    top: actionsSeparator.bottom
-                }
-
-                sourceComponent: MediaPlayer ? mediaPlayerComponent : undefined
+            Item {
+                height: units.smallSpacing
             }
 
-            Component {
-                id: mediaPlayerComponent
+            // Media Player
+            RowLayout {
+                Item {
+                    width: units.iconSizes.medium
+                }
+
+                MediaPlayer {
+                    id: mediaPlayer
+                    Layout.fillWidth: true
+                    visible: MediaPlayer
+                }
+            }
+
+            PlasmaCore.SvgItem {
+                id: mediaPlayerSeparator
+                Layout.fillWidth: true
+                Layout.preferredHeight: lineSvg.elementSize("horizontal-line").height
+                visible: mediaPlayer.visible
+                elementId: "horizontal-line"
+                svg: lineSvg
+            }
+
+            Item {
+                height: units.smallSpacing
+                visible: mediaPlayerSeparator.visible
+            }
+
+            // Details
+            GridLayout {
+                columns: 3
+                rowSpacing: units.smallSpacing / 4
 
                 Item {
-                    height: childrenRect.height + units.smallSpacing
-
-                    MediaPlayer {
-                        id: mediaPlayer
-
-                        anchors {
-                            left: parent.left
-                            leftMargin: units.iconSizes.medium + units.smallSpacing
-                            right: parent.right
-                            top: parent.top
-                            topMargin: units.smallSpacing
-                        }
-                    }
-
-                    PlasmaCore.SvgItem {
-                        id: mediaPlayerSeparator
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                            top: mediaPlayer.bottom
-                        }
-
-                        visible: mediaPlayer.visible
-                        height: lineSvg.elementSize("horizontal-line").height
-                        width: parent.width
-                        elementId: "horizontal-line"
-                        svg: lineSvg
-                    }
-                }
-            }
-
-            Column {
-                id: details
-
-                anchors {
-                    left: parent.left
-                    leftMargin: units.iconSizes.medium
-                    right: parent.right
-                    top: mediaPlayerLoader.bottom
-                    topMargin: units.smallSpacing
+                    width: units.iconSizes.medium
+                    Layout.rowSpan: currentDeviceDetails.length / 2
                 }
 
                 Repeater {
                     id: repeater
 
-                    property int longestString: 0
+                    model: currentDeviceDetails.length
 
-                    model: currentDeviceDetails.length / 2
-
-                    Item {
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                            topMargin: Math.round(units.gridUnit / 3)
-                        }
-
-                        height: Math.max(detailNameLabel.height, detailValueLabel.height)
-
-                        PlasmaComponents.Label {
-                            id: detailNameLabel
-
-                            anchors {
-                                left: parent.left
-                                leftMargin: repeater.longestString - paintedWidth + Math.round(units.gridUnit / 2)
-                                verticalCenter: parent.verticalCenter
-                            }
-
-                            height: paintedHeight
-                            font.pointSize: theme.smallestFont.pointSize
-                            horizontalAlignment: Text.AlignRight
-                            opacity: 0.6
-                            text: "<b>%1</b>: &nbsp".arg(currentDeviceDetails[index * 2])
-
-                            Component.onCompleted: {
-                                if (paintedWidth > repeater.longestString) {
-                                    repeater.longestString = paintedWidth;
-                                }
-                            }
-                        }
-
-                        PlasmaComponents.Label {
-                            id: detailValueLabel;
-
-                            anchors {
-                                left: detailNameLabel.right
-                                right: parent.right
-                                verticalCenter: parent.verticalCenter
-                            }
-
-                            height: paintedHeight
-                            elide: Text.ElideRight
-                            font.pointSize: theme.smallestFont.pointSize
-                            opacity: 0.6
-                            text: currentDeviceDetails[(index*2)+1]
-                            textFormat: Text.StyledText
-                        }
+                    PlasmaComponents.Label {
+                        id: detailLabel
+                        Layout.alignment: index % 2 ? Qt.AlignLeft : Qt.AlignRight
+                        elide: index % 2 ? Text.ElideRight : Text.ElideNone
+                        font.pointSize: theme.smallestFont.pointSize
+                        opacity: 0.6
+                        text: index % 2 ? currentDeviceDetails[index] : "<b>%1</b>:".arg(currentDeviceDetails[index])
+                        textFormat: index % 2 ? Text.PlainText : Text.StyledText
                     }
                 }
             }
