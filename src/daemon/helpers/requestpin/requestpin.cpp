@@ -20,20 +20,18 @@
  ***************************************************************************/
 
 #include "requestpin.h"
-#include "ui_dialogWidget.h"
+#include "ui_dialogwidget.h"
 
 #include <iostream>
 
-#include <QDebug>
 #include <QCoreApplication>
-#include <QTimer>
-#include <QValidator>
 #include <QRegExpValidator>
 #include <QRegExp>
 #include <QIcon>
 #include <QDialog>
 #include <QPushButton>
 
+#include <KWindowSystem>
 #include <KNotification>
 #include <KLocalizedString>
 
@@ -71,25 +69,24 @@ void RequestPin::introducePin()
     m_notification->close();
     m_notification->deleteLater();
 
-    QDialog dialog;
-    dialog.setWindowTitle(i18nc(
+    QDialog *dialog = new QDialog;
+    dialog->setAttribute(Qt::WA_DeleteOnClose);
+    dialog->setWindowIcon(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")));
+
+    dialog->setWindowTitle(i18nc(
         "Shown in the caption of a dialog where the user introduce the PIN",
         "Introduce PIN"
     ));
 
-    m_dialogWidget = new Ui::dialogWidget;
-    m_dialogWidget->setupUi(&dialog);
+    m_dialogWidget = new Ui::DialogWidget;
+    m_dialogWidget->setupUi(dialog);
     m_dialogWidget->descLabel->setText(i18nc(
         "Shown in a dialog which asks to introduce a PIN that will be used to pair a Bluetooth device, %1 is the name of the Bluetooth device",
         "In order to pair this computer with %1, you have to enter a PIN. Please do it below.",
         m_args.at(1))
     );
+
     m_dialogWidget->pixmap->setPixmap(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")).pixmap(64));
-
-    connect(m_dialogWidget->pin, &QLineEdit::textChanged, this, &RequestPin::checkPin);
-    connect(m_dialogWidget->buttonBox, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
-    connect(m_dialogWidget->buttonBox, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
-
     m_dialogWidget->pin->setFocus(Qt::ActiveWindowFocusReason);
 
     if (m_args.count() > 2 && m_args.at(2) == QLatin1String("numeric")) {
@@ -99,22 +96,35 @@ void RequestPin::introducePin()
     }
 
     m_dialogWidget->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
-    dialog.setFixedSize(dialog.sizeHint());
+    dialog->setFixedSize(dialog->sizeHint());
 
-    if (dialog.exec()) {
-        std::cout << m_dialogWidget->pin->text().toLatin1().constData();
-        std::flush(std::cout);
+    connect(dialog, &QDialog::finished, this, &RequestPin::dialogFinished);
+    connect(m_dialogWidget->pin, &QLineEdit::textChanged, this, &RequestPin::checkPin);
+    connect(m_dialogWidget->buttonBox, &QDialogButtonBox::accepted, dialog, &QDialog::accept);
+    connect(m_dialogWidget->buttonBox, &QDialogButtonBox::rejected, dialog, &QDialog::reject);
 
-        QCoreApplication::exit(0);
-        return;
-    }
+    dialog->show();
 
-    QCoreApplication::exit(1);
+    KWindowSystem::setState(dialog->winId(), NET::KeepAbove);
+    KWindowSystem::forceActiveWindow(dialog->winId());
 }
 
 void RequestPin::checkPin(const QString &pin)
 {
     m_dialogWidget->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(!pin.isEmpty());
+}
+
+void RequestPin::dialogFinished(int result)
+{
+    if (!result) {
+        QCoreApplication::exit(1);
+        return;
+    }
+
+    std::cout << m_dialogWidget->pin->text().toLatin1().constData();
+    std::flush(std::cout);
+
+    QCoreApplication::exit(0);
 }
 
 void RequestPin::quit()

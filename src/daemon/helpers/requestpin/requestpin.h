@@ -27,7 +27,7 @@
 
 namespace Ui
 {
-    class dialogWidget;
+    class DialogWidget;
 }
 
 class KNotification;
@@ -64,9 +64,10 @@ private Q_SLOTS:
      */
     void quit();
     void checkPin(const QString &pin);
+    void dialogFinished(int result);
 
 private:
-    Ui::dialogWidget *m_dialogWidget;
+    Ui::DialogWidget *m_dialogWidget;
     KNotification *m_notification;
     QStringList m_args;
 };

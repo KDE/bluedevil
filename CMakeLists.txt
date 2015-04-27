@@ -21,6 +21,7 @@ find_package(KF5 MODULE REQUIRED COMPONENTS
     WidgetsAddons
     DBusAddons
     Notifications
+    WindowSystem
     IconThemes
     Plasma
     I18n
