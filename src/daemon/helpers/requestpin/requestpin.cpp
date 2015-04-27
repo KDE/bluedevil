@@ -86,8 +86,7 @@ void RequestPin::introducePin()
     );
     m_dialogWidget->pixmap->setPixmap(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")).pixmap(64));
 
-    connect(m_dialogWidget->pin, &KLineEdit::textChanged, this, &RequestPin::checkPin);
-    connect(m_dialogWidget->pin, &KLineEdit::returnPressed, &dialog, &QDialog::accept);
+    connect(m_dialogWidget->pin, &QLineEdit::textChanged, this, &RequestPin::checkPin);
     connect(m_dialogWidget->buttonBox, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
     connect(m_dialogWidget->buttonBox, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
 
