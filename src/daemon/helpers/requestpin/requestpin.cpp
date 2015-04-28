@@ -24,12 +24,11 @@
 
 #include <iostream>
 
-#include <QCoreApplication>
-#include <QRegExpValidator>
-#include <QRegExp>
 #include <QIcon>
 #include <QDialog>
 #include <QPushButton>
+#include <QCoreApplication>
+#include <QRegularExpressionValidator>
 
 #include <KWindowSystem>
 #include <KNotification>
@@ -90,9 +89,11 @@ void RequestPin::introducePin()
     m_dialogWidget->pin->setFocus(Qt::ActiveWindowFocusReason);
 
     if (m_args.count() > 2 && m_args.at(2) == QLatin1String("numeric")) {
-        m_dialogWidget->pin->setValidator(new QRegExpValidator(QRegExp(QStringLiteral("[0-9]{1,6}")), this));
+        QRegularExpression rx(QStringLiteral("[0-9]{1,6}"));
+        m_dialogWidget->pin->setValidator(new QRegularExpressionValidator(rx, this));
     } else {
-        m_dialogWidget->pin->setValidator(new QRegExpValidator(QRegExp(QStringLiteral("[A-Za-z0-9]{1,16}")), this));
+        QRegularExpression rx(QStringLiteral("[A-Za-z0-9]{1,16}"));
+        m_dialogWidget->pin->setValidator(new QRegularExpressionValidator(rx, this));
     }
 
     m_dialogWidget->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);

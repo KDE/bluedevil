@@ -22,8 +22,8 @@
 #include "../wizardagent.h"
 #include "debug_p.h"
 
-#include <QRegExpValidator>
 #include <QSortFilterProxyModel>
+#include <QRegularExpressionValidator>
 
 #include <KIconLoader>
 #include <KMessageWidget>
@@ -161,9 +161,8 @@ void DiscoverPage::initializePage()
     list << QWizard::CancelButton;
     m_wizard->setButtonLayout(list);
 
-    QRegExp rx(QStringLiteral("[0-9]{0,9}"));
-    QRegExpValidator *validator = new QRegExpValidator(rx);
-    pinText->setValidator(validator);
+    QRegularExpression rx(QStringLiteral("[0-9]{1,16}"));
+    pinText->setValidator(new QRegularExpressionValidator(rx, this));
 
     connect(manualPin, &QCheckBox::toggled, pinText, &QLineEdit::setEnabled);
     connect(manualPin, &QCheckBox::toggled, this, &DiscoverPage::completeChanged);

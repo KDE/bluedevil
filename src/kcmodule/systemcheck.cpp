@@ -231,7 +231,7 @@ void SystemCheck::fixDisabledNotificationsError()
     config.addConfigSources(QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QStringLiteral("bluedevil/bluedevil.notifyrc")));
 
     QStringList confList = config.groupList();
-    QRegExp rx(QStringLiteral("^Event/([^/]*)$"));
+    QRegularExpression rx(QStringLiteral("^Event/([^/]*)$"));
     confList = confList.filter(rx);
 
     Q_FOREACH (const QString &group , confList) {
@@ -250,7 +250,7 @@ bool SystemCheck::checkNotificationsOK()
     config.addConfigSources(QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QStringLiteral("bluedevil/bluedevil.notifyrc")));
 
     QStringList confList = config.groupList();
-    QRegExp rx(QStringLiteral("^Event/([^/]*)$"));
+    QRegularExpression rx(QStringLiteral("^Event/([^/]*)$"));
     confList = confList.filter(rx);
 
     Q_FOREACH (const QString &group , confList) {
