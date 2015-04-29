@@ -24,6 +24,7 @@
 #include <QUrl>
 #include <QIcon>
 #include <QApplication>
+#include <QCommandLineParser>
 
 #include <KAboutData>
 #include <KDBusService>
@@ -51,6 +52,12 @@ int main(int argc, char *argv[])
 
     KAboutData::setApplicationData(aboutData);
     KDBusService service(KDBusService::Unique);
+
+    QCommandLineParser parser;
+    aboutData.setupCommandLine(&parser);
+
+    parser.process(app);
+    aboutData.processCommandLine(&parser);
 
     BlueWizard *wizard = new BlueWizard;
 

@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
     KDBusService service;
 
     QCommandLineOption kioOption(QStringList() << QStringLiteral("kio") << QStringLiteral("k"));
-    kioOption.setValueName(QStringLiteral("bluetooth://mac"));
+    kioOption.setValueName(QStringLiteral("bluetooth://address"));
 
     QCommandLineOption ubiOption(QStringList() << QStringLiteral("ubi") << QStringLiteral("u"));
     ubiOption.setValueName(QStringLiteral("ubi"));
@@ -61,14 +61,13 @@ int main(int argc, char *argv[])
     filesOption.setValueName(QStringLiteral("files"));
 
     QCommandLineParser parser;
-    parser.setApplicationDescription(i18n("Bluetooth Send File Helper"));
-    parser.addVersionOption();
-    parser.addHelpOption();
     parser.addOption(kioOption);
     parser.addOption(ubiOption);
     parser.addOption(filesOption);
+    aboutData.setupCommandLine(&parser);
 
     parser.process(app);
+    aboutData.processCommandLine(&parser);
 
     QString deviceInfo = parser.value(ubiOption);
     if (deviceInfo.isEmpty()) {
