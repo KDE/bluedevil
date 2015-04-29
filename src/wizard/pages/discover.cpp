@@ -80,26 +80,20 @@ QVariant DevicesProxyModel::data(const QModelIndex &index, int role) const
 
 bool DevicesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const
 {
-    // Move non-paired devices to the top
+    qint16 leftRssi = left.data(BluezQt::DevicesModel::RssiRole).toInt();
+    qint16 rightRssi = right.data(BluezQt::DevicesModel::RssiRole).toInt();
 
-    bool leftPaired = left.data(BluezQt::DevicesModel::PairedRole).toBool();
-    bool rightPaired = right.data(BluezQt::DevicesModel::PairedRole).toBool();
-
-    if (leftPaired > rightPaired) {
-        return true;
-    } else if (leftPaired < rightPaired) {
-        return false;
-    }
-
-    const QString &leftName = left.data(BluezQt::DevicesModel::FriendlyNameRole).toString();
-    const QString &rightName = right.data(BluezQt::DevicesModel::FriendlyNameRole).toString();
-
-    return QString::localeAwareCompare(leftName, rightName) > 0;
+    return leftRssi < rightRssi;
 }
 
 bool DevicesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
 {
     QModelIndex index = sourceModel()->index(sourceRow, 0, sourceParent);
+
+    bool devicePaired = index.data(BluezQt::DevicesModel::PairedRole).toBool();
+    if (devicePaired) {
+        return false;
+    }
 
     bool adapterPowered = index.data(BluezQt::DevicesModel::AdapterPoweredRole).toBool();
     bool adapterPairable = index.data(BluezQt::DevicesModel::AdapterPairableRole).toBool();
