@@ -127,27 +127,9 @@ DiscoverPage::DiscoverPage(BlueWizard *parent)
     connect(deviceView->selectionModel(), &QItemSelectionModel::currentChanged, this, &DiscoverPage::indexSelected);
 }
 
-void DiscoverPage::startDiscovery()
-{
-    m_manager = m_wizard->manager();
-
-    BluezQt::AdapterPtr adapter = m_manager->usableAdapter();
-    if (adapter && !adapter->isDiscovering()) {
-        adapter->startDiscovery();
-    }
-
-    m_model->setDevicesModel(new BluezQt::DevicesModel(m_manager, this));
-
-    checkAdapters();
-    connect(m_manager, &BluezQt::Manager::adapterAdded, this, &DiscoverPage::checkAdapters);
-    connect(m_manager, &BluezQt::Manager::adapterChanged, this, &DiscoverPage::checkAdapters);
-    connect(m_manager, &BluezQt::Manager::bluetoothBlockedChanged, this, &DiscoverPage::checkAdapters);
-    connect(m_manager, &BluezQt::Manager::usableAdapterChanged, this, &DiscoverPage::usableAdapterChanged);
-}
-
 void DiscoverPage::initializePage()
 {
-    qCDebug(WIZARD) << "Initialize Page";
+    qCDebug(WIZARD) << "Initialize Discover Page";
 
     QList <QWizard::WizardButton> list;
     list << QWizard::Stretch;
@@ -162,6 +144,27 @@ void DiscoverPage::initializePage()
     connect(manualPin, &QCheckBox::toggled, this, &DiscoverPage::completeChanged);
     connect(pinText, &QLineEdit::textChanged, m_wizard, &BlueWizard::setPin);
     connect(pinText, &QLineEdit::textChanged, this, &DiscoverPage::completeChanged);
+
+    m_manager = m_wizard->manager();
+
+    m_adapter = m_manager->usableAdapter();
+    if (m_adapter && !m_adapter->isDiscovering()) {
+        qCDebug(WIZARD) << "Starting scanning";
+        m_adapter->startDiscovery();
+    }
+
+    if (!m_model->sourceModel()) {
+        m_model->setDevicesModel(new BluezQt::DevicesModel(m_manager, this));
+    }
+
+    // Reset selected device
+    deviceView->setCurrentIndex(QModelIndex());
+
+    checkAdapters();
+    connect(m_manager, &BluezQt::Manager::adapterAdded, this, &DiscoverPage::checkAdapters);
+    connect(m_manager, &BluezQt::Manager::adapterChanged, this, &DiscoverPage::checkAdapters);
+    connect(m_manager, &BluezQt::Manager::bluetoothBlockedChanged, this, &DiscoverPage::checkAdapters);
+    connect(m_manager, &BluezQt::Manager::usableAdapterChanged, this, &DiscoverPage::usableAdapterChanged);
 }
 
 bool DiscoverPage::isComplete() const
@@ -193,8 +196,10 @@ int DiscoverPage::nextId() const
 
     BluezQt::DevicePtr device = m_wizard->device();
 
-    qCDebug(WIZARD) << "Stopping scanning";
-    device->adapter()->stopDiscovery();
+    if (m_adapter && m_adapter->isDiscovering()) {
+        qCDebug(WIZARD) << "Stopping scanning";
+        m_adapter->stopDiscovery();
+    }
 
     if (device->isPaired()) {
         qCDebug(WIZARD) << "Device is paired, skipping to connect";
@@ -249,8 +254,10 @@ void DiscoverPage::indexSelected(const QModelIndex &index)
 
 void DiscoverPage::usableAdapterChanged(BluezQt::AdapterPtr adapter)
 {
-    if (adapter && !adapter->isDiscovering()) {
-        adapter->startDiscovery();
+    m_adapter = adapter;
+
+    if (m_adapter && !m_adapter->isDiscovering()) {
+        m_adapter->startDiscovery();
     }
 
     checkAdapters();

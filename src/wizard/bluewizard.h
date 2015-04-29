@@ -52,9 +52,6 @@ public:
         Connect
     };
 
-public Q_SLOTS:
-    void restartWizard();
-
 private Q_SLOTS:
     void initJobResult(BluezQt::InitManagerJob *job);
     void operationalChanged(bool operational);

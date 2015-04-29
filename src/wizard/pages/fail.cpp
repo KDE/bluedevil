@@ -48,7 +48,7 @@ void FailPage::initializePage()
     QPushButton *reset = new QPushButton(this);
     KGuiItem::assign(reset, KStandardGuiItem::reset());
     reset->setText(i18nc("Button offered when the wizard fail. This button will restart the wizard", "Restart the wizard"));
-    connect(reset, &QPushButton::clicked, m_wizard, &BlueWizard::restartWizard);
+    connect(reset, &QPushButton::clicked, m_wizard, &QWizard::restart);
 
     m_wizard->setButton(QWizard::CustomButton3, reset);
     m_wizard->setButtonText(QWizard::CancelButton, i18nc("Button that closes the wizard", "Close"));

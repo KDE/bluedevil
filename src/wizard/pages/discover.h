@@ -36,8 +36,6 @@ class DiscoverPage : public QWizardPage, public Ui::Discover
 public:
     explicit DiscoverPage(BlueWizard *parent = 0);
 
-    void startDiscovery();
-
     void initializePage() Q_DECL_OVERRIDE;
     bool isComplete() const Q_DECL_OVERRIDE;
     int nextId() const Q_DECL_OVERRIDE;
@@ -53,6 +51,7 @@ private:
     BlueWizard *m_wizard;
     DevicesProxyModel *m_model;
     BluezQt::Manager *m_manager;
+    BluezQt::AdapterPtr m_adapter;
     KMessageWidget *m_warningWidget;
 };
 
