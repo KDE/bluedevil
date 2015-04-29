@@ -1,4 +1,4 @@
 #ifndef BLUEDEVILVERSION_H
 #define BLUEDEVILVERSION_H
-static const char bluedevil_version[] = "${PROJECT_VERSION}";
+#define BLUEDEVIL_VERSION QStringLiteral("${PROJECT_VERSION}")
 #endif

@@ -55,7 +55,7 @@ ObexFtpDaemon::ObexFtpDaemon(QObject *parent, const QList<QVariant>&)
 {
     KAboutData aboutData(QStringLiteral("obexftpdaemon"),
                          i18n("ObexFtp Daemon"),
-                         bluedevil_version,
+                         BLUEDEVIL_VERSION,
                          i18n("ObexFtp Daemon"),
                          KAboutLicense::GPL,
                          i18n("(c) 2010, UFO Coders"));

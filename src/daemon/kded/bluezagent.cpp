@@ -181,7 +181,7 @@ void BluezAgent::processClosedPin(int exitCode)
 
     if (exitCode == 0) {
         qCDebug(BLUEDAEMON) << "Accepting request";
-        const QString &arg = m_process->readAllStandardOutput();
+        const QString &arg = QString::fromLocal8Bit(m_process->readAllStandardOutput());
         m_pinRequest.accept(arg);
         return;
     }
