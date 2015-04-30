@@ -9,12 +9,14 @@ set(sendfilehelper_SRCS
     pages/selectdevicepage.cpp
     pages/selectfilespage.cpp
     pages/connectingpage.cpp
+    pages/failpage.cpp
 )
 
 ki18n_wrap_ui(sendfilehelper_SRCS
     discover.ui
-    pages/connecting.ui
     pages/selectfilediscover.ui
+    pages/connecting.ui
+    pages/failpage.ui
 )
 
 add_executable(bluedevil-sendfile ${sendfilehelper_SRCS})

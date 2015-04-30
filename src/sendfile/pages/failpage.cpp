@@ -1,8 +1,7 @@
 /*****************************************************************************
  * This file is part of the KDE project                                      *
  *                                                                           *
- * Copyright (C) 2010-2011 Alejandro Fiestas Olivares <afiestas@kde.org>     *
- * Copyright (C) 2010-2011 UFO Coders <info@ufocoders.com>                   *
+ * Copyright (C) 2015 David Rosca <nowrep@gmail.com>                         *
  *                                                                           *
  * This library is free software; you can redistribute it and/or             *
  * modify it under the terms of the GNU Library General Public               *
@@ -20,57 +19,42 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-#ifndef SENDFILESJOB_H
-#define SENDFILESJOB_H
+#include "failpage.h"
+#include "../sendfilewizard.h"
+#include "debug_p.h"
 
-#include <QTime>
-#include <QList>
-#include <QStringList>
+#include <QPushButton>
 
-#include <KJob>
+#include <KStandardGuiItem>
+#include <KLocalizedString>
+#include <KPixmapSequenceOverlayPainter>
 
-#include <BluezQt/ObexTransfer>
+#include <BluezQt/Device>
 
-namespace BluezQt
+FailPage::FailPage(SendFileWizard *parent)
+    : QWizardPage(parent)
+    , m_wizard(parent)
 {
-    class ObexObjectPush;
-    class InitObexManagerJob;
+    setupUi(this);
+
+    failIcon->setPixmap(QIcon::fromTheme(QStringLiteral("task-reject")).pixmap(48));
 }
 
-class SendFilesJob : public KJob
+void FailPage::initializePage()
 {
-    Q_OBJECT
+    qCDebug(SENDFILE) << "Initialize Fail Page";
 
-public:
-    explicit SendFilesJob(const QStringList &files, BluezQt::DevicePtr device, const QDBusObjectPath &session, QObject *parent = Q_NULLPTR);
+    QList<QWizard::WizardButton> list;
+    list << QWizard::Stretch;
+    list << QWizard::CancelButton;
 
-    void start() Q_DECL_OVERRIDE;
-    bool doKill() Q_DECL_OVERRIDE;
+    m_wizard->setButtonLayout(list);
 
-private Q_SLOTS:
-    void doStart();
-    void nextJob();
-    void sendFileFinished(BluezQt::PendingCall *call);
-    void jobDone();
-    void transferredChanged(quint64 transferred);
-    void statusChanged(BluezQt::ObexTransfer::Status status);
+    BluezQt::DevicePtr device = m_wizard->device();
 
-private:
-    void progress(quint64 transferBytes);
-
-    QTime m_time;
-    QStringList m_files;
-    QList <quint64> m_filesSizes;
-    QString m_currentFile;
-    quint64 m_progress;
-    quint64 m_totalSize;
-    qulonglong m_speedBytes;
-    quint64 m_currentFileSize;
-    quint64 m_currentFileProgress;
-
-    BluezQt::DevicePtr m_device;
-    BluezQt::ObexTransferPtr m_transfer;
-    BluezQt::ObexObjectPush *m_objectPush;
-};
-
-#endif // SENDFILESJOB_H
+    if (device->name().isEmpty()) {
+        failLbl->setText(i18nc("This string is shown when the wizard fail", "The connection to the device has failed"));
+    } else {
+        failLbl->setText(i18n("The connection to %1 has failed", device->name()));
+    }
+}

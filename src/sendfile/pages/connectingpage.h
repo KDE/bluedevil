@@ -27,15 +27,29 @@
 
 #include <QWizardPage>
 
+#include <BluezQt/ObexManager>
+
+class SendFileWizard;
+
 class ConnectingPage : public QWizardPage, public Ui::Connecting
 {
     Q_OBJECT
 
 public:
-    explicit ConnectingPage(QWidget *parent = 0);
+    explicit ConnectingPage(SendFileWizard *wizard = Q_NULLPTR);
 
     void initializePage() Q_DECL_OVERRIDE;
     bool isComplete() const Q_DECL_OVERRIDE;
+
+private Q_SLOTS:
+    void initJobResult(BluezQt::InitObexManagerJob *job);
+    void createSessionFinished(BluezQt::PendingCall *call);
+
+private:
+    QList<QWizard::WizardButton> wizardButtonsLayout() const;
+
+    SendFileWizard *m_wizard;
+    BluezQt::DevicePtr m_device;
 };
 
 #endif // CONNECTINGPAGE_H

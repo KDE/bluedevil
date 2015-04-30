@@ -35,7 +35,7 @@
 #include <BluezQt/ObexObjectPush>
 #include <BluezQt/InitObexManagerJob>
 
-SendFilesJob::SendFilesJob(const QStringList &files, BluezQt::DevicePtr device, QObject *parent)
+SendFilesJob::SendFilesJob(const QStringList &files, BluezQt::DevicePtr device, const QDBusObjectPath &session, QObject *parent)
     : KJob(parent)
     , m_files(files)
     , m_progress(0)
@@ -44,7 +44,6 @@ SendFilesJob::SendFilesJob(const QStringList &files, BluezQt::DevicePtr device, 
     , m_currentFileSize(0)
     , m_currentFileProgress(0)
     , m_device(device)
-    , m_objectPush(0)
 {
     qCDebug(SENDFILE) << "SendFilesJob:" << files;
 
@@ -55,6 +54,8 @@ SendFilesJob::SendFilesJob(const QStringList &files, BluezQt::DevicePtr device, 
     }
 
     setCapabilities(Killable);
+
+    m_objectPush = new BluezQt::ObexObjectPush(session, this);
 }
 
 void SendFilesJob::start()
@@ -70,37 +71,6 @@ bool SendFilesJob::doKill()
     return true;
 }
 
-void SendFilesJob::initJobResult(BluezQt::InitObexManagerJob *job)
-{
-    if (job->error()) {
-        qCWarning(SENDFILE) << "Error initializing obex manager" << job->errorText();
-        setError(UserDefinedError);
-        setErrorText(job->errorText());
-        emitResult();
-        return;
-    }
-
-    // Create ObjectPush session
-    QVariantMap map;
-    map[QStringLiteral("Target")] = QStringLiteral("opp");
-    BluezQt::PendingCall *call = job->manager()->createSession(m_device->address(), map);
-    connect(call, &BluezQt::PendingCall::finished, this, &SendFilesJob::createSessionFinished);
-}
-
-void SendFilesJob::createSessionFinished(BluezQt::PendingCall *call)
-{
-    if (call->error()) {
-        qCWarning(SENDFILE) << "Error creating session" << call->errorText();
-        setError(UserDefinedError);
-        setErrorText(call->errorText());
-        emitResult();
-        return;
-    }
-
-    m_objectPush = new BluezQt::ObexObjectPush(call->value().value<QDBusObjectPath>(), this);
-    nextJob();
-}
-
 void SendFilesJob::doStart()
 {
     qCDebug(SENDFILE) << "SendFilesJob-DoStart";
@@ -112,11 +82,7 @@ void SendFilesJob::doStart()
                        QPair<QString, QString>(i18nc("File transfer origin", "From"), m_files.first()),
                        QPair<QString, QString>(i18nc("File transfer destination", "To"), m_device->name()));
 
-    // Init BluezQt
-    BluezQt::ObexManager *manager = new BluezQt::ObexManager(this);
-    BluezQt::InitObexManagerJob *job = manager->init();
-    job->start();
-    connect(job, &BluezQt::InitObexManagerJob::result, this, &SendFilesJob::initJobResult);
+    nextJob();
 }
 
 void SendFilesJob::nextJob()

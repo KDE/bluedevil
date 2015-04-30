@@ -1,8 +1,7 @@
 /*****************************************************************************
  * This file is part of the KDE project                                      *
  *                                                                           *
- * Copyright (C) 2010-2011 Alejandro Fiestas Olivares <afiestas@kde.org>     *
- * Copyright (C) 2010-2011 UFO Coders <info@ufocoders.com>                   *
+ * Copyright (C) 2015 David Rosca <nowrep@gmail.com>                         *
  *                                                                           *
  * This library is free software; you can redistribute it and/or             *
  * modify it under the terms of the GNU Library General Public               *
@@ -20,57 +19,26 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-#ifndef SENDFILESJOB_H
-#define SENDFILESJOB_H
+#ifndef FAILPAGE_H
+#define FAILPAGE_H
 
-#include <QTime>
-#include <QList>
-#include <QStringList>
+#include "ui_failpage.h"
 
-#include <KJob>
+#include <QWizardPage>
 
-#include <BluezQt/ObexTransfer>
+class SendFileWizard;
 
-namespace BluezQt
-{
-    class ObexObjectPush;
-    class InitObexManagerJob;
-}
-
-class SendFilesJob : public KJob
+class FailPage : public QWizardPage, Ui::FailPage
 {
     Q_OBJECT
 
 public:
-    explicit SendFilesJob(const QStringList &files, BluezQt::DevicePtr device, const QDBusObjectPath &session, QObject *parent = Q_NULLPTR);
+    explicit FailPage(SendFileWizard *parent = Q_NULLPTR);
 
-    void start() Q_DECL_OVERRIDE;
-    bool doKill() Q_DECL_OVERRIDE;
-
-private Q_SLOTS:
-    void doStart();
-    void nextJob();
-    void sendFileFinished(BluezQt::PendingCall *call);
-    void jobDone();
-    void transferredChanged(quint64 transferred);
-    void statusChanged(BluezQt::ObexTransfer::Status status);
+    void initializePage() Q_DECL_OVERRIDE;
 
 private:
-    void progress(quint64 transferBytes);
-
-    QTime m_time;
-    QStringList m_files;
-    QList <quint64> m_filesSizes;
-    QString m_currentFile;
-    quint64 m_progress;
-    quint64 m_totalSize;
-    qulonglong m_speedBytes;
-    quint64 m_currentFileSize;
-    quint64 m_currentFileProgress;
-
-    BluezQt::DevicePtr m_device;
-    BluezQt::ObexTransferPtr m_transfer;
-    BluezQt::ObexObjectPush *m_objectPush;
+    SendFileWizard *m_wizard;
 };
 
-#endif // SENDFILESJOB_H
+#endif // FAILPAGE_H

@@ -31,6 +31,8 @@
 
 #include "discoverwidget.h"
 
+class QDBusObjectPath;
+
 class SendFilesJob;
 
 class SendFileWizard : public QWizard
@@ -51,7 +53,7 @@ public:
     BluezQt::DevicePtr device() const;
     void setDevice(BluezQt::DevicePtr device);
 
-    void startTransfer();
+    void startTransfer(const QDBusObjectPath &session);
 
 private Q_SLOTS:
     void initJobResult(BluezQt::InitManagerJob *job);

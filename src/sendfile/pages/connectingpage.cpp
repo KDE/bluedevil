@@ -22,32 +22,73 @@
 
 #include "connectingpage.h"
 #include "../sendfilewizard.h"
+#include "../debug_p.h"
 
-#include <QTimer>
+#include <QDBusObjectPath>
 
 #include <KLocalizedString>
 
 #include <BluezQt/Device>
+#include <BluezQt/PendingCall>
+#include <BluezQt/InitObexManagerJob>
 
-ConnectingPage::ConnectingPage(QWidget *parent)
-    : QWizardPage(parent)
+ConnectingPage::ConnectingPage(SendFileWizard *wizard)
+    : QWizardPage(wizard)
+    , m_wizard(wizard)
 {
     setupUi(this);
 }
 
 void ConnectingPage::initializePage()
 {
-    SendFileWizard *w = static_cast<SendFileWizard*>(wizard());
+    m_device = m_wizard->device();
+    connLabel->setText(i18nc("Connecting to a Bluetooth device", "Connecting to %1...", m_device->name()));
 
-    connLabel->setText(i18nc("Connecting to a Bluetooth device", "Connecting to %1...", w->device()->name()));
-    w->setWindowTitle(QString());
+    m_wizard->setWindowTitle(QString());
+    m_wizard->setButtonLayout(wizardButtonsLayout());
 
-    QTimer::singleShot(1000, this, [w]() {
-        w->startTransfer();
-    });
+    // Init BluezQt
+    BluezQt::ObexManager *manager = new BluezQt::ObexManager(this);
+    BluezQt::InitObexManagerJob *job = manager->init();
+    job->start();
+    connect(job, &BluezQt::InitObexManagerJob::result, this, &ConnectingPage::initJobResult);
 }
 
 bool ConnectingPage::isComplete() const
 {
     return false;
+}
+
+void ConnectingPage::initJobResult(BluezQt::InitObexManagerJob *job)
+{
+    if (job->error()) {
+        qCWarning(SENDFILE) << "Error initializing obex manager" << job->errorText();
+        m_wizard->next();
+        return;
+    }
+
+    // Create ObjectPush session
+    QVariantMap map;
+    map[QStringLiteral("Target")] = QStringLiteral("opp");
+    BluezQt::PendingCall *call = job->manager()->createSession(m_device->address(), map);
+    connect(call, &BluezQt::PendingCall::finished, this, &ConnectingPage::createSessionFinished);
+}
+
+void ConnectingPage::createSessionFinished(BluezQt::PendingCall *call)
+{
+    if (call->error()) {
+        qCWarning(SENDFILE) << "Error creating session" << call->errorText();
+        m_wizard->next();
+        return;
+    }
+
+    m_wizard->startTransfer(call->value().value<QDBusObjectPath>());
+}
+
+QList<QWizard::WizardButton> ConnectingPage::wizardButtonsLayout() const
+{
+    QList <QWizard::WizardButton> list;
+    list << QWizard::Stretch;
+    list << QWizard::CancelButton;
+    return list;
 }

@@ -28,6 +28,7 @@
 #include "pages/selectdevicepage.h"
 #include "pages/selectfilespage.h"
 #include "pages/connectingpage.h"
+#include "pages/failpage.h"
 
 #include <QUrl>
 #include <QPushButton>
@@ -111,7 +112,7 @@ void SendFileWizard::setDevice(BluezQt::DevicePtr device)
     m_device = device;
 }
 
-void SendFileWizard::startTransfer()
+void SendFileWizard::startTransfer(const QDBusObjectPath &session)
 {
     if (m_files.isEmpty()) {
         qCDebug(SENDFILE) << "No files to send";
@@ -120,9 +121,10 @@ void SendFileWizard::startTransfer()
 
     if (!m_device) {
         qCDebug(SENDFILE) << "No device selected";
+        return;
     }
 
-    m_job = new SendFilesJob(m_files, m_device);
+    m_job = new SendFilesJob(m_files, m_device, session);
     connect(m_job, &SendFilesJob::destroyed, qApp, &QCoreApplication::quit);
 
     KIO::getJobTracker()->registerJob(m_job);
@@ -168,7 +170,8 @@ void SendFileWizard::initJobResult(BluezQt::InitManagerJob *job)
         }
     }
 
-    addPage(new ConnectingPage());
+    addPage(new ConnectingPage(this));
+    addPage(new FailPage(this));
 
     // Only show wizard after init is completed
     show();
