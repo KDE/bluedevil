@@ -39,8 +39,8 @@ void ConnectingPage::initializePage()
 {
     SendFileWizard *w = static_cast<SendFileWizard*>(wizard());
 
-    BluezQt::DevicePtr device = w->device();
-    connLabel->setText(i18nc("Connecting to a Bluetooth device", "Connecting to %1...", device->name()));
+    connLabel->setText(i18nc("Connecting to a Bluetooth device", "Connecting to %1...", w->device()->name()));
+    w->setWindowTitle(QString());
 
     QTimer::singleShot(1000, this, [w]() {
         w->startTransfer();

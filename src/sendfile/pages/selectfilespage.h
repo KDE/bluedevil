@@ -25,7 +25,6 @@
 
 #include <QWizardPage>
 
-class QWizard;
 class KFileWidget;
 
 class SelectFilesPage : public QWizardPage
@@ -35,6 +34,7 @@ class SelectFilesPage : public QWizardPage
 public:
     explicit SelectFilesPage(QWidget *parent = 0);
 
+    void initializePage() Q_DECL_OVERRIDE;
     bool isComplete() const Q_DECL_OVERRIDE;
 
 private Q_SLOTS:

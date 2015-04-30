@@ -26,9 +26,12 @@
 #include <KFileItem>
 #include <KFileWidget>
 #include <KDirOperator>
+#include <KLocalizedString>
 
 #include <QVBoxLayout>
 #include <QStandardPaths>
+
+#include <BluezQt/Device>
 
 SelectFilesPage::SelectFilesPage(QWidget *parent)
     : QWizardPage(parent)
@@ -42,6 +45,13 @@ SelectFilesPage::SelectFilesPage(QWidget *parent)
 
     QVBoxLayout *layout = new QVBoxLayout(this);
     layout->addWidget(m_files);
+}
+
+void SelectFilesPage::initializePage()
+{
+    SendFileWizard *w = static_cast<SendFileWizard*>(wizard());
+
+    w->setWindowTitle(i18nc("Send files to a Bluetooth device", "Send to %1", w->device()->name()));
 }
 
 void SelectFilesPage::selectionChanged()

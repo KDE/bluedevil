@@ -31,9 +31,9 @@
 int main(int argc, char *argv[])
 {
     KAboutData aboutData(QStringLiteral("bluedevilsendfile"),
-                         i18n("Bluetooth Send File Helper"),
+                         i18n("Bluetooth Send File Wizard"),
                          BLUEDEVIL_VERSION,
-                         i18n("Bluetooth Send File Helper"),
+                         i18n("Bluetooth Send File Wizard"),
                          KAboutLicense::GPL,
                          i18n("(c) 2010, UFO Coders"));
 
