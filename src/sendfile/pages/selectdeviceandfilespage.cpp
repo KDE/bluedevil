@@ -69,7 +69,12 @@ void SelectDeviceAndFilesPage::openFileDialog()
     if (files.isEmpty()) {
         selectLbl->setText(i18n("Select one or more files:"));
     } else {
-        selectLbl->setText(i18n("Selected files: <b>%1</b>", files.count()));
+        QStringList fileNames;
+        Q_FOREACH (const QString &file, files) {
+            QFileInfo info(file);
+            fileNames.append(info.fileName());
+        }
+        selectLbl->setText(i18n("Selected files: <b>%1</b>", fileNames.join(QLatin1String(", "))));
     }
 
     m_wizard->setFiles(files);
