@@ -6,10 +6,7 @@ set(wizard_SRCS
 
     pages/discover.cpp
     pages/connect.cpp
-    pages/legacypairing.cpp
-    pages/legacypairingdatabase.cpp
-    pages/keyboardpairing.cpp
-    pages/ssppairing.cpp
+    pages/pairing.cpp
     pages/fail.cpp
     pages/success.cpp
 )
@@ -17,9 +14,7 @@ set(wizard_SRCS
 ki18n_wrap_ui(wizard_SRCS
             pages/discover.ui
             pages/connect.ui
-            pages/legacypairing.ui
-            pages/keyboardpairing.ui
-            pages/ssppairing.ui
+            pages/pairing.ui
             pages/fail.ui
             pages/success.ui
 )

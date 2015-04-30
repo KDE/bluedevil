@@ -45,6 +45,7 @@ QString WizardAgent::pin()
 void WizardAgent::setPin(const QString &pin)
 {
     m_pin = pin;
+    m_fromDatabase = false;
 }
 
 bool WizardAgent::isFromDatabase()
@@ -54,10 +55,7 @@ bool WizardAgent::isFromDatabase()
 
 QString WizardAgent::getPin(BluezQt::DevicePtr device)
 {
-    if (!m_pin.isEmpty() || !device) {
-        return m_pin;
-    }
-
+    m_fromDatabase = false;
     m_pin = QString::number(KRandom::random());
     m_pin = m_pin.left(6);
 
@@ -163,9 +161,4 @@ void WizardAgent::requestConfirmation(BluezQt::DevicePtr device, const QString &
     qCDebug(WIZARD) << "AGENT-RequestConfirmation " << device->ubi() << passkey;
 
     Q_EMIT confirmationRequested(passkey, req);
-}
-
-void WizardAgent::release()
-{
-    Q_EMIT agentReleased();
 }

@@ -1,8 +1,7 @@
 /*****************************************************************************
  * This file is part of the KDE project                                      *
  *                                                                           *
- * Copyright (C) 2010 Alejandro Fiestas Olivares <afiestas@kde.org>          *
- * Copyright (C) 2010-2011 UFO Coders <info@ufocoders.com>                   *
+ * Copyright (C) 2015 David Rosca <nowrep@gmail.com>                         *
  *                                                                           *
  * This library is free software; you can redistribute it and/or             *
  * modify it under the terms of the GNU Library General Public               *
@@ -20,43 +19,43 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-#ifndef KEYBOARDPAIRING_H
-#define KEYBOARDPAIRING_H
+#ifndef PAIRINGPAGE_H
+#define PAIRINGPAGE_H
 
-#include "ui_keyboardpairing.h"
+#include "ui_pairing.h"
 
 #include <QWizardPage>
 
-namespace BluezQt
-{
-    class PendingCall;
-}
+#include <BluezQt/Device>
+#include <BluezQt/Request>
 
 class BlueWizard;
-class KPixmapSequenceOverlayPainter;
 
-class KeyboardPairingPage : public QWizardPage, Ui::KeyboardPairing
+class PairingPage : public QWizardPage, Ui::Pairing
 {
     Q_OBJECT
 
 public:
-    explicit KeyboardPairingPage(BlueWizard *parent = 0);
+    explicit PairingPage(BlueWizard *parent = Q_NULLPTR);
 
     int nextId() const Q_DECL_OVERRIDE;
     void initializePage() Q_DECL_OVERRIDE;
 
-private Q_SLOTS:
-    void setPairableFinished(BluezQt::PendingCall *call);
+public Q_SLOTS:
     void pairingFinished(BluezQt::PendingCall *call);
     void pinRequested(const QString &pin);
-
-protected:
-    QList<QWizard::WizardButton> wizardButtonsLayout() const;
+    void confirmationRequested(const QString &passkey, const BluezQt::Request<> &req);
+    void matchesClicked();
+    void notMatchClicked();
+    void cancelClicked();
 
 private:
+    QList<QWizard::WizardButton> wizardButtonsLayout() const;
+
     BlueWizard *m_wizard;
-    KPixmapSequenceOverlayPainter *m_working;
+    BluezQt::DevicePtr m_device;
+    BluezQt::Request<> m_req;
     bool m_success;
 };
 
-#endif // KEYBOARDPAIRING_H
+#endif // PAIRINGPAGE_H

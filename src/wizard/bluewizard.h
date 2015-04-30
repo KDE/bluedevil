@@ -35,18 +35,12 @@ public:
     BluezQt::DevicePtr device() const;
     void setDevice(BluezQt::DevicePtr device);
 
-    QString pin() const;
-    void setPin(const QString &pin);
-
     WizardAgent *agent() const;
     BluezQt::Manager *manager() const;
 
     enum {
         Discover,
-        LegacyPairing,
-        LegacyPairingDatabase,
-        KeyboardPairing,
-        SSPPairing,
+        Pairing,
         Success,
         Fail,
         Connect
@@ -63,7 +57,6 @@ private:
     WizardAgent *m_agent;
 
     BluezQt::DevicePtr m_device;
-    QString m_pin;
 };
 
 #endif // BLUEWIZARD_H

@@ -63,7 +63,7 @@ void FailPage::initializePage()
     BluezQt::DevicePtr device = m_wizard->device();
 
     if (device->name().isEmpty()) {
-        failLbl->setText(i18nc("This string is shown when the wizard fail","The setup of the device has failed"));
+        failLbl->setText(i18nc("This string is shown when the wizard fail", "The setup of the device has failed"));
     } else {
         failLbl->setText(i18n("The setup of %1 has failed", device->name()));
     }

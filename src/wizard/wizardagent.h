@@ -43,12 +43,10 @@ public:
     void requestPasskey(BluezQt::DevicePtr device, const BluezQt::Request<quint32> &req) Q_DECL_OVERRIDE;
     void displayPasskey(BluezQt::DevicePtr device, const QString &passkey, const QString &entered) Q_DECL_OVERRIDE;
     void requestConfirmation(BluezQt::DevicePtr device, const QString &passkey, const BluezQt::Request<> &req) Q_DECL_OVERRIDE;
-    void release() Q_DECL_OVERRIDE;
 
 Q_SIGNALS:
     void pinRequested(const QString &pin);
     void confirmationRequested(const QString &passkey, const BluezQt::Request<> &req);
-    void agentReleased();
 
 private:
     bool m_fromDatabase;

@@ -142,7 +142,6 @@ void DiscoverPage::initializePage()
 
     connect(manualPin, &QCheckBox::toggled, pinText, &QLineEdit::setEnabled);
     connect(manualPin, &QCheckBox::toggled, this, &DiscoverPage::completeChanged);
-    connect(pinText, &QLineEdit::textChanged, m_wizard, &BlueWizard::setPin);
     connect(pinText, &QLineEdit::textChanged, this, &DiscoverPage::completeChanged);
 
     m_manager = m_wizard->manager();
@@ -157,8 +156,9 @@ void DiscoverPage::initializePage()
         m_model->setDevicesModel(new BluezQt::DevicesModel(m_manager, this));
     }
 
-    // Reset selected device
     deviceView->setCurrentIndex(QModelIndex());
+    manualPin->setChecked(false);
+    pinText->clear();
 
     checkAdapters();
     connect(m_manager, &BluezQt::Manager::adapterAdded, this, &DiscoverPage::checkAdapters);
@@ -169,7 +169,7 @@ void DiscoverPage::initializePage()
 
 bool DiscoverPage::isComplete() const
 {
-    if (!m_wizard->device()) {
+    if (!m_wizard->device() || m_wizard->device()->isPaired()) {
         return false;
     }
 
@@ -196,56 +196,41 @@ int DiscoverPage::nextId() const
 
     BluezQt::DevicePtr device = m_wizard->device();
 
+    if (device->isPaired()) {
+        return BlueWizard::Discover;
+    }
+
     if (m_adapter && m_adapter->isDiscovering()) {
         qCDebug(WIZARD) << "Stopping scanning";
         m_adapter->stopDiscovery();
     }
 
-    if (device->isPaired()) {
-        qCDebug(WIZARD) << "Device is paired, skipping to connect";
-        return BlueWizard::Connect;
-    }
+    QString pin = m_wizard->agent()->getPin(device);
 
-    QString pin;
     if (manualPin->isChecked()) {
-        pin = m_wizard->pin();
+        pin = pinText->text();
         m_wizard->agent()->setPin(pin);
-    } else {
-        pin = m_wizard->agent()->getPin(device);
     }
 
-    qCDebug(WIZARD) << "Class: " << device->deviceType();
+    qCDebug(WIZARD) << "Device type: " << BluezQt::Device::typeToString(device->deviceType());
     qCDebug(WIZARD) << "Legacy: " << device->hasLegacyPairing();
     qCDebug(WIZARD) << "From DB: " << m_wizard->agent()->isFromDatabase();
-    qCDebug(WIZARD) << "PIN: " << m_wizard->agent()->pin();
+    qCDebug(WIZARD) << "PIN: " << pin;
 
-    // If keyboard no matter what, we go to the keyboard page
-    if (device->deviceType() == BluezQt::Device::Keyboard) {
-        qCDebug(WIZARD) << "Keyboard Pairing";
-        return BlueWizard::KeyboardPairing;
-    }
-
-    // No legacy pairing and no database pin means secure pairing
-    if (!device->hasLegacyPairing() && !m_wizard->agent()->isFromDatabase()) {
-        qCDebug(WIZARD) << "Secure Pairing";
-        return BlueWizard::SSPPairing;
-    }
-
-    // NULL pin means that no pairing is required
+    // NULL pin means that we should only connect to device
     if (pin == QLatin1String("NULL")) {
-        qCDebug(WIZARD) << "No Pairing";
         return BlueWizard::Connect;
     }
 
-    if (m_wizard->agent()->isFromDatabase()) {
-        return BlueWizard::LegacyPairingDatabase;
-    } else {
-        return BlueWizard::LegacyPairing;
-    }
+    return BlueWizard::Pairing;
 }
 
 void DiscoverPage::indexSelected(const QModelIndex &index)
 {
+    if (m_wizard->currentId() != BlueWizard::Discover) {
+        return;
+    }
+
     BluezQt::DevicePtr device = m_model->device(index);
     m_wizard->setDevice(device);
 

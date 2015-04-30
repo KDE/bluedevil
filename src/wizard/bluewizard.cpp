@@ -19,10 +19,7 @@
 #include "wizardagent.h"
 #include "pages/discover.h"
 #include "pages/connect.h"
-#include "pages/legacypairing.h"
-#include "pages/legacypairingdatabase.h"
-#include "pages/keyboardpairing.h"
-#include "pages/ssppairing.h"
+#include "pages/pairing.h"
 #include "pages/success.h"
 #include "pages/fail.h"
 #include "debug_p.h"
@@ -42,16 +39,11 @@ BlueWizard::BlueWizard()
     : QWizard()
     , m_agent(new WizardAgent(this))
 {
-    setWindowTitle(i18n("Bluetooth Device Wizard"));
-
     setOption(QWizard::IndependentPages, true);
 
     setPage(Discover, new DiscoverPage(this));
     setPage(Connect, new ConnectPage(this));
-    setPage(LegacyPairing, new LegacyPairingPage(this));
-    setPage(LegacyPairingDatabase, new LegacyPairingPageDatabase(this));
-    setPage(KeyboardPairing, new KeyboardPairingPage(this));
-    setPage(SSPPairing, new SSPPairingPage(this));
+    setPage(Pairing, new PairingPage(this));
     setPage(Success, new SuccessPage(this));
     setPage(Fail, new FailPage(this));
 
@@ -91,18 +83,6 @@ BluezQt::DevicePtr BlueWizard::device() const
 void BlueWizard::setDevice(BluezQt::DevicePtr device)
 {
     m_device = device;
-}
-
-void BlueWizard::setPin(const QString &pin)
-{
-    qCDebug(WIZARD) << "Setting pin:" << pin;
-
-    m_pin = pin;
-}
-
-QString BlueWizard::pin() const
-{
-    return m_pin;
 }
 
 WizardAgent *BlueWizard::agent() const
