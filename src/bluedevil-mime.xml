@@ -29,6 +29,7 @@ Notes:
     <comment xml:lang="fr">Périphérique connu</comment>
     <comment xml:lang="it">Dispositivo conosciuto</comment>
     <comment xml:lang="ko">알려진 장치</comment>
+    <comment xml:lang="nb">Kjent enhet</comment>
     <comment xml:lang="nl">Bekend apparaat</comment>
     <comment xml:lang="pl">Znane urządzenie</comment>
     <comment xml:lang="pt">Dispositivo Conhecido</comment>
@@ -60,6 +61,7 @@ Notes:
     <comment xml:lang="fr">Périphérique découvert</comment>
     <comment xml:lang="it">Dispositivo scoperto</comment>
     <comment xml:lang="ko">발견한 서비스</comment>
+    <comment xml:lang="nb">Oppdaget enhet</comment>
     <comment xml:lang="nl">Gevonden apparaat</comment>
     <comment xml:lang="pl">Odkryte urządzenie</comment>
     <comment xml:lang="pt">Dispositivo Descoberto</comment>
@@ -91,6 +93,7 @@ Notes:
     <comment xml:lang="fr">Service</comment>
     <comment xml:lang="it">Servizio</comment>
     <comment xml:lang="ko">서비스</comment>
+    <comment xml:lang="nb">Tjeneste</comment>
     <comment xml:lang="nl">Service</comment>
     <comment xml:lang="pl">Usługa</comment>
     <comment xml:lang="pt">Serviço</comment>
@@ -120,6 +123,7 @@ Notes:
     <comment xml:lang="fr">Service</comment>
     <comment xml:lang="it">Servizio</comment>
     <comment xml:lang="ko">서비스</comment>
+    <comment xml:lang="nb">Tjeneste</comment>
     <comment xml:lang="nl">Service</comment>
     <comment xml:lang="pl">Usługa</comment>
     <comment xml:lang="pt">Serviço</comment>
@@ -149,6 +153,7 @@ Notes:
     <comment xml:lang="fr">Service</comment>
     <comment xml:lang="it">Servizio</comment>
     <comment xml:lang="ko">서비스</comment>
+    <comment xml:lang="nb">Tjeneste</comment>
     <comment xml:lang="nl">Service</comment>
     <comment xml:lang="pl">Usługa</comment>
     <comment xml:lang="pt">Serviço</comment>
@@ -178,6 +183,7 @@ Notes:
     <comment xml:lang="fr">Service</comment>
     <comment xml:lang="it">Servizio</comment>
     <comment xml:lang="ko">서비스</comment>
+    <comment xml:lang="nb">Tjeneste</comment>
     <comment xml:lang="nl">Service</comment>
     <comment xml:lang="pl">Usługa</comment>
     <comment xml:lang="pt">Serviço</comment>
@@ -207,6 +213,7 @@ Notes:
       <comment xml:lang="fr">Service</comment>
       <comment xml:lang="it">Servizio</comment>
       <comment xml:lang="ko">서비스</comment>
+      <comment xml:lang="nb">Tjeneste</comment>
       <comment xml:lang="nl">Service</comment>
       <comment xml:lang="pl">Usługa</comment>
       <comment xml:lang="pt">Serviço</comment>
