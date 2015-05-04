@@ -55,8 +55,8 @@ QList<QAction*> SendFileItemAction::actions(const KFileItemListProperties &fileI
 
     QList<QAction*> list;
 
-    // Don't show the action for files that we can't send or when Bluetooth is offline.
-    if (!fileItemInfos.isLocal() || !m_kded->isOnline()) {
+    // Don't show the action for files that we can't send
+    if (!fileItemInfos.isLocal()) {
         return list;
     }
 
@@ -64,29 +64,10 @@ QList<QAction*> SendFileItemAction::actions(const KFileItemListProperties &fileI
 
     QAction *menuAction = new QAction(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")), i18n("Send via Bluetooth"), this);
     QMenu *menu = new QMenu();
-
-    const QMapDeviceInfo &devices = m_kded->allDevices().value();
-    Q_FOREACH (const DeviceInfo &device, devices) {
-        if (device.value(QStringLiteral("UUIDs")).contains(BluezQt::Services::ObexObjectPush)) {
-            QAction *action = new QAction(QIcon::fromTheme(device[QStringLiteral("icon")]), device.value(QStringLiteral("name")), this);
-            connect(action, &QAction::triggered, this, &SendFileItemAction::deviceTriggered);
-            action->setData(device.value(QStringLiteral("UBI")));
-            menu->addAction(action);
-        }
-    }
-
-    QAction *otherAction = new QAction(this);
-    if (menu->actions().isEmpty()) {
-        otherAction->setText(i18nc("Find Bluetooth device", "Find Device..."));
-    } else {
-        menu->addSeparator();
-        otherAction->setText(i18nc("Other Bluetooth device", "Other..."));
-    }
-    connect(otherAction, &QAction::triggered, this, &SendFileItemAction::otherTriggered);
-    menu->addAction(otherAction);
-
     menuAction->setMenu(menu);
-    list << menuAction;
+    loadMenu(menu);
+
+    list.append(menuAction);
     return list;
 }
 
@@ -113,6 +94,45 @@ void SendFileItemAction::otherTriggered()
     }
 
     QProcess::startDetached(QStringLiteral("bluedevil-sendfile"), args);
+}
+
+void SendFileItemAction::loadMenu(QMenu *menu)
+{
+    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(m_kded->isOnline());
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, menu](QDBusPendingCallWatcher *watcher) {
+        const QDBusPendingReply<bool> &reply = *watcher;
+        watcher->deleteLater();
+        if (reply.isError() || !reply.value()) {
+            menu->menuAction()->setVisible(false);
+            return;
+        }
+
+        watcher = new QDBusPendingCallWatcher(m_kded->allDevices());
+        connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, menu](QDBusPendingCallWatcher *watcher) {
+            const QDBusPendingReply<QMapDeviceInfo> &reply = *watcher;
+            watcher->deleteLater();
+            if (reply.isError()) {
+                menu->menuAction()->setVisible(false);
+                return;
+            }
+
+            const QMapDeviceInfo &devices = m_kded->allDevices().value();
+            Q_FOREACH (const DeviceInfo &device, devices) {
+                if (device.value(QStringLiteral("UUIDs")).contains(BluezQt::Services::ObexObjectPush)) {
+                    QAction *action = new QAction(QIcon::fromTheme(device[QStringLiteral("icon")]), device.value(QStringLiteral("name")), this);
+                    connect(action, &QAction::triggered, this, &SendFileItemAction::deviceTriggered);
+                    action->setData(device.value(QStringLiteral("UBI")));
+                    menu->insertAction(0, action);
+                }
+            }
+
+            QAction *otherAction = new QAction(i18nc("Other Bluetooth device", "Other..."), this);
+            connect(otherAction, &QAction::triggered, this, &SendFileItemAction::otherTriggered);
+
+            menu->addSeparator();
+            menu->addAction(otherAction);
+        });
+    });
 }
 
 #include "sendfileitemaction.moc"
