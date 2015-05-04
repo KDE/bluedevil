@@ -42,6 +42,8 @@ private Q_SLOTS:
     void otherTriggered();
 
 private:
+    void loadMenu(QMenu *menu);
+
     org::kde::BlueDevil *m_kded;
     KFileItemListProperties m_infos;
 };
