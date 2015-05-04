@@ -433,13 +433,17 @@ PlasmaComponents.ListItem {
         connecting = true;
         runningActions++;
 
-        Device.connectDevice().finished.connect(function(call) {
+        var call = Device.connectDevice();
+        call.userData = Device;
+
+        call.finished.connect(function(call) {
             connecting = false;
             runningActions--;
 
             if (call.error) {
                 var text = "";
-                var title = "%1 (%2)".arg(Name).arg(Address);
+                var device = call.userData;
+                var title = "%1 (%2)".arg(device.name).arg(device.address);
 
                 switch (call.error) {
                 case BluezQt.PendingCall.Failed:
