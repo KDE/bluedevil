@@ -70,7 +70,7 @@ QString WizardAgent::getPin(BluezQt::DevicePtr device)
 
     QXmlStreamReader xml(&file);
 
-    int deviceType = device->deviceType();
+    int deviceType = device->type();
     int xmlType = 0;
 
     while (!xml.atEnd()) {

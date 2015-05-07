@@ -212,7 +212,7 @@ int DiscoverPage::nextId() const
         m_wizard->agent()->setPin(pin);
     }
 
-    qCDebug(WIZARD) << "Device type: " << BluezQt::Device::typeToString(device->deviceType());
+    qCDebug(WIZARD) << "Device type: " << BluezQt::Device::typeToString(device->type());
     qCDebug(WIZARD) << "Legacy: " << device->hasLegacyPairing();
     qCDebug(WIZARD) << "From DB: " << m_wizard->agent()->isFromDatabase();
     qCDebug(WIZARD) << "PIN: " << pin;

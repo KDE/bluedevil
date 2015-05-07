@@ -372,7 +372,7 @@ PlasmaComponents.ListItem {
             return Connected ? i18n("Disconnecting") : i18n("Connecting");
         }
 
-        switch (DeviceType) {
+        switch (Type) {
         case BluezQt.Device.Headset:
         case BluezQt.Device.Headphones:
         case BluezQt.Device.OtherAudio:
@@ -424,7 +424,7 @@ PlasmaComponents.ListItem {
 
         // Disconnect device
         if (Connected) {
-            Device.disconnectDevice().finished.connect(function(call) {
+            Device.disconnectFromDevice().finished.connect(function(call) {
                 connecting = false;
                 runningActions--;
             });
@@ -432,7 +432,7 @@ PlasmaComponents.ListItem {
         }
 
         // Connect device
-        var call = Device.connectDevice();
+        var call = Device.connectToDevice();
         call.userData = Device;
 
         call.finished.connect(function(call) {

@@ -442,24 +442,28 @@ QList<KIO::UDSEntry> KioFtp::listFolder(const QUrl &url, bool *ok)
         return list;
     }
 
-    const QList<BluezQt::ObexFileTransfer::Item> &items = call->value().value<QList<BluezQt::ObexFileTransfer::Item> >();
+    const QList<BluezQt::ObexFileTransferEntry> &items = call->value().value<QList<BluezQt::ObexFileTransferEntry> >();
 
-    Q_FOREACH (const BluezQt::ObexFileTransfer::Item &item, items) {
+    Q_FOREACH (const BluezQt::ObexFileTransferEntry &item, items) {
+        if (!item.isValid()) {
+            continue;
+        }
+
         KIO::UDSEntry entry;
-        entry.insert(KIO::UDSEntry::UDS_NAME, item.name);
-        entry.insert(KIO::UDSEntry::UDS_DISPLAY_NAME, item.label);
+        entry.insert(KIO::UDSEntry::UDS_NAME, item.name());
+        entry.insert(KIO::UDSEntry::UDS_DISPLAY_NAME, item.label());
         entry.insert(KIO::UDSEntry::UDS_ACCESS, 0700);
-        entry.insert(KIO::UDSEntry::UDS_MODIFICATION_TIME, item.modified.toTime_t());
-        entry.insert(KIO::UDSEntry::UDS_SIZE, item.size);
+        entry.insert(KIO::UDSEntry::UDS_MODIFICATION_TIME, item.modificationTime().toTime_t());
+        entry.insert(KIO::UDSEntry::UDS_SIZE, item.size());
 
-        if (item.type == BluezQt::ObexFileTransfer::Item::Folder) {
+        if (item.type() == BluezQt::ObexFileTransferEntry::Folder) {
             entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
-        } else {
+        } else if (item.type() == BluezQt::ObexFileTransferEntry::File) {
             entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
         }
 
         if (urlIsRoot(url)) {
-            updateRootEntryIcon(entry, item.memoryType);
+            updateRootEntryIcon(entry, item.memoryType());
         }
 
         list.append(entry);
@@ -467,7 +471,7 @@ QList<KIO::UDSEntry> KioFtp::listFolder(const QUrl &url, bool *ok)
         // Most probably the client of the kio will stat each file
         // so since we are on it, let's cache all of them.
         QUrl statUrl = url;
-        statUrl.setPath(statUrl.path() + QLatin1Char('/') + item.name);
+        statUrl.setPath(statUrl.path() + QLatin1Char('/') + item.name());
 
         if (!m_statMap.contains(statUrl.toDisplayString())) {
             qCDebug(OBEXFTP) << "Stat:"

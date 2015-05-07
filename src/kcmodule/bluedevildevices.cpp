@@ -349,14 +349,14 @@ void KCMBlueDevilDevices::removeDevice()
 void KCMBlueDevilDevices::connectDevice()
 {
     BluezQt::DevicePtr device = m_devicesModel->device(m_devices->currentIndex());
-    device->connectDevice();
+    device->connectToDevice();
 }
 
 void KCMBlueDevilDevices::disconnectDevice()
 {
     m_disconnectDevice->setEnabled(false);
     BluezQt::DevicePtr device = m_devicesModel->device(m_devices->currentIndex());
-    device->disconnectDevice();
+    device->disconnectFromDevice();
 }
 
 void KCMBlueDevilDevices::launchWizard()

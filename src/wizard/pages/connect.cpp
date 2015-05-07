@@ -54,7 +54,7 @@ void ConnectPage::initializePage()
 
     m_wizard->device()->setTrusted(true);
 
-    BluezQt::PendingCall *call = m_wizard->device()->connectDevice();
+    BluezQt::PendingCall *call = m_wizard->device()->connectToDevice();
     connect(call, &BluezQt::PendingCall::finished, this, &ConnectPage::connectFinished);
 }
 

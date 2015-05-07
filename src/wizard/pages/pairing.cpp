@@ -102,7 +102,7 @@ void PairingPage::pinRequested(const QString &pin)
     connectingLbl->hide();
     progressBar->hide();
 
-    if (m_device->deviceType() == BluezQt::Device::Keyboard) {
+    if (m_device->type() == BluezQt::Device::Keyboard) {
         confirmLbl->setText(i18n("Please introduce the PIN in your keyboard when it appears and press Enter"));
     } else {
         confirmLbl->setText(i18n("Please introduce the PIN in your device when it appears"));

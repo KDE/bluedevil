@@ -148,7 +148,7 @@ void DeviceMonitor::restoreState()
     Q_FOREACH (const QString &addr, connectedDevices) {
         BluezQt::DevicePtr device = m_manager->deviceForAddress(addr);
         if (device) {
-            device->connectDevice();
+            device->connectToDevice();
         }
     }
 }
