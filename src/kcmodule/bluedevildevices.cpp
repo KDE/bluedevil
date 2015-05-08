@@ -113,7 +113,7 @@ void BluetoothDevicesDelegate::paint(QPainter *painter, const QStyleOptionViewIt
     painter->setFont(f);
     painter->drawText(r, Qt::AlignLeft | Qt::AlignTop, index.data(BluezQt::DevicesModel::FriendlyNameRole).toString());
     painter->restore();
-    painter->drawText(r, Qt::AlignLeft | Qt::AlignBottom, deviceTypeString(index.data(BluezQt::DevicesModel::DeviceTypeRole).toInt()));
+    painter->drawText(r, Qt::AlignLeft | Qt::AlignBottom, deviceTypeString(index.data(BluezQt::DevicesModel::TypeRole).toInt()));
 
     // Draw state
     r = option.rect;
