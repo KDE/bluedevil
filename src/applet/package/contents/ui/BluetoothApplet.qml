@@ -26,7 +26,7 @@ import org.kde.bluezqt 1.0 as BluezQt
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.kquickcontrolsaddons 2.0
 
-import "plasmapackage:/code/logic.js" as Logic
+import "logic.js" as Logic
 
 Item {
     id: bluetoothApplet
