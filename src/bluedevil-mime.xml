@@ -43,6 +43,7 @@ Notes:
     <comment xml:lang="sv">Enhet</comment>
     <comment xml:lang="uk">Пристрій</comment>
     <comment xml:lang="zh_CN">设备</comment>
+    <comment xml:lang="zh_TW">裝置</comment>
   </mime-type>
   <mime-type type="inode/vnd.kde.bluedevil.service">
     <sub-class-of type="inode/directory"/>
