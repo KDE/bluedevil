@@ -33,7 +33,7 @@ Item {
 
     property bool deviceConnected : false
     property int runningActions : 0
-    property var btManager : BluezQt.Manager
+    property QtObject btManager : BluezQt.Manager
 
     Plasmoid.toolTipMainText: i18n("Bluetooth")
     Plasmoid.icon: Logic.icon()

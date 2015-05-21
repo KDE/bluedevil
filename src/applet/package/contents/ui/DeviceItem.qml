@@ -312,8 +312,8 @@ PlasmaComponents.ListItem {
 
     // Hide device details when the device for this delegate changes
     // This happens eg. when device connects/disconnects
-    property var __dev
-    readonly property var dev : Device
+    property QtObject __dev
+    readonly property QtObject dev : Device
     onDevChanged: {
         if (__dev == dev) {
             return;
