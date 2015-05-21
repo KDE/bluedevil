@@ -28,9 +28,7 @@ import org.kde.plasma.private.bluetooth 1.0 as PlasmaBt
 FocusScope {
     PlasmaBt.DevicesProxyModel {
         id: devicesModel
-        sourceModel: BluezQt.DevicesModel {
-            manager: btManager
-        }
+        sourceModel: BluezQt.DevicesModel { }
     }
 
     PlasmaExtras.Heading {

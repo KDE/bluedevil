@@ -70,8 +70,10 @@ QString WizardAgent::getPin(BluezQt::DevicePtr device)
 
     QXmlStreamReader xml(&file);
 
-    int deviceType = device->type();
-    int xmlType = 0;
+    QString deviceType = BluezQt::Device::typeToString(device->type());
+    if (deviceType == QLatin1String("audiovideo")) {
+        deviceType = QStringLiteral("audio");
+    }
 
     while (!xml.atEnd()) {
         xml.readNext();
@@ -85,9 +87,7 @@ QString WizardAgent::getPin(BluezQt::DevicePtr device)
         }
 
         if (attr.hasAttribute(QLatin1String("type")) && attr.value(QLatin1String("type")) != QLatin1String("any")) {
-            xmlType = BluezQt::Device::stringToType(attr.value(QLatin1String("type")).toString());
-            if (deviceType != xmlType) {
-                xmlType = 0;
+            if (deviceType != attr.value(QLatin1String("type")).toString()) {
                 continue;
             }
         }

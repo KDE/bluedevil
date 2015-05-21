@@ -166,7 +166,7 @@ QString BluetoothDevicesDelegate::deviceTypeString(int type) const
             return i18nc("This device is a Headset", "Headset");
         case BluezQt::Device::Headphones:
             return i18nc("This device are Headphones", "Headphones");
-        case BluezQt::Device::OtherAudio:
+        case BluezQt::Device::AudioVideo:
             return i18nc("This device is of type Audio", "Audio");
         case BluezQt::Device::Keyboard:
             return i18nc("This device is a Keyboard", "Keyboard");

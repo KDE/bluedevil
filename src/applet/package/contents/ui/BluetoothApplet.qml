@@ -33,6 +33,7 @@ Item {
 
     property bool deviceConnected : false
     property int runningActions : 0
+    property var btManager : BluezQt.Manager
 
     Plasmoid.toolTipMainText: i18n("Bluetooth")
     Plasmoid.icon: Logic.icon()
@@ -46,14 +47,6 @@ Item {
         focus: true
     }
 
-    BluezQt.Manager {
-        id: btManager
-
-        onInitFinished: {
-            Logic.init();
-        }
-    }
-
     Kio.KRun {
         id: kRun
     }
@@ -65,5 +58,7 @@ Item {
     Component.onCompleted: {
         plasmoid.removeAction("configure");
         plasmoid.setAction("bluedevilkcm", i18n("Configure &Bluetooth..."), "preferences-system-bluetooth");
+
+        Logic.init();
     }
 }
