@@ -29,6 +29,7 @@ Notes:
     <comment xml:lang="ko">장치</comment>
     <comment xml:lang="nb">Enhet</comment>
     <comment xml:lang="nl">Apparaat</comment>
+    <comment xml:lang="nn">Eining</comment>
     <comment xml:lang="pl">Urządzenie</comment>
     <comment xml:lang="pt">Dispositivo</comment>
     <comment xml:lang="pt_BR">Dispositivo</comment>
@@ -66,6 +67,7 @@ Notes:
     <comment xml:lang="ko">서비스</comment>
     <comment xml:lang="nb">Tjeneste</comment>
     <comment xml:lang="nl">Service</comment>
+    <comment xml:lang="nn">Teneste</comment>
     <comment xml:lang="pa">ਸਰਵਿਸ</comment>
     <comment xml:lang="pl">Usługa</comment>
     <comment xml:lang="pt">Serviço</comment>
@@ -102,6 +104,7 @@ Notes:
     <comment xml:lang="ko">서비스</comment>
     <comment xml:lang="nb">Tjeneste</comment>
     <comment xml:lang="nl">Service</comment>
+    <comment xml:lang="nn">Teneste</comment>
     <comment xml:lang="pa">ਸਰਵਿਸ</comment>
     <comment xml:lang="pl">Usługa</comment>
     <comment xml:lang="pt">Serviço</comment>
