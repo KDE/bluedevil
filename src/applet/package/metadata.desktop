@@ -63,6 +63,7 @@ Comment[sv]=Bllåtandstatus och kontroll
 Comment[uk]=Стан Bluetooth і керування ним
 Comment[x-test]=xxBluetooth status and controlxx
 Comment[zh_CN]=蓝牙状态和控制
+Comment[zh_TW]=藍牙狀態與控制
 
 Icon=preferences-system-bluetooth
 Type=Service
