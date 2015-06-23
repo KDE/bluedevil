@@ -17,6 +17,7 @@ Notes:
     <sub-class-of type="inode/directory"/>
     <generic-icon name="video-display"/>
     <comment>Device</comment>
+    <comment xml:lang="ast">Preséu</comment>
     <comment xml:lang="ca">Dispositiu</comment>
     <comment xml:lang="cs">Zařízení</comment>
     <comment xml:lang="de">Gerät</comment>
@@ -52,6 +53,7 @@ Notes:
     <generic-icon name="preferences-system-bluetooth"/>
     <comment>Service</comment>
     <comment xml:lang="ar">خدمة</comment>
+    <comment xml:lang="ast">Serviciu</comment>
     <comment xml:lang="bs">Usluga</comment>
     <comment xml:lang="ca">Servei</comment>
     <comment xml:lang="cs">Služba</comment>
@@ -89,6 +91,7 @@ Notes:
   <mime-type type="application/vnd.kde.bluedevil-sendfile">
     <comment>Service</comment>
     <comment xml:lang="ar">خدمة</comment>
+    <comment xml:lang="ast">Serviciu</comment>
     <comment xml:lang="bs">Usluga</comment>
     <comment xml:lang="ca">Servei</comment>
     <comment xml:lang="cs">Služba</comment>
