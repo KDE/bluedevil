@@ -2,6 +2,7 @@
 Type=Service
 Name=Send file via Bluetooth
 Name[ar]=أرسل ملفًّا عبر بلوتوث
+Name[ast]=Unviar ficheru per Bluetooth
 Name[bs]=Šalji datoteku preko Bluetoots
 Name[ca]=Envia un fitxer per Bluetooth
 Name[cs]=Poslat soubor přes Bluetooth
@@ -40,6 +41,7 @@ Name[zh_TW]=透過藍牙傳送檔案
 X-KDE-Library=bluetoothfileitemaction
 X-KDE-Submenu=Bluetooth
 X-KDE-Submenu[ar]=بلوتوث
+X-KDE-Submenu[ast]=Bluetooth
 X-KDE-Submenu[bs]=Blutut
 X-KDE-Submenu[ca]=Bluetooth
 X-KDE-Submenu[cs]=Bluetooth

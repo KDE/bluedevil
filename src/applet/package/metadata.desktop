@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Bluetooth
 Name[ar]=بلوتوث
+Name[ast]=Bluetooth
 Name[bs]=Blutut
 Name[ca]=Bluetooth
 Name[cs]=Bluetooth
@@ -38,6 +39,7 @@ Name[zh_CN]=蓝牙
 Name[zh_TW]=藍牙
 
 Comment=Bluetooth status and control
+Comment[ast]=Estáu y control de Bluetooth
 Comment[ca]=Estat i control del Bluetooth
 Comment[cs]=Stav a ovládání Bluetooth
 Comment[de]=Bluetooth-Status und -steuerung
