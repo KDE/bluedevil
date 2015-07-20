@@ -80,6 +80,7 @@ X-Plasma-API=declarativeappletscript
 X-Plasma-MainScript=ui/BluetoothApplet.qml
 
 X-Plasma-NotificationArea=true
+X-Plasma-NotificationAreaCategory=Hardware
 X-Plasma-DBusActivationService=org.bluez
 
 X-KDE-PluginInfo-Name=org.kde.plasma.bluetooth
