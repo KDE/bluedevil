@@ -52,7 +52,7 @@ Item {
     }
 
     function action_bluedevilkcm() {
-        KCMShell.open(["bluedevildevices", "bluedeviltransfer", "bluedeviladapters"]);
+        KCMShell.open(["bluedevildevices", "bluedeviladapters", "bluedevilglobal"]);
     }
 
     Component.onCompleted: {

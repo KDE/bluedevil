@@ -45,8 +45,6 @@ class KCMBlueDevilDevices : public KCModule
 public:
     KCMBlueDevilDevices(QWidget *parent, const QVariantList&);
 
-    void save() Q_DECL_OVERRIDE;
-
 private Q_SLOTS:
     void initJobResult(BluezQt::InitManagerJob *job);
     void deviceSelectionChanged(const QItemSelection &selection);
@@ -61,13 +59,11 @@ private:
     void generateNoDevicesMessage();
 
 private:
-    QCheckBox *m_enable;
     QPushButton *m_detailsDevice;
     QPushButton *m_removeDevice;
     QPushButton *m_connectDevice;
     QPushButton *m_disconnectDevice;
     QPushButton *m_addDevice;
-    bool m_isEnabled;
     BluezQt::Manager *m_manager;
     BluezQt::DevicesModel *m_devicesModel;
     QListView *m_devices;

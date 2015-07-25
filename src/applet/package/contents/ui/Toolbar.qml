@@ -78,7 +78,7 @@ Item {
             tooltip: i18n("Configure Bluetooth...")
 
             onClicked: {
-                KCMShell.open(["bluedevildevices", "bluedeviltransfer", "bluedeviladapters"]);
+                KCMShell.open(["bluedevildevices", "bluedeviladapters", "bluedevilglobal"]);
             }
         }
     }

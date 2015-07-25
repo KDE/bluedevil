@@ -1,6 +1,7 @@
 /*
  * Copyright (C) 2010 Rafael Fernández López <ereslibre@kde.org>
  * Copyright (C) 2010 UFO Coders <info@ufocoders.com>
+ * Copyright (C) 2015 David Rosca <nowrep@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public
@@ -18,8 +19,8 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef _BLUEDEVILTRANSFER_H
-#define _BLUEDEVILTRANSFER_H
+#ifndef BLUEDEVILGLOBAL_H
+#define BLUEDEVILGLOBAL_H
 
 #include <KCModule>
 
@@ -27,25 +28,30 @@
 
 namespace Ui
 {
-    class Transfer;
+    class Global;
 }
 
 class SystemCheck;
 
-class KCMBlueDevilTransfer : public KCModule
+class KCMBlueDevilGlobal : public KCModule
 {
     Q_OBJECT
 
 public:
-    KCMBlueDevilTransfer(QWidget *parent, const QVariantList&);
+    KCMBlueDevilGlobal(QWidget *parent, const QVariantList&);
+
+    void save() Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
     void initJobResult(BluezQt::InitManagerJob *job);
+    void receiveFilesChanged(bool enable);
+    void enableBluetoothChanged(bool enable);
 
 private:
     SystemCheck *m_systemCheck;
-    Ui::Transfer *m_uiTransfer;
+    Ui::Global *m_ui;
     BluezQt::Manager *m_manager;
+    bool m_isEnabled;
 };
 
-#endif // _BLUEDEVILTRANSFER_H
+#endif // BLUEDEVILGLOBAL_H

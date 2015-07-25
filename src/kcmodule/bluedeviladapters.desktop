@@ -1,6 +1,6 @@
 [Desktop Entry]
 Exec=kcmshell5 bluedeviladapters
-Icon=audio-card
+Icon=preferences-system-bluetooth
 Type=Service
 
 X-KDE-ServiceTypes=KCModule
@@ -50,42 +50,7 @@ Name[x-test]=xxAdaptersxx
 Name[zh_CN]=适配器
 Name[zh_TW]=轉接器
 
-Comment=Configure Bluetooth adapters
-Comment[ar]=اضبط محوّلات بلوتوث
-Comment[ast]=Configura los adautadores Bluetooth
-Comment[bs]=Konfigurisanje Blutut adaptera
-Comment[ca]=Configura els adaptadors Bluetooth
-Comment[cs]=Nastavte adaptéry Bluetooth
-Comment[de]=Bluetooth-Adapter einrichten
-Comment[el]=Διαμόρφωση προσαρμογέων Bluetooth
-Comment[en_GB]=Configure Bluetooth adapters
-Comment[es]=Configurar adaptadores Bluetooth
-Comment[fi]=Bluetooth-sovittimien asetukset
-Comment[fr]=Configure les adaptateurs Bluetooth
-Comment[gl]=Configurar os adaptadores de Bluetooth
-Comment[hu]=Bluetooth adapterek beállítása
-Comment[it]=Configura gli adattatori Bluetooth
-Comment[ko]=블루투스 어댑터 설정
-Comment[nb]=Sett opp Bluetooth-adaptere
-Comment[nl]=Bluetooth-adapters instellen
-Comment[nn]=Set opp Bluetooth-adapterar
-Comment[pl]=Ustawienia adapterów Bluetooth
-Comment[pt]=Configurar os adaptadores de Bluetooth
-Comment[pt_BR]=Configura os adaptadores Bluetooth
-Comment[ro]=Configurează adaptoare Bluetooth
-Comment[ru]=Настройка адаптеров Bluetooth
-Comment[sk]=Nastaviť adaptéry Bluetooth
-Comment[sl]=Nastavite vmesnike Bluetooth
-Comment[sr]=Подесите блутут адаптере
-Comment[sr@ijekavian]=Подесите блутут адаптере
-Comment[sr@ijekavianlatin]=Podesite bluetooth adaptere
-Comment[sr@latin]=Podesite bluetooth adaptere
-Comment[sv]=Anpassa Blåtandanslutningar
-Comment[tr]=Bluetooth bağdaştırıcılarını yapılandır
-Comment[uk]=Налаштування адаптерів Bluetooth
-Comment[x-test]=xxConfigure Bluetooth adaptersxx
-Comment[zh_CN]=配置蓝牙适配器
-Comment[zh_TW]=設定藍牙轉接器
+Comment=Bluetooth Adapters
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
 X-KDE-Keywords[ar]=شبكة,موصوليّة,بلوتوث,موصولية

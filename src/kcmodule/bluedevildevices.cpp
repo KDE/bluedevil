@@ -189,7 +189,6 @@ QString BluetoothDevicesDelegate::deviceTypeString(int type) const
 
 KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     : KCModule(parent)
-    , m_enable(new QCheckBox(i18n("Enable KDE Bluetooth Integration"), this))
     , m_systemCheck(0)
     , m_deviceDetails(0)
 {
@@ -209,12 +208,6 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     setAboutData(ab);
 
     QVBoxLayout *layout = new QVBoxLayout;
-    layout->addWidget(m_enable);
-
-    m_enable->setObjectName(QStringLiteral("kcfg_enableGlobalBluetooth"));
-    addConfig(GlobalSettings::self(), this);
-
-    m_isEnabled = m_enable->isChecked();
 
     m_devices = new QListView(this);
     m_devices->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
@@ -258,19 +251,6 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     BluezQt::InitManagerJob *job = m_manager->init();
     job->start();
     connect(job, &BluezQt::InitManagerJob::result, this, &KCMBlueDevilDevices::initJobResult);
-}
-
-void KCMBlueDevilDevices::save()
-{
-    KCModule::save();
-    if (!m_isEnabled && m_enable->isChecked()) {
-        m_systemCheck->kded()->setModuleAutoloading(QStringLiteral("bluedevil"), true);
-        m_systemCheck->kded()->loadModule(QStringLiteral("bluedevil"));
-    } else if (m_isEnabled && !m_enable->isChecked()) {
-        m_systemCheck->kded()->setModuleAutoloading(QStringLiteral("bluedevil"), false);
-        m_systemCheck->kded()->unloadModule(QStringLiteral("bluedevil"));
-    }
-    m_isEnabled = m_enable->isChecked();
 }
 
 void KCMBlueDevilDevices::initJobResult(BluezQt::InitManagerJob *job)
