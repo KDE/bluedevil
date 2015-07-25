@@ -59,8 +59,10 @@ public:
     quint32 discoverTime() const;
     bool powered() const;
 
-private Q_SLOTS:
+public Q_SLOTS:
     void readChanges();
+
+private Q_SLOTS:
     void visibilityChanged();
     void slotSettingsChanged();
 
@@ -94,6 +96,7 @@ class KCMBlueDevilAdapters : public KCModule
 public:
     KCMBlueDevilAdapters(QWidget *parent, const QVariantList&);
 
+    void load() Q_DECL_OVERRIDE;
     void save() Q_DECL_OVERRIDE;
 
 private Q_SLOTS:

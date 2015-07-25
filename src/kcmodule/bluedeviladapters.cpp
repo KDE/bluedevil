@@ -259,6 +259,13 @@ KCMBlueDevilAdapters::KCMBlueDevilAdapters(QWidget *parent, const QVariantList&)
     connect(job, &BluezQt::InitManagerJob::result, this, &KCMBlueDevilAdapters::initJobResult);
 }
 
+void KCMBlueDevilAdapters::load()
+{
+    Q_FOREACH (AdapterSettings *const adapterSettings, m_adapterSettingsMap) {
+        adapterSettings->readChanges();
+    }
+}
+
 void KCMBlueDevilAdapters::save()
 {
     Q_FOREACH (AdapterSettings *const adapterSettings, m_adapterSettingsMap) {
