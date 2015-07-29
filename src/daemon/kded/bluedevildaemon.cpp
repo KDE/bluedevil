@@ -160,6 +160,11 @@ void BlueDevilDaemon::stopDiscovering()
     }
 }
 
+void BlueDevilDaemon::reloadConfig()
+{
+    loadConfig();
+}
+
 void BlueDevilDaemon::initJobResult(BluezQt::InitManagerJob *job)
 {
     if (job->error()) {
@@ -193,16 +198,7 @@ void BlueDevilDaemon::onlineMode()
     d->m_manager->registerAgent(d->m_bluezAgent);
     d->m_manager->requestDefaultAgent(d->m_bluezAgent);
 
-    FileReceiverSettings::self()->load();
-    if (!d->m_fileReceiver && FileReceiverSettings::self()->enabled()) {
-        d->m_fileReceiver = new FileReceiver(d->m_manager, this);
-    }
-
-    if (d->m_fileReceiver && !FileReceiverSettings::self()->enabled()) {
-        qCDebug(BLUEDAEMON) << "Stoppping file receiver";
-        delete d->m_fileReceiver;
-        d->m_fileReceiver = 0;
-    }
+    loadConfig();
 
     d->m_status = Private::Online;
 }
@@ -223,6 +219,21 @@ void BlueDevilDaemon::offlineMode()
     }
 
     d->m_status = Private::Offline;
+}
+
+void BlueDevilDaemon::loadConfig()
+{
+    FileReceiverSettings::self()->load();
+
+    if (!d->m_fileReceiver && FileReceiverSettings::self()->enabled()) {
+        d->m_fileReceiver = new FileReceiver(d->m_manager, this);
+    }
+
+    if (d->m_fileReceiver && !FileReceiverSettings::self()->enabled()) {
+        qCDebug(BLUEDAEMON) << "Stoppping file receiver";
+        delete d->m_fileReceiver;
+        d->m_fileReceiver = 0;
+    }
 }
 
 DeviceInfo BlueDevilDaemon::deviceToInfo(BluezQt::DevicePtr device) const

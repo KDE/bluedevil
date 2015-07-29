@@ -66,6 +66,11 @@ public:
      */
     Q_SCRIPTABLE void stopDiscovering();
 
+    /**
+     * Reloads configuration
+     */
+    Q_SCRIPTABLE void reloadConfig();
+
 private Q_SLOTS:
     void initJobResult(BluezQt::InitManagerJob *job);
     void bluetoothOperationalChanged(bool operational);
@@ -73,6 +78,7 @@ private Q_SLOTS:
 private:
     void onlineMode();
     void offlineMode();
+    void loadConfig();
 
     DeviceInfo deviceToInfo(BluezQt::DevicePtr device) const;
 
