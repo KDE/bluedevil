@@ -57,6 +57,7 @@ KCMBlueDevilGlobal::KCMBlueDevilGlobal(QWidget *parent, const QVariantList&)
     ab->addAuthor(QStringLiteral("Rafael Fernández López"), i18n("Previous Developer and Maintainer"), QStringLiteral("ereslibre@kde.org"));
 
     setAboutData(ab);
+    setButtons(Apply | Default);
 
     m_ui = new Ui::Global();
     m_ui->setupUi(this);

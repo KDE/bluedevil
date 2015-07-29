@@ -206,6 +206,7 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     ab->addAuthor(QStringLiteral("Rafael Fernández López"), i18n("Previous Developer and Maintainer"), QStringLiteral("ereslibre@kde.org"));
 
     setAboutData(ab);
+    setButtons(Apply);
 
     QVBoxLayout *layout = new QVBoxLayout;
 

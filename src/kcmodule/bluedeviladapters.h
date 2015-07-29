@@ -53,6 +53,7 @@ public:
 
     bool isModified() const;
     void applyChanges();
+    void setDefaults();
 
     QString name() const;
     DiscoverOptions discoverOptions() const;
@@ -98,6 +99,7 @@ public:
 
     void load() Q_DECL_OVERRIDE;
     void save() Q_DECL_OVERRIDE;
+    void defaults() Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
     void initJobResult(BluezQt::InitManagerJob *job);

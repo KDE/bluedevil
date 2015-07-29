@@ -151,6 +151,15 @@ void AdapterSettings::applyChanges()
     }
 }
 
+void AdapterSettings::setDefaults()
+{
+    m_name->setText(m_adapter->systemName());
+    m_powered->setChecked(true);
+    m_alwaysVisible->setChecked(true);
+
+    Q_EMIT settingsChanged(isModified());
+}
+
 QString AdapterSettings::name() const
 {
     return m_name->text();
@@ -241,6 +250,7 @@ KCMBlueDevilAdapters::KCMBlueDevilAdapters(QWidget *parent, const QVariantList&)
                   QStringLiteral("ereslibre@kde.org"));
 
     setAboutData(ab);
+    setButtons(Apply | Default);
 
     QVBoxLayout *layout = new QVBoxLayout;
     QScrollArea *mainArea = new QScrollArea(this);
@@ -270,6 +280,13 @@ void KCMBlueDevilAdapters::save()
 {
     Q_FOREACH (AdapterSettings *const adapterSettings, m_adapterSettingsMap) {
         adapterSettings->applyChanges();
+    }
+}
+
+void KCMBlueDevilAdapters::defaults()
+{
+    Q_FOREACH (AdapterSettings *const adapterSettings, m_adapterSettingsMap) {
+        adapterSettings->setDefaults();
     }
 }
 
