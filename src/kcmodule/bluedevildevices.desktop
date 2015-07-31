@@ -51,6 +51,15 @@ Name[zh_CN]=设备
 Name[zh_TW]=裝置
 
 Comment=Bluetooth Devices
+Comment[ca]=Dispositius Bluetooth
+Comment[de]=Bluetooth-Geräte
+Comment[es]=Dispositivos Bluetooth
+Comment[nl]=Bluetooth-apparaten
+Comment[pt]=Dispositivos Bluetooth
+Comment[pt_BR]=Dispositivos Bluetooth
+Comment[sv]=Blåtandenheter
+Comment[uk]=Пристрої Bluetooth
+Comment[x-test]=xxBluetooth Devicesxx
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
 X-KDE-Keywords[ar]=شبكة,موصوليّة,بلوتوث,موصولية

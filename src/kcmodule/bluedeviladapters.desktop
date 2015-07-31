@@ -51,6 +51,15 @@ Name[zh_CN]=适配器
 Name[zh_TW]=轉接器
 
 Comment=Bluetooth Adapters
+Comment[ca]=Adaptadors Bluetooth
+Comment[de]=Bluetooth-Adapter
+Comment[es]=Adaptadores Bluetooth
+Comment[nl]=Bluetooth-adapters
+Comment[pt]=Adaptadores Bluetooth
+Comment[pt_BR]=Adaptadores Bluetooth
+Comment[sv]=Blåtandanslutningar
+Comment[uk]=Адаптери Bluetooth
+Comment[x-test]=xxBluetooth Adaptersxx
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
 X-KDE-Keywords[ar]=شبكة,موصوليّة,بلوتوث,موصولية
