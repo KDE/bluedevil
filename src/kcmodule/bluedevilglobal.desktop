@@ -33,6 +33,7 @@ Name[sr@latin]=Napredne postavke
 Name[sv]=Avancerade inställningar
 Name[uk]=Додаткові параметри
 Name[x-test]=xxAdvanced Settingsxx
+Name[zh_CN]=高级设置
 
 Comment=Advanced Bluetooth Settings
 Comment[ca]=Arranjament avançat del Bluetooth
@@ -56,6 +57,7 @@ Comment[sr@latin]=Napredne bluetooth postavke
 Comment[sv]=Avancerade Blåtandsinställningar
 Comment[uk]=Додаткові параметри Bluetooth
 Comment[x-test]=xxAdvanced Bluetooth Settingsxx
+Comment[zh_CN]=高级蓝牙设置
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
 X-KDE-Keywords[ar]=شبكة,موصوليّة,بلوتوث,موصولية
