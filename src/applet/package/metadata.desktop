@@ -39,6 +39,7 @@ Name[zh_CN]=蓝牙
 Name[zh_TW]=藍牙
 
 Comment=Bluetooth status and control
+Comment[ar]=حالة بلوتوث والتّحكّم بها
 Comment[ast]=Estáu y control de Bluetooth
 Comment[ca]=Estat i control del Bluetooth
 Comment[cs]=Stav a ovládání Bluetooth

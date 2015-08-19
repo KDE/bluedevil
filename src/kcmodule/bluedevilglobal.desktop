@@ -12,6 +12,7 @@ X-KDE-System-Settings-Parent-Category=bluetooth
 X-KDE-Weight=100
 
 Name=Advanced Settings
+Name[ar]=إعدادات متقدّمة
 Name[ca]=Arranjament avançat
 Name[cs]=Pokročilá nastavení
 Name[de]=Erweiterte Einstellungen
@@ -37,6 +38,7 @@ Name[x-test]=xxAdvanced Settingsxx
 Name[zh_CN]=高级设置
 
 Comment=Advanced Bluetooth Settings
+Comment[ar]=إعدادات بلوتوث المتقدّمة
 Comment[ca]=Arranjament avançat del Bluetooth
 Comment[cs]=Pokročilá nastavení Bluetooth
 Comment[de]=Erweiterte Bluetooth-Einstellungen

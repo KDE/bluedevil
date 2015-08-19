@@ -154,7 +154,7 @@ Name[x-test]=xxConfirm PINxx
 Name[zh_CN]=确认 PIN
 Name[zh_TW]=確認 PIN 碼
 Comment=Confirm a device request using matching PINs
-Comment[ar]=أكّد طلب جهاز باستخدام رموز متطابقة
+Comment[ar]=أكّد طلب الجهاز باستخدام الرّمز المطابق
 Comment[ast]=Confirma una solicitú de preséu usando PINs que concasen
 Comment[bs]=Potvrdi zahtjev uređaja koristeci odgovarajuce pinove
 Comment[ca]=Confirma una sol·licitud d'un dispositiu usant PIN que coincideixin
@@ -351,6 +351,7 @@ Action=Popup
 
 [Event/ConnectionFailed]
 Name=Connection Failed
+Name[ar]=فشل الاتّصال
 Name[ast]=Conexón fallida
 Name[ca]=Ha fallat la connexió
 Name[cs]=Spojení selhalo
@@ -384,6 +385,7 @@ Name[x-test]=xxConnection Failedxx
 Name[zh_CN]=连接失败
 Name[zh_TW]=連線失敗
 Comment=Connection to device failed
+Comment[ar]=فشل الاتّصال بالجهاز
 Comment[ast]=Falló la conxón al preséu
 Comment[ca]=Ha fallat la connexió al dispositiu
 Comment[cs]=Připojení k zařízení selhalo
