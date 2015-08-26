@@ -28,6 +28,7 @@ Notes:
     <comment xml:lang="hu">Eszköz</comment>
     <comment xml:lang="it">Dispositivo</comment>
     <comment xml:lang="ko">장치</comment>
+    <comment xml:lang="lt">Įrenginys</comment>
     <comment xml:lang="nb">Enhet</comment>
     <comment xml:lang="nl">Apparaat</comment>
     <comment xml:lang="nn">Eining</comment>
@@ -67,6 +68,7 @@ Notes:
     <comment xml:lang="hu">Szolgáltatás</comment>
     <comment xml:lang="it">Servizio</comment>
     <comment xml:lang="ko">서비스</comment>
+    <comment xml:lang="lt">Paslauga</comment>
     <comment xml:lang="nb">Tjeneste</comment>
     <comment xml:lang="nl">Service</comment>
     <comment xml:lang="nn">Teneste</comment>
@@ -105,6 +107,7 @@ Notes:
     <comment xml:lang="hu">Szolgáltatás</comment>
     <comment xml:lang="it">Servizio</comment>
     <comment xml:lang="ko">서비스</comment>
+    <comment xml:lang="lt">Paslauga</comment>
     <comment xml:lang="nb">Tjeneste</comment>
     <comment xml:lang="nl">Service</comment>
     <comment xml:lang="nn">Teneste</comment>
