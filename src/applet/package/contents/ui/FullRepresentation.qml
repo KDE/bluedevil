@@ -43,6 +43,39 @@ FocusScope {
         }
     }
 
+    Item {
+        id: bluetoothDisabledView
+        anchors.fill: parent
+
+        PlasmaExtras.Heading {
+            id: bluetoothDisabledHeading
+            level: 3
+            opacity: 0.6
+            text: i18n("Bluetooth is Disabled")
+
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+                bottom: enableBluetoothButton.top
+                bottomMargin: units.smallSpacing
+            }
+        }
+
+        PlasmaComponents.Button {
+            id: enableBluetoothButton
+            text: i18n("Enable Bluetooth")
+            iconSource: "preferences-system-bluetooth"
+
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+                verticalCenter: parent.verticalCenter
+            }
+
+            onClicked: {
+                toolbar.toggleBluetooth();
+            }
+        }
+    }
+
     Toolbar {
         id: toolbar
 
@@ -97,39 +130,6 @@ FocusScope {
             }
         }
 
-        Item {
-            id: bluetoothDisabledView
-            anchors.fill: parent
-
-            PlasmaExtras.Heading {
-                id: bluetoothDisabledHeading
-                level: 3
-                opacity: 0.6
-                text: i18n("Bluetooth is Disabled")
-
-                anchors {
-                    horizontalCenter: parent.horizontalCenter
-                    bottom: enableBluetoothButton.top
-                    bottomMargin: units.smallSpacing
-                }
-            }
-
-            PlasmaComponents.Button {
-                id: enableBluetoothButton
-                text: i18n("Enable Bluetooth")
-                iconSource: "preferences-system-bluetooth"
-
-                anchors {
-                    horizontalCenter: parent.horizontalCenter
-                    verticalCenter: parent.verticalCenter
-                }
-
-                onClicked: {
-                    toolbar.toggleBluetooth();
-                }
-            }
-        }
-
         ListView {
             id: devicesView
             anchors.fill: parent
@@ -167,7 +167,7 @@ FocusScope {
 
     onStateChanged: {
         noAdaptersHeading.visible = (state == "NoAdaptersState");
-        toolbar.visible = (state == "DevicesState" || state == "NoDevicesState" || state == "BlockedState");
+        toolbar.visible = (state == "DevicesState" || state == "NoDevicesState");
         noDevicesView.visible = (state == "NoDevicesState");
         bluetoothDisabledView.visible = (state == "BlockedState");
         devicesView.visible = (state == "DevicesState");
