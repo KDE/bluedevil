@@ -100,7 +100,7 @@ void BluetoothDevicesDelegate::paint(QPainter *painter, const QStyleOptionViewIt
 
     // Draw icon
     const int iconSize = IconSize(KIconLoader::Dialog) * 1.5;
-    const QIcon &icon = QIcon::fromTheme(index.data(BluezQt::DevicesModel::IconRole).toString());
+    const QIcon &icon = QIcon::fromTheme(index.data(BluezQt::DevicesModel::IconRole).toString(), QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")));
     painter->drawPixmap(r.left() + 5, r.top() + (r.height() - iconSize) / 2, icon.pixmap(iconSize));
 
     // Draw alias and device type

@@ -71,7 +71,7 @@ QVariant DevicesProxyModel::data(const QModelIndex &index, int role) const
 {
     switch (role) {
     case Qt::DecorationRole:
-        return QIcon::fromTheme(index.data(BluezQt::DevicesModel::IconRole).toString());
+        return QIcon::fromTheme(index.data(BluezQt::DevicesModel::IconRole).toString(), QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")));
 
     default:
         return QSortFilterProxyModel::data(index, role);

@@ -63,6 +63,12 @@ PlasmaComponents.ListItem {
             height: units.iconSizes.medium
             width: height
             source: Icon
+
+            onSourceChanged: {
+                var defaultIcon = "preferences-system-bluetooth";
+                if (!valid && source != defaultIcon)
+                    source = defaultIcon;
+            }
         }
 
         PlasmaComponents.Label {
