@@ -119,7 +119,8 @@ void SendFileItemAction::loadMenu(QMenu *menu)
             const QMapDeviceInfo &devices = m_kded->allDevices().value();
             Q_FOREACH (const DeviceInfo &device, devices) {
                 if (device.value(QStringLiteral("UUIDs")).contains(BluezQt::Services::ObexObjectPush)) {
-                    QAction *action = new QAction(QIcon::fromTheme(device[QStringLiteral("icon")]), device.value(QStringLiteral("name")), this);
+                    const QIcon &icon = QIcon::fromTheme(device[QStringLiteral("icon")], QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")));
+                    QAction *action = new QAction(icon, device.value(QStringLiteral("name")), this);
                     connect(action, &QAction::triggered, this, &SendFileItemAction::deviceTriggered);
                     action->setData(device.value(QStringLiteral("UBI")));
                     menu->insertAction(0, action);
