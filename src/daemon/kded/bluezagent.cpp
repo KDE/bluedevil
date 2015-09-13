@@ -51,7 +51,6 @@ void BluezAgent::authorizeService(BluezQt::DevicePtr device, const QString &uuid
 
     QStringList list;
     list.append(device->name());
-    list.append(device->ubi());
 
     const QString &exe = QStandardPaths::findExecutable(QStringLiteral("bluedevil-authorize"),
                                                         QStringList(HELPER_INSTALL_PATH));
@@ -117,7 +116,6 @@ void BluezAgent::requestAuthorization(BluezQt::DevicePtr device, const BluezQt::
 
     QStringList list;
     list.append(device->name());
-    list.append(device->ubi());
 
     const QString &exe = QStandardPaths::findExecutable(QStringLiteral("bluedevil-authorize"),
                                                         QStringList(HELPER_INSTALL_PATH));
