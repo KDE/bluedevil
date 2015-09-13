@@ -137,12 +137,12 @@ void ReceiveFileJob::showNotification()
     KNotification *notification = new KNotification(QStringLiteral("IncomingFile"),
                                                       KNotification::Persistent, this);
 
+    notification->setTitle(QStringLiteral("%1 (%2)").arg(m_deviceName, m_deviceAddress));
     notification->setText(i18nc(
         "Show a notification asking to authorize or deny an incoming file transfer to this computer from a Bluetooth device.",
         "%1 is sending you the file %2", m_deviceName, m_transfer->name()));
 
     QStringList actions;
-
     actions.append(i18nc("Button to accept the incoming file transfer and download it in the default download directory", "Accept"));
     actions.append(i18nc("Deny the incoming file transfer", "Cancel"));
 
@@ -162,6 +162,10 @@ void ReceiveFileJob::slotAccept()
 
     KIO::getJobTracker()->registerJob(this);
 
+    Q_EMIT description(this, i18n("Receiving file over Bluetooth"),
+                    QPair<QString, QString>(i18nc("File transfer origin", "From"), m_deviceName),
+                    QPair<QString, QString>(i18nc("File transfer destination", "To"), m_targetPath.path()));
+
     FileReceiverSettings::self()->load();
     m_targetPath = FileReceiverSettings::self()->saveUrl().adjusted(QUrl::StripTrailingSlash);
     m_targetPath.setPath(m_targetPath.path() + QLatin1Char('/') + m_transfer->name());
@@ -176,7 +180,7 @@ void ReceiveFileJob::slotCancel()
 {
     if (m_transfer->status() == BluezQt::ObexTransfer::Queued) {
         qCDebug(BLUEDAEMON) << "Cancel Push";
-        m_request.cancel();
+        m_request.reject();
         setError(KJob::UserDefinedError);
         emitResult();
     }
@@ -205,10 +209,6 @@ void ReceiveFileJob::statusChanged(BluezQt::ObexTransfer::Status status)
     switch (status) {
     case BluezQt::ObexTransfer::Active:
         qCDebug(BLUEDAEMON) << "ReceiveFileJob-Transfer Active";
-        Q_EMIT description(this, i18n("Receiving file over Bluetooth"),
-                        QPair<QString, QString>(i18nc("File transfer origin", "From"), QString(m_deviceName)),
-                        QPair<QString, QString>(i18nc("File transfer destination", "To"), m_targetPath.path()));
-
         setTotalAmount(Bytes, m_transfer->size());
         setProcessedAmount(Bytes, 0);
         m_time = QTime::currentTime();
