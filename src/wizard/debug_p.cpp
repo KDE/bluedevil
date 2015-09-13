@@ -21,4 +21,4 @@
 
 #include "debug_p.h"
 
-Q_LOGGING_CATEGORY(WIZARD, "BlueWizard")
+Q_LOGGING_CATEGORY(WIZARD, "bluedevil.wizard")

@@ -36,6 +36,7 @@
 
 #include <BluezQt/Device>
 #include <BluezQt/Adapter>
+#include <BluezQt/PendingCall>
 #include <BluezQt/InitManagerJob>
 
 K_PLUGIN_FACTORY_WITH_JSON(BlueDevilFactory,
@@ -195,8 +196,21 @@ void BlueDevilDaemon::onlineMode()
         return;
     }
 
-    d->m_manager->registerAgent(d->m_bluezAgent);
-    d->m_manager->requestDefaultAgent(d->m_bluezAgent);
+    connect(d->m_manager->registerAgent(d->m_bluezAgent), &BluezQt::PendingCall::finished, this, [this](BluezQt::PendingCall *call) {
+        if (call->error()) {
+            qCWarning(BLUEDAEMON) << "Error registering Agent" << call->errorText();
+        } else {
+            qCDebug(BLUEDAEMON) << "Agent registered";
+        }
+    });
+
+    connect(d->m_manager->requestDefaultAgent(d->m_bluezAgent), &BluezQt::PendingCall::finished, this, [this](BluezQt::PendingCall *call) {
+        if (call->error()) {
+            qCWarning(BLUEDAEMON) << "Error requesting default Agent" << call->errorText();
+        } else {
+            qCDebug(BLUEDAEMON) << "Requested default Agent";
+        }
+    });
 
     loadConfig();
 

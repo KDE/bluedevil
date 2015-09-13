@@ -21,4 +21,4 @@
 
 #include "debug_p.h"
 
-Q_LOGGING_CATEGORY(BLUEDAEMON, "BlueDaemon")
+Q_LOGGING_CATEGORY(BLUEDAEMON, "bluedevil")

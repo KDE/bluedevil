@@ -21,4 +21,4 @@
 
 #include "debug_p.h"
 
-Q_LOGGING_CATEGORY(SENDFILE, "BlueSendFile")
+Q_LOGGING_CATEGORY(SENDFILE, "bluedevil.sendfile")

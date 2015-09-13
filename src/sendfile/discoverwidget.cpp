@@ -29,7 +29,6 @@
 #include <QListView>
 #include <QLabel>
 #include <QTimer>
-#include <QDebug>
 #include <QIcon>
 
 #include <KMessageWidget>
