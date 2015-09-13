@@ -2,6 +2,7 @@
  *   Copyright (C) 2010 Alejandro Fiestas Olivares <alex@eyeos.org>        *
  *   Copyright (C) 2010 Eduardo Robles Elvira <edulix@gmail.com>           *
  *   Copyright (C) 2010 UFO Coders <info@ufocoders.com>                    *
+ *   Copyright (C) 2014-2015 David Rosca <nowrep@gmail.com>                *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -27,6 +28,7 @@
 #include <KDEDModule>
 
 #include <BluezQt/Manager>
+#include <BluezQt/ObexManager>
 
 typedef QMap<QString, QString> DeviceInfo;
 typedef QMap<QString, DeviceInfo> QMapDeviceInfo;
@@ -66,20 +68,21 @@ public:
      */
     Q_SCRIPTABLE void stopDiscovering();
 
-    /**
-     * Reloads configuration
-     */
-    Q_SCRIPTABLE void reloadConfig();
+    BluezQt::Manager *manager() const;
+    BluezQt::ObexManager *obexManager() const;
 
 private Q_SLOTS:
     void initJobResult(BluezQt::InitManagerJob *job);
-    void bluetoothOperationalChanged(bool operational);
+    void initObexJobResult(BluezQt::InitObexManagerJob *job);
+
+    void operationalChanged(bool operational);
+    void obexOperationalChanged(bool operational);
+
+    void agentRegisted(BluezQt::PendingCall *call);
+    void agentRequestedDefault(BluezQt::PendingCall *call);
+    void obexAgentRegistered(BluezQt::PendingCall *call);
 
 private:
-    void onlineMode();
-    void offlineMode();
-    void loadConfig();
-
     DeviceInfo deviceToInfo(BluezQt::DevicePtr device) const;
 
 private:

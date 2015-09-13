@@ -2,6 +2,7 @@
  *  Copyright (C) 2010-2012 by Alejandro Fiestas Olivares <afiestas@kde.org>         *
  *  Copyright (C) 2010 Eduardo Robles Elvira <edulix@gmail.com>                      *
  *  Copyright (C) 2010 UFO Coders <info@ufocoders.com>                               *
+ *  Copyright (C) 2014-2015 David Rosca <nowrep@gmail.com>                           *
  *                                                                                   *
  *  This program is free software; you can redistribute it and/or                    *
  *  modify it under the terms of the GNU General Public License                      *
@@ -20,14 +21,13 @@
 
 #include "bluedevildaemon.h"
 #include "bluezagent.h"
-#include "filereceiversettings.h"
-#include "filereceiver/filereceiver.h"
+#include "obexftp.h"
+#include "obexagent.h"
 #include "devicemonitor.h"
 #include "debug_p.h"
 #include "version.h"
 
 #include <QTimer>
-#include <QProcess>
 #include <QDBusMetaType>
 
 #include <KAboutData>
@@ -38,26 +38,28 @@
 #include <BluezQt/Adapter>
 #include <BluezQt/PendingCall>
 #include <BluezQt/InitManagerJob>
+#include <BluezQt/InitObexManagerJob>
 
 K_PLUGIN_FACTORY_WITH_JSON(BlueDevilFactory,
                            "bluedevil.json",
                            registerPlugin<BlueDevilDaemon>();)
+
+typedef QMap<QString, QString> DeviceInfo;
+typedef QMap<QString, DeviceInfo> QMapDeviceInfo;
 
 Q_DECLARE_METATYPE(DeviceInfo)
 Q_DECLARE_METATYPE(QMapDeviceInfo)
 
 struct BlueDevilDaemon::Private
 {
-    enum Status {
-        Online = 0,
-        Offline
-    } m_status;
+    BluezQt::Manager *m_manager;
+    BluezQt::ObexManager *m_obexManager;
 
     QTimer m_timer;
+    ObexFtp *m_obexFtp;
+    ObexAgent *m_obexAgent;
     BluezAgent *m_bluezAgent;
-    FileReceiver *m_fileReceiver;
     DeviceMonitor *m_deviceMonitor;
-    BluezQt::ManagerPtr m_manager;
 };
 
 BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
@@ -67,10 +69,13 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     qDBusRegisterMetaType<DeviceInfo>();
     qDBusRegisterMetaType<QMapDeviceInfo>();
 
-    d->m_status = Private::Offline;
+    d->m_manager = new BluezQt::Manager(this);
+    d->m_obexManager = new BluezQt::ObexManager(this);
+    d->m_obexFtp = new ObexFtp(this);
+    d->m_obexAgent = new ObexAgent(this);
     d->m_bluezAgent = new BluezAgent(this);
-    d->m_fileReceiver = Q_NULLPTR;
-    d->m_deviceMonitor = Q_NULLPTR;
+    d->m_deviceMonitor = new DeviceMonitor(this);
+
     d->m_timer.setSingleShot(true);
     connect(&d->m_timer, &QTimer::timeout, this, &BlueDevilDaemon::stopDiscovering);
 
@@ -96,24 +101,32 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     KAboutData::registerPluginData(aboutData);
 
     // Initialize BluezQt
-    d->m_manager = BluezQt::ManagerPtr(new BluezQt::Manager);
     BluezQt::InitManagerJob *job = d->m_manager->init();
     job->start();
     connect(job, &BluezQt::InitManagerJob::result, this, &BlueDevilDaemon::initJobResult);
+
+    BluezQt::InitObexManagerJob *initJob = d->m_obexManager->init();
+    initJob->start();
+    connect(initJob, &BluezQt::InitObexManagerJob::result, this, &BlueDevilDaemon::initObexJobResult);
+
+    qCDebug(BLUEDAEMON) << "Created";
 }
 
 BlueDevilDaemon::~BlueDevilDaemon()
 {
-    if (d->m_status == Private::Online) {
-        offlineMode();
-    }
+    d->m_manager->unregisterAgent(d->m_bluezAgent);;
+    d->m_obexManager->unregisterAgent(d->m_obexAgent);
+
+    d->m_deviceMonitor->saveState();
+
+    qCDebug(BLUEDAEMON) << "Destroyed";
 
     delete d;
 }
 
 bool BlueDevilDaemon::isOnline()
 {
-    return d->m_status == Private::Online;
+    return d->m_manager->isBluetoothOperational();
 }
 
 QMapDeviceInfo BlueDevilDaemon::allDevices()
@@ -161,9 +174,14 @@ void BlueDevilDaemon::stopDiscovering()
     }
 }
 
-void BlueDevilDaemon::reloadConfig()
+BluezQt::Manager *BlueDevilDaemon::manager() const
 {
-    loadConfig();
+    return d->m_manager;
+}
+
+BluezQt::ObexManager *BlueDevilDaemon::obexManager() const
+{
+    return d->m_obexManager;
 }
 
 void BlueDevilDaemon::initJobResult(BluezQt::InitManagerJob *job)
@@ -173,80 +191,74 @@ void BlueDevilDaemon::initJobResult(BluezQt::InitManagerJob *job)
         return;
     }
 
-    bluetoothOperationalChanged(d->m_manager->isBluetoothOperational());
-    connect(d->m_manager.data(), &BluezQt::Manager::bluetoothOperationalChanged,
-            this, &BlueDevilDaemon::bluetoothOperationalChanged);
-
-    d->m_deviceMonitor = new DeviceMonitor(d->m_manager, this);
+    operationalChanged(d->m_manager->isOperational());
+    connect(d->m_manager, &BluezQt::Manager::operationalChanged, this, &BlueDevilDaemon::operationalChanged);
 }
 
-void BlueDevilDaemon::bluetoothOperationalChanged(bool operational)
+void BlueDevilDaemon::initObexJobResult(BluezQt::InitObexManagerJob *job)
 {
+    if (job->error()) {
+        qCDebug(BLUEDAEMON) << "Error initializing obex manager:" << job->errorText();
+        return;
+    }
+
+    obexOperationalChanged(d->m_obexManager->isOperational());
+    connect(d->m_obexManager, &BluezQt::ObexManager::operationalChanged, this, &BlueDevilDaemon::obexOperationalChanged);
+}
+
+void BlueDevilDaemon::operationalChanged(bool operational)
+{
+    qCDebug(BLUEDAEMON) << "Bluetooth operational changed" << operational;
+
     if (operational) {
-        onlineMode();
+        BluezQt::PendingCall *rCall = d->m_manager->registerAgent(d->m_bluezAgent);
+        connect(rCall, &BluezQt::PendingCall::finished, this, &BlueDevilDaemon::agentRegisted);
+
+        BluezQt::PendingCall *rdCall = d->m_manager->requestDefaultAgent(d->m_bluezAgent);
+        connect(rdCall, &BluezQt::PendingCall::finished, this, &BlueDevilDaemon::agentRequestedDefault);
     } else {
-        offlineMode();
+        // Attempt to start bluetoothd
+        BluezQt::Manager::startService();
     }
 }
 
-void BlueDevilDaemon::onlineMode()
+void BlueDevilDaemon::obexOperationalChanged(bool operational)
 {
-    if (d->m_status == Private::Online) {
-        qCDebug(BLUEDAEMON) << "Already in OnlineMode";
-        return;
+    qCDebug(BLUEDAEMON) << "ObexManager operational changed" << operational;
+
+    if (operational) {
+        BluezQt::PendingCall *call = d->m_obexManager->registerAgent(d->m_obexAgent);
+        connect(call, &BluezQt::PendingCall::finished, this, &BlueDevilDaemon::obexAgentRegistered);
+    } else {
+        // Attempt to start obexd
+        BluezQt::ObexManager::startService();
     }
-
-    connect(d->m_manager->registerAgent(d->m_bluezAgent), &BluezQt::PendingCall::finished, this, [this](BluezQt::PendingCall *call) {
-        if (call->error()) {
-            qCWarning(BLUEDAEMON) << "Error registering Agent" << call->errorText();
-        } else {
-            qCDebug(BLUEDAEMON) << "Agent registered";
-        }
-    });
-
-    connect(d->m_manager->requestDefaultAgent(d->m_bluezAgent), &BluezQt::PendingCall::finished, this, [this](BluezQt::PendingCall *call) {
-        if (call->error()) {
-            qCWarning(BLUEDAEMON) << "Error requesting default Agent" << call->errorText();
-        } else {
-            qCDebug(BLUEDAEMON) << "Requested default Agent";
-        }
-    });
-
-    loadConfig();
-
-    d->m_status = Private::Online;
 }
 
-void BlueDevilDaemon::offlineMode()
+void BlueDevilDaemon::agentRegisted(BluezQt::PendingCall *call)
 {
-    if (d->m_status == Private::Offline) {
-        qCDebug(BLUEDAEMON) << "Already in OfflineMode";
-        return;
+    if (call->error()) {
+        qCWarning(BLUEDAEMON) << "Error registering Agent" << call->errorText();
+    } else {
+        qCDebug(BLUEDAEMON) << "Agent registered";
     }
-
-    d->m_manager->unregisterAgent(d->m_bluezAgent);;
-
-    if (d->m_fileReceiver) {
-        qCDebug(BLUEDAEMON) << "Stoppping file receiver";
-        delete d->m_fileReceiver;
-        d->m_fileReceiver = 0;
-    }
-
-    d->m_status = Private::Offline;
 }
 
-void BlueDevilDaemon::loadConfig()
+void BlueDevilDaemon::agentRequestedDefault(BluezQt::PendingCall *call)
 {
-    FileReceiverSettings::self()->load();
-
-    if (!d->m_fileReceiver && FileReceiverSettings::self()->enabled()) {
-        d->m_fileReceiver = new FileReceiver(d->m_manager, this);
+    if (call->error()) {
+        qCWarning(BLUEDAEMON) << "Error requesting default Agent" << call->errorText();
+    } else {
+        qCDebug(BLUEDAEMON) << "Requested default Agent";
     }
+}
 
-    if (d->m_fileReceiver && !FileReceiverSettings::self()->enabled()) {
-        qCDebug(BLUEDAEMON) << "Stoppping file receiver";
-        delete d->m_fileReceiver;
-        d->m_fileReceiver = 0;
+void BlueDevilDaemon::obexAgentRegistered(BluezQt::PendingCall *call)
+{
+    if (call->error()) {
+        qCWarning(BLUEDAEMON) << "Error registering ObexAgent" << call->errorText();
+    } else {
+        qCDebug(BLUEDAEMON) << "ObexAgent registered";
     }
 }
 

@@ -1,5 +1,6 @@
 /*************************************************************************************
  *  Copyright (C) 2013 by Alejandro Fiestas Fiestas <afiestas@kde.org>               *
+ *  Copyright (C) 2014-2015 David Rosca <nowrep@gmail.com>                           *
  *                                                                                   *
  *  This program is free software; you can redistribute it and/or                    *
  *  modify it under the terms of the GNU General Public License                      *
@@ -16,56 +17,35 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA   *
  *************************************************************************************/
 
-#ifndef RECEIVE_FILE_JOB_H
-#define RECEIVE_FILE_JOB_H
+#ifndef OBEXAGENT_H
+#define OBEXAGENT_H
 
-#include <QUrl>
-#include <QTime>
+#include <BluezQt/ObexAgent>
 
-#include <KJob>
+class KJob;
 
-#include <BluezQt/Request>
-#include <BluezQt/ObexTransfer>
+class BlueDevilDaemon;
 
-class ObexAgent;
-
-class ReceiveFileJob : public KJob
+class ObexAgent : public BluezQt::ObexAgent
 {
     Q_OBJECT
 
 public:
-    explicit ReceiveFileJob(const BluezQt::Request<QString> &req, BluezQt::ObexTransferPtr transfer, BluezQt::ObexSessionPtr session, ObexAgent *parent);
+    explicit ObexAgent(BlueDevilDaemon *daemon);
 
-    QString deviceAddress() const;
+    BluezQt::Manager *manager() const;
 
-    void start() Q_DECL_OVERRIDE;
-    bool doKill() Q_DECL_OVERRIDE;
+    bool shouldAutoAcceptTransfer(const QString &address) const;
+
+    QDBusObjectPath objectPath() const Q_DECL_OVERRIDE;
+    void authorizePush(BluezQt::ObexTransferPtr transfer, BluezQt::ObexSessionPtr session, const BluezQt::Request<QString> &request) Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
-    void init();
-    void showNotification();
-    void slotCancel();
-    void slotAccept();
-    void moveFinished(KJob *job);
-
-    void statusChanged(BluezQt::ObexTransfer::Status status);
-    void transferredChanged(quint64 transferred);
+    void receiveFileJobFinished(KJob *job);
 
 private:
-    QString createTempPath(const QString &fileName) const;
-
-    QTime m_time;
-    qulonglong m_speedBytes;
-    QString m_tempPath;
-    QString m_deviceName;
-    QString m_deviceAddress;
-    QUrl m_targetPath;
-
-    ObexAgent *m_agent;
-    BluezQt::ObexTransferPtr m_transfer;
-    BluezQt::ObexSessionPtr m_session;
-    BluezQt::Request<QString> m_request;
+    BluezQt::Manager *m_manager;
+    QHash<QString, QDateTime> m_transferTimes;
 };
 
-#endif // RECEIVE_FILE_JOB_H
-
+#endif // OBEXAGENT_H

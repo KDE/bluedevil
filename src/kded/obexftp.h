@@ -1,5 +1,6 @@
 /*************************************************************************************
  *  Copyright (C) 2013 by Alejandro Fiestas Fiestas <afiestas@kde.org>               *
+ *  Copyright (C) 2014-2015 David Rosca <nowrep@gmail.com>                           *
  *                                                                                   *
  *  This program is free software; you can redistribute it and/or                    *
  *  modify it under the terms of the GNU General Public License                      *
@@ -16,33 +17,41 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA   *
  *************************************************************************************/
 
-#ifndef OBEX_AGENT_H
-#define OBEX_AGENT_H
+#ifndef OBEXFTP_H
+#define OBEXFTP_H
 
-#include <BluezQt/ObexAgent>
+#include <QHash>
+#include <QDBusMessage>
+#include <QDBusAbstractAdaptor>
 
-class KJob;
+#include <BluezQt/Manager>
 
-class ObexAgent : public BluezQt::ObexAgent
+class QDBusPendingCallWatcher;
+
+class BlueDevilDaemon;
+
+class Q_DECL_EXPORT ObexFtp : public QDBusAbstractAdaptor
 {
     Q_OBJECT
+    Q_CLASSINFO("D-Bus Interface", "org.kde.BlueDevil.ObexFtp")
 
 public:
-    explicit ObexAgent(BluezQt::ManagerPtr manager, QObject *parent = Q_NULLPTR);
+    explicit ObexFtp(BlueDevilDaemon *daemon);
 
-    BluezQt::ManagerPtr manager() const;
-
-    bool shouldAutoAcceptTransfer(const QString &address) const;
-
-    QDBusObjectPath objectPath() const Q_DECL_OVERRIDE;
-    void authorizePush(BluezQt::ObexTransferPtr transfer, BluezQt::ObexSessionPtr session, const BluezQt::Request<QString> &request) Q_DECL_OVERRIDE;
+    Q_SCRIPTABLE bool isOnline();
+    Q_SCRIPTABLE QString preferredTarget(const QString &address);
+    Q_SCRIPTABLE QString session(const QString &address, const QString &target, const QDBusMessage &msg);
+    Q_SCRIPTABLE bool cancelTransfer(const QString &transfer, const QDBusMessage &msg);
 
 private Q_SLOTS:
-    void receiveFileJobFinished(KJob *job);
+    void createSessionFinished(BluezQt::PendingCall *call);
+    void cancelTransferFinished(QDBusPendingCallWatcher *watcher);
+    void sessionRemoved(BluezQt::ObexSessionPtr session);
 
 private:
-    BluezQt::ManagerPtr m_manager;
-    QHash<QString, QDateTime> m_transferTimes;
+    BlueDevilDaemon *m_daemon;
+    QHash<QString, QString> m_sessionMap;
+    QHash<QString, QList<QDBusMessage> > m_pendingSessions;
 };
 
-#endif // OBEX_AGENT_H
+#endif // OBEXFTP_H

@@ -19,7 +19,5 @@
     </method>
     <method name="stopDiscovering">
     </method>
-    <method name="reloadConfig">
-    </method>
   </interface>
 </node>

@@ -95,12 +95,6 @@ void KCMBlueDevilGlobal::save()
         m_systemCheck->kded()->unloadModule(QStringLiteral("bluedevil"));
     }
 
-    QDBusMessage call = QDBusMessage::createMethodCall(QStringLiteral("org.kde.kded5"),
-                                                       QStringLiteral("/modules/bluedevil"),
-                                                       QStringLiteral("org.kde.BlueDevil"),
-                                                       QStringLiteral("reloadConfig"));
-    QDBusConnection::sessionBus().asyncCall(call);
-
     m_isEnabled = m_ui->kcfg_enableGlobalBluetooth->isChecked();
 }
 

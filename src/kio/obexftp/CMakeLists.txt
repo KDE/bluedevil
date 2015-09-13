@@ -1,14 +1,8 @@
-add_subdirectory(daemon)
-
 set(kio_obexftp_SRCS
     kioobexftp.cpp
     transferfilejob.cpp
     debug_p.cpp
    )
-
-set(kded_bluedevil.xml ${CMAKE_SOURCE_DIR}/src/interfaces/kded_bluedevil.xml)
-set_source_files_properties(${kded_bluedevil.xml} PROPERTIES INCLUDE ${CMAKE_SOURCE_DIR}/src/interfaces/kded_bluedevil_types.h)
-qt5_add_dbus_interface(kio_obexftp_SRCS ${kded_bluedevil.xml} kdedbluedevil)
 
 set(kded_obexftp.xml ${CMAKE_SOURCE_DIR}/src/interfaces/kded_obexftp.xml)
 qt5_add_dbus_interface(kio_obexftp_SRCS ${kded_obexftp.xml} kdedobexftp)

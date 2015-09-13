@@ -1,6 +1,7 @@
 /*************************************************************************************
  *  Copyright (C) 2010-2012 by Alejandro Fiestas Olivares <afiestas@kde.org>         *
  *  Copyright (C) 2010 UFO Coders <info@ufocoders.com>                               *
+ *  Copyright (C) 2014-2015 David Rosca <nowrep@gmail.com>                           *
  *                                                                                   *
  *  This program is free software; you can redistribute it and/or                    *
  *  modify it under the terms of the GNU General Public License                      *
@@ -19,7 +20,6 @@
 
 #include "kioobexftp.h"
 #include "kdedobexftp.h"
-#include "kdedbluedevil.h"
 #include "version.h"
 #include "transferfilejob.h"
 #include "debug_p.h"
@@ -78,18 +78,16 @@ KioFtp::KioFtp(const QByteArray &pool, const QByteArray &app)
     : SlaveBase(QByteArrayLiteral("obexftp"), pool, app)
     , m_transfer(0)
 {
-    qDBusRegisterMetaType<DeviceInfo>();
-    qDBusRegisterMetaType<QMapDeviceInfo>();
-
-    m_kded = new org::kde::ObexFtp(QStringLiteral("org.kde.kded5"), QStringLiteral("/modules/obexftpdaemon"),
-                                   QDBusConnection::sessionBus(), this);
+    m_kded = new org::kde::BlueDevil::ObexFtp(QStringLiteral("org.kde.kded5"), QStringLiteral("/modules/bluedevil"),
+                                              QDBusConnection::sessionBus(), this);
 }
 
 void KioFtp::connectToHost()
 {
-    // Prefer pcsuite target on S60 devices
-    if (m_uuids.contains(QLatin1String("00005005-0000-1000-8000-0002EE000001"))) {
-        if (createSession(QStringLiteral("pcsuite"))) {
+    const QString &target = m_kded->preferredTarget(m_host);
+
+    if (target != QLatin1String("ftp")) {
+        if (createSession(target)) {
             return;
         }
         // Fallback to ftp
@@ -229,13 +227,6 @@ void KioFtp::setHost(const QString &host, quint16 port, const QString &user, con
 
     m_host = host;
     m_host = m_host.replace(QLatin1Char('-'), QLatin1Char(':')).toUpper();
-
-    org::kde::BlueDevil kded(QStringLiteral("org.kde.kded5"),
-                             QStringLiteral("/modules/bluedevil"),
-                             QDBusConnection::sessionBus());
-    const DeviceInfo &info = kded.device(m_host);
-
-    m_uuids = info.value(QStringLiteral("UUIDs"));
 
     infoMessage(i18n("Connecting to the device"));
 

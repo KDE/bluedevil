@@ -28,13 +28,16 @@
 
 class KFilePlacesModel;
 
+class BlueDevilDaemon;
+
 class DeviceMonitor : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit DeviceMonitor(BluezQt::ManagerPtr manager, QObject *parent = Q_NULLPTR);
-    ~DeviceMonitor();
+    explicit DeviceMonitor(BlueDevilDaemon *daemon);
+
+    void saveState();
 
 private Q_SLOTS:
     void bluetoothOperationalChanged(bool operational);
@@ -45,14 +48,13 @@ private Q_SLOTS:
     void login1PrepareForSleep(bool active);
 
 private:
-    void saveState();
     void restoreState();
     void restoreAdapter(BluezQt::AdapterPtr adapter);
 
     void clearPlaces();
     void updateDevicePlace(BluezQt::DevicePtr device);
 
-    BluezQt::ManagerPtr m_manager;
+    BluezQt::Manager *m_manager;
     KFilePlacesModel *m_places;
     KSharedConfig::Ptr m_config;
 };

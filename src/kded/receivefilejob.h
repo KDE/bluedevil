@@ -1,5 +1,6 @@
 /*************************************************************************************
  *  Copyright (C) 2013 by Alejandro Fiestas Fiestas <afiestas@kde.org>               *
+ *  Copyright (C) 2014-2015 David Rosca <nowrep@gmail.com>                           *
  *                                                                                   *
  *  This program is free software; you can redistribute it and/or                    *
  *  modify it under the terms of the GNU General Public License                      *
@@ -16,51 +17,56 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA   *
  *************************************************************************************/
 
-#ifndef OBEXFTPDAEMON_H
-#define OBEXFTPDAEMON_H
+#ifndef RECEIVEFILEJOB_H
+#define RECEIVEFILEJOB_H
 
-#include <QLoggingCategory>
+#include <QUrl>
+#include <QTime>
 
-#include <KDEDModule>
+#include <KJob>
 
-#include <BluezQt/Types>
+#include <BluezQt/Request>
+#include <BluezQt/ObexTransfer>
 
-namespace BluezQt
-{
-    class InitObexManagerJob;
-    class PendingCall;
-}
+class ObexAgent;
 
-class QDBusMessage;
-class QDBusObjectPath;
-class QDBusPendingCallWatcher;
-
-class Q_DECL_EXPORT ObexFtpDaemon : public KDEDModule
+class ReceiveFileJob : public KJob
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.kde.ObexFtp")
 
 public:
-    ObexFtpDaemon(QObject *parent, const QList<QVariant>&);
-    ~ObexFtpDaemon();
+    explicit ReceiveFileJob(const BluezQt::Request<QString> &req, BluezQt::ObexTransferPtr transfer, BluezQt::ObexSessionPtr session, ObexAgent *parent);
 
-    Q_SCRIPTABLE bool isOnline(const QDBusMessage &msg);
-    Q_SCRIPTABLE QString session(const QString &address, const QString &target, const QDBusMessage &msg);
-    Q_SCRIPTABLE bool cancelTransfer(const QString &transfer, const QDBusMessage &msg);
+    QString deviceAddress() const;
+
+    void start() Q_DECL_OVERRIDE;
+    bool doKill() Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
-    void initJobResult(BluezQt::InitObexManagerJob *job);
-    void createSessionFinished(BluezQt::PendingCall *call);
-    void cancelTransferFinished(QDBusPendingCallWatcher *watcher);
+    void init();
+    void showNotification();
+    void slotCancel();
+    void slotAccept();
+    void moveFinished(KJob *job);
 
-    void operationalChanged(bool operational);
-    void sessionRemoved(BluezQt::ObexSessionPtr session);
+    void statusChanged(BluezQt::ObexTransfer::Status status);
+    void transferredChanged(quint64 transferred);
 
 private:
-    struct Private;
-    Private *d;
+    QString createTempPath(const QString &fileName) const;
+
+    QTime m_time;
+    qulonglong m_speedBytes;
+    QString m_tempPath;
+    QString m_deviceName;
+    QString m_deviceAddress;
+    QUrl m_targetPath;
+
+    ObexAgent *m_agent;
+    BluezQt::ObexTransferPtr m_transfer;
+    BluezQt::ObexSessionPtr m_session;
+    BluezQt::Request<QString> m_request;
 };
 
-Q_DECLARE_LOGGING_CATEGORY(OBEXDAEMON)
+#endif // RECEIVEFILEJOB_H
 
-#endif // OBEXFTPDAEMON_H

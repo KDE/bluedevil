@@ -3,9 +3,9 @@ set(kded_bluedevil_SRCS
     devicemonitor.cpp
     bluezagent.cpp
     debug_p.cpp
-    filereceiver/obexagent.cpp
-    filereceiver/filereceiver.cpp
-    filereceiver/receivefilejob.cpp
+    obexftp.cpp
+    obexagent.cpp
+    receivefilejob.cpp
     helpers/requestauthorization.cpp
     helpers/requestconfirmation.cpp
     helpers/requestpin.cpp

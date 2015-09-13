@@ -3,6 +3,7 @@
  *                                                                         *
  *   Copyright (C) 2010 Alejandro Fiestas Olivares <alex@ufocoders.com>    *
  *   Copyright (C) 2010 UFO Coders <info@ufocoders.com>                    *
+ *   Copyright (C) 2014-2015 David Rosca <nowrep@gmail.com>                *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -69,9 +70,8 @@ private:
 private:
     QMap<QString, KIO::UDSEntry> m_statMap;
     QString m_host;
-    QString m_uuids;
     QString m_sessionPath;
-    org::kde::ObexFtp *m_kded;
+    org::kde::BlueDevil::ObexFtp *m_kded;
     BluezQt::ObexFileTransfer *m_transfer;
 };
 

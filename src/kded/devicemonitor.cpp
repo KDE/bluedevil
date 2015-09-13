@@ -18,6 +18,7 @@
  ***************************************************************************/
 
 #include "devicemonitor.h"
+#include "bluedevildaemon.h"
 #include "debug_p.h"
 
 #include <KDirNotify>
@@ -29,9 +30,9 @@
 #include <BluezQt/Device>
 #include <BluezQt/Services>
 
-DeviceMonitor::DeviceMonitor(BluezQt::ManagerPtr manager, QObject *parent)
-    : QObject(parent)
-    , m_manager(manager)
+DeviceMonitor::DeviceMonitor(BlueDevilDaemon *daemon)
+    : QObject(daemon)
+    , m_manager(daemon->manager())
     , m_places(new KFilePlacesModel(this))
     , m_config(KSharedConfig::openConfig(QStringLiteral("bluedevilglobalrc")))
 {
@@ -43,9 +44,9 @@ DeviceMonitor::DeviceMonitor(BluezQt::ManagerPtr manager, QObject *parent)
         deviceAdded(device);
     }
 
-    connect(m_manager.data(), &BluezQt::Manager::adapterAdded, this, &DeviceMonitor::adapterAdded);
-    connect(m_manager.data(), &BluezQt::Manager::deviceAdded, this, &DeviceMonitor::deviceAdded);
-    connect(m_manager.data(), &BluezQt::Manager::bluetoothOperationalChanged, this, &DeviceMonitor::bluetoothOperationalChanged);
+    connect(m_manager, &BluezQt::Manager::adapterAdded, this, &DeviceMonitor::adapterAdded);
+    connect(m_manager, &BluezQt::Manager::deviceAdded, this, &DeviceMonitor::deviceAdded);
+    connect(m_manager, &BluezQt::Manager::bluetoothOperationalChanged, this, &DeviceMonitor::bluetoothOperationalChanged);
 
     // Catch suspend/resume events
     QDBusConnection::systemBus().connect(QStringLiteral("org.freedesktop.login1"),
@@ -57,11 +58,6 @@ DeviceMonitor::DeviceMonitor(BluezQt::ManagerPtr manager, QObject *parent)
                                          );
 
     restoreState();
-}
-
-DeviceMonitor::~DeviceMonitor()
-{
-    saveState();
 }
 
 void DeviceMonitor::bluetoothOperationalChanged(bool operational)

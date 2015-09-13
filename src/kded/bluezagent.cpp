@@ -27,9 +27,8 @@
 #include "helpers/requestconfirmation.h"
 #include "helpers/requestpin.h"
 
-#include <QProcess>
-#include <QDBusObjectPath>
 #include <QStandardPaths>
+#include <QDBusObjectPath>
 
 #include <BluezQt/Device>
 
@@ -40,7 +39,7 @@ BluezAgent::BluezAgent(QObject *parent)
 
 QDBusObjectPath BluezAgent::objectPath() const
 {
-    return QDBusObjectPath(QStringLiteral("/BlueDevilAgent"));
+    return QDBusObjectPath(QStringLiteral("/modules/bluedevil/Agent"));
 }
 
 static void processAuthorizationRequest(BluezQt::DevicePtr device, const BluezQt::Request<> &request, RequestAuthorization::Result result)

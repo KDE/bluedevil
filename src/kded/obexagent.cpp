@@ -1,5 +1,6 @@
 /*************************************************************************************
  *  Copyright (C) 2013 by Alejandro Fiestas Fiestas <afiestas@kde.org>               *
+ *  Copyright (C) 2014-2015 David Rosca <nowrep@gmail.com>                           *
  *                                                                                   *
  *  This program is free software; you can redistribute it and/or                    *
  *  modify it under the terms of the GNU General Public License                      *
@@ -18,17 +19,19 @@
 
 #include "obexagent.h"
 #include "receivefilejob.h"
+#include "bluedevildaemon.h"
+#include "filereceiversettings.h"
 #include "debug_p.h"
 
 #include <QDBusObjectPath>
 
-ObexAgent::ObexAgent(BluezQt::ManagerPtr manager, QObject *parent)
-    : BluezQt::ObexAgent(parent)
-    , m_manager(manager)
+ObexAgent::ObexAgent(BlueDevilDaemon *daemon)
+    : BluezQt::ObexAgent(daemon)
+    , m_manager(daemon->manager())
 {
 }
 
-BluezQt::ManagerPtr ObexAgent::manager() const
+BluezQt::Manager *ObexAgent::manager() const
 {
     return m_manager;
 }
@@ -46,12 +49,19 @@ bool ObexAgent::shouldAutoAcceptTransfer(const QString &address) const
 
 QDBusObjectPath ObexAgent::objectPath() const
 {
-    return QDBusObjectPath(QStringLiteral("/BlueDevilObexAgent"));
+    return QDBusObjectPath(QStringLiteral("/modules/bluedevil/ObexAgent"));
 }
 
 void ObexAgent::authorizePush(BluezQt::ObexTransferPtr transfer, BluezQt::ObexSessionPtr session, const BluezQt::Request<QString> &request)
 {
-    qCDebug(BLUEDAEMON) << "Agent-AuthorizePush";
+    qCDebug(BLUEDAEMON) << "ObexAgent-AuthorizePush";
+
+    FileReceiverSettings::self()->load();
+    if (!FileReceiverSettings::self()->enabled()) {
+        qCDebug(BLUEDAEMON) << "File receiver disabled, rejecting incoming file";
+        request.reject();
+        return;
+    }
 
     ReceiveFileJob *job = new ReceiveFileJob(request, transfer, session, this);
     connect(job, &ReceiveFileJob::finished, this, &ObexAgent::receiveFileJobFinished);
