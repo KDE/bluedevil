@@ -222,6 +222,6 @@ void ObexFtpDaemon::sessionRemoved(BluezQt::ObexSessionPtr session)
     d->m_sessionMap.remove(key);
 }
 
-Q_LOGGING_CATEGORY(OBEXDAEMON, "ObexFtpDaemon")
+Q_LOGGING_CATEGORY(OBEXDAEMON, "bluedevil.obexftp")
 
 #include "obexftpdaemon.moc"

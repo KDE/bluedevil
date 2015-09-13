@@ -239,6 +239,6 @@ void KioBluetooth::setHost(const QString &hostname, quint16 port, const QString 
     }
 }
 
-Q_LOGGING_CATEGORY(BLUETOOTH, "KioBluetooth")
+Q_LOGGING_CATEGORY(BLUETOOTH, "bluedevil.kio_bluetooth")
 
 #include "kiobluetooth.moc"

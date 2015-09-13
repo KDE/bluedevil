@@ -21,4 +21,4 @@
 
 #include "debug_p.h"
 
-Q_LOGGING_CATEGORY(OBEXFTP, "KioObextFtp")
+Q_LOGGING_CATEGORY(OBEXFTP, "bluedevil.kio_obexftp")

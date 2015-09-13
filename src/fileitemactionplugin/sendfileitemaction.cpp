@@ -22,7 +22,6 @@
 
 #include <QList>
 #include <QMenu>
-#include <QDebug>
 #include <QAction>
 #include <QWidget>
 #include <QVariantList>
