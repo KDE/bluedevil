@@ -21,7 +21,6 @@
  ***************************************************************************/
 
 #include "bluezagent.h"
-#include "config.h"
 #include "debug_p.h"
 #include "helpers/requestauthorization.h"
 #include "helpers/requestconfirmation.h"
