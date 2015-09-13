@@ -2,6 +2,7 @@
  *   Copyright (C) 2010 Alejandro Fiestas Olivares <alex@eyeos.org>        *
  *   Copyright (C) 2010 Eduardo Robles Elvira <edulix@gmail.com>           *
  *   Copyright (C) 2010 UFO Coders <info@ufocoders.com>                    *
+ *   Copyright (C) 2014-2015 David Rosca <nowrep@gmail.com>                *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,57 +20,30 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA            *
  ***************************************************************************/
 
-#ifndef REQUEST_PIN_H
-#define REQUEST_PIN_H
+#ifndef BLUEZAGENT_H
+#define BLUEZAGENT_H
 
-#include <QObject>
-#include <QStringList>
+#include <BluezQt/Agent>
 
-namespace Ui
-{
-    class DialogWidget;
-}
-
-class KNotification;
-
-/**
- * @short Small class which send a KNotificaton to know if the Bluetooth device is authorized or not
- * A popup KNotification is send with 3 actions, trust accept and reject.
- * Trust set the remote device as trusted (using libbluedevil remote device) and quits with 0
- * Authorize quits the app with 0 (which means authorized).
- * Deny quits the app with 1 (which means denied)
- * @internal
- */
-class RequestPin : public QObject
+class BluezAgent : public BluezQt::Agent
 {
     Q_OBJECT
 
 public:
-    /**
-     * Launch the KNotification which the respective actions, also makes the needed connection
-     * between those actions and the slots
-     */
-    explicit RequestPin();
+    explicit BluezAgent(QObject *parent);
 
-private Q_SLOTS:
-    /**
-     * Show a dialog with widgetDialog as mainWidget where the user will write the PIN code.
-     * If the user click the button 1, the app print the PIN and quits the app as success
-     * In case of button 2, the app is quit as error
-     */
-    void introducePin();
+    QDBusObjectPath objectPath() const Q_DECL_OVERRIDE;
 
-    /**
-     * If the notification is ignored or closed, then we have to quit the helper
-     */
-    void quit();
-    void checkPin(const QString &pin);
-    void dialogFinished(int result);
+    void authorizeService(BluezQt::DevicePtr device, const QString &uuid, const BluezQt::Request<> &request) Q_DECL_OVERRIDE;
+    void requestPinCode(BluezQt::DevicePtr device, const BluezQt::Request<QString> &request) Q_DECL_OVERRIDE;
+    void requestPasskey(BluezQt::DevicePtr device, const BluezQt::Request<quint32> &request) Q_DECL_OVERRIDE;
+    void requestConfirmation(BluezQt::DevicePtr device, const QString &passkey, const BluezQt::Request<> &request) Q_DECL_OVERRIDE;
+    void requestAuthorization(BluezQt::DevicePtr device, const BluezQt::Request<> &request) Q_DECL_OVERRIDE;
+    void release() Q_DECL_OVERRIDE;
 
-private:
-    Ui::DialogWidget *m_dialogWidget;
-    KNotification *m_notification;
-    QStringList m_args;
+Q_SIGNALS:
+    void agentReleased();
+
 };
 
-#endif // REQUEST_PIN_H
+#endif // BLUEZAGENT_H

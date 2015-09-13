@@ -2,6 +2,7 @@
  *   Copyright (C) 2010 Alejandro Fiestas Olivares <alex@eyeos.org>        *
  *   Copyright (C) 2010 Eduardo Robles Elvira <edulix@gmail.com>           *
  *   Copyright (C) 2010 UFO Coders <info@ufocoders.com>                    *
+ *   Copyright (C) 2014-2015 David Rosca <nowrep@gmail.com>                *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,59 +20,64 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA            *
  ***************************************************************************/
 
-#include "authorize.h"
+#include "requestauthorization.h"
+#include "debug_p.h"
 
-#include <QDebug>
-#include <QCoreApplication>
 #include <QIcon>
 
 #include <KNotification>
 #include <KLocalizedString>
 
-Authorize::Authorize()
-    : QObject()
+RequestAuthorization::RequestAuthorization(BluezQt::DevicePtr device, QObject *parent)
+    : QObject(parent)
+    , m_device(device)
 {
-    const QStringList &args = QCoreApplication::arguments();
-
     KNotification *notification = new KNotification(QStringLiteral("Authorize"),
                                                     KNotification::Persistent, this);
 
-    notification->setText(i18nc(
-        "Show a notification asking to authorize or deny access to this computer from Bluetooth. The %1 is the name of the bluetooth device",
-        "%1 is requesting access to this computer", args.at(1))
-    );
+    notification->setComponentName(QStringLiteral("bluedevil"));
+    notification->setTitle(QStringLiteral("%1 (%2)").arg(m_device->name(), m_device->address()));
+    notification->setText(i18nc("Show a notification asking to authorize or deny access to this computer from Bluetooth."
+                                "The %1 is the name of the bluetooth device",
+                                "%1 is requesting access to this computer", m_device->name()));
 
     QStringList actions;
-    actions.append(i18nc("Button to trust a bluetooth remote device and authorize it to connect", "Trust and Authorize"));
+    actions.append(i18nc("Button to trust a bluetooth remote device and authorize it to connect", "Trust && Authorize"));
     actions.append(i18nc("Button to authorize a bluetooth remote device to connect", "Authorize Only"));
     actions.append(i18nc("Deny access to a remote bluetooth device", "Deny"));
 
     notification->setActions(actions);
 
-    connect(notification, &KNotification::action1Activated, this, &Authorize::trust);
-    connect(notification, &KNotification::action2Activated, this, &Authorize::authorize);
-    connect(notification, &KNotification::action3Activated, this, &Authorize::deny);
-    connect(notification, &KNotification::closed, this, &Authorize::deny);
-    connect(notification, &KNotification::ignored, this, &Authorize::deny);
+    connect(notification, &KNotification::action1Activated, this, &RequestAuthorization::authorizeAndTrust);
+    connect(notification, &KNotification::action2Activated, this, &RequestAuthorization::authorize);
+    connect(notification, &KNotification::action3Activated, this, &RequestAuthorization::deny);
+    connect(notification, &KNotification::closed, this, &RequestAuthorization::deny);
+    connect(notification, &KNotification::ignored, this, &RequestAuthorization::deny);
 
     notification->sendEvent();
 }
 
-void Authorize::authorize()
+void RequestAuthorization::authorizeAndTrust()
 {
-    qDebug() << "Accepted";
-    QCoreApplication::exit(0);
+    qCDebug(BLUEDAEMON) << "Authorization accepted and trusted:" << m_device->name() << m_device->address();
+
+    deleteLater();
+    Q_EMIT done(AcceptAndTrust);
 }
 
-void Authorize::trust()
+void RequestAuthorization::authorize()
 {
-    qDebug() << "Trusted";
-    QCoreApplication::exit(1);
+    qCDebug(BLUEDAEMON) << "Authorization accepted:" << m_device->name() << m_device->address();
+
+    deleteLater();
+    Q_EMIT done(Accept);
 }
 
-void Authorize::deny()
+void RequestAuthorization::deny()
 {
-    qDebug() << "Rejected";
-    QCoreApplication::exit(2);
+    qCDebug(BLUEDAEMON) << "Authorization denied:" << m_device->name() << m_device->address();
+
+    deleteLater();
+    Q_EMIT done(Deny);
 }
 

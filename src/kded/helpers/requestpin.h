@@ -2,6 +2,7 @@
  *   Copyright (C) 2010 Alejandro Fiestas Olivares <alex@eyeos.org>        *
  *   Copyright (C) 2010 Eduardo Robles Elvira <edulix@gmail.com>           *
  *   Copyright (C) 2010 UFO Coders <info@ufocoders.com>                    *
+ *   Copyright (C) 2014-2015 David Rosca <nowrep@gmail.com>                *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,40 +20,42 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA            *
  ***************************************************************************/
 
-#ifndef REQUEST_CONFIRMATION_H
-#define REQUEST_CONFIRMATION_H
+#ifndef REQUESTPIN_H
+#define REQUESTPIN_H
 
 #include <QObject>
 
-/**
- * @short Small class which send a KNotificaton to know if the Bluetooth device is authorized or not
- * A popup KNotification is send with 3 actions, trust accept and reject.
- * Trust set the remote device as trusted (using libbluedevil remote device) and quits with 0
- * Authorize quits the app with 0 (which means authorized).
- * Deny quits the app with 1 (which means denied)
- * @internal
- */
-class RequestConfirmation : public QObject
+#include <BluezQt/Device>
+
+namespace Ui
+{
+    class DialogWidget;
+}
+
+class KNotification;
+
+class RequestPin : public QObject
 {
     Q_OBJECT
 
 public:
-    /**
-     * Launch the KNotification which the respective actions, also makes the needed connection
-     * between those actions and the slots
-     */
-    explicit RequestConfirmation();
+    explicit RequestPin(BluezQt::DevicePtr device, bool numeric = false, QObject *parent = Q_NULLPTR);
+
+Q_SIGNALS:
+    void done(const QString &result);
 
 private Q_SLOTS:
-    /**
-     * Quits the application as success
-     */
-    void pinCorrect();
+    void introducePin();
+    void quit();
 
-    /**
-     * Quits the application as error
-     */
-    void pinWrong();
+    void checkPin(const QString &pin);
+    void dialogFinished(int result);
+
+private:
+    Ui::DialogWidget *m_dialogWidget;
+    KNotification *m_notification;
+    BluezQt::DevicePtr m_device;
+    bool m_numeric;
 };
 
-#endif // REQUEST_CONFIRMATION_H
+#endif // REQUESTPIN_H

@@ -1,7 +1,7 @@
 add_definitions(-DTRANSLATION_DOMAIN="bluedevil")
 
 add_subdirectory(sendfile)
-add_subdirectory(daemon)
+add_subdirectory(kded)
 add_subdirectory(kcmodule)
 add_subdirectory(kio)
 add_subdirectory(wizard)

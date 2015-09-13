@@ -6,9 +6,15 @@ set(kded_bluedevil_SRCS
     filereceiver/obexagent.cpp
     filereceiver/filereceiver.cpp
     filereceiver/receivefilejob.cpp
+    helpers/requestauthorization.cpp
+    helpers/requestconfirmation.cpp
+    helpers/requestpin.cpp
 )
 
-kconfig_add_kcfg_files(kded_bluedevil_SRCS ../../settings/filereceiversettings.kcfgc)
+ki18n_wrap_ui(kded_bluedevil_SRCS
+    helpers/requestpin.ui)
+
+kconfig_add_kcfg_files(kded_bluedevil_SRCS ../settings/filereceiversettings.kcfgc)
 
 add_library(kded_bluedevil MODULE ${kded_bluedevil_SRCS})
 set_target_properties(kded_bluedevil PROPERTIES OUTPUT_NAME bluedevil)
@@ -24,6 +30,7 @@ target_link_libraries(kded_bluedevil
     KF5::KIOCore
     KF5::KIOFileWidgets
     KF5::IconThemes
+    KF5::WindowSystem
     KF5::BluezQt
 )
 

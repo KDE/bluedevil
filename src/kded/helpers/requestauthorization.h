@@ -2,6 +2,7 @@
  *   Copyright (C) 2010 Alejandro Fiestas Olivares <alex@eyeos.org>        *
  *   Copyright (C) 2010 Eduardo Robles Elvira <edulix@gmail.com>           *
  *   Copyright (C) 2010 UFO Coders <info@ufocoders.com>                    *
+ *   Copyright (C) 2014-2015 David Rosca <nowrep@gmail.com>                *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,45 +20,37 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA            *
  ***************************************************************************/
 
-#ifndef AUTHORIZE_H
-#define AUTHORIZE_H
+#ifndef REQUESTAUTHORIZATION_H
+#define REQUESTAUTHORIZATION_H
 
 #include <QObject>
 
-/**
- * @short Small class which send a KNotificaton to know if the Bluetooth device is authorized or not
- * A popup KNotification is send with 3 actions, trust accept and reject.
- * Trust set the remote device as trusted (using libbluedevil remote device) and quits with 0
- * Authorize quits the app with 0 (which means authorized).
- * Deny quits the app with 1 (which means denied)
- * @internal
- */
-class Authorize : public QObject
+#include <BluezQt/Device>
+
+class RequestAuthorization : public QObject
 {
     Q_OBJECT
 
 public:
-    /**
-     * Launch the KNotification which the respective actions, also makes the needed connection
-     * between those actions and the slots
-     */
-    explicit Authorize();
+    enum Result {
+        Deny,
+        Accept,
+        AcceptAndTrust
+    };
+
+    explicit RequestAuthorization(BluezQt::DevicePtr device, QObject *parent = Q_NULLPTR);
+
+Q_SIGNALS:
+    void done(Result result);
 
 private Q_SLOTS:
-    /**
-     * 0 return value
-     */
+    void authorizeAndTrust();
     void authorize();
-
-    /**
-     * 1 return value
-     */
-    void trust();
-
-    /**
-     * 2 return value
-     */
     void deny();
+
+private:
+    BluezQt::DevicePtr m_device;
+
 };
 
-#endif // AUTHORIZE_H
+#endif // REQUESTAUTHORIZATION_H

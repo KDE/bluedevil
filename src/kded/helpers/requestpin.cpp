@@ -2,6 +2,7 @@
  *   Copyright (C) 2010 Alejandro Fiestas Olivares <alex@eyeos.org>        *
  *   Copyright (C) 2010 Eduardo Robles Elvira <edulix@gmail.com>           *
  *   Copyright (C) 2010 UFO Coders <info@ufocoders.com>                    *
+ *   Copyright (C) 2014-2015 David Rosca <nowrep@gmail.com>                *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -20,38 +21,36 @@
  ***************************************************************************/
 
 #include "requestpin.h"
-#include "ui_dialogwidget.h"
-
-#include <iostream>
+#include "ui_requestpin.h"
+#include "debug_p.h"
 
 #include <QIcon>
 #include <QDialog>
 #include <QPushButton>
-#include <QCoreApplication>
 #include <QRegularExpressionValidator>
 
 #include <KWindowSystem>
 #include <KNotification>
 #include <KLocalizedString>
 
-RequestPin::RequestPin()
-    : QObject()
+RequestPin::RequestPin(BluezQt::DevicePtr device, bool numeric, QObject *parent)
+    : QObject(parent)
     , m_dialogWidget(0)
-    , m_args(QCoreApplication::arguments())
+    , m_device(device)
+    , m_numeric(numeric)
 {
     m_notification = new KNotification(QStringLiteral("RequestPin"),
                                        KNotification::Persistent, this);
 
-    m_notification->setText(i18nc(
-        "Shown in a notification to announce that a PIN is needed to accomplish a pair action, %1 is the name of the bluetooth device",
-        "PIN needed to pair with %1", m_args.at(1))
-    );
+    m_notification->setComponentName(QStringLiteral("bluedevil"));
+    m_notification->setTitle(QStringLiteral("%1 (%2)").arg(m_device->name(), m_device->address()));
+    m_notification->setText(i18nc("Shown in a notification to announce that a PIN is needed to accomplish a pair action,"
+                                  "%1 is the name of the bluetooth device",
+                                   "PIN needed to pair with %1", m_device->name()));
 
     QStringList actions;
-    actions.append(i18nc(
-        "Notification button which once clicked, a dialog to introduce the PIN will be shown",
-        "Introduce PIN")
-    );
+    actions.append(i18nc("Notification button which once clicked, a dialog to introduce the PIN will be shown",
+                         "Introduce PIN"));
 
     m_notification->setActions(actions);
 
@@ -72,23 +71,19 @@ void RequestPin::introducePin()
     dialog->setAttribute(Qt::WA_DeleteOnClose);
     dialog->setWindowIcon(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")));
 
-    dialog->setWindowTitle(i18nc(
-        "Shown in the caption of a dialog where the user introduce the PIN",
-        "Introduce PIN"
-    ));
+    dialog->setWindowTitle(i18nc("Shown in the caption of a dialog where the user introduce the PIN",
+                                 "Introduce PIN"));
 
     m_dialogWidget = new Ui::DialogWidget;
     m_dialogWidget->setupUi(dialog);
-    m_dialogWidget->descLabel->setText(i18nc(
-        "Shown in a dialog which asks to introduce a PIN that will be used to pair a Bluetooth device, %1 is the name of the Bluetooth device",
-        "In order to pair this computer with %1, you have to enter a PIN. Please do it below.",
-        m_args.at(1))
-    );
+    m_dialogWidget->descLabel->setText(i18nc("Shown in a dialog which asks to introduce a PIN that will be used to pair a Bluetooth device,"
+                                             "%1 is the name of the Bluetooth device",
+                                             "In order to pair this computer with %1, you have to enter a PIN. Please do it below.", m_device->name()));
 
     m_dialogWidget->pixmap->setPixmap(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")).pixmap(64));
     m_dialogWidget->pin->setFocus(Qt::ActiveWindowFocusReason);
 
-    if (m_args.count() > 2 && m_args.at(2) == QLatin1String("numeric")) {
+    if (m_numeric) {
         QRegularExpression rx(QStringLiteral("[0-9]{1,6}"));
         m_dialogWidget->pin->setValidator(new QRegularExpressionValidator(rx, this));
     } else {
@@ -117,18 +112,22 @@ void RequestPin::checkPin(const QString &pin)
 
 void RequestPin::dialogFinished(int result)
 {
+    deleteLater();
+
     if (!result) {
-        QCoreApplication::exit(1);
+        qCDebug(BLUEDAEMON) << "PIN dialog rejected:" << m_device->name() << m_device->address();
+        Q_EMIT done(QString());
         return;
     }
 
-    std::cout << m_dialogWidget->pin->text().toLatin1().constData();
-    std::flush(std::cout);
-
-    QCoreApplication::exit(0);
+    qCDebug(BLUEDAEMON) << "PIN dialog accepted:" << m_device->name() << m_device->address();
+    Q_EMIT done(m_dialogWidget->pin->text().toLatin1().constData());
 }
 
 void RequestPin::quit()
 {
-    QCoreApplication::exit(1);
+    qCDebug(BLUEDAEMON) << "Rejected to introduce PIN:" << m_device->name() << m_device->address();
+
+    deleteLater();
+    Q_EMIT done(QString());
 }
