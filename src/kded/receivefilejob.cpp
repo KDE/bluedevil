@@ -226,7 +226,12 @@ void ReceiveFileJob::statusChanged(BluezQt::ObexTransfer::Status status)
         qCDebug(BLUEDAEMON) << "ReceiveFileJob-Transfer Error";
         setError(KJob::UserDefinedError);
         setErrorText(i18n("Bluetooth transfer failed"));
-        emitResult();
+
+        // Delay emitResult to make sure notification is displayed even
+        // when transfer errors right after accepting it
+        QTimer::singleShot(500, this, [this]() {
+            emitResult();
+        });
         break;
 
     default:
