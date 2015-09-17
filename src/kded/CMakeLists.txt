@@ -16,10 +16,8 @@ ki18n_wrap_ui(kded_bluedevil_SRCS
 
 kconfig_add_kcfg_files(kded_bluedevil_SRCS ../settings/filereceiversettings.kcfgc)
 
-add_library(kded_bluedevil MODULE ${kded_bluedevil_SRCS})
+kcoreaddons_add_plugin(kded_bluedevil INSTALL_NAMESPACE "kf5/kded" JSON bluedevil.json SOURCES ${kded_bluedevil_SRCS})
 set_target_properties(kded_bluedevil PROPERTIES OUTPUT_NAME bluedevil)
-
-kcoreaddons_desktop_to_json(kded_bluedevil bluedevil.desktop)
 
 target_link_libraries(kded_bluedevil
     Qt5::Gui
@@ -33,5 +31,3 @@ target_link_libraries(kded_bluedevil
     KF5::WindowSystem
     KF5::BluezQt
 )
-
-install(TARGETS kded_bluedevil DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf5/kded)

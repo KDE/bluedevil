@@ -35,7 +35,7 @@
 #include <BluezQt/Services>
 
 K_PLUGIN_FACTORY_WITH_JSON(SendFileItemActionFactory,
-                           "bluedevilsendfile.json",
+                           "bluedevilfileitemaction.json",
                            registerPlugin<SendFileItemAction>();)
 
 SendFileItemAction::SendFileItemAction(QObject *parent, const QVariantList&)

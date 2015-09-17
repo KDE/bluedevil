@@ -27,13 +27,9 @@ kconfig_add_kcfg_files(kcm_bluedevildevices_PART_SRCS ../settings/globalsettings
 
 kconfig_add_kcfg_files(kcm_bluedeviladapters_PART_SRCS ../settings/globalsettings.kcfgc)
 
-add_library(kcm_bluedevildevices MODULE ${kcm_bluedevildevices_PART_SRCS})
-add_library(kcm_bluedeviladapters MODULE ${kcm_bluedeviladapters_PART_SRCS})
-add_library(kcm_bluedevilglobal MODULE ${kcm_bluedevilglobal_PART_SRCS} ${kcm_bluedevilglobal_PART_SRCS_UI})
-
-kcoreaddons_desktop_to_json(kcm_bluedevildevices bluedevildevices.desktop)
-kcoreaddons_desktop_to_json(kcm_bluedeviladapters bluedeviladapters.desktop)
-kcoreaddons_desktop_to_json(kcm_bluedevilglobal bluedevilglobal.desktop)
+kcoreaddons_add_plugin(kcm_bluedevildevices INSTALL_NAMESPACE "." JSON bluedevildevices.json SOURCES ${kcm_bluedevildevices_PART_SRCS})
+kcoreaddons_add_plugin(kcm_bluedeviladapters INSTALL_NAMESPACE "." JSON bluedeviladapters.json SOURCES ${kcm_bluedeviladapters_PART_SRCS})
+kcoreaddons_add_plugin(kcm_bluedevilglobal INSTALL_NAMESPACE "." JSON bluedevilglobal.json SOURCES ${kcm_bluedevilglobal_PART_SRCS} ${kcm_bluedevilglobal_PART_SRCS_UI})
 
 target_link_libraries(kcm_bluedevildevices
     Qt5::Widgets
@@ -57,11 +53,3 @@ target_link_libraries(kcm_bluedevilglobal
     KF5::KIOWidgets
     KF5::ConfigWidgets
     KF5::BluezQt)
-
-install(TARGETS kcm_bluedevildevices
-                kcm_bluedeviladapters
-                kcm_bluedevilglobal DESTINATION ${PLUGIN_INSTALL_DIR})
-
-install(FILES bluedevildevices.desktop
-              bluedeviladapters.desktop
-              bluedevilglobal.desktop DESTINATION ${SERVICES_INSTALL_DIR})
