@@ -19,11 +19,11 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#include "bluedevilglobal.h"
-#include "ui_bluedevilglobal.h"
-#include "systemcheck.h"
-#include "filereceiversettings.h"
+#include "global.h"
+#include "ui_global.h"
 #include "globalsettings.h"
+#include "filereceiversettings.h"
+#include "../common/systemcheck.h"
 
 #include <QVBoxLayout>
 
@@ -127,4 +127,4 @@ void KCMBlueDevilGlobal::enableBluetoothChanged(bool enable)
     receiveFilesChanged(m_ui->kcfg_enabled->isChecked());
 }
 
-#include "bluedevilglobal.moc"
+#include "global.moc"

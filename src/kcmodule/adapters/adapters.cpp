@@ -18,8 +18,8 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#include "bluedeviladapters.h"
-#include "systemcheck.h"
+#include "adapters.h"
+#include "../common/systemcheck.h"
 
 #include <QTimer>
 #include <QScrollArea>
@@ -373,4 +373,4 @@ void KCMBlueDevilAdapters::fillAdaptersInformation()
     m_layout->addStretch();
 }
 
-#include "bluedeviladapters.moc"
+#include "adapters.moc"

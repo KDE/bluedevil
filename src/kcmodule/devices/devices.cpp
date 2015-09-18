@@ -18,10 +18,9 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#include "bluedevildevices.h"
-#include "systemcheck.h"
-#include "globalsettings.h"
+#include "devices.h"
 #include "devicedetails.h"
+#include "../common/systemcheck.h"
 
 #include <QLabel>
 #include <QDialog>
@@ -369,4 +368,4 @@ void KCMBlueDevilDevices::generateNoDevicesMessage()
     m_noDevicesMessage->setVisible(false);
 }
 
-#include "bluedevildevices.moc"
+#include "devices.moc"
