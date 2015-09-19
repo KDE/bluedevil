@@ -1,7 +1,21 @@
 {
     "KPlugin": {
         "Description": "Handles Bluetooth events", 
+        "Description[ca]": "Gestiona els esdeveniments del Bluetooth", 
+        "Description[nl]": "Behandelt bluetooth-gebeurtenissen", 
+        "Description[pl]": "Obsługuje zdarzenia Bluetooth", 
+        "Description[pt]": "Lida com os eventos do Bluetooth", 
+        "Description[pt_BR]": "Lida com os eventos de Bluetooth", 
+        "Description[sv]": "Hanterar Blåtandhändelser", 
+        "Description[x-test]": "xxHandles Bluetooth eventsxx", 
         "Name": "Bluetooth", 
+        "Name[ca]": "Bluetooth", 
+        "Name[nl]": "Bluetooth", 
+        "Name[pl]": "Bluetooth", 
+        "Name[pt]": "Bluetooth", 
+        "Name[pt_BR]": "Bluetooth", 
+        "Name[sv]": "Blåtand", 
+        "Name[x-test]": "xxBluetoothxx", 
         "ServiceTypes": [
             "KDEDModule"
         ]
