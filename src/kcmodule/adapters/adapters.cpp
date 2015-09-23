@@ -1,6 +1,7 @@
 /*
  * Copyright (C) 2010 Rafael Fernández López <ereslibre@kde.org>
  * Copyright (C) 2010 UFO Coders <info@ufocoders.com>
+ * Copyright (C) 2014-2015 David Rosca <nowrep@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public
@@ -45,6 +46,22 @@ K_PLUGIN_FACTORY_WITH_JSON(BlueDevilFactory,
                            registerPlugin<KCMBlueDevilAdapters>();)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Returns "hciX" part from UBI "/org/bluez/hciX/dev_xx_xx_xx_xx_xx_xx"
+static QString adapterHciString(const QString &ubi)
+{
+    int startIndex = ubi.indexOf(QLatin1String("/hci")) + 1;
+    if (startIndex < 1) {
+        return QString();
+    }
+
+    int endIndex = ubi.indexOf(QLatin1Char('/'), startIndex);
+    if (endIndex == -1) {
+        return ubi.mid(startIndex);
+    }
+
+    return ubi.mid(startIndex, endIndex - startIndex);
+}
 
 AdapterSettings::AdapterSettings(BluezQt::AdapterPtr adapter, KCModule *parent)
     : QGroupBox(parent)
@@ -119,7 +136,12 @@ AdapterSettings::AdapterSettings(BluezQt::AdapterPtr adapter, KCModule *parent)
     connect(m_discoverTime, SIGNAL(valueChanged(int)), this, SLOT(slotSettingsChanged()));
     connect(m_powered, SIGNAL(stateChanged(int)), this, SLOT(slotSettingsChanged()));
 
-    setTitle(i18n("Adapter: %1 (%2)", adapter->systemName(), adapter->address()));
+    const QString &hci = adapterHciString(adapter->ubi());
+    if (!hci.isEmpty()) {
+        setTitle(QStringLiteral("%1 (%2) - %3").arg(adapter->systemName(), adapter->address(), hci));
+    } else {
+        setTitle(QStringLiteral("%1 (%2)").arg(adapter->systemName(), adapter->address()));
+    }
 }
 
 bool AdapterSettings::isModified() const
@@ -205,7 +227,13 @@ void AdapterSettings::readChanges()
     m_powered->setChecked(m_poweredOrig);
 
     m_discoverTimeLabel->setText(i18np("1 minute", "%1 minutes", m_discoverTime->value()));
-    setTitle(i18n("Adapter: %1 (%2)", m_adapter->systemName(), m_adapter->address()));
+
+    const QString &hci = adapterHciString(m_adapter->ubi());
+    if (!hci.isEmpty()) {
+        setTitle(QStringLiteral("%1 (%2) - %3").arg(m_adapter->systemName(), m_adapter->address(), hci));
+    } else {
+        setTitle(QStringLiteral("%1 (%2)").arg(m_adapter->systemName(), m_adapter->address()));
+    }
 
     blockSignals(false);
 

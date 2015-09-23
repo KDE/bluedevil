@@ -1,6 +1,7 @@
 /*
  * Copyright (C) 2010 Rafael Fernández López <ereslibre@kde.org>
  * Copyright (C) 2010 UFO Coders <info@ufocoders.com>
+ * Copyright (C) 2014-2015 David Rosca <nowrep@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public
@@ -18,8 +19,8 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef _BLUEDEVILADAPTERS_H
-#define _BLUEDEVILADAPTERS_H
+#ifndef BLUEDEVILADAPTERS_H
+#define BLUEDEVILADAPTERS_H
 
 #include <QGroupBox>
 
@@ -119,4 +120,4 @@ private:
     SystemCheck *m_systemCheck;
 };
 
-#endif
+#endif // BLUEDEVILADAPTERS_H
