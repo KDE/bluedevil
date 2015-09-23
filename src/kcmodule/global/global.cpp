@@ -24,6 +24,7 @@
 #include "globalsettings.h"
 #include "filereceiversettings.h"
 #include "../common/systemcheck.h"
+#include "version.h"
 
 #include <QVBoxLayout>
 
@@ -44,9 +45,9 @@ KCMBlueDevilGlobal::KCMBlueDevilGlobal(QWidget *parent, const QVariantList&)
     : KCModule(parent)
     , m_systemCheck(Q_NULLPTR)
 {
-    KAboutData* ab = new KAboutData(QStringLiteral("kcmbluedevilglobal"),
+    KAboutData *ab = new KAboutData(QStringLiteral("kcmbluedevilglobal"),
                                     i18n("Bluetooth Advanced Settings"),
-                                    QStringLiteral("1.0"),
+                                    BLUEDEVIL_VERSION,
                                     i18n("Bluetooth Advanced Settings Control Panel Module"),
                                     KAboutLicense::GPL,
                                     i18n("(c) 2010 Rafael Fernández López"));

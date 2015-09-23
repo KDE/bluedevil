@@ -21,6 +21,7 @@
 
 #include "adapters.h"
 #include "../common/systemcheck.h"
+#include "version.h"
 
 #include <QTimer>
 #include <QScrollArea>
@@ -264,9 +265,9 @@ KCMBlueDevilAdapters::KCMBlueDevilAdapters(QWidget *parent, const QVariantList&)
     , m_noAdaptersMessage(0)
     , m_systemCheck(0)
 {
-    KAboutData* ab = new KAboutData(QStringLiteral("kcmbluedeviladapters"),
+    KAboutData *ab = new KAboutData(QStringLiteral("kcmbluedeviladapters"),
                                     i18n("Bluetooth Adapters"),
-                                    QStringLiteral("1.0"),
+                                    BLUEDEVIL_VERSION,
                                     i18n("Bluetooth Adapters Control Panel Module"),
                                     KAboutLicense::GPL,
                                     i18n("(c) 2010 Rafael Fernández López"));

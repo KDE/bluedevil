@@ -21,6 +21,7 @@
 #include "ui_devices.h"
 #include "devicedetails.h"
 #include "../common/systemcheck.h"
+#include "version.h"
 
 #include <QLabel>
 #include <QProcess>
@@ -111,7 +112,7 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
 {
     KAboutData *ab = new KAboutData(QStringLiteral("kcmbluedevildevices"),
                                     i18n("Bluetooth Devices"),
-                                    QStringLiteral("1.0"),
+                                    BLUEDEVIL_VERSION,
                                     i18n("Bluetooth Devices Control Panel Module"),
                                     KAboutLicense::GPL,
                                     i18n("(c) 2010 Rafael Fernández López"));
