@@ -1,6 +1,5 @@
 /*
- * Copyright (C) 2010 Rafael Fernández López <ereslibre@kde.org>
- * Copyright (C) 2010 UFO Coders <info@ufocoders.com>
+ * Copyright (C) 2014-2015 David Rosca <nowrep@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public
@@ -18,35 +17,58 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef _DEVICEDETAILS_H
-#define _DEVICEDETAILS_H
+#ifndef DEVICEDETAILS_H
+#define DEVICEDETAILS_H
 
-#include <QDialog>
+#include <QWidget>
 
 #include <BluezQt/Types>
 
-class QCheckBox;
-class QLineEdit;
-class QAbstractButton;
-class QDialogButtonBox;
+#include <functional>
 
-class DeviceDetails : public QDialog
+namespace Ui {
+    class DeviceDetails;
+}
+
+class DeviceDetails : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit DeviceDetails(BluezQt::DevicePtr device, QWidget *parent = Q_NULLPTR);
+    explicit DeviceDetails(QWidget *parent = Q_NULLPTR);
+
+    void setDevice(BluezQt::DevicePtr device);
+
+    void load();
+    void save();
+
+    static QString adapterHciString(const QString &ubi);
+
+Q_SIGNALS:
+    void changed(bool state);
 
 private Q_SLOTS:
-    void buttonClicked(QAbstractButton *button);
-    void blockToggled(bool checked);
+    void connectedChanged(bool connected);
+    void remoteNameChanged(const QString &name);
+    void uuidsChanged(const QStringList &uuids);
+    void adapterNameChanged(const QString &name);
+
+    void connectClicked();
+    void sendFileClicked();
+    void setupNapClicked();
+    void setupDunClicked();
+
+    void modifiedByUser();
 
 private:
+    QString deviceType() const;
+
+    void updateActions();
+    void setupNetworkConnection(const QString &service);
+    void checkNetworkConnection(const QString &service, std::function<void(bool)> func);
+
+    Ui::DeviceDetails *m_ui;
     BluezQt::DevicePtr m_device;
-    QLineEdit *m_alias;
-    QCheckBox *m_blocked;
-    QCheckBox *m_trusted;
-    QDialogButtonBox *m_buttonBox;
 };
 
-#endif
+#endif // DEVICEDETAILS_H

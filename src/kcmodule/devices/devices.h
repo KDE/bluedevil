@@ -1,6 +1,5 @@
 /*
- * Copyright (C) 2010 Rafael Fernández López <ereslibre@kde.org>
- * Copyright (C) 2010 UFO Coders <info@ufocoders.com>
+ * Copyright (C) 2015 David Rosca <nowrep@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public
@@ -18,10 +17,12 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef _BLUEDEVILDEVICES_H
-#define _BLUEDEVILDEVICES_H
+#ifndef BLUEDEVILDEVICES_H
+#define BLUEDEVILDEVICES_H
 
 #include <kcmodule.h>
+
+#include <QSortFilterProxyModel>
 
 #include <BluezQt/Manager>
 
@@ -30,13 +31,29 @@ namespace BluezQt
     class DevicesModel;
 }
 
+namespace Ui
+{
+    class Devices;
+}
+
+class QStackedLayout;
+
 class SystemCheck;
 class DeviceDetails;
 
-class QListView;
-class QCheckBox;
-class QPushButton;
-class QItemSelection;
+class DevicesProxyModel : public QSortFilterProxyModel
+{
+    Q_OBJECT
+
+public:
+    explicit DevicesProxyModel(QObject *parent = Q_NULLPTR);
+
+    QVariant data(const QModelIndex &index, int role) const Q_DECL_OVERRIDE;
+    bool lessThan(const QModelIndex &left, const QModelIndex &right) const Q_DECL_OVERRIDE;
+
+private:
+    bool duplicateIndexAddress(const QModelIndex &idx) const;
+};
 
 class KCMBlueDevilDevices : public KCModule
 {
@@ -44,33 +61,38 @@ class KCMBlueDevilDevices : public KCModule
 
 public:
     KCMBlueDevilDevices(QWidget *parent, const QVariantList&);
+    ~KCMBlueDevilDevices();
+
+    void load() Q_DECL_OVERRIDE;
+    void save() Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
     void initJobResult(BluezQt::InitManagerJob *job);
-    void deviceSelectionChanged(const QItemSelection &selection);
-    void deviceDoubleClicked(const QModelIndex &index);
-    void detailsDevice();
+
+    void addDevice();
     void removeDevice();
-    void connectDevice();
-    void disconnectDevice();
-    void launchWizard();
+    void currentChanged();
+
+    void deviceAdded();
+    void deviceRemoved();
+    void bluetoothOperationalChanged(bool operational);
 
 private:
-    void generateNoDevicesMessage();
+    void showDeviceDetails();
+    void showConfigureMessage();
+    void showNoDevicesMessage();
 
-private:
-    QPushButton *m_detailsDevice;
-    QPushButton *m_removeDevice;
-    QPushButton *m_connectDevice;
-    QPushButton *m_disconnectDevice;
-    QPushButton *m_addDevice;
+    bool showingDeviceDetails() const;
+    BluezQt::DevicePtr currentDevice() const;
+
+    Ui::Devices *m_ui;
     BluezQt::Manager *m_manager;
     BluezQt::DevicesModel *m_devicesModel;
-    QListView *m_devices;
-    QWidget *m_noDevicesMessage;
+    DevicesProxyModel *m_proxyModel;
 
     SystemCheck *m_systemCheck;
     DeviceDetails *m_deviceDetails;
+    QStackedLayout *m_contentLayout;
 };
 
-#endif
+#endif // BLUEDEVILDEVICES_H
