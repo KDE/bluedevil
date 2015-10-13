@@ -23,6 +23,7 @@
         "Description[sv]": "Hanterar Blåtandhändelser", 
         "Description[uk]": "Обробляє події Bluetooth", 
         "Description[x-test]": "xxHandles Bluetooth eventsxx", 
+        "Description[zh_CN]": "处理蓝牙事件", 
         "Name": "Bluetooth", 
         "Name[ca]": "Bluetooth", 
         "Name[cs]": "Bluetooth", 
@@ -46,6 +47,7 @@
         "Name[sv]": "Blåtand", 
         "Name[uk]": "Bluetooth", 
         "Name[x-test]": "xxBluetoothxx", 
+        "Name[zh_CN]": "蓝牙", 
         "ServiceTypes": [
             "KDEDModule"
         ]
