@@ -200,7 +200,7 @@ Action=Popup
 [Event/RequestPin]
 Name=Request PIN
 Name[ar]=طلب رمز
-Name[ast]=Riquir PIN
+Name[ast]=Solicitar PIN
 Name[bs]=Zahtijevaj PIN
 Name[ca]=Sol·licita el PIN
 Name[cs]=Vyžádat PIN
@@ -396,7 +396,7 @@ Name[zh_CN]=连接失败
 Name[zh_TW]=連線失敗
 Comment=Connection to device failed
 Comment[ar]=فشل الاتّصال بالجهاز
-Comment[ast]=Falló la conxón al preséu
+Comment[ast]=Falló la conexón al preséu
 Comment[ca]=Ha fallat la connexió al dispositiu
 Comment[cs]=Připojení k zařízení selhalo
 Comment[de]=Die Verbindung zum Gerät ist fehlgeschlagen

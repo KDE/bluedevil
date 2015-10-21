@@ -13,6 +13,7 @@ X-KDE-Weight=100
 
 Name=Advanced Settings
 Name[ar]=إعدادات متقدّمة
+Name[ast]=Axustes avanzaos
 Name[ca]=Arranjament avançat
 Name[cs]=Pokročilá nastavení
 Name[de]=Erweiterte Einstellungen
@@ -46,6 +47,7 @@ Name[zh_CN]=高级设置
 
 Comment=Advanced Bluetooth Settings
 Comment[ar]=إعدادات بلوتوث المتقدّمة
+Comment[ast]=Axustes avanzaos de Bluetooth
 Comment[ca]=Arranjament avançat del Bluetooth
 Comment[cs]=Pokročilá nastavení Bluetooth
 Comment[de]=Erweiterte Bluetooth-Einstellungen
