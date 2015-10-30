@@ -248,13 +248,8 @@ PlasmaComponents.ListItem {
 
             // Details
             GridLayout {
-                columns: 3
+                columns: 2
                 rowSpacing: units.smallSpacing / 4
-
-                Item {
-                    width: units.iconSizes.medium
-                    Layout.rowSpan: currentDeviceDetails.length / 2
-                }
 
                 Repeater {
                     id: repeater
@@ -263,7 +258,8 @@ PlasmaComponents.ListItem {
 
                     PlasmaComponents.Label {
                         id: detailLabel
-                        Layout.alignment: index % 2 ? Qt.AlignLeft : Qt.AlignRight
+                        Layout.fillWidth: true
+                        horizontalAlignment: index % 2 ? Text.AlignLeft : Text.AlignRight
                         elide: index % 2 ? Text.ElideRight : Text.ElideNone
                         font.pointSize: theme.smallestFont.pointSize
                         opacity: 0.6
