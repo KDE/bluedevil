@@ -21,6 +21,7 @@ Notes:
     <comment xml:lang="ca">Dispositiu</comment>
     <comment xml:lang="ca@valencia">Dispositiu</comment>
     <comment xml:lang="cs">Zařízení</comment>
+    <comment xml:lang="da">Enhed</comment>
     <comment xml:lang="de">Gerät</comment>
     <comment xml:lang="en_GB">Device</comment>
     <comment xml:lang="es">Dispositivo</comment>
@@ -60,6 +61,7 @@ Notes:
     <comment xml:lang="ca">Servei</comment>
     <comment xml:lang="ca@valencia">Servei</comment>
     <comment xml:lang="cs">Služba</comment>
+    <comment xml:lang="da">Tjeneste</comment>
     <comment xml:lang="de">Dienst</comment>
     <comment xml:lang="el">Υπηρεσία</comment>
     <comment xml:lang="en_GB">Service</comment>
@@ -100,6 +102,7 @@ Notes:
     <comment xml:lang="ca">Servei</comment>
     <comment xml:lang="ca@valencia">Servei</comment>
     <comment xml:lang="cs">Služba</comment>
+    <comment xml:lang="da">Tjeneste</comment>
     <comment xml:lang="de">Dienst</comment>
     <comment xml:lang="el">Υπηρεσία</comment>
     <comment xml:lang="en_GB">Service</comment>
