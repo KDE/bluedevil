@@ -1,6 +1,7 @@
 {
     "KPlugin": {
         "Description": "Handles Bluetooth events", 
+        "Description[ast]": "Remana eventos Bluetooth", 
         "Description[ca@valencia]": "Gestiona els esdeveniments del Bluetooth", 
         "Description[ca]": "Gestiona els esdeveniments del Bluetooth", 
         "Description[cs]": "Ovládá události Bluetooth", 
@@ -28,6 +29,7 @@
         "Description[x-test]": "xxHandles Bluetooth eventsxx", 
         "Description[zh_CN]": "处理蓝牙事件", 
         "Name": "Bluetooth", 
+        "Name[ast]": "Bluetooth", 
         "Name[ca@valencia]": "Bluetooth", 
         "Name[ca]": "Bluetooth", 
         "Name[cs]": "Bluetooth", 
