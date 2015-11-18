@@ -60,7 +60,6 @@ Item {
 
         anchors {
             left: switchButtonCheckbox.right
-            verticalCenter: parent.verticalCenter
             top: switchButtonCheckbox.top
             bottom: switchButtonCheckbox.bottom
         }

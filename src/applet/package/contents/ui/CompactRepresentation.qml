@@ -25,8 +25,6 @@ import org.kde.plasma.components 2.0 as PlasmaComponents
 import "logic.js" as Logic
 
 MouseArea {
-    id: panelIconWidget
-    anchors.fill: parent
     onClicked: plasmoid.expanded = !plasmoid.expanded
 
     PlasmaCore.IconItem {

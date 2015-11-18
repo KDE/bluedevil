@@ -42,10 +42,7 @@ Item {
     Plasmoid.switchHeight: units.gridUnit * 10
 
     Plasmoid.compactRepresentation: CompactRepresentation { }
-    Plasmoid.fullRepresentation: FullRepresentation {
-        id: dialogItem
-        focus: true
-    }
+    Plasmoid.fullRepresentation: FullRepresentation { }
 
     Kio.KRun {
         id: kRun
