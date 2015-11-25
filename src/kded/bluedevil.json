@@ -5,6 +5,7 @@
         "Description[ca@valencia]": "Gestiona els esdeveniments del Bluetooth", 
         "Description[ca]": "Gestiona els esdeveniments del Bluetooth", 
         "Description[cs]": "Ovládá události Bluetooth", 
+        "Description[da]": "Håndterer Bluetooth-hændelser", 
         "Description[de]": "Verarbeitung von Bluetooth-Ereignissen", 
         "Description[en_GB]": "Handles Bluetooth events", 
         "Description[es]": "Maneja eventos de Bluetooth", 
@@ -28,6 +29,7 @@
         "Description[uk]": "Обробляє події Bluetooth", 
         "Description[x-test]": "xxHandles Bluetooth eventsxx", 
         "Description[zh_CN]": "处理蓝牙事件", 
+        "Description[zh_TW]": "處理藍牙事件", 
         "Name": "Bluetooth", 
         "Name[ast]": "Bluetooth", 
         "Name[ca@valencia]": "Bluetooth", 
@@ -57,6 +59,7 @@
         "Name[uk]": "Bluetooth", 
         "Name[x-test]": "xxBluetoothxx", 
         "Name[zh_CN]": "蓝牙", 
+        "Name[zh_TW]": "藍牙", 
         "ServiceTypes": [
             "KDEDModule"
         ]
