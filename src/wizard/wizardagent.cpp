@@ -108,7 +108,7 @@ QString WizardAgent::getPin(BluezQt::DevicePtr device)
         m_fromDatabase = true;
         if (m_pin.startsWith(QLatin1String("max:"))) {
             m_fromDatabase = false;
-            int num = m_pin.right(m_pin.length() - 4).toInt();
+            int num = m_pin.rightRef(m_pin.length() - 4).toInt();
             m_pin = QString::number(KRandom::random()).left(num);
         }
 

@@ -261,7 +261,7 @@ QString ReceiveFileJob::createTempPath(const QString &fileName) const
 {
     QString xdgCacheHome = QFile::decodeName(qgetenv("XDG_CACHE_HOME"));
     if (xdgCacheHome.isEmpty()) {
-        xdgCacheHome = QDir::homePath() + QLatin1String("/.cache");
+        xdgCacheHome = QDir::homePath() + QStringLiteral("/.cache");
     }
 
     xdgCacheHome.append(QLatin1String("/obexd/"));

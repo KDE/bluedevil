@@ -152,7 +152,7 @@ void KioBluetooth::listDevices()
     const QMapDeviceInfo &devices = m_kded->allDevices().value();
     qCDebug(BLUETOOTH) << devices.keys();
 
-    Q_FOREACH(const DeviceInfo device, devices) {
+    Q_FOREACH(const DeviceInfo &device, devices) {
         listDevice(device);
     }
 

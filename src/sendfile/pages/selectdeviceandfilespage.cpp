@@ -74,7 +74,7 @@ void SelectDeviceAndFilesPage::openFileDialog()
             QFileInfo info(file);
             fileNames.append(info.fileName());
         }
-        selectLbl->setText(i18n("Selected files: <b>%1</b>", fileNames.join(QLatin1String(", "))));
+        selectLbl->setText(i18n("Selected files: <b>%1</b>", fileNames.join(QStringLiteral(", "))));
     }
 
     m_wizard->setFiles(files);
