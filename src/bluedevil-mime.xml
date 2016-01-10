@@ -26,6 +26,7 @@ Notes:
     <comment xml:lang="el">Συσκευή</comment>
     <comment xml:lang="en_GB">Device</comment>
     <comment xml:lang="es">Dispositivo</comment>
+    <comment xml:lang="et">Seade</comment>
     <comment xml:lang="fi">Laite</comment>
     <comment xml:lang="gl">Dispositivo</comment>
     <comment xml:lang="hu">Eszköz</comment>
@@ -67,6 +68,7 @@ Notes:
     <comment xml:lang="el">Υπηρεσία</comment>
     <comment xml:lang="en_GB">Service</comment>
     <comment xml:lang="es">Servicio</comment>
+    <comment xml:lang="et">Teenus</comment>
     <comment xml:lang="fi">Palvelu</comment>
     <comment xml:lang="fr">Service</comment>
     <comment xml:lang="gl">Servizo</comment>
@@ -108,6 +110,7 @@ Notes:
     <comment xml:lang="el">Υπηρεσία</comment>
     <comment xml:lang="en_GB">Service</comment>
     <comment xml:lang="es">Servicio</comment>
+    <comment xml:lang="et">Teenus</comment>
     <comment xml:lang="fi">Palvelu</comment>
     <comment xml:lang="fr">Service</comment>
     <comment xml:lang="gl">Servizo</comment>
