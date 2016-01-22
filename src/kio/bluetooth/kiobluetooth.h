@@ -82,6 +82,11 @@ public:
      */
     QList<Service> getSupportedServices(const QStringList &uuids);
 
+     /**
+     * Called by @p Bluetooth::listDir to create a "Received Files" folder entry.
+     */
+    void listDownload();
+
     /**
      * Called by @p Bluetooth::listDir when listing root dir, bluetooth:/.
      */

@@ -22,6 +22,7 @@
 #include "kiobluetooth.h"
 #include "kdedbluedevil.h"
 #include "version.h"
+#include "filereceiversettings.h"
 
 #include <QThread>
 #include <QCoreApplication>
@@ -146,6 +147,19 @@ void KioBluetooth::listRemoteDeviceServices()
     finished();
 }
 
+void KioBluetooth::listDownload()
+{
+    KIO::UDSEntry entry;
+    entry.clear();
+    entry.insert(KIO::UDSEntry::UDS_URL, FileReceiverSettings::saveUrl().toDisplayString());
+    entry.insert(KIO::UDSEntry::UDS_NAME, i18n("Received Files"));
+    entry.insert(KIO::UDSEntry::UDS_ICON_NAME, QStringLiteral("folder-downloads"));
+    entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+    entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRUSR | S_IRGRP | S_IROTH);
+    entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, QStringLiteral("inode/directory"));
+    listEntry(entry);
+}
+
 void KioBluetooth::listDevices()
 {
     qCDebug(BLUETOOTH) << "Asking kded for devices";
@@ -198,6 +212,7 @@ void KioBluetooth::listDir(const QUrl &url)
     }
 
     if (!m_hasCurrentHost) {
+        listDownload();
         listDevices();
     } else {
         listRemoteDeviceServices();
