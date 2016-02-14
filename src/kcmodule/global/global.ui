@@ -61,7 +61,11 @@
       </widget>
      </item>
      <item row="0" column="2">
-      <widget class="KUrlRequester" name="kcfg_saveUrl"/>
+      <widget class="KUrlRequester" name="kcfg_saveUrl">
+       <property name="mode">
+        <enum>KFile::Directory | KFile::ExistingOnly</enum>
+       </property>
+      </widget>
      </item>
      <item row="0" column="3">
       <spacer name="horizontalSpacer">
