@@ -45,6 +45,7 @@ SelectFilesPage::SelectFilesPage(QWidget *parent)
 
     QVBoxLayout *layout = new QVBoxLayout(this);
     layout->addWidget(m_files);
+    layout->setContentsMargins(0, 0, 0, 0);
 }
 
 void SelectFilesPage::initializePage()
