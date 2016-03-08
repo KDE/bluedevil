@@ -14,7 +14,7 @@
    <item>
     <widget class="QCheckBox" name="kcfg_enableGlobalBluetooth">
      <property name="text">
-      <string>Enable KDE Bluetooth integration</string>
+      <string>Enable Bluetooth integration</string>
      </property>
     </widget>
    </item>
@@ -63,7 +63,7 @@
      <item row="0" column="2">
       <widget class="KUrlRequester" name="kcfg_saveUrl">
        <property name="mode">
-        <enum>KFile::Directory | KFile::ExistingOnly</enum>
+        <set>KFile::Directory | KFile::ExistingOnly</set>
        </property>
       </widget>
      </item>
@@ -139,7 +139,7 @@
  <customwidgets>
   <customwidget>
    <class>KUrlRequester</class>
-   <extends>QFrame</extends>
+   <extends>QWidget</extends>
    <header>kurlrequester.h</header>
    <container>1</container>
   </customwidget>
