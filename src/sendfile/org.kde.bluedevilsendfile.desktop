@@ -118,7 +118,6 @@ Comment[zh_CN]=BlueDevil 发送文件
 Comment[zh_TW]=BlueDevil 傳送檔案
 
 Type=Application
-MimeType=application/vnd.kde.bluedevil-sendfile;
 Exec=bluedevil-sendfile
 Icon=preferences-system-bluetooth
 Terminal=false
