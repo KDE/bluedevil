@@ -271,7 +271,7 @@ void DeviceDetails::setupNetworkConnection(const QString &service)
 
     msg << m_device->address();
     msg << service;
-    msg << QStringLiteral("%1 %2 (%3)").arg(m_device->name(), i18n("Network"), service);
+    msg << i18nc("DeviceName Network (Service)", "%1 Network (%2)", m_device->name(), service);
 
     QDBusConnection::sessionBus().asyncCall(msg);
 }
