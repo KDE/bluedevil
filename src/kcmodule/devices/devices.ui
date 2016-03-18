@@ -59,10 +59,7 @@
           <item>
            <widget class="QPushButton" name="addButton">
             <property name="toolTip">
-             <string>Add user account</string>
-            </property>
-            <property name="text">
-             <string/>
+             <string>Add device</string>
             </property>
             <property name="icon">
              <iconset theme="list-add">
@@ -76,10 +73,7 @@
              <bool>false</bool>
             </property>
             <property name="toolTip">
-             <string>Remove user account</string>
-            </property>
-            <property name="text">
-             <string/>
+             <string>Remove device</string>
             </property>
             <property name="icon">
              <iconset theme="list-remove">
