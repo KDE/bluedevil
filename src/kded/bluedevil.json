@@ -32,6 +32,7 @@
         "Description[uk]": "Обробляє події Bluetooth", 
         "Description[x-test]": "xxHandles Bluetooth eventsxx", 
         "Description[zh_CN]": "处理蓝牙事件", 
+        "Description[zh_TW]": "處理藍牙事件", 
         "Name": "Bluetooth", 
         "Name[ar]": "بلوتوث", 
         "Name[ast]": "Bluetooth", 
@@ -64,6 +65,7 @@
         "Name[uk]": "Bluetooth", 
         "Name[x-test]": "xxBluetoothxx", 
         "Name[zh_CN]": "蓝牙", 
+        "Name[zh_TW]": "藍牙", 
         "ServiceTypes": [
             "KDEDModule"
         ]
