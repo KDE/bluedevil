@@ -21,6 +21,8 @@
 #include "bluedevildaemon.h"
 #include "debug_p.h"
 
+#include <QTimer>
+
 #include <KDirNotify>
 #include <KConfigGroup>
 #include <KFilePlacesModel>
@@ -69,7 +71,10 @@ void DeviceMonitor::bluetoothOperationalChanged(bool operational)
 
 void DeviceMonitor::adapterAdded(BluezQt::AdapterPtr adapter)
 {
-    restoreAdapter(adapter);
+    // Workaround bluez-qt not registering the powered change after resume from suspend
+    QTimer::singleShot(1000, this, [this, adapter]() {
+        restoreAdapter(adapter);
+    });
 }
 
 void DeviceMonitor::deviceAdded(BluezQt::DevicePtr device)
