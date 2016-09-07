@@ -17,6 +17,7 @@ Notes:
     <sub-class-of type="inode/directory"/>
     <generic-icon name="video-display"/>
     <comment>Device</comment>
+    <comment xml:lang="ar">جهاز</comment>
     <comment xml:lang="ast">Preséu</comment>
     <comment xml:lang="ca">Dispositiu</comment>
     <comment xml:lang="ca@valencia">Dispositiu</comment>
