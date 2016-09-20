@@ -49,6 +49,7 @@ Name[tr]=Gelişmiş Ayarlar
 Name[uk]=Додаткові параметри
 Name[x-test]=xxAdvanced Settingsxx
 Name[zh_CN]=高级设置
+Name[zh_TW]=進階設定
 
 Comment=Advanced Bluetooth Settings
 Comment[ar]=إعدادات بلوتوث المتقدّمة
@@ -88,6 +89,7 @@ Comment[tr]=Gelişmiş Bluetooth Ayarları
 Comment[uk]=Додаткові параметри Bluetooth
 Comment[x-test]=xxAdvanced Bluetooth Settingsxx
 Comment[zh_CN]=高级蓝牙设置
+Comment[zh_TW]=進階藍牙設定
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
 X-KDE-Keywords[ar]=شبكة,موصوليّة,بلوتوث,موصولية
