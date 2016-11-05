@@ -241,7 +241,7 @@ QString DeviceDetails::deviceType() const
     case BluezQt::Device::Printer:
         return i18nc("This device is a Printer", "Printer");
     case BluezQt::Device::Imaging:
-        return i18nc("This device is an Imaging device", "Imaging");
+        return i18nc("This device is an Imaging device (printer, scanner, camera, display, ...)", "Imaging");
     case BluezQt::Device::Wearable:
         return i18nc("This device is a Wearable", "Wearable");
     case BluezQt::Device::Toy:
