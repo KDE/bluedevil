@@ -13,7 +13,6 @@ X-KDE-Weight=60
 
 Name=Devices
 Name[ar]=الأجهزة
-Name[ast]=Preseos
 Name[bs]=uređaji
 Name[ca]=Dispositius
 Name[ca@valencia]=Dispositius
@@ -59,7 +58,6 @@ Name[zh_TW]=裝置
 
 Comment=Bluetooth Devices
 Comment[ar]=أجهزة بلوتوث
-Comment[ast]=Preseos Bluetooth
 Comment[ca]=Dispositius Bluetooth
 Comment[ca@valencia]=Dispositius Bluetooth
 Comment[cs]=Zařízení Bluetooth
@@ -100,7 +98,6 @@ Comment[zh_TW]=藍牙裝置
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
 X-KDE-Keywords[ar]=شبكة,موصوليّة,بلوتوث,موصولية
-X-KDE-Keywords[ast]=Rede,Coneutividá,Bluetooth
 X-KDE-Keywords[bs]=Network,Connectivity,Bluetooth
 X-KDE-Keywords[ca]=Xarxa,Connectivitat,Bluetooth
 X-KDE-Keywords[ca@valencia]=Xarxa,Connectivitat,Bluetooth

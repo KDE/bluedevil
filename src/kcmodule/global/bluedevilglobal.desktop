@@ -13,7 +13,6 @@ X-KDE-Weight=100
 
 Name=Advanced Settings
 Name[ar]=إعدادات متقدّمة
-Name[ast]=Axustes avanzaos
 Name[ca]=Arranjament avançat
 Name[ca@valencia]=Arranjament avançat
 Name[cs]=Pokročilá nastavení
@@ -54,7 +53,6 @@ Name[zh_TW]=進階設定
 
 Comment=Advanced Bluetooth Settings
 Comment[ar]=إعدادات بلوتوث المتقدّمة
-Comment[ast]=Axustes avanzaos de Bluetooth
 Comment[ca]=Arranjament avançat del Bluetooth
 Comment[ca@valencia]=Arranjament avançat del Bluetooth
 Comment[cs]=Pokročilá nastavení Bluetooth
@@ -95,7 +93,6 @@ Comment[zh_TW]=進階藍牙設定
 
 X-KDE-Keywords=Network,Connectivity,Bluetooth
 X-KDE-Keywords[ar]=شبكة,موصوليّة,بلوتوث,موصولية
-X-KDE-Keywords[ast]=Rede,Coneutividá,Bluetooth
 X-KDE-Keywords[bs]=Network,Connectivity,Bluetooth
 X-KDE-Keywords[ca]=Xarxa,Connectivitat,Bluetooth
 X-KDE-Keywords[ca@valencia]=Xarxa,Connectivitat,Bluetooth
