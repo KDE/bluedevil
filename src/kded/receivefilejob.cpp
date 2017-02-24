@@ -44,6 +44,7 @@ ReceiveFileJob::ReceiveFileJob(const BluezQt::Request<QString> &req, BluezQt::Ob
     , m_transfer(transfer)
     , m_session(session)
     , m_request(req)
+    , m_accepted(false)
 {
     setCapabilities(Killable);
 }
@@ -173,12 +174,13 @@ void ReceiveFileJob::slotAccept()
     m_tempPath = createTempPath(m_transfer->name());
     qCDebug(BLUEDAEMON) << "TempPath" << m_tempPath;
 
+    m_accepted = true;
     m_request.accept(m_tempPath);
 }
 
 void ReceiveFileJob::slotCancel()
 {
-    if (m_transfer->status() == BluezQt::ObexTransfer::Queued) {
+    if (!m_accepted && m_transfer->status() == BluezQt::ObexTransfer::Queued) {
         qCDebug(BLUEDAEMON) << "Cancel Push";
         m_request.reject();
         setError(KJob::UserDefinedError);
