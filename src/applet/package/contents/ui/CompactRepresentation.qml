@@ -19,12 +19,22 @@
 */
 
 import QtQuick 2.2
+import QtQuick.Layouts 1.1
+
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PlasmaComponents
 
 import "logic.js" as Logic
 
 MouseArea {
+    readonly property bool inPanel: (plasmoid.location == PlasmaCore.Types.TopEdge
+        || plasmoid.location == PlasmaCore.Types.RightEdge
+        || plasmoid.location == PlasmaCore.Types.BottomEdge
+        || plasmoid.location == PlasmaCore.Types.LeftEdge)
+
+    Layout.maximumWidth: inPanel ? units.iconSizeHints.panel : -1
+    Layout.maximumHeight: inPanel ? units.iconSizeHints.panel : -1
+
     onClicked: plasmoid.expanded = !plasmoid.expanded
 
     PlasmaCore.IconItem {
