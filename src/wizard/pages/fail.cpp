@@ -38,7 +38,7 @@ FailPage::FailPage(BlueWizard *parent)
 {
     setupUi(this);
 
-    failIcon->setPixmap(QIcon::fromTheme(QStringLiteral("task-reject")).pixmap(48));
+    failIcon->setPixmap(QIcon::fromTheme(QStringLiteral("emblem-error")).pixmap(48));
 }
 
 void FailPage::initializePage()

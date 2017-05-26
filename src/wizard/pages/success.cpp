@@ -33,7 +33,7 @@ SuccessPage::SuccessPage(BlueWizard *parent)
 {
     setupUi(this);
 
-    successIcon->setPixmap(QIcon::fromTheme(QStringLiteral("task-complete")).pixmap(48));
+    successIcon->setPixmap(QIcon::fromTheme(QStringLiteral("emblem-success")).pixmap(48));
 }
 
 int SuccessPage::nextId() const
