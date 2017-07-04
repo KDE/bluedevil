@@ -225,7 +225,7 @@ PlasmaComponents.ListItem {
                     width: units.iconSizes.medium
                 }
 
-                MediaPlayer {
+                MediaPlayerItem {
                     id: mediaPlayer
                     Layout.fillWidth: true
                     visible: MediaPlayer
