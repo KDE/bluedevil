@@ -184,7 +184,7 @@
           <item>
            <widget class="QPushButton" name="napButton">
             <property name="text">
-             <string>Setup NAP Network</string>
+             <string>Setup NAP Network...</string>
             </property>
            </widget>
           </item>
