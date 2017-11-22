@@ -154,6 +154,7 @@ void ReceiveFileJob::showNotification()
     connect(notification, &KNotification::closed, this, &ReceiveFileJob::slotCancel);
 
     notification->setComponentName(QStringLiteral("bluedevil"));
+
     notification->sendEvent();
 }
 
@@ -163,13 +164,13 @@ void ReceiveFileJob::slotAccept()
 
     KIO::getJobTracker()->registerJob(this);
 
-    Q_EMIT description(this, i18n("Receiving file over Bluetooth"),
-                    QPair<QString, QString>(i18nc("File transfer origin", "From"), m_deviceName),
-                    QPair<QString, QString>(i18nc("File transfer destination", "To"), m_targetPath.path()));
-
     FileReceiverSettings::self()->load();
     m_targetPath = FileReceiverSettings::self()->saveUrl().adjusted(QUrl::StripTrailingSlash);
     m_targetPath.setPath(m_targetPath.path() + QLatin1Char('/') + m_transfer->name());
+
+    Q_EMIT description(this, i18n("Receiving file over Bluetooth"),
+                    QPair<QString, QString>(i18nc("File transfer origin", "From"), m_deviceName),
+                    QPair<QString, QString>(i18nc("File transfer destination", "To"), m_targetPath.toDisplayString()));
 
     m_tempPath = createTempPath(m_transfer->name());
     qCDebug(BLUEDAEMON) << "TempPath" << m_tempPath;
