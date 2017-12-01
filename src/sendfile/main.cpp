@@ -52,12 +52,15 @@ int main(int argc, char *argv[])
     KDBusService service;
 
     QCommandLineOption kioOption(QStringList() << QStringLiteral("kio") << QStringLiteral("k"));
+    kioOption.setDescription(i18n("Specify receiving device by MAC address."));
     kioOption.setValueName(QStringLiteral("bluetooth://address"));
 
     QCommandLineOption ubiOption(QStringList() << QStringLiteral("ubi") << QStringLiteral("u"));
+    ubiOption.setDescription(i18n("Specify receiving device by UBI path."));
     ubiOption.setValueName(QStringLiteral("ubi"));
 
     QCommandLineOption filesOption(QStringList() << QStringLiteral("files") << QStringLiteral("f"));
+    filesOption.setDescription(i18n("Files to be sent."));
     filesOption.setValueName(QStringLiteral("files"));
 
     QCommandLineParser parser;
