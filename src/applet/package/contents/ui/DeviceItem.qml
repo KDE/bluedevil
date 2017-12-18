@@ -24,6 +24,7 @@ import QtQuick.Layouts 1.1
 import org.kde.bluezqt 1.0 as BluezQt
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PlasmaComponents
+import org.kde.kquickcontrolsaddons 2.0 as KQuickControlsAddons
 import org.kde.plasma.private.bluetooth 1.0 as PlasmaBt
 
 PlasmaComponents.ListItem {
@@ -246,6 +247,28 @@ PlasmaComponents.ListItem {
                 visible: mediaPlayerSeparator.visible
             }
 
+            KQuickControlsAddons.Clipboard {
+                id: clipboard
+            }
+
+            PlasmaComponents.ContextMenu {
+                id: contextMenu
+                property string text
+
+                function show(item, text, x, y) {
+                    contextMenu.text = text
+                    visualParent = item
+                    open(x, y)
+                }
+
+                PlasmaComponents.MenuItem {
+                    text: i18n("Copy")
+                    icon: "edit-copy"
+                    enabled: contextMenu.text !== ""
+                    onClicked: clipboard.content = contextMenu.text
+                }
+            }
+
             // Details
             GridLayout {
                 columns: 2
@@ -265,6 +288,13 @@ PlasmaComponents.ListItem {
                         opacity: 0.6
                         text: index % 2 ? currentDeviceDetails[index] : "<b>%1</b>:".arg(currentDeviceDetails[index])
                         textFormat: index % 2 ? Text.PlainText : Text.StyledText
+
+                        MouseArea {
+                            anchors.fill: parent
+                            acceptedButtons: Qt.RightButton
+                            onPressed: contextMenu.show(this, detailLabel.text, mouse.x, mouse.y)
+                            enabled: index % 2 === 1 // only let users copy the value on the right
+                        }
                     }
                 }
             }
