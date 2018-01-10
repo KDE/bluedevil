@@ -462,7 +462,12 @@ QList<KIO::UDSEntry> KioFtp::listFolder(const QUrl &url, bool *ok)
         // Most probably the client of the kio will stat each file
         // so since we are on it, let's cache all of them.
         QUrl statUrl = url;
-        statUrl.setPath(statUrl.path() + QLatin1Char('/') + item.name());
+
+        if (statUrl.path().endsWith('/')) {
+            statUrl.setPath(statUrl.path() + item.name());
+        } else {
+            statUrl.setPath(statUrl.path() + QLatin1Char('/') + item.name());
+        }
 
         if (!m_statMap.contains(statUrl.toDisplayString())) {
             qCDebug(OBEXFTP) << "Stat:"
