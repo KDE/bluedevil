@@ -107,9 +107,6 @@ void DeviceMonitor::login1PrepareForSleep(bool active)
 
 void DeviceMonitor::saveState()
 {
-    KConfigGroup globalGroup = m_config->group("Global");
-    globalGroup.writeEntry<bool>(QStringLiteral("bluetoothBlocked"), m_manager->isBluetoothBlocked());
-
     KConfigGroup adaptersGroup = m_config->group("Adapters");
 
     Q_FOREACH (BluezQt::AdapterPtr adapter, m_manager->adapters()) {
@@ -133,9 +130,6 @@ void DeviceMonitor::saveState()
 
 void DeviceMonitor::restoreState()
 {
-    KConfigGroup globalGroup = m_config->group("Global");
-    m_manager->setBluetoothBlocked(globalGroup.readEntry<bool>(QStringLiteral("bluetoothBlocked"), false));
-
     KConfigGroup adaptersGroup = m_config->group("Adapters");
 
     Q_FOREACH (BluezQt::AdapterPtr adapter, m_manager->adapters()) {
