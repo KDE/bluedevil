@@ -20,7 +20,6 @@
 */
 
 import QtQuick 2.2
-import org.kde.kio 1.0 as Kio
 import org.kde.plasma.plasmoid 2.0
 import org.kde.bluezqt 1.0 as BluezQt
 import org.kde.plasma.core 2.0 as PlasmaCore
@@ -43,10 +42,6 @@ Item {
 
     Plasmoid.compactRepresentation: CompactRepresentation { }
     Plasmoid.fullRepresentation: FullRepresentation { }
-
-    Kio.KRun {
-        id: kRun
-    }
 
     function action_bluedevilkcm() {
         KCMShell.open(["bluedevildevices", "bluedeviladapters", "bluedevilglobal"]);
