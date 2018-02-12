@@ -24,8 +24,6 @@ import QtQuick.Layouts 1.1
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PlasmaComponents
 
-import "logic.js" as Logic
-
 MouseArea {
     readonly property bool inPanel: (plasmoid.location == PlasmaCore.Types.TopEdge
         || plasmoid.location == PlasmaCore.Types.RightEdge
@@ -40,7 +38,7 @@ MouseArea {
     PlasmaCore.IconItem {
         id: bluetoothIcon
         anchors.fill: parent
-        source: Logic.icon()
+        source: plasmoid.icon
 
         PlasmaComponents.BusyIndicator {
             id: busyIndicator
