@@ -191,7 +191,7 @@ PlasmaComponents.ListItem {
 
                     onClicked: {
                         var url = "obexftp://%1/".arg(Address.replace(/:/g, "-"));
-                        kRun.openUrl(url);
+                        Qt.openUrlExternally(url);
                     }
                 }
 
