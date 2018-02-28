@@ -24,6 +24,7 @@
 #include "ui_discover.h"
 #include "debug_p.h"
 
+#include <QAction>
 #include <QSortFilterProxyModel>
 #include <QListWidgetItem>
 #include <QListView>
