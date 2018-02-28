@@ -22,6 +22,7 @@
 #include "../wizardagent.h"
 #include "debug_p.h"
 
+#include <QAction>
 #include <QSortFilterProxyModel>
 #include <QRegularExpressionValidator>
 

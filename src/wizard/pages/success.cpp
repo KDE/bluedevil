@@ -25,6 +25,8 @@
 #include "../bluewizard.h"
 #include "debug_p.h"
 
+#include <QIcon>
+
 #include <BluezQt/Device>
 
 SuccessPage::SuccessPage(BlueWizard *parent)
