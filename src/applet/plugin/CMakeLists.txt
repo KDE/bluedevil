@@ -11,5 +11,5 @@ target_link_libraries(bluetoothplugin
     KF5::Notifications
     KF5::BluezQt)
 
-install(TARGETS bluetoothplugin DESTINATION ${QML_INSTALL_DIR}/org/kde/plasma/private/bluetooth)
-install(FILES qmldir DESTINATION ${QML_INSTALL_DIR}/org/kde/plasma/private/bluetooth)
+install(TARGETS bluetoothplugin DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/plasma/private/bluetooth)
+install(FILES qmldir DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/plasma/private/bluetooth)

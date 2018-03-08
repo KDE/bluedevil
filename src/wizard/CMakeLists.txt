@@ -31,6 +31,6 @@ target_link_libraries(bluedevil-wizard
     KF5::IconThemes
     KF5::BluezQt)
 
-install(TARGETS bluedevil-wizard ${INSTALL_TARGETS_DEFAULT_ARGS})
-install(FILES org.kde.bluedevilwizard.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
-install(FILES pin-code-database.xml DESTINATION ${DATA_INSTALL_DIR}/bluedevilwizard)
+install(TARGETS bluedevil-wizard ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+install(FILES org.kde.bluedevilwizard.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES pin-code-database.xml DESTINATION ${KDE_INSTALL_DATADIR}/bluedevilwizard)

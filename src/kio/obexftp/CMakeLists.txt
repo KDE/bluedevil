@@ -18,8 +18,8 @@ target_link_libraries(kio_obexftp
     KF5::BluezQt
 )
 
-install(TARGETS kio_obexftp DESTINATION ${PLUGIN_INSTALL_DIR})
+install(TARGETS kio_obexftp DESTINATION ${KDE_INSTALL_PLUGINDIR})
 
 ########### install files ###############
 
-install(FILES obexftp.protocol DESTINATION ${SERVICES_INSTALL_DIR})
+install(FILES obexftp.protocol DESTINATION ${KDE_INSTALL_KSERVICES5DIR})

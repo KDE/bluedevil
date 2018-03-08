@@ -15,5 +15,5 @@ target_link_libraries(bluetoothfileitemaction
 target_include_directories(bluetoothfileitemaction SYSTEM
     PUBLIC $<TARGET_PROPERTY:KF5::BluezQt,INTERFACE_INCLUDE_DIRECTORIES>)
 
-install(TARGETS bluetoothfileitemaction DESTINATION ${PLUGIN_INSTALL_DIR})
-install(FILES bluedevilfileitemaction.desktop DESTINATION ${SERVICES_INSTALL_DIR})
+install(TARGETS bluetoothfileitemaction DESTINATION ${KDE_INSTALL_PLUGINDIR})
+install(FILES bluedevilfileitemaction.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR})

@@ -22,6 +22,6 @@ target_include_directories(kio_bluetooth SYSTEM
     PUBLIC $<TARGET_PROPERTY:KF5::BluezQt,INTERFACE_INCLUDE_DIRECTORIES>)
 
 ########### install files ###############
-install(TARGETS kio_bluetooth DESTINATION ${PLUGIN_INSTALL_DIR})
-install(FILES bluetooth.protocol DESTINATION ${SERVICES_INSTALL_DIR})
-install(FILES bluetooth-network.desktop DESTINATION ${DATA_INSTALL_DIR}/remoteview)
+install(TARGETS kio_bluetooth DESTINATION ${KDE_INSTALL_PLUGINDIR})
+install(FILES bluetooth.protocol DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
+install(FILES bluetooth-network.desktop DESTINATION ${KDE_INSTALL_DATADIR}/remoteview)

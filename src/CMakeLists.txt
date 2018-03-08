@@ -8,7 +8,7 @@ add_subdirectory(wizard)
 add_subdirectory(applet)
 add_subdirectory(fileitemactionplugin)
 
-install(FILES bluedevil.notifyrc DESTINATION ${KNOTIFYRC_INSTALL_DIR})
+install(FILES bluedevil.notifyrc DESTINATION ${KDE_INSTALL_KNOTIFY5RCDIR})
 
-install(FILES bluedevil-mime.xml DESTINATION ${XDG_MIME_INSTALL_DIR})
-update_xdg_mimetypes(${XDG_MIME_INSTALL_DIR})
+install(FILES bluedevil-mime.xml DESTINATION ${KDE_INSTALL_MIMEDIR})
+update_xdg_mimetypes(${KDE_INSTALL_MIMEDIR})

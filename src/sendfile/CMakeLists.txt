@@ -33,5 +33,5 @@ target_link_libraries(bluedevil-sendfile
     KF5::BluezQt
 )
 
-install(TARGETS bluedevil-sendfile DESTINATION ${INSTALL_TARGETS_DEFAULT_ARGS})
-install(FILES org.kde.bluedevilsendfile.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
+install(TARGETS bluedevil-sendfile DESTINATION ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+install(FILES org.kde.bluedevilsendfile.desktop DESTINATION ${KDE_INSTALL_APPDIR})

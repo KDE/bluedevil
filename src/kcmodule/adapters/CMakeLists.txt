@@ -17,5 +17,5 @@ target_link_libraries(kcm_bluedeviladapters
     KF5::ConfigWidgets
     KF5::BluezQt)
 
-install(TARGETS kcm_bluedeviladapters DESTINATION ${PLUGIN_INSTALL_DIR})
-install(FILES bluedeviladapters.desktop DESTINATION ${SERVICES_INSTALL_DIR})
+install(TARGETS kcm_bluedeviladapters DESTINATION ${KDE_INSTALL_PLUGINDIR})
+install(FILES bluedeviladapters.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
