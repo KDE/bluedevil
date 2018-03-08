@@ -35,7 +35,7 @@ class DeviceDetails : public QWidget
     Q_OBJECT
 
 public:
-    explicit DeviceDetails(QWidget *parent = Q_NULLPTR);
+    explicit DeviceDetails(QWidget *parent = nullptr);
 
     void setDevice(BluezQt::DevicePtr device);
 

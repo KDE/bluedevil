@@ -106,9 +106,9 @@ bool DevicesProxyModel::duplicateIndexAddress(const QModelIndex &idx) const
 KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     : KCModule(parent)
     , m_ui(new Ui::Devices)
-    , m_devicesModel(Q_NULLPTR)
-    , m_proxyModel(Q_NULLPTR)
-    , m_systemCheck(Q_NULLPTR)
+    , m_devicesModel(nullptr)
+    , m_proxyModel(nullptr)
+    , m_systemCheck(nullptr)
 {
     KAboutData *ab = new KAboutData(QStringLiteral("kcmbluedevildevices"),
                                     i18n("Bluetooth Devices"),

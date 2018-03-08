@@ -262,8 +262,8 @@ void AdapterSettings::slotSettingsChanged()
 
 KCMBlueDevilAdapters::KCMBlueDevilAdapters(QWidget *parent, const QVariantList&)
     : KCModule(parent)
-    , m_noAdaptersMessage(0)
-    , m_systemCheck(0)
+    , m_noAdaptersMessage(nullptr)
+    , m_systemCheck(nullptr)
 {
     KAboutData *ab = new KAboutData(QStringLiteral("kcmbluedeviladapters"),
                                     i18n("Bluetooth Adapters"),

@@ -28,7 +28,7 @@ class WizardAgent : public BluezQt::Agent
     Q_OBJECT
 
 public:
-    explicit WizardAgent(QObject *parent = 0);
+    explicit WizardAgent(QObject *parent = nullptr);
 
     QString pin();
     void setPin(const QString &pin);

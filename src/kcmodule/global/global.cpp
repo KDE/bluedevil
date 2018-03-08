@@ -43,7 +43,7 @@ K_PLUGIN_FACTORY_WITH_JSON(BlueDevilFactory,
 
 KCMBlueDevilGlobal::KCMBlueDevilGlobal(QWidget *parent, const QVariantList&)
     : KCModule(parent)
-    , m_systemCheck(Q_NULLPTR)
+    , m_systemCheck(nullptr)
 {
     KAboutData *ab = new KAboutData(QStringLiteral("kcmbluedevilglobal"),
                                     i18n("Bluetooth Advanced Settings"),

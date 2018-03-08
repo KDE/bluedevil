@@ -46,7 +46,7 @@ class DevicesProxyModel : public QSortFilterProxyModel
     Q_OBJECT
 
 public:
-    explicit DevicesProxyModel(QObject *parent = Q_NULLPTR);
+    explicit DevicesProxyModel(QObject *parent = nullptr);
 
     QVariant data(const QModelIndex &index, int role) const override;
     bool lessThan(const QModelIndex &left, const QModelIndex &right) const override;

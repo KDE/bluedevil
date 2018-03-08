@@ -42,7 +42,7 @@ class SendFilesJob : public KJob
     Q_OBJECT
 
 public:
-    explicit SendFilesJob(const QStringList &files, BluezQt::DevicePtr device, const QDBusObjectPath &session, QObject *parent = Q_NULLPTR);
+    explicit SendFilesJob(const QStringList &files, BluezQt::DevicePtr device, const QDBusObjectPath &session, QObject *parent = nullptr);
 
     void start() override;
     bool doKill() override;

@@ -34,7 +34,7 @@ class FailPage : public QWizardPage, Ui::Fail
     Q_OBJECT
 
 public:
-    explicit FailPage(BlueWizard *parent = 0);
+    explicit FailPage(BlueWizard *parent = nullptr);
 
     void initializePage() override;
 

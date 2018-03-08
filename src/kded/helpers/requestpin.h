@@ -39,7 +39,7 @@ class RequestPin : public QObject
     Q_OBJECT
 
 public:
-    explicit RequestPin(BluezQt::DevicePtr device, bool numeric = false, QObject *parent = Q_NULLPTR);
+    explicit RequestPin(BluezQt::DevicePtr device, bool numeric = false, QObject *parent = nullptr);
 
 Q_SIGNALS:
     void done(const QString &result);

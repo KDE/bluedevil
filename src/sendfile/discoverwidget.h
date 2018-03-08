@@ -38,7 +38,7 @@ class DiscoverWidget : public QWidget, public Ui::Discover
     Q_OBJECT
 
 public:
-    explicit DiscoverWidget(BluezQt::Manager *manager, QWidget *parent = 0);
+    explicit DiscoverWidget(BluezQt::Manager *manager, QWidget *parent = nullptr);
 
 Q_SIGNALS:
     void deviceSelected(BluezQt::DevicePtr device);

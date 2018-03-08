@@ -35,7 +35,7 @@ class SuccessPage : public QWizardPage, Ui::Success
     Q_OBJECT
 
 public:
-    explicit SuccessPage(BlueWizard *parent = 0);
+    explicit SuccessPage(BlueWizard *parent = nullptr);
 
     int nextId() const override;
     void initializePage() override;

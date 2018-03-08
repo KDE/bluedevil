@@ -58,7 +58,7 @@ private:
 
 DevicesProxyModel::DevicesProxyModel(QObject *parent)
     : QSortFilterProxyModel(parent)
-    , m_devicesModel(0)
+    , m_devicesModel(nullptr)
 {
     setDynamicSortFilter(true);
     sort(0, Qt::DescendingOrder);
@@ -100,7 +100,7 @@ BluezQt::DevicePtr DevicesProxyModel::device(const QModelIndex &index) const
 DiscoverWidget::DiscoverWidget(BluezQt::Manager *manager, QWidget* parent)
     : QWidget(parent)
     , m_manager(manager)
-    , m_warningWidget(0)
+    , m_warningWidget(nullptr)
 {
     setupUi(this);
 
@@ -134,7 +134,7 @@ void DiscoverWidget::checkAdapters()
     }
 
     delete m_warningWidget;
-    m_warningWidget = 0;
+    m_warningWidget = nullptr;
 
     if (!error && !m_manager->isBluetoothBlocked()) {
         return;

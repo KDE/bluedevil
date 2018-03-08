@@ -32,7 +32,7 @@ class SelectFilesPage : public QWizardPage
     Q_OBJECT
 
 public:
-    explicit SelectFilesPage(QWidget *parent = 0);
+    explicit SelectFilesPage(QWidget *parent = nullptr);
 
     void initializePage() override;
     bool isComplete() const override;

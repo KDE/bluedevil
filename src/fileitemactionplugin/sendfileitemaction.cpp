@@ -122,7 +122,7 @@ void SendFileItemAction::loadMenu(QMenu *menu)
                     QAction *action = new QAction(icon, device.value(QStringLiteral("name")), this);
                     connect(action, &QAction::triggered, this, &SendFileItemAction::deviceTriggered);
                     action->setData(device.value(QStringLiteral("UBI")));
-                    menu->insertAction(0, action);
+                    menu->insertAction(nullptr, action);
                 }
             }
 

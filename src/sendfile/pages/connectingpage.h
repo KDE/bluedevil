@@ -36,7 +36,7 @@ class ConnectingPage : public QWizardPage, public Ui::Connecting
     Q_OBJECT
 
 public:
-    explicit ConnectingPage(SendFileWizard *wizard = Q_NULLPTR);
+    explicit ConnectingPage(SendFileWizard *wizard = nullptr);
 
     void initializePage() override;
     bool isComplete() const override;

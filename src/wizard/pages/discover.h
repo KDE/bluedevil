@@ -34,7 +34,7 @@ class DiscoverPage : public QWizardPage, public Ui::Discover
     Q_OBJECT
 
 public:
-    explicit DiscoverPage(BlueWizard *parent = 0);
+    explicit DiscoverPage(BlueWizard *parent = nullptr);
 
     void initializePage() override;
     bool isComplete() const override;

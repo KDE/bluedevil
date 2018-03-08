@@ -39,7 +39,7 @@ class ConnectPage : public QWizardPage, Ui::Connect
     Q_OBJECT
 
 public:
-    explicit ConnectPage(BlueWizard *parent = 0);
+    explicit ConnectPage(BlueWizard *parent = nullptr);
 
     int nextId() const override;
     void initializePage() override;

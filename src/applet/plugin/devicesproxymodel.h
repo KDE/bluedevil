@@ -34,7 +34,7 @@ public:
         DeviceFullNameRole = BluezQt::DevicesModel::LastRole + 11,
     };
 
-    explicit DevicesProxyModel(QObject *parent = Q_NULLPTR);
+    explicit DevicesProxyModel(QObject *parent = nullptr);
 
     QHash<int, QByteArray> roleNames() const override;
     QVariant data(const QModelIndex &index, int role) const override;

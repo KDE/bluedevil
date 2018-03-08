@@ -36,7 +36,7 @@ class PairingPage : public QWizardPage, Ui::Pairing
     Q_OBJECT
 
 public:
-    explicit PairingPage(BlueWizard *parent = Q_NULLPTR);
+    explicit PairingPage(BlueWizard *parent = nullptr);
 
     int nextId() const override;
     void initializePage() override;

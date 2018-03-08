@@ -76,7 +76,7 @@ static bool urlIsRoot(const QUrl &url)
 
 KioFtp::KioFtp(const QByteArray &pool, const QByteArray &app)
     : SlaveBase(QByteArrayLiteral("obexftp"), pool, app)
-    , m_transfer(0)
+    , m_transfer(nullptr)
 {
     m_kded = new org::kde::BlueDevil::ObexFtp(QStringLiteral("org.kde.kded5"), QStringLiteral("/modules/bluedevil"),
                                               QDBusConnection::sessionBus(), this);
@@ -122,7 +122,7 @@ bool KioFtp::createSession(const QString &target)
     if (reply.isError() || sessionPath.isEmpty()) {
         qCDebug(OBEXFTP) << "Create session error" << reply.error().name() << reply.error().message();
         delete m_transfer;
-        m_transfer = 0;
+        m_transfer = nullptr;
         m_sessionPath.clear();
         return false;
     }

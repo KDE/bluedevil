@@ -37,7 +37,7 @@ public:
         Accept
     };
 
-    explicit RequestConfirmation(BluezQt::DevicePtr device, const QString &pin, QObject *parent = Q_NULLPTR);
+    explicit RequestConfirmation(BluezQt::DevicePtr device, const QString &pin, QObject *parent = nullptr);
 
 Q_SIGNALS:
     void done(Result result);

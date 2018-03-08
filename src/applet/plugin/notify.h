@@ -31,7 +31,7 @@ class Notify : public QObject
     Q_OBJECT
 
 public:
-    explicit Notify(QObject *parent = Q_NULLPTR);
+    explicit Notify(QObject *parent = nullptr);
 
 public Q_SLOTS:
     void connectionFailed(const QString &title, const QString &text);

@@ -38,7 +38,7 @@ public:
         AcceptAndTrust
     };
 
-    explicit RequestAuthorization(BluezQt::DevicePtr device, QObject *parent = Q_NULLPTR);
+    explicit RequestAuthorization(BluezQt::DevicePtr device, QObject *parent = nullptr);
 
 Q_SIGNALS:
     void done(Result result);

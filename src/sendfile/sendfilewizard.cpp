@@ -48,7 +48,7 @@ SendFileWizard::SendFileWizard(const QString &device, const QStringList &files)
     : QWizard()
     , m_deviceUrl(device)
     , m_files(files)
-    , m_job(0)
+    , m_job(nullptr)
 {
     setOption(NoCancelButton, false);
     setButton(QWizard::NextButton, new QPushButton(QIcon::fromTheme(QStringLiteral("document-export")), i18n("Send Files")));

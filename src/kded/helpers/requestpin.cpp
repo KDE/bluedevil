@@ -35,7 +35,7 @@
 
 RequestPin::RequestPin(BluezQt::DevicePtr device, bool numeric, QObject *parent)
     : QObject(parent)
-    , m_dialogWidget(0)
+    , m_dialogWidget(nullptr)
     , m_device(device)
     , m_numeric(numeric)
 {

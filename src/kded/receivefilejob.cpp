@@ -220,7 +220,7 @@ void ReceiveFileJob::statusChanged(BluezQt::ObexTransfer::Status status)
     case BluezQt::ObexTransfer::Complete: {
         qCDebug(BLUEDAEMON) << "ReceiveFileJob-Transfer Complete";
         KIO::CopyJob *job = KIO::move(QUrl::fromLocalFile(m_tempPath), m_targetPath, KIO::HideProgressInfo);
-        job->setUiDelegate(0);
+        job->setUiDelegate(nullptr);
         connect(job, &KIO::CopyJob::finished, this, &ReceiveFileJob::moveFinished);
         break;
     }

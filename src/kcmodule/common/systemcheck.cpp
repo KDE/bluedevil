@@ -39,12 +39,12 @@ SystemCheck::SystemCheck(BluezQt::Manager *manager, QWidget *parent)
     : QObject(parent)
     , m_parent(parent)
     , m_manager(manager)
-    , m_blockedError(0)
-    , m_noAdaptersError(0)
-    , m_noKdedRunningError(0)
-    , m_noUsableAdapterError(0)
-    , m_disabledNotificationsError(0)
-    , m_notDiscoverableAdapterError(0)
+    , m_blockedError(nullptr)
+    , m_noAdaptersError(nullptr)
+    , m_noKdedRunningError(nullptr)
+    , m_noUsableAdapterError(nullptr)
+    , m_disabledNotificationsError(nullptr)
+    , m_notDiscoverableAdapterError(nullptr)
 {
     m_kded = new org::kde::kded5(QStringLiteral("org.kde.kded5"), QStringLiteral("/kded"), QDBusConnection::sessionBus(), this);
 

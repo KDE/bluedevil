@@ -33,7 +33,7 @@ class FailPage : public QWizardPage, Ui::FailPage
     Q_OBJECT
 
 public:
-    explicit FailPage(SendFileWizard *parent = Q_NULLPTR);
+    explicit FailPage(SendFileWizard *parent = nullptr);
 
     void initializePage() override;
 
