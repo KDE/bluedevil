@@ -4,19 +4,21 @@ project(bluedevil)
 set(PROJECT_VERSION "5.12.80")
 set(PROJECT_VERSION_MAJOR 5)
 
+set(QT_MIN_VERSION "5.9.0")
+set(KF5_MIN_VERSION "5.42.0")
+
 configure_file(version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/version.h)
 
 find_package(ECM REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
-set(QT_MIN_VERSION "5.4.0")
 find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Core
     Widgets
     Qml
     DBus)
 
-find_package(KF5 MODULE REQUIRED COMPONENTS
+find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     CoreAddons
     WidgetsAddons
     DBusAddons
@@ -28,7 +30,7 @@ find_package(KF5 MODULE REQUIRED COMPONENTS
     KIO
     BluezQt)
 
-find_package(KDED REQUIRED)
+find_package(KDED ${KF5_MIN_VERSION} REQUIRED)
 find_package(SharedMimeInfo REQUIRED)
 
 include(KDEInstallDirs)
