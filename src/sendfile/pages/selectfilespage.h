@@ -34,8 +34,8 @@ class SelectFilesPage : public QWizardPage
 public:
     explicit SelectFilesPage(QWidget *parent = 0);
 
-    void initializePage() Q_DECL_OVERRIDE;
-    bool isComplete() const Q_DECL_OVERRIDE;
+    void initializePage() override;
+    bool isComplete() const override;
 
 private Q_SLOTS:
     void selectionChanged();

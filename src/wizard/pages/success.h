@@ -37,8 +37,8 @@ class SuccessPage : public QWizardPage, Ui::Success
 public:
     explicit SuccessPage(BlueWizard *parent = 0);
 
-    int nextId() const Q_DECL_OVERRIDE;
-    void initializePage() Q_DECL_OVERRIDE;
+    int nextId() const override;
+    void initializePage() override;
 
 private:
     BlueWizard *m_wizard;

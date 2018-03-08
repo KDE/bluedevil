@@ -40,7 +40,7 @@ class KCMBlueDevilGlobal : public KCModule
 public:
     KCMBlueDevilGlobal(QWidget *parent, const QVariantList&);
 
-    void save() Q_DECL_OVERRIDE;
+    void save() override;
 
 private Q_SLOTS:
     void initJobResult(BluezQt::InitManagerJob *job);

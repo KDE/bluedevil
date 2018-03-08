@@ -35,7 +35,7 @@ class SendFileItemAction : public KAbstractFileItemActionPlugin
 
 public:
     SendFileItemAction(QObject *parent, const QVariantList&);
-    QList<QAction*> actions(const KFileItemListProperties &fileItemInfos, QWidget *parent) Q_DECL_OVERRIDE;
+    QList<QAction*> actions(const KFileItemListProperties &fileItemInfos, QWidget *parent) override;
 
 private Q_SLOTS:
     void deviceTriggered();

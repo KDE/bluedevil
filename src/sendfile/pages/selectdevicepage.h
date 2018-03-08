@@ -38,7 +38,7 @@ class SelectDevicePage : public QWizardPage, public Ui::SelectFileDiscover
 public:
     explicit SelectDevicePage(SendFileWizard *wizard);
 
-    bool isComplete() const Q_DECL_OVERRIDE;
+    bool isComplete() const override;
 
 private Q_SLOTS:
     void deviceSelected(BluezQt::DevicePtr device);

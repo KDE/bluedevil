@@ -38,8 +38,8 @@ class PairingPage : public QWizardPage, Ui::Pairing
 public:
     explicit PairingPage(BlueWizard *parent = Q_NULLPTR);
 
-    int nextId() const Q_DECL_OVERRIDE;
-    void initializePage() Q_DECL_OVERRIDE;
+    int nextId() const override;
+    void initializePage() override;
 
 public Q_SLOTS:
     void pairingFinished(BluezQt::PendingCall *call);

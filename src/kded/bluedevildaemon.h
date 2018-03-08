@@ -40,7 +40,7 @@ class Q_DECL_EXPORT BlueDevilDaemon : public KDEDModule
 
 public:
     BlueDevilDaemon(QObject *parent, const QList<QVariant>&);
-    ~BlueDevilDaemon();
+    ~BlueDevilDaemon() override;
 
     /**
      * Returns whether the daemon is in online mode (eg. Bluez services are

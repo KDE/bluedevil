@@ -55,7 +55,7 @@ public:
      * get function shall not do much other than setting a mimetype and returning some data that
      * could be useful for the mimetype handler.
      */
-    void get(const QUrl &url) Q_DECL_OVERRIDE;
+    void get(const QUrl &url) override;
 
     /**
      * List current directory. There are two types of current directories in this kio:
@@ -65,16 +65,16 @@ public:
      * 2. Remote device directory (something like bluetoth:/00_12_34_56_6d_34). This directory lists
      *    the services provided by the given remote device.
      */
-    void listDir(const QUrl &url) Q_DECL_OVERRIDE;
+    void listDir(const QUrl &url) override;
 
-    void stat(const QUrl &url) Q_DECL_OVERRIDE;
+    void stat(const QUrl &url) override;
 
     /**
      * As at the momento we don't handle more than one level url paths, @p setHost has not much
      * difference with @p listDir
      *
      */
-    void setHost(const QString &hostname, quint16 port, const QString &user, const QString &pass) Q_DECL_OVERRIDE;
+    void setHost(const QString &hostname, quint16 port, const QString &user, const QString &pass) override;
 
     /**
      * Returns a list of supported service names corresponding to the given uuids list. If an uuid is

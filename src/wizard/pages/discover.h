@@ -36,9 +36,9 @@ class DiscoverPage : public QWizardPage, public Ui::Discover
 public:
     explicit DiscoverPage(BlueWizard *parent = 0);
 
-    void initializePage() Q_DECL_OVERRIDE;
-    bool isComplete() const Q_DECL_OVERRIDE;
-    int nextId() const Q_DECL_OVERRIDE;
+    void initializePage() override;
+    bool isComplete() const override;
+    int nextId() const override;
 
 private Q_SLOTS:
     void indexSelected(const QModelIndex &index);

@@ -34,7 +34,7 @@ class TransferFileJob : public KJob
 public:
     explicit TransferFileJob(BluezQt::ObexTransferPtr transfer, KioFtp *parent = 0);
 
-    void start() Q_DECL_OVERRIDE;
+    void start() override;
 
 private Q_SLOTS:
     void doStart();

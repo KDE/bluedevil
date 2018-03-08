@@ -39,8 +39,8 @@ public:
 
     QString deviceAddress() const;
 
-    void start() Q_DECL_OVERRIDE;
-    bool doKill() Q_DECL_OVERRIDE;
+    void start() override;
+    bool doKill() override;
 
 private Q_SLOTS:
     void init();

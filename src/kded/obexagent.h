@@ -37,8 +37,8 @@ public:
 
     bool shouldAutoAcceptTransfer(const QString &address) const;
 
-    QDBusObjectPath objectPath() const Q_DECL_OVERRIDE;
-    void authorizePush(BluezQt::ObexTransferPtr transfer, BluezQt::ObexSessionPtr session, const BluezQt::Request<QString> &request) Q_DECL_OVERRIDE;
+    QDBusObjectPath objectPath() const override;
+    void authorizePush(BluezQt::ObexTransferPtr transfer, BluezQt::ObexSessionPtr session, const BluezQt::Request<QString> &request) override;
 
 private Q_SLOTS:
     void receiveFileJobFinished(KJob *job);

@@ -51,7 +51,7 @@ private Q_SLOTS:
     void operationalChanged(bool operational);
 
 private:
-    void done(int result) Q_DECL_OVERRIDE;
+    void done(int result) override;
 
     BluezQt::Manager *m_manager;
     WizardAgent *m_agent;

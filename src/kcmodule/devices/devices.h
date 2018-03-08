@@ -48,8 +48,8 @@ class DevicesProxyModel : public QSortFilterProxyModel
 public:
     explicit DevicesProxyModel(QObject *parent = Q_NULLPTR);
 
-    QVariant data(const QModelIndex &index, int role) const Q_DECL_OVERRIDE;
-    bool lessThan(const QModelIndex &left, const QModelIndex &right) const Q_DECL_OVERRIDE;
+    QVariant data(const QModelIndex &index, int role) const override;
+    bool lessThan(const QModelIndex &left, const QModelIndex &right) const override;
 
 private:
     bool duplicateIndexAddress(const QModelIndex &idx) const;
@@ -61,10 +61,10 @@ class KCMBlueDevilDevices : public KCModule
 
 public:
     KCMBlueDevilDevices(QWidget *parent, const QVariantList&);
-    ~KCMBlueDevilDevices();
+    ~KCMBlueDevilDevices() override;
 
-    void load() Q_DECL_OVERRIDE;
-    void save() Q_DECL_OVERRIDE;
+    void load() override;
+    void save() override;
 
 private Q_SLOTS:
     void initJobResult(BluezQt::InitManagerJob *job);

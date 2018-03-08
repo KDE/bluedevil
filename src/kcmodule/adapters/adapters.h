@@ -98,9 +98,9 @@ class KCMBlueDevilAdapters : public KCModule
 public:
     KCMBlueDevilAdapters(QWidget *parent, const QVariantList&);
 
-    void load() Q_DECL_OVERRIDE;
-    void save() Q_DECL_OVERRIDE;
-    void defaults() Q_DECL_OVERRIDE;
+    void load() override;
+    void save() override;
+    void defaults() override;
 
 private Q_SLOTS:
     void initJobResult(BluezQt::InitManagerJob *job);

@@ -41,8 +41,8 @@ class ConnectPage : public QWizardPage, Ui::Connect
 public:
     explicit ConnectPage(BlueWizard *parent = 0);
 
-    int nextId() const Q_DECL_OVERRIDE;
-    void initializePage() Q_DECL_OVERRIDE;
+    int nextId() const override;
+    void initializePage() override;
 
 protected:
     QList<QWizard::WizardButton> wizardButtonsLayout() const;

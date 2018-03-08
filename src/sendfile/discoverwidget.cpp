@@ -47,8 +47,8 @@ public:
 
     void setDevicesModel(BluezQt::DevicesModel *model);
 
-    QVariant data(const QModelIndex &index, int role) const Q_DECL_OVERRIDE;
-    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const Q_DECL_OVERRIDE;
+    QVariant data(const QModelIndex &index, int role) const override;
+    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const override;
 
     BluezQt::DevicePtr device(const QModelIndex &index) const;
 

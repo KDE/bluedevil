@@ -38,8 +38,8 @@ class ConnectingPage : public QWizardPage, public Ui::Connecting
 public:
     explicit ConnectingPage(SendFileWizard *wizard = Q_NULLPTR);
 
-    void initializePage() Q_DECL_OVERRIDE;
-    bool isComplete() const Q_DECL_OVERRIDE;
+    void initializePage() override;
+    bool isComplete() const override;
 
 private Q_SLOTS:
     void initJobResult(BluezQt::InitObexManagerJob *job);

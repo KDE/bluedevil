@@ -39,14 +39,14 @@ class KioFtp : public QObject, public KIO::SlaveBase
 public:
     KioFtp(const QByteArray &pool, const QByteArray &app);
 
-    void copy(const QUrl &src, const QUrl &dest, int permissions, KIO::JobFlags flags) Q_DECL_OVERRIDE;
-    void listDir(const QUrl &url) Q_DECL_OVERRIDE;
-    void setHost(const QString &host, quint16 port, const QString &user, const QString &pass) Q_DECL_OVERRIDE;
-    void stat(const QUrl &url) Q_DECL_OVERRIDE;
-    void del(const QUrl &url, bool isfile) Q_DECL_OVERRIDE;
-    void mkdir(const QUrl &url, int permissions) Q_DECL_OVERRIDE;
-    void rename(const QUrl &src, const QUrl &dest, KIO::JobFlags flags) Q_DECL_OVERRIDE;
-    void get(const QUrl &url) Q_DECL_OVERRIDE;
+    void copy(const QUrl &src, const QUrl &dest, int permissions, KIO::JobFlags flags) override;
+    void listDir(const QUrl &url) override;
+    void setHost(const QString &host, quint16 port, const QString &user, const QString &pass) override;
+    void stat(const QUrl &url) override;
+    void del(const QUrl &url, bool isfile) override;
+    void mkdir(const QUrl &url, int permissions) override;
+    void rename(const QUrl &src, const QUrl &dest, KIO::JobFlags flags) override;
+    void get(const QUrl &url) override;
 
     bool cancelTransfer(const QString &transfer);
 

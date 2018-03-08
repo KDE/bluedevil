@@ -41,9 +41,9 @@ class SendFileWizard : public QWizard
 
 public:
     explicit SendFileWizard(const QString &device, const QStringList &files);
-    ~SendFileWizard();
+    ~SendFileWizard() override;
 
-    void done(int result) Q_DECL_OVERRIDE;
+    void done(int result) override;
 
     BluezQt::Manager *manager() const;
 

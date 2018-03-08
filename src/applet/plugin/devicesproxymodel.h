@@ -36,9 +36,9 @@ public:
 
     explicit DevicesProxyModel(QObject *parent = Q_NULLPTR);
 
-    QHash<int, QByteArray> roleNames() const Q_DECL_OVERRIDE;
-    QVariant data(const QModelIndex &index, int role) const Q_DECL_OVERRIDE;
-    bool lessThan(const QModelIndex &left, const QModelIndex &right) const Q_DECL_OVERRIDE;
+    QHash<int, QByteArray> roleNames() const override;
+    QVariant data(const QModelIndex &index, int role) const override;
+    bool lessThan(const QModelIndex &left, const QModelIndex &right) const override;
 
     Q_INVOKABLE QString adapterHciString(const QString &ubi) const;
 
