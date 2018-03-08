@@ -23,7 +23,7 @@
 #include "launchapp.h"
 #include "notify.h"
 
-#include <QtQml>
+#include <QQmlEngine>
 
 static QObject *notify_singleton(QQmlEngine *engine, QJSEngine *scriptEngine)
 {
