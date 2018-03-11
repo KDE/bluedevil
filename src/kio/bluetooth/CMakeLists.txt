@@ -16,6 +16,7 @@ target_link_libraries(kio_bluetooth
     KF5::KIOCore
     KF5::CoreAddons
     KF5::ConfigGui
+    Qt5::Network
 )
 
 target_include_directories(kio_bluetooth SYSTEM

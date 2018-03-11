@@ -16,6 +16,7 @@ target_link_libraries(kio_obexftp
     KF5::KIOCore
     KF5::CoreAddons
     KF5::BluezQt
+    Qt5::Network
 )
 
 install(TARGETS kio_obexftp DESTINATION ${KDE_INSTALL_PLUGINDIR})
