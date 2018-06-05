@@ -75,7 +75,7 @@ void SystemCheck::createWarnings(QVBoxLayout *layout)
     m_blockedError->setCloseButtonVisible(false);
     m_blockedError->setText(i18n("Bluetooth is disabled."));
 
-    QAction *fixBlocked = new QAction(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")), i18nc("Action to fix a problem", "Fix it"), m_blockedError);
+    QAction *fixBlocked = new QAction(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")), i18nc("Action to enable Bluetooth adapter", "Enable"), m_blockedError);
     connect(fixBlocked, SIGNAL(triggered(bool)), this, SLOT(fixBlockedError()));
     m_blockedError->addAction(fixBlocked);
 
@@ -86,7 +86,7 @@ void SystemCheck::createWarnings(QVBoxLayout *layout)
     m_noUsableAdapterError->setCloseButtonVisible(false);
     m_noUsableAdapterError->setText(i18n("Your Bluetooth adapter is powered off."));
 
-    QAction *fixNoUsableAdapter = new QAction(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")), i18nc("Action to fix a problem", "Fix it"), m_noUsableAdapterError);
+    QAction *fixNoUsableAdapter = new QAction(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")), i18nc("Action to turn on Bluetooth adapter", "Turn On"), m_noUsableAdapterError);
     connect(fixNoUsableAdapter, SIGNAL(triggered(bool)), this, SLOT(fixNoUsableAdapterError()));
     m_noUsableAdapterError->addAction(fixNoUsableAdapter);
 

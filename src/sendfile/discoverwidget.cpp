@@ -143,13 +143,17 @@ void DiscoverWidget::checkAdapters()
     m_warningWidget = new KMessageWidget(this);
     m_warningWidget->setMessageType(KMessageWidget::Warning);
     m_warningWidget->setCloseButtonVisible(false);
+    QString fixBluetoothButtonString;
+
     if (m_manager->isBluetoothBlocked()) {
         m_warningWidget->setText(i18n("Bluetooth is disabled."));
+        fixBluetoothButtonString = i18nc("Action to enable Bluetooth adapter", "Enable");
     } else {
         m_warningWidget->setText(i18n("Your Bluetooth adapter is powered off."));
+        fixBluetoothButtonString = i18nc("Action to turn on Bluetooth adapter", "Turn On");
     }
 
-    QAction *fixAdapters = new QAction(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")), i18nc("Action to fix a problem", "Fix it"), m_warningWidget);
+    QAction *fixAdapters = new QAction(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")), fixBluetoothButtonString, m_warningWidget);
     connect(fixAdapters, &QAction::triggered, this, &DiscoverWidget::fixAdaptersError);
     m_warningWidget->addAction(fixAdapters);
     verticalLayout->insertWidget(0, m_warningWidget);
