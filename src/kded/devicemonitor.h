@@ -54,8 +54,10 @@ private:
     void clearPlaces();
     void updateDevicePlace(BluezQt::DevicePtr device);
 
+    KFilePlacesModel *places();
+
     BluezQt::Manager *m_manager;
-    KFilePlacesModel *m_places;
+    KFilePlacesModel *m_places = nullptr;
     KSharedConfig::Ptr m_config;
 };
 

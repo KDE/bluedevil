@@ -35,7 +35,6 @@
 DeviceMonitor::DeviceMonitor(BlueDevilDaemon *daemon)
     : QObject(daemon)
     , m_manager(daemon->manager())
-    , m_places(new KFilePlacesModel(this))
     , m_config(KSharedConfig::openConfig(QStringLiteral("bluedevilglobalrc")))
 {
     Q_FOREACH (BluezQt::AdapterPtr adapter, m_manager->adapters()) {
@@ -60,6 +59,15 @@ DeviceMonitor::DeviceMonitor(BlueDevilDaemon *daemon)
                                          );
 
     restoreState();
+}
+
+KFilePlacesModel *DeviceMonitor::places()
+{
+    if (!m_places) {
+        m_places = new KFilePlacesModel(this);
+    }
+
+    return m_places;
 }
 
 void DeviceMonitor::bluetoothOperationalChanged(bool operational)
@@ -158,10 +166,10 @@ void DeviceMonitor::restoreAdapter(BluezQt::AdapterPtr adapter)
 
 void DeviceMonitor::clearPlaces()
 {
-    for (int i = 0; i < m_places->rowCount(); ++i) {
-        const QModelIndex &index = m_places->index(i, 0);
-        if (m_places->url(index).scheme() == QLatin1String("obexftp")) {
-            m_places->removePlace(index);
+    for (int i = 0; i < places()->rowCount(); ++i) {
+        const QModelIndex &index = places()->index(i, 0);
+        if (places()->url(index).scheme() == QLatin1String("obexftp")) {
+            places()->removePlace(index);
             i--;
         }
     }
@@ -177,21 +185,21 @@ void DeviceMonitor::updateDevicePlace(BluezQt::DevicePtr device)
     url.setScheme(QStringLiteral("obexftp"));
     url.setHost(device->address().replace(QLatin1Char(':'), QLatin1Char('-')));
 
-    const QModelIndex &index = m_places->closestItem(url);
+    const QModelIndex &index = places()->closestItem(url);
 
     if (device->isConnected()) {
-        if (m_places->url(index) != url) {
+        if (places()->url(index) != url) {
             qCDebug(BLUEDAEMON) << "Adding place" << url;
             QString icon = device->icon();
             if (icon == QLatin1String("phone")) {
                 icon.prepend(QLatin1String("smart")); // Better breeze icon
             }
-            m_places->addPlace(device->name(), url, icon);
+            places()->addPlace(device->name(), url, icon);
         }
     } else {
-        if (m_places->url(index) == url) {
+        if (places()->url(index) == url) {
             qCDebug(BLUEDAEMON) << "Removing place" << url;
-            m_places->removePlace(index);
+            places()->removePlace(index);
         }
     }
 }
