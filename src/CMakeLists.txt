@@ -6,7 +6,6 @@ add_subdirectory(kcmodule)
 add_subdirectory(kio)
 add_subdirectory(wizard)
 add_subdirectory(applet)
-add_subdirectory(fileitemactionplugin)
 
 install(FILES bluedevil.notifyrc DESTINATION ${KDE_INSTALL_KNOTIFY5RCDIR})
 
