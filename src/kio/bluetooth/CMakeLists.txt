@@ -19,7 +19,7 @@ target_link_libraries(kio_bluetooth
     Qt5::Network
 )
 
-target_include_directories(kio_bluetooth SYSTEM
+target_include_directories(kio_bluetooth
     PUBLIC $<TARGET_PROPERTY:KF5::BluezQt,INTERFACE_INCLUDE_DIRECTORIES>)
 
 ########### install files ###############
