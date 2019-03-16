@@ -32,6 +32,8 @@
 
 int main(int argc, char *argv[])
 {
+    QApplication app(argc, argv);
+
     KAboutData aboutData(QStringLiteral("bluedevilwizard"),
                          i18n("Bluetooth Device Wizard"),
                          BLUEDEVIL_VERSION,
@@ -45,7 +47,6 @@ int main(int argc, char *argv[])
     aboutData.addAuthor(QStringLiteral("Alejandro Fiestas Olivares"), i18n("Previous Maintainer"),
                         QStringLiteral("afiestas@kde.org"), QStringLiteral("http://www.afiestas.org/"));
 
-    QApplication app(argc, argv);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps);
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")));
     app.setQuitOnLastWindowClosed(false);
