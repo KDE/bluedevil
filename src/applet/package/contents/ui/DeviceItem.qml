@@ -133,7 +133,7 @@ PlasmaComponents.ListItem {
             }
 
             text: Connected ? i18n("Disconnect") : i18n("Connect")
-            opacity: !connecting && deviceItem.containsMouse ? 1 : 0
+            opacity: !connecting && (deviceItem.containsMouse || deviceItem.visibleDetails) ? 1 : 0
             visible: opacity != 0
 
             Behavior on opacity {
