@@ -53,6 +53,7 @@ RequestAuthorization::RequestAuthorization(BluezQt::DevicePtr device, QObject *p
     connect(notification, &KNotification::action3Activated, this, &RequestAuthorization::deny);
     connect(notification, &KNotification::closed, this, &RequestAuthorization::deny);
     connect(notification, &KNotification::ignored, this, &RequestAuthorization::deny);
+    connect(parent, SIGNAL(agentCanceled()), this, SLOT(deny()));
 
     notification->sendEvent();
 }

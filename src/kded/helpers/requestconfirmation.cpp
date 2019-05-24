@@ -50,6 +50,7 @@ RequestConfirmation::RequestConfirmation(BluezQt::DevicePtr device, const QStrin
     connect(notification, &KNotification::action2Activated, this, &RequestConfirmation::pinWrong);
     connect(notification, &KNotification::closed, this, &RequestConfirmation::pinWrong);
     connect(notification, &KNotification::ignored, this, &RequestConfirmation::pinWrong);
+    connect(parent, SIGNAL(agentCanceled()), this, SLOT(pinWrong()));
 
     notification->sendEvent();
 }

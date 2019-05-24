@@ -57,6 +57,7 @@ RequestPin::RequestPin(BluezQt::DevicePtr device, bool numeric, QObject *parent)
     connect(m_notification, &KNotification::action1Activated,this, &RequestPin::introducePin);
     connect(m_notification, &KNotification::closed, this, &RequestPin::quit);
     connect(m_notification, &KNotification::ignored, this, &RequestPin::quit);
+    connect(parent, SIGNAL(agentCanceled()), this, SLOT(quit()));
 
     m_notification->sendEvent();
 }

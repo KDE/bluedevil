@@ -142,3 +142,10 @@ void BluezAgent::release()
 
     Q_EMIT agentReleased();
 }
+
+void BluezAgent::cancel()
+{
+    qCDebug(BLUEDAEMON) << "AGENT-Cancel";
+
+    Q_EMIT agentCanceled();
+}

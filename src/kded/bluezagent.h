@@ -40,9 +40,11 @@ public:
     void requestConfirmation(BluezQt::DevicePtr device, const QString &passkey, const BluezQt::Request<> &request) override;
     void requestAuthorization(BluezQt::DevicePtr device, const BluezQt::Request<> &request) override;
     void release() override;
+    void cancel() override;
 
 Q_SIGNALS:
     void agentReleased();
+    void agentCanceled();
 
 };
 
