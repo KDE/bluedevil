@@ -34,7 +34,6 @@
 namespace BluezQt
 {
     class ObexObjectPush;
-    class InitObexManagerJob;
 }
 
 class SendFilesJob : public KJob
