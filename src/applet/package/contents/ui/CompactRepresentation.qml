@@ -35,10 +35,13 @@ MouseArea {
 
     onClicked: plasmoid.expanded = !plasmoid.expanded
 
+    hoverEnabled: true
+
     PlasmaCore.IconItem {
         id: bluetoothIcon
         anchors.fill: parent
         source: plasmoid.icon
+        active: parent.containsMouse
 
         PlasmaComponents.BusyIndicator {
             id: busyIndicator
