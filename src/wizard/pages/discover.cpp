@@ -117,11 +117,6 @@ DiscoverPage::DiscoverPage(BlueWizard *parent)
     setupUi(this);
     setTitle(i18n("Select a device"));
 
-    KPixmapSequenceOverlayPainter *painter = new KPixmapSequenceOverlayPainter(this);
-    painter->setSequence(KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), 22));
-    painter->setWidget(working);
-    painter->start();
-
     m_model = new DevicesProxyModel(this);
     deviceView->setModel(m_model);
 

@@ -29,19 +29,7 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <widget class="QWidget" name="working" native="true">
-         <property name="minimumSize">
-          <size>
-           <width>24</width>
-           <height>24</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>24</width>
-           <height>24</height>
-          </size>
-         </property>
+        <widget class="KBusyIndicatorWidget" name="busyIndicator" native="true">
         </widget>
        </item>
        <item>
@@ -121,6 +109,13 @@
    </item>
   </layout>
  </widget>
+  <customwidgets>
+  <customwidget>
+   <class>KBusyIndicatorWidget</class>
+   <extends>QWidget</extends>
+   <header>kbusyindicatorwidget.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
