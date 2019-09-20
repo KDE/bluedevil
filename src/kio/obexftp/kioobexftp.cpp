@@ -444,7 +444,7 @@ QList<KIO::UDSEntry> KioFtp::listFolder(const QUrl &url, bool *ok)
         entry.insert(KIO::UDSEntry::UDS_NAME, item.name());
         entry.insert(KIO::UDSEntry::UDS_DISPLAY_NAME, item.label());
         entry.insert(KIO::UDSEntry::UDS_ACCESS, 0700);
-        entry.insert(KIO::UDSEntry::UDS_MODIFICATION_TIME, item.modificationTime().toTime_t());
+        entry.insert(KIO::UDSEntry::UDS_MODIFICATION_TIME, item.modificationTime().toSecsSinceEpoch());
         entry.insert(KIO::UDSEntry::UDS_SIZE, item.size());
 
         if (item.type() == BluezQt::ObexFileTransferEntry::Folder) {

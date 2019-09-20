@@ -21,7 +21,7 @@
 #define OBEXAGENT_H
 
 #include <BluezQt/ObexAgent>
-
+#include <QHash>
 class KJob;
 
 class BlueDevilDaemon;
