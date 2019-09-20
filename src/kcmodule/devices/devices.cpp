@@ -211,8 +211,11 @@ void KCMBlueDevilDevices::removeDevice()
         return;
     }
 
-    if (KMessageBox::questionYesNo(this, i18n("Are you sure that you want to remove device \"%1\" from the list of known devices?", device->friendlyName()),
-                                   i18nc("Title of window that asks for confirmation when removing a device", "Device removal")) == KMessageBox::Yes) {
+    if (KMessageBox::warningContinueCancel(this, i18n("Are you sure that you want to remove device \"%1\" from the list of known devices?", device->friendlyName()),
+                                   i18nc("Title of window that asks for confirmation when removing a device", "Device removal"),
+                                   KStandardGuiItem::remove(),
+                                   KStandardGuiItem::cancel()
+    ) == KMessageBox::Continue) {
         device->adapter()->removeDevice(device);
     }
 }
