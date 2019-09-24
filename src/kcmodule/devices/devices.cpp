@@ -134,7 +134,7 @@ KCMBlueDevilDevices::KCMBlueDevilDevices(QWidget *parent, const QVariantList&)
     m_ui->deviceDetails->setLayout(m_contentLayout);
 
     connect(m_ui->addButton, &QPushButton::clicked, this, &KCMBlueDevilDevices::addDevice);
-    connect(m_ui->removeButton, &QPushButton::clicked, this, &KCMBlueDevilDevices::removeDevice);
+    connect(m_ui->removeButton, &QPushButton::clicked, this, &KCMBlueDevilDevices::removeSelectedDevices);
 
     connect(m_deviceDetails, &DeviceDetails::changed, this, [this](bool state) {
         Q_EMIT changed(state);
@@ -187,6 +187,8 @@ void KCMBlueDevilDevices::initJobResult(BluezQt::InitManagerJob *job)
     m_proxyModel->setSourceModel(m_devicesModel);
     m_ui->deviceList->setModel(m_proxyModel);
 
+    m_ui->deviceList->setSelectionMode(QAbstractItemView::ExtendedSelection);
+
     if (m_manager->devices().isEmpty()) {
         showNoDevicesMessage();
         m_ui->deviceListWidget->hide();
@@ -196,7 +198,7 @@ void KCMBlueDevilDevices::initJobResult(BluezQt::InitManagerJob *job)
     connect(m_manager, &BluezQt::Manager::bluetoothOperationalChanged, this, &KCMBlueDevilDevices::bluetoothOperationalChanged);
     connect(m_manager, &BluezQt::Manager::deviceAdded, this, &KCMBlueDevilDevices::deviceAdded);
     connect(m_manager, &BluezQt::Manager::deviceRemoved, this, &KCMBlueDevilDevices::deviceRemoved);
-    connect(m_ui->deviceList->selectionModel(), &QItemSelectionModel::currentChanged, this, &KCMBlueDevilDevices::currentChanged);
+    connect(m_ui->deviceList->selectionModel(), &QItemSelectionModel::selectionChanged, this, &KCMBlueDevilDevices::selectionChanged);
 }
 
 void KCMBlueDevilDevices::addDevice()
@@ -204,25 +206,41 @@ void KCMBlueDevilDevices::addDevice()
     QProcess::startDetached(QStringLiteral("bluedevil-wizard"));
 }
 
-void KCMBlueDevilDevices::removeDevice()
+void KCMBlueDevilDevices::removeSelectedDevices()
 {
     BluezQt::DevicePtr device = currentDevice();
     if (!device) {
         return;
     }
 
-    if (KMessageBox::warningContinueCancel(this, i18n("Are you sure that you want to remove device \"%1\" from the list of known devices?", device->friendlyName()),
+    const QModelIndexList indexes = m_ui->deviceList->selectionModel()->selectedIndexes();
+    QString text;
+    if (multipleDevicesSelected()) {
+        text = i18n("Are you sure that you want to remove %1 devices from the list of known devices?", indexes.size());
+    } else {
+        text = i18n("Are you sure that you want to remove device \"%1\" from the list of known devices?", device->friendlyName());
+    }
+    if (KMessageBox::warningContinueCancel(this, text,
                                    i18nc("Title of window that asks for confirmation when removing a device", "Device removal"),
                                    KStandardGuiItem::remove(),
                                    KStandardGuiItem::cancel()
     ) == KMessageBox::Continue) {
-        device->adapter()->removeDevice(device);
+        for (QModelIndex index : indexes) {
+            BluezQt::DevicePtr device = m_devicesModel->device(m_proxyModel->mapToSource(index));
+            if (device) {
+                device->adapter()->removeDevice(device);
+            }
+        }
     }
 }
 
-void KCMBlueDevilDevices::currentChanged()
+void KCMBlueDevilDevices::selectionChanged()
 {
-    if (currentDevice()) {
+    if (multipleDevicesSelected()) {
+        showConfigureMessage();
+        m_ui->removeButton->setEnabled(true);
+    }
+    else if (currentDevice()) {
         showDeviceDetails();
         m_ui->removeButton->setEnabled(true);
     } else {
@@ -306,6 +324,11 @@ void KCMBlueDevilDevices::showNoDevicesMessage()
 bool KCMBlueDevilDevices::showingDeviceDetails() const
 {
     return m_contentLayout->currentWidget() == m_deviceDetails;
+}
+
+bool KCMBlueDevilDevices::multipleDevicesSelected() const
+{
+    return m_ui->deviceList->selectionModel()->selectedIndexes().size() > 1;
 }
 
 BluezQt::DevicePtr KCMBlueDevilDevices::currentDevice() const

@@ -70,8 +70,8 @@ private Q_SLOTS:
     void initJobResult(BluezQt::InitManagerJob *job);
 
     void addDevice();
-    void removeDevice();
-    void currentChanged();
+    void removeSelectedDevices();
+    void selectionChanged();
 
     void deviceAdded();
     void deviceRemoved();
@@ -83,6 +83,7 @@ private:
     void showNoDevicesMessage();
 
     bool showingDeviceDetails() const;
+    bool multipleDevicesSelected() const;
     BluezQt::DevicePtr currentDevice() const;
 
     Ui::Devices *m_ui;
