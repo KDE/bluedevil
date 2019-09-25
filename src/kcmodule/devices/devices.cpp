@@ -216,7 +216,7 @@ void KCMBlueDevilDevices::removeSelectedDevices()
     const QModelIndexList indexes = m_ui->deviceList->selectionModel()->selectedIndexes();
     QString text;
     if (multipleDevicesSelected()) {
-        text = i18n("Are you sure that you want to remove %1 devices from the list of known devices?", indexes.size());
+        text = i18np("Are you sure that you want to remove %1 device from the list of known devices?", "Are you sure that you want to remove %1 devices from the list of known devices?", indexes.size());
     } else {
         text = i18n("Are you sure that you want to remove device \"%1\" from the list of known devices?", device->friendlyName());
     }
