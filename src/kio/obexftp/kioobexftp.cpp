@@ -390,9 +390,9 @@ void KioFtp::statHelper(const QUrl &url)
     if (urlIsRoot(url)) {
         qCDebug(OBEXFTP) << "Url is root";
         KIO::UDSEntry entry;
-        entry.insert(KIO::UDSEntry::UDS_NAME, QStringLiteral("/"));
-        entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
-        entry.insert(KIO::UDSEntry::UDS_ACCESS, 0700);
+        entry.fastInsert(KIO::UDSEntry::UDS_NAME, QStringLiteral("/"));
+        entry.fastInsert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+        entry.fastInsert(KIO::UDSEntry::UDS_ACCESS, 0700);
 
         qCDebug(OBEXFTP) << "Adding stat cache" << url.toDisplayString();
         m_statMap.insert(url.toDisplayString(), entry);
@@ -441,16 +441,16 @@ QList<KIO::UDSEntry> KioFtp::listFolder(const QUrl &url, bool *ok)
         }
 
         KIO::UDSEntry entry;
-        entry.insert(KIO::UDSEntry::UDS_NAME, item.name());
-        entry.insert(KIO::UDSEntry::UDS_DISPLAY_NAME, item.label());
-        entry.insert(KIO::UDSEntry::UDS_ACCESS, 0700);
-        entry.insert(KIO::UDSEntry::UDS_MODIFICATION_TIME, item.modificationTime().toSecsSinceEpoch());
-        entry.insert(KIO::UDSEntry::UDS_SIZE, item.size());
+        entry.fastInsert(KIO::UDSEntry::UDS_NAME, item.name());
+        entry.fastInsert(KIO::UDSEntry::UDS_DISPLAY_NAME, item.label());
+        entry.fastInsert(KIO::UDSEntry::UDS_ACCESS, 0700);
+        entry.fastInsert(KIO::UDSEntry::UDS_MODIFICATION_TIME, item.modificationTime().toSecsSinceEpoch());
+        entry.fastInsert(KIO::UDSEntry::UDS_SIZE, item.size());
 
         if (item.type() == BluezQt::ObexFileTransferEntry::Folder) {
-            entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+            entry.fastInsert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
         } else if (item.type() == BluezQt::ObexFileTransferEntry::File) {
-            entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
+            entry.fastInsert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
         }
 
         if (urlIsRoot(url)) {
@@ -526,18 +526,18 @@ void KioFtp::updateRootEntryIcon(KIO::UDSEntry &entry, const QString &memoryType
     // Nokia (mount-points are C: D: E: ...)
     if (path.size() == 2 && path.at(1) == QLatin1Char(':')) {
         if (memoryType.startsWith(QLatin1String("DEV"))) {
-            entry.insert(KIO::UDSEntry::UDS_ICON_NAME, QStringLiteral("drive-removable-media"));
+            entry.fastInsert(KIO::UDSEntry::UDS_ICON_NAME, QStringLiteral("drive-removable-media"));
         } else if (memoryType == QLatin1String("MMC")) {
-            entry.insert(KIO::UDSEntry::UDS_ICON_NAME, QStringLiteral("media-flash-sd-mmc"));
+            entry.fastInsert(KIO::UDSEntry::UDS_ICON_NAME, QStringLiteral("media-flash-sd-mmc"));
         }
     }
 
     // Android
     if (entry.stringValue(KIO::UDSEntry::UDS_NAME) == QLatin1String("PHONE_MEMORY")) {
-        entry.insert(KIO::UDSEntry::UDS_DISPLAY_NAME, i18n("Phone memory"));
-        entry.insert(KIO::UDSEntry::UDS_ICON_NAME, QStringLiteral("drive-removable-media"));
+        entry.fastInsert(KIO::UDSEntry::UDS_DISPLAY_NAME, i18n("Phone memory"));
+        entry.fastInsert(KIO::UDSEntry::UDS_ICON_NAME, QStringLiteral("drive-removable-media"));
     } else if (entry.stringValue(KIO::UDSEntry::UDS_NAME) == QLatin1String("EXTERNAL_MEMORY")) {
-        entry.insert(KIO::UDSEntry::UDS_DISPLAY_NAME, i18n("External memory"));
-        entry.insert(KIO::UDSEntry::UDS_ICON_NAME, QStringLiteral("media-flash-sd-mmc"));
+        entry.fastInsert(KIO::UDSEntry::UDS_DISPLAY_NAME, i18n("External memory"));
+        entry.fastInsert(KIO::UDSEntry::UDS_ICON_NAME, QStringLiteral("media-flash-sd-mmc"));
     }
 }

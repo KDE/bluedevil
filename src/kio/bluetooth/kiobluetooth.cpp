@@ -117,26 +117,26 @@ void KioBluetooth::listRemoteDeviceServices()
 
     Q_FOREACH (const Service &service, services) {
         KIO::UDSEntry entry;
-        entry.insert(KIO::UDSEntry::UDS_NAME, service.uuid);
-        entry.insert(KIO::UDSEntry::UDS_DISPLAY_NAME, service.name);
-        entry.insert(KIO::UDSEntry::UDS_ICON_NAME, service.icon);
-        entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRUSR | S_IRGRP | S_IROTH);
+        entry.fastInsert(KIO::UDSEntry::UDS_NAME, service.uuid);
+        entry.fastInsert(KIO::UDSEntry::UDS_DISPLAY_NAME, service.name);
+        entry.fastInsert(KIO::UDSEntry::UDS_ICON_NAME, service.icon);
+        entry.fastInsert(KIO::UDSEntry::UDS_ACCESS, S_IRUSR | S_IRGRP | S_IROTH);
 
         // If it is browse files, act as a folder
         if (service.uuid == BluezQt::Services::ObexFileTransfer) {
             QUrl obexUrl;
             obexUrl.setScheme(QStringLiteral("obexftp"));
             obexUrl.setHost(m_currentHostname.replace(QLatin1Char(':'), QLatin1Char('-')).toUpper());
-            entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
-            entry.insert(KIO::UDSEntry::UDS_URL, obexUrl.toString());
+            entry.fastInsert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+            entry.fastInsert(KIO::UDSEntry::UDS_URL, obexUrl.toString());
         } else {
-            entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
+            entry.fastInsert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
         }
 
         if (service.mimetype.isEmpty()) {
-            entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, QStringLiteral("inode/vnd.kde.bluedevil.service"));
+            entry.fastInsert(KIO::UDSEntry::UDS_MIME_TYPE, QStringLiteral("inode/vnd.kde.bluedevil.service"));
         } else {
-            entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, service.mimetype);
+            entry.fastInsert(KIO::UDSEntry::UDS_MIME_TYPE, service.mimetype);
         }
 
         listEntry(entry);
@@ -151,12 +151,12 @@ void KioBluetooth::listDownload()
 {
     KIO::UDSEntry entry;
     entry.clear();
-    entry.insert(KIO::UDSEntry::UDS_URL, FileReceiverSettings::saveUrl().toDisplayString());
-    entry.insert(KIO::UDSEntry::UDS_NAME, i18n("Received Files"));
-    entry.insert(KIO::UDSEntry::UDS_ICON_NAME, QStringLiteral("folder-downloads"));
-    entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
-    entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRUSR | S_IRGRP | S_IROTH);
-    entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, QStringLiteral("inode/directory"));
+    entry.fastInsert(KIO::UDSEntry::UDS_URL, FileReceiverSettings::saveUrl().toDisplayString());
+    entry.fastInsert(KIO::UDSEntry::UDS_NAME, i18n("Received Files"));
+    entry.fastInsert(KIO::UDSEntry::UDS_ICON_NAME, QStringLiteral("folder-downloads"));
+    entry.fastInsert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+    entry.fastInsert(KIO::UDSEntry::UDS_ACCESS, S_IRUSR | S_IRGRP | S_IROTH);
+    entry.fastInsert(KIO::UDSEntry::UDS_MIME_TYPE, QStringLiteral("inode/directory"));
     listEntry(entry);
 }
 
@@ -186,12 +186,12 @@ void KioBluetooth::listDevice(const DeviceInfo device)
     target.append(QString(device[QStringLiteral("address")]).replace(QLatin1Char(':'), QLatin1Char('-')));
 
     KIO::UDSEntry entry;
-    entry.insert(KIO::UDSEntry::UDS_URL, target);
-    entry.insert(KIO::UDSEntry::UDS_NAME, device[QStringLiteral("name")]);
-    entry.insert(KIO::UDSEntry::UDS_ICON_NAME, device[QStringLiteral("icon")]);
-    entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
-    entry.insert(KIO::UDSEntry::UDS_ACCESS, S_IRUSR | S_IRGRP | S_IROTH);
-    entry.insert(KIO::UDSEntry::UDS_MIME_TYPE, QStringLiteral("inode/vnd.kde.bluedevil.device"));
+    entry.fastInsert(KIO::UDSEntry::UDS_URL, target);
+    entry.fastInsert(KIO::UDSEntry::UDS_NAME, device[QStringLiteral("name")]);
+    entry.fastInsert(KIO::UDSEntry::UDS_ICON_NAME, device[QStringLiteral("icon")]);
+    entry.fastInsert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+    entry.fastInsert(KIO::UDSEntry::UDS_ACCESS, S_IRUSR | S_IRGRP | S_IROTH);
+    entry.fastInsert(KIO::UDSEntry::UDS_MIME_TYPE, QStringLiteral("inode/vnd.kde.bluedevil.device"));
     listEntry(entry);
 }
 
