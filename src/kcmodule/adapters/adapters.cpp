@@ -127,15 +127,15 @@ AdapterSettings::AdapterSettings(BluezQt::AdapterPtr adapter, KCModule *parent)
     m_layout->labelForField(m_discoverTimeWidget)->setEnabled(m_temporaryVisibleOrig);
 
     connect(m_adapter.data(), &BluezQt::Adapter::adapterChanged, this, &AdapterSettings::readChanges);
-    connect(m_name, SIGNAL(textEdited(QString)), this, SLOT(slotSettingsChanged()));
-    connect(m_hidden, SIGNAL(toggled(bool)), this, SLOT(visibilityChanged()));
-    connect(m_hidden, SIGNAL(toggled(bool)), this, SLOT(slotSettingsChanged()));
-    connect(m_alwaysVisible, SIGNAL(toggled(bool)), this, SLOT(visibilityChanged()));
-    connect(m_alwaysVisible, SIGNAL(toggled(bool)), this, SLOT(slotSettingsChanged()));
-    connect(m_temporaryVisible, SIGNAL(toggled(bool)), this, SLOT(visibilityChanged()));
-    connect(m_temporaryVisible, SIGNAL(toggled(bool)), this, SLOT(slotSettingsChanged()));
-    connect(m_discoverTime, SIGNAL(valueChanged(int)), this, SLOT(slotSettingsChanged()));
-    connect(m_powered, SIGNAL(stateChanged(int)), this, SLOT(slotSettingsChanged()));
+    connect(m_name, &QLineEdit::textEdited, this, &AdapterSettings::slotSettingsChanged);
+    connect(m_hidden, &QAbstractButton::toggled, this, &AdapterSettings::visibilityChanged);
+    connect(m_hidden, &QAbstractButton::toggled, this, &AdapterSettings::slotSettingsChanged);
+    connect(m_alwaysVisible, &QAbstractButton::toggled, this, &AdapterSettings::visibilityChanged);
+    connect(m_alwaysVisible, &QAbstractButton::toggled, this, &AdapterSettings::slotSettingsChanged);
+    connect(m_temporaryVisible, &QAbstractButton::toggled, this, &AdapterSettings::visibilityChanged);
+    connect(m_temporaryVisible, &QAbstractButton::toggled, this, &AdapterSettings::slotSettingsChanged);
+    connect(m_discoverTime, &QAbstractSlider::valueChanged, this, &AdapterSettings::slotSettingsChanged);
+    connect(m_powered, &QCheckBox::stateChanged, this, &AdapterSettings::slotSettingsChanged);
 
     const QString &hci = adapterHciString(adapter->ubi());
     if (!hci.isEmpty()) {
@@ -388,8 +388,8 @@ void KCMBlueDevilAdapters::fillAdaptersInformation()
 
     Q_FOREACH (BluezQt::AdapterPtr adapter, m_manager->adapters()) {
         AdapterSettings *const adapterSettings = new AdapterSettings(adapter, this);
-        connect(adapterSettings, SIGNAL(settingsChanged(bool)),
-                this, SLOT(adapterConfigurationChanged(bool)));
+        connect(adapterSettings, &AdapterSettings::settingsChanged,
+                this, &KCMBlueDevilAdapters::adapterConfigurationChanged);
         m_adapterSettingsMap.insert(adapter, adapterSettings);
         m_layout->addWidget(adapterSettings);
     }

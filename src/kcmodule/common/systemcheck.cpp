@@ -76,7 +76,7 @@ void SystemCheck::createWarnings(QVBoxLayout *layout)
     m_blockedError->setText(i18n("Bluetooth is disabled."));
 
     QAction *fixBlocked = new QAction(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")), i18nc("Action to enable Bluetooth adapter", "Enable"), m_blockedError);
-    connect(fixBlocked, SIGNAL(triggered(bool)), this, SLOT(fixBlockedError()));
+    connect(fixBlocked, &QAction::triggered, this, &SystemCheck::fixBlockedError);
     m_blockedError->addAction(fixBlocked);
 
     layout->insertWidget(0, m_blockedError);
@@ -87,7 +87,7 @@ void SystemCheck::createWarnings(QVBoxLayout *layout)
     m_noUsableAdapterError->setText(i18n("Your Bluetooth adapter is powered off."));
 
     QAction *fixNoUsableAdapter = new QAction(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")), i18nc("Action to turn on Bluetooth adapter", "Turn On"), m_noUsableAdapterError);
-    connect(fixNoUsableAdapter, SIGNAL(triggered(bool)), this, SLOT(fixNoUsableAdapterError()));
+    connect(fixNoUsableAdapter, &QAction::triggered, this, &SystemCheck::fixNoUsableAdapterError);
     m_noUsableAdapterError->addAction(fixNoUsableAdapter);
 
     layout->insertWidget(0, m_noUsableAdapterError);
@@ -97,7 +97,7 @@ void SystemCheck::createWarnings(QVBoxLayout *layout)
     m_notDiscoverableAdapterError->setCloseButtonVisible(false);
 
     QAction *fixNotDiscoverableAdapter = new QAction(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")), i18nc("Action to fix a problem", "Fix it"), m_notDiscoverableAdapterError);
-    connect(fixNotDiscoverableAdapter, SIGNAL(triggered(bool)), this, SLOT(fixNotDiscoverableAdapterError()));
+    connect(fixNotDiscoverableAdapter, &QAction::triggered, this, &SystemCheck::fixNotDiscoverableAdapterError);
     m_notDiscoverableAdapterError->addAction(fixNotDiscoverableAdapter);
     m_notDiscoverableAdapterError->setText(i18n("Your default Bluetooth adapter is not visible for remote devices."));
 
@@ -108,7 +108,7 @@ void SystemCheck::createWarnings(QVBoxLayout *layout)
     m_disabledNotificationsError->setCloseButtonVisible(false);
 
     QAction *fixDisabledNotifications = new QAction(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")), i18nc("Action to fix a problem", "Fix it"), m_disabledNotificationsError);
-    connect(fixDisabledNotifications, SIGNAL(triggered(bool)), this, SLOT(fixDisabledNotificationsError()));
+    connect(fixDisabledNotifications, &QAction::triggered, this, &SystemCheck::fixDisabledNotificationsError);
     m_disabledNotificationsError->addAction(fixDisabledNotifications);
     m_disabledNotificationsError->setText(i18n("Interaction with Bluetooth system is not optimal."));
 
@@ -119,7 +119,7 @@ void SystemCheck::createWarnings(QVBoxLayout *layout)
     m_noKdedRunningError->setCloseButtonVisible(false);
 
     QAction *fixNoKDEDRunning = new QAction(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")), i18nc("Action to fix a problem", "Fix it"), m_noKdedRunningError);
-    connect(fixNoKDEDRunning, SIGNAL(triggered(bool)), this, SLOT(fixNoKDEDRunning()));
+    connect(fixNoKDEDRunning, &QAction::triggered, this, &SystemCheck::fixNoKDEDRunning);
     m_noKdedRunningError->addAction(fixNoKDEDRunning);
     m_noKdedRunningError->setText(i18n("Bluetooth is not completely enabled."));
 
