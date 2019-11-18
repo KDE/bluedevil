@@ -26,7 +26,6 @@
 
 #include <QPushButton>
 
-#include <KIconLoader>
 #include <KStandardGuiItem>
 #include <KLocalizedString>
 

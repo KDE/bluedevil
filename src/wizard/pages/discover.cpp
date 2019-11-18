@@ -26,11 +26,8 @@
 #include <QSortFilterProxyModel>
 #include <QRegularExpressionValidator>
 
-#include <KIconLoader>
 #include <KMessageWidget>
 #include <KLocalizedString>
-#include <KPixmapSequence>
-#include <KPixmapSequenceOverlayPainter>
 
 #include <BluezQt/Manager>
 #include <BluezQt/Device>
