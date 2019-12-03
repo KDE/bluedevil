@@ -29,7 +29,6 @@
 
 #include <KAboutData>
 #include <KMessageBox>
-#include <KIconLoader>
 #include <KPluginFactory>
 #include <KLocalizedString>
 
@@ -179,7 +178,7 @@ void KCMBlueDevilDevices::initJobResult(BluezQt::InitManagerJob *job)
     m_systemCheck = new SystemCheck(m_manager, this);
     m_systemCheck->createWarnings(l);
 
-    const int size = IconSize(KIconLoader::Dialog);
+    const int size = style()->pixelMetric(QStyle::PM_LargeIconSize);
     m_ui->deviceList->setIconSize(QSize(size, size));
 
     m_devicesModel = new BluezQt::DevicesModel(m_manager, this);

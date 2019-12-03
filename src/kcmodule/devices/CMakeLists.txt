@@ -17,7 +17,6 @@ target_link_libraries(kcm_bluedevildevices
     Qt5::Widgets
     Qt5::DBus
     KF5::I18n
-    KF5::IconThemes
     KF5::ConfigWidgets
     KF5::BluezQt)
 
