@@ -285,8 +285,7 @@ PlasmaComponents.ListItem {
                         horizontalAlignment: index % 2 ? Text.AlignLeft : Text.AlignRight
                         elide: index % 2 ? Text.ElideRight : Text.ElideNone
                         font.pointSize: theme.smallestFont.pointSize
-                        opacity: 0.6
-                        text: index % 2 ? currentDeviceDetails[index] : "<b>%1</b>:".arg(currentDeviceDetails[index])
+                        text: index % 2 ? currentDeviceDetails[index] : currentDeviceDetails[index] + ":"
                         textFormat: index % 2 ? Text.PlainText : Text.StyledText
 
                         MouseArea {
