@@ -42,6 +42,7 @@ public:
 
 private Q_SLOTS:
     void indexSelected(const QModelIndex &index);
+    void itemDoubleClicked(const QModelIndex &index);
 
     void usableAdapterChanged(BluezQt::AdapterPtr adapter);
     void checkAdapters();

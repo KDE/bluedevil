@@ -118,6 +118,7 @@ DiscoverPage::DiscoverPage(BlueWizard *parent)
     deviceView->setModel(m_model);
 
     connect(deviceView->selectionModel(), &QItemSelectionModel::currentChanged, this, &DiscoverPage::indexSelected);
+    connect(deviceView, &QListView::doubleClicked, this, &DiscoverPage::itemDoubleClicked);
 }
 
 void DiscoverPage::initializePage()
@@ -228,6 +229,12 @@ void DiscoverPage::indexSelected(const QModelIndex &index)
     m_wizard->setDevice(device);
 
     Q_EMIT completeChanged();
+}
+
+void DiscoverPage::itemDoubleClicked(const QModelIndex &index)
+{
+    indexSelected(index);
+    m_wizard->next();
 }
 
 void DiscoverPage::usableAdapterChanged(BluezQt::AdapterPtr adapter)
