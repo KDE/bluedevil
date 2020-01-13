@@ -539,3 +539,9 @@ Comment[zh_CN]=连接设备失败
 Comment[zh_TW]=連線到裝置失敗
 Icon=preferences-system-bluetooth
 Action=Popup
+
+[Event/SetupFinished]
+Name=Device Setup Finished
+Comment=Setting up a Bluetooth device finished successfully
+Icon=dialog-positive
+Action=Popup

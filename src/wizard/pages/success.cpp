@@ -25,17 +25,15 @@
 #include "../bluewizard.h"
 #include "debug_p.h"
 
-#include <QIcon>
-
 #include <BluezQt/Device>
+
+#include <KNotification>
 
 SuccessPage::SuccessPage(BlueWizard *parent)
     : QWizardPage(parent)
     , m_wizard(parent)
 {
-    setupUi(this);
 
-    successIcon->setPixmap(QIcon::fromTheme(QStringLiteral("emblem-success")).pixmap(48));
 }
 
 int SuccessPage::nextId() const
@@ -45,21 +43,23 @@ int SuccessPage::nextId() const
 
 void SuccessPage::initializePage()
 {
-    qCDebug(WIZARD) << "Initialize Success Page";
-
-    QList<QWizard::WizardButton> list;
-    list << QWizard::Stretch;
-    list << QWizard::FinishButton;
-
-    m_wizard->setButtonLayout(list);
-
-    setFinalPage(true);
+    qCDebug(WIZARD) << "Sending Success notification";
 
     BluezQt::DevicePtr device = m_wizard->device();
 
+    KNotification *notification = new KNotification(QStringLiteral("SetupFinished"),
+                                                    KNotification::CloseOnTimeout, this);
+    notification->setComponentName(QStringLiteral("bluedevil"));
+    notification->setTitle(i18n("Setup Finished"));
     if (device->name().isEmpty()) {
-        successLbl->setText(i18nc("This string is shown when the wizard succeeds", "The setup of the device has succeeded"));
+        notification->setText(i18n("The device has been set up and can now be used."));
     } else {
-        successLbl->setText(i18n("The setup of %1 has succeeded", device->name()));
+        notification->setText(i18nc("Placeholder is device name",
+                                    "The device '%1' has been set up and can now be used.", device->name()));
     }
+    // Mark as response to explicit user action ("pairing the device")
+    notification->setHint(QStringLiteral("x-kde-user-action-feedback"), true);
+    notification->sendEvent();
+
+    setFinalPage(true);
 }
