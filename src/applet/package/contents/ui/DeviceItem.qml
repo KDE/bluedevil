@@ -403,45 +403,53 @@ PlasmaComponents.ListItem {
             return Connected ? i18n("Disconnecting") : i18n("Connecting");
         }
 
+        var labels = [];
+
         switch (Type) {
         case BluezQt.Device.Headset:
         case BluezQt.Device.Headphones:
         case BluezQt.Device.OtherAudio:
-            return i18n("Audio device");
+            labels.push(i18n("Audio device"));
+            break;
 
         case BluezQt.Device.Keyboard:
         case BluezQt.Device.Mouse:
         case BluezQt.Device.Joypad:
         case BluezQt.Device.Tablet:
-            return i18n("Input device");
+            labels.push(i18n("Input device"));
+            break;
 
         default:
-            break;
+            var profiles = [];
+
+            if (Uuids.indexOf(BluezQt.Services.ObexFileTransfer) != -1) {
+                profiles.push(i18n("File transfer"));
+            }
+            if (Uuids.indexOf(BluezQt.Services.ObexObjectPush) != -1) {
+                profiles.push(i18n("Send file"));
+            }
+            if (Uuids.indexOf(BluezQt.Services.HumanInterfaceDevice) != -1) {
+                profiles.push(i18n("Input"));
+            }
+            if (Uuids.indexOf(BluezQt.Services.AdvancedAudioDistribution) != -1) {
+                profiles.push(i18n("Audio"));
+            }
+            if (Uuids.indexOf(BluezQt.Services.Nap) != -1) {
+                profiles.push(i18n("Network"));
+            }
+
+            if (!profiles.length) {
+                profiles.push(i18n("Other device"));
+            }
+
+            labels.push(profiles.join(", "));
         }
 
-        var profiles = [];
-
-        if (Uuids.indexOf(BluezQt.Services.ObexFileTransfer) != -1) {
-            profiles.push(i18n("File transfer"));
-        }
-        if (Uuids.indexOf(BluezQt.Services.ObexObjectPush) != -1) {
-            profiles.push(i18n("Send file"));
-        }
-        if (Uuids.indexOf(BluezQt.Services.HumanInterfaceDevice) != -1) {
-            profiles.push(i18n("Input"));
-        }
-        if (Uuids.indexOf(BluezQt.Services.AdvancedAudioDistribution) != -1) {
-            profiles.push(i18n("Audio"));
-        }
-        if (Uuids.indexOf(BluezQt.Services.Nap) != -1) {
-            profiles.push(i18n("Network"));
+        if (Battery) {
+            labels.push(i18n("%1% Battery", Battery.percentage));
         }
 
-        if (!profiles.length) {
-            return i18n("Other device");
-        }
-
-        return profiles.join(", ");
+        return labels.join(" · ");
     }
 
     function connectToDevice()
