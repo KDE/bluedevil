@@ -542,6 +542,22 @@ Action=Popup
 
 [Event/SetupFinished]
 Name=Device Setup Finished
+Name[ca]=Ha finalitzat la configuració del dispositiu
+Name[et]=Seadme seadistamine on lõpetatud
+Name[lt]=Įrenginio sąranka užbaigta
+Name[nl]=Instellen van apparaat beëindigd
+Name[pt]=Configuração do Dispositivo Terminada
+Name[pt_BR]=Configuração do dispositivo concluída
+Name[uk]=Налаштовування пристрою завершено
+Name[x-test]=xxDevice Setup Finishedxx
 Comment=Setting up a Bluetooth device finished successfully
+Comment[ca]=La configuració del dispositiu Bluetooth ha finalitzat correctament
+Comment[et]=Bluetoothi seadme seadistamine lõpetati edukalt
+Comment[lt]=Bluetooth įrenginio nustatymas sėkmingai užbaigtas
+Comment[nl]=Instellen van een Bluetooth apparaat is met succes beëindigd
+Comment[pt]=A configuração do dispositivo Bluetooth terminou com sucesso
+Comment[pt_BR]=A configuração de um dispositivo Bluetooth foi concluída com sucesso
+Comment[uk]=Налаштовування пристрою Bluetooth успішно завершено
+Comment[x-test]=xxSetting up a Bluetooth device finished successfullyxx
 Icon=dialog-positive
 Action=Popup
