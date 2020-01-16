@@ -5,7 +5,7 @@ set(PROJECT_VERSION "5.17.80")
 set(PROJECT_VERSION_MAJOR 5)
 
 set(QT_MIN_VERSION "5.12.0")
-set(KF5_MIN_VERSION "5.62.0")
+set(KF5_MIN_VERSION "5.66.0")
 
 configure_file(version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/version.h)
 
