@@ -543,6 +543,7 @@ Action=Popup
 [Event/SetupFinished]
 Name=Device Setup Finished
 Name[ca]=Ha finalitzat la configuració del dispositiu
+Name[da]=Opsætning af enhed gennemført
 Name[es]=Configuración del dispositivo terminada
 Name[et]=Seadme seadistamine on lõpetatud
 Name[eu]=Gailua ezartzea burutu da
@@ -558,6 +559,7 @@ Name[x-test]=xxDevice Setup Finishedxx
 Name[zh_TW]=裝置設定完成
 Comment=Setting up a Bluetooth device finished successfully
 Comment[ca]=La configuració del dispositiu Bluetooth ha finalitzat correctament
+Comment[da]=Opsætningen af en Bluetooth-enhed blev gennemført
 Comment[es]=La configuración de un dispositivo Bluetooth ha terminado con éxito
 Comment[et]=Bluetoothi seadme seadistamine lõpetati edukalt
 Comment[eu]=Bluetooth gailu bat ezartzea ondo burutu da
