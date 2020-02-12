@@ -96,7 +96,7 @@ void SystemCheck::createWarnings(QVBoxLayout *layout)
     m_notDiscoverableAdapterError->setMessageType(KMessageWidget::Warning);
     m_notDiscoverableAdapterError->setCloseButtonVisible(false);
 
-    QAction *fixNotDiscoverableAdapter = new QAction(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")), i18nc("Action to fix a problem", "Fix it"), m_notDiscoverableAdapterError);
+    QAction *fixNotDiscoverableAdapter = new QAction(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")), i18nc("Action to fix a problem", "Make Visible"), m_notDiscoverableAdapterError);
     connect(fixNotDiscoverableAdapter, &QAction::triggered, this, &SystemCheck::fixNotDiscoverableAdapterError);
     m_notDiscoverableAdapterError->addAction(fixNotDiscoverableAdapter);
     m_notDiscoverableAdapterError->setText(i18n("Your default Bluetooth adapter is not visible for remote devices."));
@@ -118,7 +118,7 @@ void SystemCheck::createWarnings(QVBoxLayout *layout)
     m_noKdedRunningError ->setMessageType(KMessageWidget::Warning);
     m_noKdedRunningError->setCloseButtonVisible(false);
 
-    QAction *fixNoKDEDRunning = new QAction(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")), i18nc("Action to fix a problem", "Fix it"), m_noKdedRunningError);
+    QAction *fixNoKDEDRunning = new QAction(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")), i18nc("Action to fix a problem", "Enable"), m_noKdedRunningError);
     connect(fixNoKDEDRunning, &QAction::triggered, this, &SystemCheck::fixNoKDEDRunning);
     m_noKdedRunningError->addAction(fixNoKDEDRunning);
     m_noKdedRunningError->setText(i18n("Bluetooth is not completely enabled."));
