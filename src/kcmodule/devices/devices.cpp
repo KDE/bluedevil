@@ -202,7 +202,7 @@ void KCMBlueDevilDevices::initJobResult(BluezQt::InitManagerJob *job)
 
 void KCMBlueDevilDevices::addDevice()
 {
-    QProcess::startDetached(QStringLiteral("bluedevil-wizard"));
+    QProcess::startDetached(QStringLiteral("bluedevil-wizard"), QStringList());
 }
 
 void KCMBlueDevilDevices::removeSelectedDevices()
