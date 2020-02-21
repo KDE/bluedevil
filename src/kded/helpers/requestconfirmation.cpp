@@ -35,10 +35,10 @@ RequestConfirmation::RequestConfirmation(BluezQt::DevicePtr device, const QStrin
                                                     KNotification::Persistent, this);
 
     notification->setComponentName(QStringLiteral("bluedevil"));
-    notification->setTitle(QStringLiteral("%1 (%2)").arg(m_device->name(), m_device->address()));
+    notification->setTitle(QStringLiteral("%1 (%2)").arg(m_device->name().toHtmlEscaped(), m_device->address()));
     notification->setText(i18nc("The text is shown in a notification to know if the PIN is correct,"
                                 "%1 is the remote bluetooth device and %2 is the pin",
-                                "%1 is asking if the PIN is correct: %2", m_device->name(), m_pin));
+                                "%1 is asking if the PIN is correct: %2", m_device->name().toHtmlEscaped(), m_pin));
 
     QStringList actions;
     actions.append(i18nc("Notification button to know if the pin is correct or not", "PIN correct"));
