@@ -12,7 +12,11 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QLabel" name="connLabel"/>
+    <widget class="QLabel" name="connLabel">
+     <property name="textFormat">
+      <enum>Qt::PlainText</enum>
+     </property>
+    </widget>
    </item>
    <item>
     <widget class="QProgressBar" name="progressBar">
