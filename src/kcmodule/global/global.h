@@ -40,18 +40,14 @@ class KCMBlueDevilGlobal : public KCModule
 public:
     KCMBlueDevilGlobal(QWidget *parent, const QVariantList&);
 
-    void save() override;
-
 private Q_SLOTS:
     void initJobResult(BluezQt::InitManagerJob *job);
     void receiveFilesChanged(bool enable);
-    void enableBluetoothChanged(bool enable);
 
 private:
     SystemCheck *m_systemCheck;
     Ui::Global *m_ui;
     BluezQt::Manager *m_manager;
-    bool m_isEnabled;
 };
 
 #endif // BLUEDEVILGLOBAL_H

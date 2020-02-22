@@ -70,33 +70,14 @@ KCMBlueDevilGlobal::KCMBlueDevilGlobal(QWidget *parent, const QVariantList&)
     addConfig(FileReceiverSettings::self(), this);
     addConfig(GlobalSettings::self(), this);
 
-    m_isEnabled = m_ui->kcfg_enableGlobalBluetooth->isChecked();
-
     receiveFilesChanged(m_ui->kcfg_enabled->isChecked());
-    enableBluetoothChanged(m_ui->kcfg_enableGlobalBluetooth->isChecked());
     connect(m_ui->kcfg_enabled, &QCheckBox::toggled, this, &KCMBlueDevilGlobal::receiveFilesChanged);
-    connect(m_ui->kcfg_enableGlobalBluetooth, &QCheckBox::toggled, this, &KCMBlueDevilGlobal::enableBluetoothChanged);
 
     // Initialize BluezQt
     m_manager = new BluezQt::Manager(this);
     BluezQt::InitManagerJob *job = m_manager->init();
     job->start();
     connect(job, &BluezQt::InitManagerJob::result, this, &KCMBlueDevilGlobal::initJobResult);
-}
-
-void KCMBlueDevilGlobal::save()
-{
-    KCModule::save();
-
-    if (!m_isEnabled && m_ui->kcfg_enableGlobalBluetooth->isChecked()) {
-        m_systemCheck->kded()->setModuleAutoloading(QStringLiteral("bluedevil"), true);
-        m_systemCheck->kded()->loadModule(QStringLiteral("bluedevil"));
-    } else if (m_isEnabled && !m_ui->kcfg_enableGlobalBluetooth->isChecked()) {
-        m_systemCheck->kded()->setModuleAutoloading(QStringLiteral("bluedevil"), false);
-        m_systemCheck->kded()->unloadModule(QStringLiteral("bluedevil"));
-    }
-
-    m_isEnabled = m_ui->kcfg_enableGlobalBluetooth->isChecked();
 }
 
 void KCMBlueDevilGlobal::initJobResult(BluezQt::InitManagerJob *job)
@@ -113,19 +94,10 @@ void KCMBlueDevilGlobal::initJobResult(BluezQt::InitManagerJob *job)
 
 void KCMBlueDevilGlobal::receiveFilesChanged(bool enable)
 {
-    enable = m_ui->kcfg_enableGlobalBluetooth->isChecked() && enable;
-
     m_ui->lbl_saveFiles->setEnabled(enable);
     m_ui->lbl_autoAccept->setEnabled(enable);
     m_ui->kcfg_saveUrl->setEnabled(enable);
     m_ui->kcfg_autoAccept->setEnabled(enable);
-}
-
-void KCMBlueDevilGlobal::enableBluetoothChanged(bool enable)
-{
-    m_ui->lbl_receivingFiles->setEnabled(enable);
-    m_ui->kcfg_enabled->setEnabled(enable);
-    receiveFilesChanged(m_ui->kcfg_enabled->isChecked());
 }
 
 #include "global.moc"
