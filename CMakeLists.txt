@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0)
 
 project(bluedevil)
-set(PROJECT_VERSION "5.18.80")
+set(PROJECT_VERSION "5.18.2")
 set(PROJECT_VERSION_MAJOR 5)
 
 set(QT_MIN_VERSION "5.12.0")
@@ -41,7 +41,7 @@ include(FeatureSummary)
 include(KDEClangFormat)
 if (EXISTS "${CMAKE_SOURCE_DIR}/.git")
    add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
-   add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x060000)
+   add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x054200)
 endif()
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
