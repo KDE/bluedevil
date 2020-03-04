@@ -144,6 +144,9 @@ FocusScope {
             section.delegate: Header {
                 text: section == "Connected" ? i18n("Connected devices") : i18n("Available devices")
             }
+            highlight: PlasmaComponents.Highlight { }
+            highlightMoveDuration: 0
+            highlightResizeDuration: 0
             delegate: DeviceItem { }
         }
     }

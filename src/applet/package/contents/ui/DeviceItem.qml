@@ -37,8 +37,15 @@ PlasmaComponents.ListItem {
     property var currentDeviceDetails : []
 
     height: expanded ? baseHeight + expandableComponentLoader.height + Math.round(units.gridUnit / 3) : baseHeight
-    checked: containsMouse
     enabled: true
+    
+    onContainsMouseChanged: {
+        if (containsMouse) {
+            devicesView.currentIndex = index
+        } else {
+            devicesView.currentIndex = -1
+        }
+    }
 
     Item {
         id: deviceItemBase
