@@ -114,7 +114,7 @@ QString DeviceDetails::adapterHciString(const QString &ubi)
 
 void DeviceDetails::remoteNameChanged(const QString &name)
 {
-    m_ui->remoteName->setText(QStringLiteral("<b>%1</b>").arg(name));
+    m_ui->remoteName->setText(name);
 }
 
 void DeviceDetails::uuidsChanged(const QStringList &uuids)
