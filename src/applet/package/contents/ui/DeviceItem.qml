@@ -1,6 +1,7 @@
 /*
     Copyright 2013-2014 Jan Grulich <jgrulich@redhat.com>
     Copyright 2014-2015 David Rosca <nowrep@gmail.com>
+    Copyright 2020 Nate Graham <nate@kde.org>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -20,151 +21,36 @@
 */
 
 import QtQuick 2.2
-import QtQuick.Layouts 1.1
-import org.kde.bluezqt 1.0 as BluezQt
+import QtQuick.Controls 2.12
+import QtQuick.Layouts 1.3
+
 import org.kde.plasma.core 2.0 as PlasmaCore
+import org.kde.plasma.extras 2.0 as PlasmaExtras
 import org.kde.plasma.components 2.0 as PlasmaComponents
-import org.kde.kquickcontrolsaddons 2.0 as KQuickControlsAddons
 import org.kde.plasma.private.bluetooth 1.0 as PlasmaBt
 
-PlasmaComponents.ListItem {
-    id: deviceItem
+import org.kde.bluezqt 1.0 as BluezQt
+import org.kde.kquickcontrolsaddons 2.0 as KQuickControlsAddons
 
-    property bool expanded : visibleDetails
-    property bool visibleDetails : false
+PlasmaExtras.ExpandableListItem {
+    id: expandableListItem
+
     property bool connecting : false
-    property int baseHeight : deviceItemBase.height
     property var currentDeviceDetails : []
 
-    height: expanded ? baseHeight + expandableComponentLoader.height + Math.round(units.gridUnit / 3) : baseHeight
-    enabled: true
-    
-    onContainsMouseChanged: {
-        if (containsMouse) {
-            devicesView.currentIndex = index
-        } else {
-            devicesView.currentIndex = -1
-        }
+    icon: model.Icon
+    iconEmblem: model.Connected ? "" : "emblem-unmounted"
+    title: model.DeviceFullName
+    subtitle: infoText()
+    isBusy: connecting
+    isDefault: model.isDefault
+    defaultActionButtonAction: Action {
+        icon.name: model.Connected ? "network-disconnect" : "network-connect"
+        text: model.Connected ? i18n("Disconnect") : i18n("Connect")
+        onTriggered: connectToDevice()
     }
-
-    Item {
-        id: deviceItemBase
-
-        anchors {
-            left: parent.left
-            right: parent.right
-            top: parent.top
-            // Reset top margin from PlasmaComponents.ListItem
-            topMargin: -Math.round(units.gridUnit / 3)
-        }
-
-        height: Math.max(units.iconSizes.medium, deviceNameLabel.height + deviceInfoLabel.height) + Math.round(units.gridUnit / 2)
-
-        PlasmaCore.IconItem {
-            id: deviceIcon
-
-            anchors {
-                left: parent.left
-                verticalCenter: parent.verticalCenter
-            }
-
-            height: units.iconSizes.medium
-            width: height
-            source: Icon
-
-            onSourceChanged: {
-                var defaultIcon = "preferences-system-bluetooth";
-                if (!valid && source != defaultIcon)
-                    source = defaultIcon;
-            }
-        }
-
-        PlasmaComponents.Label {
-            id: deviceNameLabel
-
-            anchors {
-                bottom: deviceIcon.verticalCenter
-                left: deviceIcon.right
-                leftMargin: Math.round(units.gridUnit / 2)
-                right: connectButton.visible ? connectButton.left : parent.right
-            }
-
-            height: paintedHeight
-            elide: Text.ElideRight
-            font.weight: Connected ? Font.DemiBold : Font.Normal
-            font.italic: connecting
-            text: DeviceFullName
-            textFormat: Text.PlainText
-        }
-
-        PlasmaComponents.Label {
-            id: deviceInfoLabel
-
-            anchors {
-                left: deviceIcon.right
-                leftMargin: Math.round(units.gridUnit / 2)
-                right: connectButton.visible ? connectButton.left : parent.right
-                top: deviceNameLabel.bottom
-            }
-
-            height: paintedHeight
-            elide: Text.ElideRight
-            font.pointSize: theme.smallestFont.pointSize
-            opacity: 0.6
-            text: infoText()
-            textFormat: Text.PlainText
-        }
-
-        PlasmaComponents.BusyIndicator {
-            id: connectingIndicator
-
-            anchors {
-                right: parent.right
-                rightMargin: Math.round(units.gridUnit / 2)
-                verticalCenter: deviceIcon.verticalCenter
-            }
-
-            height: units.iconSizes.medium
-            width: height
-            running: connecting
-            visible: running && !connectButton.visible
-        }
-
-        PlasmaComponents.Button {
-            id: connectButton
-
-            anchors {
-                right: parent.right
-                rightMargin: Math.round(units.gridUnit / 2)
-                verticalCenter: deviceIcon.verticalCenter
-            }
-
-            text: Connected ? i18n("Disconnect") : i18n("Connect")
-            opacity: !connecting && (deviceItem.containsMouse || deviceItem.visibleDetails) ? 1 : 0
-            visible: opacity != 0
-
-            Behavior on opacity {
-                NumberAnimation {
-                    duration: units.shortDuration
-                }
-            }
-
-            onClicked: connectToDevice()
-        }
-    }
-
-    Loader {
-        id: expandableComponentLoader
-
-        anchors {
-            left: parent.left
-            right: parent.right
-            top: deviceItemBase.bottom
-        }
-    }
-
-    Component {
-        id: detailsComponent
+    customExpandedViewContent: Component {
+        id: expandedView
 
         ColumnLayout {
             spacing: 0
@@ -304,47 +190,8 @@ PlasmaComponents.ListItem {
                     }
                 }
             }
-        }
-    }
 
-    states: [
-        State {
-            name: "collapsed"
-            when: !visibleDetails
-
-            StateChangeScript {
-                script: {
-                    if (expandableComponentLoader.status == Loader.Ready) {
-                        expandableComponentLoader.sourceComponent = undefined;
-                    }
-                }
-            }
-        },
-
-        State {
-            name: "expandedDetails"
-            when: visibleDetails
-
-            StateChangeScript {
-                script: {
-                    createContent();
-                    expandableComponentLoader.sourceComponent = detailsComponent;
-                }
-            }
-        }
-    ]
-
-    onStateChanged: {
-        if (state == "expandedDetails") {
-            ListView.view.currentIndex = index;
-        }
-    }
-
-    onClicked: {
-        visibleDetails = !visibleDetails;
-
-        if (!visibleDetails) {
-            ListView.view.currentIndex = -1;
+            Component.onCompleted: createContent()
         }
     }
 
@@ -358,9 +205,9 @@ PlasmaComponents.ListItem {
         }
         __dev = dev;
 
-        if (visibleDetails) {
-            visibleDetails = false;
-            ListView.view.currentIndex = -1;
+        if (expandedView.status = Component.Ready) {
+            expandableListItem.collapse()
+            expandableListItem.ListView.view.currentIndex = -1
         }
     }
 
