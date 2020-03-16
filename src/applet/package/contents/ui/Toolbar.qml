@@ -46,6 +46,7 @@ Item {
         checked: btManager.bluetoothOperational
         enabled: btManager.bluetoothBlocked || btManager.adapters.length
         icon: "preferences-system-bluetooth"
+        tooltip: i18n("Enable Bluetooth")
 
         onClicked: toggleBluetooth()
     }

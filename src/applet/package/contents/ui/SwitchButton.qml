@@ -29,6 +29,7 @@ Item {
     property alias icon: switchButtonIcon.source
     property alias checked: switchButtonCheckbox.checked
     property alias enabled: switchButtonCheckbox.enabled
+    property alias tooltip: switchButtonCheckbox.tooltip
 
     signal clicked
 
