@@ -57,7 +57,6 @@ Item {
 
         anchors {
             right: parent.right
-            rightMargin: Math.round(units.gridUnit / 2)
             verticalCenter: parent.verticalCenter
         }
 
