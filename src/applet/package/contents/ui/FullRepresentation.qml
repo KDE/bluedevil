@@ -23,103 +23,57 @@ import QtQuick 2.2
 import org.kde.bluezqt 1.0 as BluezQt
 import org.kde.plasma.extras 2.0 as PlasmaExtras
 import org.kde.plasma.components 2.0 as PlasmaComponents
+import org.kde.plasma.components 3.0 as PlasmaComponents3
 import org.kde.plasma.private.bluetooth 1.0 as PlasmaBt
 
-FocusScope {
-    focus: true
+PlasmaComponents3.Page {
 
-    PlasmaBt.DevicesProxyModel {
-        id: devicesModel
-        sourceModel: BluezQt.DevicesModel { }
+    header: Toolbar {
+        id: toolbar
     }
 
-    PlasmaExtras.Heading {
-        id: noAdaptersHeading
-        level: 3
-        opacity: 0.6
-        text: i18n("No Adapters Available")
-
-        anchors {
-            top: parent.top
-            left: parent.left
-        }
-    }
-
-    Item {
-        id: bluetoothDisabledView
+    FocusScope {
         anchors.fill: parent
+        focus: true
+
+        PlasmaBt.DevicesProxyModel {
+            id: devicesModel
+            sourceModel: BluezQt.DevicesModel { }
+        }
 
         PlasmaExtras.Heading {
-            id: bluetoothDisabledHeading
+            id: noAdaptersHeading
             level: 3
             opacity: 0.6
-            text: i18n("Bluetooth is Disabled")
+            text: i18n("No Adapters Available")
 
             anchors {
-                horizontalCenter: parent.horizontalCenter
-                bottom: enableBluetoothButton.top
-                bottomMargin: units.smallSpacing
+                top: parent.top
+                left: parent.left
             }
-        }
-
-        PlasmaComponents.Button {
-            id: enableBluetoothButton
-            text: i18n("Enable Bluetooth")
-            iconSource: "preferences-system-bluetooth"
-
-            anchors {
-                horizontalCenter: parent.horizontalCenter
-                verticalCenter: parent.verticalCenter
-            }
-
-            onClicked: {
-                toolbar.toggleBluetooth();
-            }
-        }
-    }
-
-    Toolbar {
-        id: toolbar
-
-        anchors {
-            left: parent.left
-            right: parent.right
-            top: parent.top
-        }
-    }
-
-    PlasmaExtras.ScrollArea {
-        id: scrollView
-        visible: toolbar.visible
-
-        anchors {
-            bottom: parent.bottom
-            left: parent.left
-            right: parent.right
-            top: toolbar.bottom
         }
 
         Item {
-            id: noDevicesView
+            id: bluetoothDisabledView
             anchors.fill: parent
 
             PlasmaExtras.Heading {
-                id: noDevicesHeading
+                id: bluetoothDisabledHeading
                 level: 3
                 opacity: 0.6
-                text: i18n("No Devices Found")
+                text: i18n("Bluetooth is Disabled")
 
                 anchors {
                     horizontalCenter: parent.horizontalCenter
-                    bottom: addDeviceButton.top
+                    bottom: enableBluetoothButton.top
                     bottomMargin: units.smallSpacing
                 }
             }
 
             PlasmaComponents.Button {
-                id: addDeviceButton
-                text: i18n("Add New Device")
-                iconSource: "list-add"
+                id: enableBluetoothButton
+                text: i18n("Enable Bluetooth")
+                iconSource: "preferences-system-bluetooth"
 
                 anchors {
                     horizontalCenter: parent.horizontalCenter
@@ -127,54 +81,94 @@ FocusScope {
                 }
 
                 onClicked: {
-                    PlasmaBt.LaunchApp.runCommand("bluedevil-wizard");
+                    toolbar.toggleBluetooth();
                 }
             }
         }
 
-        ListView {
-            id: devicesView
+        PlasmaExtras.ScrollArea {
+            id: scrollView
+            visible: toolbar.visible
+
             anchors.fill: parent
-            clip: true
-            model: devicesModel
-            currentIndex: -1
-            enabled: btManager.bluetoothOperational
-            boundsBehavior: Flickable.StopAtBounds
-            section.property: "Section"
-            section.delegate: Header {
-                text: section == "Connected" ? i18n("Connected devices") : i18n("Available devices")
+
+            Item {
+                id: noDevicesView
+                anchors.fill: parent
+
+                PlasmaExtras.Heading {
+                    id: noDevicesHeading
+                    level: 3
+                    opacity: 0.6
+                    text: i18n("No Devices Found")
+
+                    anchors {
+                        horizontalCenter: parent.horizontalCenter
+                        bottom: addDeviceButton.top
+                        bottomMargin: units.smallSpacing
+                    }
+                }
+
+                PlasmaComponents.Button {
+                    id: addDeviceButton
+                    text: i18n("Add New Device")
+                    iconSource: "list-add"
+
+                    anchors {
+                        horizontalCenter: parent.horizontalCenter
+                        verticalCenter: parent.verticalCenter
+                    }
+
+                    onClicked: {
+                        PlasmaBt.LaunchApp.runCommand("bluedevil-wizard");
+                    }
+                }
             }
-            highlight: PlasmaComponents.Highlight { }
-            highlightMoveDuration: units.longDuration
-            highlightResizeDuration: units.longDuration
-            delegate: DeviceItem { }
-        }
-    }
 
-    states: [
-        State {
-            name: "BlockedState"
-            when: btManager.bluetoothBlocked
-        },
-        State {
-            name: "DevicesState"
-            when: btManager.devices.length
-        },
-        State {
-            name: "NoDevicesState"
-            when: btManager.adapters.length && !btManager.devices.length
-        },
-        State {
-            name: "NoAdaptersState"
-            when: !btManager.adapters.length
+            ListView {
+                id: devicesView
+                anchors.fill: parent
+                clip: true
+                model: devicesModel
+                currentIndex: -1
+                enabled: btManager.bluetoothOperational
+                boundsBehavior: Flickable.StopAtBounds
+                section.property: "Section"
+                section.delegate: Header {
+                    text: section == "Connected" ? i18n("Connected devices") : i18n("Available devices")
+                }
+                highlight: PlasmaComponents.Highlight { }
+                highlightMoveDuration: units.longDuration
+                highlightResizeDuration: units.longDuration
+                delegate: DeviceItem { }
+            }
         }
-    ]
 
-    onStateChanged: {
-        noAdaptersHeading.visible = (state == "NoAdaptersState");
-        toolbar.visible = (state == "DevicesState" || state == "NoDevicesState");
-        noDevicesView.visible = (state == "NoDevicesState");
-        bluetoothDisabledView.visible = (state == "BlockedState");
-        devicesView.visible = (state == "DevicesState");
+        states: [
+            State {
+                name: "BlockedState"
+                when: btManager.bluetoothBlocked
+            },
+            State {
+                name: "DevicesState"
+                when: btManager.devices.length
+            },
+            State {
+                name: "NoDevicesState"
+                when: btManager.adapters.length && !btManager.devices.length
+            },
+            State {
+                name: "NoAdaptersState"
+                when: !btManager.adapters.length
+            }
+        ]
+
+        onStateChanged: {
+            noAdaptersHeading.visible = (state == "NoAdaptersState");
+            toolbar.visible = (state == "DevicesState" || state == "NoDevicesState");
+            noDevicesView.visible = (state == "NoDevicesState");
+            bluetoothDisabledView.visible = (state == "BlockedState");
+            devicesView.visible = (state == "DevicesState");
+        }
     }
 }
