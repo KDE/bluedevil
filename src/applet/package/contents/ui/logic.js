@@ -51,7 +51,9 @@ function updateStatus()
         } else {
             text = i18n("Bluetooth is offline");
         }
-    } else if (connectedDevices.length) {
+    } else if (connectedDevices.length == 1) {
+        text = i18n("%1 connected", device.name);
+    } else if (connectedDevices.length > 1) {
         text = i18ncp("Number of connected devices", "%1 connected device", "%1 connected devices", connectedDevices.length);
         for (var i = 0; i < connectedDevices.length; ++i) {
             var device = connectedDevices[i];
