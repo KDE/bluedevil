@@ -19,17 +19,46 @@
     License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import QtQuick 2.2
+import QtQuick 2.4
+import QtQuick.Controls 2.4
 import org.kde.bluezqt 1.0 as BluezQt
 import org.kde.plasma.extras 2.0 as PlasmaExtras
 import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.plasma.components 3.0 as PlasmaComponents3
 import org.kde.plasma.private.bluetooth 1.0 as PlasmaBt
 
+import org.kde.kirigami 2.12 as Kirigami
+
 PlasmaComponents3.Page {
+
+    Action {
+        id: addBluetoothDeviceAction
+
+        enabled: btManager.devices.length === 0
+
+        text: i18n("Add New Device")
+        icon.name: "list-add"
+
+        onTriggered: {
+            PlasmaBt.LaunchApp.runCommand("bluedevil-wizard");
+        }
+    }
+    Action {
+        id: enableBluetoothAction
+
+        enabled: btManager.bluetoothBlocked
+
+        text: i18n("Enable Bluetooth")
+        icon.name: "preferences-system-bluetooth"
+
+        onTriggered: {
+            toolbar.toggleBluetooth();
+        }
+    }
 
     header: Toolbar {
         id: toolbar
+        visible: !btManager.bluetoothBlocked && btManager.adapters.length > 0
     }
 
     FocusScope {
@@ -41,92 +70,14 @@ PlasmaComponents3.Page {
             sourceModel: BluezQt.DevicesModel { }
         }
 
-        PlasmaExtras.Heading {
-            id: noAdaptersHeading
-            level: 3
-            opacity: 0.6
-            text: i18n("No Adapters Available")
-
-            anchors {
-                top: parent.top
-                left: parent.left
-            }
-        }
-
-        Item {
-            id: bluetoothDisabledView
-            anchors.fill: parent
-
-            PlasmaExtras.Heading {
-                id: bluetoothDisabledHeading
-                level: 3
-                opacity: 0.6
-                text: i18n("Bluetooth is Disabled")
-
-                anchors {
-                    horizontalCenter: parent.horizontalCenter
-                    bottom: enableBluetoothButton.top
-                    bottomMargin: units.smallSpacing
-                }
-            }
-
-            PlasmaComponents.Button {
-                id: enableBluetoothButton
-                text: i18n("Enable Bluetooth")
-                iconSource: "preferences-system-bluetooth"
-
-                anchors {
-                    horizontalCenter: parent.horizontalCenter
-                    verticalCenter: parent.verticalCenter
-                }
-
-                onClicked: {
-                    toolbar.toggleBluetooth();
-                }
-            }
-        }
-
         PlasmaExtras.ScrollArea {
             id: scrollView
-            visible: toolbar.visible
 
             anchors.fill: parent
 
-            Item {
-                id: noDevicesView
-                anchors.fill: parent
-
-                PlasmaExtras.Heading {
-                    id: noDevicesHeading
-                    level: 3
-                    opacity: 0.6
-                    text: i18n("No Devices Found")
-
-                    anchors {
-                        horizontalCenter: parent.horizontalCenter
-                        bottom: addDeviceButton.top
-                        bottomMargin: units.smallSpacing
-                    }
-                }
-
-                PlasmaComponents.Button {
-                    id: addDeviceButton
-                    text: i18n("Add New Device")
-                    iconSource: "list-add"
-
-                    anchors {
-                        horizontalCenter: parent.horizontalCenter
-                        verticalCenter: parent.verticalCenter
-                    }
-
-                    onClicked: {
-                        PlasmaBt.LaunchApp.runCommand("bluedevil-wizard");
-                    }
-                }
-            }
+            visible: toolbar.visible
 
             ListView {
-                id: devicesView
                 anchors.fill: parent
                 clip: true
                 model: devicesModel
@@ -144,31 +95,36 @@ PlasmaComponents3.Page {
             }
         }
 
-        states: [
-            State {
-                name: "BlockedState"
-                when: btManager.bluetoothBlocked
-            },
-            State {
-                name: "DevicesState"
-                when: btManager.devices.length
-            },
-            State {
-                name: "NoDevicesState"
-                when: btManager.adapters.length && !btManager.devices.length
-            },
-            State {
-                name: "NoAdaptersState"
-                when: !btManager.adapters.length
-            }
-        ]
+        // Not inside the ListView because we want the listview to be hidden
+        // when Bluetooth is disabled, yet still show an "Enable Bluetooth"
+        // message
+        Kirigami.PlaceholderMessage {
+            anchors.centerIn: parent
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.margins: units.largeSpacing
 
-        onStateChanged: {
-            noAdaptersHeading.visible = (state == "NoAdaptersState");
-            toolbar.visible = (state == "DevicesState" || state == "NoDevicesState");
-            noDevicesView.visible = (state == "NoDevicesState");
-            bluetoothDisabledView.visible = (state == "BlockedState");
-            devicesView.visible = (state == "DevicesState");
+            visible: text.length > 0
+
+            text: {
+                if (btManager.adapters.length === 0) {
+                    return i18n("No Bluetooth Adapters Available")
+                } else if (btManager.bluetoothBlocked) {
+                    return i18n("Bluetooth is Disabled")
+                } else if (btManager.devices.length === 0) {
+                    return i18n("No Devices Found")
+                }
+                return ""
+            }
+
+            helpfulAction: {
+                if (btManager.bluetoothBlocked) {
+                    return enableBluetoothAction
+                } else if (btManager.devices.length === 0) {
+                    return addBluetoothDeviceAction
+                }
+                return undefined
+            }
         }
     }
 }

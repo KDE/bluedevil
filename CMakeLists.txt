@@ -33,6 +33,12 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
 find_package(KDED ${KF5_MIN_VERSION} REQUIRED)
 find_package(SharedMimeInfo REQUIRED)
 
+find_package(KF5Kirigami2 ${KF5_MIN_VERSION} CONFIG)
+set_package_properties(KF5Kirigami2 PROPERTIES
+    DESCRIPTION "A QtQuick based components set"
+    TYPE RUNTIME
+)
+
 include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDECompilerSettings NO_POLICY_SCOPE)
