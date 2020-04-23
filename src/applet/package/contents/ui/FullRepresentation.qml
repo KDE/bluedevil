@@ -58,7 +58,8 @@ PlasmaComponents3.Page {
 
     header: Toolbar {
         id: toolbar
-        visible: !btManager.bluetoothBlocked && btManager.adapters.length > 0
+        visible: btManager.adapters.length > 0
+        enabled: !btManager.bluetoothBlocked
     }
 
     FocusScope {
@@ -75,7 +76,7 @@ PlasmaComponents3.Page {
 
             anchors.fill: parent
 
-            visible: toolbar.visible
+            visible: btManager.adapters.length > 0 && !btManager.bluetoothBlocked
 
             ListView {
                 anchors.fill: parent
