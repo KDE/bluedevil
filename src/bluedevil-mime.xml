@@ -19,6 +19,7 @@ Notes:
     <comment>Device</comment>
     <comment xml:lang="ar">جهاز</comment>
     <comment xml:lang="ast">Preséu</comment>
+    <comment xml:lang="az">Cihaz</comment>
     <comment xml:lang="ca">Dispositiu</comment>
     <comment xml:lang="ca@valencia">Dispositiu</comment>
     <comment xml:lang="cs">Zařízení</comment>
@@ -68,6 +69,7 @@ Notes:
     <comment>Service</comment>
     <comment xml:lang="ar">خدمة</comment>
     <comment xml:lang="ast">Serviciu</comment>
+    <comment xml:lang="az">Xidmət</comment>
     <comment xml:lang="bs">Usluga</comment>
     <comment xml:lang="ca">Servei</comment>
     <comment xml:lang="ca@valencia">Servei</comment>
@@ -116,6 +118,7 @@ Notes:
     <comment>Service</comment>
     <comment xml:lang="ar">خدمة</comment>
     <comment xml:lang="ast">Serviciu</comment>
+    <comment xml:lang="az">Xidmət</comment>
     <comment xml:lang="bs">Usluga</comment>
     <comment xml:lang="ca">Servei</comment>
     <comment xml:lang="ca@valencia">Servei</comment>
