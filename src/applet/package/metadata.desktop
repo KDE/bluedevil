@@ -2,6 +2,7 @@
 Name=Bluetooth
 Name[ar]=بلوتوث
 Name[ast]=Bluetooth
+Name[az]=Bluetooth
 Name[bs]=Blutut
 Name[ca]=Bluetooth
 Name[ca@valencia]=Bluetooth
@@ -49,6 +50,7 @@ Name[zh_TW]=藍牙
 
 Comment=Bluetooth status and control
 Comment[ar]=حالة بلوتوث والتّحكّم بها
+Comment[az]=Bluetooth vəziyyəti və idarə edilməsi
 Comment[ca]=Estat i control del Bluetooth
 Comment[ca@valencia]=Estat i control del Bluetooth
 Comment[cs]=Stav a ovládání Bluetooth

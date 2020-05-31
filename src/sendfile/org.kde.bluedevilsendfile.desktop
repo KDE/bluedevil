@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=BlueDevil Send File
+Name[az]=BlueDevil vasitəsi ilə fayl göndərilməsi
 Name[bs]=Bludevilovo slanje datoteke
 Name[ca]=Envia fitxers amb BlueDevil
 Name[ca@valencia]=Envia fitxers amb BlueDevil
@@ -44,6 +45,7 @@ Name[x-test]=xxBlueDevil Send Filexx
 Name[zh_CN]=BlueDevil 发送文件
 Name[zh_TW]=BlueDevil 傳送檔案
 GenericName=BlueDevil Send File
+GenericName[az]=BlueDevil vasitəsi ilə fayl göndərilməsi
 GenericName[bs]=Bludevilovo slanje datoteke
 GenericName[ca]=Envia fitxers amb BlueDevil
 GenericName[ca@valencia]=Envia fitxers amb BlueDevil
@@ -88,6 +90,7 @@ GenericName[x-test]=xxBlueDevil Send Filexx
 GenericName[zh_CN]=BlueDevil 发送文件
 GenericName[zh_TW]=BlueDevil 傳送檔案
 Comment=BlueDevil Send File
+Comment[az]=BlueDevil vasitəsi ilə fayl göndərilməsi
 Comment[bs]=Bludevilovo slanje datoteke
 Comment[ca]=Envia fitxers amb BlueDevil
 Comment[ca@valencia]=Envia fitxers amb BlueDevil
