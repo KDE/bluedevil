@@ -7,6 +7,9 @@ set(PROJECT_VERSION_MAJOR 5)
 set(QT_MIN_VERSION "5.14.0")
 set(KF5_MIN_VERSION "5.73.0")
 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 configure_file(version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/version.h)
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
@@ -28,6 +31,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     Plasma
     I18n
     KIO
+    Declarative
     BluezQt)
 
 find_package(KDED ${KF5_MIN_VERSION} REQUIRED)

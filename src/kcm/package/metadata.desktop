@@ -1,0 +1,22 @@
+[Desktop Entry]
+Name=Bluetooth
+Comment=Manage bluetooth devices
+Encoding=UTF-8
+Type=Service
+Icon=preferences-system-bluetooth
+X-KDE-ServiceTypes=KCModule
+X-KDE-Library=kcm_bluetooth
+X-KDE-PluginInfo-Author=Nicolas Fella
+X-KDE-PluginInfo-Email=nicolas.fella@gmx.de
+X-KDE-PluginInfo-Name=kcm_bluetooth
+X-KDE-PluginInfo-Version=1.0
+X-KDE-PluginInfo-Website=http://kde.org
+X-KDE-PluginInfo-Category=
+X-KDE-PluginInfo-Depends=
+X-KDE-PluginInfo-License=GPL
+X-KDE-PluginInfo-EnabledByDefault=true
+X-KDE-FormFactors=handset,tablet,mediacenter,desktop
+X-Plasma-Package=kcm_bluetooth
+X-Plasma-MainScript=ui/Bluetooth.qml
+X-KDE-ParentApp=kcontrol
+X-KDE-System-Settings-Parent-Category=hardware

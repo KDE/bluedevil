@@ -1,0 +1,22 @@
+set(kcmbluetooth_SRCS bluetooth.cpp)
+
+kconfig_add_kcfg_files(kcmbluetooth_SRCS GENERATE_MOC
+                    ../settings/filereceiversettings.kcfgc)
+
+add_library(kcm_bluetooth MODULE ${kcmbluetooth_SRCS})
+
+target_link_libraries(kcm_bluetooth
+    Qt5::Gui
+    Qt5::Qml
+    Qt5::DBus
+    KF5::CoreAddons
+    KF5::ConfigGui
+    KF5::QuickAddons
+    KF5::I18n
+    KF5::BluezQt
+    )
+kcoreaddons_desktop_to_json(kcm_bluetooth "package/metadata.desktop")
+
+install(FILES package/metadata.desktop RENAME bluetooth.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
+install(TARGETS kcm_bluetooth DESTINATION ${KDE_INSTALL_PLUGINDIR}/kcms)
+kpackage_install_package(package kcm_bluetooth kcms)

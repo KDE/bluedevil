@@ -7,10 +7,6 @@ xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
 
     <!--    File Receiving      -->
     <group name="General">
-        <entry name="enabled" type="Bool" key="enabled">
-            <label>Enable or disable receiving files</label>
-            <default>true</default>
-        </entry>
         <entry name="saveUrl" type="Url" key="saveUrl">
             <label>Save received files to:</label>
             <default code="true">QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation))</default>

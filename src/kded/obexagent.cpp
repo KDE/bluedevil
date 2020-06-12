@@ -57,11 +57,6 @@ void ObexAgent::authorizePush(BluezQt::ObexTransferPtr transfer, BluezQt::ObexSe
     qCDebug(BLUEDAEMON) << "ObexAgent-AuthorizePush";
 
     FileReceiverSettings::self()->load();
-    if (!FileReceiverSettings::self()->enabled()) {
-        qCDebug(BLUEDAEMON) << "File receiver disabled, rejecting incoming file";
-        request.reject();
-        return;
-    }
 
     ReceiveFileJob *job = new ReceiveFileJob(request, transfer, session, this);
     connect(job, &ReceiveFileJob::finished, this, &ObexAgent::receiveFileJobFinished);

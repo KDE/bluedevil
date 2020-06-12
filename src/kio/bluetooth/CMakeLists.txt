@@ -5,7 +5,7 @@ set(kded_bluedevil.xml ${CMAKE_SOURCE_DIR}/src/interfaces/kded_bluedevil.xml)
 set_source_files_properties(${kded_bluedevil.xml} PROPERTIES INCLUDE ${CMAKE_SOURCE_DIR}/src/interfaces/kded_bluedevil_types.h)
 qt5_add_dbus_interface(kio_bluetooth_SRCS ${kded_bluedevil.xml} kdedbluedevil)
 
-kconfig_add_kcfg_files(kio_bluetooth_SRCS ../../settings/filereceiversettings.kcfgc)
+kconfig_add_kcfg_files(kio_bluetooth_SRCS GENERATE_MOC ../../settings/filereceiversettings.kcfgc)
 
 add_library(kio_bluetooth MODULE ${kio_bluetooth_SRCS})
 
