@@ -27,8 +27,6 @@ import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.plasma.components 3.0 as PlasmaComponents3
 import org.kde.plasma.private.bluetooth 1.0 as PlasmaBt
 
-import org.kde.kirigami 2.12 as Kirigami
-
 PlasmaComponents3.Page {
 
     Action {
@@ -99,7 +97,7 @@ PlasmaComponents3.Page {
         // Not inside the ListView because we want the listview to be hidden
         // when Bluetooth is disabled, yet still show an "Enable Bluetooth"
         // message
-        Kirigami.PlaceholderMessage {
+        PlasmaExtras.PlaceholderMessage {
             anchors.centerIn: parent
             anchors.left: parent.left
             anchors.right: parent.right
