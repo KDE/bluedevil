@@ -56,7 +56,6 @@ Name[sv]=Enheter
 Name[tg]=Дастгоҳҳо
 Name[tr]=Aygıtlar
 Name[uk]=Пристрої
-Name[x-test]=xxDevicesxx
 Name[zh_CN]=设备
 Name[zh_TW]=裝置
 
@@ -102,7 +101,6 @@ Comment[sv]=Blåtandenheter
 Comment[tg]=Дастгоҳҳои Bluetooth
 Comment[tr]=Bluetooth Aygıtları
 Comment[uk]=Пристрої Bluetooth
-Comment[x-test]=xxBluetooth Devicesxx
 Comment[zh_CN]=蓝牙设备
 Comment[zh_TW]=藍牙裝置
 
@@ -149,7 +147,6 @@ X-KDE-Keywords[sv]=Nätverk,Anslutningar,Blåtand
 X-KDE-Keywords[tg]=Шабака,Пайвастшавӣ,Bluetooth
 X-KDE-Keywords[tr]=Ağ, Bağlanılabilirlik, Bluetooth
 X-KDE-Keywords[uk]=Network,Connectivity,Bluetooth,мережа,з’єднання,з'єднання
-X-KDE-Keywords[x-test]=xxNetworkxx,xxConnectivityxx,xxBluetoothxx
 X-KDE-Keywords[zh_CN]=网络,连接,蓝牙
 X-KDE-Keywords[zh_TW]=Network,Connectivity,Bluetooth
 
