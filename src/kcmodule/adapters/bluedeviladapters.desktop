@@ -56,6 +56,7 @@ Name[sv]=Anslutningar
 Name[tg]=Адаптерҳо
 Name[tr]=Bağdaştırıcılar
 Name[uk]=Адаптери
+Name[x-test]=xxAdaptersxx
 Name[zh_CN]=适配器
 Name[zh_TW]=轉接器
 
@@ -100,6 +101,7 @@ Comment[sv]=Blåtandanslutningar
 Comment[tg]=Адаптерҳои Bluetooth
 Comment[tr]=Bluetooth Bağdaştırıcıları
 Comment[uk]=Адаптери Bluetooth
+Comment[x-test]=xxBluetooth Adaptersxx
 Comment[zh_CN]=蓝牙适配器
 Comment[zh_TW]=藍牙轉接器
 
@@ -146,6 +148,7 @@ X-KDE-Keywords[sv]=Nätverk,Anslutningar,Blåtand
 X-KDE-Keywords[tg]=Шабака,Пайвастшавӣ,Bluetooth
 X-KDE-Keywords[tr]=Ağ, Bağlanılabilirlik, Bluetooth
 X-KDE-Keywords[uk]=Network,Connectivity,Bluetooth,мережа,з’єднання,з'єднання
+X-KDE-Keywords[x-test]=xxNetworkxx,xxConnectivityxx,xxBluetoothxx
 X-KDE-Keywords[zh_CN]=网络,连接,蓝牙
 X-KDE-Keywords[zh_TW]=Network,Connectivity,Bluetooth
 
