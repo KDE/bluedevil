@@ -54,6 +54,7 @@ Name[sv]=Avancerade inställningar
 Name[tg]=Танзимоти иловагӣ
 Name[tr]=Gelişmiş Ayarlar
 Name[uk]=Додаткові параметри
+Name[x-test]=xxAdvanced Settingsxx
 Name[zh_CN]=高级设置
 Name[zh_TW]=進階設定
 
@@ -99,6 +100,7 @@ Comment[sv]=Avancerade Blåtandsinställningar
 Comment[tg]=Танзимоти иловагии Bluetooth
 Comment[tr]=Gelişmiş Bluetooth Ayarları
 Comment[uk]=Додаткові параметри Bluetooth
+Comment[x-test]=xxAdvanced Bluetooth Settingsxx
 Comment[zh_CN]=高级蓝牙设置
 Comment[zh_TW]=進階藍牙設定
 
@@ -145,6 +147,7 @@ X-KDE-Keywords[sv]=Nätverk,Anslutningar,Blåtand
 X-KDE-Keywords[tg]=Шабака,Пайвастшавӣ,Bluetooth
 X-KDE-Keywords[tr]=Ağ, Bağlanılabilirlik, Bluetooth
 X-KDE-Keywords[uk]=Network,Connectivity,Bluetooth,мережа,з’єднання,з'єднання
+X-KDE-Keywords[x-test]=xxNetworkxx,xxConnectivityxx,xxBluetoothxx
 X-KDE-Keywords[zh_CN]=网络,连接,蓝牙
 X-KDE-Keywords[zh_TW]=Network,Connectivity,Bluetooth
 
