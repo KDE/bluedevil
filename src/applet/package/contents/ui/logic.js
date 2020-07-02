@@ -32,8 +32,9 @@ function init()
 function updateStatus()
 {
     var connectedDevices = [];
-
-    for (var i = 0; i < btManager.devices.length; ++i) {
+    var totalDevices = btManager.devices.length || 0;
+    
+    for (var i = 0; i < totalDevices; ++i) {
         var device = btManager.devices[i];
         if (device.connected) {
             connectedDevices.push(device);
