@@ -14,7 +14,7 @@ X-KDE-Weight=100
 Name=Adapters
 Name[ar]=المحوّلات
 Name[ast]=Adautadores
-Name[az]=Adapterlər
+Name[az]=Uzlaşdırıcılar
 Name[bs]=Adapteri
 Name[ca]=Adaptadors
 Name[ca@valencia]=Adaptadors
@@ -63,7 +63,7 @@ Name[zh_TW]=轉接器
 
 Comment=Bluetooth Adapters
 Comment[ar]=محوّلات بلوتوث
-Comment[az]=Bluetooth adapterləri
+Comment[az]=Bluetooth uzlaşdırıcıları
 Comment[ca]=Adaptadors Bluetooth
 Comment[ca@valencia]=Adaptadors Bluetooth
 Comment[cs]=Adaptéry Bluetooth
