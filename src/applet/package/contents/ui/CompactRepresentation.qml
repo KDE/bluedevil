@@ -22,7 +22,7 @@ import QtQuick 2.2
 import QtQuick.Layouts 1.1
 
 import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.plasma.components 2.0 as PlasmaComponents
+import org.kde.plasma.components 3.0 as PlasmaComponents3
 
 MouseArea {
     readonly property bool inPanel: (plasmoid.location == PlasmaCore.Types.TopEdge
@@ -43,9 +43,9 @@ MouseArea {
         source: plasmoid.icon
         active: parent.containsMouse
 
-        PlasmaComponents.BusyIndicator {
+        PlasmaComponents3.BusyIndicator {
             id: busyIndicator
-            anchors.fill: parent
+            anchors.centerIn: parent
             running: runningActions > 0
             visible: running
         }

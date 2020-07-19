@@ -20,7 +20,8 @@
 */
 
 import QtQuick 2.2
-import org.kde.plasma.components 2.0 as PlasmaComponents
+import org.kde.plasma.components 2.0 as PlasmaComponents // for ListItem
+import org.kde.plasma.components 3.0 as PlasmaComponents3
 
 PlasmaComponents.ListItem {
     id: header
@@ -35,10 +36,9 @@ PlasmaComponents.ListItem {
     height: headerLabel.height + units.gridUnit
     sectionDelegate: true
 
-    PlasmaComponents.Label {
+    PlasmaComponents3.Label {
         id: headerLabel
         anchors.centerIn: parent
-        height: paintedHeight
         font.weight: Font.DemiBold
         elide: Text.ElideRight
     }

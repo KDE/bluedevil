@@ -26,7 +26,8 @@ import QtQuick.Layouts 1.3
 
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.extras 2.0 as PlasmaExtras
-import org.kde.plasma.components 2.0 as PlasmaComponents
+import org.kde.plasma.components 2.0 as PlasmaComponents // for ContextMenu/MenuItem
+import org.kde.plasma.components 3.0 as PlasmaComponents3
 import org.kde.plasma.private.bluetooth 1.0 as PlasmaBt
 
 import org.kde.bluezqt 1.0 as BluezQt
@@ -76,10 +77,10 @@ PlasmaExtras.ExpandableListItem {
                     Layout.rowSpan: 2
                 }
 
-                PlasmaComponents.ToolButton {
+                PlasmaComponents3.ToolButton {
                     id: browseFilesButton
                     text: i18n("Browse Files")
-                    iconSource: "folder"
+                    icon.name: "folder"
                     visible: Uuids.indexOf(BluezQt.Services.ObexFileTransfer) != -1
 
                     onClicked: {
@@ -88,10 +89,10 @@ PlasmaExtras.ExpandableListItem {
                     }
                 }
 
-                PlasmaComponents.ToolButton {
+                PlasmaComponents3.ToolButton {
                     id: sendFileButton
                     text: i18n("Send File")
-                    iconSource: "folder-download"
+                    icon.name: "folder-download"
                     visible: Uuids.indexOf(BluezQt.Services.ObexObjectPush) != -1
 
                     onClicked: {
@@ -172,7 +173,7 @@ PlasmaExtras.ExpandableListItem {
 
                     model: currentDeviceDetails.length
 
-                    PlasmaComponents.Label {
+                    PlasmaComponents3.Label {
                         id: detailLabel
                         Layout.fillWidth: true
                         horizontalAlignment: index % 2 ? Text.AlignLeft : Text.AlignRight

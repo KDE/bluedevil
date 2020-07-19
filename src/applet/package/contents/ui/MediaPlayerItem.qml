@@ -21,14 +21,14 @@
 import QtQuick 2.2
 import QtQuick.Layouts 1.1
 import org.kde.bluezqt 1.0 as BluezQt
-import org.kde.plasma.components 2.0 as PlasmaComponents
+import org.kde.plasma.components 3.0 as PlasmaComponents3
 
 ColumnLayout {
     id: mediaPlayer
 
     spacing: 0
 
-    PlasmaComponents.Label {
+    PlasmaComponents3.Label {
         id: trackTitleLabel
         Layout.fillWidth: true
         elide: Text.ElideRight
@@ -41,7 +41,7 @@ ColumnLayout {
         visible: text.length
     }
 
-    PlasmaComponents.Label {
+    PlasmaComponents3.Label {
         id: trackArtistLabel
         Layout.fillWidth: true
         elide: Text.ElideRight
@@ -52,7 +52,7 @@ ColumnLayout {
         visible: text.length
     }
 
-    PlasmaComponents.Label {
+    PlasmaComponents3.Label {
         id: trackAlbumLabel
         Layout.fillWidth: true
         elide: Text.ElideRight
@@ -66,31 +66,31 @@ ColumnLayout {
     RowLayout {
         spacing: 0
 
-        PlasmaComponents.ToolButton {
+        PlasmaComponents3.ToolButton {
             id: previousButton
-            iconSource: "media-skip-backward"
+            icon.name: "media-skip-backward"
 
             onClicked: MediaPlayer.previous()
         }
 
-        PlasmaComponents.ToolButton {
+        PlasmaComponents3.ToolButton {
             id: playPauseButton
-            iconSource: playPauseButtonIcon()
+            icon.name: playPauseButtonIcon()
 
             onClicked: playPauseButtonClicked()
         }
 
-        PlasmaComponents.ToolButton {
+        PlasmaComponents3.ToolButton {
             id: stopButton
-            iconSource: "media-playback-stop"
+            icon.name: "media-playback-stop"
             enabled: MediaPlayer && MediaPlayer.status != BluezQt.MediaPlayer.Stopped
 
             onClicked: MediaPlayer.stop()
         }
 
-        PlasmaComponents.ToolButton {
+        PlasmaComponents3.ToolButton {
             id: nextButton
-            iconSource: "media-skip-forward"
+            icon.name: "media-skip-forward"
 
             onClicked: MediaPlayer.next()
         }

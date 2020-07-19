@@ -20,61 +20,58 @@
 */
 
 import QtQuick 2.2
+import QtQuick.Layouts 1.2
 import org.kde.kquickcontrolsaddons 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.plasma.components 2.0 as PlasmaComponents
+import org.kde.plasma.components 3.0 as PlasmaComponents3
 import org.kde.plasma.extras 2.0 as PlasmaExtras
 import org.kde.plasma.private.bluetooth 1.0 as PlasmaBt
 
 PlasmaExtras.PlasmoidHeading {
     id: toolbar
 
-    height: btSwitchButton.height
-
-    SwitchButton {
-        id: btSwitchButton
-
-        anchors {
-            left: parent.left
-            verticalCenter: parent.verticalCenter
-        }
-
-        checked: btManager.bluetoothOperational
-        enabled: btManager.bluetoothBlocked || btManager.adapters.length
-        icon: "preferences-system-bluetooth"
-        tooltip: i18n("Enable Bluetooth")
-
-        onClicked: toggleBluetooth()
-    }
-
-    Row {
-        id: rightButtons
+    RowLayout {
+        anchors.fill: parent
         spacing: units.smallSpacing
 
-        anchors {
-            right: parent.right
-            verticalCenter: parent.verticalCenter
+        SwitchButton {
+            checked: btManager.bluetoothOperational
+            enabled: btManager.bluetoothBlocked || btManager.adapters.length
+            icon: "preferences-system-bluetooth"
+            tooltip: i18n("Enable Bluetooth")
+
+            onClicked: toggleBluetooth()
         }
 
-        PlasmaComponents.ToolButton {
+        Item {
+            Layout.fillWidth: true
+        }
+
+        PlasmaComponents3.ToolButton {
             id: addDeviceButton
 
-            iconSource: "list-add"
-            tooltip: i18n("Add New Device...")
+            icon.name: "list-add"
 
             onClicked: {
                 PlasmaBt.LaunchApp.runCommand("bluedevil-wizard");
             }
+
+            PlasmaComponents3.ToolTip {
+                text: i18n("Add New Device...")
+            }
         }
 
-        PlasmaComponents.ToolButton {
+        PlasmaComponents3.ToolButton {
             id: openSettingsButton
 
-            iconSource: "configure"
-            tooltip: i18n("Configure Bluetooth...")
+            icon.name: "configure"
 
             onClicked: {
                 KCMShell.open(["bluedevildevices", "bluedeviladapters", "bluedevilglobal"]);
+            }
+
+            PlasmaComponents3.ToolTip {
+                text: i18n("Configure Bluetooth...")
             }
         }
     }
