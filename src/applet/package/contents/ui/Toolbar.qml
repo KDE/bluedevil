@@ -34,13 +34,16 @@ PlasmaExtras.PlasmoidHeading {
         anchors.fill: parent
         spacing: units.smallSpacing
 
-        SwitchButton {
+        PlasmaComponents3.CheckBox {
             checked: btManager.bluetoothOperational
             enabled: btManager.bluetoothBlocked || btManager.adapters.length
-            icon: "preferences-system-bluetooth"
-            tooltip: i18n("Enable Bluetooth")
+            icon.name: "preferences-system-bluetooth"
 
-            onClicked: toggleBluetooth()
+            onToggled: toggleBluetooth()
+
+            PlasmaComponents3.ToolTip {
+                text: i18n("Enable Bluetooth")
+            }
         }
 
         Item {
