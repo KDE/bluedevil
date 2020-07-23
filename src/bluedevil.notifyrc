@@ -1,5 +1,6 @@
 [Global]
 IconName=preferences-system-bluetooth
+Name=Bluetooth
 Comment=Bluetooth system
 Comment[ar]=نظام بلوتوث
 Comment[ast]=Sistema Bluetooth
