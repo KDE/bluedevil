@@ -40,7 +40,6 @@ PlasmaExtras.ExpandableListItem {
     property var currentDeviceDetails : []
 
     icon: model.Icon
-    iconEmblem: model.Connected ? "" : "emblem-unmounted"
     title: model.DeviceFullName
     subtitle: infoText()
     isBusy: connecting
