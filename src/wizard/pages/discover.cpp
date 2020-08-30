@@ -25,6 +25,7 @@
 #include <QAction>
 #include <QSortFilterProxyModel>
 #include <QRegularExpressionValidator>
+#include <QScroller>
 
 #include <KMessageWidget>
 #include <KLocalizedString>
@@ -159,6 +160,8 @@ void DiscoverPage::initializePage()
     connect(m_manager, &BluezQt::Manager::adapterChanged, this, &DiscoverPage::checkAdapters);
     connect(m_manager, &BluezQt::Manager::bluetoothBlockedChanged, this, &DiscoverPage::checkAdapters);
     connect(m_manager, &BluezQt::Manager::usableAdapterChanged, this, &DiscoverPage::usableAdapterChanged);
+
+    QScroller::grabGesture(deviceView);
 }
 
 bool DiscoverPage::isComplete() const
