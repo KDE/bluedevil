@@ -64,7 +64,7 @@ SimpleKCM {
         QQC2.RadioButton {
             Kirigami.FormData.label: i18n("When receiving files:")
             checked: FileReceiverSettings.autoAccept == 0
-            text: i18n("Ask for confimation")
+            text: i18n("Ask for confirmation")
             QQC2.ButtonGroup.group: radioGroup
             onClicked: {
                 FileReceiverSettings.autoAccept = 0
