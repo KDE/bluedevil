@@ -205,7 +205,7 @@ PlasmaExtras.ExpandableListItem {
         }
         __dev = dev;
 
-        if (expandedView.status = Component.Ready) {
+        if (expandedView.status == Component.Ready) {
             expandableListItem.collapse()
             expandableListItem.ListView.view.currentIndex = -1
         }
