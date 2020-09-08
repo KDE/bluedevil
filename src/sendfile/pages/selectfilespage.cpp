@@ -52,6 +52,10 @@ void SelectFilesPage::initializePage()
 {
     SendFileWizard *w = static_cast<SendFileWizard*>(wizard());
 
+    const QSize sizeHint = m_files->dialogSizeHint();
+    if (sizeHint.isValid())
+        w->resize(sizeHint);
+    
     w->setWindowTitle(i18nc("Send files to a Bluetooth device", "Send to %1", w->device()->name()));
 }
 
