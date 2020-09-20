@@ -69,6 +69,7 @@ Comment[zh_TW]=管理藍牙裝置
 Encoding=UTF-8
 Type=Service
 Icon=preferences-system-bluetooth
+Exec=kcmshell5 bluetooth
 X-KDE-ServiceTypes=KCModule
 X-KDE-Library=kcm_bluetooth
 X-KDE-PluginInfo-Author=Nicolas Fella
