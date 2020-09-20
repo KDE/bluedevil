@@ -37,7 +37,15 @@ ScrollViewKCM {
         clip: true
 
         Kirigami.PlaceholderMessage {
-            visible: !BluezQt.Manager.bluetoothOperational
+            id: noBluetoothMessage
+            visible: !BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown && BluezQt.Manager.adapters.length === 0
+            text: i18n("No Bluetooth adapters found")
+            width: parent.width - (Kirigami.Units.largeSpacing * 4)
+            anchors.centerIn: parent
+        }
+
+        Kirigami.PlaceholderMessage {
+            visible: !BluezQt.Manager.bluetoothOperational && !noBluetoothMessage.visible
             text: i18n("Bluetooth is disabled")
             width: parent.width - (Kirigami.Units.largeSpacing * 4)
             anchors.centerIn: parent
