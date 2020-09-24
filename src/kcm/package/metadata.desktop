@@ -67,6 +67,7 @@ Comment[sl]=Upravljaj naprave Bluetooth
 Comment[sv]=Hantera Blåtandsenheter
 Comment[uk]=Керування пристроями Bluetooth
 Comment[x-test]=xxManage bluetooth devicesxx
+Comment[zh_CN]=管理蓝牙设备
 Comment[zh_TW]=管理藍牙裝置
 Encoding=UTF-8
 Type=Service
