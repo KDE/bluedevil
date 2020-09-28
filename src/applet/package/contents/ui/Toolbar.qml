@@ -53,15 +53,14 @@ PlasmaExtras.PlasmoidHeading {
         PlasmaComponents3.ToolButton {
             id: openSettingsButton
 
+            visible: plasmoid.action("configure").enabled
             icon.name: "configure"
-
-            onClicked: {
-                KCMShell.open(["bluedevildevices", "bluedeviladapters", "bluedevilglobal"]);
-            }
+            onClicked: plasmoid.action("configure").trigger()
 
             PlasmaComponents3.ToolTip {
-                text: i18n("Configure Bluetooth...")
+                text: plasmoid.action("configure").text
             }
+            Accessible.name: plasmoid.action("configure").text
         }
     }
 

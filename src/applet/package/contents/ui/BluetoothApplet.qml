@@ -29,13 +29,13 @@ Item {
     Plasmoid.compactRepresentation: CompactRepresentation { }
     Plasmoid.fullRepresentation: FullRepresentation { }
 
-    function action_bluedevilkcm() {
-        KCMShell.open(["bluedevildevices", "bluedeviladapters", "bluedevilglobal"]);
+    function action_configure() {
+        KCMShell.openSystemSettings("bluetooth");
     }
 
     Component.onCompleted: {
         plasmoid.removeAction("configure");
-        plasmoid.setAction("bluedevilkcm", i18n("Configure &Bluetooth..."), "preferences-system-bluetooth");
+        plasmoid.setAction("configure", i18n("Configure &Bluetooth..."), "preferences-system-bluetooth");
 
         Logic.init();
     }
