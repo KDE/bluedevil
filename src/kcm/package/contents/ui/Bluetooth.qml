@@ -18,6 +18,9 @@ ScrollViewKCM {
 
     id: root
 
+    implicitHeight: Kirigami.Units.gridUnit * 28
+    implicitWidth: Kirigami.Units.gridUnit * 28
+
     function setBluetoothEnabled(enabled) {
         BluezQt.Manager.bluetoothBlocked = !enabled
 
