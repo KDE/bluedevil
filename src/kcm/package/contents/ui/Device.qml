@@ -54,8 +54,8 @@ SimpleKCM {
 
         Kirigami.Icon {
             source: device.icon
-            width: Kirigami.Units.gridUnit * 4
-            height: width
+            Layout.preferredWidth: Kirigami.Units.iconSizes.enormous
+            Layout.preferredHeight: Layout.preferredWidth
             Layout.alignment: Qt.AlignHCenter
         }
 
