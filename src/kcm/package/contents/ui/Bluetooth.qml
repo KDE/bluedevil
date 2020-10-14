@@ -40,7 +40,7 @@ ScrollViewKCM {
         clip: true
 
         Kirigami.PlaceholderMessage {
-            visible: !BluezQt.Manager.bluetoothOperational
+            visible: BluezQt.Manager.operational && !BluezQt.Manager.bluetoothOperational
             text: i18n("Bluetooth is disabled")
             width: parent.width - (Kirigami.Units.largeSpacing * 4)
             anchors.centerIn: parent
