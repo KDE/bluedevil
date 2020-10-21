@@ -86,7 +86,6 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
                         QStringLiteral("edulix@gmail.com"), QStringLiteral("http://blog.edulix.es"));
 
     aboutData.setComponentName(QStringLiteral("bluedevil"));
-    KAboutData::registerPluginData(aboutData);
 
     // Initialize BluezQt
     BluezQt::InitManagerJob *job = d->m_manager->init();
