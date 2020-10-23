@@ -8,7 +8,6 @@
  */
 
 #include "kiobluetooth.h"
-#include "kdedbluedevil.h"
 #include "version.h"
 #include "filereceiversettings.h"
 

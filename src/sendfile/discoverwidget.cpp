@@ -8,7 +8,6 @@
  */
 
 #include "discoverwidget.h"
-#include "ui_discover.h"
 #include "debug_p.h"
 
 #include <QAction>

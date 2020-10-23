@@ -6,7 +6,6 @@
 */
 
 #include "discover.h"
-#include "ui_discover.h"
 #include "../bluewizard.h"
 #include "../wizardagent.h"
 #include "debug_p.h"

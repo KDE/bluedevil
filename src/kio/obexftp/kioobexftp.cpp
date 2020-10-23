@@ -7,7 +7,6 @@
  */
 
 #include "kioobexftp.h"
-#include "kdedobexftp.h"
 #include "version.h"
 #include "transferfilejob.h"
 #include "debug_p.h"

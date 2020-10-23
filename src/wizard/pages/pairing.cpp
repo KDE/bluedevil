@@ -16,7 +16,6 @@
 #include <KStandardGuiItem>
 #include <KLocalizedString>
 
-#include <BluezQt/Device>
 #include <BluezQt/Adapter>
 #include <BluezQt/PendingCall>
 
