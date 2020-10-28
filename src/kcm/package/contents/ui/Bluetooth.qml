@@ -83,13 +83,15 @@ ScrollViewKCM {
 
         delegate: Kirigami.SwipeListItem {
 
+            leftPadding: 0
+            rightPadding: 0
+
             contentItem: Kirigami.BasicListItem {
                 // The parent item already has a highlight
                 activeBackgroundColor: "transparent"
                 // Otherwise there are unnecessary margins
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
-                anchors.left: parent.left
                 // No right anchor so text can be elided by actions
 
                 text: model.Name
