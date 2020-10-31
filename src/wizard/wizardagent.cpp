@@ -46,7 +46,7 @@ QString WizardAgent::getPin(BluezQt::DevicePtr device)
     m_pin = QString::number(KRandom::random());
     m_pin = m_pin.left(6);
 
-    const QString &xmlPath = QStandardPaths::locate(QStandardPaths::DataLocation,
+    const QString &xmlPath = QStandardPaths::locate(QStandardPaths::AppDataLocation,
                                                     QStringLiteral("pin-code-database.xml"));
 
     QFile file(xmlPath);
