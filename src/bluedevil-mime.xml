@@ -17,8 +17,10 @@ Notes:
     <sub-class-of type="inode/directory"/>
     <generic-icon name="video-display"/>
     <comment>Device</comment>
+    <comment xml:lang="ast">Preséu</comment>
     <comment xml:lang="ca">Dispositiu</comment>
     <comment xml:lang="el">Συσκευή</comment>
+    <comment xml:lang="en_GB">Device</comment>
     <comment xml:lang="es">Dispositivo</comment>
     <comment xml:lang="eu">Gailua</comment>
     <comment xml:lang="fr">Périphérique</comment>
@@ -35,8 +37,10 @@ Notes:
     <sub-class-of type="inode/directory"/>
     <generic-icon name="preferences-system-bluetooth"/>
     <comment>Service</comment>
+    <comment xml:lang="ast">Serviciu</comment>
     <comment xml:lang="ca">Servei</comment>
     <comment xml:lang="el">Υπηρεσία</comment>
+    <comment xml:lang="en_GB">Service</comment>
     <comment xml:lang="es">Servicio</comment>
     <comment xml:lang="eu">Zerbitzua</comment>
     <comment xml:lang="fr">Service</comment>
@@ -51,8 +55,10 @@ Notes:
   </mime-type>
   <mime-type type="application/vnd.kde.bluedevil-sendfile">
     <comment>Service</comment>
+    <comment xml:lang="ast">Serviciu</comment>
     <comment xml:lang="ca">Servei</comment>
     <comment xml:lang="el">Υπηρεσία</comment>
+    <comment xml:lang="en_GB">Service</comment>
     <comment xml:lang="es">Servicio</comment>
     <comment xml:lang="eu">Zerbitzua</comment>
     <comment xml:lang="fr">Service</comment>
