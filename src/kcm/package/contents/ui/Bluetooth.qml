@@ -41,7 +41,7 @@ ScrollViewKCM {
 
         Kirigami.PlaceholderMessage {
             id: noBluetoothMessage
-            visible: !BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown && BluezQt.Manager.adapters.length === 0
+            visible: BluezQt.Manager.adapters.length === 0
             text: i18n("No Bluetooth adapters found")
             width: parent.width - (Kirigami.Units.largeSpacing * 4)
             anchors.centerIn: parent
