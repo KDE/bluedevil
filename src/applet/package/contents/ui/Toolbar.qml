@@ -53,7 +53,7 @@ PlasmaExtras.PlasmoidHeading {
         PlasmaComponents3.ToolButton {
             id: openSettingsButton
 
-            visible: plasmoid.action("configure").enabled
+            visible: plasmoid.action("configure").enabled && !(plasmoid.containmentDisplayHints & PlasmaCore.Types.ContainmentDrawsPlasmoidHeading)
             icon.name: "configure"
             onClicked: plasmoid.action("configure").trigger()
 
