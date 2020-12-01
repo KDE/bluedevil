@@ -108,7 +108,7 @@ PlasmaComponents3.Page {
                 } else if (btManager.devices.length === 0) {
                     return addBluetoothDeviceAction
                 }
-                return undefined
+                return null
             }
         }
     }
