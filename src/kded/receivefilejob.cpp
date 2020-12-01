@@ -14,7 +14,9 @@
 #include <QIcon>
 #include <QTimer>
 #include <QTemporaryFile>
+#include <QStandardPaths>
 
+#include <KFileUtils>
 #include <KIO/CopyJob>
 #include <KNotification>
 #include <KLocalizedString>
@@ -250,19 +252,13 @@ void ReceiveFileJob::transferredChanged(quint64 transferred)
 
 QString ReceiveFileJob::createTempPath(const QString &fileName) const
 {
-    QString xdgCacheHome = QFile::decodeName(qgetenv("XDG_CACHE_HOME"));
-    if (xdgCacheHome.isEmpty()) {
-        xdgCacheHome = QDir::homePath() + QStringLiteral("/.cache");
+    const QDir cacheDir(QStandardPaths::writableLocation(QStandardPaths::StandardLocation::GenericCacheLocation) + QLatin1String("/obexd/"));
+
+    if (!cacheDir.exists()) {
+        cacheDir.mkpath(QStringLiteral("."));
     }
 
-    xdgCacheHome.append(QLatin1String("/obexd/"));
-    QString path = xdgCacheHome + fileName;
+    const QString file = KFileUtils::suggestName(cacheDir.absolutePath(), fileName);
 
-    int i = 0;
-    while (QFile::exists(path)) {
-        path = xdgCacheHome + fileName + QString::number(i);
-        i++;
-    }
-
-    return path;
+    return cacheDir.filePath(file);
 }
