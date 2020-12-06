@@ -156,6 +156,8 @@ void ReceiveFileJob::slotAccept()
     m_targetPath = FileReceiverSettings::self()->saveUrl().adjusted(QUrl::StripTrailingSlash);
     m_targetPath.setPath(m_targetPath.path() + QLatin1Char('/') + m_transfer->name());
 
+    setTotalAmount(Files, 1);
+
     Q_EMIT description(this, i18n("Receiving file over Bluetooth"),
                     QPair<QString, QString>(i18nc("File transfer origin", "From"), m_deviceName),
                     QPair<QString, QString>(i18nc("File transfer destination", "To"), m_targetPath.toDisplayString()));
@@ -187,6 +189,8 @@ void ReceiveFileJob::moveFinished(KJob *job)
 
         QFile::remove(m_tempPath);
     }
+
+    setProcessedAmount(Files, 1);
 
     // Delay emitResult to make sure notification is displayed even
     // for very small files that are received instantly
