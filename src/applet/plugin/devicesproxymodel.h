@@ -25,6 +25,7 @@ public:
     QHash<int, QByteArray> roleNames() const override;
     QVariant data(const QModelIndex &index, int role) const override;
     bool lessThan(const QModelIndex &left, const QModelIndex &right) const override;
+    bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const override;
 
     Q_INVOKABLE QString adapterHciString(const QString &ubi) const;
 
