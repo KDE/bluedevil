@@ -92,7 +92,9 @@ PlasmaComponents3.Page {
             visible: text.length > 0
 
             text: {
-                if (btManager.adapters.length === 0) {
+                // We cannot use the adapter count here because that can be zero when
+                // bluetooth is disabled even when there are physical devices
+                if (BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown) {
                     return i18n("No Bluetooth Adapters Available")
                 } else if (btManager.bluetoothBlocked) {
                     return i18n("Bluetooth is Disabled")
@@ -103,7 +105,9 @@ PlasmaComponents3.Page {
             }
 
             helpfulAction: {
-                if (btManager.bluetoothBlocked) {
+                if (BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown) {
+                    return null
+                } else if (btManager.bluetoothBlocked) {
                     return enableBluetoothAction
                 } else if (btManager.devices.length === 0) {
                     return addBluetoothDeviceAction
