@@ -1,9 +1,7 @@
-set(kcmbluetooth_SRCS bluetooth.cpp)
+add_library(kcm_bluetooth MODULE bluetooth.cpp)
 
-kconfig_add_kcfg_files(kcmbluetooth_SRCS GENERATE_MOC
+kconfig_add_kcfg_files(kcm_bluetooth GENERATE_MOC
                     ../settings/filereceiversettings.kcfgc)
-
-add_library(kcm_bluetooth MODULE ${kcmbluetooth_SRCS})
 
 target_link_libraries(kcm_bluetooth
     Qt5::Gui

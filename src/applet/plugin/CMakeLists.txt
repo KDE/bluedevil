@@ -1,10 +1,9 @@
-set(bluetoothplugin_SRCS
+add_library(bluetoothplugin SHARED
     devicesproxymodel.cpp
     launchapp.cpp
     notify.cpp
     bluetoothplugin.cpp)
 
-add_library(bluetoothplugin SHARED ${bluetoothplugin_SRCS})
 target_link_libraries(bluetoothplugin
     Qt5::Core
     Qt5::Qml
