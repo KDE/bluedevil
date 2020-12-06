@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 
     KAboutData aboutData(QStringLiteral("bluedevilwizard"),
                          i18n("Bluetooth Device Wizard"),
-                         BLUEDEVIL_VERSION,
+                         QStringLiteral(BLUEDEVIL_VERSION_STRING),
                          i18n("Bluetooth Device Wizard"),
                          KAboutLicense::GPL,
                          i18n("(c) 2010, UFO Coders"));

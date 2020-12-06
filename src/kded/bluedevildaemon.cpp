@@ -70,7 +70,7 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     KAboutData aboutData(
         QStringLiteral("bluedevildaemon"),
         i18n("Bluetooth Daemon"),
-        BLUEDEVIL_VERSION,
+        QStringLiteral(BLUEDEVIL_VERSION_STRING),
         i18n("Bluetooth Daemon"),
         KAboutLicense::GPL,
         i18n("(c) 2010, UFO Coders")

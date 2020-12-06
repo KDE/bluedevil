@@ -10,8 +10,6 @@ set(KF5_MIN_VERSION "5.74")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-configure_file(version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/version.h)
-
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} )
 
@@ -43,10 +41,16 @@ include(KDECompilerSettings NO_POLICY_SCOPE)
 include(ECMOptionalAddSubdirectory)
 include(FeatureSummary)
 include(KDEClangFormat)
+include(ECMSetupVersion)
 if (EXISTS "${CMAKE_SOURCE_DIR}/.git")
    add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
    add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x054200)
 endif()
+
+ecm_setup_version(${PROJECT_VERSION}
+    VARIABLE_PREFIX BLUEDEVIL
+    VERSION_HEADER ${CMAKE_BINARY_DIR}/version.h
+)
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 

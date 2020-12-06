@@ -1,4 +1,0 @@
-#ifndef BLUEDEVILVERSION_H
-#define BLUEDEVILVERSION_H
-#define BLUEDEVIL_VERSION QStringLiteral("${PROJECT_VERSION}")
-#endif
