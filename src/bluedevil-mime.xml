@@ -34,6 +34,7 @@ Notes:
     <comment xml:lang="ro">Dispozitiv</comment>
     <comment xml:lang="sv">Enhet</comment>
     <comment xml:lang="uk">Пристрій</comment>
+    <comment xml:lang="zh_CN">设备</comment>
   </mime-type>
   <mime-type type="inode/vnd.kde.bluedevil.service">
     <sub-class-of type="inode/directory"/>
@@ -56,6 +57,7 @@ Notes:
     <comment xml:lang="ro">Serviciu</comment>
     <comment xml:lang="sv">Tjänst</comment>
     <comment xml:lang="uk">Служба</comment>
+    <comment xml:lang="zh_CN">服务</comment>
   </mime-type>
   <mime-type type="application/vnd.kde.bluedevil-sendfile">
     <comment>Service</comment>
@@ -76,5 +78,6 @@ Notes:
     <comment xml:lang="ro">Serviciu</comment>
     <comment xml:lang="sv">Tjänst</comment>
     <comment xml:lang="uk">Служба</comment>
+    <comment xml:lang="zh_CN">服务</comment>
   </mime-type>
 </mime-info>
