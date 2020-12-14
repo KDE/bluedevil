@@ -29,7 +29,6 @@ target_link_libraries(bluedevil-wizard
     KF5::DBusAddons
     KF5::Notifications
     KF5::WidgetsAddons
-    KF5::IconThemes
     KF5::BluezQt)
 
 install(TARGETS bluedevil-wizard ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})

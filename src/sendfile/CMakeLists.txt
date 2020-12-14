@@ -28,7 +28,6 @@ target_link_libraries(bluedevil-sendfile
     KF5::CoreAddons
     KF5::DBusAddons
     KF5::WidgetsAddons
-    KF5::IconThemes
     KF5::KIOFileWidgets
     KF5::BluezQt
 )

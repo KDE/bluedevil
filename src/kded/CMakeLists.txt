@@ -27,7 +27,6 @@ target_link_libraries(kded_bluedevil
     KF5::Notifications
     KF5::KIOCore
     KF5::KIOFileWidgets
-    KF5::IconThemes
     KF5::WindowSystem
     KF5::BluezQt
 )
