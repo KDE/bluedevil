@@ -23,6 +23,7 @@ Notes:
     <comment xml:lang="es">Dispositivo</comment>
     <comment xml:lang="et">Seade</comment>
     <comment xml:lang="eu">Gailua</comment>
+    <comment xml:lang="fi">Laite</comment>
     <comment xml:lang="fr">Périphérique</comment>
     <comment xml:lang="hu">Eszköz</comment>
     <comment xml:lang="ia">Dispositivo</comment>
@@ -32,6 +33,7 @@ Notes:
     <comment xml:lang="pl">Urządzenie</comment>
     <comment xml:lang="pt_BR">Dispositivo</comment>
     <comment xml:lang="ro">Dispozitiv</comment>
+    <comment xml:lang="sk">Zariadenie</comment>
     <comment xml:lang="sv">Enhet</comment>
     <comment xml:lang="uk">Пристрій</comment>
     <comment xml:lang="zh_CN">设备</comment>
@@ -46,6 +48,7 @@ Notes:
     <comment xml:lang="es">Servicio</comment>
     <comment xml:lang="et">Teenus</comment>
     <comment xml:lang="eu">Zerbitzua</comment>
+    <comment xml:lang="fi">Palvelu</comment>
     <comment xml:lang="fr">Service</comment>
     <comment xml:lang="hu">Szolgáltatás</comment>
     <comment xml:lang="ia">Servicio</comment>
@@ -55,6 +58,7 @@ Notes:
     <comment xml:lang="pl">Usługa</comment>
     <comment xml:lang="pt_BR">Serviço</comment>
     <comment xml:lang="ro">Serviciu</comment>
+    <comment xml:lang="sk">Služba</comment>
     <comment xml:lang="sv">Tjänst</comment>
     <comment xml:lang="uk">Служба</comment>
     <comment xml:lang="zh_CN">服务</comment>
@@ -67,6 +71,7 @@ Notes:
     <comment xml:lang="es">Servicio</comment>
     <comment xml:lang="et">Teenus</comment>
     <comment xml:lang="eu">Zerbitzua</comment>
+    <comment xml:lang="fi">Palvelu</comment>
     <comment xml:lang="fr">Service</comment>
     <comment xml:lang="hu">Szolgáltatás</comment>
     <comment xml:lang="ia">Servicio</comment>
@@ -76,6 +81,7 @@ Notes:
     <comment xml:lang="pl">Usługa</comment>
     <comment xml:lang="pt_BR">Serviço</comment>
     <comment xml:lang="ro">Serviciu</comment>
+    <comment xml:lang="sk">Služba</comment>
     <comment xml:lang="sv">Tjänst</comment>
     <comment xml:lang="uk">Служба</comment>
     <comment xml:lang="zh_CN">服务</comment>
