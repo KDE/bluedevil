@@ -4,3 +4,5 @@ build
 CMakeLists.txt.user
 .clang-format
 /build*/
+cmake-build-debug*
+.idea
