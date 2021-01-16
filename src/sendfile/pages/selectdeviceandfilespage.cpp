@@ -11,12 +11,12 @@
 #include "../discoverwidget.h"
 #include "../sendfilewizard.h"
 
+#include <QFileDialog>
+#include <QIcon>
 #include <QLabel>
 #include <QStandardPaths>
-#include <QVBoxLayout>
 #include <QUrl>
-#include <QIcon>
-#include <QFileDialog>
+#include <QVBoxLayout>
 
 #include <KLocalizedString>
 
@@ -42,14 +42,15 @@ SelectDeviceAndFilesPage::SelectDeviceAndFilesPage(SendFileWizard *wizard)
 
 void SelectDeviceAndFilesPage::deviceSelected(BluezQt::DevicePtr device)
 {
-    static_cast<SendFileWizard*>(wizard())->setDevice(device);
+    static_cast<SendFileWizard *>(wizard())->setDevice(device);
 
     Q_EMIT completeChanged();
 }
 
 void SelectDeviceAndFilesPage::openFileDialog()
 {
-    const QStringList &files = QFileDialog::getOpenFileNames(this, i18n("Open file..."),
+    const QStringList &files = QFileDialog::getOpenFileNames(this, //
+                                                             i18n("Open file..."),
                                                              QStandardPaths::writableLocation(QStandardPaths::HomeLocation),
                                                              QStringLiteral("*"));
 

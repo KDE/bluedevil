@@ -48,7 +48,7 @@ void ConnectPage::initializePage()
 void ConnectPage::connectFinished(BluezQt::PendingCall *call)
 {
     qCDebug(WIZARD) << "Connect finished:";
-    qCDebug(WIZARD) << "\t error     : " << (bool) call->error();
+    qCDebug(WIZARD) << "\t error     : " << (bool)call->error();
     qCDebug(WIZARD) << "\t errorText : " << call->errorText();
 
     m_success = !call->error();
@@ -57,7 +57,7 @@ void ConnectPage::connectFinished(BluezQt::PendingCall *call)
 
 QList<QWizard::WizardButton> ConnectPage::wizardButtonsLayout() const
 {
-    QList <QWizard::WizardButton> list;
+    QList<QWizard::WizardButton> list;
     list << QWizard::Stretch;
     list << QWizard::CancelButton;
     return list;

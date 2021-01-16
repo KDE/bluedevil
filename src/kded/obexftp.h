@@ -8,9 +8,9 @@
 #ifndef OBEXFTP_H
 #define OBEXFTP_H
 
-#include <QHash>
-#include <QDBusMessage>
 #include <QDBusAbstractAdaptor>
+#include <QDBusMessage>
+#include <QHash>
 
 #include <BluezQt/Manager>
 
@@ -39,7 +39,7 @@ private Q_SLOTS:
 private:
     BlueDevilDaemon *m_daemon;
     QHash<QString, QString> m_sessionMap;
-    QHash<QString, QList<QDBusMessage> > m_pendingSessions;
+    QHash<QString, QList<QDBusMessage>> m_pendingSessions;
 };
 
 #endif // OBEXFTP_H

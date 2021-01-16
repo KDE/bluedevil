@@ -8,28 +8,28 @@
  */
 
 #include "sendfilewizard.h"
-#include "sendfilesjob.h"
 #include "debug_p.h"
+#include "sendfilesjob.h"
 
+#include "pages/connectingpage.h"
+#include "pages/failpage.h"
 #include "pages/selectdeviceandfilespage.h"
 #include "pages/selectdevicepage.h"
 #include "pages/selectfilespage.h"
-#include "pages/connectingpage.h"
-#include "pages/failpage.h"
 
-#include <QUrl>
-#include <QPushButton>
 #include <QApplication>
+#include <QPushButton>
+#include <QUrl>
 
 #include <KIO/JobTracker>
 #include <KLocalizedString>
 #include <KStatusBarJobTracker>
 
-#include <BluezQt/Device>
 #include <BluezQt/Adapter>
+#include <BluezQt/Device>
+#include <BluezQt/InitManagerJob>
 #include <BluezQt/ObexManager>
 #include <BluezQt/PendingCall>
-#include <BluezQt/InitManagerJob>
 
 SendFileWizard::SendFileWizard(const QString &device, const QStringList &files)
     : QWizard()

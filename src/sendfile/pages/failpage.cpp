@@ -12,9 +12,9 @@
 
 #include <QPushButton>
 
-#include <KStandardGuiItem>
 #include <KLocalizedString>
 #include <KPixmapSequenceOverlayPainter>
+#include <KStandardGuiItem>
 
 #include <BluezQt/Device>
 

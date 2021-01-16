@@ -10,9 +10,9 @@
 #ifndef SENDFILESJOB_H
 #define SENDFILESJOB_H
 
-#include <QTime>
 #include <QList>
 #include <QStringList>
+#include <QTime>
 
 #include <KJob>
 
@@ -20,7 +20,7 @@
 
 namespace BluezQt
 {
-    class ObexObjectPush;
+class ObexObjectPush;
 }
 
 class SendFilesJob : public KJob
@@ -46,7 +46,7 @@ private:
 
     QTime m_time;
     QStringList m_files;
-    QList <quint64> m_filesSizes;
+    QList<quint64> m_filesSizes;
     QString m_currentFile;
     quint64 m_progress;
     quint64 m_totalSize;

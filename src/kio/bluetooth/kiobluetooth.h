@@ -12,9 +12,9 @@
 
 #include "kdedbluedevil.h"
 
+#include <QLoggingCategory>
 #include <QObject>
 #include <QUrl>
-#include <QLoggingCategory>
 
 #include <kio/slavebase.h>
 
@@ -25,7 +25,7 @@ class KioBluetoothPrivate;
 
 class KioBluetooth : public QObject, public KIO::SlaveBase
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
     KioBluetooth(const QByteArray &pool, const QByteArray &app);
@@ -69,7 +69,7 @@ public:
      */
     QList<Service> getSupportedServices(const QStringList &uuids);
 
-     /**
+    /**
      * Called by @p Bluetooth::listDir to create a "Received Files" folder entry.
      */
     void listDownload();

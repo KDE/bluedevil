@@ -12,21 +12,22 @@
 
 #include <QIcon>
 
-#include <KNotification>
 #include <KLocalizedString>
+#include <KNotification>
 
 RequestAuthorization::RequestAuthorization(BluezQt::DevicePtr device, QObject *parent)
     : QObject(parent)
     , m_device(device)
 {
-    KNotification *notification = new KNotification(QStringLiteral("Authorize"),
-                                                    KNotification::Persistent, this);
+    KNotification *notification = new KNotification(QStringLiteral("Authorize"), KNotification::Persistent, this);
 
     notification->setComponentName(QStringLiteral("bluedevil"));
     notification->setTitle(QStringLiteral("%1 (%2)").arg(m_device->name().toHtmlEscaped(), m_device->address().toHtmlEscaped()));
-    notification->setText(i18nc("Show a notification asking to authorize or deny access to this computer from Bluetooth."
-                                "The %1 is the name of the bluetooth device",
-                                "%1 is requesting access to this computer", m_device->name().toHtmlEscaped()));
+    notification->setText(
+        i18nc("Show a notification asking to authorize or deny access to this computer from Bluetooth."
+              "The %1 is the name of the bluetooth device",
+              "%1 is requesting access to this computer",
+              m_device->name().toHtmlEscaped()));
 
     QStringList actions;
     actions.append(i18nc("Button to trust a bluetooth remote device and authorize it to connect", "Trust && Authorize"));
@@ -68,4 +69,3 @@ void RequestAuthorization::deny()
     deleteLater();
     Q_EMIT done(Deny);
 }
-

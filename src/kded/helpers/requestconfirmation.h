@@ -21,7 +21,7 @@ class RequestConfirmation : public QObject
 public:
     enum Result {
         Deny,
-        Accept
+        Accept,
     };
 
     explicit RequestConfirmation(BluezQt::DevicePtr device, const QString &pin, QObject *parent = nullptr);

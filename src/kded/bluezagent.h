@@ -32,7 +32,6 @@ public:
 Q_SIGNALS:
     void agentReleased();
     void agentCanceled();
-
 };
 
 #endif // BLUEZAGENT_H

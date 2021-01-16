@@ -10,17 +10,17 @@
 #include "sendfilesjob.h"
 #include "debug_p.h"
 
-#include <QUrl>
-#include <QFile>
 #include <QDBusObjectPath>
+#include <QFile>
+#include <QUrl>
 
 #include <KLocalizedString>
 
 #include <BluezQt/Device>
-#include <BluezQt/PendingCall>
+#include <BluezQt/InitObexManagerJob>
 #include <BluezQt/ObexManager>
 #include <BluezQt/ObexObjectPush>
-#include <BluezQt/InitObexManagerJob>
+#include <BluezQt/PendingCall>
 
 SendFilesJob::SendFilesJob(const QStringList &files, BluezQt::DevicePtr device, const QDBusObjectPath &session, QObject *parent)
     : KJob(parent)
@@ -34,7 +34,7 @@ SendFilesJob::SendFilesJob(const QStringList &files, BluezQt::DevicePtr device, 
 {
     qCDebug(SENDFILE) << "SendFilesJob:" << files;
 
-    Q_FOREACH(const QString &filePath, files) {
+    Q_FOREACH (const QString &filePath, files) {
         QFile file(filePath);
         m_filesSizes << file.size();
         m_totalSize += file.size();
@@ -65,7 +65,8 @@ void SendFilesJob::doStart()
     setTotalAmount(Bytes, m_totalSize);
     setProcessedAmount(Bytes, 0);
 
-    Q_EMIT description(this, i18n("Sending file over Bluetooth"),
+    Q_EMIT description(this,
+                       i18n("Sending file over Bluetooth"),
                        QPair<QString, QString>(i18nc("File transfer origin", "From"), m_files.first()),
                        QPair<QString, QString>(i18nc("File transfer destination", "To"), m_device->name()));
 
@@ -80,7 +81,8 @@ void SendFilesJob::nextJob()
     m_currentFile = m_files.takeFirst();
     m_currentFileSize = m_filesSizes.takeFirst();
 
-    Q_EMIT description(this, i18n("Sending file over Bluetooth"),
+    Q_EMIT description(this,
+                       i18n("Sending file over Bluetooth"),
                        QPair<QString, QString>(i18nc("File transfer origin", "From"), m_currentFile),
                        QPair<QString, QString>(i18nc("File transfer destination", "To"), m_device->name()));
 
@@ -101,7 +103,6 @@ void SendFilesJob::sendFileFinished(BluezQt::PendingCall *call)
     m_transfer = call->value().value<BluezQt::ObexTransferPtr>();
     connect(m_transfer.data(), &BluezQt::ObexTransfer::statusChanged, this, &SendFilesJob::statusChanged);
     connect(m_transfer.data(), &BluezQt::ObexTransfer::transferredChanged, this, &SendFilesJob::transferredChanged);
-
 }
 
 void SendFilesJob::jobDone()

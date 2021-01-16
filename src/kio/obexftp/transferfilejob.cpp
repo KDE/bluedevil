@@ -5,8 +5,8 @@
  */
 
 #include "transferfilejob.h"
-#include "kioobexftp.h"
 #include "debug_p.h"
+#include "kioobexftp.h"
 
 #include <KLocalizedString>
 

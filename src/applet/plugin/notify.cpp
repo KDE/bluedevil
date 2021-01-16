@@ -17,8 +17,7 @@ Notify::Notify(QObject *parent)
 
 void Notify::connectionFailed(const QString &title, const QString &text)
 {
-    KNotification *notification = new KNotification(QStringLiteral("ConnectionFailed"),
-                                                    KNotification::CloseOnTimeout, this);
+    KNotification *notification = new KNotification(QStringLiteral("ConnectionFailed"), KNotification::CloseOnTimeout, this);
     notification->setComponentName(QStringLiteral("bluedevil"));
     notification->setTitle(title);
     notification->setText(text);

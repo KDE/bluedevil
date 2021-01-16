@@ -6,10 +6,10 @@
  */
 
 #include "obexagent.h"
-#include "receivefilejob.h"
 #include "bluedevildaemon.h"
-#include "filereceiversettings.h"
 #include "debug_p.h"
+#include "filereceiversettings.h"
+#include "receivefilejob.h"
 
 #include <QDBusObjectPath>
 
@@ -53,8 +53,8 @@ void ObexAgent::authorizePush(BluezQt::ObexTransferPtr transfer, BluezQt::ObexSe
 
 void ObexAgent::receiveFileJobFinished(KJob *job)
 {
-    Q_ASSERT(qobject_cast<ReceiveFileJob*>(job));
-    ReceiveFileJob *j = static_cast<ReceiveFileJob*>(job);
+    Q_ASSERT(qobject_cast<ReceiveFileJob *>(job));
+    ReceiveFileJob *j = static_cast<ReceiveFileJob *>(job);
 
     if (j->error()) {
         m_transferTimes.remove(j->deviceAddress());

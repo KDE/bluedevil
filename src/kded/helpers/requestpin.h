@@ -16,7 +16,7 @@
 
 namespace Ui
 {
-    class DialogWidget;
+class DialogWidget;
 }
 
 class KNotification;

@@ -13,8 +13,8 @@
 
 #include <QPushButton>
 
-#include <KStandardGuiItem>
 #include <KLocalizedString>
+#include <KStandardGuiItem>
 
 #include <BluezQt/Adapter>
 #include <BluezQt/PendingCall>
@@ -69,7 +69,7 @@ void PairingPage::initializePage()
 void PairingPage::pairingFinished(BluezQt::PendingCall *call)
 {
     qCDebug(WIZARD) << "Pairing finished:";
-    qCDebug(WIZARD) << "\t error     : " << (bool) call->error();
+    qCDebug(WIZARD) << "\t error     : " << (bool)call->error();
     qCDebug(WIZARD) << "\t errorText : " << call->errorText();
 
     m_success = !call->error();
@@ -120,7 +120,7 @@ void PairingPage::confirmationRequested(const QString &passkey, const BluezQt::R
     m_wizard->setButton(QWizard::CustomButton1, matches);
     m_wizard->setButton(QWizard::CustomButton2, notMatch);
 
-    QList <QWizard::WizardButton> list;
+    QList<QWizard::WizardButton> list;
     list << QWizard::Stretch;
     list << QWizard::CustomButton1;
     list << QWizard::CustomButton2;
@@ -152,7 +152,7 @@ void PairingPage::cancelClicked()
 
 QList<QWizard::WizardButton> PairingPage::wizardButtonsLayout() const
 {
-    QList <QWizard::WizardButton> list;
+    QList<QWizard::WizardButton> list;
     list << QWizard::Stretch;
     list << QWizard::CustomButton1;
     return list;

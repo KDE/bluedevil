@@ -22,7 +22,6 @@ SuccessPage::SuccessPage(BlueWizard *parent)
     : QWizardPage(parent)
     , m_wizard(parent)
 {
-
 }
 
 int SuccessPage::nextId() const
@@ -36,15 +35,13 @@ void SuccessPage::initializePage()
 
     BluezQt::DevicePtr device = m_wizard->device();
 
-    KNotification *notification = new KNotification(QStringLiteral("SetupFinished"),
-                                                    KNotification::CloseOnTimeout, this);
+    KNotification *notification = new KNotification(QStringLiteral("SetupFinished"), KNotification::CloseOnTimeout, this);
     notification->setComponentName(QStringLiteral("bluedevil"));
     notification->setTitle(i18n("Setup Finished"));
     if (device->name().isEmpty()) {
         notification->setText(i18n("The device has been set up and can now be used."));
     } else {
-        notification->setText(i18nc("Placeholder is device name",
-                                    "The device '%1' has been set up and can now be used.", device->name()));
+        notification->setText(i18nc("Placeholder is device name", "The device '%1' has been set up and can now be used.", device->name()));
     }
     // Mark as response to explicit user action ("pairing the device")
     notification->setHint(QStringLiteral("x-kde-user-action-feedback"), true);

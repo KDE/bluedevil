@@ -11,17 +11,17 @@
 #include "debug_p.h"
 
 #include <QAction>
-#include <QSortFilterProxyModel>
 #include <QRegularExpressionValidator>
 #include <QScroller>
+#include <QSortFilterProxyModel>
 
-#include <KMessageWidget>
 #include <KLocalizedString>
+#include <KMessageWidget>
 
-#include <BluezQt/Manager>
-#include <BluezQt/Device>
 #include <BluezQt/Adapter>
+#include <BluezQt/Device>
 #include <BluezQt/DevicesModel>
+#include <BluezQt/Manager>
 
 class DevicesProxyModel : public QSortFilterProxyModel
 {
@@ -114,7 +114,7 @@ void DiscoverPage::initializePage()
 {
     qCDebug(WIZARD) << "Initialize Discover Page";
 
-    QList <QWizard::WizardButton> list;
+    QList<QWizard::WizardButton> list;
     list << QWizard::Stretch;
     list << QWizard::NextButton;
     list << QWizard::CancelButton;

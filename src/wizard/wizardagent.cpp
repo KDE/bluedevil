@@ -8,13 +8,13 @@
 #include "wizardagent.h"
 #include "debug_p.h"
 
+#include <QDBusObjectPath>
 #include <QFile>
 #include <QStandardPaths>
-#include <QDBusObjectPath>
 #include <QXmlStreamReader>
 
-#include <KRandom>
 #include <KLocalizedString>
+#include <KRandom>
 
 #include <BluezQt/Device>
 
@@ -46,8 +46,7 @@ QString WizardAgent::getPin(BluezQt::DevicePtr device)
     m_pin = QString::number(KRandom::random());
     m_pin = m_pin.left(6);
 
-    const QString &xmlPath = QStandardPaths::locate(QStandardPaths::AppDataLocation,
-                                                    QStringLiteral("pin-code-database.xml"));
+    const QString &xmlPath = QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("pin-code-database.xml"));
 
     QFile file(xmlPath);
     if (!file.open(QIODevice::ReadOnly)) {

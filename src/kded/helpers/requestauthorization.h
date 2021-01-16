@@ -22,7 +22,7 @@ public:
     enum Result {
         Deny,
         Accept,
-        AcceptAndTrust
+        AcceptAndTrust,
     };
 
     explicit RequestAuthorization(BluezQt::DevicePtr device, QObject *parent = nullptr);
@@ -37,7 +37,6 @@ private Q_SLOTS:
 
 private:
     BluezQt::DevicePtr m_device;
-
 };
 
 #endif // REQUESTAUTHORIZATION_H

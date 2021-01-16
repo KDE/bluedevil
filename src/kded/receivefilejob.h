@@ -8,13 +8,13 @@
 #ifndef RECEIVEFILEJOB_H
 #define RECEIVEFILEJOB_H
 
-#include <QUrl>
 #include <QTime>
+#include <QUrl>
 
 #include <KJob>
 
-#include <BluezQt/Request>
 #include <BluezQt/ObexTransfer>
+#include <BluezQt/Request>
 
 class ObexAgent;
 
@@ -58,4 +58,3 @@ private:
 };
 
 #endif // RECEIVEFILEJOB_H
-

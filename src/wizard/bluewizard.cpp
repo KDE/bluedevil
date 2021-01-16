@@ -5,22 +5,22 @@
 */
 
 #include "bluewizard.h"
-#include "wizardagent.h"
-#include "pages/discover.h"
+#include "debug_p.h"
 #include "pages/connect.h"
+#include "pages/discover.h"
+#include "pages/fail.h"
 #include "pages/pairing.h"
 #include "pages/success.h"
-#include "pages/fail.h"
-#include "debug_p.h"
+#include "wizardagent.h"
 
 #include <QApplication>
 #include <QDBusConnection>
-#include <QPushButton>
 #include <QProcess>
+#include <QPushButton>
 #include <QString>
 
-#include <KStandardGuiItem>
 #include <KLocalizedString>
+#include <KStandardGuiItem>
 
 #include <BluezQt/InitManagerJob>
 
@@ -64,12 +64,17 @@ BlueWizard::BlueWizard()
     connect(initJob, &BluezQt::InitManagerJob::result, this, &BlueWizard::initJobResult);
 
     // When Finished page is opened, close wizard automatically
-    connect(this, &QWizard::currentIdChanged, this, [this](int id) {
-        if (id == Success) {
-            done(QDialog::Accepted);
-        }
-    // Sending notification in SuccessPage is asynchronous, so this needs to be queued.
-    }, Qt::QueuedConnection);
+    connect(
+        this,
+        &QWizard::currentIdChanged,
+        this,
+        [this](int id) {
+            if (id == Success) {
+                done(QDialog::Accepted);
+            }
+            // Sending notification in SuccessPage is asynchronous, so this needs to be queued.
+        },
+        Qt::QueuedConnection);
 }
 
 BluezQt::DevicePtr BlueWizard::device() const

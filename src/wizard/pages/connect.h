@@ -16,7 +16,7 @@
 
 namespace BluezQt
 {
-    class PendingCall;
+class PendingCall;
 }
 
 class BlueWizard;

@@ -11,8 +11,8 @@
 #define SENDFILEWIZARD_H
 
 #include <QObject>
-#include <QWizard>
 #include <QStringList>
+#include <QWizard>
 
 #include <BluezQt/Manager>
 

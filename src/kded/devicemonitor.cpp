@@ -10,13 +10,13 @@
 
 #include <QTimer>
 
-#include <KDirNotify>
 #include <KConfigGroup>
+#include <KDirNotify>
 #include <KFilePlacesModel>
 
-#include <BluezQt/Manager>
 #include <BluezQt/Adapter>
 #include <BluezQt/Device>
+#include <BluezQt/Manager>
 #include <BluezQt/Services>
 
 DeviceMonitor::DeviceMonitor(BlueDevilDaemon *daemon)
@@ -42,8 +42,7 @@ DeviceMonitor::DeviceMonitor(BlueDevilDaemon *daemon)
                                          QStringLiteral("org.freedesktop.login1.Manager"),
                                          QStringLiteral("PrepareForSleep"),
                                          this,
-                                         SLOT(login1PrepareForSleep(bool))
-                                         );
+                                         SLOT(login1PrepareForSleep(bool)));
 
     restoreState();
 }
@@ -83,9 +82,9 @@ void DeviceMonitor::deviceAdded(BluezQt::DevicePtr device)
 void DeviceMonitor::deviceConnectedChanged(bool connected)
 {
     Q_UNUSED(connected)
-    Q_ASSERT(qobject_cast<BluezQt::Device*>(sender()));
+    Q_ASSERT(qobject_cast<BluezQt::Device *>(sender()));
 
-    BluezQt::DevicePtr device = static_cast<BluezQt::Device*>(sender())->toSharedPtr();
+    BluezQt::DevicePtr device = static_cast<BluezQt::Device *>(sender())->toSharedPtr();
     updateDevicePlace(device);
 }
 

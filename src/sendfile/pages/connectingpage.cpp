@@ -8,16 +8,16 @@
  */
 
 #include "connectingpage.h"
-#include "../sendfilewizard.h"
 #include "../debug_p.h"
+#include "../sendfilewizard.h"
 
 #include <QDBusObjectPath>
 
 #include <KLocalizedString>
 
 #include <BluezQt/Device>
-#include <BluezQt/PendingCall>
 #include <BluezQt/InitObexManagerJob>
+#include <BluezQt/PendingCall>
 
 ConnectingPage::ConnectingPage(SendFileWizard *wizard)
     : QWizardPage(wizard)
@@ -74,7 +74,7 @@ void ConnectingPage::createSessionFinished(BluezQt::PendingCall *call)
 
 QList<QWizard::WizardButton> ConnectingPage::wizardButtonsLayout() const
 {
-    QList <QWizard::WizardButton> list;
+    QList<QWizard::WizardButton> list;
     list << QWizard::Stretch;
     list << QWizard::CancelButton;
     return list;

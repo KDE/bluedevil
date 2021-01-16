@@ -13,8 +13,8 @@
 #include "helpers/requestconfirmation.h"
 #include "helpers/requestpin.h"
 
-#include <QStandardPaths>
 #include <QDBusObjectPath>
+#include <QStandardPaths>
 
 #include <BluezQt/Device>
 
@@ -55,7 +55,7 @@ void BluezAgent::authorizeService(BluezQt::DevicePtr device, const QString &uuid
     qCDebug(BLUEDAEMON) << "AGENT-AuthorizeService" << device->name() << "Service:" << uuid;
 
     RequestAuthorization *helper = new RequestAuthorization(device, this);
-    connect(helper, &RequestAuthorization::done, this, [ device, request](RequestAuthorization::Result result) {
+    connect(helper, &RequestAuthorization::done, this, [device, request](RequestAuthorization::Result result) {
         processAuthorizationRequest(device, request, result);
     });
 }
@@ -65,7 +65,7 @@ void BluezAgent::requestPinCode(BluezQt::DevicePtr device, const BluezQt::Reques
     qCDebug(BLUEDAEMON) << "AGENT-RequestPinCode " << device->name();
 
     RequestPin *helper = new RequestPin(device, false, this);
-    connect(helper, &RequestPin::done, this, [ request](const QString &result) {
+    connect(helper, &RequestPin::done, this, [request](const QString &result) {
         if (!result.isEmpty()) {
             qCDebug(BLUEDAEMON) << "Introducing PIN...";
             request.accept(result);
@@ -82,7 +82,7 @@ void BluezAgent::requestPasskey(BluezQt::DevicePtr device, const BluezQt::Reques
     qCDebug(BLUEDAEMON) << "AGENT-RequestPasskey " << device->name();
 
     RequestPin *helper = new RequestPin(device, true, this);
-    connect(helper, &RequestPin::done, this, [ request](const QString &result) {
+    connect(helper, &RequestPin::done, this, [request](const QString &result) {
         bool ok;
         quint32 passkey = result.toInt(&ok);
         if (ok) {
@@ -101,7 +101,7 @@ void BluezAgent::requestConfirmation(BluezQt::DevicePtr device, const QString &p
     qCDebug(BLUEDAEMON) << "AGENT-RequestConfirmation " << device->name() << passkey;
 
     RequestConfirmation *helper = new RequestConfirmation(device, passkey, this);
-    connect(helper, &RequestConfirmation::done, this, [ request](RequestConfirmation::Result result) {
+    connect(helper, &RequestConfirmation::done, this, [request](RequestConfirmation::Result result) {
         if (result == RequestConfirmation::Accept) {
             qCDebug(BLUEDAEMON) << "Accepting request";
             request.accept();
@@ -118,7 +118,7 @@ void BluezAgent::requestAuthorization(BluezQt::DevicePtr device, const BluezQt::
     qCDebug(BLUEDAEMON) << "AGENT-RequestAuthorization";
 
     RequestAuthorization *helper = new RequestAuthorization(device, this);
-    connect(helper, &RequestAuthorization::done, this, [ device, request](RequestAuthorization::Result result) {
+    connect(helper, &RequestAuthorization::done, this, [device, request](RequestAuthorization::Result result) {
         processAuthorizationRequest(device, request, result);
     });
 }

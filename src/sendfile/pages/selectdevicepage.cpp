@@ -11,10 +11,10 @@
 #include "../discoverwidget.h"
 #include "../sendfilewizard.h"
 
-#include <QLabel>
 #include <QDesktopServices>
-#include <QVBoxLayout>
 #include <QIcon>
+#include <QLabel>
+#include <QVBoxLayout>
 
 #include <BluezQt/Device>
 

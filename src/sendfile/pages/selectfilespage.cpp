@@ -10,13 +10,13 @@
 #include "selectfilespage.h"
 #include "../sendfilewizard.h"
 
+#include <KDirOperator>
 #include <KFileItem>
 #include <KFileWidget>
-#include <KDirOperator>
 #include <KLocalizedString>
 
-#include <QVBoxLayout>
 #include <QStandardPaths>
+#include <QVBoxLayout>
 
 #include <BluezQt/Device>
 
@@ -37,12 +37,12 @@ SelectFilesPage::SelectFilesPage(QWidget *parent)
 
 void SelectFilesPage::initializePage()
 {
-    SendFileWizard *w = static_cast<SendFileWizard*>(wizard());
+    SendFileWizard *w = static_cast<SendFileWizard *>(wizard());
 
     const QSize sizeHint = m_files->dialogSizeHint();
     if (sizeHint.isValid())
         w->resize(sizeHint);
-    
+
     w->setWindowTitle(i18nc("Send files to a Bluetooth device", "Send to %1", w->device()->name()));
 }
 
@@ -55,7 +55,7 @@ void SelectFilesPage::selectionChanged()
         fileList << file.localPath();
     }
 
-    static_cast<SendFileWizard*>(wizard())->setFiles(fileList);
+    static_cast<SendFileWizard *>(wizard())->setFiles(fileList);
     Q_EMIT completeChanged();
 }
 

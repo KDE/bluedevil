@@ -17,4 +17,3 @@ bool LaunchApp::runCommand(const QString &exe, const QStringList &args)
 {
     return QProcess::startDetached(exe, args);
 }
-

@@ -86,7 +86,7 @@ QString DevicesProxyModel::adapterHciString(const QString &ubi) const
 
 bool DevicesProxyModel::duplicateIndexAddress(const QModelIndex &idx) const
 {
-    const QModelIndexList &list = match(index(0, 0),
+    const QModelIndexList &list = match(index(0, 0), //
                                         BluezQt::DevicesModel::AddressRole,
                                         idx.data(BluezQt::DevicesModel::AddressRole).toString(),
                                         2,

@@ -10,22 +10,24 @@
 #include "requestconfirmation.h"
 #include "debug_p.h"
 
-#include <KNotification>
 #include <KLocalizedString>
+#include <KNotification>
 
 RequestConfirmation::RequestConfirmation(BluezQt::DevicePtr device, const QString &pin, QObject *parent)
     : QObject(parent)
     , m_device(device)
     , m_pin(pin)
 {
-    KNotification *notification = new KNotification(QStringLiteral("RequestConfirmation"),
-                                                    KNotification::Persistent, this);
+    KNotification *notification = new KNotification(QStringLiteral("RequestConfirmation"), KNotification::Persistent, this);
 
     notification->setComponentName(QStringLiteral("bluedevil"));
     notification->setTitle(QStringLiteral("%1 (%2)").arg(m_device->name().toHtmlEscaped(), m_device->address()));
-    notification->setText(i18nc("The text is shown in a notification to know if the PIN is correct,"
-                                "%1 is the remote bluetooth device and %2 is the pin",
-                                "%1 is asking if the PIN is correct: %2", m_device->name().toHtmlEscaped(), m_pin));
+    notification->setText(
+        i18nc("The text is shown in a notification to know if the PIN is correct,"
+              "%1 is the remote bluetooth device and %2 is the pin",
+              "%1 is asking if the PIN is correct: %2",
+              m_device->name().toHtmlEscaped(),
+              m_pin));
 
     QStringList actions;
     actions.append(i18nc("Notification button to know if the pin is correct or not", "PIN correct"));

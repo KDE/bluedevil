@@ -32,7 +32,7 @@ public:
         Pairing,
         Success,
         Fail,
-        Connect
+        Connect,
     };
 
 private Q_SLOTS:

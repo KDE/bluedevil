@@ -8,17 +8,17 @@
  */
 
 #include "requestpin.h"
-#include "ui_requestpin.h"
 #include "debug_p.h"
+#include "ui_requestpin.h"
 
-#include <QIcon>
 #include <QDialog>
+#include <QIcon>
 #include <QPushButton>
 #include <QRegularExpressionValidator>
 
-#include <KWindowSystem>
-#include <KNotification>
 #include <KLocalizedString>
+#include <KNotification>
+#include <KWindowSystem>
 
 RequestPin::RequestPin(BluezQt::DevicePtr device, bool numeric, QObject *parent)
     : QObject(parent)
@@ -26,22 +26,22 @@ RequestPin::RequestPin(BluezQt::DevicePtr device, bool numeric, QObject *parent)
     , m_device(device)
     , m_numeric(numeric)
 {
-    m_notification = new KNotification(QStringLiteral("RequestPin"),
-                                       KNotification::Persistent, this);
+    m_notification = new KNotification(QStringLiteral("RequestPin"), KNotification::Persistent, this);
 
     m_notification->setComponentName(QStringLiteral("bluedevil"));
     m_notification->setTitle(QStringLiteral("%1 (%2)").arg(m_device->name().toHtmlEscaped(), m_device->address().toHtmlEscaped()));
-    m_notification->setText(i18nc("Shown in a notification to announce that a PIN is needed to accomplish a pair action,"
-                                  "%1 is the name of the bluetooth device",
-                                   "PIN needed to pair with %1", m_device->name().toHtmlEscaped()));
+    m_notification->setText(
+        i18nc("Shown in a notification to announce that a PIN is needed to accomplish a pair action,"
+              "%1 is the name of the bluetooth device",
+              "PIN needed to pair with %1",
+              m_device->name().toHtmlEscaped()));
 
     QStringList actions;
-    actions.append(i18nc("Notification button which once clicked, a dialog to introduce the PIN will be shown",
-                         "Introduce PIN"));
+    actions.append(i18nc("Notification button which once clicked, a dialog to introduce the PIN will be shown", "Introduce PIN"));
 
     m_notification->setActions(actions);
 
-    connect(m_notification, &KNotification::action1Activated,this, &RequestPin::introducePin);
+    connect(m_notification, &KNotification::action1Activated, this, &RequestPin::introducePin);
     connect(m_notification, &KNotification::closed, this, &RequestPin::quit);
     connect(m_notification, &KNotification::ignored, this, &RequestPin::quit);
     connect(parent, SIGNAL(agentCanceled()), this, SLOT(quit()));
@@ -59,14 +59,15 @@ void RequestPin::introducePin()
     dialog->setAttribute(Qt::WA_DeleteOnClose);
     dialog->setWindowIcon(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")));
 
-    dialog->setWindowTitle(i18nc("Shown in the caption of a dialog where the user introduce the PIN",
-                                 "Introduce PIN"));
+    dialog->setWindowTitle(i18nc("Shown in the caption of a dialog where the user introduce the PIN", "Introduce PIN"));
 
     m_dialogWidget = new Ui::DialogWidget;
     m_dialogWidget->setupUi(dialog);
-    m_dialogWidget->descLabel->setText(i18nc("Shown in a dialog which asks to introduce a PIN that will be used to pair a Bluetooth device,"
-                                             "%1 is the name of the Bluetooth device",
-                                             "In order to pair this computer with %1, you have to enter a PIN. Please do it below.", m_device->name()));
+    m_dialogWidget->descLabel->setText(
+        i18nc("Shown in a dialog which asks to introduce a PIN that will be used to pair a Bluetooth device,"
+              "%1 is the name of the Bluetooth device",
+              "In order to pair this computer with %1, you have to enter a PIN. Please do it below.",
+              m_device->name()));
 
     m_dialogWidget->pixmap->setPixmap(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")).pixmap(64));
     m_dialogWidget->pin->setFocus(Qt::ActiveWindowFocusReason);

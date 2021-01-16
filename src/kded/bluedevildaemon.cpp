@@ -9,28 +9,26 @@
 
 #include "bluedevildaemon.h"
 #include "bluezagent.h"
-#include "obexftp.h"
-#include "obexagent.h"
-#include "devicemonitor.h"
 #include "debug_p.h"
+#include "devicemonitor.h"
+#include "obexagent.h"
+#include "obexftp.h"
 #include "version.h"
 
-#include <QTimer>
 #include <QDBusMetaType>
+#include <QTimer>
 
 #include <KAboutData>
-#include <KPluginFactory>
 #include <KLocalizedString>
+#include <KPluginFactory>
 
-#include <BluezQt/Device>
 #include <BluezQt/Adapter>
-#include <BluezQt/PendingCall>
+#include <BluezQt/Device>
 #include <BluezQt/InitManagerJob>
 #include <BluezQt/InitObexManagerJob>
+#include <BluezQt/PendingCall>
 
-K_PLUGIN_FACTORY_WITH_JSON(BlueDevilFactory,
-                           "bluedevil.json",
-                           registerPlugin<BlueDevilDaemon>();)
+K_PLUGIN_FACTORY_WITH_JSON(BlueDevilFactory, "bluedevil.json", registerPlugin<BlueDevilDaemon>();)
 
 typedef QMap<QString, QString> DeviceInfo;
 typedef QMap<QString, DeviceInfo> QMapDeviceInfo;
@@ -38,8 +36,7 @@ typedef QMap<QString, DeviceInfo> QMapDeviceInfo;
 Q_DECLARE_METATYPE(DeviceInfo)
 Q_DECLARE_METATYPE(QMapDeviceInfo)
 
-struct BlueDevilDaemon::Private
-{
+struct BlueDevilDaemon::Private {
     BluezQt::Manager *m_manager;
     BluezQt::ObexManager *m_obexManager;
 
@@ -50,7 +47,7 @@ struct BlueDevilDaemon::Private
     DeviceMonitor *m_deviceMonitor;
 };
 
-BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
+BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant> &)
     : KDEDModule(parent)
     , d(new Private)
 {
@@ -67,23 +64,27 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
     d->m_timer.setSingleShot(true);
     connect(&d->m_timer, &QTimer::timeout, this, &BlueDevilDaemon::stopDiscovering);
 
-    KAboutData aboutData(
-        QStringLiteral("bluedevildaemon"),
-        i18n("Bluetooth Daemon"),
-        QStringLiteral(BLUEDEVIL_VERSION_STRING),
-        i18n("Bluetooth Daemon"),
-        KAboutLicense::GPL,
-        i18n("(c) 2010, UFO Coders")
-    );
+    KAboutData aboutData(QStringLiteral("bluedevildaemon"),
+                         i18n("Bluetooth Daemon"),
+                         QStringLiteral(BLUEDEVIL_VERSION_STRING),
+                         i18n("Bluetooth Daemon"),
+                         KAboutLicense::GPL,
+                         i18n("(c) 2010, UFO Coders"));
 
-    aboutData.addAuthor(QStringLiteral("David Rosca"), i18n("Maintainer"),
-                        QStringLiteral("nowrep@gmail.com"), QStringLiteral("http://david.rosca.cz"));
+    aboutData.addAuthor(QStringLiteral("David Rosca"), //
+                        i18n("Maintainer"),
+                        QStringLiteral("nowrep@gmail.com"),
+                        QStringLiteral("http://david.rosca.cz"));
 
-    aboutData.addAuthor(QStringLiteral("Alejandro Fiestas Olivares"), i18n("Previous Maintainer"),
-                        QStringLiteral("afiestas@kde.org"), QStringLiteral("http://www.afiestas.org"));
+    aboutData.addAuthor(QStringLiteral("Alejandro Fiestas Olivares"),
+                        i18n("Previous Maintainer"),
+                        QStringLiteral("afiestas@kde.org"),
+                        QStringLiteral("http://www.afiestas.org"));
 
-    aboutData.addAuthor(QStringLiteral("Eduardo Robles Elvira"), i18n("Previous Maintainer"),
-                        QStringLiteral("edulix@gmail.com"), QStringLiteral("http://blog.edulix.es"));
+    aboutData.addAuthor(QStringLiteral("Eduardo Robles Elvira"),
+                        i18n("Previous Maintainer"),
+                        QStringLiteral("edulix@gmail.com"),
+                        QStringLiteral("http://blog.edulix.es"));
 
     aboutData.setComponentName(QStringLiteral("bluedevil"));
 
@@ -101,9 +102,8 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant>&)
 
 BlueDevilDaemon::~BlueDevilDaemon()
 {
-    d->m_manager->unregisterAgent(d->m_bluezAgent);;
+    d->m_manager->unregisterAgent(d->m_bluezAgent);
     d->m_obexManager->unregisterAgent(d->m_obexAgent);
-
     d->m_deviceMonitor->saveState();
 
     qCDebug(BLUEDAEMON) << "Destroyed";

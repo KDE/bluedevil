@@ -7,21 +7,21 @@
  */
 
 #include "kioobexftp.h"
-#include "version.h"
-#include "transferfilejob.h"
 #include "debug_p.h"
+#include "transferfilejob.h"
+#include "version.h"
 
 #include <unistd.h>
 
-#include <QMimeData>
-#include <QTemporaryFile>
 #include <QCoreApplication>
+#include <QMimeData>
 #include <QMimeDatabase>
+#include <QTemporaryFile>
 
 #include <KLocalizedString>
 
-#include <BluezQt/PendingCall>
 #include <BluezQt/ObexTransfer>
+#include <BluezQt/PendingCall>
 
 extern "C" int Q_DECL_EXPORT kdemain(int argc, char **argv)
 {
@@ -65,8 +65,7 @@ KioFtp::KioFtp(const QByteArray &pool, const QByteArray &app)
     : SlaveBase(QByteArrayLiteral("obexftp"), pool, app)
     , m_transfer(nullptr)
 {
-    m_kded = new org::kde::BlueDevil::ObexFtp(QStringLiteral("org.kde.kded5"), QStringLiteral("/modules/bluedevil"),
-                                              QDBusConnection::sessionBus(), this);
+    m_kded = new org::kde::BlueDevil::ObexFtp(QStringLiteral("org.kde.kded5"), QStringLiteral("/modules/bluedevil"), QDBusConnection::sessionBus(), this);
 }
 
 void KioFtp::connectToHost()
@@ -420,7 +419,7 @@ QList<KIO::UDSEntry> KioFtp::listFolder(const QUrl &url, bool *ok)
         return list;
     }
 
-    const QList<BluezQt::ObexFileTransferEntry> &items = call->value().value<QList<BluezQt::ObexFileTransferEntry> >();
+    const QList<BluezQt::ObexFileTransferEntry> &items = call->value().value<QList<BluezQt::ObexFileTransferEntry>>();
 
     Q_FOREACH (const BluezQt::ObexFileTransferEntry &item, items) {
         if (!item.isValid()) {
@@ -457,9 +456,7 @@ QList<KIO::UDSEntry> KioFtp::listFolder(const QUrl &url, bool *ok)
         }
 
         if (!m_statMap.contains(statUrl.toDisplayString())) {
-            qCDebug(OBEXFTP) << "Stat:"
-                             << statUrl.toDisplayString()
-                             << entry.stringValue(KIO::UDSEntry::UDS_NAME)
+            qCDebug(OBEXFTP) << "Stat:" << statUrl.toDisplayString() << entry.stringValue(KIO::UDSEntry::UDS_NAME)
                              << entry.numberValue(KIO::UDSEntry::UDS_SIZE);
             m_statMap.insert(statUrl.toDisplayString(), entry);
         }
@@ -483,7 +480,6 @@ bool KioFtp::changeFolder(const QString &folder)
 
 bool KioFtp::createFolder(const QString &folder)
 {
-
     BluezQt::PendingCall *call = m_transfer->createFolder(folder);
     call->waitForFinished();
 

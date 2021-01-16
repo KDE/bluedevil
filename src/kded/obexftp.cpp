@@ -6,20 +6,20 @@
  */
 
 #include "obexftp.h"
-#include "debug_p.h"
 #include "bluedevildaemon.h"
+#include "debug_p.h"
 
 #include <QDBusConnection>
 #include <QDBusObjectPath>
-#include <QDBusPendingReply>
 #include <QDBusPendingCallWatcher>
+#include <QDBusPendingReply>
 
 #include <KLocalizedString>
 
 #include <BluezQt/Device>
-#include <BluezQt/ObexManager>
 #include <BluezQt/InitObexManagerJob>
 #include <BluezQt/ObexFileTransfer>
+#include <BluezQt/ObexManager>
 #include <BluezQt/ObexSession>
 #include <BluezQt/PendingCall>
 
@@ -85,10 +85,10 @@ bool ObexFtp::cancelTransfer(const QString &transfer, const QDBusMessage &msg)
 
     msg.setDelayedReply(true);
 
-    QDBusMessage call = QDBusMessage::createMethodCall(QStringLiteral("org.bluez.obex"),
-                            transfer,
-                            QStringLiteral("org.bluez.obex.Transfer1"),
-                            QStringLiteral("Cancel"));
+    QDBusMessage call = QDBusMessage::createMethodCall(QStringLiteral("org.bluez.obex"), //
+                                                       transfer,
+                                                       QStringLiteral("org.bluez.obex.Transfer1"),
+                                                       QStringLiteral("Cancel"));
 
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(QDBusConnection::sessionBus().asyncCall(call));
     watcher->setProperty("ObexFtpDaemon-msg", QVariant::fromValue(msg));

@@ -26,7 +26,7 @@ class Q_DECL_EXPORT BlueDevilDaemon : public KDEDModule
     Q_CLASSINFO("D-Bus Interface", "org.kde.BlueDevil")
 
 public:
-    BlueDevilDaemon(QObject *parent, const QList<QVariant>&);
+    BlueDevilDaemon(QObject *parent, const QList<QVariant> &);
     ~BlueDevilDaemon() override;
 
     /**

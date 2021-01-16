@@ -8,10 +8,10 @@
 #include "bluewizard.h"
 #include "version.h"
 
-#include <QUrl>
-#include <QIcon>
 #include <QApplication>
 #include <QCommandLineParser>
+#include <QIcon>
+#include <QUrl>
 
 #include <KAboutData>
 #include <KDBusService>
@@ -28,11 +28,15 @@ int main(int argc, char *argv[])
                          KAboutLicense::GPL,
                          i18n("(c) 2010, UFO Coders"));
 
-    aboutData.addAuthor(QStringLiteral("David Rosca"), i18n("Maintainer"),
-                        QStringLiteral("nowrep@gmail.com"), QStringLiteral("http://david.rosca.cz"));
+    aboutData.addAuthor(QStringLiteral("David Rosca"), //
+                        i18n("Maintainer"),
+                        QStringLiteral("nowrep@gmail.com"),
+                        QStringLiteral("http://david.rosca.cz"));
 
-    aboutData.addAuthor(QStringLiteral("Alejandro Fiestas Olivares"), i18n("Previous Maintainer"),
-                        QStringLiteral("afiestas@kde.org"), QStringLiteral("http://www.afiestas.org/"));
+    aboutData.addAuthor(QStringLiteral("Alejandro Fiestas Olivares"),
+                        i18n("Previous Maintainer"),
+                        QStringLiteral("afiestas@kde.org"),
+                        QStringLiteral("http://www.afiestas.org/"));
 
     app.setAttribute(Qt::AA_UseHighDpiPixmaps);
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")));

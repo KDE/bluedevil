@@ -11,20 +11,20 @@
 #include "debug_p.h"
 
 #include <QAction>
-#include <QSortFilterProxyModel>
-#include <QListWidgetItem>
-#include <QListView>
-#include <QLabel>
-#include <QTimer>
 #include <QIcon>
+#include <QLabel>
+#include <QListView>
+#include <QListWidgetItem>
+#include <QSortFilterProxyModel>
+#include <QTimer>
 
 #include <KMessageWidget>
 
-#include <BluezQt/Manager>
-#include <BluezQt/Device>
 #include <BluezQt/Adapter>
-#include <BluezQt/Services>
+#include <BluezQt/Device>
 #include <BluezQt/DevicesModel>
+#include <BluezQt/Manager>
+#include <BluezQt/Services>
 
 class DevicesProxyModel : public QSortFilterProxyModel
 {
@@ -83,7 +83,7 @@ BluezQt::DevicePtr DevicesProxyModel::device(const QModelIndex &index) const
     return m_devicesModel->device(mapToSource(index));
 }
 
-DiscoverWidget::DiscoverWidget(BluezQt::Manager *manager, QWidget* parent)
+DiscoverWidget::DiscoverWidget(BluezQt::Manager *manager, QWidget *parent)
     : QWidget(parent)
     , m_manager(manager)
     , m_warningWidget(nullptr)
