@@ -64,17 +64,13 @@ BlueWizard::BlueWizard()
     connect(initJob, &BluezQt::InitManagerJob::result, this, &BlueWizard::initJobResult);
 
     // When Finished page is opened, close wizard automatically
-    connect(
-        this,
-        &QWizard::currentIdChanged,
-        this,
-        [this](int id) {
-            if (id == Success) {
-                done(QDialog::Accepted);
-            }
-            // Sending notification in SuccessPage is asynchronous, so this needs to be queued.
-        },
-        Qt::QueuedConnection);
+    const auto onCurrentIdChanged = [this](int id) {
+        if (id == Success) {
+            done(QDialog::Accepted);
+        }
+        // Sending notification in SuccessPage is asynchronous, so this needs to be queued.
+    };
+    connect(this, &QWizard::currentIdChanged, this, onCurrentIdChanged, Qt::QueuedConnection);
 }
 
 BluezQt::DevicePtr BlueWizard::device() const
