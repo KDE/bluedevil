@@ -51,6 +51,10 @@ if (EXISTS "${CMAKE_SOURCE_DIR}/.git")
    add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x054200)
 endif()
 
+if(ECM_VERSION VERSION_GREATER_EQUAL 5.79)
+    include(KDEGitCommitHooks)
+endif()
+
 ecm_setup_version(${PROJECT_VERSION}
     VARIABLE_PREFIX BLUEDEVIL
     VERSION_HEADER ${CMAKE_BINARY_DIR}/version.h
@@ -65,3 +69,6 @@ feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 # add clang-format target for all our real source files
 file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
+if(ECM_VERSION VERSION_GREATER_EQUAL 5.79)
+    kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
+endif()
