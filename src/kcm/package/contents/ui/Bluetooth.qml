@@ -84,21 +84,25 @@ ScrollViewKCM {
         }
 
         delegate: Kirigami.SwipeListItem {
+            id: listItem
 
-            leftPadding: 0
-            rightPadding: 0
+            onClicked: kcm.push("Device.qml", {device: model.Device})
 
-            contentItem: Kirigami.BasicListItem {
-                // The parent item already has a highlight
-                activeBackgroundColor: "transparent"
-                // Otherwise there are unnecessary margins
-                anchors.top: parent.top
-                anchors.bottom: parent.bottom
-                // No right anchor so text can be elided by actions
+            Row {
+                spacing: Kirigami.Units.smallSpacing
 
-                text: model.Name
-                icon: model.Icon
-                onClicked: kcm.push("Device.qml", {device: model.Device})
+                Kirigami.Icon {
+                    source: model.Icon
+                    width: Kirigami.Units.iconSizes.smallMedium
+                    height: width
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+
+                QQC2.Label {
+                    text: model.Name
+                    anchors.verticalCenter: parent.verticalCenter
+                    color: listItem.pressed ? listItem.activeTextColor : listItem.textColor
+                }
             }
 
             actions: [
