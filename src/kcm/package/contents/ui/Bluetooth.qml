@@ -37,6 +37,7 @@ ScrollViewKCM {
     }
 
     view: ListView {
+        id: list
         clip: true
 
         Kirigami.PlaceholderMessage {
@@ -50,6 +51,7 @@ ScrollViewKCM {
         }
 
         Kirigami.PlaceholderMessage {
+            id: bluetoothDisabledMessage
             visible: BluezQt.Manager.operational && !BluezQt.Manager.bluetoothOperational && !noBluetoothMessage.visible
             text: i18n("Bluetooth is disabled")
             width: parent.width - (Kirigami.Units.largeSpacing * 4)
@@ -62,6 +64,13 @@ ScrollViewKCM {
                     root.setBluetoothEnabled(true)
                 }
             }
+        }
+
+        Kirigami.PlaceholderMessage {
+            visible: !noBluetoothMessage.visible && !bluetoothDisabledMessage.visible && list.count === 0
+            text: i18n("No devices paired")
+            width: parent.width - (Kirigami.Units.largeSpacing * 4)
+            anchors.centerIn: parent
         }
 
         model: BluezQt.Manager.bluetoothOperational ? devicesModel : []
