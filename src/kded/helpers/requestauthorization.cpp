@@ -30,7 +30,7 @@ RequestAuthorization::RequestAuthorization(BluezQt::DevicePtr device, QObject *p
               m_device->name().toHtmlEscaped()));
 
     QStringList actions;
-    actions.append(i18nc("Button to trust a bluetooth remote device and authorize it to connect", "Trust && Authorize"));
+    actions.append(i18nc("Button to trust a bluetooth remote device and authorize it to connect", "Trust and Authorize"));
     actions.append(i18nc("Button to authorize a bluetooth remote device to connect", "Authorize Only"));
     actions.append(i18nc("Deny access to a remote bluetooth device", "Deny"));
 
