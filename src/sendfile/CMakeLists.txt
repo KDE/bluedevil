@@ -22,8 +22,8 @@ ki18n_wrap_ui(sendfilehelper_SRCS
 add_executable(bluedevil-sendfile ${sendfilehelper_SRCS})
 
 target_link_libraries(bluedevil-sendfile
-    Qt5::Widgets
-    Qt5::DBus
+    Qt::Widgets
+    Qt::DBus
     KF5::I18n
     KF5::CoreAddons
     KF5::DBusAddons

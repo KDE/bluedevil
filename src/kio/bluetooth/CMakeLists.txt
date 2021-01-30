@@ -10,13 +10,13 @@ kconfig_add_kcfg_files(kio_bluetooth_SRCS GENERATE_MOC ../../settings/filereceiv
 add_library(kio_bluetooth MODULE ${kio_bluetooth_SRCS})
 
 target_link_libraries(kio_bluetooth
-    Qt5::Core
-    Qt5::DBus
+    Qt::Core
+    Qt::DBus
     KF5::I18n
     KF5::KIOCore
     KF5::CoreAddons
     KF5::ConfigGui
-    Qt5::Network
+    Qt::Network
 )
 
 target_include_directories(kio_bluetooth

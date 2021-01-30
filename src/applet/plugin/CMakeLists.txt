@@ -5,8 +5,8 @@ add_library(bluetoothplugin SHARED
     bluetoothplugin.cpp)
 
 target_link_libraries(bluetoothplugin
-    Qt5::Core
-    Qt5::Qml
+    Qt::Core
+    Qt::Qml
     KF5::Notifications
     KF5::BluezQt)
 

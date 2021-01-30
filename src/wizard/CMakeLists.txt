@@ -22,8 +22,8 @@ ki18n_wrap_ui(wizard_SRCS
 add_executable(bluedevil-wizard ${wizard_SRCS})
 
 target_link_libraries(bluedevil-wizard
-    Qt5::Widgets
-    Qt5::DBus
+    Qt::Widgets
+    Qt::DBus
     KF5::I18n
     KF5::CoreAddons
     KF5::DBusAddons

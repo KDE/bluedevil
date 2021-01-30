@@ -4,9 +4,9 @@ kconfig_add_kcfg_files(kcm_bluetooth GENERATE_MOC
                     ../settings/filereceiversettings.kcfgc)
 
 target_link_libraries(kcm_bluetooth
-    Qt5::Gui
-    Qt5::Qml
-    Qt5::DBus
+    Qt::Gui
+    Qt::Qml
+    Qt::DBus
     KF5::CoreAddons
     KF5::ConfigGui
     KF5::QuickAddons
