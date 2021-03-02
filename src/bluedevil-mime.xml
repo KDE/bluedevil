@@ -21,6 +21,7 @@ Notes:
     <comment xml:lang="az">Cihaz</comment>
     <comment xml:lang="ca">Dispositiu</comment>
     <comment xml:lang="da">Enhed</comment>
+    <comment xml:lang="de">Gerät</comment>
     <comment xml:lang="el">Συσκευή</comment>
     <comment xml:lang="en_GB">Device</comment>
     <comment xml:lang="es">Dispositivo</comment>
@@ -53,6 +54,7 @@ Notes:
     <comment xml:lang="az">Xidmət</comment>
     <comment xml:lang="ca">Servei</comment>
     <comment xml:lang="da">Tjeneste</comment>
+    <comment xml:lang="de">Dienst</comment>
     <comment xml:lang="el">Υπηρεσία</comment>
     <comment xml:lang="en_GB">Service</comment>
     <comment xml:lang="es">Servicio</comment>
@@ -83,6 +85,7 @@ Notes:
     <comment xml:lang="az">Xidmət</comment>
     <comment xml:lang="ca">Servei</comment>
     <comment xml:lang="da">Tjeneste</comment>
+    <comment xml:lang="de">Dienst</comment>
     <comment xml:lang="el">Υπηρεσία</comment>
     <comment xml:lang="en_GB">Service</comment>
     <comment xml:lang="es">Servicio</comment>
