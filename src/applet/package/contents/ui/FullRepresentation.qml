@@ -43,7 +43,6 @@ PlasmaComponents3.Page {
     header: Toolbar {
         id: toolbar
         visible: btManager.adapters.length > 0
-        enabled: !btManager.bluetoothBlocked
     }
 
     FocusScope {

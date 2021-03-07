@@ -38,6 +38,7 @@ PlasmaExtras.PlasmoidHeading {
 
         PlasmaComponents3.ToolButton {
             id: addDeviceButton
+            enabled: !btManager.bluetoothBlocked
 
             icon.name: "list-add"
 
