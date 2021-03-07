@@ -62,6 +62,7 @@ PlasmaComponents3.Page {
             visible: btManager.adapters.length > 0 && !btManager.bluetoothBlocked
 
             ListView {
+                id: listView
                 anchors.fill: parent
                 clip: true
                 model: devicesModel
@@ -75,7 +76,9 @@ PlasmaComponents3.Page {
                 highlight: PlasmaComponents.Highlight { }
                 highlightMoveDuration: units.longDuration
                 highlightResizeDuration: units.longDuration
-                delegate: DeviceItem { }
+                delegate: DeviceItem {
+                    width: listView.width
+                }
             }
         }
 
