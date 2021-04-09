@@ -169,7 +169,7 @@ void KioBluetooth::listDevice(const DeviceInfo device)
         return;
     }
     QString target = QStringLiteral("bluetooth://");
-    target.append(QString(device[QStringLiteral("address")]).replace(QLatin1Char(':'), QLatin1Char('-')));
+    target.append(QString(device[QStringLiteral("address")]).replace(QLatin1Char(':'), QLatin1Char('-')) + QLatin1Char('/'));
 
     KIO::UDSEntry entry;
     entry.fastInsert(KIO::UDSEntry::UDS_URL, target);
