@@ -136,9 +136,10 @@ Comment[zh_CN]=BlueDevil 文件发送
 Comment[zh_TW]=BlueDevil 傳送檔案
 
 Type=Application
-Exec=bluedevil-sendfile
+Exec=bluedevil-sendfile -k %u
 Icon=preferences-system-bluetooth
 Terminal=false
 NoDisplay=true
 Categories=Qt;KDE;X-Bluetooth;Network;
 X-DBUS-ServiceName=org.kde.bluedevilsendfile
+MimeType=application/vnd.kde.bluedevil-sendfile
