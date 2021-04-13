@@ -162,7 +162,7 @@ PlasmaExtras.ExpandableListItem {
                         Layout.fillWidth: true
                         horizontalAlignment: index % 2 ? Text.AlignLeft : Text.AlignRight
                         elide: index % 2 ? Text.ElideRight : Text.ElideNone
-                        font.pointSize: PlasmaCore.Theme.smallestFont.pointSize
+                        font: PlasmaCore.Theme.smallestFont
                         text: index % 2 ? currentDeviceDetails[index] : currentDeviceDetails[index] + ":"
                         textFormat: index % 2 ? Text.PlainText : Text.StyledText
 

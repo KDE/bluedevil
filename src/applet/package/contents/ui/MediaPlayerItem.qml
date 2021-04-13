@@ -21,7 +21,7 @@ ColumnLayout {
         elide: Text.ElideRight
         font.weight: MediaPlayer && MediaPlayer.track.title ? Font.DemiBold : Font.Normal
         font.italic: MediaPlayer && MediaPlayer.status == BluezQt.MediaPlayer.Playing
-        font.pointSize: PlasmaCore.Theme.smallestFont.pointSize
+        font: PlasmaCore.Theme.smallestFont
         opacity: 0.6
         text: trackTitleText()
         textFormat: Text.PlainText
@@ -32,7 +32,7 @@ ColumnLayout {
         id: trackArtistLabel
         Layout.fillWidth: true
         elide: Text.ElideRight
-        font.pointSize: PlasmaCore.Theme.smallestFont.pointSize
+        font: PlasmaCore.Theme.smallestFont
         opacity: 0.6
         text: MediaPlayer ? MediaPlayer.track.artist : ""
         textFormat: Text.PlainText
@@ -43,7 +43,7 @@ ColumnLayout {
         id: trackAlbumLabel
         Layout.fillWidth: true
         elide: Text.ElideRight
-        font.pointSize: PlasmaCore.Theme.smallestFont.pointSize
+        font: PlasmaCore.Theme.smallestFont
         opacity: 0.6
         text: MediaPlayer ? MediaPlayer.track.album : ""
         textFormat: Text.PlainText
