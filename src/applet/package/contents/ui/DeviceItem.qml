@@ -57,7 +57,7 @@ PlasmaExtras.ExpandableListItem {
                 rowSpacing: 0
 
                 Item {
-                    width: units.iconSizes.medium
+                    width: PlasmaCore.Units.iconSizes.medium
                     Layout.rowSpan: 2
                 }
 
@@ -95,13 +95,13 @@ PlasmaExtras.ExpandableListItem {
             }
 
             Item {
-                height: units.smallSpacing
+                height: PlasmaCore.Units.smallSpacing
             }
 
             // Media Player
             RowLayout {
                 Item {
-                    width: units.iconSizes.medium
+                    width: PlasmaCore.Units.iconSizes.medium
                 }
 
                 MediaPlayerItem {
@@ -121,7 +121,7 @@ PlasmaExtras.ExpandableListItem {
             }
 
             Item {
-                height: units.smallSpacing
+                height: PlasmaCore.Units.smallSpacing
                 visible: mediaPlayerSeparator.visible
             }
 
@@ -150,7 +150,7 @@ PlasmaExtras.ExpandableListItem {
             // Details
             GridLayout {
                 columns: 2
-                rowSpacing: units.smallSpacing / 4
+                rowSpacing: PlasmaCore.Units.smallSpacing / 4
 
                 Repeater {
                     id: repeater
@@ -162,7 +162,7 @@ PlasmaExtras.ExpandableListItem {
                         Layout.fillWidth: true
                         horizontalAlignment: index % 2 ? Text.AlignLeft : Text.AlignRight
                         elide: index % 2 ? Text.ElideRight : Text.ElideNone
-                        font.pointSize: theme.smallestFont.pointSize
+                        font.pointSize: PlasmaCore.Theme.smallestFont.pointSize
                         text: index % 2 ? currentDeviceDetails[index] : currentDeviceDetails[index] + ":"
                         textFormat: index % 2 ? Text.PlainText : Text.StyledText
 

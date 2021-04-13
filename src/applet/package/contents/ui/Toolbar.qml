@@ -18,7 +18,7 @@ PlasmaExtras.PlasmoidHeading {
 
     RowLayout {
         anchors.fill: parent
-        spacing: units.smallSpacing
+        spacing: PlasmaCore.Units.smallSpacing
 
         PlasmaComponents3.CheckBox {
             checked: btManager.bluetoothOperational

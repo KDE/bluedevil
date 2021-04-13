@@ -8,6 +8,7 @@
 import QtQuick 2.4
 import QtQuick.Controls 2.4
 import org.kde.bluezqt 1.0 as BluezQt
+import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.extras 2.0 as PlasmaExtras
 import org.kde.plasma.components 2.0 as PlasmaComponents // for Highlight
 import org.kde.plasma.components 3.0 as PlasmaComponents3
@@ -74,8 +75,8 @@ PlasmaComponents3.Page {
                     text: section == "Connected" ? i18n("Connected devices") : i18n("Available devices")
                 }
                 highlight: PlasmaComponents.Highlight { }
-                highlightMoveDuration: units.longDuration
-                highlightResizeDuration: units.longDuration
+                highlightMoveDuration: PlasmaCore.Units.longDuration
+                highlightResizeDuration: PlasmaCore.Units.longDuration
                 delegate: DeviceItem {
                     width: listView.width
                 }
@@ -89,7 +90,7 @@ PlasmaComponents3.Page {
             anchors.centerIn: parent
             anchors.left: parent.left
             anchors.right: parent.right
-            anchors.margins: units.largeSpacing
+            anchors.margins: PlasmaCore.Units.largeSpacing
 
             visible: text.length > 0
 

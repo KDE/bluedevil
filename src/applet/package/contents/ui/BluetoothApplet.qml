@@ -23,8 +23,8 @@ Item {
     Plasmoid.toolTipMainText: i18n("Bluetooth")
     Plasmoid.icon: Logic.icon()
 
-    Plasmoid.switchWidth: units.gridUnit * 15
-    Plasmoid.switchHeight: units.gridUnit * 10
+    Plasmoid.switchWidth: PlasmaCore.Units.gridUnit * 15
+    Plasmoid.switchHeight: PlasmaCore.Units.gridUnit * 10
 
     Plasmoid.compactRepresentation: CompactRepresentation { }
     Plasmoid.fullRepresentation: FullRepresentation { }
