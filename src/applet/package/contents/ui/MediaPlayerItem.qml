@@ -21,7 +21,8 @@ ColumnLayout {
         elide: Text.ElideRight
         font.weight: MediaPlayer && MediaPlayer.track.title ? Font.DemiBold : Font.Normal
         font.italic: MediaPlayer && MediaPlayer.status == BluezQt.MediaPlayer.Playing
-        font: PlasmaCore.Theme.smallestFont
+        font.pointSize: PlasmaCore.Theme.smallestFont.pointSize
+        font.family: PlasmaCore.Theme.smallestFont.family
         opacity: 0.6
         text: trackTitleText()
         textFormat: Text.PlainText
