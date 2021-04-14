@@ -29,6 +29,7 @@ PlasmaExtras.ExpandableListItem {
     title: model.DeviceFullName
     subtitle: infoText()
     isBusy: connecting
+    isDefault: model.Connected
     defaultActionButtonAction: Action {
         icon.name: model.Connected ? "network-disconnect" : "network-connect"
         text: model.Connected ? i18n("Disconnect") : i18n("Connect")
