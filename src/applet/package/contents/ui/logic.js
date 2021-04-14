@@ -68,3 +68,16 @@ function icon()
     }
     return "preferences-system-bluetooth";
 }
+
+function conectedDevicesCount() {
+  var connectedDevices = [];
+
+  for (var i = 0; i < btManager.devices.length; ++i) {
+    var device = btManager.devices[i];
+    if (device.connected) {
+      connectedDevices.push(device);
+    }
+  }
+
+  return connectedDevices.length
+}

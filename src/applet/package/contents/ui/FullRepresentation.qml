@@ -14,6 +14,8 @@ import org.kde.plasma.components 2.0 as PlasmaComponents // for Highlight
 import org.kde.plasma.components 3.0 as PlasmaComponents3
 import org.kde.plasma.private.bluetooth 1.0 as PlasmaBt
 
+import "logic.js" as Logic
+
 PlasmaComponents3.Page {
 
     Action {
@@ -77,7 +79,7 @@ PlasmaComponents3.Page {
                 // group because it's unnecessary; all we want to do here is
                 // separate the connected devices from the available ones
                 section.delegate: Loader {
-                    active: section != "Connected"
+                    active: section != "Connected" && Logic.conectedDevicesCount() > 0
                     sourceComponent: Item {
                         width: listView.width
                         height: PlasmaCore.Units.gridUnit
