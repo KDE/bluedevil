@@ -80,6 +80,10 @@ PlasmaComponents3.Page {
                 // separate the connected devices from the available ones
                 section.delegate: Loader {
                     active: section != "Connected" && Logic.conectedDevicesCount() > 0
+                    // Need to manually set the height or else the loader takes up
+                    // space after the first time it unloads a previously-loaded item
+                    height: active ? PlasmaCore.Units.gridUnit : 0
+
                     sourceComponent: Item {
                         width: listView.width
                         height: PlasmaCore.Units.gridUnit
