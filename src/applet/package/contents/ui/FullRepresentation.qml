@@ -48,6 +48,8 @@ PlasmaComponents3.Page {
 
     FocusScope {
         anchors.fill: parent
+        anchors.topMargin: PlasmaCore.Units.smallSpacing
+
         focus: true
 
         PlasmaBt.DevicesProxyModel {
@@ -71,8 +73,25 @@ PlasmaComponents3.Page {
                 enabled: btManager.bluetoothOperational
                 boundsBehavior: Flickable.StopAtBounds
                 section.property: "Section"
-                section.delegate: Header {
-                    text: section == "Connected" ? i18n("Connected devices") : i18n("Available devices")
+                // We want to hide the section delegate for the "Connected"
+                // group because it's unnecessary; all we want to do here is
+                // separate the connected devices from the available ones
+                section.delegate: Loader {
+                    active: section != "Connected"
+                    sourceComponent: Item {
+                        width: listView.width
+                        height: PlasmaCore.Units.gridUnit
+
+                        PlasmaCore.SvgItem {
+                            width: parent.width - PlasmaCore.Units.gridUnit * 2
+                            anchors.centerIn: parent
+                            id: separatorLine
+                            svg: PlasmaCore.Svg {
+                                imagePath: "widgets/line"
+                            }
+                            elementId: "horizontal-line"
+                        }
+                    }
                 }
                 highlight: PlasmaComponents.Highlight { }
                 highlightMoveDuration: PlasmaCore.Units.longDuration
