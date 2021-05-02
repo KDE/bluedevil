@@ -42,9 +42,20 @@ ScrollViewKCM {
 
         Kirigami.PlaceholderMessage {
             id: noBluetoothMessage
-            // We cannot use the adapter count here because that can be zero when
-            // bluetooth is disabled even when there are physical devices
-            visible: BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown
+            visible: {
+                // If the rfkill state is unknown assume there are no devices
+                if (BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown) {
+                    return true
+                }
+
+                // If bluetooth is blocked the adapter count will be 0 despite having physical devices
+                // Therefore only check the count when unblocked
+                if (BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unblocked) {
+                    return BluezQt.Manager.adapters.length === 0
+                }
+
+                return false
+            }
             text: i18n("No Bluetooth adapters found")
             width: parent.width - (Kirigami.Units.largeSpacing * 4)
             anchors.centerIn: parent
