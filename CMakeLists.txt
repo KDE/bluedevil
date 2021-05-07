@@ -46,10 +46,9 @@ include(ECMOptionalAddSubdirectory)
 include(FeatureSummary)
 include(KDEClangFormat)
 include(ECMSetupVersion)
-if (EXISTS "${CMAKE_SOURCE_DIR}/.git")
-   add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
-   add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x054200)
-endif()
+
+add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f00)
+add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x054200)
 
 if(ECM_VERSION VERSION_GREATER_EQUAL 5.79)
     include(KDEGitCommitHooks)
