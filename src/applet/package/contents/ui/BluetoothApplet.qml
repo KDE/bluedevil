@@ -10,6 +10,7 @@ import org.kde.plasma.plasmoid 2.0
 import org.kde.bluezqt 1.0 as BluezQt
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.kquickcontrolsaddons 2.0
+import org.kde.plasma.private.bluetooth 1.0 as PlasmaBt
 
 import "logic.js" as Logic
 
@@ -33,9 +34,16 @@ Item {
         KCMShell.openSystemSettings("bluetooth");
     }
 
+    function action_addNewDevice() {
+        PlasmaBt.LaunchApp.runCommand("bluedevil-wizard");
+    }
+
     Component.onCompleted: {
         plasmoid.removeAction("configure");
         plasmoid.setAction("configure", i18n("Configure &Bluetooth..."), "preferences-system-bluetooth");
+
+        plasmoid.setAction("addNewDevice", i18n("Add New Device..."), "list-add");
+        plasmoid.action("addNewDevice").visible = Qt.binding(() => {return !btManager.bluetoothBlocked;});
 
         Logic.init();
     }

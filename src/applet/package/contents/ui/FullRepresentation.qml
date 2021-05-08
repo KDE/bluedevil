@@ -23,12 +23,10 @@ PlasmaComponents3.Page {
 
         enabled: btManager.devices.length === 0
 
-        text: i18n("Add New Device")
+        text: plasmoid.action("addNewDevice").text
         icon.name: "list-add"
 
-        onTriggered: {
-            PlasmaBt.LaunchApp.runCommand("bluedevil-wizard");
-        }
+        onTriggered: plasmoid.action("addNewDevice").trigger()
     }
     Action {
         id: enableBluetoothAction

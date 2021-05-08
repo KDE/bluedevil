@@ -38,16 +38,16 @@ PlasmaExtras.PlasmoidHeading {
 
         PlasmaComponents3.ToolButton {
             id: addDeviceButton
+
+            visible: !(plasmoid.containmentDisplayHints & PlasmaCore.Types.ContainmentDrawsPlasmoidHeading)
             enabled: !btManager.bluetoothBlocked
 
             icon.name: "list-add"
 
-            onClicked: {
-                PlasmaBt.LaunchApp.runCommand("bluedevil-wizard");
-            }
+            onClicked: plasmoid.action("addNewDevice").trigger()
 
             PlasmaComponents3.ToolTip {
-                text: i18n("Add New Device...")
+                text: plasmoid.action("addNewDevice").text
             }
         }
 
