@@ -50,7 +50,7 @@ void SelectDeviceAndFilesPage::deviceSelected(BluezQt::DevicePtr device)
 void SelectDeviceAndFilesPage::openFileDialog()
 {
     const QStringList &files = QFileDialog::getOpenFileNames(this, //
-                                                             i18n("Open file..."),
+                                                             i18n("Open file…"),
                                                              QStandardPaths::writableLocation(QStandardPaths::HomeLocation),
                                                              QStringLiteral("*"));
 

@@ -131,7 +131,7 @@ void KioFtp::listDir(const QUrl &url)
 
     qCDebug(OBEXFTP) << "listdir: " << url;
 
-    infoMessage(i18n("Retrieving information from remote device..."));
+    infoMessage(i18n("Retrieving information from remote device…"));
 
     qCDebug(OBEXFTP) << "Asking for listFolder" << url.path();
 

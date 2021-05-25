@@ -57,7 +57,7 @@ void PairingPage::initializePage()
     connectingLbl->show();
     confirmLbl->clear();
 
-    connectingLbl->setText(i18n("Connecting to %1...", m_device->name()));
+    connectingLbl->setText(i18n("Connecting to %1…", m_device->name()));
 
     connect(m_wizard->agent(), &WizardAgent::pinRequested, this, &PairingPage::pinRequested);
     connect(m_wizard->agent(), &WizardAgent::confirmationRequested, this, &PairingPage::confirmationRequested);

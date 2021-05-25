@@ -82,7 +82,7 @@ QList<KioBluetooth::Service> KioBluetooth::getSupportedServices(const QStringLis
 
 void KioBluetooth::listRemoteDeviceServices()
 {
-    infoMessage(i18n("Retrieving services..."));
+    infoMessage(i18n("Retrieving services…"));
 
     qCDebug(BLUETOOTH) << "Listing remote devices";
 
@@ -158,7 +158,7 @@ void KioBluetooth::listDevices()
 
     m_kded->startDiscovering(10 * 1000);
 
-    infoMessage(i18n("Scanning for new devices..."));
+    infoMessage(i18n("Scanning for new devices…"));
     finished();
 }
 

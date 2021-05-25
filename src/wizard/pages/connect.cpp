@@ -37,7 +37,7 @@ void ConnectPage::initializePage()
     qCDebug(WIZARD) << "Initialize Connect Page";
 
     m_wizard->setButtonLayout(wizardButtonsLayout());
-    connecting->setText(i18nc("Connecting to a Bluetooth device", "Connecting to %1...", m_wizard->device()->name()));
+    connecting->setText(i18nc("Connecting to a Bluetooth device", "Connecting to %1…", m_wizard->device()->name()));
 
     m_wizard->device()->setTrusted(true);
 

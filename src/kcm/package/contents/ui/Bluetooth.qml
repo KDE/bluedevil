@@ -145,7 +145,7 @@ ScrollViewKCM {
     footer: RowLayout {
 
         QQC2.Button {
-            text: i18n("Add...")
+            text: i18n("Add…")
             visible: BluezQt.Manager.bluetoothOperational
             icon.name: "list-add"
             onClicked: kcm.runWizard()
@@ -166,7 +166,7 @@ ScrollViewKCM {
 
         QQC2.Button {
             visible: BluezQt.Manager.bluetoothOperational
-            text: i18n("Configure...")
+            text: i18n("Configure…")
             icon.name: "configure"
             onClicked: kcm.push("General.qml")
         }

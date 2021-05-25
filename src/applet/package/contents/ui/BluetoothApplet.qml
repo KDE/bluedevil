@@ -40,9 +40,9 @@ Item {
 
     Component.onCompleted: {
         plasmoid.removeAction("configure");
-        plasmoid.setAction("configure", i18n("Configure &Bluetooth..."), "preferences-system-bluetooth");
+        plasmoid.setAction("configure", i18n("Configure &Bluetooth…"), "preferences-system-bluetooth");
 
-        plasmoid.setAction("addNewDevice", i18n("Add New Device..."), "list-add");
+        plasmoid.setAction("addNewDevice", i18n("Add New Device…"), "list-add");
         plasmoid.action("addNewDevice").visible = Qt.binding(() => {return !btManager.bluetoothBlocked;});
 
         Logic.init();

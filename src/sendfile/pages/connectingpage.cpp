@@ -29,7 +29,7 @@ ConnectingPage::ConnectingPage(SendFileWizard *wizard)
 void ConnectingPage::initializePage()
 {
     m_device = m_wizard->device();
-    connLabel->setText(i18nc("Connecting to a Bluetooth device", "Connecting to %1...", m_device->name()));
+    connLabel->setText(i18nc("Connecting to a Bluetooth device", "Connecting to %1…", m_device->name()));
 
     m_wizard->setWindowTitle(QString());
     m_wizard->setButtonLayout(wizardButtonsLayout());
