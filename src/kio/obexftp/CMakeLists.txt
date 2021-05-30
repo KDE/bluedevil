@@ -5,7 +5,7 @@ set(kio_obexftp_SRCS
    )
 
 set(kded_obexftp.xml ${CMAKE_SOURCE_DIR}/src/interfaces/kded_obexftp.xml)
-qt5_add_dbus_interface(kio_obexftp_SRCS ${kded_obexftp.xml} kdedobexftp)
+qt_add_dbus_interface(kio_obexftp_SRCS ${kded_obexftp.xml} kdedobexftp)
 
 add_library(kio_obexftp MODULE ${kio_obexftp_SRCS})
 
