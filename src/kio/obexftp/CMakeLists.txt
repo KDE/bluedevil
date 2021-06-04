@@ -20,7 +20,3 @@ target_link_libraries(kio_obexftp
 )
 
 install(TARGETS kio_obexftp DESTINATION ${KDE_INSTALL_PLUGINDIR})
-
-########### install files ###############
-
-install(FILES obexftp.protocol DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
