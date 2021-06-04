@@ -5,7 +5,7 @@
             "copyFromFile": true,
             "copyToFile": true,
             "deleting": true,
-            "exec": "kio_obexftp",
+            "exec": "kf5/kio/kio_obexftp",
             "input": "none",
             "listing": [
                 "Name",

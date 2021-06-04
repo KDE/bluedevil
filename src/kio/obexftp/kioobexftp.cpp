@@ -23,6 +23,13 @@
 #include <BluezQt/ObexTransfer>
 #include <BluezQt/PendingCall>
 
+// Pseudo plugin class to embed meta data
+class KIOPluginForMetaData : public QObject
+{
+    Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.kde.kio.slave.obexftp" FILE "obexftp.json")
+};
+
 extern "C" int Q_DECL_EXPORT kdemain(int argc, char **argv)
 {
     QCoreApplication app(argc, argv);
@@ -524,3 +531,5 @@ void KioFtp::updateRootEntryIcon(KIO::UDSEntry &entry, const QString &memoryType
         entry.fastInsert(KIO::UDSEntry::UDS_ICON_NAME, QStringLiteral("media-flash-sd-mmc"));
     }
 }
+
+#include "kioobexftp.moc"

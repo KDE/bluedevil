@@ -19,6 +19,13 @@
 
 #include <BluezQt/Services>
 
+// Pseudo plugin class to embed meta data
+class KIOPluginForMetaData : public QObject
+{
+    Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.kde.kio.slave.bluetooth" FILE "bluetooth.json")
+};
+
 extern "C" int Q_DECL_EXPORT kdemain(int argc, char **argv)
 {
     QCoreApplication app(argc, argv);
@@ -241,3 +248,5 @@ void KioBluetooth::setHost(const QString &hostname, quint16 port, const QString 
 }
 
 Q_LOGGING_CATEGORY(BLUETOOTH, "bluedevil.kio_bluetooth")
+
+#include "kiobluetooth.moc"
