@@ -18,6 +18,9 @@ import "logic.js" as Logic
 
 PlasmaComponents3.Page {
 
+    implicitWidth: PlasmaCore.Units.gridUnit * 24
+    implicitHeight: PlasmaCore.Units.gridUnit * 24
+
     Action {
         id: addBluetoothDeviceAction
 
