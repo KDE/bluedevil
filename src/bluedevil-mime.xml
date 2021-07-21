@@ -43,6 +43,7 @@ Notes:
     <comment xml:lang="pt_BR">Dispositivo</comment>
     <comment xml:lang="ro">Dispozitiv</comment>
     <comment xml:lang="ru">Устройство</comment>
+    <comment xml:lang="sk">Zariadenie</comment>
     <comment xml:lang="sl">Naprava</comment>
     <comment xml:lang="sv">Enhet</comment>
     <comment xml:lang="uk">Пристрій</comment>
@@ -78,6 +79,7 @@ Notes:
     <comment xml:lang="pt_BR">Serviço</comment>
     <comment xml:lang="ro">Serviciu</comment>
     <comment xml:lang="ru">Служба</comment>
+    <comment xml:lang="sk">Služba</comment>
     <comment xml:lang="sl">Storitev</comment>
     <comment xml:lang="sv">Tjänst</comment>
     <comment xml:lang="uk">Служба</comment>
@@ -111,6 +113,7 @@ Notes:
     <comment xml:lang="pt_BR">Serviço</comment>
     <comment xml:lang="ro">Serviciu</comment>
     <comment xml:lang="ru">Служба</comment>
+    <comment xml:lang="sk">Služba</comment>
     <comment xml:lang="sl">Storitev</comment>
     <comment xml:lang="sv">Tjänst</comment>
     <comment xml:lang="uk">Служба</comment>
