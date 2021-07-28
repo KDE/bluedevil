@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=BlueDevil Wizard
+Name[ar]=مرشد بلودف
 Name[ast]=Encontu pa BlueDevil
 Name[az]=BlueDevil Ayarlar Bələdçisi
 Name[bs]=Bludevilov čarobnjak
@@ -47,6 +48,7 @@ Name[x-test]=xxBlueDevil Wizardxx
 Name[zh_CN]=BlueDevil 向导
 Name[zh_TW]=BlueDevil 精靈
 GenericName=BlueDevil Wizard
+GenericName[ar]=مرشد بلودف
 GenericName[ast]=Encontu pa BlueDevil
 GenericName[az]=BlueDevil Ayarlar Bələdçisi
 GenericName[bs]=Bludevilov čarobnjak
@@ -94,6 +96,7 @@ GenericName[x-test]=xxBlueDevil Wizardxx
 GenericName[zh_CN]=BlueDevil 向导
 GenericName[zh_TW]=BlueDevil 精靈
 Comment=BlueDevil Wizard
+Comment[ar]=مرشد بلودف
 Comment[ast]=Encontu pa BlueDevil
 Comment[az]=BlueDevil Ayarlar Bələdçisi
 Comment[bs]=Bludevilov čarobnjak

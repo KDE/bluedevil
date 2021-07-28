@@ -48,6 +48,7 @@ Name[x-test]=xxBluetoothxx
 Name[zh_CN]=蓝牙
 Name[zh_TW]=藍牙
 Comment=Manage Bluetooth devices
+Comment[ar]=أدر أجهزة بلوتوث
 Comment[ast]=Xestiona preseos Bluetooth
 Comment[az]=Bluetooth Cihazlarının İdarə edilməsi
 Comment[ca]=Gestiona els dispositius Bluetooth

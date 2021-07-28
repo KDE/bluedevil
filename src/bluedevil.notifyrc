@@ -601,6 +601,7 @@ Action=Popup
 
 [Event/SetupFinished]
 Name=Device Setup Finished
+Name[ar]=انتهى إعداد الجهاز
 Name[az]=Cihazın ayarlanması başa çatdı
 Name[ca]=Ha finalitzat la configuració del dispositiu
 Name[cs]=Nastavení zařízení dokončeno
@@ -635,6 +636,7 @@ Name[x-test]=xxDevice Setup Finishedxx
 Name[zh_CN]=设备完成设置
 Name[zh_TW]=裝置設定完成
 Comment=Setting up a Bluetooth device finished successfully
+Comment[ar]=إعداد جهاز بلوتوث انتهى بنجاح
 Comment[az]=Bluetooth cihazının ayarlanması uğurla başa çatdı
 Comment[ca]=La configuració del dispositiu Bluetooth ha finalitzat correctament
 Comment[cs]=Nastavení zařízení bylo úspěšně dokončeno
