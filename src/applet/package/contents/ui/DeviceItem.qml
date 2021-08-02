@@ -245,6 +245,10 @@ PlasmaExtras.ExpandableListItem {
 
         var labels = [];
 
+        if (Connected) {
+            labels.push(i18n("Connected"));
+        }
+
         switch (Type) {
         case BluezQt.Device.Headset:
         case BluezQt.Device.Headphones:
