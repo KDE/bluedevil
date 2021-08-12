@@ -1,5 +1,6 @@
 /**
  * SPDX-FileCopyrightText: 2020 Nicolas Fella <nicolas.fella@gmx.de>
+ * SPDX-FileCopyrightText: 2021 Nate Graham <nate@kde.org>
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
@@ -11,8 +12,10 @@
 #include <QDBusPendingReply>
 
 #include <KAboutData>
+#include <KConfigGroup>
 #include <KLocalizedString>
 #include <KPluginFactory>
+#include <KSharedConfig>
 
 #include <BluezQt/Services>
 
@@ -86,6 +89,33 @@ void Bluetooth::setupNetworkConnection(const QString &service, const QString &ad
     msg << i18nc("DeviceName Network (Service)", "%1 Network (%2)", deviceName, service);
 
     QDBusConnection::sessionBus().call(msg, QDBus::NoBlock);
+}
+
+QString Bluetooth::bluetoothStatusAtLogin() const
+{
+    const auto config = KSharedConfig::openConfig(QStringLiteral("bluedevilglobalrc"));
+    const KConfigGroup globalGroup = config->group("Global");
+    return globalGroup.readEntry("launchState", "remember");
+}
+
+void Bluetooth::setBluetoothStatusAtLogin(const QString newStatus)
+{
+    auto config = KSharedConfig::openConfig(QStringLiteral("bluedevilglobalrc"));
+    KConfigGroup globalGroup = config->group("Global");
+    const QString currentValue = (globalGroup.readEntry("launchState", "remember"));
+
+    if (newStatus == currentValue) {
+        return;
+    }
+
+    if (newStatus == "remember") {
+        // Default value
+        globalGroup.deleteEntry("launchState");
+    } else {
+        globalGroup.writeEntry("launchState", newStatus);
+    }
+
+    Q_EMIT bluetoothStatusAtLoginChanged(newStatus);
 }
 
 #include "bluetooth.moc"

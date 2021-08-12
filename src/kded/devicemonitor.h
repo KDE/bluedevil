@@ -1,5 +1,6 @@
 /*
  *   SPDX-FileCopyrightText: 2015 David Rosca <nowrep@gmail.com>
+ *   SPDX-FileCopyrightText: 2021 Nate Graham <nate@kde.org>
  *
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
@@ -23,6 +24,7 @@ class DeviceMonitor : public QObject
 
 public:
     explicit DeviceMonitor(BlueDevilDaemon *daemon);
+    ~DeviceMonitor();
 
     void saveState();
 
@@ -33,6 +35,7 @@ private Q_SLOTS:
 
     void deviceConnectedChanged(bool connected);
     void login1PrepareForSleep(bool active);
+    void login1PrepareForShutdown(bool active);
 
 private:
     void restoreState();

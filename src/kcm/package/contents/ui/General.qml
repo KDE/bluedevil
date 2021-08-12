@@ -1,5 +1,6 @@
 /**
  * SPDX-FileCopyrightText: 2020 Nicolas Fella <nicolas.fella@gmx.de>
+ * SPDX-FileCopyrightText: 2021 Nate Graham <nate@kde.org>
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
@@ -58,14 +59,54 @@ SimpleKCM {
         }
 
         QQC2.ButtonGroup {
-            id: radioGroup
+            id: loginStateRadioGroup
+        }
+
+        QQC2.RadioButton {
+            Kirigami.FormData.label: i18n("On login:")
+            text: i18n("Enable Bluetooth")
+            QQC2.ButtonGroup.group: loginStateRadioGroup
+            checked: kcm.bluetoothStatusAtLogin == "enable"
+            onToggled: {
+                if (enabled) {
+                    kcm.bluetoothStatusAtLogin = "enable";
+                }
+            }
+        }
+        QQC2.RadioButton {
+            text: i18n("Disable Bluetooth")
+            QQC2.ButtonGroup.group: loginStateRadioGroup
+            checked: kcm.bluetoothStatusAtLogin == "disable"
+            onToggled: {
+                if (enabled) {
+                    kcm.bluetoothStatusAtLogin = "disable"
+                }
+            }
+        }
+        QQC2.RadioButton {
+            text: i18n("Remember previous status")
+            QQC2.ButtonGroup.group: loginStateRadioGroup
+            checked: kcm.bluetoothStatusAtLogin == "remember"
+            onToggled: {
+                if (enabled) {
+                    kcm.bluetoothStatusAtLogin = "remember"
+                }
+            }
+        }
+
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+        }
+
+        QQC2.ButtonGroup {
+            id: receivingFilesRadioGroup
         }
 
         QQC2.RadioButton {
             Kirigami.FormData.label: i18n("When receiving files:")
             checked: FileReceiverSettings.autoAccept == 0
             text: i18n("Ask for confirmation")
-            QQC2.ButtonGroup.group: radioGroup
+            QQC2.ButtonGroup.group: receivingFilesRadioGroup
             onClicked: {
                 FileReceiverSettings.autoAccept = 0
                 FileReceiverSettings.save()
@@ -75,7 +116,7 @@ SimpleKCM {
         QQC2.RadioButton {
             text: i18n("Accept for trusted devices")
             checked: FileReceiverSettings.autoAccept == 1
-            QQC2.ButtonGroup.group: radioGroup
+            QQC2.ButtonGroup.group: receivingFilesRadioGroup
             onClicked: {
                 FileReceiverSettings.autoAccept = 1
                 FileReceiverSettings.save()
@@ -84,7 +125,7 @@ SimpleKCM {
 
         QQC2.RadioButton {
             text: i18n("Always accept")
-            QQC2.ButtonGroup.group: radioGroup
+            QQC2.ButtonGroup.group: receivingFilesRadioGroup
             checked: FileReceiverSettings.autoAccept == 2
             onClicked: {
                 FileReceiverSettings.autoAccept = 2

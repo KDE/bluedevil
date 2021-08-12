@@ -1,5 +1,6 @@
 /*
  *   SPDX-FileCopyrightText: 2015 David Rosca <nowrep@gmail.com>
+ *   SPDX-FileCopyrightText: 2021 Nate Graham <nate@kde.org>
  *
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
@@ -36,7 +37,8 @@ DeviceMonitor::DeviceMonitor(BlueDevilDaemon *daemon)
     connect(m_manager, &BluezQt::Manager::deviceAdded, this, &DeviceMonitor::deviceAdded);
     connect(m_manager, &BluezQt::Manager::bluetoothOperationalChanged, this, &DeviceMonitor::bluetoothOperationalChanged);
 
-    // Catch suspend/resume events
+    // Catch suspend/resume events so we can save status when suspending and
+    // resume when waking up
     QDBusConnection::systemBus().connect(QStringLiteral("org.freedesktop.login1"),
                                          QStringLiteral("/org/freedesktop/login1"),
                                          QStringLiteral("org.freedesktop.login1.Manager"),
@@ -44,7 +46,46 @@ DeviceMonitor::DeviceMonitor(BlueDevilDaemon *daemon)
                                          this,
                                          SLOT(login1PrepareForSleep(bool)));
 
-    restoreState();
+    // Catch shutdown events so we can save status when shutting down and
+    // optionally resume when starting up
+    QDBusConnection::systemBus().connect(QStringLiteral("org.freedesktop.login1"),
+                                         QStringLiteral("/org/freedesktop/login1"),
+                                         QStringLiteral("org.freedesktop.login1.Manager"),
+                                         QStringLiteral("PrepareForShutdown"),
+                                         this,
+                                         SLOT(login1PrepareForShutdown(bool)));
+
+    // Set initial state
+    const KConfigGroup globalGroup = m_config->group("Global");
+    const QString launchState = globalGroup.readEntry("launchState", "remember");
+    if (launchState == "remember") {
+        restoreState();
+    } else if (launchState == "enable") {
+        // Un-block Bluetooth and turn on everything
+        m_manager->setBluetoothBlocked(false);
+        for (BluezQt::AdapterPtr adapter : m_manager->adapters()) {
+            adapter->setPowered(true);
+        }
+    } else if (launchState == "disable") {
+        // Turn off everything and block Bluetooth
+        for (BluezQt::AdapterPtr adapter : m_manager->adapters()) {
+            adapter->setPowered(false);
+        }
+        m_manager->setBluetoothBlocked(true);
+    }
+}
+
+// Save state when tearing down to avoid getting out of sync if kded crashes
+// or is manually restarted
+DeviceMonitor::~DeviceMonitor()
+{
+    KConfigGroup globalGroup = m_config->group("Global");
+
+    if (m_manager->isBluetoothBlocked()) {
+        globalGroup.writeEntry<bool>("bluetoothBlocked", true);
+    } else {
+        globalGroup.deleteEntry("bluetoothBlocked");
+    }
 }
 
 KFilePlacesModel *DeviceMonitor::places()
@@ -99,13 +140,29 @@ void DeviceMonitor::login1PrepareForSleep(bool active)
     }
 }
 
+void DeviceMonitor::login1PrepareForShutdown(bool active)
+{
+    if (active) {
+        qCDebug(BLUEDAEMON) << "About to shut down";
+        saveState();
+    }
+}
+
 void DeviceMonitor::saveState()
 {
     KConfigGroup adaptersGroup = m_config->group("Adapters");
+    KConfigGroup globalGroup = m_config->group("Global");
 
-    Q_FOREACH (BluezQt::AdapterPtr adapter, m_manager->adapters()) {
-        const QString key = QStringLiteral("%1_powered").arg(adapter->address());
-        adaptersGroup.writeEntry<bool>(key, adapter->isPowered());
+    if (m_manager->isBluetoothBlocked()) {
+        globalGroup.writeEntry<bool>("bluetoothBlocked", true);
+    } else {
+        globalGroup.deleteEntry("bluetoothBlocked");
+
+        // Save powered state for each adapter
+        Q_FOREACH (BluezQt::AdapterPtr adapter, m_manager->adapters()) {
+            const QString key = QStringLiteral("%1_powered").arg(adapter->address());
+            adaptersGroup.writeEntry<bool>(key, adapter->isPowered());
+        }
     }
 
     QStringList connectedDevices;
@@ -125,6 +182,10 @@ void DeviceMonitor::saveState()
 void DeviceMonitor::restoreState()
 {
     KConfigGroup adaptersGroup = m_config->group("Adapters");
+    const KConfigGroup globalGroup = m_config->group("Global");
+
+    // Restore blocked/unblocked state
+    m_manager->setBluetoothBlocked(globalGroup.readEntry<bool>("bluetoothBlocked", false));
 
     Q_FOREACH (BluezQt::AdapterPtr adapter, m_manager->adapters()) {
         const QString key = QStringLiteral("%1_powered").arg(adapter->address());
