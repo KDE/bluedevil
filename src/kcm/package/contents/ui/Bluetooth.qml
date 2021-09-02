@@ -1,5 +1,6 @@
 /**
  * SPDX-FileCopyrightText: 2020 Nicolas Fella <nicolas.fella@gmx.de>
+ * SPDX-FileCopyrightText: 2021 Tom Zander <tom@flowee.org>
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
@@ -17,6 +18,55 @@ import org.kde.plasma.private.bluetooth 1.0
 ScrollViewKCM {
 
     id: root
+
+    function makeCall(call) {
+        busyIndicator.running = true
+        call.finished.connect(call => {
+            busyIndicator.running = false
+            if (call.error) {
+                errorMessage.text = call.errorText
+                errorMessage.visible = true
+            }
+        })
+    }
+
+    Rectangle {
+        id: deleteApprovalDiag
+        anchors.fill: parent
+        visible: dialog.opened
+        color: "#4c000000"  // 30% transparent
+
+        function start(model) {
+            dialog.model = model;
+            dialog.question = i18n("Are you sure you want to forget '%1'", model.Name)
+            dialog.open();
+        }
+
+        QQC2.Dialog {
+            id: dialog
+            title: i18n("Confirm Deletion of Device")
+            standardButtons: QQC2.Dialog.Ok | QQC2.Dialog.Cancel
+            property QtObject model: null
+            property string question: ""
+
+            x: (parent.width - width) / 2
+            y: parent.height / 3
+            width: Math.min(parent.width - Kirigami.Units.gridUnit * 4, Kirigami.Units.gridUnit * 20)
+
+            modal: true
+            focus: true
+            QQC2.Label {
+                width: dialog.availableWidth
+                text: dialog.question
+                wrapMode: QQC2.Label.Wrap
+            }
+            onAccepted: {
+                root.makeCall(model.Adapter.removeDevice(model.Device));
+                model = null;
+            }
+            onRejected: model = null;
+        }
+    }
 
     implicitHeight: Kirigami.Units.gridUnit * 28
     implicitWidth: Kirigami.Units.gridUnit * 28
@@ -115,30 +165,18 @@ ScrollViewKCM {
                     icon.name: model.Connected ? "network-disconnect" : "network-connect"
                     onTriggered: {
                         if (model.Connected) {
-                            makeCall(model.Device.disconnectFromDevice())
+                            root.makeCall(model.Device.disconnectFromDevice())
                         } else {
-                            makeCall(model.Device.connectToDevice())
+                            root.makeCall(model.Device.connectToDevice())
                         }
                     }
                 },
                 Kirigami.Action {
                     text: i18n("Remove")
-                    icon.name: "list-remove"
-                    onTriggered: {
-                        makeCall(model.Adapter.removeDevice(model.Device))
-                    }
+                    icon.name: "edit-delete-remove"
+                    onTriggered: deleteApprovalDiag.start(model)
                 }
             ]
-            function makeCall(call) {
-                busyIndicator.running = true
-                call.finished.connect(call => {
-                    busyIndicator.running = false
-                    if (call.error) {
-                        errorMessage.text = call.errorText
-                        errorMessage.visible = true
-                    }
-                })
-            }
         }
     }
 
