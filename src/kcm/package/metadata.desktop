@@ -80,6 +80,7 @@ Comment[sv]=Hantera Blåtandsenheter
 Comment[uk]=Керування пристроями Bluetooth
 Comment[x-test]=xxManage Bluetooth devicesxx
 Comment[zh_CN]=管理蓝牙设备
+X-KDE-Keywords=bluetooth,hardware,connection,devices,find devices,connect,disconnect,send file,receive file,transfer,wireless,visible,adapter,pin,trusted devices
 Encoding=UTF-8
 Type=Service
 Icon=preferences-system-bluetooth
