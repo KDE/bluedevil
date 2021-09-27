@@ -21,15 +21,11 @@ PlasmaExtras.PlasmoidHeading {
         spacing: PlasmaCore.Units.smallSpacing
 
         PlasmaComponents3.CheckBox {
+            text: i18n("Enable Bluetooth")
+            icon.name: "preferences-system-bluetooth"
             checked: btManager.bluetoothOperational
             enabled: btManager.bluetoothBlocked || btManager.adapters.length
-            icon.name: "preferences-system-bluetooth"
-
             onToggled: toggleBluetooth()
-
-            PlasmaComponents3.ToolTip {
-                text: i18n("Enable Bluetooth")
-            }
         }
 
         Item {
