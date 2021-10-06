@@ -101,8 +101,8 @@ PlasmaComponents3.Page {
                     }
                 }
                 highlight: PlasmaComponents.Highlight { }
-                highlightMoveDuration: PlasmaCore.Units.longDuration
-                highlightResizeDuration: PlasmaCore.Units.longDuration
+                highlightMoveDuration: 0
+                highlightResizeDuration: 0
                 delegate: DeviceItem {
                     width: listView.width
                 }
