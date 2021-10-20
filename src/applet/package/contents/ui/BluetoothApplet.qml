@@ -31,7 +31,7 @@ Item {
     Plasmoid.fullRepresentation: FullRepresentation { }
 
     function action_configure() {
-        KCMShell.openSystemSettings("bluetooth");
+        KCMShell.openSystemSettings("kcm_bluetooth");
     }
 
     function action_addNewDevice() {
