@@ -47,6 +47,7 @@ Notes:
     <comment xml:lang="sk">Zariadenie</comment>
     <comment xml:lang="sl">Naprava</comment>
     <comment xml:lang="sv">Enhet</comment>
+    <comment xml:lang="tr">Aygıt</comment>
     <comment xml:lang="uk">Пристрій</comment>
     <comment xml:lang="zh_CN">设备</comment>
   </mime-type>
@@ -84,6 +85,7 @@ Notes:
     <comment xml:lang="sk">Služba</comment>
     <comment xml:lang="sl">Storitev</comment>
     <comment xml:lang="sv">Tjänst</comment>
+    <comment xml:lang="tr">Hizmet</comment>
     <comment xml:lang="uk">Служба</comment>
     <comment xml:lang="zh_CN">服务</comment>
   </mime-type>
@@ -119,6 +121,7 @@ Notes:
     <comment xml:lang="sk">Služba</comment>
     <comment xml:lang="sl">Storitev</comment>
     <comment xml:lang="sv">Tjänst</comment>
+    <comment xml:lang="tr">Hizmet</comment>
     <comment xml:lang="uk">Служба</comment>
     <comment xml:lang="zh_CN">服务</comment>
   </mime-type>
