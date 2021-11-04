@@ -181,16 +181,15 @@ ScrollViewKCM {
     }
 
     footer: RowLayout {
+        visible: BluezQt.Manager.bluetoothOperational
 
         QQC2.Button {
             text: i18n("Add…")
-            visible: BluezQt.Manager.bluetoothOperational
             icon.name: "list-add"
             onClicked: kcm.runWizard()
         }
 
         QQC2.Button {
-            visible: BluezQt.Manager.bluetoothOperational
             text: i18n("Disable Bluetooth")
             icon.name: "network-bluetooth"
             onClicked: {
@@ -203,7 +202,6 @@ ScrollViewKCM {
         }
 
         QQC2.Button {
-            visible: BluezQt.Manager.bluetoothOperational
             text: i18n("Configure…")
             icon.name: "configure"
             onClicked: kcm.push("General.qml")
