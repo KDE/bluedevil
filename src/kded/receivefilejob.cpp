@@ -35,6 +35,8 @@ ReceiveFileJob::ReceiveFileJob(const BluezQt::Request<QString> &req, BluezQt::Ob
     , m_accepted(false)
 {
     setCapabilities(Killable);
+    // Pretend to be BlueDevil's file transfer agent even though we're run inside kded
+    setProperty("desktopFileName", QStringLiteral("org.kde.bluedevilsendfile"));
 }
 
 QString ReceiveFileJob::deviceAddress() const
@@ -159,7 +161,7 @@ void ReceiveFileJob::slotAccept()
     setTotalAmount(Files, 1);
 
     Q_EMIT description(this,
-                       i18n("Receiving file over Bluetooth"),
+                       i18nc("@title job", "Receiving file"),
                        QPair<QString, QString>(i18nc("File transfer origin", "From"), m_deviceName),
                        QPair<QString, QString>(i18nc("File transfer destination", "To"), m_targetPath.toDisplayString()));
 
