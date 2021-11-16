@@ -37,6 +37,7 @@ ReceiveFileJob::ReceiveFileJob(const BluezQt::Request<QString> &req, BluezQt::Ob
     setCapabilities(Killable);
     // Pretend to be BlueDevil's file transfer agent even though we're run inside kded
     setProperty("desktopFileName", QStringLiteral("org.kde.bluedevilsendfile"));
+    setProperty("immediateProgressReporting", true);
 }
 
 QString ReceiveFileJob::deviceAddress() const
@@ -195,11 +196,7 @@ void ReceiveFileJob::moveFinished(KJob *job)
 
     setProcessedAmount(Files, 1);
 
-    // Delay emitResult to make sure notification is displayed even
-    // for very small files that are received instantly
-    QTimer::singleShot(500, this, [this]() {
-        emitResult();
-    });
+    emitResult();
 }
 
 void ReceiveFileJob::statusChanged(BluezQt::ObexTransfer::Status status)
