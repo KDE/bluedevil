@@ -6,7 +6,6 @@
                 "Name": "Nicolas Fella"
             }
         ],
-        "Category": "",
         "Description": "Manage Bluetooth devices",
         "Description[ar]": "أدر أجهزة بلوتوث",
         "Description[ast]": "Xestiona preseos Bluetooth",
@@ -42,7 +41,6 @@
         "Description[uk]": "Керування пристроями Bluetooth",
         "Description[x-test]": "xxManage Bluetooth devicesxx",
         "Description[zh_CN]": "管理蓝牙设备",
-        "EnabledByDefault": true,
         "FormFactors": [
             "handset",
             "tablet",
@@ -50,7 +48,6 @@
             "desktop"
         ],
         "Icon": "preferences-system-bluetooth",
-        "Id": "kcm_bluetooth",
         "License": "GPL",
         "Name": "Bluetooth",
         "Name[ar]": "بلوتوث",
@@ -101,10 +98,6 @@
         "Name[x-test]": "xxBluetoothxx",
         "Name[zh_CN]": "蓝牙",
         "Name[zh_TW]": "藍牙",
-        "ServiceTypes": [
-            "KCModule"
-        ],
-        "Version": "1.0",
         "Website": "http://kde.org"
     },
     "X-KDE-Keywords": "bluetooth,hardware,connection,devices,find devices,connect,disconnect,send file,receive file,transfer,wireless,visible,adapter,pin,trusted devices",
@@ -134,7 +127,5 @@
     "X-KDE-Keywords[x-test]": "xxbluetoothxx,xxhardwarexx,xxconnectionxx,xxdevicesxx,xxfind devicesxx,xxconnectxx,xxdisconnectxx,xxsend filexx,xxreceive filexx,xxtransferxx,xxwirelessxx,xxvisiblexx,xxadapterxx,xxpinxx,xxtrusted devicesxx",
     "X-KDE-Keywords[zh_CN]": "bluetooth,hardware,connection,devices,find devices,connect,disconnect,send file,receive file,transfer,wireless,visible,adapter,pin,trusted devices,蓝牙,硬件,连接,设备,查找设备,断开连接,发送文件,接收文件,传输,无线,可见性,适配器,已信任设备,信任设备,已信任的设备,信任的设备",
     "X-KDE-ParentApp": "kcontrol",
-    "X-KDE-System-Settings-Parent-Category": "hardware",
-    "X-Plasma-MainScript": "ui/Bluetooth.qml",
-    "X-Plasma-Package": "kcm_bluetooth"
+    "X-KDE-System-Settings-Parent-Category": "hardware"
 }
