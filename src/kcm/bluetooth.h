@@ -15,7 +15,7 @@ class Bluetooth : public KQuickAddons::ConfigModule
     Q_OBJECT
 
 public:
-    Bluetooth(QObject *parent, const QVariantList &args);
+    Bluetooth(QObject *parent, const KPluginMetaData &data, const QVariantList &args);
 
     Q_INVOKABLE void runWizard();
     Q_INVOKABLE void runSendFile(const QString &ubi);
