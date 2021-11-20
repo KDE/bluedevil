@@ -46,15 +46,6 @@ DeviceMonitor::DeviceMonitor(BlueDevilDaemon *daemon)
                                          this,
                                          SLOT(login1PrepareForSleep(bool)));
 
-    // Catch shutdown events so we can save status when shutting down and
-    // optionally resume when starting up
-    QDBusConnection::systemBus().connect(QStringLiteral("org.freedesktop.login1"),
-                                         QStringLiteral("/org/freedesktop/login1"),
-                                         QStringLiteral("org.freedesktop.login1.Manager"),
-                                         QStringLiteral("PrepareForShutdown"),
-                                         this,
-                                         SLOT(login1PrepareForShutdown(bool)));
-
     // Set initial state
     const KConfigGroup globalGroup = m_config->group("Global");
     const QString launchState = globalGroup.readEntry("launchState", "remember");
@@ -75,17 +66,11 @@ DeviceMonitor::DeviceMonitor(BlueDevilDaemon *daemon)
     }
 }
 
-// Save state when tearing down to avoid getting out of sync if kded crashes
-// or is manually restarted
 DeviceMonitor::~DeviceMonitor()
 {
-    KConfigGroup globalGroup = m_config->group("Global");
-
-    if (m_manager->isBluetoothBlocked()) {
-        globalGroup.writeEntry<bool>("bluetoothBlocked", true);
-    } else {
-        globalGroup.deleteEntry("bluetoothBlocked");
-    }
+    // Save state when tearing down to avoid getting out of sync if kded crashes
+    // or is manually restarted
+    saveState();
 }
 
 KFilePlacesModel *DeviceMonitor::places()
@@ -137,14 +122,6 @@ void DeviceMonitor::login1PrepareForSleep(bool active)
     } else {
         qCDebug(BLUEDAEMON) << "About to resume";
         restoreState();
-    }
-}
-
-void DeviceMonitor::login1PrepareForShutdown(bool active)
-{
-    if (active) {
-        qCDebug(BLUEDAEMON) << "About to shut down";
-        saveState();
     }
 }
 

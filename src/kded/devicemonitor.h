@@ -35,7 +35,6 @@ private Q_SLOTS:
 
     void deviceConnectedChanged(bool connected);
     void login1PrepareForSleep(bool active);
-    void login1PrepareForShutdown(bool active);
 
 private:
     void restoreState();
