@@ -3,10 +3,22 @@
         "Authors": [
             {
                 "Email": "nicolas.fella@gmx.de",
-                "Name": "Nicolas Fella"
+                "Name": "Nicolas Fella",
+                "Name[ca]": "Nicolas Fella",
+                "Name[es]": "Nicolas Fella",
+                "Name[nl]": "Nicolas Fella",
+                "Name[sv]": "Nicolas Fella",
+                "Name[uk]": "Nicolas Fella",
+                "Name[x-test]": "xxNicolas Fellaxx"
             }
         ],
         "Description": "Manage Bluetooth devices",
+        "Description[ca]": "Gestiona els dispositius Bluetooth",
+        "Description[es]": "Gestión de dispositivos Bluetooth",
+        "Description[nl]": "Bluetooth-apparaten beheren",
+        "Description[sv]": "Hantera Blåtandsenheter",
+        "Description[uk]": "Керування пристроями Bluetooth",
+        "Description[x-test]": "xxManage Bluetooth devicesxx",
         "FormFactors": [
             "handset",
             "tablet",
