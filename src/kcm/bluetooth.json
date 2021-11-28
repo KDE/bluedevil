@@ -4,6 +4,7 @@
             {
                 "Email": "nicolas.fella@gmx.de",
                 "Name": "Nicolas Fella",
+                "Name[az]": "Nicolas Fella",
                 "Name[ca@valencia]": "Nicolas Fella",
                 "Name[ca]": "Nicolas Fella",
                 "Name[es]": "Nicolas Fella",
@@ -22,6 +23,7 @@
             }
         ],
         "Description": "Manage Bluetooth devices",
+        "Description[az]": "Bluetooth cihazlarını idarə edin",
         "Description[ca@valencia]": "Gestiona els dispositius Bluetooth",
         "Description[ca]": "Gestiona els dispositius Bluetooth",
         "Description[es]": "Gestión de dispositivos Bluetooth",
