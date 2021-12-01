@@ -20,7 +20,8 @@
                 "Name[sl]": "Nicolas Fella",
                 "Name[sv]": "Nicolas Fella",
                 "Name[uk]": "Nicolas Fella",
-                "Name[x-test]": "xxNicolas Fellaxx"
+                "Name[x-test]": "xxNicolas Fellaxx",
+                "Name[zh_CN]": "Nicolas Fella"
             }
         ],
         "Description": "Manage Bluetooth devices",
@@ -41,6 +42,7 @@
         "Description[sv]": "Hantera Blåtandsenheter",
         "Description[uk]": "Керування пристроями Bluetooth",
         "Description[x-test]": "xxManage Bluetooth devicesxx",
+        "Description[zh_CN]": "管理蓝牙设备",
         "FormFactors": [
             "handset",
             "tablet",
