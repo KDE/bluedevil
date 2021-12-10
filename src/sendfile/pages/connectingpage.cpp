@@ -8,8 +8,8 @@
  */
 
 #include "connectingpage.h"
-#include "../debug_p.h"
 #include "../sendfilewizard.h"
+#include "bluedevil_sendfile.h"
 
 #include <QDBusObjectPath>
 
@@ -49,7 +49,7 @@ bool ConnectingPage::isComplete() const
 void ConnectingPage::initJobResult(BluezQt::InitObexManagerJob *job)
 {
     if (job->error()) {
-        qCWarning(SENDFILE) << "Error initializing obex manager" << job->errorText();
+        qCWarning(BLUEDEVIL_SENDFILE_LOG) << "Error initializing obex manager" << job->errorText();
         m_wizard->next();
         return;
     }
@@ -64,7 +64,7 @@ void ConnectingPage::initJobResult(BluezQt::InitObexManagerJob *job)
 void ConnectingPage::createSessionFinished(BluezQt::PendingCall *call)
 {
     if (call->error()) {
-        qCWarning(SENDFILE) << "Error creating session" << call->errorText();
+        qCWarning(BLUEDEVIL_SENDFILE_LOG) << "Error creating session" << call->errorText();
         m_wizard->next();
         return;
     }

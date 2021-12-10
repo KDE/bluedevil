@@ -6,8 +6,8 @@
  */
 
 #include "devicemonitor.h"
+#include "bluedevil_kded.h"
 #include "bluedevildaemon.h"
-#include "debug_p.h"
 
 #include <QTimer>
 
@@ -117,10 +117,10 @@ void DeviceMonitor::deviceConnectedChanged(bool connected)
 void DeviceMonitor::login1PrepareForSleep(bool active)
 {
     if (active) {
-        qCDebug(BLUEDAEMON) << "About to suspend";
+        qCDebug(BLUEDEVIL_KDED_LOG) << "About to suspend";
         saveState();
     } else {
-        qCDebug(BLUEDAEMON) << "About to resume";
+        qCDebug(BLUEDEVIL_KDED_LOG) << "About to resume";
         restoreState();
     }
 }
@@ -213,7 +213,7 @@ void DeviceMonitor::updateDevicePlace(BluezQt::DevicePtr device)
 
     if (device->isConnected()) {
         if (places()->url(index) != url) {
-            qCDebug(BLUEDAEMON) << "Adding place" << url;
+            qCDebug(BLUEDEVIL_KDED_LOG) << "Adding place" << url;
             QString icon = device->icon();
             if (icon == QLatin1String("phone")) {
                 icon.prepend(QLatin1String("smart")); // Better breeze icon
@@ -222,7 +222,7 @@ void DeviceMonitor::updateDevicePlace(BluezQt::DevicePtr device)
         }
     } else {
         if (places()->url(index) == url) {
-            qCDebug(BLUEDAEMON) << "Removing place" << url;
+            qCDebug(BLUEDEVIL_KDED_LOG) << "Removing place" << url;
             places()->removePlace(index);
         }
     }

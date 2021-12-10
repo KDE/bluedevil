@@ -1,4 +1,4 @@
-add_library(kcm_bluetooth MODULE bluetooth.cpp)
+add_library(kcm_bluetooth MODULE bluetooth.cpp bluetooth.h)
 
 kconfig_add_kcfg_files(kcm_bluetooth GENERATE_MOC
                     ../settings/filereceiversettings.kcfgc)

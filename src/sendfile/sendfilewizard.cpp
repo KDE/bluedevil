@@ -8,7 +8,7 @@
  */
 
 #include "sendfilewizard.h"
-#include "debug_p.h"
+#include "bluedevil_sendfile.h"
 #include "sendfilesjob.h"
 
 #include "pages/connectingpage.h"
@@ -43,8 +43,8 @@ SendFileWizard::SendFileWizard(const QString &device, const QStringList &files)
     setOption(QWizard::DisabledBackButtonOnLastPage);
     setOption(QWizard::NoBackButtonOnStartPage);
 
-    qCDebug(SENDFILE) << "Device" << m_deviceUrl;
-    qCDebug(SENDFILE) << "Files" << m_files;
+    qCDebug(BLUEDEVIL_SENDFILE_LOG) << "Device" << m_deviceUrl;
+    qCDebug(BLUEDEVIL_SENDFILE_LOG) << "Files" << m_files;
 
     // Initialize BluezQt
     m_manager = new BluezQt::Manager(this);
@@ -65,7 +65,7 @@ SendFileWizard::~SendFileWizard()
 
 void SendFileWizard::done(int result)
 {
-    qCDebug(SENDFILE) << "Wizard done: " << result;
+    qCDebug(BLUEDEVIL_SENDFILE_LOG) << "Wizard done: " << result;
 
     QWizard::done(result);
 
@@ -102,12 +102,12 @@ void SendFileWizard::setDevice(BluezQt::DevicePtr device)
 void SendFileWizard::startTransfer(const QDBusObjectPath &session)
 {
     if (m_files.isEmpty()) {
-        qCDebug(SENDFILE) << "No files to send";
+        qCDebug(BLUEDEVIL_SENDFILE_LOG) << "No files to send";
         return;
     }
 
     if (!m_device) {
-        qCDebug(SENDFILE) << "No device selected";
+        qCDebug(BLUEDEVIL_SENDFILE_LOG) << "No device selected";
         return;
     }
 
@@ -123,12 +123,12 @@ void SendFileWizard::startTransfer(const QDBusObjectPath &session)
 void SendFileWizard::initJobResult(BluezQt::InitManagerJob *job)
 {
     if (job->error()) {
-        qCWarning(SENDFILE) << "Error initializing manager:" << job->errorText();
+        qCWarning(BLUEDEVIL_SENDFILE_LOG) << "Error initializing manager:" << job->errorText();
         qApp->exit();
         return;
     }
 
-    qCDebug(SENDFILE) << "Manager initialized";
+    qCDebug(BLUEDEVIL_SENDFILE_LOG) << "Manager initialized";
 
     // KIO address: bluetooth://40-87-2b-1a-39-28/00001105-0000-1000-8000-00805F9B34FB
     if (m_deviceUrl.startsWith(QLatin1String("bluetooth"))) {

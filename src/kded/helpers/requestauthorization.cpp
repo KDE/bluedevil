@@ -8,7 +8,7 @@
  */
 
 #include "requestauthorization.h"
-#include "debug_p.h"
+#include "bluedevil_kded.h"
 
 #include <QIcon>
 
@@ -48,7 +48,7 @@ RequestAuthorization::RequestAuthorization(BluezQt::DevicePtr device, QObject *p
 
 void RequestAuthorization::authorizeAndTrust()
 {
-    qCDebug(BLUEDAEMON) << "Authorization accepted and trusted:" << m_device->name() << m_device->address();
+    qCDebug(BLUEDEVIL_KDED_LOG) << "Authorization accepted and trusted:" << m_device->name() << m_device->address();
 
     deleteLater();
     Q_EMIT done(AcceptAndTrust);
@@ -56,7 +56,7 @@ void RequestAuthorization::authorizeAndTrust()
 
 void RequestAuthorization::authorize()
 {
-    qCDebug(BLUEDAEMON) << "Authorization accepted:" << m_device->name() << m_device->address();
+    qCDebug(BLUEDEVIL_KDED_LOG) << "Authorization accepted:" << m_device->name() << m_device->address();
 
     deleteLater();
     Q_EMIT done(Accept);
@@ -64,7 +64,7 @@ void RequestAuthorization::authorize()
 
 void RequestAuthorization::deny()
 {
-    qCDebug(BLUEDAEMON) << "Authorization denied:" << m_device->name() << m_device->address();
+    qCDebug(BLUEDEVIL_KDED_LOG) << "Authorization denied:" << m_device->name() << m_device->address();
 
     deleteLater();
     Q_EMIT done(Deny);

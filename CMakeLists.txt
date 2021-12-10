@@ -47,6 +47,7 @@ include(ECMOptionalAddSubdirectory)
 include(FeatureSummary)
 include(KDEClangFormat)
 include(ECMSetupVersion)
+include(ECMQtDeclareLoggingCategory)
 
 add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f00)
 add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x054200)
@@ -68,3 +69,8 @@ feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
+ecm_qt_install_logging_categories(
+        EXPORT BLUEDEVIL
+        FILE bluedevil.categories
+        DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
+        )

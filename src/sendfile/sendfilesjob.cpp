@@ -8,7 +8,7 @@
  */
 
 #include "sendfilesjob.h"
-#include "debug_p.h"
+#include "bluedevil_sendfile.h"
 
 #include <QDBusObjectPath>
 #include <QFile>
@@ -32,7 +32,7 @@ SendFilesJob::SendFilesJob(const QStringList &files, BluezQt::DevicePtr device, 
     , m_currentFileProgress(0)
     , m_device(device)
 {
-    qCDebug(SENDFILE) << "SendFilesJob:" << files;
+    qCDebug(BLUEDEVIL_SENDFILE_LOG) << "SendFilesJob:" << files;
 
     Q_FOREACH (const QString &filePath, files) {
         QFile file(filePath);
@@ -60,7 +60,7 @@ bool SendFilesJob::doKill()
 
 void SendFilesJob::doStart()
 {
-    qCDebug(SENDFILE) << "SendFilesJob-DoStart";
+    qCDebug(BLUEDEVIL_SENDFILE_LOG) << "SendFilesJob-DoStart";
 
     setTotalAmount(Bytes, m_totalSize);
     setProcessedAmount(Bytes, 0);
@@ -75,7 +75,7 @@ void SendFilesJob::doStart()
 
 void SendFilesJob::nextJob()
 {
-    qCDebug(SENDFILE) << "SendFilesJob-NextJob";
+    qCDebug(BLUEDEVIL_SENDFILE_LOG) << "SendFilesJob-NextJob";
 
     m_transfer.clear();
     m_currentFile = m_files.takeFirst();
@@ -93,7 +93,7 @@ void SendFilesJob::nextJob()
 void SendFilesJob::sendFileFinished(BluezQt::PendingCall *call)
 {
     if (call->error()) {
-        qCWarning(SENDFILE) << "Error sending file" << call->errorText();
+        qCWarning(BLUEDEVIL_SENDFILE_LOG) << "Error sending file" << call->errorText();
         setError(UserDefinedError);
         setErrorText(call->errorText());
         emitResult();
@@ -107,7 +107,7 @@ void SendFilesJob::sendFileFinished(BluezQt::PendingCall *call)
 
 void SendFilesJob::jobDone()
 {
-    qCDebug(SENDFILE) << "SendFilesJob-JobDone";
+    qCDebug(BLUEDEVIL_SENDFILE_LOG) << "SendFilesJob-JobDone";
 
     m_speedBytes = 0;
     m_currentFileSize = 0;
@@ -142,24 +142,24 @@ void SendFilesJob::statusChanged(BluezQt::ObexTransfer::Status status)
 {
     switch (status) {
     case BluezQt::ObexTransfer::Active:
-        qCDebug(SENDFILE) << "SendFilesJob-Transfer Active";
+        qCDebug(BLUEDEVIL_SENDFILE_LOG) << "SendFilesJob-Transfer Active";
         m_time = QTime::currentTime();
         break;
 
     case BluezQt::ObexTransfer::Complete:
-        qCDebug(SENDFILE) << "SendFilesJob-Transfer Complete";
+        qCDebug(BLUEDEVIL_SENDFILE_LOG) << "SendFilesJob-Transfer Complete";
         jobDone();
         break;
 
     case BluezQt::ObexTransfer::Error:
-        qCDebug(SENDFILE) << "SendFilesJob-Transfer Error";
+        qCDebug(BLUEDEVIL_SENDFILE_LOG) << "SendFilesJob-Transfer Error";
         setError(UserDefinedError);
         setErrorText(i18n("Bluetooth transfer failed"));
         emitResult();
         break;
 
     default:
-        qCWarning(SENDFILE) << "Not implemented status: " << status;
+        qCWarning(BLUEDEVIL_SENDFILE_LOG) << "Not implemented status: " << status;
         break;
     }
 }

@@ -9,7 +9,7 @@
 
 #include "fail.h"
 #include "../bluewizard.h"
-#include "debug_p.h"
+#include "bluedevil_wizard.h"
 
 #include <QPushButton>
 
@@ -30,7 +30,7 @@ FailPage::FailPage(BlueWizard *parent)
 
 void FailPage::initializePage()
 {
-    qCDebug(WIZARD) << "Initialize Fail Page";
+    qCDebug(BLUEDEVIL_WIZARD_LOG) << "Initialize Fail Page";
 
     QPushButton *reset = new QPushButton(this);
     KGuiItem::assign(reset, KStandardGuiItem::reset());

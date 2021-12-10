@@ -6,8 +6,8 @@
  */
 
 #include "obexagent.h"
+#include "bluedevil_kded.h"
 #include "bluedevildaemon.h"
-#include "debug_p.h"
 #include "filereceiversettings.h"
 #include "receivefilejob.h"
 
@@ -42,7 +42,7 @@ QDBusObjectPath ObexAgent::objectPath() const
 
 void ObexAgent::authorizePush(BluezQt::ObexTransferPtr transfer, BluezQt::ObexSessionPtr session, const BluezQt::Request<QString> &request)
 {
-    qCDebug(BLUEDAEMON) << "ObexAgent-AuthorizePush";
+    qCDebug(BLUEDEVIL_KDED_LOG) << "ObexAgent-AuthorizePush";
 
     FileReceiverSettings::self()->load();
 

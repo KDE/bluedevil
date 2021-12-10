@@ -6,7 +6,7 @@
  */
 
 #include "receivefilejob.h"
-#include "debug_p.h"
+#include "bluedevil_kded.h"
 #include "filereceiversettings.h"
 #include "obexagent.h"
 
@@ -51,24 +51,24 @@ void ReceiveFileJob::start()
 
 bool ReceiveFileJob::doKill()
 {
-    qCDebug(BLUEDAEMON) << "ReceiveFileJob-Kill";
+    qCDebug(BLUEDEVIL_KDED_LOG) << "ReceiveFileJob-Kill";
     m_transfer->cancel();
     return true;
 }
 
 void ReceiveFileJob::init()
 {
-    qCDebug(BLUEDAEMON) << "ReceiveFileJob:";
-    qCDebug(BLUEDAEMON) << "\tName:" << m_transfer->name();
-    qCDebug(BLUEDAEMON) << "\tFilename:" << m_transfer->fileName();
-    qCDebug(BLUEDAEMON) << "\tStatus:" << m_transfer->status();
-    qCDebug(BLUEDAEMON) << "\tType:" << m_transfer->type();
-    qCDebug(BLUEDAEMON) << "\tSize:" << m_transfer->size();
-    qCDebug(BLUEDAEMON) << "\tTransferred:" << m_transfer->transferred();
+    qCDebug(BLUEDEVIL_KDED_LOG) << "ReceiveFileJob:";
+    qCDebug(BLUEDEVIL_KDED_LOG) << "\tName:" << m_transfer->name();
+    qCDebug(BLUEDEVIL_KDED_LOG) << "\tFilename:" << m_transfer->fileName();
+    qCDebug(BLUEDEVIL_KDED_LOG) << "\tStatus:" << m_transfer->status();
+    qCDebug(BLUEDEVIL_KDED_LOG) << "\tType:" << m_transfer->type();
+    qCDebug(BLUEDEVIL_KDED_LOG) << "\tSize:" << m_transfer->size();
+    qCDebug(BLUEDEVIL_KDED_LOG) << "\tTransferred:" << m_transfer->transferred();
 
-    qCDebug(BLUEDAEMON) << "ObexSession:";
-    qCDebug(BLUEDAEMON) << "\tSource:" << m_session->source();
-    qCDebug(BLUEDAEMON) << "\tDestination:" << m_session->destination();
+    qCDebug(BLUEDEVIL_KDED_LOG) << "ObexSession:";
+    qCDebug(BLUEDEVIL_KDED_LOG) << "\tSource:" << m_session->source();
+    qCDebug(BLUEDEVIL_KDED_LOG) << "\tDestination:" << m_session->destination();
 
     connect(m_transfer.data(), &BluezQt::ObexTransfer::statusChanged, this, &ReceiveFileJob::statusChanged);
     connect(m_transfer.data(), &BluezQt::ObexTransfer::transferredChanged, this, &ReceiveFileJob::transferredChanged);
@@ -77,14 +77,14 @@ void ReceiveFileJob::init()
 
     BluezQt::AdapterPtr adapter = m_agent->manager()->adapterForAddress(m_session->source());
     if (!adapter) {
-        qCDebug(BLUEDAEMON) << "No adapter for" << m_session->source();
+        qCDebug(BLUEDEVIL_KDED_LOG) << "No adapter for" << m_session->source();
         showNotification();
         return;
     }
 
     BluezQt::DevicePtr device = adapter->deviceForAddress(m_session->destination());
     if (!device) {
-        qCDebug(BLUEDAEMON) << "No device for" << m_session->destination();
+        qCDebug(BLUEDEVIL_KDED_LOG) << "No device for" << m_session->destination();
         showNotification();
         return;
     }
@@ -105,7 +105,7 @@ void ReceiveFileJob::init()
 
     case 1: // Auto-accept only from trusted devices
         if (device->isTrusted()) {
-            qCDebug(BLUEDAEMON) << "Auto-accepting transfer for trusted device";
+            qCDebug(BLUEDEVIL_KDED_LOG) << "Auto-accepting transfer for trusted device";
             slotAccept();
         } else {
             showNotification();
@@ -113,7 +113,7 @@ void ReceiveFileJob::init()
         break;
 
     case 2: // Auto-accept all transfers
-        qCDebug(BLUEDAEMON) << "Auto-accepting transfers for all devices";
+        qCDebug(BLUEDEVIL_KDED_LOG) << "Auto-accepting transfers for all devices";
         slotAccept();
         break;
 
@@ -150,7 +150,7 @@ void ReceiveFileJob::showNotification()
 
 void ReceiveFileJob::slotAccept()
 {
-    qCDebug(BLUEDAEMON) << "ReceiveFileJob-Accept";
+    qCDebug(BLUEDEVIL_KDED_LOG) << "ReceiveFileJob-Accept";
 
     KIO::getJobTracker()->registerJob(this);
 
@@ -166,7 +166,7 @@ void ReceiveFileJob::slotAccept()
                        QPair<QString, QString>(i18nc("File transfer destination", "To"), m_targetPath.toDisplayString()));
 
     m_tempPath = createTempPath(m_transfer->name());
-    qCDebug(BLUEDAEMON) << "TempPath" << m_tempPath;
+    qCDebug(BLUEDEVIL_KDED_LOG) << "TempPath" << m_tempPath;
 
     m_accepted = true;
     m_request.accept(m_tempPath);
@@ -175,7 +175,7 @@ void ReceiveFileJob::slotAccept()
 void ReceiveFileJob::slotCancel()
 {
     if (!m_accepted && m_transfer->status() == BluezQt::ObexTransfer::Queued) {
-        qCDebug(BLUEDAEMON) << "Cancel Push";
+        qCDebug(BLUEDEVIL_KDED_LOG) << "Cancel Push";
         m_request.reject();
         setError(KJob::UserDefinedError);
         emitResult();
@@ -185,8 +185,8 @@ void ReceiveFileJob::slotCancel()
 void ReceiveFileJob::moveFinished(KJob *job)
 {
     if (job->error()) {
-        qCDebug(BLUEDAEMON) << job->error();
-        qCDebug(BLUEDAEMON) << job->errorText();
+        qCDebug(BLUEDEVIL_KDED_LOG) << job->error();
+        qCDebug(BLUEDEVIL_KDED_LOG) << job->errorText();
         setError(job->error());
         setErrorText(i18n("Saving file failed"));
 
@@ -206,14 +206,14 @@ void ReceiveFileJob::statusChanged(BluezQt::ObexTransfer::Status status)
 {
     switch (status) {
     case BluezQt::ObexTransfer::Active:
-        qCDebug(BLUEDAEMON) << "ReceiveFileJob-Transfer Active";
+        qCDebug(BLUEDEVIL_KDED_LOG) << "ReceiveFileJob-Transfer Active";
         setTotalAmount(Bytes, m_transfer->size());
         setProcessedAmount(Bytes, 0);
         m_time = QTime::currentTime();
         break;
 
     case BluezQt::ObexTransfer::Complete: {
-        qCDebug(BLUEDAEMON) << "ReceiveFileJob-Transfer Complete";
+        qCDebug(BLUEDEVIL_KDED_LOG) << "ReceiveFileJob-Transfer Complete";
         KIO::CopyJob *job = KIO::move(QUrl::fromLocalFile(m_tempPath), m_targetPath, KIO::HideProgressInfo);
         job->setUiDelegate(nullptr);
         connect(job, &KIO::CopyJob::finished, this, &ReceiveFileJob::moveFinished);
@@ -221,7 +221,7 @@ void ReceiveFileJob::statusChanged(BluezQt::ObexTransfer::Status status)
     }
 
     case BluezQt::ObexTransfer::Error:
-        qCDebug(BLUEDAEMON) << "ReceiveFileJob-Transfer Error";
+        qCDebug(BLUEDEVIL_KDED_LOG) << "ReceiveFileJob-Transfer Error";
         setError(KJob::UserDefinedError);
         setErrorText(i18n("Bluetooth transfer failed"));
 
@@ -233,14 +233,14 @@ void ReceiveFileJob::statusChanged(BluezQt::ObexTransfer::Status status)
         break;
 
     default:
-        qCDebug(BLUEDAEMON) << "Not implemented status: " << status;
+        qCDebug(BLUEDEVIL_KDED_LOG) << "Not implemented status: " << status;
         break;
     }
 }
 
 void ReceiveFileJob::transferredChanged(quint64 transferred)
 {
-    // qCDebug(BLUEDAEMON) << "ReceiveFileJob-Transferred" << transferred;
+    // qCDebug(BLUEDEVIL_KDED_LOG) << "ReceiveFileJob-Transferred" << transferred;
 
     // If at least 1 second has passed since last update
     int secondsSinceLastTime = m_time.secsTo(QTime::currentTime());

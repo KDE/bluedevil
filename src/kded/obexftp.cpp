@@ -6,8 +6,8 @@
  */
 
 #include "obexftp.h"
+#include "bluedevil_kded.h"
 #include "bluedevildaemon.h"
-#include "debug_p.h"
 
 #include <QDBusConnection>
 #include <QDBusObjectPath>
@@ -56,7 +56,7 @@ QString ObexFtp::session(const QString &address, const QString &target, const QD
         return m_sessionMap[address];
     }
 
-    qCDebug(BLUEDAEMON) << "Creating obexftp session for" << address;
+    qCDebug(BLUEDEVIL_KDED_LOG) << "Creating obexftp session for" << address;
 
     // At this point we always want delayed reply
     msg.setDelayedReply(true);
@@ -104,12 +104,12 @@ void ObexFtp::createSessionFinished(BluezQt::PendingCall *call)
     if (call->error() == BluezQt::PendingCall::AlreadyExists) {
         // It may happen when kded crashes, or the session was created by different app
         // What to do here? We are not owners of the session...
-        qCWarning(BLUEDAEMON) << "Obex session already exists but it was created by different process!";
+        qCWarning(BLUEDEVIL_KDED_LOG) << "Obex session already exists but it was created by different process!";
     } else if (call->error()) {
-        qCWarning(BLUEDAEMON) << "Error creating Obex session" << call->errorText();
+        qCWarning(BLUEDEVIL_KDED_LOG) << "Error creating Obex session" << call->errorText();
     } else {
         path = call->value().value<QDBusObjectPath>().path();
-        qCDebug(BLUEDAEMON) << "Created Obex session" << path;
+        qCDebug(BLUEDEVIL_KDED_LOG) << "Created Obex session" << path;
     }
 
     const QString &address = call->userData().toString();
@@ -142,10 +142,10 @@ void ObexFtp::sessionRemoved(BluezQt::ObexSessionPtr session)
     const QString &key = m_sessionMap.key(path);
 
     if (!m_sessionMap.contains(key)) {
-        qCDebug(BLUEDAEMON) << "Removed Obex session is not ours" << path;
+        qCDebug(BLUEDEVIL_KDED_LOG) << "Removed Obex session is not ours" << path;
         return;
     }
 
-    qCDebug(BLUEDAEMON) << "Removed Obex session" << path;
+    qCDebug(BLUEDEVIL_KDED_LOG) << "Removed Obex session" << path;
     m_sessionMap.remove(key);
 }

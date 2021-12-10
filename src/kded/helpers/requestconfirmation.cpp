@@ -8,7 +8,7 @@
  */
 
 #include "requestconfirmation.h"
-#include "debug_p.h"
+#include "bluedevil_kded.h"
 
 #include <KLocalizedString>
 #include <KNotification>
@@ -46,7 +46,7 @@ RequestConfirmation::RequestConfirmation(BluezQt::DevicePtr device, const QStrin
 
 void RequestConfirmation::pinCorrect()
 {
-    qCDebug(BLUEDAEMON) << "PIN correct:" << m_device->name() << m_device->address();
+    qCDebug(BLUEDEVIL_KDED_LOG) << "PIN correct:" << m_device->name() << m_device->address();
 
     deleteLater();
     Q_EMIT done(Accept);
@@ -54,7 +54,7 @@ void RequestConfirmation::pinCorrect()
 
 void RequestConfirmation::pinWrong()
 {
-    qCDebug(BLUEDAEMON) << "PIN wrong:" << m_device->name() << m_device->address();
+    qCDebug(BLUEDEVIL_KDED_LOG) << "PIN wrong:" << m_device->name() << m_device->address();
 
     deleteLater();
     Q_EMIT done(Deny);

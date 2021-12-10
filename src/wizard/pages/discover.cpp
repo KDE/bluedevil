@@ -8,7 +8,7 @@
 #include "discover.h"
 #include "../bluewizard.h"
 #include "../wizardagent.h"
-#include "debug_p.h"
+#include "bluedevil_wizard.h"
 
 #include <QAction>
 #include <QRegularExpressionValidator>
@@ -112,7 +112,7 @@ DiscoverPage::DiscoverPage(BlueWizard *parent)
 
 void DiscoverPage::initializePage()
 {
-    qCDebug(WIZARD) << "Initialize Discover Page";
+    qCDebug(BLUEDEVIL_WIZARD_LOG) << "Initialize Discover Page";
 
     QList<QWizard::WizardButton> list;
     list << QWizard::Stretch;
@@ -131,7 +131,7 @@ void DiscoverPage::initializePage()
 
     m_adapter = m_manager->usableAdapter();
     if (m_adapter && !m_adapter->isDiscovering()) {
-        qCDebug(WIZARD) << "Starting scanning";
+        qCDebug(BLUEDEVIL_WIZARD_LOG) << "Starting scanning";
         m_adapter->startDiscovery();
     }
 
@@ -186,7 +186,7 @@ int DiscoverPage::nextId() const
     }
 
     if (m_adapter && m_adapter->isDiscovering()) {
-        qCDebug(WIZARD) << "Stopping scanning";
+        qCDebug(BLUEDEVIL_WIZARD_LOG) << "Stopping scanning";
         m_adapter->stopDiscovery();
     }
 
@@ -197,10 +197,10 @@ int DiscoverPage::nextId() const
         m_wizard->agent()->setPin(pin);
     }
 
-    qCDebug(WIZARD) << "Device type: " << BluezQt::Device::typeToString(device->type());
-    qCDebug(WIZARD) << "Legacy: " << device->hasLegacyPairing();
-    qCDebug(WIZARD) << "From DB: " << m_wizard->agent()->isFromDatabase();
-    qCDebug(WIZARD) << "PIN: " << pin;
+    qCDebug(BLUEDEVIL_WIZARD_LOG) << "Device type: " << BluezQt::Device::typeToString(device->type());
+    qCDebug(BLUEDEVIL_WIZARD_LOG) << "Legacy: " << device->hasLegacyPairing();
+    qCDebug(BLUEDEVIL_WIZARD_LOG) << "From DB: " << m_wizard->agent()->isFromDatabase();
+    qCDebug(BLUEDEVIL_WIZARD_LOG) << "PIN: " << pin;
 
     // NULL pin means that we should only connect to device
     if (pin == QLatin1String("NULL")) {

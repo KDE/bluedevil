@@ -5,7 +5,7 @@
  */
 
 #include "transferfilejob.h"
-#include "debug_p.h"
+#include "bluedevil_kio_obexftp.h"
 #include "kioobexftp.h"
 
 #include <KLocalizedString>
@@ -35,34 +35,34 @@ void TransferFileJob::statusChanged(BluezQt::ObexTransfer::Status status)
 {
     switch (status) {
     case BluezQt::ObexTransfer::Active:
-        qCDebug(OBEXFTP) << "Transfer Active";
+        qCDebug(BLUEDEVIL_KIO_OBEXFTP_LOG) << "Transfer Active";
         m_time = QTime::currentTime();
         break;
 
     case BluezQt::ObexTransfer::Complete:
-        qCDebug(OBEXFTP) << "Transfer Complete";
+        qCDebug(BLUEDEVIL_KIO_OBEXFTP_LOG) << "Transfer Complete";
         emitResult();
         break;
 
     case BluezQt::ObexTransfer::Error:
-        qCDebug(OBEXFTP) << "Transfer Error";
+        qCDebug(BLUEDEVIL_KIO_OBEXFTP_LOG) << "Transfer Error";
         setError(KJob::UserDefinedError);
         setErrorText(i18n("Bluetooth transfer failed"));
         emitResult();
         break;
 
     default:
-        qCWarning(OBEXFTP) << "Not implemented status: " << status;
+        qCWarning(BLUEDEVIL_KIO_OBEXFTP_LOG) << "Not implemented status: " << status;
         break;
     }
 }
 
 void TransferFileJob::transferredChanged(quint64 transferred)
 {
-    // qCDebug(OBEXFTP) << "Transferred: " << transferred;
+    // qCDebug(BLUEDEVIL_KIO_OBEXFTP_LOG) << "Transferred: " << transferred;
 
     if (m_parent->wasKilled()) {
-        qCDebug(OBEXFTP) << "Kio was killed, aborting task";
+        qCDebug(BLUEDEVIL_KIO_OBEXFTP_LOG) << "Kio was killed, aborting task";
         m_parent->cancelTransfer(m_transfer->objectPath().path());
         emitResult();
         return;

@@ -8,7 +8,7 @@
 
 #include "failpage.h"
 #include "../sendfilewizard.h"
-#include "debug_p.h"
+#include "bluedevil_sendfile.h"
 
 #include <QPushButton>
 
@@ -29,7 +29,7 @@ FailPage::FailPage(SendFileWizard *parent)
 
 void FailPage::initializePage()
 {
-    qCDebug(SENDFILE) << "Initialize Fail Page";
+    qCDebug(BLUEDEVIL_SENDFILE_LOG) << "Initialize Fail Page";
 
     QList<QWizard::WizardButton> list;
     list << QWizard::Stretch;

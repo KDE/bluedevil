@@ -10,7 +10,7 @@
 
 #include "success.h"
 #include "../bluewizard.h"
-#include "debug_p.h"
+#include "bluedevil_wizard.h"
 
 #include <QIcon>
 
@@ -31,7 +31,7 @@ int SuccessPage::nextId() const
 
 void SuccessPage::initializePage()
 {
-    qCDebug(WIZARD) << "Sending Success notification";
+    qCDebug(BLUEDEVIL_WIZARD_LOG) << "Sending Success notification";
 
     BluezQt::DevicePtr device = m_wizard->device();
 

@@ -5,7 +5,7 @@
 */
 
 #include "bluewizard.h"
-#include "debug_p.h"
+#include "bluedevil_wizard.h"
 #include "pages/connect.h"
 #include "pages/discover.h"
 #include "pages/fail.h"
@@ -96,12 +96,12 @@ BluezQt::Manager *BlueWizard::manager() const
 void BlueWizard::initJobResult(BluezQt::InitManagerJob *job)
 {
     if (job->error()) {
-        qCWarning(WIZARD) << "Error initializing manager:" << job->errorText();
+        qCWarning(BLUEDEVIL_WIZARD_LOG) << "Error initializing manager:" << job->errorText();
         qApp->exit(1);
         return;
     }
 
-    qCDebug(WIZARD) << "Manager initialized";
+    qCDebug(BLUEDEVIL_WIZARD_LOG) << "Manager initialized";
 
     // Make sure to register agent when bluetoothd starts
     operationalChanged(m_manager->isOperational());
@@ -123,7 +123,7 @@ void BlueWizard::operationalChanged(bool operational)
 
 void BlueWizard::done(int result)
 {
-    qCDebug(WIZARD) << "Wizard done: " << result;
+    qCDebug(BLUEDEVIL_WIZARD_LOG) << "Wizard done: " << result;
 
     QWizard::done(result);
     qApp->exit(result);

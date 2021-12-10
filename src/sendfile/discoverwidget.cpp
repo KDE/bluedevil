@@ -8,7 +8,7 @@
  */
 
 #include "discoverwidget.h"
-#include "debug_p.h"
+#include "bluedevil_sendfile.h"
 
 #include <QAction>
 #include <QIcon>

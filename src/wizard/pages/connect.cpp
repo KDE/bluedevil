@@ -9,7 +9,7 @@
 
 #include "connect.h"
 #include "../bluewizard.h"
-#include "debug_p.h"
+#include "bluedevil_wizard.h"
 
 #include <QTimer>
 
@@ -34,7 +34,7 @@ int ConnectPage::nextId() const
 
 void ConnectPage::initializePage()
 {
-    qCDebug(WIZARD) << "Initialize Connect Page";
+    qCDebug(BLUEDEVIL_WIZARD_LOG) << "Initialize Connect Page";
 
     m_wizard->setButtonLayout(wizardButtonsLayout());
     connecting->setText(i18nc("Connecting to a Bluetooth device", "Connecting to %1…", m_wizard->device()->name()));
@@ -47,9 +47,9 @@ void ConnectPage::initializePage()
 
 void ConnectPage::connectFinished(BluezQt::PendingCall *call)
 {
-    qCDebug(WIZARD) << "Connect finished:";
-    qCDebug(WIZARD) << "\t error     : " << (bool)call->error();
-    qCDebug(WIZARD) << "\t errorText : " << call->errorText();
+    qCDebug(BLUEDEVIL_WIZARD_LOG) << "Connect finished:";
+    qCDebug(BLUEDEVIL_WIZARD_LOG) << "\t error     : " << (bool)call->error();
+    qCDebug(BLUEDEVIL_WIZARD_LOG) << "\t errorText : " << call->errorText();
 
     m_success = !call->error();
     QTimer::singleShot(500, m_wizard, &BlueWizard::next);

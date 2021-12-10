@@ -9,7 +9,7 @@
 #include "pairing.h"
 #include "../bluewizard.h"
 #include "../wizardagent.h"
-#include "debug_p.h"
+#include "bluedevil_wizard.h"
 
 #include <QPushButton>
 
@@ -42,7 +42,7 @@ int PairingPage::nextId() const
 
 void PairingPage::initializePage()
 {
-    qCDebug(WIZARD) << "Initialize Pairing Page";
+    qCDebug(BLUEDEVIL_WIZARD_LOG) << "Initialize Pairing Page";
 
     m_device = m_wizard->device();
     m_wizard->setButtonLayout(wizardButtonsLayout());
@@ -68,9 +68,9 @@ void PairingPage::initializePage()
 
 void PairingPage::pairingFinished(BluezQt::PendingCall *call)
 {
-    qCDebug(WIZARD) << "Pairing finished:";
-    qCDebug(WIZARD) << "\t error     : " << (bool)call->error();
-    qCDebug(WIZARD) << "\t errorText : " << call->errorText();
+    qCDebug(BLUEDEVIL_WIZARD_LOG) << "Pairing finished:";
+    qCDebug(BLUEDEVIL_WIZARD_LOG) << "\t error     : " << (bool)call->error();
+    qCDebug(BLUEDEVIL_WIZARD_LOG) << "\t errorText : " << call->errorText();
 
     m_success = !call->error();
     m_wizard->next();

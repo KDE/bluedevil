@@ -8,8 +8,8 @@
  */
 
 #include "bluedevildaemon.h"
+#include "bluedevil_kded.h"
 #include "bluezagent.h"
-#include "debug_p.h"
 #include "devicemonitor.h"
 #include "obexagent.h"
 #include "obexftp.h"
@@ -37,14 +37,14 @@ Q_DECLARE_METATYPE(DeviceInfo)
 Q_DECLARE_METATYPE(QMapDeviceInfo)
 
 struct BlueDevilDaemon::Private {
-    BluezQt::Manager *m_manager;
-    BluezQt::ObexManager *m_obexManager;
+    BluezQt::Manager *m_manager = nullptr;
+    BluezQt::ObexManager *m_obexManager = nullptr;
 
     QTimer m_timer;
-    ObexFtp *m_obexFtp;
-    ObexAgent *m_obexAgent;
-    BluezAgent *m_bluezAgent;
-    DeviceMonitor *m_deviceMonitor;
+    ObexFtp *m_obexFtp = nullptr;
+    ObexAgent *m_obexAgent = nullptr;
+    BluezAgent *m_bluezAgent = nullptr;
+    DeviceMonitor *m_deviceMonitor = nullptr;
 };
 
 BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant> &)
@@ -97,7 +97,7 @@ BlueDevilDaemon::BlueDevilDaemon(QObject *parent, const QList<QVariant> &)
     initJob->start();
     connect(initJob, &BluezQt::InitObexManagerJob::result, this, &BlueDevilDaemon::initObexJobResult);
 
-    qCDebug(BLUEDAEMON) << "Created";
+    qCDebug(BLUEDEVIL_KDED_LOG) << "Created";
 }
 
 BlueDevilDaemon::~BlueDevilDaemon()
@@ -106,7 +106,7 @@ BlueDevilDaemon::~BlueDevilDaemon()
     d->m_obexManager->unregisterAgent(d->m_obexAgent);
     d->m_deviceMonitor->saveState();
 
-    qCDebug(BLUEDAEMON) << "Destroyed";
+    qCDebug(BLUEDEVIL_KDED_LOG) << "Destroyed";
 
     delete d;
 }
@@ -139,7 +139,7 @@ void BlueDevilDaemon::startDiscovering(quint32 timeout)
         return;
     }
 
-    qCDebug(BLUEDAEMON) << "Start discovering for" << timeout << "ms";
+    qCDebug(BLUEDEVIL_KDED_LOG) << "Start discovering for" << timeout << "ms";
 
     d->m_manager->usableAdapter()->startDiscovery();
 
@@ -154,7 +154,7 @@ void BlueDevilDaemon::stopDiscovering()
         return;
     }
 
-    qCDebug(BLUEDAEMON) << "Stop discovering";
+    qCDebug(BLUEDEVIL_KDED_LOG) << "Stop discovering";
 
     if (d->m_manager->usableAdapter()->isDiscovering()) {
         d->m_manager->usableAdapter()->stopDiscovery();
@@ -174,7 +174,7 @@ BluezQt::ObexManager *BlueDevilDaemon::obexManager() const
 void BlueDevilDaemon::initJobResult(BluezQt::InitManagerJob *job)
 {
     if (job->error()) {
-        qCDebug(BLUEDAEMON) << "Error initializing manager:" << job->errorText();
+        qCDebug(BLUEDEVIL_KDED_LOG) << "Error initializing manager:" << job->errorText();
         return;
     }
 
@@ -185,7 +185,7 @@ void BlueDevilDaemon::initJobResult(BluezQt::InitManagerJob *job)
 void BlueDevilDaemon::initObexJobResult(BluezQt::InitObexManagerJob *job)
 {
     if (job->error()) {
-        qCDebug(BLUEDAEMON) << "Error initializing obex manager:" << job->errorText();
+        qCDebug(BLUEDEVIL_KDED_LOG) << "Error initializing obex manager:" << job->errorText();
         return;
     }
 
@@ -195,7 +195,7 @@ void BlueDevilDaemon::initObexJobResult(BluezQt::InitObexManagerJob *job)
 
 void BlueDevilDaemon::operationalChanged(bool operational)
 {
-    qCDebug(BLUEDAEMON) << "Bluetooth operational changed" << operational;
+    qCDebug(BLUEDEVIL_KDED_LOG) << "Bluetooth operational changed" << operational;
 
     if (operational) {
         BluezQt::PendingCall *rCall = d->m_manager->registerAgent(d->m_bluezAgent);
@@ -211,7 +211,7 @@ void BlueDevilDaemon::operationalChanged(bool operational)
 
 void BlueDevilDaemon::obexOperationalChanged(bool operational)
 {
-    qCDebug(BLUEDAEMON) << "ObexManager operational changed" << operational;
+    qCDebug(BLUEDEVIL_KDED_LOG) << "ObexManager operational changed" << operational;
 
     if (operational) {
         BluezQt::PendingCall *call = d->m_obexManager->registerAgent(d->m_obexAgent);
@@ -225,27 +225,27 @@ void BlueDevilDaemon::obexOperationalChanged(bool operational)
 void BlueDevilDaemon::agentRegisted(BluezQt::PendingCall *call)
 {
     if (call->error()) {
-        qCWarning(BLUEDAEMON) << "Error registering Agent" << call->errorText();
+        qCWarning(BLUEDEVIL_KDED_LOG) << "Error registering Agent" << call->errorText();
     } else {
-        qCDebug(BLUEDAEMON) << "Agent registered";
+        qCDebug(BLUEDEVIL_KDED_LOG) << "Agent registered";
     }
 }
 
 void BlueDevilDaemon::agentRequestedDefault(BluezQt::PendingCall *call)
 {
     if (call->error()) {
-        qCWarning(BLUEDAEMON) << "Error requesting default Agent" << call->errorText();
+        qCWarning(BLUEDEVIL_KDED_LOG) << "Error requesting default Agent" << call->errorText();
     } else {
-        qCDebug(BLUEDAEMON) << "Requested default Agent";
+        qCDebug(BLUEDEVIL_KDED_LOG) << "Requested default Agent";
     }
 }
 
 void BlueDevilDaemon::obexAgentRegistered(BluezQt::PendingCall *call)
 {
     if (call->error()) {
-        qCWarning(BLUEDAEMON) << "Error registering ObexAgent" << call->errorText();
+        qCWarning(BLUEDEVIL_KDED_LOG) << "Error registering ObexAgent" << call->errorText();
     } else {
-        qCDebug(BLUEDAEMON) << "ObexAgent registered";
+        qCDebug(BLUEDEVIL_KDED_LOG) << "ObexAgent registered";
     }
 }
 

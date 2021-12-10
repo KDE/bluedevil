@@ -39,8 +39,8 @@ private Q_SLOTS:
     void dialogFinished(int result);
 
 private:
-    Ui::DialogWidget *m_dialogWidget;
-    KNotification *m_notification;
+    Ui::DialogWidget *m_dialogWidget = nullptr;
+    KNotification *m_notification = nullptr;
     BluezQt::DevicePtr m_device;
     bool m_numeric;
 };

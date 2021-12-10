@@ -3,7 +3,6 @@ set(sendfilehelper_SRCS
     discoverwidget.cpp
     sendfilewizard.cpp
     sendfilesjob.cpp
-    debug_p.cpp
 
     pages/selectdeviceandfilespage.cpp
     pages/selectdevicepage.cpp
@@ -11,6 +10,9 @@ set(sendfilehelper_SRCS
     pages/connectingpage.cpp
     pages/failpage.cpp
 )
+
+ecm_qt_declare_logging_category(sendfilehelper_SRCS HEADER bluedevil_sendfile.h IDENTIFIER BLUEDEVIL_SENDFILE_LOG CATEGORY_NAME
+    org.kde.plasma.bluedevil.sendfile DESCRIPTION "BlueDevil (send file)" EXPORT BLUEDEVIL)
 
 ki18n_wrap_ui(sendfilehelper_SRCS
     discover.ui

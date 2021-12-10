@@ -8,7 +8,7 @@
  */
 
 #include "requestpin.h"
-#include "debug_p.h"
+#include "bluedevil_kded.h"
 #include "ui_requestpin.h"
 
 #include <QDialog>
@@ -22,7 +22,6 @@
 
 RequestPin::RequestPin(BluezQt::DevicePtr device, bool numeric, QObject *parent)
     : QObject(parent)
-    , m_dialogWidget(nullptr)
     , m_device(device)
     , m_numeric(numeric)
 {
@@ -104,18 +103,18 @@ void RequestPin::dialogFinished(int result)
     deleteLater();
 
     if (!result) {
-        qCDebug(BLUEDAEMON) << "PIN dialog rejected:" << m_device->name() << m_device->address();
+        qCDebug(BLUEDEVIL_KDED_LOG) << "PIN dialog rejected:" << m_device->name() << m_device->address();
         Q_EMIT done(QString());
         return;
     }
 
-    qCDebug(BLUEDAEMON) << "PIN dialog accepted:" << m_device->name() << m_device->address();
+    qCDebug(BLUEDEVIL_KDED_LOG) << "PIN dialog accepted:" << m_device->name() << m_device->address();
     Q_EMIT done(m_dialogWidget->pin->text().toLatin1().constData());
 }
 
 void RequestPin::quit()
 {
-    qCDebug(BLUEDAEMON) << "Rejected to introduce PIN:" << m_device->name() << m_device->address();
+    qCDebug(BLUEDEVIL_KDED_LOG) << "Rejected to introduce PIN:" << m_device->name() << m_device->address();
 
     deleteLater();
     Q_EMIT done(QString());

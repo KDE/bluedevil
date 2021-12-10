@@ -6,7 +6,7 @@
  */
 
 #include "wizardagent.h"
-#include "debug_p.h"
+#include "bluedevil_wizard.h"
 
 #include <QDBusObjectPath>
 #include <QFile>
@@ -50,7 +50,7 @@ QString WizardAgent::getPin(BluezQt::DevicePtr device)
 
     QFile file(xmlPath);
     if (!file.open(QIODevice::ReadOnly)) {
-        qCDebug(WIZARD) << "Can't open the pin-code-database.xml";
+        qCDebug(BLUEDEVIL_WIZARD_LOG) << "Can't open the pin-code-database.xml";
         return m_pin;
     }
 
@@ -98,7 +98,7 @@ QString WizardAgent::getPin(BluezQt::DevicePtr device)
             m_pin = QString::number(KRandom::random()).left(num);
         }
 
-        qCDebug(WIZARD) << "PIN: " << m_pin;
+        qCDebug(BLUEDEVIL_WIZARD_LOG) << "PIN: " << m_pin;
         return m_pin;
     }
 
@@ -112,7 +112,7 @@ QDBusObjectPath WizardAgent::objectPath() const
 
 void WizardAgent::requestPinCode(BluezQt::DevicePtr device, const BluezQt::Request<QString> &req)
 {
-    qCDebug(WIZARD) << "AGENT-RequestPinCode" << device->ubi();
+    qCDebug(BLUEDEVIL_WIZARD_LOG) << "AGENT-RequestPinCode" << device->ubi();
 
     Q_EMIT pinRequested(m_pin);
     req.accept(m_pin);
@@ -120,14 +120,14 @@ void WizardAgent::requestPinCode(BluezQt::DevicePtr device, const BluezQt::Reque
 
 void WizardAgent::displayPinCode(BluezQt::DevicePtr device, const QString &pinCode)
 {
-    qCDebug(WIZARD) << "AGENT-DisplayPinCode" << device->ubi() << pinCode;
+    qCDebug(BLUEDEVIL_WIZARD_LOG) << "AGENT-DisplayPinCode" << device->ubi() << pinCode;
 
     Q_EMIT pinRequested(pinCode);
 }
 
 void WizardAgent::requestPasskey(BluezQt::DevicePtr device, const BluezQt::Request<quint32> &req)
 {
-    qCDebug(WIZARD) << "AGENT-RequestPasskey" << device->ubi();
+    qCDebug(BLUEDEVIL_WIZARD_LOG) << "AGENT-RequestPasskey" << device->ubi();
 
     Q_EMIT pinRequested(m_pin);
     req.accept(m_pin.toUInt());
@@ -137,14 +137,14 @@ void WizardAgent::displayPasskey(BluezQt::DevicePtr device, const QString &passk
 {
     Q_UNUSED(entered);
 
-    qCDebug(WIZARD) << "AGENT-DisplayPasskey" << device->ubi() << passkey;
+    qCDebug(BLUEDEVIL_WIZARD_LOG) << "AGENT-DisplayPasskey" << device->ubi() << passkey;
 
     Q_EMIT pinRequested(passkey);
 }
 
 void WizardAgent::requestConfirmation(BluezQt::DevicePtr device, const QString &passkey, const BluezQt::Request<> &req)
 {
-    qCDebug(WIZARD) << "AGENT-RequestConfirmation " << device->ubi() << passkey;
+    qCDebug(BLUEDEVIL_WIZARD_LOG) << "AGENT-RequestConfirmation " << device->ubi() << passkey;
 
     Q_EMIT confirmationRequested(passkey, req);
 }

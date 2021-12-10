@@ -2,14 +2,15 @@ set(wizard_SRCS
     main.cpp
     bluewizard.cpp
     wizardagent.cpp
-    debug_p.cpp
-
     pages/discover.cpp
     pages/connect.cpp
     pages/pairing.cpp
     pages/fail.cpp
     pages/success.cpp
 )
+
+ecm_qt_declare_logging_category(wizard_SRCS HEADER bluedevil_wizard.h IDENTIFIER BLUEDEVIL_WIZARD_LOG CATEGORY_NAME
+    org.kde.plasma.bluedevil.wizard DESCRIPTION "BlueDevil (wizard)" EXPORT BLUEDEVIL)
 
 ki18n_wrap_ui(wizard_SRCS
             pages/discover.ui
