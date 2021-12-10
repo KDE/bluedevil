@@ -43,7 +43,7 @@ bool WizardAgent::isFromDatabase()
 QString WizardAgent::getPin(BluezQt::DevicePtr device)
 {
     m_fromDatabase = false;
-    m_pin = QString::number(KRandom::random());
+    m_pin = QString::number(QRandomGenerator::global()->bounded(RAND_MAX));
     m_pin = m_pin.left(6);
 
     const QString &xmlPath = QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("pin-code-database.xml"));
@@ -95,7 +95,7 @@ QString WizardAgent::getPin(BluezQt::DevicePtr device)
         if (m_pin.startsWith(QLatin1String("max:"))) {
             m_fromDatabase = false;
             int num = m_pin.rightRef(m_pin.length() - 4).toInt();
-            m_pin = QString::number(KRandom::random()).left(num);
+            m_pin = QString::number(QRandomGenerator::global()->bounded(RAND_MAX)).left(num);
         }
 
         qCDebug(BLUEDEVIL_WIZARD_LOG) << "PIN: " << m_pin;
