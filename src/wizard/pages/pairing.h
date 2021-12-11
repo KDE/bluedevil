@@ -39,10 +39,10 @@ public Q_SLOTS:
 private:
     QList<QWizard::WizardButton> wizardButtonsLayout() const;
 
-    BlueWizard *m_wizard;
+    BlueWizard *const m_wizard;
     BluezQt::DevicePtr m_device;
     BluezQt::Request<> m_req;
-    bool m_success;
+    bool m_success = false;
 };
 
 #endif // PAIRINGPAGE_H

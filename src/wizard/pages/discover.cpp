@@ -37,12 +37,11 @@ public:
     BluezQt::DevicePtr device(const QModelIndex &index) const;
 
 private:
-    BluezQt::DevicesModel *m_devicesModel;
+    BluezQt::DevicesModel *m_devicesModel = nullptr;
 };
 
 DevicesProxyModel::DevicesProxyModel(QObject *parent)
     : QSortFilterProxyModel(parent)
-    , m_devicesModel(nullptr)
 {
     setDynamicSortFilter(true);
     sort(0, Qt::DescendingOrder);
@@ -96,14 +95,11 @@ BluezQt::DevicePtr DevicesProxyModel::device(const QModelIndex &index) const
 DiscoverPage::DiscoverPage(BlueWizard *parent)
     : QWizardPage(parent)
     , m_wizard(parent)
-    , m_model(nullptr)
-    , m_manager(nullptr)
-    , m_warningWidget(nullptr)
+    , m_model(new DevicesProxyModel(this))
 {
     setupUi(this);
     setTitle(i18n("Select a device"));
 
-    m_model = new DevicesProxyModel(this);
     deviceView->setModel(m_model);
 
     connect(deviceView->selectionModel(), &QItemSelectionModel::currentChanged, this, &DiscoverPage::indexSelected);

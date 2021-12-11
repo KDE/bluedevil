@@ -38,11 +38,11 @@ private Q_SLOTS:
     void fixAdaptersError();
 
 private:
-    BlueWizard *m_wizard;
-    DevicesProxyModel *m_model;
-    BluezQt::Manager *m_manager;
+    BlueWizard *const m_wizard;
+    DevicesProxyModel *const m_model;
+    BluezQt::Manager *m_manager = nullptr;
     BluezQt::AdapterPtr m_adapter;
-    KMessageWidget *m_warningWidget;
+    KMessageWidget *m_warningWidget = nullptr;
 };
 
 #endif // DISCOVER_H

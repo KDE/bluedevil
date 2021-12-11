@@ -42,8 +42,8 @@ private Q_SLOTS:
 private:
     void done(int result) override;
 
-    BluezQt::Manager *m_manager;
-    WizardAgent *m_agent;
+    BluezQt::Manager *m_manager = nullptr;
+    WizardAgent *const m_agent;
 
     BluezQt::DevicePtr m_device;
 };

@@ -38,8 +38,8 @@ private Q_SLOTS:
     void connectFinished(BluezQt::PendingCall *call);
 
 private:
-    BlueWizard *m_wizard;
-    bool m_success;
+    BlueWizard *const m_wizard;
+    bool m_success = false;
 };
 
 #endif // CONNECT_H

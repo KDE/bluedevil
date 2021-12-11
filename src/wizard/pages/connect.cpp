@@ -19,7 +19,6 @@
 ConnectPage::ConnectPage(BlueWizard *parent)
     : QWizardPage(parent)
     , m_wizard(parent)
-    , m_success(false)
 {
     setupUi(this);
 }

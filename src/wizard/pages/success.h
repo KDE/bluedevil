@@ -28,7 +28,7 @@ public:
     void initializePage() override;
 
 private:
-    BlueWizard *m_wizard;
+    BlueWizard *const m_wizard;
 };
 
 #endif // SUCCESS_H
