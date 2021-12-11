@@ -58,7 +58,7 @@ void SelectDeviceAndFilesPage::openFileDialog()
         selectLbl->setText(i18n("Select one or more files:"));
     } else {
         QStringList fileNames;
-        Q_FOREACH (const QString &file, files) {
+        for (const QString &file : files) {
             QFileInfo info(file);
             fileNames.append(info.fileName());
         }

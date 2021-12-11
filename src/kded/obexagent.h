@@ -32,7 +32,7 @@ private Q_SLOTS:
     void receiveFileJobFinished(KJob *job);
 
 private:
-    BluezQt::Manager *m_manager;
+    BluezQt::Manager *const m_manager;
     QHash<QString, QDateTime> m_transferTimes;
 };
 

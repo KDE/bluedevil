@@ -46,12 +46,12 @@ private Q_SLOTS:
     void initJobResult(BluezQt::InitManagerJob *job);
 
 private:
-    QString m_deviceUrl;
+    const QString m_deviceUrl;
     QStringList m_files;
 
-    BluezQt::Manager *m_manager;
+    BluezQt::Manager *m_manager = nullptr;
     BluezQt::DevicePtr m_device;
-    SendFilesJob *m_job;
+    SendFilesJob *m_job = nullptr;
 };
 
 #endif // SENDFILEWIZARD_H

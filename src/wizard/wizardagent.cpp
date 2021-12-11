@@ -20,11 +20,10 @@
 
 WizardAgent::WizardAgent(QObject *parent)
     : BluezQt::Agent(parent)
-    , m_fromDatabase(false)
 {
 }
 
-QString WizardAgent::pin()
+QString WizardAgent::pin() const
 {
     return m_pin;
 }

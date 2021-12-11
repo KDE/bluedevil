@@ -32,7 +32,7 @@ private Q_SLOTS:
     void openFileDialog();
 
 private:
-    SendFileWizard *m_wizard;
+    SendFileWizard *const m_wizard;
 };
 
 #endif // SELECTDEVICEANDFILESPAGE_H

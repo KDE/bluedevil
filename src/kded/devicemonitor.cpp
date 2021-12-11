@@ -49,15 +49,15 @@ DeviceMonitor::DeviceMonitor(BlueDevilDaemon *daemon)
     // Set initial state
     const KConfigGroup globalGroup = m_config->group("Global");
     const QString launchState = globalGroup.readEntry("launchState", "remember");
-    if (launchState == "remember") {
+    if (launchState == QLatin1String("remember")) {
         restoreState();
-    } else if (launchState == "enable") {
+    } else if (launchState == QLatin1String("enable")) {
         // Un-block Bluetooth and turn on everything
         m_manager->setBluetoothBlocked(false);
         for (BluezQt::AdapterPtr adapter : m_manager->adapters()) {
             adapter->setPowered(true);
         }
-    } else if (launchState == "disable") {
+    } else if (launchState == QLatin1String("disable")) {
         // Turn off everything and block Bluetooth
         for (BluezQt::AdapterPtr adapter : m_manager->adapters()) {
             adapter->setPowered(false);

@@ -31,9 +31,7 @@ void FailPage::initializePage()
 {
     qCDebug(BLUEDEVIL_SENDFILE_LOG) << "Initialize Fail Page";
 
-    QList<QWizard::WizardButton> list;
-    list << QWizard::Stretch;
-    list << QWizard::CancelButton;
+    const QList<QWizard::WizardButton> list{QWizard::Stretch, QWizard::CancelButton};
 
     m_wizard->setButtonLayout(list);
 

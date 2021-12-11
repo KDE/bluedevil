@@ -25,7 +25,7 @@ public:
     void initializePage() override;
 
 private:
-    SendFileWizard *m_wizard;
+    SendFileWizard *const m_wizard;
 };
 
 #endif // FAILPAGE_H

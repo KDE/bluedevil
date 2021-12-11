@@ -35,7 +35,7 @@ private Q_SLOTS:
 private:
     QList<QWizard::WizardButton> wizardButtonsLayout() const;
 
-    SendFileWizard *m_wizard;
+    SendFileWizard *const m_wizard;
     BluezQt::DevicePtr m_device;
 };
 

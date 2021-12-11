@@ -35,7 +35,7 @@ private Q_SLOTS:
 
 private:
     BluezQt::DevicePtr m_device;
-    QString m_pin;
+    const QString m_pin;
 };
 
 #endif // REQUESTCONFIRMATION_H

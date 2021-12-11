@@ -17,7 +17,7 @@ class WizardAgent : public BluezQt::Agent
 public:
     explicit WizardAgent(QObject *parent = nullptr);
 
-    QString pin();
+    QString pin() const;
     void setPin(const QString &pin);
 
     bool isFromDatabase();
@@ -36,7 +36,7 @@ Q_SIGNALS:
     void confirmationRequested(const QString &passkey, const BluezQt::Request<> &req);
 
 private:
-    bool m_fromDatabase;
+    bool m_fromDatabase = false;
     QString m_pin;
 };
 

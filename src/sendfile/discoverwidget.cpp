@@ -39,12 +39,11 @@ public:
     BluezQt::DevicePtr device(const QModelIndex &index) const;
 
 private:
-    BluezQt::DevicesModel *m_devicesModel;
+    BluezQt::DevicesModel *m_devicesModel = nullptr;
 };
 
 DevicesProxyModel::DevicesProxyModel(QObject *parent)
     : QSortFilterProxyModel(parent)
-    , m_devicesModel(nullptr)
 {
     setDynamicSortFilter(true);
     sort(0, Qt::DescendingOrder);

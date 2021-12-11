@@ -31,7 +31,7 @@ private Q_SLOTS:
     void deviceSelected(BluezQt::DevicePtr device);
 
 private:
-    SendFileWizard *m_wizard;
+    SendFileWizard *const m_wizard;
 };
 
 #endif // SELECTDEVICEPAGE_H

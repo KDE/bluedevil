@@ -34,7 +34,7 @@ SendFilesJob::SendFilesJob(const QStringList &files, BluezQt::DevicePtr device, 
 {
     qCDebug(BLUEDEVIL_SENDFILE_LOG) << "SendFilesJob:" << files;
 
-    Q_FOREACH (const QString &filePath, files) {
+    for (const QString &filePath : files) {
         QFile file(filePath);
         m_filesSizes << file.size();
         m_totalSize += file.size();
