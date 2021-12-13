@@ -172,7 +172,7 @@ void DeviceMonitor::restoreState()
     KConfigGroup devicesGroup = m_config->group("Devices");
     const QStringList &connectedDevices = devicesGroup.readEntry<QStringList>(QStringLiteral("connectedDevices"), QStringList());
 
-    Q_FOREACH (const QString &addr, connectedDevices) {
+    for (const QString &addr : connectedDevices) {
         BluezQt::DevicePtr device = m_manager->deviceForAddress(addr);
         if (device) {
             device->connectToDevice();

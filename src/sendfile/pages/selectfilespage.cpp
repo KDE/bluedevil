@@ -49,9 +49,9 @@ void SelectFilesPage::initializePage()
 void SelectFilesPage::selectionChanged()
 {
     QStringList fileList;
-    KFileItemList itemList = m_files->dirOperator()->selectedItems();
+    const KFileItemList itemList = m_files->dirOperator()->selectedItems();
 
-    Q_FOREACH (const KFileItem &file, itemList) {
+    for (const KFileItem &file : itemList) {
         fileList << file.localPath();
     }
 

@@ -152,7 +152,7 @@ void KioFtp::listDir(const QUrl &url)
         return;
     }
 
-    Q_FOREACH (const KIO::UDSEntry &entry, list) {
+    for (const KIO::UDSEntry &entry : list) {
         listEntry(entry);
     }
 
@@ -428,7 +428,7 @@ QList<KIO::UDSEntry> KioFtp::listFolder(const QUrl &url, bool *ok)
 
     const QList<BluezQt::ObexFileTransferEntry> &items = call->value().value<QList<BluezQt::ObexFileTransferEntry>>();
 
-    Q_FOREACH (const BluezQt::ObexFileTransferEntry &item, items) {
+    for (const BluezQt::ObexFileTransferEntry &item : items) {
         if (!item.isValid()) {
             continue;
         }
