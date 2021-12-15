@@ -21,6 +21,7 @@ Notes:
     <comment xml:lang="ast">Preséu</comment>
     <comment xml:lang="az">Cihaz</comment>
     <comment xml:lang="ca">Dispositiu</comment>
+    <comment xml:lang="ca@valencia">Dispositiu</comment>
     <comment xml:lang="cs">Zařízení</comment>
     <comment xml:lang="da">Enhed</comment>
     <comment xml:lang="de">Gerät</comment>
@@ -59,6 +60,7 @@ Notes:
     <comment xml:lang="ast">Serviciu</comment>
     <comment xml:lang="az">Xidmət</comment>
     <comment xml:lang="ca">Servei</comment>
+    <comment xml:lang="ca@valencia">Servei</comment>
     <comment xml:lang="cs">Služba</comment>
     <comment xml:lang="da">Tjeneste</comment>
     <comment xml:lang="de">Dienst</comment>
@@ -95,6 +97,7 @@ Notes:
     <comment xml:lang="ast">Serviciu</comment>
     <comment xml:lang="az">Xidmət</comment>
     <comment xml:lang="ca">Servei</comment>
+    <comment xml:lang="ca@valencia">Servei</comment>
     <comment xml:lang="cs">Služba</comment>
     <comment xml:lang="da">Tjeneste</comment>
     <comment xml:lang="de">Dienst</comment>
