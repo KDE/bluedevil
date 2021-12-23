@@ -164,7 +164,7 @@ SimpleKCM {
             return i18nc("This device is a Headset", "Headset");
         case BluezQt.Device.Headphones:
             return i18nc("This device is a Headphones", "Headphones");
-        case BluezQt.Device.DeviceAudioVideo:
+        case BluezQt.Device.AudioVideo:
             return i18nc("This device is an Audio device", "Audio");
         case BluezQt.Device.Keyboard:
             return i18nc("This device is a Keyboard", "Keyboard");
