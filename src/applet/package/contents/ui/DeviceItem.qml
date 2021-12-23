@@ -263,6 +263,10 @@ PlasmaExtras.ExpandableListItem {
             labels.push(i18n("Input device"));
             break;
 
+        case BluezQt.Device.Phone:
+            labels.push(i18n("Phone"));
+            break;
+
         default:
             var profiles = [];
 
