@@ -32,7 +32,6 @@ ReceiveFileJob::ReceiveFileJob(const BluezQt::Request<QString> &req, BluezQt::Ob
     , m_transfer(transfer)
     , m_session(session)
     , m_request(req)
-    , m_accepted(false)
 {
     setCapabilities(Killable);
     // Pretend to be BlueDevil's file transfer agent even though we're run inside kded

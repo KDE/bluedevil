@@ -32,7 +32,7 @@ private Q_SLOTS:
 private:
     QTime m_time;
     qlonglong m_speedBytes;
-    KioFtp *m_parent;
+    KioFtp *const m_parent;
     BluezQt::ObexTransferPtr m_transfer;
 };
 

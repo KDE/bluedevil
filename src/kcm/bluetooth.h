@@ -26,7 +26,7 @@ public:
     Q_PROPERTY(QString bluetoothStatusAtLogin READ bluetoothStatusAtLogin WRITE setBluetoothStatusAtLogin NOTIFY bluetoothStatusAtLoginChanged)
 
     QString bluetoothStatusAtLogin() const;
-    void setBluetoothStatusAtLogin(QString newStatus);
+    void setBluetoothStatusAtLogin(const QString &newStatus);
 
 Q_SIGNALS:
     void networkAvailable(const QString &service, bool available);

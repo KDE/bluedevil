@@ -98,7 +98,7 @@ QString Bluetooth::bluetoothStatusAtLogin() const
     return globalGroup.readEntry("launchState", "remember");
 }
 
-void Bluetooth::setBluetoothStatusAtLogin(const QString newStatus)
+void Bluetooth::setBluetoothStatusAtLogin(const QString &newStatus)
 {
     auto config = KSharedConfig::openConfig(QStringLiteral("bluedevilglobalrc"));
     KConfigGroup globalGroup = config->group("Global");

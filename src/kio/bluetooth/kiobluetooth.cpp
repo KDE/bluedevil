@@ -79,7 +79,7 @@ QList<KioBluetooth::Service> KioBluetooth::getSupportedServices(const QStringLis
     qCDebug(BLUETOOTH) << "supported services: " << uuids;
 
     QList<Service> retValue;
-    Q_FOREACH (const QString &uuid, uuids) {
+    for (const QString &uuid : uuids) {
         if (m_supportedServices.contains(uuid)) {
             retValue << m_supportedServices[uuid];
         }
@@ -108,7 +108,7 @@ void KioBluetooth::listRemoteDeviceServices()
     int i = 1;
     totalSize(services.count());
 
-    Q_FOREACH (const Service &service, services) {
+    for (const Service &service : services) {
         KIO::UDSEntry entry;
         entry.fastInsert(KIO::UDSEntry::UDS_NAME, service.uuid);
         entry.fastInsert(KIO::UDSEntry::UDS_DISPLAY_NAME, service.name);
@@ -159,7 +159,7 @@ void KioBluetooth::listDevices()
     const QMapDeviceInfo &devices = m_kded->allDevices().value();
     qCDebug(BLUETOOTH) << devices.keys();
 
-    Q_FOREACH (const DeviceInfo &device, devices) {
+    for (const DeviceInfo &device : devices) {
         listDevice(device);
     }
 

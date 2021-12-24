@@ -54,7 +54,7 @@ private:
     BluezQt::ObexTransferPtr m_transfer;
     BluezQt::ObexSessionPtr m_session;
     BluezQt::Request<QString> m_request;
-    bool m_accepted;
+    bool m_accepted = false;
 };
 
 #endif // RECEIVEFILEJOB_H

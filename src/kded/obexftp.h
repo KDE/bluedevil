@@ -37,7 +37,7 @@ private Q_SLOTS:
     void sessionRemoved(BluezQt::ObexSessionPtr session);
 
 private:
-    BlueDevilDaemon *m_daemon;
+    BlueDevilDaemon *const m_daemon;
     QHash<QString, QString> m_sessionMap;
     QHash<QString, QList<QDBusMessage>> m_pendingSessions;
 };
