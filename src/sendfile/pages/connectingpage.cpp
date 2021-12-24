@@ -65,6 +65,7 @@ void ConnectingPage::createSessionFinished(BluezQt::PendingCall *call)
 {
     if (call->error()) {
         qCWarning(BLUEDEVIL_SENDFILE_LOG) << "Error creating session" << call->errorText();
+        m_wizard->setErrorMessage(call->errorText());
         m_wizard->next();
         return;
     }

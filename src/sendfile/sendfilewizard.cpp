@@ -163,3 +163,13 @@ void SendFileWizard::initJobResult(BluezQt::InitManagerJob *job)
     // Only show wizard after init is completed
     show();
 }
+
+QString SendFileWizard::errorMessage() const
+{
+    return m_errorMessage;
+}
+
+void SendFileWizard::setErrorMessage(const QString &message)
+{
+    m_errorMessage = message;
+}

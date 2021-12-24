@@ -38,8 +38,8 @@ void FailPage::initializePage()
     BluezQt::DevicePtr device = m_wizard->device();
 
     if (device->name().isEmpty()) {
-        failLbl->setText(i18nc("This string is shown when the wizard fail", "The connection to the device has failed"));
+        failLbl->setText(i18nc("This string is shown when the wizard fail", "The connection to the device has failed: %1", m_wizard->errorMessage()));
     } else {
-        failLbl->setText(i18n("The connection to %1 has failed", device->name()));
+        failLbl->setText(i18n("The connection to %1 has failed: %2", device->name(), m_wizard->errorMessage()));
     }
 }

@@ -40,6 +40,9 @@ public:
     BluezQt::DevicePtr device() const;
     void setDevice(BluezQt::DevicePtr device);
 
+    QString errorMessage() const;
+    void setErrorMessage(const QString &message);
+
     void startTransfer(const QDBusObjectPath &session);
 
 private Q_SLOTS:
@@ -48,6 +51,7 @@ private Q_SLOTS:
 private:
     const QString m_deviceUrl;
     QStringList m_files;
+    QString m_errorMessage;
 
     BluezQt::Manager *m_manager = nullptr;
     BluezQt::DevicePtr m_device;
