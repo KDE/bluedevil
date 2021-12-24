@@ -225,9 +225,6 @@ PlasmaExtras.ExpandableListItem {
         details.push(i18n("Address"));
         details.push(Address);
 
-        details.push(i18n("Paired"));
-        details.push(boolToString(Paired));
-
         details.push(i18n("Trusted"));
         details.push(boolToString(Trusted));
 
