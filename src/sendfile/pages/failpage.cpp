@@ -24,7 +24,7 @@ FailPage::FailPage(SendFileWizard *parent)
 {
     setupUi(this);
 
-    failIcon->setPixmap(QIcon::fromTheme(QStringLiteral("task-reject")).pixmap(48));
+    failIcon->setPixmap(QIcon::fromTheme(QStringLiteral("dialog-error")).pixmap(48));
 }
 
 void FailPage::initializePage()
