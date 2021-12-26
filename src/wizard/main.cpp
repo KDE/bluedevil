@@ -22,9 +22,9 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     KAboutData aboutData(QStringLiteral("bluedevilwizard"),
-                         i18n("Bluetooth Device Wizard"),
+                         i18n("Add Bluetooth Device"),
                          QStringLiteral(BLUEDEVIL_VERSION_STRING),
-                         i18n("Bluetooth Device Wizard"),
+                         i18n("Add Bluetooth Device"),
                          KAboutLicense::GPL,
                          i18n("(c) 2010, UFO Coders"));
 

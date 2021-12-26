@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=BlueDevil Wizard
+Name=Add Bluetooth Device
 Name[ar]=مرشد بلودف
 Name[ast]=Encontu pa BlueDevil
 Name[az]=BlueDevil Ayarlar Bələdçisi
@@ -48,7 +48,7 @@ Name[uk]=Майстер BlueDevil
 Name[x-test]=xxBlueDevil Wizardxx
 Name[zh_CN]=BlueDevil 向导
 Name[zh_TW]=BlueDevil 精靈
-GenericName=BlueDevil Wizard
+GenericName=Add Bluetooth Device
 GenericName[ar]=مرشد بلودف
 GenericName[ast]=Encontu pa BlueDevil
 GenericName[az]=BlueDevil Ayarlar Bələdçisi
@@ -97,7 +97,7 @@ GenericName[uk]=Майстер BlueDevil
 GenericName[x-test]=xxBlueDevil Wizardxx
 GenericName[zh_CN]=BlueDevil 向导
 GenericName[zh_TW]=BlueDevil 精靈
-Comment=BlueDevil Wizard
+Comment=Add Bluetooth Device
 Comment[ar]=مرشد بلودف
 Comment[ast]=Encontu pa BlueDevil
 Comment[az]=BlueDevil Ayarlar Bələdçisi
