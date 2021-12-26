@@ -21,9 +21,9 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     KAboutData aboutData(QStringLiteral("bluedevilsendfile"),
-                         i18n("Bluetooth Send File Wizard"),
+                         i18n("Bluetooth File Transfer"),
                          QStringLiteral(BLUEDEVIL_VERSION_STRING),
-                         i18n("Bluetooth Send File Wizard"),
+                         i18n("Bluetooth File Transfer"),
                          KAboutLicense::GPL,
                          i18n("(c) 2010, UFO Coders"));
 
