@@ -184,7 +184,7 @@ ScrollViewKCM {
         visible: BluezQt.Manager.bluetoothOperational
 
         QQC2.Button {
-            text: i18n("Add…")
+            text: i18n("Add New Device…")
             icon.name: "list-add"
             onClicked: kcm.runWizard()
         }
