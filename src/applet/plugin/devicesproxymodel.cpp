@@ -97,6 +97,6 @@ bool DevicesProxyModel::duplicateIndexAddress(const QModelIndex &idx) const
 bool DevicesProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
 {
     const QModelIndex index = sourceModel()->index(source_row, 0, source_parent);
-    // Only show paired devices in the KCM and applet
-    return index.data(BluezQt::DevicesModel::PairedRole).toBool();
+    // Only show paired and connected devices in the KCM and applet
+    return index.data(BluezQt::DevicesModel::PairedRole).toBool() || index.data(BluezQt::DevicesModel::ConnectedRole).toBool();
 }
