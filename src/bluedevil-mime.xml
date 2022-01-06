@@ -17,7 +17,7 @@ Notes:
     <sub-class-of type="inode/directory"/>
     <generic-icon name="video-display"/>
     <comment>Device</comment>
-    <comment xml:lang="ar">الجهاز</comment>
+    <comment xml:lang="ar">جهاز</comment>
     <comment xml:lang="ast">Preséu</comment>
     <comment xml:lang="az">Cihaz</comment>
     <comment xml:lang="ca">Dispositiu</comment>
@@ -56,7 +56,7 @@ Notes:
     <sub-class-of type="inode/directory"/>
     <generic-icon name="preferences-system-bluetooth"/>
     <comment>Service</comment>
-    <comment xml:lang="ar">الخدمة</comment>
+    <comment xml:lang="ar">خدمة</comment>
     <comment xml:lang="ast">Serviciu</comment>
     <comment xml:lang="az">Xidmət</comment>
     <comment xml:lang="ca">Servei</comment>
@@ -93,7 +93,7 @@ Notes:
   </mime-type>
   <mime-type type="application/vnd.kde.bluedevil-sendfile">
     <comment>Service</comment>
-    <comment xml:lang="ar">الخدمة</comment>
+    <comment xml:lang="ar">خدمة</comment>
     <comment xml:lang="ast">Serviciu</comment>
     <comment xml:lang="az">Xidmət</comment>
     <comment xml:lang="ca">Servei</comment>
