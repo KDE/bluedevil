@@ -19,7 +19,15 @@ MouseArea {
     Layout.maximumWidth: inPanel ? PlasmaCore.Units.iconSizeHints.panel : -1
     Layout.maximumHeight: inPanel ? PlasmaCore.Units.iconSizeHints.panel : -1
 
-    onClicked: plasmoid.expanded = !plasmoid.expanded
+    acceptedButtons: Qt.LeftButton | Qt.MiddleButton
+
+    onClicked: {
+        if (mouse.button === Qt.MiddleButton) {
+            toggleBluetooth();
+        } else {
+            plasmoid.expanded = !plasmoid.expanded;
+        }
+    }
 
     hoverEnabled: true
 

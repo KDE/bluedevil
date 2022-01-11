@@ -30,6 +30,17 @@ Item {
     Plasmoid.compactRepresentation: CompactRepresentation { }
     Plasmoid.fullRepresentation: FullRepresentation { }
 
+    function toggleBluetooth()
+    {
+        var enable = !btManager.bluetoothOperational;
+        btManager.bluetoothBlocked = !enable;
+
+        for (var i = 0; i < btManager.adapters.length; ++i) {
+            var adapter = btManager.adapters[i];
+            adapter.powered = enable;
+        }
+    }
+
     function action_configure() {
         KCMShell.openSystemSettings("kcm_bluetooth");
     }

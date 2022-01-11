@@ -60,15 +60,4 @@ PlasmaExtras.PlasmoidHeading {
             Accessible.name: plasmoid.action("configure").text
         }
     }
-
-    function toggleBluetooth()
-    {
-        var enable = !btManager.bluetoothOperational;
-        btManager.bluetoothBlocked = !enable;
-
-        for (var i = 0; i < btManager.adapters.length; ++i) {
-            var adapter = btManager.adapters[i];
-            adapter.powered = enable;
-        }
-    }
 }
