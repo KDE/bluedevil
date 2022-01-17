@@ -78,13 +78,6 @@ DeviceMonitor::DeviceMonitor(BlueDevilDaemon *daemon)
     }
 }
 
-DeviceMonitor::~DeviceMonitor()
-{
-    // Save state when tearing down to avoid getting out of sync if kded crashes
-    // or is manually restarted
-    saveState();
-}
-
 KFilePlacesModel *DeviceMonitor::places()
 {
     if (!m_places) {
