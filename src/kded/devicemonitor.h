@@ -24,7 +24,6 @@ class DeviceMonitor : public QObject
 
 public:
     explicit DeviceMonitor(BlueDevilDaemon *daemon);
-    ~DeviceMonitor() override;
 
     void saveState();
 
