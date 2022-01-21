@@ -22,7 +22,6 @@ Item {
     property QtObject btManager : BluezQt.Manager
 
     Plasmoid.toolTipMainText: i18n("Bluetooth")
-    Plasmoid.icon: Logic.icon()
 
     Plasmoid.switchWidth: PlasmaCore.Units.gridUnit * 15
     Plasmoid.switchHeight: PlasmaCore.Units.gridUnit * 10
@@ -57,5 +56,6 @@ Item {
         plasmoid.action("addNewDevice").visible = Qt.binding(() => {return !btManager.bluetoothBlocked;});
 
         Logic.init();
+        plasmoid.icon = Logic.icon();
     }
 }
