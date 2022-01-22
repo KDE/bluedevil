@@ -16,8 +16,37 @@ import org.kde.bluezqt 1.0 as BluezQt
 import org.kde.plasma.private.bluetooth 1.0
 
 ScrollViewKCM {
-
     id: root
+
+    actions: [
+        Kirigami.Action {
+            id: enableAction
+            text: i18nc("@action: button as in, 'enable Bluetooth'", "Enabled")
+            icon.name: "network-bluetooth"
+            checkable: true
+            checked: BluezQt.Manager.bluetoothOperational
+            onTriggered: {
+                root.setBluetoothEnabled(!BluezQt.Manager.bluetoothOperational)
+            }
+            displayComponent: QQC2.Switch {
+                text: enableAction.text
+                checked: enableAction.checked
+                onToggled: enableAction.trigger()
+            }
+        },
+        Kirigami.Action {
+            text: i18n("Add New Device…")
+            icon.name: "list-add"
+            onTriggered: kcm.runWizard()
+            visible: BluezQt.Manager.bluetoothOperational
+        },
+        Kirigami.Action {
+            text: i18n("Configure…")
+            icon.name: "configure"
+            onTriggered: kcm.push("General.qml")
+            visible: BluezQt.Manager.bluetoothOperational
+        }
+    ]
 
     function makeCall(call) {
         busyIndicator.running = true
@@ -234,31 +263,4 @@ ScrollViewKCM {
     // System Settings doesn't draw its own footer buttons, so extra footer
     // paddings here to make them look better isn't necessary
     extraFooterTopPadding: false
-    footer: RowLayout {
-        visible: BluezQt.Manager.bluetoothOperational
-
-        QQC2.Button {
-            text: i18n("Add New Device…")
-            icon.name: "list-add"
-            onClicked: kcm.runWizard()
-        }
-
-        QQC2.Button {
-            text: i18n("Disable Bluetooth")
-            icon.name: "network-bluetooth"
-            onClicked: {
-                root.setBluetoothEnabled(false)
-            }
-        }
-
-        Item {
-            Layout.fillWidth: true
-        }
-
-        QQC2.Button {
-            text: i18n("Configure…")
-            icon.name: "configure"
-            onClicked: kcm.push("General.qml")
-        }
-    }
 }
