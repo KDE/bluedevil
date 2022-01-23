@@ -50,7 +50,7 @@ function updateStatus()
     }
 
     plasmoid.toolTipSubText = text;
-    deviceConnected = connectedDevices.length;
+    deviceConnected = Boolean(connectedDevices.length);
 
     if (btManager.bluetoothOperational) {
         plasmoid.status = PlasmaCore.Types.ActiveStatus;
