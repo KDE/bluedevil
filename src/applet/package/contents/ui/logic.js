@@ -69,7 +69,7 @@ function icon()
     return "preferences-system-bluetooth";
 }
 
-function conectedDevicesCount() {
+function connectedDevicesCount() {
   var connectedDevices = [];
 
   for (var i = 0; i < btManager.devices.length; ++i) {

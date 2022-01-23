@@ -79,7 +79,7 @@ PlasmaExtras.Representation {
             // group because it's unnecessary; all we want to do here is
             // separate the connected devices from the available ones
             section.delegate: Loader {
-                active: section != "Connected" && Logic.conectedDevicesCount() > 0
+                active: section != "Connected" && Logic.connectedDevicesCount() > 0
                 // Need to manually set the height or else the loader takes up
                 // space after the first time it unloads a previously-loaded item
                 height: active ? PlasmaCore.Units.gridUnit : 0
