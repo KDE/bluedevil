@@ -43,7 +43,7 @@ PlasmaExtras.Representation {
         icon.name: "preferences-system-bluetooth"
 
         onTriggered: {
-            toolbar.toggleBluetooth();
+            bluetoothApplet.toggleBluetooth();
         }
     }
 
