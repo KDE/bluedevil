@@ -205,6 +205,7 @@ Comment[zh_CN]=一个设备想要连接
 Comment[zh_TW]=某個裝置希望能與您連線
 Icon=preferences-system-bluetooth
 Action=Popup
+ShowPopupsInDndMode=true
 
 [Event/RequestConfirmation]
 Name=Confirm PIN
@@ -308,6 +309,7 @@ Comment[zh_CN]=通过 PIN 匹配确认设备请求
 Comment[zh_TW]=利用比對 PIN 碼確認裝置的要求
 Icon=preferences-system-bluetooth
 Action=Popup
+ShowPopupsInDndMode=true
 
 [Event/RequestPin]
 Name=Request PIN
@@ -413,6 +415,7 @@ Comment[zh_CN]=需要 PIN
 Comment[zh_TW]=需要 PIN 碼
 Icon=preferences-system-bluetooth
 Action=Popup
+ShowPopupsInDndMode=true
 
 [Event/IncomingFile]
 Name=Incoming File
@@ -518,6 +521,7 @@ Comment[zh_CN]=正在传入的文件传输
 Comment[zh_TW]=進來的檔案傳輸
 Icon=preferences-system-bluetooth
 Action=Popup
+ShowPopupsInDndMode=true
 
 [Event/ConnectionFailed]
 Name=Connection Failed
@@ -622,6 +626,7 @@ Comment[zh_CN]=连接设备失败
 Comment[zh_TW]=連線到裝置失敗
 Icon=preferences-system-bluetooth
 Action=Popup
+ShowPopupsInDndMode=true
 
 [Event/SetupFinished]
 Name=Device Setup Finished
@@ -704,3 +709,4 @@ Comment[zh_CN]=蓝牙设备设置成功
 Comment[zh_TW]=成功完成設定藍牙裝置
 Icon=dialog-positive
 Action=Popup
+ShowPopupsInDndMode=true
