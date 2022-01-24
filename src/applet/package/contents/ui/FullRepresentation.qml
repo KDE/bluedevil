@@ -102,9 +102,7 @@ PlasmaExtras.Representation {
             highlight: PlasmaComponents.Highlight { }
             highlightMoveDuration: 0
             highlightResizeDuration: 0
-            delegate: DeviceItem {
-                width: listView.width - (scrollView.PlasmaComponents3.ScrollBar.vertical.visible ? PlasmaCore.Units.smallSpacing * 4 : 0)
-            }
+            delegate: DeviceItem {}
 
             PlasmaExtras.PlaceholderMessage {
                 anchors.centerIn: parent
