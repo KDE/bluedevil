@@ -20,7 +20,7 @@ ColumnLayout {
         Layout.fillWidth: true
         elide: Text.ElideRight
         font.weight: MediaPlayer && MediaPlayer.track.title ? Font.DemiBold : Font.Normal
-        font.italic: MediaPlayer && MediaPlayer.status == BluezQt.MediaPlayer.Playing
+        font.italic: MediaPlayer && MediaPlayer.status === BluezQt.MediaPlayer.Playing
         font.pointSize: PlasmaCore.Theme.smallestFont.pointSize
         font.family: PlasmaCore.Theme.smallestFont.family
         opacity: 0.6
@@ -71,7 +71,7 @@ ColumnLayout {
         PlasmaComponents3.ToolButton {
             id: stopButton
             icon.name: "media-playback-stop"
-            enabled: MediaPlayer && MediaPlayer.status != BluezQt.MediaPlayer.Stopped
+            enabled: MediaPlayer && MediaPlayer.status !== BluezQt.MediaPlayer.Stopped
 
             onClicked: MediaPlayer.stop()
         }
@@ -92,7 +92,7 @@ ColumnLayout {
 
         var play = "\u25B6";
 
-        if (MediaPlayer.status == BluezQt.MediaPlayer.Playing) {
+        if (MediaPlayer.status === BluezQt.MediaPlayer.Playing) {
             return "%1 %2".arg(play).arg(MediaPlayer.track.title);
         }
         return MediaPlayer.track.title;
@@ -104,7 +104,7 @@ ColumnLayout {
             return "";
         }
 
-        if (MediaPlayer.status != BluezQt.MediaPlayer.Playing) {
+        if (MediaPlayer.status !== BluezQt.MediaPlayer.Playing) {
             return "media-playback-start";
         } else {
             return "media-playback-pause";
@@ -113,7 +113,7 @@ ColumnLayout {
 
     function playPauseButtonClicked()
     {
-        if (MediaPlayer.status != BluezQt.MediaPlayer.Playing) {
+        if (MediaPlayer.status !== BluezQt.MediaPlayer.Playing) {
             MediaPlayer.play()
         } else {
             MediaPlayer.pause()

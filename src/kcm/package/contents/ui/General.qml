@@ -66,7 +66,7 @@ SimpleKCM {
             Kirigami.FormData.label: i18n("On login:")
             text: i18n("Enable Bluetooth")
             QQC2.ButtonGroup.group: loginStateRadioGroup
-            checked: kcm.bluetoothStatusAtLogin == "enable"
+            checked: kcm.bluetoothStatusAtLogin === "enable"
             onToggled: {
                 if (enabled) {
                     kcm.bluetoothStatusAtLogin = "enable";
@@ -76,7 +76,7 @@ SimpleKCM {
         QQC2.RadioButton {
             text: i18n("Disable Bluetooth")
             QQC2.ButtonGroup.group: loginStateRadioGroup
-            checked: kcm.bluetoothStatusAtLogin == "disable"
+            checked: kcm.bluetoothStatusAtLogin === "disable"
             onToggled: {
                 if (enabled) {
                     kcm.bluetoothStatusAtLogin = "disable"
@@ -86,7 +86,7 @@ SimpleKCM {
         QQC2.RadioButton {
             text: i18n("Remember previous status")
             QQC2.ButtonGroup.group: loginStateRadioGroup
-            checked: kcm.bluetoothStatusAtLogin == "remember"
+            checked: kcm.bluetoothStatusAtLogin === "remember"
             onToggled: {
                 if (enabled) {
                     kcm.bluetoothStatusAtLogin = "remember"
@@ -104,7 +104,7 @@ SimpleKCM {
 
         QQC2.RadioButton {
             Kirigami.FormData.label: i18n("When receiving files:")
-            checked: FileReceiverSettings.autoAccept == 0
+            checked: FileReceiverSettings.autoAccept === 0
             text: i18n("Ask for confirmation")
             QQC2.ButtonGroup.group: receivingFilesRadioGroup
             onClicked: {
@@ -115,7 +115,7 @@ SimpleKCM {
 
         QQC2.RadioButton {
             text: i18n("Accept for trusted devices")
-            checked: FileReceiverSettings.autoAccept == 1
+            checked: FileReceiverSettings.autoAccept === 1
             QQC2.ButtonGroup.group: receivingFilesRadioGroup
             onClicked: {
                 FileReceiverSettings.autoAccept = 1
@@ -126,7 +126,7 @@ SimpleKCM {
         QQC2.RadioButton {
             text: i18n("Always accept")
             QQC2.ButtonGroup.group: receivingFilesRadioGroup
-            checked: FileReceiverSettings.autoAccept == 2
+            checked: FileReceiverSettings.autoAccept === 2
             onClicked: {
                 FileReceiverSettings.autoAccept = 2
                 FileReceiverSettings.save()

@@ -66,7 +66,7 @@ PlasmaExtras.ExpandableListItem {
                     id: browseFilesButton
                     text: i18n("Browse Files")
                     icon.name: "folder"
-                    visible: Uuids.indexOf(BluezQt.Services.ObexFileTransfer) != -1
+                    visible: Uuids.indexOf(BluezQt.Services.ObexFileTransfer) !== -1
 
                     onClicked: {
                         var url = "obexftp://%1/".arg(Address.replace(/:/g, "-"));
@@ -78,7 +78,7 @@ PlasmaExtras.ExpandableListItem {
                     id: sendFileButton
                     text: i18n("Send File")
                     icon.name: "folder-download"
-                    visible: Uuids.indexOf(BluezQt.Services.ObexObjectPush) != -1
+                    visible: Uuids.indexOf(BluezQt.Services.ObexObjectPush) !== -1
 
                     onClicked: {
                         PlasmaBt.LaunchApp.runCommand("bluedevil-sendfile", ["-u", Ubi]);
@@ -186,12 +186,12 @@ PlasmaExtras.ExpandableListItem {
     property QtObject __dev
     readonly property QtObject dev : Device
     onDevChanged: {
-        if (__dev == dev) {
+        if (__dev === dev) {
             return;
         }
         __dev = dev;
 
-        if (expandedView.status == Component.Ready) {
+        if (expandedView.status === Component.Ready) {
             expandableListItem.collapse()
             expandableListItem.ListView.view.currentIndex = -1
         }
@@ -208,7 +208,7 @@ PlasmaExtras.ExpandableListItem {
     function adapterName(a)
     {
         var hci = devicesModel.adapterHciString(a.ubi);
-        if (hci != "") {
+        if (hci !== "") {
             return "%1 (%2)".arg(a.name).arg(hci);
         }
         return a.name;
@@ -217,7 +217,7 @@ PlasmaExtras.ExpandableListItem {
     function createContent() {
         var details = [];
 
-        if (Name != RemoteName) {
+        if (Name !== RemoteName) {
             details.push(i18n("Remote Name"));
             details.push(RemoteName);
         }
@@ -270,19 +270,19 @@ PlasmaExtras.ExpandableListItem {
         default:
             var profiles = [];
 
-            if (Uuids.indexOf(BluezQt.Services.ObexFileTransfer) != -1) {
+            if (Uuids.indexOf(BluezQt.Services.ObexFileTransfer) !== -1) {
                 profiles.push(i18n("File transfer"));
             }
-            if (Uuids.indexOf(BluezQt.Services.ObexObjectPush) != -1) {
+            if (Uuids.indexOf(BluezQt.Services.ObexObjectPush) !== -1) {
                 profiles.push(i18n("Send file"));
             }
-            if (Uuids.indexOf(BluezQt.Services.HumanInterfaceDevice) != -1) {
+            if (Uuids.indexOf(BluezQt.Services.HumanInterfaceDevice) !== -1) {
                 profiles.push(i18n("Input"));
             }
-            if (Uuids.indexOf(BluezQt.Services.AdvancedAudioDistribution) != -1) {
+            if (Uuids.indexOf(BluezQt.Services.AdvancedAudioDistribution) !== -1) {
                 profiles.push(i18n("Audio"));
             }
-            if (Uuids.indexOf(BluezQt.Services.Nap) != -1) {
+            if (Uuids.indexOf(BluezQt.Services.Nap) !== -1) {
                 profiles.push(i18n("Network"));
             }
 
@@ -333,7 +333,7 @@ PlasmaExtras.ExpandableListItem {
 
                 switch (call.error) {
                 case BluezQt.PendingCall.Failed:
-                    if (call.errorText == "Host is down") {
+                    if (call.errorText === "Host is down") {
                         text = i18nc("Notification when the connection failed due to Failed:HostIsDown",
                                      "The device is unreachable");
                     } else {
