@@ -16,8 +16,8 @@ import org.kde.plasma.private.bluetooth 1.0 as PlasmaBt
 PlasmaExtras.PlasmoidHeading {
     id: toolbar
 
-    RowLayout {
-        anchors.fill: parent
+    leftPadding: PlasmaCore.Units.smallSpacing
+    contentItem: RowLayout {
         spacing: PlasmaCore.Units.smallSpacing
 
         PlasmaComponents3.CheckBox {
