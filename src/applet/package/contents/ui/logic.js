@@ -4,19 +4,7 @@
     SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
-function init()
-{
-    btManager.deviceAdded.connect(updateStatus);
-    btManager.deviceRemoved.connect(updateStatus);
-    btManager.deviceChanged.connect(updateStatus);
-    btManager.bluetoothBlockedChanged.connect(updateStatus);
-    btManager.bluetoothOperationalChanged.connect(updateStatus);
-
-    updateStatus();
-}
-
-function updateStatus()
-{
+function updateStatus() {
     var connectedDevices = [];
 
     for (var i = 0; i < btManager.devices.length; ++i) {

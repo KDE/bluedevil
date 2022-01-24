@@ -30,6 +30,26 @@ Item {
     Plasmoid.compactRepresentation: CompactRepresentation { }
     Plasmoid.fullRepresentation: FullRepresentation { }
 
+    Connections {
+        target: btManager
+
+        function onDeviceAdded() {
+            Logic.updateStatus();
+        }
+        function onDeviceRemoved() {
+            Logic.updateStatus();
+        }
+        function onDeviceChanged() {
+            Logic.updateStatus();
+        }
+        function onBluetoothBlockedChanged() {
+            Logic.updateStatus();
+        }
+        function onBluetoothOperationalChanged() {
+            Logic.updateStatus();
+        }
+    }
+
     function toggleBluetooth()
     {
         var enable = !btManager.bluetoothOperational;
@@ -56,6 +76,6 @@ Item {
         plasmoid.setAction("addNewDevice", i18n("Add New Device…"), "list-add");
         plasmoid.action("addNewDevice").visible = Qt.binding(() => {return !btManager.bluetoothBlocked;});
 
-        Logic.init();
+        Logic.updateStatus();
     }
 }
