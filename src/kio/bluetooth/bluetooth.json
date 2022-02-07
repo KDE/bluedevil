@@ -5,7 +5,6 @@
             "copyFromFile": false,
             "copyToFile": false,
             "deleting": false,
-            "exec": "kf5/kio/kio_bluetooth",
             "input": "none",
             "listing": [
                 "Name",
