@@ -36,8 +36,9 @@ int main(int argc, char *argv[])
                         i18n("Previous Maintainer"),
                         QStringLiteral("afiestas@kde.org"),
                         QStringLiteral("http://www.afiestas.org/"));
-
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     app.setAttribute(Qt::AA_UseHighDpiPixmaps);
+#endif
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")));
     app.setQuitOnLastWindowClosed(false);
 
