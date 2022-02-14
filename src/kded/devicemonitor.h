@@ -46,6 +46,7 @@ private:
     KFilePlacesModel *places();
 
     BluezQt::Manager *m_manager;
+    bool m_isParentValid;
     KFilePlacesModel *m_places = nullptr;
     KSharedConfig::Ptr m_config;
 };
