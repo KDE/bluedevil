@@ -23,6 +23,7 @@
 DeviceMonitor::DeviceMonitor(BlueDevilDaemon *daemon)
     : QObject(daemon)
     , m_manager(daemon->manager())
+    , m_isParentValid(true)
     , m_config(KSharedConfig::openConfig(QStringLiteral("bluedevilglobalrc")))
 {
     Q_FOREACH (BluezQt::AdapterPtr adapter, m_manager->adapters()) {
@@ -39,6 +40,17 @@ DeviceMonitor::DeviceMonitor(BlueDevilDaemon *daemon)
 
     // Catch suspend/resume events so we can save status when suspending and
     // resume when waking up
+    // It's possible that BlueDevilDaemon has been destroyed, but PrepareForSleep is
+    // received before DeviceMonitor is destroyed, so a crash will happen. To prevent
+    // the crash, add a check in login1PrepareForSleep to validate BlueDevilDaemon still exists.
+    connect(
+        parent(),
+        &QObject::destroyed,
+        this,
+        [this] {
+            m_isParentValid = false;
+        },
+        Qt::DirectConnection);
     QDBusConnection::systemBus().connect(QStringLiteral("org.freedesktop.login1"),
                                          QStringLiteral("/org/freedesktop/login1"),
                                          QStringLiteral("org.freedesktop.login1.Manager"),
@@ -109,6 +121,10 @@ void DeviceMonitor::deviceConnectedChanged(bool connected)
 
 void DeviceMonitor::login1PrepareForSleep(bool active)
 {
+    if (!m_isParentValid) {
+        return;
+    }
+
     if (active) {
         qCDebug(BLUEDEVIL_KDED_LOG) << "About to suspend";
         saveState();
