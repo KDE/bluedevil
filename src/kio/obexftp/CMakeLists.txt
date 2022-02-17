@@ -19,4 +19,4 @@ target_link_libraries(kio_obexftp
     Qt::Network
 )
 
-install(TARGETS kio_obexftp DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf5/kio)
+install(TARGETS kio_obexftp DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf${QT_MAJOR_VERSION}/kio)

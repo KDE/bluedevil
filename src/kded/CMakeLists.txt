@@ -19,7 +19,7 @@ ki18n_wrap_ui(kded_bluedevil_SRCS
 
 kconfig_add_kcfg_files(kded_bluedevil_SRCS GENERATE_MOC ../settings/filereceiversettings.kcfgc)
 
-kcoreaddons_add_plugin(kded_bluedevil INSTALL_NAMESPACE "kf5/kded" JSON bluedevil.json SOURCES ${kded_bluedevil_SRCS})
+kcoreaddons_add_plugin(kded_bluedevil INSTALL_NAMESPACE "kf${QT_MAJOR_VERSION}/kded" JSON bluedevil.json SOURCES ${kded_bluedevil_SRCS})
 set_target_properties(kded_bluedevil PROPERTIES OUTPUT_NAME bluedevil)
 
 target_link_libraries(kded_bluedevil
