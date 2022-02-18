@@ -94,8 +94,6 @@ void PairingPage::pinRequested(const QString &pin)
     }
 
     pinNumber->setText(pin);
-
-    m_wizard->setMinimumSize(m_wizard->sizeHint());
 }
 
 void PairingPage::confirmationRequested(const QString &passkey, const BluezQt::Request<> &req)
@@ -128,8 +126,6 @@ void PairingPage::confirmationRequested(const QString &passkey, const BluezQt::R
 
     pinNumber->setText(passkey);
     confirmLbl->setText(i18n("Please, confirm that the PIN displayed on %1 matches the wizard one.", m_wizard->device()->name()));
-
-    m_wizard->setMinimumSize(m_wizard->sizeHint());
 }
 
 void PairingPage::matchesClicked()
