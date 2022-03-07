@@ -10,7 +10,6 @@ import QtQuick.Controls 2.4
 import org.kde.bluezqt 1.0 as BluezQt
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.extras 2.0 as PlasmaExtras
-import org.kde.plasma.components 2.0 as PlasmaComponents // for Highlight
 import org.kde.plasma.components 3.0 as PlasmaComponents3
 import org.kde.plasma.private.bluetooth 1.0 as PlasmaBt
 
@@ -101,7 +100,7 @@ PlasmaExtras.Representation {
                     }
                 }
             }
-            highlight: PlasmaComponents.Highlight { }
+            highlight: PlasmaExtras.Highlight { }
             highlightMoveDuration: 0
             highlightResizeDuration: 0
             delegate: DeviceItem {}
