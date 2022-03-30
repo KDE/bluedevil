@@ -116,6 +116,8 @@ PlasmaExtras.Representation {
 
                 visible: text.length > 0
 
+                iconName: BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown || btManager.bluetoothBlocked ? "network-bluetooth" : "edit-none"
+
                 text: {
                     // We cannot use the adapter count here because that can be zero when
                     // bluetooth is disabled even when there are physical devices
