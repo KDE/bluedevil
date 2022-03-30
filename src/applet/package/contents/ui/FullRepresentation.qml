@@ -16,6 +16,9 @@ import org.kde.plasma.private.bluetooth 1.0 as PlasmaBt
 import "logic.js" as Logic
 
 PlasmaExtras.Representation {
+    id: root
+
+    readonly property bool emptyList: btManager.devices.length === 0
 
     implicitWidth: PlasmaCore.Units.gridUnit * 24
     implicitHeight: PlasmaCore.Units.gridUnit * 24
@@ -25,7 +28,7 @@ PlasmaExtras.Representation {
     Action {
         id: addBluetoothDeviceAction
 
-        enabled: btManager.devices.length === 0
+        enabled: root.emptyList
 
         text: plasmoid.action("addNewDevice").text
         icon.name: "list-add"
@@ -120,7 +123,7 @@ PlasmaExtras.Representation {
                         return i18n("No Bluetooth Adapters Available")
                     } else if (btManager.bluetoothBlocked) {
                         return i18n("Bluetooth is Disabled")
-                    } else if (btManager.devices.length === 0) {
+                    } else if (root.emptyList) {
                         return i18n("No Devices Found")
                     }
                     return ""
@@ -131,7 +134,7 @@ PlasmaExtras.Representation {
                         return null
                     } else if (btManager.bluetoothBlocked) {
                         return enableBluetoothAction
-                    } else if (btManager.devices.length === 0) {
+                    } else if (root.emptyList) {
                         return addBluetoothDeviceAction
                     }
                     return null
