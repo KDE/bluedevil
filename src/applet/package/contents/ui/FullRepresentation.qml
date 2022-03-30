@@ -108,38 +108,36 @@ PlasmaExtras.Representation {
             highlightResizeDuration: 0
             delegate: DeviceItem {}
 
-            PlasmaExtras.PlaceholderMessage {
+            Loader {
                 anchors.centerIn: parent
-                anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.margins: PlasmaCore.Units.largeSpacing
+                width: parent.width - (4 * PlasmaCore.Units.largeSpacing)
+                active: BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown || btManager.bluetoothBlocked || root.emptyList
+                sourceComponent: PlasmaExtras.PlaceholderMessage {
+                    iconName: BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown || btManager.bluetoothBlocked ? "network-bluetooth" : "edit-none"
 
-                visible: text.length > 0
-
-                iconName: BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown || btManager.bluetoothBlocked ? "network-bluetooth" : "edit-none"
-
-                text: {
-                    // We cannot use the adapter count here because that can be zero when
-                    // bluetooth is disabled even when there are physical devices
-                    if (BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown) {
-                        return i18n("No Bluetooth Adapters Available")
-                    } else if (btManager.bluetoothBlocked) {
-                        return i18n("Bluetooth is Disabled")
-                    } else if (root.emptyList) {
-                        return i18n("No Devices Found")
+                    text: {
+                        // We cannot use the adapter count here because that can be zero when
+                        // bluetooth is disabled even when there are physical devices
+                        if (BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown) {
+                            return i18n("No Bluetooth Adapters Available")
+                        } else if (btManager.bluetoothBlocked) {
+                            return i18n("Bluetooth is Disabled")
+                        } else if (root.emptyList) {
+                            return i18n("No Devices Found")
+                        }
+                        return ""
                     }
-                    return ""
-                }
 
-                helpfulAction: {
-                    if (BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown) {
+                    helpfulAction: {
+                        if (BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown) {
+                            return null
+                        } else if (btManager.bluetoothBlocked) {
+                            return enableBluetoothAction
+                        } else if (root.emptyList) {
+                            return addBluetoothDeviceAction
+                        }
                         return null
-                    } else if (btManager.bluetoothBlocked) {
-                        return enableBluetoothAction
-                    } else if (root.emptyList) {
-                        return addBluetoothDeviceAction
                     }
-                    return null
                 }
             }
         }
