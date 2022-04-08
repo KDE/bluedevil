@@ -95,6 +95,7 @@ ScrollViewKCM {
             // We cannot use the adapter count here because that can be zero when
             // bluetooth is disabled even when there are physical devices
             visible: BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown
+            icon.name: "edit-none"
             text: i18n("No Bluetooth adapters found")
             width: parent.width - (Kirigami.Units.largeSpacing * 4)
             anchors.centerIn: parent
@@ -103,6 +104,7 @@ ScrollViewKCM {
         Kirigami.PlaceholderMessage {
             id: bluetoothDisabledMessage
             visible: BluezQt.Manager.operational && !BluezQt.Manager.bluetoothOperational && !noBluetoothMessage.visible
+            icon.name: "network-bluetooth"
             text: i18n("Bluetooth is disabled")
             width: parent.width - (Kirigami.Units.largeSpacing * 4)
             anchors.centerIn: parent
@@ -118,6 +120,7 @@ ScrollViewKCM {
 
         Kirigami.PlaceholderMessage {
             visible: !noBluetoothMessage.visible && !bluetoothDisabledMessage.visible && list.count === 0
+            icon.name: "network-bluetooth-activated"
             text: i18n("No devices paired")
             width: parent.width - (Kirigami.Units.largeSpacing * 4)
             anchors.centerIn: parent
