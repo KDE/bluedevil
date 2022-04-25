@@ -41,7 +41,7 @@ PlasmaExtras.Representation {
 
         enabled: btManager.bluetoothBlocked
 
-        text: i18n("Enable Bluetooth")
+        text: i18n("Enable")
         icon.name: "preferences-system-bluetooth"
 
         onTriggered: {
@@ -119,11 +119,11 @@ PlasmaExtras.Representation {
                         // We cannot use the adapter count here because that can be zero when
                         // bluetooth is disabled even when there are physical devices
                         if (BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown) {
-                            return i18n("No Bluetooth Adapters Available")
+                            return i18n("No Bluetooth adapters available")
                         } else if (btManager.bluetoothBlocked) {
-                            return i18n("Bluetooth is Disabled")
+                            return i18n("Bluetooth is disabled")
                         } else if (root.emptyList) {
-                            return i18n("No Devices Found")
+                            return i18n("No devices found")
                         }
                         return ""
                     }
