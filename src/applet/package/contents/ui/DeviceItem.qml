@@ -35,94 +35,65 @@ PlasmaExtras.ExpandableListItem {
         text: model.Connected ? i18n("Disconnect") : i18n("Connect")
         onTriggered: connectToDevice()
     }
+
+    contextualActionsModel: [
+        Action {
+            id: browseFilesButton
+            enabled: Uuids.indexOf(BluezQt.Services.ObexFileTransfer) !== -1
+            icon.name: "folder"
+            text: i18n("Browse Files")
+
+            onTriggered: {
+                var url = "obexftp://%1/".arg(Address.replace(/:/g, "-"));
+                Qt.openUrlExternally(url);
+            }
+        },
+        Action {
+            id: sendFileButton
+            enabled: Uuids.indexOf(BluezQt.Services.ObexObjectPush) !== -1
+            icon.name: "folder-download"
+            text: i18n("Send File")
+
+            onTriggered: {
+                PlasmaBt.LaunchApp.runCommand("bluedevil-sendfile", ["-u", Ubi]);
+            }
+        }
+    ]
+
     customExpandedViewContent: Component {
         id: expandedView
 
         ColumnLayout {
             spacing: 0
 
-            PlasmaCore.SvgItem {
-                id: detailsSeparator
+            // Media Player
+            MediaPlayerItem {
+                id: mediaPlayer
+                Layout.leftMargin: PlasmaCore.Units.gridUnit + PlasmaCore.Units.smallSpacing * 3
                 Layout.fillWidth: true
-                Layout.preferredHeight: lineSvg.elementSize("horizontal-line").height
-                elementId: "horizontal-line"
-                svg: PlasmaCore.Svg {
-                    id: lineSvg
-                    imagePath: "widgets/line"
-                }
-            }
-
-            // Actions
-            GridLayout {
-                columns: 2
-                rowSpacing: 0
-
-                Item {
-                    width: PlasmaCore.Units.iconSizes.medium
-                    Layout.rowSpan: 2
-                }
-
-                PlasmaComponents3.ToolButton {
-                    id: browseFilesButton
-                    text: i18n("Browse Files")
-                    icon.name: "folder"
-                    visible: Uuids.indexOf(BluezQt.Services.ObexFileTransfer) !== -1
-
-                    onClicked: {
-                        var url = "obexftp://%1/".arg(Address.replace(/:/g, "-"));
-                        Qt.openUrlExternally(url);
-                    }
-                }
-
-                PlasmaComponents3.ToolButton {
-                    id: sendFileButton
-                    text: i18n("Send File")
-                    icon.name: "folder-download"
-                    visible: Uuids.indexOf(BluezQt.Services.ObexObjectPush) !== -1
-
-                    onClicked: {
-                        PlasmaBt.LaunchApp.runCommand("bluedevil-sendfile", ["-u", Ubi]);
-                    }
-                }
-            }
-
-            PlasmaCore.SvgItem {
-                id: actionsSeparator
-                Layout.fillWidth: true
-                Layout.preferredHeight: lineSvg.elementSize("horizontal-line").height
-                visible: browseFilesButton.visible || sendFileButton.visible
-                elementId: "horizontal-line"
-                svg: lineSvg
+                visible: MediaPlayer
             }
 
             Item {
-                height: PlasmaCore.Units.smallSpacing
-            }
-
-            // Media Player
-            RowLayout {
-                Item {
-                    width: PlasmaCore.Units.iconSizes.medium
-                }
-
-                MediaPlayerItem {
-                    id: mediaPlayer
-                    Layout.fillWidth: true
-                    visible: MediaPlayer
-                }
+                Layout.preferredHeight: PlasmaCore.Units.smallSpacing
+                visible: mediaPlayer.visible
             }
 
             PlasmaCore.SvgItem {
                 id: mediaPlayerSeparator
                 Layout.fillWidth: true
                 Layout.preferredHeight: lineSvg.elementSize("horizontal-line").height
-                visible: mediaPlayer.visible
                 elementId: "horizontal-line"
-                svg: lineSvg
+                visible: mediaPlayer.visible
+                    || (!mediaPlayer.visible && !(browseFilesButton.enabled || sendFileButton.enabled))
+                svg: PlasmaCore.Svg {
+                    id: lineSvg
+                    imagePath: "widgets/line"
+                }
             }
 
             Item {
-                height: PlasmaCore.Units.smallSpacing
+                Layout.preferredHeight: PlasmaCore.Units.smallSpacing
                 visible: mediaPlayerSeparator.visible
             }
 
