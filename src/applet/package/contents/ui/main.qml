@@ -136,11 +136,11 @@ Item {
     }
 
     Component.onCompleted: {
-        plasmoid.removeAction("configure");
-        plasmoid.setAction("configure", i18n("Configure &Bluetooth…"), "configure");
+        Plasmoid.removeAction("configure");
+        Plasmoid.setAction("configure", i18n("Configure &Bluetooth…"), "configure");
 
-        plasmoid.setAction("addNewDevice", i18n("Add New Device…"), "list-add");
-        plasmoid.action("addNewDevice").visible = Qt.binding(() => !btManager.bluetoothBlocked);
+        Plasmoid.setAction("addNewDevice", i18n("Add New Device…"), "list-add");
+        Plasmoid.action("addNewDevice").visible = Qt.binding(() => !btManager.bluetoothBlocked);
 
         Plasmoid.setAction("btSwitch", i18n("Enable Bluetooth"), "preferences-system-bluetooth");
         plasmoid.action("btSwitch").priority = 0;

@@ -9,6 +9,7 @@ import QtQuick.Layouts 1.15
 
 import org.kde.plasma.components 3.0 as PlasmaComponents3
 import org.kde.plasma.core 2.0 as PlasmaCore
+import org.kde.plasma.plasmoid 2.0
 
 MouseArea {
     readonly property bool inPanel: [
@@ -16,7 +17,7 @@ MouseArea {
         PlasmaCore.Types.RightEdge,
         PlasmaCore.Types.BottomEdge,
         PlasmaCore.Types.LeftEdge,
-    ].includes(plasmoid.location)
+    ].includes(Plasmoid.location)
 
     Layout.maximumWidth: inPanel ? PlasmaCore.Units.iconSizeHints.panel : -1
     Layout.maximumHeight: inPanel ? PlasmaCore.Units.iconSizeHints.panel : -1
@@ -27,7 +28,7 @@ MouseArea {
         if (mouse.button === Qt.MiddleButton) {
             toggleBluetooth();
         } else {
-            plasmoid.expanded = !plasmoid.expanded;
+            Plasmoid.expanded = !Plasmoid.expanded;
         }
     }
 
@@ -36,7 +37,7 @@ MouseArea {
     PlasmaCore.IconItem {
         id: bluetoothIcon
         anchors.fill: parent
-        source: plasmoid.icon
+        source: Plasmoid.icon
         active: parent.containsMouse
 
         PlasmaComponents3.BusyIndicator {

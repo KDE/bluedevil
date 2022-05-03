@@ -11,6 +11,7 @@ import QtQuick.Layouts 1.15
 import org.kde.plasma.components 3.0 as PlasmaComponents3
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.extras 2.0 as PlasmaExtras
+import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.private.bluetooth 1.0 as PlasmaBt
 
 import org.kde.kquickcontrolsaddons 2.0
@@ -41,29 +42,29 @@ PlasmaExtras.PlasmoidHeading {
         PlasmaComponents3.ToolButton {
             id: addDeviceButton
 
-            visible: !(plasmoid.containmentDisplayHints & PlasmaCore.Types.ContainmentDrawsPlasmoidHeading)
+            visible: !(Plasmoid.containmentDisplayHints & PlasmaCore.Types.ContainmentDrawsPlasmoidHeading)
             enabled: !btManager.bluetoothBlocked
 
             icon.name: "list-add"
 
-            onClicked: plasmoid.action("addNewDevice").trigger()
+            onClicked: Plasmoid.action("addNewDevice").trigger()
 
             PlasmaComponents3.ToolTip {
-                text: plasmoid.action("addNewDevice").text
+                text: Plasmoid.action("addNewDevice").text
             }
         }
 
         PlasmaComponents3.ToolButton {
             id: openSettingsButton
 
-            visible: plasmoid.action("configure").enabled && !(plasmoid.containmentDisplayHints & PlasmaCore.Types.ContainmentDrawsPlasmoidHeading)
+            visible: Plasmoid.action("configure").enabled && !(Plasmoid.containmentDisplayHints & PlasmaCore.Types.ContainmentDrawsPlasmoidHeading)
             icon.name: "configure"
-            onClicked: plasmoid.action("configure").trigger()
+            onClicked: Plasmoid.action("configure").trigger()
 
             PlasmaComponents3.ToolTip {
-                text: plasmoid.action("configure").text
+                text: Plasmoid.action("configure").text
             }
-            Accessible.name: plasmoid.action("configure").text
+            Accessible.name: Plasmoid.action("configure").text
         }
     }
 }
