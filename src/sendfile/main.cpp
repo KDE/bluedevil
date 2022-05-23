@@ -15,6 +15,7 @@
 #include <KAboutData>
 #include <KDBusService>
 #include <KLocalizedString>
+#include <KWindowSystem>
 
 int main(int argc, char *argv[])
 {
@@ -74,7 +75,8 @@ int main(int argc, char *argv[])
     SendFileWizard *wizard = new SendFileWizard(deviceInfo, parser.values(filesOption));
 
     QObject::connect(&service, &KDBusService::activateRequested, wizard, [wizard]() {
-        wizard->setWindowState((wizard->windowState() & ~Qt::WindowMinimized) | Qt::WindowActive);
+        KWindowSystem::updateStartupId(wizard->windowHandle());
+        KWindowSystem::activateWindow(wizard->windowHandle());
     });
 
     return app.exec();
