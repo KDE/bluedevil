@@ -55,7 +55,7 @@ PlasmaExtras.ExpandableListItem {
             text: i18n("Send File")
 
             onTriggered: {
-                PlasmaBt.LaunchApp.runCommand("bluedevil-sendfile", ["-u", Ubi]);
+                PlasmaBt.LaunchApp.launchSendFile(Ubi);
             }
         }
     ]

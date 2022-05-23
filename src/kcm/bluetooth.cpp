@@ -13,6 +13,8 @@
 
 #include <KAboutData>
 #include <KConfigGroup>
+#include <KIO/ApplicationLauncherJob>
+#include <KIO/CommandLauncherJob>
 #include <KLocalizedString>
 #include <KPluginFactory>
 #include <KSharedConfig>
@@ -37,12 +39,25 @@ Bluetooth::Bluetooth(QObject *parent, const KPluginMetaData &data, const QVarian
 
 void Bluetooth::runWizard()
 {
-    QProcess::startDetached(QStringLiteral("bluedevil-wizard"), QStringList());
+    auto *job = new KIO::ApplicationLauncherJob(KService::serviceByDesktopName(QStringLiteral("org.kde.bluedevilwizard")));
+    connect(job, &KJob::finished, this, [this](KJob *job) {
+        if (job->error()) {
+            Q_EMIT errorOccured(job->errorString());
+        }
+    });
+    job->start();
 }
 
 void Bluetooth::runSendFile(const QString &ubi)
 {
-    QProcess::startDetached(QStringLiteral("bluedevil-sendfile"), {QStringLiteral("-u"), ubi});
+    auto *job = new KIO::CommandLauncherJob(QStringLiteral("bluedevil-sendfile"), {QStringLiteral("-u"), ubi});
+    job->setDesktopName(QStringLiteral("org.kde.bluedevilsendfile"));
+    connect(job, &KJob::finished, this, [this](KJob *job) {
+        if (job->error()) {
+            Q_EMIT errorOccured(job->errorString());
+        }
+    });
+    job->start();
 }
 
 void Bluetooth::checkNetworkConnection(const QStringList &uuids, const QString &address)
