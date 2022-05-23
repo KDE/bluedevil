@@ -32,6 +32,7 @@ target_link_libraries(bluedevil-sendfile
     KF5::WidgetsAddons
     KF5::KIOFileWidgets
     KF5::BluezQt
+    KF5::WindowSystem
 )
 
 install(TARGETS bluedevil-sendfile DESTINATION ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
