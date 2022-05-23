@@ -31,6 +31,7 @@ public:
 Q_SIGNALS:
     void networkAvailable(const QString &service, bool available);
     QString bluetoothStatusAtLoginChanged(QString newStatus);
+    void errorOccured(const QString &errorMessage);
 
 private:
     void checkNetworkInternal(const QString &service, const QString &address);

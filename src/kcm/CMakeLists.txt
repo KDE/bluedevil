@@ -12,6 +12,7 @@ target_link_libraries(kcm_bluetooth
     KF5::QuickAddons
     KF5::I18n
     KF5::BluezQt
+    KF5::KIOGui
     )
 
 install(FILES kcm_bluetooth.desktop DESTINATION ${KDE_INSTALL_APPDIR})

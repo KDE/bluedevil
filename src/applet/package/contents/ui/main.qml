@@ -66,7 +66,7 @@ Item {
     }
 
     function action_addNewDevice() {
-        PlasmaBt.LaunchApp.runCommand("bluedevil-wizard");
+        PlasmaBt.LaunchApp.launchWizard();
     }
 
     Component.onCompleted: {

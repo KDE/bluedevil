@@ -18,7 +18,8 @@ public:
     explicit LaunchApp(QObject *parent = nullptr);
 
 public Q_SLOTS:
-    bool runCommand(const QString &exe, const QStringList &args = QStringList());
+    void launchWizard();
+    void launchSendFile(const QString &ubi);
 };
 
 #endif // LAUNCHAPP_H

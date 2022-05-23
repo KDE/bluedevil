@@ -30,6 +30,15 @@ ScrollViewKCM {
         })
     }
 
+    Connections {
+        target: kcm
+
+        function onErrorOccured(errorText) {
+            errorMessage.text = errorText
+            errorMessage.visible = true
+        }
+    }
+
     Rectangle {
         id: deleteApprovalDiag
         anchors.fill: parent
