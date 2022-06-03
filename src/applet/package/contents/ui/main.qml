@@ -12,17 +12,12 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.kquickcontrolsaddons 2.0
 import org.kde.plasma.private.bluetooth 1.0 as PlasmaBt
 
-import "logic.js" as Logic
-
 Item {
     id: bluetoothApplet
 
-    property bool deviceConnected : false
+    property var connectedDevices : []
     property int runningActions : 0
     property QtObject btManager : BluezQt.Manager
-
-    Plasmoid.toolTipMainText: i18n("Bluetooth")
-    Plasmoid.icon: Logic.icon()
 
     Plasmoid.switchWidth: PlasmaCore.Units.gridUnit * 15
     Plasmoid.switchHeight: PlasmaCore.Units.gridUnit * 10
@@ -30,33 +25,84 @@ Item {
     Plasmoid.compactRepresentation: CompactRepresentation { }
     Plasmoid.fullRepresentation: FullRepresentation { }
 
+    Plasmoid.status: (btManager.bluetoothOperational) ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.PassiveStatus
+
+    Plasmoid.icon: {
+        if (connectedDevices.length > 0) {
+            return "preferences-system-bluetooth-activated";
+        }
+        if (!btManager.bluetoothOperational) {
+            return "preferences-system-bluetooth-inactive";
+        }
+        return "preferences-system-bluetooth";
+    }
+    Plasmoid.toolTipMainText: i18n("Bluetooth")
+    Plasmoid.toolTipSubText: {
+        if (btManager.bluetoothBlocked) {
+            return i18n("Bluetooth is disabled");
+        }
+        if (!btManager.bluetoothOperational) {
+            if (btManager.adapters.length === 0) {
+                return i18n("No adapters available");
+            }
+            return i18n("Bluetooth is offline");
+        }
+        if (connectedDevices.length === 0) {
+            return i18n("No connected devices");
+        }
+        if (connectedDevices.length === 1) {
+            return i18n("%1 connected", connectedDevices[0].name);
+        }
+        let text = i18ncp("Number of connected devices", "%1 connected device", "%1 connected devices", connectedDevices.length);
+        for (let i = 0; i < connectedDevices.length; ++i) {
+            const device = connectedDevices[i];
+            text += "\n \u2022 %1".arg(device.name);
+        }
+        return text;
+    }
+
     Connections {
         target: btManager
 
         function onDeviceAdded() {
-            Logic.updateStatus();
+            updateConnectedDevices();
         }
         function onDeviceRemoved() {
-            Logic.updateStatus();
+            updateConnectedDevices();
         }
         function onDeviceChanged() {
-            Logic.updateStatus();
+            updateConnectedDevices();
         }
         function onBluetoothBlockedChanged() {
-            Logic.updateStatus();
+            updateConnectedDevices();
         }
         function onBluetoothOperationalChanged() {
-            Logic.updateStatus();
+            updateConnectedDevices();
+        }
+    }
+
+    function updateConnectedDevices() {
+        let _connectedDevices = [];
+        for (let i = 0; i < btManager.devices.length; ++i) {
+            const device = btManager.devices[i];
+            if (device.connected) {
+                _connectedDevices.push(device);
+            }
+        }
+
+        if (connectedDevices != _connectedDevices) {
+            connectedDevices = _connectedDevices;
+            connectedDevicesChanged();
         }
     }
 
     function toggleBluetooth()
     {
-        var enable = !btManager.bluetoothOperational;
+        const enable = !btManager.bluetoothOperational;
         btManager.bluetoothBlocked = !enable;
 
-        for (var i = 0; i < btManager.adapters.length; ++i) {
-            var adapter = btManager.adapters[i];
+        for (let i = 0; i < btManager.adapters.length; ++i) {
+            let adapter = btManager.adapters[i];
             adapter.powered = enable;
         }
     }
@@ -76,6 +122,6 @@ Item {
         plasmoid.setAction("addNewDevice", i18n("Add New Device…"), "list-add");
         plasmoid.action("addNewDevice").visible = Qt.binding(() => {return !btManager.bluetoothBlocked;});
 
-        Logic.updateStatus();
+        updateConnectedDevices();
     }
 }
