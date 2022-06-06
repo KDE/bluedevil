@@ -28,7 +28,7 @@ K_PLUGIN_CLASS_WITH_JSON(Bluetooth, "bluetooth.json")
 Bluetooth::Bluetooth(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
     : KQuickAddons::ConfigModule(parent, data, args)
 {
-    setButtons(KQuickAddons::ConfigModule::NoAdditionalButton);
+    setButtons(Help);
 
     qmlRegisterAnonymousType<QAbstractItemModel>("org.kde.bluedevil.kcm", 1);
     qmlRegisterSingletonInstance("org.kde.bluedevil.kcm", 1, 0, "FileReceiverSettings", FileReceiverSettings::self());

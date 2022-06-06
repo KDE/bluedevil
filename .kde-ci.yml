@@ -15,6 +15,7 @@ Dependencies:
     'frameworks/kcoreaddons': '@latest'
     'frameworks/kdbusaddons': '@latest'
     'frameworks/kdeclarative': '@latest'
+    'frameworks/kdoctools': '@latest'
     'frameworks/ki18n': '@latest'
     'frameworks/kio': '@latest'
     'frameworks/kitemviews': '@latest'

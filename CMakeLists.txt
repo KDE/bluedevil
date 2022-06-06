@@ -25,6 +25,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     CoreAddons
     WidgetsAddons
     DBusAddons
+    DocTools
     Notifications
     WindowSystem
     Plasma
@@ -74,3 +75,5 @@ ecm_qt_install_logging_categories(
         FILE bluedevil.categories
         DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
         )
+
+add_subdirectory(doc)
