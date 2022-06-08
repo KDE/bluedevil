@@ -13,8 +13,6 @@ import org.kde.plasma.extras 2.0 as PlasmaExtras
 import org.kde.plasma.components 3.0 as PlasmaComponents3
 import org.kde.plasma.private.bluetooth 1.0 as PlasmaBt
 
-import "logic.js" as Logic
-
 PlasmaExtras.Representation {
     id: root
 
