@@ -27,3 +27,5 @@ Dependencies:
     'frameworks/kxmlgui': '@latest'
     'frameworks/plasma-framework': '@latest'
     'frameworks/solid': '@latest'
+Options:
+  require-passing-tests-on: [ 'Linux', 'FreeBSD']
