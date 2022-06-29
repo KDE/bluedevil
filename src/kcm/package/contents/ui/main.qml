@@ -106,6 +106,7 @@ ScrollViewKCM {
             visible: BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown
             icon.name: "edit-none"
             text: i18n("No Bluetooth adapters found")
+            explanation: i18n("This may be caused by the bluetooth deamon not running")
             width: parent.width - (Kirigami.Units.largeSpacing * 4)
             anchors.centerIn: parent
         }
