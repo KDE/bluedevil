@@ -45,8 +45,13 @@ public:
 
     void startTransfer(const QDBusObjectPath &session);
 
+Q_SIGNALS:
+    void obexServiceInitialized();
+
 private Q_SLOTS:
     void initJobResult(BluezQt::InitManagerJob *job);
+    void slotServicePendingCallFinished(BluezQt::PendingCall *call);
+    void initWizard();
 
 private:
     const QString m_deviceUrl;
@@ -56,6 +61,9 @@ private:
     BluezQt::Manager *m_manager = nullptr;
     BluezQt::DevicePtr m_device;
     SendFilesJob *m_job = nullptr;
+
+    bool m_obexServiceInitialized = false;
+    BluezQt::PendingCall::Error m_obexdServiceError = BluezQt::PendingCall::NoError;
 };
 
 #endif // SENDFILEWIZARD_H

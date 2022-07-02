@@ -11,6 +11,8 @@
 
 #include "ui_failpage.h"
 
+#include <optional>
+
 #include <QWizardPage>
 
 class SendFileWizard;
@@ -24,8 +26,14 @@ public:
 
     void initializePage() override;
 
+    /**
+     * If not set, \FailPage will use the error message from \SendFileWizard
+     */
+    void setErrorMessage(const QString &errorMessage);
+
 private:
     SendFileWizard *const m_wizard;
+    std::optional<QString> m_errorMessage;
 };
 
 #endif // FAILPAGE_H

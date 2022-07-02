@@ -53,7 +53,8 @@ SendFileWizard::SendFileWizard(const QString &device, const QStringList &files)
     connect(initJob, &BluezQt::InitManagerJob::result, this, &SendFileWizard::initJobResult);
 
     // Make sure that obexd is running
-    BluezQt::ObexManager::startService();
+    BluezQt::PendingCall *servicePendingCall = BluezQt::ObexManager::startService();
+    connect(servicePendingCall, &BluezQt::PendingCall::finished, this, &SendFileWizard::slotServicePendingCallFinished);
 }
 
 SendFileWizard::~SendFileWizard()
@@ -129,6 +130,38 @@ void SendFileWizard::initJobResult(BluezQt::InitManagerJob *job)
     }
 
     qCDebug(BLUEDEVIL_SENDFILE_LOG) << "Manager initialized";
+
+    if (!m_obexServiceInitialized) {
+        // org.bluez.obex is not ready yet, so init the wizard later
+        connect(this, &SendFileWizard::obexServiceInitialized, this, &SendFileWizard::initWizard);
+        return;
+    }
+
+    initWizard();
+}
+
+void SendFileWizard::slotServicePendingCallFinished(BluezQt::PendingCall *call)
+{
+    m_obexServiceInitialized = true;
+    m_obexdServiceError = static_cast<BluezQt::PendingCall::Error>(call->error());
+
+    if (m_obexdServiceError != BluezQt::PendingCall::NoError) {
+        setErrorMessage(i18nc("@info:status %1 error message", "Failed to start org.bluez.obex service: %1", call->errorText()));
+    }
+
+    Q_EMIT obexServiceInitialized();
+}
+
+void SendFileWizard::initWizard()
+{
+    if (m_obexdServiceError != BluezQt::PendingCall::NoError) {
+        // Error message is set in slotServicePendingCallFinished
+        auto earlyFailPage = new FailPage(this);
+        earlyFailPage->setErrorMessage(errorMessage());
+        addPage(earlyFailPage);
+        show();
+        return;
+    }
 
     // KIO address: bluetooth://40-87-2b-1a-39-28/00001105-0000-1000-8000-00805F9B34FB
     if (m_deviceUrl.startsWith(QLatin1String("bluetooth"))) {
