@@ -10,6 +10,7 @@
 #include "bluedevil_kio_obexftp.h"
 #include "transferfilejob.h"
 #include "version.h"
+#include <kio_version.h>
 
 #include <unistd.h>
 
@@ -92,7 +93,11 @@ void KioFtp::connectToHost()
 bool KioFtp::testConnection()
 {
     if (!m_kded->isOnline().value()) {
+#if KIO_VERSION >= QT_VERSION_CHECK(5, 96, 0)
+        error(KIO::ERR_WORKER_DEFINED, i18n("Obexd service is not running."));
+#else
         error(KIO::ERR_SLAVE_DEFINED, i18n("Obexd service is not running."));
+#endif
         return false;
     }
 
