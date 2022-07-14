@@ -8,7 +8,7 @@ import QtQuick 2.2
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.10 as QQC2
 
-import org.kde.kirigami 2.12 as Kirigami
+import org.kde.kirigami 2.20 as Kirigami
 import org.kde.kcm 1.2
 
 import org.kde.bluezqt 1.0 as BluezQt
@@ -39,42 +39,46 @@ ScrollViewKCM {
         }
     }
 
-    Rectangle {
+    Kirigami.PromptDialog {
         id: deleteApprovalDiag
-        anchors.fill: parent
-        visible: dialog.opened
-        color: "#4c000000"  // 30% transparent
+
+        property QtObject model: null
 
         function start(model) {
-            dialog.model = model;
-            dialog.question = i18n("Are you sure you want to forget '%1'", model.Name)
-            dialog.open();
+            deleteApprovalDiag.model = model;
+            open();
         }
 
-        QQC2.Dialog {
-            id: dialog
-            title: i18n("Confirm Deletion of Device")
-            standardButtons: QQC2.Dialog.Ok | QQC2.Dialog.Cancel
-            property QtObject model: null
-            property string question: ""
+        title: i18n("Forget this Device?")
+        subtitle: i18n("Are you sure you want to forget \"%1\"?", deleteApprovalDiag.model.Name)
 
-            x: (parent.width - width) / 2
-            y: parent.height / 3
-            width: Math.min(parent.width - Kirigami.Units.gridUnit * 4, Kirigami.Units.gridUnit * 20)
+        showCloseButton: false
 
-            modal: true
-            focus: true
-            QQC2.Label {
-                width: dialog.availableWidth
-                text: dialog.question
-                wrapMode: QQC2.Label.Wrap
+        // Need to use fully custom actions because it's not possible to override
+        // the text and icon of a single standardbutton, and if we use just a
+        // custom action for that one, then it's in the wrong visual position
+        // relative to the StandardButton-provided Cancel button
+        standardButtons: Kirigami.Dialog.NoButton
+        customFooterActions: [
+            Kirigami.Action {
+                text: i18nc("@action:button", "Forget Device")
+                icon.name: "edit-delete-remove"
+                onTriggered: {
+                    root.makeCall(deleteApprovalDiag.model.Adapter.removeDevice(deleteApprovalDiag.model.Device));
+                    deleteApprovalDiag.close();
+                    deleteApprovalDiag.model = null;
+                }
+            },
+            Kirigami.Action {
+                text: i18nc("@action:button", "Cancel")
+                icon.name: "dialog-cancel"
+                onTriggered: {
+                    deleteApprovalDiag.close();
+                    deleteApprovalDiag.model = null;
+                }
+                shortcut: StandardKey.Cancel
             }
-            onAccepted: {
-                root.makeCall(model.Adapter.removeDevice(model.Device));
-                model = null;
-            }
-            onRejected: model = null;
-        }
+        ]
     }
 
     implicitHeight: Kirigami.Units.gridUnit * 28
@@ -184,7 +188,7 @@ ScrollViewKCM {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Remove")
+                    text: i18nc("@action:button %1 is the name of a Bluetooth device", "Forget \"%1\"", model.Name)
                     icon.name: "edit-delete-remove"
                     onTriggered: deleteApprovalDiag.start(model)
                 }
