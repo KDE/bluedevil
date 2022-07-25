@@ -84,7 +84,7 @@ SimpleKCM {
             }
         }
         QQC2.RadioButton {
-            text: i18n("Remember previous status")
+            text: i18n("Restore previous status")
             QQC2.ButtonGroup.group: loginStateRadioGroup
             checked: kcm.bluetoothStatusAtLogin === "remember"
             onToggled: {
