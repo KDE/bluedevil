@@ -131,18 +131,22 @@ PlasmaExtras.ExpandableListItem {
 
                     PlasmaComponents3.Label {
                         id: detailLabel
+
                         Layout.fillWidth: true
-                        horizontalAlignment: index % 2 ? Text.AlignLeft : Text.AlignRight
-                        elide: index % 2 ? Text.ElideRight : Text.ElideNone
+
+                        readonly property bool isContent: index % 2
+
+                        horizontalAlignment: isContent ? Text.AlignLeft : Text.AlignRight
+                        elide: isContent ? Text.ElideRight : Text.ElideNone
                         font: PlasmaCore.Theme.smallestFont
-                        text: index % 2 ? currentDeviceDetails[index] : `${currentDeviceDetails[index]}:`
-                        textFormat: index % 2 ? Text.PlainText : Text.StyledText
+                        text: isContent ? currentDeviceDetails[index] : `${currentDeviceDetails[index]}:`
+                        textFormat: isContent ? Text.PlainText : Text.StyledText
 
                         MouseArea {
                             anchors.fill: parent
                             acceptedButtons: Qt.RightButton
                             onPressed: contextMenu.show(this, detailLabel.text, mouse.x, mouse.y)
-                            enabled: index % 2 === 1 // only let users copy the value on the right
+                            enabled: parent.isContent // only let users copy the value on the right
                         }
                     }
                 }
