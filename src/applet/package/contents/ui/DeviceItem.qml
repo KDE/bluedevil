@@ -6,7 +6,7 @@
     SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
-import QtQuick 2.2
+import QtQuick 2.15
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.3
 
@@ -120,34 +120,44 @@ PlasmaExtras.ExpandableListItem {
             }
 
             // Details
-            GridLayout {
-                columns: 2
-                rowSpacing: PlasmaCore.Units.smallSpacing / 4
+            MouseArea {
+                Layout.fillWidth: true
+                Layout.preferredHeight: detailsGrid.implicitHeight
 
-                Repeater {
-                    id: repeater
+                acceptedButtons: Qt.RightButton
+                onPressed: {
+                    const item = detailsGrid.childAt(mouse.x, mouse.y);
+                    if (!item || !item.isContent) {
+                        return; // only let users copy the value on the right
+                    }
 
-                    model: currentDeviceDetails.length
+                    contextMenu.show(this, item.text, mouse.x, mouse.y);
+                }
 
-                    PlasmaComponents3.Label {
-                        id: detailLabel
+                GridLayout {
+                    id: detailsGrid
+                    width: parent.width
+                    columns: 2
+                    rowSpacing: PlasmaCore.Units.smallSpacing / 4
 
-                        Layout.fillWidth: true
+                    Repeater {
+                        id: repeater
 
-                        readonly property bool isContent: index % 2
+                        model: currentDeviceDetails.length
 
-                        horizontalAlignment: isContent ? Text.AlignLeft : Text.AlignRight
-                        elide: isContent ? Text.ElideRight : Text.ElideNone
-                        font: PlasmaCore.Theme.smallestFont
-                        opacity: isContent ? 1 : 0.6
-                        text: isContent ? currentDeviceDetails[index] : `${currentDeviceDetails[index]}:`
-                        textFormat: isContent ? Text.PlainText : Text.StyledText
+                        PlasmaComponents3.Label {
+                            id: detailLabel
 
-                        MouseArea {
-                            anchors.fill: parent
-                            acceptedButtons: Qt.RightButton
-                            onPressed: contextMenu.show(this, detailLabel.text, mouse.x, mouse.y)
-                            enabled: parent.isContent // only let users copy the value on the right
+                            Layout.fillWidth: true
+
+                            readonly property bool isContent: index % 2
+
+                            horizontalAlignment: isContent ? Text.AlignLeft : Text.AlignRight
+                            elide: isContent ? Text.ElideRight : Text.ElideNone
+                            font: PlasmaCore.Theme.smallestFont
+                            opacity: isContent ? 1 : 0.6
+                            text: isContent ? currentDeviceDetails[index] : `${currentDeviceDetails[index]}:`
+                            textFormat: isContent ? Text.PlainText : Text.StyledText
                         }
                     }
                 }
