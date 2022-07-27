@@ -139,6 +139,7 @@ PlasmaExtras.ExpandableListItem {
                         horizontalAlignment: isContent ? Text.AlignLeft : Text.AlignRight
                         elide: isContent ? Text.ElideRight : Text.ElideNone
                         font: PlasmaCore.Theme.smallestFont
+                        opacity: isContent ? 1 : 0.6
                         text: isContent ? currentDeviceDetails[index] : `${currentDeviceDetails[index]}:`
                         textFormat: isContent ? Text.PlainText : Text.StyledText
 
