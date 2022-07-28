@@ -147,6 +147,17 @@ PlasmaExtras.ExpandableListItem {
                     contextMenu.show(this, item.text, mouse.x, mouse.y);
                 }
 
+                Loader {
+                    anchors.fill: parent
+                    active: parent.activeFocus
+                    asynchronous: true
+                    z: -1
+
+                    sourceComponent: PlasmaExtras.Highlight {
+                        hovered: true
+                    }
+                }
+
                 GridLayout {
                     id: detailsGrid
                     width: parent.width
