@@ -125,6 +125,19 @@ PlasmaExtras.ExpandableListItem {
                 Layout.preferredHeight: detailsGrid.implicitHeight
 
                 acceptedButtons: Qt.RightButton
+                activeFocusOnTab: repeater.count > 0
+
+                Accessible.description: {
+                    let description = [];
+                    for (let i = 0; i < currentDeviceDetails.length; i += 2) {
+                        description.push(currentDeviceDetails[i]);
+                        description.push(": ");
+                        description.push(currentDeviceDetails[i + 1]);
+                        description.push("; ");
+                    }
+                    return description.join('');
+                }
+
                 onPressed: {
                     const item = detailsGrid.childAt(mouse.x, mouse.y);
                     if (!item || !item.isContent) {
