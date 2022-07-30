@@ -23,7 +23,7 @@
 
 #include "filereceiversettings.h"
 
-K_PLUGIN_CLASS_WITH_JSON(Bluetooth, "bluetooth.json")
+K_PLUGIN_CLASS_WITH_JSON(Bluetooth, "kcm_bluetooth.json")
 
 Bluetooth::Bluetooth(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
     : KQuickAddons::ConfigModule(parent, data, args)

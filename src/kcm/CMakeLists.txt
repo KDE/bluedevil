@@ -1,5 +1,6 @@
 add_library(kcm_bluetooth MODULE bluetooth.cpp bluetooth.h)
 
+kcmutils_generate_desktop_file(kcm_bluetooth)
 kconfig_add_kcfg_files(kcm_bluetooth GENERATE_MOC
                     ../settings/filereceiversettings.kcfgc)
 
@@ -15,6 +16,4 @@ target_link_libraries(kcm_bluetooth
     KF5::KIOGui
     )
 
-install(FILES kcm_bluetooth.desktop DESTINATION ${KDE_INSTALL_APPDIR})
-install(TARGETS kcm_bluetooth DESTINATION ${KDE_INSTALL_PLUGINDIR}/plasma/kcms/systemsettings)
 kpackage_install_package(package kcm_bluetooth kcms)

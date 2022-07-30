@@ -33,6 +33,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     KIO
     Declarative
     BluezQt
+    KCMUtils
 )
 
 find_package(SharedMimeInfo REQUIRED)

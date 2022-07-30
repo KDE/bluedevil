@@ -27,5 +27,6 @@ Dependencies:
     'frameworks/kxmlgui': '@latest'
     'frameworks/plasma-framework': '@latest'
     'frameworks/solid': '@latest'
+    'frameworks/kcmutils': '@latest' # kcmutils_generate_desktop_file
 Options:
   require-passing-tests-on: [ 'Linux', 'FreeBSD']
