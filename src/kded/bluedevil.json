@@ -93,10 +93,7 @@
         "Name[uk]": "Bluetooth",
         "Name[x-test]": "xxBluetoothxx",
         "Name[zh_CN]": "蓝牙",
-        "Name[zh_TW]": "藍牙",
-        "ServiceTypes": [
-            "KDEDModule"
-        ]
+        "Name[zh_TW]": "藍牙"
     },
     "X-KDE-Kded-autoload": "true",
     "X-KDE-Kded-load-on-demand": "false"
