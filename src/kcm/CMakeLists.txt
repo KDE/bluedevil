@@ -1,4 +1,4 @@
-add_library(kcm_bluetooth MODULE bluetooth.cpp bluetooth.h)
+kcoreaddons_add_plugin(kcm_bluetooth INSTALL_NAMESPACE "plasma/kcms/systemsettings" SOURCES bluetooth.cpp bluetooth.h)
 
 kcmutils_generate_desktop_file(kcm_bluetooth)
 kconfig_add_kcfg_files(kcm_bluetooth GENERATE_MOC
