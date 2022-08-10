@@ -21,6 +21,7 @@ PlasmaExtras.Representation {
     implicitWidth: PlasmaCore.Units.gridUnit * 24
     implicitHeight: PlasmaCore.Units.gridUnit * 24
 
+    focus: true
     collapseMarginsHint: true
 
     Action {
@@ -50,6 +51,7 @@ PlasmaExtras.Representation {
     header: Toolbar {
         id: toolbar
         visible: btManager.adapters.length > 0
+        focus: true
     }
 
     PlasmaComponents3.ScrollView {
