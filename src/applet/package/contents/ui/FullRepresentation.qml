@@ -5,7 +5,7 @@
     SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
-import QtQuick 2.4
+import QtQuick 2.15
 import QtQuick.Controls 2.4
 import org.kde.bluezqt 1.0 as BluezQt
 import org.kde.plasma.core 2.0 as PlasmaCore
@@ -23,6 +23,18 @@ PlasmaExtras.Representation {
 
     focus: true
     collapseMarginsHint: true
+
+    Keys.onDownPressed: {
+        if (listView.count === 0) {
+            return;
+        }
+        if (listView.currentIndex < 0 || toolbar.checkbox.activeFocus) {
+            listView.incrementCurrentIndex();
+            listView.currentItem.forceActiveFocus();
+        } else {
+            event.accepted = false;
+        }
+    }
 
     Action {
         id: addBluetoothDeviceAction
@@ -107,6 +119,15 @@ PlasmaExtras.Representation {
             highlightMoveDuration: 0
             highlightResizeDuration: 0
             delegate: DeviceItem {}
+
+            Keys.onUpPressed: {
+                if (listView.currentIndex === 0) {
+                    listView.currentIndex = -1;
+                    toolbar.checkbox.forceActiveFocus(Qt.BacktabFocusReason);
+                } else {
+                    event.accepted = false;
+                }
+            }
 
             Loader {
                 anchors.centerIn: parent

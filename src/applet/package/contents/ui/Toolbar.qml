@@ -16,11 +16,14 @@ import org.kde.plasma.private.bluetooth 1.0 as PlasmaBt
 PlasmaExtras.PlasmoidHeading {
     id: toolbar
 
+    property alias checkbox: checkbox
+
     leftPadding: PlasmaCore.Units.smallSpacing
     contentItem: RowLayout {
         spacing: PlasmaCore.Units.smallSpacing
 
         PlasmaComponents3.CheckBox {
+            id: checkbox
             text: i18n("Enable Bluetooth")
             icon.name: "preferences-system-bluetooth"
             checked: btManager.bluetoothOperational
