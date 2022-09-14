@@ -115,12 +115,22 @@ Item {
         PlasmaBt.LaunchApp.launchWizard();
     }
 
+    function action_btSwitch() {
+        toggleBluetooth()
+    }
+
     Component.onCompleted: {
         plasmoid.removeAction("configure");
         plasmoid.setAction("configure", i18n("Configure &Bluetooth…"), "configure");
 
         plasmoid.setAction("addNewDevice", i18n("Add New Device…"), "list-add");
         plasmoid.action("addNewDevice").visible = Qt.binding(() => {return !btManager.bluetoothBlocked;});
+
+        Plasmoid.setAction("btSwitch", i18n("Enable Bluetooth"), "preferences-system-bluetooth");
+        plasmoid.action("btSwitch").priority = 0;
+        plasmoid.action("btSwitch").checkable = true;
+        plasmoid.action("btSwitch").checked = Qt.binding(() => btManager.bluetoothOperational);
+        plasmoid.action("btSwitch").visible = Qt.binding(() => btManager.bluetoothBlocked || btManager.adapters.length > 0);
 
         updateConnectedDevices();
     }
