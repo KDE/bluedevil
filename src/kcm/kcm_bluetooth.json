@@ -40,6 +40,7 @@
                 "Name[zh_CN]": "Nicolas Fella"
             }
         ],
+        "BugReportUrl": "https://bugs.kde.org/enter_bug.cgi?product=systemsettings&component=kcm_bluetooth",
         "Description": "Manage Bluetooth devices",
         "Description[ar]": "يدير أجهزة بلوتوث",
         "Description[az]": "Bluetooth cihazlarını idarə edin",
