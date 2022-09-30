@@ -39,46 +39,47 @@ ScrollViewKCM {
         }
     }
 
-    Kirigami.PromptDialog {
-        id: deleteApprovalDiag
+    Component {
+        id: forgetDialogComponent
 
-        property QtObject model: null
+        Kirigami.PromptDialog {
+            id: dialog
 
-        function start(model) {
-            deleteApprovalDiag.model = model;
-            open();
+            required property BluezQt.Adapter adapter
+            required property BluezQt.Device device
+            required property string name
+
+            signal call(BluezQt.PendingCall pc)
+
+            title: i18n("Forget this Device?")
+            subtitle: i18n("Are you sure you want to forget \"%1\"?", dialog.name)
+
+            showCloseButton: false
+
+            // Need to use fully custom actions because it's not possible to override
+            // the text and icon of a single standardbutton, and if we use just a
+            // custom action for that one, then it's in the wrong visual position
+            // relative to the StandardButton-provided Cancel button
+            standardButtons: Kirigami.Dialog.NoButton
+            customFooterActions: [
+                Kirigami.Action {
+                    text: i18nc("@action:button", "Forget Device")
+                    icon.name: "edit-delete-remove"
+                    onTriggered: {
+                        dialog.call(dialog.adapter.removeDevice(dialog.device));
+                        dialog.close();
+                    }
+                },
+                Kirigami.Action {
+                    text: i18nc("@action:button", "Cancel")
+                    icon.name: "dialog-cancel"
+                    onTriggered: {
+                        dialog.close();
+                    }
+                    shortcut: StandardKey.Cancel
+                }
+            ]
         }
-
-        title: i18n("Forget this Device?")
-        subtitle: i18n("Are you sure you want to forget \"%1\"?", deleteApprovalDiag.model.Name)
-
-        showCloseButton: false
-
-        // Need to use fully custom actions because it's not possible to override
-        // the text and icon of a single standardbutton, and if we use just a
-        // custom action for that one, then it's in the wrong visual position
-        // relative to the StandardButton-provided Cancel button
-        standardButtons: Kirigami.Dialog.NoButton
-        customFooterActions: [
-            Kirigami.Action {
-                text: i18nc("@action:button", "Forget Device")
-                icon.name: "edit-delete-remove"
-                onTriggered: {
-                    root.makeCall(deleteApprovalDiag.model.Adapter.removeDevice(deleteApprovalDiag.model.Device));
-                    deleteApprovalDiag.close();
-                    deleteApprovalDiag.model = null;
-                }
-            },
-            Kirigami.Action {
-                text: i18nc("@action:button", "Cancel")
-                icon.name: "dialog-cancel"
-                onTriggered: {
-                    deleteApprovalDiag.close();
-                    deleteApprovalDiag.model = null;
-                }
-                shortcut: StandardKey.Cancel
-            }
-        ]
     }
 
     implicitHeight: Kirigami.Units.gridUnit * 28
@@ -190,7 +191,16 @@ ScrollViewKCM {
                 Kirigami.Action {
                     text: i18nc("@action:button %1 is the name of a Bluetooth device", "Forget \"%1\"", model.Name)
                     icon.name: "edit-delete-remove"
-                    onTriggered: deleteApprovalDiag.start(model)
+                    onTriggered: {
+                        const dialog = forgetDialogComponent.createObject(root, {
+                            adapter: model.Adapter,
+                            device: model.Device,
+                            name: model.Name,
+                        });
+                        dialog.call.connect(call => root.makeCall(call));
+                        dialog.closed.connect(() => dialog.destroy());
+                        dialog.open();
+                    }
                 }
             ]
         }
