@@ -154,9 +154,10 @@ ScrollViewKCM {
             sourceModel: BluezQt.DevicesModel { }
         }
 
-        section.property: "Connected"
+        section.property: "Section"
         section.delegate: Kirigami.ListSectionHeader {
-            text: section === "true" ? i18n("Connected") : i18n("Available")
+            required property string section
+            text: section
         }
 
         delegate: Kirigami.SwipeListItem {
