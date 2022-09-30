@@ -112,7 +112,7 @@ SimpleKCM {
 
             QQC2.TextField {
                 text: device.name
-                onTextChanged: device.name = text
+                onTextEdited: device.name = text
                 Kirigami.FormData.label: i18n("Name:")
             }
 
