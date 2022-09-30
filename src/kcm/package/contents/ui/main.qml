@@ -140,7 +140,7 @@ ScrollViewKCM {
             anchors.centerIn: parent
         }
 
-        model: BluezQt.Manager.bluetoothOperational ? devicesModel : []
+        model: BluezQt.Manager.bluetoothOperational ? devicesModel : null
 
         QQC2.BusyIndicator {
             id: busyIndicator
