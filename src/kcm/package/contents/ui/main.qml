@@ -36,9 +36,10 @@ ScrollViewKCM {
         visible: dialog.opened
         color: "#4c000000"  // 30% transparent
 
-        function start(model) {
-            dialog.model = model;
-            dialog.question = i18n("Are you sure you want to forget '%1'", model.Name)
+        function start(adapter: BluezQt.Adapter, device: BluezQt.Device, name: string) {
+            dialog.adapter = adapter;
+            dialog.device = device;
+            dialog.name = name;
             dialog.open();
         }
 
@@ -46,8 +47,10 @@ ScrollViewKCM {
             id: dialog
             title: i18n("Confirm Deletion of Device")
             standardButtons: QQC2.Dialog.Ok | QQC2.Dialog.Cancel
-            property QtObject model: null
-            property string question: ""
+
+            property BluezQt.Adapter adapter
+            property BluezQt.Device device
+            property string name
 
             x: (parent.width - width) / 2
             y: parent.height / 3
@@ -57,14 +60,17 @@ ScrollViewKCM {
             focus: true
             QQC2.Label {
                 width: dialog.availableWidth
-                text: dialog.question
+                text: i18n("Are you sure you want to forget '%1'", dialog.name)
                 wrapMode: QQC2.Label.Wrap
             }
             onAccepted: {
-                root.makeCall(model.Adapter.removeDevice(model.Device));
-                model = null;
+                root.makeCall(dialog.adapter.removeDevice(dialog.device));
             }
-            onRejected: model = null;
+            onClosed: {
+                adapter = null;
+                device = null;
+                name = "";
+            }
         }
     }
 
@@ -174,7 +180,7 @@ ScrollViewKCM {
                 Kirigami.Action {
                     text: i18n("Remove")
                     icon.name: "edit-delete-remove"
-                    onTriggered: deleteApprovalDiag.start(model)
+                    onTriggered: deleteApprovalDiag.start(model.Adapter, model.Device, model.Name)
                 }
             ]
         }
