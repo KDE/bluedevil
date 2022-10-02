@@ -1,0 +1,253 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+# Johan Claude-Breuninger <johan.claudebreuninger@gmail.com>, 2015.
+# Sebastien Renard <renard@kde.org>, 2015.
+# Vincent Pinon <vpinon@kde.org>, 2016, 2017.
+# Peter Potrowl <peter.potrowl@gmail.com>, 2019.
+# Simon Depiets <sdepiets@gmail.com>, 2020.
+# Xavier Besnard <xavier.besnard@neuf.fr>, 2020, 2021, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-16 00:45+0000\n"
+"PO-Revision-Date: 2022-04-27 21:08+0200\n"
+"Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
+"Language-Team: French <kde-francophone@kde.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Lokalize 21.12.3\n"
+"X-Environment: kde\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+
+#: package/contents/ui/DeviceItem.qml:35
+#, kde-format
+msgid "Disconnect"
+msgstr "Déconnecter"
+
+#: package/contents/ui/DeviceItem.qml:35
+#, kde-format
+msgid "Connect"
+msgstr "Connecter"
+
+#: package/contents/ui/DeviceItem.qml:44
+#, kde-format
+msgid "Browse Files"
+msgstr "Parcourir les fichiers"
+
+#: package/contents/ui/DeviceItem.qml:55
+#, kde-format
+msgid "Send File"
+msgstr "Envoyer un fichier"
+
+#: package/contents/ui/DeviceItem.qml:115
+#, kde-format
+msgid "Copy"
+msgstr "Copier"
+
+#: package/contents/ui/DeviceItem.qml:213
+#, kde-format
+msgid "Yes"
+msgstr "Oui"
+
+#: package/contents/ui/DeviceItem.qml:215
+#, kde-format
+msgid "No"
+msgstr "Non"
+
+#: package/contents/ui/DeviceItem.qml:231
+#, kde-format
+msgid "Remote Name"
+msgstr "Nom distant"
+
+#: package/contents/ui/DeviceItem.qml:235
+#, kde-format
+msgid "Address"
+msgstr "Adresse"
+
+#: package/contents/ui/DeviceItem.qml:238
+#, kde-format
+msgid "Paired"
+msgstr "Associé"
+
+#: package/contents/ui/DeviceItem.qml:241
+#, kde-format
+msgid "Trusted"
+msgstr "Approuvé"
+
+#: package/contents/ui/DeviceItem.qml:244
+#, kde-format
+msgid "Adapter"
+msgstr "Adaptateur"
+
+#: package/contents/ui/DeviceItem.qml:253
+#, kde-format
+msgid "Disconnecting"
+msgstr "Déconnexion"
+
+#: package/contents/ui/DeviceItem.qml:253
+#, kde-format
+msgid "Connecting"
+msgstr "Connexion"
+
+#: package/contents/ui/DeviceItem.qml:259
+#, kde-format
+msgid "Connected"
+msgstr "Connecté"
+
+#: package/contents/ui/DeviceItem.qml:266
+#, kde-format
+msgid "Audio device"
+msgstr "Périphérique audio"
+
+#: package/contents/ui/DeviceItem.qml:273
+#, kde-format
+msgid "Input device"
+msgstr "Périphérique d'entrée"
+
+#: package/contents/ui/DeviceItem.qml:277
+#, kde-format
+msgid "Phone"
+msgstr "Téléphone"
+
+#: package/contents/ui/DeviceItem.qml:284
+#, kde-format
+msgid "File transfer"
+msgstr "Transfert de fichiers"
+
+#: package/contents/ui/DeviceItem.qml:287
+#, kde-format
+msgid "Send file"
+msgstr "Envoyer un fichier"
+
+#: package/contents/ui/DeviceItem.qml:290
+#, kde-format
+msgid "Input"
+msgstr "Entrée"
+
+#: package/contents/ui/DeviceItem.qml:293
+#, kde-format
+msgid "Audio"
+msgstr "Audio"
+
+#: package/contents/ui/DeviceItem.qml:296
+#, kde-format
+msgid "Network"
+msgstr "Réseau"
+
+#: package/contents/ui/DeviceItem.qml:300
+#, kde-format
+msgid "Other device"
+msgstr "Autre périphérique"
+
+#: package/contents/ui/DeviceItem.qml:307
+#, kde-format
+msgid "%1% Battery"
+msgstr "%1 % de batterie"
+
+#: package/contents/ui/DeviceItem.qml:348
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed:HostIsDown"
+msgid "The device is unreachable"
+msgstr "Le périphérique est injoignable"
+
+#: package/contents/ui/DeviceItem.qml:351
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed"
+msgid "Connection to the device failed"
+msgstr "Échec de la connexion au périphérique"
+
+#: package/contents/ui/DeviceItem.qml:357
+#, kde-format
+msgctxt "Notification when the connection failed due to NotReady"
+msgid "The device is not ready"
+msgstr "Le périphérique n'est pas prêt"
+
+#: package/contents/ui/FullRepresentation.qml:55
+#, kde-format
+msgid "Enable"
+msgstr "Activer"
+
+#: package/contents/ui/FullRepresentation.qml:143
+#, kde-format
+msgid "No Bluetooth adapters available"
+msgstr "Aucun adaptateur Bluetooth disponible"
+
+#: package/contents/ui/FullRepresentation.qml:145
+#: package/contents/ui/main.qml:42
+#, kde-format
+msgid "Bluetooth is disabled"
+msgstr "Le Bluetooth est désactivé"
+
+#: package/contents/ui/FullRepresentation.qml:147
+#, kde-format
+msgid "No devices found"
+msgstr "Aucun périphérique trouvé"
+
+#: package/contents/ui/main.qml:39
+#, kde-format
+msgid "Bluetooth"
+msgstr "Bluetooth"
+
+#: package/contents/ui/main.qml:46
+#, kde-format
+msgid "No adapters available"
+msgstr "Aucun adaptateur disponible"
+
+#: package/contents/ui/main.qml:48
+#, kde-format
+msgid "Bluetooth is offline"
+msgstr "Le Bluetooth est hors-ligne"
+
+#: package/contents/ui/main.qml:51
+#, kde-format
+msgid "No connected devices"
+msgstr "Aucun périphérique connecté"
+
+#: package/contents/ui/main.qml:54
+#, kde-format
+msgid "%1 connected"
+msgstr "%1 connecté(s)"
+
+#: package/contents/ui/main.qml:56
+#, kde-format
+msgctxt "Number of connected devices"
+msgid "%1 connected device"
+msgid_plural "%1 connected devices"
+msgstr[0] "%1 périphérique connecté"
+msgstr[1] "%1 périphériques connectés"
+
+#: package/contents/ui/main.qml:124
+#, kde-format
+msgid "Configure &Bluetooth…"
+msgstr "Configurer &Bluetooth..."
+
+#: package/contents/ui/main.qml:126
+#, kde-format
+msgid "Add New Device…"
+msgstr "Ajouter un nouveau périphérique..."
+
+#: package/contents/ui/main.qml:129 package/contents/ui/Toolbar.qml:27
+#, kde-format
+msgid "Enable Bluetooth"
+msgstr "Activer Bluetooth"
+
+#~ msgid "Bluetooth is Disabled"
+#~ msgstr "Le Bluetooth est désactivé"
+
+#~ msgid "Add New Device..."
+#~ msgstr "Ajouter un périphérique..."
+
+#~ msgid "Connected devices"
+#~ msgstr "Périphériques connectés"
+
+#~ msgid "Available devices"
+#~ msgstr "Périphériques disponibles"
+
+#~ msgid "Configure Bluetooth..."
+#~ msgstr "Configurer Bluetooth..."

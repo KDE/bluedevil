@@ -1,0 +1,367 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the bluedevil package.
+#
+# A S Alam <aalam.yellow@gmail.com>, 2020, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: bluedevil\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-17 00:47+0000\n"
+"PO-Revision-Date: 2022-01-01 09:10-0800\n"
+"Last-Translator: A S Alam <aalam@satluj.org>\n"
+"Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
+"Language: pa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 21.04.3\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "ਅਮਨਪਰੀਤ ਸਿੰਘ ਆਲਮ ੨੦੨੨"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "alam.yellow@gmail.com"
+
+#: bluetooth.cpp:101
+#, kde-format
+msgctxt "DeviceName Network (Service)"
+msgid "%1 Network (%2)"
+msgstr "%1 ਨੈੱਟਵਰਕ (%2)"
+
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:180
+#, kde-format
+msgid "Disconnect"
+msgstr "ਡਿਸ-ਕਨੈਕਟ"
+
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:180
+#, kde-format
+msgid "Connect"
+msgstr "ਕਨੈਕਟ"
+
+#: package/contents/ui/Device.qml:100
+#, kde-format
+msgid "Type:"
+msgstr "ਕਿਸਮ:"
+
+#: package/contents/ui/Device.qml:105 package/contents/ui/General.qml:42
+#, kde-format
+msgid "Address:"
+msgstr "ਐਡਰੈਸ:"
+
+#: package/contents/ui/Device.qml:110
+#, kde-format
+msgid "Adapter:"
+msgstr "ਐਡਪਟਰ:"
+
+#: package/contents/ui/Device.qml:116 package/contents/ui/General.qml:36
+#, kde-format
+msgid "Name:"
+msgstr "ਨਾਂ:"
+
+#: package/contents/ui/Device.qml:120
+#, kde-format
+msgid "Trusted"
+msgstr "ਟਰੱਸਟ ਹੈ"
+
+#: package/contents/ui/Device.qml:126
+#, kde-format
+msgid "Blocked"
+msgstr "ਪਾਬੰਦੀ ਲਾਈ"
+
+#: package/contents/ui/Device.qml:132
+#, kde-format
+msgid "Send File"
+msgstr "ਫ਼ਾਈਲ ਭੇਜੋ"
+
+#: package/contents/ui/Device.qml:139
+#, kde-format
+msgid "Setup NAP Network…"
+msgstr "…NAP ਨੈੱਟਵਰਕ ਸੈਟਅੱਪ"
+
+#: package/contents/ui/Device.qml:146
+#, kde-format
+msgid "Setup DUN Network…"
+msgstr "…DUN ਨੈੱਟਵਰਕ ਸੈਟਅੱਪ"
+
+#: package/contents/ui/Device.qml:156
+#, kde-format
+msgctxt "This device is a Phone"
+msgid "Phone"
+msgstr "ਫ਼ੋਨ"
+
+#: package/contents/ui/Device.qml:158
+#, kde-format
+msgctxt "This device is a Modem"
+msgid "Modem"
+msgstr "ਮਾਡਮ"
+
+#: package/contents/ui/Device.qml:160
+#, kde-format
+msgctxt "This device is a Computer"
+msgid "Computer"
+msgstr "ਕੰਪਿਊਟਰ"
+
+#: package/contents/ui/Device.qml:162
+#, kde-format
+msgctxt "This device is of type Network"
+msgid "Network"
+msgstr "ਨੈੱਟਵਰਕ"
+
+#: package/contents/ui/Device.qml:164
+#, kde-format
+msgctxt "This device is a Headset"
+msgid "Headset"
+msgstr "ਹੈੱਡਸੈੱਟ"
+
+#: package/contents/ui/Device.qml:166
+#, kde-format
+msgctxt "This device is a Headphones"
+msgid "Headphones"
+msgstr "ਹੈੱਡ-ਫ਼ੋਨ"
+
+#: package/contents/ui/Device.qml:168
+#, kde-format
+msgctxt "This device is an Audio/Video device"
+msgid "Multimedia Device"
+msgstr "ਮਲਟੀਮੀਡਿਆ ਡਿਵਾਈਸ"
+
+#: package/contents/ui/Device.qml:170
+#, kde-format
+msgctxt "This device is a Keyboard"
+msgid "Keyboard"
+msgstr "ਕੀਬੋਰਡ"
+
+#: package/contents/ui/Device.qml:172
+#, kde-format
+msgctxt "This device is a Mouse"
+msgid "Mouse"
+msgstr "ਮਾਊਸ"
+
+#: package/contents/ui/Device.qml:174
+#, kde-format
+msgctxt "This device is a Joypad"
+msgid "Joypad"
+msgstr "ਜੋਏਪੈਡ"
+
+#: package/contents/ui/Device.qml:176
+#, kde-format
+msgctxt "This device is a Graphics Tablet (input device)"
+msgid "Tablet"
+msgstr "ਟੇਬਲੇਟ"
+
+#: package/contents/ui/Device.qml:178
+#, kde-format
+msgctxt "This device is a Peripheral device"
+msgid "Peripheral"
+msgstr "ਪੇਰੀਫੇਰਲ"
+
+#: package/contents/ui/Device.qml:180
+#, kde-format
+msgctxt "This device is a Camera"
+msgid "Camera"
+msgstr "ਕੈਮਰਾ"
+
+#: package/contents/ui/Device.qml:182
+#, kde-format
+msgctxt "This device is a Printer"
+msgid "Printer"
+msgstr "ਪਰਿੰਟਰ"
+
+#: package/contents/ui/Device.qml:184
+#, kde-format
+msgctxt ""
+"This device is an Imaging device (printer, scanner, camera, display, …)"
+msgid "Imaging"
+msgstr "ਚਿੱਤਰਣ"
+
+#: package/contents/ui/Device.qml:186
+#, kde-format
+msgctxt "This device is a Wearable"
+msgid "Wearable"
+msgstr "ਪਹਿਨਣਯੋਗ"
+
+#: package/contents/ui/Device.qml:188
+#, kde-format
+msgctxt "This device is a Toy"
+msgid "Toy"
+msgstr "ਖਿਡੌਣਾ"
+
+#: package/contents/ui/Device.qml:190
+#, kde-format
+msgctxt "This device is a Health device"
+msgid "Health"
+msgstr "ਸੇਹਤ"
+
+#: package/contents/ui/Device.qml:192
+#, kde-format
+msgctxt "Type of device: could not be determined"
+msgid "Unknown"
+msgstr "ਅਣਪਛਾਤਾ"
+
+#: package/contents/ui/General.qml:19
+#, kde-format
+msgid "Settings"
+msgstr "ਸੈਟਿੰਗਾਂ"
+
+#: package/contents/ui/General.qml:28
+#, kde-format
+msgid "Device:"
+msgstr "ਡਿਵਾਈਸ:"
+
+#: package/contents/ui/General.qml:46
+#, kde-format
+msgid "Enabled:"
+msgstr "ਸਮਰੱਥ ਹੈ:"
+
+#: package/contents/ui/General.qml:52
+#, kde-format
+msgid "Visible:"
+msgstr "ਦਿੱਖ:"
+
+#: package/contents/ui/General.qml:66
+#, kde-format
+msgid "On login:"
+msgstr "ਲਾਗਇਨ ਸਮੇਂ:"
+
+#: package/contents/ui/General.qml:67
+#, kde-format
+msgid "Enable Bluetooth"
+msgstr "ਬਲੂਟੁੱਥ ਸਮਰੱਥ ਕਰੋ"
+
+#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:212
+#, kde-format
+msgid "Disable Bluetooth"
+msgstr "ਬਲੂਟੁੱਥ ਅਸਮਰੱਥ"
+
+#: package/contents/ui/General.qml:87
+#, fuzzy, kde-format
+#| msgid "Remember previous status"
+msgid "Restore previous status"
+msgstr "ਪਿਛਲੀ ਸਥਿਤੀ ਨੂੰ ਯਾਦ ਰੱਖੋ"
+
+#: package/contents/ui/General.qml:106
+#, kde-format
+msgid "When receiving files:"
+msgstr "ਜਦੋਂ ਫਾਇਲਾਂ ਪ੍ਰਾਪਤ ਕੀਤੀਆਂ ਜਾਂਦੀਆਂ ਹਨ:"
+
+#: package/contents/ui/General.qml:108
+#, kde-format
+msgid "Ask for confirmation"
+msgstr "ਤਸਦੀਕ ਕਰਨ ਲਈ ਪੁੱਛੋ"
+
+#: package/contents/ui/General.qml:117
+#, kde-format
+msgid "Accept for trusted devices"
+msgstr "ਭਰੋਸੇਯੋਗ ਡਿਵਾਈਸਾਂ ਲਈ ਮਨਜ਼ੂਰ"
+
+#: package/contents/ui/General.qml:127
+#, kde-format
+msgid "Always accept"
+msgstr "ਹਮੇਸਾਂ ਮਨਜ਼ੂਰ ਕਰੋ"
+
+#: package/contents/ui/General.qml:137
+#, kde-format
+msgid "Save files in:"
+msgstr "ਫ਼ਾਈਲਾਂ ਇੱਥੇ ਸੰਭਾਲੋ:"
+
+#: package/contents/ui/General.qml:161 package/contents/ui/General.qml:172
+#, kde-format
+msgid "Select folder"
+msgstr "ਫੋਲਡਰ ਚੁਣੋ"
+
+#: package/contents/ui/main.qml:52
+#, kde-format
+msgid "Forget this Device?"
+msgstr ""
+
+#: package/contents/ui/main.qml:53
+#, fuzzy, kde-format
+#| msgid "Are you sure you want to forget '%1'"
+msgid "Are you sure you want to forget \"%1\"?"
+msgstr "ਕੀ ਤੁਸੀਂ '%1' ਨੂੰ ਭੁੱਲਣਾ ਚਾਹੁੰਦੇ ਹੋ"
+
+#: package/contents/ui/main.qml:64
+#, fuzzy, kde-format
+#| msgid "Device:"
+msgctxt "@action:button"
+msgid "Forget Device"
+msgstr "ਡਿਵਾਈਸ:"
+
+#: package/contents/ui/main.qml:73
+#, kde-format
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr ""
+
+#: package/contents/ui/main.qml:112
+#, kde-format
+msgid "No Bluetooth adapters found"
+msgstr "ਕੋਈ ਬਲੂਟੁੱਥ ਐਡਪਟਰ ਨਹੀਂ ਲੱਭੇ"
+
+#: package/contents/ui/main.qml:121
+#, kde-format
+msgid "Bluetooth is disabled"
+msgstr "ਬਲੂਟੁੱਥ ਅਸਮਰੱਥ ਹੈ"
+
+#: package/contents/ui/main.qml:127
+#, kde-format
+msgid "Enable"
+msgstr "ਸਮਰੱਥ"
+
+#: package/contents/ui/main.qml:137
+#, kde-format
+msgid "No devices paired"
+msgstr "ਕੋਈ ਡਿਵਾਈਸ ਪੇਅਰ ਨਹੀਂ ਕੀਤਾ ਹੈ"
+
+#: package/contents/ui/main.qml:158
+#, kde-format
+msgid "Connected"
+msgstr "ਕਨੈਕਟ ਹੈ"
+
+#: package/contents/ui/main.qml:158
+#, kde-format
+msgid "Available"
+msgstr "ਉਪਲੱਬਧ"
+
+#: package/contents/ui/main.qml:191
+#, kde-format
+msgctxt "@action:button %1 is the name of a Bluetooth device"
+msgid "Forget \"%1\""
+msgstr ""
+
+#: package/contents/ui/main.qml:206
+#, kde-format
+msgid "Add New Device…"
+msgstr "…ਨਵਾਂ ਡਿਵਾਈਸ ਜੋੜੋ"
+
+#: package/contents/ui/main.qml:224
+#, kde-format
+msgid "Configure…"
+msgstr "…ਸੰਰਚਨਾ"
+
+#~ msgid "Confirm Deletion of Device"
+#~ msgstr "ਡਿਵਾਈਸ ਹਟਾਉਣ ਦੀ ਪੁਸ਼ਟੀ"
+
+#~ msgid "Remove"
+#~ msgstr "ਹਟਾਓ"
+
+#~ msgid "Bluetooth"
+#~ msgstr "ਬਲੂਟੁੱਥ"
+
+#~ msgid "Nicolas Fella"
+#~ msgstr "Nicolas Leclercq"
+
+#~ msgid "Add…"
+#~ msgstr "…ਜੋੜੋ"
+
+#~ msgctxt "This device is an Audio device"
+#~ msgid "Audio"
+#~ msgstr "ਆਡੀਓ"
+
+#~ msgid "Add..."
+#~ msgstr "...ਜੋੜੋ"

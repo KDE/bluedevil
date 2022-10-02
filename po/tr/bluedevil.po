@@ -1,0 +1,963 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Volkan Gezer <volkangezer@gmail.com>, 2017, 2021.
+# Emir SARI <emir_sari@icloud.com>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-07-04 00:46+0000\n"
+"PO-Revision-Date: 2022-05-06 13:07+0300\n"
+"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
+"Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Lokalize 22.04.0\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Serdar Soytetir, Ozan Çağlayan, Volkan Gezer, Mesut ÖZTÜRK, Emir SARI"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+"tulliana@gmail.com, ozan@pardus.org.tr, volkangezer@gmail.com, "
+"doktormesut@gmail.com, emir_sari@icloud.com"
+
+#: kcm/bluetooth.cpp:101
+#, kde-format
+msgctxt "DeviceName Network (Service)"
+msgid "%1 Network (%2)"
+msgstr "%1 Ağ (%2)"
+
+#: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
+#, kde-format
+msgid "Bluetooth Daemon"
+msgstr "Bluetooth Hizmeti"
+
+#: kded/bluedevildaemon.cpp:72 sendfile/main.cpp:29 wizard/main.cpp:30
+#, kde-format
+msgid "(c) 2010, UFO Coders"
+msgstr "(c) 2010, UFO Coders"
+
+#: kded/bluedevildaemon.cpp:75 sendfile/main.cpp:32 wizard/main.cpp:33
+#, kde-format
+msgid "Maintainer"
+msgstr "Projeyi Yürüten"
+
+#: kded/bluedevildaemon.cpp:80 kded/bluedevildaemon.cpp:85 sendfile/main.cpp:37
+#: wizard/main.cpp:38
+#, kde-format
+msgid "Previous Maintainer"
+msgstr "Önceki Geliştirici"
+
+#: kded/helpers/requestauthorization.cpp:29
+#, kde-format
+msgctxt ""
+"Show a notification asking to authorize or deny access to this computer from "
+"Bluetooth.The %1 is the name of the bluetooth device"
+msgid "%1 is requesting access to this computer"
+msgstr "%1 bu bilgisayara erişmek istiyor"
+
+#: kded/helpers/requestauthorization.cpp:33
+#, kde-format
+msgctxt "Button to trust a bluetooth remote device and authorize it to connect"
+msgid "Trust and Authorize"
+msgstr "Güven ve Yetkilendir"
+
+#: kded/helpers/requestauthorization.cpp:34
+#, kde-format
+msgctxt "Button to authorize a bluetooth remote device to connect"
+msgid "Authorize Only"
+msgstr "Sadece Yetkilendir"
+
+#: kded/helpers/requestauthorization.cpp:35
+#, kde-format
+msgctxt "Deny access to a remote bluetooth device"
+msgid "Deny"
+msgstr "Reddet"
+
+#: kded/helpers/requestconfirmation.cpp:28
+#, kde-format
+msgctxt ""
+"The text is shown in a notification to know if the PIN is correct,%1 is the "
+"remote bluetooth device and %2 is the pin"
+msgid "%1 is asking if the PIN is correct: %2"
+msgstr "%1 PIN kodunun doğru olup olmadığını soruyor: %2"
+
+#: kded/helpers/requestconfirmation.cpp:33
+#, kde-format
+msgctxt "Notification button to know if the pin is correct or not"
+msgid "PIN correct"
+msgstr "PIN doğru"
+
+#: kded/helpers/requestconfirmation.cpp:34
+#, kde-format
+msgctxt "Notification button to say that the PIN is wrong"
+msgid "PIN incorrect"
+msgstr "PIN yanlış"
+
+#: kded/helpers/requestpin.cpp:35
+#, kde-format
+msgctxt ""
+"Shown in a notification to announce that a PIN is needed to accomplish a "
+"pair action,%1 is the name of the bluetooth device"
+msgid "PIN needed to pair with %1"
+msgstr "%1 ile eşleşmek için PIN gerekli"
+
+#: kded/helpers/requestpin.cpp:39
+#, kde-format
+msgctxt ""
+"Notification button which once clicked, a dialog to introduce the PIN will "
+"be shown"
+msgid "Introduce PIN"
+msgstr "PIN kodunu gir"
+
+#: kded/helpers/requestpin.cpp:61
+#, kde-format
+msgctxt "Shown in the caption of a dialog where the user introduce the PIN"
+msgid "Introduce PIN"
+msgstr "PIN kodunu gir"
+
+#: kded/helpers/requestpin.cpp:68
+#, kde-format
+msgctxt ""
+"Shown in a dialog which asks to introduce a PIN that will be used to pair a "
+"Bluetooth device,%1 is the name of the Bluetooth device"
+msgid ""
+"In order to pair this computer with %1, you have to enter a PIN. Please do "
+"it below."
+msgstr ""
+"Bu bilgisayarı %1 ile eşleştirmek için bir PIN kodu girmeniz gerekli. Lütfen "
+"bunu aşağıda girin."
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: kded/helpers/requestpin.ui:52
+#, kde-format
+msgid "PIN:"
+msgstr "PIN:"
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, pin)
+#: kded/helpers/requestpin.ui:65
+#, kde-format
+msgid "1234"
+msgstr "1234"
+
+#: kded/receivefilejob.cpp:132
+#, kde-format
+msgctxt ""
+"Show a notification asking to authorize or deny an incoming file transfer to "
+"this computer from a Bluetooth device."
+msgid "%1 is sending you the file %2"
+msgstr "%1 size %2 dosyasını gönderiyor"
+
+#: kded/receivefilejob.cpp:137
+#, kde-format
+msgctxt ""
+"Button to accept the incoming file transfer and download it in the default "
+"download directory"
+msgid "Accept"
+msgstr "Kabul Et"
+
+#: kded/receivefilejob.cpp:138
+#, kde-format
+msgctxt "Deny the incoming file transfer"
+msgid "Cancel"
+msgstr "İptal"
+
+#: kded/receivefilejob.cpp:164
+#, kde-format
+msgctxt "@title job"
+msgid "Receiving file"
+msgstr "Dosya alınıyor"
+
+#: kded/receivefilejob.cpp:165 sendfile/sendfilesjob.cpp:70
+#: sendfile/sendfilesjob.cpp:86
+#, kde-format
+msgctxt "File transfer origin"
+msgid "From"
+msgstr "Kimden"
+
+#: kded/receivefilejob.cpp:166 sendfile/sendfilesjob.cpp:71
+#: sendfile/sendfilesjob.cpp:87
+#, kde-format
+msgctxt "File transfer destination"
+msgid "To"
+msgstr "Kime"
+
+#: kded/receivefilejob.cpp:191
+#, kde-format
+msgid "Saving file failed"
+msgstr "Dosya kaydetme başarısız oldu"
+
+#: kded/receivefilejob.cpp:222 kio/obexftp/transferfilejob.cpp:50
+#: sendfile/sendfilesjob.cpp:157
+#, kde-format
+msgid "Bluetooth transfer failed"
+msgstr "Bluetooth aktarımı başarısız oldu"
+
+#: kio/bluetooth/kiobluetooth.cpp:52
+#, kde-format
+msgid "Send File"
+msgstr "Dosya Gönder"
+
+#: kio/bluetooth/kiobluetooth.cpp:58
+#, kde-format
+msgid "Browse Files"
+msgstr "Gözat"
+
+#: kio/bluetooth/kiobluetooth.cpp:72 kio/bluetooth/kiobluetooth.cpp:202
+#, kde-format
+msgid "No Bluetooth adapters have been found."
+msgstr "Bluetooth bağdaştırıcı bulunamadı."
+
+#: kio/bluetooth/kiobluetooth.cpp:92
+#, kde-format
+msgid "Retrieving services…"
+msgstr "Hizmetler alınıyor…"
+
+#: kio/bluetooth/kiobluetooth.cpp:99
+#, kde-format
+msgid "This address is unavailable."
+msgstr "Adres kullanılabilir değil."
+
+#: kio/bluetooth/kiobluetooth.cpp:148
+#, kde-format
+msgid "Received Files"
+msgstr "Alınan Dosyalar"
+
+#: kio/bluetooth/kiobluetooth.cpp:168
+#, kde-format
+msgid "Scanning for new devices…"
+msgstr "Yeni aygıtlar aranıyor…"
+
+#: kio/obexftp/kioobexftp.cpp:97 kio/obexftp/kioobexftp.cpp:99
+#, kde-format
+msgid "Obexd service is not running."
+msgstr "Obexd servisi çalışmıyor."
+
+#: kio/obexftp/kioobexftp.cpp:146
+#, kde-format
+msgid "Retrieving information from remote device…"
+msgstr "Uzak aygıttan bilgi alınıyor…"
+
+#: kio/obexftp/kioobexftp.cpp:229
+#, kde-format
+msgid "Connecting to the device"
+msgstr "Aygıta bağlanılıyor"
+
+#: kio/obexftp/kioobexftp.cpp:532
+#, kde-format
+msgid "Phone memory"
+msgstr "Telefon belleği"
+
+#: kio/obexftp/kioobexftp.cpp:535
+#, kde-format
+msgid "External memory"
+msgstr "Harici bellek"
+
+#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:263
+#, kde-format
+msgid "Bluetooth is disabled."
+msgstr "Bluetooth devre dışı."
+
+#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:264
+#, kde-format
+msgctxt "Action to enable Bluetooth adapter"
+msgid "Enable"
+msgstr "Etkinleştir"
+
+#: sendfile/discoverwidget.cpp:137
+#, kde-format
+msgid "Your Bluetooth adapter is powered off."
+msgstr "Bluetooth bağdaştırıcınız kapalı."
+
+#: sendfile/discoverwidget.cpp:138
+#, kde-format
+msgctxt "Action to turn on Bluetooth adapter"
+msgid "Turn On"
+msgstr "Aç"
+
+#: sendfile/main.cpp:25 sendfile/main.cpp:27
+#, kde-format
+msgid "Bluetooth File Transfer"
+msgstr "Bluetooth Dosya Aktarımı"
+
+#: sendfile/main.cpp:50
+#, kde-format
+msgid "Specify receiving device by MAC address."
+msgstr "Alıcı aygıtı MAC adresine göre belirtin."
+
+#: sendfile/main.cpp:54
+#, kde-format
+msgid "Specify receiving device by UBI path."
+msgstr "Alıcı aygıtı UBI yoluna göre belirtin."
+
+#: sendfile/main.cpp:58
+#, kde-format
+msgid "Files to be sent."
+msgstr "Gönderilecek dosyalar."
+
+#: sendfile/pages/connectingpage.cpp:32 wizard/pages/connect.cpp:39
+#, kde-format
+msgctxt "Connecting to a Bluetooth device"
+msgid "Connecting to %1…"
+msgstr "%1 aygıtına bağlanılıyor…"
+
+#: sendfile/pages/failpage.cpp:41
+#, kde-format
+msgctxt "This string is shown when the wizard fail"
+msgid "The connection to the device has failed: %1"
+msgstr "Aygıta bağlantı başarısız oldu: %1"
+
+#: sendfile/pages/failpage.cpp:43
+#, kde-format
+msgid "The connection to %1 has failed: %2"
+msgstr "%1 bağlantısı başarısız oldu: %2"
+
+#: sendfile/pages/selectdeviceandfilespage.cpp:53
+#, kde-format
+msgid "Open file…"
+msgstr "Dosya aç…"
+
+#. i18n: ectx: property (text), widget (KSqueezedTextLabel, selectLbl)
+#: sendfile/pages/selectdeviceandfilespage.cpp:58
+#: sendfile/pages/selectfilediscover.ui:99
+#, kde-format
+msgid "Select one or more files:"
+msgstr "Bir veya daha fazla dosya seçin:"
+
+#: sendfile/pages/selectdeviceandfilespage.cpp:65
+#, kde-format
+msgid "Selected files: <b>%1</b>"
+msgstr "Seçilen dosyalar: <b>%1</b>"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: sendfile/pages/selectfilediscover.ui:38
+#, kde-format
+msgid "Select a device from the list:"
+msgstr "Listeden bir aygıt seçin:"
+
+#: sendfile/pages/selectfilespage.cpp:46
+#, kde-format
+msgctxt "Send files to a Bluetooth device"
+msgid "Send to %1"
+msgstr "%1 konumuna gönder"
+
+#: sendfile/sendfilesjob.cpp:69 sendfile/sendfilesjob.cpp:85
+#, kde-format
+msgid "Sending file over Bluetooth"
+msgstr "Bluetooth üzerinden dosya gönderiliyor"
+
+#: sendfile/sendfilewizard.cpp:41
+#, kde-format
+msgid "Send Files"
+msgstr "Dosya gönder"
+
+#: sendfile/sendfilewizard.cpp:42
+#, kde-format
+msgid "Cancel"
+msgstr "İptal"
+
+#. i18n: ectx: label, entry (saveUrl), group (General)
+#: settings/filereceiver.kcfg:11
+#, kde-format
+msgid "Save received files to:"
+msgstr "Alınan dosyaları şuraya kaydet:"
+
+#. i18n: ectx: label, entry (autoAccept), group (General)
+#: settings/filereceiver.kcfg:15
+#, kde-format
+msgid "Whether allow to modify shared files"
+msgstr "Paylaşılan dosyaların değiştirilmesine izin verilip verilmeyeceği"
+
+#: wizard/bluewizard.cpp:57
+#, kde-format
+msgctxt "Action to go to the next page on the wizard"
+msgid "Next"
+msgstr "İleri"
+
+#: wizard/bluewizard.cpp:58
+#, kde-format
+msgctxt "Action to finish the wizard"
+msgid "Finish"
+msgstr "Bitir"
+
+#: wizard/main.cpp:26 wizard/main.cpp:28
+#, kde-format
+msgid "Add Bluetooth Device"
+msgstr "Bluetooth Aygıtı Ekle"
+
+#: wizard/pages/discover.cpp:101
+#, kde-format
+msgid "Select a device"
+msgstr "Bir aygıt seçin"
+
+#: wizard/pages/discover.cpp:256
+#, kde-format
+msgctxt "Action to fix a problem"
+msgid "Fix it"
+msgstr "Düzelt"
+
+#: wizard/pages/discover.cpp:266
+#, kde-format
+msgid "Your Bluetooth adapter is not pairable."
+msgstr "Bluetooth bağdaştırıcınız eşleştirilebilir durumda değil."
+
+#: wizard/pages/discover.cpp:267
+#, kde-format
+msgctxt "Action to make Bluetooth adapter pairable"
+msgid "Make Pairable"
+msgstr "Eşleştirilebilir Yap"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: wizard/pages/discover.ui:54
+#, kde-format
+msgid "Scanning…"
+msgstr "Taranıyor…"
+
+#. i18n: ectx: property (text), widget (QCheckBox, manualPin)
+#: wizard/pages/discover.ui:74
+#, kde-format
+msgid "Manual PIN:"
+msgstr "Elle PIN:"
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, pinText)
+#: wizard/pages/discover.ui:102
+#, kde-format
+msgid "0000"
+msgstr "0000"
+
+#: wizard/pages/fail.cpp:37
+#, kde-format
+msgctxt ""
+"Button offered when the wizard fail. This button will restart the wizard"
+msgid "Restart the wizard"
+msgstr "Sihirbazı tekrar başlat"
+
+#: wizard/pages/fail.cpp:41
+#, kde-format
+msgctxt "Button that closes the wizard"
+msgid "Close"
+msgstr "Kapat"
+
+#: wizard/pages/fail.cpp:53
+#, kde-format
+msgctxt "This string is shown when the wizard fail"
+msgid "The setup of the device has failed"
+msgstr "Aygıtın yapılandırılamadı"
+
+#: wizard/pages/fail.cpp:55
+#, kde-format
+msgid "The setup of %1 has failed"
+msgstr "%1 yapılandırılırken hata oluştu"
+
+#: wizard/pages/pairing.cpp:60
+#, kde-format
+msgid "Connecting to %1…"
+msgstr "%1 aygıtına bağlanılıyor…"
+
+#: wizard/pages/pairing.cpp:91
+#, kde-format
+msgid ""
+"Please introduce the PIN in your keyboard when it appears and press Enter"
+msgstr "Lütfen sorulduğunda klavyenizle PIN kodunu girin ve Enter tuşuna basın"
+
+#: wizard/pages/pairing.cpp:93
+#, kde-format
+msgid "Please introduce the PIN in your device when it appears"
+msgstr "Lütfen aygıta PIN kodunu girin"
+
+#: wizard/pages/pairing.cpp:109
+#, kde-format
+msgid "Matches"
+msgstr "Eşleşenler"
+
+#: wizard/pages/pairing.cpp:113
+#, kde-format
+msgid "Does not match"
+msgstr "Eşleşmedi"
+
+#: wizard/pages/pairing.cpp:128
+#, kde-format
+msgid "Please, confirm that the PIN displayed on %1 matches the wizard one."
+msgstr ""
+"Lütfen \"%1\" üzerinde gösterilen PIN kodunun sihirbazdakiyle uyuştuğunu "
+"doğrulayın."
+
+#: wizard/pages/success.cpp:40
+#, kde-format
+msgid "Setup Finished"
+msgstr "Kurulum Tamamlandı"
+
+#: wizard/pages/success.cpp:42
+#, kde-format
+msgid "The device has been set up and can now be used."
+msgstr "Aygıt kuruldu ve şu anda kullanılabilir."
+
+#: wizard/pages/success.cpp:44
+#, kde-format
+msgctxt "Placeholder is device name"
+msgid "The device '%1' has been set up and can now be used."
+msgstr "'%1' aygıtı kuruldu ve şu anda kullanılabilir."
+
+#~ msgid "Bluetooth"
+#~ msgstr "Bluetooth"
+
+#~ msgid "Nicolas Fella"
+#~ msgstr "Nicolas Fella"
+
+#~ msgid "Bluetooth Send File Wizard"
+#~ msgstr "Bluetooth Dosya Gönderme Sihirbazı"
+
+#~ msgid "Bluetooth Device Wizard"
+#~ msgstr "Bluetooth Aygıt Sihirbazı"
+
+#~ msgid "Receiving file over Bluetooth"
+#~ msgstr "Bluetooth üzerinden dosya alınıyor"
+
+#~ msgctxt "Connecting to a Bluetooth device"
+#~ msgid "Connecting to %1..."
+#~ msgstr "%1 aygıtına bağlanılıyor..."
+
+#~ msgid "Scanning..."
+#~ msgstr "Taranıyor..."
+
+#~ msgid "Connecting to %1..."
+#~ msgstr "%1 aygıtına bağlanılıyor..."
+
+#~ msgctxt "Radio widget to set if we want the adapter to be hidden"
+#~ msgid "Hidden"
+#~ msgstr "Gizli"
+
+#~ msgctxt "Radio widget to set if we want the adapter to be always visible"
+#~ msgid "Always visible"
+#~ msgstr "Her zaman görünür"
+
+#~ msgctxt ""
+#~ "Radio widget to set if we want the adapter to be temporarily visible"
+#~ msgid "Temporarily visible"
+#~ msgstr "Geçici olarak görünür"
+
+#~ msgctxt "Discover time for the adapter"
+#~ msgid "1 minute"
+#~ msgid_plural "%1 minutes"
+#~ msgstr[0] "%1 dakika"
+#~ msgstr[1] "%1 dakika"
+
+#~ msgctxt "Name of the adapter"
+#~ msgid "Name"
+#~ msgstr "İsim"
+
+#~ msgctxt "Whether the adapter is powered or not"
+#~ msgid "Powered"
+#~ msgstr "Açık"
+
+#~ msgctxt "Whether the adapter is visible or not"
+#~ msgid "Visibility"
+#~ msgstr "Görünürlük"
+
+#~ msgctxt "How long the adapter will be discoverable"
+#~ msgid "Discover Time"
+#~ msgstr "Keşif Süresi"
+
+#~ msgid "1 minute"
+#~ msgid_plural "%1 minutes"
+#~ msgstr[0] "%1 dakika"
+#~ msgstr[1] "%1 dakika"
+
+#~ msgid "Bluetooth Adapters"
+#~ msgstr "Bluetooth Bağdaştırıcıları"
+
+#~ msgid "Bluetooth Adapters Control Panel Module"
+#~ msgstr "Bluetooth Bağdaştırıcıları Yapılandırma Paneli"
+
+#~ msgid "(c) 2010 Rafael Fernández López"
+#~ msgstr "(c) 2010 Rafael Fernández López"
+
+#~ msgid "Previous Developer and Maintainer"
+#~ msgstr "Ana geliştirici ve projeyi yürüten"
+
+#~ msgid "No adapters found"
+#~ msgstr "Bağdaştırıcı bulunamadı"
+
+#, fuzzy
+#~| msgctxt "Radio widget to set if we want the adapter to be always visible"
+#~| msgid "Always visible"
+#~ msgctxt "Action to fix a problem"
+#~ msgid "Make Visible"
+#~ msgstr "Her zaman görünür"
+
+#~ msgid "Your default Bluetooth adapter is not visible for remote devices."
+#~ msgstr ""
+#~ "Öntanımlı Bluetooth bağdaştırıcınız uzak aygıtlar tarafından görülemez."
+
+#~ msgid "Interaction with Bluetooth system is not optimal."
+#~ msgstr "Bluetooth desteği düzgün çalışmıyor"
+
+#, fuzzy
+#~| msgctxt "This device is a Graphics Tablet (input device)"
+#~| msgid "Tablet"
+#~ msgctxt "Action to fix a problem"
+#~ msgid "Enable"
+#~ msgstr "Tablet"
+
+#~ msgid "Bluetooth is not completely enabled."
+#~ msgstr "Bluetooth tamamen etkinleştirilmemiş."
+
+#~ msgid "Disconnect"
+#~ msgstr "Bağlantıyı Kes"
+
+#~ msgid "Connect"
+#~ msgstr "Bağlan"
+
+#~ msgctxt "This device is a Phone"
+#~ msgid "Phone"
+#~ msgstr "Telefon"
+
+#~ msgctxt "This device is a Modem"
+#~ msgid "Modem"
+#~ msgstr "Modem"
+
+#~ msgctxt "This device is a Computer"
+#~ msgid "Computer"
+#~ msgstr "Bilgisayar"
+
+#~ msgctxt "This device is of type Network"
+#~ msgid "Network"
+#~ msgstr "Ağ"
+
+#~ msgctxt "This device is a Headset"
+#~ msgid "Headset"
+#~ msgstr "Mikrofonlu Kulaklık"
+
+#~ msgctxt "This device is a Headphones"
+#~ msgid "Headphones"
+#~ msgstr "Kulaklıklar"
+
+#~ msgctxt "This device is an Audio device"
+#~ msgid "Audio"
+#~ msgstr "Ses"
+
+#~ msgctxt "This device is a Keyboard"
+#~ msgid "Keyboard"
+#~ msgstr "Klavye"
+
+#~ msgctxt "This device is a Mouse"
+#~ msgid "Mouse"
+#~ msgstr "Fare"
+
+#~ msgctxt "This device is a Joypad"
+#~ msgid "Joypad"
+#~ msgstr "Oyun Çubuğu"
+
+#~ msgctxt "This device is a Graphics Tablet (input device)"
+#~ msgid "Tablet"
+#~ msgstr "Tablet"
+
+#~ msgctxt "This device is a Peripheral device"
+#~ msgid "Peripheral"
+#~ msgstr "Çevre birimi"
+
+#~ msgctxt "This device is a Camera"
+#~ msgid "Camera"
+#~ msgstr "Kamera"
+
+#~ msgctxt "This device is a Printer"
+#~ msgid "Printer"
+#~ msgstr "Yazıcı"
+
+#~ msgctxt ""
+#~ "This device is an Imaging device (printer, scanner, camera, display, ...)"
+#~ msgid "Imaging"
+#~ msgstr "Görüntüleme"
+
+#~ msgctxt "This device is a Wearable"
+#~ msgid "Wearable"
+#~ msgstr "Giyilebilir"
+
+#~ msgctxt "This device is a Toy"
+#~ msgid "Toy"
+#~ msgstr "Oyuncak"
+
+#~ msgctxt "This device is a Health device"
+#~ msgid "Health"
+#~ msgstr "Sağlık"
+
+#~ msgctxt "Type of device: could not be determined"
+#~ msgid "Unknown"
+#~ msgstr "Bilinmeyen"
+
+#~ msgid "Type:"
+#~ msgstr "Tür:"
+
+#~ msgid "Address:"
+#~ msgstr "Adres:"
+
+#~ msgid "Name:"
+#~ msgstr "İsim:"
+
+#~ msgid "Trusted:"
+#~ msgstr "Güvenilir:"
+
+#~ msgid "Blocked:"
+#~ msgstr "Engellenmiş:"
+
+#~ msgid "Actions:"
+#~ msgstr "İşlemler:"
+
+#~ msgid "Setup NAP Network..."
+#~ msgstr "NAP Ağını Kur..."
+
+#~ msgid "Setup DUN Network..."
+#~ msgstr "DUN Ağı Kur..."
+
+#~ msgid "Adapter:"
+#~ msgstr "Bağdaştırıcı:"
+
+#~ msgid "Bluetooth Devices Control Panel Module"
+#~ msgstr "Bluetooth Aygıtları Yapılandırma Paneli"
+
+#, fuzzy
+#~| msgid ""
+#~| "Are you sure that you want to remove device \"%1\" from the list of "
+#~| "known devices?"
+#~ msgid ""
+#~ "Are you sure that you want to remove %1 device from the list of known "
+#~ "devices?"
+#~ msgid_plural ""
+#~ "Are you sure that you want to remove %1 devices from the list of known "
+#~ "devices?"
+#~ msgstr[0] ""
+#~ "\"%1\" aygıtını bilinen aygıtlar listesinden kaldırmak istediğinize emin "
+#~ "misiniz?"
+#~ msgstr[1] ""
+#~ "\"%1\" aygıtını bilinen aygıtlar listesinden kaldırmak istediğinize emin "
+#~ "misiniz?"
+
+#~ msgid ""
+#~ "Are you sure that you want to remove device \"%1\" from the list of known "
+#~ "devices?"
+#~ msgstr ""
+#~ "\"%1\" aygıtını bilinen aygıtlar listesinden kaldırmak istediğinize emin "
+#~ "misiniz?"
+
+#~ msgctxt "Title of window that asks for confirmation when removing a device"
+#~ msgid "Device removal"
+#~ msgstr "Aygıt kaldırma"
+
+#~ msgid "Select a device to configure"
+#~ msgstr "Yapılandırılacak bir aygıt seçin"
+
+#~ msgid "No devices found"
+#~ msgstr "Aygıt bulunamadı"
+
+#~ msgid "Add new device"
+#~ msgstr "Yeni aygıt ekle"
+
+#~ msgid "Add device"
+#~ msgstr "Aygıt ekle"
+
+#~ msgid "Remove device"
+#~ msgstr "Aygıtı kaldır"
+
+#~ msgid "Bluetooth Advanced Settings"
+#~ msgstr "Gelişmiş Bluetooth Ayarları"
+
+#~ msgid "Bluetooth Advanced Settings Control Panel Module"
+#~ msgstr "Bluetooth Gelişmiş Ayarları Kontrol Panosu Modülü"
+
+#~ msgctxt "'Auto accept' option value"
+#~ msgid "Never"
+#~ msgstr "Asla"
+
+#~ msgctxt "'Auto accept' option value"
+#~ msgid "Trusted devices"
+#~ msgstr "Güvenilen aygıtlar"
+
+#~ msgctxt "'Auto accept' option value"
+#~ msgid "All devices"
+#~ msgstr "Tüm aygıtlar"
+
+#~ msgid "Receive files from remote devices"
+#~ msgstr "Uzak aygıttan dosyaları al"
+
+#~ msgid "Accept automatically:"
+#~ msgstr "Otomatik kabul et:"
+
+#~ msgid "Save files in:"
+#~ msgstr "Dosyaları şuraya kaydet:"
+
+#~ msgid "Enable or disable receiving files"
+#~ msgstr "Dosya alımını etkinleştir veya kapat"
+
+#~ msgid "Enable or disable the global KDE Bluetooth integration"
+#~ msgstr "KDE Bluetooth desteğini etkinleştir veya kapat"
+
+#~ msgid "Enable Bluetooth integration"
+#~ msgstr "Bluetooth bütünleştirmesini etkinleştir"
+
+#~ msgctxt "This string is shown when the wizard succeeds"
+#~ msgid "The setup of the device has succeeded"
+#~ msgstr "Aygıt başarıyla kuruldu"
+
+#~ msgid "The setup of %1 has succeeded"
+#~ msgstr "%1 başarıyla kuruldu"
+
+#~ msgid "Send via Bluetooth"
+#~ msgstr "Bluetooth üzerinden gönder"
+
+#~ msgctxt "Other Bluetooth device"
+#~ msgid "Other..."
+#~ msgstr "Diğer..."
+
+#~ msgid "No adapters found. Please connect one."
+#~ msgstr "Bağdaştırıcı bulunamadı. Lütfen bir tane takın."
+
+#~ msgctxt "Name of the device"
+#~ msgid "Name"
+#~ msgstr "İsim"
+
+#~ msgctxt "Alias of the device"
+#~ msgid "Alias"
+#~ msgstr "Takma Ad"
+
+#~ msgctxt "Device is paired"
+#~ msgid "Paired"
+#~ msgstr "Eşleşildi"
+
+#~ msgctxt "Details of the device"
+#~ msgid "Details"
+#~ msgstr "Detaylar"
+
+#~ msgctxt "Remove a device from the list of known devices"
+#~ msgid "Remove"
+#~ msgstr "Kaldır"
+
+#~ msgid "Add Device..."
+#~ msgstr "Aygıt Ekle..."
+
+#~ msgid "Re-connect"
+#~ msgstr "Yeniden Bağlan"
+
+#~ msgid "No remote devices have been added"
+#~ msgstr "Hiç uzak aygıt eklenmedi"
+
+#~ msgid "Click here to add a remote device"
+#~ msgstr "Uzak aygıt eklemek için tıklayın"
+
+#~ msgid "ObexFtp Daemon"
+#~ msgstr "ObexFtp Hizmeti"
+
+#~ msgid "Bluetooth Transfer Control Panel Module"
+#~ msgstr "Bluetooth Aktarımı Yapılandırma Paneli"
+
+#~ msgctxt "Find Bluetooth device"
+#~ msgid "Find Device..."
+#~ msgstr "Aygıt Bul..."
+
+#~ msgid "Bluetooth Send File Helper"
+#~ msgstr "Bluetooth Dosya Gönderme Yardımcısı"
+
+#~ msgid "Bluetooth Wizard"
+#~ msgstr "Bluetooth Sihirbazı"
+
+#~ msgid "Alejandro Fiestas Olivares"
+#~ msgstr "Alejandro Fiestas Olivares"
+
+#~ msgid "Eduardo Robles Elvira"
+#~ msgstr "Eduardo Robles Elvira"
+
+#~ msgid "Rafael Fernández López"
+#~ msgstr "Rafael Fernández López"
+
+#~ msgid "KDE Bluetooth System"
+#~ msgstr "KDE Bluetooth Sistemi"
+
+#~ msgctxt ""
+#~ "Showed in a notification when the Bluetooth mode is going to be changed "
+#~ "(for example to flight mode), the %1 is the name of the mode"
+#~ msgid "Change Bluetooth mode to '%1'?"
+#~ msgstr "Bluetooth kipi %1 olarak değiştirilsin mi?"
+
+#~ msgctxt "Confirm the bluetooth mode change, shown in a notification button"
+#~ msgid "Confirm"
+#~ msgstr "Doğrula"
+
+#~ msgctxt "Deny the bluetooth mdoe change, shown in a notification"
+#~ msgid "Deny"
+#~ msgstr "Reddet"
+
+#~ msgctxt ""
+#~ "User will see this as: Bluetooth device is asking if the pin is "
+#~ "correct        It is mostly a fallback"
+#~ msgid "Bluetooth device"
+#~ msgstr "Bluetooth aygıtı"
+
+#~ msgid "Default adapter: %1 (%2)"
+#~ msgstr "Öntanımlı bağdaştırıcı: %1 (%2)"
+
+#~ msgid "Developer"
+#~ msgstr "Geliştirici"
+
+#~ msgid "Bluetooth is Off"
+#~ msgstr "Bluetooth Kapalı"
+
+#~ msgid "Turn Bluetooth On"
+#~ msgstr "Bluetooth'u Aç"
+
+#~ msgid "Browse devices"
+#~ msgstr "Aygıtlara Gözat"
+
+#~ msgid "Known Devices"
+#~ msgstr "Bilinen Aygıtlar"
+
+#~ msgid "Configure Bluetooth"
+#~ msgstr "Bluetooth'u Yapılandır"
+
+#~ msgid "Turn Bluetooth Off"
+#~ msgstr "Bluetooth'u Kapat"
+
+#~ msgctxt "Number of Bluetooth connected devices"
+#~ msgid "%1 connected device"
+#~ msgid_plural "%1 connected devices"
+#~ msgstr[0] "%1 bağlı aygıt"
+#~ msgstr[1] "%1 bağlı aygıt"
+
+#~ msgctxt "When the bluetooth is enabled and powered"
+#~ msgid "Bluetooth is On"
+#~ msgstr "Bluetooth Açık"
+
+#~ msgctxt "When the bluetooth is disabled or not powered"
+#~ msgid "Bluetooth is Off"
+#~ msgstr "Bluetooth Kapalı"
+
+#~ msgctxt "Re-connect to a bluetooth device"
+#~ msgid "Re-connect"
+#~ msgstr "Yeniden Bağlan"
+
+#~ msgctxt "Disconnect to a bluetooth device"
+#~ msgid "Disconnect"
+#~ msgstr "Bağlantıyı Kes"
+
+#~ msgctxt "Connect to a bluetooth device"
+#~ msgid "Connect"
+#~ msgstr "Bağlan"
+
+#~ msgid "Device UUID where the files will be sent"
+#~ msgstr "Dosyaların gönderileceği aygıt UUID kimliği"
+
+#~ msgid "Device to pair with"
+#~ msgstr "Eşleşilecek aygıt"
+
+#~ msgid "999999999; "
+#~ msgstr "999999999; "
+
+#~ msgid "Connecting to:"
+#~ msgstr "Bağlanılıyor: %1"

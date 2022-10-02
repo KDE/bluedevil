@@ -1,0 +1,355 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the bluedevil package.
+#
+# Matjaž Jeran <matjaz.jeran@amis.net>, 2020, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: bluedevil\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-17 00:47+0000\n"
+"PO-Revision-Date: 2022-07-27 07:33+0200\n"
+"Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
+"Language-Team: Slovenian <lugos-slo@lugos.si>\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
+"%100==4 ? 3 : 0);\n"
+"X-Generator: Lokalize 22.04.1\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Matjaž Jeran,Martin Srebotnjak"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "matjaz.jeran@amis.net,miles@filmsi.net"
+
+#: bluetooth.cpp:101
+#, kde-format
+msgctxt "DeviceName Network (Service)"
+msgid "%1 Network (%2)"
+msgstr "%1 Omrežje (%2)"
+
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:180
+#, kde-format
+msgid "Disconnect"
+msgstr "Odklopi"
+
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:180
+#, kde-format
+msgid "Connect"
+msgstr "Priklopi"
+
+#: package/contents/ui/Device.qml:100
+#, kde-format
+msgid "Type:"
+msgstr "Tip:"
+
+#: package/contents/ui/Device.qml:105 package/contents/ui/General.qml:42
+#, kde-format
+msgid "Address:"
+msgstr "Naslov:"
+
+#: package/contents/ui/Device.qml:110
+#, kde-format
+msgid "Adapter:"
+msgstr "Adapter:"
+
+#: package/contents/ui/Device.qml:116 package/contents/ui/General.qml:36
+#, kde-format
+msgid "Name:"
+msgstr "Ime:"
+
+#: package/contents/ui/Device.qml:120
+#, kde-format
+msgid "Trusted"
+msgstr "Zaupanja vreden"
+
+#: package/contents/ui/Device.qml:126
+#, kde-format
+msgid "Blocked"
+msgstr "Blokiran"
+
+#: package/contents/ui/Device.qml:132
+#, kde-format
+msgid "Send File"
+msgstr "Pošlji datoteko"
+
+#: package/contents/ui/Device.qml:139
+#, kde-format
+msgid "Setup NAP Network…"
+msgstr "Nastavi omrežje NAP…"
+
+#: package/contents/ui/Device.qml:146
+#, kde-format
+msgid "Setup DUN Network…"
+msgstr "Nastavi omrežje DUN…"
+
+#: package/contents/ui/Device.qml:156
+#, kde-format
+msgctxt "This device is a Phone"
+msgid "Phone"
+msgstr "Telefon"
+
+#: package/contents/ui/Device.qml:158
+#, kde-format
+msgctxt "This device is a Modem"
+msgid "Modem"
+msgstr "Modem"
+
+#: package/contents/ui/Device.qml:160
+#, kde-format
+msgctxt "This device is a Computer"
+msgid "Computer"
+msgstr "Računalnik"
+
+#: package/contents/ui/Device.qml:162
+#, kde-format
+msgctxt "This device is of type Network"
+msgid "Network"
+msgstr "Omrežje"
+
+#: package/contents/ui/Device.qml:164
+#, kde-format
+msgctxt "This device is a Headset"
+msgid "Headset"
+msgstr "Slušalke"
+
+#: package/contents/ui/Device.qml:166
+#, kde-format
+msgctxt "This device is a Headphones"
+msgid "Headphones"
+msgstr "Slušalke z mikrofonom"
+
+#: package/contents/ui/Device.qml:168
+#, kde-format
+msgctxt "This device is an Audio/Video device"
+msgid "Multimedia Device"
+msgstr "Večpredstavnostna naprava"
+
+#: package/contents/ui/Device.qml:170
+#, kde-format
+msgctxt "This device is a Keyboard"
+msgid "Keyboard"
+msgstr "Tipkovnica"
+
+#: package/contents/ui/Device.qml:172
+#, kde-format
+msgctxt "This device is a Mouse"
+msgid "Mouse"
+msgstr "Miška"
+
+#: package/contents/ui/Device.qml:174
+#, kde-format
+msgctxt "This device is a Joypad"
+msgid "Joypad"
+msgstr "Igralna palica"
+
+#: package/contents/ui/Device.qml:176
+#, kde-format
+msgctxt "This device is a Graphics Tablet (input device)"
+msgid "Tablet"
+msgstr "Tablica"
+
+#: package/contents/ui/Device.qml:178
+#, kde-format
+msgctxt "This device is a Peripheral device"
+msgid "Peripheral"
+msgstr "Periferna naprava"
+
+#: package/contents/ui/Device.qml:180
+#, kde-format
+msgctxt "This device is a Camera"
+msgid "Camera"
+msgstr "Kamera"
+
+#: package/contents/ui/Device.qml:182
+#, kde-format
+msgctxt "This device is a Printer"
+msgid "Printer"
+msgstr "Tiskalnik"
+
+#: package/contents/ui/Device.qml:184
+#, kde-format
+msgctxt ""
+"This device is an Imaging device (printer, scanner, camera, display, …)"
+msgid "Imaging"
+msgstr "Grafična enota"
+
+#: package/contents/ui/Device.qml:186
+#, kde-format
+msgctxt "This device is a Wearable"
+msgid "Wearable"
+msgstr "Nosljiva enota"
+
+#: package/contents/ui/Device.qml:188
+#, kde-format
+msgctxt "This device is a Toy"
+msgid "Toy"
+msgstr "Igrača"
+
+#: package/contents/ui/Device.qml:190
+#, kde-format
+msgctxt "This device is a Health device"
+msgid "Health"
+msgstr "Zdravje"
+
+#: package/contents/ui/Device.qml:192
+#, kde-format
+msgctxt "Type of device: could not be determined"
+msgid "Unknown"
+msgstr "Neznano"
+
+#: package/contents/ui/General.qml:19
+#, kde-format
+msgid "Settings"
+msgstr "Nastavitve"
+
+#: package/contents/ui/General.qml:28
+#, kde-format
+msgid "Device:"
+msgstr "Naprava:"
+
+#: package/contents/ui/General.qml:46
+#, kde-format
+msgid "Enabled:"
+msgstr "Omogočeno:"
+
+#: package/contents/ui/General.qml:52
+#, kde-format
+msgid "Visible:"
+msgstr "Vidno:"
+
+#: package/contents/ui/General.qml:66
+#, kde-format
+msgid "On login:"
+msgstr "Pri prijavi:"
+
+#: package/contents/ui/General.qml:67
+#, kde-format
+msgid "Enable Bluetooth"
+msgstr "Omogoči Bluetooth"
+
+#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:212
+#, kde-format
+msgid "Disable Bluetooth"
+msgstr "Onemogoči Bluetooth"
+
+#: package/contents/ui/General.qml:87
+#, kde-format
+msgid "Restore previous status"
+msgstr "Obnovi prejšnje stanje"
+
+#: package/contents/ui/General.qml:106
+#, kde-format
+msgid "When receiving files:"
+msgstr "Ob prejemanju datoteke:"
+
+#: package/contents/ui/General.qml:108
+#, kde-format
+msgid "Ask for confirmation"
+msgstr "Vprašaj za potrditev"
+
+#: package/contents/ui/General.qml:117
+#, kde-format
+msgid "Accept for trusted devices"
+msgstr "Prejmi iz zaupanja vrednih naprav"
+
+#: package/contents/ui/General.qml:127
+#, kde-format
+msgid "Always accept"
+msgstr "Vedno sprejmi"
+
+#: package/contents/ui/General.qml:137
+#, kde-format
+msgid "Save files in:"
+msgstr "Shrani datoteke v:"
+
+#: package/contents/ui/General.qml:161 package/contents/ui/General.qml:172
+#, kde-format
+msgid "Select folder"
+msgstr "Izberi mapo"
+
+#: package/contents/ui/main.qml:52
+#, kde-format
+msgid "Forget this Device?"
+msgstr "Naj pozabim to napravo?"
+
+#: package/contents/ui/main.qml:53
+#, kde-format
+msgid "Are you sure you want to forget \"%1\"?"
+msgstr "Ali ste prepričani, da jo želite pozabiti '%1'?"
+
+#: package/contents/ui/main.qml:64
+#, kde-format
+msgctxt "@action:button"
+msgid "Forget Device"
+msgstr "Pozabi napravo"
+
+#: package/contents/ui/main.qml:73
+#, kde-format
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr "Prekliči"
+
+#: package/contents/ui/main.qml:112
+#, kde-format
+msgid "No Bluetooth adapters found"
+msgstr "Ni najdenega nobenega Bluetooth adapterja"
+
+#: package/contents/ui/main.qml:121
+#, kde-format
+msgid "Bluetooth is disabled"
+msgstr "Bluetooth je onemogočen"
+
+#: package/contents/ui/main.qml:127
+#, kde-format
+msgid "Enable"
+msgstr "Omogoči"
+
+#: package/contents/ui/main.qml:137
+#, kde-format
+msgid "No devices paired"
+msgstr "Ni uparjenih naprav"
+
+#: package/contents/ui/main.qml:158
+#, kde-format
+msgid "Connected"
+msgstr "Priključeno"
+
+#: package/contents/ui/main.qml:158
+#, kde-format
+msgid "Available"
+msgstr "Na voljo"
+
+#: package/contents/ui/main.qml:191
+#, kde-format
+msgctxt "@action:button %1 is the name of a Bluetooth device"
+msgid "Forget \"%1\""
+msgstr "Pozabi \"%1\""
+
+#: package/contents/ui/main.qml:206
+#, kde-format
+msgid "Add New Device…"
+msgstr "Dodaj novo napravo…"
+
+#: package/contents/ui/main.qml:224
+#, kde-format
+msgid "Configure…"
+msgstr "Nastavi…"
+
+#~ msgid "Confirm Deletion of Device"
+#~ msgstr "Potrdite brisanje naprave"
+
+#~ msgid "Remove"
+#~ msgstr "Odstrani"
+
+#~ msgid "Bluetooth"
+#~ msgstr "Bluetooth"
+
+#~ msgid "Nicolas Fella"
+#~ msgstr "Nicolas Fella"

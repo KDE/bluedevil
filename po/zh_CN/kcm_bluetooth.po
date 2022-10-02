@@ -1,0 +1,344 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: kdeorg\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-17 00:47+0000\n"
+"PO-Revision-Date: 2022-09-20 01:55\n"
+"Last-Translator: \n"
+"Language-Team: Chinese Simplified\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: kdeorg\n"
+"X-Crowdin-Project-ID: 269464\n"
+"X-Crowdin-Language: zh-CN\n"
+"X-Crowdin-File: /kf5-trunk/messages/bluedevil/kcm_bluetooth.pot\n"
+"X-Crowdin-File-ID: 24534\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "KDE China, Coelacanthus, Guo Yunhe, Tyson Tan"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+"kde-china@kde.org, liuhongwu2003@outlook.com, i@guoyunhe.me, "
+"tysontan@tysontan.com"
+
+#: bluetooth.cpp:101
+#, kde-format
+msgctxt "DeviceName Network (Service)"
+msgid "%1 Network (%2)"
+msgstr "%1 网络 (%2)"
+
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:180
+#, kde-format
+msgid "Disconnect"
+msgstr "断开连接"
+
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:180
+#, kde-format
+msgid "Connect"
+msgstr "连接"
+
+#: package/contents/ui/Device.qml:100
+#, kde-format
+msgid "Type:"
+msgstr "类型："
+
+#: package/contents/ui/Device.qml:105 package/contents/ui/General.qml:42
+#, kde-format
+msgid "Address:"
+msgstr "地址："
+
+#: package/contents/ui/Device.qml:110
+#, kde-format
+msgid "Adapter:"
+msgstr "适配器："
+
+#: package/contents/ui/Device.qml:116 package/contents/ui/General.qml:36
+#, kde-format
+msgid "Name:"
+msgstr "名称："
+
+#: package/contents/ui/Device.qml:120
+#, kde-format
+msgid "Trusted"
+msgstr "已信任"
+
+#: package/contents/ui/Device.qml:126
+#, kde-format
+msgid "Blocked"
+msgstr "已屏蔽"
+
+#: package/contents/ui/Device.qml:132
+#, kde-format
+msgid "Send File"
+msgstr "发送文件"
+
+#: package/contents/ui/Device.qml:139
+#, kde-format
+msgid "Setup NAP Network…"
+msgstr "设置 NAP 网络…"
+
+#: package/contents/ui/Device.qml:146
+#, kde-format
+msgid "Setup DUN Network…"
+msgstr "设置 DUN 网络…"
+
+#: package/contents/ui/Device.qml:156
+#, kde-format
+msgctxt "This device is a Phone"
+msgid "Phone"
+msgstr "电话"
+
+#: package/contents/ui/Device.qml:158
+#, kde-format
+msgctxt "This device is a Modem"
+msgid "Modem"
+msgstr "调制解调器"
+
+#: package/contents/ui/Device.qml:160
+#, kde-format
+msgctxt "This device is a Computer"
+msgid "Computer"
+msgstr "电脑"
+
+#: package/contents/ui/Device.qml:162
+#, kde-format
+msgctxt "This device is of type Network"
+msgid "Network"
+msgstr "网络"
+
+#: package/contents/ui/Device.qml:164
+#, kde-format
+msgctxt "This device is a Headset"
+msgid "Headset"
+msgstr "耳麦"
+
+#: package/contents/ui/Device.qml:166
+#, kde-format
+msgctxt "This device is a Headphones"
+msgid "Headphones"
+msgstr "耳机"
+
+#: package/contents/ui/Device.qml:168
+#, kde-format
+msgctxt "This device is an Audio/Video device"
+msgid "Multimedia Device"
+msgstr "多媒体设备"
+
+#: package/contents/ui/Device.qml:170
+#, kde-format
+msgctxt "This device is a Keyboard"
+msgid "Keyboard"
+msgstr "键盘"
+
+#: package/contents/ui/Device.qml:172
+#, kde-format
+msgctxt "This device is a Mouse"
+msgid "Mouse"
+msgstr "鼠标"
+
+#: package/contents/ui/Device.qml:174
+#, kde-format
+msgctxt "This device is a Joypad"
+msgid "Joypad"
+msgstr "手柄"
+
+#: package/contents/ui/Device.qml:176
+#, kde-format
+msgctxt "This device is a Graphics Tablet (input device)"
+msgid "Tablet"
+msgstr "数位板"
+
+#: package/contents/ui/Device.qml:178
+#, kde-format
+msgctxt "This device is a Peripheral device"
+msgid "Peripheral"
+msgstr "外设"
+
+#: package/contents/ui/Device.qml:180
+#, kde-format
+msgctxt "This device is a Camera"
+msgid "Camera"
+msgstr "相机"
+
+#: package/contents/ui/Device.qml:182
+#, kde-format
+msgctxt "This device is a Printer"
+msgid "Printer"
+msgstr "打印机"
+
+#: package/contents/ui/Device.qml:184
+#, kde-format
+msgctxt ""
+"This device is an Imaging device (printer, scanner, camera, display, …)"
+msgid "Imaging"
+msgstr "图像"
+
+#: package/contents/ui/Device.qml:186
+#, kde-format
+msgctxt "This device is a Wearable"
+msgid "Wearable"
+msgstr "可穿戴"
+
+#: package/contents/ui/Device.qml:188
+#, kde-format
+msgctxt "This device is a Toy"
+msgid "Toy"
+msgstr "玩具"
+
+#: package/contents/ui/Device.qml:190
+#, kde-format
+msgctxt "This device is a Health device"
+msgid "Health"
+msgstr "健康"
+
+#: package/contents/ui/Device.qml:192
+#, kde-format
+msgctxt "Type of device: could not be determined"
+msgid "Unknown"
+msgstr "未知"
+
+#: package/contents/ui/General.qml:19
+#, kde-format
+msgid "Settings"
+msgstr "设置"
+
+#: package/contents/ui/General.qml:28
+#, kde-format
+msgid "Device:"
+msgstr "设备："
+
+#: package/contents/ui/General.qml:46
+#, kde-format
+msgid "Enabled:"
+msgstr "已启用:"
+
+#: package/contents/ui/General.qml:52
+#, kde-format
+msgid "Visible:"
+msgstr "可见："
+
+#: package/contents/ui/General.qml:66
+#, kde-format
+msgid "On login:"
+msgstr "登录时："
+
+#: package/contents/ui/General.qml:67
+#, kde-format
+msgid "Enable Bluetooth"
+msgstr "启用蓝牙"
+
+#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:212
+#, kde-format
+msgid "Disable Bluetooth"
+msgstr "禁用蓝牙"
+
+#: package/contents/ui/General.qml:87
+#, kde-format
+msgid "Restore previous status"
+msgstr "恢复之前的状态"
+
+#: package/contents/ui/General.qml:106
+#, kde-format
+msgid "When receiving files:"
+msgstr "接收文件时："
+
+#: package/contents/ui/General.qml:108
+#, kde-format
+msgid "Ask for confirmation"
+msgstr "请求确认"
+
+#: package/contents/ui/General.qml:117
+#, kde-format
+msgid "Accept for trusted devices"
+msgstr "接受信任设备"
+
+#: package/contents/ui/General.qml:127
+#, kde-format
+msgid "Always accept"
+msgstr "总是接受"
+
+#: package/contents/ui/General.qml:137
+#, kde-format
+msgid "Save files in:"
+msgstr "保存文件到："
+
+#: package/contents/ui/General.qml:161 package/contents/ui/General.qml:172
+#, kde-format
+msgid "Select folder"
+msgstr "选择目录"
+
+#: package/contents/ui/main.qml:52
+#, kde-format
+msgid "Forget this Device?"
+msgstr "忘记此设备？"
+
+#: package/contents/ui/main.qml:53
+#, kde-format
+msgid "Are you sure you want to forget \"%1\"?"
+msgstr "您确定要忘记“%1”吗？"
+
+#: package/contents/ui/main.qml:64
+#, kde-format
+msgctxt "@action:button"
+msgid "Forget Device"
+msgstr "忘记设备"
+
+#: package/contents/ui/main.qml:73
+#, kde-format
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr "取消"
+
+#: package/contents/ui/main.qml:112
+#, kde-format
+msgid "No Bluetooth adapters found"
+msgstr "未找到蓝牙适配器"
+
+#: package/contents/ui/main.qml:121
+#, kde-format
+msgid "Bluetooth is disabled"
+msgstr "蓝牙已禁用"
+
+#: package/contents/ui/main.qml:127
+#, kde-format
+msgid "Enable"
+msgstr "启用"
+
+#: package/contents/ui/main.qml:137
+#, kde-format
+msgid "No devices paired"
+msgstr "无已配对设备"
+
+#: package/contents/ui/main.qml:158
+#, kde-format
+msgid "Connected"
+msgstr "已连接"
+
+#: package/contents/ui/main.qml:158
+#, kde-format
+msgid "Available"
+msgstr "可用"
+
+#: package/contents/ui/main.qml:191
+#, kde-format
+msgctxt "@action:button %1 is the name of a Bluetooth device"
+msgid "Forget \"%1\""
+msgstr "忘记“%1”"
+
+#: package/contents/ui/main.qml:206
+#, kde-format
+msgid "Add New Device…"
+msgstr "添加新设备…"
+
+#: package/contents/ui/main.qml:224
+#, kde-format
+msgid "Configure…"
+msgstr "配置…"

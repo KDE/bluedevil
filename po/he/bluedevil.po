@@ -1,0 +1,821 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# elkana bardugo <ttv200@gmail.com>, 2016.
+# Elkana Bardugo <ttv200@gmail.com>, 2017. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: bluedevil\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-07-04 00:46+0000\n"
+"PO-Revision-Date: 2017-05-16 06:51-0400\n"
+"Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
+"Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Zanata 3.9.6\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "אלקנה ברדוגו"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "ttv200@gmail.com"
+
+#: kcm/bluetooth.cpp:101
+#, kde-format
+msgctxt "DeviceName Network (Service)"
+msgid "%1 Network (%2)"
+msgstr "רשת %1 (%2)"
+
+#: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
+#, kde-format
+msgid "Bluetooth Daemon"
+msgstr "תהליך רקע של בלוטוס"
+
+#: kded/bluedevildaemon.cpp:72 sendfile/main.cpp:29 wizard/main.cpp:30
+#, kde-format
+msgid "(c) 2010, UFO Coders"
+msgstr "(c) 2010, UFO Coders"
+
+#: kded/bluedevildaemon.cpp:75 sendfile/main.cpp:32 wizard/main.cpp:33
+#, kde-format
+msgid "Maintainer"
+msgstr "מתחזק"
+
+#: kded/bluedevildaemon.cpp:80 kded/bluedevildaemon.cpp:85 sendfile/main.cpp:37
+#: wizard/main.cpp:38
+#, kde-format
+msgid "Previous Maintainer"
+msgstr "מתחזקים קודמים"
+
+#: kded/helpers/requestauthorization.cpp:29
+#, kde-format
+msgctxt ""
+"Show a notification asking to authorize or deny access to this computer from "
+"Bluetooth.The %1 is the name of the bluetooth device"
+msgid "%1 is requesting access to this computer"
+msgstr "%1 מבקש גישה למחשב זה"
+
+#: kded/helpers/requestauthorization.cpp:33
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "Button to trust a bluetooth remote device and authorize it to connect"
+#| msgid "Trust && Authorize"
+msgctxt "Button to trust a bluetooth remote device and authorize it to connect"
+msgid "Trust and Authorize"
+msgstr "אשר והוסף להתקנים מהימנים"
+
+#: kded/helpers/requestauthorization.cpp:34
+#, kde-format
+msgctxt "Button to authorize a bluetooth remote device to connect"
+msgid "Authorize Only"
+msgstr "אשר בלבד"
+
+#: kded/helpers/requestauthorization.cpp:35
+#, kde-format
+msgctxt "Deny access to a remote bluetooth device"
+msgid "Deny"
+msgstr "דחה"
+
+#: kded/helpers/requestconfirmation.cpp:28
+#, kde-format
+msgctxt ""
+"The text is shown in a notification to know if the PIN is correct,%1 is the "
+"remote bluetooth device and %2 is the pin"
+msgid "%1 is asking if the PIN is correct: %2"
+msgstr "%1 שואל אם הקוד נכון: %2"
+
+#: kded/helpers/requestconfirmation.cpp:33
+#, kde-format
+msgctxt "Notification button to know if the pin is correct or not"
+msgid "PIN correct"
+msgstr "הקוד נכון"
+
+#: kded/helpers/requestconfirmation.cpp:34
+#, kde-format
+msgctxt "Notification button to say that the PIN is wrong"
+msgid "PIN incorrect"
+msgstr "הקוד שגוי"
+
+#: kded/helpers/requestpin.cpp:35
+#, kde-format
+msgctxt ""
+"Shown in a notification to announce that a PIN is needed to accomplish a "
+"pair action,%1 is the name of the bluetooth device"
+msgid "PIN needed to pair with %1"
+msgstr "הקוד צריך להיות תואם עם %1"
+
+#: kded/helpers/requestpin.cpp:39
+#, kde-format
+msgctxt ""
+"Notification button which once clicked, a dialog to introduce the PIN will "
+"be shown"
+msgid "Introduce PIN"
+msgstr "הצג את הקוד"
+
+#: kded/helpers/requestpin.cpp:61
+#, kde-format
+msgctxt "Shown in the caption of a dialog where the user introduce the PIN"
+msgid "Introduce PIN"
+msgstr "הצג את הקוד"
+
+#: kded/helpers/requestpin.cpp:68
+#, kde-format
+msgctxt ""
+"Shown in a dialog which asks to introduce a PIN that will be used to pair a "
+"Bluetooth device,%1 is the name of the Bluetooth device"
+msgid ""
+"In order to pair this computer with %1, you have to enter a PIN. Please do "
+"it below."
+msgstr ""
+"כדי להתאים את המחשב עם %1, אתה צריך להקליד את הקוד PIN. בבקשה עשה זאת למטה."
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: kded/helpers/requestpin.ui:52
+#, kde-format
+msgid "PIN:"
+msgstr "קוד:"
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, pin)
+#: kded/helpers/requestpin.ui:65
+#, kde-format
+msgid "1234"
+msgstr "1234"
+
+#: kded/receivefilejob.cpp:132
+#, kde-format
+msgctxt ""
+"Show a notification asking to authorize or deny an incoming file transfer to "
+"this computer from a Bluetooth device."
+msgid "%1 is sending you the file %2"
+msgstr "%1 שולח לך את הקובץ %2"
+
+#: kded/receivefilejob.cpp:137
+#, kde-format
+msgctxt ""
+"Button to accept the incoming file transfer and download it in the default "
+"download directory"
+msgid "Accept"
+msgstr "אשר"
+
+#: kded/receivefilejob.cpp:138
+#, kde-format
+msgctxt "Deny the incoming file transfer"
+msgid "Cancel"
+msgstr "בטל"
+
+#: kded/receivefilejob.cpp:164
+#, fuzzy, kde-format
+#| msgid "<b>Receiving files</b>"
+msgctxt "@title job"
+msgid "Receiving file"
+msgstr "<b>מקבל קבצים</b>"
+
+#: kded/receivefilejob.cpp:165 sendfile/sendfilesjob.cpp:70
+#: sendfile/sendfilesjob.cpp:86
+#, kde-format
+msgctxt "File transfer origin"
+msgid "From"
+msgstr "מאת"
+
+#: kded/receivefilejob.cpp:166 sendfile/sendfilesjob.cpp:71
+#: sendfile/sendfilesjob.cpp:87
+#, kde-format
+msgctxt "File transfer destination"
+msgid "To"
+msgstr "אל"
+
+#: kded/receivefilejob.cpp:191
+#, kde-format
+msgid "Saving file failed"
+msgstr "שמירת הקובץ נכשלה"
+
+#: kded/receivefilejob.cpp:222 kio/obexftp/transferfilejob.cpp:50
+#: sendfile/sendfilesjob.cpp:157
+#, kde-format
+msgid "Bluetooth transfer failed"
+msgstr "העברת הבלוטוס נכשלה"
+
+#: kio/bluetooth/kiobluetooth.cpp:52
+#, kde-format
+msgid "Send File"
+msgstr "שלח קובץ"
+
+#: kio/bluetooth/kiobluetooth.cpp:58
+#, kde-format
+msgid "Browse Files"
+msgstr "דפדפן בקבצים"
+
+#: kio/bluetooth/kiobluetooth.cpp:72 kio/bluetooth/kiobluetooth.cpp:202
+#, kde-format
+msgid "No Bluetooth adapters have been found."
+msgstr "לא נמצאו מתאמי בלוטוס"
+
+#: kio/bluetooth/kiobluetooth.cpp:92
+#, fuzzy, kde-format
+#| msgid "Retrieving services..."
+msgid "Retrieving services…"
+msgstr "מאחר שירותים..."
+
+#: kio/bluetooth/kiobluetooth.cpp:99
+#, kde-format
+msgid "This address is unavailable."
+msgstr "כתובת זו אינה זמינה."
+
+#: kio/bluetooth/kiobluetooth.cpp:148
+#, kde-format
+msgid "Received Files"
+msgstr "מקבל קבצים"
+
+#: kio/bluetooth/kiobluetooth.cpp:168
+#, fuzzy, kde-format
+#| msgid "Scanning for new devices..."
+msgid "Scanning for new devices…"
+msgstr "מחפש התקנים חדשים..."
+
+#: kio/obexftp/kioobexftp.cpp:97 kio/obexftp/kioobexftp.cpp:99
+#, kde-format
+msgid "Obexd service is not running."
+msgstr "השירות Obexd לא רץ."
+
+#: kio/obexftp/kioobexftp.cpp:146
+#, fuzzy, kde-format
+#| msgid "Retrieving information from remote device..."
+msgid "Retrieving information from remote device…"
+msgstr "מאחזר מידע מההתקן המרוחק"
+
+#: kio/obexftp/kioobexftp.cpp:229
+#, kde-format
+msgid "Connecting to the device"
+msgstr "מתחבר להתקן"
+
+#: kio/obexftp/kioobexftp.cpp:532
+#, kde-format
+msgid "Phone memory"
+msgstr "איחסון פנימי"
+
+#: kio/obexftp/kioobexftp.cpp:535
+#, kde-format
+msgid "External memory"
+msgstr "אחסון חיצוני"
+
+#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:263
+#, kde-format
+msgid "Bluetooth is disabled."
+msgstr "הבלוטוס כבוי"
+
+#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:264
+#, fuzzy, kde-format
+#| msgctxt "This device is a Graphics Tablet (input device)"
+#| msgid "Tablet"
+msgctxt "Action to enable Bluetooth adapter"
+msgid "Enable"
+msgstr "טבלט"
+
+#: sendfile/discoverwidget.cpp:137
+#, kde-format
+msgid "Your Bluetooth adapter is powered off."
+msgstr "התקן הבלוטוס כבוי."
+
+#: sendfile/discoverwidget.cpp:138
+#, kde-format
+msgctxt "Action to turn on Bluetooth adapter"
+msgid "Turn On"
+msgstr ""
+
+#: sendfile/main.cpp:25 sendfile/main.cpp:27
+#, fuzzy, kde-format
+#| msgid "Bluetooth transfer failed"
+msgid "Bluetooth File Transfer"
+msgstr "העברת הבלוטוס נכשלה"
+
+#: sendfile/main.cpp:50
+#, kde-format
+msgid "Specify receiving device by MAC address."
+msgstr ""
+
+#: sendfile/main.cpp:54
+#, kde-format
+msgid "Specify receiving device by UBI path."
+msgstr ""
+
+#: sendfile/main.cpp:58
+#, kde-format
+msgid "Files to be sent."
+msgstr ""
+
+#: sendfile/pages/connectingpage.cpp:32 wizard/pages/connect.cpp:39
+#, fuzzy, kde-format
+#| msgctxt "Connecting to a Bluetooth device"
+#| msgid "Connecting to %1..."
+msgctxt "Connecting to a Bluetooth device"
+msgid "Connecting to %1…"
+msgstr "מתחבר ל־%1..."
+
+#: sendfile/pages/failpage.cpp:41
+#, fuzzy, kde-format
+#| msgctxt "This string is shown when the wizard fail"
+#| msgid "The connection to the device has failed"
+msgctxt "This string is shown when the wizard fail"
+msgid "The connection to the device has failed: %1"
+msgstr "ההתחברות להתקן נכשלה"
+
+#: sendfile/pages/failpage.cpp:43
+#, fuzzy, kde-format
+#| msgid "The connection to %1 has failed"
+msgid "The connection to %1 has failed: %2"
+msgstr "ההתחברות ל־%1 נכשלה"
+
+#: sendfile/pages/selectdeviceandfilespage.cpp:53
+#, fuzzy, kde-format
+#| msgid "Open file..."
+msgid "Open file…"
+msgstr "פתח קובץ..."
+
+#. i18n: ectx: property (text), widget (KSqueezedTextLabel, selectLbl)
+#: sendfile/pages/selectdeviceandfilespage.cpp:58
+#: sendfile/pages/selectfilediscover.ui:99
+#, kde-format
+msgid "Select one or more files:"
+msgstr "בחר קובץ אחד או יותר:"
+
+#: sendfile/pages/selectdeviceandfilespage.cpp:65
+#, kde-format
+msgid "Selected files: <b>%1</b>"
+msgstr "הקבצים שנבחרו: <b>%1</b>"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: sendfile/pages/selectfilediscover.ui:38
+#, kde-format
+msgid "Select a device from the list:"
+msgstr "בחר התקן מהרשימה"
+
+#: sendfile/pages/selectfilespage.cpp:46
+#, kde-format
+msgctxt "Send files to a Bluetooth device"
+msgid "Send to %1"
+msgstr "שלח ל־%1"
+
+#: sendfile/sendfilesjob.cpp:69 sendfile/sendfilesjob.cpp:85
+#, kde-format
+msgid "Sending file over Bluetooth"
+msgstr "שולח קבצים דרך הבלוטוס"
+
+#: sendfile/sendfilewizard.cpp:41
+#, kde-format
+msgid "Send Files"
+msgstr "שלח קבצים"
+
+#: sendfile/sendfilewizard.cpp:42
+#, kde-format
+msgid "Cancel"
+msgstr "בטל"
+
+#. i18n: ectx: label, entry (saveUrl), group (General)
+#: settings/filereceiver.kcfg:11
+#, kde-format
+msgid "Save received files to:"
+msgstr "שמור קבצים שהתקבלו ב:"
+
+#. i18n: ectx: label, entry (autoAccept), group (General)
+#: settings/filereceiver.kcfg:15
+#, kde-format
+msgid "Whether allow to modify shared files"
+msgstr "האם לאפשר לערוך קבצים משותפים"
+
+#: wizard/bluewizard.cpp:57
+#, kde-format
+msgctxt "Action to go to the next page on the wizard"
+msgid "Next"
+msgstr "הבא"
+
+#: wizard/bluewizard.cpp:58
+#, kde-format
+msgctxt "Action to finish the wizard"
+msgid "Finish"
+msgstr "סיים"
+
+#: wizard/main.cpp:26 wizard/main.cpp:28
+#, fuzzy, kde-format
+#| msgid "Bluetooth Devices"
+msgid "Add Bluetooth Device"
+msgstr "התקני בלוטוס"
+
+#: wizard/pages/discover.cpp:101
+#, kde-format
+msgid "Select a device"
+msgstr "בחר התקן"
+
+#: wizard/pages/discover.cpp:256
+#, kde-format
+msgctxt "Action to fix a problem"
+msgid "Fix it"
+msgstr "תקן את זה"
+
+#: wizard/pages/discover.cpp:266
+#, kde-format
+msgid "Your Bluetooth adapter is not pairable."
+msgstr "התקן הבלוטוס שלך אינו בר התאמה"
+
+#: wizard/pages/discover.cpp:267
+#, fuzzy, kde-format
+#| msgctxt "This device is a Wearable"
+#| msgid "Wearable"
+msgctxt "Action to make Bluetooth adapter pairable"
+msgid "Make Pairable"
+msgstr "לביש"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: wizard/pages/discover.ui:54
+#, fuzzy, kde-format
+#| msgid "Scanning..."
+msgid "Scanning…"
+msgstr "סורק..."
+
+#. i18n: ectx: property (text), widget (QCheckBox, manualPin)
+#: wizard/pages/discover.ui:74
+#, kde-format
+msgid "Manual PIN:"
+msgstr "קוד PIN ידני:"
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, pinText)
+#: wizard/pages/discover.ui:102
+#, kde-format
+msgid "0000"
+msgstr "0000"
+
+#: wizard/pages/fail.cpp:37
+#, kde-format
+msgctxt ""
+"Button offered when the wizard fail. This button will restart the wizard"
+msgid "Restart the wizard"
+msgstr "הפעל מחדש את האשף"
+
+#: wizard/pages/fail.cpp:41
+#, kde-format
+msgctxt "Button that closes the wizard"
+msgid "Close"
+msgstr "סגור"
+
+#: wizard/pages/fail.cpp:53
+#, kde-format
+msgctxt "This string is shown when the wizard fail"
+msgid "The setup of the device has failed"
+msgstr "הגדרת ההתקן נכשלה"
+
+#: wizard/pages/fail.cpp:55
+#, kde-format
+msgid "The setup of %1 has failed"
+msgstr "ההגדרה של %1 נכשלה"
+
+#: wizard/pages/pairing.cpp:60
+#, fuzzy, kde-format
+#| msgid "Connecting to %1..."
+msgid "Connecting to %1…"
+msgstr "מתחבר ל־%1"
+
+#: wizard/pages/pairing.cpp:91
+#, kde-format
+msgid ""
+"Please introduce the PIN in your keyboard when it appears and press Enter"
+msgstr "הקלד את הקוד PIN במקלדת שלך שהוא מופיע ולחץ אנטר"
+
+#: wizard/pages/pairing.cpp:93
+#, kde-format
+msgid "Please introduce the PIN in your device when it appears"
+msgstr "הזן את הקוד PIN בהתקן שלך שהוא מופיע"
+
+#: wizard/pages/pairing.cpp:109
+#, kde-format
+msgid "Matches"
+msgstr "מתאים"
+
+#: wizard/pages/pairing.cpp:113
+#, kde-format
+msgid "Does not match"
+msgstr "לא מתאים"
+
+#: wizard/pages/pairing.cpp:128
+#, kde-format
+msgid "Please, confirm that the PIN displayed on %1 matches the wizard one."
+msgstr "אשר שהקוד PIN שמוצג ב־%1 מתאים לקוד שבאשף."
+
+#: wizard/pages/success.cpp:40
+#, kde-format
+msgid "Setup Finished"
+msgstr ""
+
+#: wizard/pages/success.cpp:42
+#, kde-format
+msgid "The device has been set up and can now be used."
+msgstr ""
+
+#: wizard/pages/success.cpp:44
+#, kde-format
+msgctxt "Placeholder is device name"
+msgid "The device '%1' has been set up and can now be used."
+msgstr ""
+
+#, fuzzy
+#~| msgid "Bluetooth Daemon"
+#~ msgid "Bluetooth"
+#~ msgstr "תהליך רקע של בלוטוס"
+
+#~ msgid "Bluetooth Send File Wizard"
+#~ msgstr "אשף שליחת קובץ בבלוטוס"
+
+#~ msgid "Bluetooth Device Wizard"
+#~ msgstr "אשף התקני בלוטוס"
+
+#~ msgid "Receiving file over Bluetooth"
+#~ msgstr "מקבל קובץ דרך הבלוטוס"
+
+#~ msgctxt "Radio widget to set if we want the adapter to be hidden"
+#~ msgid "Hidden"
+#~ msgstr "מוסתר"
+
+#~ msgctxt "Radio widget to set if we want the adapter to be always visible"
+#~ msgid "Always visible"
+#~ msgstr "תמיד גלוי"
+
+#~ msgctxt ""
+#~ "Radio widget to set if we want the adapter to be temporarily visible"
+#~ msgid "Temporarily visible"
+#~ msgstr "גלוי באופן זמני"
+
+#~ msgctxt "Discover time for the adapter"
+#~ msgid "1 minute"
+#~ msgid_plural "%1 minutes"
+#~ msgstr[0] "דקה"
+#~ msgstr[1] "%1 דקות"
+
+#~ msgctxt "Name of the adapter"
+#~ msgid "Name"
+#~ msgstr "שם"
+
+#~ msgctxt "Whether the adapter is powered or not"
+#~ msgid "Powered"
+#~ msgstr "מופעל"
+
+#~ msgctxt "Whether the adapter is visible or not"
+#~ msgid "Visibility"
+#~ msgstr "נראות"
+
+#~ msgctxt "How long the adapter will be discoverable"
+#~ msgid "Discover Time"
+#~ msgstr "זמן לגלוי"
+
+#~ msgid "1 minute"
+#~ msgid_plural "%1 minutes"
+#~ msgstr[0] "דקה"
+#~ msgstr[1] "%1 דקות"
+
+#~ msgid "Bluetooth Adapters"
+#~ msgstr "מתאמי בלוטוס"
+
+#~ msgid "Bluetooth Adapters Control Panel Module"
+#~ msgstr "מודל לוח הבקרה למתאמי בלוטוס"
+
+#~ msgid "(c) 2010 Rafael Fernández López"
+#~ msgstr " Control Panel Module"
+
+#~ msgid "Previous Developer and Maintainer"
+#~ msgstr "מפתחים ותחזקים קודמים"
+
+#~ msgid "No adapters found"
+#~ msgstr "לא נמצאו מתאמים"
+
+#, fuzzy
+#~| msgctxt "Radio widget to set if we want the adapter to be always visible"
+#~| msgid "Always visible"
+#~ msgctxt "Action to fix a problem"
+#~ msgid "Make Visible"
+#~ msgstr "תמיד גלוי"
+
+#~ msgid "Your default Bluetooth adapter is not visible for remote devices."
+#~ msgstr "התקן הבלוטוס הברירת מחדל אינו גלוי להתקנים אחרים."
+
+#~ msgid "Interaction with Bluetooth system is not optimal."
+#~ msgstr "החיבור של הבלוטוס עם המערכת אינו יציב."
+
+#, fuzzy
+#~| msgctxt "This device is a Graphics Tablet (input device)"
+#~| msgid "Tablet"
+#~ msgctxt "Action to fix a problem"
+#~ msgid "Enable"
+#~ msgstr "טבלט"
+
+#~ msgid "Bluetooth is not completely enabled."
+#~ msgstr "הבלוטוס אינו מופעל במלואו."
+
+#~ msgid "Disconnect"
+#~ msgstr "מנותק"
+
+#~ msgid "Connect"
+#~ msgstr "מחובר"
+
+#~ msgctxt "This device is a Phone"
+#~ msgid "Phone"
+#~ msgstr "פלאפון"
+
+#~ msgctxt "This device is a Modem"
+#~ msgid "Modem"
+#~ msgstr "מודם"
+
+#~ msgctxt "This device is a Computer"
+#~ msgid "Computer"
+#~ msgstr "מחשב"
+
+#~ msgctxt "This device is of type Network"
+#~ msgid "Network"
+#~ msgstr "רשת"
+
+#~ msgctxt "This device is a Headset"
+#~ msgid "Headset"
+#~ msgstr "אוזניה"
+
+#~ msgctxt "This device is a Headphones"
+#~ msgid "Headphones"
+#~ msgstr "אוזניות"
+
+#~ msgctxt "This device is an Audio device"
+#~ msgid "Audio"
+#~ msgstr "שמע"
+
+#~ msgctxt "This device is a Keyboard"
+#~ msgid "Keyboard"
+#~ msgstr "מקלדת"
+
+#~ msgctxt "This device is a Mouse"
+#~ msgid "Mouse"
+#~ msgstr "עכבר"
+
+#~ msgctxt "This device is a Joypad"
+#~ msgid "Joypad"
+#~ msgstr "גויסטיק"
+
+#~ msgctxt "This device is a Graphics Tablet (input device)"
+#~ msgid "Tablet"
+#~ msgstr "טבלט"
+
+#~ msgctxt "This device is a Peripheral device"
+#~ msgid "Peripheral"
+#~ msgstr "התקן ציוד הקפי"
+
+#~ msgctxt "This device is a Camera"
+#~ msgid "Camera"
+#~ msgstr "מצלמה"
+
+#~ msgctxt "This device is a Printer"
+#~ msgid "Printer"
+#~ msgstr "מדפסת"
+
+#, fuzzy
+#~ msgctxt ""
+#~ "This device is an Imaging device (printer, scanner, camera, display, ...)"
+#~ msgid "Imaging"
+#~ msgstr "התקן תמונות"
+
+#~ msgctxt "This device is a Wearable"
+#~ msgid "Wearable"
+#~ msgstr "לביש"
+
+#~ msgctxt "This device is a Toy"
+#~ msgid "Toy"
+#~ msgstr "צעצוע"
+
+#~ msgctxt "This device is a Health device"
+#~ msgid "Health"
+#~ msgstr "בריאות"
+
+#~ msgctxt "Type of device: could not be determined"
+#~ msgid "Unknown"
+#~ msgstr "לא ידוע"
+
+#~ msgid "Type:"
+#~ msgstr "סוג:"
+
+#~ msgid "Address:"
+#~ msgstr "כתובת:"
+
+#~ msgid "Name:"
+#~ msgstr "שם:"
+
+#~ msgid "Trusted:"
+#~ msgstr "מהימן:"
+
+#~ msgid "Blocked:"
+#~ msgstr "חסום:"
+
+#~ msgid "Actions:"
+#~ msgstr "פעולות:"
+
+#, fuzzy
+#~| msgid "Setup NAP Network"
+#~ msgid "Setup NAP Network..."
+#~ msgstr "הגדר רשת NAP"
+
+#~ msgid "Setup DUN Network..."
+#~ msgstr "הגדרת רשת DUN..."
+
+#~ msgid "Adapter:"
+#~ msgstr "מתאם:"
+
+#~ msgid "Bluetooth Devices Control Panel Module"
+#~ msgstr "מודול לוח הבקרה של התקני בלוטוס"
+
+#, fuzzy
+#~| msgid ""
+#~| "Are you sure that you want to remove device \"%1\" from the list of "
+#~| "known devices?"
+#~ msgid ""
+#~ "Are you sure that you want to remove %1 device from the list of known "
+#~ "devices?"
+#~ msgid_plural ""
+#~ "Are you sure that you want to remove %1 devices from the list of known "
+#~ "devices?"
+#~ msgstr[0] ""
+#~ "אתה בטוח שאתה רוצה להסיר את ההתקן \"%1\" מהרשימת המכשירים הידועים?"
+#~ msgstr[1] ""
+#~ "אתה בטוח שאתה רוצה להסיר את ההתקן \"%1\" מהרשימת המכשירים הידועים?"
+
+#~ msgid ""
+#~ "Are you sure that you want to remove device \"%1\" from the list of known "
+#~ "devices?"
+#~ msgstr "אתה בטוח שאתה רוצה להסיר את ההתקן \"%1\" מהרשימת המכשירים הידועים?"
+
+#~ msgctxt "Title of window that asks for confirmation when removing a device"
+#~ msgid "Device removal"
+#~ msgstr "ההתקן הוסר"
+
+#~ msgid "Select a device to configure"
+#~ msgstr "בחר התקן להגדרה"
+
+#~ msgid "No devices found"
+#~ msgstr "לא  נמצאו התקנים"
+
+#~ msgid "Add new device"
+#~ msgstr "הוסף התקן חדש"
+
+#~ msgid "Add device"
+#~ msgstr "הוסף התקן"
+
+#~ msgid "Remove device"
+#~ msgstr "הסר התקן"
+
+#~ msgid "Bluetooth Advanced Settings"
+#~ msgstr "הגדרות בלוטוס מתקדמות"
+
+#~ msgid "Bluetooth Advanced Settings Control Panel Module"
+#~ msgstr "מודול לוח הבקרה של הגדרות בלוטוס מתקדמות"
+
+#~ msgctxt "'Auto accept' option value"
+#~ msgid "Never"
+#~ msgstr "לעולם לא"
+
+#~ msgctxt "'Auto accept' option value"
+#~ msgid "Trusted devices"
+#~ msgstr "התקנים מהימנים"
+
+#~ msgctxt "'Auto accept' option value"
+#~ msgid "All devices"
+#~ msgstr "כל ההתקנים"
+
+#~ msgid "Receive files from remote devices"
+#~ msgstr "מקבל קבצים מהתקן מרוחק"
+
+#~ msgid "Accept automatically:"
+#~ msgstr "אשר אוטומטית:"
+
+#~ msgid "Save files in:"
+#~ msgstr "שמור קבצים ב:"
+
+#~ msgid "Enable or disable receiving files"
+#~ msgstr "אפשר או בטל קבלת קבצים"
+
+#~ msgid "Enable or disable the global KDE Bluetooth integration"
+#~ msgstr "אפשר או בטל את הבלוטוס בשולחן העבודה KDE"
+
+#~ msgid "Enable Bluetooth integration"
+#~ msgstr "אפשר שימוש בבלוטוס"
+
+#~ msgctxt "This string is shown when the wizard succeeds"
+#~ msgid "The setup of the device has succeeded"
+#~ msgstr "הגדרת ההתקן הצליחה"
+
+#~ msgid "The setup of %1 has succeeded"
+#~ msgstr "ההגדרה ההתקן %1 הצליחה"
+
+#~ msgid "Send via Bluetooth"
+#~ msgstr "שלח באמצעות בלוטוס"
+
+#~ msgctxt "Other Bluetooth device"
+#~ msgid "Other..."
+#~ msgstr "אחרים..."

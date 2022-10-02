@@ -1,0 +1,367 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the bluedevil package.
+#
+# Stelios <sstavra@gmail.com>, 2020, 2021.
+msgid ""
+msgstr ""
+"Project-Id-Version: bluedevil\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-17 00:47+0000\n"
+"PO-Revision-Date: 2021-09-14 08:12+0300\n"
+"Last-Translator: Stelios <sstavra@gmail.com>\n"
+"Language-Team: Greek <kde-i18n-el@kde.org>\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 20.04.2\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Stelios"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "sstavra@gmail.com"
+
+#: bluetooth.cpp:101
+#, kde-format
+msgctxt "DeviceName Network (Service)"
+msgid "%1 Network (%2)"
+msgstr "%1 Δίκτυο (%2)"
+
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:180
+#, kde-format
+msgid "Disconnect"
+msgstr "Αποσύνδεση"
+
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:180
+#, kde-format
+msgid "Connect"
+msgstr "Σύνδεση"
+
+#: package/contents/ui/Device.qml:100
+#, kde-format
+msgid "Type:"
+msgstr "Τύπος:"
+
+#: package/contents/ui/Device.qml:105 package/contents/ui/General.qml:42
+#, kde-format
+msgid "Address:"
+msgstr "Διεύθυνση:"
+
+#: package/contents/ui/Device.qml:110
+#, kde-format
+msgid "Adapter:"
+msgstr "Προσαρμογέας:"
+
+#: package/contents/ui/Device.qml:116 package/contents/ui/General.qml:36
+#, kde-format
+msgid "Name:"
+msgstr "Όνομα:"
+
+#: package/contents/ui/Device.qml:120
+#, kde-format
+msgid "Trusted"
+msgstr "Έμπιστο"
+
+#: package/contents/ui/Device.qml:126
+#, kde-format
+msgid "Blocked"
+msgstr "Μπλοκαρισμένο"
+
+#: package/contents/ui/Device.qml:132
+#, kde-format
+msgid "Send File"
+msgstr "Αποστολή αρχείου"
+
+#: package/contents/ui/Device.qml:139
+#, kde-format
+msgid "Setup NAP Network…"
+msgstr "Ρύθμιση NAP δικτύου…"
+
+#: package/contents/ui/Device.qml:146
+#, kde-format
+msgid "Setup DUN Network…"
+msgstr "Ρύθμιση DUN δικτύου…"
+
+#: package/contents/ui/Device.qml:156
+#, kde-format
+msgctxt "This device is a Phone"
+msgid "Phone"
+msgstr "Τηλέφωνο"
+
+#: package/contents/ui/Device.qml:158
+#, kde-format
+msgctxt "This device is a Modem"
+msgid "Modem"
+msgstr "Μόντεμ"
+
+#: package/contents/ui/Device.qml:160
+#, kde-format
+msgctxt "This device is a Computer"
+msgid "Computer"
+msgstr "Υπολογιστής"
+
+#: package/contents/ui/Device.qml:162
+#, kde-format
+msgctxt "This device is of type Network"
+msgid "Network"
+msgstr "Δίκτυο"
+
+#: package/contents/ui/Device.qml:164
+#, kde-format
+msgctxt "This device is a Headset"
+msgid "Headset"
+msgstr "Ακουστικά και μικρόφωνο"
+
+#: package/contents/ui/Device.qml:166
+#, kde-format
+msgctxt "This device is a Headphones"
+msgid "Headphones"
+msgstr "Ακουστικά"
+
+#: package/contents/ui/Device.qml:168
+#, kde-format
+msgctxt "This device is an Audio/Video device"
+msgid "Multimedia Device"
+msgstr ""
+
+#: package/contents/ui/Device.qml:170
+#, kde-format
+msgctxt "This device is a Keyboard"
+msgid "Keyboard"
+msgstr "Πληκτρολόγιο"
+
+#: package/contents/ui/Device.qml:172
+#, kde-format
+msgctxt "This device is a Mouse"
+msgid "Mouse"
+msgstr "Ποντίκι"
+
+#: package/contents/ui/Device.qml:174
+#, kde-format
+msgctxt "This device is a Joypad"
+msgid "Joypad"
+msgstr "Χειριστήριο"
+
+#: package/contents/ui/Device.qml:176
+#, kde-format
+msgctxt "This device is a Graphics Tablet (input device)"
+msgid "Tablet"
+msgstr "Πινάκιο"
+
+#: package/contents/ui/Device.qml:178
+#, kde-format
+msgctxt "This device is a Peripheral device"
+msgid "Peripheral"
+msgstr "Περιφερειακό"
+
+#: package/contents/ui/Device.qml:180
+#, kde-format
+msgctxt "This device is a Camera"
+msgid "Camera"
+msgstr "Κάμερα"
+
+#: package/contents/ui/Device.qml:182
+#, kde-format
+msgctxt "This device is a Printer"
+msgid "Printer"
+msgstr "Εκτυπωτής"
+
+#: package/contents/ui/Device.qml:184
+#, kde-format
+msgctxt ""
+"This device is an Imaging device (printer, scanner, camera, display, …)"
+msgid "Imaging"
+msgstr "Απεικόνισης"
+
+#: package/contents/ui/Device.qml:186
+#, kde-format
+msgctxt "This device is a Wearable"
+msgid "Wearable"
+msgstr "Φορετή"
+
+#: package/contents/ui/Device.qml:188
+#, kde-format
+msgctxt "This device is a Toy"
+msgid "Toy"
+msgstr "Παιχνίδι"
+
+#: package/contents/ui/Device.qml:190
+#, kde-format
+msgctxt "This device is a Health device"
+msgid "Health"
+msgstr "Υγείας"
+
+#: package/contents/ui/Device.qml:192
+#, kde-format
+msgctxt "Type of device: could not be determined"
+msgid "Unknown"
+msgstr "Άγνωστη"
+
+#: package/contents/ui/General.qml:19
+#, kde-format
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+#: package/contents/ui/General.qml:28
+#, kde-format
+msgid "Device:"
+msgstr "Συσκευή:"
+
+#: package/contents/ui/General.qml:46
+#, kde-format
+msgid "Enabled:"
+msgstr "Ενεργή:"
+
+#: package/contents/ui/General.qml:52
+#, kde-format
+msgid "Visible:"
+msgstr "Ορατή:"
+
+#: package/contents/ui/General.qml:66
+#, kde-format
+msgid "On login:"
+msgstr "Στη σύνδεση:"
+
+#: package/contents/ui/General.qml:67
+#, kde-format
+msgid "Enable Bluetooth"
+msgstr "Ενεργοποίηση του bluetooth"
+
+#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:212
+#, kde-format
+msgid "Disable Bluetooth"
+msgstr "Απενεργοποίηση του bluetooth"
+
+#: package/contents/ui/General.qml:87
+#, fuzzy, kde-format
+#| msgid "Remember previous status"
+msgid "Restore previous status"
+msgstr "Ανάκληση προηγούμενης κατάστασης"
+
+#: package/contents/ui/General.qml:106
+#, kde-format
+msgid "When receiving files:"
+msgstr "Όταν δέχεται αρχεία:"
+
+#: package/contents/ui/General.qml:108
+#, kde-format
+msgid "Ask for confirmation"
+msgstr "Να ζητείται επιβεβαίωση"
+
+#: package/contents/ui/General.qml:117
+#, kde-format
+msgid "Accept for trusted devices"
+msgstr "Αποδεκτά για έμπιστες συσκευές"
+
+#: package/contents/ui/General.qml:127
+#, kde-format
+msgid "Always accept"
+msgstr "Πάντα αποδεκτά"
+
+#: package/contents/ui/General.qml:137
+#, kde-format
+msgid "Save files in:"
+msgstr "Αποθήκευση αρχείων στο:"
+
+#: package/contents/ui/General.qml:161 package/contents/ui/General.qml:172
+#, kde-format
+msgid "Select folder"
+msgstr "Επιλογή φακέλου"
+
+#: package/contents/ui/main.qml:52
+#, kde-format
+msgid "Forget this Device?"
+msgstr ""
+
+#: package/contents/ui/main.qml:53
+#, fuzzy, kde-format
+#| msgid "Are you sure you want to forget '%1'"
+msgid "Are you sure you want to forget \"%1\"?"
+msgstr "Είστε βέβαιοι ότι θέλετε να ξεχάσετε το '%1';"
+
+#: package/contents/ui/main.qml:64
+#, fuzzy, kde-format
+#| msgid "Device:"
+msgctxt "@action:button"
+msgid "Forget Device"
+msgstr "Συσκευή:"
+
+#: package/contents/ui/main.qml:73
+#, kde-format
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr ""
+
+#: package/contents/ui/main.qml:112
+#, kde-format
+msgid "No Bluetooth adapters found"
+msgstr "Δεν βρέθηκαν προσαρμογείς Bluetooth"
+
+#: package/contents/ui/main.qml:121
+#, kde-format
+msgid "Bluetooth is disabled"
+msgstr "Το bluetooth είναι ανενεργό"
+
+#: package/contents/ui/main.qml:127
+#, kde-format
+msgid "Enable"
+msgstr "Ενεργοποίηση"
+
+#: package/contents/ui/main.qml:137
+#, kde-format
+msgid "No devices paired"
+msgstr "Δεν υπάρχουν συζευγμένες συσκευές"
+
+#: package/contents/ui/main.qml:158
+#, kde-format
+msgid "Connected"
+msgstr "Συνδεδεμένο"
+
+#: package/contents/ui/main.qml:158
+#, kde-format
+msgid "Available"
+msgstr "Διαθέσιμο"
+
+#: package/contents/ui/main.qml:191
+#, kde-format
+msgctxt "@action:button %1 is the name of a Bluetooth device"
+msgid "Forget \"%1\""
+msgstr ""
+
+#: package/contents/ui/main.qml:206
+#, kde-format
+msgid "Add New Device…"
+msgstr ""
+
+#: package/contents/ui/main.qml:224
+#, kde-format
+msgid "Configure…"
+msgstr "Διαμόρφωση…"
+
+#~ msgid "Confirm Deletion of Device"
+#~ msgstr "Επιβεβαίωση διαγραφής της συσκευής"
+
+#~ msgid "Remove"
+#~ msgstr "Αφαίρεση"
+
+#~ msgid "Bluetooth"
+#~ msgstr "Bluetooth"
+
+#~ msgid "Nicolas Fella"
+#~ msgstr "Nicolas Fella"
+
+#~ msgid "Add…"
+#~ msgstr "Προσθήκη…"
+
+#~ msgctxt "This device is an Audio device"
+#~ msgid "Audio"
+#~ msgstr "Ήχου"
+
+#~ msgid "Add..."
+#~ msgstr "Προσθήκη..."

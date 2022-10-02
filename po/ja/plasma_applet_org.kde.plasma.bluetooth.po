@@ -1,0 +1,241 @@
+# Tomohiro Hyakutake <tomhioo@outlook.jp>, 2019.
+# Fumiaki Okushi <fumiaki.okushi@gmail.com>, 2019.
+msgid ""
+msgstr ""
+"Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-16 00:45+0000\n"
+"PO-Revision-Date: 2019-04-21 11:39-0700\n"
+"Last-Translator: Fumiaki Okushi <fumiaki.okushi@gmail.com>\n"
+"Language-Team: Japanese <kde-jp@kde.org>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+"X-Generator: Lokalize 18.12.3\n"
+
+#: package/contents/ui/DeviceItem.qml:35
+#, kde-format
+msgid "Disconnect"
+msgstr "接続解除"
+
+#: package/contents/ui/DeviceItem.qml:35
+#, kde-format
+msgid "Connect"
+msgstr "接続"
+
+#: package/contents/ui/DeviceItem.qml:44
+#, kde-format
+msgid "Browse Files"
+msgstr "ファイルを探索"
+
+#: package/contents/ui/DeviceItem.qml:55
+#, kde-format
+msgid "Send File"
+msgstr "ファイルを送信"
+
+#: package/contents/ui/DeviceItem.qml:115
+#, kde-format
+msgid "Copy"
+msgstr "コピー"
+
+#: package/contents/ui/DeviceItem.qml:213
+#, kde-format
+msgid "Yes"
+msgstr "はい"
+
+#: package/contents/ui/DeviceItem.qml:215
+#, kde-format
+msgid "No"
+msgstr "いいえ"
+
+#: package/contents/ui/DeviceItem.qml:231
+#, kde-format
+msgid "Remote Name"
+msgstr ""
+
+#: package/contents/ui/DeviceItem.qml:235
+#, kde-format
+msgid "Address"
+msgstr "アドレス"
+
+#: package/contents/ui/DeviceItem.qml:238
+#, kde-format
+msgid "Paired"
+msgstr "ペアリング済み"
+
+#: package/contents/ui/DeviceItem.qml:241
+#, kde-format
+msgid "Trusted"
+msgstr "承認済み"
+
+#: package/contents/ui/DeviceItem.qml:244
+#, kde-format
+msgid "Adapter"
+msgstr "アダプタ"
+
+#: package/contents/ui/DeviceItem.qml:253
+#, kde-format
+msgid "Disconnecting"
+msgstr "接続解除中"
+
+#: package/contents/ui/DeviceItem.qml:253
+#, kde-format
+msgid "Connecting"
+msgstr "接続中"
+
+#: package/contents/ui/DeviceItem.qml:259
+#, fuzzy, kde-format
+#| msgid "Connect"
+msgid "Connected"
+msgstr "接続"
+
+#: package/contents/ui/DeviceItem.qml:266
+#, kde-format
+msgid "Audio device"
+msgstr "オーディオデバイス"
+
+#: package/contents/ui/DeviceItem.qml:273
+#, kde-format
+msgid "Input device"
+msgstr "入力デバイス"
+
+#: package/contents/ui/DeviceItem.qml:277
+#, kde-format
+msgid "Phone"
+msgstr ""
+
+#: package/contents/ui/DeviceItem.qml:284
+#, kde-format
+msgid "File transfer"
+msgstr ""
+
+#: package/contents/ui/DeviceItem.qml:287
+#, kde-format
+msgid "Send file"
+msgstr "ファイルを送信"
+
+#: package/contents/ui/DeviceItem.qml:290
+#, kde-format
+msgid "Input"
+msgstr "入力"
+
+#: package/contents/ui/DeviceItem.qml:293
+#, kde-format
+msgid "Audio"
+msgstr "オーディオ"
+
+#: package/contents/ui/DeviceItem.qml:296
+#, kde-format
+msgid "Network"
+msgstr "ネットワーク"
+
+#: package/contents/ui/DeviceItem.qml:300
+#, kde-format
+msgid "Other device"
+msgstr "その他のデバイス"
+
+#: package/contents/ui/DeviceItem.qml:307
+#, kde-format
+msgid "%1% Battery"
+msgstr ""
+
+#: package/contents/ui/DeviceItem.qml:348
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed:HostIsDown"
+msgid "The device is unreachable"
+msgstr "デバイスに到達できません"
+
+#: package/contents/ui/DeviceItem.qml:351
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed"
+msgid "Connection to the device failed"
+msgstr "デバイスへの接続に失敗"
+
+#: package/contents/ui/DeviceItem.qml:357
+#, kde-format
+msgctxt "Notification when the connection failed due to NotReady"
+msgid "The device is not ready"
+msgstr ""
+
+#: package/contents/ui/FullRepresentation.qml:55
+#, kde-format
+msgid "Enable"
+msgstr ""
+
+#: package/contents/ui/FullRepresentation.qml:143
+#, fuzzy, kde-format
+#| msgid "No Adapters Available"
+msgid "No Bluetooth adapters available"
+msgstr "アダプタがありません"
+
+#: package/contents/ui/FullRepresentation.qml:145
+#: package/contents/ui/main.qml:42
+#, kde-format
+msgid "Bluetooth is disabled"
+msgstr "Bluetooth は無効です"
+
+#: package/contents/ui/FullRepresentation.qml:147
+#, fuzzy, kde-format
+#| msgid "No Devices Found"
+msgid "No devices found"
+msgstr "デバイスが見つかりません"
+
+#: package/contents/ui/main.qml:39
+#, kde-format
+msgid "Bluetooth"
+msgstr "Bluetooth"
+
+#: package/contents/ui/main.qml:46
+#, kde-format
+msgid "No adapters available"
+msgstr "アダプタがありません"
+
+#: package/contents/ui/main.qml:48
+#, kde-format
+msgid "Bluetooth is offline"
+msgstr ""
+
+#: package/contents/ui/main.qml:51
+#, kde-format
+msgid "No connected devices"
+msgstr "接続されたデバイスなし"
+
+#: package/contents/ui/main.qml:54
+#, fuzzy, kde-format
+#| msgctxt "Number of connected devices"
+#| msgid "%1 connected device"
+#| msgid_plural "%1 connected devices"
+msgid "%1 connected"
+msgstr "%1個の接続済みデバイス"
+
+#: package/contents/ui/main.qml:56
+#, kde-format
+msgctxt "Number of connected devices"
+msgid "%1 connected device"
+msgid_plural "%1 connected devices"
+msgstr[0] "%1個の接続済みデバイス"
+msgstr[1] "%1 個の接続済みのデバイス"
+
+#: package/contents/ui/main.qml:124
+#, fuzzy, kde-format
+#| msgid "Configure &Bluetooth..."
+msgid "Configure &Bluetooth…"
+msgstr "Bluetooth を設定(&B)..."
+
+#: package/contents/ui/main.qml:126
+#, fuzzy, kde-format
+#| msgid "Add New Device..."
+msgid "Add New Device…"
+msgstr "新しいデバイスを追加..."
+
+#: package/contents/ui/main.qml:129 package/contents/ui/Toolbar.qml:27
+#, kde-format
+msgid "Enable Bluetooth"
+msgstr "Bluetooth を有効化"
+
+#~ msgid "Bluetooth is Disabled"
+#~ msgstr "Bluetooth は無効です"

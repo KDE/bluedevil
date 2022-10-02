@@ -1,0 +1,369 @@
+# Lithuanian translations for bluedevil package.
+# Copyright (C) 2020 This file is copyright:
+# This file is distributed under the same license as the bluedevil package.
+# Automatically generated, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: bluedevil\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-17 00:47+0000\n"
+"PO-Revision-Date: 2021-12-10 00:32+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: lt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
+"%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
+"X-Generator: Poedit 3.0\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Moo"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "<>"
+
+#: bluetooth.cpp:101
+#, kde-format
+msgctxt "DeviceName Network (Service)"
+msgid "%1 Network (%2)"
+msgstr "%1 tinklas (%2)"
+
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:180
+#, kde-format
+msgid "Disconnect"
+msgstr "Atsijungti"
+
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:180
+#, kde-format
+msgid "Connect"
+msgstr "Prisijungti"
+
+#: package/contents/ui/Device.qml:100
+#, kde-format
+msgid "Type:"
+msgstr "Tipas:"
+
+#: package/contents/ui/Device.qml:105 package/contents/ui/General.qml:42
+#, kde-format
+msgid "Address:"
+msgstr "Adresas:"
+
+#: package/contents/ui/Device.qml:110
+#, kde-format
+msgid "Adapter:"
+msgstr "Adapteris:"
+
+#: package/contents/ui/Device.qml:116 package/contents/ui/General.qml:36
+#, kde-format
+msgid "Name:"
+msgstr "Pavadinimas:"
+
+#: package/contents/ui/Device.qml:120
+#, kde-format
+msgid "Trusted"
+msgstr "Patikimas"
+
+#: package/contents/ui/Device.qml:126
+#, kde-format
+msgid "Blocked"
+msgstr "Užblokuotas"
+
+#: package/contents/ui/Device.qml:132
+#, kde-format
+msgid "Send File"
+msgstr "Siųsti failą"
+
+#: package/contents/ui/Device.qml:139
+#, kde-format
+msgid "Setup NAP Network…"
+msgstr "Nustatyti NAP tinklą…"
+
+#: package/contents/ui/Device.qml:146
+#, kde-format
+msgid "Setup DUN Network…"
+msgstr "Nustatyti DUN tinklą…"
+
+#: package/contents/ui/Device.qml:156
+#, kde-format
+msgctxt "This device is a Phone"
+msgid "Phone"
+msgstr "Telefonas"
+
+#: package/contents/ui/Device.qml:158
+#, kde-format
+msgctxt "This device is a Modem"
+msgid "Modem"
+msgstr "Modemas"
+
+#: package/contents/ui/Device.qml:160
+#, kde-format
+msgctxt "This device is a Computer"
+msgid "Computer"
+msgstr "Kompiuteris"
+
+#: package/contents/ui/Device.qml:162
+#, kde-format
+msgctxt "This device is of type Network"
+msgid "Network"
+msgstr "Tinklas"
+
+#: package/contents/ui/Device.qml:164
+#, kde-format
+msgctxt "This device is a Headset"
+msgid "Headset"
+msgstr "Ausinės su mikrofonu"
+
+#: package/contents/ui/Device.qml:166
+#, kde-format
+msgctxt "This device is a Headphones"
+msgid "Headphones"
+msgstr "Ausinės"
+
+#: package/contents/ui/Device.qml:168
+#, kde-format
+msgctxt "This device is an Audio/Video device"
+msgid "Multimedia Device"
+msgstr ""
+
+#: package/contents/ui/Device.qml:170
+#, kde-format
+msgctxt "This device is a Keyboard"
+msgid "Keyboard"
+msgstr "Klaviatūra"
+
+#: package/contents/ui/Device.qml:172
+#, kde-format
+msgctxt "This device is a Mouse"
+msgid "Mouse"
+msgstr "Pelė"
+
+#: package/contents/ui/Device.qml:174
+#, kde-format
+msgctxt "This device is a Joypad"
+msgid "Joypad"
+msgstr "Žaidimų pultas"
+
+#: package/contents/ui/Device.qml:176
+#, kde-format
+msgctxt "This device is a Graphics Tablet (input device)"
+msgid "Tablet"
+msgstr "Planšetė"
+
+#: package/contents/ui/Device.qml:178
+#, kde-format
+msgctxt "This device is a Peripheral device"
+msgid "Peripheral"
+msgstr "Išorinis įtaisas"
+
+#: package/contents/ui/Device.qml:180
+#, kde-format
+msgctxt "This device is a Camera"
+msgid "Camera"
+msgstr "Kamera"
+
+#: package/contents/ui/Device.qml:182
+#, kde-format
+msgctxt "This device is a Printer"
+msgid "Printer"
+msgstr "Spausdintuvas"
+
+#: package/contents/ui/Device.qml:184
+#, kde-format
+msgctxt ""
+"This device is an Imaging device (printer, scanner, camera, display, …)"
+msgid "Imaging"
+msgstr "Vaizdo gavimo"
+
+#: package/contents/ui/Device.qml:186
+#, kde-format
+msgctxt "This device is a Wearable"
+msgid "Wearable"
+msgstr "Galimas dėvėti"
+
+#: package/contents/ui/Device.qml:188
+#, kde-format
+msgctxt "This device is a Toy"
+msgid "Toy"
+msgstr "Žaislas"
+
+#: package/contents/ui/Device.qml:190
+#, kde-format
+msgctxt "This device is a Health device"
+msgid "Health"
+msgstr "Sveikatos"
+
+#: package/contents/ui/Device.qml:192
+#, kde-format
+msgctxt "Type of device: could not be determined"
+msgid "Unknown"
+msgstr "Nežinomas"
+
+#: package/contents/ui/General.qml:19
+#, kde-format
+msgid "Settings"
+msgstr "Nuostatos"
+
+#: package/contents/ui/General.qml:28
+#, kde-format
+msgid "Device:"
+msgstr "Įrenginys:"
+
+#: package/contents/ui/General.qml:46
+#, kde-format
+msgid "Enabled:"
+msgstr "Įjungtas:"
+
+#: package/contents/ui/General.qml:52
+#, kde-format
+msgid "Visible:"
+msgstr "Matomas:"
+
+#: package/contents/ui/General.qml:66
+#, kde-format
+msgid "On login:"
+msgstr "Prisijungiant:"
+
+#: package/contents/ui/General.qml:67
+#, kde-format
+msgid "Enable Bluetooth"
+msgstr "Įjungti Bluetooth"
+
+#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:212
+#, kde-format
+msgid "Disable Bluetooth"
+msgstr "Išjungti Bluetooth"
+
+#: package/contents/ui/General.qml:87
+#, fuzzy, kde-format
+#| msgid "Remember previous status"
+msgid "Restore previous status"
+msgstr "Prisiminti ankstesnę būseną"
+
+#: package/contents/ui/General.qml:106
+#, kde-format
+msgid "When receiving files:"
+msgstr "Gaunant failus:"
+
+#: package/contents/ui/General.qml:108
+#, kde-format
+msgid "Ask for confirmation"
+msgstr "Klausti patvirtinimo"
+
+#: package/contents/ui/General.qml:117
+#, kde-format
+msgid "Accept for trusted devices"
+msgstr "Priimti iš patikimų įrenginių"
+
+#: package/contents/ui/General.qml:127
+#, kde-format
+msgid "Always accept"
+msgstr "Visada priimti"
+
+#: package/contents/ui/General.qml:137
+#, kde-format
+msgid "Save files in:"
+msgstr "Įrašyti failus į:"
+
+#: package/contents/ui/General.qml:161 package/contents/ui/General.qml:172
+#, kde-format
+msgid "Select folder"
+msgstr "Pasirinkti aplanką"
+
+#: package/contents/ui/main.qml:52
+#, kde-format
+msgid "Forget this Device?"
+msgstr ""
+
+#: package/contents/ui/main.qml:53
+#, fuzzy, kde-format
+#| msgid "Are you sure you want to forget '%1'"
+msgid "Are you sure you want to forget \"%1\"?"
+msgstr "Ar tikrai norite pamiršti „%1“"
+
+#: package/contents/ui/main.qml:64
+#, fuzzy, kde-format
+#| msgid "Device:"
+msgctxt "@action:button"
+msgid "Forget Device"
+msgstr "Įrenginys:"
+
+#: package/contents/ui/main.qml:73
+#, kde-format
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr ""
+
+#: package/contents/ui/main.qml:112
+#, kde-format
+msgid "No Bluetooth adapters found"
+msgstr "Nerasta jokių Bluetooth adapterių"
+
+#: package/contents/ui/main.qml:121
+#, kde-format
+msgid "Bluetooth is disabled"
+msgstr "Bluetooth yra išjungtas"
+
+#: package/contents/ui/main.qml:127
+#, kde-format
+msgid "Enable"
+msgstr "Įjungti"
+
+#: package/contents/ui/main.qml:137
+#, kde-format
+msgid "No devices paired"
+msgstr "Nėra suporuotų įrenginių"
+
+#: package/contents/ui/main.qml:158
+#, kde-format
+msgid "Connected"
+msgstr "Prisijungta"
+
+#: package/contents/ui/main.qml:158
+#, kde-format
+msgid "Available"
+msgstr "Prieinamas"
+
+#: package/contents/ui/main.qml:191
+#, kde-format
+msgctxt "@action:button %1 is the name of a Bluetooth device"
+msgid "Forget \"%1\""
+msgstr ""
+
+#: package/contents/ui/main.qml:206
+#, kde-format
+msgid "Add New Device…"
+msgstr ""
+
+#: package/contents/ui/main.qml:224
+#, kde-format
+msgid "Configure…"
+msgstr "Konfigūruoti…"
+
+#~ msgid "Confirm Deletion of Device"
+#~ msgstr "Patvirtinti įrenginio ištrynimą"
+
+#~ msgid "Remove"
+#~ msgstr "Šalinti"
+
+#~ msgid "Bluetooth"
+#~ msgstr "Bluetooth"
+
+#~ msgid "Nicolas Fella"
+#~ msgstr "Nicolas Fella"
+
+#~ msgid "Add…"
+#~ msgstr "Pridėti…"
+
+#~ msgctxt "This device is an Audio device"
+#~ msgid "Audio"
+#~ msgstr "Audio"
+
+#~ msgid "Add..."
+#~ msgstr "Pridėti..."

@@ -1,0 +1,254 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Elkana Bardugo <ttv200@gmail.com>, 2016.
+# Elkana Bardugo <ttv200@gmail.com>, 2017. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-16 00:45+0000\n"
+"PO-Revision-Date: 2017-05-16 06:55-0400\n"
+"Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
+"Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Zanata 3.9.6\n"
+
+#: package/contents/ui/DeviceItem.qml:35
+#, kde-format
+msgid "Disconnect"
+msgstr "התנתק"
+
+#: package/contents/ui/DeviceItem.qml:35
+#, kde-format
+msgid "Connect"
+msgstr "התחבר"
+
+#: package/contents/ui/DeviceItem.qml:44
+#, kde-format
+msgid "Browse Files"
+msgstr "דפדפף בקבצים"
+
+#: package/contents/ui/DeviceItem.qml:55
+#, kde-format
+msgid "Send File"
+msgstr "שלח קובץ"
+
+#: package/contents/ui/DeviceItem.qml:115
+#, kde-format
+msgid "Copy"
+msgstr ""
+
+#: package/contents/ui/DeviceItem.qml:213
+#, kde-format
+msgid "Yes"
+msgstr "כן"
+
+#: package/contents/ui/DeviceItem.qml:215
+#, kde-format
+msgid "No"
+msgstr "לא"
+
+#: package/contents/ui/DeviceItem.qml:231
+#, kde-format
+msgid "Remote Name"
+msgstr "שם מרוחק"
+
+#: package/contents/ui/DeviceItem.qml:235
+#, kde-format
+msgid "Address"
+msgstr "כתובת"
+
+#: package/contents/ui/DeviceItem.qml:238
+#, kde-format
+msgid "Paired"
+msgstr "מתואם"
+
+#: package/contents/ui/DeviceItem.qml:241
+#, kde-format
+msgid "Trusted"
+msgstr "אמין"
+
+#: package/contents/ui/DeviceItem.qml:244
+#, kde-format
+msgid "Adapter"
+msgstr "מתאם"
+
+#: package/contents/ui/DeviceItem.qml:253
+#, kde-format
+msgid "Disconnecting"
+msgstr "מתנתק"
+
+#: package/contents/ui/DeviceItem.qml:253
+#, kde-format
+msgid "Connecting"
+msgstr "מתחבר"
+
+#: package/contents/ui/DeviceItem.qml:259
+#, fuzzy, kde-format
+#| msgid "Connect"
+msgid "Connected"
+msgstr "התחבר"
+
+#: package/contents/ui/DeviceItem.qml:266
+#, kde-format
+msgid "Audio device"
+msgstr "התקן שמע"
+
+#: package/contents/ui/DeviceItem.qml:273
+#, kde-format
+msgid "Input device"
+msgstr "התקן קלט"
+
+#: package/contents/ui/DeviceItem.qml:277
+#, kde-format
+msgid "Phone"
+msgstr ""
+
+#: package/contents/ui/DeviceItem.qml:284
+#, kde-format
+msgid "File transfer"
+msgstr "העברת קבצים"
+
+#: package/contents/ui/DeviceItem.qml:287
+#, kde-format
+msgid "Send file"
+msgstr "שלח קובץ"
+
+#: package/contents/ui/DeviceItem.qml:290
+#, kde-format
+msgid "Input"
+msgstr "קלט"
+
+#: package/contents/ui/DeviceItem.qml:293
+#, kde-format
+msgid "Audio"
+msgstr "שמע"
+
+#: package/contents/ui/DeviceItem.qml:296
+#, kde-format
+msgid "Network"
+msgstr "רשת"
+
+#: package/contents/ui/DeviceItem.qml:300
+#, kde-format
+msgid "Other device"
+msgstr "התקנים אחרים"
+
+#: package/contents/ui/DeviceItem.qml:307
+#, kde-format
+msgid "%1% Battery"
+msgstr ""
+
+#: package/contents/ui/DeviceItem.qml:348
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed:HostIsDown"
+msgid "The device is unreachable"
+msgstr "ההתקן אינו ניתן להשגה"
+
+#: package/contents/ui/DeviceItem.qml:351
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed"
+msgid "Connection to the device failed"
+msgstr "ההתחברות להתקן נכשלה"
+
+#: package/contents/ui/DeviceItem.qml:357
+#, kde-format
+msgctxt "Notification when the connection failed due to NotReady"
+msgid "The device is not ready"
+msgstr "ההתקן אינו מוכן"
+
+#: package/contents/ui/FullRepresentation.qml:55
+#, kde-format
+msgid "Enable"
+msgstr ""
+
+#: package/contents/ui/FullRepresentation.qml:143
+#, fuzzy, kde-format
+#| msgid "No Adapters Available"
+msgid "No Bluetooth adapters available"
+msgstr "אין מתאמים זמינים"
+
+#: package/contents/ui/FullRepresentation.qml:145
+#: package/contents/ui/main.qml:42
+#, kde-format
+msgid "Bluetooth is disabled"
+msgstr "הבלוטוס כבוי"
+
+#: package/contents/ui/FullRepresentation.qml:147
+#, fuzzy, kde-format
+#| msgid "No Devices Found"
+msgid "No devices found"
+msgstr "לא נמצאו התקנים"
+
+#: package/contents/ui/main.qml:39
+#, kde-format
+msgid "Bluetooth"
+msgstr "בלוטוס"
+
+#: package/contents/ui/main.qml:46
+#, kde-format
+msgid "No adapters available"
+msgstr "אין מתאמים זמינים"
+
+#: package/contents/ui/main.qml:48
+#, kde-format
+msgid "Bluetooth is offline"
+msgstr "הבלוטוס לא מחובר"
+
+#: package/contents/ui/main.qml:51
+#, kde-format
+msgid "No connected devices"
+msgstr "אין התקנים מחוברים"
+
+#: package/contents/ui/main.qml:54
+#, fuzzy, kde-format
+#| msgctxt "Number of connected devices"
+#| msgid "%1 connected device"
+#| msgid_plural "%1 connected devices"
+msgid "%1 connected"
+msgstr "התקן מחובר"
+
+#: package/contents/ui/main.qml:56
+#, kde-format
+msgctxt "Number of connected devices"
+msgid "%1 connected device"
+msgid_plural "%1 connected devices"
+msgstr[0] "התקן מחובר"
+msgstr[1] "%1 התקנים מחוברים"
+
+#: package/contents/ui/main.qml:124
+#, fuzzy, kde-format
+#| msgid "Configure &Bluetooth..."
+msgid "Configure &Bluetooth…"
+msgstr "הגדר בלוטוס..."
+
+#: package/contents/ui/main.qml:126
+#, fuzzy, kde-format
+#| msgid "Add New Device"
+msgid "Add New Device…"
+msgstr "הוסף התקן חדש"
+
+#: package/contents/ui/main.qml:129 package/contents/ui/Toolbar.qml:27
+#, kde-format
+msgid "Enable Bluetooth"
+msgstr "הפעל בלוטוס"
+
+#~ msgid "Bluetooth is Disabled"
+#~ msgstr "הבלוטוס כבוי"
+
+#~ msgid "Add New Device..."
+#~ msgstr "הוסף התקן חדש..."
+
+#~ msgid "Connected devices"
+#~ msgstr "התקנים מחוברים"
+
+#~ msgid "Available devices"
+#~ msgstr "התקנים זמינים"
+
+#~ msgid "Configure Bluetooth..."
+#~ msgstr "הגדרות בלוטוס..."

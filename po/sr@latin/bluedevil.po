@@ -1,0 +1,952 @@
+# Translation of bluedevil.po into Serbian.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2011, 2013, 2014, 2015, 2016, 2017.
+# Dalibor Djuric <daliborddjuric@gmail.com>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: bluedevil\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2020-03-15 03:36+0100\n"
+"PO-Revision-Date: 2017-12-15 12:37+0100\n"
+"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
+"Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
+"Language: sr@latin\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+"X-Environment: kde\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Časlav Ilić"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "caslav.ilic@gmx.net"
+
+#: kcmodule/adapters/adapters.cpp:71
+#, kde-format
+msgctxt "Radio widget to set if we want the adapter to be hidden"
+msgid "Hidden"
+msgstr "skriven"
+
+#: kcmodule/adapters/adapters.cpp:72
+#, kde-format
+msgctxt "Radio widget to set if we want the adapter to be always visible"
+msgid "Always visible"
+msgstr "uvek vidljiv"
+
+#: kcmodule/adapters/adapters.cpp:73
+#, kde-format
+msgctxt "Radio widget to set if we want the adapter to be temporarily visible"
+msgid "Temporarily visible"
+msgstr "privremeno vidljiv"
+
+#: kcmodule/adapters/adapters.cpp:113
+#, kde-format
+msgctxt "Discover time for the adapter"
+msgid "1 minute"
+msgid_plural "%1 minutes"
+msgstr[0] "%1 minut"
+msgstr[1] "%1 minuta"
+msgstr[2] "%1 minuta"
+msgstr[3] "1 minut"
+
+#: kcmodule/adapters/adapters.cpp:119
+#, kde-format
+msgctxt "Name of the adapter"
+msgid "Name"
+msgstr "Ime"
+
+#: kcmodule/adapters/adapters.cpp:120
+#, kde-format
+msgctxt "Whether the adapter is powered or not"
+msgid "Powered"
+msgstr "U pogonu"
+
+#: kcmodule/adapters/adapters.cpp:121
+#, kde-format
+msgctxt "Whether the adapter is visible or not"
+msgid "Visibility"
+msgstr "Vidljivost"
+
+#: kcmodule/adapters/adapters.cpp:124
+#, kde-format
+msgctxt "How long the adapter will be discoverable"
+msgid "Discover Time"
+msgstr "Vreme otkrivanja"
+
+#: kcmodule/adapters/adapters.cpp:230 kcmodule/adapters/adapters.cpp:257
+#, kde-format
+msgid "1 minute"
+msgid_plural "%1 minutes"
+msgstr[0] "%1 minut"
+msgstr[1] "%1 minuta"
+msgstr[2] "%1 minuta"
+msgstr[3] "1 minut"
+
+#: kcmodule/adapters/adapters.cpp:269
+#, kde-format
+msgid "Bluetooth Adapters"
+msgstr "Bluetooth adapteri"
+
+#: kcmodule/adapters/adapters.cpp:271
+#, kde-format
+msgid "Bluetooth Adapters Control Panel Module"
+msgstr "Kontrolni modul za bluetooth adaptere"
+
+#: kcmodule/adapters/adapters.cpp:273 kcmodule/devices/devices.cpp:117
+#: kcmodule/global/global.cpp:53
+#, kde-format
+msgid "(c) 2010 Rafael Fernández López"
+msgstr "© 2010, Rafel Fernandez Lopez"
+
+#: kcmodule/adapters/adapters.cpp:275 kcmodule/devices/devices.cpp:120
+#: kcmodule/global/global.cpp:55 kded/bluedevildaemon.cpp:91
+#: sendfile/main.cpp:42 wizard/main.cpp:44
+#, kde-format
+msgid "Maintainer"
+msgstr "Održavalac"
+
+#: kcmodule/adapters/adapters.cpp:278 kcmodule/devices/devices.cpp:123
+#: kcmodule/global/global.cpp:58
+#, kde-format
+msgid "Previous Developer and Maintainer"
+msgstr "Prethodni programer i održavalac"
+
+#: kcmodule/adapters/adapters.cpp:348
+#, kde-format
+msgid "No adapters found"
+msgstr "Nije nađen nijedan adapter"
+
+#: kcmodule/common/systemcheck.cpp:69 kio/bluetooth/kiobluetooth.cpp:79
+#: kio/bluetooth/kiobluetooth.cpp:209
+#, kde-format
+msgid "No Bluetooth adapters have been found."
+msgstr "Nije nađen nijedan bluetooth adapter."
+
+#: kcmodule/common/systemcheck.cpp:76 sendfile/discoverwidget.cpp:149
+#: wizard/pages/discover.cpp:276
+#, kde-format
+msgid "Bluetooth is disabled."
+msgstr "Bluetooth je deaktiviran."
+
+#: kcmodule/common/systemcheck.cpp:78 sendfile/discoverwidget.cpp:150
+#: wizard/pages/discover.cpp:277
+#, fuzzy, kde-format
+#| msgctxt "This device is a Graphics Tablet (input device)"
+#| msgid "Tablet"
+msgctxt "Action to enable Bluetooth adapter"
+msgid "Enable"
+msgstr "tablica"
+
+#: kcmodule/common/systemcheck.cpp:87 sendfile/discoverwidget.cpp:152
+#, kde-format
+msgid "Your Bluetooth adapter is powered off."
+msgstr "Bluetooth adapter je ugašen."
+
+#: kcmodule/common/systemcheck.cpp:89 sendfile/discoverwidget.cpp:153
+#, kde-format
+msgctxt "Action to turn on Bluetooth adapter"
+msgid "Turn On"
+msgstr ""
+
+#: kcmodule/common/systemcheck.cpp:99
+#, fuzzy, kde-format
+#| msgctxt "Radio widget to set if we want the adapter to be always visible"
+#| msgid "Always visible"
+msgctxt "Action to fix a problem"
+msgid "Make Visible"
+msgstr "uvek vidljiv"
+
+#: kcmodule/common/systemcheck.cpp:102
+#, kde-format
+msgid "Your default Bluetooth adapter is not visible for remote devices."
+msgstr "Podrazumevani bluetooth adapter nije vidljiv udaljenim uređajima."
+
+#: kcmodule/common/systemcheck.cpp:110 wizard/pages/discover.cpp:269
+#, kde-format
+msgctxt "Action to fix a problem"
+msgid "Fix it"
+msgstr "Popravi"
+
+#: kcmodule/common/systemcheck.cpp:113
+#, kde-format
+msgid "Interaction with Bluetooth system is not optimal."
+msgstr "Saradnja sa bluetooth sistemom nije optimalna."
+
+#: kcmodule/common/systemcheck.cpp:121
+#, fuzzy, kde-format
+#| msgctxt "This device is a Graphics Tablet (input device)"
+#| msgid "Tablet"
+msgctxt "Action to fix a problem"
+msgid "Enable"
+msgstr "tablica"
+
+#: kcmodule/common/systemcheck.cpp:124
+#, kde-format
+msgid "Bluetooth is not completely enabled."
+msgstr "Bluetooth nije potpuno aktiviran."
+
+#: kcmodule/devices/devicedetails.cpp:162
+#, kde-format
+msgid "Disconnect"
+msgstr "Prekini vezu"
+
+#: kcmodule/devices/devicedetails.cpp:165
+#, kde-format
+msgid "Connect"
+msgstr "Poveži"
+
+#: kcmodule/devices/devicedetails.cpp:216
+#, kde-format
+msgctxt "This device is a Phone"
+msgid "Phone"
+msgstr "telefon"
+
+#: kcmodule/devices/devicedetails.cpp:218
+#, kde-format
+msgctxt "This device is a Modem"
+msgid "Modem"
+msgstr "modem"
+
+#: kcmodule/devices/devicedetails.cpp:220
+#, kde-format
+msgctxt "This device is a Computer"
+msgid "Computer"
+msgstr "računar"
+
+#: kcmodule/devices/devicedetails.cpp:222
+#, kde-format
+msgctxt "This device is of type Network"
+msgid "Network"
+msgstr "mreža"
+
+#: kcmodule/devices/devicedetails.cpp:224
+#, kde-format
+msgctxt "This device is a Headset"
+msgid "Headset"
+msgstr "slušalice sa mikrofonom"
+
+#: kcmodule/devices/devicedetails.cpp:226
+#, kde-format
+msgctxt "This device is a Headphones"
+msgid "Headphones"
+msgstr "slušalice"
+
+#: kcmodule/devices/devicedetails.cpp:228
+#, kde-format
+msgctxt "This device is an Audio device"
+msgid "Audio"
+msgstr "audio"
+
+#: kcmodule/devices/devicedetails.cpp:230
+#, kde-format
+msgctxt "This device is a Keyboard"
+msgid "Keyboard"
+msgstr "tastatura"
+
+#: kcmodule/devices/devicedetails.cpp:232
+#, kde-format
+msgctxt "This device is a Mouse"
+msgid "Mouse"
+msgstr "miš"
+
+#: kcmodule/devices/devicedetails.cpp:234
+#, kde-format
+msgctxt "This device is a Joypad"
+msgid "Joypad"
+msgstr "džojped"
+
+#: kcmodule/devices/devicedetails.cpp:236
+#, kde-format
+msgctxt "This device is a Graphics Tablet (input device)"
+msgid "Tablet"
+msgstr "tablica"
+
+#: kcmodule/devices/devicedetails.cpp:238
+#, kde-format
+msgctxt "This device is a Peripheral device"
+msgid "Peripheral"
+msgstr "periferija"
+
+#: kcmodule/devices/devicedetails.cpp:240
+#, kde-format
+msgctxt "This device is a Camera"
+msgid "Camera"
+msgstr "fotoaparat"
+
+#: kcmodule/devices/devicedetails.cpp:242
+#, kde-format
+msgctxt "This device is a Printer"
+msgid "Printer"
+msgstr "štampač"
+
+#: kcmodule/devices/devicedetails.cpp:244
+#, kde-format
+msgctxt ""
+"This device is an Imaging device (printer, scanner, camera, display, ...)"
+msgid "Imaging"
+msgstr "slikanje"
+
+#: kcmodule/devices/devicedetails.cpp:246
+#, kde-format
+msgctxt "This device is a Wearable"
+msgid "Wearable"
+msgstr "nosivi"
+
+#: kcmodule/devices/devicedetails.cpp:248
+#, kde-format
+msgctxt "This device is a Toy"
+msgid "Toy"
+msgstr "igračka"
+
+#: kcmodule/devices/devicedetails.cpp:250
+#, kde-format
+msgctxt "This device is a Health device"
+msgid "Health"
+msgstr "zdravlje"
+
+#: kcmodule/devices/devicedetails.cpp:252
+#, kde-format
+msgctxt "Type of device: could not be determined"
+msgid "Unknown"
+msgstr "nepoznat"
+
+#: kcmodule/devices/devicedetails.cpp:274
+#, kde-format
+msgctxt "DeviceName Network (Service)"
+msgid "%1 Network (%2)"
+msgstr "Mreža %1 (%2)"
+
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+#: kcmodule/devices/devicedetails.ui:116
+#, kde-format
+msgid "Type:"
+msgstr "Tip:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_5)
+#: kcmodule/devices/devicedetails.ui:126
+#, kde-format
+msgid "Address:"
+msgstr "Adresa:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_8)
+#: kcmodule/devices/devicedetails.ui:140
+#, kde-format
+msgid "Name:"
+msgstr "Ime:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: kcmodule/devices/devicedetails.ui:154
+#, kde-format
+msgid "Trusted:"
+msgstr "Pouzdan:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: kcmodule/devices/devicedetails.ui:164
+#, kde-format
+msgid "Blocked:"
+msgstr "Blokiran:"
+
+#. i18n: ectx: property (text), widget (QLabel, actionsLabel)
+#: kcmodule/devices/devicedetails.ui:174
+#, kde-format
+msgid "Actions:"
+msgstr "Radnje:"
+
+#. i18n: ectx: property (text), widget (QPushButton, sendFileButton)
+#: kcmodule/devices/devicedetails.ui:183 kio/bluetooth/kiobluetooth.cpp:58
+#, kde-format
+msgid "Send File"
+msgstr "Slanje fajla"
+
+#. i18n: ectx: property (text), widget (QPushButton, napButton)
+#: kcmodule/devices/devicedetails.ui:190
+#, kde-format
+msgid "Setup NAP Network..."
+msgstr "Postavi NAP mrežu..."
+
+#. i18n: ectx: property (text), widget (QPushButton, dunButton)
+#: kcmodule/devices/devicedetails.ui:197
+#, kde-format
+msgid "Setup DUN Network..."
+msgstr "Postavi DUN mrežu..."
+
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#: kcmodule/devices/devicedetails.ui:206
+#, kde-format
+msgid "Adapter:"
+msgstr "Adapter:"
+
+#: kcmodule/devices/devices.cpp:113
+#, kde-format
+msgid "Bluetooth Devices"
+msgstr "Bluetooth uređaji"
+
+#: kcmodule/devices/devices.cpp:115
+#, kde-format
+msgid "Bluetooth Devices Control Panel Module"
+msgstr "Kontrolni modul za bluetooth uređaje"
+
+#: kcmodule/devices/devices.cpp:218
+#, fuzzy, kde-format
+#| msgid ""
+#| "Are you sure that you want to remove device \"%1\" from the list of known "
+#| "devices?"
+msgid ""
+"Are you sure that you want to remove %1 device from the list of known "
+"devices?"
+msgid_plural ""
+"Are you sure that you want to remove %1 devices from the list of known "
+"devices?"
+msgstr[0] ""
+"Želite li zaista da uklonite uređaj „%1“ sa spiska poznatih uređaja?"
+msgstr[1] ""
+"Želite li zaista da uklonite uređaj „%1“ sa spiska poznatih uređaja?"
+msgstr[2] ""
+"Želite li zaista da uklonite uređaj „%1“ sa spiska poznatih uređaja?"
+msgstr[3] ""
+"Želite li zaista da uklonite uređaj „%1“ sa spiska poznatih uređaja?"
+
+#: kcmodule/devices/devices.cpp:220
+#, kde-format
+msgid ""
+"Are you sure that you want to remove device \"%1\" from the list of known "
+"devices?"
+msgstr "Želite li zaista da uklonite uređaj „%1“ sa spiska poznatih uređaja?"
+
+#: kcmodule/devices/devices.cpp:223
+#, kde-format
+msgctxt "Title of window that asks for confirmation when removing a device"
+msgid "Device removal"
+msgstr "Uklanjanje uređaja"
+
+#: kcmodule/devices/devices.cpp:290
+#, kde-format
+msgid "Select a device to configure"
+msgstr "Izaberite uređaj za podešavanje"
+
+#: kcmodule/devices/devices.cpp:305
+#, kde-format
+msgid "No devices found"
+msgstr "Nije nađen nijedan uređaj"
+
+#: kcmodule/devices/devices.cpp:308
+#, kde-format
+msgid "Add new device"
+msgstr "Dodaj novi uređaj"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, addButton)
+#: kcmodule/devices/devices.ui:62
+#, kde-format
+msgid "Add device"
+msgstr "Dodaj uređaj"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, removeButton)
+#: kcmodule/devices/devices.ui:76
+#, kde-format
+msgid "Remove device"
+msgstr "Ukloni uređaj"
+
+#: kcmodule/global/global.cpp:49
+#, kde-format
+msgid "Bluetooth Advanced Settings"
+msgstr "Napredne bluetooth postavke"
+
+#: kcmodule/global/global.cpp:51
+#, kde-format
+msgid "Bluetooth Advanced Settings Control Panel Module"
+msgstr "Kontrolni modul za napredne bluetooth postavke"
+
+#: kcmodule/global/global.cpp:66
+#, kde-format
+msgctxt "'Auto accept' option value"
+msgid "Never"
+msgstr "nikad"
+
+#: kcmodule/global/global.cpp:67
+#, kde-format
+msgctxt "'Auto accept' option value"
+msgid "Trusted devices"
+msgstr "pouzdani uređaji"
+
+#: kcmodule/global/global.cpp:68
+#, kde-format
+msgctxt "'Auto accept' option value"
+msgid "All devices"
+msgstr "svi uređaji"
+
+#. i18n: ectx: property (text), widget (QLabel, lbl_receivingFiles)
+#: kcmodule/global/global.ui:17
+#, kde-format
+msgid "<b>Receiving files</b>"
+msgstr "<b>Prijem fajlova</b>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_enabled)
+#: kcmodule/global/global.ui:24
+#, kde-format
+msgid "Receive files from remote devices"
+msgstr "Primaj fajlove sa udaljenih uređaja"
+
+#. i18n: ectx: property (text), widget (QLabel, lbl_autoAccept)
+#: kcmodule/global/global.ui:66
+#, kde-format
+msgid "Accept automatically:"
+msgstr "Prihvataj automatski:"
+
+#. i18n: ectx: property (text), widget (QLabel, lbl_saveFiles)
+#: kcmodule/global/global.ui:76
+#, kde-format
+msgid "Save files in:"
+msgstr "Upisuj fajlove u:"
+
+#: kded/bluedevildaemon.cpp:84 kded/bluedevildaemon.cpp:86
+#, kde-format
+msgid "Bluetooth Daemon"
+msgstr "Bluetooth demon"
+
+#: kded/bluedevildaemon.cpp:88 sendfile/main.cpp:40 wizard/main.cpp:42
+#, kde-format
+msgid "(c) 2010, UFO Coders"
+msgstr "© 2010, UFO Coders"
+
+#: kded/bluedevildaemon.cpp:94 kded/bluedevildaemon.cpp:97 sendfile/main.cpp:45
+#: wizard/main.cpp:47
+#, kde-format
+msgid "Previous Maintainer"
+msgstr "Prethodni održavalac"
+
+#: kded/helpers/requestauthorization.cpp:42
+#, kde-format
+msgctxt ""
+"Show a notification asking to authorize or deny access to this computer from "
+"Bluetooth.The %1 is the name of the bluetooth device"
+msgid "%1 is requesting access to this computer"
+msgstr "%1 traži pristup ovom računaru"
+
+#: kded/helpers/requestauthorization.cpp:45
+#, kde-format
+msgctxt "Button to trust a bluetooth remote device and authorize it to connect"
+msgid "Trust && Authorize"
+msgstr "Veruj i ovlasti"
+
+#: kded/helpers/requestauthorization.cpp:46
+#, kde-format
+msgctxt "Button to authorize a bluetooth remote device to connect"
+msgid "Authorize Only"
+msgstr "Samo ovlasti"
+
+#: kded/helpers/requestauthorization.cpp:47
+#, kde-format
+msgctxt "Deny access to a remote bluetooth device"
+msgid "Deny"
+msgstr "Odbij"
+
+#: kded/helpers/requestconfirmation.cpp:41
+#, kde-format
+msgctxt ""
+"The text is shown in a notification to know if the PIN is correct,%1 is the "
+"remote bluetooth device and %2 is the pin"
+msgid "%1 is asking if the PIN is correct: %2"
+msgstr "%1 pita da li je PIN ispravan: %2"
+
+#: kded/helpers/requestconfirmation.cpp:44
+#, kde-format
+msgctxt "Notification button to know if the pin is correct or not"
+msgid "PIN correct"
+msgstr "PIN je ispravan"
+
+#: kded/helpers/requestconfirmation.cpp:45
+#, kde-format
+msgctxt "Notification button to say that the PIN is wrong"
+msgid "PIN incorrect"
+msgstr "PIN nije ispravan"
+
+#: kded/helpers/requestpin.cpp:49
+#, kde-format
+msgctxt ""
+"Shown in a notification to announce that a PIN is needed to accomplish a "
+"pair action,%1 is the name of the bluetooth device"
+msgid "PIN needed to pair with %1"
+msgstr "Potreban PIN za uparivanje sa %1"
+
+#: kded/helpers/requestpin.cpp:53
+#, kde-format
+msgctxt ""
+"Notification button which once clicked, a dialog to introduce the PIN will "
+"be shown"
+msgid "Introduce PIN"
+msgstr "Uvedi PIN"
+
+#: kded/helpers/requestpin.cpp:76
+#, kde-format
+msgctxt "Shown in the caption of a dialog where the user introduce the PIN"
+msgid "Introduce PIN"
+msgstr "Uvođenje PIN‑a"
+
+#: kded/helpers/requestpin.cpp:82
+#, kde-format
+msgctxt ""
+"Shown in a dialog which asks to introduce a PIN that will be used to pair a "
+"Bluetooth device,%1 is the name of the Bluetooth device"
+msgid ""
+"In order to pair this computer with %1, you have to enter a PIN. Please do "
+"it below."
+msgstr ""
+"Morate uneti PIN da biste uparili ovaj računar sa %1. Učinite to ispod."
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: kded/helpers/requestpin.ui:52
+#, kde-format
+msgid "PIN:"
+msgstr "PIN:"
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, pin)
+#: kded/helpers/requestpin.ui:65
+#, kde-format
+msgid "1234"
+msgstr "1234"
+
+#: kded/receivefilejob.cpp:144
+#, kde-format
+msgctxt ""
+"Show a notification asking to authorize or deny an incoming file transfer to "
+"this computer from a Bluetooth device."
+msgid "%1 is sending you the file %2"
+msgstr "%1 hoće da pošalje fajl %2"
+
+#: kded/receivefilejob.cpp:147
+#, kde-format
+msgctxt ""
+"Button to accept the incoming file transfer and download it in the default "
+"download directory"
+msgid "Accept"
+msgstr "Prihvati"
+
+#: kded/receivefilejob.cpp:148
+#, kde-format
+msgctxt "Deny the incoming file transfer"
+msgid "Cancel"
+msgstr "Odustani"
+
+#: kded/receivefilejob.cpp:171
+#, kde-format
+msgid "Receiving file over Bluetooth"
+msgstr "Primam fajl preko Bluetootha"
+
+#: kded/receivefilejob.cpp:172 sendfile/sendfilesjob.cpp:82
+#: sendfile/sendfilesjob.cpp:97
+#, kde-format
+msgctxt "File transfer origin"
+msgid "From"
+msgstr "Sa"
+
+#: kded/receivefilejob.cpp:173 sendfile/sendfilesjob.cpp:83
+#: sendfile/sendfilesjob.cpp:98
+#, kde-format
+msgctxt "File transfer destination"
+msgid "To"
+msgstr "Na"
+
+#: kded/receivefilejob.cpp:198
+#, kde-format
+msgid "Saving file failed"
+msgstr "Upisivanje fajla propalo"
+
+#: kded/receivefilejob.cpp:231 kio/obexftp/transferfilejob.cpp:62
+#: sendfile/sendfilesjob.cpp:169
+#, kde-format
+msgid "Bluetooth transfer failed"
+msgstr "Prenos preko Bluetootha propao"
+
+#: kio/bluetooth/kiobluetooth.cpp:64
+#, kde-format
+msgid "Browse Files"
+msgstr "Pregledanje fajlova"
+
+#: kio/bluetooth/kiobluetooth.cpp:99
+#, kde-format
+msgid "Retrieving services..."
+msgstr "Dobavljam servise..."
+
+#: kio/bluetooth/kiobluetooth.cpp:106
+#, kde-format
+msgid "This address is unavailable."
+msgstr "Ova adresa nije dostupna."
+
+#: kio/bluetooth/kiobluetooth.cpp:155
+#, kde-format
+msgid "Received Files"
+msgstr "Primljeni fajlovi"
+
+#: kio/bluetooth/kiobluetooth.cpp:175
+#, kde-format
+msgid "Scanning for new devices..."
+msgstr "Skeniram za novim uređajima..."
+
+#: kio/obexftp/kioobexftp.cpp:102
+#, kde-format
+msgid "Obexd service is not running."
+msgstr "ObexFTP‑ov servis nije u pogonu."
+
+#: kio/obexftp/kioobexftp.cpp:148
+#, kde-format
+msgid "Retrieving information from remote device..."
+msgstr "Dobavljam podatke sa udaljenog uređaja..."
+
+#: kio/obexftp/kioobexftp.cpp:231
+#, kde-format
+msgid "Connecting to the device"
+msgstr "Povezujem uređaj..."
+
+# >> @item
+#: kio/obexftp/kioobexftp.cpp:537
+#, kde-format
+msgid "Phone memory"
+msgstr "memorija telefona"
+
+# >> @item
+#: kio/obexftp/kioobexftp.cpp:540
+#, kde-format
+msgid "External memory"
+msgstr "spoljašnja memorija"
+
+#: sendfile/main.cpp:36 sendfile/main.cpp:38
+#, kde-format
+msgid "Bluetooth Send File Wizard"
+msgstr "Čarobnjak za slanje fajlova preko Bluetootha"
+
+#: sendfile/main.cpp:56
+#, kde-format
+msgid "Specify receiving device by MAC address."
+msgstr "Prijemni uređaj po MAC adresi."
+
+#: sendfile/main.cpp:60
+#, kde-format
+msgid "Specify receiving device by UBI path."
+msgstr "Prijemni uređaj po UBI putanji."
+
+#: sendfile/main.cpp:64
+#, kde-format
+msgid "Files to be sent."
+msgstr "Fajlovi za slanje."
+
+#: sendfile/pages/connectingpage.cpp:45 wizard/pages/connect.cpp:53
+#, kde-format
+msgctxt "Connecting to a Bluetooth device"
+msgid "Connecting to %1..."
+msgstr "Povezujem %1..."
+
+#: sendfile/pages/failpage.cpp:56
+#, kde-format
+msgctxt "This string is shown when the wizard fail"
+msgid "The connection to the device has failed"
+msgstr "Povezivanje sa uređajem nije uspelo"
+
+#: sendfile/pages/failpage.cpp:58
+#, kde-format
+msgid "The connection to %1 has failed"
+msgstr "Povezivanje sa uređajem %1 nije uspelo"
+
+#: sendfile/pages/selectdeviceandfilespage.cpp:65
+#, kde-format
+msgid "Open file..."
+msgstr "Otvori fajl..."
+
+#. i18n: ectx: property (text), widget (KSqueezedTextLabel, selectLbl)
+#: sendfile/pages/selectdeviceandfilespage.cpp:70
+#: sendfile/pages/selectfilediscover.ui:99
+#, kde-format
+msgid "Select one or more files:"
+msgstr "Izaberite jedan ili više fajlova:"
+
+#: sendfile/pages/selectdeviceandfilespage.cpp:77
+#, kde-format
+msgid "Selected files: <b>%1</b>"
+msgstr "Izabrani fajlovi: <b>%1</b>"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: sendfile/pages/selectfilediscover.ui:38
+#, kde-format
+msgid "Select a device from the list:"
+msgstr "Izaberite uređaj sa spiska:"
+
+#: sendfile/pages/selectfilespage.cpp:55
+#, kde-format
+msgctxt "Send files to a Bluetooth device"
+msgid "Send to %1"
+msgstr "Pošalji na %1"
+
+#: sendfile/sendfilesjob.cpp:81 sendfile/sendfilesjob.cpp:96
+#, kde-format
+msgid "Sending file over Bluetooth"
+msgstr "Šaljem fajl preko Bluetootha"
+
+#: sendfile/sendfilewizard.cpp:54
+#, kde-format
+msgid "Send Files"
+msgstr "Pošalji fajlove"
+
+#: sendfile/sendfilewizard.cpp:55
+#, kde-format
+msgid "Cancel"
+msgstr "Odustani"
+
+#. i18n: ectx: label, entry (enabled), group (General)
+#: settings/filereceiver.kcfg:11
+#, kde-format
+msgid "Enable or disable receiving files"
+msgstr "Uključi ili isključi prijem fajlova"
+
+#. i18n: ectx: label, entry (saveUrl), group (General)
+#: settings/filereceiver.kcfg:15
+#, kde-format
+msgid "Save received files to:"
+msgstr "Upisuj primljene fajlove u:"
+
+#. i18n: ectx: label, entry (autoAccept), group (General)
+#: settings/filereceiver.kcfg:19
+#, kde-format
+msgid "Whether allow to modify shared files"
+msgstr "Da li dozvoliti menjanje deljenih fajlova"
+
+#. i18n: ectx: label, entry (enableGlobalBluetooth), group (General)
+#: settings/global.kcfg:9
+#, kde-format
+msgid "Enable or disable the global KDE Bluetooth integration"
+msgstr "Uključi ili isključi globalnu saradnju Bluetootha sa KDE‑om"
+
+#: wizard/bluewizard.cpp:68
+#, kde-format
+msgctxt "Action to go to the next page on the wizard"
+msgid "Next"
+msgstr "Sledeće"
+
+#: wizard/bluewizard.cpp:69
+#, kde-format
+msgctxt "Action to finish the wizard"
+msgid "Finish"
+msgstr "Završi"
+
+#: wizard/main.cpp:38 wizard/main.cpp:40
+#, kde-format
+msgid "Bluetooth Device Wizard"
+msgstr "Čarobnjak bluetooth uređaja"
+
+# >> @title:window
+#: wizard/pages/discover.cpp:115
+#, kde-format
+msgid "Select a device"
+msgstr "Izbor uređaja"
+
+#: wizard/pages/discover.cpp:279
+#, kde-format
+msgid "Your Bluetooth adapter is not pairable."
+msgstr "Bluetooth adapter nije upariv."
+
+#: wizard/pages/discover.cpp:280
+#, fuzzy, kde-format
+#| msgctxt "This device is a Wearable"
+#| msgid "Wearable"
+msgctxt "Action to make Bluetooth adapter pairable"
+msgid "Make Pairable"
+msgstr "nosivi"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: wizard/pages/discover.ui:54
+#, kde-format
+msgid "Scanning..."
+msgstr "Skeniram..."
+
+#. i18n: ectx: property (text), widget (QCheckBox, manualPin)
+#: wizard/pages/discover.ui:74
+#, kde-format
+msgid "Manual PIN:"
+msgstr "Ručni PIN:"
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, pinText)
+#: wizard/pages/discover.ui:102
+#, kde-format
+msgid "0000"
+msgstr "0000"
+
+#: wizard/pages/fail.cpp:50
+#, kde-format
+msgctxt ""
+"Button offered when the wizard fail. This button will restart the wizard"
+msgid "Restart the wizard"
+msgstr "Ponovo pokreni čarobnjak"
+
+#: wizard/pages/fail.cpp:54
+#, kde-format
+msgctxt "Button that closes the wizard"
+msgid "Close"
+msgstr "Zatvori"
+
+#: wizard/pages/fail.cpp:66
+#, kde-format
+msgctxt "This string is shown when the wizard fail"
+msgid "The setup of the device has failed"
+msgstr "Postavljanje uređaja nije uspelo"
+
+#: wizard/pages/fail.cpp:68
+#, kde-format
+msgid "The setup of %1 has failed"
+msgstr "Postavljanje uređaja %1 nije uspelo"
+
+#: wizard/pages/pairing.cpp:74
+#, kde-format
+msgid "Connecting to %1..."
+msgstr "Povezujem %1..."
+
+# ? Wtf?
+#: wizard/pages/pairing.cpp:105
+#, kde-format
+msgid ""
+"Please introduce the PIN in your keyboard when it appears and press Enter"
+msgstr "Uvedite PIN u svoju tastaturu kada se pojavi i pritisnite Enter."
+
+# ? Wtf?
+#: wizard/pages/pairing.cpp:107
+#, kde-format
+msgid "Please introduce the PIN in your device when it appears"
+msgstr "Uvedite PIN u svoj uređaj kada se pojavi."
+
+# >> @action:button
+#: wizard/pages/pairing.cpp:125
+#, kde-format
+msgid "Matches"
+msgstr "Poklapa se"
+
+# >> @action:button
+#: wizard/pages/pairing.cpp:129
+#, kde-format
+msgid "Does not match"
+msgstr "Ne poklapa se"
+
+#: wizard/pages/pairing.cpp:144
+#, kde-format
+msgid "Please, confirm that the PIN displayed on %1 matches the wizard one."
+msgstr "Potvrdite da PIN prikazan na %1 odgovara ovom u čarobnjaku."
+
+#: wizard/pages/success.cpp:55
+#, kde-format
+msgid "Setup Finished"
+msgstr ""
+
+#: wizard/pages/success.cpp:57
+#, kde-format
+msgid "The device has been set up and can now be used."
+msgstr ""
+
+#: wizard/pages/success.cpp:60
+#, kde-format
+msgctxt "Placeholder is device name"
+msgid "The device '%1' has been set up and can now be used."
+msgstr ""

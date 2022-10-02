@@ -1,0 +1,246 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Volkan Gezer <volkangezer@gmail.com>, 2017, 2021.
+# Emir SARI <emir_sari@icloud.com>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-16 00:45+0000\n"
+"PO-Revision-Date: 2022-05-06 13:06+0300\n"
+"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
+"Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Lokalize 22.04.0\n"
+
+#: package/contents/ui/DeviceItem.qml:35
+#, kde-format
+msgid "Disconnect"
+msgstr "Bağlantıyı Kes"
+
+#: package/contents/ui/DeviceItem.qml:35
+#, kde-format
+msgid "Connect"
+msgstr "Bağlan"
+
+#: package/contents/ui/DeviceItem.qml:44
+#, kde-format
+msgid "Browse Files"
+msgstr "Dosyalara Göz At"
+
+#: package/contents/ui/DeviceItem.qml:55
+#, kde-format
+msgid "Send File"
+msgstr "Dosya Gönder"
+
+#: package/contents/ui/DeviceItem.qml:115
+#, kde-format
+msgid "Copy"
+msgstr "Kopyala"
+
+#: package/contents/ui/DeviceItem.qml:213
+#, kde-format
+msgid "Yes"
+msgstr "Evet"
+
+#: package/contents/ui/DeviceItem.qml:215
+#, kde-format
+msgid "No"
+msgstr "Hayır"
+
+#: package/contents/ui/DeviceItem.qml:231
+#, kde-format
+msgid "Remote Name"
+msgstr "Uzak Ad"
+
+#: package/contents/ui/DeviceItem.qml:235
+#, kde-format
+msgid "Address"
+msgstr "Adres"
+
+#: package/contents/ui/DeviceItem.qml:238
+#, kde-format
+msgid "Paired"
+msgstr "Eşleştirilmiş"
+
+#: package/contents/ui/DeviceItem.qml:241
+#, kde-format
+msgid "Trusted"
+msgstr "Güvenilir"
+
+#: package/contents/ui/DeviceItem.qml:244
+#, kde-format
+msgid "Adapter"
+msgstr "Bağdaştırıcı"
+
+#: package/contents/ui/DeviceItem.qml:253
+#, kde-format
+msgid "Disconnecting"
+msgstr "Bağlantı kesiliyor"
+
+#: package/contents/ui/DeviceItem.qml:253
+#, kde-format
+msgid "Connecting"
+msgstr "Bağlanıyor"
+
+#: package/contents/ui/DeviceItem.qml:259
+#, kde-format
+msgid "Connected"
+msgstr "Bağlı"
+
+#: package/contents/ui/DeviceItem.qml:266
+#, kde-format
+msgid "Audio device"
+msgstr "Ses aygıtı"
+
+#: package/contents/ui/DeviceItem.qml:273
+#, kde-format
+msgid "Input device"
+msgstr "Giriş aygıtı"
+
+#: package/contents/ui/DeviceItem.qml:277
+#, kde-format
+msgid "Phone"
+msgstr "Telefon"
+
+#: package/contents/ui/DeviceItem.qml:284
+#, kde-format
+msgid "File transfer"
+msgstr "Dosya aktarımı"
+
+#: package/contents/ui/DeviceItem.qml:287
+#, kde-format
+msgid "Send file"
+msgstr "Dosya gönder"
+
+#: package/contents/ui/DeviceItem.qml:290
+#, kde-format
+msgid "Input"
+msgstr "Giriş"
+
+#: package/contents/ui/DeviceItem.qml:293
+#, kde-format
+msgid "Audio"
+msgstr "Ses"
+
+#: package/contents/ui/DeviceItem.qml:296
+#, kde-format
+msgid "Network"
+msgstr "Ağ"
+
+#: package/contents/ui/DeviceItem.qml:300
+#, kde-format
+msgid "Other device"
+msgstr "Diğer aygıt"
+
+#: package/contents/ui/DeviceItem.qml:307
+#, kde-format
+msgid "%1% Battery"
+msgstr "%​%1 Pil"
+
+#: package/contents/ui/DeviceItem.qml:348
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed:HostIsDown"
+msgid "The device is unreachable"
+msgstr "Aygıta erişilemiyor"
+
+#: package/contents/ui/DeviceItem.qml:351
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed"
+msgid "Connection to the device failed"
+msgstr "Aygıta bağlantı başarısız oldu"
+
+#: package/contents/ui/DeviceItem.qml:357
+#, kde-format
+msgctxt "Notification when the connection failed due to NotReady"
+msgid "The device is not ready"
+msgstr "Aygıt hazır değil"
+
+#: package/contents/ui/FullRepresentation.qml:55
+#, kde-format
+msgid "Enable"
+msgstr "Etkinleştir"
+
+#: package/contents/ui/FullRepresentation.qml:143
+#, kde-format
+msgid "No Bluetooth adapters available"
+msgstr "Kullanılabilir Bluetooth bağdaştırıcısı yok"
+
+#: package/contents/ui/FullRepresentation.qml:145
+#: package/contents/ui/main.qml:42
+#, kde-format
+msgid "Bluetooth is disabled"
+msgstr "Bluetooth devre dışı"
+
+#: package/contents/ui/FullRepresentation.qml:147
+#, kde-format
+msgid "No devices found"
+msgstr "Aygıt bulunamadı"
+
+#: package/contents/ui/main.qml:39
+#, kde-format
+msgid "Bluetooth"
+msgstr "Bluetooth"
+
+#: package/contents/ui/main.qml:46
+#, kde-format
+msgid "No adapters available"
+msgstr "Hiçbir bağdaştırıcı mevcut değil"
+
+#: package/contents/ui/main.qml:48
+#, kde-format
+msgid "Bluetooth is offline"
+msgstr "Bluetooth çevrimdışı"
+
+#: package/contents/ui/main.qml:51
+#, kde-format
+msgid "No connected devices"
+msgstr "Bağlı aygıt yok"
+
+#: package/contents/ui/main.qml:54
+#, kde-format
+msgid "%1 connected"
+msgstr "%1 bağlandı"
+
+#: package/contents/ui/main.qml:56
+#, kde-format
+msgctxt "Number of connected devices"
+msgid "%1 connected device"
+msgid_plural "%1 connected devices"
+msgstr[0] "%1 bağlı aygıt"
+msgstr[1] "%1 bağlı aygıt"
+
+#: package/contents/ui/main.qml:124
+#, kde-format
+msgid "Configure &Bluetooth…"
+msgstr "&Bluetooth'u Yapılandır…"
+
+#: package/contents/ui/main.qml:126
+#, kde-format
+msgid "Add New Device…"
+msgstr "Yeni Aygıt Ekle"
+
+#: package/contents/ui/main.qml:129 package/contents/ui/Toolbar.qml:27
+#, kde-format
+msgid "Enable Bluetooth"
+msgstr "Bluetooth'u Etkinleştir"
+
+#~ msgid "Bluetooth is Disabled"
+#~ msgstr "Bluetooth Devre Dışı"
+
+#~ msgid "Add New Device..."
+#~ msgstr "Yeni Aygıt Ekle..."
+
+#~ msgid "Connected devices"
+#~ msgstr "Bağlı aygıtlar"
+
+#~ msgid "Available devices"
+#~ msgstr "Kullanılabilir aygıtlar"
+
+#~ msgid "Configure Bluetooth..."
+#~ msgstr "Bluetooth'u Yapılandır..."

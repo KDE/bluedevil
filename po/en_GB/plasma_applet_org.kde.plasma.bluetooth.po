@@ -1,0 +1,245 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Steve Allewell <steve.allewell@gmail.com>, 2017, 2020, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-16 00:45+0000\n"
+"PO-Revision-Date: 2022-07-22 15:33+0100\n"
+"Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
+"Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 22.04.3\n"
+
+#: package/contents/ui/DeviceItem.qml:35
+#, kde-format
+msgid "Disconnect"
+msgstr "Disconnect"
+
+#: package/contents/ui/DeviceItem.qml:35
+#, kde-format
+msgid "Connect"
+msgstr "Connect"
+
+#: package/contents/ui/DeviceItem.qml:44
+#, kde-format
+msgid "Browse Files"
+msgstr "Browse Files"
+
+#: package/contents/ui/DeviceItem.qml:55
+#, kde-format
+msgid "Send File"
+msgstr "Send File"
+
+#: package/contents/ui/DeviceItem.qml:115
+#, kde-format
+msgid "Copy"
+msgstr "Copy"
+
+#: package/contents/ui/DeviceItem.qml:213
+#, kde-format
+msgid "Yes"
+msgstr "Yes"
+
+#: package/contents/ui/DeviceItem.qml:215
+#, kde-format
+msgid "No"
+msgstr "No"
+
+#: package/contents/ui/DeviceItem.qml:231
+#, kde-format
+msgid "Remote Name"
+msgstr "Remote Name"
+
+#: package/contents/ui/DeviceItem.qml:235
+#, kde-format
+msgid "Address"
+msgstr "Address"
+
+#: package/contents/ui/DeviceItem.qml:238
+#, kde-format
+msgid "Paired"
+msgstr "Paired"
+
+#: package/contents/ui/DeviceItem.qml:241
+#, kde-format
+msgid "Trusted"
+msgstr "Trusted"
+
+#: package/contents/ui/DeviceItem.qml:244
+#, kde-format
+msgid "Adapter"
+msgstr "Adapter"
+
+#: package/contents/ui/DeviceItem.qml:253
+#, kde-format
+msgid "Disconnecting"
+msgstr "Disconnecting"
+
+#: package/contents/ui/DeviceItem.qml:253
+#, kde-format
+msgid "Connecting"
+msgstr "Connecting"
+
+#: package/contents/ui/DeviceItem.qml:259
+#, kde-format
+msgid "Connected"
+msgstr "Connected"
+
+#: package/contents/ui/DeviceItem.qml:266
+#, kde-format
+msgid "Audio device"
+msgstr "Audio device"
+
+#: package/contents/ui/DeviceItem.qml:273
+#, kde-format
+msgid "Input device"
+msgstr "Input device"
+
+#: package/contents/ui/DeviceItem.qml:277
+#, kde-format
+msgid "Phone"
+msgstr "Phone"
+
+#: package/contents/ui/DeviceItem.qml:284
+#, kde-format
+msgid "File transfer"
+msgstr "File transfer"
+
+#: package/contents/ui/DeviceItem.qml:287
+#, kde-format
+msgid "Send file"
+msgstr "Send file"
+
+#: package/contents/ui/DeviceItem.qml:290
+#, kde-format
+msgid "Input"
+msgstr "Input"
+
+#: package/contents/ui/DeviceItem.qml:293
+#, kde-format
+msgid "Audio"
+msgstr "Audio"
+
+#: package/contents/ui/DeviceItem.qml:296
+#, kde-format
+msgid "Network"
+msgstr "Network"
+
+#: package/contents/ui/DeviceItem.qml:300
+#, kde-format
+msgid "Other device"
+msgstr "Other device"
+
+#: package/contents/ui/DeviceItem.qml:307
+#, kde-format
+msgid "%1% Battery"
+msgstr "%1% Battery"
+
+#: package/contents/ui/DeviceItem.qml:348
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed:HostIsDown"
+msgid "The device is unreachable"
+msgstr "The device is unreachable"
+
+#: package/contents/ui/DeviceItem.qml:351
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed"
+msgid "Connection to the device failed"
+msgstr "Connection to the device failed"
+
+#: package/contents/ui/DeviceItem.qml:357
+#, kde-format
+msgctxt "Notification when the connection failed due to NotReady"
+msgid "The device is not ready"
+msgstr "The device is not ready"
+
+#: package/contents/ui/FullRepresentation.qml:55
+#, kde-format
+msgid "Enable"
+msgstr "Enable"
+
+#: package/contents/ui/FullRepresentation.qml:143
+#, kde-format
+msgid "No Bluetooth adapters available"
+msgstr "No Bluetooth adapters available"
+
+#: package/contents/ui/FullRepresentation.qml:145
+#: package/contents/ui/main.qml:42
+#, kde-format
+msgid "Bluetooth is disabled"
+msgstr "Bluetooth is disabled"
+
+#: package/contents/ui/FullRepresentation.qml:147
+#, kde-format
+msgid "No devices found"
+msgstr "No devices found"
+
+#: package/contents/ui/main.qml:39
+#, kde-format
+msgid "Bluetooth"
+msgstr "Bluetooth"
+
+#: package/contents/ui/main.qml:46
+#, kde-format
+msgid "No adapters available"
+msgstr "No adapters available"
+
+#: package/contents/ui/main.qml:48
+#, kde-format
+msgid "Bluetooth is offline"
+msgstr "Bluetooth is offline"
+
+#: package/contents/ui/main.qml:51
+#, kde-format
+msgid "No connected devices"
+msgstr "No connected devices"
+
+#: package/contents/ui/main.qml:54
+#, kde-format
+msgid "%1 connected"
+msgstr "%1 connected"
+
+#: package/contents/ui/main.qml:56
+#, kde-format
+msgctxt "Number of connected devices"
+msgid "%1 connected device"
+msgid_plural "%1 connected devices"
+msgstr[0] "%1 connected device"
+msgstr[1] "%1 connected devices"
+
+#: package/contents/ui/main.qml:124
+#, kde-format
+msgid "Configure &Bluetooth…"
+msgstr "Configure &Bluetooth…"
+
+#: package/contents/ui/main.qml:126
+#, kde-format
+msgid "Add New Device…"
+msgstr "Add New Device…"
+
+#: package/contents/ui/main.qml:129 package/contents/ui/Toolbar.qml:27
+#, kde-format
+msgid "Enable Bluetooth"
+msgstr "Enable Bluetooth"
+
+#~ msgid "Bluetooth is Disabled"
+#~ msgstr "Bluetooth is Disabled"
+
+#~ msgid "Add New Device..."
+#~ msgstr "Add New Device..."
+
+#~ msgid "Connected devices"
+#~ msgstr "Connected devices"
+
+#~ msgid "Available devices"
+#~ msgstr "Available devices"
+
+#~ msgid "Configure Bluetooth..."
+#~ msgstr "Configure Bluetooth..."
