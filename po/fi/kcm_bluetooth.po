@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-17 00:47+0000\n"
+"POT-Creation-Date: 2022-10-03 00:49+0000\n"
 "PO-Revision-Date: 2022-08-09 10:32+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -40,12 +40,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1-verkko (%2)"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:180
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:182
 #, kde-format
 msgid "Disconnect"
 msgstr "Katkaise yhteys"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:180
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:182
 #, kde-format
 msgid "Connect"
 msgstr "Yhdistä"
@@ -240,7 +240,7 @@ msgstr "Kirjauduttaessa:"
 msgid "Enable Bluetooth"
 msgstr "Ota Bluetooth käyttöön"
 
-#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:212
+#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:223
 #, kde-format
 msgid "Disable Bluetooth"
 msgstr "Poista Bluetooth käytöstä"
@@ -280,73 +280,69 @@ msgstr "Tallenna tiedostot kohteeseen:"
 msgid "Select folder"
 msgstr "Valitse kansio"
 
-#: package/contents/ui/main.qml:52
+#: package/contents/ui/main.qml:54
 #, kde-format
 msgid "Forget this Device?"
 msgstr "Unohdetaanko tämä laite?"
 
-#: package/contents/ui/main.qml:53
+#: package/contents/ui/main.qml:55
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
 msgstr "Haluatko varmasti unohtaa laitteen ”%1”?"
 
-#: package/contents/ui/main.qml:64
+#: package/contents/ui/main.qml:66
 #, kde-format
 msgctxt "@action:button"
 msgid "Forget Device"
 msgstr "Unohda laite"
 
-#: package/contents/ui/main.qml:73
+#: package/contents/ui/main.qml:74
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
 msgstr "Peru"
 
-#: package/contents/ui/main.qml:112
+#: package/contents/ui/main.qml:113
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "Bluetooth-sovittimia ei löytynyt"
 
-#: package/contents/ui/main.qml:121
+#: package/contents/ui/main.qml:122
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth ei ole käytössä"
 
-#: package/contents/ui/main.qml:127
+#: package/contents/ui/main.qml:128
 #, kde-format
 msgid "Enable"
 msgstr "Käytä"
 
-#: package/contents/ui/main.qml:137
+#: package/contents/ui/main.qml:138
 #, kde-format
 msgid "No devices paired"
 msgstr "Ei paritettuja laitteita"
 
-#: package/contents/ui/main.qml:158
-#, kde-format
-msgid "Connected"
-msgstr "Yhdistetty"
-
-#: package/contents/ui/main.qml:158
-#, kde-format
-msgid "Available"
-msgstr "Käytettävissä"
-
-#: package/contents/ui/main.qml:191
+#: package/contents/ui/main.qml:193
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "Unohda ”%1”"
 
-#: package/contents/ui/main.qml:206
+#: package/contents/ui/main.qml:217
 #, kde-format
 msgid "Add New Device…"
 msgstr "Lisää uusi laite…"
 
-#: package/contents/ui/main.qml:224
+#: package/contents/ui/main.qml:235
 #, kde-format
 msgid "Configure…"
 msgstr "Asetukset…"
+
+#~ msgid "Connected"
+#~ msgstr "Yhdistetty"
+
+#~ msgid "Available"
+#~ msgstr "Käytettävissä"
 
 #~ msgid "Confirm Deletion of Device"
 #~ msgstr "Vahvista laitteen poistaminen"

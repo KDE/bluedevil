@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-17 00:47+0000\n"
+"POT-Creation-Date: 2022-10-03 00:49+0000\n"
 "PO-Revision-Date: 2022-08-02 22:06+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -33,12 +33,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 nätverk (%2)"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:180
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:182
 #, kde-format
 msgid "Disconnect"
 msgstr "Koppla ner"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:180
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:182
 #, kde-format
 msgid "Connect"
 msgstr "Anslut"
@@ -233,7 +233,7 @@ msgstr "Vid inloggning:"
 msgid "Enable Bluetooth"
 msgstr "Aktivera Blåtand"
 
-#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:212
+#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:223
 #, kde-format
 msgid "Disable Bluetooth"
 msgstr "Inaktivera Blåtand"
@@ -273,73 +273,69 @@ msgstr "Spara filer i:"
 msgid "Select folder"
 msgstr "Välj katalog"
 
-#: package/contents/ui/main.qml:52
+#: package/contents/ui/main.qml:54
 #, kde-format
 msgid "Forget this Device?"
 msgstr "Glöm enhet?"
 
-#: package/contents/ui/main.qml:53
+#: package/contents/ui/main.qml:55
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
 msgstr "Är du säker på att du vill glömma '\"%1'?"
 
-#: package/contents/ui/main.qml:64
+#: package/contents/ui/main.qml:66
 #, kde-format
 msgctxt "@action:button"
 msgid "Forget Device"
 msgstr "Glöm enhet"
 
-#: package/contents/ui/main.qml:73
+#: package/contents/ui/main.qml:74
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: package/contents/ui/main.qml:112
+#: package/contents/ui/main.qml:113
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "Inga Blåtandanslutningar hittades"
 
-#: package/contents/ui/main.qml:121
+#: package/contents/ui/main.qml:122
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Blåtand är inte aktiverat"
 
-#: package/contents/ui/main.qml:127
+#: package/contents/ui/main.qml:128
 #, kde-format
 msgid "Enable"
 msgstr "Aktivera"
 
-#: package/contents/ui/main.qml:137
+#: package/contents/ui/main.qml:138
 #, kde-format
 msgid "No devices paired"
 msgstr "Inga enheter ihopparade"
 
-#: package/contents/ui/main.qml:158
-#, kde-format
-msgid "Connected"
-msgstr "Ansluten"
-
-#: package/contents/ui/main.qml:158
-#, kde-format
-msgid "Available"
-msgstr "Tillgängligt"
-
-#: package/contents/ui/main.qml:191
+#: package/contents/ui/main.qml:193
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "Glöm \"%1\""
 
-#: package/contents/ui/main.qml:206
+#: package/contents/ui/main.qml:217
 #, kde-format
 msgid "Add New Device…"
 msgstr "Lägg till ny enhet..."
 
-#: package/contents/ui/main.qml:224
+#: package/contents/ui/main.qml:235
 #, kde-format
 msgid "Configure…"
 msgstr "Anpassa…"
+
+#~ msgid "Connected"
+#~ msgstr "Ansluten"
+
+#~ msgid "Available"
+#~ msgstr "Tillgängligt"
 
 #~ msgid "Confirm Deletion of Device"
 #~ msgstr "Bekräfta borttagning av enhet"

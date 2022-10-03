@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-17 00:47+0000\n"
+"POT-Creation-Date: 2022-10-03 00:49+0000\n"
 "PO-Revision-Date: 2022-08-26 23:44+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
@@ -37,12 +37,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 Jaringan (%2)"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:180
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:182
 #, kde-format
 msgid "Disconnect"
 msgstr "Diskoneksikan"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:180
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:182
 #, kde-format
 msgid "Connect"
 msgstr "Koneksikan"
@@ -237,7 +237,7 @@ msgstr "Saat login:"
 msgid "Enable Bluetooth"
 msgstr "Aktifkan Bluetooth"
 
-#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:212
+#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:223
 #, kde-format
 msgid "Disable Bluetooth"
 msgstr "Nonfungsikan Bluetooth"
@@ -278,75 +278,71 @@ msgstr "Simpan file di:"
 msgid "Select folder"
 msgstr "Pilih folder"
 
-#: package/contents/ui/main.qml:52
+#: package/contents/ui/main.qml:54
 #, kde-format
 msgid "Forget this Device?"
 msgstr ""
 
-#: package/contents/ui/main.qml:53
+#: package/contents/ui/main.qml:55
 #, fuzzy, kde-format
 #| msgid "Are you sure you want to forget '%1'"
 msgid "Are you sure you want to forget \"%1\"?"
 msgstr "Apakah Anda yakin Anda ingin melupakan '%1'"
 
-#: package/contents/ui/main.qml:64
+#: package/contents/ui/main.qml:66
 #, fuzzy, kde-format
 #| msgid "Device:"
 msgctxt "@action:button"
 msgid "Forget Device"
 msgstr "Perangkat:"
 
-#: package/contents/ui/main.qml:73
+#: package/contents/ui/main.qml:74
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
 msgstr ""
 
-#: package/contents/ui/main.qml:112
+#: package/contents/ui/main.qml:113
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "Tidak ada adaptor Bluetooth yang ditemukan"
 
-#: package/contents/ui/main.qml:121
+#: package/contents/ui/main.qml:122
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth telah dinonfungsikan"
 
-#: package/contents/ui/main.qml:127
+#: package/contents/ui/main.qml:128
 #, kde-format
 msgid "Enable"
 msgstr "Fungsikan"
 
-#: package/contents/ui/main.qml:137
+#: package/contents/ui/main.qml:138
 #, kde-format
 msgid "No devices paired"
 msgstr "Tidak ada peranti yang disandingkan"
 
-#: package/contents/ui/main.qml:158
-#, kde-format
-msgid "Connected"
-msgstr "Terkoneksi"
-
-#: package/contents/ui/main.qml:158
-#, kde-format
-msgid "Available"
-msgstr "Tersedia"
-
-#: package/contents/ui/main.qml:191
+#: package/contents/ui/main.qml:193
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr ""
 
-#: package/contents/ui/main.qml:206
+#: package/contents/ui/main.qml:217
 #, kde-format
 msgid "Add New Device…"
 msgstr "Tambahkan Peranti Baru..."
 
-#: package/contents/ui/main.qml:224
+#: package/contents/ui/main.qml:235
 #, kde-format
 msgid "Configure…"
 msgstr "Konfigurasikan..."
+
+#~ msgid "Connected"
+#~ msgstr "Terkoneksi"
+
+#~ msgid "Available"
+#~ msgstr "Tersedia"
 
 #~ msgid "Confirm Deletion of Device"
 #~ msgstr "Konfirmasi Penghapusan Perangkat"
