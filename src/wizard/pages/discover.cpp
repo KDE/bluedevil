@@ -36,8 +36,12 @@ public:
 
     BluezQt::DevicePtr device(const QModelIndex &index) const;
 
+    QString searchString() const;
+    void setSearchString(const QString &searchString);
+
 private:
     BluezQt::DevicesModel *m_devicesModel = nullptr;
+    QString m_searchString;
 };
 
 DevicesProxyModel::DevicesProxyModel(QObject *parent)
@@ -83,13 +87,39 @@ bool DevicesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
 
     bool adapterPowered = index.data(BluezQt::DevicesModel::AdapterPoweredRole).toBool();
     bool adapterPairable = index.data(BluezQt::DevicesModel::AdapterPairableRole).toBool();
-    return adapterPowered && adapterPairable;
+    if (!adapterPowered || !adapterPairable) {
+        return false;
+    }
+
+    if (!m_searchString.isEmpty()) {
+        const QString displayString = index.data(Qt::DisplayRole).toString();
+        if (!displayString.contains(m_searchString, Qt::CaseInsensitive)) {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 BluezQt::DevicePtr DevicesProxyModel::device(const QModelIndex &index) const
 {
     Q_ASSERT(m_devicesModel);
     return m_devicesModel->device(mapToSource(index));
+}
+
+QString DevicesProxyModel::searchString() const
+{
+    return m_searchString;
+}
+
+void DevicesProxyModel::setSearchString(const QString &searchString)
+{
+    if (m_searchString == searchString) {
+        return;
+    }
+
+    m_searchString = searchString;
+    invalidateFilter();
 }
 
 DiscoverPage::DiscoverPage(BlueWizard *parent)
@@ -104,6 +134,12 @@ DiscoverPage::DiscoverPage(BlueWizard *parent)
 
     connect(deviceView->selectionModel(), &QItemSelectionModel::currentChanged, this, &DiscoverPage::indexSelected);
     connect(deviceView, &QListView::doubleClicked, this, &DiscoverPage::itemDoubleClicked);
+
+    QAction *findAction = new QAction(this);
+    connect(findAction, &QAction::triggered, searchField, qOverload<>(&QWidget::setFocus));
+    findAction->setShortcut(QKeySequence::Find);
+    connect(searchField, &QLineEdit::textChanged, m_model, &DevicesProxyModel::setSearchString);
+    addAction(findAction);
 }
 
 void DiscoverPage::initializePage()
@@ -204,6 +240,13 @@ int DiscoverPage::nextId() const
     }
 
     return BlueWizard::Pairing;
+}
+
+void DiscoverPage::showEvent(QShowEvent *event)
+{
+    Q_UNUSED(event);
+    // Focus the device view by default, not the search field.
+    deviceView->setFocus();
 }
 
 void DiscoverPage::indexSelected(const QModelIndex &index)

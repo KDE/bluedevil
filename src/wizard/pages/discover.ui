@@ -14,6 +14,16 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
+      <widget class="QLineEdit" name="searchField">
+       <property name="placeholderText">
+        <string>Search…</string>
+       </property>
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QListView" name="deviceView">
        <property name="iconSize">
         <size>

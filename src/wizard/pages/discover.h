@@ -29,6 +29,9 @@ public:
     bool isComplete() const override;
     int nextId() const override;
 
+protected:
+    void showEvent(QShowEvent *event) override;
+
 private Q_SLOTS:
     void indexSelected(const QModelIndex &index);
     void itemDoubleClicked(const QModelIndex &index);
