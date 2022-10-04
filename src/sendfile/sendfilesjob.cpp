@@ -62,6 +62,7 @@ void SendFilesJob::doStart()
 {
     qCDebug(BLUEDEVIL_SENDFILE_LOG) << "SendFilesJob-DoStart";
 
+    setTotalAmount(Files, m_files.count());
     setTotalAmount(Bytes, m_totalSize);
     setProcessedAmount(Bytes, 0);
 
@@ -75,6 +76,8 @@ void SendFilesJob::nextJob()
     m_transfer.clear();
     m_currentFile = m_files.takeFirst();
     m_currentFileSize = m_filesSizes.takeFirst();
+    // Starts at 1 file.
+    setProcessedAmount(Files, totalAmount(Files) - m_files.count());
 
     Q_EMIT description(this,
                        i18n("Sending file over Bluetooth"),
