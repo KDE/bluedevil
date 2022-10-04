@@ -65,11 +65,6 @@ void SendFilesJob::doStart()
     setTotalAmount(Bytes, m_totalSize);
     setProcessedAmount(Bytes, 0);
 
-    Q_EMIT description(this,
-                       i18n("Sending file over Bluetooth"),
-                       QPair<QString, QString>(i18nc("File transfer origin", "From"), m_files.first()),
-                       QPair<QString, QString>(i18nc("File transfer destination", "To"), m_device->name()));
-
     nextJob();
 }
 
