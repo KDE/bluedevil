@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-07-04 00:46+0000\n"
+"POT-Creation-Date: 2022-10-05 00:47+0000\n"
 "PO-Revision-Date: 2017-05-16 06:51-0400\n"
 "Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
 "Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
@@ -178,15 +178,13 @@ msgctxt "@title job"
 msgid "Receiving file"
 msgstr "<b>מקבל קבצים</b>"
 
-#: kded/receivefilejob.cpp:165 sendfile/sendfilesjob.cpp:70
-#: sendfile/sendfilesjob.cpp:86
+#: kded/receivefilejob.cpp:165 sendfile/sendfilesjob.cpp:84
 #, kde-format
 msgctxt "File transfer origin"
 msgid "From"
 msgstr "מאת"
 
-#: kded/receivefilejob.cpp:166 sendfile/sendfilesjob.cpp:71
-#: sendfile/sendfilesjob.cpp:87
+#: kded/receivefilejob.cpp:166 sendfile/sendfilesjob.cpp:85
 #, kde-format
 msgctxt "File transfer destination"
 msgid "To"
@@ -198,7 +196,7 @@ msgid "Saving file failed"
 msgstr "שמירת הקובץ נכשלה"
 
 #: kded/receivefilejob.cpp:222 kio/obexftp/transferfilejob.cpp:50
-#: sendfile/sendfilesjob.cpp:157
+#: sendfile/sendfilesjob.cpp:155
 #, kde-format
 msgid "Bluetooth transfer failed"
 msgstr "העברת הבלוטוס נכשלה"
@@ -363,7 +361,7 @@ msgctxt "Send files to a Bluetooth device"
 msgid "Send to %1"
 msgstr "שלח ל־%1"
 
-#: sendfile/sendfilesjob.cpp:69 sendfile/sendfilesjob.cpp:85
+#: sendfile/sendfilesjob.cpp:83
 #, kde-format
 msgid "Sending file over Bluetooth"
 msgstr "שולח קבצים דרך הבלוטוס"

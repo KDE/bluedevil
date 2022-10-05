@@ -7,14 +7,14 @@ msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-16 00:45+0000\n"
-"PO-Revision-Date: 2022-01-07 14:45+0100\n"
+"PO-Revision-Date: 2022-10-04 17:54+0200\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.12.1\n"
+"X-Generator: Lokalize 22.08.1\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: package/contents/ui/DeviceItem.qml:35
@@ -163,13 +163,12 @@ msgstr "Zariadenie nie je pripravené"
 #: package/contents/ui/FullRepresentation.qml:55
 #, kde-format
 msgid "Enable"
-msgstr ""
+msgstr "Povoliť"
 
 #: package/contents/ui/FullRepresentation.qml:143
-#, fuzzy, kde-format
-#| msgid "No Bluetooth Adapters Available"
+#, kde-format
 msgid "No Bluetooth adapters available"
-msgstr "Nie sú žiadne dostupné BT adaptéry"
+msgstr "Žiadne Bluetooth adaptéry nie sú dostupné"
 
 #: package/contents/ui/FullRepresentation.qml:145
 #: package/contents/ui/main.qml:42
@@ -178,10 +177,9 @@ msgid "Bluetooth is disabled"
 msgstr "Bluetooth je zakázaný"
 
 #: package/contents/ui/FullRepresentation.qml:147
-#, fuzzy, kde-format
-#| msgid "No Devices Found"
+#, kde-format
 msgid "No devices found"
-msgstr "Nenašli sa zariadenia"
+msgstr "Nenašli sa žiadne zariadenia"
 
 #: package/contents/ui/main.qml:39
 #, kde-format
