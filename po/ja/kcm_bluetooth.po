@@ -331,9 +331,3 @@ msgstr "新しいデバイスを追加..."
 #, kde-format
 msgid "Configure…"
 msgstr "設定..."
-
-#~ msgid "Connected"
-#~ msgstr "接続済み"
-
-#~ msgid "Available"
-#~ msgstr "利用可能"

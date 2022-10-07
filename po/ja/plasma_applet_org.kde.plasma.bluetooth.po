@@ -236,6 +236,3 @@ msgstr "新しいデバイスを追加..."
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Bluetooth を有効化"
-
-#~ msgid "Bluetooth is Disabled"
-#~ msgstr "Bluetooth は無効です"

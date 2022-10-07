@@ -510,14 +510,3 @@ msgstr "デバイスのセットアップが完了し、利用可能になりま
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "デバイス '%1' のセットアップが完了し、利用可能になりました。"
-
-#, fuzzy
-#~| msgid "Bluetooth Daemon"
-#~ msgid "Bluetooth"
-#~ msgstr "Bluetooth デーモン"
-
-#~ msgid "Bluetooth Send File Wizard"
-#~ msgstr "Bluetooth ファイル送信ウィザード"
-
-#~ msgid "Receiving file over Bluetooth"
-#~ msgstr "Bluetooth でファイルを受信しています"
