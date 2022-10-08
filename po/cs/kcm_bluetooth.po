@@ -334,9 +334,3 @@ msgstr "Přidat nové zařízení…"
 #, kde-format
 msgid "Configure…"
 msgstr "Nastavit…"
-
-#~ msgid "Connected"
-#~ msgstr "Připojen"
-
-#~ msgid "Available"
-#~ msgstr "Dostupné"
