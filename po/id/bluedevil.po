@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-05 00:47+0000\n"
+"POT-Creation-Date: 2022-10-10 00:47+0000\n"
 "PO-Revision-Date: 2022-08-26 23:44+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
@@ -261,12 +261,12 @@ msgstr "Memori ponsel"
 msgid "External memory"
 msgstr "Memori eksternal"
 
-#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:263
+#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:306
 #, kde-format
 msgid "Bluetooth is disabled."
 msgstr "Bluetooth telah dinonfungsikan"
 
-#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:264
+#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:307
 #, kde-format
 msgctxt "Action to enable Bluetooth adapter"
 msgid "Enable"
@@ -393,42 +393,48 @@ msgstr "Selesai"
 msgid "Add Bluetooth Device"
 msgstr "Tambahkan Peranti Bluetooth"
 
-#: wizard/pages/discover.cpp:101
+#: wizard/pages/discover.cpp:131
 #, kde-format
 msgid "Select a device"
 msgstr "Pilih peranti"
 
-#: wizard/pages/discover.cpp:256
+#: wizard/pages/discover.cpp:299
 #, kde-format
 msgctxt "Action to fix a problem"
 msgid "Fix it"
 msgstr "Perbaiki"
 
-#: wizard/pages/discover.cpp:266
+#: wizard/pages/discover.cpp:309
 #, kde-format
 msgid "Your Bluetooth adapter is not pairable."
 msgstr "Adaptor Bluetooth-mu tidak bisa disandingkan."
 
-#: wizard/pages/discover.cpp:267
+#: wizard/pages/discover.cpp:310
 #, kde-format
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
 msgstr "Buat Bisa Disandingkan"
 
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, searchField)
+#: wizard/pages/discover.ui:19
+#, kde-format
+msgid "Search…"
+msgstr ""
+
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: wizard/pages/discover.ui:54
+#: wizard/pages/discover.ui:64
 #, kde-format
 msgid "Scanning…"
 msgstr "Memindai..."
 
 #. i18n: ectx: property (text), widget (QCheckBox, manualPin)
-#: wizard/pages/discover.ui:74
+#: wizard/pages/discover.ui:84
 #, kde-format
 msgid "Manual PIN:"
 msgstr "PIN manual:"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, pinText)
-#: wizard/pages/discover.ui:102
+#: wizard/pages/discover.ui:112
 #, kde-format
 msgid "0000"
 msgstr "0000"

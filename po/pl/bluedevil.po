@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2015, 2016, 2017, 2018, 2019, 2020, 2021.
+# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-05 00:47+0000\n"
-"PO-Revision-Date: 2021-12-30 12:21+0100\n"
+"POT-Creation-Date: 2022-10-10 00:47+0000\n"
+"PO-Revision-Date: 2022-10-09 11:32+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 22.03.70\n"
+"X-Generator: Lokalize 22.04.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -256,12 +256,12 @@ msgstr "Pamięć telefonu"
 msgid "External memory"
 msgstr "Pamięć zewnętrzna"
 
-#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:263
+#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:306
 #, kde-format
 msgid "Bluetooth is disabled."
 msgstr "Bluetooth jest wyłączony."
 
-#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:264
+#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:307
 #, kde-format
 msgctxt "Action to enable Bluetooth adapter"
 msgid "Enable"
@@ -388,42 +388,48 @@ msgstr "Zakończ"
 msgid "Add Bluetooth Device"
 msgstr "Dodaj urządzenie Bluetooth"
 
-#: wizard/pages/discover.cpp:101
+#: wizard/pages/discover.cpp:131
 #, kde-format
 msgid "Select a device"
 msgstr "Wybierz urządzenie"
 
-#: wizard/pages/discover.cpp:256
+#: wizard/pages/discover.cpp:299
 #, kde-format
 msgctxt "Action to fix a problem"
 msgid "Fix it"
 msgstr "Zmień to"
 
-#: wizard/pages/discover.cpp:266
+#: wizard/pages/discover.cpp:309
 #, kde-format
 msgid "Your Bluetooth adapter is not pairable."
 msgstr "Twojego adaptera Bluetooth nie da się sparować."
 
-#: wizard/pages/discover.cpp:267
+#: wizard/pages/discover.cpp:310
 #, kde-format
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
 msgstr "Uczyń sparowanymi"
 
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, searchField)
+#: wizard/pages/discover.ui:19
+#, kde-format
+msgid "Search…"
+msgstr ""
+
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: wizard/pages/discover.ui:54
+#: wizard/pages/discover.ui:64
 #, kde-format
 msgid "Scanning…"
 msgstr "Przeszukiwanie..."
 
 #. i18n: ectx: property (text), widget (QCheckBox, manualPin)
-#: wizard/pages/discover.ui:74
+#: wizard/pages/discover.ui:84
 #, kde-format
 msgid "Manual PIN:"
 msgstr "Ręczny PIN:"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, pinText)
-#: wizard/pages/discover.ui:102
+#: wizard/pages/discover.ui:112
 #, kde-format
 msgid "0000"
 msgstr "0000"
@@ -445,12 +451,12 @@ msgstr "Zamknij"
 #, kde-format
 msgctxt "This string is shown when the wizard fail"
 msgid "The setup of the device has failed"
-msgstr "Ustawienie urządzenia nieudane"
+msgstr "Nie udało się połączyć z urządzeniem"
 
 #: wizard/pages/fail.cpp:55
 #, kde-format
 msgid "The setup of %1 has failed"
-msgstr "Ustawienie %1 nieudane"
+msgstr "Nie udało się połączyć z %1"
 
 #: wizard/pages/pairing.cpp:60
 #, kde-format
@@ -492,18 +498,19 @@ msgstr ""
 #: wizard/pages/success.cpp:40
 #, kde-format
 msgid "Setup Finished"
-msgstr "Ukończono ustawianie"
+msgstr "Ukończono łączenie"
 
 #: wizard/pages/success.cpp:42
 #, kde-format
 msgid "The device has been set up and can now be used."
-msgstr "Urządzenie zostało ustawione i można z niego teraz korzystać."
+msgstr "Połączono z urządzeniem, więc teraz można zacząć z niego korzystać."
 
 #: wizard/pages/success.cpp:44
 #, kde-format
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
-msgstr "Urządzenie '%1' zostało ustawione i można z niego teraz korzystać."
+msgstr ""
+"Połączono z urządzeniem '%1', więc teraz można zacząć z niego korzystać."
 
 #~ msgid "Bluetooth"
 #~ msgstr "Bluetooth"
