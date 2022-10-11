@@ -39,7 +39,7 @@ Item {
     Plasmoid.toolTipMainText: i18n("Bluetooth")
     Plasmoid.toolTipSubText: {
         if (btManager.bluetoothBlocked) {
-            return i18n("Bluetooth is disabled");
+            return i18n("Bluetooth is disabled; middle-click to enable");
         }
         if (!btManager.bluetoothOperational) {
             if (btManager.adapters.length === 0) {
@@ -48,15 +48,16 @@ Item {
             return i18n("Bluetooth is offline");
         }
         if (connectedDevices.length === 0) {
-            return i18n("No connected devices");
+            return i18n("No connected devices\nMiddle-click to disable Bluetooth");
         }
         if (connectedDevices.length === 1) {
-            return i18n("%1 connected", connectedDevices[0].name);
+            return i18n("%1 connected\nMiddle-click to disable Bluetooth", connectedDevices[0].name);
         }
         let text = i18ncp("Number of connected devices", "%1 connected device", "%1 connected devices", connectedDevices.length);
         for (let i = 0; i < connectedDevices.length; ++i) {
             const device = connectedDevices[i];
             text += "\n \u2022 %1".arg(device.name);
+            text += i18n("Middle-click to disable Bluetooth");
         }
         return text;
     }
