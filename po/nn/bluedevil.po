@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-07-04 00:46+0000\n"
+"POT-Creation-Date: 2022-10-10 00:47+0000\n"
 "PO-Revision-Date: 2022-01-23 13:39+0100\n"
 "Last-Translator: Øystein Steffensen-Alværvik <oysteins.omsetting@protonmail."
 "com>\n"
@@ -178,15 +178,13 @@ msgctxt "@title job"
 msgid "Receiving file"
 msgstr "Tek imot fil"
 
-#: kded/receivefilejob.cpp:165 sendfile/sendfilesjob.cpp:70
-#: sendfile/sendfilesjob.cpp:86
+#: kded/receivefilejob.cpp:165 sendfile/sendfilesjob.cpp:84
 #, kde-format
 msgctxt "File transfer origin"
 msgid "From"
 msgstr "Frå"
 
-#: kded/receivefilejob.cpp:166 sendfile/sendfilesjob.cpp:71
-#: sendfile/sendfilesjob.cpp:87
+#: kded/receivefilejob.cpp:166 sendfile/sendfilesjob.cpp:85
 #, kde-format
 msgctxt "File transfer destination"
 msgid "To"
@@ -198,7 +196,7 @@ msgid "Saving file failed"
 msgstr "Klarte ikkje lagra fila"
 
 #: kded/receivefilejob.cpp:222 kio/obexftp/transferfilejob.cpp:50
-#: sendfile/sendfilesjob.cpp:157
+#: sendfile/sendfilesjob.cpp:155
 #, kde-format
 msgid "Bluetooth transfer failed"
 msgstr "Feil ved Bluetooth-overføring"
@@ -263,12 +261,12 @@ msgstr "Telefonminne"
 msgid "External memory"
 msgstr "Eksternt minne"
 
-#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:263
+#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:306
 #, kde-format
 msgid "Bluetooth is disabled."
 msgstr "Bluetooth er av."
 
-#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:264
+#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:307
 #, kde-format
 msgctxt "Action to enable Bluetooth adapter"
 msgid "Enable"
@@ -351,7 +349,7 @@ msgctxt "Send files to a Bluetooth device"
 msgid "Send to %1"
 msgstr "Send til %1"
 
-#: sendfile/sendfilesjob.cpp:69 sendfile/sendfilesjob.cpp:85
+#: sendfile/sendfilesjob.cpp:83
 #, kde-format
 msgid "Sending file over Bluetooth"
 msgstr "Sender fil over Bluetooth"
@@ -395,42 +393,48 @@ msgstr "Fullfør"
 msgid "Add Bluetooth Device"
 msgstr "Legg til Bluetooth-eining"
 
-#: wizard/pages/discover.cpp:101
+#: wizard/pages/discover.cpp:131
 #, kde-format
 msgid "Select a device"
 msgstr "Vel ei eining"
 
-#: wizard/pages/discover.cpp:256
+#: wizard/pages/discover.cpp:299
 #, kde-format
 msgctxt "Action to fix a problem"
 msgid "Fix it"
 msgstr "Rett det"
 
-#: wizard/pages/discover.cpp:266
+#: wizard/pages/discover.cpp:309
 #, kde-format
 msgid "Your Bluetooth adapter is not pairable."
 msgstr "Bluetooth-adapteren kan ikkje parast."
 
-#: wizard/pages/discover.cpp:267
+#: wizard/pages/discover.cpp:310
 #, kde-format
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
 msgstr "Gjer parbar"
 
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, searchField)
+#: wizard/pages/discover.ui:19
+#, kde-format
+msgid "Search…"
+msgstr ""
+
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: wizard/pages/discover.ui:54
+#: wizard/pages/discover.ui:64
 #, kde-format
 msgid "Scanning…"
 msgstr "Skannar …"
 
 #. i18n: ectx: property (text), widget (QCheckBox, manualPin)
-#: wizard/pages/discover.ui:74
+#: wizard/pages/discover.ui:84
 #, kde-format
 msgid "Manual PIN:"
 msgstr "Manuell PIN:"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, pinText)
-#: wizard/pages/discover.ui:102
+#: wizard/pages/discover.ui:112
 #, kde-format
 msgid "0000"
 msgstr "0000"
