@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-16 00:45+0000\n"
+"POT-Creation-Date: 2022-10-16 00:48+0000\n"
 "PO-Revision-Date: 2022-05-03 13:30-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -173,7 +173,6 @@ msgid "No Bluetooth adapters available"
 msgstr "Nenhum adaptador Bluetooth disponível"
 
 #: package/contents/ui/FullRepresentation.qml:145
-#: package/contents/ui/main.qml:42
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "O Bluetooth está desativado"
@@ -188,6 +187,12 @@ msgstr "Nenhum dispositivo encontrado"
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
+#: package/contents/ui/main.qml:42
+#, fuzzy, kde-format
+#| msgid "Bluetooth is disabled"
+msgid "Bluetooth is disabled; middle-click to enable"
+msgstr "O Bluetooth está desativado"
+
 #: package/contents/ui/main.qml:46
 #, kde-format
 msgid "No adapters available"
@@ -200,13 +205,17 @@ msgstr "O Bluetooth está desligado"
 
 #: package/contents/ui/main.qml:51
 #, kde-format
-msgid "No connected devices"
-msgstr "Nenhum dispositivo conectado"
+msgid ""
+"No connected devices\n"
+"Middle-click to disable Bluetooth"
+msgstr ""
 
 #: package/contents/ui/main.qml:54
 #, kde-format
-msgid "%1 connected"
-msgstr "%1 conectado"
+msgid ""
+"%1 connected\n"
+"Middle-click to disable Bluetooth"
+msgstr ""
 
 #: package/contents/ui/main.qml:56
 #, kde-format
@@ -216,20 +225,31 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 dispositivo conectado"
 msgstr[1] "%1 dispositivos conectados"
 
-#: package/contents/ui/main.qml:124
+#: package/contents/ui/main.qml:60
+#, kde-format
+msgid "Middle-click to disable Bluetooth"
+msgstr ""
+
+#: package/contents/ui/main.qml:125
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Configurar o &Bluetooth..."
 
-#: package/contents/ui/main.qml:126
+#: package/contents/ui/main.qml:127
 #, kde-format
 msgid "Add New Device…"
 msgstr "Adicionar novo dispositivo..."
 
-#: package/contents/ui/main.qml:129 package/contents/ui/Toolbar.qml:27
+#: package/contents/ui/main.qml:130 package/contents/ui/Toolbar.qml:27
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Ativar o Bluetooth"
+
+#~ msgid "No connected devices"
+#~ msgstr "Nenhum dispositivo conectado"
+
+#~ msgid "%1 connected"
+#~ msgstr "%1 conectado"
 
 #~ msgid "Bluetooth is Disabled"
 #~ msgstr "O Bluetooth está desativado"

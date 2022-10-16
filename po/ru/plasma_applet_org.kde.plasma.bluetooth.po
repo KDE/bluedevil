@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-16 00:45+0000\n"
+"POT-Creation-Date: 2022-10-16 00:48+0000\n"
 "PO-Revision-Date: 2022-05-10 21:17+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -181,7 +181,6 @@ msgid "No Bluetooth adapters available"
 msgstr "Нет доступных адаптеров Bluetooth"
 
 #: package/contents/ui/FullRepresentation.qml:145
-#: package/contents/ui/main.qml:42
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth выключен"
@@ -196,6 +195,12 @@ msgstr "Не найдено ни одного устройства"
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
+#: package/contents/ui/main.qml:42
+#, fuzzy, kde-format
+#| msgid "Bluetooth is disabled"
+msgid "Bluetooth is disabled; middle-click to enable"
+msgstr "Bluetooth выключен"
+
 #: package/contents/ui/main.qml:46
 #, kde-format
 msgid "No adapters available"
@@ -208,13 +213,17 @@ msgstr "Нет активных адаптеров Bluetooth"
 
 #: package/contents/ui/main.qml:51
 #, kde-format
-msgid "No connected devices"
-msgstr "Нет подключённых устройств"
+msgid ""
+"No connected devices\n"
+"Middle-click to disable Bluetooth"
+msgstr ""
 
 #: package/contents/ui/main.qml:54
 #, kde-format
-msgid "%1 connected"
-msgstr "%1 подключено"
+msgid ""
+"%1 connected\n"
+"Middle-click to disable Bluetooth"
+msgstr ""
 
 #: package/contents/ui/main.qml:56
 #, kde-format
@@ -226,20 +235,31 @@ msgstr[1] "%1 подключённых устройства"
 msgstr[2] "%1 подключённых устройств"
 msgstr[3] "%1 подключённое устройство"
 
-#: package/contents/ui/main.qml:124
+#: package/contents/ui/main.qml:60
+#, kde-format
+msgid "Middle-click to disable Bluetooth"
+msgstr ""
+
+#: package/contents/ui/main.qml:125
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Н&астроить Bluetooth..."
 
-#: package/contents/ui/main.qml:126
+#: package/contents/ui/main.qml:127
 #, kde-format
 msgid "Add New Device…"
 msgstr "Добавить новое устройство..."
 
-#: package/contents/ui/main.qml:129 package/contents/ui/Toolbar.qml:27
+#: package/contents/ui/main.qml:130 package/contents/ui/Toolbar.qml:27
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Включить Bluetooth"
+
+#~ msgid "No connected devices"
+#~ msgstr "Нет подключённых устройств"
+
+#~ msgid "%1 connected"
+#~ msgstr "%1 подключено"
 
 #~ msgid "Bluetooth is Disabled"
 #~ msgstr "Bluetooth выключен"

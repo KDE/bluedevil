@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-16 00:45+0000\n"
+"POT-Creation-Date: 2022-10-16 00:48+0000\n"
 "PO-Revision-Date: 2020-04-26 12:59+0800\n"
 "Last-Translator: Yi-Jyun Pan <pan93412@gmail.com>\n"
 "Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
@@ -174,7 +174,6 @@ msgid "No Bluetooth adapters available"
 msgstr "沒有可用的藍牙轉接器"
 
 #: package/contents/ui/FullRepresentation.qml:145
-#: package/contents/ui/main.qml:42
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "藍牙裝置已關閉。"
@@ -190,6 +189,12 @@ msgstr "找不到裝置"
 msgid "Bluetooth"
 msgstr "藍牙"
 
+#: package/contents/ui/main.qml:42
+#, fuzzy, kde-format
+#| msgid "Bluetooth is disabled"
+msgid "Bluetooth is disabled; middle-click to enable"
+msgstr "藍牙裝置已關閉。"
+
 #: package/contents/ui/main.qml:46
 #, kde-format
 msgid "No adapters available"
@@ -202,13 +207,17 @@ msgstr "藍牙裝置已離線"
 
 #: package/contents/ui/main.qml:51
 #, kde-format
-msgid "No connected devices"
-msgstr "沒有已連線的裝置"
+msgid ""
+"No connected devices\n"
+"Middle-click to disable Bluetooth"
+msgstr ""
 
 #: package/contents/ui/main.qml:54
 #, kde-format
-msgid "%1 connected"
-msgstr "已連線 %1"
+msgid ""
+"%1 connected\n"
+"Middle-click to disable Bluetooth"
+msgstr ""
 
 #: package/contents/ui/main.qml:56
 #, kde-format
@@ -217,22 +226,33 @@ msgid "%1 connected device"
 msgid_plural "%1 connected devices"
 msgstr[0] "%1 個已連線的裝置"
 
-#: package/contents/ui/main.qml:124
+#: package/contents/ui/main.qml:60
+#, kde-format
+msgid "Middle-click to disable Bluetooth"
+msgstr ""
+
+#: package/contents/ui/main.qml:125
 #, fuzzy, kde-format
 #| msgid "Configure &Bluetooth..."
 msgid "Configure &Bluetooth…"
 msgstr "設定藍牙裝置(&B)..."
 
-#: package/contents/ui/main.qml:126
+#: package/contents/ui/main.qml:127
 #, fuzzy, kde-format
 #| msgid "Add New Device"
 msgid "Add New Device…"
 msgstr "新增裝置"
 
-#: package/contents/ui/main.qml:129 package/contents/ui/Toolbar.qml:27
+#: package/contents/ui/main.qml:130 package/contents/ui/Toolbar.qml:27
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "開啟藍牙"
+
+#~ msgid "No connected devices"
+#~ msgstr "沒有已連線的裝置"
+
+#~ msgid "%1 connected"
+#~ msgstr "已連線 %1"
 
 #~ msgid "Bluetooth is Disabled"
 #~ msgstr "藍牙裝置已關閉"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-16 00:45+0000\n"
+"POT-Creation-Date: 2022-10-16 00:48+0000\n"
 "PO-Revision-Date: 2020-04-24 13:19+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -173,7 +173,6 @@ msgid "No Bluetooth adapters available"
 msgstr "Bluetoothi adaptereid pole saada"
 
 #: package/contents/ui/FullRepresentation.qml:145
-#: package/contents/ui/main.qml:42
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth on välja lülitatud"
@@ -189,6 +188,12 @@ msgstr "Seadmeid ei leitud"
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
+#: package/contents/ui/main.qml:42
+#, fuzzy, kde-format
+#| msgid "Bluetooth is disabled"
+msgid "Bluetooth is disabled; middle-click to enable"
+msgstr "Bluetooth on välja lülitatud"
+
 #: package/contents/ui/main.qml:46
 #, kde-format
 msgid "No adapters available"
@@ -201,13 +206,17 @@ msgstr "Bluetooth ei ole võrgus"
 
 #: package/contents/ui/main.qml:51
 #, kde-format
-msgid "No connected devices"
-msgstr "Ühendatud seadmed puuduvad"
+msgid ""
+"No connected devices\n"
+"Middle-click to disable Bluetooth"
+msgstr ""
 
 #: package/contents/ui/main.qml:54
 #, kde-format
-msgid "%1 connected"
-msgstr "%1 ühendatud"
+msgid ""
+"%1 connected\n"
+"Middle-click to disable Bluetooth"
+msgstr ""
 
 #: package/contents/ui/main.qml:56
 #, kde-format
@@ -217,22 +226,33 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 ühendatud seade"
 msgstr[1] "%1 ühendatud seadet"
 
-#: package/contents/ui/main.qml:124
+#: package/contents/ui/main.qml:60
+#, kde-format
+msgid "Middle-click to disable Bluetooth"
+msgstr ""
+
+#: package/contents/ui/main.qml:125
 #, fuzzy, kde-format
 #| msgid "Configure &Bluetooth..."
 msgid "Configure &Bluetooth…"
 msgstr "Seadista &Bluetoothi ..."
 
-#: package/contents/ui/main.qml:126
+#: package/contents/ui/main.qml:127
 #, fuzzy, kde-format
 #| msgid "Add New Device"
 msgid "Add New Device…"
 msgstr "Lisa uus seade"
 
-#: package/contents/ui/main.qml:129 package/contents/ui/Toolbar.qml:27
+#: package/contents/ui/main.qml:130 package/contents/ui/Toolbar.qml:27
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Lülita Bluetooth sisse"
+
+#~ msgid "No connected devices"
+#~ msgstr "Ühendatud seadmed puuduvad"
+
+#~ msgid "%1 connected"
+#~ msgstr "%1 ühendatud"
 
 #~ msgid "Bluetooth is Disabled"
 #~ msgstr "Bluetooth on välja lülitatud"

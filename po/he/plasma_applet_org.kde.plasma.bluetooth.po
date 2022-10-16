@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-16 00:45+0000\n"
+"POT-Creation-Date: 2022-10-16 00:48+0000\n"
 "PO-Revision-Date: 2017-05-16 06:55-0400\n"
 "Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
 "Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
@@ -174,7 +174,6 @@ msgid "No Bluetooth adapters available"
 msgstr "אין מתאמים זמינים"
 
 #: package/contents/ui/FullRepresentation.qml:145
-#: package/contents/ui/main.qml:42
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "הבלוטוס כבוי"
@@ -190,6 +189,12 @@ msgstr "לא נמצאו התקנים"
 msgid "Bluetooth"
 msgstr "בלוטוס"
 
+#: package/contents/ui/main.qml:42
+#, fuzzy, kde-format
+#| msgid "Bluetooth is disabled"
+msgid "Bluetooth is disabled; middle-click to enable"
+msgstr "הבלוטוס כבוי"
+
 #: package/contents/ui/main.qml:46
 #, kde-format
 msgid "No adapters available"
@@ -202,16 +207,17 @@ msgstr "הבלוטוס לא מחובר"
 
 #: package/contents/ui/main.qml:51
 #, kde-format
-msgid "No connected devices"
-msgstr "אין התקנים מחוברים"
+msgid ""
+"No connected devices\n"
+"Middle-click to disable Bluetooth"
+msgstr ""
 
 #: package/contents/ui/main.qml:54
-#, fuzzy, kde-format
-#| msgctxt "Number of connected devices"
-#| msgid "%1 connected device"
-#| msgid_plural "%1 connected devices"
-msgid "%1 connected"
-msgstr "התקן מחובר"
+#, kde-format
+msgid ""
+"%1 connected\n"
+"Middle-click to disable Bluetooth"
+msgstr ""
 
 #: package/contents/ui/main.qml:56
 #, kde-format
@@ -221,22 +227,37 @@ msgid_plural "%1 connected devices"
 msgstr[0] "התקן מחובר"
 msgstr[1] "%1 התקנים מחוברים"
 
-#: package/contents/ui/main.qml:124
+#: package/contents/ui/main.qml:60
+#, kde-format
+msgid "Middle-click to disable Bluetooth"
+msgstr ""
+
+#: package/contents/ui/main.qml:125
 #, fuzzy, kde-format
 #| msgid "Configure &Bluetooth..."
 msgid "Configure &Bluetooth…"
 msgstr "הגדר בלוטוס..."
 
-#: package/contents/ui/main.qml:126
+#: package/contents/ui/main.qml:127
 #, fuzzy, kde-format
 #| msgid "Add New Device"
 msgid "Add New Device…"
 msgstr "הוסף התקן חדש"
 
-#: package/contents/ui/main.qml:129 package/contents/ui/Toolbar.qml:27
+#: package/contents/ui/main.qml:130 package/contents/ui/Toolbar.qml:27
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "הפעל בלוטוס"
+
+#~ msgid "No connected devices"
+#~ msgstr "אין התקנים מחוברים"
+
+#, fuzzy
+#~| msgctxt "Number of connected devices"
+#~| msgid "%1 connected device"
+#~| msgid_plural "%1 connected devices"
+#~ msgid "%1 connected"
+#~ msgstr "התקן מחובר"
 
 #~ msgid "Bluetooth is Disabled"
 #~ msgstr "הבלוטוס כבוי"

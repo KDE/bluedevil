@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-16 00:45+0000\n"
+"POT-Creation-Date: 2022-10-16 00:48+0000\n"
 "PO-Revision-Date: 2021-09-02 09:10+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -173,7 +173,6 @@ msgid "No Bluetooth adapters available"
 msgstr "Μη διαθέσιμοι προσαρμογείς bluetooth"
 
 #: package/contents/ui/FullRepresentation.qml:145
-#: package/contents/ui/main.qml:42
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Το Bluetooth είναι απενεργοποιημένο"
@@ -189,6 +188,12 @@ msgstr "Δε βρέθηκαν συσκευές"
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
+#: package/contents/ui/main.qml:42
+#, fuzzy, kde-format
+#| msgid "Bluetooth is disabled"
+msgid "Bluetooth is disabled; middle-click to enable"
+msgstr "Το Bluetooth είναι απενεργοποιημένο"
+
 #: package/contents/ui/main.qml:46
 #, kde-format
 msgid "No adapters available"
@@ -201,13 +206,17 @@ msgstr "Το Bluetooth είναι εκτός σύνδεσης"
 
 #: package/contents/ui/main.qml:51
 #, kde-format
-msgid "No connected devices"
-msgstr "Καμία συνδεδεμένη συσκευή"
+msgid ""
+"No connected devices\n"
+"Middle-click to disable Bluetooth"
+msgstr ""
 
 #: package/contents/ui/main.qml:54
 #, kde-format
-msgid "%1 connected"
-msgstr "%1 σε σύνδεση"
+msgid ""
+"%1 connected\n"
+"Middle-click to disable Bluetooth"
+msgstr ""
 
 #: package/contents/ui/main.qml:56
 #, kde-format
@@ -217,20 +226,31 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 συνδεδεμένη συσκευή"
 msgstr[1] "%1 συνδεδεμένες συσκευές"
 
-#: package/contents/ui/main.qml:124
+#: package/contents/ui/main.qml:60
+#, kde-format
+msgid "Middle-click to disable Bluetooth"
+msgstr ""
+
+#: package/contents/ui/main.qml:125
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Διαμόρφωση &Bluetooth…"
 
-#: package/contents/ui/main.qml:126
+#: package/contents/ui/main.qml:127
 #, kde-format
 msgid "Add New Device…"
 msgstr "Προσθήκη νέας συσκευής…"
 
-#: package/contents/ui/main.qml:129 package/contents/ui/Toolbar.qml:27
+#: package/contents/ui/main.qml:130 package/contents/ui/Toolbar.qml:27
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Ενεργοποίηση Bluetooth"
+
+#~ msgid "No connected devices"
+#~ msgstr "Καμία συνδεδεμένη συσκευή"
+
+#~ msgid "%1 connected"
+#~ msgstr "%1 σε σύνδεση"
 
 #~ msgid "Bluetooth is Disabled"
 #~ msgstr "Το Bluetooth είναι απενεργοποιημένο"
