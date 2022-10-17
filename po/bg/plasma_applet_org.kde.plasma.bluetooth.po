@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-16 00:48+0000\n"
-"PO-Revision-Date: 2022-05-20 11:32+0200\n"
+"PO-Revision-Date: 2022-10-16 13:41+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.04.0\n"
+"X-Generator: Lokalize 22.08.2\n"
 
 #: package/contents/ui/DeviceItem.qml:35
 #, kde-format
@@ -186,10 +186,11 @@ msgid "Bluetooth"
 msgstr "Bluetooth"
 
 #: package/contents/ui/main.qml:42
-#, fuzzy, kde-format
-#| msgid "Bluetooth is disabled"
+#, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
-msgstr "Bluetooth е изключен"
+msgstr ""
+"Bluetooth е изключен. Кликнете със среден бутон на мишката, за да го "
+"активирате"
 
 #: package/contents/ui/main.qml:46
 #, kde-format
@@ -207,6 +208,8 @@ msgid ""
 "No connected devices\n"
 "Middle-click to disable Bluetooth"
 msgstr ""
+"Няма свързани устройства\n"
+"Кликнете със среден бутон на мишката, за да деактивирате Bluetooth"
 
 #: package/contents/ui/main.qml:54
 #, kde-format
@@ -214,6 +217,8 @@ msgid ""
 "%1 connected\n"
 "Middle-click to disable Bluetooth"
 msgstr ""
+"%1 е свързан\n"
+"Кликнете със среден бутон на мишката, за да деактивирате Bluetooth"
 
 #: package/contents/ui/main.qml:56
 #, kde-format
@@ -226,7 +231,7 @@ msgstr[1] "%1 свързани устройства"
 #: package/contents/ui/main.qml:60
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
-msgstr ""
+msgstr "Кликване със среден бутон на мишката, за деактивиране на Bluetooth"
 
 #: package/contents/ui/main.qml:125
 #, kde-format
@@ -242,9 +247,3 @@ msgstr "Добавяне на ново устройство…"
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Активиране на Bluetooth"
-
-#~ msgid "No connected devices"
-#~ msgstr "Няма свързани устройства"
-
-#~ msgid "%1 connected"
-#~ msgstr "%1 е свързан"

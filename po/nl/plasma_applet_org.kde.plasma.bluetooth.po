@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-16 00:48+0000\n"
-"PO-Revision-Date: 2022-04-26 12:02+0200\n"
+"PO-Revision-Date: 2022-10-16 22:41+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.04.0\n"
+"X-Generator: Lokalize 22.08.2\n"
 
 #: package/contents/ui/DeviceItem.qml:35
 #, kde-format
@@ -186,10 +186,9 @@ msgid "Bluetooth"
 msgstr "Bluetooth"
 
 #: package/contents/ui/main.qml:42
-#, fuzzy, kde-format
-#| msgid "Bluetooth is disabled"
+#, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
-msgstr "Bluetooth is uitgeschakeld"
+msgstr "Bluetooth is uitgeschakeld; midden-klik om in te schakelen"
 
 #: package/contents/ui/main.qml:46
 #, kde-format
@@ -207,6 +206,8 @@ msgid ""
 "No connected devices\n"
 "Middle-click to disable Bluetooth"
 msgstr ""
+"Geen verbonden apparaten\n"
+"Midden-klik om Bluetooth uit te schakelen"
 
 #: package/contents/ui/main.qml:54
 #, kde-format
@@ -214,6 +215,8 @@ msgid ""
 "%1 connected\n"
 "Middle-click to disable Bluetooth"
 msgstr ""
+"%1 verbonden\n"
+"Midden-klik om Bluetooth uit te schakelen"
 
 #: package/contents/ui/main.qml:56
 #, kde-format
@@ -226,7 +229,7 @@ msgstr[1] "%1 verbonden apparaten"
 #: package/contents/ui/main.qml:60
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
-msgstr ""
+msgstr "Midden-klik om Bluetooth uit te schakelen"
 
 #: package/contents/ui/main.qml:125
 #, kde-format

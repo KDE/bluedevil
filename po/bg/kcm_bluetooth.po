@@ -330,9 +330,3 @@ msgstr "Добавяне на ново устройство…"
 #, kde-format
 msgid "Configure…"
 msgstr "Конфигуриране…"
-
-#~ msgid "Connected"
-#~ msgstr "Свързано"
-
-#~ msgid "Available"
-#~ msgstr "На линия"

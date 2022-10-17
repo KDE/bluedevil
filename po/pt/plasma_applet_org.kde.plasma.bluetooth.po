@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: plasma_applet_org\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-16 00:48+0000\n"
-"PO-Revision-Date: 2022-05-04 18:32+0100\n"
+"PO-Revision-Date: 2022-10-16 11:37+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -186,10 +186,9 @@ msgid "Bluetooth"
 msgstr "Bluetooth"
 
 #: package/contents/ui/main.qml:42
-#, fuzzy, kde-format
-#| msgid "Bluetooth is disabled"
+#, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
-msgstr "O Bluetooth está desactivado"
+msgstr "O Bluetooth está desactivado; use o botão do meio para o activar"
 
 #: package/contents/ui/main.qml:46
 #, kde-format
@@ -207,6 +206,8 @@ msgid ""
 "No connected devices\n"
 "Middle-click to disable Bluetooth"
 msgstr ""
+"Não existem dispositivos ligados\n"
+"Use o botão do meio para desactivar o Bluetooth"
 
 #: package/contents/ui/main.qml:54
 #, kde-format
@@ -214,6 +215,8 @@ msgid ""
 "%1 connected\n"
 "Middle-click to disable Bluetooth"
 msgstr ""
+"O %1 está ligado\n"
+"Use o botão do meio para desactivar o Bluetooth"
 
 #: package/contents/ui/main.qml:56
 #, kde-format
@@ -226,7 +229,7 @@ msgstr[1] "%1 dispositivos ligados"
 #: package/contents/ui/main.qml:60
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
-msgstr ""
+msgstr "Use o botão do meio do rato para desactivar o Bluetooth"
 
 #: package/contents/ui/main.qml:125
 #, kde-format
@@ -242,9 +245,3 @@ msgstr "Adicionar um Novo Dispositivo…"
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Activar o Bluetooth"
-
-#~ msgid "No connected devices"
-#~ msgstr "Sem dispositivos ligados"
-
-#~ msgid "%1 connected"
-#~ msgstr "%1 ligado"

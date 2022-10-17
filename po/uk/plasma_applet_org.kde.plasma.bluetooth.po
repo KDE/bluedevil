@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-16 00:48+0000\n"
-"PO-Revision-Date: 2022-04-26 08:37+0300\n"
+"PO-Revision-Date: 2022-10-16 08:43+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -189,10 +189,9 @@ msgid "Bluetooth"
 msgstr "Bluetooth"
 
 #: package/contents/ui/main.qml:42
-#, fuzzy, kde-format
-#| msgid "Bluetooth is disabled"
+#, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
-msgstr "Bluetooth вимкнено"
+msgstr "Bluetooth вимкнено; клацніть середньою кнопкою, щоб увімкнути"
 
 #: package/contents/ui/main.qml:46
 #, kde-format
@@ -210,6 +209,8 @@ msgid ""
 "No connected devices\n"
 "Middle-click to disable Bluetooth"
 msgstr ""
+"Немає з'єднаних пристроїв\n"
+"Клацніть середньою, щоб вимкнути Bluetooth"
 
 #: package/contents/ui/main.qml:54
 #, kde-format
@@ -217,6 +218,8 @@ msgid ""
 "%1 connected\n"
 "Middle-click to disable Bluetooth"
 msgstr ""
+"З'єднано %1\n"
+"Клацніть середньою, щоб вимкнути Bluetooth"
 
 #: package/contents/ui/main.qml:56
 #, kde-format
@@ -231,7 +234,7 @@ msgstr[3] "%1 з’єднаний пристрій"
 #: package/contents/ui/main.qml:60
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
-msgstr ""
+msgstr "Клацніть середньою, щоб вимкнути Bluetooth"
 
 #: package/contents/ui/main.qml:125
 #, kde-format

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-16 00:48+0000\n"
-"PO-Revision-Date: 2022-05-06 13:06+0300\n"
+"PO-Revision-Date: 2022-10-16 11:04+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.04.0\n"
+"X-Generator: Lokalize 22.08.1\n"
 
 #: package/contents/ui/DeviceItem.qml:35
 #, kde-format
@@ -187,10 +187,9 @@ msgid "Bluetooth"
 msgstr "Bluetooth"
 
 #: package/contents/ui/main.qml:42
-#, fuzzy, kde-format
-#| msgid "Bluetooth is disabled"
+#, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
-msgstr "Bluetooth devre dışı"
+msgstr "Bluetooth devre dışı; etkinleştirmek için orta tıklayın"
 
 #: package/contents/ui/main.qml:46
 #, kde-format
@@ -208,13 +207,15 @@ msgid ""
 "No connected devices\n"
 "Middle-click to disable Bluetooth"
 msgstr ""
+"Bağlı aygıt yok\n"
+"Bluetooth'u devre dışı bırakmak için orta tıklayın"
 
 #: package/contents/ui/main.qml:54
 #, kde-format
 msgid ""
 "%1 connected\n"
 "Middle-click to disable Bluetooth"
-msgstr ""
+msgstr "%1 bağlı Bluetooth'u devre dışı bırakmak için orta tıklayın"
 
 #: package/contents/ui/main.qml:56
 #, kde-format
@@ -227,7 +228,7 @@ msgstr[1] "%1 bağlı aygıt"
 #: package/contents/ui/main.qml:60
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
-msgstr ""
+msgstr "Bluetooth'u devre dışı bırakmak için orta tıklayın"
 
 #: package/contents/ui/main.qml:125
 #, kde-format

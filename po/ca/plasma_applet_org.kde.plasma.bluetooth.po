@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-16 00:48+0000\n"
-"PO-Revision-Date: 2022-04-26 09:19+0200\n"
+"PO-Revision-Date: 2022-10-16 09:02+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -190,10 +190,9 @@ msgid "Bluetooth"
 msgstr "Bluetooth"
 
 #: package/contents/ui/main.qml:42
-#, fuzzy, kde-format
-#| msgid "Bluetooth is disabled"
+#, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
-msgstr "El Bluetooth està desactivat"
+msgstr "El Bluetooth està desactivat; feu un clic del mig per activar-lo"
 
 #: package/contents/ui/main.qml:46
 #, kde-format
@@ -211,6 +210,8 @@ msgid ""
 "No connected devices\n"
 "Middle-click to disable Bluetooth"
 msgstr ""
+"No hi ha cap dispositiu connectat\n"
+"Feu un clic del mig per desactivar el Bluetooth"
 
 #: package/contents/ui/main.qml:54
 #, kde-format
@@ -218,6 +219,8 @@ msgid ""
 "%1 connected\n"
 "Middle-click to disable Bluetooth"
 msgstr ""
+"%1 està connectat\n"
+"Feu un clic del mig per desactivar el Bluetooth"
 
 #: package/contents/ui/main.qml:56
 #, kde-format
@@ -230,7 +233,7 @@ msgstr[1] "%1 dispositius connectats"
 #: package/contents/ui/main.qml:60
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
-msgstr ""
+msgstr "Feu un clic del mig per desactivar el Bluetooth"
 
 #: package/contents/ui/main.qml:125
 #, kde-format
@@ -246,9 +249,3 @@ msgstr "Afegeix un dispositiu nou…"
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Activa el Bluetooth"
-
-#~ msgid "No connected devices"
-#~ msgstr "No hi ha cap dispositiu connectat"
-
-#~ msgid "%1 connected"
-#~ msgstr "%1 connectat"
