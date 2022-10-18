@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-16 00:48+0000\n"
-"PO-Revision-Date: 2022-09-19 18:47+0200\n"
+"PO-Revision-Date: 2022-10-17 07:41+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -187,10 +187,9 @@ msgid "Bluetooth"
 msgstr "Bluetooth"
 
 #: package/contents/ui/main.qml:42
-#, fuzzy, kde-format
-#| msgid "Bluetooth is disabled"
+#, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
-msgstr "Bluetooth გამორთულია"
+msgstr "Bluetooth გამორთულია; ჩასართავად გამოიყენეთ შუა-წკაპი"
 
 #: package/contents/ui/main.qml:46
 #, kde-format
@@ -208,6 +207,8 @@ msgid ""
 "No connected devices\n"
 "Middle-click to disable Bluetooth"
 msgstr ""
+"მიერთებული მოწყობილობების გარეშე.\n"
+"ჩასართავად გამოიყენეთ შუა-წკაპი"
 
 #: package/contents/ui/main.qml:54
 #, kde-format
@@ -215,6 +216,8 @@ msgid ""
 "%1 connected\n"
 "Middle-click to disable Bluetooth"
 msgstr ""
+"%1 მიერთებული\n"
+"ჩასართავად გამოიყენეთ შუა-წკაპი"
 
 #: package/contents/ui/main.qml:56
 #, kde-format
@@ -227,7 +230,7 @@ msgstr[1] "%1 მიერთებული მოწყობილობა"
 #: package/contents/ui/main.qml:60
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
-msgstr ""
+msgstr "Bluetooth-ის გამოსართავად გამოიყენეთ შუა-წკაპი"
 
 #: package/contents/ui/main.qml:125
 #, kde-format
