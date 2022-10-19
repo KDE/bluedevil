@@ -66,19 +66,20 @@ ScrollViewKCM {
                     text: i18nc("@action:button", "Forget Device")
                     icon.name: "edit-delete-remove"
                     onTriggered: {
-                        dialog.call(dialog.adapter.removeDevice(dialog.device));
-                        dialog.close();
+                        dialog.accept();
                     }
                 },
                 Kirigami.Action {
                     text: i18nc("@action:button", "Cancel")
                     icon.name: "dialog-cancel"
                     onTriggered: {
-                        dialog.close();
+                        dialog.reject();
                     }
                     shortcut: StandardKey.Cancel
                 }
             ]
+
+            onAccepted: call(adapter.removeDevice(device))
         }
     }
 
