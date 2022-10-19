@@ -80,6 +80,26 @@ ScrollViewKCM {
             ]
 
             onAccepted: call(adapter.removeDevice(device))
+
+            contentData: [
+                Connections {
+                    target: dialog.device
+                    function onDeviceRemoved() {
+                        dialog.reject();
+                    }
+                },
+                Connections {
+                    target: dialog.adapter
+                    function onAdapterRemoved() {
+                        dialog.reject();
+                    }
+                    function onPoweredChanged() {
+                        if (!dialog.adapter.powered) {
+                            dialog.reject();
+                        }
+                    }
+                }
+            ]
         }
     }
 
