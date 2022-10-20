@@ -198,7 +198,11 @@ ScrollViewKCM {
                             device: model.Device,
                             name: model.Name,
                         });
-                        dialog.call.connect(call => root.makeCall(call));
+                        // Use IIFE (Immediately Invoked Function Expression) to hard-copy a reference
+                        // to root object, to avoid it being lost if the delegate is destroyed.
+                        dialog.call.connect((function (root) {
+                            return (call => root.makeCall(call));
+                        })(root));
                         dialog.closed.connect(() => dialog.destroy());
                         dialog.open();
                     }
