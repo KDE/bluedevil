@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-03 00:49+0000\n"
+"POT-Creation-Date: 2022-10-22 00:46+0000\n"
 "PO-Revision-Date: 2022-07-26 09:40+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -36,12 +36,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "Мережа %1 (%2)"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:182
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:203
 #, kde-format
 msgid "Disconnect"
 msgstr "Від’єднатися"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:182
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:203
 #, kde-format
 msgid "Connect"
 msgstr "З'єднатися"
@@ -236,7 +236,7 @@ msgstr "При вході:"
 msgid "Enable Bluetooth"
 msgstr "Увімкнути Bluetooth"
 
-#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:223
+#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:248
 #, kde-format
 msgid "Disable Bluetooth"
 msgstr "Вимкнути Bluetooth"
@@ -292,44 +292,44 @@ msgctxt "@action:button"
 msgid "Forget Device"
 msgstr "Забути про пристрій"
 
-#: package/contents/ui/main.qml:74
+#: package/contents/ui/main.qml:73
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: package/contents/ui/main.qml:113
+#: package/contents/ui/main.qml:134
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "Адаптерів Bluetooth не знайдено"
 
-#: package/contents/ui/main.qml:122
+#: package/contents/ui/main.qml:143
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth вимкнено"
 
-#: package/contents/ui/main.qml:128
+#: package/contents/ui/main.qml:149
 #, kde-format
 msgid "Enable"
 msgstr "Увімкнути"
 
-#: package/contents/ui/main.qml:138
+#: package/contents/ui/main.qml:159
 #, kde-format
 msgid "No devices paired"
 msgstr "Не пов'язано жодного пристрою"
 
-#: package/contents/ui/main.qml:193
+#: package/contents/ui/main.qml:214
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "Забути про «%1»"
 
-#: package/contents/ui/main.qml:217
+#: package/contents/ui/main.qml:242
 #, kde-format
 msgid "Add New Device…"
 msgstr "Додати новий пристрій…"
 
-#: package/contents/ui/main.qml:235
+#: package/contents/ui/main.qml:260
 #, kde-format
 msgid "Configure…"
 msgstr "Налаштувати…"

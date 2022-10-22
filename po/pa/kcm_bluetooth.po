@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-03 00:49+0000\n"
+"POT-Creation-Date: 2022-10-22 00:46+0000\n"
 "PO-Revision-Date: 2022-01-01 09:10-0800\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -33,12 +33,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 ਨੈੱਟਵਰਕ (%2)"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:182
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:203
 #, kde-format
 msgid "Disconnect"
 msgstr "ਡਿਸ-ਕਨੈਕਟ"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:182
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:203
 #, kde-format
 msgid "Connect"
 msgstr "ਕਨੈਕਟ"
@@ -233,7 +233,7 @@ msgstr "ਲਾਗਇਨ ਸਮੇਂ:"
 msgid "Enable Bluetooth"
 msgstr "ਬਲੂਟੁੱਥ ਸਮਰੱਥ ਕਰੋ"
 
-#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:223
+#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:248
 #, kde-format
 msgid "Disable Bluetooth"
 msgstr "ਬਲੂਟੁੱਥ ਅਸਮਰੱਥ"
@@ -292,44 +292,44 @@ msgctxt "@action:button"
 msgid "Forget Device"
 msgstr "ਡਿਵਾਈਸ:"
 
-#: package/contents/ui/main.qml:74
+#: package/contents/ui/main.qml:73
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
 msgstr ""
 
-#: package/contents/ui/main.qml:113
+#: package/contents/ui/main.qml:134
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "ਕੋਈ ਬਲੂਟੁੱਥ ਐਡਪਟਰ ਨਹੀਂ ਲੱਭੇ"
 
-#: package/contents/ui/main.qml:122
+#: package/contents/ui/main.qml:143
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "ਬਲੂਟੁੱਥ ਅਸਮਰੱਥ ਹੈ"
 
-#: package/contents/ui/main.qml:128
+#: package/contents/ui/main.qml:149
 #, kde-format
 msgid "Enable"
 msgstr "ਸਮਰੱਥ"
 
-#: package/contents/ui/main.qml:138
+#: package/contents/ui/main.qml:159
 #, kde-format
 msgid "No devices paired"
 msgstr "ਕੋਈ ਡਿਵਾਈਸ ਪੇਅਰ ਨਹੀਂ ਕੀਤਾ ਹੈ"
 
-#: package/contents/ui/main.qml:193
+#: package/contents/ui/main.qml:214
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr ""
 
-#: package/contents/ui/main.qml:217
+#: package/contents/ui/main.qml:242
 #, kde-format
 msgid "Add New Device…"
 msgstr "…ਨਵਾਂ ਡਿਵਾਈਸ ਜੋੜੋ"
 
-#: package/contents/ui/main.qml:235
+#: package/contents/ui/main.qml:260
 #, kde-format
 msgid "Configure…"
 msgstr "…ਸੰਰਚਨਾ"

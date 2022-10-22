@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-03 00:49+0000\n"
+"POT-Creation-Date: 2022-10-22 00:46+0000\n"
 "PO-Revision-Date: 2022-10-19 13:21\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -35,12 +35,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 网络 (%2)"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:182
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:203
 #, kde-format
 msgid "Disconnect"
 msgstr "断开连接"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:182
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:203
 #, kde-format
 msgid "Connect"
 msgstr "连接"
@@ -235,7 +235,7 @@ msgstr "登录时："
 msgid "Enable Bluetooth"
 msgstr "启用蓝牙"
 
-#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:223
+#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:248
 #, kde-format
 msgid "Disable Bluetooth"
 msgstr "禁用蓝牙"
@@ -291,44 +291,44 @@ msgctxt "@action:button"
 msgid "Forget Device"
 msgstr "忘记设备"
 
-#: package/contents/ui/main.qml:74
+#: package/contents/ui/main.qml:73
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
 msgstr "取消"
 
-#: package/contents/ui/main.qml:113
+#: package/contents/ui/main.qml:134
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "未找到蓝牙适配器"
 
-#: package/contents/ui/main.qml:122
+#: package/contents/ui/main.qml:143
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "蓝牙已禁用"
 
-#: package/contents/ui/main.qml:128
+#: package/contents/ui/main.qml:149
 #, kde-format
 msgid "Enable"
 msgstr "启用"
 
-#: package/contents/ui/main.qml:138
+#: package/contents/ui/main.qml:159
 #, kde-format
 msgid "No devices paired"
 msgstr "无已配对设备"
 
-#: package/contents/ui/main.qml:193
+#: package/contents/ui/main.qml:214
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "忘记“%1”"
 
-#: package/contents/ui/main.qml:217
+#: package/contents/ui/main.qml:242
 #, kde-format
 msgid "Add New Device…"
 msgstr "添加新设备…"
 
-#: package/contents/ui/main.qml:235
+#: package/contents/ui/main.qml:260
 #, kde-format
 msgid "Configure…"
 msgstr "配置…"
