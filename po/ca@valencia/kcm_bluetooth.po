@@ -334,9 +334,3 @@ msgstr "Afig un dispositiu nou…"
 #, kde-format
 msgid "Configure…"
 msgstr "Configura…"
-
-#~ msgid "Connected"
-#~ msgstr "Connectat"
-
-#~ msgid "Available"
-#~ msgstr "Disponible"
