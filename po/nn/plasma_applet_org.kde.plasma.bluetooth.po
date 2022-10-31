@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-16 00:48+0000\n"
-"PO-Revision-Date: 2022-06-18 14:50+0200\n"
+"PO-Revision-Date: 2022-10-30 10:07+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 22.04.2\n"
+"X-Generator: Lokalize 22.08.2\n"
 
 #: package/contents/ui/DeviceItem.qml:35
 #, kde-format
@@ -191,7 +191,7 @@ msgstr "Bluetooth"
 #: package/contents/ui/main.qml:42
 #, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
-msgstr ""
+msgstr "Bluetooth er avslått – midtklikk for å slå på"
 
 #: package/contents/ui/main.qml:46
 #, kde-format
@@ -209,6 +209,8 @@ msgid ""
 "No connected devices\n"
 "Middle-click to disable Bluetooth"
 msgstr ""
+"Ingen tilkopla einingar\n"
+"Midtklikk for å slå av Bluetooth"
 
 #: package/contents/ui/main.qml:54
 #, kde-format
@@ -216,6 +218,8 @@ msgid ""
 "%1 connected\n"
 "Middle-click to disable Bluetooth"
 msgstr ""
+"%1 tilkopla\n"
+"Midtklikk for å slå av Bluetooth"
 
 #: package/contents/ui/main.qml:56
 #, kde-format
@@ -228,7 +232,7 @@ msgstr[1] "%1 tilkopla einingar"
 #: package/contents/ui/main.qml:60
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
-msgstr ""
+msgstr "Midtklikk for å slå av Bluetooth"
 
 #: package/contents/ui/main.qml:125
 #, kde-format
