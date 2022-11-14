@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-10 00:47+0000\n"
+"POT-Creation-Date: 2022-11-14 00:47+0000\n"
 "PO-Revision-Date: 2021-09-17 23:44+0900\n"
 "Last-Translator: Tomohiro Hyakutake <tomhioo@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -309,7 +309,7 @@ msgctxt "Connecting to a Bluetooth device"
 msgid "Connecting to %1…"
 msgstr "%1 に接続しています…"
 
-#: sendfile/pages/failpage.cpp:41
+#: sendfile/pages/failpage.cpp:43
 #, fuzzy, kde-format
 #| msgctxt "This string is shown when the wizard fail"
 #| msgid "The connection to the device has failed"
@@ -317,7 +317,7 @@ msgctxt "This string is shown when the wizard fail"
 msgid "The connection to the device has failed: %1"
 msgstr "デバイスへの接続に失敗しました"
 
-#: sendfile/pages/failpage.cpp:43
+#: sendfile/pages/failpage.cpp:45
 #, fuzzy, kde-format
 #| msgid "The connection to %1 has failed"
 msgid "The connection to %1 has failed: %2"
@@ -366,6 +366,12 @@ msgstr "ファイルを送信"
 #, kde-format
 msgid "Cancel"
 msgstr "キャンセル"
+
+#: sendfile/sendfilewizard.cpp:149
+#, kde-format
+msgctxt "@info:status %1 error message"
+msgid "Failed to start org.bluez.obex service: %1"
+msgstr ""
 
 #. i18n: ectx: label, entry (saveUrl), group (General)
 #: settings/filereceiver.kcfg:11

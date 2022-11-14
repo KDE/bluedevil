@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-10 00:47+0000\n"
+"POT-Creation-Date: 2022-11-14 00:47+0000\n"
 "PO-Revision-Date: 2021-12-27 09:45+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -306,13 +306,13 @@ msgctxt "Connecting to a Bluetooth device"
 msgid "Connecting to %1…"
 msgstr "Ansluter till %1…"
 
-#: sendfile/pages/failpage.cpp:41
+#: sendfile/pages/failpage.cpp:43
 #, kde-format
 msgctxt "This string is shown when the wizard fail"
 msgid "The connection to the device has failed: %1"
 msgstr "Anslutningen till enheten har slutat fungera: %1"
 
-#: sendfile/pages/failpage.cpp:43
+#: sendfile/pages/failpage.cpp:45
 #, kde-format
 msgid "The connection to %1 has failed: %2"
 msgstr "Anslutningen till %1 har slutat fungera: %2"
@@ -360,6 +360,12 @@ msgstr "Skicka filer"
 #, kde-format
 msgid "Cancel"
 msgstr "Avbryt"
+
+#: sendfile/sendfilewizard.cpp:149
+#, kde-format
+msgctxt "@info:status %1 error message"
+msgid "Failed to start org.bluez.obex service: %1"
+msgstr ""
 
 #. i18n: ectx: label, entry (saveUrl), group (General)
 #: settings/filereceiver.kcfg:11
