@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-14 00:47+0000\n"
-"PO-Revision-Date: 2022-03-26 23:06+0000\n"
+"PO-Revision-Date: 2022-11-15 09:27+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -366,7 +366,7 @@ msgstr "Cancelar"
 #, kde-format
 msgctxt "@info:status %1 error message"
 msgid "Failed to start org.bluez.obex service: %1"
-msgstr ""
+msgstr "Não foi possível iniciar o serviço 'org.bluez.obex': %1"
 
 #. i18n: ectx: label, entry (saveUrl), group (General)
 #: settings/filereceiver.kcfg:11
@@ -517,9 +517,3 @@ msgstr "O dispositivo foi configurado e pode agora ser usado."
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "O dispositivo '%1' foi configurado e pode agora ser usado."
-
-#~ msgid "Bluetooth"
-#~ msgstr "Bluetooth"
-
-#~ msgid "Nicolas Fella"
-#~ msgstr "Nicolas Fella"
