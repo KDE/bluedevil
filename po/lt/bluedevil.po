@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-14 00:47+0000\n"
-"PO-Revision-Date: 2021-12-10 00:30+0200\n"
-"Last-Translator: Moo\n"
+"PO-Revision-Date: 2022-11-17 22:59+0200\n"
+"Last-Translator: Moo <<>>\n"
 "Language-Team: lt <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.2.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -282,10 +282,9 @@ msgid "Turn On"
 msgstr "Įjungti"
 
 #: sendfile/main.cpp:25 sendfile/main.cpp:27
-#, fuzzy, kde-format
-#| msgid "Bluetooth transfer failed"
+#, kde-format
 msgid "Bluetooth File Transfer"
-msgstr "Bluetooth persiuntimas nepavyko"
+msgstr "Bluetooth failų persiuntimas"
 
 #: sendfile/main.cpp:50
 #, kde-format
@@ -309,18 +308,15 @@ msgid "Connecting to %1…"
 msgstr "Jungiamasi prie %1…"
 
 #: sendfile/pages/failpage.cpp:43
-#, fuzzy, kde-format
-#| msgctxt "This string is shown when the wizard fail"
-#| msgid "The connection to the device has failed"
+#, kde-format
 msgctxt "This string is shown when the wizard fail"
 msgid "The connection to the device has failed: %1"
-msgstr "Nepavyko prisijungti prie įrenginio"
+msgstr "Nepavyko prisijungti prie įrenginio: %1"
 
 #: sendfile/pages/failpage.cpp:45
-#, fuzzy, kde-format
-#| msgid "The connection to %1 has failed"
+#, kde-format
 msgid "The connection to %1 has failed: %2"
-msgstr "Nepavyko prisijungti prie %1"
+msgstr "Nepavyko prisijungti prie %1: %2"
 
 #: sendfile/pages/selectdeviceandfilespage.cpp:53
 #, kde-format
@@ -370,7 +366,7 @@ msgstr "Atsisakyti"
 #, kde-format
 msgctxt "@info:status %1 error message"
 msgid "Failed to start org.bluez.obex service: %1"
-msgstr ""
+msgstr "Nepavyko paleisti org.bluez.obex tarnybos: %1"
 
 #. i18n: ectx: label, entry (saveUrl), group (General)
 #: settings/filereceiver.kcfg:11
@@ -397,10 +393,9 @@ msgid "Finish"
 msgstr "Baigti"
 
 #: wizard/main.cpp:26 wizard/main.cpp:28
-#, fuzzy, kde-format
-#| msgid "Bluetooth Devices"
+#, kde-format
 msgid "Add Bluetooth Device"
-msgstr "Bluetooth įrenginiai"
+msgstr "Pridėti Bluetooth įrenginį"
 
 #: wizard/pages/discover.cpp:131
 #, kde-format
@@ -428,7 +423,7 @@ msgstr "Paversti suporuojamu"
 #: wizard/pages/discover.ui:19
 #, kde-format
 msgid "Search…"
-msgstr ""
+msgstr "Ieškoti…"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: wizard/pages/discover.ui:64
