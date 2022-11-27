@@ -78,5 +78,6 @@ ecm_qt_install_logging_categories(
         )
 
 add_subdirectory(doc)
+kdoctools_install(po)
 
 ki18n_install(po)
