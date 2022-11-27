@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-14 00:47+0000\n"
-"PO-Revision-Date: 2022-01-01 15:47+0000\n"
+"PO-Revision-Date: 2022-11-26 12:50+0000\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
 "Language: en_GB\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.0\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -365,7 +365,7 @@ msgstr "Cancel"
 #, kde-format
 msgctxt "@info:status %1 error message"
 msgid "Failed to start org.bluez.obex service: %1"
-msgstr ""
+msgstr "Failed to start org.bluez.obex service: %1"
 
 #. i18n: ectx: label, entry (saveUrl), group (General)
 #: settings/filereceiver.kcfg:11
@@ -422,7 +422,7 @@ msgstr "Make Pairable"
 #: wizard/pages/discover.ui:19
 #, kde-format
 msgid "Search…"
-msgstr ""
+msgstr "Search…"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: wizard/pages/discover.ui:64
