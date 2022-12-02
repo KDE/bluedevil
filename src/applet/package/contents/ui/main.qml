@@ -47,18 +47,20 @@ Item {
             }
             return i18n("Bluetooth is offline");
         }
+        const hint = i18n("Middle-click to disable Bluetooth");
         if (connectedDevices.length === 0) {
-            return i18n("No connected devices\nMiddle-click to disable Bluetooth");
+            return "%1\n%2".arg(i18n("No connected devices")).arg(hint);
         }
         if (connectedDevices.length === 1) {
-            return i18n("%1 connected\nMiddle-click to disable Bluetooth", connectedDevices[0].name);
+            const device = connectedDevices[0];
+            return "%1\n%2".arg(i18n("%1 connected", device.name)).arg(hint);
         }
         let text = i18ncp("Number of connected devices", "%1 connected device", "%1 connected devices", connectedDevices.length);
         for (let i = 0; i < connectedDevices.length; ++i) {
             const device = connectedDevices[i];
             text += "\n \u2022 %1".arg(device.name);
-            text += i18n("Middle-click to disable Bluetooth");
         }
+        text += "\n%1".arg(hint);
         return text;
     }
 
