@@ -47,11 +47,13 @@ Item {
             }
             return i18n("Bluetooth is offline");
         }
+
         const hint = i18n("Middle-click to disable Bluetooth");
+
         if (connectedDevices.length === 0) {
             return "%1\n%2".arg(i18n("No connected devices")).arg(hint);
-        }
-        if (connectedDevices.length === 1) {
+
+        } else if (connectedDevices.length === 1) {
             const device = connectedDevices[0];
             const battery = device.battery;
             const name = i18n("%1 connected", device.name);
@@ -59,17 +61,19 @@ Item {
                 ? "%1 · %2".arg(name).arg(i18n("%1% Battery", battery.percentage))
                 : name
             return "%1\n%2".arg(text).arg(hint);
+
+        } else {
+            let text = i18ncp("Number of connected devices", "%1 connected device", "%1 connected devices", connectedDevices.length);
+            for (let i = 0; i < connectedDevices.length; ++i) {
+                const device = connectedDevices[i];
+                const battery = device.battery;
+                text += battery
+                    ? "\n \u2022 %1 · %2".arg(device.name).arg(i18n("%1% Battery", battery.percentage))
+                    : "\n \u2022 %1".arg(device.name);
+            }
+            text += "\n%1".arg(hint);
+            return text;
         }
-        let text = i18ncp("Number of connected devices", "%1 connected device", "%1 connected devices", connectedDevices.length);
-        for (let i = 0; i < connectedDevices.length; ++i) {
-            const device = connectedDevices[i];
-            const battery = device.battery;
-            text += battery
-                ? "\n \u2022 %1 · %2".arg(device.name).arg(i18n("%1% Battery", battery.percentage))
-                : "\n \u2022 %1".arg(device.name);
-        }
-        text += "\n%1".arg(hint);
-        return text;
     }
 
     Connections {
