@@ -53,12 +53,20 @@ Item {
         }
         if (connectedDevices.length === 1) {
             const device = connectedDevices[0];
-            return "%1\n%2".arg(i18n("%1 connected", device.name)).arg(hint);
+            const battery = device.battery;
+            const name = i18n("%1 connected", device.name);
+            let text = battery
+                ? "%1 · %2".arg(name).arg(i18n("%1% Battery", battery.percentage))
+                : name
+            return "%1\n%2".arg(text).arg(hint);
         }
         let text = i18ncp("Number of connected devices", "%1 connected device", "%1 connected devices", connectedDevices.length);
         for (let i = 0; i < connectedDevices.length; ++i) {
             const device = connectedDevices[i];
-            text += "\n \u2022 %1".arg(device.name);
+            const battery = device.battery;
+            text += battery
+                ? "\n \u2022 %1 · %2".arg(device.name).arg(i18n("%1% Battery", battery.percentage))
+                : "\n \u2022 %1".arg(device.name);
         }
         text += "\n%1".arg(hint);
         return text;
