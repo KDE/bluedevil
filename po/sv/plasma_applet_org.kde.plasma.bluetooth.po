@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-16 00:48+0000\n"
+"POT-Creation-Date: 2022-12-03 00:47+0000\n"
 "PO-Revision-Date: 2022-04-26 18:59+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -201,21 +201,22 @@ msgstr "Inga anslutningar tillgängliga"
 msgid "Bluetooth is offline"
 msgstr "Blåtand är nerkopplat"
 
-#: package/contents/ui/main.qml:51
+#: package/contents/ui/main.qml:50
 #, kde-format
-msgid ""
-"No connected devices\n"
-"Middle-click to disable Bluetooth"
+msgid "Middle-click to disable Bluetooth"
 msgstr ""
 
-#: package/contents/ui/main.qml:54
+#: package/contents/ui/main.qml:52
 #, kde-format
-msgid ""
-"%1 connected\n"
-"Middle-click to disable Bluetooth"
-msgstr ""
+msgid "No connected devices"
+msgstr "Inga anslutna enheter"
 
 #: package/contents/ui/main.qml:56
+#, kde-format
+msgid "%1 connected"
+msgstr "%1 ansluten"
+
+#: package/contents/ui/main.qml:58
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -223,31 +224,20 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 ansluten enhet"
 msgstr[1] "%1 anslutna enheter"
 
-#: package/contents/ui/main.qml:60
-#, kde-format
-msgid "Middle-click to disable Bluetooth"
-msgstr ""
-
-#: package/contents/ui/main.qml:125
+#: package/contents/ui/main.qml:127
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Anpassa &Blåtand…"
 
-#: package/contents/ui/main.qml:127
+#: package/contents/ui/main.qml:129
 #, kde-format
 msgid "Add New Device…"
 msgstr "Lägg till ny enhet…"
 
-#: package/contents/ui/main.qml:130 package/contents/ui/Toolbar.qml:27
+#: package/contents/ui/main.qml:132 package/contents/ui/Toolbar.qml:27
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Aktivera Blåtand"
-
-#~ msgid "No connected devices"
-#~ msgstr "Inga anslutna enheter"
-
-#~ msgid "%1 connected"
-#~ msgstr "%1 ansluten"
 
 #~ msgid "Bluetooth is Disabled"
 #~ msgstr "Blåtand är inte aktiverat"

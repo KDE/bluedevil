@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-16 00:48+0000\n"
+"POT-Creation-Date: 2022-12-03 00:47+0000\n"
 "PO-Revision-Date: 2020-04-24 13:19+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -204,21 +204,22 @@ msgstr "Adapterid puuduvad"
 msgid "Bluetooth is offline"
 msgstr "Bluetooth ei ole võrgus"
 
-#: package/contents/ui/main.qml:51
+#: package/contents/ui/main.qml:50
 #, kde-format
-msgid ""
-"No connected devices\n"
-"Middle-click to disable Bluetooth"
+msgid "Middle-click to disable Bluetooth"
 msgstr ""
 
-#: package/contents/ui/main.qml:54
+#: package/contents/ui/main.qml:52
 #, kde-format
-msgid ""
-"%1 connected\n"
-"Middle-click to disable Bluetooth"
-msgstr ""
+msgid "No connected devices"
+msgstr "Ühendatud seadmed puuduvad"
 
 #: package/contents/ui/main.qml:56
+#, kde-format
+msgid "%1 connected"
+msgstr "%1 ühendatud"
+
+#: package/contents/ui/main.qml:58
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -226,33 +227,22 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 ühendatud seade"
 msgstr[1] "%1 ühendatud seadet"
 
-#: package/contents/ui/main.qml:60
-#, kde-format
-msgid "Middle-click to disable Bluetooth"
-msgstr ""
-
-#: package/contents/ui/main.qml:125
+#: package/contents/ui/main.qml:127
 #, fuzzy, kde-format
 #| msgid "Configure &Bluetooth..."
 msgid "Configure &Bluetooth…"
 msgstr "Seadista &Bluetoothi ..."
 
-#: package/contents/ui/main.qml:127
+#: package/contents/ui/main.qml:129
 #, fuzzy, kde-format
 #| msgid "Add New Device"
 msgid "Add New Device…"
 msgstr "Lisa uus seade"
 
-#: package/contents/ui/main.qml:130 package/contents/ui/Toolbar.qml:27
+#: package/contents/ui/main.qml:132 package/contents/ui/Toolbar.qml:27
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Lülita Bluetooth sisse"
-
-#~ msgid "No connected devices"
-#~ msgstr "Ühendatud seadmed puuduvad"
-
-#~ msgid "%1 connected"
-#~ msgstr "%1 ühendatud"
 
 #~ msgid "Bluetooth is Disabled"
 #~ msgstr "Bluetooth on välja lülitatud"

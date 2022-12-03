@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-16 00:48+0000\n"
+"POT-Creation-Date: 2022-12-03 00:47+0000\n"
 "PO-Revision-Date: 2017-05-16 06:55-0400\n"
 "Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
 "Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
@@ -205,21 +205,25 @@ msgstr "אין מתאמים זמינים"
 msgid "Bluetooth is offline"
 msgstr "הבלוטוס לא מחובר"
 
-#: package/contents/ui/main.qml:51
+#: package/contents/ui/main.qml:50
 #, kde-format
-msgid ""
-"No connected devices\n"
-"Middle-click to disable Bluetooth"
+msgid "Middle-click to disable Bluetooth"
 msgstr ""
 
-#: package/contents/ui/main.qml:54
+#: package/contents/ui/main.qml:52
 #, kde-format
-msgid ""
-"%1 connected\n"
-"Middle-click to disable Bluetooth"
-msgstr ""
+msgid "No connected devices"
+msgstr "אין התקנים מחוברים"
 
 #: package/contents/ui/main.qml:56
+#, fuzzy, kde-format
+#| msgctxt "Number of connected devices"
+#| msgid "%1 connected device"
+#| msgid_plural "%1 connected devices"
+msgid "%1 connected"
+msgstr "התקן מחובר"
+
+#: package/contents/ui/main.qml:58
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -227,37 +231,22 @@ msgid_plural "%1 connected devices"
 msgstr[0] "התקן מחובר"
 msgstr[1] "%1 התקנים מחוברים"
 
-#: package/contents/ui/main.qml:60
-#, kde-format
-msgid "Middle-click to disable Bluetooth"
-msgstr ""
-
-#: package/contents/ui/main.qml:125
+#: package/contents/ui/main.qml:127
 #, fuzzy, kde-format
 #| msgid "Configure &Bluetooth..."
 msgid "Configure &Bluetooth…"
 msgstr "הגדר בלוטוס..."
 
-#: package/contents/ui/main.qml:127
+#: package/contents/ui/main.qml:129
 #, fuzzy, kde-format
 #| msgid "Add New Device"
 msgid "Add New Device…"
 msgstr "הוסף התקן חדש"
 
-#: package/contents/ui/main.qml:130 package/contents/ui/Toolbar.qml:27
+#: package/contents/ui/main.qml:132 package/contents/ui/Toolbar.qml:27
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "הפעל בלוטוס"
-
-#~ msgid "No connected devices"
-#~ msgstr "אין התקנים מחוברים"
-
-#, fuzzy
-#~| msgctxt "Number of connected devices"
-#~| msgid "%1 connected device"
-#~| msgid_plural "%1 connected devices"
-#~ msgid "%1 connected"
-#~ msgstr "התקן מחובר"
 
 #~ msgid "Bluetooth is Disabled"
 #~ msgstr "הבלוטוס כבוי"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-16 00:48+0000\n"
+"POT-Creation-Date: 2022-12-03 00:47+0000\n"
 "PO-Revision-Date: 2022-10-17 06:22+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -204,25 +204,22 @@ msgstr "Ez dago moldagailurik erabilgarri"
 msgid "Bluetooth is offline"
 msgstr "Bluetooth lerroz kanpo dago"
 
-#: package/contents/ui/main.qml:51
+#: package/contents/ui/main.qml:50
 #, kde-format
-msgid ""
-"No connected devices\n"
-"Middle-click to disable Bluetooth"
-msgstr ""
-"Ez dago konektatutako gailurik\n"
-"Erdiko-klik Bluetooth ezgaitzeko"
+msgid "Middle-click to disable Bluetooth"
+msgstr "Erdiko-klik Bluetooth ezgaitzeko"
 
-#: package/contents/ui/main.qml:54
+#: package/contents/ui/main.qml:52
 #, kde-format
-msgid ""
-"%1 connected\n"
-"Middle-click to disable Bluetooth"
-msgstr ""
-"%1 konektatuta\n"
-"Erdiko-klik Bluetooth ezgaitzeko"
+msgid "No connected devices"
+msgstr "Ez dago konektatutako gailurik"
 
 #: package/contents/ui/main.qml:56
+#, kde-format
+msgid "%1 connected"
+msgstr "%1 konektatuta"
+
+#: package/contents/ui/main.qml:58
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -230,31 +227,34 @@ msgid_plural "%1 connected devices"
 msgstr[0] "gailu %1 konektatuta"
 msgstr[1] "%1 gailu konektatuta"
 
-#: package/contents/ui/main.qml:60
-#, kde-format
-msgid "Middle-click to disable Bluetooth"
-msgstr "Erdiko-klik Bluetooth ezgaitzeko"
-
-#: package/contents/ui/main.qml:125
+#: package/contents/ui/main.qml:127
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Konfiguratu &Bluetooth..."
 
-#: package/contents/ui/main.qml:127
+#: package/contents/ui/main.qml:129
 #, kde-format
 msgid "Add New Device…"
 msgstr "Gehitu gailu berria..."
 
-#: package/contents/ui/main.qml:130 package/contents/ui/Toolbar.qml:27
+#: package/contents/ui/main.qml:132 package/contents/ui/Toolbar.qml:27
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Gaitu Bluetooth"
 
-#~ msgid "No connected devices"
-#~ msgstr "Ez dago konektatutako gailurik"
+#~ msgid ""
+#~ "No connected devices\n"
+#~ "Middle-click to disable Bluetooth"
+#~ msgstr ""
+#~ "Ez dago konektatutako gailurik\n"
+#~ "Erdiko-klik Bluetooth ezgaitzeko"
 
-#~ msgid "%1 connected"
-#~ msgstr "%1 konektatuta"
+#~ msgid ""
+#~ "%1 connected\n"
+#~ "Middle-click to disable Bluetooth"
+#~ msgstr ""
+#~ "%1 konektatuta\n"
+#~ "Erdiko-klik Bluetooth ezgaitzeko"
 
 #~ msgid "Bluetooth is Disabled"
 #~ msgstr "Bluetooth desgaituta dago"

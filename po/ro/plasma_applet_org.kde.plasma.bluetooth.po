@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-16 00:48+0000\n"
+"POT-Creation-Date: 2022-12-03 00:47+0000\n"
 "PO-Revision-Date: 2022-06-01 15:38+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -202,21 +202,22 @@ msgstr "Niciun adaptor disponibil"
 msgid "Bluetooth is offline"
 msgstr "Bluetooth este offline"
 
-#: package/contents/ui/main.qml:51
+#: package/contents/ui/main.qml:50
 #, kde-format
-msgid ""
-"No connected devices\n"
-"Middle-click to disable Bluetooth"
+msgid "Middle-click to disable Bluetooth"
 msgstr ""
 
-#: package/contents/ui/main.qml:54
+#: package/contents/ui/main.qml:52
 #, kde-format
-msgid ""
-"%1 connected\n"
-"Middle-click to disable Bluetooth"
-msgstr ""
+msgid "No connected devices"
+msgstr "Niciun dispozitiv conectat"
 
 #: package/contents/ui/main.qml:56
+#, kde-format
+msgid "%1 connected"
+msgstr "%1 conectat"
+
+#: package/contents/ui/main.qml:58
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -225,31 +226,20 @@ msgstr[0] "%1 dispozitiv conectat"
 msgstr[1] "%1 dispozitive conectate"
 msgstr[2] "%1 de dispozitive conectate"
 
-#: package/contents/ui/main.qml:60
-#, kde-format
-msgid "Middle-click to disable Bluetooth"
-msgstr ""
-
-#: package/contents/ui/main.qml:125
+#: package/contents/ui/main.qml:127
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Configurează &Bluetooth…"
 
-#: package/contents/ui/main.qml:127
+#: package/contents/ui/main.qml:129
 #, kde-format
 msgid "Add New Device…"
 msgstr "Adaugă dispozitiv nou…"
 
-#: package/contents/ui/main.qml:130 package/contents/ui/Toolbar.qml:27
+#: package/contents/ui/main.qml:132 package/contents/ui/Toolbar.qml:27
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Activează Bluetooth"
-
-#~ msgid "No connected devices"
-#~ msgstr "Niciun dispozitiv conectat"
-
-#~ msgid "%1 connected"
-#~ msgstr "%1 conectat"
 
 #~ msgid "Bluetooth is Disabled"
 #~ msgstr "Bluetooth este dezactivat"

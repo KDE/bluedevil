@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-16 00:48+0000\n"
+"POT-Creation-Date: 2022-12-03 00:47+0000\n"
 "PO-Revision-Date: 2022-11-15 06:52+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -202,25 +202,22 @@ msgstr "Ni razpoložljivih vmesnikov"
 msgid "Bluetooth is offline"
 msgstr "Bluetooth ni povezan"
 
-#: package/contents/ui/main.qml:51
+#: package/contents/ui/main.qml:50
 #, kde-format
-msgid ""
-"No connected devices\n"
-"Middle-click to disable Bluetooth"
-msgstr ""
-"Ni priključenih naprav\n"
-"S srednjim klikom onemogočite Bluetooth"
+msgid "Middle-click to disable Bluetooth"
+msgstr "S srednjim klikom onemogočite Bluetooth"
 
-#: package/contents/ui/main.qml:54
+#: package/contents/ui/main.qml:52
 #, kde-format
-msgid ""
-"%1 connected\n"
-"Middle-click to disable Bluetooth"
-msgstr ""
-"%1 priključena\n"
-"S srednjim klikom onemogočite Bluetooth"
+msgid "No connected devices"
+msgstr "Ni povezanih naprav"
 
 #: package/contents/ui/main.qml:56
+#, kde-format
+msgid "%1 connected"
+msgstr "%1 povezan"
+
+#: package/contents/ui/main.qml:58
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -230,31 +227,34 @@ msgstr[1] "%1 povezani napravi"
 msgstr[2] "%1 povezane naprave"
 msgstr[3] "%1 povezanih naprav"
 
-#: package/contents/ui/main.qml:60
-#, kde-format
-msgid "Middle-click to disable Bluetooth"
-msgstr "S srednjim klikom onemogočite Bluetooth"
-
-#: package/contents/ui/main.qml:125
+#: package/contents/ui/main.qml:127
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Nastavi &Bluetooth…"
 
-#: package/contents/ui/main.qml:127
+#: package/contents/ui/main.qml:129
 #, kde-format
 msgid "Add New Device…"
 msgstr "Dodaj novo napravo…"
 
-#: package/contents/ui/main.qml:130 package/contents/ui/Toolbar.qml:27
+#: package/contents/ui/main.qml:132 package/contents/ui/Toolbar.qml:27
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Omogoči Bluetooth"
 
-#~ msgid "No connected devices"
-#~ msgstr "Ni povezanih naprav"
+#~ msgid ""
+#~ "No connected devices\n"
+#~ "Middle-click to disable Bluetooth"
+#~ msgstr ""
+#~ "Ni priključenih naprav\n"
+#~ "S srednjim klikom onemogočite Bluetooth"
 
-#~ msgid "%1 connected"
-#~ msgstr "%1 povezan"
+#~ msgid ""
+#~ "%1 connected\n"
+#~ "Middle-click to disable Bluetooth"
+#~ msgstr ""
+#~ "%1 priključena\n"
+#~ "S srednjim klikom onemogočite Bluetooth"
 
 #~ msgid "Bluetooth is Disabled"
 #~ msgstr "Bluetooth ni omogočen"
