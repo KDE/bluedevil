@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-03 00:47+0000\n"
-"PO-Revision-Date: 2022-10-16 13:41+0200\n"
+"POT-Creation-Date: 2022-12-05 00:48+0000\n"
+"PO-Revision-Date: 2022-12-05 00:31+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.08.2\n"
+"X-Generator: Lokalize 22.08.3\n"
 
 #: package/contents/ui/DeviceItem.qml:35
 #, kde-format
@@ -137,7 +137,8 @@ msgstr "Мрежа"
 msgid "Other device"
 msgstr "Друго устройство"
 
-#: package/contents/ui/DeviceItem.qml:307
+#: package/contents/ui/DeviceItem.qml:307 package/contents/ui/main.qml:61
+#: package/contents/ui/main.qml:71
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% батерия"
@@ -202,28 +203,22 @@ msgstr "Няма налични адаптери"
 msgid "Bluetooth is offline"
 msgstr "Bluetooth е изключен"
 
-#: package/contents/ui/main.qml:50
+#: package/contents/ui/main.qml:51
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr "Кликване със среден бутон на мишката, за деактивиране на Bluetooth"
 
-#: package/contents/ui/main.qml:52
-#, fuzzy, kde-format
-#| msgctxt "Number of connected devices"
-#| msgid "%1 connected device"
-#| msgid_plural "%1 connected devices"
+#: package/contents/ui/main.qml:54
+#, kde-format
 msgid "No connected devices"
-msgstr "%1 свързано устройство"
+msgstr "Няма свързани устройства"
 
-#: package/contents/ui/main.qml:56
-#, fuzzy, kde-format
-#| msgctxt "Number of connected devices"
-#| msgid "%1 connected device"
-#| msgid_plural "%1 connected devices"
+#: package/contents/ui/main.qml:59
+#, kde-format
 msgid "%1 connected"
 msgstr "%1 свързано устройство"
 
-#: package/contents/ui/main.qml:58
+#: package/contents/ui/main.qml:66
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -231,17 +226,17 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 свързано устройство"
 msgstr[1] "%1 свързани устройства"
 
-#: package/contents/ui/main.qml:127
+#: package/contents/ui/main.qml:139
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Настройване на &Bluetooth..."
 
-#: package/contents/ui/main.qml:129
+#: package/contents/ui/main.qml:141
 #, kde-format
 msgid "Add New Device…"
 msgstr "Добавяне на ново устройство…"
 
-#: package/contents/ui/main.qml:132 package/contents/ui/Toolbar.qml:27
+#: package/contents/ui/main.qml:144 package/contents/ui/Toolbar.qml:27
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Активиране на Bluetooth"

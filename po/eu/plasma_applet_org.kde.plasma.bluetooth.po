@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-03 00:47+0000\n"
+"POT-Creation-Date: 2022-12-05 00:48+0000\n"
 "PO-Revision-Date: 2022-10-17 06:22+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -141,7 +141,8 @@ msgstr "Sarea"
 msgid "Other device"
 msgstr "Beste gailu batzuk"
 
-#: package/contents/ui/DeviceItem.qml:307
+#: package/contents/ui/DeviceItem.qml:307 package/contents/ui/main.qml:61
+#: package/contents/ui/main.qml:71
 #, kde-format
 msgid "%1% Battery"
 msgstr "%%1 bateria"
@@ -204,22 +205,22 @@ msgstr "Ez dago moldagailurik erabilgarri"
 msgid "Bluetooth is offline"
 msgstr "Bluetooth lerroz kanpo dago"
 
-#: package/contents/ui/main.qml:50
+#: package/contents/ui/main.qml:51
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr "Erdiko-klik Bluetooth ezgaitzeko"
 
-#: package/contents/ui/main.qml:52
+#: package/contents/ui/main.qml:54
 #, kde-format
 msgid "No connected devices"
 msgstr "Ez dago konektatutako gailurik"
 
-#: package/contents/ui/main.qml:56
+#: package/contents/ui/main.qml:59
 #, kde-format
 msgid "%1 connected"
 msgstr "%1 konektatuta"
 
-#: package/contents/ui/main.qml:58
+#: package/contents/ui/main.qml:66
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -227,17 +228,17 @@ msgid_plural "%1 connected devices"
 msgstr[0] "gailu %1 konektatuta"
 msgstr[1] "%1 gailu konektatuta"
 
-#: package/contents/ui/main.qml:127
+#: package/contents/ui/main.qml:139
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Konfiguratu &Bluetooth..."
 
-#: package/contents/ui/main.qml:129
+#: package/contents/ui/main.qml:141
 #, kde-format
 msgid "Add New Device…"
 msgstr "Gehitu gailu berria..."
 
-#: package/contents/ui/main.qml:132 package/contents/ui/Toolbar.qml:27
+#: package/contents/ui/main.qml:144 package/contents/ui/Toolbar.qml:27
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Gaitu Bluetooth"

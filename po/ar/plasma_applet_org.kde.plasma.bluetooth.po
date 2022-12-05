@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-03 00:47+0000\n"
+"POT-Creation-Date: 2022-12-05 00:48+0000\n"
 "PO-Revision-Date: 2022-10-22 19:10+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -139,7 +139,8 @@ msgstr "الشّبكة"
 msgid "Other device"
 msgstr "جهاز آخر"
 
-#: package/contents/ui/DeviceItem.qml:307
+#: package/contents/ui/DeviceItem.qml:307 package/contents/ui/main.qml:61
+#: package/contents/ui/main.qml:71
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1٪ بطارية"
@@ -202,22 +203,22 @@ msgstr "لا محوّلات متوفّرة"
 msgid "Bluetooth is offline"
 msgstr "بلوتوث مطفأة"
 
-#: package/contents/ui/main.qml:50
+#: package/contents/ui/main.qml:51
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr "انقر الزر الأوسط لتعطيل بلوتوث"
 
-#: package/contents/ui/main.qml:52
+#: package/contents/ui/main.qml:54
 #, kde-format
 msgid "No connected devices"
 msgstr "لا أجهزة متّصلة"
 
-#: package/contents/ui/main.qml:56
+#: package/contents/ui/main.qml:59
 #, kde-format
 msgid "%1 connected"
 msgstr "‏%1 متّصل"
 
-#: package/contents/ui/main.qml:58
+#: package/contents/ui/main.qml:66
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -229,17 +230,17 @@ msgstr[3] "‏%1 أجهزة متّصلة"
 msgstr[4] "‏%1 جهازًا متّصلًا"
 msgstr[5] "‏%1 جهاز متّصل"
 
-#: package/contents/ui/main.qml:127
+#: package/contents/ui/main.qml:139
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "اضبط بلوتو&ث..."
 
-#: package/contents/ui/main.qml:129
+#: package/contents/ui/main.qml:141
 #, kde-format
 msgid "Add New Device…"
 msgstr "أضف جهازًا جديدًا..."
 
-#: package/contents/ui/main.qml:132 package/contents/ui/Toolbar.qml:27
+#: package/contents/ui/main.qml:144 package/contents/ui/Toolbar.qml:27
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "فعّل بلوتوث"

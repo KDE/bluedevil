@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-03 00:47+0000\n"
+"POT-Creation-Date: 2022-12-05 00:48+0000\n"
 "PO-Revision-Date: 2020-04-26 12:59+0800\n"
 "Last-Translator: Yi-Jyun Pan <pan93412@gmail.com>\n"
 "Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
@@ -139,7 +139,8 @@ msgstr "網路"
 msgid "Other device"
 msgstr "其他裝置"
 
-#: package/contents/ui/DeviceItem.qml:307
+#: package/contents/ui/DeviceItem.qml:307 package/contents/ui/main.qml:61
+#: package/contents/ui/main.qml:71
 #, kde-format
 msgid "%1% Battery"
 msgstr "電量 %1%"
@@ -205,41 +206,41 @@ msgstr "沒有可用的藍牙轉接器"
 msgid "Bluetooth is offline"
 msgstr "藍牙裝置已離線"
 
-#: package/contents/ui/main.qml:50
+#: package/contents/ui/main.qml:51
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr ""
 
-#: package/contents/ui/main.qml:52
+#: package/contents/ui/main.qml:54
 #, kde-format
 msgid "No connected devices"
 msgstr "沒有已連線的裝置"
 
-#: package/contents/ui/main.qml:56
+#: package/contents/ui/main.qml:59
 #, kde-format
 msgid "%1 connected"
 msgstr "已連線 %1"
 
-#: package/contents/ui/main.qml:58
+#: package/contents/ui/main.qml:66
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
 msgid_plural "%1 connected devices"
 msgstr[0] "%1 個已連線的裝置"
 
-#: package/contents/ui/main.qml:127
+#: package/contents/ui/main.qml:139
 #, fuzzy, kde-format
 #| msgid "Configure &Bluetooth..."
 msgid "Configure &Bluetooth…"
 msgstr "設定藍牙裝置(&B)..."
 
-#: package/contents/ui/main.qml:129
+#: package/contents/ui/main.qml:141
 #, fuzzy, kde-format
 #| msgid "Add New Device"
 msgid "Add New Device…"
 msgstr "新增裝置"
 
-#: package/contents/ui/main.qml:132 package/contents/ui/Toolbar.qml:27
+#: package/contents/ui/main.qml:144 package/contents/ui/Toolbar.qml:27
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "開啟藍牙"

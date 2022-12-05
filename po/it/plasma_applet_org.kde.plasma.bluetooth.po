@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-03 00:47+0000\n"
+"POT-Creation-Date: 2022-12-05 00:48+0000\n"
 "PO-Revision-Date: 2022-11-01 14:52+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -138,7 +138,8 @@ msgstr "Rete"
 msgid "Other device"
 msgstr "Altro dispositivo"
 
-#: package/contents/ui/DeviceItem.qml:307
+#: package/contents/ui/DeviceItem.qml:307 package/contents/ui/main.qml:61
+#: package/contents/ui/main.qml:71
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% di batteria"
@@ -201,22 +202,22 @@ msgstr "Nessun adattatore disponibile"
 msgid "Bluetooth is offline"
 msgstr "Il Bluetooth non è in linea"
 
-#: package/contents/ui/main.qml:50
+#: package/contents/ui/main.qml:51
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr "Clic centrale per disabilitare il Bluetooth"
 
-#: package/contents/ui/main.qml:52
+#: package/contents/ui/main.qml:54
 #, kde-format
 msgid "No connected devices"
 msgstr "Nessun dispositivo connesso"
 
-#: package/contents/ui/main.qml:56
+#: package/contents/ui/main.qml:59
 #, kde-format
 msgid "%1 connected"
 msgstr "%1 connesso"
 
-#: package/contents/ui/main.qml:58
+#: package/contents/ui/main.qml:66
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -224,17 +225,17 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 dispositivo connesso"
 msgstr[1] "%1 dispositivi connessi"
 
-#: package/contents/ui/main.qml:127
+#: package/contents/ui/main.qml:139
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Configura &Bluetooth…"
 
-#: package/contents/ui/main.qml:129
+#: package/contents/ui/main.qml:141
 #, kde-format
 msgid "Add New Device…"
 msgstr "Aggiungi nuovo dispositivo…"
 
-#: package/contents/ui/main.qml:132 package/contents/ui/Toolbar.qml:27
+#: package/contents/ui/main.qml:144 package/contents/ui/Toolbar.qml:27
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Abilita il Bluetooth"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-03 00:47+0000\n"
+"POT-Creation-Date: 2022-12-05 00:48+0000\n"
 "PO-Revision-Date: 2022-10-27 03:42+0700\n"
 "Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
 "Language-Team: Interlingue <kde-i18n-doc@kde.org>\n"
@@ -138,7 +138,8 @@ msgstr "Rete"
 msgid "Other device"
 msgstr "Altri aparate"
 
-#: package/contents/ui/DeviceItem.qml:307
+#: package/contents/ui/DeviceItem.qml:307 package/contents/ui/main.qml:61
+#: package/contents/ui/main.qml:71
 #, kde-format
 msgid "%1% Battery"
 msgstr "Batterie: %1%"
@@ -201,12 +202,12 @@ msgstr "Null adaptatores disponibil"
 msgid "Bluetooth is offline"
 msgstr "Bluetooth es ínactiv"
 
-#: package/contents/ui/main.qml:50
+#: package/contents/ui/main.qml:51
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr "Medial clic ínactiva Bluetooth"
 
-#: package/contents/ui/main.qml:52
+#: package/contents/ui/main.qml:54
 #, fuzzy, kde-format
 #| msgctxt "Number of connected devices"
 #| msgid "%1 connected device"
@@ -214,7 +215,7 @@ msgstr "Medial clic ínactiva Bluetooth"
 msgid "No connected devices"
 msgstr "%1 conexet aparate"
 
-#: package/contents/ui/main.qml:56
+#: package/contents/ui/main.qml:59
 #, fuzzy, kde-format
 #| msgctxt "Number of connected devices"
 #| msgid "%1 connected device"
@@ -222,7 +223,7 @@ msgstr "%1 conexet aparate"
 msgid "%1 connected"
 msgstr "%1 conexet aparate"
 
-#: package/contents/ui/main.qml:58
+#: package/contents/ui/main.qml:66
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -230,17 +231,17 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 conexet aparate"
 msgstr[1] "%1 conexet aparates"
 
-#: package/contents/ui/main.qml:127
+#: package/contents/ui/main.qml:139
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Configurar &Bluetooth"
 
-#: package/contents/ui/main.qml:129
+#: package/contents/ui/main.qml:141
 #, kde-format
 msgid "Add New Device…"
 msgstr "Adjuncter un nov aparate..."
 
-#: package/contents/ui/main.qml:132 package/contents/ui/Toolbar.qml:27
+#: package/contents/ui/main.qml:144 package/contents/ui/Toolbar.qml:27
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Activar Bluetooth"

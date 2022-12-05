@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-03 00:47+0000\n"
+"POT-Creation-Date: 2022-12-05 00:48+0000\n"
 "PO-Revision-Date: 2022-10-16 11:04+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -138,7 +138,8 @@ msgstr "Ağ"
 msgid "Other device"
 msgstr "Diğer aygıt"
 
-#: package/contents/ui/DeviceItem.qml:307
+#: package/contents/ui/DeviceItem.qml:307 package/contents/ui/main.qml:61
+#: package/contents/ui/main.qml:71
 #, kde-format
 msgid "%1% Battery"
 msgstr "%​%1 Pil"
@@ -201,22 +202,22 @@ msgstr "Hiçbir bağdaştırıcı mevcut değil"
 msgid "Bluetooth is offline"
 msgstr "Bluetooth çevrimdışı"
 
-#: package/contents/ui/main.qml:50
+#: package/contents/ui/main.qml:51
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr "Bluetooth'u devre dışı bırakmak için orta tıklayın"
 
-#: package/contents/ui/main.qml:52
+#: package/contents/ui/main.qml:54
 #, kde-format
 msgid "No connected devices"
 msgstr "Bağlı aygıt yok"
 
-#: package/contents/ui/main.qml:56
+#: package/contents/ui/main.qml:59
 #, kde-format
 msgid "%1 connected"
 msgstr "%1 bağlandı"
 
-#: package/contents/ui/main.qml:58
+#: package/contents/ui/main.qml:66
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -224,17 +225,17 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 bağlı aygıt"
 msgstr[1] "%1 bağlı aygıt"
 
-#: package/contents/ui/main.qml:127
+#: package/contents/ui/main.qml:139
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "&Bluetooth'u Yapılandır…"
 
-#: package/contents/ui/main.qml:129
+#: package/contents/ui/main.qml:141
 #, kde-format
 msgid "Add New Device…"
 msgstr "Yeni Aygıt Ekle"
 
-#: package/contents/ui/main.qml:132 package/contents/ui/Toolbar.qml:27
+#: package/contents/ui/main.qml:144 package/contents/ui/Toolbar.qml:27
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Bluetooth'u Etkinleştir"
