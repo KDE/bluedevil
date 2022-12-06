@@ -214,7 +214,7 @@ PlasmaExtras.ExpandableListItem {
     function adapterName(a) {
         const hci = devicesModel.adapterHciString(a.ubi);
         return (hci !== "")
-            ? "%1 (%2)".arg(a.name).arg(hci)
+            ? i18nc("@label %1 is human-readable adapter name, %2 is HCI", "%1 (%2)", a.name, hci)
             : a.name;
     }
 
@@ -331,7 +331,7 @@ PlasmaExtras.ExpandableListItem {
             if (call.error) {
                 let text = "";
                 const device = call.userData;
-                const title = "%1 (%2)".arg(device.name).arg(device.address);
+                const title = i18nc("@label %1 is human-readable device name, %2 is low-level device address", "%1 (%2)", device.name, device.address);
 
                 switch (call.error) {
                 case BluezQt.PendingCall.Failed:
