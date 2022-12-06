@@ -24,11 +24,14 @@ MouseArea {
 
     acceptedButtons: Qt.LeftButton | Qt.MiddleButton
 
+    property bool wasExpanded
+
+    onPressed: wasExpanded = Plasmoid.expanded
     onClicked: {
         if (mouse.button === Qt.MiddleButton) {
             toggleBluetooth();
         } else {
-            Plasmoid.expanded = !Plasmoid.expanded;
+            Plasmoid.expanded = !wasExpanded;
         }
     }
 
