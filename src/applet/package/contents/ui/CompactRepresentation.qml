@@ -42,12 +42,5 @@ MouseArea {
         anchors.fill: parent
         source: Plasmoid.icon
         active: parent.containsMouse
-
-        PlasmaComponents3.BusyIndicator {
-            id: busyIndicator
-            anchors.centerIn: parent
-            running: runningActions > 0
-            visible: running
-        }
     }
 }

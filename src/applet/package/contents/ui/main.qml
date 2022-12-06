@@ -28,6 +28,7 @@ Item {
     Plasmoid.fullRepresentation: FullRepresentation { }
 
     Plasmoid.status: (btManager.bluetoothOperational) ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.PassiveStatus
+    Plasmoid.busy: runningActions > 0
 
     Plasmoid.icon: {
         if (connectedDevices.length > 0) {
