@@ -6,18 +6,18 @@
 */
 
 import QtQuick 2.2
-import org.kde.plasma.plasmoid 2.0
 import org.kde.bluezqt 1.0 as BluezQt
-import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.kquickcontrolsaddons 2.0
+import org.kde.plasma.core 2.0 as PlasmaCore
+import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.private.bluetooth 1.0 as PlasmaBt
 
 Item {
     id: bluetoothApplet
 
-    property var connectedDevices : []
-    property int runningActions : 0
-    property QtObject btManager : BluezQt.Manager
+    property var connectedDevices: []
+    property int runningActions: 0
+    property QtObject btManager: BluezQt.Manager
 
     Plasmoid.switchWidth: PlasmaCore.Units.gridUnit * 15
     Plasmoid.switchHeight: PlasmaCore.Units.gridUnit * 10
@@ -111,13 +111,12 @@ Item {
         }
     }
 
-    function toggleBluetooth()
-    {
+    function toggleBluetooth() {
         const enable = !btManager.bluetoothOperational;
         btManager.bluetoothBlocked = !enable;
 
         for (let i = 0; i < btManager.adapters.length; ++i) {
-            let adapter = btManager.adapters[i];
+            const adapter = btManager.adapters[i];
             adapter.powered = enable;
         }
     }
@@ -139,7 +138,7 @@ Item {
         plasmoid.setAction("configure", i18n("Configure &Bluetooth…"), "configure");
 
         plasmoid.setAction("addNewDevice", i18n("Add New Device…"), "list-add");
-        plasmoid.action("addNewDevice").visible = Qt.binding(() => {return !btManager.bluetoothBlocked;});
+        plasmoid.action("addNewDevice").visible = Qt.binding(() => !btManager.bluetoothBlocked);
 
         Plasmoid.setAction("btSwitch", i18n("Enable Bluetooth"), "preferences-system-bluetooth");
         plasmoid.action("btSwitch").priority = 0;

@@ -84,13 +84,12 @@ ColumnLayout {
         }
     }
 
-    function trackTitleText()
-    {
+    function trackTitleText() {
         if (!MediaPlayer) {
             return "";
         }
 
-        var play = "\u25B6";
+        const play = "\u25B6";
 
         if (MediaPlayer.status === BluezQt.MediaPlayer.Playing) {
             return "%1 %2".arg(play).arg(MediaPlayer.track.title);
@@ -98,8 +97,7 @@ ColumnLayout {
         return MediaPlayer.track.title;
     }
 
-    function playPauseButtonIcon()
-    {
+    function playPauseButtonIcon() {
         if (!MediaPlayer) {
             return "";
         }
@@ -111,8 +109,7 @@ ColumnLayout {
         }
     }
 
-    function playPauseButtonClicked()
-    {
+    function playPauseButtonClicked() {
         if (MediaPlayer.status !== BluezQt.MediaPlayer.Playing) {
             MediaPlayer.play()
         } else {

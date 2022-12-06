@@ -55,9 +55,7 @@ PlasmaExtras.Representation {
         text: i18n("Enable")
         icon.name: "preferences-system-bluetooth"
 
-        onTriggered: {
-            bluetoothApplet.toggleBluetooth();
-        }
+        onTriggered: bluetoothApplet.toggleBluetooth()
     }
 
     header: Toolbar {
@@ -115,7 +113,7 @@ PlasmaExtras.Representation {
                     }
                 }
             }
-            highlight: PlasmaExtras.Highlight { }
+            highlight: PlasmaExtras.Highlight {}
             highlightMoveDuration: 0
             highlightResizeDuration: 0
             delegate: DeviceItem {}
@@ -140,24 +138,26 @@ PlasmaExtras.Representation {
                         // We cannot use the adapter count here because that can be zero when
                         // bluetooth is disabled even when there are physical devices
                         if (BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown) {
-                            return i18n("No Bluetooth adapters available")
+                            return i18n("No Bluetooth adapters available");
                         } else if (btManager.bluetoothBlocked) {
-                            return i18n("Bluetooth is disabled")
+                            return i18n("Bluetooth is disabled");
                         } else if (root.emptyList) {
-                            return i18n("No devices found")
+                            return i18n("No devices found");
+                        } else {
+                            return "";
                         }
-                        return ""
                     }
 
                     helpfulAction: {
                         if (BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown) {
-                            return null
+                            return null;
                         } else if (btManager.bluetoothBlocked) {
-                            return enableBluetoothAction
+                            return enableBluetoothAction;
                         } else if (root.emptyList) {
-                            return addBluetoothDeviceAction
+                            return addBluetoothDeviceAction;
+                        } else {
+                            return null;
                         }
-                        return null
                     }
                 }
             }

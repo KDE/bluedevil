@@ -22,8 +22,8 @@ import org.kde.kquickcontrolsaddons 2.0 as KQuickControlsAddons
 PlasmaExtras.ExpandableListItem {
     id: expandableListItem
 
-    property bool connecting : false
-    property var currentDeviceDetails : []
+    property bool connecting: false
+    property var currentDeviceDetails: []
 
     icon: model.Icon
     title: model.DeviceFullName
@@ -44,7 +44,7 @@ PlasmaExtras.ExpandableListItem {
             text: i18n("Browse Files")
 
             onTriggered: {
-                var url = "obexftp://%1/".arg(Address.replace(/:/g, "-"));
+                const url = "obexftp://%1/".arg(Address.replace(/:/g, "-"));
                 Qt.openUrlExternally(url);
             }
         },
@@ -202,30 +202,24 @@ PlasmaExtras.ExpandableListItem {
         __dev = dev;
 
         if (expandedView.status === Component.Ready) {
-            expandableListItem.collapse()
-            expandableListItem.ListView.view.currentIndex = -1
+            expandableListItem.collapse();
+            expandableListItem.ListView.view.currentIndex = -1;
         }
     }
 
-    function boolToString(v)
-    {
-        if (v) {
-            return i18n("Yes");
-        }
-        return i18n("No");
+    function boolToString(v) {
+        return v ? i18n("Yes") : i18n("No");
     }
 
-    function adapterName(a)
-    {
-        var hci = devicesModel.adapterHciString(a.ubi);
-        if (hci !== "") {
-            return "%1 (%2)".arg(a.name).arg(hci);
-        }
-        return a.name;
+    function adapterName(a) {
+        const hci = devicesModel.adapterHciString(a.ubi);
+        return (hci !== "")
+            ? "%1 (%2)".arg(a.name).arg(hci)
+            : a.name;
     }
 
     function createContent() {
-        var details = [];
+        const details = [];
 
         if (Name !== RemoteName) {
             details.push(i18n("Remote Name"));
@@ -247,13 +241,12 @@ PlasmaExtras.ExpandableListItem {
         currentDeviceDetails = details;
     }
 
-    function infoText()
-    {
+    function infoText() {
         if (connecting) {
             return Connected ? i18n("Disconnecting") : i18n("Connecting");
         }
 
-        var labels = [];
+        const labels = [];
 
         if (Connected) {
             labels.push(i18n("Connected"));
@@ -278,7 +271,7 @@ PlasmaExtras.ExpandableListItem {
             break;
 
         default:
-            var profiles = [];
+            const profiles = [];
 
             if (Uuids.indexOf(BluezQt.Services.ObexFileTransfer) !== -1) {
                 profiles.push(i18n("File transfer"));
@@ -310,8 +303,7 @@ PlasmaExtras.ExpandableListItem {
         return labels.join(" · ");
     }
 
-    function connectToDevice()
-    {
+    function connectToDevice() {
         if (connecting) {
             return;
         }
@@ -321,7 +313,7 @@ PlasmaExtras.ExpandableListItem {
 
         // Disconnect device
         if (Connected) {
-            Device.disconnectFromDevice().finished.connect(function(call) {
+            Device.disconnectFromDevice().finished.connect(call => {
                 connecting = false;
                 runningActions--;
             });
@@ -329,27 +321,25 @@ PlasmaExtras.ExpandableListItem {
         }
 
         // Connect device
-        var call = Device.connectToDevice();
+        const /*PendingCall*/call = Device.connectToDevice();
         call.userData = Device;
 
-        call.finished.connect(function(call) {
+        call.finished.connect(call => {
             connecting = false;
             runningActions--;
 
             if (call.error) {
-                var text = "";
-                var device = call.userData;
-                var title = "%1 (%2)".arg(device.name).arg(device.address);
+                let text = "";
+                const device = call.userData;
+                const title = "%1 (%2)".arg(device.name).arg(device.address);
 
                 switch (call.error) {
                 case BluezQt.PendingCall.Failed:
-                    if (call.errorText === "Host is down") {
-                        text = i18nc("Notification when the connection failed due to Failed:HostIsDown",
-                                     "The device is unreachable");
-                    } else {
-                        text = i18nc("Notification when the connection failed due to Failed",
-                                     "Connection to the device failed");
-                    }
+                    text = (call.errorText === "Host is down")
+                        ? i18nc("Notification when the connection failed due to Failed:HostIsDown",
+                                "The device is unreachable")
+                        : i18nc("Notification when the connection failed due to Failed",
+                                "Connection to the device failed");
                     break;
 
                 case BluezQt.PendingCall.NotReady:
