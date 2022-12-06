@@ -207,11 +207,11 @@ PlasmaExtras.ExpandableListItem {
         }
     }
 
-    function boolToString(v) {
+    function boolToString(v): string {
         return v ? i18n("Yes") : i18n("No");
     }
 
-    function adapterName(a) {
+    function adapterName(a): string {
         const hci = devicesModel.adapterHciString(a.ubi);
         return (hci !== "")
             ? i18nc("@label %1 is human-readable adapter name, %2 is HCI", "%1 (%2)", a.name, hci)
@@ -241,7 +241,7 @@ PlasmaExtras.ExpandableListItem {
         currentDeviceDetails = details;
     }
 
-    function infoText() {
+    function infoText(): string {
         if (connecting) {
             return Connected ? i18n("Disconnecting") : i18n("Connecting");
         }
@@ -303,6 +303,24 @@ PlasmaExtras.ExpandableListItem {
         return labels.join(" · ");
     }
 
+    function errorText(/*PendingCall*/ call): string {
+        switch (call.error) {
+        case BluezQt.PendingCall.Failed:
+            return (call.errorText === "Host is down")
+                ? i18nc("Notification when the connection failed due to Failed:HostIsDown",
+                        "The device is unreachable")
+                : i18nc("Notification when the connection failed due to Failed",
+                        "Connection to the device failed");
+
+        case BluezQt.PendingCall.NotReady:
+            return i18nc("Notification when the connection failed due to NotReady",
+                         "The device is not ready");
+
+        default:
+            return "";
+        }
+    }
+
     function connectToDevice() {
         if (connecting) {
             return;
@@ -329,27 +347,9 @@ PlasmaExtras.ExpandableListItem {
             runningActions--;
 
             if (call.error) {
-                let text = "";
                 const device = call.userData;
                 const title = i18nc("@label %1 is human-readable device name, %2 is low-level device address", "%1 (%2)", device.name, device.address);
-
-                switch (call.error) {
-                case BluezQt.PendingCall.Failed:
-                    text = (call.errorText === "Host is down")
-                        ? i18nc("Notification when the connection failed due to Failed:HostIsDown",
-                                "The device is unreachable")
-                        : i18nc("Notification when the connection failed due to Failed",
-                                "Connection to the device failed");
-                    break;
-
-                case BluezQt.PendingCall.NotReady:
-                    text = i18nc("Notification when the connection failed due to NotReady",
-                                 "The device is not ready");
-                    break;
-
-                default:
-                    return;
-                }
+                const text = errorText(call);
 
                 PlasmaBt.Notify.connectionFailed(title, text);
             }
