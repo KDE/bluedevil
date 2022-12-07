@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-05 00:48+0000\n"
+"POT-Creation-Date: 2022-12-07 00:48+0000\n"
 "PO-Revision-Date: 2017-05-16 06:55-0400\n"
 "Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
 "Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
@@ -43,180 +43,193 @@ msgstr "שלח קובץ"
 msgid "Copy"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:213
+#: package/contents/ui/DeviceItem.qml:211
 #, kde-format
 msgid "Yes"
 msgstr "כן"
 
-#: package/contents/ui/DeviceItem.qml:215
+#: package/contents/ui/DeviceItem.qml:211
 #, kde-format
 msgid "No"
 msgstr "לא"
 
-#: package/contents/ui/DeviceItem.qml:231
+#: package/contents/ui/DeviceItem.qml:217
+#, kde-format
+msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
+msgid "%1 (%2)"
+msgstr ""
+
+#: package/contents/ui/DeviceItem.qml:225
 #, kde-format
 msgid "Remote Name"
 msgstr "שם מרוחק"
 
-#: package/contents/ui/DeviceItem.qml:235
+#: package/contents/ui/DeviceItem.qml:229
 #, kde-format
 msgid "Address"
 msgstr "כתובת"
 
-#: package/contents/ui/DeviceItem.qml:238
+#: package/contents/ui/DeviceItem.qml:232
 #, kde-format
 msgid "Paired"
 msgstr "מתואם"
 
-#: package/contents/ui/DeviceItem.qml:241
+#: package/contents/ui/DeviceItem.qml:235
 #, kde-format
 msgid "Trusted"
 msgstr "אמין"
 
-#: package/contents/ui/DeviceItem.qml:244
+#: package/contents/ui/DeviceItem.qml:238
 #, kde-format
 msgid "Adapter"
 msgstr "מתאם"
 
-#: package/contents/ui/DeviceItem.qml:253
+#: package/contents/ui/DeviceItem.qml:246
 #, kde-format
 msgid "Disconnecting"
 msgstr "מתנתק"
 
-#: package/contents/ui/DeviceItem.qml:253
+#: package/contents/ui/DeviceItem.qml:246
 #, kde-format
 msgid "Connecting"
 msgstr "מתחבר"
 
-#: package/contents/ui/DeviceItem.qml:259
+#: package/contents/ui/DeviceItem.qml:252
 #, fuzzy, kde-format
 #| msgid "Connect"
 msgid "Connected"
 msgstr "התחבר"
 
-#: package/contents/ui/DeviceItem.qml:266
+#: package/contents/ui/DeviceItem.qml:259
 #, kde-format
 msgid "Audio device"
 msgstr "התקן שמע"
 
-#: package/contents/ui/DeviceItem.qml:273
+#: package/contents/ui/DeviceItem.qml:266
 #, kde-format
 msgid "Input device"
 msgstr "התקן קלט"
 
-#: package/contents/ui/DeviceItem.qml:277
+#: package/contents/ui/DeviceItem.qml:270
 #, kde-format
 msgid "Phone"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:284
+#: package/contents/ui/DeviceItem.qml:277
 #, kde-format
 msgid "File transfer"
 msgstr "העברת קבצים"
 
-#: package/contents/ui/DeviceItem.qml:287
+#: package/contents/ui/DeviceItem.qml:280
 #, kde-format
 msgid "Send file"
 msgstr "שלח קובץ"
 
-#: package/contents/ui/DeviceItem.qml:290
+#: package/contents/ui/DeviceItem.qml:283
 #, kde-format
 msgid "Input"
 msgstr "קלט"
 
-#: package/contents/ui/DeviceItem.qml:293
+#: package/contents/ui/DeviceItem.qml:286
 #, kde-format
 msgid "Audio"
 msgstr "שמע"
 
-#: package/contents/ui/DeviceItem.qml:296
+#: package/contents/ui/DeviceItem.qml:289
 #, kde-format
 msgid "Network"
 msgstr "רשת"
 
-#: package/contents/ui/DeviceItem.qml:300
+#: package/contents/ui/DeviceItem.qml:293
 #, kde-format
 msgid "Other device"
 msgstr "התקנים אחרים"
 
-#: package/contents/ui/DeviceItem.qml:307 package/contents/ui/main.qml:61
-#: package/contents/ui/main.qml:71
+#: package/contents/ui/DeviceItem.qml:300 package/contents/ui/main.qml:63
+#: package/contents/ui/main.qml:73
 #, kde-format
 msgid "%1% Battery"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:348
+#: package/contents/ui/DeviceItem.qml:311
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "ההתקן אינו ניתן להשגה"
 
-#: package/contents/ui/DeviceItem.qml:351
+#: package/contents/ui/DeviceItem.qml:313
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "ההתחברות להתקן נכשלה"
 
-#: package/contents/ui/DeviceItem.qml:357
+#: package/contents/ui/DeviceItem.qml:317
 #, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "ההתקן אינו מוכן"
 
-#: package/contents/ui/FullRepresentation.qml:55
+#: package/contents/ui/DeviceItem.qml:351
+#, kde-format
+msgctxt ""
+"@label %1 is human-readable device name, %2 is low-level device address"
+msgid "%1 (%2)"
+msgstr ""
+
+#: package/contents/ui/FullRepresentation.qml:58
 #, kde-format
 msgid "Enable"
 msgstr ""
 
-#: package/contents/ui/FullRepresentation.qml:143
+#: package/contents/ui/FullRepresentation.qml:144
 #, fuzzy, kde-format
 #| msgid "No Adapters Available"
 msgid "No Bluetooth adapters available"
 msgstr "אין מתאמים זמינים"
 
-#: package/contents/ui/FullRepresentation.qml:145
+#: package/contents/ui/FullRepresentation.qml:146
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "הבלוטוס כבוי"
 
-#: package/contents/ui/FullRepresentation.qml:147
+#: package/contents/ui/FullRepresentation.qml:148
 #, fuzzy, kde-format
 #| msgid "No Devices Found"
 msgid "No devices found"
 msgstr "לא נמצאו התקנים"
 
-#: package/contents/ui/main.qml:39
+#: package/contents/ui/main.qml:41
 #, kde-format
 msgid "Bluetooth"
 msgstr "בלוטוס"
 
-#: package/contents/ui/main.qml:42
+#: package/contents/ui/main.qml:44
 #, fuzzy, kde-format
 #| msgid "Bluetooth is disabled"
 msgid "Bluetooth is disabled; middle-click to enable"
 msgstr "הבלוטוס כבוי"
 
-#: package/contents/ui/main.qml:46
+#: package/contents/ui/main.qml:48
 #, kde-format
 msgid "No adapters available"
 msgstr "אין מתאמים זמינים"
 
-#: package/contents/ui/main.qml:48
+#: package/contents/ui/main.qml:50
 #, kde-format
 msgid "Bluetooth is offline"
 msgstr "הבלוטוס לא מחובר"
 
-#: package/contents/ui/main.qml:51
+#: package/contents/ui/main.qml:53
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr ""
 
-#: package/contents/ui/main.qml:54
+#: package/contents/ui/main.qml:56
 #, kde-format
 msgid "No connected devices"
 msgstr "אין התקנים מחוברים"
 
-#: package/contents/ui/main.qml:59
+#: package/contents/ui/main.qml:61
 #, fuzzy, kde-format
 #| msgctxt "Number of connected devices"
 #| msgid "%1 connected device"
@@ -224,7 +237,7 @@ msgstr "אין התקנים מחוברים"
 msgid "%1 connected"
 msgstr "התקן מחובר"
 
-#: package/contents/ui/main.qml:66
+#: package/contents/ui/main.qml:68
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -232,19 +245,19 @@ msgid_plural "%1 connected devices"
 msgstr[0] "התקן מחובר"
 msgstr[1] "%1 התקנים מחוברים"
 
-#: package/contents/ui/main.qml:139
+#: package/contents/ui/main.qml:140
 #, fuzzy, kde-format
 #| msgid "Configure &Bluetooth..."
 msgid "Configure &Bluetooth…"
 msgstr "הגדר בלוטוס..."
 
-#: package/contents/ui/main.qml:141
+#: package/contents/ui/main.qml:142
 #, fuzzy, kde-format
 #| msgid "Add New Device"
 msgid "Add New Device…"
 msgstr "הוסף התקן חדש"
 
-#: package/contents/ui/main.qml:144 package/contents/ui/Toolbar.qml:27
+#: package/contents/ui/main.qml:145 package/contents/ui/Toolbar.qml:30
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "הפעל בלוטוס"
