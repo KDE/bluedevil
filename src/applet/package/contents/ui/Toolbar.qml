@@ -52,6 +52,7 @@ PlasmaExtras.PlasmoidHeading {
             PlasmaComponents3.ToolTip {
                 text: Plasmoid.action("addNewDevice").text
             }
+            Accessible.name: Plasmoid.action("addNewDevice").text
         }
 
         PlasmaComponents3.ToolButton {
