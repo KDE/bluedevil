@@ -62,7 +62,7 @@ PlasmaExtras.PlasmoidHeading {
 
             property QtObject /*QAction*/ qAction: Plasmoid.action("configure")
 
-            visible: qAction.enabled && !(Plasmoid.containmentDisplayHints & PlasmaCore.Types.ContainmentDrawsPlasmoidHeading)
+            visible: !(Plasmoid.containmentDisplayHints & PlasmaCore.Types.ContainmentDrawsPlasmoidHeading)
             icon.name: "configure"
             onClicked: qAction.trigger()
 
