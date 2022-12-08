@@ -144,10 +144,10 @@ Item {
         Plasmoid.action("addNewDevice").visible = Qt.binding(() => !btManager.bluetoothBlocked);
 
         Plasmoid.setAction("btSwitch", i18n("Enable Bluetooth"), "preferences-system-bluetooth");
-        plasmoid.action("btSwitch").priority = 0;
-        plasmoid.action("btSwitch").checkable = true;
-        plasmoid.action("btSwitch").checked = Qt.binding(() => btManager.bluetoothOperational);
-        plasmoid.action("btSwitch").visible = Qt.binding(() => btManager.bluetoothBlocked || btManager.adapters.length > 0);
+        Plasmoid.action("btSwitch").priority = 0;
+        Plasmoid.action("btSwitch").checkable = true;
+        Plasmoid.action("btSwitch").checked = Qt.binding(() => btManager.bluetoothOperational);
+        Plasmoid.action("btSwitch").visible = Qt.binding(() => btManager.bluetoothBlocked || btManager.adapters.length > 0);
 
         updateConnectedDevices();
     }
