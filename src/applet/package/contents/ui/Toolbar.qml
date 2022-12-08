@@ -43,7 +43,7 @@ PlasmaExtras.PlasmoidHeading {
             id: addDeviceButton
 
             visible: !(Plasmoid.containmentDisplayHints & PlasmaCore.Types.ContainmentDrawsPlasmoidHeading)
-            enabled: !btManager.bluetoothBlocked
+            enabled: Plasmoid.action("addNewDevice").visible
 
             icon.name: "list-add"
 
