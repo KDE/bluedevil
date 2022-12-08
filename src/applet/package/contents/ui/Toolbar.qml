@@ -42,30 +42,34 @@ PlasmaExtras.PlasmoidHeading {
         PlasmaComponents3.ToolButton {
             id: addDeviceButton
 
+            property QtObject /*QAction*/ qAction: Plasmoid.action("addNewDevice")
+
             visible: !(Plasmoid.containmentDisplayHints & PlasmaCore.Types.ContainmentDrawsPlasmoidHeading)
-            enabled: Plasmoid.action("addNewDevice").visible
+            enabled: qAction.visible
 
             icon.name: "list-add"
 
-            onClicked: Plasmoid.action("addNewDevice").trigger()
+            onClicked: qAction.trigger()
 
             PlasmaComponents3.ToolTip {
-                text: Plasmoid.action("addNewDevice").text
+                text: addDeviceButton.qAction.text
             }
-            Accessible.name: Plasmoid.action("addNewDevice").text
+            Accessible.name: qAction.text
         }
 
         PlasmaComponents3.ToolButton {
             id: openSettingsButton
 
-            visible: Plasmoid.action("configure").enabled && !(Plasmoid.containmentDisplayHints & PlasmaCore.Types.ContainmentDrawsPlasmoidHeading)
+            property QtObject /*QAction*/ qAction: Plasmoid.action("configure")
+
+            visible: qAction.enabled && !(Plasmoid.containmentDisplayHints & PlasmaCore.Types.ContainmentDrawsPlasmoidHeading)
             icon.name: "configure"
-            onClicked: Plasmoid.action("configure").trigger()
+            onClicked: qAction.trigger()
 
             PlasmaComponents3.ToolTip {
-                text: Plasmoid.action("configure").text
+                text: openSettingsButton.qAction.text
             }
-            Accessible.name: Plasmoid.action("configure").text
+            Accessible.name: qAction.text
         }
     }
 }
