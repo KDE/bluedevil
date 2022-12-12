@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-07 00:48+0000\n"
-"PO-Revision-Date: 2022-11-28 21:54+0100\n"
+"PO-Revision-Date: 2022-12-11 21:27+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.11.80\n"
+"X-Generator: Lokalize 22.12.0\n"
 
 #: package/contents/ui/DeviceItem.qml:35
 #, kde-format
@@ -57,7 +57,7 @@ msgstr "No"
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: package/contents/ui/DeviceItem.qml:225
 #, kde-format
@@ -173,7 +173,7 @@ msgstr "Le dispositivo non es preste"
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: package/contents/ui/FullRepresentation.qml:58
 #, kde-format
