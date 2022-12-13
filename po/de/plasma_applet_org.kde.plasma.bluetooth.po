@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-07 00:48+0000\n"
+"POT-Creation-Date: 2022-12-13 00:57+0000\n"
 "PO-Revision-Date: 2022-11-10 20:18+0100\n"
 "Last-Translator: Frank Steinmetzger <dev-kde@felsenfleischer.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -142,8 +142,8 @@ msgstr "Netzwerk"
 msgid "Other device"
 msgstr "Anderes Gerät"
 
-#: package/contents/ui/DeviceItem.qml:300 package/contents/ui/main.qml:63
-#: package/contents/ui/main.qml:73
+#: package/contents/ui/DeviceItem.qml:300 package/contents/ui/main.qml:64
+#: package/contents/ui/main.qml:74
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% Akku"
@@ -193,42 +193,42 @@ msgstr "Bluetooth ist ausgeschaltet"
 msgid "No devices found"
 msgstr "Keine Geräte gefunden"
 
-#: package/contents/ui/main.qml:41
+#: package/contents/ui/main.qml:42
 #, kde-format
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
-#: package/contents/ui/main.qml:44
+#: package/contents/ui/main.qml:45
 #, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
 msgstr "Bluetooth ist ausgeschaltet; mit Mittelklick aktivieren"
 
-#: package/contents/ui/main.qml:48
+#: package/contents/ui/main.qml:49
 #, kde-format
 msgid "No adapters available"
 msgstr "Keine Adapter verfügbar"
 
-#: package/contents/ui/main.qml:50
+#: package/contents/ui/main.qml:51
 #, kde-format
 msgid "Bluetooth is offline"
 msgstr "Bluetooth ist aus"
 
-#: package/contents/ui/main.qml:53
+#: package/contents/ui/main.qml:54
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr "Bluetooth mit Mittelklick deaktivieren"
 
-#: package/contents/ui/main.qml:56
+#: package/contents/ui/main.qml:57
 #, kde-format
 msgid "No connected devices"
 msgstr "Keine verbundenen Geräte"
 
-#: package/contents/ui/main.qml:61
+#: package/contents/ui/main.qml:62
 #, kde-format
 msgid "%1 connected"
 msgstr "%1 verbunden"
 
-#: package/contents/ui/main.qml:68
+#: package/contents/ui/main.qml:69
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -236,17 +236,17 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 verbundenes Gerät"
 msgstr[1] "%1 verbundene Geräte"
 
-#: package/contents/ui/main.qml:140
+#: package/contents/ui/main.qml:141
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "&Bluetooth einrichten ..."
 
-#: package/contents/ui/main.qml:142
+#: package/contents/ui/main.qml:143
 #, kde-format
 msgid "Add New Device…"
 msgstr "Neues Gerät hinzufügen ..."
 
-#: package/contents/ui/main.qml:145 package/contents/ui/Toolbar.qml:30
+#: package/contents/ui/main.qml:146 package/contents/ui/Toolbar.qml:30
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Bluetooth aktivieren"

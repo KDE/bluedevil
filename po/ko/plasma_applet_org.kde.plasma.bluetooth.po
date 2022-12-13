@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-07 00:48+0000\n"
+"POT-Creation-Date: 2022-12-13 00:57+0000\n"
 "PO-Revision-Date: 2022-05-06 00:29+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -143,8 +143,8 @@ msgstr "네트워크"
 msgid "Other device"
 msgstr "기타 장치"
 
-#: package/contents/ui/DeviceItem.qml:300 package/contents/ui/main.qml:63
-#: package/contents/ui/main.qml:73
+#: package/contents/ui/DeviceItem.qml:300 package/contents/ui/main.qml:64
+#: package/contents/ui/main.qml:74
 #, kde-format
 msgid "%1% Battery"
 msgstr "배터리 %1%"
@@ -194,60 +194,60 @@ msgstr "블루투스가 비활성화 되어 있음"
 msgid "No devices found"
 msgstr "장치를 찾을 수 없음"
 
-#: package/contents/ui/main.qml:41
+#: package/contents/ui/main.qml:42
 #, kde-format
 msgid "Bluetooth"
 msgstr "블루투스"
 
-#: package/contents/ui/main.qml:44
+#: package/contents/ui/main.qml:45
 #, fuzzy, kde-format
 #| msgid "Bluetooth is disabled"
 msgid "Bluetooth is disabled; middle-click to enable"
 msgstr "블루투스가 비활성화 되어 있음"
 
-#: package/contents/ui/main.qml:48
+#: package/contents/ui/main.qml:49
 #, kde-format
 msgid "No adapters available"
 msgstr "사용 가능한 어댑터 없음"
 
-#: package/contents/ui/main.qml:50
+#: package/contents/ui/main.qml:51
 #, kde-format
 msgid "Bluetooth is offline"
 msgstr "블루투스가 오프라인임"
 
-#: package/contents/ui/main.qml:53
+#: package/contents/ui/main.qml:54
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr ""
 
-#: package/contents/ui/main.qml:56
+#: package/contents/ui/main.qml:57
 #, kde-format
 msgid "No connected devices"
 msgstr "연결된 장치 없음"
 
-#: package/contents/ui/main.qml:61
+#: package/contents/ui/main.qml:62
 #, kde-format
 msgid "%1 connected"
 msgstr "%1 연결됨"
 
-#: package/contents/ui/main.qml:68
+#: package/contents/ui/main.qml:69
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
 msgid_plural "%1 connected devices"
 msgstr[0] "연결된 장치 %1개"
 
-#: package/contents/ui/main.qml:140
+#: package/contents/ui/main.qml:141
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "블루투스 설정(&B)…"
 
-#: package/contents/ui/main.qml:142
+#: package/contents/ui/main.qml:143
 #, kde-format
 msgid "Add New Device…"
 msgstr "새 장치 추가…"
 
-#: package/contents/ui/main.qml:145 package/contents/ui/Toolbar.qml:30
+#: package/contents/ui/main.qml:146 package/contents/ui/Toolbar.qml:30
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "블루투스 활성화"
