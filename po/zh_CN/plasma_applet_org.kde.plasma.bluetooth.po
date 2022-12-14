@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-13 00:57+0000\n"
-"PO-Revision-Date: 2022-12-01 06:51\n"
+"PO-Revision-Date: 2022-12-13 12:20\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -221,20 +221,14 @@ msgid "Middle-click to disable Bluetooth"
 msgstr "中键点击禁用蓝牙"
 
 #: package/contents/ui/main.qml:57
-#, fuzzy, kde-format
-#| msgctxt "Number of connected devices"
-#| msgid "%1 connected device"
-#| msgid_plural "%1 connected devices"
+#, kde-format
 msgid "No connected devices"
-msgstr "%1 个已连接设备"
+msgstr "尚未连接任何设备"
 
 #: package/contents/ui/main.qml:62
-#, fuzzy, kde-format
-#| msgctxt "Number of connected devices"
-#| msgid "%1 connected device"
-#| msgid_plural "%1 connected devices"
+#, kde-format
 msgid "%1 connected"
-msgstr "%1 个已连接设备"
+msgstr "%1 已连接"
 
 #: package/contents/ui/main.qml:69
 #, kde-format
@@ -257,17 +251,3 @@ msgstr "添加新设备…"
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "启用蓝牙"
-
-#~ msgid ""
-#~ "No connected devices\n"
-#~ "Middle-click to disable Bluetooth"
-#~ msgstr ""
-#~ "没有已连接的设备\n"
-#~ "中键点击禁用蓝牙"
-
-#~ msgid ""
-#~ "%1 connected\n"
-#~ "Middle-click to disable Bluetooth"
-#~ msgstr ""
-#~ "%1 已连接\n"
-#~ "中键点击禁用蓝牙"
