@@ -253,17 +253,3 @@ msgstr "Добавяне на ново устройство…"
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Активиране на Bluetooth"
-
-#~ msgid ""
-#~ "No connected devices\n"
-#~ "Middle-click to disable Bluetooth"
-#~ msgstr ""
-#~ "Няма свързани устройства\n"
-#~ "Кликнете със среден бутон на мишката, за да деактивирате Bluetooth"
-
-#~ msgid ""
-#~ "%1 connected\n"
-#~ "Middle-click to disable Bluetooth"
-#~ msgstr ""
-#~ "%1 е свързан\n"
-#~ "Кликнете със среден бутон на мишката, за да деактивирате Bluetooth"
