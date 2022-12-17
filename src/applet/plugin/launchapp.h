@@ -4,8 +4,7 @@
     SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
-#ifndef LAUNCHAPP_H
-#define LAUNCHAPP_H
+#pragma once
 
 #include <QObject>
 #include <QStringList>
@@ -21,5 +20,3 @@ public Q_SLOTS:
     void launchWizard();
     void launchSendFile(const QString &ubi);
 };
-
-#endif // LAUNCHAPP_H

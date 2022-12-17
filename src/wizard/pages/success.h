@@ -8,8 +8,7 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#ifndef SUCCESS_H
-#define SUCCESS_H
+#pragma once
 
 #include "ui_success.h"
 
@@ -30,5 +29,3 @@ public:
 private:
     BlueWizard *const m_wizard;
 };
-
-#endif // SUCCESS_H

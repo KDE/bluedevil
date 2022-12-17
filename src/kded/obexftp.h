@@ -5,8 +5,7 @@
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef OBEXFTP_H
-#define OBEXFTP_H
+#pragma once
 
 #include <QDBusAbstractAdaptor>
 #include <QDBusMessage>
@@ -41,5 +40,3 @@ private:
     QHash<QString, QString> m_sessionMap;
     QHash<QString, QList<QDBusMessage>> m_pendingSessions;
 };
-
-#endif // OBEXFTP_H

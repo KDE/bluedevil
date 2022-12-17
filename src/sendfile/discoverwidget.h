@@ -7,8 +7,7 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#ifndef DISCOVERWIDGET_H
-#define DISCOVERWIDGET_H
+#pragma once
 
 #include "ui_discover.h"
 
@@ -41,5 +40,3 @@ private:
     DevicesProxyModel *m_model;
     KMessageWidget *m_warningWidget;
 };
-
-#endif // DISCOVERWIDGET_H

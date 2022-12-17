@@ -5,8 +5,7 @@
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef RECEIVEFILEJOB_H
-#define RECEIVEFILEJOB_H
+#pragma once
 
 #include <QTime>
 #include <QUrl>
@@ -56,5 +55,3 @@ private:
     BluezQt::Request<QString> m_request;
     bool m_accepted = false;
 };
-
-#endif // RECEIVEFILEJOB_H

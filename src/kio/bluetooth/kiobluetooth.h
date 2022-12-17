@@ -7,8 +7,7 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-#ifndef KIOBLUETOOTH_H
-#define KIOBLUETOOTH_H
+#pragma once
 
 #include "kdedbluedevil.h"
 
@@ -121,5 +120,3 @@ private:
 };
 
 Q_DECLARE_LOGGING_CATEGORY(BLUETOOTH)
-
-#endif // KIOBLUETOOTH_H

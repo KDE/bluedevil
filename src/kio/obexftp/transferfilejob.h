@@ -4,8 +4,7 @@
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef TRANSFERFILEJOB_H
-#define TRANSFERFILEJOB_H
+#pragma once
 
 #include <QTime>
 
@@ -35,5 +34,3 @@ private:
     KioFtp *const m_parent;
     BluezQt::ObexTransferPtr m_transfer;
 };
-
-#endif // TRANSFERFILEJOB_H

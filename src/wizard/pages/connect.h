@@ -7,8 +7,7 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#ifndef CONNECT_H
-#define CONNECT_H
+#pragma once
 
 #include "ui_connect.h"
 
@@ -41,5 +40,3 @@ private:
     BlueWizard *const m_wizard;
     bool m_success = false;
 };
-
-#endif // CONNECT_H

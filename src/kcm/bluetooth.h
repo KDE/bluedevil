@@ -4,8 +4,7 @@
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef BLUETOOTH_H
-#define BLUETOOTH_H
+#pragma once
 
 #include <KQuickConfigModule>
 #include <QObject>
@@ -36,5 +35,3 @@ Q_SIGNALS:
 private:
     void checkNetworkInternal(const QString &service, const QString &address);
 };
-
-#endif // BLUETOOTHKCM_H

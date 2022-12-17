@@ -5,8 +5,7 @@
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef DEVICEMONITOR_H
-#define DEVICEMONITOR_H
+#pragma once
 
 #include <QObject>
 
@@ -49,5 +48,3 @@ private:
     KFilePlacesModel *m_places = nullptr;
     KSharedConfig::Ptr m_config;
 };
-
-#endif // DEVICEMONITOR_H

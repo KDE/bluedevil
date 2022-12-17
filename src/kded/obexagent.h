@@ -5,8 +5,7 @@
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *************************************************************************************/
 
-#ifndef OBEXAGENT_H
-#define OBEXAGENT_H
+#pragma once
 
 #include <BluezQt/ObexAgent>
 #include <QHash>
@@ -35,5 +34,3 @@ private:
     BluezQt::Manager *const m_manager;
     QHash<QString, QDateTime> m_transferTimes;
 };
-
-#endif // OBEXAGENT_H

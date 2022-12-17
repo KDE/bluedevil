@@ -7,8 +7,7 @@
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef REQUESTAUTHORIZATION_H
-#define REQUESTAUTHORIZATION_H
+#pragma once
 
 #include <QObject>
 
@@ -38,5 +37,3 @@ private Q_SLOTS:
 private:
     BluezQt::DevicePtr m_device;
 };
-
-#endif // REQUESTAUTHORIZATION_H

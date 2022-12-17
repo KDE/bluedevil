@@ -7,8 +7,7 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#ifndef SELECTDEVICEPAGE_H
-#define SELECTDEVICEPAGE_H
+#pragma once
 
 #include "ui_selectfilediscover.h"
 
@@ -33,5 +32,3 @@ private Q_SLOTS:
 private:
     SendFileWizard *const m_wizard;
 };
-
-#endif // SELECTDEVICEPAGE_H

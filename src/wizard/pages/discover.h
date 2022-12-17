@@ -4,8 +4,7 @@
     SPDX-License-Identifier: GPL-3.0-or-later
 */
 
-#ifndef DISCOVER_H
-#define DISCOVER_H
+#pragma once
 
 #include "ui_discover.h"
 
@@ -47,5 +46,3 @@ private:
     BluezQt::AdapterPtr m_adapter;
     KMessageWidget *m_warningWidget = nullptr;
 };
-
-#endif // DISCOVER_H

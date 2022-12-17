@@ -6,8 +6,7 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#ifndef FAILPAGE_H
-#define FAILPAGE_H
+#pragma once
 
 #include "ui_failpage.h"
 
@@ -35,5 +34,3 @@ private:
     SendFileWizard *const m_wizard;
     std::optional<QString> m_errorMessage;
 };
-
-#endif // FAILPAGE_H

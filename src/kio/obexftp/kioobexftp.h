@@ -8,8 +8,7 @@
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef KIO_OBEXFTP_H
-#define KIO_OBEXFTP_H
+#pragma once
 
 #include "kdedobexftp.h"
 
@@ -65,5 +64,3 @@ private:
     org::kde::BlueDevil::ObexFtp *m_kded;
     BluezQt::ObexFileTransfer *m_transfer;
 };
-
-#endif // KIO_OBEXFTP_H

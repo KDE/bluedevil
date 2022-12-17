@@ -7,8 +7,7 @@
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef BLUEDEVILDAEMON_H
-#define BLUEDEVILDAEMON_H
+#pragma once
 
 #include <QMap>
 
@@ -76,5 +75,3 @@ private:
     struct Private;
     Private *const d;
 };
-
-#endif // BLUEDEVILDAEMON_H

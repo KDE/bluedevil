@@ -7,8 +7,7 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#ifndef SENDFILEWIZARD_H
-#define SENDFILEWIZARD_H
+#pragma once
 
 #include <QObject>
 #include <QStringList>
@@ -66,5 +65,3 @@ private:
     bool m_obexServiceInitialized = false;
     BluezQt::PendingCall::Error m_obexdServiceError = BluezQt::PendingCall::NoError;
 };
-
-#endif // SENDFILEWIZARD_H

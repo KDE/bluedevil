@@ -7,8 +7,7 @@
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef BLUEZAGENT_H
-#define BLUEZAGENT_H
+#pragma once
 
 #include <BluezQt/Agent>
 
@@ -33,5 +32,3 @@ Q_SIGNALS:
     void agentReleased();
     void agentCanceled();
 };
-
-#endif // BLUEZAGENT_H

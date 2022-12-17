@@ -7,8 +7,7 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#ifndef FAIL_H
-#define FAIL_H
+#pragma once
 
 #include "ui_fail.h"
 
@@ -28,5 +27,3 @@ public:
 private:
     BlueWizard *const m_wizard;
 };
-
-#endif // FAIL_H

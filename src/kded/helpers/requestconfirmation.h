@@ -7,8 +7,7 @@
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef REQUESTCONFIRMATION_H
-#define REQUESTCONFIRMATION_H
+#pragma once
 
 #include <QObject>
 
@@ -37,5 +36,3 @@ private:
     BluezQt::DevicePtr m_device;
     const QString m_pin;
 };
-
-#endif // REQUESTCONFIRMATION_H

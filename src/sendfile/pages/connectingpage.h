@@ -7,8 +7,7 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#ifndef CONNECTINGPAGE_H
-#define CONNECTINGPAGE_H
+#pragma once
 
 #include "ui_connecting.h"
 
@@ -38,5 +37,3 @@ private:
     SendFileWizard *const m_wizard;
     BluezQt::DevicePtr m_device;
 };
-
-#endif // CONNECTINGPAGE_H

@@ -7,8 +7,7 @@
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef REQUESTPIN_H
-#define REQUESTPIN_H
+#pragma once
 
 #include <QObject>
 
@@ -44,5 +43,3 @@ private:
     BluezQt::DevicePtr m_device;
     bool m_numeric;
 };
-
-#endif // REQUESTPIN_H

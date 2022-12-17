@@ -6,8 +6,7 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#ifndef PAIRINGPAGE_H
-#define PAIRINGPAGE_H
+#pragma once
 
 #include "ui_pairing.h"
 
@@ -44,5 +43,3 @@ private:
     BluezQt::Request<> m_req;
     bool m_success = false;
 };
-
-#endif // PAIRINGPAGE_H

@@ -4,8 +4,7 @@
     SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
-#ifndef DEVICESPROXYMODEL_H
-#define DEVICESPROXYMODEL_H
+#pragma once
 
 #include <BluezQt/DevicesModel>
 #include <QSortFilterProxyModel>
@@ -32,5 +31,3 @@ public:
 private:
     bool duplicateIndexAddress(const QModelIndex &idx) const;
 };
-
-#endif // DEVICESPROXYMODEL_H

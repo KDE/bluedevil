@@ -4,8 +4,7 @@
     SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
-#ifndef NOTIFY_H
-#define NOTIFY_H
+#pragma once
 
 #include <QObject>
 #include <QStringList>
@@ -22,5 +21,3 @@ public:
 public Q_SLOTS:
     void connectionFailed(const QString &title, const QString &text);
 };
-
-#endif // NOTIFY_H

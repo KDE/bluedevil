@@ -4,8 +4,7 @@
     SPDX-License-Identifier: GPL-3.0-or-later
 */
 
-#ifndef BLUEWIZARD_H
-#define BLUEWIZARD_H
+#pragma once
 
 #include <QObject>
 #include <QWizard>
@@ -47,5 +46,3 @@ private:
 
     BluezQt::DevicePtr m_device;
 };
-
-#endif // BLUEWIZARD_H

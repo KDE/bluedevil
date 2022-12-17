@@ -4,8 +4,7 @@
     SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
-#ifndef BLUETOOTHPLUGIN_H
-#define BLUETOOTHPLUGIN_H
+#pragma once
 
 #include <QQmlExtensionPlugin>
 
@@ -17,5 +16,3 @@ class BluetoothPlugin : public QQmlExtensionPlugin
 public:
     void registerTypes(const char *uri) override;
 };
-
-#endif // BLUETOOTHPLUGIN_H

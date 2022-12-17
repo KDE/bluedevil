@@ -7,8 +7,7 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#ifndef SELECTFILESPAGE_H
-#define SELECTFILESPAGE_H
+#pragma once
 
 #include <QWizardPage>
 
@@ -30,5 +29,3 @@ private Q_SLOTS:
 private:
     KFileWidget *m_files;
 };
-
-#endif // SELECTFILESPAGE_H

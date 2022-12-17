@@ -5,8 +5,7 @@
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef WIZARDAGENT_H
-#define WIZARDAGENT_H
+#pragma once
 
 #include <BluezQt/Agent>
 
@@ -39,5 +38,3 @@ private:
     bool m_fromDatabase = false;
     QString m_pin;
 };
-
-#endif // WIZARDAGENT_H

@@ -6,8 +6,7 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#ifndef KDED_BLUEDEVIL_TYPES_H
-#define KDED_BLUEDEVIL_TYPES_H
+#pragma once
 
 #include <QMetaType>
 
@@ -15,5 +14,3 @@ typedef QMap<QString, QString> DeviceInfo;
 typedef QMap<QString, DeviceInfo> QMapDeviceInfo;
 Q_DECLARE_METATYPE(DeviceInfo)
 Q_DECLARE_METATYPE(QMapDeviceInfo)
-
-#endif // KDED_BLUEDEVIL_TYPES_H

@@ -7,8 +7,7 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#ifndef SENDFILESJOB_H
-#define SENDFILESJOB_H
+#pragma once
 
 #include <QList>
 #include <QStringList>
@@ -58,5 +57,3 @@ private:
     BluezQt::ObexTransferPtr m_transfer;
     BluezQt::ObexObjectPush *m_objectPush;
 };
-
-#endif // SENDFILESJOB_H
