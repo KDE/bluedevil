@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-06 00:46+0000\n"
+"POT-Creation-Date: 2022-12-22 00:48+0000\n"
 "PO-Revision-Date: 2022-01-11 22:46+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -107,7 +107,7 @@ msgctxt "Notification button to say that the PIN is wrong"
 msgid "PIN incorrect"
 msgstr "PIN ei ole oikea"
 
-#: kded/helpers/requestpin.cpp:36
+#: kded/helpers/requestpin.cpp:35
 #, kde-format
 msgctxt ""
 "Shown in a notification to announce that a PIN is needed to accomplish a "
@@ -115,7 +115,7 @@ msgctxt ""
 msgid "PIN needed to pair with %1"
 msgstr "PIN tarvitaan parin muodostamiseksi laitteeseen %1"
 
-#: kded/helpers/requestpin.cpp:40
+#: kded/helpers/requestpin.cpp:39
 #, kde-format
 msgctxt ""
 "Notification button which once clicked, a dialog to introduce the PIN will "
@@ -123,13 +123,13 @@ msgctxt ""
 msgid "Introduce PIN"
 msgstr "Anna PIN"
 
-#: kded/helpers/requestpin.cpp:62
+#: kded/helpers/requestpin.cpp:61
 #, kde-format
 msgctxt "Shown in the caption of a dialog where the user introduce the PIN"
 msgid "Introduce PIN"
 msgstr "Anna PIN"
 
-#: kded/helpers/requestpin.cpp:69
+#: kded/helpers/requestpin.cpp:68
 #, kde-format
 msgctxt ""
 "Shown in a dialog which asks to introduce a PIN that will be used to pair a "
