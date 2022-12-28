@@ -38,7 +38,8 @@
                 "Name[tr]": "Nicolas Fella",
                 "Name[uk]": "Nicolas Fella",
                 "Name[x-test]": "xxNicolas Fellaxx",
-                "Name[zh_CN]": "Nicolas Fella"
+                "Name[zh_CN]": "Nicolas Fella",
+                "Name[zh_TW]": "Nicolas Fella"
             }
         ],
         "BugReportUrl": "https://bugs.kde.org/enter_bug.cgi?product=systemsettings&component=kcm_bluetooth",
@@ -78,6 +79,7 @@
         "Description[uk]": "Керування пристроями Bluetooth",
         "Description[x-test]": "xxManage Bluetooth devicesxx",
         "Description[zh_CN]": "管理蓝牙设备",
+        "Description[zh_TW]": "管理藍牙裝置",
         "FormFactors": [
             "handset",
             "tablet",
