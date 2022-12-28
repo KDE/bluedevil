@@ -54,6 +54,7 @@ Notes:
     <comment xml:lang="tr">Aygıt</comment>
     <comment xml:lang="uk">Пристрій</comment>
     <comment xml:lang="zh_CN">设备</comment>
+    <comment xml:lang="zh_TW">裝置</comment>
   </mime-type>
   <mime-type type="inode/vnd.kde.bluedevil.service">
     <sub-class-of type="inode/directory"/>
@@ -96,6 +97,7 @@ Notes:
     <comment xml:lang="tr">Hizmet</comment>
     <comment xml:lang="uk">Служба</comment>
     <comment xml:lang="zh_CN">服务</comment>
+    <comment xml:lang="zh_TW">服務</comment>
   </mime-type>
   <mime-type type="application/vnd.kde.bluedevil-sendfile">
     <comment>Service</comment>
@@ -136,5 +138,6 @@ Notes:
     <comment xml:lang="tr">Hizmet</comment>
     <comment xml:lang="uk">Служба</comment>
     <comment xml:lang="zh_CN">服务</comment>
+    <comment xml:lang="zh_TW">服務</comment>
   </mime-type>
 </mime-info>
