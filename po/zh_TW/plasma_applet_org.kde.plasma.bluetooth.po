@@ -3,20 +3,21 @@
 #
 # Franklin, 2015.
 # pan93412 <pan93412@gmail.com>, 2018, 2020.
+# Kisaragi Hiu <mail@kisaragi-hiu.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-13 00:57+0000\n"
-"PO-Revision-Date: 2020-04-26 12:59+0800\n"
-"Last-Translator: Yi-Jyun Pan <pan93412@gmail.com>\n"
-"Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
+"PO-Revision-Date: 2022-12-28 09:02+0900\n"
+"Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
+"Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 19.12.3\n"
+"X-Generator: Lokalize 22.12.0\n"
 
 #: package/contents/ui/DeviceItem.qml:35
 #, kde-format
@@ -57,7 +58,7 @@ msgstr "否"
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: package/contents/ui/DeviceItem.qml:225
 #, kde-format
@@ -72,12 +73,12 @@ msgstr "位址"
 #: package/contents/ui/DeviceItem.qml:232
 #, kde-format
 msgid "Paired"
-msgstr "無配對"
+msgstr "已配對"
 
 #: package/contents/ui/DeviceItem.qml:235
 #, kde-format
 msgid "Trusted"
-msgstr "信任："
+msgstr "受信任的"
 
 #: package/contents/ui/DeviceItem.qml:238
 #, kde-format
@@ -87,7 +88,7 @@ msgstr "轉接器"
 #: package/contents/ui/DeviceItem.qml:246
 #, kde-format
 msgid "Disconnecting"
-msgstr "連線"
+msgstr "斷線中"
 
 #: package/contents/ui/DeviceItem.qml:246
 #, kde-format
@@ -95,10 +96,9 @@ msgid "Connecting"
 msgstr "連線中"
 
 #: package/contents/ui/DeviceItem.qml:252
-#, fuzzy, kde-format
-#| msgid "Connect"
+#, kde-format
 msgid "Connected"
-msgstr "連線"
+msgstr "已連線"
 
 #: package/contents/ui/DeviceItem.qml:259
 #, kde-format
@@ -113,7 +113,7 @@ msgstr "輸入裝置"
 #: package/contents/ui/DeviceItem.qml:270
 #, kde-format
 msgid "Phone"
-msgstr ""
+msgstr "手機"
 
 #: package/contents/ui/DeviceItem.qml:277
 #, kde-format
@@ -174,27 +174,25 @@ msgstr "裝置未就緒"
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: package/contents/ui/FullRepresentation.qml:58
 #, kde-format
 msgid "Enable"
-msgstr ""
+msgstr "啟用"
 
 #: package/contents/ui/FullRepresentation.qml:144
-#, fuzzy, kde-format
-#| msgid "No Bluetooth Adapters Available"
+#, kde-format
 msgid "No Bluetooth adapters available"
 msgstr "沒有可用的藍牙轉接器"
 
 #: package/contents/ui/FullRepresentation.qml:146
 #, kde-format
 msgid "Bluetooth is disabled"
-msgstr "藍牙裝置已關閉。"
+msgstr "藍牙已關閉"
 
 #: package/contents/ui/FullRepresentation.qml:148
-#, fuzzy, kde-format
-#| msgid "No Devices Found"
+#, kde-format
 msgid "No devices found"
 msgstr "找不到裝置"
 
@@ -204,25 +202,24 @@ msgid "Bluetooth"
 msgstr "藍牙"
 
 #: package/contents/ui/main.qml:45
-#, fuzzy, kde-format
-#| msgid "Bluetooth is disabled"
+#, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
-msgstr "藍牙裝置已關閉。"
+msgstr "藍牙已關閉；中鍵點擊以開啟"
 
 #: package/contents/ui/main.qml:49
 #, kde-format
 msgid "No adapters available"
-msgstr "沒有可用的藍牙轉接器"
+msgstr "沒有可用的轉接器"
 
 #: package/contents/ui/main.qml:51
 #, kde-format
 msgid "Bluetooth is offline"
-msgstr "藍牙裝置已離線"
+msgstr "藍牙已離線"
 
 #: package/contents/ui/main.qml:54
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
-msgstr ""
+msgstr "中鍵點擊以關閉藍牙"
 
 #: package/contents/ui/main.qml:57
 #, kde-format
@@ -242,16 +239,14 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 個已連線的裝置"
 
 #: package/contents/ui/main.qml:141
-#, fuzzy, kde-format
-#| msgid "Configure &Bluetooth..."
+#, kde-format
 msgid "Configure &Bluetooth…"
-msgstr "設定藍牙裝置(&B)..."
+msgstr "設定藍牙(&B)…"
 
 #: package/contents/ui/main.qml:143
-#, fuzzy, kde-format
-#| msgid "Add New Device"
+#, kde-format
 msgid "Add New Device…"
-msgstr "新增裝置"
+msgstr "新增裝置…"
 
 #: package/contents/ui/main.qml:146 package/contents/ui/Toolbar.qml:30
 #, kde-format

@@ -5,20 +5,21 @@
 # Jeff Huang <s8321414@gmail.com>, 2016, 2020.
 # Franklin Weng <franklin@goodhorse.idv.tw>, 2017.
 # pan93412 <pan93412@gmail.com>, 2018, 2019, 2020.
+# Kisaragi Hiu <mail@kisaragi-hiu.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-22 00:48+0000\n"
-"PO-Revision-Date: 2020-09-17 14:14+0800\n"
-"Last-Translator: Jeff Huang <s8321414@gmail.com>\n"
+"PO-Revision-Date: 2022-12-28 08:59+0900\n"
+"Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 19.08.3\n"
+"X-Generator: Lokalize 22.12.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -66,13 +67,10 @@ msgid "%1 is requesting access to this computer"
 msgstr "%1 正要求存取此電腦"
 
 #: kded/helpers/requestauthorization.cpp:33
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "Button to trust a bluetooth remote device and authorize it to connect"
-#| msgid "Trust && Authorize"
+#, kde-format
 msgctxt "Button to trust a bluetooth remote device and authorize it to connect"
 msgid "Trust and Authorize"
-msgstr "信任與授權"
+msgstr "信任並授權"
 
 #: kded/helpers/requestauthorization.cpp:34
 #, kde-format
@@ -173,11 +171,10 @@ msgid "Cancel"
 msgstr "取消"
 
 #: kded/receivefilejob.cpp:164
-#, fuzzy, kde-format
-#| msgid "<b>Receiving files</b>"
+#, kde-format
 msgctxt "@title job"
 msgid "Receiving file"
-msgstr "<b>正在接收檔案</b>"
+msgstr "正在接收檔案"
 
 #: kded/receivefilejob.cpp:165 sendfile/sendfilesjob.cpp:84
 #, kde-format
@@ -215,13 +212,12 @@ msgstr "瀏覽檔案"
 #: kio/bluetooth/kiobluetooth.cpp:72 kio/bluetooth/kiobluetooth.cpp:202
 #, kde-format
 msgid "No Bluetooth adapters have been found."
-msgstr "找不到藍牙轉接器"
+msgstr "沒有找到藍牙轉接器。"
 
 #: kio/bluetooth/kiobluetooth.cpp:92
-#, fuzzy, kde-format
-#| msgid "Retrieving services..."
+#, kde-format
 msgid "Retrieving services…"
-msgstr "取得服務中..."
+msgstr "取得服務中…"
 
 #: kio/bluetooth/kiobluetooth.cpp:99
 #, kde-format
@@ -234,10 +230,9 @@ msgid "Received Files"
 msgstr "已接收檔案："
 
 #: kio/bluetooth/kiobluetooth.cpp:168
-#, fuzzy, kde-format
-#| msgid "Scanning for new devices..."
+#, kde-format
 msgid "Scanning for new devices…"
-msgstr "掃描新裝置中..."
+msgstr "掃描新裝置中…"
 
 #: kio/obexftp/kioobexftp.cpp:97 kio/obexftp/kioobexftp.cpp:99
 #, kde-format
@@ -245,10 +240,9 @@ msgid "Obexd service is not running."
 msgstr "Obexd 服務未執行。"
 
 #: kio/obexftp/kioobexftp.cpp:146
-#, fuzzy, kde-format
-#| msgid "Retrieving information from remote device..."
+#, kde-format
 msgid "Retrieving information from remote device…"
-msgstr "從遠端裝置取得資訊中..."
+msgstr "從遠端裝置取得資訊中…"
 
 #: kio/obexftp/kioobexftp.cpp:229
 #, kde-format
@@ -288,10 +282,9 @@ msgid "Turn On"
 msgstr "開啟"
 
 #: sendfile/main.cpp:25 sendfile/main.cpp:27
-#, fuzzy, kde-format
-#| msgid "Bluetooth transfer failed"
+#, kde-format
 msgid "Bluetooth File Transfer"
-msgstr "藍牙傳輸失敗"
+msgstr "藍牙檔案傳輸"
 
 #: sendfile/main.cpp:50
 #, kde-format
@@ -309,32 +302,26 @@ msgid "Files to be sent."
 msgstr "要傳送的檔案。"
 
 #: sendfile/pages/connectingpage.cpp:32 wizard/pages/connect.cpp:39
-#, fuzzy, kde-format
-#| msgctxt "Connecting to a Bluetooth device"
-#| msgid "Connecting to %1..."
+#, kde-format
 msgctxt "Connecting to a Bluetooth device"
 msgid "Connecting to %1…"
-msgstr "正在連線到 %1..."
+msgstr "正在連線到 %1…"
 
 #: sendfile/pages/failpage.cpp:43
-#, fuzzy, kde-format
-#| msgctxt "This string is shown when the wizard fail"
-#| msgid "The connection to the device has failed"
+#, kde-format
 msgctxt "This string is shown when the wizard fail"
 msgid "The connection to the device has failed: %1"
-msgstr "連線到裝置失敗"
+msgstr "連線到裝置失敗：%1"
 
 #: sendfile/pages/failpage.cpp:45
-#, fuzzy, kde-format
-#| msgid "The connection to %1 has failed"
+#, kde-format
 msgid "The connection to %1 has failed: %2"
-msgstr "與 %1 的連線失敗"
+msgstr "與 %1 的連線失敗：%2"
 
 #: sendfile/pages/selectdeviceandfilespage.cpp:53
-#, fuzzy, kde-format
-#| msgid "Open file..."
+#, kde-format
 msgid "Open file…"
-msgstr "開啟檔案..."
+msgstr "開啟檔案…"
 
 #. i18n: ectx: property (text), widget (KSqueezedTextLabel, selectLbl)
 #: sendfile/pages/selectdeviceandfilespage.cpp:58
@@ -379,7 +366,7 @@ msgstr "取消"
 #, kde-format
 msgctxt "@info:status %1 error message"
 msgid "Failed to start org.bluez.obex service: %1"
-msgstr ""
+msgstr "無法啟動 org.bluez.obex 服務：%1"
 
 #. i18n: ectx: label, entry (saveUrl), group (General)
 #: settings/filereceiver.kcfg:11
@@ -406,10 +393,9 @@ msgid "Finish"
 msgstr "完成"
 
 #: wizard/main.cpp:26 wizard/main.cpp:28
-#, fuzzy, kde-format
-#| msgid "Bluetooth Devices"
+#, kde-format
 msgid "Add Bluetooth Device"
-msgstr "藍牙裝置"
+msgstr "新增藍牙裝置"
 
 #: wizard/pages/discover.cpp:131
 #, kde-format
@@ -431,20 +417,19 @@ msgstr "您的藍牙轉接器無法配對。"
 #, kde-format
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
-msgstr "能夠配對"
+msgstr "讓它能夠配對"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, searchField)
 #: wizard/pages/discover.ui:19
 #, kde-format
 msgid "Search…"
-msgstr ""
+msgstr "搜尋…"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: wizard/pages/discover.ui:64
-#, fuzzy, kde-format
-#| msgid "Scanning..."
+#, kde-format
 msgid "Scanning…"
-msgstr "掃描中..."
+msgstr "掃描中…"
 
 #. i18n: ectx: property (text), widget (QCheckBox, manualPin)
 #: wizard/pages/discover.ui:84
@@ -483,10 +468,9 @@ msgid "The setup of %1 has failed"
 msgstr "%1 的設定失敗"
 
 #: wizard/pages/pairing.cpp:60
-#, fuzzy, kde-format
-#| msgid "Connecting to %1..."
+#, kde-format
 msgid "Connecting to %1…"
-msgstr "正在連線到 %1..."
+msgstr "正在連線到 %1…"
 
 #: wizard/pages/pairing.cpp:91
 #, kde-format
