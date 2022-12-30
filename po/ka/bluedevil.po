@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-22 00:48+0000\n"
-"PO-Revision-Date: 2022-11-16 08:37+0100\n"
+"PO-Revision-Date: 2022-12-30 05:42+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -37,7 +37,7 @@ msgstr "%1 ქსელი (%2)"
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
 msgid "Bluetooth Daemon"
-msgstr "Bluetooth -ის დემონი"
+msgstr "ბლუთუზის დემონი"
 
 #: kded/bluedevildaemon.cpp:72 sendfile/main.cpp:29 wizard/main.cpp:30
 #, kde-format
@@ -194,7 +194,7 @@ msgstr "ფაილის შენახვის შეცდომა"
 #: sendfile/sendfilesjob.cpp:155
 #, kde-format
 msgid "Bluetooth transfer failed"
-msgstr "Bluetooth-ით გადაცემის შეცდომა"
+msgstr "ბლუთუზით გადაცემის შეცდომა"
 
 #: kio/bluetooth/kiobluetooth.cpp:52
 #, kde-format
@@ -209,7 +209,7 @@ msgstr "ფაილის არჩევა"
 #: kio/bluetooth/kiobluetooth.cpp:72 kio/bluetooth/kiobluetooth.cpp:202
 #, kde-format
 msgid "No Bluetooth adapters have been found."
-msgstr "Bluetooth ბარათი ნაპოვნი არაა."
+msgstr "ბლუთუზის  ბარათი ნაპოვნი არაა."
 
 #: kio/bluetooth/kiobluetooth.cpp:92
 #, kde-format
@@ -259,7 +259,7 @@ msgstr "გარე მეხსიერება"
 #: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:306
 #, kde-format
 msgid "Bluetooth is disabled."
-msgstr "Bluetooth გამორთულია."
+msgstr "ბლუთუზი გამორთულია."
 
 #: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:307
 #, kde-format
@@ -270,7 +270,7 @@ msgstr "ჩართვა"
 #: sendfile/discoverwidget.cpp:137
 #, kde-format
 msgid "Your Bluetooth adapter is powered off."
-msgstr "თქვენი Bluetooth ადაპტერი გამორთულია."
+msgstr "თქვენი ბლუთუზის ადაპტერი გამორთულია."
 
 #: sendfile/discoverwidget.cpp:138
 #, kde-format
@@ -281,7 +281,7 @@ msgstr "ჩართვა"
 #: sendfile/main.cpp:25 sendfile/main.cpp:27
 #, kde-format
 msgid "Bluetooth File Transfer"
-msgstr "Bluetooth-ით ფაილის გადაცემა"
+msgstr "ბლუთუზით ფაილის გადაცემა"
 
 #: sendfile/main.cpp:50
 #, kde-format
@@ -392,7 +392,7 @@ msgstr "დასრულება"
 #: wizard/main.cpp:26 wizard/main.cpp:28
 #, kde-format
 msgid "Add Bluetooth Device"
-msgstr "Bluetooth მოწყობილობის დამატება"
+msgstr "ბლუთუზის  მოწყობილობის დამატება"
 
 #: wizard/pages/discover.cpp:131
 #, kde-format
@@ -408,7 +408,7 @@ msgstr "გაასწორეთ"
 #: wizard/pages/discover.cpp:309
 #, kde-format
 msgid "Your Bluetooth adapter is not pairable."
-msgstr "თქვენი Bluetooth ადაპტერი დაწყვილებადი არაა."
+msgstr "თქვენი ბლუთუზის ადაპტერი დაწყვილებადი არაა."
 
 #: wizard/pages/discover.cpp:310
 #, kde-format

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-13 00:57+0000\n"
-"PO-Revision-Date: 2022-12-08 06:39+0100\n"
+"PO-Revision-Date: 2022-12-30 05:43+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -183,12 +183,12 @@ msgstr "ჩართვა"
 #: package/contents/ui/FullRepresentation.qml:144
 #, kde-format
 msgid "No Bluetooth adapters available"
-msgstr "Bluetooth ბარათი ნაპოვნი არაა"
+msgstr "ბლუთუზის ბარათი ნაპოვნი არაა"
 
 #: package/contents/ui/FullRepresentation.qml:146
 #, kde-format
 msgid "Bluetooth is disabled"
-msgstr "Bluetooth გამორთულია"
+msgstr "ბლუთუზი გამორთულია"
 
 #: package/contents/ui/FullRepresentation.qml:148
 #, kde-format
@@ -198,12 +198,12 @@ msgstr "მოწყობილობების პოვნა ვერ მ
 #: package/contents/ui/main.qml:42
 #, kde-format
 msgid "Bluetooth"
-msgstr "Bluetooth"
+msgstr "ბლუთუზი"
 
 #: package/contents/ui/main.qml:45
 #, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
-msgstr "Bluetooth გამორთულია; ჩასართავად გამოიყენეთ შუა-წკაპი"
+msgstr "ბლუთუზი გამორთულია; ჩასართავად გამოიყენეთ შუა-წკაპი"
 
 #: package/contents/ui/main.qml:49
 #, kde-format
@@ -213,12 +213,12 @@ msgstr "ბარათი მიუწვდომელია"
 #: package/contents/ui/main.qml:51
 #, kde-format
 msgid "Bluetooth is offline"
-msgstr "Bluetooth გათიშულია"
+msgstr "ბლუთუზი გათიშულია"
 
 #: package/contents/ui/main.qml:54
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
-msgstr "Bluetooth-ის გამოსართავად გამოიყენეთ შუა-წკაპი"
+msgstr "ბლუთუზის გამოსართავად გამოიყენეთ შუა-წკაპი"
 
 #: package/contents/ui/main.qml:57
 #, kde-format
@@ -241,7 +241,7 @@ msgstr[1] "%1 მიერთებული მოწყობილობა"
 #: package/contents/ui/main.qml:141
 #, kde-format
 msgid "Configure &Bluetooth…"
-msgstr "&Bluetooth-ის მორგება…"
+msgstr "&ბლუთუზის მორგება…"
 
 #: package/contents/ui/main.qml:143
 #, kde-format
@@ -251,7 +251,7 @@ msgstr "ახალი მოწყობილობის დამატე�
 #: package/contents/ui/main.qml:146 package/contents/ui/Toolbar.qml:30
 #, kde-format
 msgid "Enable Bluetooth"
-msgstr "Bluetooth-ის ჩართვა"
+msgstr "ბლუთუზის ჩართვა"
 
 #~ msgid ""
 #~ "No connected devices\n"
