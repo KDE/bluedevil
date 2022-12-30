@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-22 00:46+0000\n"
+"POT-Creation-Date: 2022-12-30 00:54+0000\n"
 "PO-Revision-Date: 2022-12-24 11:42\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -35,12 +35,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 网络 (%2)"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:203
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:202
 #, kde-format
 msgid "Disconnect"
 msgstr "断开连接"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:203
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:202
 #, kde-format
 msgid "Connect"
 msgstr "连接"
@@ -235,7 +235,7 @@ msgstr "登录时："
 msgid "Enable Bluetooth"
 msgstr "启用蓝牙"
 
-#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:248
+#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:247
 #, kde-format
 msgid "Disable Bluetooth"
 msgstr "禁用蓝牙"
@@ -317,18 +317,29 @@ msgstr "启用"
 msgid "No devices paired"
 msgstr "无已配对设备"
 
-#: package/contents/ui/main.qml:214
+#: package/contents/ui/main.qml:180
+#, fuzzy, kde-format
+#| msgid "Connect"
+msgid "Connected"
+msgstr "连接"
+
+#: package/contents/ui/main.qml:180
+#, kde-format
+msgid "Available"
+msgstr ""
+
+#: package/contents/ui/main.qml:213
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "忘记“%1”"
 
-#: package/contents/ui/main.qml:242
+#: package/contents/ui/main.qml:241
 #, kde-format
 msgid "Add New Device…"
 msgstr "添加新设备…"
 
-#: package/contents/ui/main.qml:260
+#: package/contents/ui/main.qml:259
 #, kde-format
 msgid "Configure…"
 msgstr "配置…"

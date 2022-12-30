@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-22 00:46+0000\n"
+"POT-Creation-Date: 2022-12-30 00:54+0000\n"
 "PO-Revision-Date: 2022-10-09 17:41+0200\n"
 "Last-Translator: Thomas Vergnaud <thomas.vergnaud@mailo.eu>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
@@ -47,12 +47,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "Réseau %1 (%2)"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:203
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:202
 #, kde-format
 msgid "Disconnect"
 msgstr "Déconnecter"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:203
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:202
 #, kde-format
 msgid "Connect"
 msgstr "Connecter"
@@ -247,7 +247,7 @@ msgstr "À la connexion :"
 msgid "Enable Bluetooth"
 msgstr "Activer le périphérique « Bluetooth »"
 
-#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:248
+#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:247
 #, kde-format
 msgid "Disable Bluetooth"
 msgstr "Désactiver le périphérique « Bluetooth »"
@@ -329,27 +329,31 @@ msgstr "Activer"
 msgid "No devices paired"
 msgstr "Aucun périphérique associé"
 
-#: package/contents/ui/main.qml:214
+#: package/contents/ui/main.qml:180
+#, kde-format
+msgid "Connected"
+msgstr "Connecté"
+
+#: package/contents/ui/main.qml:180
+#, kde-format
+msgid "Available"
+msgstr "Disponible"
+
+#: package/contents/ui/main.qml:213
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "Oublier « %1 »"
 
-#: package/contents/ui/main.qml:242
+#: package/contents/ui/main.qml:241
 #, kde-format
 msgid "Add New Device…"
 msgstr "Ajouter un nouveau périphérique..."
 
-#: package/contents/ui/main.qml:260
+#: package/contents/ui/main.qml:259
 #, kde-format
 msgid "Configure…"
 msgstr "Configurer..."
-
-#~ msgid "Connected"
-#~ msgstr "Connecté"
-
-#~ msgid "Available"
-#~ msgstr "Disponible"
 
 #~ msgid "Confirm Deletion of Device"
 #~ msgstr "Confirmez la suppression du périphérique"

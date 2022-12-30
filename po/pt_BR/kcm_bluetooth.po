@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-22 00:46+0000\n"
+"POT-Creation-Date: 2022-12-30 00:54+0000\n"
 "PO-Revision-Date: 2022-08-19 15:17-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -33,12 +33,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "Rede %1 (%2)"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:203
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:202
 #, kde-format
 msgid "Disconnect"
 msgstr "Desconectar"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:203
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:202
 #, kde-format
 msgid "Connect"
 msgstr "Conectar"
@@ -233,7 +233,7 @@ msgstr "Na inicialização:"
 msgid "Enable Bluetooth"
 msgstr "Ativar o Bluetooth"
 
-#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:248
+#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:247
 #, kde-format
 msgid "Disable Bluetooth"
 msgstr "Desabilitar Bluetooth"
@@ -315,27 +315,31 @@ msgstr "Ativar"
 msgid "No devices paired"
 msgstr "Nenhum dispositivo pareado"
 
-#: package/contents/ui/main.qml:214
+#: package/contents/ui/main.qml:180
+#, kde-format
+msgid "Connected"
+msgstr "Conectado"
+
+#: package/contents/ui/main.qml:180
+#, kde-format
+msgid "Available"
+msgstr "Disponível"
+
+#: package/contents/ui/main.qml:213
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "Esquecer \"%1\""
 
-#: package/contents/ui/main.qml:242
+#: package/contents/ui/main.qml:241
 #, kde-format
 msgid "Add New Device…"
 msgstr "Adicionar novo dispositivo..."
 
-#: package/contents/ui/main.qml:260
+#: package/contents/ui/main.qml:259
 #, kde-format
 msgid "Configure…"
 msgstr "Configurar..."
-
-#~ msgid "Connected"
-#~ msgstr "Conectado"
-
-#~ msgid "Available"
-#~ msgstr "Disponível"
 
 #~ msgid "Confirm Deletion of Device"
 #~ msgstr "Confirmar exclusão do dispositivo"

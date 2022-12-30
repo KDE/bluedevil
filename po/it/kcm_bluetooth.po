@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-22 00:46+0000\n"
+"POT-Creation-Date: 2022-12-30 00:54+0000\n"
 "PO-Revision-Date: 2022-07-26 13:05+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -35,12 +35,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "Rete %1 (%2)"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:203
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:202
 #, kde-format
 msgid "Disconnect"
 msgstr "Disconnetti"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:203
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:202
 #, kde-format
 msgid "Connect"
 msgstr "Connetti"
@@ -235,7 +235,7 @@ msgstr "All'accesso:"
 msgid "Enable Bluetooth"
 msgstr "Abilita Bluetooth"
 
-#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:248
+#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:247
 #, kde-format
 msgid "Disable Bluetooth"
 msgstr "Disabilita Bluetooth"
@@ -317,27 +317,31 @@ msgstr "Abilita"
 msgid "No devices paired"
 msgstr "Nessun dispositivo associato"
 
-#: package/contents/ui/main.qml:214
+#: package/contents/ui/main.qml:180
+#, kde-format
+msgid "Connected"
+msgstr "Connesso"
+
+#: package/contents/ui/main.qml:180
+#, kde-format
+msgid "Available"
+msgstr "Disponibile"
+
+#: package/contents/ui/main.qml:213
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "Dimentica «%1»"
 
-#: package/contents/ui/main.qml:242
+#: package/contents/ui/main.qml:241
 #, kde-format
 msgid "Add New Device…"
 msgstr "Aggiungi nuovo dispositivo..."
 
-#: package/contents/ui/main.qml:260
+#: package/contents/ui/main.qml:259
 #, kde-format
 msgid "Configure…"
 msgstr "Configura..."
-
-#~ msgid "Connected"
-#~ msgstr "Connesso"
-
-#~ msgid "Available"
-#~ msgstr "Disponibile"
 
 #~ msgid "Confirm Deletion of Device"
 #~ msgstr "Conferma eliminazione del dispositivo"

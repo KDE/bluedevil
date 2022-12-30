@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-22 00:46+0000\n"
+"POT-Creation-Date: 2022-12-30 00:54+0000\n"
 "PO-Revision-Date: 2020-09-28 02:19+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -33,12 +33,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 võrk (%2)"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:203
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:202
 #, kde-format
 msgid "Disconnect"
 msgstr "Katkesta ühendus"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:203
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:202
 #, kde-format
 msgid "Connect"
 msgstr "Ühenda"
@@ -239,7 +239,7 @@ msgstr ""
 msgid "Enable Bluetooth"
 msgstr "Lülita Bluetooth välja"
 
-#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:248
+#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:247
 #, kde-format
 msgid "Disable Bluetooth"
 msgstr "Lülita Bluetooth välja"
@@ -322,28 +322,32 @@ msgstr "Lülita sisse"
 msgid "No devices paired"
 msgstr ""
 
-#: package/contents/ui/main.qml:214
+#: package/contents/ui/main.qml:180
+#, kde-format
+msgid "Connected"
+msgstr "Ühendatud"
+
+#: package/contents/ui/main.qml:180
+#, kde-format
+msgid "Available"
+msgstr "Saadaval"
+
+#: package/contents/ui/main.qml:213
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr ""
 
-#: package/contents/ui/main.qml:242
+#: package/contents/ui/main.qml:241
 #, kde-format
 msgid "Add New Device…"
 msgstr ""
 
-#: package/contents/ui/main.qml:260
+#: package/contents/ui/main.qml:259
 #, fuzzy, kde-format
 #| msgid "Configure..."
 msgid "Configure…"
 msgstr "Seadista ..."
-
-#~ msgid "Connected"
-#~ msgstr "Ühendatud"
-
-#~ msgid "Available"
-#~ msgstr "Saadaval"
 
 #~ msgid "Remove"
 #~ msgstr "Eemalda"
