@@ -320,15 +320,14 @@ msgid "No devices paired"
 msgstr "No hi ha cap dispositiu aparellat"
 
 #: package/contents/ui/main.qml:180
-#, fuzzy, kde-format
-#| msgid "Connect"
+#, kde-format
 msgid "Connected"
-msgstr "Connecta"
+msgstr "Connectat"
 
 #: package/contents/ui/main.qml:180
 #, kde-format
 msgid "Available"
-msgstr ""
+msgstr "Disponible"
 
 #: package/contents/ui/main.qml:213
 #, kde-format
