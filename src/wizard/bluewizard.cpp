@@ -123,7 +123,7 @@ void BlueWizard::operationalChanged(bool operational)
 
 void BlueWizard::done(int result)
 {
-    qCDebug(BLUEDEVIL_WIZARD_LOG) << "Wizard done: " << result;
+    qCDebug(BLUEDEVIL_WIZARD_LOG) << "Wizard done:" << result;
 
     QWizard::done(result);
     qApp->exit(result);
