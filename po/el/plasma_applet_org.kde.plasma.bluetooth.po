@@ -2,13 +2,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Dimitris Kardarakos <dimkard@gmail.com>, 2015, 2016.
-# Stelios <sstavra@gmail.com>, 2020, 2021.
+# Stelios <sstavra@gmail.com>, 2020, 2021, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-13 00:57+0000\n"
-"PO-Revision-Date: 2021-09-02 09:10+0300\n"
+"PO-Revision-Date: 2023-01-04 10:55+0200\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
 "Language: el\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.04.2\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #: package/contents/ui/DeviceItem.qml:35
 #, kde-format
@@ -57,7 +57,7 @@ msgstr "Όχι"
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: package/contents/ui/DeviceItem.qml:225
 #, kde-format
@@ -112,7 +112,7 @@ msgstr "Συσκευή εισόδου"
 #: package/contents/ui/DeviceItem.qml:270
 #, kde-format
 msgid "Phone"
-msgstr ""
+msgstr "Τηλέφωνο"
 
 #: package/contents/ui/DeviceItem.qml:277
 #, kde-format
@@ -173,16 +173,15 @@ msgstr "Η συσκευή δεν είναι έτοιμη"
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: package/contents/ui/FullRepresentation.qml:58
 #, kde-format
 msgid "Enable"
-msgstr ""
+msgstr "Ενεργοποίηση"
 
 #: package/contents/ui/FullRepresentation.qml:144
-#, fuzzy, kde-format
-#| msgid "No Bluetooth Adapters Available"
+#, kde-format
 msgid "No Bluetooth adapters available"
 msgstr "Μη διαθέσιμοι προσαρμογείς bluetooth"
 
@@ -192,8 +191,7 @@ msgid "Bluetooth is disabled"
 msgstr "Το Bluetooth είναι απενεργοποιημένο"
 
 #: package/contents/ui/FullRepresentation.qml:148
-#, fuzzy, kde-format
-#| msgid "No Devices Found"
+#, kde-format
 msgid "No devices found"
 msgstr "Δε βρέθηκαν συσκευές"
 
@@ -203,10 +201,9 @@ msgid "Bluetooth"
 msgstr "Bluetooth"
 
 #: package/contents/ui/main.qml:45
-#, fuzzy, kde-format
-#| msgid "Bluetooth is disabled"
+#, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
-msgstr "Το Bluetooth είναι απενεργοποιημένο"
+msgstr "Το Bluetooth είναι απενεργοποιημένο, ενεργοποιήστε το με μεσαίο κλικ"
 
 #: package/contents/ui/main.qml:49
 #, kde-format
@@ -221,7 +218,7 @@ msgstr "Το Bluetooth είναι εκτός σύνδεσης"
 #: package/contents/ui/main.qml:54
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
-msgstr ""
+msgstr "Μεσαίο κλικ για απενεργοποίηση του Bluetooth"
 
 #: package/contents/ui/main.qml:57
 #, kde-format
