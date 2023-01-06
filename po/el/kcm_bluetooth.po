@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-30 00:54+0000\n"
-"PO-Revision-Date: 2023-01-04 10:52+0200\n"
+"PO-Revision-Date: 2023-01-05 08:44+0200\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
 "Language: el\n"
@@ -276,7 +276,7 @@ msgstr "Επιλογή φακέλου"
 #: package/contents/ui/main.qml:54
 #, kde-format
 msgid "Forget this Device?"
-msgstr ""
+msgstr "Να ξεχαστεί αυτή η συσκευή;"
 
 #: package/contents/ui/main.qml:55
 #, kde-format
