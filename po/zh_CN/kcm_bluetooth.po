@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-30 00:54+0000\n"
-"PO-Revision-Date: 2023-01-02 07:11\n"
+"PO-Revision-Date: 2023-01-12 10:29\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -320,12 +320,12 @@ msgstr "无已配对设备"
 #: package/contents/ui/main.qml:180
 #, kde-format
 msgid "Connected"
-msgstr ""
+msgstr "已连接"
 
 #: package/contents/ui/main.qml:180
 #, kde-format
 msgid "Available"
-msgstr ""
+msgstr "可用"
 
 #: package/contents/ui/main.qml:213
 #, kde-format
