@@ -9,15 +9,20 @@ set(wizard_SRCS
     pages/success.cpp
 )
 
-ecm_qt_declare_logging_category(wizard_SRCS HEADER bluedevil_wizard.h IDENTIFIER BLUEDEVIL_WIZARD_LOG CATEGORY_NAME
-    org.kde.plasma.bluedevil.wizard DESCRIPTION "BlueDevil (wizard)" EXPORT BLUEDEVIL)
+ecm_qt_declare_logging_category(wizard_SRCS
+    HEADER bluedevil_wizard.h
+    IDENTIFIER BLUEDEVIL_WIZARD_LOG
+    CATEGORY_NAME org.kde.plasma.bluedevil.wizard
+    DESCRIPTION "BlueDevil (wizard)"
+    EXPORT BLUEDEVIL
+)
 
 ki18n_wrap_ui(wizard_SRCS
-            pages/discover.ui
-            pages/connect.ui
-            pages/pairing.ui
-            pages/fail.ui
-            pages/success.ui
+    pages/discover.ui
+    pages/connect.ui
+    pages/pairing.ui
+    pages/fail.ui
+    pages/success.ui
 )
 
 add_executable(bluedevil-wizard ${wizard_SRCS})
@@ -31,7 +36,8 @@ target_link_libraries(bluedevil-wizard
     KF5::Notifications
     KF5::WidgetsAddons
     KF5::WindowSystem
-    KF5::BluezQt)
+    KF5::BluezQt
+)
 
 install(TARGETS bluedevil-wizard ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES org.kde.bluedevilwizard.desktop DESTINATION ${KDE_INSTALL_APPDIR})

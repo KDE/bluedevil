@@ -11,11 +11,17 @@ set(kded_bluedevil_SRCS
     helpers/requestpin.cpp
 )
 
-ecm_qt_declare_logging_category(kded_bluedevil_SRCS HEADER bluedevil_kded.h IDENTIFIER BLUEDEVIL_KDED_LOG CATEGORY_NAME
-    org.kde.plasma.bluedevil.kded DESCRIPTION "BlueDevil (kded)" EXPORT BLUEDEVIL)
+ecm_qt_declare_logging_category(kded_bluedevil_SRCS
+    HEADER bluedevil_kded.h
+    IDENTIFIER BLUEDEVIL_KDED_LOG
+    CATEGORY_NAME org.kde.plasma.bluedevil.kded
+    DESCRIPTION "BlueDevil (kded)"
+    EXPORT BLUEDEVIL
+)
 
 ki18n_wrap_ui(kded_bluedevil_SRCS
-    helpers/requestpin.ui)
+    helpers/requestpin.ui
+)
 
 kconfig_add_kcfg_files(kded_bluedevil_SRCS GENERATE_MOC ../settings/filereceiversettings.kcfgc)
 

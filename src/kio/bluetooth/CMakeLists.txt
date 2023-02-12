@@ -1,5 +1,6 @@
 set(kio_bluetooth_SRCS
-   kiobluetooth.cpp)
+    kiobluetooth.cpp
+)
 
 set(kded_bluedevil.xml ${CMAKE_SOURCE_DIR}/src/interfaces/kded_bluedevil.xml)
 set_source_files_properties(${kded_bluedevil.xml} PROPERTIES INCLUDE ${CMAKE_SOURCE_DIR}/src/interfaces/kded_bluedevil_types.h)
@@ -20,7 +21,8 @@ target_link_libraries(kio_bluetooth
 )
 
 target_include_directories(kio_bluetooth
-    PUBLIC $<TARGET_PROPERTY:KF5::BluezQt,INTERFACE_INCLUDE_DIRECTORIES>)
+    PUBLIC $<TARGET_PROPERTY:KF5::BluezQt,INTERFACE_INCLUDE_DIRECTORIES>
+)
 
 ########### install files ###############
 install(TARGETS kio_bluetooth DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf${QT_MAJOR_VERSION}/kio)

@@ -72,10 +72,10 @@ file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
 ecm_qt_install_logging_categories(
-        EXPORT BLUEDEVIL
-        FILE bluedevil.categories
-        DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
-        )
+    EXPORT BLUEDEVIL
+    FILE bluedevil.categories
+    DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
+)
 
 add_subdirectory(doc)
 kdoctools_install(po)
