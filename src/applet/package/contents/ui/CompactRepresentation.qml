@@ -19,9 +19,6 @@ MouseArea {
         PlasmaCore.Types.LeftEdge,
     ].includes(Plasmoid.location)
 
-    Layout.maximumWidth: inPanel ? PlasmaCore.Units.iconSizeHints.panel : -1
-    Layout.maximumHeight: inPanel ? PlasmaCore.Units.iconSizeHints.panel : -1
-
     acceptedButtons: Qt.LeftButton | Qt.MiddleButton
 
     property bool wasExpanded
