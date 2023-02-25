@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-22 00:48+0000\n"
-"PO-Revision-Date: 2023-02-15 11:03\n"
+"PO-Revision-Date: 2023-02-24 12:43\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -446,7 +446,7 @@ msgstr "0000"
 msgctxt ""
 "Button offered when the wizard fail. This button will restart the wizard"
 msgid "Restart the wizard"
-msgstr "重新启动连接向导"
+msgstr "重新开始连接向导"
 
 #: wizard/pages/fail.cpp:41
 #, kde-format
@@ -504,10 +504,10 @@ msgstr "安装完成"
 #: wizard/pages/success.cpp:42
 #, kde-format
 msgid "The device has been set up and can now be used."
-msgstr "设备已完成安装，现在可以使用了。"
+msgstr "设备已经连接，现在即可使用。"
 
 #: wizard/pages/success.cpp:44
 #, kde-format
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
-msgstr "设备“%1”已完成安装，现在可以使用了。"
+msgstr "设备“%1”已经连接，现在即可使用。"
