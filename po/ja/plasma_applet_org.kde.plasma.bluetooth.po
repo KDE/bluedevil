@@ -1,12 +1,13 @@
 # Tomohiro Hyakutake <tomhioo@outlook.jp>, 2019.
 # Fumiaki Okushi <fumiaki.okushi@gmail.com>, 2019.
+# Ryuichi Yamada <ryuichi_ya220@outlook.jp>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-13 00:57+0000\n"
-"PO-Revision-Date: 2019-04-21 11:39-0700\n"
-"Last-Translator: Fumiaki Okushi <fumiaki.okushi@gmail.com>\n"
+"PO-Revision-Date: 2023-02-23 18:21+0900\n"
+"Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -15,7 +16,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 18.12.3\n"
+"X-Generator: Lokalize 22.12.2\n"
 
 #: package/contents/ui/DeviceItem.qml:35
 #, kde-format
@@ -30,7 +31,7 @@ msgstr "接続"
 #: package/contents/ui/DeviceItem.qml:44
 #, kde-format
 msgid "Browse Files"
-msgstr "ファイルを探索"
+msgstr "ファイルを閲覧する"
 
 #: package/contents/ui/DeviceItem.qml:55
 #, kde-format
@@ -56,12 +57,12 @@ msgstr "いいえ"
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: package/contents/ui/DeviceItem.qml:225
 #, kde-format
 msgid "Remote Name"
-msgstr ""
+msgstr "リモート名"
 
 #: package/contents/ui/DeviceItem.qml:229
 #, kde-format
@@ -94,15 +95,14 @@ msgid "Connecting"
 msgstr "接続中"
 
 #: package/contents/ui/DeviceItem.qml:252
-#, fuzzy, kde-format
-#| msgid "Connect"
+#, kde-format
 msgid "Connected"
-msgstr "接続"
+msgstr "接続済み"
 
 #: package/contents/ui/DeviceItem.qml:259
 #, kde-format
 msgid "Audio device"
-msgstr "オーディオデバイス"
+msgstr "音声デバイス"
 
 #: package/contents/ui/DeviceItem.qml:266
 #, kde-format
@@ -112,12 +112,12 @@ msgstr "入力デバイス"
 #: package/contents/ui/DeviceItem.qml:270
 #, kde-format
 msgid "Phone"
-msgstr ""
+msgstr "電話"
 
 #: package/contents/ui/DeviceItem.qml:277
 #, kde-format
 msgid "File transfer"
-msgstr ""
+msgstr "ファイル転送"
 
 #: package/contents/ui/DeviceItem.qml:280
 #, kde-format
@@ -148,7 +148,7 @@ msgstr "その他のデバイス"
 #: package/contents/ui/main.qml:74
 #, kde-format
 msgid "%1% Battery"
-msgstr ""
+msgstr "バッテリ %1%"
 
 #: package/contents/ui/DeviceItem.qml:311
 #, kde-format
@@ -166,25 +166,24 @@ msgstr "デバイスへの接続に失敗"
 #, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
-msgstr ""
+msgstr "デバイスの準備ができていません"
 
 #: package/contents/ui/DeviceItem.qml:351
 #, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: package/contents/ui/FullRepresentation.qml:58
 #, kde-format
 msgid "Enable"
-msgstr ""
+msgstr "有効化"
 
 #: package/contents/ui/FullRepresentation.qml:144
-#, fuzzy, kde-format
-#| msgid "No Adapters Available"
+#, kde-format
 msgid "No Bluetooth adapters available"
-msgstr "アダプタがありません"
+msgstr "利用可能な Bluetooth アダプタがありません"
 
 #: package/contents/ui/FullRepresentation.qml:146
 #, kde-format
@@ -192,8 +191,7 @@ msgid "Bluetooth is disabled"
 msgstr "Bluetooth は無効です"
 
 #: package/contents/ui/FullRepresentation.qml:148
-#, fuzzy, kde-format
-#| msgid "No Devices Found"
+#, kde-format
 msgid "No devices found"
 msgstr "デバイスが見つかりません"
 
@@ -203,10 +201,9 @@ msgid "Bluetooth"
 msgstr "Bluetooth"
 
 #: package/contents/ui/main.qml:45
-#, fuzzy, kde-format
-#| msgid "Bluetooth is disabled"
+#, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
-msgstr "Bluetooth は無効です"
+msgstr "Bluetooth は無効です - 中クリックで有効化"
 
 #: package/contents/ui/main.qml:49
 #, kde-format
@@ -216,12 +213,12 @@ msgstr "アダプタがありません"
 #: package/contents/ui/main.qml:51
 #, kde-format
 msgid "Bluetooth is offline"
-msgstr ""
+msgstr "Bluetooth はオフラインです"
 
 #: package/contents/ui/main.qml:54
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
-msgstr ""
+msgstr "中クリックで Bluetooth を無効化"
 
 #: package/contents/ui/main.qml:57
 #, kde-format
@@ -229,12 +226,9 @@ msgid "No connected devices"
 msgstr "接続されたデバイスなし"
 
 #: package/contents/ui/main.qml:62
-#, fuzzy, kde-format
-#| msgctxt "Number of connected devices"
-#| msgid "%1 connected device"
-#| msgid_plural "%1 connected devices"
+#, kde-format
 msgid "%1 connected"
-msgstr "%1個の接続済みデバイス"
+msgstr "%1 接続済み"
 
 #: package/contents/ui/main.qml:69
 #, kde-format
@@ -242,17 +236,15 @@ msgctxt "Number of connected devices"
 msgid "%1 connected device"
 msgid_plural "%1 connected devices"
 msgstr[0] "%1個の接続済みデバイス"
-msgstr[1] "%1 個の接続済みのデバイス"
+msgstr[1] "%1個の接続済みデバイス"
 
 #: package/contents/ui/main.qml:141
-#, fuzzy, kde-format
-#| msgid "Configure &Bluetooth..."
+#, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Bluetooth を設定(&B)..."
 
 #: package/contents/ui/main.qml:143
-#, fuzzy, kde-format
-#| msgid "Add New Device..."
+#, kde-format
 msgid "Add New Device…"
 msgstr "新しいデバイスを追加..."
 
