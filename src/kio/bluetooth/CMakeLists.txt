@@ -13,15 +13,15 @@ add_library(kio_bluetooth MODULE ${kio_bluetooth_SRCS})
 target_link_libraries(kio_bluetooth
     Qt::Core
     Qt::DBus
-    KF5::I18n
-    KF5::KIOCore
-    KF5::CoreAddons
-    KF5::ConfigGui
+    KF6::I18n
+    KF6::KIOCore
+    KF6::CoreAddons
+    KF6::ConfigGui
     Qt::Network
 )
 
 target_include_directories(kio_bluetooth
-    PUBLIC $<TARGET_PROPERTY:KF5::BluezQt,INTERFACE_INCLUDE_DIRECTORIES>
+    PUBLIC $<TARGET_PROPERTY:KF6::BluezQt,INTERFACE_INCLUDE_DIRECTORIES>
 )
 
 ########### install files ###############

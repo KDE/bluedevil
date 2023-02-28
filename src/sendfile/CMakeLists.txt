@@ -31,13 +31,13 @@ add_executable(bluedevil-sendfile ${sendfilehelper_SRCS})
 target_link_libraries(bluedevil-sendfile
     Qt::Widgets
     Qt::DBus
-    KF5::I18n
-    KF5::CoreAddons
-    KF5::DBusAddons
-    KF5::WidgetsAddons
-    KF5::KIOFileWidgets
-    KF5::BluezQt
-    KF5::WindowSystem
+    KF6::I18n
+    KF6::CoreAddons
+    KF6::DBusAddons
+    KF6::WidgetsAddons
+    KF6::KIOFileWidgets
+    KF6::BluezQt
+    KF6::WindowSystem
 )
 
 install(TARGETS bluedevil-sendfile DESTINATION ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})

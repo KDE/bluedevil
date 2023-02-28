@@ -18,10 +18,10 @@ add_library(kio_obexftp MODULE ${kio_obexftp_SRCS})
 target_link_libraries(kio_obexftp
     Qt::Core
     Qt::DBus
-    KF5::I18n
-    KF5::KIOCore
-    KF5::CoreAddons
-    KF5::BluezQt
+    KF6::I18n
+    KF6::KIOCore
+    KF6::CoreAddons
+    KF6::BluezQt
     Qt::Network
 )
 

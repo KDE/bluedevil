@@ -7,9 +7,9 @@ add_library(bluetoothplugin SHARED
 target_link_libraries(bluetoothplugin
     Qt::Core
     Qt::Qml
-    KF5::Notifications
-    KF5::KIOGui
-    KF5::BluezQt)
+    KF6::Notifications
+    KF6::KIOGui
+    KF6::BluezQt)
 
 install(TARGETS bluetoothplugin DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/plasma/private/bluetooth)
 install(FILES qmldir DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/plasma/private/bluetooth)

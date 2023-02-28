@@ -14,12 +14,12 @@ target_link_libraries(kcm_bluetooth
     Qt::Gui
     Qt::Qml
     Qt::DBus
-    KF5::CoreAddons
-    KF5::ConfigGui
-    KF5::QuickAddons
-    KF5::I18n
-    KF5::BluezQt
-    KF5::KIOGui
+    KF6::CoreAddons
+    KF6::ConfigGui
+    KF6::QuickAddons
+    KF6::I18n
+    KF6::BluezQt
+    KF6::KIOGui
 )
 
 kpackage_install_package(package kcm_bluetooth kcms)

@@ -30,13 +30,13 @@ add_executable(bluedevil-wizard ${wizard_SRCS})
 target_link_libraries(bluedevil-wizard
     Qt::Widgets
     Qt::DBus
-    KF5::I18n
-    KF5::CoreAddons
-    KF5::DBusAddons
-    KF5::Notifications
-    KF5::WidgetsAddons
-    KF5::WindowSystem
-    KF5::BluezQt
+    KF6::I18n
+    KF6::CoreAddons
+    KF6::DBusAddons
+    KF6::Notifications
+    KF6::WidgetsAddons
+    KF6::WindowSystem
+    KF6::BluezQt
 )
 
 install(TARGETS bluedevil-wizard ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})

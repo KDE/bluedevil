@@ -5,13 +5,13 @@ set(PROJECT_VERSION "5.27.80")
 set(PROJECT_VERSION_MAJOR 5)
 
 set(QT_MIN_VERSION "5.15.2")
-set(KF5_MIN_VERSION "5.102.0")
+set(KF6_MIN_VERSION "5.102.0")
 set(KDE_COMPILERSETTINGS_LEVEL "5.82")
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
+find_package(ECM ${KF6_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 include(KDEInstallDirs)
 
@@ -21,7 +21,7 @@ find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Qml
     DBus)
 
-find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     CoreAddons
     WidgetsAddons
     DBusAddons
@@ -38,8 +38,8 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
 
 find_package(SharedMimeInfo REQUIRED)
 
-find_package(KF5Kirigami2 ${KF5_MIN_VERSION} CONFIG)
-set_package_properties(KF5Kirigami2 PROPERTIES
+find_package(KF6Kirigami2 ${KF6_MIN_VERSION} CONFIG)
+set_package_properties(KF6Kirigami2 PROPERTIES
     TYPE RUNTIME
 )
 
