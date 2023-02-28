@@ -16,6 +16,7 @@
 #include <QTimer>
 
 #include <KIO/CopyJob>
+#include <KIO/JobTracker>
 #include <KJobTrackerInterface>
 #include <KLocalizedString>
 #include <KNotification>
