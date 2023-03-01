@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-13 00:57+0000\n"
+"POT-Creation-Date: 2023-03-01 23:29+0000\n"
 "PO-Revision-Date: 2022-08-26 23:44+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
@@ -18,157 +18,157 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 21.12.3\n"
 
-#: package/contents/ui/DeviceItem.qml:35
+#: package/contents/ui/DeviceItem.qml:34
 #, kde-format
 msgid "Disconnect"
 msgstr "Diskoneksikan"
 
-#: package/contents/ui/DeviceItem.qml:35
+#: package/contents/ui/DeviceItem.qml:34
 #, kde-format
 msgid "Connect"
 msgstr "Sambung"
 
-#: package/contents/ui/DeviceItem.qml:44
+#: package/contents/ui/DeviceItem.qml:43
 #, kde-format
 msgid "Browse Files"
 msgstr "Telusuri File"
 
-#: package/contents/ui/DeviceItem.qml:55
+#: package/contents/ui/DeviceItem.qml:54
 #, kde-format
 msgid "Send File"
 msgstr "Kirim File"
 
-#: package/contents/ui/DeviceItem.qml:115
+#: package/contents/ui/DeviceItem.qml:114
 #, kde-format
 msgid "Copy"
 msgstr "Salin"
 
-#: package/contents/ui/DeviceItem.qml:211
+#: package/contents/ui/DeviceItem.qml:210
 #, kde-format
 msgid "Yes"
 msgstr "Ya"
 
-#: package/contents/ui/DeviceItem.qml:211
+#: package/contents/ui/DeviceItem.qml:210
 #, kde-format
 msgid "No"
 msgstr "Tidak"
 
-#: package/contents/ui/DeviceItem.qml:217
+#: package/contents/ui/DeviceItem.qml:216
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:225
+#: package/contents/ui/DeviceItem.qml:224
 #, kde-format
 msgid "Remote Name"
 msgstr "Nama Remot"
 
-#: package/contents/ui/DeviceItem.qml:229
+#: package/contents/ui/DeviceItem.qml:228
 #, kde-format
 msgid "Address"
 msgstr "Alamat"
 
-#: package/contents/ui/DeviceItem.qml:232
+#: package/contents/ui/DeviceItem.qml:231
 #, kde-format
 msgid "Paired"
 msgstr "Disandingkan"
 
-#: package/contents/ui/DeviceItem.qml:235
+#: package/contents/ui/DeviceItem.qml:234
 #, kde-format
 msgid "Trusted"
 msgstr "Dipercaya"
 
-#: package/contents/ui/DeviceItem.qml:238
+#: package/contents/ui/DeviceItem.qml:237
 #, kde-format
 msgid "Adapter"
 msgstr "Adaptor"
 
-#: package/contents/ui/DeviceItem.qml:246
+#: package/contents/ui/DeviceItem.qml:245
 #, kde-format
 msgid "Disconnecting"
 msgstr "Mendiskoneksi"
 
-#: package/contents/ui/DeviceItem.qml:246
+#: package/contents/ui/DeviceItem.qml:245
 #, kde-format
 msgid "Connecting"
 msgstr "Mengonek"
 
-#: package/contents/ui/DeviceItem.qml:252
+#: package/contents/ui/DeviceItem.qml:251
 #, kde-format
 msgid "Connected"
 msgstr "Terkoneksi"
 
-#: package/contents/ui/DeviceItem.qml:259
+#: package/contents/ui/DeviceItem.qml:258
 #, kde-format
 msgid "Audio device"
 msgstr "Perangkat audio"
 
-#: package/contents/ui/DeviceItem.qml:266
+#: package/contents/ui/DeviceItem.qml:265
 #, kde-format
 msgid "Input device"
 msgstr "Perangkat input"
 
-#: package/contents/ui/DeviceItem.qml:270
+#: package/contents/ui/DeviceItem.qml:269
 #, kde-format
 msgid "Phone"
 msgstr "Telepon"
 
-#: package/contents/ui/DeviceItem.qml:277
+#: package/contents/ui/DeviceItem.qml:276
 #, kde-format
 msgid "File transfer"
 msgstr "Transfer file"
 
-#: package/contents/ui/DeviceItem.qml:280
+#: package/contents/ui/DeviceItem.qml:279
 #, kde-format
 msgid "Send file"
 msgstr "Kirim file"
 
-#: package/contents/ui/DeviceItem.qml:283
+#: package/contents/ui/DeviceItem.qml:282
 #, kde-format
 msgid "Input"
 msgstr "Input"
 
-#: package/contents/ui/DeviceItem.qml:286
+#: package/contents/ui/DeviceItem.qml:285
 #, kde-format
 msgid "Audio"
 msgstr "Audio"
 
-#: package/contents/ui/DeviceItem.qml:289
+#: package/contents/ui/DeviceItem.qml:288
 #, kde-format
 msgid "Network"
 msgstr "Jaringan"
 
-#: package/contents/ui/DeviceItem.qml:293
+#: package/contents/ui/DeviceItem.qml:292
 #, kde-format
 msgid "Other device"
 msgstr "Perangkat lain"
 
-#: package/contents/ui/DeviceItem.qml:300 package/contents/ui/main.qml:64
+#: package/contents/ui/DeviceItem.qml:299 package/contents/ui/main.qml:64
 #: package/contents/ui/main.qml:74
 #, kde-format
 msgid "%1% Battery"
 msgstr "Baterai %1%"
 
-#: package/contents/ui/DeviceItem.qml:311
+#: package/contents/ui/DeviceItem.qml:310
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "Perangkat tidak terjangkau"
 
-#: package/contents/ui/DeviceItem.qml:313
+#: package/contents/ui/DeviceItem.qml:312
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "Koneksi ke peranti gagal"
 
-#: package/contents/ui/DeviceItem.qml:317
+#: package/contents/ui/DeviceItem.qml:316
 #, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Perangkat belum siap"
 
-#: package/contents/ui/DeviceItem.qml:351
+#: package/contents/ui/DeviceItem.qml:350
 #, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"

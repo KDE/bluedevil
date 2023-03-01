@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-13 00:57+0000\n"
+"POT-Creation-Date: 2023-03-01 23:29+0000\n"
 "PO-Revision-Date: 2022-10-27 03:42+0700\n"
 "Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
 "Language-Team: Interlingue <kde-i18n-doc@kde.org>\n"
@@ -18,157 +18,157 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.12\n"
 
-#: package/contents/ui/DeviceItem.qml:35
+#: package/contents/ui/DeviceItem.qml:34
 #, kde-format
 msgid "Disconnect"
 msgstr "Deconexer"
 
-#: package/contents/ui/DeviceItem.qml:35
+#: package/contents/ui/DeviceItem.qml:34
 #, kde-format
 msgid "Connect"
 msgstr "Connexer"
 
-#: package/contents/ui/DeviceItem.qml:44
+#: package/contents/ui/DeviceItem.qml:43
 #, kde-format
 msgid "Browse Files"
 msgstr "Examinar li files"
 
-#: package/contents/ui/DeviceItem.qml:55
+#: package/contents/ui/DeviceItem.qml:54
 #, kde-format
 msgid "Send File"
 msgstr "Inviar un file"
 
-#: package/contents/ui/DeviceItem.qml:115
+#: package/contents/ui/DeviceItem.qml:114
 #, kde-format
 msgid "Copy"
 msgstr "Copiar"
 
-#: package/contents/ui/DeviceItem.qml:211
+#: package/contents/ui/DeviceItem.qml:210
 #, kde-format
 msgid "Yes"
 msgstr "Yes"
 
-#: package/contents/ui/DeviceItem.qml:211
+#: package/contents/ui/DeviceItem.qml:210
 #, kde-format
 msgid "No"
 msgstr "No"
 
-#: package/contents/ui/DeviceItem.qml:217
+#: package/contents/ui/DeviceItem.qml:216
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:225
+#: package/contents/ui/DeviceItem.qml:224
 #, kde-format
 msgid "Remote Name"
 msgstr "Lontan nómine"
 
-#: package/contents/ui/DeviceItem.qml:229
+#: package/contents/ui/DeviceItem.qml:228
 #, kde-format
 msgid "Address"
 msgstr "Adresse"
 
-#: package/contents/ui/DeviceItem.qml:232
+#: package/contents/ui/DeviceItem.qml:231
 #, kde-format
 msgid "Paired"
 msgstr "Acuplat"
 
-#: package/contents/ui/DeviceItem.qml:235
+#: package/contents/ui/DeviceItem.qml:234
 #, kde-format
 msgid "Trusted"
 msgstr "Fidet"
 
-#: package/contents/ui/DeviceItem.qml:238
+#: package/contents/ui/DeviceItem.qml:237
 #, kde-format
 msgid "Adapter"
 msgstr "Adaptator"
 
-#: package/contents/ui/DeviceItem.qml:246
+#: package/contents/ui/DeviceItem.qml:245
 #, kde-format
 msgid "Disconnecting"
 msgstr "Deconexente"
 
-#: package/contents/ui/DeviceItem.qml:246
+#: package/contents/ui/DeviceItem.qml:245
 #, kde-format
 msgid "Connecting"
 msgstr "Conexente"
 
-#: package/contents/ui/DeviceItem.qml:252
+#: package/contents/ui/DeviceItem.qml:251
 #, kde-format
 msgid "Connected"
 msgstr "Conexet"
 
-#: package/contents/ui/DeviceItem.qml:259
+#: package/contents/ui/DeviceItem.qml:258
 #, kde-format
 msgid "Audio device"
 msgstr "Audioaparate"
 
-#: package/contents/ui/DeviceItem.qml:266
+#: package/contents/ui/DeviceItem.qml:265
 #, kde-format
 msgid "Input device"
 msgstr "Aparate de intrada"
 
-#: package/contents/ui/DeviceItem.qml:270
+#: package/contents/ui/DeviceItem.qml:269
 #, kde-format
 msgid "Phone"
 msgstr "Telefon"
 
-#: package/contents/ui/DeviceItem.qml:277
+#: package/contents/ui/DeviceItem.qml:276
 #, kde-format
 msgid "File transfer"
 msgstr "Transferte de files"
 
-#: package/contents/ui/DeviceItem.qml:280
+#: package/contents/ui/DeviceItem.qml:279
 #, kde-format
 msgid "Send file"
 msgstr "Inviar un file"
 
-#: package/contents/ui/DeviceItem.qml:283
+#: package/contents/ui/DeviceItem.qml:282
 #, kde-format
 msgid "Input"
 msgstr "Intrada"
 
-#: package/contents/ui/DeviceItem.qml:286
+#: package/contents/ui/DeviceItem.qml:285
 #, kde-format
 msgid "Audio"
 msgstr "Audio"
 
-#: package/contents/ui/DeviceItem.qml:289
+#: package/contents/ui/DeviceItem.qml:288
 #, kde-format
 msgid "Network"
 msgstr "Rete"
 
-#: package/contents/ui/DeviceItem.qml:293
+#: package/contents/ui/DeviceItem.qml:292
 #, kde-format
 msgid "Other device"
 msgstr "Altri aparate"
 
-#: package/contents/ui/DeviceItem.qml:300 package/contents/ui/main.qml:64
+#: package/contents/ui/DeviceItem.qml:299 package/contents/ui/main.qml:64
 #: package/contents/ui/main.qml:74
 #, kde-format
 msgid "%1% Battery"
 msgstr "Batterie: %1%"
 
-#: package/contents/ui/DeviceItem.qml:311
+#: package/contents/ui/DeviceItem.qml:310
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "Li aparate es ínatingibil"
 
-#: package/contents/ui/DeviceItem.qml:313
+#: package/contents/ui/DeviceItem.qml:312
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "Conexion al aparate ne successat"
 
-#: package/contents/ui/DeviceItem.qml:317
+#: package/contents/ui/DeviceItem.qml:316
 #, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Li aparate ne es pret"
 
-#: package/contents/ui/DeviceItem.qml:351
+#: package/contents/ui/DeviceItem.qml:350
 #, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-13 00:57+0000\n"
+"POT-Creation-Date: 2023-03-01 23:29+0000\n"
 "PO-Revision-Date: 2022-12-28 09:02+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -19,157 +19,157 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Lokalize 22.12.0\n"
 
-#: package/contents/ui/DeviceItem.qml:35
+#: package/contents/ui/DeviceItem.qml:34
 #, kde-format
 msgid "Disconnect"
 msgstr "斷線"
 
-#: package/contents/ui/DeviceItem.qml:35
+#: package/contents/ui/DeviceItem.qml:34
 #, kde-format
 msgid "Connect"
 msgstr "連線"
 
-#: package/contents/ui/DeviceItem.qml:44
+#: package/contents/ui/DeviceItem.qml:43
 #, kde-format
 msgid "Browse Files"
 msgstr "瀏覽檔案"
 
-#: package/contents/ui/DeviceItem.qml:55
+#: package/contents/ui/DeviceItem.qml:54
 #, kde-format
 msgid "Send File"
 msgstr "傳送檔案"
 
-#: package/contents/ui/DeviceItem.qml:115
+#: package/contents/ui/DeviceItem.qml:114
 #, kde-format
 msgid "Copy"
 msgstr "複製"
 
-#: package/contents/ui/DeviceItem.qml:211
+#: package/contents/ui/DeviceItem.qml:210
 #, kde-format
 msgid "Yes"
 msgstr "是"
 
-#: package/contents/ui/DeviceItem.qml:211
+#: package/contents/ui/DeviceItem.qml:210
 #, kde-format
 msgid "No"
 msgstr "否"
 
-#: package/contents/ui/DeviceItem.qml:217
+#: package/contents/ui/DeviceItem.qml:216
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: package/contents/ui/DeviceItem.qml:225
+#: package/contents/ui/DeviceItem.qml:224
 #, kde-format
 msgid "Remote Name"
 msgstr "遠端名稱"
 
-#: package/contents/ui/DeviceItem.qml:229
+#: package/contents/ui/DeviceItem.qml:228
 #, kde-format
 msgid "Address"
 msgstr "位址"
 
-#: package/contents/ui/DeviceItem.qml:232
+#: package/contents/ui/DeviceItem.qml:231
 #, kde-format
 msgid "Paired"
 msgstr "已配對"
 
-#: package/contents/ui/DeviceItem.qml:235
+#: package/contents/ui/DeviceItem.qml:234
 #, kde-format
 msgid "Trusted"
 msgstr "受信任的"
 
-#: package/contents/ui/DeviceItem.qml:238
+#: package/contents/ui/DeviceItem.qml:237
 #, kde-format
 msgid "Adapter"
 msgstr "轉接器"
 
-#: package/contents/ui/DeviceItem.qml:246
+#: package/contents/ui/DeviceItem.qml:245
 #, kde-format
 msgid "Disconnecting"
 msgstr "斷線中"
 
-#: package/contents/ui/DeviceItem.qml:246
+#: package/contents/ui/DeviceItem.qml:245
 #, kde-format
 msgid "Connecting"
 msgstr "連線中"
 
-#: package/contents/ui/DeviceItem.qml:252
+#: package/contents/ui/DeviceItem.qml:251
 #, kde-format
 msgid "Connected"
 msgstr "已連線"
 
-#: package/contents/ui/DeviceItem.qml:259
+#: package/contents/ui/DeviceItem.qml:258
 #, kde-format
 msgid "Audio device"
 msgstr "音效裝置"
 
-#: package/contents/ui/DeviceItem.qml:266
+#: package/contents/ui/DeviceItem.qml:265
 #, kde-format
 msgid "Input device"
 msgstr "輸入裝置"
 
-#: package/contents/ui/DeviceItem.qml:270
+#: package/contents/ui/DeviceItem.qml:269
 #, kde-format
 msgid "Phone"
 msgstr "手機"
 
-#: package/contents/ui/DeviceItem.qml:277
+#: package/contents/ui/DeviceItem.qml:276
 #, kde-format
 msgid "File transfer"
 msgstr "檔案傳輸"
 
-#: package/contents/ui/DeviceItem.qml:280
+#: package/contents/ui/DeviceItem.qml:279
 #, kde-format
 msgid "Send file"
 msgstr "傳送檔案"
 
-#: package/contents/ui/DeviceItem.qml:283
+#: package/contents/ui/DeviceItem.qml:282
 #, kde-format
 msgid "Input"
 msgstr "輸入"
 
-#: package/contents/ui/DeviceItem.qml:286
+#: package/contents/ui/DeviceItem.qml:285
 #, kde-format
 msgid "Audio"
 msgstr "音效"
 
-#: package/contents/ui/DeviceItem.qml:289
+#: package/contents/ui/DeviceItem.qml:288
 #, kde-format
 msgid "Network"
 msgstr "網路"
 
-#: package/contents/ui/DeviceItem.qml:293
+#: package/contents/ui/DeviceItem.qml:292
 #, kde-format
 msgid "Other device"
 msgstr "其他裝置"
 
-#: package/contents/ui/DeviceItem.qml:300 package/contents/ui/main.qml:64
+#: package/contents/ui/DeviceItem.qml:299 package/contents/ui/main.qml:64
 #: package/contents/ui/main.qml:74
 #, kde-format
 msgid "%1% Battery"
 msgstr "電量 %1%"
 
-#: package/contents/ui/DeviceItem.qml:311
+#: package/contents/ui/DeviceItem.qml:310
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "連不到此裝置"
 
-#: package/contents/ui/DeviceItem.qml:313
+#: package/contents/ui/DeviceItem.qml:312
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "連線到裝置失敗"
 
-#: package/contents/ui/DeviceItem.qml:317
+#: package/contents/ui/DeviceItem.qml:316
 #, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "裝置未就緒"
 
-#: package/contents/ui/DeviceItem.qml:351
+#: package/contents/ui/DeviceItem.qml:350
 #, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"

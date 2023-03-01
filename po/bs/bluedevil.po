@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-22 00:48+0000\n"
+"POT-Creation-Date: 2023-03-01 23:29+0000\n"
 "PO-Revision-Date: 2014-11-11 13:36+0000\n"
 "Last-Translator: Naida Čongo <ncongo1@etf.unsa.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -176,7 +176,7 @@ msgstr "PIN:"
 msgid "1234"
 msgstr "1234"
 
-#: kded/receivefilejob.cpp:132
+#: kded/receivefilejob.cpp:133
 #, kde-format
 msgctxt ""
 "Show a notification asking to authorize or deny an incoming file transfer to "
@@ -184,7 +184,7 @@ msgctxt ""
 msgid "%1 is sending you the file %2"
 msgstr "%1 Vam šalje datoteku %2"
 
-#: kded/receivefilejob.cpp:137
+#: kded/receivefilejob.cpp:138
 #, kde-format
 msgctxt ""
 "Button to accept the incoming file transfer and download it in the default "
@@ -192,38 +192,38 @@ msgctxt ""
 msgid "Accept"
 msgstr "Prihvati"
 
-#: kded/receivefilejob.cpp:138
+#: kded/receivefilejob.cpp:139
 #, kde-format
 msgctxt "Deny the incoming file transfer"
 msgid "Cancel"
 msgstr "Otkaži"
 
-#: kded/receivefilejob.cpp:164
+#: kded/receivefilejob.cpp:165
 #, fuzzy, kde-format
 #| msgid "<b>Receiving</b>"
 msgctxt "@title job"
 msgid "Receiving file"
 msgstr "<b>Prijem</b>"
 
-#: kded/receivefilejob.cpp:165 sendfile/sendfilesjob.cpp:84
+#: kded/receivefilejob.cpp:166 sendfile/sendfilesjob.cpp:84
 #, kde-format
 msgctxt "File transfer origin"
 msgid "From"
 msgstr "Od"
 
-#: kded/receivefilejob.cpp:166 sendfile/sendfilesjob.cpp:85
+#: kded/receivefilejob.cpp:167 sendfile/sendfilesjob.cpp:85
 #, kde-format
 msgctxt "File transfer destination"
 msgid "To"
 msgstr "Za"
 
-#: kded/receivefilejob.cpp:191
+#: kded/receivefilejob.cpp:192
 #, fuzzy, kde-format
 #| msgid "Save files in:"
 msgid "Saving file failed"
 msgstr "Snimi datoteke u:"
 
-#: kded/receivefilejob.cpp:222 kio/obexftp/transferfilejob.cpp:50
+#: kded/receivefilejob.cpp:223 kio/obexftp/transferfilejob.cpp:50
 #: sendfile/sendfilesjob.cpp:155
 #, fuzzy, kde-format
 #| msgid "Bluetooth Transfer"

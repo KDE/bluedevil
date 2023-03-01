@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-22 00:48+0000\n"
+"POT-Creation-Date: 2023-03-01 23:29+0000\n"
 "PO-Revision-Date: 2022-08-26 23:44+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
@@ -150,7 +150,7 @@ msgstr "PIN:"
 msgid "1234"
 msgstr "1234"
 
-#: kded/receivefilejob.cpp:132
+#: kded/receivefilejob.cpp:133
 #, kde-format
 msgctxt ""
 "Show a notification asking to authorize or deny an incoming file transfer to "
@@ -158,7 +158,7 @@ msgctxt ""
 msgid "%1 is sending you the file %2"
 msgstr "%1 telah mengirimi Anda file %2"
 
-#: kded/receivefilejob.cpp:137
+#: kded/receivefilejob.cpp:138
 #, kde-format
 msgctxt ""
 "Button to accept the incoming file transfer and download it in the default "
@@ -166,36 +166,36 @@ msgctxt ""
 msgid "Accept"
 msgstr "Terima"
 
-#: kded/receivefilejob.cpp:138
+#: kded/receivefilejob.cpp:139
 #, kde-format
 msgctxt "Deny the incoming file transfer"
 msgid "Cancel"
 msgstr "Batal"
 
-#: kded/receivefilejob.cpp:164
+#: kded/receivefilejob.cpp:165
 #, kde-format
 msgctxt "@title job"
 msgid "Receiving file"
 msgstr "Menerima file"
 
-#: kded/receivefilejob.cpp:165 sendfile/sendfilesjob.cpp:84
+#: kded/receivefilejob.cpp:166 sendfile/sendfilesjob.cpp:84
 #, kde-format
 msgctxt "File transfer origin"
 msgid "From"
 msgstr "Dari"
 
-#: kded/receivefilejob.cpp:166 sendfile/sendfilesjob.cpp:85
+#: kded/receivefilejob.cpp:167 sendfile/sendfilesjob.cpp:85
 #, kde-format
 msgctxt "File transfer destination"
 msgid "To"
 msgstr "Ke"
 
-#: kded/receivefilejob.cpp:191
+#: kded/receivefilejob.cpp:192
 #, kde-format
 msgid "Saving file failed"
 msgstr "Penyimpanan file gagal"
 
-#: kded/receivefilejob.cpp:222 kio/obexftp/transferfilejob.cpp:50
+#: kded/receivefilejob.cpp:223 kio/obexftp/transferfilejob.cpp:50
 #: sendfile/sendfilesjob.cpp:155
 #, kde-format
 msgid "Bluetooth transfer failed"
