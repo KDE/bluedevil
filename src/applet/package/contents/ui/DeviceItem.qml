@@ -10,7 +10,6 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
 
-import org.kde.plasma.components 2.0 as PlasmaComponents // for ContextMenu/MenuItem
 import org.kde.plasma.components 3.0 as PlasmaComponents3
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.extras 2.0 as PlasmaExtras
@@ -101,7 +100,7 @@ PlasmaExtras.ExpandableListItem {
                 id: clipboard
             }
 
-            PlasmaComponents.ContextMenu {
+            PlasmaExtras.Menu {
                 id: contextMenu
                 property string text
 
@@ -111,7 +110,7 @@ PlasmaExtras.ExpandableListItem {
                     open(x, y)
                 }
 
-                PlasmaComponents.MenuItem {
+                PlasmaExtras.MenuItem {
                     text: i18n("Copy")
                     icon: "edit-copy"
                     enabled: contextMenu.text !== ""
