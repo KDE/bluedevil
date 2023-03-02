@@ -192,7 +192,7 @@ ScrollViewKCM {
                 separatorVisible: false
 
                 text: model.Name
-                icon: model.Icon
+                icon.name: model.Icon
                 iconSize: Kirigami.Units.iconSizes.medium
                 onClicked: kcm.push("Device.qml", {device: model.Device})
             }
