@@ -7,7 +7,7 @@
 import QtQuick 2.2
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.10 as QQC2
-import QtQuick.Dialogs 1.3
+import QtQuick.Dialogs
 
 import org.kde.kirigami 2.10 as Kirigami
 import org.kde.kcm 1.2
@@ -167,15 +167,14 @@ SimpleKCM {
 
                 active: false
 
-                sourceComponent: FileDialog {
+                sourceComponent: FolderDialog {
                     id: startupFileDialog
                     title: i18n("Select folder")
-                    selectFolder: true
 
-                    folder: FileReceiverSettings.saveUrl
+                    currentFolder: FileReceiverSettings.saveUrl
 
                     onAccepted: {
-                        FileReceiverSettings.saveUrl = folder
+                        FileReceiverSettings.saveUrl = selectedFolder
                         folderDialogLoader.active = false
                         FileReceiverSettings.save()
                     }
