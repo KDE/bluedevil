@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# Shinjo Park <kde@peremen.name>, 2015, 2018, 2020, 2021, 2022.
+# Shinjo Park <kde@peremen.name>, 2015, 2018, 2020, 2021, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-13 00:57+0000\n"
-"PO-Revision-Date: 2022-05-06 00:29+0200\n"
+"PO-Revision-Date: 2023-03-01 00:45+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -56,7 +56,7 @@ msgstr "아니요"
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1(%2)"
 
 #: package/contents/ui/DeviceItem.qml:225
 #, kde-format
@@ -172,7 +172,7 @@ msgstr "장치가 준비되지 않았음"
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1(%2)"
 
 #: package/contents/ui/FullRepresentation.qml:58
 #, kde-format
@@ -187,7 +187,7 @@ msgstr "사용 가능한 블루투스 어댑터 없음"
 #: package/contents/ui/FullRepresentation.qml:146
 #, kde-format
 msgid "Bluetooth is disabled"
-msgstr "블루투스가 비활성화 되어 있음"
+msgstr "블루투스가 비활성화되어 있음"
 
 #: package/contents/ui/FullRepresentation.qml:148
 #, kde-format
@@ -200,10 +200,9 @@ msgid "Bluetooth"
 msgstr "블루투스"
 
 #: package/contents/ui/main.qml:45
-#, fuzzy, kde-format
-#| msgid "Bluetooth is disabled"
+#, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
-msgstr "블루투스가 비활성화 되어 있음"
+msgstr "블루투스가 비활성화되어 있음, 활성화하려면 가운데 단추로 클릭"
 
 #: package/contents/ui/main.qml:49
 #, kde-format
@@ -218,7 +217,7 @@ msgstr "블루투스가 오프라인임"
 #: package/contents/ui/main.qml:54
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
-msgstr ""
+msgstr "가운데 단추로 클릭하여 블루투스 비활성화"
 
 #: package/contents/ui/main.qml:57
 #, kde-format
