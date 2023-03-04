@@ -4,11 +4,19 @@
         "Authors": [
             {
                 "Email": "nowrep@gmail.com",
-                "Name": "David Rosca"
+                "Name": "David Rosca",
+                "Name[es]": "David Rosca",
+                "Name[it]": "David Rosca",
+                "Name[uk]": "David Rosca",
+                "Name[x-test]": "xxDavid Roscaxx"
             }
         ],
         "Category": "System Information",
         "Description": "Bluetooth status and control",
+        "Description[es]": "Estado y control de Bluetooth",
+        "Description[it]": "Stato e controllo del Bluetooth",
+        "Description[uk]": "Стан Bluetooth і керування ним",
+        "Description[x-test]": "xxBluetooth status and controlxx",
         "EnabledByDefault": true,
         "Icon": "preferences-system-bluetooth",
         "Id": "org.kde.plasma.bluetooth",
