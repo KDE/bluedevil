@@ -6,7 +6,11 @@
                 "Email": "nowrep@gmail.com",
                 "Name": "David Rosca",
                 "Name[es]": "David Rosca",
+                "Name[fr]": "David Rosca",
                 "Name[it]": "David Rosca",
+                "Name[ka]": "David Rosca",
+                "Name[nn]": "David Rosca",
+                "Name[tr]": "David Rosca",
                 "Name[uk]": "David Rosca",
                 "Name[x-test]": "xxDavid Roscaxx"
             }
@@ -14,7 +18,11 @@
         "Category": "System Information",
         "Description": "Bluetooth status and control",
         "Description[es]": "Estado y control de Bluetooth",
+        "Description[fr]": "État et contrôle du Bluetooth",
         "Description[it]": "Stato e controllo del Bluetooth",
+        "Description[ka]": "ბლუთუზის სტატუსი და კონტროლი",
+        "Description[nn]": "Status og styring for Bluetooth",
+        "Description[tr]": "Bluetooth durumu ve denetimi",
         "Description[uk]": "Стан Bluetooth і керування ним",
         "Description[x-test]": "xxBluetooth status and controlxx",
         "EnabledByDefault": true,
