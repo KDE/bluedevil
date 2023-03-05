@@ -799,7 +799,7 @@ msgstr "الجهاز '%1' أُعد ويمكن استخدامه الآن."
 #~ msgstr "فعّل استقبال الملفّات أو عطّله"
 
 #~ msgid "Enable or disable the global KDE Bluetooth integration"
-#~ msgstr "فعّل تكامل كدي العموميّ مع بلوتوث أو عطّله"
+#~ msgstr "فعّل تكامل كِيدِي العموميّ مع بلوتوث أو عطّله"
 
 #~ msgid "Enable Bluetooth integration"
 #~ msgstr "فعّل تكامل بلوتوث"
@@ -867,7 +867,7 @@ msgstr "الجهاز '%1' أُعد ويمكن استخدامه الآن."
 #~ msgstr "مُرشد بلوتوث"
 
 #~ msgid "KDE Bluetooth System"
-#~ msgstr "نظام كدي لبلوتوث"
+#~ msgstr "نظام كِيدِي لبلوتوث"
 
 #~ msgctxt ""
 #~ "Showed in a notification when the Bluetooth mode is going to be changed "
