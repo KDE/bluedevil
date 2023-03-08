@@ -2,21 +2,22 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Wantoyo <wantoyek@gmail.com>, 2017, 2018, 2019, 2020, 2022.
 # Aziz Adam Adrian <4.adam.adrian@gmail.com>, 2022.
+# Linerly <linerly@protonmail.com>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-13 00:57+0000\n"
-"PO-Revision-Date: 2022-08-26 23:44+0700\n"
-"Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
-"Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
+"PO-Revision-Date: 2023-03-03 09:57+0700\n"
+"Last-Translator: Linerly <linerly@protonmail.com>\n"
+"Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: package/contents/ui/DeviceItem.qml:35
 #, kde-format
@@ -57,7 +58,7 @@ msgstr "Tidak"
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: package/contents/ui/DeviceItem.qml:225
 #, kde-format
@@ -87,17 +88,17 @@ msgstr "Adaptor"
 #: package/contents/ui/DeviceItem.qml:246
 #, kde-format
 msgid "Disconnecting"
-msgstr "Mendiskoneksi"
+msgstr "Memutuskan"
 
 #: package/contents/ui/DeviceItem.qml:246
 #, kde-format
 msgid "Connecting"
-msgstr "Mengonek"
+msgstr "Menghubungkan"
 
 #: package/contents/ui/DeviceItem.qml:252
 #, kde-format
 msgid "Connected"
-msgstr "Terkoneksi"
+msgstr "Terhubung"
 
 #: package/contents/ui/DeviceItem.qml:259
 #, kde-format
@@ -107,7 +108,7 @@ msgstr "Perangkat audio"
 #: package/contents/ui/DeviceItem.qml:266
 #, kde-format
 msgid "Input device"
-msgstr "Perangkat input"
+msgstr "Perangkat masukan"
 
 #: package/contents/ui/DeviceItem.qml:270
 #, kde-format
@@ -117,17 +118,17 @@ msgstr "Telepon"
 #: package/contents/ui/DeviceItem.qml:277
 #, kde-format
 msgid "File transfer"
-msgstr "Transfer file"
+msgstr "Transfer berkas"
 
 #: package/contents/ui/DeviceItem.qml:280
 #, kde-format
 msgid "Send file"
-msgstr "Kirim file"
+msgstr "Kirim berkas"
 
 #: package/contents/ui/DeviceItem.qml:283
 #, kde-format
 msgid "Input"
-msgstr "Input"
+msgstr "Masukan"
 
 #: package/contents/ui/DeviceItem.qml:286
 #, kde-format
@@ -173,7 +174,7 @@ msgstr "Perangkat belum siap"
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: package/contents/ui/FullRepresentation.qml:58
 #, kde-format
@@ -201,10 +202,9 @@ msgid "Bluetooth"
 msgstr "Bluetooth"
 
 #: package/contents/ui/main.qml:45
-#, fuzzy, kde-format
-#| msgid "Bluetooth is disabled"
+#, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
-msgstr "Bluetooth telah dinonfungsikan"
+msgstr "Bluetooth telah dinonaktifkan; klik tengah untuk mengaktifkan"
 
 #: package/contents/ui/main.qml:49
 #, kde-format
@@ -214,30 +214,30 @@ msgstr "Tidak ada adaptor yang tersedia"
 #: package/contents/ui/main.qml:51
 #, kde-format
 msgid "Bluetooth is offline"
-msgstr "Bluetooth telah offline"
+msgstr "Bluetooth sedang luring"
 
 #: package/contents/ui/main.qml:54
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
-msgstr ""
+msgstr "Klik tengah untuk menonaktifkan Bluetooth"
 
 #: package/contents/ui/main.qml:57
 #, kde-format
 msgid "No connected devices"
-msgstr "Tidak ada peranti terkoneksi"
+msgstr "Tidak ada peranti terhubung"
 
 #: package/contents/ui/main.qml:62
 #, kde-format
 msgid "%1 connected"
-msgstr "%1 terkoneksi"
+msgstr "%1 terhubung"
 
 #: package/contents/ui/main.qml:69
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
 msgid_plural "%1 connected devices"
-msgstr[0] "%1 peranti terkoneksikan"
-msgstr[1] "%1 peranti terkoneksikan"
+msgstr[0] "%1 peranti terhubung"
+msgstr[1] "%1 peranti terhubung"
 
 #: package/contents/ui/main.qml:141
 #, kde-format
