@@ -5,6 +5,7 @@
             {
                 "Email": "nowrep@gmail.com",
                 "Name": "David Rosca",
+                "Name[bg]": "David Rosca",
                 "Name[ca@valencia]": "David Rosca",
                 "Name[ca]": "David Rosca",
                 "Name[es]": "David Rosca",
@@ -23,6 +24,7 @@
         ],
         "Category": "System Information",
         "Description": "Bluetooth status and control",
+        "Description[bg]": "Състояние и контрол на Bluetooth",
         "Description[ca@valencia]": "Estat i control de Bluetooth",
         "Description[ca]": "Estat i control del Bluetooth",
         "Description[es]": "Estado y control de Bluetooth",
