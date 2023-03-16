@@ -7,10 +7,10 @@
 #ifndef BLUETOOTH_H
 #define BLUETOOTH_H
 
-#include <KQuickAddons/ConfigModule>
+#include <KQuickConfigModule>
 #include <QObject>
 
-class Bluetooth : public KQuickAddons::ConfigModule
+class Bluetooth : public KQuickConfigModule
 {
     Q_OBJECT
 
