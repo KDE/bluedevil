@@ -1,14 +1,14 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2015, 2016, 2017.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-01 23:29+0000\n"
-"PO-Revision-Date: 2019-09-28 23:50+0200\n"
+"PO-Revision-Date: 2023-03-25 15:28+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 19.11.70\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -64,10 +64,7 @@ msgid "%1 is requesting access to this computer"
 msgstr "%1 solicita acceso a este computador"
 
 #: kded/helpers/requestauthorization.cpp:33
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "Button to trust a bluetooth remote device and authorize it to connect"
-#| msgid "Trust && Authorize"
+#, kde-format
 msgctxt "Button to trust a bluetooth remote device and authorize it to connect"
 msgid "Trust and Authorize"
 msgstr "Validar e autorizar"
@@ -173,11 +170,10 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #: kded/receivefilejob.cpp:165
-#, fuzzy, kde-format
-#| msgid "<b>Receiving files</b>"
+#, kde-format
 msgctxt "@title job"
 msgid "Receiving file"
-msgstr "<b>Recibindo ficheiros</b>"
+msgstr "Recibindo o ficheiro"
 
 #: kded/receivefilejob.cpp:166 sendfile/sendfilesjob.cpp:84
 #, kde-format
@@ -218,8 +214,7 @@ msgid "No Bluetooth adapters have been found."
 msgstr "Non se atopou ningún adaptador de Bluetooth."
 
 #: kio/bluetooth/kiobluetooth.cpp:92
-#, fuzzy, kde-format
-#| msgid "Retrieving services..."
+#, kde-format
 msgid "Retrieving services…"
 msgstr "Obtendo os servizos…"
 
@@ -234,8 +229,7 @@ msgid "Received Files"
 msgstr "Ficheiros recibidos"
 
 #: kio/bluetooth/kiobluetooth.cpp:168
-#, fuzzy, kde-format
-#| msgid "Scanning for new devices..."
+#, kde-format
 msgid "Scanning for new devices…"
 msgstr "Buscando novos dispositivos…"
 
@@ -245,8 +239,7 @@ msgid "Obexd service is not running."
 msgstr "O servizo Obexd non se está a executar."
 
 #: kio/obexftp/kioobexftp.cpp:146
-#, fuzzy, kde-format
-#| msgid "Retrieving information from remote device..."
+#, kde-format
 msgid "Retrieving information from remote device…"
 msgstr "Obtendo información do dispositivo remoto…"
 
@@ -288,10 +281,9 @@ msgid "Turn On"
 msgstr "Acender"
 
 #: sendfile/main.cpp:25 sendfile/main.cpp:27
-#, fuzzy, kde-format
-#| msgid "Bluetooth Transfer"
+#, kde-format
 msgid "Bluetooth File Transfer"
-msgstr "Transferencia por Bluetooth"
+msgstr "Transferencia de ficheiros por Bluetooth"
 
 #: sendfile/main.cpp:50
 #, kde-format
@@ -309,29 +301,24 @@ msgid "Files to be sent."
 msgstr "Ficheiros para enviar."
 
 #: sendfile/pages/connectingpage.cpp:32 wizard/pages/connect.cpp:39
-#, fuzzy, kde-format
-#| msgid "Connecting to: %1"
+#, kde-format
 msgctxt "Connecting to a Bluetooth device"
 msgid "Connecting to %1…"
-msgstr "Conectando con: %1"
+msgstr "Conectando con %1…"
 
 #: sendfile/pages/failpage.cpp:43
-#, fuzzy, kde-format
-#| msgctxt "This string is shown when the wizard fail"
-#| msgid "The connection to the device has failed"
+#, kde-format
 msgctxt "This string is shown when the wizard fail"
 msgid "The connection to the device has failed: %1"
-msgstr "A conexión co dispositivo fallou."
+msgstr "A conexión co dispositivo fallou: %1"
 
 #: sendfile/pages/failpage.cpp:45
-#, fuzzy, kde-format
-#| msgid "The connection to %1 has failed"
+#, kde-format
 msgid "The connection to %1 has failed: %2"
-msgstr "A conexión con %1 fallou."
+msgstr "A conexión con %1 fallou: %2"
 
 #: sendfile/pages/selectdeviceandfilespage.cpp:53
-#, fuzzy, kde-format
-#| msgid "Open file..."
+#, kde-format
 msgid "Open file…"
 msgstr "Abrir un ficheiro…"
 
@@ -378,7 +365,7 @@ msgstr "Cancelar"
 #, kde-format
 msgctxt "@info:status %1 error message"
 msgid "Failed to start org.bluez.obex service: %1"
-msgstr ""
+msgstr "Non se puido iniciar o servizo org.bluez.obex: %1"
 
 #. i18n: ectx: label, entry (saveUrl), group (General)
 #: settings/filereceiver.kcfg:11
@@ -405,10 +392,9 @@ msgid "Finish"
 msgstr "Rematar"
 
 #: wizard/main.cpp:26 wizard/main.cpp:28
-#, fuzzy, kde-format
-#| msgid "Bluetooth Devices"
+#, kde-format
 msgid "Add Bluetooth Device"
-msgstr "Dispositivos de Bluetooth"
+msgstr "Engadir un dispositivo de Bluetooth"
 
 #: wizard/pages/discover.cpp:131
 #, kde-format
@@ -427,25 +413,22 @@ msgid "Your Bluetooth adapter is not pairable."
 msgstr "O adaptador de Bluetooth non permite emparellalo."
 
 #: wizard/pages/discover.cpp:310
-#, fuzzy, kde-format
-#| msgctxt "This device is a Wearable"
-#| msgid "Wearable"
+#, kde-format
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
-msgstr "Vestíbel"
+msgstr "Permitir emparellar"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, searchField)
 #: wizard/pages/discover.ui:19
 #, kde-format
 msgid "Search…"
-msgstr ""
+msgstr "Buscar…"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: wizard/pages/discover.ui:64
-#, fuzzy, kde-format
-#| msgid "Scanning"
+#, kde-format
 msgid "Scanning…"
-msgstr "Explorando"
+msgstr "Examinando…"
 
 #. i18n: ectx: property (text), widget (QCheckBox, manualPin)
 #: wizard/pages/discover.ui:84
@@ -484,10 +467,9 @@ msgid "The setup of %1 has failed"
 msgstr "A configuración de %1 fallou."
 
 #: wizard/pages/pairing.cpp:60
-#, fuzzy, kde-format
-#| msgid "Connecting to: %1"
+#, kde-format
 msgid "Connecting to %1…"
-msgstr "Conectando con: %1"
+msgstr "Conectando con %1…"
 
 #: wizard/pages/pairing.cpp:91
 #, kde-format
@@ -518,18 +500,18 @@ msgstr "Confirme que o PIN mostrado en %1 coincide co do asistente."
 #: wizard/pages/success.cpp:40
 #, kde-format
 msgid "Setup Finished"
-msgstr ""
+msgstr "Rematou a preparación"
 
 #: wizard/pages/success.cpp:42
 #, kde-format
 msgid "The device has been set up and can now be used."
-msgstr ""
+msgstr "Este dispositivo está preparado para usarse."
 
 #: wizard/pages/success.cpp:44
 #, kde-format
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
-msgstr ""
+msgstr "O dispositivo «%1» está preparado para usarse."
 
 #~ msgid "Bluetooth"
 #~ msgstr "Bluetooth"
