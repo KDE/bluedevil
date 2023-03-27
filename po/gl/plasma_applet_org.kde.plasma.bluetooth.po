@@ -1,21 +1,22 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-#
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2015.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2023.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-01 23:29+0000\n"
-"PO-Revision-Date: 2018-01-18 22:04+0100\n"
+"PO-Revision-Date: 2023-03-26 10:22+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
-"Language-Team: Galician <kde-i18n-doc@kde.org>\n"
+"Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: package/contents/ui/DeviceItem.qml:34
 #, kde-format
@@ -56,7 +57,7 @@ msgstr "Non"
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: package/contents/ui/DeviceItem.qml:224
 #, kde-format
@@ -94,10 +95,9 @@ msgid "Connecting"
 msgstr "Conectando"
 
 #: package/contents/ui/DeviceItem.qml:251
-#, fuzzy, kde-format
-#| msgid "Connect"
+#, kde-format
 msgid "Connected"
-msgstr "Conectar"
+msgstr "Conectado"
 
 #: package/contents/ui/DeviceItem.qml:258
 #, kde-format
@@ -112,7 +112,7 @@ msgstr "Dispositivo de entrada"
 #: package/contents/ui/DeviceItem.qml:269
 #, kde-format
 msgid "Phone"
-msgstr ""
+msgstr "Teléfono"
 
 #: package/contents/ui/DeviceItem.qml:276
 #, kde-format
@@ -148,7 +148,7 @@ msgstr "Outro dispositivo"
 #: package/contents/ui/main.qml:74
 #, kde-format
 msgid "%1% Battery"
-msgstr ""
+msgstr "Batería: %1%"
 
 #: package/contents/ui/DeviceItem.qml:310
 #, kde-format
@@ -173,18 +173,17 @@ msgstr "O dispositivo non está listo."
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: package/contents/ui/FullRepresentation.qml:58
 #, kde-format
 msgid "Enable"
-msgstr ""
+msgstr "Activar"
 
 #: package/contents/ui/FullRepresentation.qml:144
-#, fuzzy, kde-format
-#| msgid "No Adapters Available"
+#, kde-format
 msgid "No Bluetooth adapters available"
-msgstr "Non hai adaptadores dispoñíbeis"
+msgstr "Non hai adaptadores de Bluetooth dispoñíbeis."
 
 #: package/contents/ui/FullRepresentation.qml:146
 #, kde-format
@@ -192,10 +191,9 @@ msgid "Bluetooth is disabled"
 msgstr "O sistema Bluetooth está desactivado."
 
 #: package/contents/ui/FullRepresentation.qml:148
-#, fuzzy, kde-format
-#| msgid "No Devices Found"
+#, kde-format
 msgid "No devices found"
-msgstr "Non se atopou ningún dispositivo"
+msgstr "Non se atopou ningún dispositivo."
 
 #: package/contents/ui/main.qml:42
 #, kde-format
@@ -203,10 +201,9 @@ msgid "Bluetooth"
 msgstr "Bluetooth"
 
 #: package/contents/ui/main.qml:45
-#, fuzzy, kde-format
-#| msgid "Bluetooth is disabled"
+#, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
-msgstr "O sistema Bluetooth está desactivado."
+msgstr "O Bluetooth está desactivado; clic central para activalo"
 
 #: package/contents/ui/main.qml:49
 #, kde-format
@@ -221,7 +218,7 @@ msgstr "O sistema Bluetooth está desconectado."
 #: package/contents/ui/main.qml:54
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
-msgstr ""
+msgstr "Clic central para desactivar o Bluetooth"
 
 #: package/contents/ui/main.qml:57
 #, kde-format
@@ -229,32 +226,27 @@ msgid "No connected devices"
 msgstr "Non hai dispositivos conectados."
 
 #: package/contents/ui/main.qml:62
-#, fuzzy, kde-format
-#| msgctxt "Number of connected devices"
-#| msgid "%1 connected device"
-#| msgid_plural "%1 connected devices"
+#, kde-format
 msgid "%1 connected"
-msgstr "Un dispositivo conectado."
+msgstr "%1 conectado"
 
 #: package/contents/ui/main.qml:69
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
 msgid_plural "%1 connected devices"
-msgstr[0] "Un dispositivo conectado."
-msgstr[1] "%1 dispositivos conectados."
+msgstr[0] "%1 dispositivo conectado"
+msgstr[1] "%1 dispositivos conectados"
 
 #: package/contents/ui/main.qml:141
-#, fuzzy, kde-format
-#| msgid "Configure &Bluetooth..."
+#, kde-format
 msgid "Configure &Bluetooth…"
-msgstr "Configurar o sistema &Bluetooth…"
+msgstr "Configurar o &Bluetooth…"
 
 #: package/contents/ui/main.qml:143
-#, fuzzy, kde-format
-#| msgid "Add New Device"
+#, kde-format
 msgid "Add New Device…"
-msgstr "Engadir un dispositivo"
+msgstr "Engadir un dispositivo…"
 
 #: package/contents/ui/main.qml:146 package/contents/ui/Toolbar.qml:30
 #, kde-format

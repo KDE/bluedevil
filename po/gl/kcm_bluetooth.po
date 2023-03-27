@@ -1,14 +1,14 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2015, 2016, 2017.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-30 00:54+0000\n"
-"PO-Revision-Date: 2019-09-28 23:50+0200\n"
+"PO-Revision-Date: 2023-03-26 10:20+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 19.11.70\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -67,12 +67,12 @@ msgstr "Nome:"
 #: package/contents/ui/Device.qml:120
 #, kde-format
 msgid "Trusted"
-msgstr ""
+msgstr "Validado"
 
 #: package/contents/ui/Device.qml:126
 #, kde-format
 msgid "Blocked"
-msgstr ""
+msgstr "Bloqueado"
 
 #: package/contents/ui/Device.qml:132
 #, kde-format
@@ -82,12 +82,12 @@ msgstr "Enviar un ficheiro"
 #: package/contents/ui/Device.qml:139
 #, kde-format
 msgid "Setup NAP Network…"
-msgstr ""
+msgstr "Preparar unha rede NAP…"
 
 #: package/contents/ui/Device.qml:146
 #, kde-format
 msgid "Setup DUN Network…"
-msgstr ""
+msgstr "Preparar unha rede DUN…"
 
 #: package/contents/ui/Device.qml:156
 #, kde-format
@@ -129,7 +129,7 @@ msgstr "Auriculares"
 #, kde-format
 msgctxt "This device is an Audio/Video device"
 msgid "Multimedia Device"
-msgstr ""
+msgstr "Dispositivo multimedia"
 
 #: package/contents/ui/Device.qml:170
 #, kde-format
@@ -178,7 +178,7 @@ msgstr "Impresora"
 msgctxt ""
 "This device is an Imaging device (printer, scanner, camera, display, …)"
 msgid "Imaging"
-msgstr ""
+msgstr "Imaxe"
 
 #: package/contents/ui/Device.qml:186
 #, kde-format
@@ -207,62 +207,62 @@ msgstr "Descoñecido"
 #: package/contents/ui/General.qml:19
 #, kde-format
 msgid "Settings"
-msgstr ""
+msgstr "Configuración"
 
 #: package/contents/ui/General.qml:28
 #, kde-format
 msgid "Device:"
-msgstr ""
+msgstr "Dispositivo:"
 
 #: package/contents/ui/General.qml:46
 #, kde-format
 msgid "Enabled:"
-msgstr ""
+msgstr "Activado:"
 
 #: package/contents/ui/General.qml:52
 #, kde-format
 msgid "Visible:"
-msgstr ""
+msgstr "Visíbel:"
 
 #: package/contents/ui/General.qml:66
 #, kde-format
 msgid "On login:"
-msgstr ""
+msgstr "Ao acceder:"
 
 #: package/contents/ui/General.qml:67
 #, kde-format
 msgid "Enable Bluetooth"
-msgstr ""
+msgstr "Activar o Bluetooth"
 
 #: package/contents/ui/General.qml:77 package/contents/ui/main.qml:247
 #, kde-format
 msgid "Disable Bluetooth"
-msgstr ""
+msgstr "Desactivar o Bluetooth"
 
 #: package/contents/ui/General.qml:87
 #, kde-format
 msgid "Restore previous status"
-msgstr ""
+msgstr "Restaurar o estado anterior"
 
 #: package/contents/ui/General.qml:106
 #, kde-format
 msgid "When receiving files:"
-msgstr ""
+msgstr "Ao recibir ficheiros:"
 
 #: package/contents/ui/General.qml:108
 #, kde-format
 msgid "Ask for confirmation"
-msgstr ""
+msgstr "Pedir confirmación"
 
 #: package/contents/ui/General.qml:117
 #, kde-format
 msgid "Accept for trusted devices"
-msgstr ""
+msgstr "Aceptar para dispositivos validados"
 
 #: package/contents/ui/General.qml:127
 #, kde-format
 msgid "Always accept"
-msgstr ""
+msgstr "Aceptar sempre"
 
 #: package/contents/ui/General.qml:137
 #, kde-format
@@ -272,72 +272,72 @@ msgstr "Gardar os ficheiros en:"
 #: package/contents/ui/General.qml:161 package/contents/ui/General.qml:172
 #, kde-format
 msgid "Select folder"
-msgstr ""
+msgstr "Seleccionar un cartafol"
 
 #: package/contents/ui/main.qml:54
 #, kde-format
 msgid "Forget this Device?"
-msgstr ""
+msgstr "Esquecer este dispositivo?"
 
 #: package/contents/ui/main.qml:55
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
-msgstr ""
+msgstr "Seguro que quere esquecer «%1»?"
 
 #: package/contents/ui/main.qml:66
 #, kde-format
 msgctxt "@action:button"
 msgid "Forget Device"
-msgstr ""
+msgstr "Esquecer o dispositivo"
 
 #: package/contents/ui/main.qml:73
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: package/contents/ui/main.qml:134
 #, kde-format
 msgid "No Bluetooth adapters found"
-msgstr ""
+msgstr "Non se atopou ningún adaptador de Bluetooth"
 
 #: package/contents/ui/main.qml:143
 #, kde-format
 msgid "Bluetooth is disabled"
-msgstr ""
+msgstr "O Bluetooth está desactivado."
 
 #: package/contents/ui/main.qml:149
 #, kde-format
 msgid "Enable"
-msgstr ""
+msgstr "Activar"
 
 #: package/contents/ui/main.qml:159
 #, kde-format
 msgid "No devices paired"
-msgstr ""
+msgstr "Non hai dispositivos emparellados."
 
 #: package/contents/ui/main.qml:180
 #, kde-format
 msgid "Connected"
-msgstr ""
+msgstr "Conectado"
 
 #: package/contents/ui/main.qml:180
 #, kde-format
 msgid "Available"
-msgstr ""
+msgstr "Dispoñíbel"
 
 #: package/contents/ui/main.qml:213
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
-msgstr ""
+msgstr "Esquecer «%1»"
 
 #: package/contents/ui/main.qml:241
 #, kde-format
 msgid "Add New Device…"
-msgstr ""
+msgstr "Engadir un dispositivo…"
 
 #: package/contents/ui/main.qml:259
 #, kde-format
 msgid "Configure…"
-msgstr ""
+msgstr "Configurar…"
