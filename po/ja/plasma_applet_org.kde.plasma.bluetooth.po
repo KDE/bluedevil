@@ -1,13 +1,13 @@
 # Tomohiro Hyakutake <tomhioo@outlook.jp>, 2019.
-# Fumiaki Okushi <fumiaki.okushi@gmail.com>, 2019.
 # Ryuichi Yamada <ryuichi_ya220@outlook.jp>, 2023.
+# Fumiaki Okushi <fumiaki.okushi@gmail.com>, 2019, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-13 00:57+0000\n"
-"PO-Revision-Date: 2023-02-23 18:21+0900\n"
-"Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
+"PO-Revision-Date: 2023-04-07 23:40-0700\n"
+"Last-Translator: Fumiaki Okushi <fumiaki.okushi@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 22.12.2\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: package/contents/ui/DeviceItem.qml:35
 #, kde-format
@@ -203,7 +203,7 @@ msgstr "Bluetooth"
 #: package/contents/ui/main.qml:45
 #, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
-msgstr "Bluetooth は無効です - 中クリックで有効化"
+msgstr "Bluetooth は無効です - 中クリックして有効化"
 
 #: package/contents/ui/main.qml:49
 #, kde-format
@@ -218,7 +218,7 @@ msgstr "Bluetooth はオフラインです"
 #: package/contents/ui/main.qml:54
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
-msgstr "中クリックで Bluetooth を無効化"
+msgstr "中クリックして Bluetooth を無効化"
 
 #: package/contents/ui/main.qml:57
 #, kde-format
