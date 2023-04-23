@@ -21,7 +21,9 @@ PlasmaExtras.PlasmoidHeading {
 
     property alias checkbox: checkbox
 
-    leftPadding: PlasmaCore.Units.smallSpacing
+    leftPadding: mirrored ? 0 : PlasmaCore.Units.smallSpacing
+    rightPadding: mirrored ? PlasmaCore.Units.smallSpacing : 0
+
     contentItem: RowLayout {
         spacing: PlasmaCore.Units.smallSpacing
 
