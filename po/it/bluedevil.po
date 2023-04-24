@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Pino Toscano <toscano.pino@tiscali.it>, 2010, 2011, 2013, 2014, 2015, 2016, 2018, 2019, 2020.
 # Vincenzo Reale <smart2128vr@gmail.com>, 2022.
-# Paolo Zamponi <zapaolo@email.it>, 2022.
+# Paolo Zamponi <feus73@gmail.com>, 2022.
 #
 msgid ""
 msgstr ""
