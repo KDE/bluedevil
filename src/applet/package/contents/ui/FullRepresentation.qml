@@ -101,6 +101,10 @@ PlasmaExtras.Representation {
                 // space after the first time it unloads a previously-loaded item
                 height: active ? PlasmaCore.Units.gridUnit : 0
 
+                // give us 2 frames to try and figure out a layout, this reduces jumpyness quite a bit but doesn't
+                // entirely eliminate it https://bugs.kde.org/show_bug.cgi?id=438610
+                Behavior on height { PropertyAnimation { duration: 32 } }
+
                 sourceComponent: Item {
                     width: listView.width - PlasmaCore.Units.smallSpacing * 4
                     height: PlasmaCore.Units.gridUnit
