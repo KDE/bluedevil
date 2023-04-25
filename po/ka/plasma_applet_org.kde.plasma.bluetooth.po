@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-01 23:29+0000\n"
+"POT-Creation-Date: 2023-04-25 02:28+0000\n"
 "PO-Revision-Date: 2022-12-30 05:43+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -248,7 +248,7 @@ msgstr "&ბლუთუზის მორგება…"
 msgid "Add New Device…"
 msgstr "ახალი მოწყობილობის დამატება…"
 
-#: package/contents/ui/main.qml:146 package/contents/ui/Toolbar.qml:30
+#: package/contents/ui/main.qml:146 package/contents/ui/Toolbar.qml:32
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "ბლუთუზის ჩართვა"
