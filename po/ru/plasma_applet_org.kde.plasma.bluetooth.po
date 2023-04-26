@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-25 03:00+0000\n"
+"POT-Creation-Date: 2023-04-26 02:49+0000\n"
 "PO-Revision-Date: 2022-12-11 23:12+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -189,17 +189,17 @@ msgstr "%1 (%2)"
 msgid "Enable"
 msgstr "Включить"
 
-#: package/contents/ui/FullRepresentation.qml:144
+#: package/contents/ui/FullRepresentation.qml:148
 #, kde-format
 msgid "No Bluetooth adapters available"
 msgstr "Нет доступных адаптеров Bluetooth"
 
-#: package/contents/ui/FullRepresentation.qml:146
+#: package/contents/ui/FullRepresentation.qml:150
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth выключен"
 
-#: package/contents/ui/FullRepresentation.qml:148
+#: package/contents/ui/FullRepresentation.qml:152
 #, kde-format
 msgid "No devices found"
 msgstr "Не найдено ни одного устройства"

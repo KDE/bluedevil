@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-25 03:00+0000\n"
+"POT-Creation-Date: 2023-04-26 02:49+0000\n"
 "PO-Revision-Date: 2022-12-30 05:43+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -180,17 +180,17 @@ msgstr "%1 (%2)"
 msgid "Enable"
 msgstr "ჩართვა"
 
-#: package/contents/ui/FullRepresentation.qml:144
+#: package/contents/ui/FullRepresentation.qml:148
 #, kde-format
 msgid "No Bluetooth adapters available"
 msgstr "ბლუთუზის ბარათი ნაპოვნი არაა"
 
-#: package/contents/ui/FullRepresentation.qml:146
+#: package/contents/ui/FullRepresentation.qml:150
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "ბლუთუზი გამორთულია"
 
-#: package/contents/ui/FullRepresentation.qml:148
+#: package/contents/ui/FullRepresentation.qml:152
 #, kde-format
 msgid "No devices found"
 msgstr "მოწყობილობების პოვნა ვერ მოხერხდა"
