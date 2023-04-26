@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-25 02:28+0000\n"
+"POT-Creation-Date: 2023-04-26 02:16+0000\n"
 "PO-Revision-Date: 2017-05-16 06:55-0400\n"
 "Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
 "Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
@@ -181,18 +181,18 @@ msgstr ""
 msgid "Enable"
 msgstr ""
 
-#: package/contents/ui/FullRepresentation.qml:144
+#: package/contents/ui/FullRepresentation.qml:148
 #, fuzzy, kde-format
 #| msgid "No Adapters Available"
 msgid "No Bluetooth adapters available"
 msgstr "אין מתאמים זמינים"
 
-#: package/contents/ui/FullRepresentation.qml:146
+#: package/contents/ui/FullRepresentation.qml:150
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "הבלוטוס כבוי"
 
-#: package/contents/ui/FullRepresentation.qml:148
+#: package/contents/ui/FullRepresentation.qml:152
 #, fuzzy, kde-format
 #| msgid "No Devices Found"
 msgid "No devices found"
