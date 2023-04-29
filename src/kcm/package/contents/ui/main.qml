@@ -145,7 +145,7 @@ ScrollViewKCM {
             anchors.centerIn: parent
 
             helpfulAction: Kirigami.Action {
-                iconName: "network-bluetooth"
+                icon.name: "network-bluetooth"
                 text: i18n("Enable")
                 onTriggered: {
                     root.setBluetoothEnabled(true)
