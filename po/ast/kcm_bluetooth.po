@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-30 00:54+0000\n"
-"PO-Revision-Date: 2023-04-28 22:17+0200\n"
+"PO-Revision-Date: 2023-04-29 18:09+0200\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: \n"
 "Language: ast\n"
@@ -276,12 +276,12 @@ msgstr ""
 #: package/contents/ui/main.qml:54
 #, kde-format
 msgid "Forget this Device?"
-msgstr "¿Quies escaecer esti ficheru?"
+msgstr "Desaniciu d'un preséu"
 
 #: package/contents/ui/main.qml:55
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
-msgstr ""
+msgstr "¿De xuru que quies escaecer el preséu «%1»?"
 
 #: package/contents/ui/main.qml:66
 #, kde-format
@@ -323,7 +323,7 @@ msgstr ""
 #: package/contents/ui/main.qml:180
 #, kde-format
 msgid "Available"
-msgstr ""
+msgstr "Preseos disponibles"
 
 #: package/contents/ui/main.qml:213
 #, kde-format
