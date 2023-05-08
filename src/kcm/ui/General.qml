@@ -10,7 +10,7 @@ import QtQuick.Controls 2.10 as QQC2
 import QtQuick.Dialogs
 
 import org.kde.kirigami 2.10 as Kirigami
-import org.kde.kcm 1.2
+import org.kde.kcmutils
 import org.kde.bluezqt 1.0 as BluezQt
 import org.kde.bluedevil.kcm 1.0
 

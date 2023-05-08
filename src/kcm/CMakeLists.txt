@@ -1,14 +1,6 @@
-kcoreaddons_add_plugin(kcm_bluetooth
-    INSTALL_NAMESPACE "plasma/kcms/systemsettings"
-    SOURCES
-        bluetooth.cpp
-        bluetooth.h
-)
+kcmutils_add_qml_kcm(kcm_bluetooth SOURCES bluetooth.cpp bluetooth.h)
 
-kcmutils_generate_desktop_file(kcm_bluetooth)
-kconfig_add_kcfg_files(kcm_bluetooth GENERATE_MOC
-    ../settings/filereceiversettings.kcfgc
-)
+kconfig_add_kcfg_files(kcm_bluetooth GENERATE_MOC ../settings/filereceiversettings.kcfgc)
 
 target_link_libraries(kcm_bluetooth
     Qt::Gui
@@ -22,4 +14,3 @@ target_link_libraries(kcm_bluetooth
     KF6::KIOGui
 )
 
-kpackage_install_package(package kcm_bluetooth kcms)
