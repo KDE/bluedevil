@@ -12,7 +12,7 @@ import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.private.bluetooth 1.0 as PlasmaBt
 
 import org.kde.bluezqt 1.0 as BluezQt
-import org.kde.kquickcontrolsaddons 2.0
+import org.kde.kcmutils
 
 Item {
     id: bluetoothApplet
@@ -125,7 +125,7 @@ Item {
     }
 
     function action_configure() {
-        KCMShell.openSystemSettings("kcm_bluetooth");
+        KCMLauncher.openSystemSettings("kcm_bluetooth");
     }
 
     function action_addNewDevice() {
