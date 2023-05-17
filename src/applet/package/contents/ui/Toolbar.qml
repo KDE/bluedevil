@@ -19,7 +19,7 @@ import org.kde.kquickcontrolsaddons 2.0
 PlasmaExtras.PlasmoidHeading {
     id: toolbar
 
-    property alias checkbox: checkbox
+    property alias onSwitch: onSwitch
 
     leftPadding: mirrored ? 0 : PlasmaCore.Units.smallSpacing
     rightPadding: mirrored ? PlasmaCore.Units.smallSpacing : 0
@@ -27,8 +27,8 @@ PlasmaExtras.PlasmoidHeading {
     contentItem: RowLayout {
         spacing: PlasmaCore.Units.smallSpacing
 
-        PlasmaComponents3.CheckBox {
-            id: checkbox
+        PlasmaComponents3.Switch {
+            id: onSwitch
             text: i18n("Enable Bluetooth")
             icon.name: "preferences-system-bluetooth"
             checked: btManager.bluetoothOperational

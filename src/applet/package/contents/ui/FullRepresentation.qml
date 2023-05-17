@@ -31,7 +31,7 @@ PlasmaExtras.Representation {
         if (listView.count === 0) {
             return;
         }
-        if (listView.currentIndex < 0 || toolbar.checkbox.activeFocus) {
+        if (listView.currentIndex < 0 || toolbar.onSwitch.activeFocus) {
             listView.incrementCurrentIndex();
             listView.currentItem.forceActiveFocus();
         } else {
@@ -128,7 +128,7 @@ PlasmaExtras.Representation {
             Keys.onUpPressed: {
                 if (listView.currentIndex === 0) {
                     listView.currentIndex = -1;
-                    toolbar.checkbox.forceActiveFocus(Qt.BacktabFocusReason);
+                    toolbar.onSwitch.forceActiveFocus(Qt.BacktabFocusReason);
                 } else {
                     event.accepted = false;
                 }
