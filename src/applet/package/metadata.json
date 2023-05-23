@@ -32,6 +32,7 @@
                 "Name[tr]": "David Rosca",
                 "Name[uk]": "David Rosca",
                 "Name[x-test]": "xxDavid Roscaxx",
+                "Name[zh_CN]": "David Rosca",
                 "Name[zh_TW]": "David Rosca"
             }
         ],
@@ -63,6 +64,7 @@
         "Description[tr]": "Bluetooth durumu ve denetimi",
         "Description[uk]": "Стан Bluetooth і керування ним",
         "Description[x-test]": "xxBluetooth status and controlxx",
+        "Description[zh_CN]": "蓝牙状态和控制",
         "Description[zh_TW]": "藍牙狀態與控制",
         "EnabledByDefault": true,
         "Icon": "preferences-system-bluetooth",
