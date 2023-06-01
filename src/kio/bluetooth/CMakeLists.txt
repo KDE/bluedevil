@@ -25,5 +25,5 @@ target_include_directories(kio_bluetooth
 )
 
 ########### install files ###############
-install(TARGETS kio_bluetooth DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf${QT_MAJOR_VERSION}/kio)
+install(TARGETS kio_bluetooth DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf6/kio)
 install(FILES bluetooth-network.desktop DESTINATION ${KDE_INSTALL_DATADIR}/remoteview)
