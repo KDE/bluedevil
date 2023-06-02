@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-30 00:54+0000\n"
+"POT-Creation-Date: 2023-06-02 02:04+0000\n"
 "PO-Revision-Date: 2023-05-22 13:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -35,12 +35,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 网络 (%2)"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:202
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:231
 #, kde-format
 msgid "Disconnect"
 msgstr "断开连接"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:202
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:231
 #, kde-format
 msgid "Connect"
 msgstr "连接"
@@ -235,7 +235,7 @@ msgstr "登录时："
 msgid "Enable Bluetooth"
 msgstr "启用蓝牙"
 
-#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:247
+#: package/contents/ui/General.qml:77
 #, kde-format
 msgid "Disable Bluetooth"
 msgstr "禁用蓝牙"
@@ -275,70 +275,77 @@ msgstr "保存文件到："
 msgid "Select folder"
 msgstr "选择目录"
 
-#: package/contents/ui/main.qml:54
+#: package/contents/ui/main.qml:24
+#, fuzzy, kde-format
+#| msgid "Enabled:"
+msgctxt "@action: button as in, 'enable Bluetooth'"
+msgid "Enabled"
+msgstr "已启用:"
+
+#: package/contents/ui/main.qml:38
+#, kde-format
+msgid "Add New Device…"
+msgstr "添加新设备…"
+
+#: package/contents/ui/main.qml:44
+#, kde-format
+msgid "Configure…"
+msgstr "配置…"
+
+#: package/contents/ui/main.qml:83
 #, kde-format
 msgid "Forget this Device?"
 msgstr "忘记此设备？"
 
-#: package/contents/ui/main.qml:55
+#: package/contents/ui/main.qml:84
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
 msgstr "您确定要忘记“%1”吗？"
 
-#: package/contents/ui/main.qml:66
+#: package/contents/ui/main.qml:95
 #, kde-format
 msgctxt "@action:button"
 msgid "Forget Device"
 msgstr "忘记设备"
 
-#: package/contents/ui/main.qml:73
+#: package/contents/ui/main.qml:102
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
 msgstr "取消"
 
-#: package/contents/ui/main.qml:134
+#: package/contents/ui/main.qml:163
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "未找到蓝牙适配器"
 
-#: package/contents/ui/main.qml:143
+#: package/contents/ui/main.qml:172
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "蓝牙已禁用"
 
-#: package/contents/ui/main.qml:149
+#: package/contents/ui/main.qml:178
 #, kde-format
 msgid "Enable"
 msgstr "启用"
 
-#: package/contents/ui/main.qml:159
+#: package/contents/ui/main.qml:188
 #, kde-format
 msgid "No devices paired"
 msgstr "无已配对设备"
 
-#: package/contents/ui/main.qml:180
+#: package/contents/ui/main.qml:209
 #, kde-format
 msgid "Connected"
 msgstr "已连接"
 
-#: package/contents/ui/main.qml:180
+#: package/contents/ui/main.qml:209
 #, kde-format
 msgid "Available"
 msgstr "可用"
 
-#: package/contents/ui/main.qml:213
+#: package/contents/ui/main.qml:242
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "忘记“%1”"
-
-#: package/contents/ui/main.qml:241
-#, kde-format
-msgid "Add New Device…"
-msgstr "添加新设备…"
-
-#: package/contents/ui/main.qml:259
-#, kde-format
-msgid "Configure…"
-msgstr "配置…"

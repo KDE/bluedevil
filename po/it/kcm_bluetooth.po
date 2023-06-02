@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-30 00:54+0000\n"
+"POT-Creation-Date: 2023-06-02 02:04+0000\n"
 "PO-Revision-Date: 2022-07-26 13:05+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -35,12 +35,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "Rete %1 (%2)"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:202
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:231
 #, kde-format
 msgid "Disconnect"
 msgstr "Disconnetti"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:202
+#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:231
 #, kde-format
 msgid "Connect"
 msgstr "Connetti"
@@ -235,7 +235,7 @@ msgstr "All'accesso:"
 msgid "Enable Bluetooth"
 msgstr "Abilita Bluetooth"
 
-#: package/contents/ui/General.qml:77 package/contents/ui/main.qml:247
+#: package/contents/ui/General.qml:77
 #, kde-format
 msgid "Disable Bluetooth"
 msgstr "Disabilita Bluetooth"
@@ -275,73 +275,80 @@ msgstr "Salva i file in:"
 msgid "Select folder"
 msgstr "Seleziona la cartella"
 
-#: package/contents/ui/main.qml:54
+#: package/contents/ui/main.qml:24
+#, fuzzy, kde-format
+#| msgid "Enabled:"
+msgctxt "@action: button as in, 'enable Bluetooth'"
+msgid "Enabled"
+msgstr "Abilitato:"
+
+#: package/contents/ui/main.qml:38
+#, kde-format
+msgid "Add New Device…"
+msgstr "Aggiungi nuovo dispositivo..."
+
+#: package/contents/ui/main.qml:44
+#, kde-format
+msgid "Configure…"
+msgstr "Configura..."
+
+#: package/contents/ui/main.qml:83
 #, kde-format
 msgid "Forget this Device?"
 msgstr "Vuoi dimenticare questo dispositivo?"
 
-#: package/contents/ui/main.qml:55
+#: package/contents/ui/main.qml:84
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
 msgstr "Sei sicuro di voler dimenticare «\"%1»?"
 
-#: package/contents/ui/main.qml:66
+#: package/contents/ui/main.qml:95
 #, kde-format
 msgctxt "@action:button"
 msgid "Forget Device"
 msgstr "Dimentica dispositivo"
 
-#: package/contents/ui/main.qml:73
+#: package/contents/ui/main.qml:102
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
 msgstr "Annulla"
 
-#: package/contents/ui/main.qml:134
+#: package/contents/ui/main.qml:163
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "Nessun adattatore Bluetooth trovato"
 
-#: package/contents/ui/main.qml:143
+#: package/contents/ui/main.qml:172
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Il Bluetooth è disabilitato"
 
-#: package/contents/ui/main.qml:149
+#: package/contents/ui/main.qml:178
 #, kde-format
 msgid "Enable"
 msgstr "Abilita"
 
-#: package/contents/ui/main.qml:159
+#: package/contents/ui/main.qml:188
 #, kde-format
 msgid "No devices paired"
 msgstr "Nessun dispositivo associato"
 
-#: package/contents/ui/main.qml:180
+#: package/contents/ui/main.qml:209
 #, kde-format
 msgid "Connected"
 msgstr "Connesso"
 
-#: package/contents/ui/main.qml:180
+#: package/contents/ui/main.qml:209
 #, kde-format
 msgid "Available"
 msgstr "Disponibile"
 
-#: package/contents/ui/main.qml:213
+#: package/contents/ui/main.qml:242
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "Dimentica «%1»"
-
-#: package/contents/ui/main.qml:241
-#, kde-format
-msgid "Add New Device…"
-msgstr "Aggiungi nuovo dispositivo..."
-
-#: package/contents/ui/main.qml:259
-#, kde-format
-msgid "Configure…"
-msgstr "Configura..."
 
 #~ msgid "Confirm Deletion of Device"
 #~ msgstr "Conferma eliminazione del dispositivo"
