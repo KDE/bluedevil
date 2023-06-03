@@ -1,16 +1,16 @@
 # Translation of kcm_bluetooth.po to Catalan (Valencian)
-# Copyright (C) 2020-2022 This_file_is_part_of_KDE
+# Copyright (C) 2020-2023 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2020, 2022.
+# Josep M. Ferrer <txemaq@gmail.com>, 2020, 2022, 2023.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-02 02:04+0000\n"
-"PO-Revision-Date: 2022-07-26 13:16+0200\n"
+"PO-Revision-Date: 2023-06-02 09:06+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -278,11 +278,10 @@ msgid "Select folder"
 msgstr "Seleccioneu una carpeta"
 
 #: package/contents/ui/main.qml:24
-#, fuzzy, kde-format
-#| msgid "Enabled:"
+#, kde-format
 msgctxt "@action: button as in, 'enable Bluetooth'"
 msgid "Enabled"
-msgstr "Activat:"
+msgstr "Activa"
 
 #: package/contents/ui/main.qml:38
 #, kde-format
