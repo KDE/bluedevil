@@ -33,7 +33,7 @@ PlasmaExtras.PlasmoidHeading {
             icon.name: "preferences-system-bluetooth"
             checked: btManager.bluetoothOperational
             enabled: btManager.bluetoothBlocked || btManager.adapters.length > 0
-            focus: Plasmoid.expanded
+            focus: bluetoothApplet.expanded
             onToggled: toggleBluetooth()
         }
 

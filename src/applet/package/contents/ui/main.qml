@@ -14,18 +14,18 @@ import org.kde.plasma.private.bluetooth 1.0 as PlasmaBt
 import org.kde.bluezqt 1.0 as BluezQt
 import org.kde.kcmutils
 
-Item {
+PlasmoidItem {
     id: bluetoothApplet
 
     property var connectedDevices: []
     property int runningActions: 0
     property QtObject btManager: BluezQt.Manager
 
-    Plasmoid.switchWidth: PlasmaCore.Units.gridUnit * 15
-    Plasmoid.switchHeight: PlasmaCore.Units.gridUnit * 10
+    switchWidth: PlasmaCore.Units.gridUnit * 15
+    switchHeight: PlasmaCore.Units.gridUnit * 10
 
-    Plasmoid.compactRepresentation: CompactRepresentation { }
-    Plasmoid.fullRepresentation: FullRepresentation { }
+    compactRepresentation: CompactRepresentation { }
+    fullRepresentation: FullRepresentation { }
 
     Plasmoid.status: (btManager.bluetoothOperational) ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.PassiveStatus
     Plasmoid.busy: runningActions > 0
@@ -39,8 +39,8 @@ Item {
         }
         return "preferences-system-bluetooth";
     }
-    Plasmoid.toolTipMainText: i18n("Bluetooth")
-    Plasmoid.toolTipSubText: {
+    toolTipMainText: i18n("Bluetooth")
+    toolTipSubText: {
         if (btManager.bluetoothBlocked) {
             return i18n("Bluetooth is disabled; middle-click to enable");
         }
