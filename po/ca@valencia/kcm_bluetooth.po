@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-02 02:04+0000\n"
+"POT-Creation-Date: 2023-06-08 02:13+0000\n"
 "PO-Revision-Date: 2023-06-02 09:06+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -37,315 +37,315 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "Xarxa %1 (%2)"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:231
+#: ui/Device.qml:68 ui/main.qml:231
 #, kde-format
 msgid "Disconnect"
 msgstr "Desconnecta"
 
-#: package/contents/ui/Device.qml:68 package/contents/ui/main.qml:231
+#: ui/Device.qml:68 ui/main.qml:231
 #, kde-format
 msgid "Connect"
 msgstr "Connecta"
 
-#: package/contents/ui/Device.qml:100
+#: ui/Device.qml:100
 #, kde-format
 msgid "Type:"
 msgstr "Tipus:"
 
-#: package/contents/ui/Device.qml:105 package/contents/ui/General.qml:42
+#: ui/Device.qml:105 ui/General.qml:42
 #, kde-format
 msgid "Address:"
 msgstr "Adreça:"
 
-#: package/contents/ui/Device.qml:110
+#: ui/Device.qml:110
 #, kde-format
 msgid "Adapter:"
 msgstr "Adaptador:"
 
-#: package/contents/ui/Device.qml:116 package/contents/ui/General.qml:36
+#: ui/Device.qml:116 ui/General.qml:36
 #, kde-format
 msgid "Name:"
 msgstr "Nom:"
 
-#: package/contents/ui/Device.qml:120
+#: ui/Device.qml:120
 #, kde-format
 msgid "Trusted"
 msgstr "De confiança"
 
-#: package/contents/ui/Device.qml:126
+#: ui/Device.qml:126
 #, kde-format
 msgid "Blocked"
 msgstr "Blocat"
 
-#: package/contents/ui/Device.qml:132
+#: ui/Device.qml:132
 #, kde-format
 msgid "Send File"
 msgstr "Envia un fitxer"
 
-#: package/contents/ui/Device.qml:139
+#: ui/Device.qml:139
 #, kde-format
 msgid "Setup NAP Network…"
 msgstr "Configura una xarxa NAP…"
 
-#: package/contents/ui/Device.qml:146
+#: ui/Device.qml:146
 #, kde-format
 msgid "Setup DUN Network…"
 msgstr "Configura una xarxa DUN…"
 
-#: package/contents/ui/Device.qml:156
+#: ui/Device.qml:156
 #, kde-format
 msgctxt "This device is a Phone"
 msgid "Phone"
 msgstr "Telèfon"
 
-#: package/contents/ui/Device.qml:158
+#: ui/Device.qml:158
 #, kde-format
 msgctxt "This device is a Modem"
 msgid "Modem"
 msgstr "Mòdem"
 
-#: package/contents/ui/Device.qml:160
+#: ui/Device.qml:160
 #, kde-format
 msgctxt "This device is a Computer"
 msgid "Computer"
 msgstr "Ordinador"
 
-#: package/contents/ui/Device.qml:162
+#: ui/Device.qml:162
 #, kde-format
 msgctxt "This device is of type Network"
 msgid "Network"
 msgstr "Xarxa"
 
-#: package/contents/ui/Device.qml:164
+#: ui/Device.qml:164
 #, kde-format
 msgctxt "This device is a Headset"
 msgid "Headset"
 msgstr "Auriculars"
 
-#: package/contents/ui/Device.qml:166
+#: ui/Device.qml:166
 #, kde-format
 msgctxt "This device is a Headphones"
 msgid "Headphones"
 msgstr "Cascs"
 
-#: package/contents/ui/Device.qml:168
+#: ui/Device.qml:168
 #, kde-format
 msgctxt "This device is an Audio/Video device"
 msgid "Multimedia Device"
 msgstr "Dispositiu multimèdia"
 
-#: package/contents/ui/Device.qml:170
+#: ui/Device.qml:170
 #, kde-format
 msgctxt "This device is a Keyboard"
 msgid "Keyboard"
 msgstr "Teclat"
 
-#: package/contents/ui/Device.qml:172
+#: ui/Device.qml:172
 #, kde-format
 msgctxt "This device is a Mouse"
 msgid "Mouse"
 msgstr "Ratolí"
 
-#: package/contents/ui/Device.qml:174
+#: ui/Device.qml:174
 #, kde-format
 msgctxt "This device is a Joypad"
 msgid "Joypad"
 msgstr "Comandament de joc"
 
-#: package/contents/ui/Device.qml:176
+#: ui/Device.qml:176
 #, kde-format
 msgctxt "This device is a Graphics Tablet (input device)"
 msgid "Tablet"
 msgstr "Tauleta"
 
-#: package/contents/ui/Device.qml:178
+#: ui/Device.qml:178
 #, kde-format
 msgctxt "This device is a Peripheral device"
 msgid "Peripheral"
 msgstr "Perifèric"
 
-#: package/contents/ui/Device.qml:180
+#: ui/Device.qml:180
 #, kde-format
 msgctxt "This device is a Camera"
 msgid "Camera"
 msgstr "Càmera"
 
-#: package/contents/ui/Device.qml:182
+#: ui/Device.qml:182
 #, kde-format
 msgctxt "This device is a Printer"
 msgid "Printer"
 msgstr "Impressora"
 
-#: package/contents/ui/Device.qml:184
+#: ui/Device.qml:184
 #, kde-format
 msgctxt ""
 "This device is an Imaging device (printer, scanner, camera, display, …)"
 msgid "Imaging"
 msgstr "Obtenció d'imatges"
 
-#: package/contents/ui/Device.qml:186
+#: ui/Device.qml:186
 #, kde-format
 msgctxt "This device is a Wearable"
 msgid "Wearable"
 msgstr "Portable"
 
-#: package/contents/ui/Device.qml:188
+#: ui/Device.qml:188
 #, kde-format
 msgctxt "This device is a Toy"
 msgid "Toy"
 msgstr "Joguet"
 
-#: package/contents/ui/Device.qml:190
+#: ui/Device.qml:190
 #, kde-format
 msgctxt "This device is a Health device"
 msgid "Health"
 msgstr "Salut"
 
-#: package/contents/ui/Device.qml:192
+#: ui/Device.qml:192
 #, kde-format
 msgctxt "Type of device: could not be determined"
 msgid "Unknown"
 msgstr "Desconegut"
 
-#: package/contents/ui/General.qml:19
+#: ui/General.qml:19
 #, kde-format
 msgid "Settings"
 msgstr "Configuració"
 
-#: package/contents/ui/General.qml:28
+#: ui/General.qml:28
 #, kde-format
 msgid "Device:"
 msgstr "Dispositiu:"
 
-#: package/contents/ui/General.qml:46
+#: ui/General.qml:46
 #, kde-format
 msgid "Enabled:"
 msgstr "Activat:"
 
-#: package/contents/ui/General.qml:52
+#: ui/General.qml:52
 #, kde-format
 msgid "Visible:"
 msgstr "Visible:"
 
-#: package/contents/ui/General.qml:66
+#: ui/General.qml:66
 #, kde-format
 msgid "On login:"
 msgstr "En connectar-se:"
 
-#: package/contents/ui/General.qml:67
+#: ui/General.qml:67
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Activa Bluetooth"
 
-#: package/contents/ui/General.qml:77
+#: ui/General.qml:77
 #, kde-format
 msgid "Disable Bluetooth"
 msgstr "Desactiva Bluetooth"
 
-#: package/contents/ui/General.qml:87
+#: ui/General.qml:87
 #, kde-format
 msgid "Restore previous status"
 msgstr "Restaura l'estat anterior"
 
-#: package/contents/ui/General.qml:106
+#: ui/General.qml:106
 #, kde-format
 msgid "When receiving files:"
 msgstr "En rebre fitxers:"
 
-#: package/contents/ui/General.qml:108
+#: ui/General.qml:108
 #, kde-format
 msgid "Ask for confirmation"
 msgstr "Demana confirmació"
 
-#: package/contents/ui/General.qml:117
+#: ui/General.qml:117
 #, kde-format
 msgid "Accept for trusted devices"
 msgstr "Accepta per als dispositius de confiança"
 
-#: package/contents/ui/General.qml:127
+#: ui/General.qml:127
 #, kde-format
 msgid "Always accept"
 msgstr "Accepta sempre"
 
-#: package/contents/ui/General.qml:137
+#: ui/General.qml:137
 #, kde-format
 msgid "Save files in:"
 msgstr "Guarda els fitxers a:"
 
-#: package/contents/ui/General.qml:161 package/contents/ui/General.qml:172
+#: ui/General.qml:161 ui/General.qml:172
 #, kde-format
 msgid "Select folder"
 msgstr "Seleccioneu una carpeta"
 
-#: package/contents/ui/main.qml:24
+#: ui/main.qml:24
 #, kde-format
 msgctxt "@action: button as in, 'enable Bluetooth'"
 msgid "Enabled"
 msgstr "Activa"
 
-#: package/contents/ui/main.qml:38
+#: ui/main.qml:38
 #, kde-format
 msgid "Add New Device…"
 msgstr "Afig un dispositiu nou…"
 
-#: package/contents/ui/main.qml:44
+#: ui/main.qml:44
 #, kde-format
 msgid "Configure…"
 msgstr "Configura…"
 
-#: package/contents/ui/main.qml:83
+#: ui/main.qml:83
 #, kde-format
 msgid "Forget this Device?"
 msgstr "Voleu oblidar este dispositiu?"
 
-#: package/contents/ui/main.qml:84
+#: ui/main.qml:84
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
 msgstr "Segur que voleu oblidar «%1»?"
 
-#: package/contents/ui/main.qml:95
+#: ui/main.qml:95
 #, kde-format
 msgctxt "@action:button"
 msgid "Forget Device"
 msgstr "Oblida el dispositiu"
 
-#: package/contents/ui/main.qml:102
+#: ui/main.qml:102
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#: package/contents/ui/main.qml:163
+#: ui/main.qml:163
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "No s'ha trobat cap adaptador Bluetooth"
 
-#: package/contents/ui/main.qml:172
+#: ui/main.qml:172
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth està desactivat"
 
-#: package/contents/ui/main.qml:178
+#: ui/main.qml:178
 #, kde-format
 msgid "Enable"
 msgstr "Activa"
 
-#: package/contents/ui/main.qml:188
+#: ui/main.qml:188
 #, kde-format
 msgid "No devices paired"
 msgstr "No hi ha cap dispositiu aparellat"
 
-#: package/contents/ui/main.qml:209
+#: ui/main.qml:209
 #, kde-format
 msgid "Connected"
 msgstr "Connectat"
 
-#: package/contents/ui/main.qml:209
+#: ui/main.qml:209
 #, kde-format
 msgid "Available"
 msgstr "Disponible"
 
-#: package/contents/ui/main.qml:242
+#: ui/main.qml:242
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
