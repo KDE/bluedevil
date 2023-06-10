@@ -25,8 +25,8 @@
 
 K_PLUGIN_CLASS_WITH_JSON(Bluetooth, "kcm_bluetooth.json")
 
-Bluetooth::Bluetooth(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
-    : KQuickConfigModule(parent, data, args)
+Bluetooth::Bluetooth(QObject *parent, const KPluginMetaData &data)
+    : KQuickConfigModule(parent, data)
 {
     setButtons(Help);
 
