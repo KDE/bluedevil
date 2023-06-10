@@ -4,9 +4,9 @@
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-import QtQuick 2.2
+import QtQuick 2.15
 import QtQuick.Layouts 1.1
-import QtQuick.Controls 2.10 as QQC2
+import QtQuick.Controls 2.15 as QQC2
 
 import org.kde.kirigami 2.20 as Kirigami
 import org.kde.kcmutils
@@ -35,16 +35,11 @@ ScrollViewKCM {
             }
         },
         Kirigami.Action {
-            text: i18n("Add New Device…")
+            id: addAction
+            text: i18nc("@action:button", "Add New Device…")
             icon.name: "list-add"
             onTriggered: kcm.runWizard()
-            visible: BluezQt.Manager.bluetoothOperational
-        },
-        Kirigami.Action {
-            text: i18n("Configure…")
-            icon.name: "configure"
-            onTriggered: kcm.push("General.qml")
-            visible: BluezQt.Manager.bluetoothOperational
+            enabled: BluezQt.Manager.bluetoothOperational
         }
     ]
 
@@ -144,12 +139,6 @@ ScrollViewKCM {
         }
     }
 
-    header: Kirigami.InlineMessage {
-        id: errorMessage
-        type: Kirigami.MessageType.Error
-        showCloseButton: true
-    }
-
     view: ListView {
         id: list
         clip: true
@@ -173,13 +162,7 @@ ScrollViewKCM {
             width: parent.width - (Kirigami.Units.largeSpacing * 4)
             anchors.centerIn: parent
 
-            helpfulAction: Kirigami.Action {
-                icon.name: "network-bluetooth"
-                text: i18n("Enable")
-                onTriggered: {
-                    root.setBluetoothEnabled(true)
-                }
-            }
+            helpfulAction: enableAction
         }
 
         Kirigami.PlaceholderMessage {
@@ -188,6 +171,8 @@ ScrollViewKCM {
             text: i18n("No devices paired")
             width: parent.width - (Kirigami.Units.largeSpacing * 4)
             anchors.centerIn: parent
+
+            helpfulAction: addAction
         }
 
         model: BluezQt.Manager.bluetoothOperational ? devicesModel : null
@@ -198,7 +183,6 @@ ScrollViewKCM {
             anchors.centerIn: parent
         }
 
-
         DevicesProxyModel {
             id: devicesModel
             sourceModel: BluezQt.DevicesModel { }
@@ -206,42 +190,86 @@ ScrollViewKCM {
 
         section.property: "Connected"
         section.delegate: Kirigami.ListSectionHeader {
-            text: section === "true" ? i18n("Connected") : i18n("Available")
+            text: section === "true" ? i18n("Connected devices") : i18n("Paired devices")
         }
 
-        delegate: Kirigami.SwipeListItem {
+        delegate: Kirigami.AbstractListItem {
+            // There's no need for a list item to ever be selected
+            down: false
+            highlighted: false
+            hoverEnabled: false
+            // ... and because of that, use alternating backgrounds to visually
+            // connect list items' left and right side content elements
+            alternatingBackground: true
 
-            // content item includes its own padding
-            padding: 0
+            contentItem: RowLayout {
+                spacing: Kirigami.Units.smallSpacing
 
-            contentItem: Kirigami.BasicListItem {
-                // The parent item already has a highlight
-                activeBackgroundColor: "transparent"
+                Kirigami.Icon {
+                    Layout.preferredHeight: Kirigami.Units.iconSizes.Medium
+                    Layout.preferredWidth: Layout.preferredHeight
+                    source: model.Icon
+                }
 
-                separatorVisible: false
+                ColumnLayout {
+                    Layout.fillWidth: true
+                    Layout.alignment: Qt.AlignVCenter
 
-                text: model.Name
-                icon.name: model.Icon
-                iconSize: Kirigami.Units.iconSizes.medium
-                onClicked: kcm.push("Device.qml", {device: model.Device})
-            }
+                    spacing: 0
 
-            actions: [
-                Kirigami.Action {
+                    Kirigami.Heading {
+                        Layout.fillWidth: true
+
+                        text: model.Name
+                        level: 5
+                        elide: Text.ElideRight
+                    }
+
+                    QQC2.Label {
+                        Layout.fillWidth: true
+
+                        text: deviceTypeToString(model.Device.type)
+                        visible: text.length > 0
+                        font: Kirigami.Theme.smallestFont
+                        opacity: color === Kirigami.Theme.textColor ? 0.7 : 1.0
+                        elide: Text.ElideRight
+                    }
+                }
+
+                /* TODO: Show on connecting(/disconnecting?)
+                QQC2.BusyIndicator {
+                    id: indicator
+                    running: false
+                    height: connectButton.height
+                }
+                */
+
+                QQC2.ToolButton {
+                    // TODO: Disable when connecting
+                    text: i18nc("@action:button", "Configure…")
+                    icon.name: "configure"
+                    onClicked: kcm.push("Device.qml", {device: model.Device})
+                }
+
+                QQC2.ToolButton {
                     text: model.Connected ? i18n("Disconnect") : i18n("Connect")
                     icon.name: model.Connected ? "network-disconnect" : "network-connect"
-                    onTriggered: {
+                    onClicked: {
                         if (model.Connected) {
                             root.makeCall(model.Device.disconnectFromDevice())
                         } else {
                             root.makeCall(model.Device.connectToDevice())
                         }
                     }
-                },
-                Kirigami.Action {
-                    text: i18nc("@action:button %1 is the name of a Bluetooth device", "Forget \"%1\"", model.Name)
+                }
+
+                // TODO: Rather than makeCall and use busyIndicator, show it on the device itself (per-device)
+                // Applet does this!!!
+
+                QQC2.ToolButton {
                     icon.name: "edit-delete-remove"
-                    onTriggered: {
+
+                    onClicked: {
                         const dialog = forgetDialogComponent.createObject(root, {
                             adapter: model.Adapter,
                             device: model.Device,
@@ -255,12 +283,125 @@ ScrollViewKCM {
                         dialog.closed.connect(() => dialog.destroy());
                         dialog.open();
                     }
+
+                    QQC2.ToolTip {
+                        text: i18nc("@info:tooltip %1 is the name of a Bluetooth device", "Forget \"%1\"", model.Name)
+                    }
                 }
-            ]
+            }
+        }
+    }
+
+    footer: ColumnLayout {
+        id: footerLayout
+
+        spacing: Kirigami.Units.smallSpacing
+
+        Kirigami.InlineMessage {
+            id: errorMessage
+            Layout.fillWidth: true
+            type: Kirigami.MessageType.Error
+            showCloseButton: true
+
+            // TODO: Set a real message, rather than showing raw error strings
+            // i.e. add a function that sets the correct text for an error, falling back to the raw error message
+        }
+
+        Kirigami.FormLayout {
+            id: form
+
+            property QtObject adapter: BluezQt.Manager.adapters[adaptersBox.currentIndex]
+
+            QQC2.ComboBox {
+                id: adaptersBox
+                Kirigami.FormData.label: i18n("Device:")
+                model: BluezQt.Manager.adapters
+                textRole: "name"
+                visible: count > 1
+            }
+
+            QQC2.TextField {
+                text: form.adapter.name
+                Kirigami.FormData.label: i18n("Name:")
+                onEditingFinished: form.adapter.name = text
+            }
+
+            QQC2.Label {
+                text: form.adapter.address
+                Kirigami.FormData.label: i18n("Address:")
+            }
+
+            QQC2.CheckBox {
+                Kirigami.FormData.label: i18n("Enabled:")
+                checked: form.adapter.powered
+                onToggled: form.adapter.powered = checked
+                visible: adaptersBox.count > 1
+            }
+
+            QQC2.CheckBox {
+                Kirigami.FormData.label: i18n("Visible:")
+                checked: form.adapter.discoverable
+                onToggled: form.adapter.discoverable = checked
+            }
+
+            Kirigami.Separator {
+                Kirigami.FormData.isSection: true
+            }
+
+            QQC2.Button {
+                Kirigami.FormData.label: i18n("Behavior:")
+                text: i18nc("@action:button", "Configure…")
+                icon.name: "preferences-system-bluetooth"
+                onClicked: kcm.push("General.qml")
+            }
         }
     }
 
     // System Settings doesn't draw its own footer buttons, so extra footer
     // paddings here to make them look better isn't necessary
     extraFooterTopPadding: false
+
+    // TODO: Duplicated in Device
+    function deviceTypeToString(type) {
+        switch (type) {
+        case BluezQt.Device.Phone:
+            return i18nc("This device is a Phone", "Phone");
+        case BluezQt.Device.Modem:
+            return i18nc("This device is a Modem", "Modem");
+        case BluezQt.Device.Computer:
+            return i18nc("This device is a Computer", "Computer");
+        case BluezQt.Device.Network:
+            return i18nc("This device is of type Network", "Network");
+        case BluezQt.Device.Headset:
+            return i18nc("This device is a Headset", "Headset");
+        case BluezQt.Device.Headphones:
+            return i18nc("This device is a Headphones", "Headphones");
+        case BluezQt.Device.AudioVideo:
+            return i18nc("This device is an Audio/Video device", "Multimedia Device");
+        case BluezQt.Device.Keyboard:
+            return i18nc("This device is a Keyboard", "Keyboard");
+        case BluezQt.Device.Mouse:
+            return i18nc("This device is a Mouse", "Mouse");
+        case BluezQt.Device.Joypad:
+            return i18nc("This device is a Joypad", "Joypad");
+        case BluezQt.Device.Tablet:
+            return i18nc("This device is a Graphics Tablet (input device)", "Tablet");
+        case BluezQt.Device.Peripheral:
+            return i18nc("This device is a Peripheral device", "Peripheral");
+        case BluezQt.Device.Camera:
+            return i18nc("This device is a Camera", "Camera");
+        case BluezQt.Device.Printer:
+            return i18nc("This device is a Printer", "Printer");
+        case BluezQt.Device.Imaging:
+            return i18nc("This device is an Imaging device (printer, scanner, camera, display, …)", "Imaging");
+        case BluezQt.Device.Wearable:
+            return i18nc("This device is a Wearable", "Wearable");
+        case BluezQt.Device.Toy:
+            return i18nc("This device is a Toy", "Toy");
+        case BluezQt.Device.Health:
+            return i18nc("This device is a Health device", "Health");
+        default:
+            return i18nc("Type of device: could not be determined", "Unknown");
+        }
+    }
 }

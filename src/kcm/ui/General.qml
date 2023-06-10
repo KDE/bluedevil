@@ -16,7 +16,7 @@ import org.kde.bluedevil.kcm 1.0
 
 SimpleKCM {
 
-    title: i18n("Settings")
+    title: i18n("Behavior")
 
     Kirigami.FormLayout {
         id: form
@@ -29,33 +29,6 @@ SimpleKCM {
             model: BluezQt.Manager.adapters
             textRole: "name"
             visible: count > 1
-        }
-
-        QQC2.TextField {
-            text: form.adapter.name
-            Kirigami.FormData.label: i18n("Name:")
-            onEditingFinished: form.adapter.name = text
-        }
-
-        QQC2.Label {
-            text: form.adapter.address
-            Kirigami.FormData.label: i18n("Address:")
-        }
-
-        QQC2.CheckBox {
-            Kirigami.FormData.label: i18n("Enabled:")
-            checked: form.adapter.powered
-            onToggled: form.adapter.powered = checked
-        }
-
-        QQC2.CheckBox {
-            Kirigami.FormData.label: i18n("Visible:")
-            checked: form.adapter.discoverable
-            onToggled: form.adapter.discoverable = checked
-        }
-
-        Kirigami.Separator {
-            Kirigami.FormData.isSection: true
         }
 
         QQC2.ButtonGroup {
