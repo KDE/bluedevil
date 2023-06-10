@@ -21,7 +21,7 @@ ScrollViewKCM {
     actions: [
         Kirigami.Action {
             id: enableAction
-            text: i18nc("@action: button as in, 'enable Bluetooth'", "Enabled")
+            text: i18nc("@action: button", "Enable Bluetooth")
             icon.name: "network-bluetooth"
             checkable: true
             checked: BluezQt.Manager.bluetoothOperational
