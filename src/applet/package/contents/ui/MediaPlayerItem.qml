@@ -8,7 +8,7 @@ import QtQuick 2.15
 import QtQuick.Layouts 1.15
 
 import org.kde.plasma.components 3.0 as PlasmaComponents3
-import org.kde.plasma.core 2.0 as PlasmaCore
+import org.kde.kirigami 2.20 as Kirigami
 
 import org.kde.bluezqt 1.0 as BluezQt
 
@@ -23,8 +23,8 @@ ColumnLayout {
         elide: Text.ElideRight
         font.weight: MediaPlayer && MediaPlayer.track.title ? Font.DemiBold : Font.Normal
         font.italic: MediaPlayer && MediaPlayer.status === BluezQt.MediaPlayer.Playing
-        font.pointSize: PlasmaCore.Theme.smallestFont.pointSize
-        font.family: PlasmaCore.Theme.smallestFont.family
+        font.pointSize: Kirigami.Theme.smallFont.pointSize
+        font.family: Kirigami.Theme.smallFont.family
         opacity: 0.6
         text: trackTitleText()
         textFormat: Text.PlainText
@@ -35,7 +35,7 @@ ColumnLayout {
         id: trackArtistLabel
         Layout.fillWidth: true
         elide: Text.ElideRight
-        font: PlasmaCore.Theme.smallestFont
+        font: Kirigami.Theme.smallFont
         opacity: 0.6
         text: MediaPlayer ? MediaPlayer.track.artist : ""
         textFormat: Text.PlainText
@@ -46,7 +46,7 @@ ColumnLayout {
         id: trackAlbumLabel
         Layout.fillWidth: true
         elide: Text.ElideRight
-        font: PlasmaCore.Theme.smallestFont
+        font: Kirigami.Theme.smallFont
         opacity: 0.6
         text: MediaPlayer ? MediaPlayer.track.album : ""
         textFormat: Text.PlainText

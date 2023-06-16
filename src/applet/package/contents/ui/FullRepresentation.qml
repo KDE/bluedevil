@@ -10,6 +10,7 @@ import QtQuick.Controls 2.15
 
 import org.kde.plasma.components 3.0 as PlasmaComponents3
 import org.kde.plasma.core 2.0 as PlasmaCore
+import org.kde.kirigami 2.20 as Kirigami
 import org.kde.plasma.extras 2.0 as PlasmaExtras
 import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.private.bluetooth 1.0 as PlasmaBt
@@ -21,8 +22,8 @@ PlasmaExtras.Representation {
 
     readonly property bool emptyList: btManager.devices.length === 0
 
-    implicitWidth: PlasmaCore.Units.gridUnit * 24
-    implicitHeight: PlasmaCore.Units.gridUnit * 24
+    implicitWidth: Kirigami.Units.gridUnit * 24
+    implicitHeight: Kirigami.Units.gridUnit * 24
 
     focus: true
     collapseMarginsHint: true
@@ -85,11 +86,11 @@ PlasmaExtras.Representation {
             model: btManager.adapters.length > 0 && !btManager.bluetoothBlocked ? devicesModel : null
             currentIndex: -1
             boundsBehavior: Flickable.StopAtBounds
-            topMargin: PlasmaCore.Units.smallSpacing * 2
-            bottomMargin: PlasmaCore.Units.smallSpacing * 2
-            leftMargin: PlasmaCore.Units.smallSpacing * 2
-            rightMargin: PlasmaCore.Units.smallSpacing * 2
-            spacing: PlasmaCore.Units.smallSpacing
+            topMargin: Kirigami.Units.smallSpacing * 2
+            bottomMargin: Kirigami.Units.smallSpacing * 2
+            leftMargin: Kirigami.Units.smallSpacing * 2
+            rightMargin: Kirigami.Units.smallSpacing * 2
+            spacing: Kirigami.Units.smallSpacing
 
             section.property: "Section"
             // We want to hide the section delegate for the "Connected"
@@ -99,18 +100,18 @@ PlasmaExtras.Representation {
                 active: section !== "Connected" && bluetoothApplet.connectedDevices.length > 0
                 // Need to manually set the height or else the loader takes up
                 // space after the first time it unloads a previously-loaded item
-                height: active ? PlasmaCore.Units.gridUnit : 0
+                height: active ? Kirigami.Units.gridUnit : 0
 
                 // give us 2 frames to try and figure out a layout, this reduces jumpyness quite a bit but doesn't
                 // entirely eliminate it https://bugs.kde.org/show_bug.cgi?id=438610
                 Behavior on height { PropertyAnimation { duration: 32 } }
 
                 sourceComponent: Item {
-                    width: listView.width - PlasmaCore.Units.smallSpacing * 4
-                    height: PlasmaCore.Units.gridUnit
+                    width: listView.width - Kirigami.Units.smallSpacing * 4
+                    height: Kirigami.Units.gridUnit
 
                     PlasmaCore.SvgItem {
-                        width: parent.width - PlasmaCore.Units.gridUnit * 2
+                        width: parent.width - Kirigami.Units.gridUnit * 2
                         anchors.centerIn: parent
                         id: separatorLine
                         svg: PlasmaCore.Svg {
@@ -136,7 +137,7 @@ PlasmaExtras.Representation {
 
             Loader {
                 anchors.centerIn: parent
-                width: parent.width - (4 * PlasmaCore.Units.largeSpacing)
+                width: parent.width - (4 * Kirigami.Units.gridUnit)
                 active: BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown || btManager.bluetoothBlocked || root.emptyList
                 sourceComponent: PlasmaExtras.PlaceholderMessage {
                     iconName: BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown || btManager.bluetoothBlocked ? "network-bluetooth" : "edit-none"

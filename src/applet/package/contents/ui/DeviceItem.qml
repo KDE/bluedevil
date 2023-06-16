@@ -12,6 +12,7 @@ import QtQuick.Layouts 1.15
 
 import org.kde.plasma.components 3.0 as PlasmaComponents3
 import org.kde.plasma.core 2.0 as PlasmaCore
+import org.kde.kirigami 2.20 as Kirigami
 import org.kde.plasma.extras 2.0 as PlasmaExtras
 import org.kde.plasma.private.bluetooth 1.0 as PlasmaBt
 
@@ -68,13 +69,13 @@ PlasmaExtras.ExpandableListItem {
             // Media Player
             MediaPlayerItem {
                 id: mediaPlayer
-                Layout.leftMargin: PlasmaCore.Units.gridUnit + PlasmaCore.Units.smallSpacing * 3
+                Layout.leftMargin: Kirigami.Units.gridUnit + PlasmaCore.Units.smallSpacing * 3
                 Layout.fillWidth: true
                 visible: MediaPlayer
             }
 
             Item {
-                Layout.preferredHeight: PlasmaCore.Units.smallSpacing
+                Layout.preferredHeight: Kirigami.Units.smallSpacing
                 visible: mediaPlayer.visible
             }
 
@@ -92,7 +93,7 @@ PlasmaExtras.ExpandableListItem {
             }
 
             Item {
-                Layout.preferredHeight: PlasmaCore.Units.smallSpacing
+                Layout.preferredHeight: Kirigami.Units.smallSpacing
                 visible: mediaPlayerSeparator.visible
             }
 
@@ -161,7 +162,7 @@ PlasmaExtras.ExpandableListItem {
                     id: detailsGrid
                     width: parent.width
                     columns: 2
-                    rowSpacing: PlasmaCore.Units.smallSpacing / 4
+                    rowSpacing: Kirigami.Units.smallSpacing / 4
 
                     Repeater {
                         id: repeater
@@ -177,7 +178,7 @@ PlasmaExtras.ExpandableListItem {
 
                             horizontalAlignment: isContent ? Text.AlignLeft : Text.AlignRight
                             elide: isContent ? Text.ElideRight : Text.ElideNone
-                            font: PlasmaCore.Theme.smallestFont
+                            font: Kirigami.Theme.smallFont
                             opacity: isContent ? 1 : 0.6
                             text: isContent ? currentDeviceDetails[index] : `${currentDeviceDetails[index]}:`
                             textFormat: isContent ? Text.PlainText : Text.StyledText

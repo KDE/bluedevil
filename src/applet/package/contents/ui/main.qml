@@ -8,6 +8,7 @@
 import QtQuick 2.15
 
 import org.kde.plasma.core 2.0 as PlasmaCore
+import org.kde.kirigami 2.20 as Kirigami
 import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.private.bluetooth 1.0 as PlasmaBt
 
@@ -21,8 +22,8 @@ PlasmoidItem {
     property int runningActions: 0
     property QtObject btManager: BluezQt.Manager
 
-    switchWidth: PlasmaCore.Units.gridUnit * 15
-    switchHeight: PlasmaCore.Units.gridUnit * 10
+    switchWidth: Kirigami.Units.gridUnit * 15
+    switchHeight: Kirigami.Units.gridUnit * 10
 
     compactRepresentation: CompactRepresentation { }
     fullRepresentation: FullRepresentation { }
