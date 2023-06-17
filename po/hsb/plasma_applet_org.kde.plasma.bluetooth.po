@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-26 02:16+0000\n"
+"POT-Creation-Date: 2023-06-17 02:06+0000\n"
 "PO-Revision-Date: 2021-10-25 18:41+0200\n"
 "Last-Translator: Edward Wornar <edi.werner@gmx.de>\n"
 "Language-Team: Upper Sorbian <kde-i18n-doc@kde.org>\n"
@@ -17,222 +17,222 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
 "%100==4 ? 2 : 3;\n"
 
-#: package/contents/ui/DeviceItem.qml:34
+#: package/contents/ui/DeviceItem.qml:35
 #, kde-format
 msgid "Disconnect"
 msgstr "Wotwjazać"
 
-#: package/contents/ui/DeviceItem.qml:34
+#: package/contents/ui/DeviceItem.qml:35
 #, kde-format
 msgid "Connect"
 msgstr "Přizamknyć"
 
-#: package/contents/ui/DeviceItem.qml:43
+#: package/contents/ui/DeviceItem.qml:44
 #, kde-format
 msgid "Browse Files"
 msgstr "W datajach čušlić"
 
-#: package/contents/ui/DeviceItem.qml:54
+#: package/contents/ui/DeviceItem.qml:55
 #, kde-format
 msgid "Send File"
 msgstr "Dataju pósłać"
 
-#: package/contents/ui/DeviceItem.qml:114
+#: package/contents/ui/DeviceItem.qml:115
 #, kde-format
 msgid "Copy"
 msgstr "Kopěrować"
 
-#: package/contents/ui/DeviceItem.qml:210
+#: package/contents/ui/DeviceItem.qml:211
 #, kde-format
 msgid "Yes"
 msgstr "Haj"
 
-#: package/contents/ui/DeviceItem.qml:210
+#: package/contents/ui/DeviceItem.qml:211
 #, kde-format
 msgid "No"
 msgstr "Ně"
 
-#: package/contents/ui/DeviceItem.qml:216
+#: package/contents/ui/DeviceItem.qml:217
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:224
+#: package/contents/ui/DeviceItem.qml:225
 #, kde-format
 msgid "Remote Name"
 msgstr "Mjeno na dalokim graće"
 
-#: package/contents/ui/DeviceItem.qml:228
+#: package/contents/ui/DeviceItem.qml:229
 #, kde-format
 msgid "Address"
 msgstr "Adresa"
 
-#: package/contents/ui/DeviceItem.qml:231
+#: package/contents/ui/DeviceItem.qml:232
 #, kde-format
 msgid "Paired"
 msgstr "Porowane"
 
-#: package/contents/ui/DeviceItem.qml:234
+#: package/contents/ui/DeviceItem.qml:235
 #, kde-format
 msgid "Trusted"
 msgstr "Dowěri so"
 
-#: package/contents/ui/DeviceItem.qml:237
+#: package/contents/ui/DeviceItem.qml:238
 #, kde-format
 msgid "Adapter"
 msgstr "Adapter"
 
-#: package/contents/ui/DeviceItem.qml:245
+#: package/contents/ui/DeviceItem.qml:246
 #, kde-format
 msgid "Disconnecting"
 msgstr "Wowjazuju"
 
-#: package/contents/ui/DeviceItem.qml:245
+#: package/contents/ui/DeviceItem.qml:246
 #, kde-format
 msgid "Connecting"
 msgstr "Přizamkuju"
 
-#: package/contents/ui/DeviceItem.qml:251
+#: package/contents/ui/DeviceItem.qml:252
 #, kde-format
 msgid "Connected"
 msgstr "Přizamknjeny"
 
-#: package/contents/ui/DeviceItem.qml:258
+#: package/contents/ui/DeviceItem.qml:259
 #, kde-format
 msgid "Audio device"
 msgstr "Awdio-grat"
 
-#: package/contents/ui/DeviceItem.qml:265
+#: package/contents/ui/DeviceItem.qml:266
 #, kde-format
 msgid "Input device"
 msgstr "Zapodawanski grat"
 
-#: package/contents/ui/DeviceItem.qml:269
+#: package/contents/ui/DeviceItem.qml:270
 #, kde-format
 msgid "Phone"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:276
+#: package/contents/ui/DeviceItem.qml:277
 #, kde-format
 msgid "File transfer"
 msgstr "Přesyłanje datajow"
 
-#: package/contents/ui/DeviceItem.qml:279
+#: package/contents/ui/DeviceItem.qml:280
 #, kde-format
 msgid "Send file"
 msgstr "Dataju pósłać"
 
-#: package/contents/ui/DeviceItem.qml:282
+#: package/contents/ui/DeviceItem.qml:283
 #, kde-format
 msgid "Input"
 msgstr "Zapodawanje"
 
-#: package/contents/ui/DeviceItem.qml:285
+#: package/contents/ui/DeviceItem.qml:286
 #, kde-format
 msgid "Audio"
 msgstr "Awdijo"
 
-#: package/contents/ui/DeviceItem.qml:288
+#: package/contents/ui/DeviceItem.qml:289
 #, kde-format
 msgid "Network"
 msgstr "Syć"
 
-#: package/contents/ui/DeviceItem.qml:292
+#: package/contents/ui/DeviceItem.qml:293
 #, kde-format
 msgid "Other device"
 msgstr "Druhi grat"
 
-#: package/contents/ui/DeviceItem.qml:299 package/contents/ui/main.qml:64
-#: package/contents/ui/main.qml:74
+#: package/contents/ui/DeviceItem.qml:300 package/contents/ui/main.qml:65
+#: package/contents/ui/main.qml:75
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% Baterija"
 
-#: package/contents/ui/DeviceItem.qml:310
+#: package/contents/ui/DeviceItem.qml:311
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "Grat njehodźi so dócpěć"
 
-#: package/contents/ui/DeviceItem.qml:312
+#: package/contents/ui/DeviceItem.qml:313
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "Zwisk ke gratej je so zwrěšćił"
 
-#: package/contents/ui/DeviceItem.qml:316
+#: package/contents/ui/DeviceItem.qml:317
 #, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Grat njeje hotowy"
 
-#: package/contents/ui/DeviceItem.qml:350
+#: package/contents/ui/DeviceItem.qml:351
 #, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
 msgstr ""
 
-#: package/contents/ui/FullRepresentation.qml:58
+#: package/contents/ui/FullRepresentation.qml:59
 #, kde-format
 msgid "Enable"
 msgstr ""
 
-#: package/contents/ui/FullRepresentation.qml:148
+#: package/contents/ui/FullRepresentation.qml:149
 #, fuzzy, kde-format
 #| msgid "No Bluetooth Adapters Available"
 msgid "No Bluetooth adapters available"
 msgstr "Njemóžach žadyn bluetooth-adapter namakać"
 
-#: package/contents/ui/FullRepresentation.qml:150
+#: package/contents/ui/FullRepresentation.qml:151
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth je hasnjeny"
 
-#: package/contents/ui/FullRepresentation.qml:152
+#: package/contents/ui/FullRepresentation.qml:153
 #, fuzzy, kde-format
 #| msgid "No Devices Found"
 msgid "No devices found"
 msgstr "Njemóžach žane graty namakać"
 
-#: package/contents/ui/main.qml:42
+#: package/contents/ui/main.qml:43
 #, kde-format
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
-#: package/contents/ui/main.qml:45
+#: package/contents/ui/main.qml:46
 #, fuzzy, kde-format
 #| msgid "Bluetooth is disabled"
 msgid "Bluetooth is disabled; middle-click to enable"
 msgstr "Bluetooth je hasnjeny"
 
-#: package/contents/ui/main.qml:49
+#: package/contents/ui/main.qml:50
 #, kde-format
 msgid "No adapters available"
 msgstr "Žane adaptery k dispoziciji"
 
-#: package/contents/ui/main.qml:51
+#: package/contents/ui/main.qml:52
 #, kde-format
 msgid "Bluetooth is offline"
 msgstr "Bluetooth je offline"
 
-#: package/contents/ui/main.qml:54
+#: package/contents/ui/main.qml:55
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr ""
 
-#: package/contents/ui/main.qml:57
+#: package/contents/ui/main.qml:58
 #, kde-format
 msgid "No connected devices"
 msgstr "Žane přizamknjene graty"
 
-#: package/contents/ui/main.qml:62
+#: package/contents/ui/main.qml:63
 #, kde-format
 msgid "%1 connected"
 msgstr "Zwisk k %1 steji"
 
-#: package/contents/ui/main.qml:69
+#: package/contents/ui/main.qml:70
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -242,17 +242,17 @@ msgstr[1] "%1 přizamknjenej grataj"
 msgstr[2] "%1 přizamknjene graty"
 msgstr[3] "%1 přizamknjenych gratow"
 
-#: package/contents/ui/main.qml:141
+#: package/contents/ui/main.qml:142
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "&Bluetooth připrawić…"
 
-#: package/contents/ui/main.qml:143
+#: package/contents/ui/main.qml:144
 #, kde-format
 msgid "Add New Device…"
 msgstr "Nowy grat dodać..."
 
-#: package/contents/ui/main.qml:146 package/contents/ui/Toolbar.qml:32
+#: package/contents/ui/main.qml:147 package/contents/ui/Toolbar.qml:33
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Bluetooth zaswěćić"
