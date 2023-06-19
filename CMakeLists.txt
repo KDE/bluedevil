@@ -29,6 +29,7 @@ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     Notifications
     WindowSystem
     Plasma
+    Svg
     I18n
     KIO
     BluezQt

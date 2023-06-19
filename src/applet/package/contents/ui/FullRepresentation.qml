@@ -11,6 +11,7 @@ import QtQuick.Controls 2.15
 import org.kde.plasma.components 3.0 as PlasmaComponents3
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.kirigami 2.20 as Kirigami
+import org.kde.ksvg 1.0 as KSvg
 import org.kde.plasma.extras 2.0 as PlasmaExtras
 import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.private.bluetooth 1.0 as PlasmaBt
@@ -110,11 +111,11 @@ PlasmaExtras.Representation {
                     width: listView.width - Kirigami.Units.smallSpacing * 4
                     height: Kirigami.Units.gridUnit
 
-                    PlasmaCore.SvgItem {
+                    KSvg.SvgItem {
                         width: parent.width - Kirigami.Units.gridUnit * 2
                         anchors.centerIn: parent
                         id: separatorLine
-                        svg: PlasmaCore.Svg {
+                        svg: KSvg.Svg {
                             imagePath: "widgets/line"
                         }
                         elementId: "horizontal-line"
