@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Giovanni Sora <g.sora@tiscali.it>, 2016, 2017, 2019, 2020, 2021, 2022.
+# Giovanni Sora <g.sora@tiscali.it>, 2016, 2017, 2019, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-22 00:48+0000\n"
-"PO-Revision-Date: 2022-11-28 21:51+0100\n"
+"PO-Revision-Date: 2023-06-18 21:46+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.11.80\n"
+"X-Generator: Lokalize 23.04.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -160,7 +160,7 @@ msgctxt ""
 "Button to accept the incoming file transfer and download it in the default "
 "download directory"
 msgid "Accept"
-msgstr "Da acceptation"
+msgstr "Accepta"
 
 #: kded/receivefilejob.cpp:138
 #, kde-format
@@ -415,7 +415,7 @@ msgstr "Tu adaptator Bluetooth non es accupabile."
 #, kde-format
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
-msgstr "Facer parabile"
+msgstr "Facer associabile"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, searchField)
 #: wizard/pages/discover.ui:19
@@ -485,7 +485,7 @@ msgstr "Pro favor inserta le PIN in tu dispositivo quando il appare"
 #: wizard/pages/pairing.cpp:109
 #, kde-format
 msgid "Matches"
-msgstr "coincidentias"
+msgstr "Coincidentias"
 
 #: wizard/pages/pairing.cpp:113
 #, kde-format
