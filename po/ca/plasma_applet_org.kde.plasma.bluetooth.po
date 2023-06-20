@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-17 02:06+0000\n"
+"POT-Creation-Date: 2023-06-20 02:58+0000\n"
 "PO-Revision-Date: 2022-12-07 11:14+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -21,179 +21,179 @@ msgstr ""
 "X-Accelerator-Marker: &\n"
 "X-Generator: Lokalize 20.12.0\n"
 
-#: package/contents/ui/DeviceItem.qml:35
+#: package/contents/ui/DeviceItem.qml:36
 #, kde-format
 msgid "Disconnect"
 msgstr "Desconnecta"
 
-#: package/contents/ui/DeviceItem.qml:35
+#: package/contents/ui/DeviceItem.qml:36
 #, kde-format
 msgid "Connect"
 msgstr "Connecta"
 
-#: package/contents/ui/DeviceItem.qml:44
+#: package/contents/ui/DeviceItem.qml:45
 #, kde-format
 msgid "Browse Files"
 msgstr "Navega pels fitxers"
 
-#: package/contents/ui/DeviceItem.qml:55
+#: package/contents/ui/DeviceItem.qml:56
 #, kde-format
 msgid "Send File"
 msgstr "Envia un fitxer"
 
-#: package/contents/ui/DeviceItem.qml:115
+#: package/contents/ui/DeviceItem.qml:116
 #, kde-format
 msgid "Copy"
 msgstr "Copia"
 
-#: package/contents/ui/DeviceItem.qml:211
+#: package/contents/ui/DeviceItem.qml:212
 #, kde-format
 msgid "Yes"
 msgstr "Sí"
 
-#: package/contents/ui/DeviceItem.qml:211
+#: package/contents/ui/DeviceItem.qml:212
 #, kde-format
 msgid "No"
 msgstr "No"
 
-#: package/contents/ui/DeviceItem.qml:217
+#: package/contents/ui/DeviceItem.qml:218
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: package/contents/ui/DeviceItem.qml:225
+#: package/contents/ui/DeviceItem.qml:226
 #, kde-format
 msgid "Remote Name"
 msgstr "Nom remot"
 
-#: package/contents/ui/DeviceItem.qml:229
+#: package/contents/ui/DeviceItem.qml:230
 #, kde-format
 msgid "Address"
 msgstr "Adreça"
 
-#: package/contents/ui/DeviceItem.qml:232
+#: package/contents/ui/DeviceItem.qml:233
 #, kde-format
 msgid "Paired"
 msgstr "Emparellat"
 
-#: package/contents/ui/DeviceItem.qml:235
+#: package/contents/ui/DeviceItem.qml:236
 #, kde-format
 msgid "Trusted"
 msgstr "De confiança"
 
-#: package/contents/ui/DeviceItem.qml:238
+#: package/contents/ui/DeviceItem.qml:239
 #, kde-format
 msgid "Adapter"
 msgstr "Adaptador"
 
-#: package/contents/ui/DeviceItem.qml:246
+#: package/contents/ui/DeviceItem.qml:247
 #, kde-format
 msgid "Disconnecting"
 msgstr "S'està desconnectant"
 
-#: package/contents/ui/DeviceItem.qml:246
+#: package/contents/ui/DeviceItem.qml:247
 #, kde-format
 msgid "Connecting"
 msgstr "S'està connectant"
 
-#: package/contents/ui/DeviceItem.qml:252
+#: package/contents/ui/DeviceItem.qml:253
 #, kde-format
 msgid "Connected"
 msgstr "Connectat"
 
-#: package/contents/ui/DeviceItem.qml:259
+#: package/contents/ui/DeviceItem.qml:260
 #, kde-format
 msgid "Audio device"
 msgstr "Dispositiu d'àudio"
 
-#: package/contents/ui/DeviceItem.qml:266
+#: package/contents/ui/DeviceItem.qml:267
 #, kde-format
 msgid "Input device"
 msgstr "Dispositiu d'entrada"
 
-#: package/contents/ui/DeviceItem.qml:270
+#: package/contents/ui/DeviceItem.qml:271
 #, kde-format
 msgid "Phone"
 msgstr "Telèfon"
 
-#: package/contents/ui/DeviceItem.qml:277
+#: package/contents/ui/DeviceItem.qml:278
 #, kde-format
 msgid "File transfer"
 msgstr "Transferència de fitxers"
 
-#: package/contents/ui/DeviceItem.qml:280
+#: package/contents/ui/DeviceItem.qml:281
 #, kde-format
 msgid "Send file"
 msgstr "Envia un fitxer"
 
-#: package/contents/ui/DeviceItem.qml:283
+#: package/contents/ui/DeviceItem.qml:284
 #, kde-format
 msgid "Input"
 msgstr "Entrada"
 
-#: package/contents/ui/DeviceItem.qml:286
+#: package/contents/ui/DeviceItem.qml:287
 #, kde-format
 msgid "Audio"
 msgstr "Àudio"
 
-#: package/contents/ui/DeviceItem.qml:289
+#: package/contents/ui/DeviceItem.qml:290
 #, kde-format
 msgid "Network"
 msgstr "Xarxa"
 
-#: package/contents/ui/DeviceItem.qml:293
+#: package/contents/ui/DeviceItem.qml:294
 #, kde-format
 msgid "Other device"
 msgstr "Un altre dispositiu"
 
-#: package/contents/ui/DeviceItem.qml:300 package/contents/ui/main.qml:65
+#: package/contents/ui/DeviceItem.qml:301 package/contents/ui/main.qml:65
 #: package/contents/ui/main.qml:75
 #, kde-format
 msgid "%1% Battery"
 msgstr "Bateria %1%"
 
-#: package/contents/ui/DeviceItem.qml:311
+#: package/contents/ui/DeviceItem.qml:312
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "No es pot accedir al dispositiu"
 
-#: package/contents/ui/DeviceItem.qml:313
+#: package/contents/ui/DeviceItem.qml:314
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "Ha fallat la connexió amb el dispositiu"
 
-#: package/contents/ui/DeviceItem.qml:317
+#: package/contents/ui/DeviceItem.qml:318
 #, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "El dispositiu no està preparat"
 
-#: package/contents/ui/DeviceItem.qml:351
+#: package/contents/ui/DeviceItem.qml:352
 #, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: package/contents/ui/FullRepresentation.qml:59
+#: package/contents/ui/FullRepresentation.qml:60
 #, kde-format
 msgid "Enable"
 msgstr "Activa"
 
-#: package/contents/ui/FullRepresentation.qml:149
+#: package/contents/ui/FullRepresentation.qml:150
 #, kde-format
 msgid "No Bluetooth adapters available"
 msgstr "No hi ha cap adaptador Bluetooth disponible"
 
-#: package/contents/ui/FullRepresentation.qml:151
+#: package/contents/ui/FullRepresentation.qml:152
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "El Bluetooth està desactivat"
 
-#: package/contents/ui/FullRepresentation.qml:153
+#: package/contents/ui/FullRepresentation.qml:154
 #, kde-format
 msgid "No devices found"
 msgstr "No s'ha trobat cap dispositiu"

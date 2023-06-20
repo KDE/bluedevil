@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-17 02:06+0000\n"
+"POT-Creation-Date: 2023-06-20 02:58+0000\n"
 "PO-Revision-Date: 2023-03-01 00:45+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -17,179 +17,179 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Lokalize 21.12.3\n"
 
-#: package/contents/ui/DeviceItem.qml:35
+#: package/contents/ui/DeviceItem.qml:36
 #, kde-format
 msgid "Disconnect"
 msgstr "연결 끊기"
 
-#: package/contents/ui/DeviceItem.qml:35
+#: package/contents/ui/DeviceItem.qml:36
 #, kde-format
 msgid "Connect"
 msgstr "연결"
 
-#: package/contents/ui/DeviceItem.qml:44
+#: package/contents/ui/DeviceItem.qml:45
 #, kde-format
 msgid "Browse Files"
 msgstr "파일 탐색"
 
-#: package/contents/ui/DeviceItem.qml:55
+#: package/contents/ui/DeviceItem.qml:56
 #, kde-format
 msgid "Send File"
 msgstr "파일 보내기"
 
-#: package/contents/ui/DeviceItem.qml:115
+#: package/contents/ui/DeviceItem.qml:116
 #, kde-format
 msgid "Copy"
 msgstr "복사"
 
-#: package/contents/ui/DeviceItem.qml:211
+#: package/contents/ui/DeviceItem.qml:212
 #, kde-format
 msgid "Yes"
 msgstr "예"
 
-#: package/contents/ui/DeviceItem.qml:211
+#: package/contents/ui/DeviceItem.qml:212
 #, kde-format
 msgid "No"
 msgstr "아니요"
 
-#: package/contents/ui/DeviceItem.qml:217
+#: package/contents/ui/DeviceItem.qml:218
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr "%1(%2)"
 
-#: package/contents/ui/DeviceItem.qml:225
+#: package/contents/ui/DeviceItem.qml:226
 #, kde-format
 msgid "Remote Name"
 msgstr "원격 이름"
 
-#: package/contents/ui/DeviceItem.qml:229
+#: package/contents/ui/DeviceItem.qml:230
 #, kde-format
 msgid "Address"
 msgstr "주소"
 
-#: package/contents/ui/DeviceItem.qml:232
+#: package/contents/ui/DeviceItem.qml:233
 #, kde-format
 msgid "Paired"
 msgstr "페어링됨"
 
-#: package/contents/ui/DeviceItem.qml:235
+#: package/contents/ui/DeviceItem.qml:236
 #, kde-format
 msgid "Trusted"
 msgstr "신뢰함"
 
-#: package/contents/ui/DeviceItem.qml:238
+#: package/contents/ui/DeviceItem.qml:239
 #, kde-format
 msgid "Adapter"
 msgstr "어댑터"
 
-#: package/contents/ui/DeviceItem.qml:246
+#: package/contents/ui/DeviceItem.qml:247
 #, kde-format
 msgid "Disconnecting"
 msgstr "연결 끊는 중"
 
-#: package/contents/ui/DeviceItem.qml:246
+#: package/contents/ui/DeviceItem.qml:247
 #, kde-format
 msgid "Connecting"
 msgstr "연결 중"
 
-#: package/contents/ui/DeviceItem.qml:252
+#: package/contents/ui/DeviceItem.qml:253
 #, kde-format
 msgid "Connected"
 msgstr "연결됨"
 
-#: package/contents/ui/DeviceItem.qml:259
+#: package/contents/ui/DeviceItem.qml:260
 #, kde-format
 msgid "Audio device"
 msgstr "오디오 장치"
 
-#: package/contents/ui/DeviceItem.qml:266
+#: package/contents/ui/DeviceItem.qml:267
 #, kde-format
 msgid "Input device"
 msgstr "입력 장치"
 
-#: package/contents/ui/DeviceItem.qml:270
+#: package/contents/ui/DeviceItem.qml:271
 #, kde-format
 msgid "Phone"
 msgstr "휴대폰"
 
-#: package/contents/ui/DeviceItem.qml:277
+#: package/contents/ui/DeviceItem.qml:278
 #, kde-format
 msgid "File transfer"
 msgstr "파일 전송"
 
-#: package/contents/ui/DeviceItem.qml:280
+#: package/contents/ui/DeviceItem.qml:281
 #, kde-format
 msgid "Send file"
 msgstr "파일 보내기"
 
-#: package/contents/ui/DeviceItem.qml:283
+#: package/contents/ui/DeviceItem.qml:284
 #, kde-format
 msgid "Input"
 msgstr "입력"
 
-#: package/contents/ui/DeviceItem.qml:286
+#: package/contents/ui/DeviceItem.qml:287
 #, kde-format
 msgid "Audio"
 msgstr "오디오"
 
-#: package/contents/ui/DeviceItem.qml:289
+#: package/contents/ui/DeviceItem.qml:290
 #, kde-format
 msgid "Network"
 msgstr "네트워크"
 
-#: package/contents/ui/DeviceItem.qml:293
+#: package/contents/ui/DeviceItem.qml:294
 #, kde-format
 msgid "Other device"
 msgstr "기타 장치"
 
-#: package/contents/ui/DeviceItem.qml:300 package/contents/ui/main.qml:65
+#: package/contents/ui/DeviceItem.qml:301 package/contents/ui/main.qml:65
 #: package/contents/ui/main.qml:75
 #, kde-format
 msgid "%1% Battery"
 msgstr "배터리 %1%"
 
-#: package/contents/ui/DeviceItem.qml:311
+#: package/contents/ui/DeviceItem.qml:312
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "장치에 접근할 수 없음"
 
-#: package/contents/ui/DeviceItem.qml:313
+#: package/contents/ui/DeviceItem.qml:314
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "장치에 연결할 수 없음"
 
-#: package/contents/ui/DeviceItem.qml:317
+#: package/contents/ui/DeviceItem.qml:318
 #, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "장치가 준비되지 않았음"
 
-#: package/contents/ui/DeviceItem.qml:351
+#: package/contents/ui/DeviceItem.qml:352
 #, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
 msgstr "%1(%2)"
 
-#: package/contents/ui/FullRepresentation.qml:59
+#: package/contents/ui/FullRepresentation.qml:60
 #, kde-format
 msgid "Enable"
 msgstr "활성화"
 
-#: package/contents/ui/FullRepresentation.qml:149
+#: package/contents/ui/FullRepresentation.qml:150
 #, kde-format
 msgid "No Bluetooth adapters available"
 msgstr "사용 가능한 블루투스 어댑터 없음"
 
-#: package/contents/ui/FullRepresentation.qml:151
+#: package/contents/ui/FullRepresentation.qml:152
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "블루투스가 비활성화되어 있음"
 
-#: package/contents/ui/FullRepresentation.qml:153
+#: package/contents/ui/FullRepresentation.qml:154
 #, kde-format
 msgid "No devices found"
 msgstr "장치를 찾을 수 없음"

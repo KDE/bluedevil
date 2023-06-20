@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-17 02:06+0000\n"
+"POT-Creation-Date: 2023-06-20 02:58+0000\n"
 "PO-Revision-Date: 2023-01-05 13:42+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -18,179 +18,179 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Lokalize 22.12.0\n"
 
-#: package/contents/ui/DeviceItem.qml:35
+#: package/contents/ui/DeviceItem.qml:36
 #, kde-format
 msgid "Disconnect"
 msgstr "Odpojit se"
 
-#: package/contents/ui/DeviceItem.qml:35
+#: package/contents/ui/DeviceItem.qml:36
 #, kde-format
 msgid "Connect"
 msgstr "Připojit se"
 
-#: package/contents/ui/DeviceItem.qml:44
+#: package/contents/ui/DeviceItem.qml:45
 #, kde-format
 msgid "Browse Files"
 msgstr "Procházet soubory"
 
-#: package/contents/ui/DeviceItem.qml:55
+#: package/contents/ui/DeviceItem.qml:56
 #, kde-format
 msgid "Send File"
 msgstr "Poslat soubor"
 
-#: package/contents/ui/DeviceItem.qml:115
+#: package/contents/ui/DeviceItem.qml:116
 #, kde-format
 msgid "Copy"
 msgstr "Kopírovat"
 
-#: package/contents/ui/DeviceItem.qml:211
+#: package/contents/ui/DeviceItem.qml:212
 #, kde-format
 msgid "Yes"
 msgstr "Ano"
 
-#: package/contents/ui/DeviceItem.qml:211
+#: package/contents/ui/DeviceItem.qml:212
 #, kde-format
 msgid "No"
 msgstr "Ne"
 
-#: package/contents/ui/DeviceItem.qml:217
+#: package/contents/ui/DeviceItem.qml:218
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: package/contents/ui/DeviceItem.qml:225
+#: package/contents/ui/DeviceItem.qml:226
 #, kde-format
 msgid "Remote Name"
 msgstr "Název vzdáleného zařízení"
 
-#: package/contents/ui/DeviceItem.qml:229
+#: package/contents/ui/DeviceItem.qml:230
 #, kde-format
 msgid "Address"
 msgstr "Adresa"
 
-#: package/contents/ui/DeviceItem.qml:232
+#: package/contents/ui/DeviceItem.qml:233
 #, kde-format
 msgid "Paired"
 msgstr "Spárovaný"
 
-#: package/contents/ui/DeviceItem.qml:235
+#: package/contents/ui/DeviceItem.qml:236
 #, kde-format
 msgid "Trusted"
 msgstr "Důvěryhodný"
 
-#: package/contents/ui/DeviceItem.qml:238
+#: package/contents/ui/DeviceItem.qml:239
 #, kde-format
 msgid "Adapter"
 msgstr "Adaptér"
 
-#: package/contents/ui/DeviceItem.qml:246
+#: package/contents/ui/DeviceItem.qml:247
 #, kde-format
 msgid "Disconnecting"
 msgstr "Odpojuji"
 
-#: package/contents/ui/DeviceItem.qml:246
+#: package/contents/ui/DeviceItem.qml:247
 #, kde-format
 msgid "Connecting"
 msgstr "Navazuji spojení"
 
-#: package/contents/ui/DeviceItem.qml:252
+#: package/contents/ui/DeviceItem.qml:253
 #, kde-format
 msgid "Connected"
 msgstr "Připojen"
 
-#: package/contents/ui/DeviceItem.qml:259
+#: package/contents/ui/DeviceItem.qml:260
 #, kde-format
 msgid "Audio device"
 msgstr "Audio zařízení"
 
-#: package/contents/ui/DeviceItem.qml:266
+#: package/contents/ui/DeviceItem.qml:267
 #, kde-format
 msgid "Input device"
 msgstr "Vstupní zařízení"
 
-#: package/contents/ui/DeviceItem.qml:270
+#: package/contents/ui/DeviceItem.qml:271
 #, kde-format
 msgid "Phone"
 msgstr "Telefon"
 
-#: package/contents/ui/DeviceItem.qml:277
+#: package/contents/ui/DeviceItem.qml:278
 #, kde-format
 msgid "File transfer"
 msgstr "Přenos souboru"
 
-#: package/contents/ui/DeviceItem.qml:280
+#: package/contents/ui/DeviceItem.qml:281
 #, kde-format
 msgid "Send file"
 msgstr "Poslat soubor"
 
-#: package/contents/ui/DeviceItem.qml:283
+#: package/contents/ui/DeviceItem.qml:284
 #, kde-format
 msgid "Input"
 msgstr "Vstup"
 
-#: package/contents/ui/DeviceItem.qml:286
+#: package/contents/ui/DeviceItem.qml:287
 #, kde-format
 msgid "Audio"
 msgstr "Zvuk"
 
-#: package/contents/ui/DeviceItem.qml:289
+#: package/contents/ui/DeviceItem.qml:290
 #, kde-format
 msgid "Network"
 msgstr "Síť"
 
-#: package/contents/ui/DeviceItem.qml:293
+#: package/contents/ui/DeviceItem.qml:294
 #, kde-format
 msgid "Other device"
 msgstr "Jiné zařízení"
 
-#: package/contents/ui/DeviceItem.qml:300 package/contents/ui/main.qml:65
+#: package/contents/ui/DeviceItem.qml:301 package/contents/ui/main.qml:65
 #: package/contents/ui/main.qml:75
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% Baterie"
 
-#: package/contents/ui/DeviceItem.qml:311
+#: package/contents/ui/DeviceItem.qml:312
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "Zařízení je nedostupné"
 
-#: package/contents/ui/DeviceItem.qml:313
+#: package/contents/ui/DeviceItem.qml:314
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "Připojení k zařízení selhalo"
 
-#: package/contents/ui/DeviceItem.qml:317
+#: package/contents/ui/DeviceItem.qml:318
 #, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Zařízení není připraveno"
 
-#: package/contents/ui/DeviceItem.qml:351
+#: package/contents/ui/DeviceItem.qml:352
 #, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: package/contents/ui/FullRepresentation.qml:59
+#: package/contents/ui/FullRepresentation.qml:60
 #, kde-format
 msgid "Enable"
 msgstr "Povolit"
 
-#: package/contents/ui/FullRepresentation.qml:149
+#: package/contents/ui/FullRepresentation.qml:150
 #, kde-format
 msgid "No Bluetooth adapters available"
 msgstr "Nejsou dostupné žádné adaptéry Bluetooth"
 
-#: package/contents/ui/FullRepresentation.qml:151
+#: package/contents/ui/FullRepresentation.qml:152
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth není povolen"
 
-#: package/contents/ui/FullRepresentation.qml:153
+#: package/contents/ui/FullRepresentation.qml:154
 #, kde-format
 msgid "No devices found"
 msgstr "Nebyla nalezena žádná zařízení"
