@@ -495,7 +495,7 @@ msgstr "Non coincide"
 #: wizard/pages/pairing.cpp:128
 #, kde-format
 msgid "Please, confirm that the PIN displayed on %1 matches the wizard one."
-msgstr "Confirme que o PIN mostrado en %1 coincide co do asistente."
+msgstr "Confirme que o PIN amosado en %1 coincide co do asistente."
 
 #: wizard/pages/success.cpp:40
 #, kde-format
