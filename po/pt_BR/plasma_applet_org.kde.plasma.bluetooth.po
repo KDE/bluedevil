@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-20 02:58+0000\n"
+"POT-Creation-Date: 2023-06-21 02:02+0000\n"
 "PO-Revision-Date: 2022-12-15 11:33-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -249,7 +249,7 @@ msgstr "Configurar o &Bluetooth..."
 msgid "Add New Device…"
 msgstr "Adicionar novo dispositivo..."
 
-#: package/contents/ui/main.qml:147 package/contents/ui/Toolbar.qml:33
+#: package/contents/ui/main.qml:147 package/contents/ui/Toolbar.qml:32
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Ativar o Bluetooth"
