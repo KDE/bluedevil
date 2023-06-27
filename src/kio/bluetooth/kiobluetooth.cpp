@@ -65,7 +65,7 @@ KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
 
     qCDebug(BLUETOOTH) << "Kio Bluetooth instanced!";
 
-    m_kded = new org::kde::BlueDevil(QStringLiteral("org.kde.kded5"), QStringLiteral("/modules/bluedevil"), QDBusConnection::sessionBus());
+    m_kded = new org::kde::BlueDevil(QStringLiteral("org.kde.kded6"), QStringLiteral("/modules/bluedevil"), QDBusConnection::sessionBus());
 
     if (!m_kded->isOnline()) {
         qCDebug(BLUETOOTH) << "Bluetooth is offline";

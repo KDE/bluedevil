@@ -73,7 +73,7 @@ KioFtp::KioFtp(const QByteArray &pool, const QByteArray &app)
     : SlaveBase(QByteArrayLiteral("obexftp"), pool, app)
     , m_transfer(nullptr)
 {
-    m_kded = new org::kde::BlueDevil::ObexFtp(QStringLiteral("org.kde.kded5"), QStringLiteral("/modules/bluedevil"), QDBusConnection::sessionBus(), this);
+    m_kded = new org::kde::BlueDevil::ObexFtp(QStringLiteral("org.kde.kded6"), QStringLiteral("/modules/bluedevil"), QDBusConnection::sessionBus(), this);
 }
 
 void KioFtp::connectToHost()
