@@ -15,6 +15,7 @@
 #include <QWizard>
 
 #include <BluezQt/Manager>
+#include <BluezQt/PendingCall>
 
 #include "discoverwidget.h"
 
