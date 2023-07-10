@@ -80,3 +80,5 @@ QList<QWizard::WizardButton> ConnectingPage::wizardButtonsLayout() const
     list << QWizard::CancelButton;
     return list;
 }
+
+#include "moc_connectingpage.cpp"

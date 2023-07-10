@@ -169,3 +169,5 @@ void SendFilesJob::progress(quint64 transferBytes)
     m_progress += toAdd;
     setProcessedAmount(Bytes, m_progress);
 }
+
+#include "moc_sendfilesjob.cpp"

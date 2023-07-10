@@ -61,3 +61,5 @@ QList<QWizard::WizardButton> ConnectPage::wizardButtonsLayout() const
     list << QWizard::CancelButton;
     return list;
 }
+
+#include "moc_connect.cpp"

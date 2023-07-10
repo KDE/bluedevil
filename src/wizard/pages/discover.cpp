@@ -323,3 +323,5 @@ void DiscoverPage::fixAdaptersError()
         adapter->setPairable(true);
     }
 }
+
+#include "moc_discover.cpp"

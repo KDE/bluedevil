@@ -59,3 +59,5 @@ void RequestConfirmation::pinWrong()
     deleteLater();
     Q_EMIT done(Deny);
 }
+
+#include "moc_requestconfirmation.cpp"

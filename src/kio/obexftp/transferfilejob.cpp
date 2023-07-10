@@ -80,3 +80,5 @@ void TransferFileJob::transferredChanged(quint64 transferred)
 
     m_parent->processedSize(transferred);
 }
+
+#include "moc_transferfilejob.cpp"

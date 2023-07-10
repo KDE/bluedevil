@@ -31,3 +31,5 @@ void LaunchApp::launchSendFile(const QString &ubi)
     job->setUiDelegate(delegate);
     job->start();
 }
+
+#include "moc_launchapp.cpp"

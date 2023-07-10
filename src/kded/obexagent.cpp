@@ -63,3 +63,5 @@ void ObexAgent::receiveFileJobFinished(KJob *job)
 
     m_transferTimes[j->deviceAddress()] = QDateTime::currentDateTime();
 }
+
+#include "moc_obexagent.cpp"

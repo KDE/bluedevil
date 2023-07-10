@@ -128,3 +128,5 @@ void BlueWizard::done(int result)
     QWizard::done(result);
     qApp->exit(result);
 }
+
+#include "moc_bluewizard.cpp"

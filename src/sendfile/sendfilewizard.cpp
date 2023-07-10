@@ -206,3 +206,5 @@ void SendFileWizard::setErrorMessage(const QString &message)
 {
     m_errorMessage = message;
 }
+
+#include "moc_sendfilewizard.cpp"

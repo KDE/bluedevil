@@ -49,3 +49,5 @@ void SuccessPage::initializePage()
 
     setFinalPage(true);
 }
+
+#include "moc_success.cpp"

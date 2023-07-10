@@ -136,3 +136,5 @@ void BluezAgent::cancel()
 
     Q_EMIT agentCanceled();
 }
+
+#include "moc_bluezagent.cpp"

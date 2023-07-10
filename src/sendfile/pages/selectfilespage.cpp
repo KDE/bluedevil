@@ -63,3 +63,5 @@ bool SelectFilesPage::isComplete() const
 {
     return !m_files->dirOperator()->selectedItems().isEmpty();
 }
+
+#include "moc_selectfilespage.cpp"

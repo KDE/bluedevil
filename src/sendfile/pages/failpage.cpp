@@ -50,3 +50,5 @@ void FailPage::setErrorMessage(const QString &errorMessage)
 {
     m_errorMessage = errorMessage;
 }
+
+#include "moc_failpage.cpp"

@@ -152,3 +152,5 @@ void DiscoverWidget::fixAdaptersError()
         adapter->setPowered(true);
     }
 }
+
+#include "moc_discoverwidget.cpp"

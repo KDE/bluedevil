@@ -69,3 +69,5 @@ void RequestAuthorization::deny()
     deleteLater();
     Q_EMIT done(Deny);
 }
+
+#include "moc_requestauthorization.cpp"

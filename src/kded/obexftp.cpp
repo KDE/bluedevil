@@ -149,3 +149,5 @@ void ObexFtp::sessionRemoved(BluezQt::ObexSessionPtr session)
     qCDebug(BLUEDEVIL_KDED_LOG) << "Removed Obex session" << path;
     m_sessionMap.remove(key);
 }
+
+#include "moc_obexftp.cpp"

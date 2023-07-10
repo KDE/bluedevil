@@ -267,3 +267,5 @@ DeviceInfo BlueDevilDaemon::deviceToInfo(BluezQt::DevicePtr device) const
 }
 
 #include "bluedevildaemon.moc"
+
+#include "moc_bluedevildaemon.cpp"

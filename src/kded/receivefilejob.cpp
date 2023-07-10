@@ -270,3 +270,5 @@ QString ReceiveFileJob::createTempPath(const QString &fileName) const
 
     return path;
 }
+
+#include "moc_receivefilejob.cpp"

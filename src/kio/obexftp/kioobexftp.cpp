@@ -538,3 +538,5 @@ void KioFtp::updateRootEntryIcon(KIO::UDSEntry &entry, const QString &memoryType
 }
 
 #include "kioobexftp.moc"
+
+#include "moc_kioobexftp.cpp"

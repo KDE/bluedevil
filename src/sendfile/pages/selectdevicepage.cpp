@@ -47,3 +47,5 @@ bool SelectDevicePage::isComplete() const
     }
     return true;
 }
+
+#include "moc_selectdevicepage.cpp"

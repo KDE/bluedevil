@@ -35,3 +35,5 @@ void BluetoothPlugin::registerTypes(const char *uri)
     qmlRegisterSingletonType<LaunchApp>(uri, 1, 0, "LaunchApp", launchapp_singleton);
     qmlRegisterType<DevicesProxyModel>(uri, 1, 0, "DevicesProxyModel");
 }
+
+#include "moc_bluetoothplugin.cpp"

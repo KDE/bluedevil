@@ -120,3 +120,5 @@ void RequestPin::quit()
     deleteLater();
     Q_EMIT done(QString());
 }
+
+#include "moc_requestpin.cpp"

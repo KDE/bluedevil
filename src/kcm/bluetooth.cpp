@@ -131,3 +131,5 @@ void Bluetooth::setBluetoothStatusAtLogin(const QString &newStatus)
 }
 
 #include "bluetooth.moc"
+
+#include "moc_bluetooth.cpp"

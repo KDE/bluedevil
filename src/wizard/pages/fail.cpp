@@ -55,3 +55,5 @@ void FailPage::initializePage()
         failLbl->setText(i18n("The setup of %1 has failed", device->name()));
     }
 }
+
+#include "moc_fail.cpp"

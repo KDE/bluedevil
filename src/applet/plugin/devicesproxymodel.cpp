@@ -100,3 +100,5 @@ bool DevicesProxyModel::filterAcceptsRow(int source_row, const QModelIndex &sour
     // Only show paired and connected devices in the KCM and applet
     return index.data(BluezQt::DevicesModel::PairedRole).toBool() || index.data(BluezQt::DevicesModel::ConnectedRole).toBool();
 }
+
+#include "moc_devicesproxymodel.cpp"

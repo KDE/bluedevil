@@ -23,3 +23,5 @@ void Notify::connectionFailed(const QString &title, const QString &text)
     notification->setText(text);
     notification->sendEvent();
 }
+
+#include "moc_notify.cpp"

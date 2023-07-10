@@ -151,3 +151,5 @@ void WizardAgent::requestConfirmation(BluezQt::DevicePtr device, const QString &
 
     Q_EMIT confirmationRequested(passkey, req);
 }
+
+#include "moc_wizardagent.cpp"

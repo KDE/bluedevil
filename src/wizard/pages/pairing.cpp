@@ -153,3 +153,5 @@ QList<QWizard::WizardButton> PairingPage::wizardButtonsLayout() const
     list << QWizard::CustomButton1;
     return list;
 }
+
+#include "moc_pairing.cpp"

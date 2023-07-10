@@ -82,3 +82,5 @@ bool SelectDeviceAndFilesPage::isComplete() const
 
     return true;
 }
+
+#include "moc_selectdeviceandfilespage.cpp"

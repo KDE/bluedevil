@@ -236,3 +236,5 @@ void DeviceMonitor::updateDevicePlace(BluezQt::DevicePtr device)
         }
     }
 }
+
+#include "moc_devicemonitor.cpp"
