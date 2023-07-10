@@ -125,30 +125,34 @@ PlasmoidItem {
         }
     }
 
-    function action_configure() {
-        KCMLauncher.openSystemSettings("kcm_bluetooth");
-    }
 
-    function action_addNewDevice() {
-        PlasmaBt.LaunchApp.launchWizard();
-    }
+    Plasmoid.contextualActions: [
+        PlasmaCore.Action {
+            text: i18n("Add New Device…")
+            icon.name: "list-add"
+            visible: !btManager.bluetoothBlocked
+            onTriggered: PlasmaBt.LaunchApp.launchWizard()
+        },
+        PlasmaCore.Action {
+            text: i18n("Enable Bluetooth")
+            icon.name: "preferences-system-bluetooth"
+            priority: PlasmaCore.Action.LowPriority
+            checkable: true
+            checked: btManager.bluetoothOperational
+            visible: btManager.bluetoothBlocked || btManager.adapters.length > 0
+            onTriggered: toggleBluetooth()
+        }
+    ]
 
-    function action_btSwitch() {
-        toggleBluetooth()
+    PlasmaCore.Action {
+        id: configureAction
+        text: i18n("Configure &Bluetooth…")
+        icon.name: "configure"
+        onTriggered: KCMLauncher.openSystemSettings("kcm_bluetooth")
     }
 
     Component.onCompleted: {
-        Plasmoid.removeAction("configure");
-        Plasmoid.setAction("configure", i18n("Configure &Bluetooth…"), "configure");
-
-        Plasmoid.setAction("addNewDevice", i18n("Add New Device…"), "list-add");
-        Plasmoid.action("addNewDevice").visible = Qt.binding(() => !btManager.bluetoothBlocked);
-
-        Plasmoid.setAction("btSwitch", i18n("Enable Bluetooth"), "preferences-system-bluetooth");
-        Plasmoid.action("btSwitch").priority = 0;
-        Plasmoid.action("btSwitch").checkable = true;
-        Plasmoid.action("btSwitch").checked = Qt.binding(() => btManager.bluetoothOperational);
-        Plasmoid.action("btSwitch").visible = Qt.binding(() => btManager.bluetoothBlocked || btManager.adapters.length > 0);
+        Plasmoid.setInternalAction("configure", configureAction);
 
         updateConnectedDevices();
     }
