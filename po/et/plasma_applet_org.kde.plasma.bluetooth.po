@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-21 02:02+0000\n"
+"POT-Creation-Date: 2023-07-11 02:03+0000\n"
 "PO-Revision-Date: 2020-04-24 13:19+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -241,22 +241,22 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 ühendatud seade"
 msgstr[1] "%1 ühendatud seadet"
 
-#: package/contents/ui/main.qml:142
-#, fuzzy, kde-format
-#| msgid "Configure &Bluetooth..."
-msgid "Configure &Bluetooth…"
-msgstr "Seadista &Bluetoothi ..."
-
-#: package/contents/ui/main.qml:144
+#: package/contents/ui/main.qml:131
 #, fuzzy, kde-format
 #| msgid "Add New Device"
 msgid "Add New Device…"
 msgstr "Lisa uus seade"
 
-#: package/contents/ui/main.qml:147 package/contents/ui/Toolbar.qml:32
+#: package/contents/ui/main.qml:137 package/contents/ui/Toolbar.qml:32
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Lülita Bluetooth sisse"
+
+#: package/contents/ui/main.qml:149
+#, fuzzy, kde-format
+#| msgid "Configure &Bluetooth..."
+msgid "Configure &Bluetooth…"
+msgstr "Seadista &Bluetoothi ..."
 
 #~ msgid "Bluetooth is Disabled"
 #~ msgstr "Bluetooth on välja lülitatud"

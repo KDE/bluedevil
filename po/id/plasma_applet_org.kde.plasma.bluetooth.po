@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-21 02:02+0000\n"
+"POT-Creation-Date: 2023-07-11 02:03+0000\n"
 "PO-Revision-Date: 2023-03-03 09:57+0700\n"
 "Last-Translator: Linerly <linerly@protonmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -239,20 +239,20 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 peranti terhubung"
 msgstr[1] "%1 peranti terhubung"
 
-#: package/contents/ui/main.qml:142
-#, kde-format
-msgid "Configure &Bluetooth…"
-msgstr "Konfigurasi &Bluetooth..."
-
-#: package/contents/ui/main.qml:144
+#: package/contents/ui/main.qml:131
 #, kde-format
 msgid "Add New Device…"
 msgstr "Tambahkan Peranti Baru..."
 
-#: package/contents/ui/main.qml:147 package/contents/ui/Toolbar.qml:32
+#: package/contents/ui/main.qml:137 package/contents/ui/Toolbar.qml:32
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Fungsikan Bluetooth"
+
+#: package/contents/ui/main.qml:149
+#, kde-format
+msgid "Configure &Bluetooth…"
+msgstr "Konfigurasi &Bluetooth..."
 
 #~ msgid "Bluetooth is Disabled"
 #~ msgstr "Bluetooth telah Dinonfungsikan"

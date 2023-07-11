@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-21 02:02+0000\n"
+"POT-Creation-Date: 2023-07-11 02:03+0000\n"
 "PO-Revision-Date: 2022-12-07 07:11+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -242,20 +242,20 @@ msgstr[1] "%1 з’єднаних пристрої"
 msgstr[2] "%1 з’єднаних пристроїв"
 msgstr[3] "%1 з’єднаний пристрій"
 
-#: package/contents/ui/main.qml:142
-#, kde-format
-msgid "Configure &Bluetooth…"
-msgstr "Нала&штувати Bluetooth…"
-
-#: package/contents/ui/main.qml:144
+#: package/contents/ui/main.qml:131
 #, kde-format
 msgid "Add New Device…"
 msgstr "Додати новий пристрій…"
 
-#: package/contents/ui/main.qml:147 package/contents/ui/Toolbar.qml:32
+#: package/contents/ui/main.qml:137 package/contents/ui/Toolbar.qml:32
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Увімкнути Bluetooth"
+
+#: package/contents/ui/main.qml:149
+#, kde-format
+msgid "Configure &Bluetooth…"
+msgstr "Нала&штувати Bluetooth…"
 
 #~ msgid ""
 #~ "No connected devices\n"

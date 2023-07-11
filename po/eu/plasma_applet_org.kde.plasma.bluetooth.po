@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-21 02:02+0000\n"
+"POT-Creation-Date: 2023-07-11 02:03+0000\n"
 "PO-Revision-Date: 2022-12-08 21:36+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque\n"
@@ -240,20 +240,20 @@ msgid_plural "%1 connected devices"
 msgstr[0] "gailu %1 konektatuta"
 msgstr[1] "%1 gailu konektatuta"
 
-#: package/contents/ui/main.qml:142
-#, kde-format
-msgid "Configure &Bluetooth…"
-msgstr "Konfiguratu &Bluetooth..."
-
-#: package/contents/ui/main.qml:144
+#: package/contents/ui/main.qml:131
 #, kde-format
 msgid "Add New Device…"
 msgstr "Gehitu gailu berria..."
 
-#: package/contents/ui/main.qml:147 package/contents/ui/Toolbar.qml:32
+#: package/contents/ui/main.qml:137 package/contents/ui/Toolbar.qml:32
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Gaitu Bluetooth"
+
+#: package/contents/ui/main.qml:149
+#, kde-format
+msgid "Configure &Bluetooth…"
+msgstr "Konfiguratu &Bluetooth..."
 
 #~ msgid ""
 #~ "No connected devices\n"

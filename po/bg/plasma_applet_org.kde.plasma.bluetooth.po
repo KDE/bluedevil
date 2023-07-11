@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-21 02:02+0000\n"
+"POT-Creation-Date: 2023-07-11 02:03+0000\n"
 "PO-Revision-Date: 2022-12-07 19:10+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -239,17 +239,17 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 свързано устройство"
 msgstr[1] "%1 свързани устройства"
 
-#: package/contents/ui/main.qml:142
-#, kde-format
-msgid "Configure &Bluetooth…"
-msgstr "Настройване на &Bluetooth..."
-
-#: package/contents/ui/main.qml:144
+#: package/contents/ui/main.qml:131
 #, kde-format
 msgid "Add New Device…"
 msgstr "Добавяне на ново устройство…"
 
-#: package/contents/ui/main.qml:147 package/contents/ui/Toolbar.qml:32
+#: package/contents/ui/main.qml:137 package/contents/ui/Toolbar.qml:32
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Активиране на Bluetooth"
+
+#: package/contents/ui/main.qml:149
+#, kde-format
+msgid "Configure &Bluetooth…"
+msgstr "Настройване на &Bluetooth..."

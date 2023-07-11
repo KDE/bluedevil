@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-21 02:02+0000\n"
+"POT-Creation-Date: 2023-07-11 02:03+0000\n"
 "PO-Revision-Date: 2017-05-16 06:55-0400\n"
 "Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
 "Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
@@ -245,22 +245,22 @@ msgid_plural "%1 connected devices"
 msgstr[0] "התקן מחובר"
 msgstr[1] "%1 התקנים מחוברים"
 
-#: package/contents/ui/main.qml:142
-#, fuzzy, kde-format
-#| msgid "Configure &Bluetooth..."
-msgid "Configure &Bluetooth…"
-msgstr "הגדר בלוטוס..."
-
-#: package/contents/ui/main.qml:144
+#: package/contents/ui/main.qml:131
 #, fuzzy, kde-format
 #| msgid "Add New Device"
 msgid "Add New Device…"
 msgstr "הוסף התקן חדש"
 
-#: package/contents/ui/main.qml:147 package/contents/ui/Toolbar.qml:32
+#: package/contents/ui/main.qml:137 package/contents/ui/Toolbar.qml:32
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "הפעל בלוטוס"
+
+#: package/contents/ui/main.qml:149
+#, fuzzy, kde-format
+#| msgid "Configure &Bluetooth..."
+msgid "Configure &Bluetooth…"
+msgstr "הגדר בלוטוס..."
 
 #~ msgid "Bluetooth is Disabled"
 #~ msgstr "הבלוטוס כבוי"
