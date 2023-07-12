@@ -21,6 +21,8 @@ PlasmoidItem {
     property var connectedDevices: []
     property int runningActions: 0
     property QtObject btManager: BluezQt.Manager
+    property alias addDeviceAction: addAction
+    property alias enableBluetoothAction: enableAction
 
     switchWidth: Kirigami.Units.gridUnit * 15
     switchHeight: Kirigami.Units.gridUnit * 10
@@ -128,12 +130,14 @@ PlasmoidItem {
 
     Plasmoid.contextualActions: [
         PlasmaCore.Action {
+            id: addAction
             text: i18n("Add New Device…")
             icon.name: "list-add"
             visible: !btManager.bluetoothBlocked
             onTriggered: PlasmaBt.LaunchApp.launchWizard()
         },
         PlasmaCore.Action {
+            id: enableAction
             text: i18n("Enable Bluetooth")
             icon.name: "preferences-system-bluetooth"
             priority: PlasmaCore.Action.LowPriority

@@ -46,10 +46,10 @@ PlasmaExtras.Representation {
 
         enabled: root.emptyList
 
-        text: Plasmoid.action("addNewDevice").text
+        text: bluetoothApplet.addDeviceAction.text
         icon.name: "list-add"
 
-        onTriggered: Plasmoid.action("addNewDevice").trigger()
+        onTriggered: bluetoothApplet.addDeviceAction.trigger()
     }
 
     Action {

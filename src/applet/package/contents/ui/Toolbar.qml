@@ -44,7 +44,7 @@ PlasmaExtras.PlasmoidHeading {
         PlasmaComponents3.ToolButton {
             id: addDeviceButton
 
-            property QtObject /*QAction*/ qAction: Plasmoid.action("addNewDevice")
+            property QtObject /*QAction*/ qAction: bluetoothApplet.addDeviceAction
 
             visible: !(Plasmoid.containmentDisplayHints & PlasmaCore.Types.ContainmentDrawsPlasmoidHeading)
             enabled: qAction.visible
@@ -62,7 +62,7 @@ PlasmaExtras.PlasmoidHeading {
         PlasmaComponents3.ToolButton {
             id: openSettingsButton
 
-            property QtObject /*QAction*/ qAction: Plasmoid.action("configure")
+            property QtObject /*QAction*/ qAction: Plasmoid.internalAction("configure")
 
             visible: !(Plasmoid.containmentDisplayHints & PlasmaCore.Types.ContainmentDrawsPlasmoidHeading)
             icon.name: "configure"
