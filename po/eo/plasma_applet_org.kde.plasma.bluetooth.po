@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-11 02:03+0000\n"
+"POT-Creation-Date: 2023-07-13 02:10+0000\n"
 "PO-Revision-Date: 2023-05-08 04:22+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -144,8 +144,8 @@ msgstr "Reto"
 msgid "Other device"
 msgstr "Alia aparato"
 
-#: package/contents/ui/DeviceItem.qml:301 package/contents/ui/main.qml:65
-#: package/contents/ui/main.qml:75
+#: package/contents/ui/DeviceItem.qml:301 package/contents/ui/main.qml:67
+#: package/contents/ui/main.qml:77
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% Baterio"
@@ -195,42 +195,42 @@ msgstr "Bluetooth estas malŝaltita"
 msgid "No devices found"
 msgstr "Neniuj aparatoj trovitaj"
 
-#: package/contents/ui/main.qml:43
+#: package/contents/ui/main.qml:45
 #, kde-format
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
-#: package/contents/ui/main.qml:46
+#: package/contents/ui/main.qml:48
 #, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
 msgstr "Bluetooth estas malŝaltita; mezklaku por ebligi"
 
-#: package/contents/ui/main.qml:50
+#: package/contents/ui/main.qml:52
 #, kde-format
 msgid "No adapters available"
 msgstr "Neniuj adaptiloj haveblaj"
 
-#: package/contents/ui/main.qml:52
+#: package/contents/ui/main.qml:54
 #, kde-format
 msgid "Bluetooth is offline"
 msgstr "Bluetooth estas eksterrete"
 
-#: package/contents/ui/main.qml:55
+#: package/contents/ui/main.qml:57
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr "Mezklaku por malŝalti Bluetooth"
 
-#: package/contents/ui/main.qml:58
+#: package/contents/ui/main.qml:60
 #, kde-format
 msgid "No connected devices"
 msgstr "Neniuj konektitaj aparatoj"
 
-#: package/contents/ui/main.qml:63
+#: package/contents/ui/main.qml:65
 #, kde-format
 msgid "%1 connected"
 msgstr "%1 konektita"
 
-#: package/contents/ui/main.qml:70
+#: package/contents/ui/main.qml:72
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -238,17 +238,17 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 konektita aparato"
 msgstr[1] "%1 konektitaj aparatoj"
 
-#: package/contents/ui/main.qml:131
+#: package/contents/ui/main.qml:134
 #, kde-format
 msgid "Add New Device…"
 msgstr "Aldoni novan aparaton…"
 
-#: package/contents/ui/main.qml:137 package/contents/ui/Toolbar.qml:32
+#: package/contents/ui/main.qml:141 package/contents/ui/Toolbar.qml:32
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Ebligi Bluetooth"
 
-#: package/contents/ui/main.qml:149
+#: package/contents/ui/main.qml:153
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Agordi &Bludenton…"

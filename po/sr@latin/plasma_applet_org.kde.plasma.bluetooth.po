@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-11 02:03+0000\n"
+"POT-Creation-Date: 2023-07-13 02:10+0000\n"
 "PO-Revision-Date: 2017-12-24 21:47+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -146,8 +146,8 @@ msgstr "Mreža"
 msgid "Other device"
 msgstr "Drugi uređaj"
 
-#: package/contents/ui/DeviceItem.qml:301 package/contents/ui/main.qml:65
-#: package/contents/ui/main.qml:75
+#: package/contents/ui/DeviceItem.qml:301 package/contents/ui/main.qml:67
+#: package/contents/ui/main.qml:77
 #, kde-format
 msgid "%1% Battery"
 msgstr ""
@@ -199,38 +199,38 @@ msgstr "Bluetooth je isključen"
 msgid "No devices found"
 msgstr "Nije nađen nijedan uređaj"
 
-#: package/contents/ui/main.qml:43
+#: package/contents/ui/main.qml:45
 #, kde-format
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
-#: package/contents/ui/main.qml:46
+#: package/contents/ui/main.qml:48
 #, fuzzy, kde-format
 #| msgid "Bluetooth is disabled"
 msgid "Bluetooth is disabled; middle-click to enable"
 msgstr "Bluetooth je isključen"
 
-#: package/contents/ui/main.qml:50
+#: package/contents/ui/main.qml:52
 #, kde-format
 msgid "No adapters available"
 msgstr "Nema nijednog adaptera"
 
-#: package/contents/ui/main.qml:52
+#: package/contents/ui/main.qml:54
 #, kde-format
 msgid "Bluetooth is offline"
 msgstr "Bluetooth je van veze"
 
-#: package/contents/ui/main.qml:55
+#: package/contents/ui/main.qml:57
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr ""
 
-#: package/contents/ui/main.qml:58
+#: package/contents/ui/main.qml:60
 #, kde-format
 msgid "No connected devices"
 msgstr "Nema povezanih uređaja"
 
-#: package/contents/ui/main.qml:63
+#: package/contents/ui/main.qml:65
 #, fuzzy, kde-format
 #| msgctxt "Number of connected devices"
 #| msgid "%1 connected device"
@@ -238,7 +238,7 @@ msgstr "Nema povezanih uređaja"
 msgid "%1 connected"
 msgstr "%1 povezan uređaj"
 
-#: package/contents/ui/main.qml:70
+#: package/contents/ui/main.qml:72
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -248,18 +248,18 @@ msgstr[1] "%1 povezana uređaja"
 msgstr[2] "%1 povezanih uređaja"
 msgstr[3] "%1 povezan uređaj"
 
-#: package/contents/ui/main.qml:131
+#: package/contents/ui/main.qml:134
 #, fuzzy, kde-format
 #| msgid "Add New Device"
 msgid "Add New Device…"
 msgstr "Dodaj novi uređaj"
 
-#: package/contents/ui/main.qml:137 package/contents/ui/Toolbar.qml:32
+#: package/contents/ui/main.qml:141 package/contents/ui/Toolbar.qml:32
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Uključi Bluetooth"
 
-#: package/contents/ui/main.qml:149
+#: package/contents/ui/main.qml:153
 #, fuzzy, kde-format
 #| msgid "Configure &Bluetooth..."
 msgid "Configure &Bluetooth…"
