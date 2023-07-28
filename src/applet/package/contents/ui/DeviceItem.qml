@@ -170,7 +170,7 @@ PlasmaExtras.ExpandableListItem {
 
                         model: currentDeviceDetails.length
 
-                        Label {
+                        PlasmaComponents3.Label {
                             id: detailLabel
 
                             Layout.fillWidth: true
