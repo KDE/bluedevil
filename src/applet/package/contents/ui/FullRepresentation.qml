@@ -58,7 +58,7 @@ PlasmaExtras.Representation {
         enabled: btManager.bluetoothBlocked
 
         text: i18n("Enable")
-        icon.name: "preferences-system-bluetooth"
+        icon.name: "preferences-system-bluetooth-symbolic"
 
         onTriggered: bluetoothApplet.toggleBluetooth()
     }

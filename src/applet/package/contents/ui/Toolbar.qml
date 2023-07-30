@@ -30,7 +30,7 @@ PlasmaExtras.PlasmoidHeading {
         PlasmaComponents3.Switch {
             id: onSwitch
             text: i18n("Enable Bluetooth")
-            icon.name: "preferences-system-bluetooth"
+            icon.name: "preferences-system-bluetooth-symbolic"
             checked: btManager.bluetoothOperational
             enabled: btManager.bluetoothBlocked || btManager.adapters.length > 0
             focus: bluetoothApplet.expanded

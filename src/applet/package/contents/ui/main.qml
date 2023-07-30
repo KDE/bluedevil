@@ -35,12 +35,12 @@ PlasmoidItem {
 
     Plasmoid.icon: {
         if (connectedDevices.length > 0) {
-            return "preferences-system-bluetooth-activated";
+            return "preferences-system-bluetooth-activated-symbolic";
         }
         if (!btManager.bluetoothOperational) {
-            return "preferences-system-bluetooth-inactive";
+            return "preferences-system-bluetooth-inactive-symbolic";
         }
-        return "preferences-system-bluetooth";
+        return "preferences-system-bluetooth-symbolic";
     }
     toolTipMainText: i18n("Bluetooth")
     toolTipSubText: {
@@ -139,7 +139,7 @@ PlasmoidItem {
         PlasmaCore.Action {
             id: enableAction
             text: i18n("Enable Bluetooth")
-            icon.name: "preferences-system-bluetooth"
+            icon.name: "preferences-system-bluetooth-symbolic"
             priority: PlasmaCore.Action.LowPriority
             checkable: true
             checked: btManager.bluetoothOperational
