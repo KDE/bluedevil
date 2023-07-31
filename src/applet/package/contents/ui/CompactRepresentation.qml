@@ -39,10 +39,7 @@ MouseArea {
 
     Kirigami.Icon {
         id: bluetoothIcon
-        readonly property int roundedSize: Kirigami.Units.iconSizes.roundedIconSize(Math.min(parent.width, parent.height))
-        anchors.centerIn: parent
-        width: roundedSize
-        height: roundedSize
+        anchors.fill: parent
         source: Plasmoid.icon
         active: parent.containsMouse
     }
