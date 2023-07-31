@@ -27,6 +27,9 @@ PlasmoidItem {
     switchWidth: Kirigami.Units.gridUnit * 15
     switchHeight: Kirigami.Units.gridUnit * 10
 
+    // Only exists because the default CompactRepresentation doesn't expose
+    // a middle-click action.
+    // TODO remove once it gains that feature.
     compactRepresentation: CompactRepresentation { }
     fullRepresentation: FullRepresentation { }
 
