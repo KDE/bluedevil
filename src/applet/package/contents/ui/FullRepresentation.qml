@@ -115,9 +115,7 @@ PlasmaExtras.Representation {
                         width: parent.width - Kirigami.Units.gridUnit * 2
                         anchors.centerIn: parent
                         id: separatorLine
-                        svg: KSvg.Svg {
-                            imagePath: "widgets/line"
-                        }
+                        imagePath: "widgets/line"
                         elementId: "horizontal-line"
                     }
                 }
