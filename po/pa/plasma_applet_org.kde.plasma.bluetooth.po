@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-13 02:10+0000\n"
+"POT-Creation-Date: 2023-08-01 02:16+0000\n"
 "PO-Revision-Date: 2022-01-01 09:10-0800\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -143,8 +143,8 @@ msgstr "ਨੈੱਟਵਰਕ"
 msgid "Other device"
 msgstr "ਹੋਰ ਜੰਤਰ"
 
-#: package/contents/ui/DeviceItem.qml:301 package/contents/ui/main.qml:67
-#: package/contents/ui/main.qml:77
+#: package/contents/ui/DeviceItem.qml:301 package/contents/ui/main.qml:70
+#: package/contents/ui/main.qml:80
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% ਬੈਟਰੀ"
@@ -196,43 +196,43 @@ msgstr "ਬਲੂਟੁੱਥ ਅਸਮਰੱਥ ਹੈ"
 msgid "No devices found"
 msgstr "ਕੋਈ ਡਿਵਾਈਸ ਨਹੀਂ ਲੱਭਿਆ"
 
-#: package/contents/ui/main.qml:45
+#: package/contents/ui/main.qml:48
 #, kde-format
 msgid "Bluetooth"
 msgstr "ਬਲੂਟੁੱਥ"
 
-#: package/contents/ui/main.qml:48
+#: package/contents/ui/main.qml:51
 #, fuzzy, kde-format
 #| msgid "Bluetooth is disabled"
 msgid "Bluetooth is disabled; middle-click to enable"
 msgstr "ਬਲੂਟੁੱਥ ਅਸਮਰੱਥ ਹੈ"
 
-#: package/contents/ui/main.qml:52
+#: package/contents/ui/main.qml:55
 #, kde-format
 msgid "No adapters available"
 msgstr "ਕੋਈ ਐਡਪਟਰ ਉਪਲੱਬਧ ਨਹੀਂ"
 
-#: package/contents/ui/main.qml:54
+#: package/contents/ui/main.qml:57
 #, kde-format
 msgid "Bluetooth is offline"
 msgstr "ਬਲੂਟੁੱਥ ਬੰਦ ਕੀਤਾ ਹੈ"
 
-#: package/contents/ui/main.qml:57
+#: package/contents/ui/main.qml:60
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr ""
 
-#: package/contents/ui/main.qml:60
+#: package/contents/ui/main.qml:63
 #, kde-format
 msgid "No connected devices"
 msgstr "ਕੋਈ ਕਨੈਕਟ ਹੋਇਆ ਡਿਵਾਈਸ ਨਹੀਂ ਹੈ"
 
-#: package/contents/ui/main.qml:65
+#: package/contents/ui/main.qml:68
 #, kde-format
 msgid "%1 connected"
 msgstr "%1 ਕਨੈਕਟ ਹੈ"
 
-#: package/contents/ui/main.qml:72
+#: package/contents/ui/main.qml:75
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -240,17 +240,17 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 ਕਨੈਕਟ ਹੋਇਆ ਡਿਵਾਈਸ"
 msgstr[1] "%1 ਕਨੈਕਟ ਹੋਏ ਡਿਵਾਈਸ"
 
-#: package/contents/ui/main.qml:134
+#: package/contents/ui/main.qml:137
 #, kde-format
 msgid "Add New Device…"
 msgstr "…ਨਵਾਂ ਡਿਵਾਈਸ ਜੋੜੋ"
 
-#: package/contents/ui/main.qml:141 package/contents/ui/Toolbar.qml:32
+#: package/contents/ui/main.qml:144 package/contents/ui/Toolbar.qml:32
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "ਬਲੂਟੁੱਥ ਨੂੰ ਸਮਰੱਥ ਕਰੋ"
 
-#: package/contents/ui/main.qml:153
+#: package/contents/ui/main.qml:156
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "…ਬਲੂਟੁੱਥ ਦੀ ਸੰਰਚਨਾ ਕਰੋ(&B)"
