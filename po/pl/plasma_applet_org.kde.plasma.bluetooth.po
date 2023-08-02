@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-01 02:16+0000\n"
+"POT-Creation-Date: 2023-08-02 02:08+0000\n"
 "PO-Revision-Date: 2022-12-10 11:05+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -38,137 +38,137 @@ msgstr "Przeglądaj pliki"
 msgid "Send File"
 msgstr "Wyślij plik"
 
-#: package/contents/ui/DeviceItem.qml:116
+#: package/contents/ui/DeviceItem.qml:113
 #, kde-format
 msgid "Copy"
 msgstr "Skopiuj"
 
-#: package/contents/ui/DeviceItem.qml:212
+#: package/contents/ui/DeviceItem.qml:209
 #, kde-format
 msgid "Yes"
 msgstr "Tak"
 
-#: package/contents/ui/DeviceItem.qml:212
+#: package/contents/ui/DeviceItem.qml:209
 #, kde-format
 msgid "No"
 msgstr "Nie"
 
-#: package/contents/ui/DeviceItem.qml:218
+#: package/contents/ui/DeviceItem.qml:215
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: package/contents/ui/DeviceItem.qml:226
+#: package/contents/ui/DeviceItem.qml:223
 #, kde-format
 msgid "Remote Name"
 msgstr "Zdalna nazwa"
 
-#: package/contents/ui/DeviceItem.qml:230
+#: package/contents/ui/DeviceItem.qml:227
 #, kde-format
 msgid "Address"
 msgstr "Adres"
 
-#: package/contents/ui/DeviceItem.qml:233
+#: package/contents/ui/DeviceItem.qml:230
 #, kde-format
 msgid "Paired"
 msgstr "Sparowane"
 
-#: package/contents/ui/DeviceItem.qml:236
+#: package/contents/ui/DeviceItem.qml:233
 #, kde-format
 msgid "Trusted"
 msgstr "Zaufane"
 
-#: package/contents/ui/DeviceItem.qml:239
+#: package/contents/ui/DeviceItem.qml:236
 #, kde-format
 msgid "Adapter"
 msgstr "Adapter"
 
-#: package/contents/ui/DeviceItem.qml:247
+#: package/contents/ui/DeviceItem.qml:244
 #, kde-format
 msgid "Disconnecting"
 msgstr "Rozłączanie"
 
-#: package/contents/ui/DeviceItem.qml:247
+#: package/contents/ui/DeviceItem.qml:244
 #, kde-format
 msgid "Connecting"
 msgstr "Łączenie"
 
-#: package/contents/ui/DeviceItem.qml:253
+#: package/contents/ui/DeviceItem.qml:250
 #, kde-format
 msgid "Connected"
 msgstr "Połączony"
 
-#: package/contents/ui/DeviceItem.qml:260
+#: package/contents/ui/DeviceItem.qml:257
 #, kde-format
 msgid "Audio device"
 msgstr "Urządzenie dźwiękowe"
 
-#: package/contents/ui/DeviceItem.qml:267
+#: package/contents/ui/DeviceItem.qml:264
 #, kde-format
 msgid "Input device"
 msgstr "Urządzenie wejściowe"
 
-#: package/contents/ui/DeviceItem.qml:271
+#: package/contents/ui/DeviceItem.qml:268
 #, kde-format
 msgid "Phone"
 msgstr "Telefon"
 
-#: package/contents/ui/DeviceItem.qml:278
+#: package/contents/ui/DeviceItem.qml:275
 #, kde-format
 msgid "File transfer"
 msgstr "Przeglądanie plików"
 
-#: package/contents/ui/DeviceItem.qml:281
+#: package/contents/ui/DeviceItem.qml:278
 #, kde-format
 msgid "Send file"
 msgstr "Wysyłanie plików"
 
-#: package/contents/ui/DeviceItem.qml:284
+#: package/contents/ui/DeviceItem.qml:281
 #, kde-format
 msgid "Input"
 msgstr "Sterowanie"
 
-#: package/contents/ui/DeviceItem.qml:287
+#: package/contents/ui/DeviceItem.qml:284
 #, kde-format
 msgid "Audio"
 msgstr "Dźwięk"
 
-#: package/contents/ui/DeviceItem.qml:290
+#: package/contents/ui/DeviceItem.qml:287
 #, kde-format
 msgid "Network"
 msgstr "Sieć"
 
-#: package/contents/ui/DeviceItem.qml:294
+#: package/contents/ui/DeviceItem.qml:291
 #, kde-format
 msgid "Other device"
 msgstr "Inne urządzenie"
 
-#: package/contents/ui/DeviceItem.qml:301 package/contents/ui/main.qml:70
+#: package/contents/ui/DeviceItem.qml:298 package/contents/ui/main.qml:70
 #: package/contents/ui/main.qml:80
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% Bateria"
 
-#: package/contents/ui/DeviceItem.qml:312
+#: package/contents/ui/DeviceItem.qml:309
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "Urządzenie jest niedostępne"
 
-#: package/contents/ui/DeviceItem.qml:314
+#: package/contents/ui/DeviceItem.qml:311
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "Nie udało się połączyć z urządzeniem"
 
-#: package/contents/ui/DeviceItem.qml:318
+#: package/contents/ui/DeviceItem.qml:315
 #, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Urządzenie nie jest gotowe"
 
-#: package/contents/ui/DeviceItem.qml:352
+#: package/contents/ui/DeviceItem.qml:349
 #, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
@@ -180,17 +180,17 @@ msgstr "%1 (%2)"
 msgid "Enable"
 msgstr "Włącz"
 
-#: package/contents/ui/FullRepresentation.qml:150
+#: package/contents/ui/FullRepresentation.qml:148
 #, kde-format
 msgid "No Bluetooth adapters available"
 msgstr "Nie wykryto żadnych adapterów Bluetooth"
 
-#: package/contents/ui/FullRepresentation.qml:152
+#: package/contents/ui/FullRepresentation.qml:150
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth jest wyłączony"
 
-#: package/contents/ui/FullRepresentation.qml:154
+#: package/contents/ui/FullRepresentation.qml:152
 #, kde-format
 msgid "No devices found"
 msgstr "Nie znaleziono żadnego urządzenia"
