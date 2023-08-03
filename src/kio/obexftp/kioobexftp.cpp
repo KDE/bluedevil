@@ -70,7 +70,7 @@ static bool urlIsRoot(const QUrl &url)
 }
 
 KioFtp::KioFtp(const QByteArray &pool, const QByteArray &app)
-    : SlaveBase(QByteArrayLiteral("obexftp"), pool, app)
+    : WorkerBase(QByteArrayLiteral("obexftp"), pool, app)
     , m_transfer(nullptr)
 {
     m_kded = new org::kde::BlueDevil::ObexFtp(QStringLiteral("org.kde.kded6"), QStringLiteral("/modules/bluedevil"), QDBusConnection::sessionBus(), this);
@@ -90,24 +90,18 @@ void KioFtp::connectToHost()
     createSession(QStringLiteral("ftp"));
 }
 
-bool KioFtp::testConnection()
+KIO::WorkerResult KioFtp::testConnection()
 {
     if (!m_kded->isOnline().value()) {
-#if KIO_VERSION >= QT_VERSION_CHECK(5, 96, 0)
-        error(KIO::ERR_WORKER_DEFINED, i18n("Obexd service is not running."));
-#else
-        error(KIO::ERR_SLAVE_DEFINED, i18n("Obexd service is not running."));
-#endif
-        return false;
+        return KIO::WorkerResult::fail(KIO::ERR_WORKER_DEFINED, i18n("Obexd service is not running."));
     }
 
     connectToHost();
 
     if (!m_transfer) {
-        error(KIO::ERR_CANNOT_CONNECT, m_host);
-        return false;
+        return KIO::WorkerResult::fail(KIO::ERR_CANNOT_CONNECT, m_host);
     }
-    return true;
+    return KIO::WorkerResult::pass();
 }
 
 bool KioFtp::createSession(const QString &target)
@@ -135,10 +129,10 @@ bool KioFtp::createSession(const QString &target)
     return true;
 }
 
-void KioFtp::listDir(const QUrl &url)
+KIO::WorkerResult KioFtp::listDir(const QUrl &url)
 {
-    if (!testConnection()) {
-        return;
+    if (auto result = testConnection(); !result.success()) {
+        return result;
     }
 
     qCDebug(BLUEDEVIL_KIO_OBEXFTP_LOG) << "listdir: " << url;
@@ -147,52 +141,51 @@ void KioFtp::listDir(const QUrl &url)
 
     qCDebug(BLUEDEVIL_KIO_OBEXFTP_LOG) << "Asking for listFolder" << url.path();
 
-    if (!changeFolder(url.path())) {
-        return;
+    if (auto result = changeFolder(url.path()); !result.success()) {
+        return result;
     }
 
-    bool ok;
-    const QList<KIO::UDSEntry> &list = listFolder(url, &ok);
-    if (!ok) {
-        return;
+    const auto [result, entries] = listFolder(url);
+    if (!result.success()) {
+        return result;
     }
 
-    for (const KIO::UDSEntry &entry : list) {
+    for (const KIO::UDSEntry &entry : entries) {
         listEntry(entry);
     }
 
-    finished();
+    return KIO::WorkerResult::pass();
 }
 
-void KioFtp::copy(const QUrl &src, const QUrl &dest, int permissions, KIO::JobFlags flags)
+KIO::WorkerResult KioFtp::copy(const QUrl &src, const QUrl &dest, int permissions, KIO::JobFlags flags)
 {
     Q_UNUSED(permissions)
     Q_UNUSED(flags)
 
-    if (!testConnection()) {
-        return;
+    if (auto result = testConnection(); !result.success()) {
+        return result;
     }
 
     qCDebug(BLUEDEVIL_KIO_OBEXFTP_LOG) << "copy: " << src.url() << " to " << dest.url();
 
     copyHelper(src, dest);
 
-    finished();
+    return KIO::WorkerResult::pass();
 }
 
-void KioFtp::rename(const QUrl &src, const QUrl &dest, KIO::JobFlags flags)
+KIO::WorkerResult KioFtp::rename(const QUrl &src, const QUrl &dest, KIO::JobFlags flags)
 {
     Q_UNUSED(src)
     Q_UNUSED(dest)
     Q_UNUSED(flags)
 
-    error(KIO::ERR_UNSUPPORTED_ACTION, QString());
+    return KIO::WorkerResult::fail(KIO::ERR_UNSUPPORTED_ACTION, QString());
 }
 
-void KioFtp::get(const QUrl &url)
+KIO::WorkerResult KioFtp::get(const QUrl &url)
 {
-    if (!testConnection()) {
-        return;
+    if (auto result = testConnection(); !result.success()) {
+        return result;
     }
 
     qCDebug(BLUEDEVIL_KIO_OBEXFTP_LOG) << "get" << url;
@@ -209,7 +202,7 @@ void KioFtp::get(const QUrl &url)
 
     totalSize(tempFile.size());
     data(tempFile.readAll());
-    finished();
+    return KIO::WorkerResult::pass();
 }
 
 bool KioFtp::cancelTransfer(const QString &transfer)
@@ -231,52 +224,52 @@ void KioFtp::setHost(const QString &host, quint16 port, const QString &user, con
     connectToHost();
 }
 
-void KioFtp::del(const QUrl &url, bool isfile)
+KIO::WorkerResult KioFtp::del(const QUrl &url, bool isfile)
 {
     Q_UNUSED(isfile)
 
-    if (!testConnection()) {
-        return;
+    if (auto result = testConnection(); !result.success()) {
+        return result;
     }
 
     qCDebug(BLUEDEVIL_KIO_OBEXFTP_LOG) << "Del: " << url.url();
 
-    if (!changeFolder(urlDirectory(url))) {
-        return;
+    if (auto result = changeFolder(urlDirectory(url)); !result.success()) {
+        return result;
     }
 
-    if (!deleteFile(urlFileName(url))) {
-        return;
+    if (auto result = deleteFile(urlFileName(url)); !result.success()) {
+        return result;
     }
 
-    finished();
+    return KIO::WorkerResult::pass();
 }
 
-void KioFtp::mkdir(const QUrl &url, int permissions)
+KIO::WorkerResult KioFtp::mkdir(const QUrl &url, int permissions)
 {
     Q_UNUSED(permissions)
 
-    if (!testConnection()) {
-        return;
+    if (auto result = testConnection(); !result.success()) {
+        return result;
     }
 
     qCDebug(BLUEDEVIL_KIO_OBEXFTP_LOG) << "MkDir: " << url.url();
 
-    if (!changeFolder(urlDirectory(url))) {
-        return;
+    if (auto result = changeFolder(urlDirectory(url)); !result.success()) {
+        return result;
     }
 
-    if (!createFolder(urlFileName(url))) {
-        return;
+    if (auto result = createFolder(urlFileName(url)); !result.success()) {
+        return result;
     }
 
-    finished();
+    return KIO::WorkerResult::pass();
 }
 
-void KioFtp::stat(const QUrl &url)
+KIO::WorkerResult KioFtp::stat(const QUrl &url)
 {
-    if (!testConnection()) {
-        return;
+    if (auto result = testConnection(); !result.success()) {
+        return result;
     }
 
     qCDebug(BLUEDEVIL_KIO_OBEXFTP_LOG) << "Stat: " << url.url();
@@ -284,38 +277,33 @@ void KioFtp::stat(const QUrl &url)
     qCDebug(BLUEDEVIL_KIO_OBEXFTP_LOG) << "Stat File: " << urlFileName(url);
     qCDebug(BLUEDEVIL_KIO_OBEXFTP_LOG) << "Empty Dir: " << urlDirectory(url).isEmpty();
 
-    statHelper(url);
-
-    qCDebug(BLUEDEVIL_KIO_OBEXFTP_LOG) << "Finished";
-    finished();
+    return statHelper(url);
 }
 
-void KioFtp::copyHelper(const QUrl &src, const QUrl &dest)
+KIO::WorkerResult KioFtp::copyHelper(const QUrl &src, const QUrl &dest)
 {
     if (src.scheme() == QLatin1String("obexftp") && dest.scheme() == QLatin1String("obexftp")) {
-        copyWithinObexftp(src, dest);
-        return;
+        return copyWithinObexftp(src, dest);
     }
 
     if (src.scheme() == QLatin1String("obexftp")) {
-        copyFromObexftp(src, dest);
-        return;
+        return copyFromObexftp(src, dest);
     }
 
     if (dest.scheme() == QLatin1String("obexftp")) {
-        copyToObexftp(src, dest);
-        return;
+        return copyToObexftp(src, dest);
     }
 
     qCDebug(BLUEDEVIL_KIO_OBEXFTP_LOG) << "This shouldn't happen...";
+    return KIO::WorkerResult::fail(KIO::ERR_UNKNOWN, i18n("This should not happen"));
 }
 
-void KioFtp::copyWithinObexftp(const QUrl &src, const QUrl &dest)
+KIO::WorkerResult KioFtp::copyWithinObexftp(const QUrl &src, const QUrl &dest)
 {
     qCDebug(BLUEDEVIL_KIO_OBEXFTP_LOG) << "Source: " << src << "Dest:" << dest;
 
-    if (!changeFolder(urlDirectory(src))) {
-        return;
+    if (auto result = changeFolder(urlDirectory(src)); !result.success()) {
+        return result;
     }
 
     BluezQt::PendingCall *call = m_transfer->copyFile(src.path(), dest.path());
@@ -324,27 +312,28 @@ void KioFtp::copyWithinObexftp(const QUrl &src, const QUrl &dest)
     if (call->error()) {
         // Copying files within obexftp is currently not implemented in obexd
         if (call->errorText() == QLatin1String("Not Implemented")) {
-            error(KIO::ERR_UNSUPPORTED_ACTION, src.path());
+            return KIO::WorkerResult::fail(KIO::ERR_UNSUPPORTED_ACTION, src.path());
         } else {
-            error(KIO::ERR_CANNOT_WRITE, src.path());
+            return KIO::WorkerResult::fail(KIO::ERR_CANNOT_WRITE, src.path());
         }
-        return;
     }
 
-    finished();
+    return KIO::WorkerResult::pass();
 }
 
-void KioFtp::copyFromObexftp(const QUrl &src, const QUrl &dest)
+KIO::WorkerResult KioFtp::copyFromObexftp(const QUrl &src, const QUrl &dest)
 {
     qCDebug(BLUEDEVIL_KIO_OBEXFTP_LOG) << "Source: " << src << "Dest:" << dest;
 
-    if (!changeFolder(urlDirectory(src))) {
-        return;
+    if (auto result = changeFolder(urlDirectory(src)); !result.success()) {
+        return result;
     }
 
     if (!m_statMap.contains(src.toDisplayString())) {
-        bool ok;
-        listFolder(urlUpDir(src), &ok);
+        auto [result, _] = listFolder(urlUpDir(src));
+        if (!result.success()) {
+            return result;
+        }
     }
 
     BluezQt::PendingCall *call = m_transfer->getFile(dest.path(), urlFileName(src));
@@ -356,14 +345,16 @@ void KioFtp::copyFromObexftp(const QUrl &src, const QUrl &dest)
     BluezQt::ObexTransferPtr transfer = call->value().value<BluezQt::ObexTransferPtr>();
     TransferFileJob *getFile = new TransferFileJob(transfer, this);
     getFile->exec();
+
+    return KIO::WorkerResult::pass();
 }
 
-void KioFtp::copyToObexftp(const QUrl &src, const QUrl &dest)
+KIO::WorkerResult KioFtp::copyToObexftp(const QUrl &src, const QUrl &dest)
 {
     qCDebug(BLUEDEVIL_KIO_OBEXFTP_LOG) << "Source:" << src << "Dest:" << dest;
 
-    if (!changeFolder(urlDirectory(dest))) {
-        return;
+    if (auto result = changeFolder(urlDirectory(dest)); !result.success()) {
+        return result;
     }
 
     BluezQt::PendingCall *call = m_transfer->putFile(src.path(), urlFileName(dest));
@@ -375,14 +366,16 @@ void KioFtp::copyToObexftp(const QUrl &src, const QUrl &dest)
     BluezQt::ObexTransferPtr transfer = call->value().value<BluezQt::ObexTransferPtr>();
     TransferFileJob *putFile = new TransferFileJob(transfer, this);
     putFile->exec();
+
+    return KIO::WorkerResult::pass();
 }
 
-void KioFtp::statHelper(const QUrl &url)
+KIO::WorkerResult KioFtp::statHelper(const QUrl &url)
 {
     if (m_statMap.contains(url.toDisplayString())) {
         qCDebug(BLUEDEVIL_KIO_OBEXFTP_LOG) << "statMap contains the url";
         statEntry(m_statMap.value(url.toDisplayString()));
-        return;
+        return KIO::WorkerResult::pass();
     }
 
     if (urlIsRoot(url)) {
@@ -395,19 +388,18 @@ void KioFtp::statHelper(const QUrl &url)
         qCDebug(BLUEDEVIL_KIO_OBEXFTP_LOG) << "Adding stat cache" << url.toDisplayString();
         m_statMap.insert(url.toDisplayString(), entry);
         statEntry(entry);
-        return;
+        return KIO::WorkerResult::pass();
     }
 
     qCDebug(BLUEDEVIL_KIO_OBEXFTP_LOG) << "statMap does not contains the url";
 
-    if (!changeFolder(urlDirectory(url))) {
-        return;
+    if (auto result = changeFolder(urlDirectory(url)); !result.success()) {
+        return result;
     }
 
-    bool ok;
-    listFolder(urlUpDir(url), &ok);
-    if (!ok) {
-        return;
+    auto [result, _] = listFolder(urlUpDir(url));
+    if (!result.success()) {
+        return result;
     }
 
     if (!m_statMap.contains(url.toDisplayString())) {
@@ -415,9 +407,11 @@ void KioFtp::statHelper(const QUrl &url)
     }
 
     statEntry(m_statMap.value(url.toDisplayString()));
+
+    return KIO::WorkerResult::pass();
 }
 
-QList<KIO::UDSEntry> KioFtp::listFolder(const QUrl &url, bool *ok)
+KioFtp::ListResult KioFtp::listFolder(const QUrl &url)
 {
     QList<KIO::UDSEntry> list;
 
@@ -426,9 +420,7 @@ QList<KIO::UDSEntry> KioFtp::listFolder(const QUrl &url, bool *ok)
 
     if (call->error()) {
         qCDebug(BLUEDEVIL_KIO_OBEXFTP_LOG) << "List folder error" << call->errorText();
-        error(KIO::ERR_CANNOT_OPEN_FOR_READING, url.path());
-        *ok = false;
-        return list;
+        return {KIO::WorkerResult::fail(KIO::ERR_CANNOT_OPEN_FOR_READING, url.path()), {}};
     }
 
     const QList<BluezQt::ObexFileTransferEntry> &items = call->value().value<QList<BluezQt::ObexFileTransferEntry>>();
@@ -474,44 +466,40 @@ QList<KIO::UDSEntry> KioFtp::listFolder(const QUrl &url, bool *ok)
         }
     }
 
-    *ok = true;
-    return list;
+    return {KIO::WorkerResult::pass(), list};
 }
 
-bool KioFtp::changeFolder(const QString &folder)
+KIO::WorkerResult KioFtp::changeFolder(const QString &folder)
 {
     BluezQt::PendingCall *call = m_transfer->changeFolder(folder);
     call->waitForFinished();
 
     if (call->error()) {
-        error(KIO::ERR_CANNOT_ENTER_DIRECTORY, folder);
-        return false;
+        return KIO::WorkerResult::fail(KIO::ERR_CANNOT_ENTER_DIRECTORY, folder);
     }
-    return true;
+    return KIO::WorkerResult::pass();
 }
 
-bool KioFtp::createFolder(const QString &folder)
+KIO::WorkerResult KioFtp::createFolder(const QString &folder)
 {
     BluezQt::PendingCall *call = m_transfer->createFolder(folder);
     call->waitForFinished();
 
     if (call->error()) {
-        error(KIO::ERR_CANNOT_MKDIR, folder);
-        return false;
+        return KIO::WorkerResult::fail(KIO::ERR_CANNOT_MKDIR, folder);
     }
-    return true;
+    return KIO::WorkerResult::pass();
 }
 
-bool KioFtp::deleteFile(const QString &file)
+KIO::WorkerResult KioFtp::deleteFile(const QString &file)
 {
     BluezQt::PendingCall *call = m_transfer->deleteFile(file);
     call->waitForFinished();
 
     if (call->error()) {
-        error(KIO::ERR_CANNOT_DELETE, file);
-        return false;
+        return KIO::WorkerResult::fail(KIO::ERR_CANNOT_DELETE, file);
     }
-    return true;
+    return KIO::WorkerResult::pass();
 }
 
 void KioFtp::updateRootEntryIcon(KIO::UDSEntry &entry, const QString &memoryType)

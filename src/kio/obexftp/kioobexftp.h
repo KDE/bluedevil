@@ -15,44 +15,48 @@
 
 #include <QObject>
 
-#include <KIO/SlaveBase>
+#include <KIO/WorkerBase>
 
 #include <BluezQt/ObexFileTransfer>
 
-class KioFtp : public QObject, public KIO::SlaveBase
+class KioFtp : public QObject, public KIO::WorkerBase
 {
     Q_OBJECT
 
 public:
     KioFtp(const QByteArray &pool, const QByteArray &app);
 
-    void copy(const QUrl &src, const QUrl &dest, int permissions, KIO::JobFlags flags) override;
-    void listDir(const QUrl &url) override;
+    KIO::WorkerResult copy(const QUrl &src, const QUrl &dest, int permissions, KIO::JobFlags flags) override;
+    KIO::WorkerResult listDir(const QUrl &url) override;
     void setHost(const QString &host, quint16 port, const QString &user, const QString &pass) override;
-    void stat(const QUrl &url) override;
-    void del(const QUrl &url, bool isfile) override;
-    void mkdir(const QUrl &url, int permissions) override;
-    void rename(const QUrl &src, const QUrl &dest, KIO::JobFlags flags) override;
-    void get(const QUrl &url) override;
+    KIO::WorkerResult stat(const QUrl &url) override;
+    KIO::WorkerResult del(const QUrl &url, bool isfile) override;
+    KIO::WorkerResult mkdir(const QUrl &url, int permissions) override;
+    KIO::WorkerResult rename(const QUrl &src, const QUrl &dest, KIO::JobFlags flags) override;
+    KIO::WorkerResult get(const QUrl &url) override;
 
     bool cancelTransfer(const QString &transfer);
 
 private:
-    void copyHelper(const QUrl &src, const QUrl &dest);
-    void copyWithinObexftp(const QUrl &src, const QUrl &dest);
-    void copyFromObexftp(const QUrl &src, const QUrl &dest);
-    void copyToObexftp(const QUrl &src, const QUrl &dest);
-    void statHelper(const QUrl &url);
+    [[nodiscard]] KIO::WorkerResult copyHelper(const QUrl &src, const QUrl &dest);
+    [[nodiscard]] KIO::WorkerResult copyWithinObexftp(const QUrl &src, const QUrl &dest);
+    [[nodiscard]] KIO::WorkerResult copyFromObexftp(const QUrl &src, const QUrl &dest);
+    [[nodiscard]] KIO::WorkerResult copyToObexftp(const QUrl &src, const QUrl &dest);
+    [[nodiscard]] KIO::WorkerResult statHelper(const QUrl &url);
 
-    QList<KIO::UDSEntry> listFolder(const QUrl &url, bool *ok);
-    bool changeFolder(const QString &folder);
-    bool createFolder(const QString &folder);
-    bool deleteFile(const QString &file);
+    struct ListResult {
+        KIO::WorkerResult result;
+        QList<KIO::UDSEntry> entries;
+    };
+    [[nodiscard]] ListResult listFolder(const QUrl &url);
+    [[nodiscard]] KIO::WorkerResult changeFolder(const QString &folder);
+    [[nodiscard]] KIO::WorkerResult createFolder(const QString &folder);
+    [[nodiscard]] KIO::WorkerResult deleteFile(const QString &file);
 
     void updateRootEntryIcon(KIO::UDSEntry &entry, const QString &memoryType);
     bool createSession(const QString &target);
     void connectToHost();
-    bool testConnection();
+    [[nodiscard]] KIO::WorkerResult testConnection();
 
 private:
     QMap<QString, KIO::UDSEntry> m_statMap;
