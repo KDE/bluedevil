@@ -47,7 +47,7 @@ PlasmaExtras.Representation {
         enabled: root.emptyList
 
         text: bluetoothApplet.addDeviceAction.text
-        icon.name: "list-add"
+        icon.name: "list-add-symbolic"
 
         onTriggered: bluetoothApplet.addDeviceAction.trigger()
     }

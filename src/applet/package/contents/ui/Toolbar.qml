@@ -49,7 +49,7 @@ PlasmaExtras.PlasmoidHeading {
             visible: !(Plasmoid.containmentDisplayHints & PlasmaCore.Types.ContainmentDrawsPlasmoidHeading)
             enabled: qAction.visible
 
-            icon.name: "list-add"
+            icon.name: "list-add-symbolic"
 
             onClicked: qAction.trigger()
 
@@ -65,7 +65,7 @@ PlasmaExtras.PlasmoidHeading {
             property QtObject /*QAction*/ qAction: Plasmoid.internalAction("configure")
 
             visible: !(Plasmoid.containmentDisplayHints & PlasmaCore.Types.ContainmentDrawsPlasmoidHeading)
-            icon.name: "configure"
+            icon.name: "configure-symbolic"
             onClicked: qAction.trigger()
 
             PlasmaComponents3.ToolTip {

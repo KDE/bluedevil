@@ -38,12 +38,12 @@ PlasmoidItem {
 
     Plasmoid.icon: {
         if (connectedDevices.length > 0) {
-            return "preferences-system-bluetooth-activated-symbolic";
+            return "network-bluetooth-activated-symbolic";
         }
         if (!btManager.bluetoothOperational) {
-            return "preferences-system-bluetooth-inactive-symbolic";
+            return "network-bluetooth-inactive-symbolic";
         }
-        return "preferences-system-bluetooth-symbolic";
+        return "network-bluetooth-symbolic";
     }
     toolTipMainText: i18n("Bluetooth")
     toolTipSubText: {
@@ -135,7 +135,7 @@ PlasmoidItem {
         PlasmaCore.Action {
             id: addAction
             text: i18n("Add New Device…")
-            icon.name: "list-add"
+            icon.name: "list-add-symbolic"
             visible: !btManager.bluetoothBlocked
             onTriggered: PlasmaBt.LaunchApp.launchWizard()
         },
@@ -154,7 +154,7 @@ PlasmoidItem {
     PlasmaCore.Action {
         id: configureAction
         text: i18n("Configure &Bluetooth…")
-        icon.name: "configure"
+        icon.name: "configure-symbolic"
         onTriggered: KCMLauncher.openSystemSettings("kcm_bluetooth")
     }
 

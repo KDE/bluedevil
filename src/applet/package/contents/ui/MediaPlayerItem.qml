@@ -58,7 +58,7 @@ ColumnLayout {
 
         PlasmaComponents3.ToolButton {
             id: previousButton
-            icon.name: "media-skip-backward"
+            icon.name: "media-skip-backward-symbolic"
 
             onClicked: MediaPlayer.previous()
         }
@@ -72,7 +72,7 @@ ColumnLayout {
 
         PlasmaComponents3.ToolButton {
             id: stopButton
-            icon.name: "media-playback-stop"
+            icon.name: "media-playback-stop-symbolic"
             enabled: MediaPlayer && MediaPlayer.status !== BluezQt.MediaPlayer.Stopped
 
             onClicked: MediaPlayer.stop()
@@ -80,7 +80,7 @@ ColumnLayout {
 
         PlasmaComponents3.ToolButton {
             id: nextButton
-            icon.name: "media-skip-forward"
+            icon.name: "media-skip-forward-symbolic"
 
             onClicked: MediaPlayer.next()
         }
@@ -105,9 +105,9 @@ ColumnLayout {
         }
 
         if (MediaPlayer.status !== BluezQt.MediaPlayer.Playing) {
-            return "media-playback-start";
+            return "media-playback-start-symbolic";
         } else {
-            return "media-playback-pause";
+            return "media-playback-pause-symbolic";
         }
     }
 

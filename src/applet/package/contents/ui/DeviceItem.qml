@@ -32,7 +32,7 @@ PlasmaExtras.ExpandableListItem {
     isBusy: connecting
     isDefault: model.Connected
     defaultActionButtonAction: Action {
-        icon.name: model.Connected ? "network-disconnect" : "network-connect"
+        icon.name: model.Connected ? "network-disconnect-symbolic" : "network-connect-symbolic"
         text: model.Connected ? i18n("Disconnect") : i18n("Connect")
         onTriggered: connectToDevice()
     }
@@ -41,7 +41,7 @@ PlasmaExtras.ExpandableListItem {
         Action {
             id: browseFilesButton
             enabled: Uuids.indexOf(BluezQt.Services.ObexFileTransfer) !== -1
-            icon.name: "folder"
+            icon.name: "folder-symbolic"
             text: i18n("Browse Files")
 
             onTriggered: {
@@ -52,7 +52,7 @@ PlasmaExtras.ExpandableListItem {
         Action {
             id: sendFileButton
             enabled: Uuids.indexOf(BluezQt.Services.ObexObjectPush) !== -1
-            icon.name: "folder-download"
+            icon.name: "folder-download-symbolic"
             text: i18n("Send File")
 
             onTriggered: {
@@ -111,7 +111,7 @@ PlasmaExtras.ExpandableListItem {
 
                 PlasmaExtras.MenuItem {
                     text: i18n("Copy")
-                    icon: "edit-copy"
+                    icon: "edit-copy-symbolic"
                     enabled: contextMenu.text !== ""
                     onClicked: clipboard.content = contextMenu.text
                 }
