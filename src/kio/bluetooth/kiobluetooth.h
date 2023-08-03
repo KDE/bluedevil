@@ -16,14 +16,14 @@
 #include <QObject>
 #include <QUrl>
 
-#include <kio/slavebase.h>
+#include <KIO/WorkerBase>
 
 /**
- * @short This class implements a bluetooth kioslave that list devices and their services.
+ * @short This class implements a bluetooth kioworker that list devices and their services.
  */
 class KioBluetoothPrivate;
 
-class KioBluetooth : public QObject, public KIO::SlaveBase
+class KioBluetooth : public QObject, public KIO::WorkerBase
 {
     Q_OBJECT
 
@@ -42,7 +42,7 @@ public:
      * get function shall not do much other than setting a mimetype and returning some data that
      * could be useful for the mimetype handler.
      */
-    void get(const QUrl &url) override;
+    KIO::WorkerResult get(const QUrl &url) override;
 
     /**
      * List current directory. There are two types of current directories in this kio:
@@ -52,9 +52,9 @@ public:
      * 2. Remote device directory (something like bluetoth:/00_12_34_56_6d_34). This directory lists
      *    the services provided by the given remote device.
      */
-    void listDir(const QUrl &url) override;
+    KIO::WorkerResult listDir(const QUrl &url) override;
 
-    void stat(const QUrl &url) override;
+    KIO::WorkerResult stat(const QUrl &url) override;
 
     /**
      * As at the momento we don't handle more than one level url paths, @p setHost has not much
@@ -83,7 +83,7 @@ public:
      * Called by @p Bluetooth::listDir when listing a remote device (something like
      * bluetoth:/00_12_34_56_6d_34) services.
      */
-    void listRemoteDeviceServices();
+    [[nodiscard]] KIO::WorkerResult listRemoteDeviceServices();
 
 public Q_SLOTS:
     void listDevice(const DeviceInfo device);

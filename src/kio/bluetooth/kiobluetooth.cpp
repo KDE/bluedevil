@@ -23,7 +23,7 @@
 class KIOPluginForMetaData : public QObject
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.kde.kio.slave.bluetooth" FILE "bluetooth.json")
+    Q_PLUGIN_METADATA(IID "org.kde.kio.worker.bluetooth" FILE "bluetooth.json")
 };
 
 extern "C" int Q_DECL_EXPORT kdemain(int argc, char **argv)
@@ -35,13 +35,13 @@ extern "C" int Q_DECL_EXPORT kdemain(int argc, char **argv)
         exit(-1);
     }
 
-    KioBluetooth slave(argv[2], argv[3]);
-    slave.dispatchLoop();
+    KioBluetooth worker(argv[2], argv[3]);
+    worker.dispatchLoop();
     return 0;
 }
 
 KioBluetooth::KioBluetooth(const QByteArray &pool, const QByteArray &app)
-    : SlaveBase(QByteArrayLiteral("bluetooth"), pool, app)
+    : KIO::WorkerBase(QByteArrayLiteral("bluetooth"), pool, app)
 {
     qDBusRegisterMetaType<DeviceInfo>();
     qDBusRegisterMetaType<QMapDeviceInfo>();
@@ -87,7 +87,7 @@ QList<KioBluetooth::Service> KioBluetooth::getSupportedServices(const QStringLis
     return retValue;
 }
 
-void KioBluetooth::listRemoteDeviceServices()
+KIO::WorkerResult KioBluetooth::listRemoteDeviceServices()
 {
     infoMessage(i18n("Retrieving services…"));
 
@@ -97,8 +97,7 @@ void KioBluetooth::listRemoteDeviceServices()
     if (info.isEmpty()) {
         qCDebug(BLUETOOTH) << "Invalid hostname!";
         infoMessage(i18n("This address is unavailable."));
-        finished();
-        return;
+        return KIO::WorkerResult::pass();
     }
 
     const QList<Service> &services = getSupportedServices(info.value(QStringLiteral("UUIDs")).split(QLatin1Char(',')));
@@ -137,7 +136,7 @@ void KioBluetooth::listRemoteDeviceServices()
     }
 
     infoMessage(QString());
-    finished();
+    return KIO::WorkerResult::pass();
 }
 
 void KioBluetooth::listDownload()
@@ -166,7 +165,6 @@ void KioBluetooth::listDevices()
     m_kded->startDiscovering(10 * 1000);
 
     infoMessage(i18n("Scanning for new devices…"));
-    finished();
 }
 
 void KioBluetooth::listDevice(const DeviceInfo device)
@@ -188,7 +186,7 @@ void KioBluetooth::listDevice(const DeviceInfo device)
     listEntry(entry);
 }
 
-void KioBluetooth::listDir(const QUrl &url)
+KIO::WorkerResult KioBluetooth::listDir(const QUrl &url)
 {
     qCDebug(BLUETOOTH) << "Listing..." << url;
 
@@ -200,31 +198,31 @@ void KioBluetooth::listDir(const QUrl &url)
     qCDebug(BLUETOOTH) << m_kded->isOnline().value();
     if (!m_kded->isOnline().value()) {
         infoMessage(i18n("No Bluetooth adapters have been found."));
-        finished();
-        return;
+        return KIO::WorkerResult::pass();
     }
 
     if (!m_hasCurrentHost) {
         listDownload();
         listDevices();
+        return KIO::WorkerResult::pass();
     } else {
-        listRemoteDeviceServices();
+        return listRemoteDeviceServices();
     }
 }
 
-void KioBluetooth::stat(const QUrl &url)
+KIO::WorkerResult KioBluetooth::stat(const QUrl &url)
 {
     qCDebug(BLUETOOTH) << "Stat: " << url;
-    finished();
+    return KIO::WorkerResult::pass();
 }
 
-void KioBluetooth::get(const QUrl &url)
+KIO::WorkerResult KioBluetooth::get(const QUrl &url)
 {
     m_kded->stopDiscovering();
     qCDebug(BLUETOOTH) << "Get: " << url;
     qCDebug(BLUETOOTH) << m_supportedServices.value(url.fileName()).mimetype;
     mimeType(m_supportedServices.value(url.fileName()).mimetype);
-    finished();
+    return KIO::WorkerResult::pass();
 }
 
 void KioBluetooth::setHost(const QString &hostname, quint16 port, const QString &user, const QString &pass)
