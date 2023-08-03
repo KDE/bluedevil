@@ -156,7 +156,7 @@ SimpleKCM {
             }
 
             QQC2.Button {
-                icon.name: "folder"
+                icon.name: "document-open-folder-symbolic"
                 display: QQC2.AbstractButton.IconOnly
                 text: i18n("Select folder")
                 onClicked: folderDialogLoader.active = true

@@ -22,7 +22,7 @@ ScrollViewKCM {
         Kirigami.Action {
             id: enableAction
             text: i18nc("@action: button as in, 'enable Bluetooth'", "Enabled")
-            icon.name: "network-bluetooth"
+            icon.name: "network-bluetooth-symbolic"
             checkable: true
             checked: BluezQt.Manager.bluetoothOperational
             onTriggered: {
@@ -36,13 +36,13 @@ ScrollViewKCM {
         },
         Kirigami.Action {
             text: i18n("Add New Device…")
-            icon.name: "list-add"
+            icon.name: "list-add-symbolic"
             onTriggered: kcm.runWizard()
             visible: BluezQt.Manager.bluetoothOperational
         },
         Kirigami.Action {
             text: i18n("Configure…")
-            icon.name: "configure"
+            icon.name: "configure-symbolic"
             onTriggered: kcm.push("General.qml")
             visible: BluezQt.Manager.bluetoothOperational
         }
@@ -93,14 +93,14 @@ ScrollViewKCM {
             customFooterActions: [
                 Kirigami.Action {
                     text: i18nc("@action:button", "Forget Device")
-                    icon.name: "edit-delete-remove"
+                    icon.name: "edit-delete-remove-symbolic"
                     onTriggered: {
                         dialog.accept();
                     }
                 },
                 Kirigami.Action {
                     text: i18nc("@action:button", "Cancel")
-                    icon.name: "dialog-cancel"
+                    icon.name: "dialog-cancel-symbolic"
                     onTriggered: {
                         dialog.reject();
                     }
@@ -159,7 +159,7 @@ ScrollViewKCM {
             // We cannot use the adapter count here because that can be zero when
             // bluetooth is disabled even when there are physical devices
             visible: BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown
-            icon.name: "edit-none"
+            icon.name: "edit-none-symbolic"
             text: i18n("No Bluetooth adapters found")
             width: parent.width - (Kirigami.Units.largeSpacing * 4)
             anchors.centerIn: parent
@@ -168,13 +168,13 @@ ScrollViewKCM {
         Kirigami.PlaceholderMessage {
             id: bluetoothDisabledMessage
             visible: BluezQt.Manager.operational && !BluezQt.Manager.bluetoothOperational && !noBluetoothMessage.visible
-            icon.name: "network-bluetooth"
+            icon.name: "network-bluetooth-inactive-symbolic"
             text: i18n("Bluetooth is disabled")
             width: parent.width - (Kirigami.Units.largeSpacing * 4)
             anchors.centerIn: parent
 
             helpfulAction: Kirigami.Action {
-                icon.name: "network-bluetooth"
+                icon.name: "network-bluetooth-symbolic"
                 text: i18n("Enable")
                 onTriggered: {
                     root.setBluetoothEnabled(true)
@@ -184,7 +184,7 @@ ScrollViewKCM {
 
         Kirigami.PlaceholderMessage {
             visible: !noBluetoothMessage.visible && !bluetoothDisabledMessage.visible && list.count === 0
-            icon.name: "network-bluetooth-activated"
+            icon.name: "network-bluetooth-activated-symbolic"
             text: i18n("No devices paired")
             width: parent.width - (Kirigami.Units.largeSpacing * 4)
             anchors.centerIn: parent
@@ -229,7 +229,7 @@ ScrollViewKCM {
             actions: [
                 Kirigami.Action {
                     text: model.Connected ? i18n("Disconnect") : i18n("Connect")
-                    icon.name: model.Connected ? "network-disconnect" : "network-connect"
+                    icon.name: model.Connected ? "network-disconnect-symbolic" : "network-connect-symbolic"
                     onTriggered: {
                         if (model.Connected) {
                             root.makeCall(model.Device.disconnectFromDevice())
@@ -240,7 +240,7 @@ ScrollViewKCM {
                 },
                 Kirigami.Action {
                     text: i18nc("@action:button %1 is the name of a Bluetooth device", "Forget \"%1\"", model.Name)
-                    icon.name: "edit-delete-remove"
+                    icon.name: "edit-delete-remove-symbolic"
                     onTriggered: {
                         const dialog = forgetDialogComponent.createObject(root, {
                             adapter: model.Adapter,
