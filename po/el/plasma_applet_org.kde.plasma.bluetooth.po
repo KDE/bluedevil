@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-02 02:08+0000\n"
+"POT-Creation-Date: 2023-08-12 02:01+0000\n"
 "PO-Revision-Date: 2023-01-04 10:55+0200\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -175,22 +175,22 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: package/contents/ui/FullRepresentation.qml:60
+#: package/contents/ui/FullRepresentation.qml:59
 #, kde-format
 msgid "Enable"
 msgstr "Ενεργοποίηση"
 
-#: package/contents/ui/FullRepresentation.qml:148
+#: package/contents/ui/FullRepresentation.qml:147
 #, kde-format
 msgid "No Bluetooth adapters available"
 msgstr "Μη διαθέσιμοι προσαρμογείς bluetooth"
 
-#: package/contents/ui/FullRepresentation.qml:150
+#: package/contents/ui/FullRepresentation.qml:149
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Το Bluetooth είναι απενεργοποιημένο"
 
-#: package/contents/ui/FullRepresentation.qml:152
+#: package/contents/ui/FullRepresentation.qml:151
 #, kde-format
 msgid "No devices found"
 msgstr "Δε βρέθηκαν συσκευές"

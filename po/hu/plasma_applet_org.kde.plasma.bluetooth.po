@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-02 02:08+0000\n"
+"POT-Creation-Date: 2023-08-12 02:01+0000\n"
 "PO-Revision-Date: 2021-12-29 16:52+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -175,23 +175,23 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr ""
 
-#: package/contents/ui/FullRepresentation.qml:60
+#: package/contents/ui/FullRepresentation.qml:59
 #, kde-format
 msgid "Enable"
 msgstr ""
 
-#: package/contents/ui/FullRepresentation.qml:148
+#: package/contents/ui/FullRepresentation.qml:147
 #, fuzzy, kde-format
 #| msgid "No Bluetooth Adapters Available"
 msgid "No Bluetooth adapters available"
 msgstr "Nem érhetők el Bluetooth adapterek"
 
-#: package/contents/ui/FullRepresentation.qml:150
+#: package/contents/ui/FullRepresentation.qml:149
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "A Bluetooth ki van kapcsolva"
 
-#: package/contents/ui/FullRepresentation.qml:152
+#: package/contents/ui/FullRepresentation.qml:151
 #, fuzzy, kde-format
 #| msgid "No Devices Found"
 msgid "No devices found"

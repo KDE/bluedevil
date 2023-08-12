@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-02 02:08+0000\n"
+"POT-Creation-Date: 2023-08-12 02:01+0000\n"
 "PO-Revision-Date: 2022-12-12 17:27+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -174,22 +174,22 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: package/contents/ui/FullRepresentation.qml:60
+#: package/contents/ui/FullRepresentation.qml:59
 #, kde-format
 msgid "Enable"
 msgstr "Activar"
 
-#: package/contents/ui/FullRepresentation.qml:148
+#: package/contents/ui/FullRepresentation.qml:147
 #, kde-format
 msgid "No Bluetooth adapters available"
 msgstr "Sem dispositivos Bluetooth disponíveis"
 
-#: package/contents/ui/FullRepresentation.qml:150
+#: package/contents/ui/FullRepresentation.qml:149
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "O Bluetooth está desactivado"
 
-#: package/contents/ui/FullRepresentation.qml:152
+#: package/contents/ui/FullRepresentation.qml:151
 #, kde-format
 msgid "No devices found"
 msgstr "Não foram encontrados dispositivos"
