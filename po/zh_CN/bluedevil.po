@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-01 23:29+0000\n"
+"POT-Creation-Date: 2023-08-18 01:56+0000\n"
 "PO-Revision-Date: 2023-08-02 12:38\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -207,7 +207,7 @@ msgstr "发送文件"
 msgid "Browse Files"
 msgstr "浏览文件"
 
-#: kio/bluetooth/kiobluetooth.cpp:72 kio/bluetooth/kiobluetooth.cpp:202
+#: kio/bluetooth/kiobluetooth.cpp:72 kio/bluetooth/kiobluetooth.cpp:200
 #, kde-format
 msgid "No Bluetooth adapters have been found."
 msgstr "没有找到蓝牙适配器。"
@@ -222,37 +222,42 @@ msgstr "正在获取服务…"
 msgid "This address is unavailable."
 msgstr "此地址不可用。"
 
-#: kio/bluetooth/kiobluetooth.cpp:148
+#: kio/bluetooth/kiobluetooth.cpp:147
 #, kde-format
 msgid "Received Files"
 msgstr "已接收文件"
 
-#: kio/bluetooth/kiobluetooth.cpp:168
+#: kio/bluetooth/kiobluetooth.cpp:167
 #, kde-format
 msgid "Scanning for new devices…"
 msgstr "正在扫描新设备…"
 
-#: kio/obexftp/kioobexftp.cpp:97 kio/obexftp/kioobexftp.cpp:99
+#: kio/obexftp/kioobexftp.cpp:96
 #, kde-format
 msgid "Obexd service is not running."
 msgstr "Obexd 服务并未运行。"
 
-#: kio/obexftp/kioobexftp.cpp:146
+#: kio/obexftp/kioobexftp.cpp:140
 #, kde-format
 msgid "Retrieving information from remote device…"
 msgstr "正在从远程设备获取信息…"
 
-#: kio/obexftp/kioobexftp.cpp:229
+#: kio/obexftp/kioobexftp.cpp:222
 #, kde-format
 msgid "Connecting to the device"
 msgstr "正在连接到设备"
 
-#: kio/obexftp/kioobexftp.cpp:532
+#: kio/obexftp/kioobexftp.cpp:298
+#, kde-format
+msgid "This should not happen"
+msgstr ""
+
+#: kio/obexftp/kioobexftp.cpp:520
 #, kde-format
 msgid "Phone memory"
 msgstr "手机存储"
 
-#: kio/obexftp/kioobexftp.cpp:535
+#: kio/obexftp/kioobexftp.cpp:523
 #, kde-format
 msgid "External memory"
 msgstr "外部存储"

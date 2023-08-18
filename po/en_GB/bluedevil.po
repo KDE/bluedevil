@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-01 23:29+0000\n"
+"POT-Creation-Date: 2023-08-18 01:56+0000\n"
 "PO-Revision-Date: 2022-11-26 12:50+0000\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
@@ -208,7 +208,7 @@ msgstr "Send File"
 msgid "Browse Files"
 msgstr "Browse Files"
 
-#: kio/bluetooth/kiobluetooth.cpp:72 kio/bluetooth/kiobluetooth.cpp:202
+#: kio/bluetooth/kiobluetooth.cpp:72 kio/bluetooth/kiobluetooth.cpp:200
 #, kde-format
 msgid "No Bluetooth adapters have been found."
 msgstr "No Bluetooth adapters have been found."
@@ -223,37 +223,42 @@ msgstr "Retrieving services…"
 msgid "This address is unavailable."
 msgstr "This address is unavailable."
 
-#: kio/bluetooth/kiobluetooth.cpp:148
+#: kio/bluetooth/kiobluetooth.cpp:147
 #, kde-format
 msgid "Received Files"
 msgstr "Received Files"
 
-#: kio/bluetooth/kiobluetooth.cpp:168
+#: kio/bluetooth/kiobluetooth.cpp:167
 #, kde-format
 msgid "Scanning for new devices…"
 msgstr "Scanning for new devices…"
 
-#: kio/obexftp/kioobexftp.cpp:97 kio/obexftp/kioobexftp.cpp:99
+#: kio/obexftp/kioobexftp.cpp:96
 #, kde-format
 msgid "Obexd service is not running."
 msgstr "Obexd service is not running."
 
-#: kio/obexftp/kioobexftp.cpp:146
+#: kio/obexftp/kioobexftp.cpp:140
 #, kde-format
 msgid "Retrieving information from remote device…"
 msgstr "Retrieving information from remote device…"
 
-#: kio/obexftp/kioobexftp.cpp:229
+#: kio/obexftp/kioobexftp.cpp:222
 #, kde-format
 msgid "Connecting to the device"
 msgstr "Connecting to the device"
 
-#: kio/obexftp/kioobexftp.cpp:532
+#: kio/obexftp/kioobexftp.cpp:298
+#, kde-format
+msgid "This should not happen"
+msgstr ""
+
+#: kio/obexftp/kioobexftp.cpp:520
 #, kde-format
 msgid "Phone memory"
 msgstr "Phone memory"
 
-#: kio/obexftp/kioobexftp.cpp:535
+#: kio/obexftp/kioobexftp.cpp:523
 #, kde-format
 msgid "External memory"
 msgstr "External memory"

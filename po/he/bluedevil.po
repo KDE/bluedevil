@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-01 23:29+0000\n"
+"POT-Creation-Date: 2023-08-18 01:56+0000\n"
 "PO-Revision-Date: 2017-05-16 06:51-0400\n"
 "Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
 "Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
@@ -211,7 +211,7 @@ msgstr "שלח קובץ"
 msgid "Browse Files"
 msgstr "דפדפן בקבצים"
 
-#: kio/bluetooth/kiobluetooth.cpp:72 kio/bluetooth/kiobluetooth.cpp:202
+#: kio/bluetooth/kiobluetooth.cpp:72 kio/bluetooth/kiobluetooth.cpp:200
 #, kde-format
 msgid "No Bluetooth adapters have been found."
 msgstr "לא נמצאו מתאמי בלוטוס"
@@ -227,39 +227,44 @@ msgstr "מאחר שירותים..."
 msgid "This address is unavailable."
 msgstr "כתובת זו אינה זמינה."
 
-#: kio/bluetooth/kiobluetooth.cpp:148
+#: kio/bluetooth/kiobluetooth.cpp:147
 #, kde-format
 msgid "Received Files"
 msgstr "מקבל קבצים"
 
-#: kio/bluetooth/kiobluetooth.cpp:168
+#: kio/bluetooth/kiobluetooth.cpp:167
 #, fuzzy, kde-format
 #| msgid "Scanning for new devices..."
 msgid "Scanning for new devices…"
 msgstr "מחפש התקנים חדשים..."
 
-#: kio/obexftp/kioobexftp.cpp:97 kio/obexftp/kioobexftp.cpp:99
+#: kio/obexftp/kioobexftp.cpp:96
 #, kde-format
 msgid "Obexd service is not running."
 msgstr "השירות Obexd לא רץ."
 
-#: kio/obexftp/kioobexftp.cpp:146
+#: kio/obexftp/kioobexftp.cpp:140
 #, fuzzy, kde-format
 #| msgid "Retrieving information from remote device..."
 msgid "Retrieving information from remote device…"
 msgstr "מאחזר מידע מההתקן המרוחק"
 
-#: kio/obexftp/kioobexftp.cpp:229
+#: kio/obexftp/kioobexftp.cpp:222
 #, kde-format
 msgid "Connecting to the device"
 msgstr "מתחבר להתקן"
 
-#: kio/obexftp/kioobexftp.cpp:532
+#: kio/obexftp/kioobexftp.cpp:298
+#, kde-format
+msgid "This should not happen"
+msgstr ""
+
+#: kio/obexftp/kioobexftp.cpp:520
 #, kde-format
 msgid "Phone memory"
 msgstr "איחסון פנימי"
 
-#: kio/obexftp/kioobexftp.cpp:535
+#: kio/obexftp/kioobexftp.cpp:523
 #, kde-format
 msgid "External memory"
 msgstr "אחסון חיצוני"

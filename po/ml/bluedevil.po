@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-01 23:29+0000\n"
+"POT-Creation-Date: 2023-08-18 01:56+0000\n"
 "PO-Revision-Date: 2019-12-12 22:59+0000\n"
 "Last-Translator: Vivek KJ Pazhedath <vivekkj2004@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc."
@@ -207,7 +207,7 @@ msgstr "ഫയൽ അയക്കുക "
 msgid "Browse Files"
 msgstr "ഫയലുകൾ ബ്രൌസുചെയ്യുക"
 
-#: kio/bluetooth/kiobluetooth.cpp:72 kio/bluetooth/kiobluetooth.cpp:202
+#: kio/bluetooth/kiobluetooth.cpp:72 kio/bluetooth/kiobluetooth.cpp:200
 #, kde-format
 msgid "No Bluetooth adapters have been found."
 msgstr "ബ്ലൂടൂത്ത് അഡാപ്റ്ററുകളൊന്നും കണ്ടെത്തിയില്ല."
@@ -223,38 +223,43 @@ msgstr "സേവനങ്ങൾ വീണ്ടെടുക്കുന്ന�
 msgid "This address is unavailable."
 msgstr "ഈ വിലാസം ലഭ്യമല്ല"
 
-#: kio/bluetooth/kiobluetooth.cpp:148
+#: kio/bluetooth/kiobluetooth.cpp:147
 #, kde-format
 msgid "Received Files"
 msgstr "ലഭിച്ച ഫയലുകൾ "
 
-#: kio/bluetooth/kiobluetooth.cpp:168
+#: kio/bluetooth/kiobluetooth.cpp:167
 #, fuzzy, kde-format
 #| msgid "Scanning for new devices..."
 msgid "Scanning for new devices…"
 msgstr "പുതിയ ഉപകാരണത്തിനായി തിരയുന്നു "
 
-#: kio/obexftp/kioobexftp.cpp:97 kio/obexftp/kioobexftp.cpp:99
+#: kio/obexftp/kioobexftp.cpp:96
 #, kde-format
 msgid "Obexd service is not running."
 msgstr ""
 
-#: kio/obexftp/kioobexftp.cpp:146
+#: kio/obexftp/kioobexftp.cpp:140
 #, kde-format
 msgid "Retrieving information from remote device…"
 msgstr ""
 
-#: kio/obexftp/kioobexftp.cpp:229
+#: kio/obexftp/kioobexftp.cpp:222
 #, kde-format
 msgid "Connecting to the device"
 msgstr "ഉപകരണത്തിലേക്ക് കണക്റ്റുചെയ്യുന്നു"
 
-#: kio/obexftp/kioobexftp.cpp:532
+#: kio/obexftp/kioobexftp.cpp:298
+#, kde-format
+msgid "This should not happen"
+msgstr ""
+
+#: kio/obexftp/kioobexftp.cpp:520
 #, kde-format
 msgid "Phone memory"
 msgstr "ഫോൺ മെമ്മറി"
 
-#: kio/obexftp/kioobexftp.cpp:535
+#: kio/obexftp/kioobexftp.cpp:523
 #, kde-format
 msgid "External memory"
 msgstr "ബാഹ്യ മെമ്മറി"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-01 23:29+0000\n"
+"POT-Creation-Date: 2023-08-18 01:56+0000\n"
 "PO-Revision-Date: 2023-05-08 04:22+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -208,7 +208,7 @@ msgstr "Sendi Dosieron"
 msgid "Browse Files"
 msgstr "Foliumi Dosieroj"
 
-#: kio/bluetooth/kiobluetooth.cpp:72 kio/bluetooth/kiobluetooth.cpp:202
+#: kio/bluetooth/kiobluetooth.cpp:72 kio/bluetooth/kiobluetooth.cpp:200
 #, kde-format
 msgid "No Bluetooth adapters have been found."
 msgstr "Neniuj Bluetooth-adaptiloj estis trovitaj."
@@ -223,37 +223,42 @@ msgstr "Prenante servojn..."
 msgid "This address is unavailable."
 msgstr "Ĉi tiu adreso ne estas disponebla."
 
-#: kio/bluetooth/kiobluetooth.cpp:148
+#: kio/bluetooth/kiobluetooth.cpp:147
 #, kde-format
 msgid "Received Files"
 msgstr "Ricevitaj Dosieroj"
 
-#: kio/bluetooth/kiobluetooth.cpp:168
+#: kio/bluetooth/kiobluetooth.cpp:167
 #, kde-format
 msgid "Scanning for new devices…"
 msgstr "Skanante por novaj aparatoj..."
 
-#: kio/obexftp/kioobexftp.cpp:97 kio/obexftp/kioobexftp.cpp:99
+#: kio/obexftp/kioobexftp.cpp:96
 #, kde-format
 msgid "Obexd service is not running."
 msgstr "Obexd-servo ne funkcias."
 
-#: kio/obexftp/kioobexftp.cpp:146
+#: kio/obexftp/kioobexftp.cpp:140
 #, kde-format
 msgid "Retrieving information from remote device…"
 msgstr "Prenante informojn de fora aparato..."
 
-#: kio/obexftp/kioobexftp.cpp:229
+#: kio/obexftp/kioobexftp.cpp:222
 #, kde-format
 msgid "Connecting to the device"
 msgstr "Konektante al la aparato"
 
-#: kio/obexftp/kioobexftp.cpp:532
+#: kio/obexftp/kioobexftp.cpp:298
+#, kde-format
+msgid "This should not happen"
+msgstr ""
+
+#: kio/obexftp/kioobexftp.cpp:520
 #, kde-format
 msgid "Phone memory"
 msgstr "Telefona memoro"
 
-#: kio/obexftp/kioobexftp.cpp:535
+#: kio/obexftp/kioobexftp.cpp:523
 #, kde-format
 msgid "External memory"
 msgstr "Ekstera memoro"
