@@ -34,6 +34,7 @@ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     KIO
     BluezQt
     KCMUtils
+    JobWidgets
 )
 
 find_package(SharedMimeInfo REQUIRED)

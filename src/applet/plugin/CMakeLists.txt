@@ -8,6 +8,7 @@ target_link_libraries(bluetoothplugin
     Qt::Core
     Qt::Qml
     KF6::Notifications
+    KF6::JobWidgets
     KF6::KIOGui
     KF6::BluezQt)
 
