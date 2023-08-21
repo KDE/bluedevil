@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-18 01:56+0000\n"
-"PO-Revision-Date: 2023-05-08 04:22+0100\n"
+"PO-Revision-Date: 2023-08-20 19:52+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -251,7 +251,7 @@ msgstr "Konektante al la aparato"
 #: kio/obexftp/kioobexftp.cpp:298
 #, kde-format
 msgid "This should not happen"
-msgstr ""
+msgstr "Ĉi tio ne devus okazi"
 
 #: kio/obexftp/kioobexftp.cpp:520
 #, kde-format
