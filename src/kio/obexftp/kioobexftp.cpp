@@ -168,9 +168,7 @@ KIO::WorkerResult KioFtp::copy(const QUrl &src, const QUrl &dest, int permission
 
     qCDebug(BLUEDEVIL_KIO_OBEXFTP_LOG) << "copy: " << src.url() << " to " << dest.url();
 
-    copyHelper(src, dest);
-
-    return KIO::WorkerResult::pass();
+    return copyHelper(src, dest);
 }
 
 KIO::WorkerResult KioFtp::rename(const QUrl &src, const QUrl &dest, KIO::JobFlags flags)
@@ -193,7 +191,9 @@ KIO::WorkerResult KioFtp::get(const QUrl &url)
     QTemporaryFile tempFile(QStringLiteral("%1/kioftp_XXXXXX.%2").arg(QDir::tempPath(), urlFileName(url)));
     tempFile.open();
 
-    copyHelper(url, QUrl::fromLocalFile(tempFile.fileName()));
+    if (auto result = copyHelper(url, QUrl::fromLocalFile(tempFile.fileName())); !result.success()) {
+        return result;
+    }
 
     QMimeDatabase mimeDatabase;
     const QMimeType &mime = mimeDatabase.mimeTypeForFile(tempFile.fileName());
