@@ -70,7 +70,7 @@ PlasmaExtras.ExpandableListItem {
             // Media Player
             MediaPlayerItem {
                 id: mediaPlayer
-                Layout.leftMargin: Kirigami.Units.gridUnit + PlasmaCore.Units.smallSpacing * 3
+                Layout.leftMargin: Kirigami.Units.gridUnit + Kirigami.Units.smallSpacing * 3
                 Layout.fillWidth: true
                 visible: MediaPlayer
             }
