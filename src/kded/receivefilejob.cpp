@@ -134,14 +134,12 @@ void ReceiveFileJob::showNotification()
                                 m_deviceName.toHtmlEscaped(),
                                 m_transfer->name()));
 
-    QStringList actions;
-    actions.append(i18nc("Button to accept the incoming file transfer and download it in the default download directory", "Accept"));
-    actions.append(i18nc("Deny the incoming file transfer", "Cancel"));
+    auto acceptAction =
+        notification->addAction(i18nc("Button to accept the incoming file transfer and download it in the default download directory", "Accept"));
+    auto cancelAction = notification->addAction(i18nc("Deny the incoming file transfer", "Cancel"));
 
-    notification->setActions(actions);
-
-    connect(notification, &KNotification::action1Activated, this, &ReceiveFileJob::slotAccept);
-    connect(notification, &KNotification::action2Activated, this, &ReceiveFileJob::slotCancel);
+    connect(acceptAction, &KNotificationAction::activated, this, &ReceiveFileJob::slotAccept);
+    connect(cancelAction, &KNotificationAction::activated, this, &ReceiveFileJob::slotCancel);
     connect(notification, &KNotification::closed, this, &ReceiveFileJob::slotCancel);
 
     notification->setComponentName(QStringLiteral("bluedevil"));

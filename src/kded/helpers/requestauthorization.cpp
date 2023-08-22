@@ -29,16 +29,14 @@ RequestAuthorization::RequestAuthorization(BluezQt::DevicePtr device, QObject *p
               "%1 is requesting access to this computer",
               m_device->name().toHtmlEscaped()));
 
-    QStringList actions;
-    actions.append(i18nc("Button to trust a bluetooth remote device and authorize it to connect", "Trust and Authorize"));
-    actions.append(i18nc("Button to authorize a bluetooth remote device to connect", "Authorize Only"));
-    actions.append(i18nc("Deny access to a remote bluetooth device", "Deny"));
+    auto trustAndAuthorizeAction =
+        notification->addAction(i18nc("Button to trust a bluetooth remote device and authorize it to connect", "Trust and Authorize"));
+    auto authorizeAction = notification->addAction(i18nc("Button to authorize a bluetooth remote device to connect", "Authorize Only"));
+    auto denyAction = notification->addAction(i18nc("Deny access to a remote bluetooth device", "Deny"));
 
-    notification->setActions(actions);
-
-    connect(notification, &KNotification::action1Activated, this, &RequestAuthorization::authorizeAndTrust);
-    connect(notification, &KNotification::action2Activated, this, &RequestAuthorization::authorize);
-    connect(notification, &KNotification::action3Activated, this, &RequestAuthorization::deny);
+    connect(trustAndAuthorizeAction, &KNotificationAction::activated, this, &RequestAuthorization::authorizeAndTrust);
+    connect(authorizeAction, &KNotificationAction::activated, this, &RequestAuthorization::authorize);
+    connect(denyAction, &KNotificationAction::activated, this, &RequestAuthorization::deny);
     connect(notification, &KNotification::closed, this, &RequestAuthorization::deny);
     connect(notification, &KNotification::ignored, this, &RequestAuthorization::deny);
     connect(parent, SIGNAL(agentCanceled()), this, SLOT(deny()));

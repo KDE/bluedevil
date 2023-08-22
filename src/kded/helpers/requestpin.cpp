@@ -35,12 +35,9 @@ RequestPin::RequestPin(BluezQt::DevicePtr device, bool numeric, QObject *parent)
               "PIN needed to pair with %1",
               m_device->name().toHtmlEscaped()));
 
-    QStringList actions;
-    actions.append(i18nc("Notification button which once clicked, a dialog to introduce the PIN will be shown", "Introduce PIN"));
+    auto action = m_notification->addAction(i18nc("Notification button which once clicked, a dialog to introduce the PIN will be shown", "Introduce PIN"));
 
-    m_notification->setActions(actions);
-
-    connect(m_notification, &KNotification::action1Activated, this, &RequestPin::introducePin);
+    connect(action, &KNotificationAction::activated, this, &RequestPin::introducePin);
     connect(m_notification, &KNotification::closed, this, &RequestPin::quit);
     connect(m_notification, &KNotification::ignored, this, &RequestPin::quit);
     connect(parent, SIGNAL(agentCanceled()), this, SLOT(quit()));

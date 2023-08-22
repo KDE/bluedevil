@@ -29,14 +29,11 @@ RequestConfirmation::RequestConfirmation(BluezQt::DevicePtr device, const QStrin
               m_device->name().toHtmlEscaped(),
               m_pin));
 
-    QStringList actions;
-    actions.append(i18nc("Notification button to know if the pin is correct or not", "PIN correct"));
-    actions.append(i18nc("Notification button to say that the PIN is wrong", "PIN incorrect"));
+    auto correctAction = notification->addAction(i18nc("Notification button to know if the pin is correct or not", "PIN correct"));
+    auto incorrectAction = notification->addAction(i18nc("Notification button to say that the PIN is wrong", "PIN incorrect"));
 
-    notification->setActions(actions);
-
-    connect(notification, &KNotification::action1Activated, this, &RequestConfirmation::pinCorrect);
-    connect(notification, &KNotification::action2Activated, this, &RequestConfirmation::pinWrong);
+    connect(correctAction, &KNotificationAction::activated, this, &RequestConfirmation::pinCorrect);
+    connect(incorrectAction, &KNotificationAction::activated, this, &RequestConfirmation::pinWrong);
     connect(notification, &KNotification::closed, this, &RequestConfirmation::pinWrong);
     connect(notification, &KNotification::ignored, this, &RequestConfirmation::pinWrong);
     connect(parent, SIGNAL(agentCanceled()), this, SLOT(pinWrong()));
