@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-18 01:56+0000\n"
-"PO-Revision-Date: 2023-08-02 12:38\n"
+"PO-Revision-Date: 2023-08-27 03:38\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -250,7 +250,7 @@ msgstr "正在连接到设备"
 #: kio/obexftp/kioobexftp.cpp:298
 #, kde-format
 msgid "This should not happen"
-msgstr ""
+msgstr "不应该发生这种情况。"
 
 #: kio/obexftp/kioobexftp.cpp:520
 #, kde-format
