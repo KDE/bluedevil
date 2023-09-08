@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-08 02:13+0000\n"
-"PO-Revision-Date: 2023-06-02 12:23+0300\n"
+"PO-Revision-Date: 2023-09-07 23:23+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.07.70\n"
+"X-Generator: Lokalize 23.11.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -315,7 +315,7 @@ msgstr "İptal"
 #: ui/main.qml:163
 #, kde-format
 msgid "No Bluetooth adapters found"
-msgstr "Herhangi bir Bluetooth bağdaştırıcı bulunamadı"
+msgstr "Herhangi bir Bluetooth bağdaştırıcısı bulunamadı"
 
 #: ui/main.qml:172
 #, kde-format

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-18 01:56+0000\n"
-"PO-Revision-Date: 2023-08-18 09:34+0300\n"
+"PO-Revision-Date: 2023-09-07 23:23+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -213,7 +213,7 @@ msgstr "Göz At"
 #: kio/bluetooth/kiobluetooth.cpp:72 kio/bluetooth/kiobluetooth.cpp:200
 #, kde-format
 msgid "No Bluetooth adapters have been found."
-msgstr "Bluetooth bağdaştırıcı bulunamadı."
+msgstr "Bluetooth bağdaştırıcısı bulunamadı."
 
 #: kio/bluetooth/kiobluetooth.cpp:92
 #, kde-format
