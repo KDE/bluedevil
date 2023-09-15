@@ -25,12 +25,14 @@ ScrollViewKCM {
             icon.name: "network-bluetooth-symbolic"
             checkable: true
             checked: BluezQt.Manager.bluetoothOperational
+            visible: BluezQt.Manager.rfkill.state !== BluezQt.Rfkill.Unknown
             onTriggered: {
                 root.setBluetoothEnabled(!BluezQt.Manager.bluetoothOperational)
             }
             displayComponent: QQC2.Switch {
                 text: enableAction.text
                 checked: enableAction.checked
+                visible: enableAction.visible
                 onToggled: enableAction.trigger()
             }
         },
