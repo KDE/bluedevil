@@ -11,9 +11,13 @@
 
 #include <BluezQt/PendingCall>
 
+#include <qqmlregistration.h>
+
 class Notify : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_SINGLETON
 
 public:
     explicit Notify(QObject *parent = nullptr);

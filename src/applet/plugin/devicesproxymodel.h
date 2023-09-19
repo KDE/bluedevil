@@ -9,9 +9,12 @@
 #include <BluezQt/DevicesModel>
 #include <QSortFilterProxyModel>
 
+#include <qqmlregistration.h>
+
 class DevicesProxyModel : public QSortFilterProxyModel
 {
     Q_OBJECT
+    QML_ELEMENT
 
 public:
     enum AdditionalRoles {

@@ -9,9 +9,13 @@
 #include <QObject>
 #include <QStringList>
 
+#include <qqmlregistration.h>
+
 class LaunchApp : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_SINGLETON
 
 public:
     explicit LaunchApp(QObject *parent = nullptr);

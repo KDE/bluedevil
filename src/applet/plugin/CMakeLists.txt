@@ -1,10 +1,9 @@
-ecm_add_qml_module(bluetoothplugin URI org.kde.plasma.private.bluetooth)
+ecm_add_qml_module(bluetoothplugin URI org.kde.plasma.private.bluetooth GENERATE_PLUGIN_SOURCE)
 
 target_sources(bluetoothplugin PRIVATE
     devicesproxymodel.cpp
     launchapp.cpp
-    notify.cpp
-    bluetoothplugin.cpp)
+    notify.cpp)
 
 target_link_libraries(bluetoothplugin PRIVATE
     Qt::Core
