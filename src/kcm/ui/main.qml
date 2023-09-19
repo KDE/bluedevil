@@ -13,7 +13,7 @@ import org.kde.kcmutils
 
 import org.kde.bluezqt 1.0 as BluezQt
 
-import org.kde.plasma.private.bluetooth 1.0
+import org.kde.plasma.private.bluetooth
 
 ScrollViewKCM {
     id: root

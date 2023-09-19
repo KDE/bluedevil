@@ -15,7 +15,7 @@ import org.kde.plasma.core as PlasmaCore
 import org.kde.kirigami 2.20 as Kirigami
 import org.kde.ksvg 1.0 as KSvg
 import org.kde.plasma.extras 2.0 as PlasmaExtras
-import org.kde.plasma.private.bluetooth 1.0 as PlasmaBt
+import org.kde.plasma.private.bluetooth as PlasmaBt
 
 import org.kde.bluezqt 1.0 as BluezQt
 import org.kde.kquickcontrolsaddons 2.0 as KQuickControlsAddons
