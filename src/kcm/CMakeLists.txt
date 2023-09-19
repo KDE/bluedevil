@@ -12,5 +12,6 @@ target_link_libraries(kcm_bluetooth PRIVATE
     KF6::I18n
     KF6::BluezQt
     KF6::KIOGui
+    KF6::Service
 )
 

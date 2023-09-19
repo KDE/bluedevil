@@ -11,6 +11,7 @@ target_link_libraries(bluetoothplugin PRIVATE
     KF6::Notifications
     KF6::JobWidgets
     KF6::KIOGui
-    KF6::BluezQt)
+    KF6::BluezQt
+    KF6::Service)
 
 ecm_finalize_qml_module(bluetoothplugin)
