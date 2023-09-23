@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-08 02:13+0000\n"
+"POT-Creation-Date: 2023-09-23 01:45+0000\n"
 "PO-Revision-Date: 2020-09-28 02:19+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -33,12 +33,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 võrk (%2)"
 
-#: ui/Device.qml:68 ui/main.qml:231
+#: ui/Device.qml:68 ui/main.qml:233
 #, kde-format
 msgid "Disconnect"
 msgstr "Katkesta ühendus"
 
-#: ui/Device.qml:68 ui/main.qml:231
+#: ui/Device.qml:68 ui/main.qml:233
 #, kde-format
 msgid "Connect"
 msgstr "Ühenda"
@@ -286,71 +286,71 @@ msgctxt "@action: button as in, 'enable Bluetooth'"
 msgid "Enabled"
 msgstr "Sisse lülitatud:"
 
-#: ui/main.qml:38
+#: ui/main.qml:40
 #, kde-format
 msgid "Add New Device…"
 msgstr ""
 
-#: ui/main.qml:44
+#: ui/main.qml:46
 #, fuzzy, kde-format
 #| msgid "Configure..."
 msgid "Configure…"
 msgstr "Seadista ..."
 
-#: ui/main.qml:83
+#: ui/main.qml:85
 #, kde-format
 msgid "Forget this Device?"
 msgstr ""
 
-#: ui/main.qml:84
+#: ui/main.qml:86
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
 msgstr ""
 
-#: ui/main.qml:95
+#: ui/main.qml:97
 #, fuzzy, kde-format
 #| msgid "Device:"
 msgctxt "@action:button"
 msgid "Forget Device"
 msgstr "Seade:"
 
-#: ui/main.qml:102
+#: ui/main.qml:104
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
 msgstr ""
 
-#: ui/main.qml:163
+#: ui/main.qml:165
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "Ühtegi Bluetoothi adapterit ei leitud"
 
-#: ui/main.qml:172
+#: ui/main.qml:174
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth on välja lülitatud"
 
-#: ui/main.qml:178
+#: ui/main.qml:180
 #, kde-format
 msgid "Enable"
 msgstr "Lülita sisse"
 
-#: ui/main.qml:188
+#: ui/main.qml:190
 #, kde-format
 msgid "No devices paired"
 msgstr ""
 
-#: ui/main.qml:209
+#: ui/main.qml:211
 #, kde-format
 msgid "Connected"
 msgstr "Ühendatud"
 
-#: ui/main.qml:209
+#: ui/main.qml:211
 #, kde-format
 msgid "Available"
 msgstr "Saadaval"
 
-#: ui/main.qml:242
+#: ui/main.qml:244
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
