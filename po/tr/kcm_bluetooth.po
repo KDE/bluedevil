@@ -347,22 +347,3 @@ msgstr "Kullanılabilir"
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "Unut: \"%1\""
-
-#~ msgid "Confirm Deletion of Device"
-#~ msgstr "Aygıtın Silinmesini Onayla"
-
-#~ msgid "Remove"
-#~ msgstr "Kaldır"
-
-#~ msgid "Bluetooth"
-#~ msgstr "Bluetooth"
-
-#~ msgid "Nicolas Fella"
-#~ msgstr "Nicolas Fella"
-
-#~ msgid "Add…"
-#~ msgstr "Ekle…"
-
-#~ msgctxt "This device is an Audio device"
-#~ msgid "Audio"
-#~ msgstr "Ses"

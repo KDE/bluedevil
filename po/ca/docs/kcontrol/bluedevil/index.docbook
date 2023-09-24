@@ -141,10 +141,10 @@
 >Confiança</guilabel
 > en la configuració del dispositiu a sota) i <guilabel
 >Accepta sempre</guilabel
-> els fitxers enviats. També podeu configurar la carpeta per emmagatzemar els fitxers rebuts. </para>
+> els fitxers enviats. També podeu configurar la carpeta per a emmagatzemar els fitxers rebuts. </para>
         
         <para
->Premeu el botó enrere a la part superior de la pàgina per tornar a la pàgina principal del mòdul de configuració. </para>
+>Premeu el botó enrere a la part superior de la pàgina per a tornar a la pàgina principal del mòdul de configuració. </para>
         
         <para id="adddevice"
 >Podeu afegir un dispositiu &bluetooth; a la llista principal fent clic al botó <guibutton
@@ -156,7 +156,7 @@
 >PIN manual</guilabel
 > si cal i feu clic amb el botó <mousebutton
 >esquerre</mousebutton
-> al dispositiu detectat per aparellar-lo amb l'ordinador. Vegeu el manual del dispositiu sobre el procediment d'aparellament, la forma pot variar, però normalment és molt senzill. </para>
+> al dispositiu detectat per a aparellar-lo amb l'ordinador. Vegeu el manual del dispositiu sobre el procediment d'aparellament, la forma pot variar, però normalment és molt senzill. </para>
         
         <screenshot>
             <screeninfo
@@ -175,7 +175,7 @@
         <para
 >Feu clic amb el botó <mousebutton
 >esquerre</mousebutton
-> a l'element de la llista per configurar el seu nom a la llista de dispositius i fer-lo de <guilabel
+> a l'element de la llista per a configurar el seu nom a la llista de dispositius i fer-lo de <guilabel
 >Confiança</guilabel
 > i <guilabel
 >Blocat</guilabel
@@ -196,7 +196,7 @@
         </screenshot>
         
         <para
->Premeu el botó enrere a la part superior de la pàgina per tornar a la pàgina principal del mòdul de configuració. </para>
+>Premeu el botó enrere a la part superior de la pàgina per a tornar a la pàgina principal del mòdul de configuració. </para>
         
         <para
 >En passar per sobre amb el cursor del ratolí, cada dispositiu &bluetooth; a la llista principal mostra dos botons a la dreta. </para>
@@ -214,7 +214,7 @@
 ><imagedata fileref="network-disconnect.png" format="PNG"/></imageobject
 ></inlinemediaobject
 ></guiicon
-> per connectar o desconnectar un dispositiu. </para>
+> per a connectar o desconnectar un dispositiu. </para>
         
         <para
 >Podeu eliminar un dispositiu de la llista principal seleccionant-lo i fent clic en la icona <inlinemediaobject
@@ -248,14 +248,14 @@
         <para
 >Feu clic amb el botó <mousebutton
 >esquerre</mousebutton
-> a la icona de la safata del sistema per commutar entre mostrar i amagar el <link linkend="controlpanel"
+> a la icona de la safata del sistema per a commutar entre mostrar i amagar el <link linkend="controlpanel"
 >plafó de control principal del &bluetooth;</link
 >. </para>
         
         <para
 >Feu clic amb el botó <mousebutton
 >dret</mousebutton
-> a la icona de la safata del sistema per mostrar el seu menú contextual amb només un element: </para>
+> a la icona de la safata del sistema per a mostrar el seu menú contextual amb només un element: </para>
         
         <variablelist>
             <varlistentry>
@@ -281,7 +281,7 @@
 >El plafó de control principal del &bluetooth;</title>
             
             <para
->El plafó de control principal del &bluetooth; es pot utilitzar per controlar el subsistema &bluetooth; de l'ordinador. </para>
+>El plafó de control principal del &bluetooth; es pot utilitzar per a controlar el subsistema &bluetooth; de l'ordinador. </para>
             
             <screenshot>
                 <screeninfo
@@ -298,9 +298,9 @@
             </screenshot>
             
             <para
->La fila superior del plafó conté el commutador del &bluetooth; per activar o desactivar el mòdul &bluetooth;, el botó «més» per a <link linkend="adddevice"
+>La fila superior del plafó conté el commutador del &bluetooth; per a activar o desactivar el mòdul &bluetooth;, el botó «més» per a <link linkend="adddevice"
 >afegir dispositius &bluetooth;</link
->, i el botó de «configuració» per iniciar el <link linkend="kcmbluetooth"
+>, i el botó de «configuració» per a iniciar el <link linkend="kcmbluetooth"
 >mòdul de configuració &bluetooth; del &plasma;</link
 >. </para>
             
@@ -319,17 +319,17 @@
 ><imagedata fileref="network-disconnect.png" format="PNG"/></imageobject
 ></inlinemediaobject
 ></guiicon
-> per connectar o desconnectar un dispositiu. </para>
+> per a connectar o desconnectar un dispositiu. </para>
             
             <para
 >Feu clic al botó <guilabel
 >v</guilabel
-> a la dreta de l'element del dispositiu per expandir les seves propietats. </para>
+> a la dreta de l'element del dispositiu per a expandir les seves propietats. </para>
             
             <para
 >El botó <guibutton
 >Envia un fitxer...</guibutton
-> només es mostrarà si el dispositiu corresponent està connectat i preparat per rebre fitxers. Aquesta característica pot necessitar algun programari addicional per instal·lar-se. Si cal, seguiu les instruccions i consulteu la documentació de la distribució. </para>
+> només es mostrarà si el dispositiu corresponent està connectat i preparat per a rebre fitxers. Aquesta característica pot necessitar algun programari addicional per a instal·lar-se. Si cal, seguiu les instruccions i consulteu la documentació de la distribució. </para>
             
         </sect2>
     </sect1>
