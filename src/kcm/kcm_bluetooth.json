@@ -174,5 +174,6 @@
     "X-KDE-Keywords[x-test]": "xxbluetoothxx,xxhardwarexx,xxconnectionxx,xxdevicesxx,xxfind devicesxx,xxconnectxx,xxdisconnectxx,xxsend filexx,xxreceive filexx,xxtransferxx,xxwirelessxx,xxvisiblexx,xxadapterxx,xxpinxx,xxtrusted devicesxx",
     "X-KDE-Keywords[zh_CN]": "bluetooth,hardware,connection,devices,find devices,connect,disconnect,send file,receive file,transfer,wireless,visible,adapter,pin,trusted devices,蓝牙,硬件,连接,设备,查找设备,断开连接,发送文件,接收文件,传输,无线,可见性,适配器,已信任设备,信任设备,已信任的设备,信任的设备",
     "X-KDE-ParentApp": "kcontrol",
-    "X-KDE-System-Settings-Parent-Category": "hardware"
+    "X-KDE-System-Settings-Parent-Category": "hardware",
+    "X-KDE-Weight": 20
 }
