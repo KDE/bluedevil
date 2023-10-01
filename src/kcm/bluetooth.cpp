@@ -6,6 +6,7 @@
 
 #include "bluetooth.h"
 
+#include <QAbstractItemModel>
 #include <QDBusConnection>
 #include <QDBusMessage>
 #include <QDBusPendingCallWatcher>
