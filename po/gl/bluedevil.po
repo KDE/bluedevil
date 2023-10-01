@@ -365,7 +365,7 @@ msgstr "Cancelar"
 #, kde-format
 msgctxt "@info:status %1 error message"
 msgid "Failed to start org.bluez.obex service: %1"
-msgstr "Non se puido iniciar o servizo org.bluez.obex: %1"
+msgstr "Non foi posíbel iniciar o servizo org.bluez.obex: %1"
 
 #. i18n: ectx: label, entry (saveUrl), group (General)
 #: settings/filereceiver.kcfg:11
