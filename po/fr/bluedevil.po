@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-18 01:56+0000\n"
+"POT-Creation-Date: 2023-10-02 01:42+0000\n"
 "PO-Revision-Date: 2023-09-09 14:08+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
@@ -42,7 +42,7 @@ msgstr ""
 "jcorn@free.fr, vincent.pinon@laposte.net, thomas.vergnaud@mailo.eu, "
 "vpinon@kde.org, sdepiets@gmail.com, xavier.besnard@neuf.fr"
 
-#: kcm/bluetooth.cpp:101
+#: kcm/bluetooth.cpp:102
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
