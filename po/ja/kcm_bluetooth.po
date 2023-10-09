@@ -334,15 +334,14 @@ msgid "No devices paired"
 msgstr "ペアリングされたデバイスはありません"
 
 #: ui/main.qml:211
-#, fuzzy, kde-format
-#| msgid "Connect"
+#, kde-format
 msgid "Connected"
-msgstr "接続"
+msgstr "接続済み"
 
 #: ui/main.qml:211
 #, kde-format
 msgid "Available"
-msgstr ""
+msgstr "利用可能"
 
 #: ui/main.qml:244
 #, kde-format
