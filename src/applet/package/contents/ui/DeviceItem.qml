@@ -83,7 +83,6 @@ PlasmaExtras.ExpandableListItem {
             KSvg.SvgItem {
                 id: mediaPlayerSeparator
                 Layout.fillWidth: true
-                Layout.preferredHeight: lineSvg.elementSize("horizontal-line").height
                 imagePath: "widgets/line"
                 elementId: "horizontal-line"
                 visible: mediaPlayer.visible
