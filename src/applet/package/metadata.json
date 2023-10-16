@@ -124,12 +124,8 @@
         "Name[x-test]": "xxBluetoothxx",
         "Name[zh_CN]": "蓝牙",
         "Name[zh_TW]": "藍牙",
-        "Version": "3.0.0",
         "Website": "https://kde.org/plasma-desktop"
     },
-    "X-Plasma-API": "declarativeappletscript",
     "X-Plasma-DBusActivationService": "org.bluez",
-    "X-Plasma-MainScript": "ui/main.qml",
-    "X-Plasma-NotificationArea": "true",
     "X-Plasma-NotificationAreaCategory": "Hardware"
 }
