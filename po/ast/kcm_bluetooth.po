@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the bluedevil package.
 #
-# Enol P. <enolp@softastur.org>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023 Enol P. <enolp@softastur.org>
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-02 01:42+0000\n"
-"PO-Revision-Date: 2023-06-27 23:38+0200\n"
+"PO-Revision-Date: 2023-10-26 00:34+0200\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: \n"
 "Language: ast\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.04.2\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -226,32 +226,32 @@ msgstr ""
 #: ui/General.qml:66
 #, kde-format
 msgid "On login:"
-msgstr ""
+msgstr "Al aniciar la sesión:"
 
 #: ui/General.qml:67
 #, kde-format
 msgid "Enable Bluetooth"
-msgstr ""
+msgstr "Habilitar el Bluetooth"
 
 #: ui/General.qml:77
 #, kde-format
 msgid "Disable Bluetooth"
-msgstr ""
+msgstr "Inhabilitar el Bluetooth"
 
 #: ui/General.qml:87
 #, kde-format
 msgid "Restore previous status"
-msgstr ""
+msgstr "Restaurar l'estáu anterior"
 
 #: ui/General.qml:106
 #, kde-format
 msgid "When receiving files:"
-msgstr ""
+msgstr "Al recibir ficheros:"
 
 #: ui/General.qml:108
 #, kde-format
 msgid "Ask for confirmation"
-msgstr ""
+msgstr "Pidir la confirmación"
 
 #: ui/General.qml:117
 #, kde-format
@@ -266,7 +266,7 @@ msgstr ""
 #: ui/General.qml:137
 #, kde-format
 msgid "Save files in:"
-msgstr ""
+msgstr "Guardar los ficheros en:"
 
 #: ui/General.qml:161 ui/General.qml:172
 #, kde-format

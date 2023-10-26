@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the bluedevil package.
 #
-# Enol P. <enolp@softastur.org>, 2023.
+# SPDX-FileCopyrightText: 2023 Enol P. <enolp@softastur.org>
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-02 01:42+0000\n"
-"PO-Revision-Date: 2023-05-04 15:09+0200\n"
+"PO-Revision-Date: 2023-10-25 11:18+0200\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: \n"
 "Language: ast\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.04.0\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -72,13 +72,13 @@ msgstr ""
 #, kde-format
 msgctxt "Button to authorize a bluetooth remote device to connect"
 msgid "Authorize Only"
-msgstr ""
+msgstr "Autorizar namás"
 
 #: kded/helpers/requestauthorization.cpp:35
 #, kde-format
 msgctxt "Deny access to a remote bluetooth device"
 msgid "Deny"
-msgstr ""
+msgstr "Negar"
 
 #: kded/helpers/requestconfirmation.cpp:28
 #, kde-format
@@ -142,7 +142,7 @@ msgstr "PIN:"
 #: kded/helpers/requestpin.ui:65
 #, kde-format
 msgid "1234"
-msgstr ""
+msgstr "1234"
 
 #: kded/receivefilejob.cpp:133
 #, kde-format
@@ -253,12 +253,12 @@ msgstr ""
 #: kio/obexftp/kioobexftp.cpp:520
 #, kde-format
 msgid "Phone memory"
-msgstr ""
+msgstr "Memoria del teléfonu"
 
 #: kio/obexftp/kioobexftp.cpp:523
 #, kde-format
 msgid "External memory"
-msgstr ""
+msgstr "Memoria esterna"
 
 #: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:306
 #, kde-format
@@ -274,7 +274,7 @@ msgstr ""
 #: sendfile/discoverwidget.cpp:137
 #, kde-format
 msgid "Your Bluetooth adapter is powered off."
-msgstr ""
+msgstr "L'adaptador Bluetooth ta apagáu."
 
 #: sendfile/discoverwidget.cpp:138
 #, kde-format
@@ -424,19 +424,19 @@ msgstr ""
 #: wizard/pages/discover.ui:19
 #, kde-format
 msgid "Search…"
-msgstr ""
+msgstr "Buscar…"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: wizard/pages/discover.ui:64
 #, kde-format
 msgid "Scanning…"
-msgstr ""
+msgstr "Buscando"
 
 #. i18n: ectx: property (text), widget (QCheckBox, manualPin)
 #: wizard/pages/discover.ui:84
 #, kde-format
 msgid "Manual PIN:"
-msgstr ""
+msgstr "PIN manual:"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, pinText)
 #: wizard/pages/discover.ui:112
@@ -477,12 +477,12 @@ msgstr ""
 #, kde-format
 msgid ""
 "Please introduce the PIN in your keyboard when it appears and press Enter"
-msgstr ""
+msgstr "Introduz el PIN nel tecláu cuando apaeza ya primi Intro"
 
 #: wizard/pages/pairing.cpp:93
 #, kde-format
 msgid "Please introduce the PIN in your device when it appears"
-msgstr ""
+msgstr "Introduz el PIN nel preséu cuando apaeza"
 
 #: wizard/pages/pairing.cpp:109
 #, kde-format
