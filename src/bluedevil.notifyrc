@@ -2,6 +2,7 @@
 IconName=preferences-system-bluetooth
 Name=Bluetooth
 Name[ar]=بلوتوث
+Name[ast]=Bluetooth
 Name[az]=Bluetooth
 Name[bg]=Bluetooth
 Name[bs]=Blutut
@@ -439,6 +440,7 @@ ShowPopupsInDndMode=true
 [Event/IncomingFile]
 Name=Incoming File
 Name[ar]=ملفّ وارد
+Name[ast]=Ficheru entrante
 Name[az]=Qəbul edilən fayl
 Name[bg]=Входящ файл
 Name[bs]=Dolazeća datoteka
