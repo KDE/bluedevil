@@ -93,11 +93,7 @@ QString WizardAgent::getPin(BluezQt::DevicePtr device)
         m_fromDatabase = true;
         if (m_pin.startsWith(QLatin1String("max:"))) {
             m_fromDatabase = false;
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-            int num = m_pin.rightRef(m_pin.length() - 4).toInt();
-#else
             int num = QStringView(m_pin).right(m_pin.length() - 4).toInt();
-#endif
             m_pin = QString::number(QRandomGenerator::global()->bounded(RAND_MAX)).left(num);
         }
 
