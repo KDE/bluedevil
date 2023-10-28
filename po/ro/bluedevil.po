@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-02 01:42+0000\n"
+"POT-Creation-Date: 2023-10-28 01:45+0000\n"
 "PO-Revision-Date: 2022-02-05 12:15+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian\n"
@@ -290,17 +290,17 @@ msgstr "Pornește-l"
 msgid "Bluetooth File Transfer"
 msgstr "Transfer de fișiere prin Bluetooth"
 
-#: sendfile/main.cpp:50
+#: sendfile/main.cpp:47
 #, kde-format
 msgid "Specify receiving device by MAC address."
 msgstr "Specifică dispozitivul care primește după adresa MAC."
 
-#: sendfile/main.cpp:54
+#: sendfile/main.cpp:51
 #, kde-format
 msgid "Specify receiving device by UBI path."
 msgstr "Specifică dispozitivul care primește după calea UBI."
 
-#: sendfile/main.cpp:58
+#: sendfile/main.cpp:55
 #, kde-format
 msgid "Files to be sent."
 msgstr "Fișiere de trimis."

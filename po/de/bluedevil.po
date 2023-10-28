@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-02 01:42+0000\n"
+"POT-Creation-Date: 2023-10-28 01:45+0000\n"
 "PO-Revision-Date: 2022-12-19 10:02+0100\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -288,17 +288,17 @@ msgstr "Einschalten"
 msgid "Bluetooth File Transfer"
 msgstr "Bluetooth-Datenübertragung"
 
-#: sendfile/main.cpp:50
+#: sendfile/main.cpp:47
 #, kde-format
 msgid "Specify receiving device by MAC address."
 msgstr "Empfangsgerät durch MAC-Adresse angeben."
 
-#: sendfile/main.cpp:54
+#: sendfile/main.cpp:51
 #, kde-format
 msgid "Specify receiving device by UBI path."
 msgstr "Empfangsgerät durch UBI-Pfad angeben."
 
-#: sendfile/main.cpp:58
+#: sendfile/main.cpp:55
 #, kde-format
 msgid "Files to be sent."
 msgstr "Dateien, die gesendet werden."

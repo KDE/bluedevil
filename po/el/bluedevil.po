@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-02 01:42+0000\n"
+"POT-Creation-Date: 2023-10-28 01:45+0000\n"
 "PO-Revision-Date: 2023-01-04 10:48+0200\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -291,17 +291,17 @@ msgstr "Ξεκίνημα"
 msgid "Bluetooth File Transfer"
 msgstr "Μεταφορά αρχείου με Bluetooth"
 
-#: sendfile/main.cpp:50
+#: sendfile/main.cpp:47
 #, kde-format
 msgid "Specify receiving device by MAC address."
 msgstr "Καθορίστε τη συσκευή λήψης από τη διεύθυνση MAC."
 
-#: sendfile/main.cpp:54
+#: sendfile/main.cpp:51
 #, kde-format
 msgid "Specify receiving device by UBI path."
 msgstr "Καθορίστε τη συσκευή λήψης από τη διαδρομή UBI."
 
-#: sendfile/main.cpp:58
+#: sendfile/main.cpp:55
 #, kde-format
 msgid "Files to be sent."
 msgstr "Αρχεία προς αποστολή."
