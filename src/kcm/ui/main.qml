@@ -9,6 +9,7 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.10 as QQC2
 
 import org.kde.kirigami 2.20 as Kirigami
+import org.kde.kirigami.delegates as KD
 import org.kde.kcmutils
 
 import org.kde.bluezqt 1.0 as BluezQt
@@ -213,20 +214,13 @@ ScrollViewKCM {
 
         delegate: Kirigami.SwipeListItem {
 
-            // content item includes its own padding
-            padding: 0
-
-            contentItem: Kirigami.BasicListItem {
-                // The parent item already has a highlight
-                activeBackgroundColor: "transparent"
-
-                separatorVisible: false
-
-                text: model.Name
+            contentItem: KD.IconTitleSubtitle {
+                title: model.Name
                 icon.name: model.Icon
-                iconSize: Kirigami.Units.iconSizes.medium
-                onClicked: kcm.push("Device.qml", {device: model.Device})
+                icon.width: Kirigami.Units.iconSizes.medium
             }
+
+            onClicked: kcm.push("Device.qml", {device: model.Device})
 
             actions: [
                 Kirigami.Action {
