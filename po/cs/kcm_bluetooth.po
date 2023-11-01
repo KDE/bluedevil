@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-02 01:42+0000\n"
+"POT-Creation-Date: 2023-11-01 01:41+0000\n"
 "PO-Revision-Date: 2023-06-05 11:12+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -37,12 +37,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 Síť (%2)"
 
-#: ui/Device.qml:68 ui/main.qml:233
+#: ui/Device.qml:68 ui/main.qml:227
 #, kde-format
 msgid "Disconnect"
 msgstr "Odpojit"
 
-#: ui/Device.qml:68 ui/main.qml:233
+#: ui/Device.qml:68 ui/main.qml:227
 #, kde-format
 msgid "Connect"
 msgstr "Připojit se"
@@ -277,75 +277,75 @@ msgstr "Uložit soubory v:"
 msgid "Select folder"
 msgstr "Vybrat složku"
 
-#: ui/main.qml:24
+#: ui/main.qml:25
 #, kde-format
 msgctxt "@action: button as in, 'enable Bluetooth'"
 msgid "Enabled"
 msgstr "Povoleno"
 
-#: ui/main.qml:40
+#: ui/main.qml:41
 #, kde-format
 msgid "Add New Device…"
 msgstr "Přidat nové zařízení…"
 
-#: ui/main.qml:46
+#: ui/main.qml:47
 #, kde-format
 msgid "Configure…"
 msgstr "Nastavit…"
 
-#: ui/main.qml:85
+#: ui/main.qml:86
 #, kde-format
 msgid "Forget this Device?"
 msgstr "Zapomenout zařízení?"
 
-#: ui/main.qml:86
+#: ui/main.qml:87
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
 msgstr "Opravdu si přejete zapomenout '%1'?"
 
-#: ui/main.qml:97
+#: ui/main.qml:98
 #, kde-format
 msgctxt "@action:button"
 msgid "Forget Device"
 msgstr "Zapomenout zařízení"
 
-#: ui/main.qml:104
+#: ui/main.qml:105
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: ui/main.qml:165
+#: ui/main.qml:166
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "Adaptéry Bluetooth nebyly nalezeny"
 
-#: ui/main.qml:174
+#: ui/main.qml:175
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth není povolen"
 
-#: ui/main.qml:180
+#: ui/main.qml:181
 #, kde-format
 msgid "Enable"
 msgstr "Povolit"
 
-#: ui/main.qml:190
+#: ui/main.qml:191
 #, kde-format
 msgid "No devices paired"
 msgstr "Žádné zařízení není spárováno"
 
-#: ui/main.qml:211
+#: ui/main.qml:212
 #, kde-format
 msgid "Connected"
 msgstr "Připojen"
 
-#: ui/main.qml:211
+#: ui/main.qml:212
 #, kde-format
 msgid "Available"
 msgstr "Dostupné"
 
-#: ui/main.qml:244
+#: ui/main.qml:238
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""

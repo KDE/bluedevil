@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-02 01:42+0000\n"
+"POT-Creation-Date: 2023-11-01 01:41+0000\n"
 "PO-Revision-Date: 2022-11-17 22:56+0200\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: none\n"
@@ -35,12 +35,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 tinklas (%2)"
 
-#: ui/Device.qml:68 ui/main.qml:233
+#: ui/Device.qml:68 ui/main.qml:227
 #, kde-format
 msgid "Disconnect"
 msgstr "Atsijungti"
 
-#: ui/Device.qml:68 ui/main.qml:233
+#: ui/Device.qml:68 ui/main.qml:227
 #, kde-format
 msgid "Connect"
 msgstr "Prisijungti"
@@ -275,76 +275,76 @@ msgstr "Įrašyti failus į:"
 msgid "Select folder"
 msgstr "Pasirinkti aplanką"
 
-#: ui/main.qml:24
+#: ui/main.qml:25
 #, fuzzy, kde-format
 #| msgid "Enabled:"
 msgctxt "@action: button as in, 'enable Bluetooth'"
 msgid "Enabled"
 msgstr "Įjungtas:"
 
-#: ui/main.qml:40
+#: ui/main.qml:41
 #, kde-format
 msgid "Add New Device…"
 msgstr "Pridėti naują įrenginį…"
 
-#: ui/main.qml:46
+#: ui/main.qml:47
 #, kde-format
 msgid "Configure…"
 msgstr "Konfigūruoti…"
 
-#: ui/main.qml:85
+#: ui/main.qml:86
 #, kde-format
 msgid "Forget this Device?"
 msgstr "Pamiršti šį įrenginį?"
 
-#: ui/main.qml:86
+#: ui/main.qml:87
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
 msgstr "Ar tikrai norite pamiršti „%1“?"
 
-#: ui/main.qml:97
+#: ui/main.qml:98
 #, kde-format
 msgctxt "@action:button"
 msgid "Forget Device"
 msgstr "Pamiršti įrenginį"
 
-#: ui/main.qml:104
+#: ui/main.qml:105
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
 msgstr "Atsisakyti"
 
-#: ui/main.qml:165
+#: ui/main.qml:166
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "Nerasta jokių Bluetooth adapterių"
 
-#: ui/main.qml:174
+#: ui/main.qml:175
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth yra išjungtas"
 
-#: ui/main.qml:180
+#: ui/main.qml:181
 #, kde-format
 msgid "Enable"
 msgstr "Įjungti"
 
-#: ui/main.qml:190
+#: ui/main.qml:191
 #, kde-format
 msgid "No devices paired"
 msgstr "Nėra suporuotų įrenginių"
 
-#: ui/main.qml:211
+#: ui/main.qml:212
 #, kde-format
 msgid "Connected"
 msgstr "Prisijungta"
 
-#: ui/main.qml:211
+#: ui/main.qml:212
 #, kde-format
 msgid "Available"
 msgstr "Prieinamas"
 
-#: ui/main.qml:244
+#: ui/main.qml:238
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""

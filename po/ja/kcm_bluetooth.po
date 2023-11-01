@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-02 01:42+0000\n"
+"POT-Creation-Date: 2023-11-01 01:41+0000\n"
 "PO-Revision-Date: 2022-08-26 17:12+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -34,12 +34,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 ネットワーク (%2)"
 
-#: ui/Device.qml:68 ui/main.qml:233
+#: ui/Device.qml:68 ui/main.qml:227
 #, kde-format
 msgid "Disconnect"
 msgstr "切断"
 
-#: ui/Device.qml:68 ui/main.qml:233
+#: ui/Device.qml:68 ui/main.qml:227
 #, kde-format
 msgid "Connect"
 msgstr "接続"
@@ -274,76 +274,76 @@ msgstr "ファイルの保存先:"
 msgid "Select folder"
 msgstr "フォルダを選択"
 
-#: ui/main.qml:24
+#: ui/main.qml:25
 #, fuzzy, kde-format
 #| msgid "Enabled:"
 msgctxt "@action: button as in, 'enable Bluetooth'"
 msgid "Enabled"
 msgstr "有効:"
 
-#: ui/main.qml:40
+#: ui/main.qml:41
 #, kde-format
 msgid "Add New Device…"
 msgstr "新しいデバイスを追加..."
 
-#: ui/main.qml:46
+#: ui/main.qml:47
 #, kde-format
 msgid "Configure…"
 msgstr "設定..."
 
-#: ui/main.qml:85
+#: ui/main.qml:86
 #, kde-format
 msgid "Forget this Device?"
 msgstr "このデバイスを削除しますか？"
 
-#: ui/main.qml:86
+#: ui/main.qml:87
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
 msgstr "本当に \"%1\" を削除しますか？"
 
-#: ui/main.qml:97
+#: ui/main.qml:98
 #, kde-format
 msgctxt "@action:button"
 msgid "Forget Device"
 msgstr "デバイスを削除"
 
-#: ui/main.qml:104
+#: ui/main.qml:105
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: ui/main.qml:165
+#: ui/main.qml:166
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "Bluetooth アダプタが見つかりません"
 
-#: ui/main.qml:174
+#: ui/main.qml:175
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth は無効化されています。"
 
-#: ui/main.qml:180
+#: ui/main.qml:181
 #, kde-format
 msgid "Enable"
 msgstr "有効化"
 
-#: ui/main.qml:190
+#: ui/main.qml:191
 #, kde-format
 msgid "No devices paired"
 msgstr "ペアリングされたデバイスはありません"
 
-#: ui/main.qml:211
+#: ui/main.qml:212
 #, kde-format
 msgid "Connected"
 msgstr "接続済み"
 
-#: ui/main.qml:211
+#: ui/main.qml:212
 #, kde-format
 msgid "Available"
 msgstr "利用可能"
 
-#: ui/main.qml:244
+#: ui/main.qml:238
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
