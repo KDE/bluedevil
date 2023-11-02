@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-28 01:45+0000\n"
-"PO-Revision-Date: 2023-10-31 20:02+0100\n"
+"PO-Revision-Date: 2023-11-02 01:12+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: \n"
 "Language: ast\n"
@@ -385,13 +385,13 @@ msgstr ""
 #, kde-format
 msgctxt "Action to go to the next page on the wizard"
 msgid "Next"
-msgstr ""
+msgstr "Siguiente"
 
 #: wizard/bluewizard.cpp:58
 #, kde-format
 msgctxt "Action to finish the wizard"
 msgid "Finish"
-msgstr ""
+msgstr "Finar"
 
 #: wizard/main.cpp:26 wizard/main.cpp:28
 #, kde-format
@@ -487,17 +487,17 @@ msgstr "Introduz el PIN nel preséu cuando apaeza"
 #: wizard/pages/pairing.cpp:109
 #, kde-format
 msgid "Matches"
-msgstr ""
+msgstr "Concasa"
 
 #: wizard/pages/pairing.cpp:113
 #, kde-format
 msgid "Does not match"
-msgstr ""
+msgstr "Nun concasa"
 
 #: wizard/pages/pairing.cpp:128
 #, kde-format
 msgid "Please, confirm that the PIN displayed on %1 matches the wizard one."
-msgstr ""
+msgstr "Confirma que'l PIN qu'apaez en «%1» concasa col del encontu."
 
 #: wizard/pages/success.cpp:40
 #, kde-format

@@ -4,25 +4,26 @@
 # Dimitris Kardarakos <dimkard@gmail.com>, 2015, 2016.
 # Petros Vidalis <pvidalis@gmail.com>, 2016, 2018.
 # Stelios <sstavra@gmail.com>, 2020, 2021, 2023.
+# SPDX-FileCopyrightText: 2023 George Stefanakis <george.stefanakis@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-28 01:45+0000\n"
-"PO-Revision-Date: 2023-01-04 10:48+0200\n"
-"Last-Translator: Stelios <sstavra@gmail.com>\n"
-"Language-Team: Greek <kde-i18n-el@kde.org>\n"
+"PO-Revision-Date: 2023-09-06 23:41+0300\n"
+"Last-Translator: George Stefanakis <george.stefanakis@gmail.com>\n"
+"Language-Team: Greek <kde-i18n-doc@kde.org>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 23.08.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Δημήτρης Καρδαράκος, Πέτρος Βιδάλης"
+msgstr "Δημήτρης Καρδαράκος, Πέτρος Βιδάλης, Γιώργος Στεφανάκης"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
@@ -252,7 +253,7 @@ msgstr "Σύνδεση με τη συσκευή"
 #: kio/obexftp/kioobexftp.cpp:298
 #, kde-format
 msgid "This should not happen"
-msgstr ""
+msgstr "Αυτό δεν θα έπρεπε να συμβεί"
 
 #: kio/obexftp/kioobexftp.cpp:520
 #, kde-format

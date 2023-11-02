@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-17 01:40+0000\n"
-"PO-Revision-Date: 2023-10-25 11:23+0200\n"
+"PO-Revision-Date: 2023-11-01 12:32+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: \n"
 "Language: ast\n"
@@ -101,12 +101,12 @@ msgstr ""
 #: package/contents/ui/DeviceItem.qml:256
 #, kde-format
 msgid "Audio device"
-msgstr ""
+msgstr "Preséu d'audiu"
 
 #: package/contents/ui/DeviceItem.qml:263
 #, kde-format
 msgid "Input device"
-msgstr ""
+msgstr "Preséu d'entrada"
 
 #: package/contents/ui/DeviceItem.qml:267
 #, kde-format
@@ -131,7 +131,7 @@ msgstr ""
 #: package/contents/ui/DeviceItem.qml:283
 #, kde-format
 msgid "Audio"
-msgstr ""
+msgstr "Audiu"
 
 #: package/contents/ui/DeviceItem.qml:286
 #, kde-format
@@ -141,7 +141,7 @@ msgstr ""
 #: package/contents/ui/DeviceItem.qml:290
 #, kde-format
 msgid "Other device"
-msgstr ""
+msgstr "Otru preséu"
 
 #: package/contents/ui/DeviceItem.qml:297 package/contents/ui/main.qml:70
 #: package/contents/ui/main.qml:80
@@ -192,7 +192,7 @@ msgstr ""
 #: package/contents/ui/FullRepresentation.qml:151
 #, kde-format
 msgid "No devices found"
-msgstr ""
+msgstr "Nun s'atopó nengún preséu"
 
 #: package/contents/ui/main.qml:48
 #, kde-format
