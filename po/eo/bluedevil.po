@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-28 01:45+0000\n"
+"POT-Creation-Date: 2023-11-04 16:52+0000\n"
 "PO-Revision-Date: 2023-08-20 19:52+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -89,13 +89,13 @@ msgctxt ""
 msgid "%1 is asking if the PIN is correct: %2"
 msgstr "%1 demandas ĉu la PIN estas ĝusta: %2"
 
-#: kded/helpers/requestconfirmation.cpp:33
+#: kded/helpers/requestconfirmation.cpp:32
 #, kde-format
 msgctxt "Notification button to know if the pin is correct or not"
 msgid "PIN correct"
 msgstr "PIN ĝusta"
 
-#: kded/helpers/requestconfirmation.cpp:34
+#: kded/helpers/requestconfirmation.cpp:33
 #, kde-format
 msgctxt "Notification button to say that the PIN is wrong"
 msgid "PIN incorrect"
@@ -109,7 +109,7 @@ msgctxt ""
 msgid "PIN needed to pair with %1"
 msgstr "PIN bezonata por parigi kun %1"
 
-#: kded/helpers/requestpin.cpp:39
+#: kded/helpers/requestpin.cpp:38
 #, kde-format
 msgctxt ""
 "Notification button which once clicked, a dialog to introduce the PIN will "
@@ -117,13 +117,13 @@ msgctxt ""
 msgid "Introduce PIN"
 msgstr "Enkonduki PIN"
 
-#: kded/helpers/requestpin.cpp:61
+#: kded/helpers/requestpin.cpp:58
 #, kde-format
 msgctxt "Shown in the caption of a dialog where the user introduce the PIN"
 msgid "Introduce PIN"
 msgstr "Enkonduki PIN"
 
-#: kded/helpers/requestpin.cpp:68
+#: kded/helpers/requestpin.cpp:65
 #, kde-format
 msgctxt ""
 "Shown in a dialog which asks to introduce a PIN that will be used to pair a "
@@ -169,30 +169,30 @@ msgctxt "Deny the incoming file transfer"
 msgid "Cancel"
 msgstr "Nuligi"
 
-#: kded/receivefilejob.cpp:165
+#: kded/receivefilejob.cpp:163
 #, kde-format
 msgctxt "@title job"
 msgid "Receiving file"
 msgstr "Ricevanta dosiero"
 
-#: kded/receivefilejob.cpp:166 sendfile/sendfilesjob.cpp:84
+#: kded/receivefilejob.cpp:164 sendfile/sendfilesjob.cpp:84
 #, kde-format
 msgctxt "File transfer origin"
 msgid "From"
 msgstr "De"
 
-#: kded/receivefilejob.cpp:167 sendfile/sendfilesjob.cpp:85
+#: kded/receivefilejob.cpp:165 sendfile/sendfilesjob.cpp:85
 #, kde-format
 msgctxt "File transfer destination"
 msgid "To"
 msgstr "Al"
 
-#: kded/receivefilejob.cpp:192
+#: kded/receivefilejob.cpp:190
 #, kde-format
 msgid "Saving file failed"
 msgstr "Konservado de dosiero malsukcesis"
 
-#: kded/receivefilejob.cpp:223 kio/obexftp/transferfilejob.cpp:50
+#: kded/receivefilejob.cpp:221 kio/obexftp/transferfilejob.cpp:50
 #: sendfile/sendfilesjob.cpp:155
 #, kde-format
 msgid "Bluetooth transfer failed"
