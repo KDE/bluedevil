@@ -25,8 +25,8 @@ Dependencies:
     'frameworks/kwidgetsaddons': '@latest'
     'frameworks/kwindowsystem': '@latest'
     'frameworks/kxmlgui': '@latest'
-    'frameworks/plasma-framework': '@latest'
     'frameworks/solid': '@latest'
     'frameworks/kcmutils': '@latest' # kcmutils_generate_desktop_file
+    'plasma/plasma-framework': 'kf5'
 Options:
   require-passing-tests-on: [ 'Linux', 'FreeBSD']
