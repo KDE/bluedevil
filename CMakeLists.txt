@@ -28,7 +28,6 @@ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     DocTools
     Notifications
     WindowSystem
-    Plasma
     Svg
     I18n
     KIO
@@ -36,6 +35,8 @@ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     KCMUtils
     JobWidgets
 )
+
+find_package(KF6Plasma ${PROJECT_VERSION} REQUIRED)
 
 find_package(SharedMimeInfo REQUIRED)
 
