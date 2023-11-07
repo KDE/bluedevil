@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-04 16:52+0000\n"
-"PO-Revision-Date: 2023-03-07 14:05+0200\n"
+"PO-Revision-Date: 2023-09-29 09:37+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -257,7 +257,7 @@ msgstr "Yhdistetään laitteeseen"
 #: kio/obexftp/kioobexftp.cpp:298
 #, kde-format
 msgid "This should not happen"
-msgstr ""
+msgstr "Näin ei tulisi tapahtua"
 
 #: kio/obexftp/kioobexftp.cpp:520
 #, kde-format
