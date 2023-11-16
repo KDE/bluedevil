@@ -37,7 +37,7 @@ PlasmaExtras.ExpandableListItem {
         onTriggered: connectToDevice()
     }
 
-    contextualActionsModel: [
+    contextualActions: [
         Action {
             id: browseFilesButton
             enabled: Uuids.indexOf(BluezQt.Services.ObexFileTransfer) !== -1
