@@ -27,6 +27,6 @@ Dependencies:
     'frameworks/kxmlgui': '@latest'
     'frameworks/solid': '@latest'
     'frameworks/kcmutils': '@latest' # kcmutils_generate_desktop_file
-    'plasma/plasma-framework': 'kf5'
+    'plasma/libplasma': 'kf5'
 Options:
   require-passing-tests-on: [ 'Linux', 'FreeBSD']
