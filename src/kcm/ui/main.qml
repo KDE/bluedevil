@@ -209,35 +209,49 @@ ScrollViewKCM {
 
         section.property: "Connected"
         section.delegate: Kirigami.ListSectionHeader {
+            width: ListView.view.width
             text: section === "true" ? i18n("Connected") : i18n("Available")
         }
 
-        delegate: Kirigami.SwipeListItem {
-
-            contentItem: KD.IconTitleSubtitle {
-                title: model.Name
-                icon.name: model.Icon
-                icon.width: Kirigami.Units.iconSizes.medium
-            }
+        delegate: QQC2.ItemDelegate {
+            width: ListView.view.width
 
             onClicked: kcm.push("Device.qml", {device: model.Device})
 
-            actions: [
-                Kirigami.Action {
+            contentItem: RowLayout {
+                spacing: Kirigami.Units.smallSpacing
+
+                KD.IconTitleSubtitle {
+                    title: model.Name
+                    icon.name: model.Icon
+                    icon.width: Kirigami.Units.iconSizes.medium
+                    Layout.fillWidth: true
+                }
+
+                QQC2.ToolButton {
                     text: model.Connected ? i18n("Disconnect") : i18n("Connect")
                     icon.name: model.Connected ? "network-disconnect-symbolic" : "network-connect-symbolic"
-                    onTriggered: {
+                    display: QQC2.AbstractButton.IconOnly
+                    QQC2.ToolTip.text: text
+                    QQC2.ToolTip.visible: hovered
+
+                    onClicked: {
                         if (model.Connected) {
                             root.makeCall(model.Device.disconnectFromDevice())
                         } else {
                             root.makeCall(model.Device.connectToDevice())
                         }
                     }
-                },
-                Kirigami.Action {
+                }
+
+                QQC2.ToolButton {
                     text: i18nc("@action:button %1 is the name of a Bluetooth device", "Forget \"%1\"", model.Name)
                     icon.name: "edit-delete-remove-symbolic"
-                    onTriggered: {
+                    display: QQC2.AbstractButton.IconOnly
+                    QQC2.ToolTip.text: text
+                    QQC2.ToolTip.visible: hovered
+
+                    onClicked: {
                         const dialog = forgetDialogComponent.createObject(root, {
                             adapter: model.Adapter,
                             device: model.Device,
@@ -252,7 +266,7 @@ ScrollViewKCM {
                         dialog.open();
                     }
                 }
-            ]
+            }
         }
     }
 
