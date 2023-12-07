@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-01 01:41+0000\n"
+"POT-Creation-Date: 2023-12-07 01:41+0000\n"
 "PO-Revision-Date: 2023-06-05 11:12+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -37,12 +37,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 Síť (%2)"
 
-#: ui/Device.qml:68 ui/main.qml:227
+#: ui/Device.qml:68 ui/main.qml:232
 #, kde-format
 msgid "Disconnect"
 msgstr "Odpojit"
 
-#: ui/Device.qml:68 ui/main.qml:227
+#: ui/Device.qml:68 ui/main.qml:232
 #, kde-format
 msgid "Connect"
 msgstr "Připojit se"
@@ -335,17 +335,17 @@ msgstr "Povolit"
 msgid "No devices paired"
 msgstr "Žádné zařízení není spárováno"
 
-#: ui/main.qml:212
+#: ui/main.qml:213
 #, kde-format
 msgid "Connected"
 msgstr "Připojen"
 
-#: ui/main.qml:212
+#: ui/main.qml:213
 #, kde-format
 msgid "Available"
 msgstr "Dostupné"
 
-#: ui/main.qml:238
+#: ui/main.qml:248
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""

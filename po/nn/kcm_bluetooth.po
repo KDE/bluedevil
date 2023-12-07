@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-01 01:41+0000\n"
+"POT-Creation-Date: 2023-12-07 01:41+0000\n"
 "PO-Revision-Date: 2023-07-15 14:20+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -36,12 +36,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 nettverk (%2)"
 
-#: ui/Device.qml:68 ui/main.qml:227
+#: ui/Device.qml:68 ui/main.qml:232
 #, kde-format
 msgid "Disconnect"
 msgstr "Kopla frå"
 
-#: ui/Device.qml:68 ui/main.qml:227
+#: ui/Device.qml:68 ui/main.qml:232
 #, kde-format
 msgid "Connect"
 msgstr "Kopla til"
@@ -334,17 +334,17 @@ msgstr "Slå på"
 msgid "No devices paired"
 msgstr "Ingen einingar er para"
 
-#: ui/main.qml:212
+#: ui/main.qml:213
 #, kde-format
 msgid "Connected"
 msgstr "Kopla til"
 
-#: ui/main.qml:212
+#: ui/main.qml:213
 #, kde-format
 msgid "Available"
 msgstr "Tilgjengeleg"
 
-#: ui/main.qml:238
+#: ui/main.qml:248
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""

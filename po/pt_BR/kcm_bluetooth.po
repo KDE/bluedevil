@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-01 01:41+0000\n"
+"POT-Creation-Date: 2023-12-07 01:41+0000\n"
 "PO-Revision-Date: 2023-06-26 17:09-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -33,12 +33,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "Rede %1 (%2)"
 
-#: ui/Device.qml:68 ui/main.qml:227
+#: ui/Device.qml:68 ui/main.qml:232
 #, kde-format
 msgid "Disconnect"
 msgstr "Desconectar"
 
-#: ui/Device.qml:68 ui/main.qml:227
+#: ui/Device.qml:68 ui/main.qml:232
 #, kde-format
 msgid "Connect"
 msgstr "Conectar"
@@ -331,17 +331,17 @@ msgstr "Ativar"
 msgid "No devices paired"
 msgstr "Nenhum dispositivo pareado"
 
-#: ui/main.qml:212
+#: ui/main.qml:213
 #, kde-format
 msgid "Connected"
 msgstr "Conectado"
 
-#: ui/main.qml:212
+#: ui/main.qml:213
 #, kde-format
 msgid "Available"
 msgstr "Disponível"
 
-#: ui/main.qml:238
+#: ui/main.qml:248
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
