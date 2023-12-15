@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-07 01:41+0000\n"
-"PO-Revision-Date: 2023-06-02 09:06+0200\n"
+"PO-Revision-Date: 2023-12-14 13:00+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 20.12.0\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -120,13 +120,13 @@ msgstr "Xarxa"
 #, kde-format
 msgctxt "This device is a Headset"
 msgid "Headset"
-msgstr "Auriculars"
+msgstr "Auriculars amb micròfon"
 
 #: ui/Device.qml:166
 #, kde-format
 msgctxt "This device is a Headphones"
 msgid "Headphones"
-msgstr "Cascs"
+msgstr "Auriculars"
 
 #: ui/Device.qml:168
 #, kde-format
