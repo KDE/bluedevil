@@ -16,6 +16,8 @@ import org.kde.bluezqt 1.0 as BluezQt
 
 import org.kde.plasma.private.bluetooth
 
+import "script.js" as Script;
+
 ScrollViewKCM {
     id: root
 
@@ -223,6 +225,7 @@ ScrollViewKCM {
 
                 KD.IconTitleSubtitle {
                     title: model.Name
+                    subtitle: infoText(model.Device.type, model.Device.battery, model.Device.uuids)
                     icon.name: model.Icon
                     icon.width: Kirigami.Units.iconSizes.medium
                     Layout.fillWidth: true
@@ -273,4 +276,16 @@ ScrollViewKCM {
     // System Settings doesn't draw its own footer buttons, so extra footer
     // paddings here to make them look better isn't necessary
     extraFooterTopPadding: false
+
+    function infoText(type, battery, uuids): string {
+        const labels = [];
+
+        labels.push(Script.deviceTypeToString(type));
+
+        if (battery) {
+            labels.push(i18n("%1% Battery", battery.percentage));
+        }
+
+        return labels.join(" · ");
+    }
 }
