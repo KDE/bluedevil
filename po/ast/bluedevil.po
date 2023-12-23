@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-04 16:52+0000\n"
-"PO-Revision-Date: 2023-11-02 01:12+0100\n"
+"PO-Revision-Date: 2023-12-12 09:07+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
-"Language-Team: \n"
+"Language-Team: Assamese <alministradores@softastur.org>\n"
 "Language: ast\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.2\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -208,7 +208,7 @@ msgstr ""
 #: kio/bluetooth/kiobluetooth.cpp:72 kio/bluetooth/kiobluetooth.cpp:200
 #, kde-format
 msgid "No Bluetooth adapters have been found."
-msgstr ""
+msgstr "Nun s'atopó nengún adautador Bluetooth."
 
 #: kio/bluetooth/kiobluetooth.cpp:92
 #, kde-format
@@ -218,7 +218,7 @@ msgstr ""
 #: kio/bluetooth/kiobluetooth.cpp:99
 #, kde-format
 msgid "This address is unavailable."
-msgstr ""
+msgstr "Esta direición nun ta disponible."
 
 #: kio/bluetooth/kiobluetooth.cpp:147
 #, kde-format
