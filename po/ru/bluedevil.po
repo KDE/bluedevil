@@ -4,13 +4,13 @@
 # Vladimir Buharin <vovan2482@mail.ru>, 2010.
 # Alexander Potashev <aspotashev@gmail.com>, 2010, 2011, 2015, 2016, 2017, 2018, 2020.
 # Yuri Efremov <yur.arh@gmail.com>, 2010, 2011.
-# Alexander Yavorsky <kekcuha@gmail.com>, 2019, 2020, 2021, 2022.
+# Alexander Yavorsky <kekcuha@gmail.com>, 2019, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-04 16:52+0000\n"
-"PO-Revision-Date: 2022-12-11 23:12+0300\n"
+"PO-Revision-Date: 2023-12-27 10:15+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -256,7 +256,7 @@ msgstr "Подключение к устройству"
 #: kio/obexftp/kioobexftp.cpp:298
 #, kde-format
 msgid "This should not happen"
-msgstr ""
+msgstr "Неизвестная ошибка"
 
 #: kio/obexftp/kioobexftp.cpp:520
 #, kde-format
