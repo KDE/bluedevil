@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the bluedevil package.
-# Sergiu Bivol <sergiu@cip.md>, 2020, 2021, 2022.
+# Sergiu Bivol <sergiu@cip.md>, 2020, 2021, 2022, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-07 01:41+0000\n"
-"PO-Revision-Date: 2022-12-28 13:54+0000\n"
+"PO-Revision-Date: 2024-01-07 12:58+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
@@ -275,11 +275,10 @@ msgid "Select folder"
 msgstr "Alege dosarul"
 
 #: ui/main.qml:25
-#, fuzzy, kde-format
-#| msgid "Enabled:"
+#, kde-format
 msgctxt "@action: button as in, 'enable Bluetooth'"
 msgid "Enabled"
-msgstr "Activat:"
+msgstr "Activat"
 
 #: ui/main.qml:41
 #, kde-format
