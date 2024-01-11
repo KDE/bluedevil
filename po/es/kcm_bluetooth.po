@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-07 01:41+0000\n"
+"POT-Creation-Date: 2024-01-11 00:38+0000\n"
 "PO-Revision-Date: 2023-06-03 01:04+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -35,175 +35,70 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "Red %1 (%2)"
 
-#: ui/Device.qml:68 ui/main.qml:232
+#: ui/Device.qml:70 ui/main.qml:235
 #, kde-format
 msgid "Disconnect"
 msgstr "Desconectar"
 
-#: ui/Device.qml:68 ui/main.qml:232
+#: ui/Device.qml:70 ui/main.qml:235
 #, kde-format
 msgid "Connect"
 msgstr "Conectar"
 
-#: ui/Device.qml:100
+#: ui/Device.qml:102
 #, kde-format
 msgid "Type:"
 msgstr "Tipo:"
 
-#: ui/Device.qml:105 ui/General.qml:42
+#: ui/Device.qml:108
+#, kde-format
+msgid "%1%"
+msgstr ""
+
+#: ui/Device.qml:112
+#, kde-format
+msgid "Battery:"
+msgstr ""
+
+#: ui/Device.qml:117 ui/General.qml:42
 #, kde-format
 msgid "Address:"
 msgstr "Dirección:"
 
-#: ui/Device.qml:110
+#: ui/Device.qml:122
 #, kde-format
 msgid "Adapter:"
 msgstr "Adaptador:"
 
-#: ui/Device.qml:116 ui/General.qml:36
+#: ui/Device.qml:128 ui/General.qml:36
 #, kde-format
 msgid "Name:"
 msgstr "Nombre:"
 
-#: ui/Device.qml:120
+#: ui/Device.qml:132
 #, kde-format
 msgid "Trusted"
 msgstr "De confianza"
 
-#: ui/Device.qml:126
+#: ui/Device.qml:138
 #, kde-format
 msgid "Blocked"
 msgstr "Bloqueado"
 
-#: ui/Device.qml:132
+#: ui/Device.qml:144
 #, kde-format
 msgid "Send File"
 msgstr "Enviar archivo"
 
-#: ui/Device.qml:139
+#: ui/Device.qml:151
 #, kde-format
 msgid "Setup NAP Network…"
 msgstr "Configurar red NAP..."
 
-#: ui/Device.qml:146
+#: ui/Device.qml:158
 #, kde-format
 msgid "Setup DUN Network…"
 msgstr "Configurar red DUN..."
-
-#: ui/Device.qml:156
-#, kde-format
-msgctxt "This device is a Phone"
-msgid "Phone"
-msgstr "Teléfono"
-
-#: ui/Device.qml:158
-#, kde-format
-msgctxt "This device is a Modem"
-msgid "Modem"
-msgstr "Módem"
-
-#: ui/Device.qml:160
-#, kde-format
-msgctxt "This device is a Computer"
-msgid "Computer"
-msgstr "Computador"
-
-#: ui/Device.qml:162
-#, kde-format
-msgctxt "This device is of type Network"
-msgid "Network"
-msgstr "Red"
-
-#: ui/Device.qml:164
-#, kde-format
-msgctxt "This device is a Headset"
-msgid "Headset"
-msgstr "Cascos"
-
-#: ui/Device.qml:166
-#, kde-format
-msgctxt "This device is a Headphones"
-msgid "Headphones"
-msgstr "Auriculares"
-
-#: ui/Device.qml:168
-#, kde-format
-msgctxt "This device is an Audio/Video device"
-msgid "Multimedia Device"
-msgstr "Dispositivo multimedia"
-
-#: ui/Device.qml:170
-#, kde-format
-msgctxt "This device is a Keyboard"
-msgid "Keyboard"
-msgstr "Teclado"
-
-#: ui/Device.qml:172
-#, kde-format
-msgctxt "This device is a Mouse"
-msgid "Mouse"
-msgstr "Ratón"
-
-#: ui/Device.qml:174
-#, kde-format
-msgctxt "This device is a Joypad"
-msgid "Joypad"
-msgstr "Mando de videojuegos"
-
-#: ui/Device.qml:176
-#, kde-format
-msgctxt "This device is a Graphics Tablet (input device)"
-msgid "Tablet"
-msgstr "Tableta"
-
-#: ui/Device.qml:178
-#, kde-format
-msgctxt "This device is a Peripheral device"
-msgid "Peripheral"
-msgstr "Periférico"
-
-#: ui/Device.qml:180
-#, kde-format
-msgctxt "This device is a Camera"
-msgid "Camera"
-msgstr "Cámara"
-
-#: ui/Device.qml:182
-#, kde-format
-msgctxt "This device is a Printer"
-msgid "Printer"
-msgstr "Impresora"
-
-#: ui/Device.qml:184
-#, kde-format
-msgctxt ""
-"This device is an Imaging device (printer, scanner, camera, display, …)"
-msgid "Imaging"
-msgstr "Dispositivos de imagen"
-
-#: ui/Device.qml:186
-#, kde-format
-msgctxt "This device is a Wearable"
-msgid "Wearable"
-msgstr "Tecnología vestible"
-
-#: ui/Device.qml:188
-#, kde-format
-msgctxt "This device is a Toy"
-msgid "Toy"
-msgstr "Juguete digital"
-
-#: ui/Device.qml:190
-#, kde-format
-msgctxt "This device is a Health device"
-msgid "Health"
-msgstr "Dispositivo de salud"
-
-#: ui/Device.qml:192
-#, kde-format
-msgctxt "Type of device: could not be determined"
-msgid "Unknown"
-msgstr "Desconocido"
 
 #: ui/General.qml:19
 #, kde-format
@@ -275,79 +170,161 @@ msgstr "Guardar archivos en:"
 msgid "Select folder"
 msgstr "Seleccionar carpeta"
 
-#: ui/main.qml:25
+#: ui/main.qml:27
 #, kde-format
 msgctxt "@action: button as in, 'enable Bluetooth'"
 msgid "Enabled"
 msgstr "Activado"
 
-#: ui/main.qml:41
+#: ui/main.qml:43
 #, kde-format
 msgid "Add New Device…"
 msgstr "Añadir nuevo dispositivo..."
 
-#: ui/main.qml:47
+#: ui/main.qml:49
 #, kde-format
 msgid "Configure…"
 msgstr "Configurar..."
 
-#: ui/main.qml:86
+#: ui/main.qml:88
 #, kde-format
 msgid "Forget this Device?"
 msgstr "¿Olvidar este dispositivo?"
 
-#: ui/main.qml:87
+#: ui/main.qml:89
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
 msgstr "¿Seguro que quiere olvidar «%1»?"
 
-#: ui/main.qml:98
+#: ui/main.qml:100
 #, kde-format
 msgctxt "@action:button"
 msgid "Forget Device"
 msgstr "Olvidar dispositivo"
 
-#: ui/main.qml:105
+#: ui/main.qml:107
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: ui/main.qml:166
+#: ui/main.qml:168
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "No se han encontrado adaptadores Bluetooth"
 
-#: ui/main.qml:175
+#: ui/main.qml:177
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth está desactivado"
 
-#: ui/main.qml:181
+#: ui/main.qml:183
 #, kde-format
 msgid "Enable"
 msgstr "Activar"
 
-#: ui/main.qml:191
+#: ui/main.qml:193
 #, kde-format
 msgid "No devices paired"
 msgstr "No hay dispositivos vinculados"
 
-#: ui/main.qml:213
+#: ui/main.qml:215
 #, kde-format
 msgid "Connected"
 msgstr "Conectado"
 
-#: ui/main.qml:213
+#: ui/main.qml:215
 #, kde-format
 msgid "Available"
 msgstr "Disponible"
 
-#: ui/main.qml:248
+#: ui/main.qml:251
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "Olvidar «%1»"
+
+#: ui/main.qml:286
+#, kde-format
+msgid "%1% Battery"
+msgstr ""
+
+#~ msgctxt "This device is a Phone"
+#~ msgid "Phone"
+#~ msgstr "Teléfono"
+
+#~ msgctxt "This device is a Modem"
+#~ msgid "Modem"
+#~ msgstr "Módem"
+
+#~ msgctxt "This device is a Computer"
+#~ msgid "Computer"
+#~ msgstr "Computador"
+
+#~ msgctxt "This device is of type Network"
+#~ msgid "Network"
+#~ msgstr "Red"
+
+#~ msgctxt "This device is a Headset"
+#~ msgid "Headset"
+#~ msgstr "Cascos"
+
+#~ msgctxt "This device is a Headphones"
+#~ msgid "Headphones"
+#~ msgstr "Auriculares"
+
+#~ msgctxt "This device is an Audio/Video device"
+#~ msgid "Multimedia Device"
+#~ msgstr "Dispositivo multimedia"
+
+#~ msgctxt "This device is a Keyboard"
+#~ msgid "Keyboard"
+#~ msgstr "Teclado"
+
+#~ msgctxt "This device is a Mouse"
+#~ msgid "Mouse"
+#~ msgstr "Ratón"
+
+#~ msgctxt "This device is a Joypad"
+#~ msgid "Joypad"
+#~ msgstr "Mando de videojuegos"
+
+#~ msgctxt "This device is a Graphics Tablet (input device)"
+#~ msgid "Tablet"
+#~ msgstr "Tableta"
+
+#~ msgctxt "This device is a Peripheral device"
+#~ msgid "Peripheral"
+#~ msgstr "Periférico"
+
+#~ msgctxt "This device is a Camera"
+#~ msgid "Camera"
+#~ msgstr "Cámara"
+
+#~ msgctxt "This device is a Printer"
+#~ msgid "Printer"
+#~ msgstr "Impresora"
+
+#~ msgctxt ""
+#~ "This device is an Imaging device (printer, scanner, camera, display, …)"
+#~ msgid "Imaging"
+#~ msgstr "Dispositivos de imagen"
+
+#~ msgctxt "This device is a Wearable"
+#~ msgid "Wearable"
+#~ msgstr "Tecnología vestible"
+
+#~ msgctxt "This device is a Toy"
+#~ msgid "Toy"
+#~ msgstr "Juguete digital"
+
+#~ msgctxt "This device is a Health device"
+#~ msgid "Health"
+#~ msgstr "Dispositivo de salud"
+
+#~ msgctxt "Type of device: could not be determined"
+#~ msgid "Unknown"
+#~ msgstr "Desconocido"
 
 #~ msgid "Confirm Deletion of Device"
 #~ msgstr "Confirmar borrado de dispositivo"

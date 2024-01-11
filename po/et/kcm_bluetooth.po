@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-07 01:41+0000\n"
+"POT-Creation-Date: 2024-01-11 00:38+0000\n"
 "PO-Revision-Date: 2020-09-28 02:19+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -33,180 +33,72 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 võrk (%2)"
 
-#: ui/Device.qml:68 ui/main.qml:232
+#: ui/Device.qml:70 ui/main.qml:235
 #, kde-format
 msgid "Disconnect"
 msgstr "Katkesta ühendus"
 
-#: ui/Device.qml:68 ui/main.qml:232
+#: ui/Device.qml:70 ui/main.qml:235
 #, kde-format
 msgid "Connect"
 msgstr "Ühenda"
 
-#: ui/Device.qml:100
+#: ui/Device.qml:102
 #, kde-format
 msgid "Type:"
 msgstr "Tüüp:"
 
-#: ui/Device.qml:105 ui/General.qml:42
+#: ui/Device.qml:108
+#, kde-format
+msgid "%1%"
+msgstr ""
+
+#: ui/Device.qml:112
+#, kde-format
+msgid "Battery:"
+msgstr ""
+
+#: ui/Device.qml:117 ui/General.qml:42
 #, kde-format
 msgid "Address:"
 msgstr "Aadress:"
 
-#: ui/Device.qml:110
+#: ui/Device.qml:122
 #, kde-format
 msgid "Adapter:"
 msgstr "Adapter:"
 
-#: ui/Device.qml:116 ui/General.qml:36
+#: ui/Device.qml:128 ui/General.qml:36
 #, kde-format
 msgid "Name:"
 msgstr "Nimi:"
 
-#: ui/Device.qml:120
+#: ui/Device.qml:132
 #, kde-format
 msgid "Trusted"
 msgstr "Usaldatav"
 
-#: ui/Device.qml:126
+#: ui/Device.qml:138
 #, kde-format
 msgid "Blocked"
 msgstr "Blokeeritud"
 
-#: ui/Device.qml:132
+#: ui/Device.qml:144
 #, kde-format
 msgid "Send File"
 msgstr "Saada fail"
 
-#: ui/Device.qml:139
+#: ui/Device.qml:151
 #, fuzzy, kde-format
 #| msgid "Setup NAP Network..."
 msgid "Setup NAP Network…"
 msgstr "Seadista NAP võrk ..."
 
-#: ui/Device.qml:146
+#: ui/Device.qml:158
 #, fuzzy, kde-format
 #| msgid "Setup DUN Network..."
 msgid "Setup DUN Network…"
 msgstr "Seadista DUN võrk ..."
-
-#: ui/Device.qml:156
-#, kde-format
-msgctxt "This device is a Phone"
-msgid "Phone"
-msgstr "Telefon"
-
-#: ui/Device.qml:158
-#, kde-format
-msgctxt "This device is a Modem"
-msgid "Modem"
-msgstr "Modem"
-
-#: ui/Device.qml:160
-#, kde-format
-msgctxt "This device is a Computer"
-msgid "Computer"
-msgstr "Arvuti"
-
-#: ui/Device.qml:162
-#, kde-format
-msgctxt "This device is of type Network"
-msgid "Network"
-msgstr "Võrk"
-
-#: ui/Device.qml:164
-#, kde-format
-msgctxt "This device is a Headset"
-msgid "Headset"
-msgstr "Peakomplekt"
-
-#: ui/Device.qml:166
-#, kde-format
-msgctxt "This device is a Headphones"
-msgid "Headphones"
-msgstr "Kõrvaklapid"
-
-#: ui/Device.qml:168
-#, kde-format
-msgctxt "This device is an Audio/Video device"
-msgid "Multimedia Device"
-msgstr ""
-
-#: ui/Device.qml:170
-#, kde-format
-msgctxt "This device is a Keyboard"
-msgid "Keyboard"
-msgstr "Klaviatuur"
-
-#: ui/Device.qml:172
-#, kde-format
-msgctxt "This device is a Mouse"
-msgid "Mouse"
-msgstr "Hiir"
-
-#: ui/Device.qml:174
-#, kde-format
-msgctxt "This device is a Joypad"
-msgid "Joypad"
-msgstr "Juhtpult"
-
-#: ui/Device.qml:176
-#, kde-format
-msgctxt "This device is a Graphics Tablet (input device)"
-msgid "Tablet"
-msgstr "Graafikalaud"
-
-#: ui/Device.qml:178
-#, kde-format
-msgctxt "This device is a Peripheral device"
-msgid "Peripheral"
-msgstr "Välisseade"
-
-#: ui/Device.qml:180
-#, kde-format
-msgctxt "This device is a Camera"
-msgid "Camera"
-msgstr "Kaamera"
-
-#: ui/Device.qml:182
-#, kde-format
-msgctxt "This device is a Printer"
-msgid "Printer"
-msgstr "Printer"
-
-#: ui/Device.qml:184
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "This device is an Imaging device (printer, scanner, camera, display, ...)"
-#| msgid "Imaging"
-msgctxt ""
-"This device is an Imaging device (printer, scanner, camera, display, …)"
-msgid "Imaging"
-msgstr "Pildiseade"
-
-#: ui/Device.qml:186
-#, kde-format
-msgctxt "This device is a Wearable"
-msgid "Wearable"
-msgstr "Nutiaksessuaar"
-
-#: ui/Device.qml:188
-#, kde-format
-msgctxt "This device is a Toy"
-msgid "Toy"
-msgstr "Mänguasi"
-
-#: ui/Device.qml:190
-#, kde-format
-msgctxt "This device is a Health device"
-msgid "Health"
-msgstr "Terviseaksessuaar"
-
-#: ui/Device.qml:192
-#, kde-format
-msgctxt "Type of device: could not be determined"
-msgid "Unknown"
-msgstr "Teadmata"
 
 #: ui/General.qml:19
 #, kde-format
@@ -279,82 +171,164 @@ msgstr "Failide salvestamise asukoht:"
 msgid "Select folder"
 msgstr "Kataloogi valimine"
 
-#: ui/main.qml:25
+#: ui/main.qml:27
 #, fuzzy, kde-format
 #| msgid "Enabled:"
 msgctxt "@action: button as in, 'enable Bluetooth'"
 msgid "Enabled"
 msgstr "Sisse lülitatud:"
 
-#: ui/main.qml:41
+#: ui/main.qml:43
 #, kde-format
 msgid "Add New Device…"
 msgstr ""
 
-#: ui/main.qml:47
+#: ui/main.qml:49
 #, fuzzy, kde-format
 #| msgid "Configure..."
 msgid "Configure…"
 msgstr "Seadista ..."
 
-#: ui/main.qml:86
+#: ui/main.qml:88
 #, kde-format
 msgid "Forget this Device?"
 msgstr ""
 
-#: ui/main.qml:87
+#: ui/main.qml:89
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
 msgstr ""
 
-#: ui/main.qml:98
+#: ui/main.qml:100
 #, fuzzy, kde-format
 #| msgid "Device:"
 msgctxt "@action:button"
 msgid "Forget Device"
 msgstr "Seade:"
 
-#: ui/main.qml:105
+#: ui/main.qml:107
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
 msgstr ""
 
-#: ui/main.qml:166
+#: ui/main.qml:168
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "Ühtegi Bluetoothi adapterit ei leitud"
 
-#: ui/main.qml:175
+#: ui/main.qml:177
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth on välja lülitatud"
 
-#: ui/main.qml:181
+#: ui/main.qml:183
 #, kde-format
 msgid "Enable"
 msgstr "Lülita sisse"
 
-#: ui/main.qml:191
+#: ui/main.qml:193
 #, kde-format
 msgid "No devices paired"
 msgstr ""
 
-#: ui/main.qml:213
+#: ui/main.qml:215
 #, kde-format
 msgid "Connected"
 msgstr "Ühendatud"
 
-#: ui/main.qml:213
+#: ui/main.qml:215
 #, kde-format
 msgid "Available"
 msgstr "Saadaval"
 
-#: ui/main.qml:248
+#: ui/main.qml:251
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr ""
+
+#: ui/main.qml:286
+#, kde-format
+msgid "%1% Battery"
+msgstr ""
+
+#~ msgctxt "This device is a Phone"
+#~ msgid "Phone"
+#~ msgstr "Telefon"
+
+#~ msgctxt "This device is a Modem"
+#~ msgid "Modem"
+#~ msgstr "Modem"
+
+#~ msgctxt "This device is a Computer"
+#~ msgid "Computer"
+#~ msgstr "Arvuti"
+
+#~ msgctxt "This device is of type Network"
+#~ msgid "Network"
+#~ msgstr "Võrk"
+
+#~ msgctxt "This device is a Headset"
+#~ msgid "Headset"
+#~ msgstr "Peakomplekt"
+
+#~ msgctxt "This device is a Headphones"
+#~ msgid "Headphones"
+#~ msgstr "Kõrvaklapid"
+
+#~ msgctxt "This device is a Keyboard"
+#~ msgid "Keyboard"
+#~ msgstr "Klaviatuur"
+
+#~ msgctxt "This device is a Mouse"
+#~ msgid "Mouse"
+#~ msgstr "Hiir"
+
+#~ msgctxt "This device is a Joypad"
+#~ msgid "Joypad"
+#~ msgstr "Juhtpult"
+
+#~ msgctxt "This device is a Graphics Tablet (input device)"
+#~ msgid "Tablet"
+#~ msgstr "Graafikalaud"
+
+#~ msgctxt "This device is a Peripheral device"
+#~ msgid "Peripheral"
+#~ msgstr "Välisseade"
+
+#~ msgctxt "This device is a Camera"
+#~ msgid "Camera"
+#~ msgstr "Kaamera"
+
+#~ msgctxt "This device is a Printer"
+#~ msgid "Printer"
+#~ msgstr "Printer"
+
+#, fuzzy
+#~| msgctxt ""
+#~| "This device is an Imaging device (printer, scanner, camera, display, ...)"
+#~| msgid "Imaging"
+#~ msgctxt ""
+#~ "This device is an Imaging device (printer, scanner, camera, display, …)"
+#~ msgid "Imaging"
+#~ msgstr "Pildiseade"
+
+#~ msgctxt "This device is a Wearable"
+#~ msgid "Wearable"
+#~ msgstr "Nutiaksessuaar"
+
+#~ msgctxt "This device is a Toy"
+#~ msgid "Toy"
+#~ msgstr "Mänguasi"
+
+#~ msgctxt "This device is a Health device"
+#~ msgid "Health"
+#~ msgstr "Terviseaksessuaar"
+
+#~ msgctxt "Type of device: could not be determined"
+#~ msgid "Unknown"
+#~ msgstr "Teadmata"
 
 #~ msgid "Remove"
 #~ msgstr "Eemalda"

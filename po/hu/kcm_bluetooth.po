@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-07 01:41+0000\n"
+"POT-Creation-Date: 2024-01-11 00:38+0000\n"
 "PO-Revision-Date: 2023-09-11 15:53+0200\n"
 "Last-Translator: Kristof Kiszel <kiszel.kristof@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -34,175 +34,70 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 hálózat (%2)"
 
-#: ui/Device.qml:68 ui/main.qml:232
+#: ui/Device.qml:70 ui/main.qml:235
 #, kde-format
 msgid "Disconnect"
 msgstr "Kapcsolat bontása"
 
-#: ui/Device.qml:68 ui/main.qml:232
+#: ui/Device.qml:70 ui/main.qml:235
 #, kde-format
 msgid "Connect"
 msgstr "Kapcsolódás"
 
-#: ui/Device.qml:100
+#: ui/Device.qml:102
 #, kde-format
 msgid "Type:"
 msgstr "Típus:"
 
-#: ui/Device.qml:105 ui/General.qml:42
+#: ui/Device.qml:108
+#, kde-format
+msgid "%1%"
+msgstr ""
+
+#: ui/Device.qml:112
+#, kde-format
+msgid "Battery:"
+msgstr ""
+
+#: ui/Device.qml:117 ui/General.qml:42
 #, kde-format
 msgid "Address:"
 msgstr "Cím:"
 
-#: ui/Device.qml:110
+#: ui/Device.qml:122
 #, kde-format
 msgid "Adapter:"
 msgstr "Adapter:"
 
-#: ui/Device.qml:116 ui/General.qml:36
+#: ui/Device.qml:128 ui/General.qml:36
 #, kde-format
 msgid "Name:"
 msgstr "Név:"
 
-#: ui/Device.qml:120
+#: ui/Device.qml:132
 #, kde-format
 msgid "Trusted"
 msgstr "Megbízható"
 
-#: ui/Device.qml:126
+#: ui/Device.qml:138
 #, kde-format
 msgid "Blocked"
 msgstr "Blokkolt"
 
-#: ui/Device.qml:132
+#: ui/Device.qml:144
 #, kde-format
 msgid "Send File"
 msgstr "Fájl küldése"
 
-#: ui/Device.qml:139
+#: ui/Device.qml:151
 #, kde-format
 msgid "Setup NAP Network…"
 msgstr "NAP hálózat beállítása…"
 
-#: ui/Device.qml:146
+#: ui/Device.qml:158
 #, kde-format
 msgid "Setup DUN Network…"
 msgstr "DUN hálózat beállítása…"
-
-#: ui/Device.qml:156
-#, kde-format
-msgctxt "This device is a Phone"
-msgid "Phone"
-msgstr "Telefon"
-
-#: ui/Device.qml:158
-#, kde-format
-msgctxt "This device is a Modem"
-msgid "Modem"
-msgstr "Modem"
-
-#: ui/Device.qml:160
-#, kde-format
-msgctxt "This device is a Computer"
-msgid "Computer"
-msgstr "Számítógép"
-
-#: ui/Device.qml:162
-#, kde-format
-msgctxt "This device is of type Network"
-msgid "Network"
-msgstr "Hálózat"
-
-#: ui/Device.qml:164
-#, kde-format
-msgctxt "This device is a Headset"
-msgid "Headset"
-msgstr "Fejhallgató"
-
-#: ui/Device.qml:166
-#, kde-format
-msgctxt "This device is a Headphones"
-msgid "Headphones"
-msgstr "Fülhallgatók"
-
-#: ui/Device.qml:168
-#, kde-format
-msgctxt "This device is an Audio/Video device"
-msgid "Multimedia Device"
-msgstr "Multimédiás eszköz"
-
-#: ui/Device.qml:170
-#, kde-format
-msgctxt "This device is a Keyboard"
-msgid "Keyboard"
-msgstr "Billentyűzet"
-
-#: ui/Device.qml:172
-#, kde-format
-msgctxt "This device is a Mouse"
-msgid "Mouse"
-msgstr "Egér"
-
-#: ui/Device.qml:174
-#, kde-format
-msgctxt "This device is a Joypad"
-msgid "Joypad"
-msgstr "Játékvezérlő"
-
-#: ui/Device.qml:176
-#, kde-format
-msgctxt "This device is a Graphics Tablet (input device)"
-msgid "Tablet"
-msgstr "Rajztábla"
-
-#: ui/Device.qml:178
-#, kde-format
-msgctxt "This device is a Peripheral device"
-msgid "Peripheral"
-msgstr "Periféria"
-
-#: ui/Device.qml:180
-#, kde-format
-msgctxt "This device is a Camera"
-msgid "Camera"
-msgstr "Fényképezőgép"
-
-#: ui/Device.qml:182
-#, kde-format
-msgctxt "This device is a Printer"
-msgid "Printer"
-msgstr "Nyomtató"
-
-#: ui/Device.qml:184
-#, kde-format
-msgctxt ""
-"This device is an Imaging device (printer, scanner, camera, display, …)"
-msgid "Imaging"
-msgstr "Képkezelés"
-
-#: ui/Device.qml:186
-#, kde-format
-msgctxt "This device is a Wearable"
-msgid "Wearable"
-msgstr "Viselhető"
-
-#: ui/Device.qml:188
-#, kde-format
-msgctxt "This device is a Toy"
-msgid "Toy"
-msgstr "Játék"
-
-#: ui/Device.qml:190
-#, kde-format
-msgctxt "This device is a Health device"
-msgid "Health"
-msgstr "Egészség"
-
-#: ui/Device.qml:192
-#, kde-format
-msgctxt "Type of device: could not be determined"
-msgid "Unknown"
-msgstr "Ismeretlen"
 
 #: ui/General.qml:19
 #, kde-format
@@ -274,79 +169,161 @@ msgstr "Fájlok mentése ide:"
 msgid "Select folder"
 msgstr "Mappa kiválasztása"
 
-#: ui/main.qml:25
+#: ui/main.qml:27
 #, kde-format
 msgctxt "@action: button as in, 'enable Bluetooth'"
 msgid "Enabled"
 msgstr "Bekapcsolva"
 
-#: ui/main.qml:41
+#: ui/main.qml:43
 #, kde-format
 msgid "Add New Device…"
 msgstr "Új eszköz hozzáadása…"
 
-#: ui/main.qml:47
+#: ui/main.qml:49
 #, kde-format
 msgid "Configure…"
 msgstr "Beállítások…"
 
-#: ui/main.qml:86
+#: ui/main.qml:88
 #, kde-format
 msgid "Forget this Device?"
 msgstr "Eszköz elfelejtése?"
 
-#: ui/main.qml:87
+#: ui/main.qml:89
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
 msgstr "Biztosan el szeretni felejteni ezt: „%1”?"
 
-#: ui/main.qml:98
+#: ui/main.qml:100
 #, kde-format
 msgctxt "@action:button"
 msgid "Forget Device"
 msgstr "Eszköz elfelejtése"
 
-#: ui/main.qml:105
+#: ui/main.qml:107
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
 msgstr "Mégsem"
 
-#: ui/main.qml:166
+#: ui/main.qml:168
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "Nem található bluetooth adapter"
 
-#: ui/main.qml:175
+#: ui/main.qml:177
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "A Bluetooth ki van kapcsolva"
 
-#: ui/main.qml:181
+#: ui/main.qml:183
 #, kde-format
 msgid "Enable"
 msgstr "Bekapcsolás"
 
-#: ui/main.qml:191
+#: ui/main.qml:193
 #, kde-format
 msgid "No devices paired"
 msgstr "Nincs párosított eszköz"
 
-#: ui/main.qml:213
+#: ui/main.qml:215
 #, kde-format
 msgid "Connected"
 msgstr "Kapcsolódva"
 
-#: ui/main.qml:213
+#: ui/main.qml:215
 #, kde-format
 msgid "Available"
 msgstr "Elérhető"
 
-#: ui/main.qml:248
+#: ui/main.qml:251
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "„%1” elfelejtése"
+
+#: ui/main.qml:286
+#, kde-format
+msgid "%1% Battery"
+msgstr ""
+
+#~ msgctxt "This device is a Phone"
+#~ msgid "Phone"
+#~ msgstr "Telefon"
+
+#~ msgctxt "This device is a Modem"
+#~ msgid "Modem"
+#~ msgstr "Modem"
+
+#~ msgctxt "This device is a Computer"
+#~ msgid "Computer"
+#~ msgstr "Számítógép"
+
+#~ msgctxt "This device is of type Network"
+#~ msgid "Network"
+#~ msgstr "Hálózat"
+
+#~ msgctxt "This device is a Headset"
+#~ msgid "Headset"
+#~ msgstr "Fejhallgató"
+
+#~ msgctxt "This device is a Headphones"
+#~ msgid "Headphones"
+#~ msgstr "Fülhallgatók"
+
+#~ msgctxt "This device is an Audio/Video device"
+#~ msgid "Multimedia Device"
+#~ msgstr "Multimédiás eszköz"
+
+#~ msgctxt "This device is a Keyboard"
+#~ msgid "Keyboard"
+#~ msgstr "Billentyűzet"
+
+#~ msgctxt "This device is a Mouse"
+#~ msgid "Mouse"
+#~ msgstr "Egér"
+
+#~ msgctxt "This device is a Joypad"
+#~ msgid "Joypad"
+#~ msgstr "Játékvezérlő"
+
+#~ msgctxt "This device is a Graphics Tablet (input device)"
+#~ msgid "Tablet"
+#~ msgstr "Rajztábla"
+
+#~ msgctxt "This device is a Peripheral device"
+#~ msgid "Peripheral"
+#~ msgstr "Periféria"
+
+#~ msgctxt "This device is a Camera"
+#~ msgid "Camera"
+#~ msgstr "Fényképezőgép"
+
+#~ msgctxt "This device is a Printer"
+#~ msgid "Printer"
+#~ msgstr "Nyomtató"
+
+#~ msgctxt ""
+#~ "This device is an Imaging device (printer, scanner, camera, display, …)"
+#~ msgid "Imaging"
+#~ msgstr "Képkezelés"
+
+#~ msgctxt "This device is a Wearable"
+#~ msgid "Wearable"
+#~ msgstr "Viselhető"
+
+#~ msgctxt "This device is a Toy"
+#~ msgid "Toy"
+#~ msgstr "Játék"
+
+#~ msgctxt "This device is a Health device"
+#~ msgid "Health"
+#~ msgstr "Egészség"
+
+#~ msgctxt "Type of device: could not be determined"
+#~ msgid "Unknown"
+#~ msgstr "Ismeretlen"
 
 #~ msgid "Confirm Deletion of Device"
 #~ msgstr "Eszköz törlésének megerősítése"

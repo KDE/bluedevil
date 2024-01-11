@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-07 01:41+0000\n"
+"POT-Creation-Date: 2024-01-11 00:38+0000\n"
 "PO-Revision-Date: 2023-09-06 23:42+0300\n"
 "Last-Translator: George Stefanakis <george.stefanakis@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
@@ -34,175 +34,70 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 Δίκτυο (%2)"
 
-#: ui/Device.qml:68 ui/main.qml:232
+#: ui/Device.qml:70 ui/main.qml:235
 #, kde-format
 msgid "Disconnect"
 msgstr "Αποσύνδεση"
 
-#: ui/Device.qml:68 ui/main.qml:232
+#: ui/Device.qml:70 ui/main.qml:235
 #, kde-format
 msgid "Connect"
 msgstr "Σύνδεση"
 
-#: ui/Device.qml:100
+#: ui/Device.qml:102
 #, kde-format
 msgid "Type:"
 msgstr "Τύπος:"
 
-#: ui/Device.qml:105 ui/General.qml:42
+#: ui/Device.qml:108
+#, kde-format
+msgid "%1%"
+msgstr ""
+
+#: ui/Device.qml:112
+#, kde-format
+msgid "Battery:"
+msgstr ""
+
+#: ui/Device.qml:117 ui/General.qml:42
 #, kde-format
 msgid "Address:"
 msgstr "Διεύθυνση:"
 
-#: ui/Device.qml:110
+#: ui/Device.qml:122
 #, kde-format
 msgid "Adapter:"
 msgstr "Προσαρμογέας:"
 
-#: ui/Device.qml:116 ui/General.qml:36
+#: ui/Device.qml:128 ui/General.qml:36
 #, kde-format
 msgid "Name:"
 msgstr "Όνομα:"
 
-#: ui/Device.qml:120
+#: ui/Device.qml:132
 #, kde-format
 msgid "Trusted"
 msgstr "Έμπιστο"
 
-#: ui/Device.qml:126
+#: ui/Device.qml:138
 #, kde-format
 msgid "Blocked"
 msgstr "Αποκλεισμένο"
 
-#: ui/Device.qml:132
+#: ui/Device.qml:144
 #, kde-format
 msgid "Send File"
 msgstr "Αποστολή αρχείου"
 
-#: ui/Device.qml:139
+#: ui/Device.qml:151
 #, kde-format
 msgid "Setup NAP Network…"
 msgstr "Ρύθμιση NAP δικτύου…"
 
-#: ui/Device.qml:146
+#: ui/Device.qml:158
 #, kde-format
 msgid "Setup DUN Network…"
 msgstr "Ρύθμιση DUN δικτύου…"
-
-#: ui/Device.qml:156
-#, kde-format
-msgctxt "This device is a Phone"
-msgid "Phone"
-msgstr "Τηλέφωνο"
-
-#: ui/Device.qml:158
-#, kde-format
-msgctxt "This device is a Modem"
-msgid "Modem"
-msgstr "Μόντεμ"
-
-#: ui/Device.qml:160
-#, kde-format
-msgctxt "This device is a Computer"
-msgid "Computer"
-msgstr "Υπολογιστής"
-
-#: ui/Device.qml:162
-#, kde-format
-msgctxt "This device is of type Network"
-msgid "Network"
-msgstr "Δίκτυο"
-
-#: ui/Device.qml:164
-#, kde-format
-msgctxt "This device is a Headset"
-msgid "Headset"
-msgstr "Ακουστικά και μικρόφωνο"
-
-#: ui/Device.qml:166
-#, kde-format
-msgctxt "This device is a Headphones"
-msgid "Headphones"
-msgstr "Ακουστικά"
-
-#: ui/Device.qml:168
-#, kde-format
-msgctxt "This device is an Audio/Video device"
-msgid "Multimedia Device"
-msgstr "Συσκευή πολυμέσων"
-
-#: ui/Device.qml:170
-#, kde-format
-msgctxt "This device is a Keyboard"
-msgid "Keyboard"
-msgstr "Πληκτρολόγιο"
-
-#: ui/Device.qml:172
-#, kde-format
-msgctxt "This device is a Mouse"
-msgid "Mouse"
-msgstr "Ποντίκι"
-
-#: ui/Device.qml:174
-#, kde-format
-msgctxt "This device is a Joypad"
-msgid "Joypad"
-msgstr "Χειριστήριο"
-
-#: ui/Device.qml:176
-#, kde-format
-msgctxt "This device is a Graphics Tablet (input device)"
-msgid "Tablet"
-msgstr "Πινάκιο"
-
-#: ui/Device.qml:178
-#, kde-format
-msgctxt "This device is a Peripheral device"
-msgid "Peripheral"
-msgstr "Περιφερειακό"
-
-#: ui/Device.qml:180
-#, kde-format
-msgctxt "This device is a Camera"
-msgid "Camera"
-msgstr "Κάμερα"
-
-#: ui/Device.qml:182
-#, kde-format
-msgctxt "This device is a Printer"
-msgid "Printer"
-msgstr "Εκτυπωτής"
-
-#: ui/Device.qml:184
-#, kde-format
-msgctxt ""
-"This device is an Imaging device (printer, scanner, camera, display, …)"
-msgid "Imaging"
-msgstr "Απεικόνισης"
-
-#: ui/Device.qml:186
-#, kde-format
-msgctxt "This device is a Wearable"
-msgid "Wearable"
-msgstr "Φορετή"
-
-#: ui/Device.qml:188
-#, kde-format
-msgctxt "This device is a Toy"
-msgid "Toy"
-msgstr "Παιχνίδι"
-
-#: ui/Device.qml:190
-#, kde-format
-msgctxt "This device is a Health device"
-msgid "Health"
-msgstr "Υγείας"
-
-#: ui/Device.qml:192
-#, kde-format
-msgctxt "Type of device: could not be determined"
-msgid "Unknown"
-msgstr "Άγνωστη"
 
 #: ui/General.qml:19
 #, kde-format
@@ -274,79 +169,161 @@ msgstr "Αποθήκευση αρχείων στο:"
 msgid "Select folder"
 msgstr "Επιλογή φακέλου"
 
-#: ui/main.qml:25
+#: ui/main.qml:27
 #, kde-format
 msgctxt "@action: button as in, 'enable Bluetooth'"
 msgid "Enabled"
 msgstr "Ενεργοποιημένο"
 
-#: ui/main.qml:41
+#: ui/main.qml:43
 #, kde-format
 msgid "Add New Device…"
 msgstr "Προσθήκη νέας συσκευής…"
 
-#: ui/main.qml:47
+#: ui/main.qml:49
 #, kde-format
 msgid "Configure…"
 msgstr "Διαμόρφωση…"
 
-#: ui/main.qml:86
+#: ui/main.qml:88
 #, kde-format
 msgid "Forget this Device?"
 msgstr "Να ξεχαστεί αυτή η συσκευή;"
 
-#: ui/main.qml:87
+#: ui/main.qml:89
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
 msgstr "Είστε βέβαιοι ότι θέλετε να ξεχάσετε το «%1»;"
 
-#: ui/main.qml:98
+#: ui/main.qml:100
 #, kde-format
 msgctxt "@action:button"
 msgid "Forget Device"
 msgstr "Να ξεχαστεί η συσκευή"
 
-#: ui/main.qml:105
+#: ui/main.qml:107
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
 msgstr "Ακύρωση"
 
-#: ui/main.qml:166
+#: ui/main.qml:168
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "Δεν βρέθηκαν προσαρμογείς Bluetooth"
 
-#: ui/main.qml:175
+#: ui/main.qml:177
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Το bluetooth είναι ανενεργό"
 
-#: ui/main.qml:181
+#: ui/main.qml:183
 #, kde-format
 msgid "Enable"
 msgstr "Ενεργοποίηση"
 
-#: ui/main.qml:191
+#: ui/main.qml:193
 #, kde-format
 msgid "No devices paired"
 msgstr "Δεν υπάρχουν συζευγμένες συσκευές"
 
-#: ui/main.qml:213
+#: ui/main.qml:215
 #, kde-format
 msgid "Connected"
 msgstr "Συνδεδεμένο"
 
-#: ui/main.qml:213
+#: ui/main.qml:215
 #, kde-format
 msgid "Available"
 msgstr "Διαθέσιμο"
 
-#: ui/main.qml:248
+#: ui/main.qml:251
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "Να ξεχαστεί η «%1»"
+
+#: ui/main.qml:286
+#, kde-format
+msgid "%1% Battery"
+msgstr ""
+
+#~ msgctxt "This device is a Phone"
+#~ msgid "Phone"
+#~ msgstr "Τηλέφωνο"
+
+#~ msgctxt "This device is a Modem"
+#~ msgid "Modem"
+#~ msgstr "Μόντεμ"
+
+#~ msgctxt "This device is a Computer"
+#~ msgid "Computer"
+#~ msgstr "Υπολογιστής"
+
+#~ msgctxt "This device is of type Network"
+#~ msgid "Network"
+#~ msgstr "Δίκτυο"
+
+#~ msgctxt "This device is a Headset"
+#~ msgid "Headset"
+#~ msgstr "Ακουστικά και μικρόφωνο"
+
+#~ msgctxt "This device is a Headphones"
+#~ msgid "Headphones"
+#~ msgstr "Ακουστικά"
+
+#~ msgctxt "This device is an Audio/Video device"
+#~ msgid "Multimedia Device"
+#~ msgstr "Συσκευή πολυμέσων"
+
+#~ msgctxt "This device is a Keyboard"
+#~ msgid "Keyboard"
+#~ msgstr "Πληκτρολόγιο"
+
+#~ msgctxt "This device is a Mouse"
+#~ msgid "Mouse"
+#~ msgstr "Ποντίκι"
+
+#~ msgctxt "This device is a Joypad"
+#~ msgid "Joypad"
+#~ msgstr "Χειριστήριο"
+
+#~ msgctxt "This device is a Graphics Tablet (input device)"
+#~ msgid "Tablet"
+#~ msgstr "Πινάκιο"
+
+#~ msgctxt "This device is a Peripheral device"
+#~ msgid "Peripheral"
+#~ msgstr "Περιφερειακό"
+
+#~ msgctxt "This device is a Camera"
+#~ msgid "Camera"
+#~ msgstr "Κάμερα"
+
+#~ msgctxt "This device is a Printer"
+#~ msgid "Printer"
+#~ msgstr "Εκτυπωτής"
+
+#~ msgctxt ""
+#~ "This device is an Imaging device (printer, scanner, camera, display, …)"
+#~ msgid "Imaging"
+#~ msgstr "Απεικόνισης"
+
+#~ msgctxt "This device is a Wearable"
+#~ msgid "Wearable"
+#~ msgstr "Φορετή"
+
+#~ msgctxt "This device is a Toy"
+#~ msgid "Toy"
+#~ msgstr "Παιχνίδι"
+
+#~ msgctxt "This device is a Health device"
+#~ msgid "Health"
+#~ msgstr "Υγείας"
+
+#~ msgctxt "Type of device: could not be determined"
+#~ msgid "Unknown"
+#~ msgstr "Άγνωστη"
 
 #~ msgid "Confirm Deletion of Device"
 #~ msgstr "Επιβεβαίωση διαγραφής της συσκευής"
