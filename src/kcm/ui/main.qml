@@ -273,10 +273,6 @@ ScrollViewKCM {
         }
     }
 
-    // System Settings doesn't draw its own footer buttons, so extra footer
-    // paddings here to make them look better isn't necessary
-    extraFooterTopPadding: false
-
     function infoText(type, battery, uuids): string {
         const labels = [];
 
