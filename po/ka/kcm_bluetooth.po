@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-11 00:38+0000\n"
-"PO-Revision-Date: 2023-06-03 05:24+0200\n"
+"POT-Creation-Date: 2024-01-13 00:39+0000\n"
+"PO-Revision-Date: 2024-01-12 04:51+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -52,12 +52,12 @@ msgstr "ტიპი:"
 #: ui/Device.qml:108
 #, kde-format
 msgid "%1%"
-msgstr ""
+msgstr "%1%"
 
 #: ui/Device.qml:112
 #, kde-format
 msgid "Battery:"
-msgstr ""
+msgstr "ელემენტი:"
 
 #: ui/Device.qml:117 ui/General.qml:42
 #, kde-format
@@ -243,10 +243,10 @@ msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "\"%1\"-ის დავიწყება"
 
-#: ui/main.qml:286
+#: ui/main.qml:282
 #, kde-format
 msgid "%1% Battery"
-msgstr ""
+msgstr "%1% ელემენტი"
 
 #~ msgctxt "This device is a Phone"
 #~ msgid "Phone"

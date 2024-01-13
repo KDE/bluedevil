@@ -1,20 +1,20 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the bluedevil package.
 #
-# Mincho Kondarev <mkondarev@yahoo.de>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Mincho Kondarev <mkondarev@yahoo.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-11 00:38+0000\n"
-"PO-Revision-Date: 2023-06-08 19:12+0200\n"
+"POT-Creation-Date: 2024-01-13 00:39+0000\n"
+"PO-Revision-Date: 2024-01-11 21:57+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.04.1\n"
+"X-Generator: Lokalize 23.08.4\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -51,12 +51,12 @@ msgstr "Вид:"
 #: ui/Device.qml:108
 #, kde-format
 msgid "%1%"
-msgstr ""
+msgstr "%1%"
 
 #: ui/Device.qml:112
 #, kde-format
 msgid "Battery:"
-msgstr ""
+msgstr "Батерия:"
 
 #: ui/Device.qml:117 ui/General.qml:42
 #, kde-format
@@ -242,10 +242,10 @@ msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "Забравяне на \"%1\"?"
 
-#: ui/main.qml:286
+#: ui/main.qml:282
 #, kde-format
 msgid "%1% Battery"
-msgstr ""
+msgstr "%1% Батерия"
 
 #~ msgctxt "This device is a Phone"
 #~ msgid "Phone"

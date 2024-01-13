@@ -1,14 +1,14 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the bluedevil package.
 #
 # Volkan Gezer <volkangezer@gmail.com>, 2021.
-# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-11 00:38+0000\n"
-"PO-Revision-Date: 2023-09-07 23:23+0300\n"
+"POT-Creation-Date: 2024-01-13 00:39+0000\n"
+"PO-Revision-Date: 2024-01-11 16:08+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.11.70\n"
+"X-Generator: Lokalize 24.01.85\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -52,12 +52,12 @@ msgstr "Tür:"
 #: ui/Device.qml:108
 #, kde-format
 msgid "%1%"
-msgstr ""
+msgstr "%​%1"
 
 #: ui/Device.qml:112
 #, kde-format
 msgid "Battery:"
-msgstr ""
+msgstr "Pil:"
 
 #: ui/Device.qml:117 ui/General.qml:42
 #, kde-format
@@ -112,7 +112,7 @@ msgstr "Aygıt:"
 #: ui/General.qml:46
 #, kde-format
 msgid "Enabled:"
-msgstr "Etkinleştirildi:"
+msgstr "Etkin:"
 
 #: ui/General.qml:52
 #, kde-format
@@ -122,7 +122,7 @@ msgstr "Görünür:"
 #: ui/General.qml:66
 #, kde-format
 msgid "On login:"
-msgstr "Oturum açılışı sırasında:"
+msgstr "Oturumu açarken:"
 
 #: ui/General.qml:67
 #, kde-format
@@ -193,7 +193,7 @@ msgstr "Bu Aygıtı Unut?"
 #: ui/main.qml:89
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
-msgstr "'%1' aygıtını unutmak istediğinize emin misiniz?"
+msgstr "'%1' aygıtını unutmak istediğinizden emin misiniz?"
 
 #: ui/main.qml:100
 #, kde-format
@@ -243,10 +243,10 @@ msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "Unut: \"%1\""
 
-#: ui/main.qml:286
+#: ui/main.qml:282
 #, kde-format
 msgid "%1% Battery"
-msgstr ""
+msgstr "Pil %​%1"
 
 #~ msgctxt "This device is a Phone"
 #~ msgid "Phone"

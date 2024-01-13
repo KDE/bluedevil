@@ -1,16 +1,16 @@
 # Translation of kcm_bluetooth.po to Catalan
-# Copyright (C) 2020-2023 This_file_is_part_of_KDE
+# Copyright (C) 2020-2024 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2020, 2022, 2023.
+# Josep M. Ferrer <txemaq@gmail.com>, 2020, 2022, 2023, 2024.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-11 00:38+0000\n"
-"PO-Revision-Date: 2023-12-14 13:00+0100\n"
+"POT-Creation-Date: 2024-01-13 00:39+0000\n"
+"PO-Revision-Date: 2024-01-11 15:30+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -55,12 +55,12 @@ msgstr "Tipus:"
 #: ui/Device.qml:108
 #, kde-format
 msgid "%1%"
-msgstr ""
+msgstr "%1%"
 
 #: ui/Device.qml:112
 #, kde-format
 msgid "Battery:"
-msgstr ""
+msgstr "Bateria:"
 
 #: ui/Device.qml:117 ui/General.qml:42
 #, kde-format
@@ -246,10 +246,10 @@ msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "Oblida «%1»"
 
-#: ui/main.qml:286
+#: ui/main.qml:282
 #, kde-format
 msgid "%1% Battery"
-msgstr ""
+msgstr "Bateria %1%"
 
 #~ msgctxt "This device is a Phone"
 #~ msgid "Phone"

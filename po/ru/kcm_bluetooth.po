@@ -2,13 +2,13 @@
 # This file is distributed under the same license as the bluedevil package.
 #
 # Alexander Potashev <aspotashev@gmail.com>, 2020.
-# Alexander Yavorsky <kekcuha@gmail.com>, 2021, 2022, 2023.
+# Alexander Yavorsky <kekcuha@gmail.com>, 2021, 2022, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-11 00:38+0000\n"
-"PO-Revision-Date: 2023-11-14 22:23+0300\n"
+"POT-Creation-Date: 2024-01-13 00:39+0000\n"
+"PO-Revision-Date: 2024-01-11 10:21+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -53,12 +53,12 @@ msgstr "Тип:"
 #: ui/Device.qml:108
 #, kde-format
 msgid "%1%"
-msgstr ""
+msgstr "%1%"
 
 #: ui/Device.qml:112
 #, kde-format
 msgid "Battery:"
-msgstr ""
+msgstr "Батарея:"
 
 #: ui/Device.qml:117 ui/General.qml:42
 #, kde-format
@@ -245,7 +245,7 @@ msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "Удалить «%1»"
 
-#: ui/main.qml:286
+#: ui/main.qml:282
 #, kde-format
 msgid "%1% Battery"
 msgstr ""

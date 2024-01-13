@@ -1,16 +1,16 @@
 # Translation of kcm_bluetooth.po to Catalan (Valencian)
-# Copyright (C) 2020-2023 This_file_is_part_of_KDE
+# Copyright (C) 2020-2024 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2020, 2022, 2023.
+# Josep M. Ferrer <txemaq@gmail.com>, 2020, 2022, 2023, 2024.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-11 00:38+0000\n"
-"PO-Revision-Date: 2023-12-14 13:00+0100\n"
+"POT-Creation-Date: 2024-01-13 00:39+0000\n"
+"PO-Revision-Date: 2024-01-11 15:30+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -55,12 +55,12 @@ msgstr "Tipus:"
 #: ui/Device.qml:108
 #, kde-format
 msgid "%1%"
-msgstr ""
+msgstr "%1%"
 
 #: ui/Device.qml:112
 #, kde-format
 msgid "Battery:"
-msgstr ""
+msgstr "Bateria:"
 
 #: ui/Device.qml:117 ui/General.qml:42
 #, kde-format
@@ -246,84 +246,7 @@ msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "Oblida «%1»"
 
-#: ui/main.qml:286
+#: ui/main.qml:282
 #, kde-format
 msgid "%1% Battery"
-msgstr ""
-
-#~ msgctxt "This device is a Phone"
-#~ msgid "Phone"
-#~ msgstr "Telèfon"
-
-#~ msgctxt "This device is a Modem"
-#~ msgid "Modem"
-#~ msgstr "Mòdem"
-
-#~ msgctxt "This device is a Computer"
-#~ msgid "Computer"
-#~ msgstr "Ordinador"
-
-#~ msgctxt "This device is of type Network"
-#~ msgid "Network"
-#~ msgstr "Xarxa"
-
-#~ msgctxt "This device is a Headset"
-#~ msgid "Headset"
-#~ msgstr "Auriculars amb micròfon"
-
-#~ msgctxt "This device is a Headphones"
-#~ msgid "Headphones"
-#~ msgstr "Auriculars"
-
-#~ msgctxt "This device is an Audio/Video device"
-#~ msgid "Multimedia Device"
-#~ msgstr "Dispositiu multimèdia"
-
-#~ msgctxt "This device is a Keyboard"
-#~ msgid "Keyboard"
-#~ msgstr "Teclat"
-
-#~ msgctxt "This device is a Mouse"
-#~ msgid "Mouse"
-#~ msgstr "Ratolí"
-
-#~ msgctxt "This device is a Joypad"
-#~ msgid "Joypad"
-#~ msgstr "Comandament de joc"
-
-#~ msgctxt "This device is a Graphics Tablet (input device)"
-#~ msgid "Tablet"
-#~ msgstr "Tauleta"
-
-#~ msgctxt "This device is a Peripheral device"
-#~ msgid "Peripheral"
-#~ msgstr "Perifèric"
-
-#~ msgctxt "This device is a Camera"
-#~ msgid "Camera"
-#~ msgstr "Càmera"
-
-#~ msgctxt "This device is a Printer"
-#~ msgid "Printer"
-#~ msgstr "Impressora"
-
-#~ msgctxt ""
-#~ "This device is an Imaging device (printer, scanner, camera, display, …)"
-#~ msgid "Imaging"
-#~ msgstr "Obtenció d'imatges"
-
-#~ msgctxt "This device is a Wearable"
-#~ msgid "Wearable"
-#~ msgstr "Portable"
-
-#~ msgctxt "This device is a Toy"
-#~ msgid "Toy"
-#~ msgstr "Joguet"
-
-#~ msgctxt "This device is a Health device"
-#~ msgid "Health"
-#~ msgstr "Salut"
-
-#~ msgctxt "Type of device: could not be determined"
-#~ msgid "Unknown"
-#~ msgstr "Desconegut"
+msgstr "Bateria %1%"
