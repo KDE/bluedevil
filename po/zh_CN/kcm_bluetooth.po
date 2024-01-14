@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-13 00:39+0000\n"
-"PO-Revision-Date: 2024-01-06 03:31\n"
+"PO-Revision-Date: 2024-01-13 05:59\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -52,12 +52,12 @@ msgstr "类型："
 #: ui/Device.qml:108
 #, kde-format
 msgid "%1%"
-msgstr ""
+msgstr "%1%"
 
 #: ui/Device.qml:112
 #, kde-format
 msgid "Battery:"
-msgstr ""
+msgstr "电量："
 
 #: ui/Device.qml:117 ui/General.qml:42
 #, kde-format
@@ -246,81 +246,4 @@ msgstr "忘记“%1”"
 #: ui/main.qml:282
 #, kde-format
 msgid "%1% Battery"
-msgstr ""
-
-#~ msgctxt "This device is a Phone"
-#~ msgid "Phone"
-#~ msgstr "电话"
-
-#~ msgctxt "This device is a Modem"
-#~ msgid "Modem"
-#~ msgstr "调制解调器"
-
-#~ msgctxt "This device is a Computer"
-#~ msgid "Computer"
-#~ msgstr "电脑"
-
-#~ msgctxt "This device is of type Network"
-#~ msgid "Network"
-#~ msgstr "网络"
-
-#~ msgctxt "This device is a Headset"
-#~ msgid "Headset"
-#~ msgstr "耳麦"
-
-#~ msgctxt "This device is a Headphones"
-#~ msgid "Headphones"
-#~ msgstr "耳机"
-
-#~ msgctxt "This device is an Audio/Video device"
-#~ msgid "Multimedia Device"
-#~ msgstr "多媒体设备"
-
-#~ msgctxt "This device is a Keyboard"
-#~ msgid "Keyboard"
-#~ msgstr "键盘"
-
-#~ msgctxt "This device is a Mouse"
-#~ msgid "Mouse"
-#~ msgstr "鼠标"
-
-#~ msgctxt "This device is a Joypad"
-#~ msgid "Joypad"
-#~ msgstr "手柄"
-
-#~ msgctxt "This device is a Graphics Tablet (input device)"
-#~ msgid "Tablet"
-#~ msgstr "数位板"
-
-#~ msgctxt "This device is a Peripheral device"
-#~ msgid "Peripheral"
-#~ msgstr "外设"
-
-#~ msgctxt "This device is a Camera"
-#~ msgid "Camera"
-#~ msgstr "相机"
-
-#~ msgctxt "This device is a Printer"
-#~ msgid "Printer"
-#~ msgstr "打印机"
-
-#~ msgctxt ""
-#~ "This device is an Imaging device (printer, scanner, camera, display, …)"
-#~ msgid "Imaging"
-#~ msgstr "图像"
-
-#~ msgctxt "This device is a Wearable"
-#~ msgid "Wearable"
-#~ msgstr "可穿戴"
-
-#~ msgctxt "This device is a Toy"
-#~ msgid "Toy"
-#~ msgstr "玩具"
-
-#~ msgctxt "This device is a Health device"
-#~ msgid "Health"
-#~ msgstr "健康"
-
-#~ msgctxt "Type of device: could not be determined"
-#~ msgid "Unknown"
-#~ msgstr "未知"
+msgstr "%1% 电量"
