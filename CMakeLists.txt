@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.16)
 
 project(bluedevil)
 set(PROJECT_VERSION "6.0.80")
+set(PROJECT_DEP_VERSION "6.0.80")
 set(PROJECT_VERSION_MAJOR 6)
 
 set(QT_MIN_VERSION "6.6.0")
@@ -36,7 +37,7 @@ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     JobWidgets
 )
 
-find_package(Plasma ${PROJECT_VERSION} REQUIRED)
+find_package(Plasma ${PROJECT_DEP_VERSION} REQUIRED)
 
 find_package(SharedMimeInfo REQUIRED)
 
