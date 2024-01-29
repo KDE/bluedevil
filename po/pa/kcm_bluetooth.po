@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-13 00:39+0000\n"
-"PO-Revision-Date: 2024-01-03 14:03-0600\n"
+"PO-Revision-Date: 2024-01-28 15:20-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
 "Language: pa\n"
@@ -51,12 +51,12 @@ msgstr "ਕਿਸਮ:"
 #: ui/Device.qml:108
 #, kde-format
 msgid "%1%"
-msgstr ""
+msgstr "%1%"
 
 #: ui/Device.qml:112
 #, kde-format
 msgid "Battery:"
-msgstr ""
+msgstr "ਬੈਟਰੀ:"
 
 #: ui/Device.qml:117 ui/General.qml:42
 #, kde-format
@@ -245,7 +245,7 @@ msgstr "\"%1\" ਨੂੰ ਭੁੱਲੋ"
 #: ui/main.qml:282
 #, kde-format
 msgid "%1% Battery"
-msgstr ""
+msgstr "%1% ਬੈਟਰੀ"
 
 #~ msgctxt "This device is a Phone"
 #~ msgid "Phone"
