@@ -37,7 +37,7 @@ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     JobWidgets
 )
 
-find_package(Plasma ${PROJECT_VERSION} REQUIRED)
+find_package(Plasma ${PROJECT_DEP_VERSION} REQUIRED)
 
 find_package(SharedMimeInfo REQUIRED)
 
