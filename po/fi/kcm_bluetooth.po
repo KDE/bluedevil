@@ -1,7 +1,7 @@
 # Finnish messages for bluedevil.
 # Copyright © 2011 This_file_is_part_of_KDE
 # This file is distributed under the same license as the extragear-base package.
-# Tommi Nieminen <translator@legisign.org>, 2011, 2015, 2017, 2018, 2020, 2021, 2022, 2023.
+# Tommi Nieminen <translator@legisign.org>, 2011, 2015, 2017, 2018, 2020, 2021, 2022, 2023, 2024.
 # Jorma Karvonen <karvonen.jorma@gmail.com>, 2011.
 # Lasse Liehu <lasse.liehu@gmail.com>, 2011, 2012, 2013, 2014, 2015, 2016.
 #
