@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# Shinjo Park <kde@peremen.name>, 2010, 2011, 2014, 2015, 2016, 2017, 2018, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2010, 2011, 2014, 2015, 2016, 2017, 2018, 2020, 2021, 2022, 2023, 2024 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-13 00:39+0000\n"
-"PO-Revision-Date: 2023-07-18 13:28+0200\n"
+"PO-Revision-Date: 2024-02-09 20:09+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -51,12 +51,12 @@ msgstr "종류:"
 #: ui/Device.qml:108
 #, kde-format
 msgid "%1%"
-msgstr ""
+msgstr "%1%"
 
 #: ui/Device.qml:112
 #, kde-format
 msgid "Battery:"
-msgstr ""
+msgstr "배터리:"
 
 #: ui/Device.qml:117 ui/General.qml:42
 #, kde-format
@@ -245,7 +245,7 @@ msgstr "\"%1\" 삭제"
 #: ui/main.qml:282
 #, kde-format
 msgid "%1% Battery"
-msgstr ""
+msgstr "배터리 %1%"
 
 #~ msgctxt "This device is a Phone"
 #~ msgid "Phone"
