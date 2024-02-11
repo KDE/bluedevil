@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the bluedevil package.
 #
-# Zayed Al-Saidi <zayed.alsaidi@gmail.com>, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-13 00:39+0000\n"
-"PO-Revision-Date: 2023-06-08 12:04+0400\n"
+"PO-Revision-Date: 2024-02-10 17:23+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -52,12 +52,12 @@ msgstr "النوع:"
 #: ui/Device.qml:108
 #, kde-format
 msgid "%1%"
-msgstr ""
+msgstr "%1٪"
 
 #: ui/Device.qml:112
 #, kde-format
 msgid "Battery:"
-msgstr ""
+msgstr "البطارية:"
 
 #: ui/Device.qml:117 ui/General.qml:42
 #, kde-format
@@ -246,7 +246,7 @@ msgstr "انسَ \"%1\""
 #: ui/main.qml:282
 #, kde-format
 msgid "%1% Battery"
-msgstr ""
+msgstr "البطارية %1٪"
 
 #~ msgctxt "This device is a Phone"
 #~ msgid "Phone"
