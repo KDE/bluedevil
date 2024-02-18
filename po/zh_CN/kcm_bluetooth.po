@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-13 00:39+0000\n"
+"POT-Creation-Date: 2024-02-18 00:38+0000\n"
 "PO-Revision-Date: 2024-02-05 11:37\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -34,12 +34,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 网络 (%2)"
 
-#: ui/Device.qml:70 ui/main.qml:235
+#: ui/Device.qml:70 ui/main.qml:237
 #, kde-format
 msgid "Disconnect"
 msgstr "断开连接"
 
-#: ui/Device.qml:70 ui/main.qml:235
+#: ui/Device.qml:70 ui/main.qml:237
 #, kde-format
 msgid "Connect"
 msgstr "连接"
@@ -212,38 +212,49 @@ msgstr "取消"
 msgid "No Bluetooth adapters found"
 msgstr "没有找到蓝牙适配器"
 
-#: ui/main.qml:177
+#: ui/main.qml:169
+#, kde-format
+msgid "Connect an external Bluetooth adapter"
+msgstr ""
+
+#: ui/main.qml:178
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "蓝牙已禁用"
 
-#: ui/main.qml:183
+#: ui/main.qml:184
 #, kde-format
 msgid "Enable"
 msgstr "启用"
 
-#: ui/main.qml:193
+#: ui/main.qml:194
 #, kde-format
 msgid "No devices paired"
 msgstr "没有已配对的设备"
 
-#: ui/main.qml:215
+#: ui/main.qml:195
+#, kde-kuit-format
+msgctxt "@info"
+msgid "Click <interface>Add New Device…</interface> to pair some"
+msgstr ""
+
+#: ui/main.qml:217
 #, kde-format
 msgid "Connected"
 msgstr "已连接"
 
-#: ui/main.qml:215
+#: ui/main.qml:217
 #, kde-format
 msgid "Available"
 msgstr "可用"
 
-#: ui/main.qml:251
+#: ui/main.qml:253
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "忘记“%1”"
 
-#: ui/main.qml:282
+#: ui/main.qml:284
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% 电量"

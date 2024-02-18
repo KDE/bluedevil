@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-13 00:39+0000\n"
+"POT-Creation-Date: 2024-02-18 00:38+0000\n"
 "PO-Revision-Date: 2023-07-15 14:20+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -36,12 +36,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 nettverk (%2)"
 
-#: ui/Device.qml:70 ui/main.qml:235
+#: ui/Device.qml:70 ui/main.qml:237
 #, kde-format
 msgid "Disconnect"
 msgstr "Kopla frå"
 
-#: ui/Device.qml:70 ui/main.qml:235
+#: ui/Device.qml:70 ui/main.qml:237
 #, kde-format
 msgid "Connect"
 msgstr "Kopla til"
@@ -214,38 +214,49 @@ msgstr "Avbryt"
 msgid "No Bluetooth adapters found"
 msgstr "Fann ingen Bluetooth-adapterar"
 
-#: ui/main.qml:177
+#: ui/main.qml:169
+#, kde-format
+msgid "Connect an external Bluetooth adapter"
+msgstr ""
+
+#: ui/main.qml:178
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth er avslått"
 
-#: ui/main.qml:183
+#: ui/main.qml:184
 #, kde-format
 msgid "Enable"
 msgstr "Slå på"
 
-#: ui/main.qml:193
+#: ui/main.qml:194
 #, kde-format
 msgid "No devices paired"
 msgstr "Ingen einingar er para"
 
-#: ui/main.qml:215
+#: ui/main.qml:195
+#, kde-kuit-format
+msgctxt "@info"
+msgid "Click <interface>Add New Device…</interface> to pair some"
+msgstr ""
+
+#: ui/main.qml:217
 #, kde-format
 msgid "Connected"
 msgstr "Kopla til"
 
-#: ui/main.qml:215
+#: ui/main.qml:217
 #, kde-format
 msgid "Available"
 msgstr "Tilgjengeleg"
 
-#: ui/main.qml:251
+#: ui/main.qml:253
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "Gløym «%1»"
 
-#: ui/main.qml:282
+#: ui/main.qml:284
 #, kde-format
 msgid "%1% Battery"
 msgstr ""

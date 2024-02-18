@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-13 00:39+0000\n"
+"POT-Creation-Date: 2024-02-18 00:38+0000\n"
 "PO-Revision-Date: 2022-08-26 17:12+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -34,12 +34,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 ネットワーク (%2)"
 
-#: ui/Device.qml:70 ui/main.qml:235
+#: ui/Device.qml:70 ui/main.qml:237
 #, kde-format
 msgid "Disconnect"
 msgstr "切断"
 
-#: ui/Device.qml:70 ui/main.qml:235
+#: ui/Device.qml:70 ui/main.qml:237
 #, kde-format
 msgid "Connect"
 msgstr "接続"
@@ -213,38 +213,49 @@ msgstr "キャンセル"
 msgid "No Bluetooth adapters found"
 msgstr "Bluetooth アダプタが見つかりません"
 
-#: ui/main.qml:177
+#: ui/main.qml:169
+#, kde-format
+msgid "Connect an external Bluetooth adapter"
+msgstr ""
+
+#: ui/main.qml:178
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth は無効化されています。"
 
-#: ui/main.qml:183
+#: ui/main.qml:184
 #, kde-format
 msgid "Enable"
 msgstr "有効化"
 
-#: ui/main.qml:193
+#: ui/main.qml:194
 #, kde-format
 msgid "No devices paired"
 msgstr "ペアリングされたデバイスはありません"
 
-#: ui/main.qml:215
+#: ui/main.qml:195
+#, kde-kuit-format
+msgctxt "@info"
+msgid "Click <interface>Add New Device…</interface> to pair some"
+msgstr ""
+
+#: ui/main.qml:217
 #, kde-format
 msgid "Connected"
 msgstr "接続済み"
 
-#: ui/main.qml:215
+#: ui/main.qml:217
 #, kde-format
 msgid "Available"
 msgstr "利用可能"
 
-#: ui/main.qml:251
+#: ui/main.qml:253
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "\"%1\" を削除"
 
-#: ui/main.qml:282
+#: ui/main.qml:284
 #, kde-format
 msgid "%1% Battery"
 msgstr ""
