@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-18 00:38+0000\n"
-"PO-Revision-Date: 2024-01-12 04:51+0100\n"
+"PO-Revision-Date: 2024-02-18 05:27+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -215,7 +215,7 @@ msgstr "ბლუთუზის ბარათი ნაპოვნი არ
 #: ui/main.qml:169
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
-msgstr ""
+msgstr "მიუერთეთ გარე ბლუთუზის ადაპტერი"
 
 #: ui/main.qml:178
 #, kde-format
@@ -237,6 +237,8 @@ msgstr "შეწყვილებული მოწყობილობე�
 msgctxt "@info"
 msgid "Click <interface>Add New Device…</interface> to pair some"
 msgstr ""
+"დასაწყვილებლად დააწკაპუნეთ <interface>ახალი მოწყობილობის დამატების…</"
+"interface> ღილაკზე"
 
 #: ui/main.qml:217
 #, kde-format

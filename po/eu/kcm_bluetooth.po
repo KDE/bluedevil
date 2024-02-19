@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-18 00:38+0000\n"
-"PO-Revision-Date: 2024-01-11 22:58+0100\n"
+"PO-Revision-Date: 2024-02-18 19:26+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -212,12 +212,12 @@ msgstr "Utzi"
 #: ui/main.qml:168
 #, kde-format
 msgid "No Bluetooth adapters found"
-msgstr "Ez da aurkitu Bluetooth moldagailurik"
+msgstr "Ez da Bluetooth moldagailurik aurkitu "
 
 #: ui/main.qml:169
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
-msgstr ""
+msgstr "Kanpoko Bluetooth egokigailu bat konektatzea"
 
 #: ui/main.qml:178
 #, kde-format
@@ -239,6 +239,8 @@ msgstr "Ez dago parekatutako gailurik"
 msgctxt "@info"
 msgid "Click <interface>Add New Device…</interface> to pair some"
 msgstr ""
+"Egin klik <interface>Gehitu gailu berria…</interface> aukeran baten bat "
+"parekatzeko"
 
 #: ui/main.qml:217
 #, kde-format

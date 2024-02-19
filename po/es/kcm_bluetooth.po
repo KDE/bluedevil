@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kcm_bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-18 00:38+0000\n"
-"PO-Revision-Date: 2024-01-11 02:45+0100\n"
+"PO-Revision-Date: 2024-02-18 19:42+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -216,7 +216,7 @@ msgstr "No se han encontrado adaptadores Bluetooth"
 #: ui/main.qml:169
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
-msgstr ""
+msgstr "Conectar un adaptador Bluetooth externo"
 
 #: ui/main.qml:178
 #, kde-format
@@ -238,6 +238,7 @@ msgstr "No hay dispositivos vinculados"
 msgctxt "@info"
 msgid "Click <interface>Add New Device…</interface> to pair some"
 msgstr ""
+"Pulse <interface>Añadir nuevo dispositivo...</interface> para vincular uno"
 
 #: ui/main.qml:217
 #, kde-format

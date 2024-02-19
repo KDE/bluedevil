@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-18 00:38+0000\n"
-"PO-Revision-Date: 2024-01-11 09:36+0100\n"
+"PO-Revision-Date: 2024-02-18 05:52+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -215,7 +215,7 @@ msgstr "Ni najdenega nobenega Bluetooth adapterja"
 #: ui/main.qml:169
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
-msgstr ""
+msgstr "Priklopi zunanji Bluetooth adapter"
 
 #: ui/main.qml:178
 #, kde-format
@@ -236,7 +236,7 @@ msgstr "Ni uparjenih naprav"
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Add New Device…</interface> to pair some"
-msgstr ""
+msgstr "Kliknite <interface>Dodaj novo napravo…</interface>, da uparite kakšno"
 
 #: ui/main.qml:217
 #, kde-format

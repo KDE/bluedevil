@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-18 00:38+0000\n"
-"PO-Revision-Date: 2024-02-09 17:45+0300\n"
+"PO-Revision-Date: 2024-02-18 16:09+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -193,7 +193,7 @@ msgstr "Bu Aygıtı Unut?"
 #: ui/main.qml:89
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
-msgstr "'%1' aygıtını unutmak istediğinizden emin misiniz?"
+msgstr "‘%1’ aygıtını unutmak istediğinizden emin misiniz?"
 
 #: ui/main.qml:100
 #, kde-format
@@ -215,7 +215,7 @@ msgstr "Herhangi bir Bluetooth bağdaştırıcısı bulunamadı"
 #: ui/main.qml:169
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
-msgstr ""
+msgstr "Bir dış Bluetooth bağdaştırıcısı bağlayın"
 
 #: ui/main.qml:178
 #, kde-format
@@ -236,7 +236,7 @@ msgstr "Eşleştirilmiş aygıt yok"
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Add New Device…</interface> to pair some"
-msgstr ""
+msgstr "Eşleştirmek için <interface>Yeni Aygıt Ekle…</interface>’ye tıklayın"
 
 #: ui/main.qml:217
 #, kde-format
@@ -252,7 +252,7 @@ msgstr "Kullanılabilir"
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
-msgstr "Unut: \"%1\""
+msgstr "Unut: ‘%1’"
 
 #: ui/main.qml:284
 #, kde-format
