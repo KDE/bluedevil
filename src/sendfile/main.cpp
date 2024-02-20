@@ -39,6 +39,7 @@ int main(int argc, char *argv[])
                         QStringLiteral("http://www.afiestas.org/"));
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("preferences-system-bluetooth")));
     app.setQuitOnLastWindowClosed(false);
+    app.setQuitLockEnabled(false);
 
     KAboutData::setApplicationData(aboutData);
     KDBusService service;
