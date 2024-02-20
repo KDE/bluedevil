@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-18 00:38+0000\n"
-"PO-Revision-Date: 2024-02-09 20:09+0100\n"
+"PO-Revision-Date: 2024-02-19 23:01+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -214,7 +214,7 @@ msgstr "블루투스 어댑터를 찾을 수 없음"
 #: ui/main.qml:169
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
-msgstr ""
+msgstr "외부 블루투스 어댑터 연결"
 
 #: ui/main.qml:178
 #, kde-format
@@ -235,7 +235,7 @@ msgstr "페어링된 장치 없음"
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Add New Device…</interface> to pair some"
-msgstr ""
+msgstr "<interface>새 장치 추가…</interface>를 클릭해서 페어링하십시오"
 
 #: ui/main.qml:217
 #, kde-format

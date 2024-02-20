@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-18 00:38+0000\n"
-"PO-Revision-Date: 2024-01-12 21:57+0200\n"
+"PO-Revision-Date: 2024-02-18 08:28+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -215,7 +215,7 @@ msgstr "לא נמצאו מתאמי בלוטות׳"
 #: ui/main.qml:169
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
-msgstr ""
+msgstr "חיבור מתאם בלוטות׳ חיצוני"
 
 #: ui/main.qml:178
 #, kde-format
@@ -236,7 +236,7 @@ msgstr "אין התקנים מצומדים"
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Add New Device…</interface> to pair some"
-msgstr ""
+msgstr "יש ללחוץ על <interface>הוספת התקן חדש…</interface> כדי לצמד כאלה"
 
 #: ui/main.qml:217
 #, kde-format
