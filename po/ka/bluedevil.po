@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 16:52+0000\n"
+"POT-Creation-Date: 2024-02-21 02:24+0000\n"
 "PO-Revision-Date: 2023-08-19 05:21+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -288,17 +288,17 @@ msgstr "ჩართვა"
 msgid "Bluetooth File Transfer"
 msgstr "ბლუთუზით ფაილის გადაცემა"
 
-#: sendfile/main.cpp:47
+#: sendfile/main.cpp:48
 #, kde-format
 msgid "Specify receiving device by MAC address."
 msgstr "მიმღები მოწყობილობის MAC მისამართის მითითება."
 
-#: sendfile/main.cpp:51
+#: sendfile/main.cpp:52
 #, kde-format
 msgid "Specify receiving device by UBI path."
 msgstr "მიმღები მოწყობილობის UBI ბილიკით მითითება."
 
-#: sendfile/main.cpp:55
+#: sendfile/main.cpp:56
 #, kde-format
 msgid "Files to be sent."
 msgstr "გასაგზავნი ფაილები."

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 16:52+0000\n"
+"POT-Creation-Date: 2024-02-21 02:24+0000\n"
 "PO-Revision-Date: 2023-01-14 23:54+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -289,17 +289,17 @@ msgstr "Açmaq"
 msgid "Bluetooth File Transfer"
 msgstr "Bluetooth ilə fayl mübadiləsi"
 
-#: sendfile/main.cpp:47
+#: sendfile/main.cpp:48
 #, kde-format
 msgid "Specify receiving device by MAC address."
 msgstr "Qəbul edən cihazı MAC ünvanına görə göstərmək."
 
-#: sendfile/main.cpp:51
+#: sendfile/main.cpp:52
 #, kde-format
 msgid "Specify receiving device by UBI path."
 msgstr "Qəbul edən cihazı onun UBİ yoluna görə göstərmək."
 
-#: sendfile/main.cpp:55
+#: sendfile/main.cpp:56
 #, kde-format
 msgid "Files to be sent."
 msgstr "Göndərmək üçün fayllar"

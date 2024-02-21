@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 16:52+0000\n"
+"POT-Creation-Date: 2024-02-21 02:24+0000\n"
 "PO-Revision-Date: 2023-09-10 22:13+0200\n"
 "Last-Translator: Kristof Kiszel <kiszel.kristof@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -289,17 +289,17 @@ msgstr "Bekapcsolás"
 msgid "Bluetooth File Transfer"
 msgstr "Bluetooth fájlátvitel"
 
-#: sendfile/main.cpp:47
+#: sendfile/main.cpp:48
 #, kde-format
 msgid "Specify receiving device by MAC address."
 msgstr "Fogadó eszköz megadása MAC-címmel."
 
-#: sendfile/main.cpp:51
+#: sendfile/main.cpp:52
 #, kde-format
 msgid "Specify receiving device by UBI path."
 msgstr "Fogadó eszköz megadása UBI elérési úttal."
 
-#: sendfile/main.cpp:55
+#: sendfile/main.cpp:56
 #, kde-format
 msgid "Files to be sent."
 msgstr "Elküldendő fájlok."

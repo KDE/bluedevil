@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 16:52+0000\n"
+"POT-Creation-Date: 2024-02-21 02:24+0000\n"
 "PO-Revision-Date: 2023-08-18 11:48+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -295,17 +295,17 @@ msgstr "Inicia"
 msgid "Bluetooth File Transfer"
 msgstr "Transferència de fitxers Bluetooth"
 
-#: sendfile/main.cpp:47
+#: sendfile/main.cpp:48
 #, kde-format
 msgid "Specify receiving device by MAC address."
 msgstr "Especifica el dispositiu de recepció amb l'adreça MAC."
 
-#: sendfile/main.cpp:51
+#: sendfile/main.cpp:52
 #, kde-format
 msgid "Specify receiving device by UBI path."
 msgstr "Especifica el dispositiu de recepció amb el camí UBI."
 
-#: sendfile/main.cpp:55
+#: sendfile/main.cpp:56
 #, kde-format
 msgid "Files to be sent."
 msgstr "Fitxers que s'enviaran."
