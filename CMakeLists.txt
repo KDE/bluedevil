@@ -41,8 +41,8 @@ find_package(Plasma ${PROJECT_DEP_VERSION} REQUIRED)
 
 find_package(SharedMimeInfo REQUIRED)
 
-find_package(KF6Kirigami2 ${KF6_MIN_VERSION} CONFIG)
-set_package_properties(KF6Kirigami2 PROPERTIES
+find_package(KF6Kirigami ${KF6_MIN_VERSION} CONFIG)
+set_package_properties(KF6Kirigami PROPERTIES
     TYPE RUNTIME
 )
 
