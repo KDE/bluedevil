@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-18 00:38+0000\n"
-"PO-Revision-Date: 2024-01-11 15:30+0100\n"
+"PO-Revision-Date: 2024-02-18 10:38+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -218,7 +218,7 @@ msgstr "No s'ha trobat cap adaptador Bluetooth"
 #: ui/main.qml:169
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
-msgstr ""
+msgstr "Connecta un adaptador Bluetooth extern"
 
 #: ui/main.qml:178
 #, kde-format
@@ -240,6 +240,7 @@ msgstr "No hi ha cap dispositiu aparellat"
 msgctxt "@info"
 msgid "Click <interface>Add New Device…</interface> to pair some"
 msgstr ""
+"Feu clic en <interface>Afig un dispositiu nou…</interface> per a aparellar-ne"
 
 #: ui/main.qml:217
 #, kde-format
