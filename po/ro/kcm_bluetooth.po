@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-18 00:38+0000\n"
-"PO-Revision-Date: 2024-01-07 12:58+0000\n"
+"PO-Revision-Date: 2024-02-18 15:58+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
@@ -52,12 +52,12 @@ msgstr "Tip:"
 #: ui/Device.qml:108
 #, kde-format
 msgid "%1%"
-msgstr ""
+msgstr "%1%"
 
 #: ui/Device.qml:112
 #, kde-format
 msgid "Battery:"
-msgstr ""
+msgstr "Acumulator:"
 
 #: ui/Device.qml:117 ui/General.qml:42
 #, kde-format
@@ -215,7 +215,7 @@ msgstr "Niciun adaptor Bluetooth găsit"
 #: ui/main.qml:169
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
-msgstr ""
+msgstr "Conectează un adaptor Bluetooth extern"
 
 #: ui/main.qml:178
 #, kde-format
@@ -237,6 +237,8 @@ msgstr "Niciun dispozitiv asociat"
 msgctxt "@info"
 msgid "Click <interface>Add New Device…</interface> to pair some"
 msgstr ""
+"Apăsați pe <interface>Adaugă dispozitiv nou…</interface> pentru a asocia "
+"câteva"
 
 #: ui/main.qml:217
 #, kde-format
@@ -257,7 +259,7 @@ msgstr "Uită „%1”"
 #: ui/main.qml:284
 #, kde-format
 msgid "%1% Battery"
-msgstr ""
+msgstr "Acumulator %1%"
 
 #~ msgctxt "This device is a Phone"
 #~ msgid "Phone"
