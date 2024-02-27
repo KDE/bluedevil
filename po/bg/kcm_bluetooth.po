@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-18 00:38+0000\n"
-"PO-Revision-Date: 2024-01-11 21:57+0100\n"
+"PO-Revision-Date: 2024-02-26 08:48+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -214,7 +214,7 @@ msgstr "Няма намерени Bluetooth устройства"
 #: ui/main.qml:169
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
-msgstr ""
+msgstr "Свързване на външен адаптер за Bluetooth"
 
 #: ui/main.qml:178
 #, kde-format
@@ -236,6 +236,8 @@ msgstr "Няма сдвоени устройства"
 msgctxt "@info"
 msgid "Click <interface>Add New Device…</interface> to pair some"
 msgstr ""
+"За да сдвоите нови устройства, щракнете върху бутона <interface> Добавяне на "
+"ново устройство…</interface>."
 
 #: ui/main.qml:217
 #, kde-format
