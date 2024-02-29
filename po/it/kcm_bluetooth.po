@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-18 00:38+0000\n"
-"PO-Revision-Date: 2024-01-11 15:47+0100\n"
+"PO-Revision-Date: 2024-02-18 15:22+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -216,7 +216,7 @@ msgstr "Nessun adattatore Bluetooth trovato"
 #: ui/main.qml:169
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
-msgstr ""
+msgstr "Collega un adattatore Bluetooth esterno"
 
 #: ui/main.qml:178
 #, kde-format
@@ -238,6 +238,8 @@ msgstr "Nessun dispositivo associato"
 msgctxt "@info"
 msgid "Click <interface>Add New Device…</interface> to pair some"
 msgstr ""
+"Fai clic su <interface>Aggiungi nuovo dispositivo…</interface> per "
+"accoppiarne alcuni"
 
 #: ui/main.qml:217
 #, kde-format
