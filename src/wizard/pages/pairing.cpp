@@ -73,7 +73,12 @@ void PairingPage::pairingFinished(BluezQt::PendingCall *call)
     qCDebug(BLUEDEVIL_WIZARD_LOG) << "\t errorText : " << call->errorText();
 
     m_success = !call->error();
-    m_wizard->next();
+    if (m_device->isConnected()) {
+        BluezQt::PendingCall *disconnectCall = m_device->disconnectFromDevice();
+        connect(disconnectCall, &BluezQt::PendingCall::finished, m_wizard, &QWizard::next);
+    } else {
+        m_wizard->next();
+    }
 }
 
 void PairingPage::pinRequested(const QString &pin)
