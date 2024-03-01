@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-18 00:38+0000\n"
-"PO-Revision-Date: 2024-02-05 11:37\n"
+"PO-Revision-Date: 2024-02-29 12:52\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -117,7 +117,7 @@ msgstr "已启用:"
 #: ui/General.qml:52
 #, kde-format
 msgid "Visible:"
-msgstr "可见："
+msgstr "可被发现："
 
 #: ui/General.qml:66
 #, kde-format
@@ -215,7 +215,7 @@ msgstr "没有找到蓝牙适配器"
 #: ui/main.qml:169
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
-msgstr ""
+msgstr "连接外置蓝牙适配器"
 
 #: ui/main.qml:178
 #, kde-format
@@ -236,7 +236,7 @@ msgstr "没有已配对的设备"
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Add New Device…</interface> to pair some"
-msgstr ""
+msgstr "点击 <interface>添加新设备…</interface> 进行配对"
 
 #: ui/main.qml:217
 #, kde-format
