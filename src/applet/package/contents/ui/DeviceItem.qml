@@ -24,6 +24,7 @@ PlasmaExtras.ExpandableListItem {
     id: expandableListItem
 
     property bool connecting: false
+    property bool connectionFailed: false
     property var currentDeviceDetails: []
 
     icon: model.Icon
@@ -247,6 +248,8 @@ PlasmaExtras.ExpandableListItem {
 
         if (Connected) {
             labels.push(i18n("Connected"));
+        } else if (connectionFailed) {
+            labels.push(i18n("Connection failed"));
         }
 
         switch (Type) {
@@ -338,12 +341,14 @@ PlasmaExtras.ExpandableListItem {
         // Connect device
         const /*PendingCall*/call = Device.connectToDevice();
         call.userData = Device;
+        connectionFailed = false;
 
         call.finished.connect(call => {
             connecting = false;
             runningActions--;
 
             if (call.error) {
+                connectionFailed = true;
                 const device = call.userData;
                 const title = i18nc("@label %1 is human-readable device name, %2 is low-level device address", "%1 (%2)", device.name, device.address);
                 const text = errorText(call);
