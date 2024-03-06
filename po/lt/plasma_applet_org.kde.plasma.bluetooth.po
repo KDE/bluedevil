@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: trunk-kf 5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-17 01:40+0000\n"
+"POT-Creation-Date: 2024-03-06 00:38+0000\n"
 "PO-Revision-Date: 2022-12-28 01:32+0200\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -20,157 +20,164 @@ msgstr ""
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: package/contents/ui/DeviceItem.qml:36
+#: package/contents/ui/DeviceItem.qml:37
 #, kde-format
 msgid "Disconnect"
 msgstr "Atsijungti"
 
-#: package/contents/ui/DeviceItem.qml:36
+#: package/contents/ui/DeviceItem.qml:37
 #, kde-format
 msgid "Connect"
 msgstr "Prisijungti"
 
-#: package/contents/ui/DeviceItem.qml:45
+#: package/contents/ui/DeviceItem.qml:46
 #, kde-format
 msgid "Browse Files"
 msgstr "Naršyti failus"
 
-#: package/contents/ui/DeviceItem.qml:56
+#: package/contents/ui/DeviceItem.qml:57
 #, kde-format
 msgid "Send File"
 msgstr "Siųsti failą"
 
-#: package/contents/ui/DeviceItem.qml:112
+#: package/contents/ui/DeviceItem.qml:113
 #, kde-format
 msgid "Copy"
 msgstr "Kopijuoti"
 
-#: package/contents/ui/DeviceItem.qml:208
+#: package/contents/ui/DeviceItem.qml:209
 #, kde-format
 msgid "Yes"
 msgstr "Taip"
 
-#: package/contents/ui/DeviceItem.qml:208
+#: package/contents/ui/DeviceItem.qml:209
 #, kde-format
 msgid "No"
 msgstr "Ne"
 
-#: package/contents/ui/DeviceItem.qml:214
+#: package/contents/ui/DeviceItem.qml:215
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: package/contents/ui/DeviceItem.qml:222
+#: package/contents/ui/DeviceItem.qml:223
 #, kde-format
 msgid "Remote Name"
 msgstr "Nuotolinis pavadinimas"
 
-#: package/contents/ui/DeviceItem.qml:226
+#: package/contents/ui/DeviceItem.qml:227
 #, kde-format
 msgid "Address"
 msgstr "Adresas"
 
-#: package/contents/ui/DeviceItem.qml:229
+#: package/contents/ui/DeviceItem.qml:230
 #, kde-format
 msgid "Paired"
 msgstr "Suporuotas"
 
-#: package/contents/ui/DeviceItem.qml:232
+#: package/contents/ui/DeviceItem.qml:233
 #, kde-format
 msgid "Trusted"
 msgstr "Patikimas"
 
-#: package/contents/ui/DeviceItem.qml:235
+#: package/contents/ui/DeviceItem.qml:236
 #, kde-format
 msgid "Adapter"
 msgstr "Adapteris"
 
-#: package/contents/ui/DeviceItem.qml:243
+#: package/contents/ui/DeviceItem.qml:244
 #, kde-format
 msgid "Disconnecting"
 msgstr "Atsijungiama"
 
-#: package/contents/ui/DeviceItem.qml:243
+#: package/contents/ui/DeviceItem.qml:244
 #, kde-format
 msgid "Connecting"
 msgstr "Jungiamasi"
 
-#: package/contents/ui/DeviceItem.qml:249
+#: package/contents/ui/DeviceItem.qml:250
 #, kde-format
 msgid "Connected"
 msgstr "Prisijungta"
 
-#: package/contents/ui/DeviceItem.qml:256
+#: package/contents/ui/DeviceItem.qml:252
+#, fuzzy, kde-format
+#| msgctxt "Notification when the connection failed due to Failed"
+#| msgid "Connection to the device failed"
+msgid "Connection failed"
+msgstr "Nepavyko prisijungti prie įrenginio"
+
+#: package/contents/ui/DeviceItem.qml:259
 #, kde-format
 msgid "Audio device"
 msgstr "Garso įrenginys"
 
-#: package/contents/ui/DeviceItem.qml:263
+#: package/contents/ui/DeviceItem.qml:266
 #, kde-format
 msgid "Input device"
 msgstr "Įvesties įrenginys"
 
-#: package/contents/ui/DeviceItem.qml:267
+#: package/contents/ui/DeviceItem.qml:270
 #, kde-format
 msgid "Phone"
 msgstr "Telefonas"
 
-#: package/contents/ui/DeviceItem.qml:274
+#: package/contents/ui/DeviceItem.qml:277
 #, kde-format
 msgid "File transfer"
 msgstr "Failų persiuntimas"
 
-#: package/contents/ui/DeviceItem.qml:277
+#: package/contents/ui/DeviceItem.qml:280
 #, kde-format
 msgid "Send file"
 msgstr "Siųsti failą"
 
-#: package/contents/ui/DeviceItem.qml:280
+#: package/contents/ui/DeviceItem.qml:283
 #, kde-format
 msgid "Input"
 msgstr "Įvestis"
 
-#: package/contents/ui/DeviceItem.qml:283
+#: package/contents/ui/DeviceItem.qml:286
 #, kde-format
 msgid "Audio"
 msgstr "Garsas"
 
-#: package/contents/ui/DeviceItem.qml:286
+#: package/contents/ui/DeviceItem.qml:289
 #, kde-format
 msgid "Network"
 msgstr "Tinklas"
 
-#: package/contents/ui/DeviceItem.qml:290
+#: package/contents/ui/DeviceItem.qml:293
 #, kde-format
 msgid "Other device"
 msgstr "Kitas įrenginys"
 
-#: package/contents/ui/DeviceItem.qml:297 package/contents/ui/main.qml:70
+#: package/contents/ui/DeviceItem.qml:300 package/contents/ui/main.qml:70
 #: package/contents/ui/main.qml:80
 #, kde-format
 msgid "%1% Battery"
 msgstr "Akumuliatorius %1%"
 
-#: package/contents/ui/DeviceItem.qml:308
+#: package/contents/ui/DeviceItem.qml:311
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "Įrenginys yra nepasiekiamas"
 
-#: package/contents/ui/DeviceItem.qml:310
+#: package/contents/ui/DeviceItem.qml:313
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "Nepavyko prisijungti prie įrenginio"
 
-#: package/contents/ui/DeviceItem.qml:314
+#: package/contents/ui/DeviceItem.qml:317
 #, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Įrenginys nėra pasiruošęs"
 
-#: package/contents/ui/DeviceItem.qml:348
+#: package/contents/ui/DeviceItem.qml:353
 #, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
