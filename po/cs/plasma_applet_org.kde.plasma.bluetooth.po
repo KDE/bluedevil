@@ -100,11 +100,9 @@ msgid "Connected"
 msgstr "Připojen"
 
 #: package/contents/ui/DeviceItem.qml:252
-#, fuzzy, kde-format
-#| msgctxt "Notification when the connection failed due to Failed"
-#| msgid "Connection to the device failed"
+#, kde-format
 msgid "Connection failed"
-msgstr "Připojení k zařízení selhalo"
+msgstr "Připojení selhalo"
 
 #: package/contents/ui/DeviceItem.qml:259
 #, kde-format
