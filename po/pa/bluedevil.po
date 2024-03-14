@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-21 02:24+0000\n"
+"POT-Creation-Date: 2024-03-14 03:05+0000\n"
 "PO-Revision-Date: 2024-01-03 14:20-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -473,28 +473,28 @@ msgstr "%1 ਲਈ ਸੈਟਅੱਪ ਫੇਲ੍ਹ ਹੋਇਆ"
 msgid "Connecting to %1…"
 msgstr "…%1 ਨਾਲ ਕਨੈਕਟ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
 
-#: wizard/pages/pairing.cpp:91
+#: wizard/pages/pairing.cpp:96
 #, kde-format
 msgid ""
 "Please introduce the PIN in your keyboard when it appears and press Enter"
 msgstr "ਜਦੋਂ ਦਿਖਾਈ ਦੇਵੇ ਤਾਂ ਆਪਣੇ ਕੀਬੋਰਡ ਤੋਂ ਪਿੰਨ ਦਿਓ ਅਤੇ ਐਂਟਰ ਦਬਾਓ"
 
-#: wizard/pages/pairing.cpp:93
+#: wizard/pages/pairing.cpp:98
 #, kde-format
 msgid "Please introduce the PIN in your device when it appears"
 msgstr "ਜਦੋਂ ਦਿਖਾਈ ਦੇਵੇ ਤਾਂ ਆਪਣੇ ਡਿਵਾਈਸ ਤੋਂ ਪਿੰਨ ਦਿਓ"
 
-#: wizard/pages/pairing.cpp:109
+#: wizard/pages/pairing.cpp:114
 #, kde-format
 msgid "Matches"
 msgstr "ਮਿਲਦਾ"
 
-#: wizard/pages/pairing.cpp:113
+#: wizard/pages/pairing.cpp:118
 #, kde-format
 msgid "Does not match"
 msgstr "ਮਿਲਦਾ ਨਹੀਂ"
 
-#: wizard/pages/pairing.cpp:128
+#: wizard/pages/pairing.cpp:133
 #, kde-format
 msgid "Please, confirm that the PIN displayed on %1 matches the wizard one."
 msgstr "ਯਕੀਨੀ ਬਣਾਓ ਕਿ '%1' ਉੱਤੇ ਵੇਖਾਇਆ PIN ਸਹਾਇਕ ਨਾਲ ਮਿਲਦਾ ਹੈ।"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-21 02:24+0000\n"
+"POT-Creation-Date: 2024-03-14 03:05+0000\n"
 "PO-Revision-Date: 2023-12-27 10:15+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -481,29 +481,29 @@ msgstr "Не удалось настроить устройство %1."
 msgid "Connecting to %1…"
 msgstr "Подключение к %1..."
 
-#: wizard/pages/pairing.cpp:91
+#: wizard/pages/pairing.cpp:96
 #, kde-format
 msgid ""
 "Please introduce the PIN in your keyboard when it appears and press Enter"
 msgstr ""
 "Когда PIN-код будет показан, введите его на клавиатуре и нажмите Enter."
 
-#: wizard/pages/pairing.cpp:93
+#: wizard/pages/pairing.cpp:98
 #, kde-format
 msgid "Please introduce the PIN in your device when it appears"
 msgstr "Когда PIN-код будет показан, введите его на устройстве."
 
-#: wizard/pages/pairing.cpp:109
+#: wizard/pages/pairing.cpp:114
 #, kde-format
 msgid "Matches"
 msgstr "Совпадает"
 
-#: wizard/pages/pairing.cpp:113
+#: wizard/pages/pairing.cpp:118
 #, kde-format
 msgid "Does not match"
 msgstr "Не совпадает"
 
-#: wizard/pages/pairing.cpp:128
+#: wizard/pages/pairing.cpp:133
 #, kde-format
 msgid "Please, confirm that the PIN displayed on %1 matches the wizard one."
 msgstr ""

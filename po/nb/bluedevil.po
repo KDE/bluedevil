@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-21 02:24+0000\n"
+"POT-Creation-Date: 2024-03-14 03:05+0000\n"
 "PO-Revision-Date: 2015-08-27 16:56+0200\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -475,28 +475,28 @@ msgstr "Oppsett av %1 mislyktes"
 msgid "Connecting to %1…"
 msgstr ""
 
-#: wizard/pages/pairing.cpp:91
+#: wizard/pages/pairing.cpp:96
 #, kde-format
 msgid ""
 "Please introduce the PIN in your keyboard when it appears and press Enter"
 msgstr "Tast inn PIN på tastaturet når det dukker opp og trykk Enter"
 
-#: wizard/pages/pairing.cpp:93
+#: wizard/pages/pairing.cpp:98
 #, kde-format
 msgid "Please introduce the PIN in your device when it appears"
 msgstr "Tast inn PIN på  enheten din når det dukker opp"
 
-#: wizard/pages/pairing.cpp:109
+#: wizard/pages/pairing.cpp:114
 #, kde-format
 msgid "Matches"
 msgstr "Stemmer overens"
 
-#: wizard/pages/pairing.cpp:113
+#: wizard/pages/pairing.cpp:118
 #, kde-format
 msgid "Does not match"
 msgstr "Stemmer ikke overens"
 
-#: wizard/pages/pairing.cpp:128
+#: wizard/pages/pairing.cpp:133
 #, kde-format
 msgid "Please, confirm that the PIN displayed on %1 matches the wizard one."
 msgstr "Bekreft at PIN som vises på «%1» stemmer med veiviserens."

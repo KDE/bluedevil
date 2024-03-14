@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-21 02:24+0000\n"
+"POT-Creation-Date: 2024-03-14 03:05+0000\n"
 "PO-Revision-Date: 2017-12-15 12:37+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -501,31 +501,31 @@ msgid "Connecting to %1…"
 msgstr "Povezujem %1..."
 
 # ? Wtf?
-#: wizard/pages/pairing.cpp:91
+#: wizard/pages/pairing.cpp:96
 #, kde-format
 msgid ""
 "Please introduce the PIN in your keyboard when it appears and press Enter"
 msgstr "Uvedite PIN u svoju tastaturu kada se pojavi i pritisnite Enter."
 
 # ? Wtf?
-#: wizard/pages/pairing.cpp:93
+#: wizard/pages/pairing.cpp:98
 #, kde-format
 msgid "Please introduce the PIN in your device when it appears"
 msgstr "Uvedite PIN u svoj uređaj kada se pojavi."
 
 # >> @action:button
-#: wizard/pages/pairing.cpp:109
+#: wizard/pages/pairing.cpp:114
 #, kde-format
 msgid "Matches"
 msgstr "Poklapa se"
 
 # >> @action:button
-#: wizard/pages/pairing.cpp:113
+#: wizard/pages/pairing.cpp:118
 #, kde-format
 msgid "Does not match"
 msgstr "Ne poklapa se"
 
-#: wizard/pages/pairing.cpp:128
+#: wizard/pages/pairing.cpp:133
 #, kde-format
 msgid "Please, confirm that the PIN displayed on %1 matches the wizard one."
 msgstr "Potvrdite da PIN prikazan na %1 odgovara ovom u čarobnjaku."
