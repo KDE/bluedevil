@@ -1,6 +1,6 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the bluedevil package.
-# Luigi Toscano <luigi.toscano@tiscali.it>, 2015, 2017, 2020, 2021, 2022.
+# Luigi Toscano <luigi.toscano@tiscali.it>, 2015, 2017, 2020, 2021, 2022, 2024.
 # Vincenzo Reale <smart2128vr@gmail.com>, 2022.
 #
 msgid ""
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-06 00:38+0000\n"
-"PO-Revision-Date: 2022-12-08 00:19+0100\n"
+"PO-Revision-Date: 2024-03-06 21:59+0100\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.03.70\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: package/contents/ui/DeviceItem.qml:37
 #, kde-format
@@ -100,11 +100,9 @@ msgid "Connected"
 msgstr "Connesso"
 
 #: package/contents/ui/DeviceItem.qml:252
-#, fuzzy, kde-format
-#| msgctxt "Notification when the connection failed due to Failed"
-#| msgid "Connection to the device failed"
+#, kde-format
 msgid "Connection failed"
-msgstr "Connessione al dispositivo non riuscita"
+msgstr "Connessione non riuscita"
 
 #: package/contents/ui/DeviceItem.qml:259
 #, kde-format
