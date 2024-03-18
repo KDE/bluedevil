@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-06 00:38+0000\n"
-"PO-Revision-Date: 2024-02-11 12:56+0100\n"
+"PO-Revision-Date: 2024-03-17 10:52+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -100,11 +100,9 @@ msgid "Connected"
 msgstr "Połączony"
 
 #: package/contents/ui/DeviceItem.qml:252
-#, fuzzy, kde-format
-#| msgctxt "Notification when the connection failed due to Failed"
-#| msgid "Connection to the device failed"
+#, kde-format
 msgid "Connection failed"
-msgstr "Nie udało się połączyć z urządzeniem"
+msgstr "Nie udało się połączyć"
 
 #: package/contents/ui/DeviceItem.qml:259
 #, kde-format
