@@ -1,7 +1,7 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# SPDX-FileCopyrightText: 2022, 2023 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Emir SARI <emir_sari@icloud.com>
 # Volkan Gezer <volkangezer@gmail.com>, 2017, 2021.
 # Emir SARI <emir_sari@icloud.com>, 2023.
 msgid ""
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-14 00:39+0000\n"
-"PO-Revision-Date: 2023-11-14 19:44+0300\n"
+"PO-Revision-Date: 2024-03-22 16:10+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.11.70\n"
+"X-Generator: Lokalize 24.02.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -96,13 +96,13 @@ msgstr "%1, PIN kodunun doğru olup olmadığını soruyor: %2"
 #, kde-format
 msgctxt "Notification button to know if the pin is correct or not"
 msgid "PIN correct"
-msgstr "PIN doğru"
+msgstr "PIN Doğru"
 
 #: kded/helpers/requestconfirmation.cpp:33
 #, kde-format
 msgctxt "Notification button to say that the PIN is wrong"
 msgid "PIN incorrect"
-msgstr "PIN yanlış"
+msgstr "PIN Yanlış"
 
 #: kded/helpers/requestpin.cpp:35
 #, kde-format
@@ -494,7 +494,7 @@ msgstr "Lütfen aygıta PIN kodunu girin"
 #: wizard/pages/pairing.cpp:114
 #, kde-format
 msgid "Matches"
-msgstr "Eşleşenler"
+msgstr "Eşleşiyor"
 
 #: wizard/pages/pairing.cpp:118
 #, kde-format
