@@ -120,8 +120,8 @@ PlasmaExtras.Representation {
                 }
             }
             highlight: PlasmaExtras.Highlight {}
-            highlightMoveDuration: 0
-            highlightResizeDuration: 0
+            highlightMoveDuration: Kirigami.Units.shortDuration
+            highlightResizeDuration: Kirigami.Units.shortDuration
             delegate: DeviceItem {}
 
             Keys.onUpPressed: {
