@@ -42,7 +42,7 @@ ScrollViewKCM {
         Kirigami.Action {
             text: i18n("Add New Device…")
             icon.name: "list-add-symbolic"
-            onTriggered: kcm.runWizard()
+            onTriggered: kcm.runWizard(root)
             visible: BluezQt.Manager.bluetoothOperational
         },
         Kirigami.Action {

@@ -46,12 +46,22 @@ int main(int argc, char *argv[])
     KDBusService service(KDBusService::Unique);
 
     QCommandLineParser parser;
+
+    QCommandLineOption parentWindowOption(QStringList() << QStringLiteral("parentWindow"));
+    parentWindowOption.setDescription(i18n("Parent window handle."));
+    parentWindowOption.setValueName(QStringLiteral("parentWindow"));
+
+    parser.addOption(parentWindowOption);
+
     aboutData.setupCommandLine(&parser);
 
     parser.process(app);
     aboutData.processCommandLine(&parser);
 
     BlueWizard *wizard = new BlueWizard;
+
+    wizard->winId();
+    KWindowSystem::setMainWindow(wizard->windowHandle(), parser.value(parentWindowOption));
 
     QObject::connect(&service, &KDBusService::activateRequested, wizard, [wizard]() {
         KWindowSystem::updateStartupId(wizard->windowHandle());
