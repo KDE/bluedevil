@@ -7,7 +7,9 @@ target_link_libraries(kcm_bluetooth PRIVATE
     Qt::Gui
     Qt::Qml
     Qt::DBus
+    Qt::Quick
 
+    KF6::WindowSystem
     KF6::BluezQt
     KF6::ConfigGui
     KF6::CoreAddons

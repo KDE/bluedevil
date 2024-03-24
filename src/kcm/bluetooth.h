@@ -17,7 +17,7 @@ class Bluetooth : public KQuickConfigModule
 public:
     Bluetooth(QObject *parent, const KPluginMetaData &data);
 
-    Q_INVOKABLE void runWizard();
+    Q_INVOKABLE void runWizard(QQuickItem *context);
     Q_INVOKABLE void runSendFile(const QString &ubi);
 
     Q_INVOKABLE void checkNetworkConnection(const QStringList &uuids, const QString &address);

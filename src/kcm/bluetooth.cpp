@@ -11,6 +11,8 @@
 #include <QDBusMessage>
 #include <QDBusPendingCallWatcher>
 #include <QDBusPendingReply>
+#include <QQuickItem>
+#include <QQuickRenderControl>
 
 #include <KAboutData>
 #include <KConfigGroup>
@@ -19,6 +21,8 @@
 #include <KLocalizedString>
 #include <KPluginFactory>
 #include <KSharedConfig>
+#include <KWaylandExtras>
+#include <KWindowSystem>
 
 #include <BluezQt/Services>
 
@@ -37,15 +41,34 @@ Bluetooth::Bluetooth(QObject *parent, const KPluginMetaData &data)
     qmlRegisterSingletonInstance("org.kde.bluedevil.kcm", 1, 0, "GlobalSettings", GlobalSettings::self());
 }
 
-void Bluetooth::runWizard()
+void Bluetooth::runWizard(QQuickItem *context)
 {
-    auto *job = new KIO::ApplicationLauncherJob(KService::serviceByDesktopName(QStringLiteral("org.kde.bluedevilwizard")));
-    connect(job, &KJob::finished, this, [this](KJob *job) {
-        if (job->error()) {
-            Q_EMIT errorOccured(job->errorString());
-        }
-    });
-    job->start();
+    auto runIt = [this](const QString &windowHandle) {
+        auto *job = new KIO::CommandLauncherJob(QStringLiteral("bluedevil-wizard"), {QStringLiteral("--parentWindow"), windowHandle});
+
+        connect(job, &KJob::finished, this, [this](KJob *job) {
+            if (job->error()) {
+                Q_EMIT errorOccured(job->errorString());
+            }
+        });
+        job->start();
+    };
+
+    QWindow *actualWindow = QQuickRenderControl::renderWindowFor(context->window());
+
+    if (KWindowSystem::isPlatformWayland()) {
+        KWaylandExtras::exportWindow(actualWindow);
+        connect(
+            KWaylandExtras::self(),
+            &KWaylandExtras::windowExported,
+            this,
+            [runIt](QWindow *, const QString &windowHandle) {
+                runIt(windowHandle);
+            },
+            Qt::SingleShotConnection);
+    } else {
+        runIt(QStringLiteral("0x%1").arg((unsigned int)actualWindow->winId(), 0, 16));
+    }
 }
 
 void Bluetooth::runSendFile(const QString &ubi)

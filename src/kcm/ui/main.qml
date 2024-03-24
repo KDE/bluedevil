@@ -46,7 +46,7 @@ KCMUtils.ScrollViewKCM {
         Kirigami.Action {
             text: i18n("Pair Device…")
             icon.name: "list-add-symbolic"
-            onTriggered: root.KCMUtils.ConfigModule.runWizard()
+            onTriggered: root.KCMUtils.ConfigModule.runWizard(root)
             visible: BluezQt.Manager.bluetoothOperational
             displayHint: Kirigami.DisplayHint.KeepVisible
         },

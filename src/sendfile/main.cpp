@@ -71,6 +71,7 @@ int main(int argc, char *argv[])
     }
 
     SendFileWizard *wizard = new SendFileWizard(deviceInfo, parser.values(filesOption));
+    wizard->winId();
 
     QObject::connect(&service, &KDBusService::activateRequested, wizard, [wizard]() {
         KWindowSystem::updateStartupId(wizard->windowHandle());
