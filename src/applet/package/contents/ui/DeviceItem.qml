@@ -20,6 +20,8 @@ import org.kde.plasma.private.bluetooth as PlasmaBt
 import org.kde.bluezqt 1.0 as BluezQt
 import org.kde.kquickcontrolsaddons 2.0 as KQuickControlsAddons
 
+import "qrc:/utils.js" as Utils;
+
 PlasmaExtras.ExpandableListItem {
     id: expandableListItem
 
@@ -252,49 +254,7 @@ PlasmaExtras.ExpandableListItem {
             labels.push(i18n("Connection failed"));
         }
 
-        switch (Type) {
-        case BluezQt.Device.Headset:
-        case BluezQt.Device.Headphones:
-        case BluezQt.Device.OtherAudio:
-            labels.push(i18n("Audio device"));
-            break;
-
-        case BluezQt.Device.Keyboard:
-        case BluezQt.Device.Mouse:
-        case BluezQt.Device.Joypad:
-        case BluezQt.Device.Tablet:
-            labels.push(i18n("Input device"));
-            break;
-
-        case BluezQt.Device.Phone:
-            labels.push(i18n("Phone"));
-            break;
-
-        default:
-            const profiles = [];
-
-            if (Uuids.indexOf(BluezQt.Services.ObexFileTransfer) !== -1) {
-                profiles.push(i18n("File transfer"));
-            }
-            if (Uuids.indexOf(BluezQt.Services.ObexObjectPush) !== -1) {
-                profiles.push(i18n("Send file"));
-            }
-            if (Uuids.indexOf(BluezQt.Services.HumanInterfaceDevice) !== -1) {
-                profiles.push(i18n("Input"));
-            }
-            if (Uuids.indexOf(BluezQt.Services.AdvancedAudioDistribution) !== -1) {
-                profiles.push(i18n("Audio"));
-            }
-            if (Uuids.indexOf(BluezQt.Services.Nap) !== -1) {
-                profiles.push(i18n("Network"));
-            }
-
-            if (!profiles.length) {
-                profiles.push(i18n("Other device"));
-            }
-
-            labels.push(profiles.join(", "));
-        }
+        labels.push(Utils.deviceTypeToString(Type));
 
         if (Battery) {
             labels.push(i18n("%1% Battery", Battery.percentage));

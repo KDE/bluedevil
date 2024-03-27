@@ -1,4 +1,9 @@
 kcmutils_add_qml_kcm(kcm_bluetooth SOURCES bluetooth.cpp bluetooth.h)
+qt_add_resources(kcm_bluetooth "utils"
+        PREFIX /kcm/kcm_bluetooth
+        FILES
+        ../utils.js
+)
 
 kconfig_add_kcfg_files(kcm_bluetooth GENERATE_MOC ../settings/filereceiversettings.kcfgc)
 

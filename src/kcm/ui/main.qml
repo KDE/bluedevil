@@ -16,7 +16,7 @@ import org.kde.bluezqt 1.0 as BluezQt
 
 import org.kde.plasma.private.bluetooth
 
-import "script.js" as Script;
+import "utils.js" as Utils;
 
 ScrollViewKCM {
     id: root
@@ -278,7 +278,7 @@ ScrollViewKCM {
     function infoText(type, battery, uuids): string {
         const labels = [];
 
-        labels.push(Script.deviceTypeToString(type));
+        labels.push(Utils.deviceTypeToString(type));
 
         if (battery) {
             labels.push(i18n("%1% Battery", battery.percentage));
