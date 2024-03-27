@@ -19,7 +19,7 @@ function deviceTypeToString(type) {
     case BluezQt.Device.Mouse:
         return i18nc("This device is a Mouse", "Mouse");
     case BluezQt.Device.Joypad:
-        return i18nc("This device is a Joypad", "Joypad");
+        return i18nc("This device is a Game controller", "Game controller");
     case BluezQt.Device.Tablet:
         return i18nc("This device is a Graphics Tablet (input device)", "Tablet");
     case BluezQt.Device.Peripheral:
