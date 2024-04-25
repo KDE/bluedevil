@@ -27,6 +27,8 @@ public:
     void saveState();
 
 private Q_SLOTS:
+    void readyToSetInitialState(bool operational);
+
     void bluetoothOperationalChanged(bool operational);
     void adapterAdded(BluezQt::AdapterPtr adapter);
     void deviceAdded(BluezQt::DevicePtr device);
@@ -35,6 +37,8 @@ private Q_SLOTS:
     void login1PrepareForSleep(bool active);
 
 private:
+    void setInitialState();
+
     void restoreState();
     void restoreAdapter(BluezQt::AdapterPtr adapter);
 
