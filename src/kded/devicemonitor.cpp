@@ -58,6 +58,24 @@ DeviceMonitor::DeviceMonitor(BlueDevilDaemon *daemon)
                                          this,
                                          SLOT(login1PrepareForSleep(bool)));
 
+    // Before setting the initial state, we need to wait for the manager to be operational
+    if (m_manager->isOperational()) {
+        setInitialState();
+    } else {
+        connect(m_manager, &BluezQt::Manager::operationalChanged, this, &DeviceMonitor::readyToSetInitialState);
+    }
+}
+
+void DeviceMonitor::readyToSetInitialState(bool operational)
+{
+    if (operational) {
+        setInitialState();
+        disconnect(m_manager, &BluezQt::Manager::operationalChanged, this, &DeviceMonitor::readyToSetInitialState);
+    }
+}
+
+void DeviceMonitor::setInitialState()
+{
     // Set initial state
     const KConfigGroup globalGroup = m_config->group("Global");
     const QString launchState = globalGroup.readEntry("launchState", "remember");
@@ -69,12 +87,18 @@ DeviceMonitor::DeviceMonitor(BlueDevilDaemon *daemon)
         for (BluezQt::AdapterPtr adapter : m_manager->adapters()) {
             adapter->setPowered(true);
         }
+        // restoreAdapter() is scheduled to be called after 1 second when adapterAdded is emitted,
+        // so we need to save state to make sure that adapter won't be turned off after restoreAdapter()
+        saveState();
     } else if (launchState == QLatin1String("disable")) {
         // Turn off everything and block Bluetooth
         for (BluezQt::AdapterPtr adapter : m_manager->adapters()) {
             adapter->setPowered(false);
         }
         m_manager->setBluetoothBlocked(true);
+        // restoreAdapter() is scheduled to be called after 1 second when adapterAdded is emitted,
+        // so we need to save state to make sure that adapter won't be turned on after restoreAdapter()
+        saveState();
     }
 }
 
