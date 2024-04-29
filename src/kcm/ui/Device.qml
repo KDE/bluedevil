@@ -46,8 +46,10 @@ SimpleKCM {
         kcm.checkNetworkConnection(device.uuids, device.address)
     }
 
+    headerPaddingEnabled: false // Let the InlineMessage touch the edges
     header: Kirigami.InlineMessage {
         id: errorMessage
+        position: Kirigami.InlineMessage.Position.Header
         type: Kirigami.MessageType.Error
         showCloseButton: true
     }
