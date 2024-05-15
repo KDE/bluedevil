@@ -112,7 +112,7 @@ msgstr "设备："
 #: ui/General.qml:46
 #, kde-format
 msgid "Enabled:"
-msgstr "已启用:"
+msgstr "已启用："
 
 #: ui/General.qml:52
 #, kde-format
