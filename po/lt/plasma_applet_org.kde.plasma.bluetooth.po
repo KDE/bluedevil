@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: trunk-kf 5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-06 00:38+0000\n"
-"PO-Revision-Date: 2022-12-28 01:32+0200\n"
+"PO-Revision-Date: 2024-05-16 21:33+0300\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: package/contents/ui/DeviceItem.qml:37
 #, kde-format
@@ -102,11 +102,9 @@ msgid "Connected"
 msgstr "Prisijungta"
 
 #: package/contents/ui/DeviceItem.qml:252
-#, fuzzy, kde-format
-#| msgctxt "Notification when the connection failed due to Failed"
-#| msgid "Connection to the device failed"
+#, kde-format
 msgid "Connection failed"
-msgstr "Nepavyko prisijungti prie įrenginio"
+msgstr "Ryšys patyrė nesėkmę"
 
 #: package/contents/ui/DeviceItem.qml:259
 #, kde-format
