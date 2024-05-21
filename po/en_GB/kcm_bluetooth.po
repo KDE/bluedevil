@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the bluedevil package.
 #
-# Steve Allewell <steve.allewell@gmail.com>, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024 Steve Allewell <steve.allewell@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-18 00:38+0000\n"
-"PO-Revision-Date: 2023-06-17 12:01+0100\n"
+"PO-Revision-Date: 2024-05-20 19:40+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
 "Language: en_GB\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.03.70\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -51,12 +51,12 @@ msgstr "Type:"
 #: ui/Device.qml:108
 #, kde-format
 msgid "%1%"
-msgstr ""
+msgstr "%1%"
 
 #: ui/Device.qml:112
 #, kde-format
 msgid "Battery:"
-msgstr ""
+msgstr "Battery:"
 
 #: ui/Device.qml:117 ui/General.qml:42
 #, kde-format
@@ -214,7 +214,7 @@ msgstr "No Bluetooth adapters found"
 #: ui/main.qml:169
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
-msgstr ""
+msgstr "Connect an external Bluetooth adaptor"
 
 #: ui/main.qml:178
 #, kde-format
@@ -235,7 +235,7 @@ msgstr "No devices paired"
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Add New Device…</interface> to pair some"
-msgstr ""
+msgstr "Click <interface>Add New Device…</interface> to pair some"
 
 #: ui/main.qml:217
 #, kde-format
@@ -256,7 +256,7 @@ msgstr "Forget \"%1\""
 #: ui/main.qml:284
 #, kde-format
 msgid "%1% Battery"
-msgstr ""
+msgstr "%1% Battery"
 
 #~ msgctxt "This device is a Phone"
 #~ msgid "Phone"
