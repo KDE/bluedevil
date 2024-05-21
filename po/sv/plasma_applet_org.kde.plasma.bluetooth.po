@@ -71,7 +71,7 @@ msgstr "Adress"
 #: package/contents/ui/DeviceItem.qml:232
 #, kde-format
 msgid "Paired"
-msgstr "Ihopparad"
+msgstr "Parkopplad"
 
 #: package/contents/ui/DeviceItem.qml:235
 #, kde-format

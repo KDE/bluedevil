@@ -313,7 +313,7 @@ msgstr "Aktivera"
 #: package/contents/ui/main.qml:159
 #, kde-format
 msgid "No devices paired"
-msgstr "Inga enheter ihopparade"
+msgstr "Inga enheter parkopplade"
 
 #: package/contents/ui/main.qml:180
 #, kde-format

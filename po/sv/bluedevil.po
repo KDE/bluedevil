@@ -132,7 +132,7 @@ msgid ""
 "In order to pair this computer with %1, you have to enter a PIN. Please do "
 "it below."
 msgstr ""
-"För att para ihop den här datorn med %1, måste du ange en PIN-kod. Gör det "
+"För att parkoppla den här datorn med %1, måste du ange en PIN-kod. Gör det "
 "nedan."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -410,13 +410,13 @@ msgstr "Rätta det"
 #: wizard/pages/discover.cpp:309
 #, kde-format
 msgid "Your Bluetooth adapter is not pairable."
-msgstr "Blåtandsanslutningen går inte att para ihop."
+msgstr "Blåtandsanslutningen går inte att parkoppla."
 
 #: wizard/pages/discover.cpp:310
 #, kde-format
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
-msgstr "Möjliggör att para ihop"
+msgstr "Möjliggör parkoppling"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, searchField)
 #: wizard/pages/discover.ui:19
@@ -831,7 +831,7 @@ msgstr "Enheten '%1' har ställts in och kan nu användas."
 
 #~ msgctxt "Device is paired"
 #~ msgid "Paired"
-#~ msgstr "Ihopparad"
+#~ msgstr "Parkopplad"
 
 #~ msgctxt "Details of the device"
 #~ msgid "Details"
@@ -1095,7 +1095,7 @@ msgstr "Enheten '%1' har ställts in och kan nu användas."
 #~ msgstr "Tjänstval"
 
 #~ msgid "%1 has been paired successfully"
-#~ msgstr "%1 har parats ihop med lyckat resultat"
+#~ msgstr "%1 har parkopplats med lyckat resultat"
 
 #~ msgctxt "Do not initialize any service of the device"
 #~ msgid "None"
@@ -1407,7 +1407,7 @@ msgstr "Enheten '%1' har ställts in och kan nu användas."
 #~ "Some bluetooth devices do not have to be paired or they do not support "
 #~ "it. Choose this option if this is the case."
 #~ msgstr ""
-#~ "Visa Blåtandsenheter behöver inte paras ihop, eller stöder det inte. "
+#~ "Visa Blåtandsenheter behöver inte parkopplas, eller stöder det inte. "
 #~ "Markera alternativet om så är fallet."
 
 #~ msgctxt "Notification button to know if the pin is correct or not"

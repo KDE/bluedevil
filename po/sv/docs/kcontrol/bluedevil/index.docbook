@@ -30,7 +30,7 @@
 > <affiliation
 ><address
 ><email
->stefan.asserhall@bredband.net</email
+>stefan.asserhall@gmail.com</email
 ></address
 ></affiliation
 > <contrib
@@ -170,7 +170,7 @@
 >Manuell PIN-kod</guilabel
 > om det behövs och <mousebutton
 >vänster</mousebutton
->klicka på den detekterade enheten för att para ihop den med datorn. Se enhetens manual om proceduren för att para ihop. Resultatet kan variera, men oftast är det mycket enkelt. </para>
+>klicka på den detekterade enheten för att parkoppla den med datorn. Se enhetens manual om proceduren för att parkoppla. Resultatet kan variera, men oftast är det mycket enkelt. </para>
         
         <screenshot>
             <screeninfo
@@ -323,7 +323,7 @@
 >. </para>
             
             <para
->Huvudutrymmet i panelen är ägnad åt de ihopparade enheterna. </para>
+>Huvudutrymmet i panelen är ägnad åt de parkopplade enheterna. </para>
             <para
 >Använd <guiicon
 ><inlinemediaobject
