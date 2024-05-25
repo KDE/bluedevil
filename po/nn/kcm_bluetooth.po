@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-18 00:38+0000\n"
+"POT-Creation-Date: 2024-05-25 00:40+0000\n"
 "PO-Revision-Date: 2024-03-17 11:01+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -35,67 +35,67 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 nettverk (%2)"
 
-#: ui/Device.qml:70 ui/main.qml:237
+#: ui/Device.qml:72 ui/main.qml:239
 #, kde-format
 msgid "Disconnect"
 msgstr "Kopla frå"
 
-#: ui/Device.qml:70 ui/main.qml:237
+#: ui/Device.qml:72 ui/main.qml:239
 #, kde-format
 msgid "Connect"
 msgstr "Kopla til"
 
-#: ui/Device.qml:102
+#: ui/Device.qml:104
 #, kde-format
 msgid "Type:"
 msgstr "Type:"
 
-#: ui/Device.qml:108
+#: ui/Device.qml:110
 #, kde-format
 msgid "%1%"
 msgstr "%1 %"
 
-#: ui/Device.qml:112
+#: ui/Device.qml:114
 #, kde-format
 msgid "Battery:"
 msgstr "Batteri:"
 
-#: ui/Device.qml:117 ui/General.qml:42
+#: ui/Device.qml:119 ui/General.qml:42
 #, kde-format
 msgid "Address:"
 msgstr "Adresse:"
 
-#: ui/Device.qml:122
+#: ui/Device.qml:124
 #, kde-format
 msgid "Adapter:"
 msgstr "Adapter:"
 
-#: ui/Device.qml:128 ui/General.qml:36
+#: ui/Device.qml:130 ui/General.qml:36
 #, kde-format
 msgid "Name:"
 msgstr "Namn:"
 
-#: ui/Device.qml:132
+#: ui/Device.qml:134
 #, kde-format
 msgid "Trusted"
 msgstr "Tiltrudd"
 
-#: ui/Device.qml:138
+#: ui/Device.qml:140
 #, kde-format
 msgid "Blocked"
 msgstr "Blokkert"
 
-#: ui/Device.qml:144
+#: ui/Device.qml:146
 #, kde-format
 msgid "Send File"
 msgstr "Send fil"
 
-#: ui/Device.qml:151
+#: ui/Device.qml:153
 #, kde-format
 msgid "Setup NAP Network…"
 msgstr "Set opp NAP-nettverk …"
 
-#: ui/Device.qml:158
+#: ui/Device.qml:160
 #, kde-format
 msgid "Setup DUN Network…"
 msgstr "Set opp DUN-nettverk …"
@@ -208,54 +208,54 @@ msgctxt "@action:button"
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: ui/main.qml:168
+#: ui/main.qml:170
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "Fann ingen Bluetooth-adapterar"
 
-#: ui/main.qml:169
+#: ui/main.qml:171
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
 msgstr "Kopla til ekstern Bluetooth-adapter"
 
-#: ui/main.qml:178
+#: ui/main.qml:180
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth er avslått"
 
-#: ui/main.qml:184
+#: ui/main.qml:186
 #, kde-format
 msgid "Enable"
 msgstr "Slå på"
 
-#: ui/main.qml:194
+#: ui/main.qml:196
 #, kde-format
 msgid "No devices paired"
 msgstr "Ingen einingar er para"
 
-#: ui/main.qml:195
+#: ui/main.qml:197
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Add New Device…</interface> to pair some"
 msgstr "Trykk <interface>Legg til ny eining</interface> for å para ei eining"
 
-#: ui/main.qml:217
+#: ui/main.qml:219
 #, kde-format
 msgid "Connected"
 msgstr "Kopla til"
 
-#: ui/main.qml:217
+#: ui/main.qml:219
 #, kde-format
 msgid "Available"
 msgstr "Tilgjengeleg"
 
-#: ui/main.qml:253
+#: ui/main.qml:255
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "Gløym «%1»"
 
-#: ui/main.qml:284
+#: ui/main.qml:286
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1 % batteri"

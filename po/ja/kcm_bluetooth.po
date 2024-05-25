@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-18 00:38+0000\n"
+"POT-Creation-Date: 2024-05-25 00:40+0000\n"
 "PO-Revision-Date: 2024-02-23 21:57+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: ja\n"
@@ -34,67 +34,67 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 ネットワーク (%2)"
 
-#: ui/Device.qml:70 ui/main.qml:237
+#: ui/Device.qml:72 ui/main.qml:239
 #, kde-format
 msgid "Disconnect"
 msgstr "切断"
 
-#: ui/Device.qml:70 ui/main.qml:237
+#: ui/Device.qml:72 ui/main.qml:239
 #, kde-format
 msgid "Connect"
 msgstr "接続"
 
-#: ui/Device.qml:102
+#: ui/Device.qml:104
 #, kde-format
 msgid "Type:"
 msgstr "種類:"
 
-#: ui/Device.qml:108
+#: ui/Device.qml:110
 #, kde-format
 msgid "%1%"
 msgstr "%1%"
 
-#: ui/Device.qml:112
+#: ui/Device.qml:114
 #, kde-format
 msgid "Battery:"
 msgstr "バッテリ:"
 
-#: ui/Device.qml:117 ui/General.qml:42
+#: ui/Device.qml:119 ui/General.qml:42
 #, kde-format
 msgid "Address:"
 msgstr "アドレス:"
 
-#: ui/Device.qml:122
+#: ui/Device.qml:124
 #, kde-format
 msgid "Adapter:"
 msgstr "アダプタ:"
 
-#: ui/Device.qml:128 ui/General.qml:36
+#: ui/Device.qml:130 ui/General.qml:36
 #, kde-format
 msgid "Name:"
 msgstr "名前:"
 
-#: ui/Device.qml:132
+#: ui/Device.qml:134
 #, kde-format
 msgid "Trusted"
 msgstr "信頼済"
 
-#: ui/Device.qml:138
+#: ui/Device.qml:140
 #, kde-format
 msgid "Blocked"
 msgstr "ブロック済み"
 
-#: ui/Device.qml:144
+#: ui/Device.qml:146
 #, kde-format
 msgid "Send File"
 msgstr "ファイルを送信"
 
-#: ui/Device.qml:151
+#: ui/Device.qml:153
 #, kde-format
 msgid "Setup NAP Network…"
 msgstr "NAP ネットワークのセットアップ..."
 
-#: ui/Device.qml:158
+#: ui/Device.qml:160
 #, kde-format
 msgid "Setup DUN Network…"
 msgstr "DUN ネットワークのセットアップ..."
@@ -207,32 +207,32 @@ msgctxt "@action:button"
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: ui/main.qml:168
+#: ui/main.qml:170
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "Bluetooth アダプタが見つかりません"
 
-#: ui/main.qml:169
+#: ui/main.qml:171
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
 msgstr "Bluetooth アダプタを接続してください"
 
-#: ui/main.qml:178
+#: ui/main.qml:180
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth は無効化されています。"
 
-#: ui/main.qml:184
+#: ui/main.qml:186
 #, kde-format
 msgid "Enable"
 msgstr "有効化"
 
-#: ui/main.qml:194
+#: ui/main.qml:196
 #, kde-format
 msgid "No devices paired"
 msgstr "ペアリングされたデバイスはありません"
 
-#: ui/main.qml:195
+#: ui/main.qml:197
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Add New Device…</interface> to pair some"
@@ -240,23 +240,23 @@ msgstr ""
 "<interface>新しいデバイスを追加...</interface>をクリックしてペアリングしてく"
 "ださい"
 
-#: ui/main.qml:217
+#: ui/main.qml:219
 #, kde-format
 msgid "Connected"
 msgstr "接続済み"
 
-#: ui/main.qml:217
+#: ui/main.qml:219
 #, kde-format
 msgid "Available"
 msgstr "利用可能"
 
-#: ui/main.qml:253
+#: ui/main.qml:255
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "\"%1\" を削除"
 
-#: ui/main.qml:284
+#: ui/main.qml:286
 #, kde-format
 msgid "%1% Battery"
 msgstr "バッテリ %1%"
