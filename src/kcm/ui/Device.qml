@@ -55,6 +55,7 @@ KCMUtils.SimpleKCM {
     }
 
     ColumnLayout {
+        spacing: Kirigami.Units.smallSpacing
 
         Kirigami.Icon {
             source: device.icon
@@ -66,6 +67,8 @@ KCMUtils.SimpleKCM {
         Kirigami.FormLayout {
 
             Row {
+                spacing: Kirigami.Units.smallSpacing
+
                 QQC2.Button {
                     id: connectButton
                     enabled: !indicator.running
