@@ -53,7 +53,7 @@ PlasmaExtras.ExpandableListItem {
         Action {
             id: sendFileButton
             enabled: Uuids.indexOf(BluezQt.Services.ObexObjectPush) !== -1
-            icon.name: "folder-download-symbolic"
+            icon.name: "document-share-symbolic"
             text: i18n("Send File")
 
             onTriggered: {

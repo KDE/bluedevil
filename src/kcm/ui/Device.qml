@@ -151,6 +151,7 @@ KCMUtils.SimpleKCM {
             }
 
             QQC2.Button {
+                icon.name: "document-share-symbolic"
                 text: i18n("Send File")
                 visible: root.device.uuids.includes(BluezQt.Services.ObexObjectPush) && root.device.connected
                 onClicked: root.KCMUtils.ConfigModule.runSendFile(root.device.ubi)
@@ -158,6 +159,7 @@ KCMUtils.SimpleKCM {
 
             QQC2.Button {
                 id: napButton
+                icon.name: "network-wireless-bluetooth-symbolic"
                 text: i18n("Setup NAP Network…")
                 visible: false
                 onClicked: root.KCMUtils.ConfigModule.setupNetworkConnection("nap", root.device.address, root.device.name)
@@ -165,6 +167,7 @@ KCMUtils.SimpleKCM {
 
             QQC2.Button {
                 id: dunButton
+                icon.name: "network-wireless-bluetooth-symbolic"
                 text: i18n("Setup DUN Network…")
                 visible: false
                 onClicked: root.KCMUtils.ConfigModule.setupNetworkConnection("dun", root.device.address, root.device.name)
