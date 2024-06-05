@@ -140,13 +140,12 @@ KCMUtils.ScrollViewKCM {
     implicitHeight: Kirigami.Units.gridUnit * 28
     implicitWidth: Kirigami.Units.gridUnit * 28
 
-    function setBluetoothEnabled(enabled) {
-        BluezQt.Manager.bluetoothBlocked = !enabled
+    function setBluetoothEnabled(enabled: bool): void {
+        BluezQt.Manager.bluetoothBlocked = !enabled;
 
-        for (var i = 0; i < BluezQt.Manager.adapters.length; ++i) {
-            var adapter = BluezQt.Manager.adapters[i];
+        BluezQt.Manager.adapters.forEach(adapter => {
             adapter.powered = enabled;
-        }
+        });
     }
 
     headerPaddingEnabled: false // Let the InlineMessage touch the edges
