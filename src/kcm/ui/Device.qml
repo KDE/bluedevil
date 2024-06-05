@@ -70,7 +70,7 @@ KCMUtils.SimpleKCM {
                     id: connectButton
                     enabled: !indicator.running
                     text: device.connected ? i18n("Disconnect") : i18n("Connect")
-                        icon.name: device.connected ? "network-disconnect-symbolic" : "network-connect-symbolic"
+                    icon.name: device.connected ? "network-disconnect-symbolic" : "network-connect-symbolic"
 
                     onClicked: {
                         if (device.connected) {
