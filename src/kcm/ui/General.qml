@@ -138,18 +138,19 @@ KCMUtils.SimpleKCM {
         Row {
             Kirigami.FormData.label: i18n("Save files in:")
             QQC2.TextField {
-                function urlToPath(urlString) {
-                    var s
+                function urlToFilePath(url: url): string {
+                    const urlString = url.toString();
+                    let encodedFilePath;
                     if (urlString.startsWith("file:///")) {
-                        var k = urlString.charAt(9) === ':' ? 8 : 7
-                        s = urlString.substring(k)
+                        const start = urlString.charAt(9) === ':' ? 8 : 7;
+                        encodedFilePath = urlString.substring(start);
                     } else {
-                        s = urlString
+                        encodedFilePath = urlString;
                     }
-                    return decodeURIComponent(s);
+                    return decodeURIComponent(encodedFilePath);
                 }
 
-                text: urlToPath(FileReceiverSettings.saveUrl.toString())
+                text: urlToFilePath(FileReceiverSettings.saveUrl)
 
                 onEditingFinished: {
                     FileReceiverSettings.saveUrl = Qt.resolvedUrl(text)

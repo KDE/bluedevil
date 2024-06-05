@@ -22,7 +22,7 @@ KCMUtils.SimpleKCM {
 
     Connections {
         target: kcm
-        function onNetworkAvailable(service, available) {
+        function onNetworkAvailable(service: string, available: bool): void {
             switch (service) {
             case "dun":
                 dunButton.visible = available && device.connected;
@@ -39,7 +39,7 @@ KCMUtils.SimpleKCM {
     Connections {
         target: device
 
-        function onConnectedChanged() {
+        function onConnectedChanged(connected: bool): void {
             kcm.checkNetworkConnection(device.uuids, device.address)
         }
     }
@@ -85,7 +85,7 @@ KCMUtils.SimpleKCM {
                         }
                     }
 
-                    function makeCall(call) {
+                    function makeCall(call: BluezQt.PendingCall): void {
                         indicator.running = true
                         call.finished.connect(call => {
                             indicator.running = false

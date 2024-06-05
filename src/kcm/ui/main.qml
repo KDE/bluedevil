@@ -53,7 +53,7 @@ KCMUtils.ScrollViewKCM {
         }
     ]
 
-    function makeCall(call) {
+    function makeCall(call: BluezQt.PendingCall): void {
         busyIndicator.running = true
         call.finished.connect(call => {
             busyIndicator.running = false
@@ -67,7 +67,7 @@ KCMUtils.ScrollViewKCM {
     Connections {
         target: kcm
 
-        function onErrorOccured(errorText) {
+        function onErrorOccured(errorText: string): void {
             errorMessage.text = errorText
             errorMessage.visible = true
         }
@@ -118,17 +118,17 @@ KCMUtils.ScrollViewKCM {
             contentData: [
                 Connections {
                     target: dialog.device
-                    function onDeviceRemoved() {
+                    function onDeviceRemoved(device: BluezQt.Device): void {
                         dialog.reject();
                     }
                 },
                 Connections {
                     target: dialog.adapter
-                    function onAdapterRemoved() {
+                    function onAdapterRemoved(adapter: BluezQt.Adapter): void {
                         dialog.reject();
                     }
-                    function onPoweredChanged() {
-                        if (!dialog.adapter.powered) {
+                    function onPoweredChanged(powered: bool): void {
+                        if (!powered) {
                             dialog.reject();
                         }
                     }
