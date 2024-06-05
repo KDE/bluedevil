@@ -108,12 +108,8 @@ KCMUtils.SimpleKCM {
             }
 
             QQC2.Label {
-                text: {
-                    if (device.battery) {
-                        return i18n("%1%", device.battery.percentage)
-                    }
-                }
-                visible: device.battery && device.battery.percentage
+                text: device.battery !== null ? i18n("%1%", device.battery.percentage) : ""
+                visible: device.battery !== null
                 Kirigami.FormData.label: i18n("Battery:")
             }
 
