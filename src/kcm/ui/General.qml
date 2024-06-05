@@ -4,6 +4,8 @@
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls as QQC2
@@ -15,15 +17,16 @@ import org.kde.bluezqt as BluezQt
 import org.kde.bluedevil.kcm
 
 KCMUtils.SimpleKCM {
+    id: root
 
     title: i18n("Settings")
 
+    // FIXME: Manager.adapters property does not have any NOTIFY hook.
+    // Somehow even the name won't update in the ComboBox
+    readonly property BluezQt.Adapter adapter: BluezQt.Manager.adapters[box.currentIndex] ?? null
+
     Kirigami.FormLayout {
         id: form
-
-        // FIXME: Manager.adapters property does not have any NOTIFY hook.
-        // Somehow even the name won't update in the ComboBox
-        readonly property BluezQt.Adapter adapter: BluezQt.Manager.adapters[box.currentIndex] ?? null
 
         QQC2.ComboBox {
             id: box
@@ -34,26 +37,26 @@ KCMUtils.SimpleKCM {
         }
 
         QQC2.TextField {
-            text: form.adapter.name
+            text: root.adapter.name
             Kirigami.FormData.label: i18n("Name:")
-            onEditingFinished: form.adapter.name = text
+            onEditingFinished: root.adapter.name = text
         }
 
         QQC2.Label {
-            text: form.adapter.address
+            text: root.adapter.address
             Kirigami.FormData.label: i18n("Address:")
         }
 
         QQC2.CheckBox {
             Kirigami.FormData.label: i18n("Enabled:")
-            checked: form.adapter.powered
-            onToggled: form.adapter.powered = checked
+            checked: root.adapter.powered
+            onToggled: root.adapter.powered = checked
         }
 
         QQC2.CheckBox {
             Kirigami.FormData.label: i18n("Visible:")
-            checked: form.adapter.discoverable
-            onToggled: form.adapter.discoverable = checked
+            checked: root.adapter.discoverable
+            onToggled: root.adapter.discoverable = checked
         }
 
         Kirigami.Separator {
@@ -68,30 +71,30 @@ KCMUtils.SimpleKCM {
             Kirigami.FormData.label: i18n("On login:")
             text: i18n("Enable Bluetooth")
             QQC2.ButtonGroup.group: loginStateRadioGroup
-            checked: kcm.bluetoothStatusAtLogin === "enable"
+            checked: root.KCMUtils.ConfigModule.bluetoothStatusAtLogin === "enable"
             onToggled: {
                 if (enabled) {
-                    kcm.bluetoothStatusAtLogin = "enable";
+                    root.KCMUtils.ConfigModule.bluetoothStatusAtLogin = "enable";
                 }
             }
         }
         QQC2.RadioButton {
             text: i18n("Disable Bluetooth")
             QQC2.ButtonGroup.group: loginStateRadioGroup
-            checked: kcm.bluetoothStatusAtLogin === "disable"
+            checked: root.KCMUtils.ConfigModule.bluetoothStatusAtLogin === "disable"
             onToggled: {
                 if (enabled) {
-                    kcm.bluetoothStatusAtLogin = "disable"
+                    root.KCMUtils.ConfigModule.bluetoothStatusAtLogin = "disable"
                 }
             }
         }
         QQC2.RadioButton {
             text: i18n("Restore previous status")
             QQC2.ButtonGroup.group: loginStateRadioGroup
-            checked: kcm.bluetoothStatusAtLogin === "remember"
+            checked: root.KCMUtils.ConfigModule.bluetoothStatusAtLogin === "remember"
             onToggled: {
                 if (enabled) {
-                    kcm.bluetoothStatusAtLogin = "remember"
+                    root.KCMUtils.ConfigModule.bluetoothStatusAtLogin = "remember"
                 }
             }
         }

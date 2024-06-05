@@ -4,6 +4,8 @@
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls as QQC2
@@ -39,13 +41,13 @@ KCMUtils.ScrollViewKCM {
         Kirigami.Action {
             text: i18n("Add New Device…")
             icon.name: "list-add-symbolic"
-            onTriggered: kcm.runWizard()
+            onTriggered: root.KCMUtils.ConfigModule.runWizard()
             visible: BluezQt.Manager.bluetoothOperational
         },
         Kirigami.Action {
             text: i18n("Configure…")
             icon.name: "configure-symbolic"
-            onTriggered: kcm.push("General.qml")
+            onTriggered: root.KCMUtils.ConfigModule.push("General.qml")
             visible: BluezQt.Manager.bluetoothOperational
         }
     ]
@@ -62,7 +64,7 @@ KCMUtils.ScrollViewKCM {
     }
 
     Connections {
-        target: kcm
+        target: root.KCMUtils.ConfigModule
 
         function onErrorOccured(errorText: string): void {
             errorMessage.text = errorText
@@ -83,7 +85,7 @@ KCMUtils.ScrollViewKCM {
             signal call(BluezQt.PendingCall pc)
 
             title: i18n("Forget this Device?")
-            subtitle: i18n("Are you sure you want to forget \"%1\"?", dialog.name)
+            subtitle: i18n("Are you sure you want to forget \"%1\"?", name)
 
             showCloseButton: false
 
@@ -211,44 +213,50 @@ KCMUtils.ScrollViewKCM {
 
         section.property: "Connected"
         section.delegate: Kirigami.ListSectionHeader {
+            required property string section
+
             width: ListView.view.width
             text: section === "true" ? i18n("Connected") : i18n("Available")
         }
 
         delegate: QQC2.ItemDelegate {
+            id: delegate
+
+            required property var model
+
             width: ListView.view.width
 
-            onClicked: kcm.push("Device.qml", {device: model.Device})
+            onClicked: root.KCMUtils.ConfigModule.push("Device.qml", { device: model.Device })
 
             contentItem: RowLayout {
                 spacing: Kirigami.Units.smallSpacing
 
                 KD.IconTitleSubtitle {
-                    title: model.Name
-                    subtitle: root.infoText(model.Device)
-                    icon.name: model.Icon
+                    title: delegate.model.Name
+                    subtitle: root.infoText(delegate.model.Device)
+                    icon.name: delegate.model.Icon
                     icon.width: Kirigami.Units.iconSizes.medium
                     Layout.fillWidth: true
                 }
 
                 QQC2.ToolButton {
-                    text: model.Connected ? i18n("Disconnect") : i18n("Connect")
-                    icon.name: model.Connected ? "network-disconnect-symbolic" : "network-connect-symbolic"
+                    text: delegate.model.Connected ? i18n("Disconnect") : i18n("Connect")
+                    icon.name: delegate.model.Connected ? "network-disconnect-symbolic" : "network-connect-symbolic"
                     display: QQC2.AbstractButton.IconOnly
                     QQC2.ToolTip.text: text
                     QQC2.ToolTip.visible: hovered
 
                     onClicked: {
-                        if (model.Connected) {
-                            root.makeCall(model.Device.disconnectFromDevice())
+                        if (delegate.model.Connected) {
+                            root.makeCall(delegate.model.Device.disconnectFromDevice())
                         } else {
-                            root.makeCall(model.Device.connectToDevice())
+                            root.makeCall(delegate.model.Device.connectToDevice())
                         }
                     }
                 }
 
                 QQC2.ToolButton {
-                    text: i18nc("@action:button %1 is the name of a Bluetooth device", "Forget \"%1\"", model.Name)
+                    text: i18nc("@action:button %1 is the name of a Bluetooth device", "Forget \"%1\"", delegate.model.Name)
                     icon.name: "edit-delete-remove-symbolic"
                     display: QQC2.AbstractButton.IconOnly
                     QQC2.ToolTip.text: text
@@ -256,9 +264,9 @@ KCMUtils.ScrollViewKCM {
 
                     onClicked: {
                         const dialog = forgetDialogComponent.createObject(root, {
-                            adapter: model.Adapter,
-                            device: model.Device,
-                            name: model.Name,
+                            adapter: delegate.model.Adapter,
+                            device: delegate.model.Device,
+                            name: delegate.model.Name,
                         });
                         // Use IIFE (Immediately Invoked Function Expression) to hard-copy a reference
                         // to root object, to avoid it being lost if the delegate is destroyed.

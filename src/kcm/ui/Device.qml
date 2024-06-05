@@ -3,6 +3,8 @@
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls as QQC2
@@ -15,20 +17,21 @@ import org.kde.bluezqt as BluezQt
 import "script.js" as Script
 
 KCMUtils.SimpleKCM {
+    id: root
 
     required property BluezQt.Device device
 
     title: device.name
 
     Connections {
-        target: kcm
+        target: root.KCMUtils.ConfigModule
         function onNetworkAvailable(service: string, available: bool): void {
             switch (service) {
             case "dun":
-                dunButton.visible = available && device.connected;
+                dunButton.visible = available && root.device.connected;
                 break;
             case "nap":
-                napButton.visible = available && device.connected;
+                napButton.visible = available && root.device.connected;
                 break;
             default:
                 break;
@@ -37,15 +40,19 @@ KCMUtils.SimpleKCM {
     }
 
     Connections {
-        target: device
+        target: root.device
 
         function onConnectedChanged(connected: bool): void {
-            kcm.checkNetworkConnection(device.uuids, device.address)
+            root.checkNetworkConnection();
         }
     }
 
     Component.onCompleted: {
-        kcm.checkNetworkConnection(device.uuids, device.address)
+        checkNetworkConnection();
+    }
+
+    function checkNetworkConnection(): void {
+        KCMUtils.ConfigModule.checkNetworkConnection(device.uuids, device.address);
     }
 
     headerPaddingEnabled: false // Let the InlineMessage touch the edges
@@ -60,7 +67,7 @@ KCMUtils.SimpleKCM {
         spacing: Kirigami.Units.smallSpacing
 
         Kirigami.Icon {
-            source: device.icon
+            source: root.device.icon
             Layout.preferredWidth: Kirigami.Units.iconSizes.enormous
             Layout.preferredHeight: Layout.preferredWidth
             Layout.alignment: Qt.AlignHCenter
@@ -74,14 +81,14 @@ KCMUtils.SimpleKCM {
                 QQC2.Button {
                     id: connectButton
                     enabled: !indicator.running
-                    text: device.connected ? i18n("Disconnect") : i18n("Connect")
-                    icon.name: device.connected ? "network-disconnect-symbolic" : "network-connect-symbolic"
+                    text: root.device.connected ? i18n("Disconnect") : i18n("Connect")
+                    icon.name: root.device.connected ? "network-disconnect-symbolic" : "network-connect-symbolic"
 
                     onClicked: {
-                        if (device.connected) {
-                            makeCall(device.disconnectFromDevice())
+                        if (root.device.connected) {
+                            makeCall(root.device.disconnectFromDevice())
                         } else {
-                            makeCall(device.connectToDevice())
+                            makeCall(root.device.connectToDevice())
                         }
                     }
 
@@ -105,62 +112,62 @@ KCMUtils.SimpleKCM {
             }
 
             QQC2.Label {
-                text: Script.deviceTypeToString(device)
+                text: Script.deviceTypeToString(root.device)
                 Kirigami.FormData.label: i18n("Type:")
             }
 
             QQC2.Label {
-                text: device.battery !== null ? i18n("%1%", device.battery.percentage) : ""
-                visible: device.battery !== null
+                text: root.device.battery !== null ? i18n("%1%", root.device.battery.percentage) : ""
+                visible: root.device.battery !== null
                 Kirigami.FormData.label: i18n("Battery:")
             }
 
             QQC2.Label {
-                text: device.address
+                text: root.device.address
                 Kirigami.FormData.label: i18n("Address:")
             }
 
             QQC2.Label {
-                text: device.adapter.name
+                text: root.device.adapter.name
                 Kirigami.FormData.label: i18n("Adapter:")
             }
 
             QQC2.TextField {
-                text: device.name
-                onTextEdited: device.name = text
+                text: root.device.name
+                onTextEdited: root.device.name = text
                 Kirigami.FormData.label: i18n("Name:")
             }
 
             QQC2.CheckBox {
                 text: i18n("Trusted")
-                checked: device.trusted
-                onClicked: device.trusted = !device.trusted
+                checked: root.device.trusted
+                onClicked: root.device.trusted = !root.device.trusted
             }
 
             QQC2.CheckBox {
                 text: i18n("Blocked")
-                checked: device.blocked
-                onClicked: device.blocked = !device.blocked
+                checked: root.device.blocked
+                onClicked: root.device.blocked = !root.device.blocked
             }
 
             QQC2.Button {
                 text: i18n("Send File")
-                visible: device.uuids.includes(BluezQt.Services.ObexObjectPush) && device.connected
-                onClicked: kcm.runSendFile(device.ubi)
+                visible: root.device.uuids.includes(BluezQt.Services.ObexObjectPush) && root.device.connected
+                onClicked: root.KCMUtils.ConfigModule.runSendFile(root.device.ubi)
             }
 
             QQC2.Button {
                 id: napButton
                 text: i18n("Setup NAP Network…")
                 visible: false
-                onClicked: kcm.setupNetworkConnection("nap", device.address, device.name)
+                onClicked: root.KCMUtils.ConfigModule.setupNetworkConnection("nap", root.device.address, root.device.name)
             }
 
             QQC2.Button {
                 id: dunButton
                 text: i18n("Setup DUN Network…")
                 visible: false
-                onClicked: kcm.setupNetworkConnection("dun", device.address, device.name)
+                onClicked: root.KCMUtils.ConfigModule.setupNetworkConnection("dun", root.device.address, root.device.name)
             }
         }
     }
