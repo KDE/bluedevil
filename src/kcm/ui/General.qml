@@ -10,11 +10,11 @@ import QtQuick.Controls as QQC2
 import QtQuick.Dialogs
 
 import org.kde.kirigami as Kirigami
-import org.kde.kcmutils
+import org.kde.kcmutils as KCMUtils
 import org.kde.bluezqt as BluezQt
 import org.kde.bluedevil.kcm
 
-SimpleKCM {
+KCMUtils.SimpleKCM {
 
     title: i18n("Settings")
 

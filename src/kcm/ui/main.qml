@@ -10,7 +10,7 @@ import QtQuick.Controls as QQC2
 
 import org.kde.kirigami as Kirigami
 import org.kde.kirigami.delegates as KD
-import org.kde.kcmutils
+import org.kde.kcmutils as KCMUtils
 
 import org.kde.bluezqt as BluezQt
 
@@ -18,7 +18,7 @@ import org.kde.plasma.private.bluetooth
 
 import "script.js" as Script
 
-ScrollViewKCM {
+KCMUtils.ScrollViewKCM {
     id: root
 
     actions: [

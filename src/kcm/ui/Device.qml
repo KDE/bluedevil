@@ -8,13 +8,13 @@ import QtQuick.Layouts
 import QtQuick.Controls as QQC2
 
 import org.kde.kirigami as Kirigami
-import org.kde.kcmutils
+import org.kde.kcmutils as KCMUtils
 
 import org.kde.bluezqt as BluezQt
 
 import "script.js" as Script
 
-SimpleKCM {
+KCMUtils.SimpleKCM {
 
     property var device
 
