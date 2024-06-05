@@ -16,7 +16,7 @@ import org.kde.bluezqt as BluezQt
 
 import org.kde.plasma.private.bluetooth
 
-import "script.js" as Script;
+import "script.js" as Script
 
 ScrollViewKCM {
     id: root

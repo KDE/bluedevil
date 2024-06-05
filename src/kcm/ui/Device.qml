@@ -12,7 +12,7 @@ import org.kde.kcmutils
 
 import org.kde.bluezqt as BluezQt
 
-import "script.js" as Script;
+import "script.js" as Script
 
 SimpleKCM {
 
