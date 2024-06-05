@@ -72,67 +72,13 @@ KCMUtils.ScrollViewKCM {
         }
     }
 
-    Component {
-        id: forgetDialogComponent
+    ForgetDeviceDialog {
+        id: forgetDeviceDialog
 
-        Kirigami.PromptDialog {
-            id: dialog
+        parent: root.QQC2.Overlay.overlay
 
-            required property BluezQt.Adapter adapter
-            required property BluezQt.Device device
-            required property string name
-
-            signal call(BluezQt.PendingCall pc)
-
-            title: i18n("Forget this Device?")
-            subtitle: i18n("Are you sure you want to forget \"%1\"?", name)
-
-            showCloseButton: false
-
-            // Need to use fully custom actions because it's not possible to override
-            // the text and icon of a single standardbutton, and if we use just a
-            // custom action for that one, then it's in the wrong visual position
-            // relative to the StandardButton-provided Cancel button
-            standardButtons: Kirigami.Dialog.NoButton
-            customFooterActions: [
-                Kirigami.Action {
-                    text: i18nc("@action:button", "Forget Device")
-                    icon.name: "edit-delete-remove-symbolic"
-                    onTriggered: {
-                        dialog.accept();
-                    }
-                },
-                Kirigami.Action {
-                    text: i18nc("@action:button", "Cancel")
-                    icon.name: "dialog-cancel-symbolic"
-                    onTriggered: {
-                        dialog.reject();
-                    }
-                    shortcut: StandardKey.Cancel
-                }
-            ]
-
-            onAccepted: call(adapter.removeDevice(device))
-
-            contentData: [
-                Connections {
-                    target: dialog.device
-                    function onDeviceRemoved(device: BluezQt.Device): void {
-                        dialog.reject();
-                    }
-                },
-                Connections {
-                    target: dialog.adapter
-                    function onAdapterRemoved(adapter: BluezQt.Adapter): void {
-                        dialog.reject();
-                    }
-                    function onPoweredChanged(powered: bool): void {
-                        if (!powered) {
-                            dialog.reject();
-                        }
-                    }
-                }
-            ]
+        onCall: call => {
+            root.makeCall(call);
         }
     }
 
@@ -256,26 +202,13 @@ KCMUtils.ScrollViewKCM {
                 }
 
                 QQC2.ToolButton {
-                    text: i18nc("@action:button %1 is the name of a Bluetooth device", "Forget \"%1\"", delegate.model.Name)
-                    icon.name: "edit-delete-remove-symbolic"
+                    action: ForgetDeviceAction {
+                        dialog: forgetDeviceDialog
+                        device: delegate.model.Device
+                    }
                     display: QQC2.AbstractButton.IconOnly
                     QQC2.ToolTip.text: text
                     QQC2.ToolTip.visible: hovered
-
-                    onClicked: {
-                        const dialog = forgetDialogComponent.createObject(root, {
-                            adapter: delegate.model.Adapter,
-                            device: delegate.model.Device,
-                            name: delegate.model.Name,
-                        });
-                        // Use IIFE (Immediately Invoked Function Expression) to hard-copy a reference
-                        // to root object, to avoid it being lost if the delegate is destroyed.
-                        dialog.call.connect((function (root) {
-                            return (call => root.makeCall(call));
-                        })(root));
-                        dialog.closed.connect(() => dialog.destroy());
-                        dialog.open();
-                    }
                 }
             }
         }
