@@ -21,7 +21,9 @@ KCMUtils.SimpleKCM {
     Kirigami.FormLayout {
         id: form
 
-        property QtObject adapter: BluezQt.Manager.adapters[box.currentIndex]
+        // FIXME: Manager.adapters property does not have any NOTIFY hook.
+        // Somehow even the name won't update in the ComboBox
+        readonly property BluezQt.Adapter adapter: BluezQt.Manager.adapters[box.currentIndex] ?? null
 
         QQC2.ComboBox {
             id: box

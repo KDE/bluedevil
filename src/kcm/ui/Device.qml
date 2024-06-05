@@ -16,7 +16,7 @@ import "script.js" as Script
 
 KCMUtils.SimpleKCM {
 
-    property var device
+    required property BluezQt.Device device
 
     title: device.name
 
