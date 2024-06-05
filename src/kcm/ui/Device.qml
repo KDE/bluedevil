@@ -103,7 +103,7 @@ KCMUtils.SimpleKCM {
             }
 
             QQC2.Label {
-                text: Script.deviceTypeToString(device.type)
+                text: Script.deviceTypeToString(device)
                 Kirigami.FormData.label: i18n("Type:")
             }
 

@@ -229,7 +229,7 @@ KCMUtils.ScrollViewKCM {
 
                 KD.IconTitleSubtitle {
                     title: model.Name
-                    subtitle: infoText(model.Device.type, model.Device.battery, model.Device.uuids)
+                    subtitle: root.infoText(model.Device)
                     icon.name: model.Icon
                     icon.width: Kirigami.Units.iconSizes.medium
                     Layout.fillWidth: true
@@ -277,10 +277,11 @@ KCMUtils.ScrollViewKCM {
         }
     }
 
-    function infoText(type, battery, uuids): string {
+    function infoText(device: BluezQt.Device): string {
+        const { battery } = device;
         const labels = [];
 
-        labels.push(Script.deviceTypeToString(type));
+        labels.push(Script.deviceTypeToString(device));
 
         if (battery) {
             labels.push(i18n("%1% Battery", battery.percentage));

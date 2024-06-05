@@ -1,5 +1,7 @@
-function deviceTypeToString(type) {
-    switch (type) {
+.import org.kde.bluezqt as BluezQt
+
+function deviceTypeToString(device) {
+    switch (device.type) {
     case BluezQt.Device.Phone:
         return i18nc("This device is a Phone", "Phone");
     case BluezQt.Device.Modem:
@@ -37,28 +39,29 @@ function deviceTypeToString(type) {
     case BluezQt.Device.Health:
         return i18nc("This device is a Health device", "Health");
     default:
+        const { uuids } = device;
         const profiles = [];
 
-        if (Uuids.indexOf(BluezQt.Services.ObexFileTransfer) !== -1) {
+        if (uuids.includes(BluezQt.Services.ObexFileTransfer)) {
             profiles.push(i18n("File transfer"));
         }
-        if (Uuids.indexOf(BluezQt.Services.ObexObjectPush) !== -1) {
+        if (uuids.includes(BluezQt.Services.ObexObjectPush)) {
             profiles.push(i18n("Send file"));
         }
-        if (Uuids.indexOf(BluezQt.Services.HumanInterfaceDevice) !== -1) {
+        if (uuids.includes(BluezQt.Services.HumanInterfaceDevice)) {
             profiles.push(i18n("Input"));
         }
-        if (Uuids.indexOf(BluezQt.Services.AdvancedAudioDistribution) !== -1) {
+        if (uuids.includes(BluezQt.Services.AdvancedAudioDistribution)) {
             profiles.push(i18n("Audio"));
         }
-        if (Uuids.indexOf(BluezQt.Services.Nap) !== -1) {
+        if (uuids.includes(BluezQt.Services.Nap)) {
             profiles.push(i18n("Network"));
         }
 
-        if (!profiles.length) {
+        if (profiles.length === 0) {
             profiles.push(i18n("Other"));
         }
 
-        labels.push(profiles.join(", "));
+        return profiles.join(i18nc("List separator", ", "));
     }
 }
