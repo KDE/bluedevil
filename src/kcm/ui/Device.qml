@@ -66,6 +66,16 @@ KCMUtils.SimpleKCM {
         })
     }
 
+    ForgetDeviceDialog {
+        id: forgetDeviceDialog
+
+        parent: root.QQC2.Overlay.overlay
+
+        onCall: call => {
+            root.makeCall(call);
+        }
+    }
+
     headerPaddingEnabled: false // Let the InlineMessage touch the edges
     header: Kirigami.InlineMessage {
         id: errorMessage
@@ -171,6 +181,19 @@ KCMUtils.SimpleKCM {
                 text: i18n("Setup DUN Network…")
                 visible: false
                 onClicked: root.KCMUtils.ConfigModule.setupNetworkConnection("dun", root.device.address, root.device.name)
+            }
+
+            Kirigami.Separator {
+                Kirigami.FormData.isSection: true
+            }
+
+            QQC2.Button {
+                action: ForgetDeviceAction {
+                    dialog: forgetDeviceDialog
+                    device: root.device
+                }
+                // override action's text with a shorter label
+                text: i18nc("@action:button Forget the Bluetooth device", "Forget");
             }
         }
     }
