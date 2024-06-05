@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-import QtQuick 2.2
-import QtQuick.Layouts 1.1
-import QtQuick.Controls 2.0 as QQC2
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Controls as QQC2
 
-import org.kde.kirigami 2.10 as Kirigami
+import org.kde.kirigami as Kirigami
 import org.kde.kcmutils
 
-import org.kde.bluezqt 1.0 as BluezQt
+import org.kde.bluezqt as BluezQt
 
 import "script.js" as Script;
 
@@ -109,7 +109,7 @@ SimpleKCM {
                     if (device.battery) {
                         return i18n("%1%", device.battery.percentage)
                     }
-                } 
+                }
                 visible: device.battery && device.battery.percentage
                 Kirigami.FormData.label: i18n("Battery:")
             }
