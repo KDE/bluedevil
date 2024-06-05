@@ -55,6 +55,17 @@ KCMUtils.SimpleKCM {
         KCMUtils.ConfigModule.checkNetworkConnection(device.uuids, device.address);
     }
 
+    function makeCall(call: BluezQt.PendingCall): void {
+        indicator.running = true
+        call.finished.connect(call => {
+            indicator.running = false
+            if (call.error) {
+                errorMessage.text = call.errorText
+                errorMessage.visible = true
+            }
+        })
+    }
+
     headerPaddingEnabled: false // Let the InlineMessage touch the edges
     header: Kirigami.InlineMessage {
         id: errorMessage
@@ -86,21 +97,10 @@ KCMUtils.SimpleKCM {
 
                     onClicked: {
                         if (root.device.connected) {
-                            makeCall(root.device.disconnectFromDevice())
+                            root.makeCall(root.device.disconnectFromDevice())
                         } else {
-                            makeCall(root.device.connectToDevice())
+                            root.makeCall(root.device.connectToDevice())
                         }
-                    }
-
-                    function makeCall(call: BluezQt.PendingCall): void {
-                        indicator.running = true
-                        call.finished.connect(call => {
-                            indicator.running = false
-                            if (call.error) {
-                                errorMessage.text = call.errorText
-                                errorMessage.visible = true
-                            }
-                        })
                     }
                 }
 
