@@ -23,13 +23,15 @@ KCMUtils.SimpleKCM {
     Connections {
         target: kcm
         function onNetworkAvailable(service, available) {
-
-            if (service === "dun") {
-                dunButton.visible = available && device.connected
-            }
-
-            if (service === "nap") {
-                napButton.visible = available && device.connected
+            switch (service) {
+            case "dun":
+                dunButton.visible = available && device.connected;
+                break;
+            case "nap":
+                napButton.visible = available && device.connected;
+                break;
+            default:
+                break;
             }
         }
     }
