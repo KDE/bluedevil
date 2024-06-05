@@ -1,6 +1,8 @@
 /**
  * SPDX-FileCopyrightText: 2020 Nicolas Fella <nicolas.fella@gmx.de>
  * SPDX-FileCopyrightText: 2021 Nate Graham <nate@kde.org>
+ * SPDX-FileCopyrightText: 2022 ivan tkachenko <me@ratijas.tk>
+ *
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
