@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-25 00:40+0000\n"
+"POT-Creation-Date: 2024-06-07 00:39+0000\n"
 "PO-Revision-Date: 2024-02-18 08:28+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -34,227 +34,235 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "רשת %1 (%2)"
 
-#: ui/Device.qml:72 ui/main.qml:239
+#: ui/Device.qml:105 ui/main.qml:189
 #, kde-format
 msgid "Disconnect"
 msgstr "ניתוק"
 
-#: ui/Device.qml:72 ui/main.qml:239
+#: ui/Device.qml:105 ui/main.qml:189
 #, kde-format
 msgid "Connect"
 msgstr "חיבור"
 
-#: ui/Device.qml:104
+#: ui/Device.qml:126
 #, kde-format
 msgid "Type:"
 msgstr "סוג:"
 
-#: ui/Device.qml:110
+#: ui/Device.qml:130
 #, kde-format
 msgid "%1%"
 msgstr "%1%"
 
-#: ui/Device.qml:114
+#: ui/Device.qml:132
 #, kde-format
 msgid "Battery:"
 msgstr "סוללה:"
 
-#: ui/Device.qml:119 ui/General.qml:42
+#: ui/Device.qml:137 ui/General.qml:47
 #, kde-format
 msgid "Address:"
 msgstr "כתובת:"
 
-#: ui/Device.qml:124
+#: ui/Device.qml:142
 #, kde-format
 msgid "Adapter:"
 msgstr "מתאם:"
 
-#: ui/Device.qml:130 ui/General.qml:36
+#: ui/Device.qml:148 ui/General.qml:41
 #, kde-format
 msgid "Name:"
 msgstr "שם:"
 
-#: ui/Device.qml:134
+#: ui/Device.qml:152
 #, kde-format
 msgid "Trusted"
 msgstr "מהימן"
 
-#: ui/Device.qml:140
+#: ui/Device.qml:158
 #, kde-format
 msgid "Blocked"
 msgstr "חסום"
 
-#: ui/Device.qml:146
+#: ui/Device.qml:165
 #, kde-format
 msgid "Send File"
 msgstr "שליחת קובץ"
 
-#: ui/Device.qml:153
+#: ui/Device.qml:173
 #, kde-format
 msgid "Setup NAP Network…"
 msgstr "הגדרת רשת דרך נקודת גישה…"
 
-#: ui/Device.qml:160
+#: ui/Device.qml:181
 #, kde-format
 msgid "Setup DUN Network…"
 msgstr "הגדרת רשת בחיוג…"
 
-#: ui/General.qml:19
-#, kde-format
-msgid "Settings"
-msgstr "הגדרות"
+#: ui/Device.qml:196
+#, fuzzy, kde-format
+#| msgctxt "@action:button %1 is the name of a Bluetooth device"
+#| msgid "Forget \"%1\""
+msgctxt "@action:button Forget the Bluetooth device"
+msgid "Forget"
+msgstr "לשכוח את „%1”"
 
-#: ui/General.qml:28
-#, kde-format
-msgid "Device:"
-msgstr "התקן:"
-
-#: ui/General.qml:46
-#, kde-format
-msgid "Enabled:"
-msgstr "פעיל:"
-
-#: ui/General.qml:52
-#, kde-format
-msgid "Visible:"
-msgstr "גלוי:"
-
-#: ui/General.qml:66
-#, kde-format
-msgid "On login:"
-msgstr "עם הכניסה:"
-
-#: ui/General.qml:67
-#, kde-format
-msgid "Enable Bluetooth"
-msgstr "הפעלת בלוטות׳"
-
-#: ui/General.qml:77
-#, kde-format
-msgid "Disable Bluetooth"
-msgstr "השבתת בלוטות׳"
-
-#: ui/General.qml:87
-#, kde-format
-msgid "Restore previous status"
-msgstr "שחזור המצב הקודם"
-
-#: ui/General.qml:106
-#, kde-format
-msgid "When receiving files:"
-msgstr "בעת קבלת קבצים:"
-
-#: ui/General.qml:108
-#, kde-format
-msgid "Ask for confirmation"
-msgstr "בקשת אישור"
-
-#: ui/General.qml:117
-#, kde-format
-msgid "Accept for trusted devices"
-msgstr "לאשר להתקנים מהימנים"
-
-#: ui/General.qml:127
-#, kde-format
-msgid "Always accept"
-msgstr "לאשר תמיד"
-
-#: ui/General.qml:137
-#, kde-format
-msgid "Save files in:"
-msgstr "שמירת קבצים תחת:"
-
-#: ui/General.qml:161 ui/General.qml:172
-#, kde-format
-msgid "Select folder"
-msgstr "בחירת תיקייה"
-
-#: ui/main.qml:27
-#, kde-format
-msgctxt "@action: button as in, 'enable Bluetooth'"
-msgid "Enabled"
-msgstr "פעיל"
-
-#: ui/main.qml:43
-#, kde-format
-msgid "Add New Device…"
-msgstr "הוספת התקן חדש…"
-
-#: ui/main.qml:49
-#, kde-format
-msgid "Configure…"
-msgstr "הגדרה…"
-
-#: ui/main.qml:88
-#, kde-format
-msgid "Forget this Device?"
-msgstr "לשכוח את ההתקן הזה?"
-
-#: ui/main.qml:89
-#, kde-format
-msgid "Are you sure you want to forget \"%1\"?"
-msgstr "לשכוח את „%1”?"
-
-#: ui/main.qml:100
-#, kde-format
-msgctxt "@action:button"
-msgid "Forget Device"
-msgstr "לשכוח מההתקן"
-
-#: ui/main.qml:107
-#, kde-format
-msgctxt "@action:button"
-msgid "Cancel"
-msgstr "ביטול"
-
-#: ui/main.qml:170
-#, kde-format
-msgid "No Bluetooth adapters found"
-msgstr "לא נמצאו מתאמי בלוטות׳"
-
-#: ui/main.qml:171
-#, kde-format
-msgid "Connect an external Bluetooth adapter"
-msgstr "חיבור מתאם בלוטות׳ חיצוני"
-
-#: ui/main.qml:180
-#, kde-format
-msgid "Bluetooth is disabled"
-msgstr "בלוטות׳ מושבת"
-
-#: ui/main.qml:186
-#, kde-format
-msgid "Enable"
-msgstr "הפעלה"
-
-#: ui/main.qml:196
-#, kde-format
-msgid "No devices paired"
-msgstr "אין התקנים מצומדים"
-
-#: ui/main.qml:197
-#, kde-kuit-format
-msgctxt "@info"
-msgid "Click <interface>Add New Device…</interface> to pair some"
-msgstr "יש ללחוץ על <interface>הוספת התקן חדש…</interface> כדי לצמד כאלה"
-
-#: ui/main.qml:219
-#, kde-format
-msgid "Connected"
-msgstr "מחובר"
-
-#: ui/main.qml:219
-#, kde-format
-msgid "Available"
-msgstr "זמין"
-
-#: ui/main.qml:255
+#: ui/ForgetDeviceAction.qml:15
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "לשכוח את „%1”"
 
-#: ui/main.qml:286
+#: ui/ForgetDeviceDialog.qml:32
+#, kde-format
+msgid "Forget this Device?"
+msgstr "לשכוח את ההתקן הזה?"
+
+#: ui/ForgetDeviceDialog.qml:33
+#, kde-format
+msgid "Are you sure you want to forget \"%1\"?"
+msgstr "לשכוח את „%1”?"
+
+#: ui/ForgetDeviceDialog.qml:45
+#, kde-format
+msgctxt "@action:button"
+msgid "Forget Device"
+msgstr "לשכוח מההתקן"
+
+#: ui/ForgetDeviceDialog.qml:52
+#, kde-format
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr "ביטול"
+
+#: ui/General.qml:22
+#, kde-format
+msgid "Settings"
+msgstr "הגדרות"
+
+#: ui/General.qml:33
+#, kde-format
+msgid "Device:"
+msgstr "התקן:"
+
+#: ui/General.qml:51
+#, kde-format
+msgid "Enabled:"
+msgstr "פעיל:"
+
+#: ui/General.qml:57
+#, kde-format
+msgid "Visible:"
+msgstr "גלוי:"
+
+#: ui/General.qml:71
+#, kde-format
+msgid "On login:"
+msgstr "עם הכניסה:"
+
+#: ui/General.qml:72
+#, kde-format
+msgid "Enable Bluetooth"
+msgstr "הפעלת בלוטות׳"
+
+#: ui/General.qml:82
+#, kde-format
+msgid "Disable Bluetooth"
+msgstr "השבתת בלוטות׳"
+
+#: ui/General.qml:92
+#, kde-format
+msgid "Restore previous status"
+msgstr "שחזור המצב הקודם"
+
+#: ui/General.qml:111
+#, kde-format
+msgid "When receiving files:"
+msgstr "בעת קבלת קבצים:"
+
+#: ui/General.qml:113
+#, kde-format
+msgid "Ask for confirmation"
+msgstr "בקשת אישור"
+
+#: ui/General.qml:122
+#, kde-format
+msgid "Accept for trusted devices"
+msgstr "לאשר להתקנים מהימנים"
+
+#: ui/General.qml:132
+#, kde-format
+msgid "Always accept"
+msgstr "לאשר תמיד"
+
+#: ui/General.qml:142
+#, kde-format
+msgid "Save files in:"
+msgstr "שמירת קבצים תחת:"
+
+#: ui/General.qml:167 ui/General.qml:178
+#, kde-format
+msgid "Select folder"
+msgstr "בחירת תיקייה"
+
+#: ui/main.qml:29
+#, kde-format
+msgctxt "@action: button as in, 'enable Bluetooth'"
+msgid "Enabled"
+msgstr "פעיל"
+
+#: ui/main.qml:42
+#, kde-format
+msgid "Add New Device…"
+msgstr "הוספת התקן חדש…"
+
+#: ui/main.qml:48
+#, kde-format
+msgid "Configure…"
+msgstr "הגדרה…"
+
+#: ui/main.qml:114
+#, kde-format
+msgid "No Bluetooth adapters found"
+msgstr "לא נמצאו מתאמי בלוטות׳"
+
+#: ui/main.qml:115
+#, kde-format
+msgid "Connect an external Bluetooth adapter"
+msgstr "חיבור מתאם בלוטות׳ חיצוני"
+
+#: ui/main.qml:124
+#, kde-format
+msgid "Bluetooth is disabled"
+msgstr "בלוטות׳ מושבת"
+
+#: ui/main.qml:130
+#, kde-format
+msgid "Enable"
+msgstr "הפעלה"
+
+#: ui/main.qml:140
+#, kde-format
+msgid "No devices paired"
+msgstr "אין התקנים מצומדים"
+
+#: ui/main.qml:141
+#, kde-kuit-format
+msgctxt "@info"
+msgid "Click <interface>Add New Device…</interface> to pair some"
+msgstr "יש ללחוץ על <interface>הוספת התקן חדש…</interface> כדי לצמד כאלה"
+
+#: ui/main.qml:165
+#, kde-format
+msgid "Connected"
+msgstr "מחובר"
+
+#: ui/main.qml:165
+#, kde-format
+msgid "Available"
+msgstr "זמין"
+
+#: ui/main.qml:224
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% סוללה"

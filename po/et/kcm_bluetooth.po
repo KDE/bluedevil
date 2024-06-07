@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-25 00:40+0000\n"
+"POT-Creation-Date: 2024-06-07 00:39+0000\n"
 "PO-Revision-Date: 2020-09-28 02:19+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -33,233 +33,240 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 võrk (%2)"
 
-#: ui/Device.qml:72 ui/main.qml:239
+#: ui/Device.qml:105 ui/main.qml:189
 #, kde-format
 msgid "Disconnect"
 msgstr "Katkesta ühendus"
 
-#: ui/Device.qml:72 ui/main.qml:239
+#: ui/Device.qml:105 ui/main.qml:189
 #, kde-format
 msgid "Connect"
 msgstr "Ühenda"
 
-#: ui/Device.qml:104
+#: ui/Device.qml:126
 #, kde-format
 msgid "Type:"
 msgstr "Tüüp:"
 
-#: ui/Device.qml:110
+#: ui/Device.qml:130
 #, kde-format
 msgid "%1%"
 msgstr ""
 
-#: ui/Device.qml:114
+#: ui/Device.qml:132
 #, kde-format
 msgid "Battery:"
 msgstr ""
 
-#: ui/Device.qml:119 ui/General.qml:42
+#: ui/Device.qml:137 ui/General.qml:47
 #, kde-format
 msgid "Address:"
 msgstr "Aadress:"
 
-#: ui/Device.qml:124
+#: ui/Device.qml:142
 #, kde-format
 msgid "Adapter:"
 msgstr "Adapter:"
 
-#: ui/Device.qml:130 ui/General.qml:36
+#: ui/Device.qml:148 ui/General.qml:41
 #, kde-format
 msgid "Name:"
 msgstr "Nimi:"
 
-#: ui/Device.qml:134
+#: ui/Device.qml:152
 #, kde-format
 msgid "Trusted"
 msgstr "Usaldatav"
 
-#: ui/Device.qml:140
+#: ui/Device.qml:158
 #, kde-format
 msgid "Blocked"
 msgstr "Blokeeritud"
 
-#: ui/Device.qml:146
+#: ui/Device.qml:165
 #, kde-format
 msgid "Send File"
 msgstr "Saada fail"
 
-#: ui/Device.qml:153
+#: ui/Device.qml:173
 #, fuzzy, kde-format
 #| msgid "Setup NAP Network..."
 msgid "Setup NAP Network…"
 msgstr "Seadista NAP võrk ..."
 
-#: ui/Device.qml:160
+#: ui/Device.qml:181
 #, fuzzy, kde-format
 #| msgid "Setup DUN Network..."
 msgid "Setup DUN Network…"
 msgstr "Seadista DUN võrk ..."
 
-#: ui/General.qml:19
-#, kde-format
-msgid "Settings"
-msgstr "Seadistused"
-
-#: ui/General.qml:28
-#, kde-format
-msgid "Device:"
+#: ui/Device.qml:196
+#, fuzzy, kde-format
+#| msgid "Device:"
+msgctxt "@action:button Forget the Bluetooth device"
+msgid "Forget"
 msgstr "Seade:"
 
-#: ui/General.qml:46
+#: ui/ForgetDeviceAction.qml:15
 #, kde-format
-msgid "Enabled:"
-msgstr "Sisse lülitatud:"
-
-#: ui/General.qml:52
-#, kde-format
-msgid "Visible:"
-msgstr "Nähtav:"
-
-#: ui/General.qml:66
-#, kde-format
-msgid "On login:"
+msgctxt "@action:button %1 is the name of a Bluetooth device"
+msgid "Forget \"%1\""
 msgstr ""
 
-#: ui/General.qml:67
-#, fuzzy, kde-format
-#| msgid "Disable Bluetooth"
-msgid "Enable Bluetooth"
-msgstr "Lülita Bluetooth välja"
-
-#: ui/General.qml:77
-#, kde-format
-msgid "Disable Bluetooth"
-msgstr "Lülita Bluetooth välja"
-
-#: ui/General.qml:87
-#, kde-format
-msgid "Restore previous status"
-msgstr ""
-
-#: ui/General.qml:106
-#, kde-format
-msgid "When receiving files:"
-msgstr "Failide vastuvõtmisel:"
-
-#: ui/General.qml:108
-#, kde-format
-msgid "Ask for confirmation"
-msgstr "Küsitakse alati kinnitust"
-
-#: ui/General.qml:117
-#, kde-format
-msgid "Accept for trusted devices"
-msgstr "Küsitakse kinnitust ainult mitteusaldatavate seadmete puhul"
-
-#: ui/General.qml:127
-#, kde-format
-msgid "Always accept"
-msgstr "Ei küsita kunagi kinnitust"
-
-#: ui/General.qml:137
-#, kde-format
-msgid "Save files in:"
-msgstr "Failide salvestamise asukoht:"
-
-#: ui/General.qml:161 ui/General.qml:172
-#, kde-format
-msgid "Select folder"
-msgstr "Kataloogi valimine"
-
-#: ui/main.qml:27
-#, fuzzy, kde-format
-#| msgid "Enabled:"
-msgctxt "@action: button as in, 'enable Bluetooth'"
-msgid "Enabled"
-msgstr "Sisse lülitatud:"
-
-#: ui/main.qml:43
-#, kde-format
-msgid "Add New Device…"
-msgstr ""
-
-#: ui/main.qml:49
-#, fuzzy, kde-format
-#| msgid "Configure..."
-msgid "Configure…"
-msgstr "Seadista ..."
-
-#: ui/main.qml:88
+#: ui/ForgetDeviceDialog.qml:32
 #, kde-format
 msgid "Forget this Device?"
 msgstr ""
 
-#: ui/main.qml:89
+#: ui/ForgetDeviceDialog.qml:33
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
 msgstr ""
 
-#: ui/main.qml:100
+#: ui/ForgetDeviceDialog.qml:45
 #, fuzzy, kde-format
 #| msgid "Device:"
 msgctxt "@action:button"
 msgid "Forget Device"
 msgstr "Seade:"
 
-#: ui/main.qml:107
+#: ui/ForgetDeviceDialog.qml:52
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
 msgstr ""
 
-#: ui/main.qml:170
+#: ui/General.qml:22
+#, kde-format
+msgid "Settings"
+msgstr "Seadistused"
+
+#: ui/General.qml:33
+#, kde-format
+msgid "Device:"
+msgstr "Seade:"
+
+#: ui/General.qml:51
+#, kde-format
+msgid "Enabled:"
+msgstr "Sisse lülitatud:"
+
+#: ui/General.qml:57
+#, kde-format
+msgid "Visible:"
+msgstr "Nähtav:"
+
+#: ui/General.qml:71
+#, kde-format
+msgid "On login:"
+msgstr ""
+
+#: ui/General.qml:72
+#, fuzzy, kde-format
+#| msgid "Disable Bluetooth"
+msgid "Enable Bluetooth"
+msgstr "Lülita Bluetooth välja"
+
+#: ui/General.qml:82
+#, kde-format
+msgid "Disable Bluetooth"
+msgstr "Lülita Bluetooth välja"
+
+#: ui/General.qml:92
+#, kde-format
+msgid "Restore previous status"
+msgstr ""
+
+#: ui/General.qml:111
+#, kde-format
+msgid "When receiving files:"
+msgstr "Failide vastuvõtmisel:"
+
+#: ui/General.qml:113
+#, kde-format
+msgid "Ask for confirmation"
+msgstr "Küsitakse alati kinnitust"
+
+#: ui/General.qml:122
+#, kde-format
+msgid "Accept for trusted devices"
+msgstr "Küsitakse kinnitust ainult mitteusaldatavate seadmete puhul"
+
+#: ui/General.qml:132
+#, kde-format
+msgid "Always accept"
+msgstr "Ei küsita kunagi kinnitust"
+
+#: ui/General.qml:142
+#, kde-format
+msgid "Save files in:"
+msgstr "Failide salvestamise asukoht:"
+
+#: ui/General.qml:167 ui/General.qml:178
+#, kde-format
+msgid "Select folder"
+msgstr "Kataloogi valimine"
+
+#: ui/main.qml:29
+#, fuzzy, kde-format
+#| msgid "Enabled:"
+msgctxt "@action: button as in, 'enable Bluetooth'"
+msgid "Enabled"
+msgstr "Sisse lülitatud:"
+
+#: ui/main.qml:42
+#, kde-format
+msgid "Add New Device…"
+msgstr ""
+
+#: ui/main.qml:48
+#, fuzzy, kde-format
+#| msgid "Configure..."
+msgid "Configure…"
+msgstr "Seadista ..."
+
+#: ui/main.qml:114
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "Ühtegi Bluetoothi adapterit ei leitud"
 
-#: ui/main.qml:171
+#: ui/main.qml:115
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
 msgstr ""
 
-#: ui/main.qml:180
+#: ui/main.qml:124
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth on välja lülitatud"
 
-#: ui/main.qml:186
+#: ui/main.qml:130
 #, kde-format
 msgid "Enable"
 msgstr "Lülita sisse"
 
-#: ui/main.qml:196
+#: ui/main.qml:140
 #, kde-format
 msgid "No devices paired"
 msgstr ""
 
-#: ui/main.qml:197
+#: ui/main.qml:141
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Add New Device…</interface> to pair some"
 msgstr ""
 
-#: ui/main.qml:219
+#: ui/main.qml:165
 #, kde-format
 msgid "Connected"
 msgstr "Ühendatud"
 
-#: ui/main.qml:219
+#: ui/main.qml:165
 #, kde-format
 msgid "Available"
 msgstr "Saadaval"
 
-#: ui/main.qml:255
-#, kde-format
-msgctxt "@action:button %1 is the name of a Bluetooth device"
-msgid "Forget \"%1\""
-msgstr ""
-
-#: ui/main.qml:286
+#: ui/main.qml:224
 #, kde-format
 msgid "%1% Battery"
 msgstr ""

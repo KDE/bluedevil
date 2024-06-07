@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-25 00:40+0000\n"
+"POT-Creation-Date: 2024-06-07 00:39+0000\n"
 "PO-Revision-Date: 2024-01-11 20:48-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -33,227 +33,235 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "Rede %1 (%2)"
 
-#: ui/Device.qml:72 ui/main.qml:239
+#: ui/Device.qml:105 ui/main.qml:189
 #, kde-format
 msgid "Disconnect"
 msgstr "Desconectar"
 
-#: ui/Device.qml:72 ui/main.qml:239
+#: ui/Device.qml:105 ui/main.qml:189
 #, kde-format
 msgid "Connect"
 msgstr "Conectar"
 
-#: ui/Device.qml:104
+#: ui/Device.qml:126
 #, kde-format
 msgid "Type:"
 msgstr "Tipo:"
 
-#: ui/Device.qml:110
+#: ui/Device.qml:130
 #, kde-format
 msgid "%1%"
 msgstr "%1%"
 
-#: ui/Device.qml:114
+#: ui/Device.qml:132
 #, kde-format
 msgid "Battery:"
 msgstr "Bateria:"
 
-#: ui/Device.qml:119 ui/General.qml:42
+#: ui/Device.qml:137 ui/General.qml:47
 #, kde-format
 msgid "Address:"
 msgstr "Endereço:"
 
-#: ui/Device.qml:124
+#: ui/Device.qml:142
 #, kde-format
 msgid "Adapter:"
 msgstr "Adaptador:"
 
-#: ui/Device.qml:130 ui/General.qml:36
+#: ui/Device.qml:148 ui/General.qml:41
 #, kde-format
 msgid "Name:"
 msgstr "Nome:"
 
-#: ui/Device.qml:134
+#: ui/Device.qml:152
 #, kde-format
 msgid "Trusted"
 msgstr "Confiável"
 
-#: ui/Device.qml:140
+#: ui/Device.qml:158
 #, kde-format
 msgid "Blocked"
 msgstr "Bloqueado"
 
-#: ui/Device.qml:146
+#: ui/Device.qml:165
 #, kde-format
 msgid "Send File"
 msgstr "Enviar arquivo"
 
-#: ui/Device.qml:153
+#: ui/Device.qml:173
 #, kde-format
 msgid "Setup NAP Network…"
 msgstr "Configurar rede NAP..."
 
-#: ui/Device.qml:160
+#: ui/Device.qml:181
 #, kde-format
 msgid "Setup DUN Network…"
 msgstr "Configurar rede DUN..."
 
-#: ui/General.qml:19
-#, kde-format
-msgid "Settings"
-msgstr "Configurações"
+#: ui/Device.qml:196
+#, fuzzy, kde-format
+#| msgctxt "@action:button %1 is the name of a Bluetooth device"
+#| msgid "Forget \"%1\""
+msgctxt "@action:button Forget the Bluetooth device"
+msgid "Forget"
+msgstr "Esquecer \"%1\""
 
-#: ui/General.qml:28
-#, kde-format
-msgid "Device:"
-msgstr "Dispositivo:"
-
-#: ui/General.qml:46
-#, kde-format
-msgid "Enabled:"
-msgstr "Ativado:"
-
-#: ui/General.qml:52
-#, kde-format
-msgid "Visible:"
-msgstr "Visível:"
-
-#: ui/General.qml:66
-#, kde-format
-msgid "On login:"
-msgstr "Na inicialização:"
-
-#: ui/General.qml:67
-#, kde-format
-msgid "Enable Bluetooth"
-msgstr "Ativar o Bluetooth"
-
-#: ui/General.qml:77
-#, kde-format
-msgid "Disable Bluetooth"
-msgstr "Desabilitar Bluetooth"
-
-#: ui/General.qml:87
-#, kde-format
-msgid "Restore previous status"
-msgstr "Restaurar status anterior"
-
-#: ui/General.qml:106
-#, kde-format
-msgid "When receiving files:"
-msgstr "Ao receber arquivos:"
-
-#: ui/General.qml:108
-#, kde-format
-msgid "Ask for confirmation"
-msgstr "Solicitar confirmação"
-
-#: ui/General.qml:117
-#, kde-format
-msgid "Accept for trusted devices"
-msgstr "Aceitar para a dispositivos confiáveis"
-
-#: ui/General.qml:127
-#, kde-format
-msgid "Always accept"
-msgstr "Aceitar sempre"
-
-#: ui/General.qml:137
-#, kde-format
-msgid "Save files in:"
-msgstr "Salvar os arquivos em:"
-
-#: ui/General.qml:161 ui/General.qml:172
-#, kde-format
-msgid "Select folder"
-msgstr "Selecionar pasta"
-
-#: ui/main.qml:27
-#, kde-format
-msgctxt "@action: button as in, 'enable Bluetooth'"
-msgid "Enabled"
-msgstr "Ativado"
-
-#: ui/main.qml:43
-#, kde-format
-msgid "Add New Device…"
-msgstr "Adicionar novo dispositivo..."
-
-#: ui/main.qml:49
-#, kde-format
-msgid "Configure…"
-msgstr "Configurar..."
-
-#: ui/main.qml:88
-#, kde-format
-msgid "Forget this Device?"
-msgstr "Esquecer este dispositivo?"
-
-#: ui/main.qml:89
-#, kde-format
-msgid "Are you sure you want to forget \"%1\"?"
-msgstr "Deseja realmente esquecer \"%1\"?"
-
-#: ui/main.qml:100
-#, kde-format
-msgctxt "@action:button"
-msgid "Forget Device"
-msgstr "Esquecer dispositivo"
-
-#: ui/main.qml:107
-#, kde-format
-msgctxt "@action:button"
-msgid "Cancel"
-msgstr "Cancelar"
-
-#: ui/main.qml:170
-#, kde-format
-msgid "No Bluetooth adapters found"
-msgstr "Nenhum adaptador Bluetooth encontrado"
-
-#: ui/main.qml:171
-#, kde-format
-msgid "Connect an external Bluetooth adapter"
-msgstr ""
-
-#: ui/main.qml:180
-#, kde-format
-msgid "Bluetooth is disabled"
-msgstr "O Bluetooth está desativado"
-
-#: ui/main.qml:186
-#, kde-format
-msgid "Enable"
-msgstr "Ativar"
-
-#: ui/main.qml:196
-#, kde-format
-msgid "No devices paired"
-msgstr "Nenhum dispositivo pareado"
-
-#: ui/main.qml:197
-#, kde-kuit-format
-msgctxt "@info"
-msgid "Click <interface>Add New Device…</interface> to pair some"
-msgstr ""
-
-#: ui/main.qml:219
-#, kde-format
-msgid "Connected"
-msgstr "Conectado"
-
-#: ui/main.qml:219
-#, kde-format
-msgid "Available"
-msgstr "Disponível"
-
-#: ui/main.qml:255
+#: ui/ForgetDeviceAction.qml:15
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "Esquecer \"%1\""
 
-#: ui/main.qml:286
+#: ui/ForgetDeviceDialog.qml:32
+#, kde-format
+msgid "Forget this Device?"
+msgstr "Esquecer este dispositivo?"
+
+#: ui/ForgetDeviceDialog.qml:33
+#, kde-format
+msgid "Are you sure you want to forget \"%1\"?"
+msgstr "Deseja realmente esquecer \"%1\"?"
+
+#: ui/ForgetDeviceDialog.qml:45
+#, kde-format
+msgctxt "@action:button"
+msgid "Forget Device"
+msgstr "Esquecer dispositivo"
+
+#: ui/ForgetDeviceDialog.qml:52
+#, kde-format
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: ui/General.qml:22
+#, kde-format
+msgid "Settings"
+msgstr "Configurações"
+
+#: ui/General.qml:33
+#, kde-format
+msgid "Device:"
+msgstr "Dispositivo:"
+
+#: ui/General.qml:51
+#, kde-format
+msgid "Enabled:"
+msgstr "Ativado:"
+
+#: ui/General.qml:57
+#, kde-format
+msgid "Visible:"
+msgstr "Visível:"
+
+#: ui/General.qml:71
+#, kde-format
+msgid "On login:"
+msgstr "Na inicialização:"
+
+#: ui/General.qml:72
+#, kde-format
+msgid "Enable Bluetooth"
+msgstr "Ativar o Bluetooth"
+
+#: ui/General.qml:82
+#, kde-format
+msgid "Disable Bluetooth"
+msgstr "Desabilitar Bluetooth"
+
+#: ui/General.qml:92
+#, kde-format
+msgid "Restore previous status"
+msgstr "Restaurar status anterior"
+
+#: ui/General.qml:111
+#, kde-format
+msgid "When receiving files:"
+msgstr "Ao receber arquivos:"
+
+#: ui/General.qml:113
+#, kde-format
+msgid "Ask for confirmation"
+msgstr "Solicitar confirmação"
+
+#: ui/General.qml:122
+#, kde-format
+msgid "Accept for trusted devices"
+msgstr "Aceitar para a dispositivos confiáveis"
+
+#: ui/General.qml:132
+#, kde-format
+msgid "Always accept"
+msgstr "Aceitar sempre"
+
+#: ui/General.qml:142
+#, kde-format
+msgid "Save files in:"
+msgstr "Salvar os arquivos em:"
+
+#: ui/General.qml:167 ui/General.qml:178
+#, kde-format
+msgid "Select folder"
+msgstr "Selecionar pasta"
+
+#: ui/main.qml:29
+#, kde-format
+msgctxt "@action: button as in, 'enable Bluetooth'"
+msgid "Enabled"
+msgstr "Ativado"
+
+#: ui/main.qml:42
+#, kde-format
+msgid "Add New Device…"
+msgstr "Adicionar novo dispositivo..."
+
+#: ui/main.qml:48
+#, kde-format
+msgid "Configure…"
+msgstr "Configurar..."
+
+#: ui/main.qml:114
+#, kde-format
+msgid "No Bluetooth adapters found"
+msgstr "Nenhum adaptador Bluetooth encontrado"
+
+#: ui/main.qml:115
+#, kde-format
+msgid "Connect an external Bluetooth adapter"
+msgstr ""
+
+#: ui/main.qml:124
+#, kde-format
+msgid "Bluetooth is disabled"
+msgstr "O Bluetooth está desativado"
+
+#: ui/main.qml:130
+#, kde-format
+msgid "Enable"
+msgstr "Ativar"
+
+#: ui/main.qml:140
+#, kde-format
+msgid "No devices paired"
+msgstr "Nenhum dispositivo pareado"
+
+#: ui/main.qml:141
+#, kde-kuit-format
+msgctxt "@info"
+msgid "Click <interface>Add New Device…</interface> to pair some"
+msgstr ""
+
+#: ui/main.qml:165
+#, kde-format
+msgid "Connected"
+msgstr "Conectado"
+
+#: ui/main.qml:165
+#, kde-format
+msgid "Available"
+msgstr "Disponível"
+
+#: ui/main.qml:224
 #, kde-format
 msgid "%1% Battery"
 msgstr "Bateria %1%"
