@@ -1,14 +1,14 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 # Lasse Liehu <lasse.liehu@gmail.com>, 2015.
-# Tommi Nieminen <translator@legisign.org>, 2017, 2020, 2021, 2022, 2023.
+# Tommi Nieminen <translator@legisign.org>, 2017, 2020, 2021, 2022, 2023, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-06 00:38+0000\n"
-"PO-Revision-Date: 2023-03-07 14:05+0200\n"
+"PO-Revision-Date: 2024-03-11 15:14+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -100,11 +100,9 @@ msgid "Connected"
 msgstr "Yhdistetty"
 
 #: package/contents/ui/DeviceItem.qml:252
-#, fuzzy, kde-format
-#| msgctxt "Notification when the connection failed due to Failed"
-#| msgid "Connection to the device failed"
+#, kde-format
 msgid "Connection failed"
-msgstr "Laitteeseen yhdistäminen epäonnistui"
+msgstr "Yhteydenotto epäonnistui"
 
 #: package/contents/ui/DeviceItem.qml:259
 #, kde-format

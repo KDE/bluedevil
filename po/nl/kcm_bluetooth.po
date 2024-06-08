@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-07 00:39+0000\n"
-"PO-Revision-Date: 2024-02-18 14:06+0100\n"
+"PO-Revision-Date: 2024-06-07 09:36+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.05.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -99,12 +99,10 @@ msgid "Setup DUN Network…"
 msgstr "DUN-netwerk instellen..."
 
 #: ui/Device.qml:196
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the name of a Bluetooth device"
-#| msgid "Forget \"%1\""
+#, kde-format
 msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"
-msgstr "\"%1\" vergeten"
+msgstr "Vergeten"
 
 #: ui/ForgetDeviceAction.qml:15
 #, kde-format

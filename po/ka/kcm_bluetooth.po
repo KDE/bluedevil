@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-07 00:39+0000\n"
-"PO-Revision-Date: 2024-02-18 05:27+0100\n"
+"PO-Revision-Date: 2024-06-07 05:28+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -100,12 +100,10 @@ msgid "Setup DUN Network…"
 msgstr "DUN ქსელის მორგება…"
 
 #: ui/Device.qml:196
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the name of a Bluetooth device"
-#| msgid "Forget \"%1\""
+#, kde-format
 msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"
-msgstr "\"%1\"-ის დავიწყება"
+msgstr "დავიწყება"
 
 #: ui/ForgetDeviceAction.qml:15
 #, kde-format
