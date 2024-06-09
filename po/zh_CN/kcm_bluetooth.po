@@ -100,12 +100,10 @@ msgid "Setup DUN Network…"
 msgstr "设置 DUN 网络…"
 
 #: ui/Device.qml:196
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the name of a Bluetooth device"
-#| msgid "Forget \"%1\""
+#, kde-format
 msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"
-msgstr "忘记“%1”"
+msgstr ""
 
 #: ui/ForgetDeviceAction.qml:15
 #, kde-format

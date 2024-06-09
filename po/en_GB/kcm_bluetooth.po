@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-07 00:39+0000\n"
-"PO-Revision-Date: 2024-05-20 19:40+0100\n"
+"PO-Revision-Date: 2024-06-08 12:27+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
 "Language: en_GB\n"
@@ -99,12 +99,10 @@ msgid "Setup DUN Network…"
 msgstr "Setup DUN Network…"
 
 #: ui/Device.qml:196
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the name of a Bluetooth device"
-#| msgid "Forget \"%1\""
+#, kde-format
 msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"
-msgstr "Forget \"%1\""
+msgstr "Forget"
 
 #: ui/ForgetDeviceAction.qml:15
 #, kde-format
