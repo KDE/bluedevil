@@ -188,7 +188,7 @@ msgstr "启用"
 #: package/contents/ui/FullRepresentation.qml:147
 #, kde-format
 msgid "No Bluetooth adapters available"
-msgstr "无可用的蓝牙适配器"
+msgstr "没有可用的蓝牙适配器"
 
 #: package/contents/ui/FullRepresentation.qml:149
 #, kde-format
@@ -213,7 +213,7 @@ msgstr "蓝牙已禁用；中键点击以启用"
 #: package/contents/ui/main.qml:55
 #, kde-format
 msgid "No adapters available"
-msgstr "无可用适配器"
+msgstr "没有可用的适配器"
 
 #: package/contents/ui/main.qml:57
 #, kde-format
