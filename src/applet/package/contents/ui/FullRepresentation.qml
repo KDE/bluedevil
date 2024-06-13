@@ -43,8 +43,6 @@ PlasmaExtras.Representation {
     Action {
         id: addBluetoothDeviceAction
 
-        enabled: root.emptyList
-
         text: bluetoothApplet.addDeviceAction.text
         icon.name: "list-add-symbolic"
 
@@ -53,8 +51,6 @@ PlasmaExtras.Representation {
 
     Action {
         id: enableBluetoothAction
-
-        enabled: btManager.bluetoothBlocked
 
         text: i18n("Enable")
         icon.name: "preferences-system-bluetooth-symbolic"
