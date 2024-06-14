@@ -8,6 +8,7 @@
 import QtQuick
 import QtQuick.Layouts
 
+import org.kde.bluezqt as BluezQt
 import org.kde.kirigami as Kirigami
 import org.kde.plasma.components as PlasmaComponents3
 import org.kde.plasma.core as PlasmaCore
@@ -29,8 +30,8 @@ PlasmaExtras.PlasmoidHeading {
             id: onSwitch
             text: i18n("Enable Bluetooth")
             icon.name: "preferences-system-bluetooth-symbolic"
-            checked: btManager.bluetoothOperational
-            enabled: btManager.bluetoothBlocked || btManager.adapters.length > 0
+            checked: BluezQt.Manager.bluetoothOperational
+            enabled: BluezQt.Manager.bluetoothBlocked || BluezQt.Manager.adapters.length > 0
             focus: bluetoothApplet.expanded
             onToggled: toggleBluetooth()
         }

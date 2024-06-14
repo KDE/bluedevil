@@ -19,7 +19,6 @@ PlasmoidItem {
 
     property var connectedDevices: []
     property int runningActions: 0
-    property QtObject btManager: BluezQt.Manager
     property alias addDeviceAction: addAction
     property alias enableBluetoothAction: enableAction
 
@@ -35,25 +34,25 @@ PlasmoidItem {
 
     fullRepresentation: FullRepresentation { }
 
-    Plasmoid.status: (btManager.bluetoothOperational) ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.PassiveStatus
+    Plasmoid.status: (BluezQt.Manager.bluetoothOperational) ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.PassiveStatus
     Plasmoid.busy: runningActions > 0
 
     Plasmoid.icon: {
         if (connectedDevices.length > 0) {
             return "network-bluetooth-activated-symbolic";
         }
-        if (!btManager.bluetoothOperational) {
+        if (!BluezQt.Manager.bluetoothOperational) {
             return "network-bluetooth-inactive-symbolic";
         }
         return "network-bluetooth-symbolic";
     }
     toolTipMainText: i18n("Bluetooth")
     toolTipSubText: {
-        if (btManager.bluetoothBlocked) {
+        if (BluezQt.Manager.bluetoothBlocked) {
             return i18n("Bluetooth is disabled; middle-click to enable");
         }
-        if (!btManager.bluetoothOperational) {
-            if (btManager.adapters.length === 0) {
+        if (!BluezQt.Manager.bluetoothOperational) {
+            if (BluezQt.Manager.adapters.length === 0) {
                 return i18n("No adapters available");
             }
             return i18n("Bluetooth is offline");
@@ -88,7 +87,7 @@ PlasmoidItem {
     }
 
     Connections {
-        target: btManager
+        target: BluezQt.Manager
 
         function onDeviceAdded() {
             updateConnectedDevices();
@@ -109,8 +108,8 @@ PlasmoidItem {
 
     function updateConnectedDevices() {
         let _connectedDevices = [];
-        for (let i = 0; i < btManager.devices.length; ++i) {
-            const device = btManager.devices[i];
+        for (let i = 0; i < BluezQt.Manager.devices.length; ++i) {
+            const device = BluezQt.Manager.devices[i];
             if (device.connected) {
                 _connectedDevices.push(device);
             }
@@ -123,11 +122,11 @@ PlasmoidItem {
     }
 
     function toggleBluetooth() {
-        const enable = !btManager.bluetoothOperational;
-        btManager.bluetoothBlocked = !enable;
+        const enable = !BluezQt.Manager.bluetoothOperational;
+        BluezQt.Manager.bluetoothBlocked = !enable;
 
-        for (let i = 0; i < btManager.adapters.length; ++i) {
-            const adapter = btManager.adapters[i];
+        for (let i = 0; i < BluezQt.Manager.adapters.length; ++i) {
+            const adapter = BluezQt.Manager.adapters[i];
             adapter.powered = enable;
         }
     }
@@ -137,7 +136,7 @@ PlasmoidItem {
             id: addAction
             text: i18n("Add New Device…")
             icon.name: "list-add-symbolic"
-            visible: !btManager.bluetoothBlocked
+            visible: !BluezQt.Manager.bluetoothBlocked
             onTriggered: checked => PlasmaBt.LaunchApp.launchWizard()
         },
         PlasmaCore.Action {
@@ -146,8 +145,8 @@ PlasmoidItem {
             icon.name: "preferences-system-bluetooth-symbolic"
             priority: PlasmaCore.Action.LowPriority
             checkable: true
-            checked: btManager.bluetoothOperational
-            visible: btManager.bluetoothBlocked || btManager.adapters.length > 0
+            checked: BluezQt.Manager.bluetoothOperational
+            visible: BluezQt.Manager.bluetoothBlocked || BluezQt.Manager.adapters.length > 0
             onTriggered: checked => toggleBluetooth()
         }
     ]

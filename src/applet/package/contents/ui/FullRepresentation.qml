@@ -19,7 +19,7 @@ import org.kde.plasma.private.bluetooth as PlasmaBt
 PlasmaExtras.Representation {
     id: root
 
-    readonly property bool emptyList: btManager.devices.length === 0
+    readonly property bool emptyList: BluezQt.Manager.devices.length === 0
 
     implicitWidth: Kirigami.Units.gridUnit * 24
     implicitHeight: Kirigami.Units.gridUnit * 24
@@ -59,7 +59,7 @@ PlasmaExtras.Representation {
 
     header: Toolbar {
         id: toolbar
-        visible: btManager.adapters.length > 0
+        visible: BluezQt.Manager.adapters.length > 0
         focus: true
     }
 
@@ -78,7 +78,7 @@ PlasmaExtras.Representation {
                 id: devicesModel
                 sourceModel: BluezQt.DevicesModel { }
             }
-            model: btManager.adapters.length > 0 && !btManager.bluetoothBlocked ? devicesModel : null
+            model: BluezQt.Manager.adapters.length > 0 && !BluezQt.Manager.bluetoothBlocked ? devicesModel : null
             clip: true
             currentIndex: -1
             boundsBehavior: Flickable.StopAtBounds
@@ -132,16 +132,16 @@ PlasmaExtras.Representation {
             Loader {
                 anchors.centerIn: parent
                 width: parent.width - (4 * Kirigami.Units.gridUnit)
-                active: BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown || btManager.bluetoothBlocked || root.emptyList
+                active: BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown || BluezQt.Manager.bluetoothBlocked || root.emptyList
                 sourceComponent: PlasmaExtras.PlaceholderMessage {
-                    iconName: BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown || btManager.bluetoothBlocked ? "network-bluetooth" : "edit-none"
+                    iconName: BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown || BluezQt.Manager.bluetoothBlocked ? "network-bluetooth" : "edit-none"
 
                     text: {
                         // We cannot use the adapter count here because that can be zero when
                         // bluetooth is disabled even when there are physical devices
                         if (BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown) {
                             return i18n("No Bluetooth adapters available");
-                        } else if (btManager.bluetoothBlocked) {
+                        } else if (BluezQt.Manager.bluetoothBlocked) {
                             return i18n("Bluetooth is disabled");
                         } else if (root.emptyList) {
                             return i18n("No devices found");
@@ -153,7 +153,7 @@ PlasmaExtras.Representation {
                     helpfulAction: {
                         if (BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown) {
                             return null;
-                        } else if (btManager.bluetoothBlocked) {
+                        } else if (BluezQt.Manager.bluetoothBlocked) {
                             return enableBluetoothAction;
                         } else if (root.emptyList) {
                             return addBluetoothDeviceAction;
