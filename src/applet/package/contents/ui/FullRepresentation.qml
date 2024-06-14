@@ -79,6 +79,7 @@ PlasmaExtras.Representation {
                 sourceModel: BluezQt.DevicesModel { }
             }
             model: btManager.adapters.length > 0 && !btManager.bluetoothBlocked ? devicesModel : null
+            clip: true
             currentIndex: -1
             boundsBehavior: Flickable.StopAtBounds
             topMargin: Kirigami.Units.smallSpacing * 2
