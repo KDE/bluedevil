@@ -42,7 +42,6 @@ MouseArea {
     hoverEnabled: true
 
     Kirigami.Icon {
-        id: bluetoothIcon
         anchors.fill: parent
         source: Plasmoid.icon
         active: root.containsMouse
