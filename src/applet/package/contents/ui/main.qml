@@ -17,7 +17,7 @@ import org.kde.plasma.private.bluetooth as PlasmaBt
 PlasmoidItem {
     id: bluetoothApplet
 
-    property var connectedDevices: []
+    property list<BluezQt.Device> connectedDevices
     property int runningActions: 0
     property alias addDeviceAction: addAction
     property alias enableBluetoothAction: enableAction
@@ -106,17 +106,19 @@ PlasmoidItem {
         }
     }
 
-    function updateConnectedDevices() {
-        let _connectedDevices = [];
-        for (let i = 0; i < BluezQt.Manager.devices.length; ++i) {
-            const device = BluezQt.Manager.devices[i];
-            if (device.connected) {
-                _connectedDevices.push(device);
-            }
+    function arraysEqualShallow(lhs: var, rhs: var): bool {
+        if (lhs.length !== rhs.length) {
+            return false;
         }
+        return lhs.every((left, i) => left === rhs[i]);
+    }
 
-        if (connectedDevices != _connectedDevices) {
-            connectedDevices = _connectedDevices;
+    function updateConnectedDevices(): void {
+        const connectedDevices = BluezQt.Manager.devices
+            .filter(device => device.connected);
+
+        if (!arraysEqualShallow(this.connectedDevices, connectedDevices)) {
+            this.connectedDevices = connectedDevices;
             connectedDevicesChanged();
         }
     }
