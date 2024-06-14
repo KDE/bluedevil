@@ -68,15 +68,16 @@ PlasmaExtras.ExpandableListItem {
 
             // Media Player
             MediaPlayerItem {
-                id: mediaPlayer
+                id: mediaPlayerItem
+                mediaPlayer: model.MediaPlayer
                 Layout.leftMargin: Kirigami.Units.gridUnit + Kirigami.Units.smallSpacing * 3
                 Layout.fillWidth: true
-                visible: MediaPlayer
+                visible: mediaPlayer !== null
             }
 
             Item {
                 Layout.preferredHeight: Kirigami.Units.smallSpacing
-                visible: mediaPlayer.visible
+                visible: mediaPlayerItem.visible
             }
 
             KSvg.SvgItem {
@@ -84,8 +85,8 @@ PlasmaExtras.ExpandableListItem {
                 Layout.fillWidth: true
                 imagePath: "widgets/line"
                 elementId: "horizontal-line"
-                visible: mediaPlayer.visible
-                    || (!mediaPlayer.visible && !(browseFilesButton.enabled || sendFileButton.enabled))
+                visible: mediaPlayerItem.visible
+                    || (!mediaPlayerItem.visible && !(browseFilesButton.enabled || sendFileButton.enabled))
             }
 
             Item {

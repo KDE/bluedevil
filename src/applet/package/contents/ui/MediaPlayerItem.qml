@@ -12,7 +12,9 @@ import org.kde.kirigami as Kirigami
 import org.kde.plasma.components as PlasmaComponents3
 
 ColumnLayout {
-    id: mediaPlayer
+    id: root
+
+    required property BluezQt.MediaPlayer mediaPlayer
 
     spacing: 0
 
@@ -20,12 +22,12 @@ ColumnLayout {
         id: trackTitleLabel
         Layout.fillWidth: true
         elide: Text.ElideRight
-        font.weight: MediaPlayer && MediaPlayer.track.title ? Font.DemiBold : Font.Normal
-        font.italic: MediaPlayer && MediaPlayer.status === BluezQt.MediaPlayer.Playing
+        font.weight: root.mediaPlayer !== null && root.mediaPlayer.track.title !== "" ? Font.DemiBold : Font.Normal
+        font.italic: root.mediaPlayer !== null && root.mediaPlayer.status === BluezQt.MediaPlayer.Playing
         font.pointSize: Kirigami.Theme.smallFont.pointSize
         font.family: Kirigami.Theme.smallFont.family
         opacity: 0.6
-        text: trackTitleText()
+        text: root.trackTitleText()
         textFormat: Text.PlainText
         visible: text.length
     }
@@ -36,7 +38,7 @@ ColumnLayout {
         elide: Text.ElideRight
         font: Kirigami.Theme.smallFont
         opacity: 0.6
-        text: MediaPlayer ? MediaPlayer.track.artist : ""
+        text: root.mediaPlayer?.track.artist ?? ""
         textFormat: Text.PlainText
         visible: text.length
     }
@@ -47,7 +49,7 @@ ColumnLayout {
         elide: Text.ElideRight
         font: Kirigami.Theme.smallFont
         opacity: 0.6
-        text: MediaPlayer ? MediaPlayer.track.album : ""
+        text: root.mediaPlayer?.track.album ?? ""
         textFormat: Text.PlainText
         visible: text.length
     }
@@ -59,62 +61,62 @@ ColumnLayout {
             id: previousButton
             icon.name: "media-skip-backward-symbolic"
 
-            onClicked: MediaPlayer.previous()
+            onClicked: root.mediaPlayer?.previous()
         }
 
         PlasmaComponents3.ToolButton {
             id: playPauseButton
-            icon.name: playPauseButtonIcon()
+            icon.name: root.playPauseButtonIcon()
 
-            onClicked: playPauseButtonClicked()
+            onClicked: root.playPauseButtonClicked()
         }
 
         PlasmaComponents3.ToolButton {
             id: stopButton
             icon.name: "media-playback-stop-symbolic"
-            enabled: MediaPlayer && MediaPlayer.status !== BluezQt.MediaPlayer.Stopped
+            enabled: root.mediaPlayer !== null && root.mediaPlayer.status !== BluezQt.MediaPlayer.Stopped
 
-            onClicked: MediaPlayer.stop()
+            onClicked: root.mediaPlayer?.stop()
         }
 
         PlasmaComponents3.ToolButton {
             id: nextButton
             icon.name: "media-skip-forward-symbolic"
 
-            onClicked: MediaPlayer.next()
+            onClicked: root.mediaPlayer?.next()
         }
     }
 
-    function trackTitleText() {
-        if (!MediaPlayer) {
+    function trackTitleText(): string {
+        if (!mediaPlayer) {
             return "";
         }
 
         const play = "\u25B6";
 
-        if (MediaPlayer.status === BluezQt.MediaPlayer.Playing) {
-            return "%1 %2".arg(play).arg(MediaPlayer.track.title);
+        if (mediaPlayer.status === BluezQt.MediaPlayer.Playing) {
+            return "%1 %2".arg(play).arg(mediaPlayer.track.title);
         }
-        return MediaPlayer.track.title;
+        return mediaPlayer.track.title;
     }
 
-    function playPauseButtonIcon() {
-        if (!MediaPlayer) {
+    function playPauseButtonIcon(): string {
+        if (!mediaPlayer) {
             return "";
         }
 
-        if (MediaPlayer.status !== BluezQt.MediaPlayer.Playing) {
+        if (mediaPlayer.status !== BluezQt.MediaPlayer.Playing) {
             return "media-playback-start-symbolic";
         } else {
             return "media-playback-pause-symbolic";
         }
     }
 
-    function playPauseButtonClicked() {
-        if (MediaPlayer.status !== BluezQt.MediaPlayer.Playing) {
-            MediaPlayer.play()
+    function playPauseButtonClicked(): void {
+        if (mediaPlayer.status !== BluezQt.MediaPlayer.Playing) {
+            mediaPlayer.play();
         } else {
-            MediaPlayer.pause()
+            mediaPlayer.pause();
         }
     }
 }
