@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-06 00:38+0000\n"
+"POT-Creation-Date: 2024-06-14 00:40+0000\n"
 "PO-Revision-Date: 2020-04-24 13:19+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -182,23 +182,23 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr ""
 
-#: package/contents/ui/FullRepresentation.qml:59
+#: package/contents/ui/FullRepresentation.qml:55
 #, kde-format
 msgid "Enable"
 msgstr ""
 
-#: package/contents/ui/FullRepresentation.qml:147
+#: package/contents/ui/FullRepresentation.qml:143
 #, fuzzy, kde-format
 #| msgid "No Bluetooth Adapters Available"
 msgid "No Bluetooth adapters available"
 msgstr "Bluetoothi adaptereid pole saada"
 
-#: package/contents/ui/FullRepresentation.qml:149
+#: package/contents/ui/FullRepresentation.qml:145
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth on välja lülitatud"
 
-#: package/contents/ui/FullRepresentation.qml:151
+#: package/contents/ui/FullRepresentation.qml:147
 #, fuzzy, kde-format
 #| msgid "No Devices Found"
 msgid "No devices found"
