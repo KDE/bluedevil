@@ -10,15 +10,14 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
+import org.kde.bluezqt as BluezQt
+import org.kde.kirigami as Kirigami
+import org.kde.kquickcontrolsaddons as KQuickControlsAddons
+import org.kde.ksvg as KSvg
 import org.kde.plasma.components as PlasmaComponents3
 import org.kde.plasma.core as PlasmaCore
-import org.kde.kirigami as Kirigami
-import org.kde.ksvg as KSvg
 import org.kde.plasma.extras as PlasmaExtras
 import org.kde.plasma.private.bluetooth as PlasmaBt
-
-import org.kde.bluezqt as BluezQt
-import org.kde.kquickcontrolsaddons as KQuickControlsAddons
 
 PlasmaExtras.ExpandableListItem {
     id: expandableListItem

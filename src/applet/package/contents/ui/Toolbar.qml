@@ -8,13 +8,12 @@
 import QtQuick
 import QtQuick.Layouts
 
+import org.kde.kirigami as Kirigami
+import org.kde.kquickcontrolsaddons
 import org.kde.plasma.components as PlasmaComponents3
 import org.kde.plasma.core as PlasmaCore
-import org.kde.kirigami as Kirigami
 import org.kde.plasma.extras as PlasmaExtras
 import org.kde.plasma.plasmoid
-
-import org.kde.kquickcontrolsaddons
 
 PlasmaExtras.PlasmoidHeading {
     id: toolbar
