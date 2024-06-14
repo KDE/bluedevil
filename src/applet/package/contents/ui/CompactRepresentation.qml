@@ -12,6 +12,8 @@ import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.plasmoid
 
 MouseArea {
+    id: root
+
     required property PlasmoidItem plasmoidItem
 
     readonly property bool inPanel: [
@@ -43,6 +45,6 @@ MouseArea {
         id: bluetoothIcon
         anchors.fill: parent
         source: Plasmoid.icon
-        active: parent.containsMouse
+        active: root.containsMouse
     }
 }
