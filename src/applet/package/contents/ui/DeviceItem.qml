@@ -19,8 +19,6 @@ import org.kde.plasma.extras as PlasmaExtras
 import org.kde.plasma.private.bluetooth as PlasmaBt
 
 PlasmaExtras.ExpandableListItem {
-    id: expandableListItem
-
     property bool connecting: false
     property bool connectionFailed: false
     property var currentDeviceDetails: []
@@ -199,8 +197,8 @@ PlasmaExtras.ExpandableListItem {
         __dev = dev;
 
         if (expandedView.status === Component.Ready) {
-            expandableListItem.collapse();
-            expandableListItem.ListView.view.currentIndex = -1;
+            collapse();
+            ListView.view.currentIndex = -1;
         }
     }
 
