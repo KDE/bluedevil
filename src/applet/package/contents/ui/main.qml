@@ -76,13 +76,12 @@ PlasmoidItem {
 
         } else {
             let text = i18ncp("Number of connected devices", "%1 connected device", "%1 connected devices", connectedDevices.length);
-            for (let i = 0; i < connectedDevices.length; ++i) {
-                const device = connectedDevices[i];
-                const battery = device.battery;
+            connectedDevices.forEach(device => {
+                const { battery, name } = device;
                 text += battery
-                    ? "\n \u2022 %1 · %2".arg(device.name).arg(i18n("%1% Battery", battery.percentage))
-                    : "\n \u2022 %1".arg(device.name);
-            }
+                    ? "\n \u2022 %1 · %2".arg(name).arg(i18n("%1% Battery", battery.percentage))
+                    : "\n \u2022 %1".arg(name);
+            })
             text += "\n%1".arg(hint);
             return text;
         }
