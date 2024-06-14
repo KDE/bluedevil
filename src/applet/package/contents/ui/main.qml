@@ -135,7 +135,7 @@ PlasmoidItem {
             text: i18n("Add New Device…")
             icon.name: "list-add-symbolic"
             visible: !btManager.bluetoothBlocked
-            onTriggered: PlasmaBt.LaunchApp.launchWizard()
+            onTriggered: checked => PlasmaBt.LaunchApp.launchWizard()
         },
         PlasmaCore.Action {
             id: enableAction
@@ -145,7 +145,7 @@ PlasmoidItem {
             checkable: true
             checked: btManager.bluetoothOperational
             visible: btManager.bluetoothBlocked || btManager.adapters.length > 0
-            onTriggered: toggleBluetooth()
+            onTriggered: checked => toggleBluetooth()
         }
     ]
 
@@ -153,7 +153,7 @@ PlasmoidItem {
         id: configureAction
         text: i18n("Configure &Bluetooth…")
         icon.name: "configure-symbolic"
-        onTriggered: KCMUtils.KCMLauncher.openSystemSettings("kcm_bluetooth")
+        onTriggered: checked => KCMUtils.KCMLauncher.openSystemSettings("kcm_bluetooth")
     }
 
     Component.onCompleted: {

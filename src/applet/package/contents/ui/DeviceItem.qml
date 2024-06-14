@@ -33,7 +33,7 @@ PlasmaExtras.ExpandableListItem {
     defaultActionButtonAction: QQC2.Action {
         icon.name: model.Connected ? "network-disconnect-symbolic" : "network-connect-symbolic"
         text: model.Connected ? i18n("Disconnect") : i18n("Connect")
-        onTriggered: connectToDevice()
+        onTriggered: source => connectToDevice()
     }
 
     contextualActions: [
@@ -43,7 +43,7 @@ PlasmaExtras.ExpandableListItem {
             icon.name: "folder-symbolic"
             text: i18n("Browse Files")
 
-            onTriggered: {
+            onTriggered: source => {
                 const url = "obexftp://%1/".arg(Address.replace(/:/g, "-"));
                 Qt.openUrlExternally(url);
             }
@@ -54,7 +54,7 @@ PlasmaExtras.ExpandableListItem {
             icon.name: "document-share-symbolic"
             text: i18n("Send File")
 
-            onTriggered: {
+            onTriggered: source => {
                 PlasmaBt.LaunchApp.launchSendFile(Ubi);
             }
         }
@@ -134,7 +134,7 @@ PlasmaExtras.ExpandableListItem {
                     return description.join('');
                 }
 
-                onPressed: {
+                onPressed: mouse => {
                     const item = detailsGrid.childAt(mouse.x, mouse.y);
                     if (!item || !item.isContent) {
                         return; // only let users copy the value on the right

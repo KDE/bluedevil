@@ -27,7 +27,7 @@ PlasmaExtras.Representation {
     focus: true
     collapseMarginsHint: true
 
-    Keys.onDownPressed: {
+    Keys.onDownPressed: event => {
         if (listView.count === 0) {
             return;
         }
@@ -45,7 +45,7 @@ PlasmaExtras.Representation {
         text: bluetoothApplet.addDeviceAction.text
         icon.name: "list-add-symbolic"
 
-        onTriggered: bluetoothApplet.addDeviceAction.trigger()
+        onTriggered: source => bluetoothApplet.addDeviceAction.trigger()
     }
 
     QQC2.Action {
@@ -54,7 +54,7 @@ PlasmaExtras.Representation {
         text: i18n("Enable")
         icon.name: "preferences-system-bluetooth-symbolic"
 
-        onTriggered: bluetoothApplet.toggleBluetooth()
+        onTriggered: source => bluetoothApplet.toggleBluetooth()
     }
 
     header: Toolbar {
@@ -119,7 +119,7 @@ PlasmaExtras.Representation {
             highlightResizeDuration: Kirigami.Units.shortDuration
             delegate: DeviceItem {}
 
-            Keys.onUpPressed: {
+            Keys.onUpPressed: event => {
                 if (listView.currentIndex === 0) {
                     listView.currentIndex = -1;
                     toolbar.onSwitch.forceActiveFocus(Qt.BacktabFocusReason);
