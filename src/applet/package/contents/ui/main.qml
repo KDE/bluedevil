@@ -8,7 +8,7 @@
 import QtQuick
 
 import org.kde.bluezqt as BluezQt
-import org.kde.kcmutils
+import org.kde.kcmutils as KCMUtils
 import org.kde.kirigami as Kirigami
 import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.plasmoid
@@ -153,7 +153,7 @@ PlasmoidItem {
         id: configureAction
         text: i18n("Configure &Bluetooth…")
         icon.name: "configure-symbolic"
-        onTriggered: KCMLauncher.openSystemSettings("kcm_bluetooth")
+        onTriggered: KCMUtils.KCMLauncher.openSystemSettings("kcm_bluetooth")
     }
 
     Component.onCompleted: {

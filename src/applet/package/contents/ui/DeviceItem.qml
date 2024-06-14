@@ -7,7 +7,7 @@
 */
 
 import QtQuick
-import QtQuick.Controls
+import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 
 import org.kde.bluezqt as BluezQt
@@ -30,14 +30,14 @@ PlasmaExtras.ExpandableListItem {
     subtitle: infoText()
     isBusy: connecting
     isDefault: model.Connected
-    defaultActionButtonAction: Action {
+    defaultActionButtonAction: QQC2.Action {
         icon.name: model.Connected ? "network-disconnect-symbolic" : "network-connect-symbolic"
         text: model.Connected ? i18n("Disconnect") : i18n("Connect")
         onTriggered: connectToDevice()
     }
 
     contextualActions: [
-        Action {
+        QQC2.Action {
             id: browseFilesButton
             enabled: Uuids.indexOf(BluezQt.Services.ObexFileTransfer) !== -1
             icon.name: "folder-symbolic"
@@ -48,7 +48,7 @@ PlasmaExtras.ExpandableListItem {
                 Qt.openUrlExternally(url);
             }
         },
-        Action {
+        QQC2.Action {
             id: sendFileButton
             enabled: Uuids.indexOf(BluezQt.Services.ObexObjectPush) !== -1
             icon.name: "document-share-symbolic"

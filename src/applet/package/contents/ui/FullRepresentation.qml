@@ -6,7 +6,7 @@
 */
 
 import QtQuick
-import QtQuick.Controls
+import QtQuick.Controls as QQC2
 
 import org.kde.bluezqt as BluezQt
 import org.kde.kirigami as Kirigami
@@ -39,7 +39,7 @@ PlasmaExtras.Representation {
         }
     }
 
-    Action {
+    QQC2.Action {
         id: addBluetoothDeviceAction
 
         text: bluetoothApplet.addDeviceAction.text
@@ -48,7 +48,7 @@ PlasmaExtras.Representation {
         onTriggered: bluetoothApplet.addDeviceAction.trigger()
     }
 
-    Action {
+    QQC2.Action {
         id: enableBluetoothAction
 
         text: i18n("Enable")
