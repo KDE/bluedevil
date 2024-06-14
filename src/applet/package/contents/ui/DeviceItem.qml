@@ -21,7 +21,7 @@ import org.kde.plasma.private.bluetooth as PlasmaBt
 PlasmaExtras.ExpandableListItem {
     property bool connecting: false
     property bool connectionFailed: false
-    property var currentDeviceDetails: []
+    property list<string> currentDeviceDetails
 
     icon: model.Icon
     title: model.DeviceFullName
@@ -162,20 +162,23 @@ PlasmaExtras.ExpandableListItem {
                     Repeater {
                         id: repeater
 
-                        model: currentDeviceDetails.length
+                        model: currentDeviceDetails
 
                         PlasmaComponents3.Label {
                             id: detailLabel
 
-                            Layout.fillWidth: true
+                            required property int index
+                            required property string modelData
 
                             readonly property bool isContent: index % 2
+
+                            Layout.fillWidth: true
 
                             horizontalAlignment: isContent ? Text.AlignLeft : Text.AlignRight
                             elide: isContent ? Text.ElideRight : Text.ElideNone
                             font: Kirigami.Theme.smallFont
                             opacity: isContent ? 1 : 0.6
-                            text: isContent ? currentDeviceDetails[index] : `${currentDeviceDetails[index]}:`
+                            text: isContent ? modelData : `${modelData}:`
                             textFormat: isContent ? Text.PlainText : Text.StyledText
                         }
                     }
