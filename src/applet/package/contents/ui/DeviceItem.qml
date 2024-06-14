@@ -100,10 +100,10 @@ PlasmaExtras.ExpandableListItem {
                 id: contextMenu
                 property string text
 
-                function show(item, text, x, y) {
-                    contextMenu.text = text
-                    visualParent = item
-                    open(x, y)
+                function show(visualParent: Item, text: string, x: real, y: real) {
+                    this.visualParent = visualParent;
+                    this.text = text;
+                    open(x, y);
                 }
 
                 PlasmaExtras.MenuItem {
@@ -205,18 +205,18 @@ PlasmaExtras.ExpandableListItem {
         }
     }
 
-    function boolToString(v): string {
-        return v ? i18n("Yes") : i18n("No");
+    function boolToString(value: bool): string {
+        return value ? i18n("Yes") : i18n("No");
     }
 
-    function adapterName(a): string {
-        const hci = devicesModel.adapterHciString(a.ubi);
+    function adapterName(adapter: BluezQt.Adapter): string {
+        const hci = devicesModel.adapterHciString(adapter.ubi);
         return (hci !== "")
-            ? i18nc("@label %1 is human-readable adapter name, %2 is HCI", "%1 (%2)", a.name, hci)
-            : a.name;
+            ? i18nc("@label %1 is human-readable adapter name, %2 is HCI", "%1 (%2)", adapter.name, hci)
+            : adapter.name;
     }
 
-    function createContent() {
+    function createContent(): void {
         const details = [];
 
         if (Name !== RemoteName) {
@@ -303,7 +303,7 @@ PlasmaExtras.ExpandableListItem {
         return labels.join(" · ");
     }
 
-    function errorText(/*PendingCall*/ call): string {
+    function errorText(call: BluezQt.PendingCall): string {
         switch (call.error) {
         case BluezQt.PendingCall.Failed:
             return (call.errorText === "Host is down")
@@ -321,7 +321,7 @@ PlasmaExtras.ExpandableListItem {
         }
     }
 
-    function connectToDevice() {
+    function connectToDevice(): void {
         if (connecting) {
             return;
         }

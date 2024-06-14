@@ -90,19 +90,19 @@ PlasmoidItem {
     Connections {
         target: BluezQt.Manager
 
-        function onDeviceAdded() {
+        function onDeviceAdded(): void {
             updateConnectedDevices();
         }
-        function onDeviceRemoved() {
+        function onDeviceRemoved(): void {
             updateConnectedDevices();
         }
-        function onDeviceChanged() {
+        function onDeviceChanged(): void {
             updateConnectedDevices();
         }
-        function onBluetoothBlockedChanged() {
+        function onBluetoothBlockedChanged(): void {
             updateConnectedDevices();
         }
-        function onBluetoothOperationalChanged() {
+        function onBluetoothOperationalChanged(): void {
             updateConnectedDevices();
         }
     }
@@ -124,7 +124,7 @@ PlasmoidItem {
         }
     }
 
-    function toggleBluetooth() {
+    function toggleBluetooth(): void {
         const enable = !BluezQt.Manager.bluetoothOperational;
         BluezQt.Manager.bluetoothBlocked = !enable;
 
