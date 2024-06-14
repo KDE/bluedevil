@@ -2,6 +2,7 @@
     SPDX-FileCopyrightText: 2013-2014 Jan Grulich <jgrulich@redhat.com>
     SPDX-FileCopyrightText: 2014-2015 David Rosca <nowrep@gmail.com>
     SPDX-FileCopyrightText: 2020 Nate Graham <nate@kde.org>
+    SPDX-FileCopyrightText: 2024 ivan tkachenko <me@ratijas.tk>
 
     SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
