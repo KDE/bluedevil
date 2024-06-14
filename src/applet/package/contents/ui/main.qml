@@ -130,7 +130,6 @@ PlasmoidItem {
         }
     }
 
-
     Plasmoid.contextualActions: [
         PlasmaCore.Action {
             id: addAction

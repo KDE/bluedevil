@@ -23,8 +23,8 @@ MouseArea {
 
     property bool wasExpanded
 
-    onPressed: mouse => { 
-        wasExpanded = bluetoothApplet.expanded 
+    onPressed: mouse => {
+        wasExpanded = bluetoothApplet.expanded
     }
 
     onClicked: mouse => {
