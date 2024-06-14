@@ -111,6 +111,8 @@ PlasmaExtras.Representation {
                 required property string section
 
                 active: section !== "Connected" && root.hasConnectedDevices
+
+                width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
                 // Need to manually set the height or else the loader takes up
                 // space after the first time it unloads a previously-loaded item
                 height: active ? Kirigami.Units.gridUnit : 0
@@ -120,9 +122,6 @@ PlasmaExtras.Representation {
                 Behavior on height { PropertyAnimation { duration: 32 } }
 
                 sourceComponent: Item {
-                    width: listView.width - Kirigami.Units.smallSpacing * 4
-                    height: Kirigami.Units.gridUnit
-
                     KSvg.SvgItem {
                         width: parent.width - Kirigami.Units.gridUnit * 2
                         anchors.centerIn: parent
