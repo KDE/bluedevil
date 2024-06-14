@@ -5,6 +5,8 @@
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import org.kde.bluezqt as BluezQt
 import org.kde.kirigami as Kirigami
