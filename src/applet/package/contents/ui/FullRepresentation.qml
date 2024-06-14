@@ -5,6 +5,8 @@
     SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Controls as QQC2
 
@@ -106,6 +108,8 @@ PlasmaExtras.Representation {
             // group because it's unnecessary; all we want to do here is
             // separate the connected devices from the available ones
             section.delegate: Loader {
+                required property string section
+
                 active: section !== "Connected" && root.hasConnectedDevices
                 // Need to manually set the height or else the loader takes up
                 // space after the first time it unloads a previously-loaded item

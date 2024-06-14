@@ -6,6 +6,8 @@
     SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Layouts
@@ -19,6 +21,11 @@ import org.kde.plasma.extras as PlasmaExtras
 import org.kde.plasma.private.bluetooth as PlasmaBt
 
 PlasmaExtras.ExpandableListItem {
+    id: root
+
+    required property int index
+    required property var model
+
     property bool connecting: false
     property bool connectionFailed: false
     property list<string> currentDeviceDetails
@@ -29,31 +36,31 @@ PlasmaExtras.ExpandableListItem {
     isBusy: connecting
     isDefault: model.Connected
     defaultActionButtonAction: QQC2.Action {
-        icon.name: model.Connected ? "network-disconnect-symbolic" : "network-connect-symbolic"
-        text: model.Connected ? i18n("Disconnect") : i18n("Connect")
+        icon.name: root.model.Connected ? "network-disconnect-symbolic" : "network-connect-symbolic"
+        text: root.model.Connected ? i18n("Disconnect") : i18n("Connect")
         onTriggered: source => connectToDevice()
     }
 
     contextualActions: [
         QQC2.Action {
             id: browseFilesButton
-            enabled: Uuids.indexOf(BluezQt.Services.ObexFileTransfer) !== -1
+            enabled: root.model.Uuids.indexOf(BluezQt.Services.ObexFileTransfer) !== -1
             icon.name: "folder-symbolic"
             text: i18n("Browse Files")
 
             onTriggered: source => {
-                const url = "obexftp://%1/".arg(Address.replace(/:/g, "-"));
+                const url = "obexftp://%1/".arg(root.model.Address.replace(/:/g, "-"));
                 Qt.openUrlExternally(url);
             }
         },
         QQC2.Action {
             id: sendFileButton
-            enabled: Uuids.indexOf(BluezQt.Services.ObexObjectPush) !== -1
+            enabled: root.model.Uuids.indexOf(BluezQt.Services.ObexObjectPush) !== -1
             icon.name: "document-share-symbolic"
             text: i18n("Send File")
 
             onTriggered: source => {
-                PlasmaBt.LaunchApp.launchSendFile(Ubi);
+                PlasmaBt.LaunchApp.launchSendFile(root.model.Ubi);
             }
         }
     ]
@@ -67,7 +74,7 @@ PlasmaExtras.ExpandableListItem {
             // Media Player
             MediaPlayerItem {
                 id: mediaPlayerItem
-                mediaPlayer: model.MediaPlayer
+                mediaPlayer: root.model.MediaPlayer
                 Layout.leftMargin: Kirigami.Units.gridUnit + Kirigami.Units.smallSpacing * 3
                 Layout.fillWidth: true
                 visible: mediaPlayer !== null
@@ -123,18 +130,18 @@ PlasmaExtras.ExpandableListItem {
                 activeFocusOnTab: repeater.count > 0
 
                 Accessible.description: {
-                    let description = [];
-                    for (let i = 0; i < currentDeviceDetails.length; i += 2) {
-                        description.push(currentDeviceDetails[i]);
+                    const description = [];
+                    for (let i = 0; i < root.currentDeviceDetails.length; i += 2) {
+                        description.push(root.currentDeviceDetails[i]);
                         description.push(": ");
-                        description.push(currentDeviceDetails[i + 1]);
+                        description.push(root.currentDeviceDetails[i + 1]);
                         description.push("; ");
                     }
                     return description.join('');
                 }
 
                 onPressed: mouse => {
-                    const item = detailsGrid.childAt(mouse.x, mouse.y);
+                    const item = detailsGrid.childAt(mouse.x, mouse.y) as PlasmaComponents3.Label;
                     if (!item || !item.isContent) {
                         return; // only let users copy the value on the right
                     }
@@ -162,7 +169,7 @@ PlasmaExtras.ExpandableListItem {
                     Repeater {
                         id: repeater
 
-                        model: currentDeviceDetails
+                        model: root.currentDeviceDetails
 
                         PlasmaComponents3.Label {
                             id: detailLabel
@@ -191,8 +198,8 @@ PlasmaExtras.ExpandableListItem {
 
     // Hide device details when the device for this delegate changes
     // This happens eg. when device connects/disconnects
-    property QtObject __dev
-    readonly property QtObject dev : Device
+    property BluezQt.Device __dev
+    readonly property BluezQt.Device dev: model.Device
     onDevChanged: {
         if (__dev === dev) {
             return;
@@ -219,40 +226,40 @@ PlasmaExtras.ExpandableListItem {
     function createContent(): void {
         const details = [];
 
-        if (Name !== RemoteName) {
+        if (model.Name !== model.RemoteName) {
             details.push(i18n("Remote Name"));
-            details.push(RemoteName);
+            details.push(model.RemoteName);
         }
 
         details.push(i18n("Address"));
-        details.push(Address);
+        details.push(model.Address);
 
         details.push(i18n("Paired"));
-        details.push(boolToString(Paired));
+        details.push(boolToString(model.Paired));
 
         details.push(i18n("Trusted"));
-        details.push(boolToString(Trusted));
+        details.push(boolToString(model.Trusted));
 
         details.push(i18n("Adapter"));
-        details.push(adapterName(Adapter));
+        details.push(adapterName(model.Adapter));
 
         currentDeviceDetails = details;
     }
 
     function infoText(): string {
         if (connecting) {
-            return Connected ? i18n("Disconnecting") : i18n("Connecting");
+            return model.Connected ? i18n("Disconnecting") : i18n("Connecting");
         }
 
         const labels = [];
 
-        if (Connected) {
+        if (model.Connected) {
             labels.push(i18n("Connected"));
         } else if (connectionFailed) {
             labels.push(i18n("Connection failed"));
         }
 
-        switch (Type) {
+        switch (model.Type) {
         case BluezQt.Device.Headset:
         case BluezQt.Device.Headphones:
         case BluezQt.Device.OtherAudio:
@@ -273,19 +280,19 @@ PlasmaExtras.ExpandableListItem {
         default:
             const profiles = [];
 
-            if (Uuids.indexOf(BluezQt.Services.ObexFileTransfer) !== -1) {
+            if (model.Uuids.indexOf(BluezQt.Services.ObexFileTransfer) !== -1) {
                 profiles.push(i18n("File transfer"));
             }
-            if (Uuids.indexOf(BluezQt.Services.ObexObjectPush) !== -1) {
+            if (model.Uuids.indexOf(BluezQt.Services.ObexObjectPush) !== -1) {
                 profiles.push(i18n("Send file"));
             }
-            if (Uuids.indexOf(BluezQt.Services.HumanInterfaceDevice) !== -1) {
+            if (model.Uuids.indexOf(BluezQt.Services.HumanInterfaceDevice) !== -1) {
                 profiles.push(i18n("Input"));
             }
-            if (Uuids.indexOf(BluezQt.Services.AdvancedAudioDistribution) !== -1) {
+            if (model.Uuids.indexOf(BluezQt.Services.AdvancedAudioDistribution) !== -1) {
                 profiles.push(i18n("Audio"));
             }
-            if (Uuids.indexOf(BluezQt.Services.Nap) !== -1) {
+            if (model.Uuids.indexOf(BluezQt.Services.Nap) !== -1) {
                 profiles.push(i18n("Network"));
             }
 
@@ -296,8 +303,8 @@ PlasmaExtras.ExpandableListItem {
             labels.push(profiles.join(", "));
         }
 
-        if (Battery) {
-            labels.push(i18n("%1% Battery", Battery.percentage));
+        if (model.Battery) {
+            labels.push(i18n("%1% Battery", model.Battery.percentage));
         }
 
         return labels.join(" · ");
@@ -330,8 +337,8 @@ PlasmaExtras.ExpandableListItem {
         runningActions++;
 
         // Disconnect device
-        if (Connected) {
-            Device.disconnectFromDevice().finished.connect(call => {
+        if (model.Connected) {
+            model.Device.disconnectFromDevice().finished.connect(call => {
                 connecting = false;
                 runningActions--;
             });
@@ -339,8 +346,8 @@ PlasmaExtras.ExpandableListItem {
         }
 
         // Connect device
-        const /*PendingCall*/call = Device.connectToDevice();
-        call.userData = Device;
+        const /*PendingCall*/call = model.Device.connectToDevice();
+        call.userData = model.Device;
         connectionFailed = false;
 
         call.finished.connect(call => {
