@@ -12,6 +12,7 @@ import org.kde.bluezqt as BluezQt
 import org.kde.kirigami as Kirigami
 import org.kde.ksvg as KSvg
 import org.kde.plasma.components as PlasmaComponents3
+import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.extras as PlasmaExtras
 import org.kde.plasma.plasmoid
 import org.kde.plasma.private.bluetooth as PlasmaBt
@@ -19,6 +20,9 @@ import org.kde.plasma.private.bluetooth as PlasmaBt
 PlasmaExtras.Representation {
     id: root
 
+    required property PlasmoidItem plasmoidItem
+    required property PlasmaCore.Action addDeviceAction
+    required property PlasmaCore.Action enableBluetoothAction
     required property bool hasConnectedDevices
 
     readonly property bool emptyList: BluezQt.Manager.devices.length === 0
@@ -44,23 +48,29 @@ PlasmaExtras.Representation {
     QQC2.Action {
         id: addBluetoothDeviceAction
 
-        text: bluetoothApplet.addDeviceAction.text
-        icon.name: "list-add-symbolic"
+        text: root.addDeviceAction.text
+        icon.name: root.addDeviceAction.icon.name
 
-        onTriggered: source => bluetoothApplet.addDeviceAction.trigger()
+        onTriggered: source => root.addDeviceAction.trigger()
     }
 
+    // Unlike the associated Plasma Action, this one is for a non-checkable button
     QQC2.Action {
         id: enableBluetoothAction
 
         text: i18n("Enable")
-        icon.name: "preferences-system-bluetooth-symbolic"
+        icon.name: root.enableBluetoothAction.icon.name
 
-        onTriggered: source => bluetoothApplet.toggleBluetooth()
+        onTriggered: source => root.enableBluetoothAction.trigger()
     }
 
     header: Toolbar {
         id: toolbar
+
+        plasmoidItem: root.plasmoidItem
+        addDeviceAction: root.addDeviceAction
+        enableBluetoothAction: root.enableBluetoothAction
+
         visible: BluezQt.Manager.adapters.length > 0
         focus: true
     }

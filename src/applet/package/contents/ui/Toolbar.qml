@@ -16,9 +16,13 @@ import org.kde.plasma.extras as PlasmaExtras
 import org.kde.plasma.plasmoid
 
 PlasmaExtras.PlasmoidHeading {
-    id: toolbar
+    id: root
 
-    property alias onSwitch: onSwitch
+    required property PlasmoidItem plasmoidItem
+    required property PlasmaCore.Action addDeviceAction
+    required property PlasmaCore.Action enableBluetoothAction
+
+    readonly property alias onSwitch: onSwitch
 
     leftPadding: mirrored ? 0 : Kirigami.Units.smallSpacing
     rightPadding: mirrored ? Kirigami.Units.smallSpacing : 0
@@ -28,12 +32,12 @@ PlasmaExtras.PlasmoidHeading {
 
         PlasmaComponents3.Switch {
             id: onSwitch
-            text: i18n("Enable Bluetooth")
-            icon.name: "preferences-system-bluetooth-symbolic"
-            checked: BluezQt.Manager.bluetoothOperational
-            enabled: BluezQt.Manager.bluetoothBlocked || BluezQt.Manager.adapters.length > 0
-            focus: bluetoothApplet.expanded
-            onToggled: toggleBluetooth()
+            text: root.enableBluetoothAction.text
+            icon.name: root.enableBluetoothAction.icon.name
+            checked: root.enableBluetoothAction.checked
+            enabled: root.enableBluetoothAction.visible
+            focus: root.plasmoidItem.expanded
+            onToggled: root.enableBluetoothAction.trigger()
         }
 
         Item {
@@ -43,7 +47,7 @@ PlasmaExtras.PlasmoidHeading {
         PlasmaComponents3.ToolButton {
             id: addDeviceButton
 
-            property QtObject /*QAction*/ qAction: bluetoothApplet.addDeviceAction
+            property QtObject /*QAction*/ qAction: root.addDeviceAction
 
             visible: !(Plasmoid.containmentDisplayHints & PlasmaCore.Types.ContainmentDrawsPlasmoidHeading)
             enabled: qAction.visible

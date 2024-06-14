@@ -15,12 +15,13 @@ import org.kde.plasma.plasmoid
 import org.kde.plasma.private.bluetooth as PlasmaBt
 
 PlasmoidItem {
-    id: bluetoothApplet
+    id: root
 
     property list<BluezQt.Device> connectedDevices
     property int runningActions: 0
-    property alias addDeviceAction: addAction
-    property alias enableBluetoothAction: enableAction
+
+    readonly property alias addDeviceAction: addDeviceAction
+    readonly property alias enableBluetoothAction: enableBluetoothAction
 
     switchWidth: Kirigami.Units.gridUnit * 15
     switchHeight: Kirigami.Units.gridUnit * 10
@@ -29,11 +30,14 @@ PlasmoidItem {
     // a middle-click action.
     // TODO remove once it gains that feature.
     compactRepresentation: CompactRepresentation {
-        plasmoidItem: bluetoothApplet
+        plasmoidItem: root
     }
 
     fullRepresentation: FullRepresentation {
-        hasConnectedDevices: bluetoothApplet.connectedDevices.length > 0
+        plasmoidItem: root
+        addDeviceAction: root.addDeviceAction
+        enableBluetoothAction: root.enableBluetoothAction
+        hasConnectedDevices: root.connectedDevices.length > 0
     }
 
     Plasmoid.status: (BluezQt.Manager.bluetoothOperational) ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.PassiveStatus
@@ -136,14 +140,14 @@ PlasmoidItem {
 
     Plasmoid.contextualActions: [
         PlasmaCore.Action {
-            id: addAction
+            id: addDeviceAction
             text: i18n("Add New Device…")
             icon.name: "list-add-symbolic"
             visible: !BluezQt.Manager.bluetoothBlocked
             onTriggered: checked => PlasmaBt.LaunchApp.launchWizard()
         },
         PlasmaCore.Action {
-            id: enableAction
+            id: enableBluetoothAction
             text: i18n("Enable Bluetooth")
             icon.name: "preferences-system-bluetooth-symbolic"
             priority: PlasmaCore.Action.LowPriority
