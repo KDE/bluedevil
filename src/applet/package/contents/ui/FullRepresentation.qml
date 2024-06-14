@@ -19,6 +19,8 @@ import org.kde.plasma.private.bluetooth as PlasmaBt
 PlasmaExtras.Representation {
     id: root
 
+    required property bool hasConnectedDevices
+
     readonly property bool emptyList: BluezQt.Manager.devices.length === 0
 
     implicitWidth: Kirigami.Units.gridUnit * 24
@@ -93,7 +95,7 @@ PlasmaExtras.Representation {
             // group because it's unnecessary; all we want to do here is
             // separate the connected devices from the available ones
             section.delegate: Loader {
-                active: section !== "Connected" && bluetoothApplet.connectedDevices.length > 0
+                active: section !== "Connected" && root.hasConnectedDevices
                 // Need to manually set the height or else the loader takes up
                 // space after the first time it unloads a previously-loaded item
                 height: active ? Kirigami.Units.gridUnit : 0

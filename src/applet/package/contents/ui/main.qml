@@ -32,7 +32,9 @@ PlasmoidItem {
         plasmoidItem: bluetoothApplet
     }
 
-    fullRepresentation: FullRepresentation { }
+    fullRepresentation: FullRepresentation {
+        hasConnectedDevices: bluetoothApplet.connectedDevices.length > 0
+    }
 
     Plasmoid.status: (BluezQt.Manager.bluetoothOperational) ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.PassiveStatus
     Plasmoid.busy: runningActions > 0
