@@ -12,6 +12,8 @@ import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.plasmoid
 
 MouseArea {
+    required property PlasmoidItem plasmoidItem
+
     readonly property bool inPanel: [
         PlasmaCore.Types.TopEdge,
         PlasmaCore.Types.RightEdge,
@@ -24,14 +26,14 @@ MouseArea {
     property bool wasExpanded
 
     onPressed: mouse => {
-        wasExpanded = bluetoothApplet.expanded
+        wasExpanded = plasmoidItem.expanded
     }
 
     onClicked: mouse => {
         if (mouse.button === Qt.MiddleButton) {
-            toggleBluetooth();
+            plasmoidItem.toggleBluetooth();
         } else {
-            bluetoothApplet.expanded = !wasExpanded;
+            plasmoidItem.expanded = !wasExpanded;
         }
     }
 

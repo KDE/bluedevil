@@ -29,7 +29,10 @@ PlasmoidItem {
     // Only exists because the default CompactRepresentation doesn't expose
     // a middle-click action.
     // TODO remove once it gains that feature.
-    compactRepresentation: CompactRepresentation { }
+    compactRepresentation: CompactRepresentation {
+        plasmoidItem: bluetoothApplet
+    }
+
     fullRepresentation: FullRepresentation { }
 
     Plasmoid.status: (btManager.bluetoothOperational) ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.PassiveStatus
