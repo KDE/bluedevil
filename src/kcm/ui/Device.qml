@@ -160,10 +160,18 @@ KCMUtils.SimpleKCM {
                 onClicked: root.device.trusted = !root.device.trusted
             }
 
-            QQC2.CheckBox {
-                text: i18n("Blocked")
-                checked: root.device.blocked
-                onClicked: root.device.blocked = !root.device.blocked
+            RowLayout {
+                spacing: Kirigami.Units.smallSpacing
+
+                QQC2.CheckBox {
+                    text: i18n("Blocked")
+                    checked: root.device.blocked
+                    onClicked: root.device.blocked = !root.device.blocked
+                }
+
+                Kirigami.ContextualHelpButton {
+                    toolTipText: i18n("Any incoming connections from a blocked device will be immediately rejected.")
+                }
             }
 
             QQC2.Button {
