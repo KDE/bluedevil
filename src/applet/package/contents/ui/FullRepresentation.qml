@@ -91,6 +91,7 @@ PlasmaExtras.Representation {
             id: listView
             readonly property var devicesModel: PlasmaBt.DevicesProxyModel {
                 id: devicesModel
+                hideBlockedDevices: true
                 sourceModel: BluezQt.DevicesModel { }
             }
             model: BluezQt.Manager.adapters.length > 0 && !BluezQt.Manager.bluetoothBlocked ? devicesModel : null

@@ -16,6 +16,22 @@ DevicesProxyModel::DevicesProxyModel(QObject *parent)
     sort(0, Qt::DescendingOrder);
 }
 
+bool DevicesProxyModel::hideBlockedDevices() const
+{
+    return m_hideBlockedDevices;
+}
+
+void DevicesProxyModel::setHideBlockedDevices(bool shouldHide)
+{
+    if (m_hideBlockedDevices != shouldHide) {
+        m_hideBlockedDevices = shouldHide;
+
+        invalidateFilter();
+
+        Q_EMIT hideBlockedDevicesChanged();
+    }
+}
+
 QHash<int, QByteArray> DevicesProxyModel::roleNames() const
 {
     QHash<int, QByteArray> roles = QSortFilterProxyModel::roleNames();
@@ -97,6 +113,9 @@ bool DevicesProxyModel::duplicateIndexAddress(const QModelIndex &idx) const
 bool DevicesProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
 {
     const QModelIndex index = sourceModel()->index(source_row, 0, source_parent);
+    if (m_hideBlockedDevices && index.data(BluezQt::DevicesModel::BlockedRole).toBool()) {
+        return false;
+    }
     // Only show paired and connected devices in the KCM and applet
     return index.data(BluezQt::DevicesModel::PairedRole).toBool() || index.data(BluezQt::DevicesModel::ConnectedRole).toBool();
 }

@@ -16,6 +16,8 @@ class DevicesProxyModel : public QSortFilterProxyModel
     Q_OBJECT
     QML_ELEMENT
 
+    Q_PROPERTY(bool hideBlockedDevices READ hideBlockedDevices WRITE setHideBlockedDevices NOTIFY hideBlockedDevicesChanged FINAL)
+
 public:
     enum AdditionalRoles {
         SectionRole = BluezQt::DevicesModel::LastRole + 10,
@@ -24,6 +26,9 @@ public:
 
     explicit DevicesProxyModel(QObject *parent = nullptr);
 
+    bool hideBlockedDevices() const;
+    void setHideBlockedDevices(bool Hide);
+
     QHash<int, QByteArray> roleNames() const override;
     QVariant data(const QModelIndex &index, int role) const override;
     bool lessThan(const QModelIndex &left, const QModelIndex &right) const override;
@@ -31,6 +36,11 @@ public:
 
     Q_INVOKABLE QString adapterHciString(const QString &ubi) const;
 
+Q_SIGNALS:
+    void hideBlockedDevicesChanged();
+
 private:
     bool duplicateIndexAddress(const QModelIndex &idx) const;
+
+    bool m_hideBlockedDevices = false;
 };
