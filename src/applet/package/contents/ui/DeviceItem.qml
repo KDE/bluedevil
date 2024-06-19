@@ -194,17 +194,11 @@ PlasmaExtras.ExpandableListItem {
 
     // Hide device details when the device for this delegate changes
     // This happens eg. when device connects/disconnects
-    property BluezQt.Device __dev
-    readonly property BluezQt.Device dev: model.Device
-    onDevChanged: {
-        if (__dev === dev) {
-            return;
-        }
-
-        __dev = dev;
-
-        if (expandedView.status === Component.Ready) {
-            collapse();
+    property BluezQt.Device __device: model.Device
+    // React to both model and model.Device changes at once
+    on__DeviceChanged: {
+        collapse();
+        if (ListView.view.currentIndex === index) {
             ListView.view.currentIndex = -1;
         }
     }
