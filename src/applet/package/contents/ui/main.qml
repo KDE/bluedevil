@@ -20,9 +20,6 @@ import org.kde.plasma.private.bluetooth as PlasmaBt
 PlasmoidItem {
     id: root
 
-    readonly property list<BluezQt.Device> connectedDevices: BluezQt.Manager.devices
-        .filter(device => device.connected)
-
     property int runningActions: 0
 
     readonly property alias addDeviceAction: addDeviceAction
@@ -42,14 +39,13 @@ PlasmoidItem {
         plasmoidItem: root
         addDeviceAction: root.addDeviceAction
         enableBluetoothAction: root.enableBluetoothAction
-        hasConnectedDevices: root.connectedDevices.length > 0
     }
 
     Plasmoid.status: (BluezQt.Manager.bluetoothOperational) ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.PassiveStatus
     Plasmoid.busy: runningActions > 0
 
     Plasmoid.icon: {
-        if (connectedDevices.length > 0) {
+        if (BluezQt.Manager.connectedDevices.length > 0) {
             return "network-bluetooth-activated-symbolic";
         }
         if (!BluezQt.Manager.bluetoothOperational) {
@@ -59,6 +55,7 @@ PlasmoidItem {
     }
     toolTipMainText: i18n("Bluetooth")
     toolTipSubText: {
+        const connectedDevices = BluezQt.Manager.connectedDevices;
         if (BluezQt.Manager.bluetoothBlocked) {
             return i18n("Bluetooth is disabled; middle-click to enable");
         }

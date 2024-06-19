@@ -26,7 +26,6 @@ PlasmaExtras.Representation {
     required property PlasmoidItem plasmoidItem
     required property PlasmaCore.Action addDeviceAction
     required property PlasmaCore.Action enableBluetoothAction
-    required property bool hasConnectedDevices
 
     readonly property bool emptyList: BluezQt.Manager.devices.length === 0
 
@@ -112,7 +111,7 @@ PlasmaExtras.Representation {
             section.delegate: Loader {
                 required property string section
 
-                active: section !== "Connected" && root.hasConnectedDevices
+                active: section !== "Connected" && BluezQt.Manager.connectedDevices.length > 0
 
                 width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
                 // Need to manually set the height or else the loader takes up
