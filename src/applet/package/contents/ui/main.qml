@@ -20,7 +20,9 @@ import org.kde.plasma.private.bluetooth as PlasmaBt
 PlasmoidItem {
     id: root
 
-    property list<BluezQt.Device> connectedDevices
+    readonly property list<BluezQt.Device> connectedDevices: BluezQt.Manager.devices
+        .filter(device => device.connected)
+
     property int runningActions: 0
 
     readonly property alias addDeviceAction: addDeviceAction
@@ -94,43 +96,6 @@ PlasmoidItem {
         }
     }
 
-    Connections {
-        target: BluezQt.Manager
-
-        function onDeviceAdded(): void {
-            updateConnectedDevices();
-        }
-        function onDeviceRemoved(): void {
-            updateConnectedDevices();
-        }
-        function onDeviceChanged(): void {
-            updateConnectedDevices();
-        }
-        function onBluetoothBlockedChanged(): void {
-            updateConnectedDevices();
-        }
-        function onBluetoothOperationalChanged(): void {
-            updateConnectedDevices();
-        }
-    }
-
-    function arraysEqualShallow(lhs: var, rhs: var): bool {
-        if (lhs.length !== rhs.length) {
-            return false;
-        }
-        return lhs.every((left, i) => left === rhs[i]);
-    }
-
-    function updateConnectedDevices(): void {
-        const connectedDevices = BluezQt.Manager.devices
-            .filter(device => device.connected);
-
-        if (!arraysEqualShallow(this.connectedDevices, connectedDevices)) {
-            this.connectedDevices = connectedDevices;
-            connectedDevicesChanged();
-        }
-    }
-
     function toggleBluetooth(): void {
         const enable = !BluezQt.Manager.bluetoothOperational;
         BluezQt.Manager.bluetoothBlocked = !enable;
@@ -170,7 +135,5 @@ PlasmoidItem {
 
     Component.onCompleted: {
         Plasmoid.setInternalAction("configure", configureAction);
-
-        updateConnectedDevices();
     }
 }
