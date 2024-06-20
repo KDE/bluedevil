@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-14 00:40+0000\n"
+"POT-Creation-Date: 2024-06-20 00:40+0000\n"
 "PO-Revision-Date: 2017-12-24 21:47+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -18,226 +18,226 @@ msgstr ""
 "X-Text-Markup: kde4\n"
 "X-Environment: kde\n"
 
-#: package/contents/ui/DeviceItem.qml:37
+#: package/contents/ui/DeviceItem.qml:41
 #, kde-format
 msgid "Disconnect"
 msgstr "Прекини везу"
 
-#: package/contents/ui/DeviceItem.qml:37
+#: package/contents/ui/DeviceItem.qml:41
 #, kde-format
 msgid "Connect"
 msgstr "Повежи се"
 
-#: package/contents/ui/DeviceItem.qml:46
+#: package/contents/ui/DeviceItem.qml:50
 #, kde-format
 msgid "Browse Files"
 msgstr "Прегледај фајлове"
 
-#: package/contents/ui/DeviceItem.qml:57
+#: package/contents/ui/DeviceItem.qml:61
 #, kde-format
 msgid "Send File"
 msgstr "Пошаљи фајл"
 
-#: package/contents/ui/DeviceItem.qml:113
+#: package/contents/ui/DeviceItem.qml:118
 #, kde-format
 msgid "Copy"
 msgstr "Копирај"
 
-#: package/contents/ui/DeviceItem.qml:209
+#: package/contents/ui/DeviceItem.qml:217
 #, kde-format
 msgid "Yes"
 msgstr "да"
 
-#: package/contents/ui/DeviceItem.qml:209
+#: package/contents/ui/DeviceItem.qml:217
 #, kde-format
 msgid "No"
 msgstr "не"
 
-#: package/contents/ui/DeviceItem.qml:215
+#: package/contents/ui/DeviceItem.qml:223
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:223
+#: package/contents/ui/DeviceItem.qml:231
 #, kde-format
 msgid "Remote Name"
 msgstr "Удаљено име"
 
-#: package/contents/ui/DeviceItem.qml:227
+#: package/contents/ui/DeviceItem.qml:235
 #, kde-format
 msgid "Address"
 msgstr "Адреса"
 
-#: package/contents/ui/DeviceItem.qml:230
+#: package/contents/ui/DeviceItem.qml:238
 #, kde-format
 msgid "Paired"
 msgstr "Упарен"
 
-#: package/contents/ui/DeviceItem.qml:233
+#: package/contents/ui/DeviceItem.qml:241
 #, kde-format
 msgid "Trusted"
 msgstr "Поуздан"
 
-#: package/contents/ui/DeviceItem.qml:236
+#: package/contents/ui/DeviceItem.qml:244
 #, kde-format
 msgid "Adapter"
 msgstr "Адаптер"
 
-#: package/contents/ui/DeviceItem.qml:244
+#: package/contents/ui/DeviceItem.qml:252
 #, kde-format
 msgid "Disconnecting"
 msgstr "Прекидам везу"
 
 # >> The device is connecting.
-#: package/contents/ui/DeviceItem.qml:244
+#: package/contents/ui/DeviceItem.qml:252
 #, kde-format
 msgid "Connecting"
 msgstr "Повезује се"
 
-#: package/contents/ui/DeviceItem.qml:250
+#: package/contents/ui/DeviceItem.qml:258
 #, fuzzy, kde-format
 #| msgid "Connect"
 msgid "Connected"
 msgstr "Повежи се"
 
-#: package/contents/ui/DeviceItem.qml:252
+#: package/contents/ui/DeviceItem.qml:260
 #, fuzzy, kde-format
 #| msgctxt "Notification when the connection failed due to Failed"
 #| msgid "Connection to the device failed"
 msgid "Connection failed"
 msgstr "Повезивање са уређајем пропало"
 
-#: package/contents/ui/DeviceItem.qml:259
+#: package/contents/ui/DeviceItem.qml:267
 #, kde-format
 msgid "Audio device"
 msgstr "Аудио уређај"
 
-#: package/contents/ui/DeviceItem.qml:266
+#: package/contents/ui/DeviceItem.qml:274
 #, kde-format
 msgid "Input device"
 msgstr "Улазни уређај"
 
-#: package/contents/ui/DeviceItem.qml:270
+#: package/contents/ui/DeviceItem.qml:278
 #, kde-format
 msgid "Phone"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:277
+#: package/contents/ui/DeviceItem.qml:285
 #, kde-format
 msgid "File transfer"
 msgstr "Пренос фајлова"
 
-#: package/contents/ui/DeviceItem.qml:280
+#: package/contents/ui/DeviceItem.qml:288
 #, kde-format
 msgid "Send file"
 msgstr "Пошаљи фајл"
 
-#: package/contents/ui/DeviceItem.qml:283
+#: package/contents/ui/DeviceItem.qml:291
 #, kde-format
 msgid "Input"
 msgstr "Улаз"
 
-#: package/contents/ui/DeviceItem.qml:286
+#: package/contents/ui/DeviceItem.qml:294
 #, kde-format
 msgid "Audio"
 msgstr "Аудио"
 
-#: package/contents/ui/DeviceItem.qml:289
+#: package/contents/ui/DeviceItem.qml:297
 #, kde-format
 msgid "Network"
 msgstr "Мрежа"
 
-#: package/contents/ui/DeviceItem.qml:293
+#: package/contents/ui/DeviceItem.qml:301
 #, kde-format
 msgid "Other device"
 msgstr "Други уређај"
 
-#: package/contents/ui/DeviceItem.qml:300 package/contents/ui/main.qml:70
-#: package/contents/ui/main.qml:80
+#: package/contents/ui/DeviceItem.qml:308 package/contents/ui/main.qml:80
+#: package/contents/ui/main.qml:89
 #, kde-format
 msgid "%1% Battery"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:311
+#: package/contents/ui/DeviceItem.qml:319
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "Уређај је недоступан"
 
-#: package/contents/ui/DeviceItem.qml:313
+#: package/contents/ui/DeviceItem.qml:321
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "Повезивање са уређајем пропало"
 
-#: package/contents/ui/DeviceItem.qml:317
+#: package/contents/ui/DeviceItem.qml:325
 #, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Уређај није спреман"
 
-#: package/contents/ui/DeviceItem.qml:353
+#: package/contents/ui/DeviceItem.qml:361
 #, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
 msgstr ""
 
-#: package/contents/ui/FullRepresentation.qml:55
+#: package/contents/ui/FullRepresentation.qml:64
 #, kde-format
 msgid "Enable"
 msgstr ""
 
-#: package/contents/ui/FullRepresentation.qml:143
+#: package/contents/ui/FullRepresentation.qml:159
 #, fuzzy, kde-format
 #| msgid "No Adapters Available"
 msgid "No Bluetooth adapters available"
 msgstr "Нема доступних адаптера"
 
-#: package/contents/ui/FullRepresentation.qml:145
+#: package/contents/ui/FullRepresentation.qml:161
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Блутут је искључен"
 
-#: package/contents/ui/FullRepresentation.qml:147
+#: package/contents/ui/FullRepresentation.qml:163
 #, fuzzy, kde-format
 #| msgid "No Devices Found"
 msgid "No devices found"
 msgstr "Није нађен ниједан уређај"
 
-#: package/contents/ui/main.qml:48
+#: package/contents/ui/main.qml:58
 #, kde-format
 msgid "Bluetooth"
 msgstr "Блутут"
 
-#: package/contents/ui/main.qml:51
+#: package/contents/ui/main.qml:61
 #, fuzzy, kde-format
 #| msgid "Bluetooth is disabled"
 msgid "Bluetooth is disabled; middle-click to enable"
 msgstr "Блутут је искључен"
 
-#: package/contents/ui/main.qml:55
+#: package/contents/ui/main.qml:65
 #, kde-format
 msgid "No adapters available"
 msgstr "Нема ниједног адаптера"
 
-#: package/contents/ui/main.qml:57
+#: package/contents/ui/main.qml:67
 #, kde-format
 msgid "Bluetooth is offline"
 msgstr "Блутут је ван везе"
 
-#: package/contents/ui/main.qml:60
+#: package/contents/ui/main.qml:70
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr ""
 
-#: package/contents/ui/main.qml:63
+#: package/contents/ui/main.qml:73
 #, kde-format
 msgid "No connected devices"
 msgstr "Нема повезаних уређаја"
 
-#: package/contents/ui/main.qml:68
+#: package/contents/ui/main.qml:78
 #, fuzzy, kde-format
 #| msgctxt "Number of connected devices"
 #| msgid "%1 connected device"
@@ -245,7 +245,7 @@ msgstr "Нема повезаних уређаја"
 msgid "%1 connected"
 msgstr "%1 повезан уређај"
 
-#: package/contents/ui/main.qml:75
+#: package/contents/ui/main.qml:85
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -255,18 +255,18 @@ msgstr[1] "%1 повезана уређаја"
 msgstr[2] "%1 повезаних уређаја"
 msgstr[3] "%1 повезан уређај"
 
-#: package/contents/ui/main.qml:137
+#: package/contents/ui/main.qml:147
 #, fuzzy, kde-format
 #| msgid "Add New Device"
 msgid "Add New Device…"
 msgstr "Додај нови уређај"
 
-#: package/contents/ui/main.qml:144 package/contents/ui/Toolbar.qml:32
+#: package/contents/ui/main.qml:154
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Укључи блутут"
 
-#: package/contents/ui/main.qml:156
+#: package/contents/ui/main.qml:166
 #, fuzzy, kde-format
 #| msgid "Configure &Bluetooth..."
 msgid "Configure &Bluetooth…"

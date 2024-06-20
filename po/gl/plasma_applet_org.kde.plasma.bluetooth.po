@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-14 00:40+0000\n"
+"POT-Creation-Date: 2024-06-20 00:40+0000\n"
 "PO-Revision-Date: 2024-03-06 18:21+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -18,224 +18,224 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 23.08.5\n"
 
-#: package/contents/ui/DeviceItem.qml:37
+#: package/contents/ui/DeviceItem.qml:41
 #, kde-format
 msgid "Disconnect"
 msgstr "Desconectar"
 
-#: package/contents/ui/DeviceItem.qml:37
+#: package/contents/ui/DeviceItem.qml:41
 #, kde-format
 msgid "Connect"
 msgstr "Conectar"
 
-#: package/contents/ui/DeviceItem.qml:46
+#: package/contents/ui/DeviceItem.qml:50
 #, kde-format
 msgid "Browse Files"
 msgstr "Explorar os ficheiros"
 
-#: package/contents/ui/DeviceItem.qml:57
+#: package/contents/ui/DeviceItem.qml:61
 #, kde-format
 msgid "Send File"
 msgstr "Enviar un ficheiro"
 
-#: package/contents/ui/DeviceItem.qml:113
+#: package/contents/ui/DeviceItem.qml:118
 #, kde-format
 msgid "Copy"
 msgstr "Copiar"
 
-#: package/contents/ui/DeviceItem.qml:209
+#: package/contents/ui/DeviceItem.qml:217
 #, kde-format
 msgid "Yes"
 msgstr "Si"
 
-#: package/contents/ui/DeviceItem.qml:209
+#: package/contents/ui/DeviceItem.qml:217
 #, kde-format
 msgid "No"
 msgstr "Non"
 
-#: package/contents/ui/DeviceItem.qml:215
+#: package/contents/ui/DeviceItem.qml:223
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: package/contents/ui/DeviceItem.qml:223
+#: package/contents/ui/DeviceItem.qml:231
 #, kde-format
 msgid "Remote Name"
 msgstr "Nome remoto"
 
-#: package/contents/ui/DeviceItem.qml:227
+#: package/contents/ui/DeviceItem.qml:235
 #, kde-format
 msgid "Address"
 msgstr "Enderezo"
 
-#: package/contents/ui/DeviceItem.qml:230
+#: package/contents/ui/DeviceItem.qml:238
 #, kde-format
 msgid "Paired"
 msgstr "Emparellado"
 
-#: package/contents/ui/DeviceItem.qml:233
+#: package/contents/ui/DeviceItem.qml:241
 #, kde-format
 msgid "Trusted"
 msgstr "Validado"
 
-#: package/contents/ui/DeviceItem.qml:236
+#: package/contents/ui/DeviceItem.qml:244
 #, kde-format
 msgid "Adapter"
 msgstr "Adaptador"
 
-#: package/contents/ui/DeviceItem.qml:244
+#: package/contents/ui/DeviceItem.qml:252
 #, kde-format
 msgid "Disconnecting"
 msgstr "Desconectando"
 
-#: package/contents/ui/DeviceItem.qml:244
+#: package/contents/ui/DeviceItem.qml:252
 #, kde-format
 msgid "Connecting"
 msgstr "Conectando"
 
-#: package/contents/ui/DeviceItem.qml:250
+#: package/contents/ui/DeviceItem.qml:258
 #, kde-format
 msgid "Connected"
 msgstr "Conectado"
 
-#: package/contents/ui/DeviceItem.qml:252
+#: package/contents/ui/DeviceItem.qml:260
 #, kde-format
 msgid "Connection failed"
 msgstr "A conexión fallou."
 
-#: package/contents/ui/DeviceItem.qml:259
+#: package/contents/ui/DeviceItem.qml:267
 #, kde-format
 msgid "Audio device"
 msgstr "Dispositivo de son"
 
-#: package/contents/ui/DeviceItem.qml:266
+#: package/contents/ui/DeviceItem.qml:274
 #, kde-format
 msgid "Input device"
 msgstr "Dispositivo de entrada"
 
-#: package/contents/ui/DeviceItem.qml:270
+#: package/contents/ui/DeviceItem.qml:278
 #, kde-format
 msgid "Phone"
 msgstr "Teléfono"
 
-#: package/contents/ui/DeviceItem.qml:277
+#: package/contents/ui/DeviceItem.qml:285
 #, kde-format
 msgid "File transfer"
 msgstr "Transferencia de ficheiros"
 
-#: package/contents/ui/DeviceItem.qml:280
+#: package/contents/ui/DeviceItem.qml:288
 #, kde-format
 msgid "Send file"
 msgstr "Enviar un ficheiro"
 
-#: package/contents/ui/DeviceItem.qml:283
+#: package/contents/ui/DeviceItem.qml:291
 #, kde-format
 msgid "Input"
 msgstr "Entrada"
 
-#: package/contents/ui/DeviceItem.qml:286
+#: package/contents/ui/DeviceItem.qml:294
 #, kde-format
 msgid "Audio"
 msgstr "Son"
 
-#: package/contents/ui/DeviceItem.qml:289
+#: package/contents/ui/DeviceItem.qml:297
 #, kde-format
 msgid "Network"
 msgstr "Rede"
 
-#: package/contents/ui/DeviceItem.qml:293
+#: package/contents/ui/DeviceItem.qml:301
 #, kde-format
 msgid "Other device"
 msgstr "Outro dispositivo"
 
-#: package/contents/ui/DeviceItem.qml:300 package/contents/ui/main.qml:70
-#: package/contents/ui/main.qml:80
+#: package/contents/ui/DeviceItem.qml:308 package/contents/ui/main.qml:80
+#: package/contents/ui/main.qml:89
 #, kde-format
 msgid "%1% Battery"
 msgstr "Batería: %1%"
 
-#: package/contents/ui/DeviceItem.qml:311
+#: package/contents/ui/DeviceItem.qml:319
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "Non é posíbel acadar o dispositivo."
 
-#: package/contents/ui/DeviceItem.qml:313
+#: package/contents/ui/DeviceItem.qml:321
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "A conexión co dispositivo fallou."
 
-#: package/contents/ui/DeviceItem.qml:317
+#: package/contents/ui/DeviceItem.qml:325
 #, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "O dispositivo non está listo."
 
-#: package/contents/ui/DeviceItem.qml:353
+#: package/contents/ui/DeviceItem.qml:361
 #, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: package/contents/ui/FullRepresentation.qml:55
+#: package/contents/ui/FullRepresentation.qml:64
 #, kde-format
 msgid "Enable"
 msgstr "Activar"
 
-#: package/contents/ui/FullRepresentation.qml:143
+#: package/contents/ui/FullRepresentation.qml:159
 #, kde-format
 msgid "No Bluetooth adapters available"
 msgstr "Non hai adaptadores de Bluetooth dispoñíbeis."
 
-#: package/contents/ui/FullRepresentation.qml:145
+#: package/contents/ui/FullRepresentation.qml:161
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "O sistema Bluetooth está desactivado."
 
-#: package/contents/ui/FullRepresentation.qml:147
+#: package/contents/ui/FullRepresentation.qml:163
 #, kde-format
 msgid "No devices found"
 msgstr "Non se atopou ningún dispositivo."
 
-#: package/contents/ui/main.qml:48
+#: package/contents/ui/main.qml:58
 #, kde-format
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
-#: package/contents/ui/main.qml:51
+#: package/contents/ui/main.qml:61
 #, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
 msgstr "O Bluetooth está desactivado; clic central para activalo"
 
-#: package/contents/ui/main.qml:55
+#: package/contents/ui/main.qml:65
 #, kde-format
 msgid "No adapters available"
 msgstr "Non hai adaptadores dispoñíbeis."
 
-#: package/contents/ui/main.qml:57
+#: package/contents/ui/main.qml:67
 #, kde-format
 msgid "Bluetooth is offline"
 msgstr "O sistema Bluetooth está desconectado."
 
-#: package/contents/ui/main.qml:60
+#: package/contents/ui/main.qml:70
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr "Clic central para desactivar o Bluetooth"
 
-#: package/contents/ui/main.qml:63
+#: package/contents/ui/main.qml:73
 #, kde-format
 msgid "No connected devices"
 msgstr "Non hai dispositivos conectados."
 
-#: package/contents/ui/main.qml:68
+#: package/contents/ui/main.qml:78
 #, kde-format
 msgid "%1 connected"
 msgstr "%1 conectado"
 
-#: package/contents/ui/main.qml:75
+#: package/contents/ui/main.qml:85
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -243,17 +243,17 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 dispositivo conectado"
 msgstr[1] "%1 dispositivos conectados"
 
-#: package/contents/ui/main.qml:137
+#: package/contents/ui/main.qml:147
 #, kde-format
 msgid "Add New Device…"
 msgstr "Engadir un dispositivo…"
 
-#: package/contents/ui/main.qml:144 package/contents/ui/Toolbar.qml:32
+#: package/contents/ui/main.qml:154
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Activar o sistema de Bluetooth"
 
-#: package/contents/ui/main.qml:156
+#: package/contents/ui/main.qml:166
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Configurar o &Bluetooth…"

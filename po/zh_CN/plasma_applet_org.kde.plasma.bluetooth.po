@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-14 00:40+0000\n"
+"POT-Creation-Date: 2024-06-20 00:40+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -18,241 +18,241 @@ msgstr ""
 "bluetooth.pot\n"
 "X-Crowdin-File-ID: 43113\n"
 
-#: package/contents/ui/DeviceItem.qml:37
+#: package/contents/ui/DeviceItem.qml:41
 #, kde-format
 msgid "Disconnect"
 msgstr "断开"
 
-#: package/contents/ui/DeviceItem.qml:37
+#: package/contents/ui/DeviceItem.qml:41
 #, kde-format
 msgid "Connect"
 msgstr "连接"
 
-#: package/contents/ui/DeviceItem.qml:46
+#: package/contents/ui/DeviceItem.qml:50
 #, kde-format
 msgid "Browse Files"
 msgstr "浏览文件"
 
-#: package/contents/ui/DeviceItem.qml:57
+#: package/contents/ui/DeviceItem.qml:61
 #, kde-format
 msgid "Send File"
 msgstr "发送文件"
 
-#: package/contents/ui/DeviceItem.qml:113
+#: package/contents/ui/DeviceItem.qml:118
 #, kde-format
 msgid "Copy"
 msgstr "复制"
 
-#: package/contents/ui/DeviceItem.qml:209
+#: package/contents/ui/DeviceItem.qml:217
 #, kde-format
 msgid "Yes"
 msgstr "是"
 
-#: package/contents/ui/DeviceItem.qml:209
+#: package/contents/ui/DeviceItem.qml:217
 #, kde-format
 msgid "No"
 msgstr "否"
 
-#: package/contents/ui/DeviceItem.qml:215
+#: package/contents/ui/DeviceItem.qml:223
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: package/contents/ui/DeviceItem.qml:223
+#: package/contents/ui/DeviceItem.qml:231
 #, kde-format
 msgid "Remote Name"
 msgstr "远程名称"
 
-#: package/contents/ui/DeviceItem.qml:227
+#: package/contents/ui/DeviceItem.qml:235
 #, kde-format
 msgid "Address"
 msgstr "地址"
 
-#: package/contents/ui/DeviceItem.qml:230
+#: package/contents/ui/DeviceItem.qml:238
 #, kde-format
 msgid "Paired"
 msgstr "已配对"
 
-#: package/contents/ui/DeviceItem.qml:233
+#: package/contents/ui/DeviceItem.qml:241
 #, kde-format
 msgid "Trusted"
 msgstr "已信任"
 
-#: package/contents/ui/DeviceItem.qml:236
+#: package/contents/ui/DeviceItem.qml:244
 #, kde-format
 msgid "Adapter"
 msgstr "适配器"
 
-#: package/contents/ui/DeviceItem.qml:244
+#: package/contents/ui/DeviceItem.qml:252
 #, kde-format
 msgid "Disconnecting"
 msgstr "正在断开连接"
 
-#: package/contents/ui/DeviceItem.qml:244
+#: package/contents/ui/DeviceItem.qml:252
 #, kde-format
 msgid "Connecting"
 msgstr "正在连接"
 
-#: package/contents/ui/DeviceItem.qml:250
+#: package/contents/ui/DeviceItem.qml:258
 #, kde-format
 msgid "Connected"
 msgstr "已连接"
 
-#: package/contents/ui/DeviceItem.qml:252
+#: package/contents/ui/DeviceItem.qml:260
 #, kde-format
 msgid "Connection failed"
 msgstr "连接失败"
 
-#: package/contents/ui/DeviceItem.qml:259
+#: package/contents/ui/DeviceItem.qml:267
 #, kde-format
 msgid "Audio device"
 msgstr "音频设备"
 
-#: package/contents/ui/DeviceItem.qml:266
+#: package/contents/ui/DeviceItem.qml:274
 #, kde-format
 msgid "Input device"
 msgstr "输入设备"
 
-#: package/contents/ui/DeviceItem.qml:270
+#: package/contents/ui/DeviceItem.qml:278
 #, kde-format
 msgid "Phone"
 msgstr "电话"
 
-#: package/contents/ui/DeviceItem.qml:277
+#: package/contents/ui/DeviceItem.qml:285
 #, kde-format
 msgid "File transfer"
 msgstr "文件传输"
 
-#: package/contents/ui/DeviceItem.qml:280
+#: package/contents/ui/DeviceItem.qml:288
 #, kde-format
 msgid "Send file"
 msgstr "发送文件"
 
-#: package/contents/ui/DeviceItem.qml:283
+#: package/contents/ui/DeviceItem.qml:291
 #, kde-format
 msgid "Input"
 msgstr "输入"
 
-#: package/contents/ui/DeviceItem.qml:286
+#: package/contents/ui/DeviceItem.qml:294
 #, kde-format
 msgid "Audio"
 msgstr "音频"
 
-#: package/contents/ui/DeviceItem.qml:289
+#: package/contents/ui/DeviceItem.qml:297
 #, kde-format
 msgid "Network"
 msgstr "网络"
 
-#: package/contents/ui/DeviceItem.qml:293
+#: package/contents/ui/DeviceItem.qml:301
 #, kde-format
 msgid "Other device"
 msgstr "其他设备"
 
-#: package/contents/ui/DeviceItem.qml:300 package/contents/ui/main.qml:70
-#: package/contents/ui/main.qml:80
+#: package/contents/ui/DeviceItem.qml:308 package/contents/ui/main.qml:80
+#: package/contents/ui/main.qml:89
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% 电量"
 
-#: package/contents/ui/DeviceItem.qml:311
+#: package/contents/ui/DeviceItem.qml:319
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "设备无法访问"
 
-#: package/contents/ui/DeviceItem.qml:313
+#: package/contents/ui/DeviceItem.qml:321
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "设备连接失败"
 
-#: package/contents/ui/DeviceItem.qml:317
+#: package/contents/ui/DeviceItem.qml:325
 #, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "设备未就绪"
 
-#: package/contents/ui/DeviceItem.qml:353
+#: package/contents/ui/DeviceItem.qml:361
 #, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: package/contents/ui/FullRepresentation.qml:55
+#: package/contents/ui/FullRepresentation.qml:64
 #, kde-format
 msgid "Enable"
 msgstr "启用"
 
-#: package/contents/ui/FullRepresentation.qml:143
+#: package/contents/ui/FullRepresentation.qml:159
 #, kde-format
 msgid "No Bluetooth adapters available"
 msgstr "没有可用的蓝牙适配器"
 
-#: package/contents/ui/FullRepresentation.qml:145
+#: package/contents/ui/FullRepresentation.qml:161
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "蓝牙已禁用"
 
-#: package/contents/ui/FullRepresentation.qml:147
+#: package/contents/ui/FullRepresentation.qml:163
 #, kde-format
 msgid "No devices found"
 msgstr "没有找到设备"
 
-#: package/contents/ui/main.qml:48
+#: package/contents/ui/main.qml:58
 #, kde-format
 msgid "Bluetooth"
 msgstr "蓝牙"
 
-#: package/contents/ui/main.qml:51
+#: package/contents/ui/main.qml:61
 #, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
 msgstr "蓝牙已禁用；中键点击以启用"
 
-#: package/contents/ui/main.qml:55
+#: package/contents/ui/main.qml:65
 #, kde-format
 msgid "No adapters available"
 msgstr "没有可用的适配器"
 
-#: package/contents/ui/main.qml:57
+#: package/contents/ui/main.qml:67
 #, kde-format
 msgid "Bluetooth is offline"
 msgstr "蓝牙离线"
 
-#: package/contents/ui/main.qml:60
+#: package/contents/ui/main.qml:70
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr "中键点击禁用蓝牙"
 
-#: package/contents/ui/main.qml:63
+#: package/contents/ui/main.qml:73
 #, kde-format
 msgid "No connected devices"
 msgstr "尚未连接任何设备"
 
-#: package/contents/ui/main.qml:68
+#: package/contents/ui/main.qml:78
 #, kde-format
 msgid "%1 connected"
 msgstr "%1 已连接"
 
-#: package/contents/ui/main.qml:75
+#: package/contents/ui/main.qml:85
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
 msgid_plural "%1 connected devices"
 msgstr[0] "%1 个已连接设备"
 
-#: package/contents/ui/main.qml:137
+#: package/contents/ui/main.qml:147
 #, kde-format
 msgid "Add New Device…"
 msgstr "添加新设备…"
 
-#: package/contents/ui/main.qml:144 package/contents/ui/Toolbar.qml:32
+#: package/contents/ui/main.qml:154
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "启用蓝牙"
 
-#: package/contents/ui/main.qml:156
+#: package/contents/ui/main.qml:166
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "配置蓝牙(&B)…"
