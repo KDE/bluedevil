@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: trunk-kf 5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-20 00:40+0000\n"
+"POT-Creation-Date: 2024-06-21 00:39+0000\n"
 "PO-Revision-Date: 2024-05-16 21:33+0300\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -187,17 +187,17 @@ msgstr "%1 (%2)"
 msgid "Enable"
 msgstr "Įjungti"
 
-#: package/contents/ui/FullRepresentation.qml:159
+#: package/contents/ui/FullRepresentation.qml:160
 #, kde-format
 msgid "No Bluetooth adapters available"
 msgstr "Nėra prieinamų Bluetooth adapterių"
 
-#: package/contents/ui/FullRepresentation.qml:161
+#: package/contents/ui/FullRepresentation.qml:162
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth yra išjungtas"
 
-#: package/contents/ui/FullRepresentation.qml:163
+#: package/contents/ui/FullRepresentation.qml:164
 #, kde-format
 msgid "No devices found"
 msgstr "Nerasta jokių įrenginių"

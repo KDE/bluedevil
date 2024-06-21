@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-20 00:40+0000\n"
+"POT-Creation-Date: 2024-06-21 00:39+0000\n"
 "PO-Revision-Date: 2023-01-11 21:03+0100\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -186,17 +186,17 @@ msgstr "%1 (%2)"
 msgid "Enable"
 msgstr "Povoliť"
 
-#: package/contents/ui/FullRepresentation.qml:159
+#: package/contents/ui/FullRepresentation.qml:160
 #, kde-format
 msgid "No Bluetooth adapters available"
 msgstr "Žiadne Bluetooth adaptéry nie sú dostupné"
 
-#: package/contents/ui/FullRepresentation.qml:161
+#: package/contents/ui/FullRepresentation.qml:162
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth je zakázaný"
 
-#: package/contents/ui/FullRepresentation.qml:163
+#: package/contents/ui/FullRepresentation.qml:164
 #, kde-format
 msgid "No devices found"
 msgstr "Nenašli sa žiadne zariadenia"
