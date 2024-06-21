@@ -79,27 +79,18 @@ PlasmaExtras.ExpandableListItem {
                 id: mediaPlayerItem
                 mediaPlayer: root.model.MediaPlayer
                 Layout.leftMargin: Kirigami.Units.gridUnit + Kirigami.Units.smallSpacing * 3
+                Layout.bottomMargin: Kirigami.Units.smallSpacing
                 Layout.fillWidth: true
                 visible: mediaPlayer !== null
             }
 
-            Item {
-                Layout.preferredHeight: Kirigami.Units.smallSpacing
-                visible: mediaPlayerItem.visible
-            }
-
             KSvg.SvgItem {
-                id: mediaPlayerSeparator
                 Layout.fillWidth: true
+                Layout.bottomMargin: Kirigami.Units.smallSpacing
                 imagePath: "widgets/line"
                 elementId: "horizontal-line"
                 visible: mediaPlayerItem.visible
                     || (!mediaPlayerItem.visible && !(browseFilesButton.enabled || sendFileButton.enabled))
-            }
-
-            Item {
-                Layout.preferredHeight: Kirigami.Units.smallSpacing
-                visible: mediaPlayerSeparator.visible
             }
 
             KQuickControlsAddons.Clipboard {
@@ -209,6 +200,7 @@ PlasmaExtras.ExpandableListItem {
         if (__dev === dev) {
             return;
         }
+
         __dev = dev;
 
         if (expandedView.status === Component.Ready) {
