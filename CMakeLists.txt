@@ -18,24 +18,25 @@ include(KDEInstallDirs)
 
 find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Core
-    Widgets
+    DBus
     Qml
-    DBus)
+    Widgets
+)
 
 find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
+    BluezQt
     CoreAddons
-    WidgetsAddons
     DBusAddons
     DocTools
-    Notifications
-    WindowSystem
-    Svg
     I18n
-    KIO
-    BluezQt
-    KCMUtils
     JobWidgets
+    KCMUtils
+    KIO
+    Notifications
     Service
+    Svg
+    WidgetsAddons
+    WindowSystem
 )
 
 find_package(Plasma ${PROJECT_DEP_VERSION} REQUIRED)

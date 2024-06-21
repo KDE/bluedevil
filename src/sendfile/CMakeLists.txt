@@ -1,14 +1,14 @@
 set(sendfilehelper_SRCS
-    main.cpp
     discoverwidget.cpp
-    sendfilewizard.cpp
+    main.cpp
     sendfilesjob.cpp
+    sendfilewizard.cpp
 
+    pages/connectingpage.cpp
+    pages/failpage.cpp
     pages/selectdeviceandfilespage.cpp
     pages/selectdevicepage.cpp
     pages/selectfilespage.cpp
-    pages/connectingpage.cpp
-    pages/failpage.cpp
 )
 
 ecm_qt_declare_logging_category(sendfilehelper_SRCS
@@ -21,22 +21,23 @@ ecm_qt_declare_logging_category(sendfilehelper_SRCS
 
 ki18n_wrap_ui(sendfilehelper_SRCS
     discover.ui
-    pages/selectfilediscover.ui
     pages/connecting.ui
     pages/failpage.ui
+    pages/selectfilediscover.ui
 )
 
 add_executable(bluedevil-sendfile ${sendfilehelper_SRCS})
 
 target_link_libraries(bluedevil-sendfile
-    Qt::Widgets
     Qt::DBus
-    KF6::I18n
+    Qt::Widgets
+
+    KF6::BluezQt
     KF6::CoreAddons
     KF6::DBusAddons
-    KF6::WidgetsAddons
+    KF6::I18n
     KF6::KIOFileWidgets
-    KF6::BluezQt
+    KF6::WidgetsAddons
     KF6::WindowSystem
 )
 

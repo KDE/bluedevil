@@ -30,13 +30,14 @@ set_target_properties(kded_bluedevil PROPERTIES OUTPUT_NAME bluedevil)
 
 target_link_libraries(kded_bluedevil
     Qt::Gui
-    KF6::I18n
-    KF6::CoreAddons
-    KF6::DBusAddons
-    KF6::Notifications
-    KF6::KIOCore
-    KF6::KIOFileWidgets
-    KF6::WindowSystem
+
     KF6::BluezQt
     KF6::ConfigGui
+    KF6::CoreAddons
+    KF6::DBusAddons
+    KF6::I18n
+    KF6::KIOCore
+    KF6::KIOFileWidgets
+    KF6::Notifications
+    KF6::WindowSystem
 )

@@ -1,12 +1,12 @@
 set(wizard_SRCS
-    main.cpp
     bluewizard.cpp
-    wizardagent.cpp
-    pages/discover.cpp
+    main.cpp
     pages/connect.cpp
-    pages/pairing.cpp
+    pages/discover.cpp
     pages/fail.cpp
+    pages/pairing.cpp
     pages/success.cpp
+    wizardagent.cpp
 )
 
 ecm_qt_declare_logging_category(wizard_SRCS
@@ -18,25 +18,26 @@ ecm_qt_declare_logging_category(wizard_SRCS
 )
 
 ki18n_wrap_ui(wizard_SRCS
-    pages/discover.ui
     pages/connect.ui
-    pages/pairing.ui
+    pages/discover.ui
     pages/fail.ui
+    pages/pairing.ui
     pages/success.ui
 )
 
 add_executable(bluedevil-wizard ${wizard_SRCS})
 
 target_link_libraries(bluedevil-wizard
-    Qt::Widgets
     Qt::DBus
-    KF6::I18n
+    Qt::Widgets
+
+    KF6::BluezQt
     KF6::CoreAddons
     KF6::DBusAddons
+    KF6::I18n
     KF6::Notifications
     KF6::WidgetsAddons
     KF6::WindowSystem
-    KF6::BluezQt
 )
 
 install(TARGETS bluedevil-wizard ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})

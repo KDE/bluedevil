@@ -18,11 +18,12 @@ add_library(kio_obexftp MODULE ${kio_obexftp_SRCS})
 target_link_libraries(kio_obexftp
     Qt::Core
     Qt::DBus
+    Qt::Network
+
+    KF6::BluezQt
+    KF6::CoreAddons
     KF6::I18n
     KF6::KIOCore
-    KF6::CoreAddons
-    KF6::BluezQt
-    Qt::Network
 )
 
 install(TARGETS kio_obexftp DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf6/kio)

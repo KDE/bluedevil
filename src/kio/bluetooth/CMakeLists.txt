@@ -13,11 +13,12 @@ add_library(kio_bluetooth MODULE ${kio_bluetooth_SRCS})
 target_link_libraries(kio_bluetooth
     Qt::Core
     Qt::DBus
+    Qt::Network
+
+    KF6::ConfigGui
+    KF6::CoreAddons
     KF6::I18n
     KF6::KIOCore
-    KF6::CoreAddons
-    KF6::ConfigGui
-    Qt::Network
 )
 
 target_include_directories(kio_bluetooth
