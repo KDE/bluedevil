@@ -39,7 +39,9 @@ PlasmaExtras.ExpandableListItem {
     defaultActionButtonAction: QQC2.Action {
         icon.name: root.model.Connected ? "network-disconnect-symbolic" : "network-connect-symbolic"
         text: root.model.Connected ? i18n("Disconnect") : i18n("Connect")
-        onTriggered: source => connectToDevice()
+        onTriggered: source => {
+            root.connectToDevice();
+        }
     }
 
     contextualActions: [
@@ -193,7 +195,9 @@ PlasmaExtras.ExpandableListItem {
                 }
             }
 
-            Component.onCompleted: createContent()
+            Component.onCompleted: {
+                root.createContent();
+            }
         }
     }
 
