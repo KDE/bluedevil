@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-21 00:39+0000\n"
+"POT-Creation-Date: 2024-06-22 00:40+0000\n"
 "PO-Revision-Date: 2017-12-24 21:47+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -28,156 +28,156 @@ msgstr "Прекини везу"
 msgid "Connect"
 msgstr "Повежи се"
 
-#: package/contents/ui/DeviceItem.qml:50
+#: package/contents/ui/DeviceItem.qml:52
 #, kde-format
 msgid "Browse Files"
 msgstr "Прегледај фајлове"
 
-#: package/contents/ui/DeviceItem.qml:61
+#: package/contents/ui/DeviceItem.qml:63
 #, kde-format
 msgid "Send File"
 msgstr "Пошаљи фајл"
 
-#: package/contents/ui/DeviceItem.qml:118
+#: package/contents/ui/DeviceItem.qml:111
 #, kde-format
 msgid "Copy"
 msgstr "Копирај"
 
-#: package/contents/ui/DeviceItem.qml:217
+#: package/contents/ui/DeviceItem.qml:213
 #, kde-format
 msgid "Yes"
 msgstr "да"
 
-#: package/contents/ui/DeviceItem.qml:217
+#: package/contents/ui/DeviceItem.qml:213
 #, kde-format
 msgid "No"
 msgstr "не"
 
-#: package/contents/ui/DeviceItem.qml:223
+#: package/contents/ui/DeviceItem.qml:219
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:231
+#: package/contents/ui/DeviceItem.qml:227
 #, kde-format
 msgid "Remote Name"
 msgstr "Удаљено име"
 
-#: package/contents/ui/DeviceItem.qml:235
+#: package/contents/ui/DeviceItem.qml:231
 #, kde-format
 msgid "Address"
 msgstr "Адреса"
 
-#: package/contents/ui/DeviceItem.qml:238
+#: package/contents/ui/DeviceItem.qml:234
 #, kde-format
 msgid "Paired"
 msgstr "Упарен"
 
-#: package/contents/ui/DeviceItem.qml:241
+#: package/contents/ui/DeviceItem.qml:237
 #, kde-format
 msgid "Trusted"
 msgstr "Поуздан"
 
-#: package/contents/ui/DeviceItem.qml:244
+#: package/contents/ui/DeviceItem.qml:240
 #, kde-format
 msgid "Adapter"
 msgstr "Адаптер"
 
-#: package/contents/ui/DeviceItem.qml:252
+#: package/contents/ui/DeviceItem.qml:248
 #, kde-format
 msgid "Disconnecting"
 msgstr "Прекидам везу"
 
 # >> The device is connecting.
-#: package/contents/ui/DeviceItem.qml:252
+#: package/contents/ui/DeviceItem.qml:248
 #, kde-format
 msgid "Connecting"
 msgstr "Повезује се"
 
-#: package/contents/ui/DeviceItem.qml:258
+#: package/contents/ui/DeviceItem.qml:254
 #, fuzzy, kde-format
 #| msgid "Connect"
 msgid "Connected"
 msgstr "Повежи се"
 
-#: package/contents/ui/DeviceItem.qml:260
+#: package/contents/ui/DeviceItem.qml:256
 #, fuzzy, kde-format
 #| msgctxt "Notification when the connection failed due to Failed"
 #| msgid "Connection to the device failed"
 msgid "Connection failed"
 msgstr "Повезивање са уређајем пропало"
 
-#: package/contents/ui/DeviceItem.qml:267
+#: package/contents/ui/DeviceItem.qml:263
 #, kde-format
 msgid "Audio device"
 msgstr "Аудио уређај"
 
-#: package/contents/ui/DeviceItem.qml:274
+#: package/contents/ui/DeviceItem.qml:270
 #, kde-format
 msgid "Input device"
 msgstr "Улазни уређај"
 
-#: package/contents/ui/DeviceItem.qml:278
+#: package/contents/ui/DeviceItem.qml:274
 #, kde-format
 msgid "Phone"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:285
+#: package/contents/ui/DeviceItem.qml:281
 #, kde-format
 msgid "File transfer"
 msgstr "Пренос фајлова"
 
-#: package/contents/ui/DeviceItem.qml:288
+#: package/contents/ui/DeviceItem.qml:284
 #, kde-format
 msgid "Send file"
 msgstr "Пошаљи фајл"
 
-#: package/contents/ui/DeviceItem.qml:291
+#: package/contents/ui/DeviceItem.qml:287
 #, kde-format
 msgid "Input"
 msgstr "Улаз"
 
-#: package/contents/ui/DeviceItem.qml:294
+#: package/contents/ui/DeviceItem.qml:290
 #, kde-format
 msgid "Audio"
 msgstr "Аудио"
 
-#: package/contents/ui/DeviceItem.qml:297
+#: package/contents/ui/DeviceItem.qml:293
 #, kde-format
 msgid "Network"
 msgstr "Мрежа"
 
-#: package/contents/ui/DeviceItem.qml:301
+#: package/contents/ui/DeviceItem.qml:297
 #, kde-format
 msgid "Other device"
 msgstr "Други уређај"
 
-#: package/contents/ui/DeviceItem.qml:308 package/contents/ui/main.qml:80
+#: package/contents/ui/DeviceItem.qml:304 package/contents/ui/main.qml:80
 #: package/contents/ui/main.qml:89
 #, kde-format
 msgid "%1% Battery"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:319
+#: package/contents/ui/DeviceItem.qml:315
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "Уређај је недоступан"
 
-#: package/contents/ui/DeviceItem.qml:321
+#: package/contents/ui/DeviceItem.qml:317
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "Повезивање са уређајем пропало"
 
-#: package/contents/ui/DeviceItem.qml:325
+#: package/contents/ui/DeviceItem.qml:321
 #, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Уређај није спреман"
 
-#: package/contents/ui/DeviceItem.qml:361
+#: package/contents/ui/DeviceItem.qml:357
 #, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-21 00:39+0000\n"
+"POT-Creation-Date: 2024-06-22 00:40+0000\n"
 "PO-Revision-Date: 2024-03-06 08:17+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -30,152 +30,152 @@ msgstr "Від’єднатися"
 msgid "Connect"
 msgstr "З'єднатися"
 
-#: package/contents/ui/DeviceItem.qml:50
+#: package/contents/ui/DeviceItem.qml:52
 #, kde-format
 msgid "Browse Files"
 msgstr "Переглянути файли"
 
-#: package/contents/ui/DeviceItem.qml:61
+#: package/contents/ui/DeviceItem.qml:63
 #, kde-format
 msgid "Send File"
 msgstr "Надіслати файл"
 
-#: package/contents/ui/DeviceItem.qml:118
+#: package/contents/ui/DeviceItem.qml:111
 #, kde-format
 msgid "Copy"
 msgstr "Копіювати"
 
-#: package/contents/ui/DeviceItem.qml:217
+#: package/contents/ui/DeviceItem.qml:213
 #, kde-format
 msgid "Yes"
 msgstr "Так"
 
-#: package/contents/ui/DeviceItem.qml:217
+#: package/contents/ui/DeviceItem.qml:213
 #, kde-format
 msgid "No"
 msgstr "Ні"
 
-#: package/contents/ui/DeviceItem.qml:223
+#: package/contents/ui/DeviceItem.qml:219
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: package/contents/ui/DeviceItem.qml:231
+#: package/contents/ui/DeviceItem.qml:227
 #, kde-format
 msgid "Remote Name"
 msgstr "Назва віддаленого пристрою"
 
-#: package/contents/ui/DeviceItem.qml:235
+#: package/contents/ui/DeviceItem.qml:231
 #, kde-format
 msgid "Address"
 msgstr "Адреса"
 
-#: package/contents/ui/DeviceItem.qml:238
+#: package/contents/ui/DeviceItem.qml:234
 #, kde-format
 msgid "Paired"
 msgstr "Пов’язано"
 
-#: package/contents/ui/DeviceItem.qml:241
+#: package/contents/ui/DeviceItem.qml:237
 #, kde-format
 msgid "Trusted"
 msgstr "Надійний"
 
-#: package/contents/ui/DeviceItem.qml:244
+#: package/contents/ui/DeviceItem.qml:240
 #, kde-format
 msgid "Adapter"
 msgstr "Адаптер"
 
-#: package/contents/ui/DeviceItem.qml:252
+#: package/contents/ui/DeviceItem.qml:248
 #, kde-format
 msgid "Disconnecting"
 msgstr "Від’єднуємося"
 
-#: package/contents/ui/DeviceItem.qml:252
+#: package/contents/ui/DeviceItem.qml:248
 #, kde-format
 msgid "Connecting"
 msgstr "Виконується з'єднання"
 
-#: package/contents/ui/DeviceItem.qml:258
+#: package/contents/ui/DeviceItem.qml:254
 #, kde-format
 msgid "Connected"
 msgstr "З'єднано"
 
-#: package/contents/ui/DeviceItem.qml:260
+#: package/contents/ui/DeviceItem.qml:256
 #, kde-format
 msgid "Connection failed"
 msgstr "Не вдалося встановити з'єднання"
 
-#: package/contents/ui/DeviceItem.qml:267
+#: package/contents/ui/DeviceItem.qml:263
 #, kde-format
 msgid "Audio device"
 msgstr "Звуковий пристрій"
 
-#: package/contents/ui/DeviceItem.qml:274
+#: package/contents/ui/DeviceItem.qml:270
 #, kde-format
 msgid "Input device"
 msgstr "Пристрій введення"
 
-#: package/contents/ui/DeviceItem.qml:278
+#: package/contents/ui/DeviceItem.qml:274
 #, kde-format
 msgid "Phone"
 msgstr "Телефон"
 
-#: package/contents/ui/DeviceItem.qml:285
+#: package/contents/ui/DeviceItem.qml:281
 #, kde-format
 msgid "File transfer"
 msgstr "Перенесення файлів"
 
-#: package/contents/ui/DeviceItem.qml:288
+#: package/contents/ui/DeviceItem.qml:284
 #, kde-format
 msgid "Send file"
 msgstr "Надіслати файл"
 
-#: package/contents/ui/DeviceItem.qml:291
+#: package/contents/ui/DeviceItem.qml:287
 #, kde-format
 msgid "Input"
 msgstr "Введення"
 
-#: package/contents/ui/DeviceItem.qml:294
+#: package/contents/ui/DeviceItem.qml:290
 #, kde-format
 msgid "Audio"
 msgstr "Звук"
 
-#: package/contents/ui/DeviceItem.qml:297
+#: package/contents/ui/DeviceItem.qml:293
 #, kde-format
 msgid "Network"
 msgstr "Мережа"
 
-#: package/contents/ui/DeviceItem.qml:301
+#: package/contents/ui/DeviceItem.qml:297
 #, kde-format
 msgid "Other device"
 msgstr "Інший пристрій"
 
-#: package/contents/ui/DeviceItem.qml:308 package/contents/ui/main.qml:80
+#: package/contents/ui/DeviceItem.qml:304 package/contents/ui/main.qml:80
 #: package/contents/ui/main.qml:89
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% акумулятора"
 
-#: package/contents/ui/DeviceItem.qml:319
+#: package/contents/ui/DeviceItem.qml:315
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "Пристрій недоступний"
 
-#: package/contents/ui/DeviceItem.qml:321
+#: package/contents/ui/DeviceItem.qml:317
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "Не вдалося встановити з’єднання із пристроєм"
 
-#: package/contents/ui/DeviceItem.qml:325
+#: package/contents/ui/DeviceItem.qml:321
 #, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Пристрій неготовий"
 
-#: package/contents/ui/DeviceItem.qml:361
+#: package/contents/ui/DeviceItem.qml:357
 #, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
