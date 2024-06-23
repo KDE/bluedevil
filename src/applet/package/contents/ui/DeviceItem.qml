@@ -301,24 +301,6 @@ PlasmaExtras.ExpandableListItem {
         return labels.join(" · ");
     }
 
-    function errorText(call: BluezQt.PendingCall): string {
-        switch (call.error) {
-        case BluezQt.PendingCall.Failed:
-            return (call.errorText === "Host is down")
-                ? i18nc("Notification when the connection failed due to Failed:HostIsDown",
-                        "The device is unreachable")
-                : i18nc("Notification when the connection failed due to Failed",
-                        "Connection to the device failed");
-
-        case BluezQt.PendingCall.NotReady:
-            return i18nc("Notification when the connection failed due to NotReady",
-                         "The device is not ready");
-
-        default:
-            return "";
-        }
-    }
-
     function connectToDevice(): void {
         if (connecting) {
             return;
@@ -345,14 +327,9 @@ PlasmaExtras.ExpandableListItem {
             connecting = false;
             runningActions--;
 
-            if (call.error) {
-                connectionFailed = true;
-                const device = call.userData;
-                const title = i18nc("@label %1 is human-readable device name, %2 is low-level device address", "%1 (%2)", device.name, device.address);
-                const text = errorText(call);
-
-                PlasmaBt.Notify.connectionFailed(title, text);
-            }
+            const { address, name } = call.userData as BluezQt.Device;
+            PlasmaBt.Notify.notifyIfConnectionFailed(call, name, address);
+            connectionFailed = call.error !== BluezQt.PendingCall.NoError;
         });
     }
 }
