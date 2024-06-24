@@ -104,9 +104,12 @@ KCMUtils.SimpleKCM {
 
                 QQC2.Button {
                     id: connectButton
-                    enabled: !indicator.running
+                    enabled: !indicator.running && !root.device.blocked
                     text: root.device.connected ? i18n("Disconnect") : i18n("Connect")
                     icon.name: root.device.connected ? "network-disconnect-symbolic" : "network-connect-symbolic"
+
+                    QQC2.ToolTip.text: i18n("Unblock the device first to be able to connect to it")
+                    QQC2.ToolTip.visible: !enabled && hovered
 
                     onClicked: {
                         if (root.device.connected) {

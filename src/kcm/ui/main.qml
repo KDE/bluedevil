@@ -205,6 +205,7 @@ KCMUtils.ScrollViewKCM {
                     text: delegate.model.Connected ? i18n("Disconnect") : i18n("Connect")
                     icon.name: delegate.model.Connected ? "network-disconnect-symbolic" : "network-connect-symbolic"
                     display: QQC2.AbstractButton.IconOnly
+                    visible: !delegate.model.Blocked
                     QQC2.ToolTip.text: text
                     QQC2.ToolTip.visible: hovered
 
