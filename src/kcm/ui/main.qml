@@ -162,12 +162,23 @@ KCMUtils.ScrollViewKCM {
             sourceModel: BluezQt.DevicesModel { }
         }
 
-        section.property: "Connected"
+        section.property: "Section"
         section.delegate: Kirigami.ListSectionHeader {
             required property string section
 
             width: ListView.view.width
-            text: section === "true" ? i18n("Connected") : i18n("Available")
+            text: {
+                switch (section) {
+                case "Blocked":
+                    return i18n("Blocked");
+                case "Connected":
+                    return i18n("Connected");
+                case "Available":
+                    return i18n("Available");
+                default:
+                    return "";
+                }
+            }
         }
 
         delegate: QQC2.ItemDelegate {

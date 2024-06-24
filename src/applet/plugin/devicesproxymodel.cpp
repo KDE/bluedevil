@@ -44,6 +44,9 @@ QVariant DevicesProxyModel::data(const QModelIndex &index, int role) const
 {
     switch (role) {
     case SectionRole:
+        if (index.data(BluezQt::DevicesModel::BlockedRole).toBool()) {
+            return QStringLiteral("Blocked");
+        }
         if (index.data(BluezQt::DevicesModel::ConnectedRole).toBool()) {
             return QStringLiteral("Connected");
         }
@@ -68,9 +71,20 @@ QVariant DevicesProxyModel::data(const QModelIndex &index, int role) const
 
 bool DevicesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const
 {
+    bool leftBlocked = left.data(BluezQt::DevicesModel::BlockedRole).toBool();
+    bool rightBlocked = right.data(BluezQt::DevicesModel::BlockedRole).toBool();
+
+    // Blocked are checked first, but they go last.
+    if (!leftBlocked && rightBlocked) {
+        return false;
+    } else if (leftBlocked && !rightBlocked) {
+        return true;
+    }
+
     bool leftConnected = left.data(BluezQt::DevicesModel::ConnectedRole).toBool();
     bool rightConnected = right.data(BluezQt::DevicesModel::ConnectedRole).toBool();
 
+    // Conencted go above disconnected but available (not blocked)
     if (!leftConnected && rightConnected) {
         return true;
     } else if (leftConnected && !rightConnected) {
