@@ -71,9 +71,9 @@ bool DevicesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &rig
     bool leftConnected = left.data(BluezQt::DevicesModel::ConnectedRole).toBool();
     bool rightConnected = right.data(BluezQt::DevicesModel::ConnectedRole).toBool();
 
-    if (leftConnected < rightConnected) {
+    if (!leftConnected && rightConnected) {
         return true;
-    } else if (leftConnected > rightConnected) {
+    } else if (leftConnected && !rightConnected) {
         return false;
     }
 
