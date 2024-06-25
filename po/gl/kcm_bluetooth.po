@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-15 00:40+0000\n"
+"POT-Creation-Date: 2024-06-25 00:39+0000\n"
 "PO-Revision-Date: 2024-06-08 11:30+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -34,72 +34,77 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "Rede %1 (%2)"
 
-#: ui/Device.qml:108 ui/main.qml:194
+#: ui/Device.qml:108 ui/main.qml:205
 #, kde-format
 msgid "Disconnect"
 msgstr "Desconectar"
 
-#: ui/Device.qml:108 ui/main.qml:194
+#: ui/Device.qml:108 ui/main.qml:205
 #, kde-format
 msgid "Connect"
 msgstr "Conectar"
 
-#: ui/Device.qml:129
+#: ui/Device.qml:111
+#, kde-format
+msgid "Unblock the device first to be able to connect to it"
+msgstr ""
+
+#: ui/Device.qml:132
 #, kde-format
 msgid "Type:"
 msgstr "Tipo:"
 
-#: ui/Device.qml:133
+#: ui/Device.qml:136
 #, kde-format
 msgid "%1%"
 msgstr "%1%"
 
-#: ui/Device.qml:135
+#: ui/Device.qml:138
 #, kde-format
 msgid "Battery:"
 msgstr "Batería:"
 
-#: ui/Device.qml:140 ui/General.qml:49
+#: ui/Device.qml:143 ui/General.qml:49
 #, kde-format
 msgid "Address:"
 msgstr "Enderezo:"
 
-#: ui/Device.qml:145
+#: ui/Device.qml:148
 #, kde-format
 msgid "Adapter:"
 msgstr "Adaptador:"
 
-#: ui/Device.qml:151 ui/General.qml:43
+#: ui/Device.qml:154 ui/General.qml:43
 #, kde-format
 msgid "Name:"
 msgstr "Nome:"
 
-#: ui/Device.qml:155
+#: ui/Device.qml:158
 #, kde-format
 msgid "Trusted"
 msgstr "Validado"
 
-#: ui/Device.qml:161
+#: ui/Device.qml:164 ui/main.qml:173
 #, kde-format
 msgid "Blocked"
 msgstr "Bloqueado"
 
-#: ui/Device.qml:168
+#: ui/Device.qml:171
 #, kde-format
 msgid "Send File"
 msgstr "Enviar un ficheiro"
 
-#: ui/Device.qml:176
+#: ui/Device.qml:179
 #, kde-format
 msgid "Setup NAP Network…"
 msgstr "Preparar unha rede NAP…"
 
-#: ui/Device.qml:184
+#: ui/Device.qml:187
 #, kde-format
 msgid "Setup DUN Network…"
 msgstr "Preparar unha rede DUN…"
 
-#: ui/Device.qml:199
+#: ui/Device.qml:202
 #, kde-format
 msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"
@@ -251,17 +256,17 @@ msgid "Click <interface>Add New Device…</interface> to pair some"
 msgstr ""
 "Prema <interface>Engadir un novo dispositivo…</interface> para emparellar un"
 
-#: ui/main.qml:170
+#: ui/main.qml:175
 #, kde-format
 msgid "Connected"
 msgstr "Conectado"
 
-#: ui/main.qml:170
+#: ui/main.qml:177
 #, kde-format
 msgid "Available"
 msgstr "Dispoñíbel"
 
-#: ui/main.qml:229
+#: ui/main.qml:241
 #, kde-format
 msgid "%1% Battery"
 msgstr "Batería: %1%"

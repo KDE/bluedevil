@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-15 00:40+0000\n"
+"POT-Creation-Date: 2024-06-25 00:39+0000\n"
 "PO-Revision-Date: 2022-07-26 15:51+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -33,72 +33,77 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 Şəbəkə (%2)"
 
-#: ui/Device.qml:108 ui/main.qml:194
+#: ui/Device.qml:108 ui/main.qml:205
 #, kde-format
 msgid "Disconnect"
 msgstr "Ayırmaq"
 
-#: ui/Device.qml:108 ui/main.qml:194
+#: ui/Device.qml:108 ui/main.qml:205
 #, kde-format
 msgid "Connect"
 msgstr "Qoşmaq"
 
-#: ui/Device.qml:129
+#: ui/Device.qml:111
+#, kde-format
+msgid "Unblock the device first to be able to connect to it"
+msgstr ""
+
+#: ui/Device.qml:132
 #, kde-format
 msgid "Type:"
 msgstr "Növü:"
 
-#: ui/Device.qml:133
+#: ui/Device.qml:136
 #, kde-format
 msgid "%1%"
 msgstr ""
 
-#: ui/Device.qml:135
+#: ui/Device.qml:138
 #, kde-format
 msgid "Battery:"
 msgstr ""
 
-#: ui/Device.qml:140 ui/General.qml:49
+#: ui/Device.qml:143 ui/General.qml:49
 #, kde-format
 msgid "Address:"
 msgstr "Ünvan:"
 
-#: ui/Device.qml:145
+#: ui/Device.qml:148
 #, kde-format
 msgid "Adapter:"
 msgstr "Uzlaşdırıcı:"
 
-#: ui/Device.qml:151 ui/General.qml:43
+#: ui/Device.qml:154 ui/General.qml:43
 #, kde-format
 msgid "Name:"
 msgstr "Adı:"
 
-#: ui/Device.qml:155
+#: ui/Device.qml:158
 #, kde-format
 msgid "Trusted"
 msgstr "Güvən Səviyyəsi"
 
-#: ui/Device.qml:161
+#: ui/Device.qml:164 ui/main.qml:173
 #, kde-format
 msgid "Blocked"
 msgstr "Kilidli"
 
-#: ui/Device.qml:168
+#: ui/Device.qml:171
 #, kde-format
 msgid "Send File"
 msgstr "Fayl göndərmək"
 
-#: ui/Device.qml:176
+#: ui/Device.qml:179
 #, kde-format
 msgid "Setup NAP Network…"
 msgstr "NAP Şəbəkəsini qurun..."
 
-#: ui/Device.qml:184
+#: ui/Device.qml:187
 #, kde-format
 msgid "Setup DUN Network…"
 msgstr "DUN Şəbəkəsini qurun"
 
-#: ui/Device.qml:199
+#: ui/Device.qml:202
 #, fuzzy, kde-format
 #| msgctxt "@action:button %1 is the name of a Bluetooth device"
 #| msgid "Forget \"%1\""
@@ -252,17 +257,17 @@ msgctxt "@info"
 msgid "Click <interface>Add New Device…</interface> to pair some"
 msgstr ""
 
-#: ui/main.qml:170
+#: ui/main.qml:175
 #, kde-format
 msgid "Connected"
 msgstr "Qoşuldu"
 
-#: ui/main.qml:170
+#: ui/main.qml:177
 #, kde-format
 msgid "Available"
 msgstr "Əlçatan"
 
-#: ui/main.qml:229
+#: ui/main.qml:241
 #, kde-format
 msgid "%1% Battery"
 msgstr ""

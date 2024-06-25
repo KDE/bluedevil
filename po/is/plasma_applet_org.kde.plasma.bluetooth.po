@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-22 00:40+0000\n"
+"POT-Creation-Date: 2024-06-25 00:39+0000\n"
 "PO-Revision-Date: 2024-03-18 15:04+0000\n"
 "Last-Translator: Guðmundur Erlingsson <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -42,199 +42,199 @@ msgstr "Senda skrá"
 msgid "Copy"
 msgstr "Afrita"
 
-#: package/contents/ui/DeviceItem.qml:213
+#: package/contents/ui/DeviceItem.qml:207
 #, kde-format
 msgid "Yes"
 msgstr "Já"
 
-#: package/contents/ui/DeviceItem.qml:213
+#: package/contents/ui/DeviceItem.qml:207
 #, kde-format
 msgid "No"
 msgstr "Nei"
 
-#: package/contents/ui/DeviceItem.qml:219
+#: package/contents/ui/DeviceItem.qml:213
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: package/contents/ui/DeviceItem.qml:227
+#: package/contents/ui/DeviceItem.qml:221
 #, kde-format
 msgid "Remote Name"
 msgstr "Heiti fjartengds tækis"
 
-#: package/contents/ui/DeviceItem.qml:231
+#: package/contents/ui/DeviceItem.qml:225
 #, kde-format
 msgid "Address"
 msgstr "Vistfang"
 
-#: package/contents/ui/DeviceItem.qml:234
+#: package/contents/ui/DeviceItem.qml:228
 #, kde-format
 msgid "Paired"
 msgstr "Parað"
 
-#: package/contents/ui/DeviceItem.qml:237
+#: package/contents/ui/DeviceItem.qml:231
 #, kde-format
 msgid "Trusted"
 msgstr "Traust"
 
-#: package/contents/ui/DeviceItem.qml:240
+#: package/contents/ui/DeviceItem.qml:234
 #, kde-format
 msgid "Adapter"
 msgstr "Búnaður"
 
-#: package/contents/ui/DeviceItem.qml:248
+#: package/contents/ui/DeviceItem.qml:242
 #, kde-format
 msgid "Disconnecting"
 msgstr "Aftengist"
 
-#: package/contents/ui/DeviceItem.qml:248
+#: package/contents/ui/DeviceItem.qml:242
 #, kde-format
 msgid "Connecting"
 msgstr "Tengist"
 
-#: package/contents/ui/DeviceItem.qml:254
+#: package/contents/ui/DeviceItem.qml:248
 #, kde-format
 msgid "Connected"
 msgstr "Tengt"
 
-#: package/contents/ui/DeviceItem.qml:256
+#: package/contents/ui/DeviceItem.qml:250
 #, kde-format
 msgid "Connection failed"
 msgstr "Tenging mistókst"
 
-#: package/contents/ui/DeviceItem.qml:263
+#: package/contents/ui/DeviceItem.qml:257
 #, kde-format
 msgid "Audio device"
 msgstr "Hljóðtæki"
 
-#: package/contents/ui/DeviceItem.qml:270
+#: package/contents/ui/DeviceItem.qml:264
 #, kde-format
 msgid "Input device"
 msgstr "Inntakstæki"
 
-#: package/contents/ui/DeviceItem.qml:274
+#: package/contents/ui/DeviceItem.qml:268
 #, kde-format
 msgid "Phone"
 msgstr "Sími"
 
-#: package/contents/ui/DeviceItem.qml:281
+#: package/contents/ui/DeviceItem.qml:275
 #, kde-format
 msgid "File transfer"
 msgstr "Skráaflutningur"
 
-#: package/contents/ui/DeviceItem.qml:284
+#: package/contents/ui/DeviceItem.qml:278
 #, kde-format
 msgid "Send file"
 msgstr "Senda skrá"
 
-#: package/contents/ui/DeviceItem.qml:287
+#: package/contents/ui/DeviceItem.qml:281
 #, kde-format
 msgid "Input"
 msgstr "Inntak"
 
-#: package/contents/ui/DeviceItem.qml:290
+#: package/contents/ui/DeviceItem.qml:284
 #, kde-format
 msgid "Audio"
 msgstr "Hljóð"
 
-#: package/contents/ui/DeviceItem.qml:293
+#: package/contents/ui/DeviceItem.qml:287
 #, kde-format
 msgid "Network"
 msgstr "Net"
 
-#: package/contents/ui/DeviceItem.qml:297
+#: package/contents/ui/DeviceItem.qml:291
 #, kde-format
 msgid "Other device"
 msgstr "Annað tæki"
 
-#: package/contents/ui/DeviceItem.qml:304 package/contents/ui/main.qml:80
-#: package/contents/ui/main.qml:89
+#: package/contents/ui/DeviceItem.qml:298 package/contents/ui/main.qml:79
+#: package/contents/ui/main.qml:88
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% rafhlaða"
 
-#: package/contents/ui/DeviceItem.qml:315
+#: package/contents/ui/DeviceItem.qml:309
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "Ekki næst í tækið"
 
-#: package/contents/ui/DeviceItem.qml:317
+#: package/contents/ui/DeviceItem.qml:311
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "Tengingin við tækið brást"
 
-#: package/contents/ui/DeviceItem.qml:321
+#: package/contents/ui/DeviceItem.qml:315
 #, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Tækið er ekki tilbúið"
 
-#: package/contents/ui/DeviceItem.qml:357
+#: package/contents/ui/DeviceItem.qml:351
 #, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: package/contents/ui/FullRepresentation.qml:64
+#: package/contents/ui/FullRepresentation.qml:63
 #, kde-format
 msgid "Enable"
 msgstr "Virkja"
 
-#: package/contents/ui/FullRepresentation.qml:160
+#: package/contents/ui/FullRepresentation.qml:159
 #, kde-format
 msgid "No Bluetooth adapters available"
 msgstr "Enginn Bluetooth-búnaður fannst"
 
-#: package/contents/ui/FullRepresentation.qml:162
+#: package/contents/ui/FullRepresentation.qml:161
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Slökkt er á Bluetooth"
 
-#: package/contents/ui/FullRepresentation.qml:164
+#: package/contents/ui/FullRepresentation.qml:163
 #, kde-format
 msgid "No devices found"
 msgstr "Engin tæki fundust"
 
-#: package/contents/ui/main.qml:58
+#: package/contents/ui/main.qml:56
 #, kde-format
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
-#: package/contents/ui/main.qml:61
+#: package/contents/ui/main.qml:60
 #, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
 msgstr "Slökkt er á Bluetooth. Miðjusmelltu til að kveikja"
 
-#: package/contents/ui/main.qml:65
+#: package/contents/ui/main.qml:64
 #, kde-format
 msgid "No adapters available"
 msgstr "Enginn búnaður fannst"
 
-#: package/contents/ui/main.qml:67
+#: package/contents/ui/main.qml:66
 #, kde-format
 msgid "Bluetooth is offline"
 msgstr "Bluetooth er ótengt"
 
-#: package/contents/ui/main.qml:70
+#: package/contents/ui/main.qml:69
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr "Miðjusmelltu til að slökkva á Bluetooth"
 
-#: package/contents/ui/main.qml:73
+#: package/contents/ui/main.qml:72
 #, kde-format
 msgid "No connected devices"
 msgstr "Engin tengd tæki"
 
-#: package/contents/ui/main.qml:78
+#: package/contents/ui/main.qml:77
 #, kde-format
 msgid "%1 connected"
 msgstr "%1 tengt"
 
-#: package/contents/ui/main.qml:85
+#: package/contents/ui/main.qml:84
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -242,17 +242,17 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 tengt tæki"
 msgstr[1] "%1 tengd tæki"
 
-#: package/contents/ui/main.qml:147
+#: package/contents/ui/main.qml:109
 #, kde-format
 msgid "Add New Device…"
 msgstr "Bæta við nýju tæki…"
 
-#: package/contents/ui/main.qml:154
+#: package/contents/ui/main.qml:116
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Kveikja á Bluetooth"
 
-#: package/contents/ui/main.qml:166
+#: package/contents/ui/main.qml:128
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Grunnstilla &Bluetooth…"

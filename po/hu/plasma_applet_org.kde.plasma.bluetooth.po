@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-22 00:40+0000\n"
+"POT-Creation-Date: 2024-06-25 00:39+0000\n"
 "PO-Revision-Date: 2024-03-20 14:22+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -43,200 +43,200 @@ msgstr "Fájl küldése"
 msgid "Copy"
 msgstr "Másolás"
 
-#: package/contents/ui/DeviceItem.qml:213
+#: package/contents/ui/DeviceItem.qml:207
 #, kde-format
 msgid "Yes"
 msgstr "Igen"
 
-#: package/contents/ui/DeviceItem.qml:213
+#: package/contents/ui/DeviceItem.qml:207
 #, kde-format
 msgid "No"
 msgstr "Nem"
 
-#: package/contents/ui/DeviceItem.qml:219
+#: package/contents/ui/DeviceItem.qml:213
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: package/contents/ui/DeviceItem.qml:227
+#: package/contents/ui/DeviceItem.qml:221
 #, kde-format
 msgid "Remote Name"
 msgstr "Távoli név"
 
-#: package/contents/ui/DeviceItem.qml:231
+#: package/contents/ui/DeviceItem.qml:225
 #, kde-format
 msgid "Address"
 msgstr "Cím"
 
-#: package/contents/ui/DeviceItem.qml:234
+#: package/contents/ui/DeviceItem.qml:228
 #, kde-format
 msgid "Paired"
 msgstr "Párosítva"
 
-#: package/contents/ui/DeviceItem.qml:237
+#: package/contents/ui/DeviceItem.qml:231
 #, kde-format
 msgid "Trusted"
 msgstr "Megbízható"
 
-#: package/contents/ui/DeviceItem.qml:240
+#: package/contents/ui/DeviceItem.qml:234
 #, kde-format
 msgid "Adapter"
 msgstr "Adapter"
 
-#: package/contents/ui/DeviceItem.qml:248
+#: package/contents/ui/DeviceItem.qml:242
 #, kde-format
 msgid "Disconnecting"
 msgstr "Kapcsolat bontása"
 
-#: package/contents/ui/DeviceItem.qml:248
+#: package/contents/ui/DeviceItem.qml:242
 #, kde-format
 msgid "Connecting"
 msgstr "Kapcsolódás"
 
-#: package/contents/ui/DeviceItem.qml:254
+#: package/contents/ui/DeviceItem.qml:248
 #, kde-format
 msgid "Connected"
 msgstr "Kapcsolódva"
 
-#: package/contents/ui/DeviceItem.qml:256
+#: package/contents/ui/DeviceItem.qml:250
 #, kde-format
 msgid "Connection failed"
 msgstr "Kapcsolódás sikertelen"
 
-#: package/contents/ui/DeviceItem.qml:263
+#: package/contents/ui/DeviceItem.qml:257
 #, kde-format
 msgid "Audio device"
 msgstr "Hangeszköz"
 
-#: package/contents/ui/DeviceItem.qml:270
+#: package/contents/ui/DeviceItem.qml:264
 #, kde-format
 msgid "Input device"
 msgstr "Bemeneti eszköz"
 
-#: package/contents/ui/DeviceItem.qml:274
+#: package/contents/ui/DeviceItem.qml:268
 #, kde-format
 msgid "Phone"
 msgstr "Telefon"
 
-#: package/contents/ui/DeviceItem.qml:281
+#: package/contents/ui/DeviceItem.qml:275
 #, kde-format
 msgid "File transfer"
 msgstr "Fájlátvitel"
 
-#: package/contents/ui/DeviceItem.qml:284
+#: package/contents/ui/DeviceItem.qml:278
 #, kde-format
 msgid "Send file"
 msgstr "Fájl küldése"
 
-#: package/contents/ui/DeviceItem.qml:287
+#: package/contents/ui/DeviceItem.qml:281
 #, kde-format
 msgid "Input"
 msgstr "Bemenet"
 
-#: package/contents/ui/DeviceItem.qml:290
+#: package/contents/ui/DeviceItem.qml:284
 #, kde-format
 msgid "Audio"
 msgstr "Hang"
 
-#: package/contents/ui/DeviceItem.qml:293
+#: package/contents/ui/DeviceItem.qml:287
 #, kde-format
 msgid "Network"
 msgstr "Hálózat"
 
-#: package/contents/ui/DeviceItem.qml:297
+#: package/contents/ui/DeviceItem.qml:291
 #, kde-format
 msgid "Other device"
 msgstr "Egyéb eszköz"
 
-#: package/contents/ui/DeviceItem.qml:304 package/contents/ui/main.qml:80
-#: package/contents/ui/main.qml:89
+#: package/contents/ui/DeviceItem.qml:298 package/contents/ui/main.qml:79
+#: package/contents/ui/main.qml:88
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% akkumulátor"
 
-#: package/contents/ui/DeviceItem.qml:315
+#: package/contents/ui/DeviceItem.qml:309
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "Az eszköz nem érhető el"
 
-#: package/contents/ui/DeviceItem.qml:317
+#: package/contents/ui/DeviceItem.qml:311
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "Nem sikerült kapcsolódni az eszközhöz"
 
-#: package/contents/ui/DeviceItem.qml:321
+#: package/contents/ui/DeviceItem.qml:315
 #, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Az eszköz nem áll készen"
 
-#: package/contents/ui/DeviceItem.qml:357
+#: package/contents/ui/DeviceItem.qml:351
 #, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: package/contents/ui/FullRepresentation.qml:64
+#: package/contents/ui/FullRepresentation.qml:63
 #, kde-format
 msgid "Enable"
 msgstr "Bekapcsolás"
 
-#: package/contents/ui/FullRepresentation.qml:160
+#: package/contents/ui/FullRepresentation.qml:159
 #, kde-format
 msgid "No Bluetooth adapters available"
 msgstr "Nem érhetők el Bluetooth adapterek"
 
-#: package/contents/ui/FullRepresentation.qml:162
+#: package/contents/ui/FullRepresentation.qml:161
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "A Bluetooth ki van kapcsolva"
 
-#: package/contents/ui/FullRepresentation.qml:164
+#: package/contents/ui/FullRepresentation.qml:163
 #, kde-format
 msgid "No devices found"
 msgstr "Nem találhatók eszközök"
 
-#: package/contents/ui/main.qml:58
+#: package/contents/ui/main.qml:56
 #, kde-format
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
-#: package/contents/ui/main.qml:61
+#: package/contents/ui/main.qml:60
 #, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
 msgstr ""
 "A Bluetooth ki van kapcsolva; kattintson középső gombbal a bekapcsoláshoz"
 
-#: package/contents/ui/main.qml:65
+#: package/contents/ui/main.qml:64
 #, kde-format
 msgid "No adapters available"
 msgstr "Nem érhetők el adapterek"
 
-#: package/contents/ui/main.qml:67
+#: package/contents/ui/main.qml:66
 #, kde-format
 msgid "Bluetooth is offline"
 msgstr "A Bluetooth offline"
 
-#: package/contents/ui/main.qml:70
+#: package/contents/ui/main.qml:69
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr "Kattintson középső gombbal a Bluetooth kikapcsolásához"
 
-#: package/contents/ui/main.qml:73
+#: package/contents/ui/main.qml:72
 #, kde-format
 msgid "No connected devices"
 msgstr "Nincsenek kapcsolódott eszközök"
 
-#: package/contents/ui/main.qml:78
+#: package/contents/ui/main.qml:77
 #, kde-format
 msgid "%1 connected"
 msgstr "%1 kapcsolódott"
 
-#: package/contents/ui/main.qml:85
+#: package/contents/ui/main.qml:84
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -244,17 +244,17 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 kapcsolódott eszköz"
 msgstr[1] "%1 kapcsolódott eszköz"
 
-#: package/contents/ui/main.qml:147
+#: package/contents/ui/main.qml:109
 #, kde-format
 msgid "Add New Device…"
 msgstr "Új eszköz hozzáadása…"
 
-#: package/contents/ui/main.qml:154
+#: package/contents/ui/main.qml:116
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Bluetooth bekapcsolása"
 
-#: package/contents/ui/main.qml:166
+#: package/contents/ui/main.qml:128
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "A &Bluetooth beállítása…"
