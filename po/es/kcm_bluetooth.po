@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kcm_bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-25 00:39+0000\n"
-"PO-Revision-Date: 2024-06-07 19:59+0200\n"
+"PO-Revision-Date: 2024-06-25 17:48+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.05.0\n"
+"X-Generator: Lokalize 24.05.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -48,7 +48,7 @@ msgstr "Conectar"
 #: ui/Device.qml:111
 #, kde-format
 msgid "Unblock the device first to be able to connect to it"
-msgstr ""
+msgstr "Desbloquee el dispositivo antes para poder conectarse a él"
 
 #: ui/Device.qml:132
 #, kde-format

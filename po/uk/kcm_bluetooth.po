@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kcm_bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-25 00:39+0000\n"
-"PO-Revision-Date: 2024-06-07 22:12+0300\n"
+"PO-Revision-Date: 2024-06-25 07:07+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk\n"
@@ -50,6 +50,8 @@ msgstr "З'єднатися"
 #, kde-format
 msgid "Unblock the device first to be able to connect to it"
 msgstr ""
+"Щоб мати змогу встановити з'єднання із пристроєм, слід спочатку його "
+"розблокувати"
 
 #: ui/Device.qml:132
 #, kde-format
