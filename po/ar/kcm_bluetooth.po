@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-25 00:39+0000\n"
-"PO-Revision-Date: 2024-06-08 11:30+0400\n"
+"PO-Revision-Date: 2024-06-26 18:27+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -47,7 +47,7 @@ msgstr "اتّصل"
 #: ui/Device.qml:111
 #, kde-format
 msgid "Unblock the device first to be able to connect to it"
-msgstr ""
+msgstr "فك قفل الجهاز أولا لتتمكن من الاتصال به"
 
 #: ui/Device.qml:132
 #, kde-format

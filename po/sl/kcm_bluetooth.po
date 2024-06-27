@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-25 00:39+0000\n"
-"PO-Revision-Date: 2024-06-07 06:44+0200\n"
+"PO-Revision-Date: 2024-06-26 11:59+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -47,7 +47,7 @@ msgstr "Priklopi"
 #: ui/Device.qml:111
 #, kde-format
 msgid "Unblock the device first to be able to connect to it"
-msgstr ""
+msgstr "Najprej odblokirajte napravo, da se lahko povežete z njo"
 
 #: ui/Device.qml:132
 #, kde-format

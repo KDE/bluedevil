@@ -47,7 +47,7 @@ msgstr "连接"
 #: ui/Device.qml:111
 #, kde-format
 msgid "Unblock the device first to be able to connect to it"
-msgstr ""
+msgstr "请先解除设备的屏蔽状态，然后才能连接它"
 
 #: ui/Device.qml:132
 #, kde-format
