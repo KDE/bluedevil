@@ -287,7 +287,8 @@ PlasmaExtras.ExpandableListItem {
                 profiles.push(i18n("Network"));
             }
 
-            if (!profiles.length) {
+            if (profiles.length === 0) {
+                // None of the above
                 profiles.push(i18n("Other device"));
             }
 
