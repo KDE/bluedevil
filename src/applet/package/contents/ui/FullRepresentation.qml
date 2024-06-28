@@ -25,7 +25,7 @@ PlasmaExtras.Representation {
 
     required property PlasmoidItem plasmoidItem
     required property PlasmaCore.Action addDeviceAction
-    required property PlasmaCore.Action enableBluetoothAction
+    required property PlasmaCore.Action toggleBluetoothAction
 
     readonly property bool emptyList: BluezQt.Manager.devices.length === 0
 
@@ -58,12 +58,12 @@ PlasmaExtras.Representation {
 
     // Unlike the associated Plasma Action, this one is for a non-checkable button
     QQC2.Action {
-        id: enableBluetoothAction
+        id: toggleBluetoothAction
 
         text: i18n("Enable")
-        icon.name: root.enableBluetoothAction.icon.name
+        icon.name: root.toggleBluetoothAction.icon.name
 
-        onTriggered: source => root.enableBluetoothAction.trigger()
+        onTriggered: source => root.toggleBluetoothAction.trigger()
     }
 
     header: Toolbar {
@@ -71,7 +71,7 @@ PlasmaExtras.Representation {
 
         plasmoidItem: root.plasmoidItem
         addDeviceAction: root.addDeviceAction
-        enableBluetoothAction: root.enableBluetoothAction
+        toggleBluetoothAction: root.toggleBluetoothAction
 
         visible: BluezQt.Manager.adapters.length > 0
         focus: true
@@ -170,7 +170,7 @@ PlasmaExtras.Representation {
                         if (BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown) {
                             return null;
                         } else if (BluezQt.Manager.bluetoothBlocked) {
-                            return enableBluetoothAction;
+                            return toggleBluetoothAction;
                         } else if (root.emptyList) {
                             return addBluetoothDeviceAction;
                         } else {

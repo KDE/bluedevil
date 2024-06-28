@@ -23,7 +23,7 @@ PlasmaExtras.PlasmoidHeading {
 
     required property PlasmoidItem plasmoidItem
     required property PlasmaCore.Action addDeviceAction
-    required property PlasmaCore.Action enableBluetoothAction
+    required property PlasmaCore.Action toggleBluetoothAction
 
     readonly property alias onSwitch: onSwitch
 
@@ -35,12 +35,12 @@ PlasmaExtras.PlasmoidHeading {
 
         PlasmaComponents3.Switch {
             id: onSwitch
-            text: root.enableBluetoothAction.text
-            icon.name: root.enableBluetoothAction.icon.name
-            checked: root.enableBluetoothAction.checked
-            enabled: root.enableBluetoothAction.visible
+            text: root.toggleBluetoothAction.text
+            icon.name: root.toggleBluetoothAction.icon.name
+            checked: root.toggleBluetoothAction.checked
+            enabled: root.toggleBluetoothAction.visible
             focus: root.plasmoidItem.expanded
-            onToggled: root.enableBluetoothAction.trigger()
+            onToggled: root.toggleBluetoothAction.trigger()
         }
 
         Item {
