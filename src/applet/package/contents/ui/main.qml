@@ -33,6 +33,7 @@ PlasmoidItem {
     // TODO remove once it gains that feature.
     compactRepresentation: CompactRepresentation {
         plasmoidItem: root
+        enableBluetoothAction: root.enableBluetoothAction
     }
 
     fullRepresentation: FullRepresentation {
@@ -93,14 +94,12 @@ PlasmoidItem {
         }
     }
 
-    function toggleBluetooth(): void {
-        const enable = !BluezQt.Manager.bluetoothOperational;
+    function setBluetoothEnabled(enable: bool): void {
         BluezQt.Manager.bluetoothBlocked = !enable;
 
-        for (let i = 0; i < BluezQt.Manager.adapters.length; ++i) {
-            const adapter = BluezQt.Manager.adapters[i];
+        BluezQt.Manager.adapters.forEach(adapter => {
             adapter.powered = enable;
-        }
+        });
     }
 
     Plasmoid.contextualActions: [
@@ -119,7 +118,9 @@ PlasmoidItem {
             checkable: true
             checked: BluezQt.Manager.bluetoothOperational
             visible: BluezQt.Manager.bluetoothBlocked || BluezQt.Manager.adapters.length > 0
-            onTriggered: checked => toggleBluetooth()
+            onTriggered: checked => {
+                root.setBluetoothEnabled(checked);
+            }
         }
     ]
 
