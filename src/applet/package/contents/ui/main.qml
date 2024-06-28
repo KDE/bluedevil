@@ -42,7 +42,7 @@ PlasmoidItem {
         toggleBluetoothAction: root.toggleBluetoothAction
     }
 
-    Plasmoid.status: (BluezQt.Manager.bluetoothOperational) ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.PassiveStatus
+    Plasmoid.status: BluezQt.Manager.bluetoothOperational ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.PassiveStatus
     Plasmoid.busy: runningActions > 0
 
     Plasmoid.icon: {
