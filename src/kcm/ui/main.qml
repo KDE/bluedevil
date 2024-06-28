@@ -30,7 +30,7 @@ KCMUtils.ScrollViewKCM {
 
     actions: [
         Kirigami.Action {
-            id: enableAction
+            id: toggleBluetoothAction
             text: i18nc("@action: button as in, 'enable Bluetooth'", "Enabled")
             icon.name: "network-bluetooth-symbolic"
             checkable: true
@@ -40,7 +40,7 @@ KCMUtils.ScrollViewKCM {
                 root.toggleBluetooth();
             }
             displayComponent: QQC2.Switch {
-                action: enableAction
+                action: toggleBluetoothAction
             }
         },
         Kirigami.Action {

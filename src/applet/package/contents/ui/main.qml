@@ -23,7 +23,7 @@ PlasmoidItem {
     property int runningActions: 0
 
     readonly property alias addDeviceAction: addDeviceAction
-    readonly property alias enableBluetoothAction: enableBluetoothAction
+    readonly property alias toggleBluetoothAction: toggleBluetoothAction
 
     switchWidth: Kirigami.Units.gridUnit * 15
     switchHeight: Kirigami.Units.gridUnit * 10
@@ -33,13 +33,13 @@ PlasmoidItem {
     // TODO remove once it gains that feature.
     compactRepresentation: CompactRepresentation {
         plasmoidItem: root
-        enableBluetoothAction: root.enableBluetoothAction
+        toggleBluetoothAction: root.toggleBluetoothAction
     }
 
     fullRepresentation: FullRepresentation {
         plasmoidItem: root
         addDeviceAction: root.addDeviceAction
-        enableBluetoothAction: root.enableBluetoothAction
+        toggleBluetoothAction: root.toggleBluetoothAction
     }
 
     Plasmoid.status: (BluezQt.Manager.bluetoothOperational) ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.PassiveStatus
@@ -111,7 +111,7 @@ PlasmoidItem {
             onTriggered: checked => PlasmaBt.LaunchApp.launchWizard()
         },
         PlasmaCore.Action {
-            id: enableBluetoothAction
+            id: toggleBluetoothAction
             text: i18n("Enable Bluetooth")
             icon.name: "preferences-system-bluetooth-symbolic"
             priority: PlasmaCore.Action.LowPriority

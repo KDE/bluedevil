@@ -18,7 +18,7 @@ MouseArea {
     id: root
 
     required property PlasmoidItem plasmoidItem
-    required property PlasmaCore.Action enableBluetoothAction
+    required property PlasmaCore.Action toggleBluetoothAction
 
     readonly property bool inPanel: [
         PlasmaCore.Types.TopEdge,
@@ -37,7 +37,7 @@ MouseArea {
 
     onClicked: mouse => {
         if (mouse.button === Qt.MiddleButton) {
-            root.enableBluetoothAction.trigger();
+            root.toggleBluetoothAction.trigger();
         } else {
             plasmoidItem.expanded = !wasExpanded;
         }
