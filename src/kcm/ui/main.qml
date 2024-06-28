@@ -37,7 +37,7 @@ KCMUtils.ScrollViewKCM {
             checked: BluezQt.Manager.bluetoothOperational
             visible: BluezQt.Manager.rfkill.state !== BluezQt.Rfkill.Unknown
             onToggled: source => {
-                root.setBluetoothEnabled(!BluezQt.Manager.bluetoothOperational)
+                root.toggleBluetooth();
             }
             displayComponent: QQC2.Switch {
                 action: enableAction
@@ -90,11 +90,16 @@ KCMUtils.ScrollViewKCM {
     implicitHeight: Kirigami.Units.gridUnit * 28
     implicitWidth: Kirigami.Units.gridUnit * 28
 
-    function setBluetoothEnabled(enabled: bool): void {
-        BluezQt.Manager.bluetoothBlocked = !enabled;
+    function toggleBluetooth(): void {
+        const enable = !BluezQt.Manager.bluetoothOperational;
+        setBluetoothEnabled(enable);
+    }
+
+    function setBluetoothEnabled(enable: bool): void {
+        BluezQt.Manager.bluetoothBlocked = !enable;
 
         BluezQt.Manager.adapters.forEach(adapter => {
-            adapter.powered = enabled;
+            adapter.powered = enable;
         });
     }
 
@@ -134,7 +139,7 @@ KCMUtils.ScrollViewKCM {
                 icon.name: "network-bluetooth-symbolic"
                 text: i18n("Enable")
                 onTriggered: {
-                    root.setBluetoothEnabled(true)
+                    root.setBluetoothEnabled(true);
                 }
             }
         }
