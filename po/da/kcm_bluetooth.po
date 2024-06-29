@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-25 00:39+0000\n"
+"POT-Creation-Date: 2024-06-29 00:40+0000\n"
 "PO-Revision-Date: 2020-10-04 17:14+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -83,29 +83,35 @@ msgstr "Navn:"
 msgid "Trusted"
 msgstr "Betroet"
 
-#: ui/Device.qml:164 ui/main.qml:173
+#: ui/Device.qml:167 ui/main.qml:173
 #, kde-format
 msgid "Blocked"
 msgstr "Blokeret"
 
-#: ui/Device.qml:171
+#: ui/Device.qml:173
+#, kde-format
+msgid ""
+"Any incoming connections from a blocked device will be immediately rejected."
+msgstr ""
+
+#: ui/Device.qml:179
 #, kde-format
 msgid "Send File"
 msgstr "Send fil"
 
-#: ui/Device.qml:179
+#: ui/Device.qml:187
 #, fuzzy, kde-format
 #| msgid "Setup NAP Network..."
 msgid "Setup NAP Network…"
 msgstr "Sæt NAP-netværk op..."
 
-#: ui/Device.qml:187
+#: ui/Device.qml:195
 #, fuzzy, kde-format
 #| msgid "Setup DUN Network..."
 msgid "Setup DUN Network…"
 msgstr "Sæt DUN-netværk op..."
 
-#: ui/Device.qml:202
+#: ui/Device.qml:210
 #, fuzzy, kde-format
 #| msgid "Device:"
 msgctxt "@action:button Forget the Bluetooth device"

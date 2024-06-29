@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-25 00:39+0000\n"
-"PO-Revision-Date: 2024-06-08 10:47+0200\n"
+"POT-Creation-Date: 2024-06-29 00:40+0000\n"
+"PO-Revision-Date: 2024-06-28 16:51+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -47,7 +47,7 @@ msgstr "Konekti"
 #: ui/Device.qml:111
 #, kde-format
 msgid "Unblock the device first to be able to connect to it"
-msgstr ""
+msgstr "Malbloku la aparaton unue por ebligi kontekti al ĝi"
 
 #: ui/Device.qml:132
 #, kde-format
@@ -84,27 +84,33 @@ msgstr "Nomo:"
 msgid "Trusted"
 msgstr "Fidinda"
 
-#: ui/Device.qml:164 ui/main.qml:173
+#: ui/Device.qml:167 ui/main.qml:173
 #, kde-format
 msgid "Blocked"
 msgstr "Blokita"
 
-#: ui/Device.qml:171
+#: ui/Device.qml:173
+#, kde-format
+msgid ""
+"Any incoming connections from a blocked device will be immediately rejected."
+msgstr ""
+
+#: ui/Device.qml:179
 #, kde-format
 msgid "Send File"
 msgstr "Sendi Dosieron"
 
-#: ui/Device.qml:179
+#: ui/Device.qml:187
 #, kde-format
 msgid "Setup NAP Network…"
 msgstr "Agordi NAP-reton…"
 
-#: ui/Device.qml:187
+#: ui/Device.qml:195
 #, kde-format
 msgid "Setup DUN Network…"
 msgstr "Agordi DUN-reton…"
 
-#: ui/Device.qml:202
+#: ui/Device.qml:210
 #, kde-format
 msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"

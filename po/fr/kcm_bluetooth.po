@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-25 00:39+0000\n"
-"PO-Revision-Date: 2024-06-08 08:14+0200\n"
+"POT-Creation-Date: 2024-06-29 00:40+0000\n"
+"PO-Revision-Date: 2024-06-27 11:20+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -23,10 +23,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
-"X-Text-Markup: kde4\n"
+"X-Environment: kde\n"
 "X-Generator: Lokalize 23.08.5\n"
+"X-Text-Markup: kde4\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -61,7 +61,7 @@ msgstr "Connecter"
 #: ui/Device.qml:111
 #, kde-format
 msgid "Unblock the device first to be able to connect to it"
-msgstr ""
+msgstr "Débloquez d'abord le périphérique pour pouvoir vous y connecter"
 
 #: ui/Device.qml:132
 #, kde-format
@@ -98,27 +98,33 @@ msgstr "Nom :"
 msgid "Trusted"
 msgstr "Fiable"
 
-#: ui/Device.qml:164 ui/main.qml:173
+#: ui/Device.qml:167 ui/main.qml:173
 #, kde-format
 msgid "Blocked"
 msgstr "Bloqué"
 
-#: ui/Device.qml:171
+#: ui/Device.qml:173
+#, kde-format
+msgid ""
+"Any incoming connections from a blocked device will be immediately rejected."
+msgstr ""
+
+#: ui/Device.qml:179
 #, kde-format
 msgid "Send File"
 msgstr "Envoyer un fichier"
 
-#: ui/Device.qml:179
+#: ui/Device.qml:187
 #, kde-format
 msgid "Setup NAP Network…"
 msgstr "Configurer un réseau NAP..."
 
-#: ui/Device.qml:187
+#: ui/Device.qml:195
 #, kde-format
 msgid "Setup DUN Network…"
 msgstr "Configurer un réseau DUN…"
 
-#: ui/Device.qml:202
+#: ui/Device.qml:210
 #, kde-format
 msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"
