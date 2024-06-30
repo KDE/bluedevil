@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-18 00:38+0000\n"
-"PO-Revision-Date: 2024-02-18 19:26+0100\n"
+"PO-Revision-Date: 2024-06-29 22:27+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.05.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -195,7 +195,7 @@ msgstr "Ahaztu gailu hau?"
 #: ui/main.qml:89
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
-msgstr "Ziur zaude «%1» ahaztu nahi duzula?"
+msgstr "Ziur zaude \"%1\" ahaztu nahi duzula?"
 
 #: ui/main.qml:100
 #, kde-format
@@ -256,7 +256,7 @@ msgstr "Erabilgarri"
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
-msgstr "Ahaztu «%1»"
+msgstr "Ahaztu \"%1\""
 
 #: ui/main.qml:284
 #, kde-format
