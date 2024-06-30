@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kcm_bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-29 00:40+0000\n"
-"PO-Revision-Date: 2024-06-25 17:48+0200\n"
+"PO-Revision-Date: 2024-06-29 21:39+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -95,6 +95,8 @@ msgstr "Bloqueado"
 msgid ""
 "Any incoming connections from a blocked device will be immediately rejected."
 msgstr ""
+"Cualquier conexión entrante de un dispositivo bloqueado se rechazará "
+"inmediatamente."
 
 #: ui/Device.qml:179
 #, kde-format

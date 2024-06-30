@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-29 00:40+0000\n"
-"PO-Revision-Date: 2024-06-26 11:59+0200\n"
+"PO-Revision-Date: 2024-06-29 06:56+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -93,7 +93,7 @@ msgstr "Blokiran"
 #, kde-format
 msgid ""
 "Any incoming connections from a blocked device will be immediately rejected."
-msgstr ""
+msgstr "Kakršnakoli dohodna povezava z blokirane naprave bo takoj zavrnjena."
 
 #: ui/Device.qml:179
 #, kde-format

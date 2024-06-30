@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-29 00:40+0000\n"
-"PO-Revision-Date: 2024-02-18 19:26+0100\n"
+"PO-Revision-Date: 2024-06-29 22:27+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.05.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -49,7 +49,7 @@ msgstr "Konektatu"
 #: ui/Device.qml:111
 #, kde-format
 msgid "Unblock the device first to be able to connect to it"
-msgstr ""
+msgstr "Aurrena desblokeatu gailua hartara konektatu ahal izateko"
 
 #: ui/Device.qml:132
 #, kde-format
@@ -96,6 +96,7 @@ msgstr "Blokeatuta"
 msgid ""
 "Any incoming connections from a blocked device will be immediately rejected."
 msgstr ""
+"Blokeatutako gailu baten sarrerako edozein konexio berehala errefusatuko da."
 
 #: ui/Device.qml:179
 #, kde-format
@@ -113,18 +114,16 @@ msgid "Setup DUN Network…"
 msgstr "Ezarri DUN sarea..."
 
 #: ui/Device.qml:210
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the name of a Bluetooth device"
-#| msgid "Forget \"%1\""
+#, kde-format
 msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"
-msgstr "Ahaztu «%1»"
+msgstr "Ahaztu"
 
 #: ui/ForgetDeviceAction.qml:17
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
-msgstr "Ahaztu «%1»"
+msgstr "Ahaztu \"%1\""
 
 #: ui/ForgetDeviceDialog.qml:34
 #, kde-format
@@ -134,7 +133,7 @@ msgstr "Ahaztu gailu hau?"
 #: ui/ForgetDeviceDialog.qml:35
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
-msgstr "Ziur zaude «%1» ahaztu nahi duzula?"
+msgstr "Ziur zaude \"%1\" ahaztu nahi duzula?"
 
 #: ui/ForgetDeviceDialog.qml:47
 #, kde-format
