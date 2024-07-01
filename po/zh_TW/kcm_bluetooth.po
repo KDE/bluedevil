@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-29 00:40+0000\n"
-"PO-Revision-Date: 2024-06-26 06:41+0900\n"
+"PO-Revision-Date: 2024-06-30 11:16+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -95,7 +95,7 @@ msgstr "已封鎖"
 #, kde-format
 msgid ""
 "Any incoming connections from a blocked device will be immediately rejected."
-msgstr ""
+msgstr "來自已封鎖的裝置的任何連線都會馬上被回絕。"
 
 #: ui/Device.qml:179
 #, kde-format
