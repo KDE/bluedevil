@@ -93,7 +93,7 @@ msgstr "已屏蔽"
 #, kde-format
 msgid ""
 "Any incoming connections from a blocked device will be immediately rejected."
-msgstr ""
+msgstr "来自已屏蔽设备的任何传入连接将被立即拒绝。"
 
 #: ui/Device.qml:179
 #, kde-format
