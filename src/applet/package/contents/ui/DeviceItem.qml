@@ -27,20 +27,18 @@ PlasmaExtras.ExpandableListItem {
     required property int index
     required property var model
 
-    property bool connecting: false
-    property bool connectionFailed: false
     property list<string> currentDeviceDetails
 
     icon: model.Icon
     title: model.DeviceFullName
     subtitle: infoText()
-    isBusy: connecting
+    isBusy: model.Connecting
     isDefault: model.Connected
     defaultActionButtonAction: QQC2.Action {
         icon.name: root.model.Connected ? "network-disconnect-symbolic" : "network-connect-symbolic"
         text: root.model.Connected ? i18n("Disconnect") : i18n("Connect")
         onTriggered: source => {
-            root.connectToDevice();
+            root.toggleDevice();
         }
     }
 
@@ -238,7 +236,7 @@ PlasmaExtras.ExpandableListItem {
     }
 
     function infoText(): string {
-        if (connecting) {
+        if (model.Connecting) {
             return model.Connected ? i18n("Disconnecting") : i18n("Connecting");
         }
 
@@ -246,7 +244,7 @@ PlasmaExtras.ExpandableListItem {
 
         if (model.Connected) {
             labels.push(i18n("Connected"));
-        } else if (connectionFailed) {
+        } else if (model.ConnectionFailed) {
             labels.push(i18n("Connection failed"));
         }
 
@@ -302,58 +300,15 @@ PlasmaExtras.ExpandableListItem {
         return labels.join(" · ");
     }
 
-    function errorText(call: BluezQt.PendingCall): string {
-        switch (call.error) {
-        case BluezQt.PendingCall.Failed:
-            return (call.errorText === "Host is down")
-                ? i18nc("Notification when the connection failed due to Failed:HostIsDown",
-                        "The device is unreachable")
-                : i18nc("Notification when the connection failed due to Failed",
-                        "Connection to the device failed");
-
-        case BluezQt.PendingCall.NotReady:
-            return i18nc("Notification when the connection failed due to NotReady",
-                         "The device is not ready");
-
-        default:
-            return "";
-        }
-    }
-
-    function connectToDevice(): void {
-        if (connecting) {
+    function toggleDevice(): void {
+        if (model.Connecting) {
             return;
         }
 
-        connecting = true;
-        runningActions++;
+        const /*PendingCall*/call = model.Connected
+            ? model.Device.disconnectFromDevice()
+            : model.Device.connectToDevice();
 
-        // Disconnect device
-        if (model.Connected) {
-            model.Device.disconnectFromDevice().finished.connect(call => {
-                connecting = false;
-                runningActions--;
-            });
-            return;
-        }
-
-        // Connect device
-        const /*PendingCall*/call = model.Device.connectToDevice();
-        call.userData = model.Device;
-        connectionFailed = false;
-
-        call.finished.connect(call => {
-            connecting = false;
-            runningActions--;
-
-            if (call.error) {
-                connectionFailed = true;
-                const device = call.userData;
-                const title = i18nc("@label %1 is human-readable device name, %2 is low-level device address", "%1 (%2)", device.name, device.address);
-                const text = errorText(call);
-
-                PlasmaBt.Notify.connectionFailed(title, text);
-            }
-        });
+        PlasmaBt.SharedDevicesStateProxyModel.registerPendingCallForDeviceUbi(call, model.Ubi);
     }
 }

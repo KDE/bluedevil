@@ -35,6 +35,12 @@ PlasmaExtras.Representation {
     focus: true
     collapseMarginsHint: true
 
+    PlasmaBt.DevicesProxyModel {
+        id: devicesModel
+        hideBlockedDevices: true
+        sourceModel: PlasmaBt.SharedDevicesStateProxyModel
+    }
+
     Keys.onDownPressed: event => {
         if (listView.count === 0) {
             return;
@@ -88,11 +94,7 @@ PlasmaExtras.Representation {
 
         contentItem: ListView {
             id: listView
-            readonly property var devicesModel: PlasmaBt.DevicesProxyModel {
-                id: devicesModel
-                hideBlockedDevices: true
-                sourceModel: BluezQt.DevicesModel { }
-            }
+
             model: BluezQt.Manager.adapters.length > 0 && !BluezQt.Manager.bluetoothBlocked ? devicesModel : null
             clip: true
             currentIndex: -1

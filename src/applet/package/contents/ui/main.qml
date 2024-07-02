@@ -20,8 +20,6 @@ import org.kde.plasma.private.bluetooth as PlasmaBt
 PlasmoidItem {
     id: root
 
-    property int runningActions: 0
-
     readonly property alias addDeviceAction: addDeviceAction
     readonly property alias toggleBluetoothAction: toggleBluetoothAction
 
@@ -43,7 +41,7 @@ PlasmoidItem {
     }
 
     Plasmoid.status: BluezQt.Manager.bluetoothOperational ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.PassiveStatus
-    Plasmoid.busy: runningActions > 0
+    Plasmoid.busy: PlasmaBt.SharedDevicesStateProxyModel.connecting
 
     Plasmoid.icon: {
         if (BluezQt.Manager.connectedDevices.length > 0) {

@@ -22,6 +22,8 @@ public:
     enum AdditionalRoles {
         SectionRole = BluezQt::DevicesModel::LastRole + 10,
         DeviceFullNameRole = BluezQt::DevicesModel::LastRole + 11,
+
+        LastRole = DeviceFullNameRole,
     };
 
     explicit DevicesProxyModel(QObject *parent = nullptr);
