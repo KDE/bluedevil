@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-29 00:40+0000\n"
-"PO-Revision-Date: 2024-03-18 15:00+0000\n"
-"Last-Translator: Guðmundur Erlingsson <gudmundure@gmail.com>\n"
+"PO-Revision-Date: 2024-06-29 13:46+0000\n"
+"Last-Translator: Gummi <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
 "Language: is\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -46,7 +46,7 @@ msgstr "Tengjast"
 #: ui/Device.qml:111
 #, kde-format
 msgid "Unblock the device first to be able to connect to it"
-msgstr ""
+msgstr "Gefðu fyrst leyfi til að tengjast tækinu til að geta tengst því"
 
 #: ui/Device.qml:132
 #, kde-format
@@ -93,6 +93,7 @@ msgstr "Útilokað"
 msgid ""
 "Any incoming connections from a blocked device will be immediately rejected."
 msgstr ""
+"Öllum tengingum á innleið frá útilokuðu tæki verður umsvifalaust hafnað."
 
 #: ui/Device.qml:179
 #, kde-format
@@ -110,12 +111,10 @@ msgid "Setup DUN Network…"
 msgstr "Setja upp DUN-net..."
 
 #: ui/Device.qml:210
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the name of a Bluetooth device"
-#| msgid "Forget \"%1\""
+#, kde-format
 msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"
-msgstr "Gleyma \"%1\""
+msgstr "Gleyma"
 
 #: ui/ForgetDeviceAction.qml:17
 #, kde-format

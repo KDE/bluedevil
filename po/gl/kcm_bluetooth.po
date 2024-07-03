@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-29 00:40+0000\n"
-"PO-Revision-Date: 2024-06-27 20:59+0200\n"
+"PO-Revision-Date: 2024-07-02 17:46+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -94,6 +94,8 @@ msgstr "Bloqueado"
 msgid ""
 "Any incoming connections from a blocked device will be immediately rejected."
 msgstr ""
+"As conexións entrantes de dispositivos bloqueados rexeitaranse "
+"inmediatamente."
 
 #: ui/Device.qml:179
 #, kde-format
