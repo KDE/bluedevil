@@ -10,6 +10,8 @@ target_sources(bluetoothplugin PRIVATE
     devicesstateproxymodel.h
     launchapp.cpp
     launchapp.h
+    utils.cpp
+    utils.h
 )
 
 set_source_files_properties(

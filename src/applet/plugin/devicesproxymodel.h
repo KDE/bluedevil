@@ -36,8 +36,6 @@ public:
     bool lessThan(const QModelIndex &left, const QModelIndex &right) const override;
     bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const override;
 
-    Q_INVOKABLE QString adapterHciString(const QString &ubi) const;
-
 Q_SIGNALS:
     void hideBlockedDevicesChanged();
 

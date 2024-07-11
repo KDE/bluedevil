@@ -206,7 +206,7 @@ PlasmaExtras.ExpandableListItem {
     }
 
     function adapterName(adapter: BluezQt.Adapter): string {
-        const hci = devicesModel.adapterHciString(adapter.ubi);
+        const hci = PlasmaBt.Utils.adapterHciString(adapter.ubi);
         return (hci !== "")
             ? i18nc("@label %1 is human-readable adapter name, %2 is HCI", "%1 (%2)", adapter.name, hci)
             : adapter.name;

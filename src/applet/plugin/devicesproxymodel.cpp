@@ -5,6 +5,7 @@
 */
 
 #include "devicesproxymodel.h"
+#include "utils.h"
 
 #include <BluezQt/Adapter>
 #include <BluezQt/Device>
@@ -56,7 +57,7 @@ QVariant DevicesProxyModel::data(const QModelIndex &index, int role) const
         if (duplicateIndexAddress(index)) {
             const QString &name = QSortFilterProxyModel::data(index, BluezQt::DevicesModel::NameRole).toString();
             const QString &ubi = QSortFilterProxyModel::data(index, BluezQt::DevicesModel::UbiRole).toString();
-            const QString &hci = adapterHciString(ubi);
+            const QString &hci = Utils::adapterHciString(ubi);
 
             if (!hci.isEmpty()) {
                 return QStringLiteral("%1 - %2").arg(name, hci);
@@ -95,23 +96,6 @@ bool DevicesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &rig
     const QString &rightName = right.data(BluezQt::DevicesModel::NameRole).toString();
 
     return QString::localeAwareCompare(leftName, rightName) > 0;
-}
-
-// Returns "hciX" part from UBI "/org/bluez/hciX/dev_xx_xx_xx_xx_xx_xx"
-QString DevicesProxyModel::adapterHciString(const QString &ubi) const
-{
-    int startIndex = ubi.indexOf(QLatin1String("/hci")) + 1;
-
-    if (startIndex < 1) {
-        return QString();
-    }
-
-    int endIndex = ubi.indexOf(QLatin1Char('/'), startIndex);
-
-    if (endIndex == -1) {
-        return ubi.mid(startIndex);
-    }
-    return ubi.mid(startIndex, endIndex - startIndex);
 }
 
 bool DevicesProxyModel::duplicateIndexAddress(const QModelIndex &idx) const
