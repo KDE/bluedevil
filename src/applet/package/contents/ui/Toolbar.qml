@@ -50,7 +50,7 @@ PlasmaExtras.PlasmoidHeading {
         PlasmaComponents3.ToolButton {
             id: addDeviceButton
 
-            property QtObject /*QAction*/ qAction: root.addDeviceAction
+            readonly property PlasmaCore.Action qAction: root.addDeviceAction
 
             visible: !(Plasmoid.containmentDisplayHints & PlasmaCore.Types.ContainmentDrawsPlasmoidHeading)
             enabled: qAction.visible
@@ -68,7 +68,7 @@ PlasmaExtras.PlasmoidHeading {
         PlasmaComponents3.ToolButton {
             id: openSettingsButton
 
-            property QtObject /*QAction*/ qAction: Plasmoid.internalAction("configure")
+            readonly property PlasmaCore.Action qAction: Plasmoid.internalAction("configure")
 
             visible: !(Plasmoid.containmentDisplayHints & PlasmaCore.Types.ContainmentDrawsPlasmoidHeading)
             icon.name: "configure-symbolic"
