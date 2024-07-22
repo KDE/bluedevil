@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-29 00:40+0000\n"
+"POT-Creation-Date: 2024-07-22 00:40+0000\n"
 "PO-Revision-Date: 2024-06-29 22:27+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -36,12 +36,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 sarea (%2)"
 
-#: ui/Device.qml:108 ui/main.qml:205
+#: ui/Device.qml:108 ui/main.qml:210
 #, kde-format
 msgid "Disconnect"
 msgstr "Deskonektatu"
 
-#: ui/Device.qml:108 ui/main.qml:205
+#: ui/Device.qml:108 ui/main.qml:210
 #, kde-format
 msgid "Connect"
 msgstr "Konektatu"
@@ -86,7 +86,7 @@ msgstr "Izena:"
 msgid "Trusted"
 msgstr "Konfiantzazkoa"
 
-#: ui/Device.qml:167 ui/main.qml:173
+#: ui/Device.qml:167 ui/main.qml:178
 #, kde-format
 msgid "Blocked"
 msgstr "Blokeatuta"
@@ -233,32 +233,32 @@ msgstr "Gehitu gailu berria..."
 msgid "Configure…"
 msgstr "Konfiguratu..."
 
-#: ui/main.qml:119
+#: ui/main.qml:124
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "Ez da Bluetooth moldagailurik aurkitu "
 
-#: ui/main.qml:120
+#: ui/main.qml:125
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
 msgstr "Kanpoko Bluetooth egokigailu bat konektatzea"
 
-#: ui/main.qml:129
+#: ui/main.qml:134
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth ezgaituta dago"
 
-#: ui/main.qml:135
+#: ui/main.qml:140
 #, kde-format
 msgid "Enable"
 msgstr "Gaitu"
 
-#: ui/main.qml:145
+#: ui/main.qml:150
 #, kde-format
 msgid "No devices paired"
 msgstr "Ez dago parekatutako gailurik"
 
-#: ui/main.qml:146
+#: ui/main.qml:151
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Add New Device…</interface> to pair some"
@@ -266,17 +266,17 @@ msgstr ""
 "Egin klik <interface>Gehitu gailu berria…</interface> aukeran baten bat "
 "parekatzeko"
 
-#: ui/main.qml:175
+#: ui/main.qml:180
 #, kde-format
 msgid "Connected"
 msgstr "Konektatuta"
 
-#: ui/main.qml:177
+#: ui/main.qml:182
 #, kde-format
 msgid "Available"
 msgstr "Erabilgarri"
 
-#: ui/main.qml:241
+#: ui/main.qml:246
 #, kde-format
 msgid "%1% Battery"
 msgstr "%%1 bateria"

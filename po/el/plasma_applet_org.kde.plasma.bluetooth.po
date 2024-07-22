@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-25 00:39+0000\n"
+"POT-Creation-Date: 2024-07-22 00:40+0000\n"
 "PO-Revision-Date: 2023-01-04 10:55+0200\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -18,226 +18,201 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 21.12.3\n"
 
-#: package/contents/ui/DeviceItem.qml:41
+#: package/contents/ui/DeviceItem.qml:39
 #, kde-format
 msgid "Disconnect"
 msgstr "Αποσύνδεση"
 
-#: package/contents/ui/DeviceItem.qml:41
+#: package/contents/ui/DeviceItem.qml:39
 #, kde-format
 msgid "Connect"
 msgstr "Σύνδεση"
 
-#: package/contents/ui/DeviceItem.qml:52
+#: package/contents/ui/DeviceItem.qml:50
 #, kde-format
 msgid "Browse Files"
 msgstr "Περιήγηση στα αρχεία"
 
-#: package/contents/ui/DeviceItem.qml:63
+#: package/contents/ui/DeviceItem.qml:61
 #, kde-format
 msgid "Send File"
 msgstr "Αποστολή αρχείου"
 
-#: package/contents/ui/DeviceItem.qml:111
+#: package/contents/ui/DeviceItem.qml:109
 #, kde-format
 msgid "Copy"
 msgstr "Αντιγραφή"
 
-#: package/contents/ui/DeviceItem.qml:207
+#: package/contents/ui/DeviceItem.qml:205
 #, kde-format
 msgid "Yes"
 msgstr "Ναι"
 
-#: package/contents/ui/DeviceItem.qml:207
+#: package/contents/ui/DeviceItem.qml:205
 #, kde-format
 msgid "No"
 msgstr "Όχι"
 
-#: package/contents/ui/DeviceItem.qml:213
+#: package/contents/ui/DeviceItem.qml:211
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: package/contents/ui/DeviceItem.qml:221
+#: package/contents/ui/DeviceItem.qml:219
 #, kde-format
 msgid "Remote Name"
 msgstr "Όνομα απομακρυσμένης"
 
-#: package/contents/ui/DeviceItem.qml:225
+#: package/contents/ui/DeviceItem.qml:223
 #, kde-format
 msgid "Address"
 msgstr "Διεύθυνση"
 
-#: package/contents/ui/DeviceItem.qml:228
+#: package/contents/ui/DeviceItem.qml:226
 #, kde-format
 msgid "Paired"
 msgstr "Σε σύζευξη"
 
-#: package/contents/ui/DeviceItem.qml:231
+#: package/contents/ui/DeviceItem.qml:229
 #, kde-format
 msgid "Trusted"
 msgstr "Έμπιστη"
 
-#: package/contents/ui/DeviceItem.qml:234
+#: package/contents/ui/DeviceItem.qml:232
 #, kde-format
 msgid "Adapter"
 msgstr "Προσαρμογέας"
 
-#: package/contents/ui/DeviceItem.qml:242
+#: package/contents/ui/DeviceItem.qml:240
 #, kde-format
 msgid "Disconnecting"
 msgstr "Αποσύνδεση"
 
-#: package/contents/ui/DeviceItem.qml:242
+#: package/contents/ui/DeviceItem.qml:240
 #, kde-format
 msgid "Connecting"
 msgstr "Συνδέεται"
 
-#: package/contents/ui/DeviceItem.qml:248
+#: package/contents/ui/DeviceItem.qml:246
 #, kde-format
 msgid "Connected"
 msgstr "Συνδεδεμένο"
 
-#: package/contents/ui/DeviceItem.qml:250
+#: package/contents/ui/DeviceItem.qml:248
 #, fuzzy, kde-format
 #| msgctxt "Notification when the connection failed due to Failed"
 #| msgid "Connection to the device failed"
 msgid "Connection failed"
 msgstr "Η σύνδεση με τη συσκευή απέτυχε"
 
-#: package/contents/ui/DeviceItem.qml:257
+#: package/contents/ui/DeviceItem.qml:255
 #, kde-format
 msgid "Audio device"
 msgstr "Συσκευή ήχου"
 
-#: package/contents/ui/DeviceItem.qml:264
+#: package/contents/ui/DeviceItem.qml:262
 #, kde-format
 msgid "Input device"
 msgstr "Συσκευή εισόδου"
 
-#: package/contents/ui/DeviceItem.qml:268
+#: package/contents/ui/DeviceItem.qml:266
 #, kde-format
 msgid "Phone"
 msgstr "Τηλέφωνο"
 
-#: package/contents/ui/DeviceItem.qml:275
+#: package/contents/ui/DeviceItem.qml:273
 #, kde-format
 msgid "File transfer"
 msgstr "Μεταφορά αρχείου"
 
-#: package/contents/ui/DeviceItem.qml:278
+#: package/contents/ui/DeviceItem.qml:276
 #, kde-format
 msgid "Send file"
 msgstr "Αποστολή αρχείου"
 
-#: package/contents/ui/DeviceItem.qml:281
+#: package/contents/ui/DeviceItem.qml:279
 #, kde-format
 msgid "Input"
 msgstr "Είσοδος"
 
-#: package/contents/ui/DeviceItem.qml:284
+#: package/contents/ui/DeviceItem.qml:282
 #, kde-format
 msgid "Audio"
 msgstr "Ήχος"
 
-#: package/contents/ui/DeviceItem.qml:287
+#: package/contents/ui/DeviceItem.qml:285
 #, kde-format
 msgid "Network"
 msgstr "Δίκτυο"
 
-#: package/contents/ui/DeviceItem.qml:291
+#: package/contents/ui/DeviceItem.qml:290
 #, kde-format
 msgid "Other device"
 msgstr "Άλλη συσκευή"
 
-#: package/contents/ui/DeviceItem.qml:298 package/contents/ui/main.qml:79
-#: package/contents/ui/main.qml:88
+#: package/contents/ui/DeviceItem.qml:297 package/contents/ui/main.qml:78
+#: package/contents/ui/main.qml:87
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% μπαταρία"
 
-#: package/contents/ui/DeviceItem.qml:309
-#, kde-format
-msgctxt "Notification when the connection failed due to Failed:HostIsDown"
-msgid "The device is unreachable"
-msgstr "Η συσκευή δεν είναι προσβάσιμη"
-
-#: package/contents/ui/DeviceItem.qml:311
-#, kde-format
-msgctxt "Notification when the connection failed due to Failed"
-msgid "Connection to the device failed"
-msgstr "Η σύνδεση με τη συσκευή απέτυχε"
-
-#: package/contents/ui/DeviceItem.qml:315
-#, kde-format
-msgctxt "Notification when the connection failed due to NotReady"
-msgid "The device is not ready"
-msgstr "Η συσκευή δεν είναι έτοιμη"
-
-#: package/contents/ui/DeviceItem.qml:351
-#, kde-format
-msgctxt ""
-"@label %1 is human-readable device name, %2 is low-level device address"
-msgid "%1 (%2)"
-msgstr "%1 (%2)"
-
-#: package/contents/ui/FullRepresentation.qml:63
+#: package/contents/ui/FullRepresentation.qml:69
 #, kde-format
 msgid "Enable"
 msgstr "Ενεργοποίηση"
 
-#: package/contents/ui/FullRepresentation.qml:159
+#: package/contents/ui/FullRepresentation.qml:161
 #, kde-format
 msgid "No Bluetooth adapters available"
 msgstr "Μη διαθέσιμοι προσαρμογείς bluetooth"
 
-#: package/contents/ui/FullRepresentation.qml:161
+#: package/contents/ui/FullRepresentation.qml:163
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Το Bluetooth είναι απενεργοποιημένο"
 
-#: package/contents/ui/FullRepresentation.qml:163
+#: package/contents/ui/FullRepresentation.qml:165
 #, kde-format
 msgid "No devices found"
 msgstr "Δε βρέθηκαν συσκευές"
 
-#: package/contents/ui/main.qml:56
+#: package/contents/ui/main.qml:55
 #, kde-format
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
-#: package/contents/ui/main.qml:60
+#: package/contents/ui/main.qml:59
 #, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
 msgstr "Το Bluetooth είναι απενεργοποιημένο, ενεργοποιήστε το με μεσαίο κλικ"
 
-#: package/contents/ui/main.qml:64
+#: package/contents/ui/main.qml:63
 #, kde-format
 msgid "No adapters available"
 msgstr "Μη διαθέσιμοι προσαρμογείς"
 
-#: package/contents/ui/main.qml:66
+#: package/contents/ui/main.qml:65
 #, kde-format
 msgid "Bluetooth is offline"
 msgstr "Το Bluetooth είναι εκτός σύνδεσης"
 
-#: package/contents/ui/main.qml:69
+#: package/contents/ui/main.qml:68
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr "Μεσαίο κλικ για απενεργοποίηση του Bluetooth"
 
-#: package/contents/ui/main.qml:72
+#: package/contents/ui/main.qml:71
 #, kde-format
 msgid "No connected devices"
 msgstr "Καμία συνδεδεμένη συσκευή"
 
-#: package/contents/ui/main.qml:77
+#: package/contents/ui/main.qml:76
 #, kde-format
 msgid "%1 connected"
 msgstr "%1 σε σύνδεση"
 
-#: package/contents/ui/main.qml:84
+#: package/contents/ui/main.qml:83
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -245,20 +220,37 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 συνδεδεμένη συσκευή"
 msgstr[1] "%1 συνδεδεμένες συσκευές"
 
-#: package/contents/ui/main.qml:109
+#: package/contents/ui/main.qml:106
 #, kde-format
 msgid "Add New Device…"
 msgstr "Προσθήκη νέας συσκευής…"
 
-#: package/contents/ui/main.qml:116
+#: package/contents/ui/main.qml:113
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Ενεργοποίηση Bluetooth"
 
-#: package/contents/ui/main.qml:128
+#: package/contents/ui/main.qml:127
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Διαμόρφωση &Bluetooth…"
+
+#~ msgctxt "Notification when the connection failed due to Failed:HostIsDown"
+#~ msgid "The device is unreachable"
+#~ msgstr "Η συσκευή δεν είναι προσβάσιμη"
+
+#~ msgctxt "Notification when the connection failed due to Failed"
+#~ msgid "Connection to the device failed"
+#~ msgstr "Η σύνδεση με τη συσκευή απέτυχε"
+
+#~ msgctxt "Notification when the connection failed due to NotReady"
+#~ msgid "The device is not ready"
+#~ msgstr "Η συσκευή δεν είναι έτοιμη"
+
+#~ msgctxt ""
+#~ "@label %1 is human-readable device name, %2 is low-level device address"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 (%2)"
 
 #~ msgid "Bluetooth is Disabled"
 #~ msgstr "Το Bluetooth είναι απενεργοποιημένο"

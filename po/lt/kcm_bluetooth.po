@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-29 00:40+0000\n"
+"POT-Creation-Date: 2024-07-22 00:40+0000\n"
 "PO-Revision-Date: 2024-07-10 01:05+0300\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: none\n"
@@ -35,12 +35,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 tinklas (%2)"
 
-#: ui/Device.qml:108 ui/main.qml:205
+#: ui/Device.qml:108 ui/main.qml:210
 #, kde-format
 msgid "Disconnect"
 msgstr "Atsijungti"
 
-#: ui/Device.qml:108 ui/main.qml:205
+#: ui/Device.qml:108 ui/main.qml:210
 #, kde-format
 msgid "Connect"
 msgstr "Prisijungti"
@@ -85,7 +85,7 @@ msgstr "Pavadinimas:"
 msgid "Trusted"
 msgstr "Patikimas"
 
-#: ui/Device.qml:167 ui/main.qml:173
+#: ui/Device.qml:167 ui/main.qml:178
 #, kde-format
 msgid "Blocked"
 msgstr "Užblokuotas"
@@ -232,32 +232,32 @@ msgstr "Pridėti naują įrenginį…"
 msgid "Configure…"
 msgstr "Konfigūruoti…"
 
-#: ui/main.qml:119
+#: ui/main.qml:124
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "Nerasta jokių Bluetooth adapterių"
 
-#: ui/main.qml:120
+#: ui/main.qml:125
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
 msgstr "Prijunkite išorinį Bluetooth adapterį"
 
-#: ui/main.qml:129
+#: ui/main.qml:134
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth yra išjungtas"
 
-#: ui/main.qml:135
+#: ui/main.qml:140
 #, kde-format
 msgid "Enable"
 msgstr "Įjungti"
 
-#: ui/main.qml:145
+#: ui/main.qml:150
 #, kde-format
 msgid "No devices paired"
 msgstr "Nėra suporuotų įrenginių"
 
-#: ui/main.qml:146
+#: ui/main.qml:151
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Add New Device…</interface> to pair some"
@@ -265,17 +265,17 @@ msgstr ""
 "Norėdami juos pridėti, spustelėkite <interface>Pridėti naują įrenginį…</"
 "interface>"
 
-#: ui/main.qml:175
+#: ui/main.qml:180
 #, kde-format
 msgid "Connected"
 msgstr "Prisijungta"
 
-#: ui/main.qml:177
+#: ui/main.qml:182
 #, kde-format
 msgid "Available"
 msgstr "Prieinamas"
 
-#: ui/main.qml:241
+#: ui/main.qml:246
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% akumuliatorius"

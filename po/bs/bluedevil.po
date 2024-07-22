@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-14 00:39+0000\n"
+"POT-Creation-Date: 2024-07-22 00:40+0000\n"
 "PO-Revision-Date: 2014-11-11 13:36+0000\n"
 "Last-Translator: Naida Čongo <ncongo1@etf.unsa.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -31,6 +31,34 @@ msgid "Your emails"
 msgstr ""
 "Markolalic@etf.unsa.ba,samir.ribic@etf.unsa.ba,ncongo1@etf.unsa.ba,"
 "vljubovic@smartnet.ba"
+
+#: applet/plugin/devicesstateproxymodel.cpp:220
+#, fuzzy, kde-format
+#| msgctxt "This device is of type Network"
+#| msgid "Network"
+msgctxt ""
+"@label %1 is human-readable device name, %2 is low-level device address"
+msgid "%1 (%2)"
+msgstr "Mreža"
+
+#: applet/plugin/devicesstateproxymodel.cpp:235
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed:HostIsDown"
+msgid "The device is unreachable"
+msgstr ""
+
+#: applet/plugin/devicesstateproxymodel.cpp:236
+#, fuzzy, kde-format
+#| msgid "Connecting to the device"
+msgctxt "Notification when the connection failed due to Failed"
+msgid "Connection to the device failed"
+msgstr "Povezujem se s uređajem"
+
+#: applet/plugin/devicesstateproxymodel.cpp:239
+#, kde-format
+msgctxt "Notification when the connection failed due to NotReady"
+msgid "The device is not ready"
+msgstr ""
 
 #: kcm/bluetooth.cpp:102
 #, fuzzy, kde-format

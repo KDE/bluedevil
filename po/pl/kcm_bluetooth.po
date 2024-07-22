@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-29 00:40+0000\n"
-"PO-Revision-Date: 2024-06-16 11:00+0200\n"
+"POT-Creation-Date: 2024-07-22 00:40+0000\n"
+"PO-Revision-Date: 2024-07-21 07:02+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -34,12 +34,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "Sieć %1 (%2)"
 
-#: ui/Device.qml:108 ui/main.qml:205
+#: ui/Device.qml:108 ui/main.qml:210
 #, kde-format
 msgid "Disconnect"
 msgstr "Rozłącz"
 
-#: ui/Device.qml:108 ui/main.qml:205
+#: ui/Device.qml:108 ui/main.qml:210
 #, kde-format
 msgid "Connect"
 msgstr "Połącz"
@@ -47,7 +47,7 @@ msgstr "Połącz"
 #: ui/Device.qml:111
 #, kde-format
 msgid "Unblock the device first to be able to connect to it"
-msgstr ""
+msgstr "Najpierw odblokuj urządzenie, aby móc się do niego podłączyć"
 
 #: ui/Device.qml:132
 #, kde-format
@@ -84,7 +84,7 @@ msgstr "Nazwa:"
 msgid "Trusted"
 msgstr "Zaufane"
 
-#: ui/Device.qml:167 ui/main.qml:173
+#: ui/Device.qml:167 ui/main.qml:178
 #, kde-format
 msgid "Blocked"
 msgstr "Zablokowane"
@@ -94,6 +94,8 @@ msgstr "Zablokowane"
 msgid ""
 "Any incoming connections from a blocked device will be immediately rejected."
 msgstr ""
+"Każde przychodzące połączenie z zablokowanego urządzenie będzie natychmiast "
+"odrzucane."
 
 #: ui/Device.qml:179
 #, kde-format
@@ -230,49 +232,49 @@ msgstr "Dodaj nowe urządzenie..."
 msgid "Configure…"
 msgstr "Ustawienia..."
 
-#: ui/main.qml:119
+#: ui/main.qml:124
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "Nie znaleziono żadnego adaptera Bluetooth"
 
-#: ui/main.qml:120
+#: ui/main.qml:125
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
 msgstr "Podłącz zewnętrzny adapter Bluetooth"
 
-#: ui/main.qml:129
+#: ui/main.qml:134
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth jest wyłączony"
 
-#: ui/main.qml:135
+#: ui/main.qml:140
 #, kde-format
 msgid "Enable"
 msgstr "Włącz"
 
-#: ui/main.qml:145
+#: ui/main.qml:150
 #, kde-format
 msgid "No devices paired"
 msgstr "Nie sparowano żadnego urządzenia"
 
-#: ui/main.qml:146
+#: ui/main.qml:151
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Add New Device…</interface> to pair some"
 msgstr ""
 "Naciśnij <interface>Dodaj nowe urządzenie…</interface>, aby jakieś sparować"
 
-#: ui/main.qml:175
+#: ui/main.qml:180
 #, kde-format
 msgid "Connected"
 msgstr "Połączony"
 
-#: ui/main.qml:177
+#: ui/main.qml:182
 #, kde-format
 msgid "Available"
 msgstr "Dostępny"
 
-#: ui/main.qml:241
+#: ui/main.qml:246
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% Bateria"

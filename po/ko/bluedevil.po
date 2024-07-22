@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-14 00:39+0000\n"
+"POT-Creation-Date: 2024-07-22 00:40+0000\n"
 "PO-Revision-Date: 2023-08-25 20:56+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -26,6 +26,36 @@ msgstr "박신조"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde@peremen.name"
+
+#: applet/plugin/devicesstateproxymodel.cpp:220
+#, fuzzy, kde-format
+#| msgctxt "DeviceName Network (Service)"
+#| msgid "%1 Network (%2)"
+msgctxt ""
+"@label %1 is human-readable device name, %2 is low-level device address"
+msgid "%1 (%2)"
+msgstr "%1 네트워크(%2)"
+
+#: applet/plugin/devicesstateproxymodel.cpp:235
+#, fuzzy, kde-format
+#| msgid "This address is unavailable."
+msgctxt "Notification when the connection failed due to Failed:HostIsDown"
+msgid "The device is unreachable"
+msgstr "이 주소를 사용할 수 없습니다."
+
+#: applet/plugin/devicesstateproxymodel.cpp:236
+#, fuzzy, kde-format
+#| msgid "Connecting to the device"
+msgctxt "Notification when the connection failed due to Failed"
+msgid "Connection to the device failed"
+msgstr "장치에 연결하는 중"
+
+#: applet/plugin/devicesstateproxymodel.cpp:239
+#, fuzzy, kde-format
+#| msgid "Obexd service is not running."
+msgctxt "Notification when the connection failed due to NotReady"
+msgid "The device is not ready"
+msgstr "Obexd 서비스가 실행 중이 아닙니다."
 
 #: kcm/bluetooth.cpp:102
 #, kde-format

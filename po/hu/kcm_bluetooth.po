@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-29 00:40+0000\n"
+"POT-Creation-Date: 2024-07-22 00:40+0000\n"
 "PO-Revision-Date: 2024-07-07 14:30+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -34,12 +34,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 hálózat (%2)"
 
-#: ui/Device.qml:108 ui/main.qml:205
+#: ui/Device.qml:108 ui/main.qml:210
 #, kde-format
 msgid "Disconnect"
 msgstr "Kapcsolat bontása"
 
-#: ui/Device.qml:108 ui/main.qml:205
+#: ui/Device.qml:108 ui/main.qml:210
 #, kde-format
 msgid "Connect"
 msgstr "Kapcsolódás"
@@ -84,7 +84,7 @@ msgstr "Név:"
 msgid "Trusted"
 msgstr "Megbízható"
 
-#: ui/Device.qml:167 ui/main.qml:173
+#: ui/Device.qml:167 ui/main.qml:178
 #, kde-format
 msgid "Blocked"
 msgstr "Blokkolt"
@@ -232,32 +232,32 @@ msgstr "Új eszköz hozzáadása…"
 msgid "Configure…"
 msgstr "Beállítások…"
 
-#: ui/main.qml:119
+#: ui/main.qml:124
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "Nem található bluetooth adapter"
 
-#: ui/main.qml:120
+#: ui/main.qml:125
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
 msgstr "Csatlakoztasson egy külső Bluetooth-adaptert"
 
-#: ui/main.qml:129
+#: ui/main.qml:134
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "A Bluetooth ki van kapcsolva"
 
-#: ui/main.qml:135
+#: ui/main.qml:140
 #, kde-format
 msgid "Enable"
 msgstr "Bekapcsolás"
 
-#: ui/main.qml:145
+#: ui/main.qml:150
 #, kde-format
 msgid "No devices paired"
 msgstr "Nincs párosított eszköz"
 
-#: ui/main.qml:146
+#: ui/main.qml:151
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Add New Device…</interface> to pair some"
@@ -265,17 +265,17 @@ msgstr ""
 "Kattintson az <interface>Új eszköz hozzáadása…</interface> gombra "
 "párosításhoz"
 
-#: ui/main.qml:175
+#: ui/main.qml:180
 #, kde-format
 msgid "Connected"
 msgstr "Kapcsolódva"
 
-#: ui/main.qml:177
+#: ui/main.qml:182
 #, kde-format
 msgid "Available"
 msgstr "Elérhető"
 
-#: ui/main.qml:241
+#: ui/main.qml:246
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% akkumulátor"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-25 00:39+0000\n"
+"POT-Creation-Date: 2024-07-22 00:40+0000\n"
 "PO-Revision-Date: 2024-05-13 22:47+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -17,226 +17,201 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 24.02.2\n"
 
-#: package/contents/ui/DeviceItem.qml:41
+#: package/contents/ui/DeviceItem.qml:39
 #, kde-format
 msgid "Disconnect"
 msgstr "Прекъсване на връзката"
 
-#: package/contents/ui/DeviceItem.qml:41
+#: package/contents/ui/DeviceItem.qml:39
 #, kde-format
 msgid "Connect"
 msgstr "Свързване"
 
-#: package/contents/ui/DeviceItem.qml:52
+#: package/contents/ui/DeviceItem.qml:50
 #, kde-format
 msgid "Browse Files"
 msgstr "Преглед на файлове"
 
-#: package/contents/ui/DeviceItem.qml:63
+#: package/contents/ui/DeviceItem.qml:61
 #, kde-format
 msgid "Send File"
 msgstr "Изпращане на файл"
 
-#: package/contents/ui/DeviceItem.qml:111
+#: package/contents/ui/DeviceItem.qml:109
 #, kde-format
 msgid "Copy"
 msgstr "Копиране"
 
-#: package/contents/ui/DeviceItem.qml:207
+#: package/contents/ui/DeviceItem.qml:205
 #, kde-format
 msgid "Yes"
 msgstr "Да"
 
-#: package/contents/ui/DeviceItem.qml:207
+#: package/contents/ui/DeviceItem.qml:205
 #, kde-format
 msgid "No"
 msgstr "Не"
 
-#: package/contents/ui/DeviceItem.qml:213
+#: package/contents/ui/DeviceItem.qml:211
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: package/contents/ui/DeviceItem.qml:221
+#: package/contents/ui/DeviceItem.qml:219
 #, kde-format
 msgid "Remote Name"
 msgstr "Име на отдалечения компютър"
 
-#: package/contents/ui/DeviceItem.qml:225
+#: package/contents/ui/DeviceItem.qml:223
 #, kde-format
 msgid "Address"
 msgstr "Адрес"
 
-#: package/contents/ui/DeviceItem.qml:228
+#: package/contents/ui/DeviceItem.qml:226
 #, kde-format
 msgid "Paired"
 msgstr "Сдвоено"
 
-#: package/contents/ui/DeviceItem.qml:231
+#: package/contents/ui/DeviceItem.qml:229
 #, kde-format
 msgid "Trusted"
 msgstr "Доверен"
 
-#: package/contents/ui/DeviceItem.qml:234
+#: package/contents/ui/DeviceItem.qml:232
 #, kde-format
 msgid "Adapter"
 msgstr "Адаптер"
 
-#: package/contents/ui/DeviceItem.qml:242
+#: package/contents/ui/DeviceItem.qml:240
 #, kde-format
 msgid "Disconnecting"
 msgstr "Прекъсване на връзката"
 
-#: package/contents/ui/DeviceItem.qml:242
+#: package/contents/ui/DeviceItem.qml:240
 #, kde-format
 msgid "Connecting"
 msgstr "Свързване"
 
-#: package/contents/ui/DeviceItem.qml:248
+#: package/contents/ui/DeviceItem.qml:246
 #, kde-format
 msgid "Connected"
 msgstr "Свързано"
 
-#: package/contents/ui/DeviceItem.qml:250
+#: package/contents/ui/DeviceItem.qml:248
 #, kde-format
 msgid "Connection failed"
 msgstr "Връзката е неуспешна"
 
-#: package/contents/ui/DeviceItem.qml:257
+#: package/contents/ui/DeviceItem.qml:255
 #, kde-format
 msgid "Audio device"
 msgstr "Аудио устройство"
 
-#: package/contents/ui/DeviceItem.qml:264
+#: package/contents/ui/DeviceItem.qml:262
 #, kde-format
 msgid "Input device"
 msgstr "Устройство за въвеждане"
 
-#: package/contents/ui/DeviceItem.qml:268
+#: package/contents/ui/DeviceItem.qml:266
 #, kde-format
 msgid "Phone"
 msgstr "Телефон"
 
-#: package/contents/ui/DeviceItem.qml:275
+#: package/contents/ui/DeviceItem.qml:273
 #, kde-format
 msgid "File transfer"
 msgstr "Прехвърляне на файл"
 
-#: package/contents/ui/DeviceItem.qml:278
+#: package/contents/ui/DeviceItem.qml:276
 #, kde-format
 msgid "Send file"
 msgstr "Изпращане на файл"
 
-#: package/contents/ui/DeviceItem.qml:281
+#: package/contents/ui/DeviceItem.qml:279
 #, kde-format
 msgid "Input"
 msgstr "Вход"
 
-#: package/contents/ui/DeviceItem.qml:284
+#: package/contents/ui/DeviceItem.qml:282
 #, kde-format
 msgid "Audio"
 msgstr "Аудио"
 
-#: package/contents/ui/DeviceItem.qml:287
+#: package/contents/ui/DeviceItem.qml:285
 #, kde-format
 msgid "Network"
 msgstr "Мрежа"
 
-#: package/contents/ui/DeviceItem.qml:291
+#: package/contents/ui/DeviceItem.qml:290
 #, kde-format
 msgid "Other device"
 msgstr "Друго устройство"
 
-#: package/contents/ui/DeviceItem.qml:298 package/contents/ui/main.qml:79
-#: package/contents/ui/main.qml:88
+#: package/contents/ui/DeviceItem.qml:297 package/contents/ui/main.qml:78
+#: package/contents/ui/main.qml:87
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% батерия"
 
-#: package/contents/ui/DeviceItem.qml:309
-#, kde-format
-msgctxt "Notification when the connection failed due to Failed:HostIsDown"
-msgid "The device is unreachable"
-msgstr "Устройството не може да бъде достигнато"
-
-#: package/contents/ui/DeviceItem.qml:311
-#, kde-format
-msgctxt "Notification when the connection failed due to Failed"
-msgid "Connection to the device failed"
-msgstr "Връзката с устройството е неуспешна"
-
-#: package/contents/ui/DeviceItem.qml:315
-#, kde-format
-msgctxt "Notification when the connection failed due to NotReady"
-msgid "The device is not ready"
-msgstr "Устройството не е готово"
-
-#: package/contents/ui/DeviceItem.qml:351
-#, kde-format
-msgctxt ""
-"@label %1 is human-readable device name, %2 is low-level device address"
-msgid "%1 (%2)"
-msgstr "%1 (%2)"
-
-#: package/contents/ui/FullRepresentation.qml:63
+#: package/contents/ui/FullRepresentation.qml:69
 #, kde-format
 msgid "Enable"
 msgstr "Активиране"
 
-#: package/contents/ui/FullRepresentation.qml:159
+#: package/contents/ui/FullRepresentation.qml:161
 #, kde-format
 msgid "No Bluetooth adapters available"
 msgstr "Няма налични Bluetooth адаптери"
 
-#: package/contents/ui/FullRepresentation.qml:161
+#: package/contents/ui/FullRepresentation.qml:163
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth е изключен"
 
-#: package/contents/ui/FullRepresentation.qml:163
+#: package/contents/ui/FullRepresentation.qml:165
 #, kde-format
 msgid "No devices found"
 msgstr "Няма намерени устройства"
 
-#: package/contents/ui/main.qml:56
+#: package/contents/ui/main.qml:55
 #, kde-format
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
-#: package/contents/ui/main.qml:60
+#: package/contents/ui/main.qml:59
 #, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
 msgstr ""
 "Bluetooth е изключен. Кликнете със среден бутон на мишката, за да го "
 "активирате"
 
-#: package/contents/ui/main.qml:64
+#: package/contents/ui/main.qml:63
 #, kde-format
 msgid "No adapters available"
 msgstr "Няма налични адаптери"
 
-#: package/contents/ui/main.qml:66
+#: package/contents/ui/main.qml:65
 #, kde-format
 msgid "Bluetooth is offline"
 msgstr "Bluetooth е изключен"
 
-#: package/contents/ui/main.qml:69
+#: package/contents/ui/main.qml:68
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr "Кликване със среден бутон на мишката, за деактивиране на Bluetooth"
 
-#: package/contents/ui/main.qml:72
+#: package/contents/ui/main.qml:71
 #, kde-format
 msgid "No connected devices"
 msgstr "Няма свързани устройства"
 
-#: package/contents/ui/main.qml:77
+#: package/contents/ui/main.qml:76
 #, kde-format
 msgid "%1 connected"
 msgstr "%1 свързано устройство"
 
-#: package/contents/ui/main.qml:84
+#: package/contents/ui/main.qml:83
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -244,17 +219,34 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 свързано устройство"
 msgstr[1] "%1 свързани устройства"
 
-#: package/contents/ui/main.qml:109
+#: package/contents/ui/main.qml:106
 #, kde-format
 msgid "Add New Device…"
 msgstr "Добавяне на ново устройство…"
 
-#: package/contents/ui/main.qml:116
+#: package/contents/ui/main.qml:113
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Активиране на Bluetooth"
 
-#: package/contents/ui/main.qml:128
+#: package/contents/ui/main.qml:127
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Настройване на &Bluetooth…"
+
+#~ msgctxt "Notification when the connection failed due to Failed:HostIsDown"
+#~ msgid "The device is unreachable"
+#~ msgstr "Устройството не може да бъде достигнато"
+
+#~ msgctxt "Notification when the connection failed due to Failed"
+#~ msgid "Connection to the device failed"
+#~ msgstr "Връзката с устройството е неуспешна"
+
+#~ msgctxt "Notification when the connection failed due to NotReady"
+#~ msgid "The device is not ready"
+#~ msgstr "Устройството не е готово"
+
+#~ msgctxt ""
+#~ "@label %1 is human-readable device name, %2 is low-level device address"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 (%2)"

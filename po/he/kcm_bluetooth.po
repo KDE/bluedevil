@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-29 00:40+0000\n"
+"POT-Creation-Date: 2024-07-22 00:40+0000\n"
 "PO-Revision-Date: 2024-06-29 07:30+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -34,12 +34,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "רשת %1 (%2)"
 
-#: ui/Device.qml:108 ui/main.qml:205
+#: ui/Device.qml:108 ui/main.qml:210
 #, kde-format
 msgid "Disconnect"
 msgstr "ניתוק"
 
-#: ui/Device.qml:108 ui/main.qml:205
+#: ui/Device.qml:108 ui/main.qml:210
 #, kde-format
 msgid "Connect"
 msgstr "חיבור"
@@ -84,7 +84,7 @@ msgstr "שם:"
 msgid "Trusted"
 msgstr "מהימן"
 
-#: ui/Device.qml:167 ui/main.qml:173
+#: ui/Device.qml:167 ui/main.qml:178
 #, kde-format
 msgid "Blocked"
 msgstr "חסום"
@@ -230,48 +230,48 @@ msgstr "הוספת התקן חדש…"
 msgid "Configure…"
 msgstr "הגדרה…"
 
-#: ui/main.qml:119
+#: ui/main.qml:124
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "לא נמצאו מתאמי בלוטות׳"
 
-#: ui/main.qml:120
+#: ui/main.qml:125
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
 msgstr "חיבור מתאם בלוטות׳ חיצוני"
 
-#: ui/main.qml:129
+#: ui/main.qml:134
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "בלוטות׳ מושבת"
 
-#: ui/main.qml:135
+#: ui/main.qml:140
 #, kde-format
 msgid "Enable"
 msgstr "הפעלה"
 
-#: ui/main.qml:145
+#: ui/main.qml:150
 #, kde-format
 msgid "No devices paired"
 msgstr "אין התקנים מצומדים"
 
-#: ui/main.qml:146
+#: ui/main.qml:151
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Add New Device…</interface> to pair some"
 msgstr "יש ללחוץ על <interface>הוספת התקן חדש…</interface> כדי לצמד כאלה"
 
-#: ui/main.qml:175
+#: ui/main.qml:180
 #, kde-format
 msgid "Connected"
 msgstr "מחובר"
 
-#: ui/main.qml:177
+#: ui/main.qml:182
 #, kde-format
 msgid "Available"
 msgstr "זמין"
 
-#: ui/main.qml:241
+#: ui/main.qml:246
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% סוללה"
