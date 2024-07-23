@@ -3,14 +3,14 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2010, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# Yuri Chornoivan <yurchor@ukr.net>, 2010, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-22 00:40+0000\n"
-"PO-Revision-Date: 2023-08-18 09:05+0300\n"
-"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
+"PO-Revision-Date: 2024-07-22 08:45+0300\n"
+"Last-Translator: Fracture dept <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Launchpad-Export-Date: 2010-09-09 05:40+0000\n"
-"X-Generator: Lokalize 20.12.0\n"
+"X-Generator: Lokalize 23.04.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -32,34 +32,29 @@ msgid "Your emails"
 msgstr "yurchor@gmail.com"
 
 #: applet/plugin/devicesstateproxymodel.cpp:220
-#, fuzzy, kde-format
-#| msgctxt "DeviceName Network (Service)"
-#| msgid "%1 Network (%2)"
+#, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
-msgstr "Мережа %1 (%2)"
+msgstr "%1 (%2)"
 
 #: applet/plugin/devicesstateproxymodel.cpp:235
-#, fuzzy, kde-format
-#| msgid "This address is unavailable."
+#, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
-msgstr "Ця адреса недоступна."
+msgstr "Пристрій недоступний"
 
 #: applet/plugin/devicesstateproxymodel.cpp:236
-#, fuzzy, kde-format
-#| msgid "Connecting to the device"
+#, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
-msgstr "Встановлення з’єднання з пристроєм"
+msgstr "Не вдалося встановити з’єднання із пристроєм"
 
 #: applet/plugin/devicesstateproxymodel.cpp:239
-#, fuzzy, kde-format
-#| msgid "Obexd service is not running."
+#, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
-msgstr "Службу obexd не запущено."
+msgstr "Пристрій неготовий"
 
 #: kcm/bluetooth.cpp:102
 #, kde-format

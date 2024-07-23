@@ -1,16 +1,16 @@
 # Translation for bluedevil.po to Euskara/Basque (eu)
-# Copyright (C) 2016-2023 This file is copyright:
+# Copyright (C) 2016-2024 This file is copyright:
 # This file is distributed under the same license as the bluedevil package.
-# KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>.
+# SPDX-FileCopyrightText: 2024 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
 #
 # Translators:
-# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-22 00:40+0000\n"
-"PO-Revision-Date: 2023-08-18 11:19+0200\n"
+"PO-Revision-Date: 2024-07-22 20:44+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.04.3\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -31,34 +31,29 @@ msgid "Your emails"
 msgstr "xalba@ni.eus"
 
 #: applet/plugin/devicesstateproxymodel.cpp:220
-#, fuzzy, kde-format
-#| msgctxt "DeviceName Network (Service)"
-#| msgid "%1 Network (%2)"
+#, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
-msgstr "%1 sarea (%2)"
+msgstr "%1 (%2)"
 
 #: applet/plugin/devicesstateproxymodel.cpp:235
-#, fuzzy, kde-format
-#| msgid "This address is unavailable."
+#, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
-msgstr "Helbide hau ez dago erabilgarri."
+msgstr "Gailua eskuraezin dago"
 
 #: applet/plugin/devicesstateproxymodel.cpp:236
-#, fuzzy, kde-format
-#| msgid "Connecting to the device"
+#, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
-msgstr "Gailura konektatzen"
+msgstr "Gailurako konexioak huts egin du"
 
 #: applet/plugin/devicesstateproxymodel.cpp:239
-#, fuzzy, kde-format
-#| msgid "Obexd service is not running."
+#, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
-msgstr "Obexd zerbitzua ez dago martxan."
+msgstr "Gailua ez dago prest"
 
 #: kcm/bluetooth.cpp:102
 #, kde-format

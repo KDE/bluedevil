@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-22 00:40+0000\n"
-"PO-Revision-Date: 2024-03-22 16:10+0300\n"
+"PO-Revision-Date: 2024-07-22 12:45+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.02.1\n"
+"X-Generator: Lokalize 24.07.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -32,34 +32,29 @@ msgstr ""
 "doktormesut@gmail.com, emir_sari@icloud.com"
 
 #: applet/plugin/devicesstateproxymodel.cpp:220
-#, fuzzy, kde-format
-#| msgctxt "DeviceName Network (Service)"
-#| msgid "%1 Network (%2)"
+#, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
-msgstr "%1 Ağ (%2)"
+msgstr "%1 (%2)"
 
 #: applet/plugin/devicesstateproxymodel.cpp:235
-#, fuzzy, kde-format
-#| msgid "This address is unavailable."
+#, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
-msgstr "Adres kullanılamıyor."
+msgstr "Aygıta erişilemiyor"
 
 #: applet/plugin/devicesstateproxymodel.cpp:236
-#, fuzzy, kde-format
-#| msgid "Connecting to the device"
+#, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
-msgstr "Aygıta bağlanılıyor"
+msgstr "Aygıta bağlanılamadı"
 
 #: applet/plugin/devicesstateproxymodel.cpp:239
-#, fuzzy, kde-format
-#| msgid "Obexd service is not running."
+#, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
-msgstr "Obexd hizmeti çalışmıyor."
+msgstr "Aygıt hazır değil"
 
 #: kcm/bluetooth.cpp:102
 #, kde-format
@@ -75,18 +70,18 @@ msgstr "Bluetooth Ardalan Süreci"
 #: kded/bluedevildaemon.cpp:72 sendfile/main.cpp:29 wizard/main.cpp:30
 #, kde-format
 msgid "(c) 2010, UFO Coders"
-msgstr "(c) 2010, UFO Coders"
+msgstr "© 2010, UFO Coders"
 
 #: kded/bluedevildaemon.cpp:75 sendfile/main.cpp:32 wizard/main.cpp:33
 #, kde-format
 msgid "Maintainer"
-msgstr "Projeyi Yürüten"
+msgstr "Bakımcı"
 
 #: kded/bluedevildaemon.cpp:80 kded/bluedevildaemon.cpp:85 sendfile/main.cpp:37
 #: wizard/main.cpp:38
 #, kde-format
 msgid "Previous Maintainer"
-msgstr "Önceki Geliştirici"
+msgstr "Önceki bakımcı"
 
 #: kded/helpers/requestauthorization.cpp:29
 #, kde-format

@@ -233,20 +233,3 @@ msgstr "Bruk Bluetooth"
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Set opp &Bluetooth …"
-
-#~ msgctxt "Notification when the connection failed due to Failed:HostIsDown"
-#~ msgid "The device is unreachable"
-#~ msgstr "Kan ikkje nå eininga"
-
-#~ msgctxt "Notification when the connection failed due to Failed"
-#~ msgid "Connection to the device failed"
-#~ msgstr "Klarte ikkje kopla til eininga"
-
-#~ msgctxt "Notification when the connection failed due to NotReady"
-#~ msgid "The device is not ready"
-#~ msgstr "Eininga er ikkje klar"
-
-#~ msgctxt ""
-#~ "@label %1 is human-readable device name, %2 is low-level device address"
-#~ msgid "%1 (%2)"
-#~ msgstr "%1 (%2)"

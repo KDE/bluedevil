@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-22 00:40+0000\n"
-"PO-Revision-Date: 2023-10-21 18:45+0200\n"
+"PO-Revision-Date: 2024-07-22 06:38+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -33,34 +33,29 @@ msgstr ""
 "andrejm@ubuntu.si,matjaz.jeran@amis.net"
 
 #: applet/plugin/devicesstateproxymodel.cpp:220
-#, fuzzy, kde-format
-#| msgctxt "DeviceName Network (Service)"
-#| msgid "%1 Network (%2)"
+#, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
-msgstr "Omrežje %1 (%2)"
+msgstr "%1 (%2)"
 
 #: applet/plugin/devicesstateproxymodel.cpp:235
-#, fuzzy, kde-format
-#| msgid "This address is unavailable."
+#, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
-msgstr "Ta naslov ni na voljo."
+msgstr "Naprava je nedostopna"
 
 #: applet/plugin/devicesstateproxymodel.cpp:236
-#, fuzzy, kde-format
-#| msgid "Connecting to the device"
+#, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
-msgstr "Povezovanje z napravo"
+msgstr "Povezovanje z napravo ni uspelo"
 
 #: applet/plugin/devicesstateproxymodel.cpp:239
-#, fuzzy, kde-format
-#| msgid "Obexd service is not running."
+#, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
-msgstr "Storitev obexd ne teče."
+msgstr "Naprava ni pripravljena"
 
 #: kcm/bluetooth.cpp:102
 #, kde-format

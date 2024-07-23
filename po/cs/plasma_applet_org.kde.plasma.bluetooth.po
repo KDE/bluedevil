@@ -233,20 +233,3 @@ msgstr "Povolit Bluetooth"
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Nastavit &Bluetooth..."
-
-#~ msgctxt "Notification when the connection failed due to Failed:HostIsDown"
-#~ msgid "The device is unreachable"
-#~ msgstr "Zařízení je nedostupné"
-
-#~ msgctxt "Notification when the connection failed due to Failed"
-#~ msgid "Connection to the device failed"
-#~ msgstr "Připojení k zařízení selhalo"
-
-#~ msgctxt "Notification when the connection failed due to NotReady"
-#~ msgid "The device is not ready"
-#~ msgstr "Zařízení není připraveno"
-
-#~ msgctxt ""
-#~ "@label %1 is human-readable device name, %2 is low-level device address"
-#~ msgid "%1 (%2)"
-#~ msgstr "%1 (%2)"

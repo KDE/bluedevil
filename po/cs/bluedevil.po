@@ -32,34 +32,29 @@ msgid "Your emails"
 msgstr "vit@pelcak.org, tomas.chvatal@gmail.com"
 
 #: applet/plugin/devicesstateproxymodel.cpp:220
-#, fuzzy, kde-format
-#| msgctxt "DeviceName Network (Service)"
-#| msgid "%1 Network (%2)"
+#, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
-msgstr "%1 Síť (%2)"
+msgstr "%1 (%2)"
 
 #: applet/plugin/devicesstateproxymodel.cpp:235
-#, fuzzy, kde-format
-#| msgid "This address is unavailable."
+#, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
-msgstr "Tato adresa je nedostupná."
+msgstr "Zařízení je nedostupné"
 
 #: applet/plugin/devicesstateproxymodel.cpp:236
-#, fuzzy, kde-format
-#| msgid "Connecting to the device"
+#, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
-msgstr "Připojuji se k zařízení"
+msgstr "Připojení k zařízení selhalo"
 
 #: applet/plugin/devicesstateproxymodel.cpp:239
-#, fuzzy, kde-format
-#| msgid "Obexd service is not running."
+#, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
-msgstr "Služba obexd není spuštěna."
+msgstr "Zařízení není připraveno"
 
 #: kcm/bluetooth.cpp:102
 #, kde-format
