@@ -231,20 +231,3 @@ msgstr "启用蓝牙"
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "配置蓝牙(&B)…"
-
-#~ msgctxt "Notification when the connection failed due to Failed:HostIsDown"
-#~ msgid "The device is unreachable"
-#~ msgstr "设备无法访问"
-
-#~ msgctxt "Notification when the connection failed due to Failed"
-#~ msgid "Connection to the device failed"
-#~ msgstr "设备连接失败"
-
-#~ msgctxt "Notification when the connection failed due to NotReady"
-#~ msgid "The device is not ready"
-#~ msgstr "设备未就绪"
-
-#~ msgctxt ""
-#~ "@label %1 is human-readable device name, %2 is low-level device address"
-#~ msgid "%1 (%2)"
-#~ msgstr "%1 (%2)"
