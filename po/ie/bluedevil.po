@@ -1,22 +1,21 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the bluedevil package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# SPDX-FileCopyrightText: 2024 OIS <mistresssilvara@hotmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-22 00:40+0000\n"
-"PO-Revision-Date: 2022-11-01 00:34+0700\n"
+"PO-Revision-Date: 2024-08-02 15:16+0700\n"
 "Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
-"Language-Team: Interlingue <kde-i18n-doc@kde.org>\n"
+"Language-Team: Interlingue <>\n"
 "Language: ie\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Lokalize 24.07.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -29,32 +28,29 @@ msgid "Your emails"
 msgstr "mistresssilvara@hotmail.com"
 
 #: applet/plugin/devicesstateproxymodel.cpp:220
-#, fuzzy, kde-format
-#| msgctxt "DeviceName Network (Service)"
-#| msgid "%1 Network (%2)"
+#, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
-msgstr "Rete %1 (%2)"
+msgstr "%1 (%2)"
 
 #: applet/plugin/devicesstateproxymodel.cpp:235
 #, fuzzy, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
-msgstr "Índisponibil"
-
-#: applet/plugin/devicesstateproxymodel.cpp:236
-#, fuzzy, kde-format
-#| msgid "Connecting to the device"
-msgctxt "Notification when the connection failed due to Failed"
-msgid "Connection to the device failed"
 msgstr "Conexente al aparate"
 
+#: applet/plugin/devicesstateproxymodel.cpp:236
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed"
+msgid "Connection to the device failed"
+msgstr "Li conexion al aparate ne successat"
+
 #: applet/plugin/devicesstateproxymodel.cpp:239
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
-msgstr "obexd es índisponibil"
+msgstr "Li aparate ne es pret"
 
 #: kcm/bluetooth.cpp:102
 #, kde-format
@@ -90,8 +86,8 @@ msgctxt ""
 "Bluetooth.The %1 is the name of the bluetooth device"
 msgid "%1 is requesting access to this computer"
 msgstr ""
-"Accesse refusat.\n"
-"Ne successat scrir a %1."
+"Por acuplar to computator con %1, vu deve provider un PIN. Ples far to ad-"
+"infra."
 
 #: kded/helpers/requestauthorization.cpp:33
 #, kde-format
@@ -112,12 +108,12 @@ msgid "Deny"
 msgstr "Refusar"
 
 #: kded/helpers/requestconfirmation.cpp:28
-#, kde-format
+#, fuzzy, kde-format
 msgctxt ""
 "The text is shown in a notification to know if the PIN is correct,%1 is the "
 "remote bluetooth device and %2 is the pin"
 msgid "%1 is asking if the PIN is correct: %2"
-msgstr ""
+msgstr "PIN es corect"
 
 #: kded/helpers/requestconfirmation.cpp:32
 #, kde-format
@@ -145,13 +141,13 @@ msgctxt ""
 "Notification button which once clicked, a dialog to introduce the PIN will "
 "be shown"
 msgid "Introduce PIN"
-msgstr "PIN:"
+msgstr "PIN es corect"
 
 #: kded/helpers/requestpin.cpp:58
 #, fuzzy, kde-format
 msgctxt "Shown in the caption of a dialog where the user introduce the PIN"
 msgid "Introduce PIN"
-msgstr "PIN:"
+msgstr "PIN es corect"
 
 #: kded/helpers/requestpin.cpp:65
 #, kde-format
@@ -218,15 +214,15 @@ msgid "To"
 msgstr "A"
 
 #: kded/receivefilejob.cpp:190
-#, fuzzy, kde-format
+#, kde-format
 msgid "Saving file failed"
-msgstr "Gardante un file..."
+msgstr "Ne successat gardar li file"
 
 #: kded/receivefilejob.cpp:221 kio/obexftp/transferfilejob.cpp:50
 #: sendfile/sendfilesjob.cpp:155
-#, fuzzy, kde-format
+#, kde-format
 msgid "Bluetooth transfer failed"
-msgstr "Transferte Bluetooth"
+msgstr "Transferte Bluetooth ne successat"
 
 #: kio/bluetooth/kiobluetooth.cpp:52
 #, kde-format
@@ -239,9 +235,9 @@ msgid "Browse Files"
 msgstr "Examinar li files"
 
 #: kio/bluetooth/kiobluetooth.cpp:72 kio/bluetooth/kiobluetooth.cpp:200
-#, fuzzy, kde-format
+#, kde-format
 msgid "No Bluetooth adapters have been found."
-msgstr "Null adaptatores Bluetooth es trovat"
+msgstr "Null adaptatores Bluetooth esset trovat."
 
 #: kio/bluetooth/kiobluetooth.cpp:92
 #, kde-format
@@ -251,7 +247,7 @@ msgstr "Obtenente li servicies…"
 #: kio/bluetooth/kiobluetooth.cpp:99
 #, fuzzy, kde-format
 msgid "This address is unavailable."
-msgstr "Índisponibil"
+msgstr "Bluetooth es ínactiv."
 
 #: kio/bluetooth/kiobluetooth.cpp:147
 #, kde-format
@@ -261,17 +257,17 @@ msgstr "Recivet files"
 #: kio/bluetooth/kiobluetooth.cpp:167
 #, fuzzy, kde-format
 msgid "Scanning for new devices…"
-msgstr "Examination, "
+msgstr "Adjuncter un nov aparate..."
 
 #: kio/obexftp/kioobexftp.cpp:96
 #, fuzzy, kde-format
 msgid "Obexd service is not running."
-msgstr "obexd es índisponibil"
+msgstr "Menú de servicie «Compresser»"
 
 #: kio/obexftp/kioobexftp.cpp:140
 #, fuzzy, kde-format
 msgid "Retrieving information from remote device…"
-msgstr "Obtenente information pri un tip MIME de %1 es ínsupportat."
+msgstr "De"
 
 #: kio/obexftp/kioobexftp.cpp:222
 #, kde-format
@@ -279,9 +275,9 @@ msgid "Connecting to the device"
 msgstr "Conexente al aparate"
 
 #: kio/obexftp/kioobexftp.cpp:298
-#, kde-format
+#, fuzzy, kde-format
 msgid "This should not happen"
-msgstr ""
+msgstr "Ne coresponde"
 
 #: kio/obexftp/kioobexftp.cpp:520
 #, kde-format
@@ -305,9 +301,9 @@ msgid "Enable"
 msgstr "Permisser"
 
 #: sendfile/discoverwidget.cpp:137
-#, kde-format
+#, fuzzy, kde-format
 msgid "Your Bluetooth adapter is powered off."
-msgstr ""
+msgstr "OIS"
 
 #: sendfile/discoverwidget.cpp:138
 #, kde-format
@@ -321,14 +317,14 @@ msgid "Bluetooth File Transfer"
 msgstr "Transferte de files Bluetooth"
 
 #: sendfile/main.cpp:48
-#, kde-format
+#, fuzzy, kde-format
 msgid "Specify receiving device by MAC address."
-msgstr ""
+msgstr "Li aparate «%1» esset configurat e posse esser usat."
 
 #: sendfile/main.cpp:52
-#, kde-format
+#, fuzzy, kde-format
 msgid "Specify receiving device by UBI path."
-msgstr ""
+msgstr "Li aparate «%1» esset configurat e posse esser usat."
 
 #: sendfile/main.cpp:56
 #, kde-format
@@ -336,7 +332,7 @@ msgid "Files to be sent."
 msgstr "Files por inviar."
 
 #: sendfile/pages/connectingpage.cpp:32 wizard/pages/connect.cpp:39
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Connecting to a Bluetooth device"
 msgid "Connecting to %1…"
 msgstr "Conexente a %1..."
@@ -371,9 +367,9 @@ msgstr "Selectet files: <b>%1</b>"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: sendfile/pages/selectfilediscover.ui:38
-#, fuzzy, kde-format
+#, kde-format
 msgid "Select a device from the list:"
-msgstr "Selecter un audioaparate"
+msgstr "Selecte un aparate in li liste:"
 
 #: sendfile/pages/selectfilespage.cpp:46
 #, kde-format
@@ -400,19 +396,19 @@ msgstr "Anullar"
 #, kde-format
 msgctxt "@info:status %1 error message"
 msgid "Failed to start org.bluez.obex service: %1"
-msgstr ""
+msgstr "Ne successat lansar li servicie org.bluez.obex: %1"
 
 #. i18n: ectx: label, entry (saveUrl), group (General)
 #: settings/filereceiver.kcfg:11
-#, fuzzy, kde-format
+#, kde-format
 msgid "Save received files to:"
-msgstr "_Notificar pri recivet files"
+msgstr "Gardar recivet files a:"
 
 #. i18n: ectx: label, entry (autoAccept), group (General)
 #: settings/filereceiver.kcfg:15
-#, kde-format
+#, fuzzy, kde-format
 msgid "Whether allow to modify shared files"
-msgstr ""
+msgstr "Examinar li files"
 
 #: wizard/bluewizard.cpp:57
 #, kde-format
@@ -445,7 +441,7 @@ msgstr "Reparar"
 #: wizard/pages/discover.cpp:309
 #, fuzzy, kde-format
 msgid "Your Bluetooth adapter is not pairable."
-msgstr "Controla li status de energie de adaptator Bluetooth"
+msgstr "OIS"
 
 #: wizard/pages/discover.cpp:310
 #, fuzzy, kde-format
@@ -455,21 +451,21 @@ msgstr "_Preparar"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, searchField)
 #: wizard/pages/discover.ui:19
-#, fuzzy, kde-format
+#, kde-format
 msgid "Search…"
-msgstr "_Serchar:"
+msgstr "Sercha..."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: wizard/pages/discover.ui:64
 #, fuzzy, kde-format
 msgid "Scanning…"
-msgstr "Examination..."
+msgstr "Examination"
 
 #. i18n: ectx: property (text), widget (QCheckBox, manualPin)
 #: wizard/pages/discover.ui:84
 #, fuzzy, kde-format
 msgid "Manual PIN:"
-msgstr "PIN"
+msgstr "PIN es corect"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, pinText)
 #: wizard/pages/discover.ui:112
@@ -494,12 +490,12 @@ msgstr "Cluder"
 #, fuzzy, kde-format
 msgctxt "This string is shown when the wizard fail"
 msgid "The setup of the device has failed"
-msgstr "Lansar li assistente de configuration por ti-ci aparate"
+msgstr "Li aparate «%1» esset configurat e posse esser usat."
 
 #: wizard/pages/fail.cpp:55
-#, fuzzy, kde-format
+#, kde-format
 msgid "The setup of %1 has failed"
-msgstr "Li conexion a %1 ne successat: %2"
+msgstr "Li configuration de %1 ne successat"
 
 #: wizard/pages/pairing.cpp:60
 #, kde-format
@@ -507,15 +503,15 @@ msgid "Connecting to %1…"
 msgstr "Conexente a %1..."
 
 #: wizard/pages/pairing.cpp:96
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "Please introduce the PIN in your keyboard when it appears and press Enter"
-msgstr ""
+msgstr "OIS"
 
 #: wizard/pages/pairing.cpp:98
-#, kde-format
+#, fuzzy, kde-format
 msgid "Please introduce the PIN in your device when it appears"
-msgstr ""
+msgstr "OIS"
 
 #: wizard/pages/pairing.cpp:114
 #, kde-format
@@ -528,9 +524,11 @@ msgid "Does not match"
 msgstr "Ne coresponde"
 
 #: wizard/pages/pairing.cpp:133
-#, kde-format
+#, fuzzy, kde-format
 msgid "Please, confirm that the PIN displayed on %1 matches the wizard one."
 msgstr ""
+"Por acuplar to computator con %1, vu deve provider un PIN. Ples far to ad-"
+"infra."
 
 #: wizard/pages/success.cpp:40
 #, kde-format
@@ -538,9 +536,9 @@ msgid "Setup Finished"
 msgstr "Configuration es finit"
 
 #: wizard/pages/success.cpp:42
-#, fuzzy, kde-format
+#, kde-format
 msgid "The device has been set up and can now be used."
-msgstr "Li aparate «%1» esset configurat e posse esser usat."
+msgstr "Li aparate esset configurat e posse esser usat."
 
 #: wizard/pages/success.cpp:44
 #, kde-format

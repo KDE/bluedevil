@@ -1,22 +1,21 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the bluedevil package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# SPDX-FileCopyrightText: 2024 OIS <mistresssilvara@hotmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-22 00:40+0000\n"
-"PO-Revision-Date: 2022-10-27 03:42+0700\n"
+"PO-Revision-Date: 2024-08-02 15:12+0700\n"
 "Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
-"Language-Team: Interlingue <kde-i18n-doc@kde.org>\n"
+"Language-Team: Interlingue <>\n"
 "Language: ie\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Lokalize 24.07.70\n"
 
 #: package/contents/ui/DeviceItem.qml:39
 #, kde-format
@@ -57,7 +56,7 @@ msgstr "No"
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: package/contents/ui/DeviceItem.qml:219
 #, kde-format
@@ -100,11 +99,9 @@ msgid "Connected"
 msgstr "Conexet"
 
 #: package/contents/ui/DeviceItem.qml:248
-#, fuzzy, kde-format
-#| msgctxt "Notification when the connection failed due to Failed"
-#| msgid "Connection to the device failed"
+#, kde-format
 msgid "Connection failed"
-msgstr "Conexion al aparate ne successat"
+msgstr "Conexion ne successat"
 
 #: package/contents/ui/DeviceItem.qml:255
 #, kde-format
@@ -203,20 +200,14 @@ msgid "Middle-click to disable Bluetooth"
 msgstr "Medial clic ínactiva Bluetooth"
 
 #: package/contents/ui/main.qml:71
-#, fuzzy, kde-format
-#| msgctxt "Number of connected devices"
-#| msgid "%1 connected device"
-#| msgid_plural "%1 connected devices"
+#, kde-format
 msgid "No connected devices"
-msgstr "%1 conexet aparate"
+msgstr "Null conexet aparates"
 
 #: package/contents/ui/main.qml:76
-#, fuzzy, kde-format
-#| msgctxt "Number of connected devices"
-#| msgid "%1 connected device"
-#| msgid_plural "%1 connected devices"
+#, kde-format
 msgid "%1 connected"
-msgstr "%1 conexet aparate"
+msgstr "%1 conexet"
 
 #: package/contents/ui/main.qml:83
 #, kde-format
