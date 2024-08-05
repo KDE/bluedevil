@@ -103,7 +103,7 @@ PlasmoidItem {
     Plasmoid.contextualActions: [
         PlasmaCore.Action {
             id: addDeviceAction
-            text: i18n("Add New Device…")
+            text: i18n("Pair Device…")
             icon.name: "list-add-symbolic"
             visible: !BluezQt.Manager.bluetoothBlocked
             onTriggered: checked => PlasmaBt.LaunchApp.launchWizard()

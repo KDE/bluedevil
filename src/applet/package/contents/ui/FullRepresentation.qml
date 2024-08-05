@@ -152,7 +152,7 @@ PlasmaExtras.Representation {
                 width: parent.width - (4 * Kirigami.Units.gridUnit)
                 active: BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown || BluezQt.Manager.bluetoothBlocked || root.emptyList
                 sourceComponent: PlasmaExtras.PlaceholderMessage {
-                    iconName: BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown || BluezQt.Manager.bluetoothBlocked ? "network-bluetooth" : "edit-none"
+                    iconName: BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown || BluezQt.Manager.bluetoothBlocked ? "network-bluetooth" : "network-bluetooth-activated"
 
                     text: {
                         // We cannot use the adapter count here because that can be zero when
@@ -162,7 +162,7 @@ PlasmaExtras.Representation {
                         } else if (BluezQt.Manager.bluetoothBlocked) {
                             return i18n("Bluetooth is disabled");
                         } else if (root.emptyList) {
-                            return i18n("No devices found");
+                            return i18n("No devices paired");
                         } else {
                             return "";
                         }

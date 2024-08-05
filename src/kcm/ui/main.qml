@@ -44,7 +44,7 @@ KCMUtils.ScrollViewKCM {
             }
         },
         Kirigami.Action {
-            text: i18n("Add New Device…")
+            text: i18n("Pair Device…")
             icon.name: "list-add-symbolic"
             onTriggered: root.KCMUtils.ConfigModule.runWizard()
             visible: BluezQt.Manager.bluetoothOperational
@@ -148,7 +148,7 @@ KCMUtils.ScrollViewKCM {
             visible: !noBluetoothMessage.visible && !bluetoothDisabledMessage.visible && list.count === 0
             icon.name: "network-bluetooth-activated"
             text: i18n("No devices paired")
-            explanation: xi18nc("@info", "Click <interface>Add New Device…</interface> to pair some")
+            explanation: xi18nc("@info", "Click <interface>Pair Device…</interface> to pair some")
             width: parent.width - (Kirigami.Units.largeSpacing * 4)
             anchors.centerIn: parent
         }
