@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-22 00:40+0000\n"
+"POT-Creation-Date: 2024-08-06 00:40+0000\n"
 "PO-Revision-Date: 2024-06-16 19:38+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -170,8 +170,9 @@ msgid "Bluetooth is disabled"
 msgstr "Blåtand är inte aktiverat"
 
 #: package/contents/ui/FullRepresentation.qml:165
-#, kde-format
-msgid "No devices found"
+#, fuzzy, kde-format
+#| msgid "No devices found"
+msgid "No devices paired"
 msgstr "Inga enheter hittades"
 
 #: package/contents/ui/main.qml:55
@@ -218,8 +219,9 @@ msgstr[0] "%1 ansluten enhet"
 msgstr[1] "%1 anslutna enheter"
 
 #: package/contents/ui/main.qml:106
-#, kde-format
-msgid "Add New Device…"
+#, fuzzy, kde-format
+#| msgid "Add New Device…"
+msgid "Pair Device…"
 msgstr "Lägg till ny enhet…"
 
 #: package/contents/ui/main.qml:113

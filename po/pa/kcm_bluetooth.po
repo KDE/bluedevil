@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-22 00:40+0000\n"
+"POT-Creation-Date: 2024-08-06 00:40+0000\n"
 "PO-Revision-Date: 2024-01-28 15:20-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -222,8 +222,9 @@ msgid "Enabled"
 msgstr "ਸਮਰੱਥ ਹੈ"
 
 #: ui/main.qml:47
-#, kde-format
-msgid "Add New Device…"
+#, fuzzy, kde-format
+#| msgid "Add New Device…"
+msgid "Pair Device…"
 msgstr "…ਨਵਾਂ ਡਿਵਾਈਸ ਜੋੜੋ"
 
 #: ui/main.qml:53
@@ -259,7 +260,7 @@ msgstr "ਕੋਈ ਡਿਵਾਈਸ ਪੇਅਰ ਨਹੀਂ ਕੀਤਾ ਹ�
 #: ui/main.qml:151
 #, kde-kuit-format
 msgctxt "@info"
-msgid "Click <interface>Add New Device…</interface> to pair some"
+msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr ""
 
 #: ui/main.qml:180

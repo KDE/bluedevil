@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-22 00:40+0000\n"
+"POT-Creation-Date: 2024-08-06 00:40+0000\n"
 "PO-Revision-Date: 2024-06-29 16:41+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -226,8 +226,9 @@ msgid "Enabled"
 msgstr "Activa"
 
 #: ui/main.qml:47
-#, kde-format
-msgid "Add New Device…"
+#, fuzzy, kde-format
+#| msgid "Add New Device…"
+msgid "Pair Device…"
 msgstr "Afig un dispositiu nou…"
 
 #: ui/main.qml:53
@@ -261,9 +262,11 @@ msgid "No devices paired"
 msgstr "No hi ha cap dispositiu aparellat"
 
 #: ui/main.qml:151
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "Click <interface>Add New Device…</interface> to pair some"
 msgctxt "@info"
-msgid "Click <interface>Add New Device…</interface> to pair some"
+msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr ""
 "Feu clic en <interface>Afig un dispositiu nou…</interface> per a aparellar-ne"
 

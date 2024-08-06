@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-22 00:40+0000\n"
+"POT-Creation-Date: 2024-08-06 00:40+0000\n"
 "PO-Revision-Date: 2024-06-08 15:59+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -171,8 +171,9 @@ msgid "Bluetooth is disabled"
 msgstr "Bluetooth este dezactivat"
 
 #: package/contents/ui/FullRepresentation.qml:165
-#, kde-format
-msgid "No devices found"
+#, fuzzy, kde-format
+#| msgid "No devices found"
+msgid "No devices paired"
 msgstr "Niciun dispozitiv găsit"
 
 #: package/contents/ui/main.qml:55
@@ -220,8 +221,9 @@ msgstr[1] "%1 dispozitive conectate"
 msgstr[2] "%1 de dispozitive conectate"
 
 #: package/contents/ui/main.qml:106
-#, kde-format
-msgid "Add New Device…"
+#, fuzzy, kde-format
+#| msgid "Add New Device…"
+msgid "Pair Device…"
 msgstr "Adaugă dispozitiv nou…"
 
 #: package/contents/ui/main.qml:113

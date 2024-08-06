@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-22 00:40+0000\n"
+"POT-Creation-Date: 2024-08-06 00:40+0000\n"
 "PO-Revision-Date: 2024-03-09 09:22+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -171,8 +171,9 @@ msgid "Bluetooth is disabled"
 msgstr "Bluetooth estas malŝaltita"
 
 #: package/contents/ui/FullRepresentation.qml:165
-#, kde-format
-msgid "No devices found"
+#, fuzzy, kde-format
+#| msgid "No devices found"
+msgid "No devices paired"
 msgstr "Neniuj aparatoj trovitaj"
 
 #: package/contents/ui/main.qml:55
@@ -219,8 +220,9 @@ msgstr[0] "%1 konektita aparato"
 msgstr[1] "%1 konektitaj aparatoj"
 
 #: package/contents/ui/main.qml:106
-#, kde-format
-msgid "Add New Device…"
+#, fuzzy, kde-format
+#| msgid "Add New Device…"
+msgid "Pair Device…"
 msgstr "Aldoni novan aparaton…"
 
 #: package/contents/ui/main.qml:113

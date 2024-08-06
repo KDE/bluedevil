@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-22 00:40+0000\n"
+"POT-Creation-Date: 2024-08-06 00:40+0000\n"
 "PO-Revision-Date: 2024-06-08 15:59+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -221,8 +221,9 @@ msgid "Enabled"
 msgstr "Activat"
 
 #: ui/main.qml:47
-#, kde-format
-msgid "Add New Device…"
+#, fuzzy, kde-format
+#| msgid "Add New Device…"
+msgid "Pair Device…"
 msgstr "Adaugă dispozitiv nou…"
 
 #: ui/main.qml:53
@@ -256,9 +257,11 @@ msgid "No devices paired"
 msgstr "Niciun dispozitiv asociat"
 
 #: ui/main.qml:151
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "Click <interface>Add New Device…</interface> to pair some"
 msgctxt "@info"
-msgid "Click <interface>Add New Device…</interface> to pair some"
+msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr ""
 "Apăsați pe <interface>Adaugă dispozitiv nou…</interface> pentru a asocia "
 "câteva"

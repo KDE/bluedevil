@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-22 00:40+0000\n"
+"POT-Creation-Date: 2024-08-06 00:40+0000\n"
 "PO-Revision-Date: 2024-03-06 11:27+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -171,8 +171,9 @@ msgid "Bluetooth is disabled"
 msgstr "Bluetooth devre dışı"
 
 #: package/contents/ui/FullRepresentation.qml:165
-#, kde-format
-msgid "No devices found"
+#, fuzzy, kde-format
+#| msgid "No devices found"
+msgid "No devices paired"
 msgstr "Aygıt bulunamadı"
 
 #: package/contents/ui/main.qml:55
@@ -219,8 +220,9 @@ msgstr[0] "%1 bağlı aygıt"
 msgstr[1] "%1 bağlı aygıt"
 
 #: package/contents/ui/main.qml:106
-#, kde-format
-msgid "Add New Device…"
+#, fuzzy, kde-format
+#| msgid "Add New Device…"
+msgid "Pair Device…"
 msgstr "Yeni Aygıt Ekle"
 
 #: package/contents/ui/main.qml:113

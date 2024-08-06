@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-22 00:40+0000\n"
+"POT-Creation-Date: 2024-08-06 00:40+0000\n"
 "PO-Revision-Date: 2024-06-30 13:30+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -220,8 +220,9 @@ msgid "Enabled"
 msgstr "இயக்கு"
 
 #: ui/main.qml:47
-#, kde-format
-msgid "Add New Device…"
+#, fuzzy, kde-format
+#| msgid "Add New Device…"
+msgid "Pair Device…"
 msgstr "புதிய சாதனத்தை சேர்…"
 
 #: ui/main.qml:53
@@ -255,9 +256,11 @@ msgid "No devices paired"
 msgstr "எச்சாதனமும் இணைக்கப்படவில்லை"
 
 #: ui/main.qml:151
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "Click <interface>Add New Device…</interface> to pair some"
 msgctxt "@info"
-msgid "Click <interface>Add New Device…</interface> to pair some"
+msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr "ஒன்றை சேர்க்க <interface>புதிய சாதனத்தை சேர்…</interface> என்பதை அழுத்தவும்"
 
 #: ui/main.qml:180

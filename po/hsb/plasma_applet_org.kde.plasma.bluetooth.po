@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-22 00:40+0000\n"
+"POT-Creation-Date: 2024-08-06 00:40+0000\n"
 "PO-Revision-Date: 2021-10-25 18:41+0200\n"
 "Last-Translator: Edward Wornar <edi.werner@gmx.de>\n"
 "Language-Team: Upper Sorbian <kde-i18n-doc@kde.org>\n"
@@ -175,7 +175,7 @@ msgstr "Bluetooth je hasnjeny"
 #: package/contents/ui/FullRepresentation.qml:165
 #, fuzzy, kde-format
 #| msgid "No Devices Found"
-msgid "No devices found"
+msgid "No devices paired"
 msgstr "Njemóžach žane graty namakać"
 
 #: package/contents/ui/main.qml:55
@@ -225,8 +225,9 @@ msgstr[2] "%1 přizamknjene graty"
 msgstr[3] "%1 přizamknjenych gratow"
 
 #: package/contents/ui/main.qml:106
-#, kde-format
-msgid "Add New Device…"
+#, fuzzy, kde-format
+#| msgid "Add New Device…"
+msgid "Pair Device…"
 msgstr "Nowy grat dodać..."
 
 #: package/contents/ui/main.qml:113

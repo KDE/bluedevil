@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-22 00:40+0000\n"
+"POT-Creation-Date: 2024-08-06 00:40+0000\n"
 "PO-Revision-Date: 2024-07-02 21:14+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -221,8 +221,9 @@ msgid "Enabled"
 msgstr "Aktiverad"
 
 #: ui/main.qml:47
-#, kde-format
-msgid "Add New Device…"
+#, fuzzy, kde-format
+#| msgid "Add New Device…"
+msgid "Pair Device…"
 msgstr "Lägg till ny enhet..."
 
 #: ui/main.qml:53
@@ -256,9 +257,11 @@ msgid "No devices paired"
 msgstr "Inga enheter parkopplade"
 
 #: ui/main.qml:151
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "Click <interface>Add New Device…</interface> to pair some"
 msgctxt "@info"
-msgid "Click <interface>Add New Device…</interface> to pair some"
+msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr "Klicka på <interface>Lägg till ny enhet…</interface> för att parkoppla"
 
 #: ui/main.qml:180

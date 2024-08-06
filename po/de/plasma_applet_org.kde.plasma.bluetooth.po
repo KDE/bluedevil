@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-22 00:40+0000\n"
+"POT-Creation-Date: 2024-08-06 00:40+0000\n"
 "PO-Revision-Date: 2024-03-27 19:28+0100\n"
 "Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -170,8 +170,9 @@ msgid "Bluetooth is disabled"
 msgstr "Bluetooth ist ausgeschaltet"
 
 #: package/contents/ui/FullRepresentation.qml:165
-#, kde-format
-msgid "No devices found"
+#, fuzzy, kde-format
+#| msgid "No devices found"
+msgid "No devices paired"
 msgstr "Keine Geräte gefunden"
 
 #: package/contents/ui/main.qml:55
@@ -218,8 +219,9 @@ msgstr[0] "%1 verbundenes Gerät"
 msgstr[1] "%1 verbundene Geräte"
 
 #: package/contents/ui/main.qml:106
-#, kde-format
-msgid "Add New Device…"
+#, fuzzy, kde-format
+#| msgid "Add New Device…"
+msgid "Pair Device…"
 msgstr "Neues Gerät hinzufügen ..."
 
 #: package/contents/ui/main.qml:113

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-22 00:40+0000\n"
+"POT-Creation-Date: 2024-08-06 00:40+0000\n"
 "PO-Revision-Date: 2020-09-28 02:19+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -227,7 +227,7 @@ msgstr "Sisse lülitatud:"
 
 #: ui/main.qml:47
 #, kde-format
-msgid "Add New Device…"
+msgid "Pair Device…"
 msgstr ""
 
 #: ui/main.qml:53
@@ -264,7 +264,7 @@ msgstr ""
 #: ui/main.qml:151
 #, kde-kuit-format
 msgctxt "@info"
-msgid "Click <interface>Add New Device…</interface> to pair some"
+msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr ""
 
 #: ui/main.qml:180
