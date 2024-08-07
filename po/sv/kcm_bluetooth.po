@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-06 00:40+0000\n"
-"PO-Revision-Date: 2024-07-02 21:14+0200\n"
+"PO-Revision-Date: 2024-08-06 07:38+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -221,10 +221,9 @@ msgid "Enabled"
 msgstr "Aktiverad"
 
 #: ui/main.qml:47
-#, fuzzy, kde-format
-#| msgid "Add New Device…"
+#, kde-format
 msgid "Pair Device…"
-msgstr "Lägg till ny enhet..."
+msgstr "Parkoppla enhet…"
 
 #: ui/main.qml:53
 #, kde-format
@@ -257,12 +256,10 @@ msgid "No devices paired"
 msgstr "Inga enheter parkopplade"
 
 #: ui/main.qml:151
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click <interface>Add New Device…</interface> to pair some"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
-msgstr "Klicka på <interface>Lägg till ny enhet…</interface> för att parkoppla"
+msgstr "Klicka på <interface>Parkoppla enhet…</interface> för att parkoppla"
 
 #: ui/main.qml:180
 #, kde-format

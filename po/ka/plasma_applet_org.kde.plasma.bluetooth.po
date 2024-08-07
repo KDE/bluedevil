@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-06 00:40+0000\n"
-"PO-Revision-Date: 2024-03-06 05:47+0100\n"
+"PO-Revision-Date: 2024-08-06 05:55+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -171,10 +171,9 @@ msgid "Bluetooth is disabled"
 msgstr "ბლუთუზი გამორთულია"
 
 #: package/contents/ui/FullRepresentation.qml:165
-#, fuzzy, kde-format
-#| msgid "No devices found"
+#, kde-format
 msgid "No devices paired"
-msgstr "მოწყობილობების პოვნა ვერ მოხერხდა"
+msgstr "შეწყვილებული მოწყობილობების გარეშე"
 
 #: package/contents/ui/main.qml:55
 #, kde-format
@@ -220,10 +219,9 @@ msgstr[0] "%1 მიერთებული მოწყობილობა"
 msgstr[1] "%1 მიერთებული მოწყობილობა"
 
 #: package/contents/ui/main.qml:106
-#, fuzzy, kde-format
-#| msgid "Add New Device…"
+#, kde-format
 msgid "Pair Device…"
-msgstr "ახალი მოწყობილობის დამატება…"
+msgstr "მოწყობილობის დაწყვილება…"
 
 #: package/contents/ui/main.qml:113
 #, kde-format

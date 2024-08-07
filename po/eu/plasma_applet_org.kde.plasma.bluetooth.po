@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-06 00:40+0000\n"
-"PO-Revision-Date: 2024-03-06 22:11+0100\n"
+"PO-Revision-Date: 2024-08-06 11:46+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.02.0\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #: package/contents/ui/DeviceItem.qml:39
 #, kde-format
@@ -173,10 +173,9 @@ msgid "Bluetooth is disabled"
 msgstr "Bluetooth desgaituta dago"
 
 #: package/contents/ui/FullRepresentation.qml:165
-#, fuzzy, kde-format
-#| msgid "No devices found"
+#, kde-format
 msgid "No devices paired"
-msgstr "Ez da gailurik aurkitu"
+msgstr "Ez dago parekatutako gailurik"
 
 #: package/contents/ui/main.qml:55
 #, kde-format
@@ -222,10 +221,9 @@ msgstr[0] "gailu %1 konektatuta"
 msgstr[1] "%1 gailu konektatuta"
 
 #: package/contents/ui/main.qml:106
-#, fuzzy, kde-format
-#| msgid "Add New Device…"
+#, kde-format
 msgid "Pair Device…"
-msgstr "Gehitu gailu berria..."
+msgstr "Gailua parekatu..."
 
 #: package/contents/ui/main.qml:113
 #, kde-format
