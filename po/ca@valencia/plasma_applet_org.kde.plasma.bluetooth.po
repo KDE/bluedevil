@@ -3,14 +3,14 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2015, 2016, 2017, 2020, 2022, 2023, 2024.
+# SPDX-FileCopyrightText: 2015, 2016, 2017, 2020, 2022, 2023, 2024 Josep M. Ferrer <txemaq@gmail.com>
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2017, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-06 00:40+0000\n"
-"PO-Revision-Date: 2024-03-06 10:14+0100\n"
+"PO-Revision-Date: 2024-08-06 13:20+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #: package/contents/ui/DeviceItem.qml:39
 #, kde-format
@@ -174,10 +174,9 @@ msgid "Bluetooth is disabled"
 msgstr "Bluetooth està desactivat"
 
 #: package/contents/ui/FullRepresentation.qml:165
-#, fuzzy, kde-format
-#| msgid "No devices found"
+#, kde-format
 msgid "No devices paired"
-msgstr "No s'ha trobat cap dispositiu"
+msgstr "No hi ha cap dispositiu aparellat"
 
 #: package/contents/ui/main.qml:55
 #, kde-format
@@ -223,10 +222,9 @@ msgstr[0] "%1 dispositiu connectat"
 msgstr[1] "%1 dispositius connectats"
 
 #: package/contents/ui/main.qml:106
-#, fuzzy, kde-format
-#| msgid "Add New Device…"
+#, kde-format
 msgid "Pair Device…"
-msgstr "Afig un dispositiu nou…"
+msgstr "Aparella un dispositiu…"
 
 #: package/contents/ui/main.qml:113
 #, kde-format
@@ -237,20 +235,3 @@ msgstr "Activa Bluetooth"
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Configura &Bluetooth…"
-
-#~ msgctxt "Notification when the connection failed due to Failed:HostIsDown"
-#~ msgid "The device is unreachable"
-#~ msgstr "No es pot accedir al dispositiu"
-
-#~ msgctxt "Notification when the connection failed due to Failed"
-#~ msgid "Connection to the device failed"
-#~ msgstr "No s'ha pogut connectar amb el dispositiu"
-
-#~ msgctxt "Notification when the connection failed due to NotReady"
-#~ msgid "The device is not ready"
-#~ msgstr "El dispositiu no està preparat"
-
-#~ msgctxt ""
-#~ "@label %1 is human-readable device name, %2 is low-level device address"
-#~ msgid "%1 (%2)"
-#~ msgstr "%1 (%2)"
