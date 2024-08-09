@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-06 00:40+0000\n"
-"PO-Revision-Date: 2024-03-23 13:02+0100\n"
+"PO-Revision-Date: 2024-08-08 22:04+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 24.02.0\n"
+"X-Generator: Lokalize 24.11.70\n"
 
 #: package/contents/ui/DeviceItem.qml:39
 #, kde-format
@@ -172,10 +172,9 @@ msgid "Bluetooth is disabled"
 msgstr "Bluetooth er avslått"
 
 #: package/contents/ui/FullRepresentation.qml:165
-#, fuzzy, kde-format
-#| msgid "No devices found"
+#, kde-format
 msgid "No devices paired"
-msgstr "Fann ingen einingar"
+msgstr "Ingen einingar er para"
 
 #: package/contents/ui/main.qml:55
 #, kde-format
@@ -221,10 +220,9 @@ msgstr[0] "%1 tilkopla eining"
 msgstr[1] "%1 tilkopla einingar"
 
 #: package/contents/ui/main.qml:106
-#, fuzzy, kde-format
-#| msgid "Add New Device…"
+#, kde-format
 msgid "Pair Device…"
-msgstr "Legg til ny eining …"
+msgstr "Par ny eining …"
 
 #: package/contents/ui/main.qml:113
 #, kde-format
