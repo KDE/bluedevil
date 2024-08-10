@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-18 00:38+0000\n"
+"POT-Creation-Date: 2024-08-10 02:40+0000\n"
 "PO-Revision-Date: 2024-03-17 11:01+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -259,3 +259,148 @@ msgstr "Gløym «%1»"
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1 % batteri"
+
+#: ui/script.js:4
+#, kde-format
+msgctxt "This device is a Phone"
+msgid "Phone"
+msgstr ""
+
+#: ui/script.js:6
+#, kde-format
+msgctxt "This device is a Modem"
+msgid "Modem"
+msgstr ""
+
+#: ui/script.js:8
+#, kde-format
+msgctxt "This device is a Computer"
+msgid "Computer"
+msgstr ""
+
+#: ui/script.js:10
+#, fuzzy, kde-format
+#| msgctxt "DeviceName Network (Service)"
+#| msgid "%1 Network (%2)"
+msgctxt "This device is of type Network"
+msgid "Network"
+msgstr "%1 nettverk (%2)"
+
+#: ui/script.js:12
+#, kde-format
+msgctxt "This device is a Headset"
+msgid "Headset"
+msgstr ""
+
+#: ui/script.js:14
+#, kde-format
+msgctxt "This device is a Headphones"
+msgid "Headphones"
+msgstr ""
+
+#: ui/script.js:16
+#, kde-format
+msgctxt "This device is an Audio/Video device"
+msgid "Multimedia"
+msgstr ""
+
+#: ui/script.js:18
+#, kde-format
+msgctxt "This device is a Keyboard"
+msgid "Keyboard"
+msgstr ""
+
+#: ui/script.js:20
+#, kde-format
+msgctxt "This device is a Mouse"
+msgid "Mouse"
+msgstr ""
+
+#: ui/script.js:22
+#, kde-format
+msgctxt "This device is a Game controller"
+msgid "Game controller"
+msgstr ""
+
+#: ui/script.js:24
+#, fuzzy, kde-format
+#| msgid "Enable"
+msgctxt "This device is a Graphics Tablet (input device)"
+msgid "Tablet"
+msgstr "Slå på"
+
+#: ui/script.js:26
+#, kde-format
+msgctxt "This device is a Peripheral device"
+msgid "Peripheral"
+msgstr ""
+
+#: ui/script.js:28
+#, kde-format
+msgctxt "This device is a Camera"
+msgid "Camera"
+msgstr ""
+
+#: ui/script.js:30
+#, kde-format
+msgctxt "This device is a Printer"
+msgid "Printer"
+msgstr ""
+
+#: ui/script.js:32
+#, kde-format
+msgctxt ""
+"This device is an Imaging device (printer, scanner, camera, display, …)"
+msgid "Imaging"
+msgstr ""
+
+#: ui/script.js:34
+#, kde-format
+msgctxt "This device is a Wearable"
+msgid "Wearable"
+msgstr ""
+
+#: ui/script.js:36
+#, kde-format
+msgctxt "This device is a Toy"
+msgid "Toy"
+msgstr ""
+
+#: ui/script.js:38
+#, kde-format
+msgctxt "This device is a Health device"
+msgid "Health"
+msgstr ""
+
+#: ui/script.js:43
+#, kde-format
+msgid "File transfer"
+msgstr ""
+
+#: ui/script.js:46
+#, fuzzy, kde-format
+#| msgid "Send File"
+msgid "Send file"
+msgstr "Send fil"
+
+#: ui/script.js:49
+#, kde-format
+msgid "Input"
+msgstr ""
+
+#: ui/script.js:52
+#, kde-format
+msgid "Audio"
+msgstr ""
+
+#: ui/script.js:55
+#, fuzzy, kde-format
+#| msgctxt "DeviceName Network (Service)"
+#| msgid "%1 Network (%2)"
+msgid "Network"
+msgstr "%1 nettverk (%2)"
+
+#: ui/script.js:59
+#, kde-format
+msgid "Other"
+msgstr ""

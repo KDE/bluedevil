@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-18 00:38+0000\n"
+"POT-Creation-Date: 2024-08-10 02:40+0000\n"
 "PO-Revision-Date: 2024-02-25 03:11+0200\n"
 "Last-Translator: Lasse Liehu <lasse.liehu@iki.fi>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -265,78 +265,155 @@ msgstr "Unohda ”%1”"
 msgid "%1% Battery"
 msgstr "%1 % akkua"
 
-#~ msgctxt "This device is a Phone"
-#~ msgid "Phone"
-#~ msgstr "Puhelin"
+#: ui/script.js:4
+#, kde-format
+msgctxt "This device is a Phone"
+msgid "Phone"
+msgstr "Puhelin"
 
-#~ msgctxt "This device is a Modem"
-#~ msgid "Modem"
-#~ msgstr "Modeemi"
+#: ui/script.js:6
+#, kde-format
+msgctxt "This device is a Modem"
+msgid "Modem"
+msgstr "Modeemi"
 
-#~ msgctxt "This device is a Computer"
-#~ msgid "Computer"
-#~ msgstr "Tietokone"
+#: ui/script.js:8
+#, kde-format
+msgctxt "This device is a Computer"
+msgid "Computer"
+msgstr "Tietokone"
 
-#~ msgctxt "This device is of type Network"
-#~ msgid "Network"
-#~ msgstr "Verkko"
+#: ui/script.js:10
+#, kde-format
+msgctxt "This device is of type Network"
+msgid "Network"
+msgstr "Verkko"
 
-#~ msgctxt "This device is a Headset"
-#~ msgid "Headset"
-#~ msgstr "Kuulokkeet"
+#: ui/script.js:12
+#, kde-format
+msgctxt "This device is a Headset"
+msgid "Headset"
+msgstr "Kuulokkeet"
 
-#~ msgctxt "This device is a Headphones"
-#~ msgid "Headphones"
-#~ msgstr "Kuulokkeet"
+#: ui/script.js:14
+#, kde-format
+msgctxt "This device is a Headphones"
+msgid "Headphones"
+msgstr "Kuulokkeet"
 
-#~ msgctxt "This device is an Audio/Video device"
-#~ msgid "Multimedia Device"
-#~ msgstr "Multimedialaite"
+#: ui/script.js:16
+#, fuzzy, kde-format
+#| msgctxt "This device is an Audio/Video device"
+#| msgid "Multimedia Device"
+msgctxt "This device is an Audio/Video device"
+msgid "Multimedia"
+msgstr "Multimedialaite"
 
-#~ msgctxt "This device is a Keyboard"
-#~ msgid "Keyboard"
-#~ msgstr "Näppäimistö"
+#: ui/script.js:18
+#, kde-format
+msgctxt "This device is a Keyboard"
+msgid "Keyboard"
+msgstr "Näppäimistö"
 
-#~ msgctxt "This device is a Mouse"
-#~ msgid "Mouse"
-#~ msgstr "Hiiri"
+#: ui/script.js:20
+#, kde-format
+msgctxt "This device is a Mouse"
+msgid "Mouse"
+msgstr "Hiiri"
+
+#: ui/script.js:22
+#, kde-format
+msgctxt "This device is a Game controller"
+msgid "Game controller"
+msgstr ""
+
+#: ui/script.js:24
+#, kde-format
+msgctxt "This device is a Graphics Tablet (input device)"
+msgid "Tablet"
+msgstr "Piirtopöytä"
+
+#: ui/script.js:26
+#, kde-format
+msgctxt "This device is a Peripheral device"
+msgid "Peripheral"
+msgstr "Oheislaite"
+
+#: ui/script.js:28
+#, kde-format
+msgctxt "This device is a Camera"
+msgid "Camera"
+msgstr "Kamera"
+
+#: ui/script.js:30
+#, kde-format
+msgctxt "This device is a Printer"
+msgid "Printer"
+msgstr "Tulostin"
+
+#: ui/script.js:32
+#, kde-format
+msgctxt ""
+"This device is an Imaging device (printer, scanner, camera, display, …)"
+msgid "Imaging"
+msgstr "Kuvankäsittelylaite"
+
+#: ui/script.js:34
+#, kde-format
+msgctxt "This device is a Wearable"
+msgid "Wearable"
+msgstr "Asuste"
+
+#: ui/script.js:36
+#, kde-format
+msgctxt "This device is a Toy"
+msgid "Toy"
+msgstr "Lelu"
+
+#: ui/script.js:38
+#, kde-format
+msgctxt "This device is a Health device"
+msgid "Health"
+msgstr "Terveys"
+
+#: ui/script.js:43
+#, kde-format
+msgid "File transfer"
+msgstr ""
+
+#: ui/script.js:46
+#, fuzzy, kde-format
+#| msgid "Send File"
+msgid "Send file"
+msgstr "Lähetä tiedosto"
+
+#: ui/script.js:49
+#, kde-format
+msgid "Input"
+msgstr ""
+
+#: ui/script.js:52
+#, fuzzy, kde-format
+#| msgctxt "This device is an Audio device"
+#| msgid "Audio"
+msgid "Audio"
+msgstr "Ääni"
+
+#: ui/script.js:55
+#, fuzzy, kde-format
+#| msgctxt "This device is of type Network"
+#| msgid "Network"
+msgid "Network"
+msgstr "Verkko"
+
+#: ui/script.js:59
+#, kde-format
+msgid "Other"
+msgstr ""
 
 #~ msgctxt "This device is a Joypad"
 #~ msgid "Joypad"
 #~ msgstr "Peliohjain"
-
-#~ msgctxt "This device is a Graphics Tablet (input device)"
-#~ msgid "Tablet"
-#~ msgstr "Piirtopöytä"
-
-#~ msgctxt "This device is a Peripheral device"
-#~ msgid "Peripheral"
-#~ msgstr "Oheislaite"
-
-#~ msgctxt "This device is a Camera"
-#~ msgid "Camera"
-#~ msgstr "Kamera"
-
-#~ msgctxt "This device is a Printer"
-#~ msgid "Printer"
-#~ msgstr "Tulostin"
-
-#~ msgctxt ""
-#~ "This device is an Imaging device (printer, scanner, camera, display, …)"
-#~ msgid "Imaging"
-#~ msgstr "Kuvankäsittelylaite"
-
-#~ msgctxt "This device is a Wearable"
-#~ msgid "Wearable"
-#~ msgstr "Asuste"
-
-#~ msgctxt "This device is a Toy"
-#~ msgid "Toy"
-#~ msgstr "Lelu"
-
-#~ msgctxt "This device is a Health device"
-#~ msgid "Health"
-#~ msgstr "Terveys"
 
 #~ msgctxt "Type of device: could not be determined"
 #~ msgid "Unknown"
@@ -356,10 +433,6 @@ msgstr "%1 % akkua"
 
 #~ msgid "Add…"
 #~ msgstr "Lisää…"
-
-#~ msgctxt "This device is an Audio device"
-#~ msgid "Audio"
-#~ msgstr "Ääni"
 
 #~ msgid "Add..."
 #~ msgstr "Lisää…"

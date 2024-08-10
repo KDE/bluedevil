@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-18 00:38+0000\n"
+"POT-Creation-Date: 2024-08-10 02:40+0000\n"
 "PO-Revision-Date: 2024-06-08 11:30+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -260,78 +260,153 @@ msgstr "Esquecer «%1»"
 msgid "%1% Battery"
 msgstr "Batería: %1%"
 
-#~ msgctxt "This device is a Phone"
-#~ msgid "Phone"
-#~ msgstr "Teléfono"
+#: ui/script.js:4
+#, kde-format
+msgctxt "This device is a Phone"
+msgid "Phone"
+msgstr "Teléfono"
 
-#~ msgctxt "This device is a Modem"
-#~ msgid "Modem"
-#~ msgstr "Módem"
+#: ui/script.js:6
+#, kde-format
+msgctxt "This device is a Modem"
+msgid "Modem"
+msgstr "Módem"
 
-#~ msgctxt "This device is a Computer"
-#~ msgid "Computer"
-#~ msgstr "Computador"
+#: ui/script.js:8
+#, kde-format
+msgctxt "This device is a Computer"
+msgid "Computer"
+msgstr "Computador"
 
-#~ msgctxt "This device is of type Network"
-#~ msgid "Network"
-#~ msgstr "Rede"
+#: ui/script.js:10
+#, kde-format
+msgctxt "This device is of type Network"
+msgid "Network"
+msgstr "Rede"
 
-#~ msgctxt "This device is a Headset"
-#~ msgid "Headset"
-#~ msgstr "Cascos"
+#: ui/script.js:12
+#, kde-format
+msgctxt "This device is a Headset"
+msgid "Headset"
+msgstr "Cascos"
 
-#~ msgctxt "This device is a Headphones"
-#~ msgid "Headphones"
-#~ msgstr "Auriculares"
+#: ui/script.js:14
+#, kde-format
+msgctxt "This device is a Headphones"
+msgid "Headphones"
+msgstr "Auriculares"
 
-#~ msgctxt "This device is an Audio/Video device"
-#~ msgid "Multimedia Device"
-#~ msgstr "Dispositivo multimedia"
+#: ui/script.js:16
+#, fuzzy, kde-format
+#| msgctxt "This device is an Audio/Video device"
+#| msgid "Multimedia Device"
+msgctxt "This device is an Audio/Video device"
+msgid "Multimedia"
+msgstr "Dispositivo multimedia"
 
-#~ msgctxt "This device is a Keyboard"
-#~ msgid "Keyboard"
-#~ msgstr "Teclado"
+#: ui/script.js:18
+#, kde-format
+msgctxt "This device is a Keyboard"
+msgid "Keyboard"
+msgstr "Teclado"
 
-#~ msgctxt "This device is a Mouse"
-#~ msgid "Mouse"
-#~ msgstr "Rato"
+#: ui/script.js:20
+#, kde-format
+msgctxt "This device is a Mouse"
+msgid "Mouse"
+msgstr "Rato"
+
+#: ui/script.js:22
+#, kde-format
+msgctxt "This device is a Game controller"
+msgid "Game controller"
+msgstr ""
+
+#: ui/script.js:24
+#, kde-format
+msgctxt "This device is a Graphics Tablet (input device)"
+msgid "Tablet"
+msgstr "Tableta"
+
+#: ui/script.js:26
+#, kde-format
+msgctxt "This device is a Peripheral device"
+msgid "Peripheral"
+msgstr "Periférico"
+
+#: ui/script.js:28
+#, kde-format
+msgctxt "This device is a Camera"
+msgid "Camera"
+msgstr "Cámara"
+
+#: ui/script.js:30
+#, kde-format
+msgctxt "This device is a Printer"
+msgid "Printer"
+msgstr "Impresora"
+
+#: ui/script.js:32
+#, kde-format
+msgctxt ""
+"This device is an Imaging device (printer, scanner, camera, display, …)"
+msgid "Imaging"
+msgstr "Imaxe"
+
+#: ui/script.js:34
+#, kde-format
+msgctxt "This device is a Wearable"
+msgid "Wearable"
+msgstr "Poñíbel"
+
+#: ui/script.js:36
+#, kde-format
+msgctxt "This device is a Toy"
+msgid "Toy"
+msgstr "Xoguete"
+
+#: ui/script.js:38
+#, kde-format
+msgctxt "This device is a Health device"
+msgid "Health"
+msgstr "Saúde"
+
+#: ui/script.js:43
+#, kde-format
+msgid "File transfer"
+msgstr ""
+
+#: ui/script.js:46
+#, fuzzy, kde-format
+#| msgid "Send File"
+msgid "Send file"
+msgstr "Enviar un ficheiro"
+
+#: ui/script.js:49
+#, kde-format
+msgid "Input"
+msgstr ""
+
+#: ui/script.js:52
+#, kde-format
+msgid "Audio"
+msgstr ""
+
+#: ui/script.js:55
+#, fuzzy, kde-format
+#| msgctxt "This device is of type Network"
+#| msgid "Network"
+msgid "Network"
+msgstr "Rede"
+
+#: ui/script.js:59
+#, kde-format
+msgid "Other"
+msgstr ""
 
 #~ msgctxt "This device is a Joypad"
 #~ msgid "Joypad"
 #~ msgstr "Mando"
-
-#~ msgctxt "This device is a Graphics Tablet (input device)"
-#~ msgid "Tablet"
-#~ msgstr "Tableta"
-
-#~ msgctxt "This device is a Peripheral device"
-#~ msgid "Peripheral"
-#~ msgstr "Periférico"
-
-#~ msgctxt "This device is a Camera"
-#~ msgid "Camera"
-#~ msgstr "Cámara"
-
-#~ msgctxt "This device is a Printer"
-#~ msgid "Printer"
-#~ msgstr "Impresora"
-
-#~ msgctxt ""
-#~ "This device is an Imaging device (printer, scanner, camera, display, …)"
-#~ msgid "Imaging"
-#~ msgstr "Imaxe"
-
-#~ msgctxt "This device is a Wearable"
-#~ msgid "Wearable"
-#~ msgstr "Poñíbel"
-
-#~ msgctxt "This device is a Toy"
-#~ msgid "Toy"
-#~ msgstr "Xoguete"
-
-#~ msgctxt "This device is a Health device"
-#~ msgid "Health"
-#~ msgstr "Saúde"
 
 #~ msgctxt "Type of device: could not be determined"
 #~ msgid "Unknown"

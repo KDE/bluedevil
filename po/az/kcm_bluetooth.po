@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-18 00:38+0000\n"
+"POT-Creation-Date: 2024-08-10 02:40+0000\n"
 "PO-Revision-Date: 2022-07-26 15:51+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -259,78 +259,155 @@ msgstr "\"%1\" unudulsun"
 msgid "%1% Battery"
 msgstr ""
 
-#~ msgctxt "This device is a Phone"
-#~ msgid "Phone"
-#~ msgstr "Telefon"
+#: ui/script.js:4
+#, kde-format
+msgctxt "This device is a Phone"
+msgid "Phone"
+msgstr "Telefon"
 
-#~ msgctxt "This device is a Modem"
-#~ msgid "Modem"
-#~ msgstr "Modem"
+#: ui/script.js:6
+#, kde-format
+msgctxt "This device is a Modem"
+msgid "Modem"
+msgstr "Modem"
 
-#~ msgctxt "This device is a Computer"
-#~ msgid "Computer"
-#~ msgstr "Kompyuter"
+#: ui/script.js:8
+#, kde-format
+msgctxt "This device is a Computer"
+msgid "Computer"
+msgstr "Kompyuter"
 
-#~ msgctxt "This device is of type Network"
-#~ msgid "Network"
-#~ msgstr "Şəbəkə"
+#: ui/script.js:10
+#, kde-format
+msgctxt "This device is of type Network"
+msgid "Network"
+msgstr "Şəbəkə"
 
-#~ msgctxt "This device is a Headset"
-#~ msgid "Headset"
-#~ msgstr "Mikrofonlu qulaqlıq"
+#: ui/script.js:12
+#, kde-format
+msgctxt "This device is a Headset"
+msgid "Headset"
+msgstr "Mikrofonlu qulaqlıq"
 
-#~ msgctxt "This device is a Headphones"
-#~ msgid "Headphones"
-#~ msgstr "Qulaqlıqlar"
+#: ui/script.js:14
+#, kde-format
+msgctxt "This device is a Headphones"
+msgid "Headphones"
+msgstr "Qulaqlıqlar"
 
-#~ msgctxt "This device is an Audio/Video device"
-#~ msgid "Multimedia Device"
-#~ msgstr "Multimedia cihazı"
+#: ui/script.js:16
+#, fuzzy, kde-format
+#| msgctxt "This device is an Audio/Video device"
+#| msgid "Multimedia Device"
+msgctxt "This device is an Audio/Video device"
+msgid "Multimedia"
+msgstr "Multimedia cihazı"
 
-#~ msgctxt "This device is a Keyboard"
-#~ msgid "Keyboard"
-#~ msgstr "Klaviatura"
+#: ui/script.js:18
+#, kde-format
+msgctxt "This device is a Keyboard"
+msgid "Keyboard"
+msgstr "Klaviatura"
 
-#~ msgctxt "This device is a Mouse"
-#~ msgid "Mouse"
-#~ msgstr "Siçan"
+#: ui/script.js:20
+#, kde-format
+msgctxt "This device is a Mouse"
+msgid "Mouse"
+msgstr "Siçan"
+
+#: ui/script.js:22
+#, kde-format
+msgctxt "This device is a Game controller"
+msgid "Game controller"
+msgstr ""
+
+#: ui/script.js:24
+#, kde-format
+msgctxt "This device is a Graphics Tablet (input device)"
+msgid "Tablet"
+msgstr "Planşet"
+
+#: ui/script.js:26
+#, kde-format
+msgctxt "This device is a Peripheral device"
+msgid "Peripheral"
+msgstr "Periferik"
+
+#: ui/script.js:28
+#, kde-format
+msgctxt "This device is a Camera"
+msgid "Camera"
+msgstr "Kamera"
+
+#: ui/script.js:30
+#, kde-format
+msgctxt "This device is a Printer"
+msgid "Printer"
+msgstr "Printer"
+
+#: ui/script.js:32
+#, kde-format
+msgctxt ""
+"This device is an Imaging device (printer, scanner, camera, display, …)"
+msgid "Imaging"
+msgstr "Görüntüləmə"
+
+#: ui/script.js:34
+#, kde-format
+msgctxt "This device is a Wearable"
+msgid "Wearable"
+msgstr "Daşınan qurğu"
+
+#: ui/script.js:36
+#, kde-format
+msgctxt "This device is a Toy"
+msgid "Toy"
+msgstr "Oyuncaqlar"
+
+#: ui/script.js:38
+#, kde-format
+msgctxt "This device is a Health device"
+msgid "Health"
+msgstr "Tibbi cihazlar"
+
+#: ui/script.js:43
+#, kde-format
+msgid "File transfer"
+msgstr ""
+
+#: ui/script.js:46
+#, fuzzy, kde-format
+#| msgid "Send File"
+msgid "Send file"
+msgstr "Fayl göndərmək"
+
+#: ui/script.js:49
+#, kde-format
+msgid "Input"
+msgstr ""
+
+#: ui/script.js:52
+#, fuzzy, kde-format
+#| msgctxt "This device is an Audio device"
+#| msgid "Audio"
+msgid "Audio"
+msgstr "Audio"
+
+#: ui/script.js:55
+#, fuzzy, kde-format
+#| msgctxt "This device is of type Network"
+#| msgid "Network"
+msgid "Network"
+msgstr "Şəbəkə"
+
+#: ui/script.js:59
+#, kde-format
+msgid "Other"
+msgstr ""
 
 #~ msgctxt "This device is a Joypad"
 #~ msgid "Joypad"
 #~ msgstr "Oyun dəstəyi"
-
-#~ msgctxt "This device is a Graphics Tablet (input device)"
-#~ msgid "Tablet"
-#~ msgstr "Planşet"
-
-#~ msgctxt "This device is a Peripheral device"
-#~ msgid "Peripheral"
-#~ msgstr "Periferik"
-
-#~ msgctxt "This device is a Camera"
-#~ msgid "Camera"
-#~ msgstr "Kamera"
-
-#~ msgctxt "This device is a Printer"
-#~ msgid "Printer"
-#~ msgstr "Printer"
-
-#~ msgctxt ""
-#~ "This device is an Imaging device (printer, scanner, camera, display, …)"
-#~ msgid "Imaging"
-#~ msgstr "Görüntüləmə"
-
-#~ msgctxt "This device is a Wearable"
-#~ msgid "Wearable"
-#~ msgstr "Daşınan qurğu"
-
-#~ msgctxt "This device is a Toy"
-#~ msgid "Toy"
-#~ msgstr "Oyuncaqlar"
-
-#~ msgctxt "This device is a Health device"
-#~ msgid "Health"
-#~ msgstr "Tibbi cihazlar"
 
 #~ msgctxt "Type of device: could not be determined"
 #~ msgid "Unknown"
@@ -350,10 +427,6 @@ msgstr ""
 
 #~ msgid "Add…"
 #~ msgstr "Əlavə etmək…"
-
-#~ msgctxt "This device is an Audio device"
-#~ msgid "Audio"
-#~ msgstr "Audio"
 
 #~ msgid "Add..."
 #~ msgstr "Əlavə etmək..."
