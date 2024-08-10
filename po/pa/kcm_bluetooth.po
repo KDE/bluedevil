@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-06 00:40+0000\n"
+"POT-Creation-Date: 2024-08-10 00:42+0000\n"
 "PO-Revision-Date: 2024-01-28 15:20-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -278,78 +278,161 @@ msgstr "ਉਪਲੱਬਧ"
 msgid "%1% Battery"
 msgstr "%1% ਬੈਟਰੀ"
 
-#~ msgctxt "This device is a Phone"
-#~ msgid "Phone"
-#~ msgstr "ਫ਼ੋਨ"
+#: ui/script.js:13
+#, kde-format
+msgctxt "This device is a Phone"
+msgid "Phone"
+msgstr "ਫ਼ੋਨ"
 
-#~ msgctxt "This device is a Modem"
-#~ msgid "Modem"
-#~ msgstr "ਮਾਡਮ"
+#: ui/script.js:15
+#, kde-format
+msgctxt "This device is a Modem"
+msgid "Modem"
+msgstr "ਮਾਡਮ"
 
-#~ msgctxt "This device is a Computer"
-#~ msgid "Computer"
-#~ msgstr "ਕੰਪਿਊਟਰ"
+#: ui/script.js:17
+#, kde-format
+msgctxt "This device is a Computer"
+msgid "Computer"
+msgstr "ਕੰਪਿਊਟਰ"
 
-#~ msgctxt "This device is of type Network"
-#~ msgid "Network"
-#~ msgstr "ਨੈੱਟਵਰਕ"
+#: ui/script.js:19
+#, kde-format
+msgctxt "This device is of type Network"
+msgid "Network"
+msgstr "ਨੈੱਟਵਰਕ"
 
-#~ msgctxt "This device is a Headset"
-#~ msgid "Headset"
-#~ msgstr "ਹੈੱਡਸੈੱਟ"
+#: ui/script.js:21
+#, kde-format
+msgctxt "This device is a Headset"
+msgid "Headset"
+msgstr "ਹੈੱਡਸੈੱਟ"
 
-#~ msgctxt "This device is a Headphones"
-#~ msgid "Headphones"
-#~ msgstr "ਹੈੱਡ-ਫ਼ੋਨ"
+#: ui/script.js:23
+#, kde-format
+msgctxt "This device is a Headphones"
+msgid "Headphones"
+msgstr "ਹੈੱਡ-ਫ਼ੋਨ"
 
-#~ msgctxt "This device is an Audio/Video device"
-#~ msgid "Multimedia Device"
-#~ msgstr "ਮਲਟੀਮੀਡਿਆ ਡਿਵਾਈਸ"
+#: ui/script.js:25
+#, fuzzy, kde-format
+#| msgctxt "This device is an Audio/Video device"
+#| msgid "Multimedia Device"
+msgctxt "This device is an Audio/Video device"
+msgid "Multimedia"
+msgstr "ਮਲਟੀਮੀਡਿਆ ਡਿਵਾਈਸ"
 
-#~ msgctxt "This device is a Keyboard"
-#~ msgid "Keyboard"
-#~ msgstr "ਕੀਬੋਰਡ"
+#: ui/script.js:27
+#, kde-format
+msgctxt "This device is a Keyboard"
+msgid "Keyboard"
+msgstr "ਕੀਬੋਰਡ"
 
-#~ msgctxt "This device is a Mouse"
-#~ msgid "Mouse"
-#~ msgstr "ਮਾਊਸ"
+#: ui/script.js:29
+#, kde-format
+msgctxt "This device is a Mouse"
+msgid "Mouse"
+msgstr "ਮਾਊਸ"
+
+#: ui/script.js:31
+#, kde-format
+msgctxt "This device is a Game controller"
+msgid "Game controller"
+msgstr ""
+
+#: ui/script.js:33
+#, kde-format
+msgctxt "This device is a Graphics Tablet (input device)"
+msgid "Tablet"
+msgstr "ਟੇਬਲੇਟ"
+
+#: ui/script.js:35
+#, kde-format
+msgctxt "This device is a Peripheral device"
+msgid "Peripheral"
+msgstr "ਪੇਰੀਫੇਰਲ"
+
+#: ui/script.js:37
+#, kde-format
+msgctxt "This device is a Camera"
+msgid "Camera"
+msgstr "ਕੈਮਰਾ"
+
+#: ui/script.js:39
+#, kde-format
+msgctxt "This device is a Printer"
+msgid "Printer"
+msgstr "ਪਰਿੰਟਰ"
+
+#: ui/script.js:41
+#, kde-format
+msgctxt ""
+"This device is an Imaging device (printer, scanner, camera, display, …)"
+msgid "Imaging"
+msgstr "ਚਿੱਤਰਣ"
+
+#: ui/script.js:43
+#, kde-format
+msgctxt "This device is a Wearable"
+msgid "Wearable"
+msgstr "ਪਹਿਨਣਯੋਗ"
+
+#: ui/script.js:45
+#, kde-format
+msgctxt "This device is a Toy"
+msgid "Toy"
+msgstr "ਖਿਡੌਣਾ"
+
+#: ui/script.js:47
+#, kde-format
+msgctxt "This device is a Health device"
+msgid "Health"
+msgstr "ਸੇਹਤ"
+
+#: ui/script.js:53
+#, kde-format
+msgid "File transfer"
+msgstr ""
+
+#: ui/script.js:56
+#, fuzzy, kde-format
+#| msgid "Send File"
+msgid "Send file"
+msgstr "ਫਾਇਲ ਭੇਜੋ"
+
+#: ui/script.js:59
+#, kde-format
+msgid "Input"
+msgstr ""
+
+#: ui/script.js:62
+#, fuzzy, kde-format
+#| msgctxt "This device is an Audio device"
+#| msgid "Audio"
+msgid "Audio"
+msgstr "ਆਡੀਓ"
+
+#: ui/script.js:65
+#, fuzzy, kde-format
+#| msgctxt "This device is of type Network"
+#| msgid "Network"
+msgid "Network"
+msgstr "ਨੈੱਟਵਰਕ"
+
+#: ui/script.js:69
+#, kde-format
+msgid "Other"
+msgstr ""
+
+#: ui/script.js:72
+#, kde-format
+msgctxt "List separator"
+msgid ", "
+msgstr ""
 
 #~ msgctxt "This device is a Joypad"
 #~ msgid "Joypad"
 #~ msgstr "ਜੋਏਪੈਡ"
-
-#~ msgctxt "This device is a Graphics Tablet (input device)"
-#~ msgid "Tablet"
-#~ msgstr "ਟੇਬਲੇਟ"
-
-#~ msgctxt "This device is a Peripheral device"
-#~ msgid "Peripheral"
-#~ msgstr "ਪੇਰੀਫੇਰਲ"
-
-#~ msgctxt "This device is a Camera"
-#~ msgid "Camera"
-#~ msgstr "ਕੈਮਰਾ"
-
-#~ msgctxt "This device is a Printer"
-#~ msgid "Printer"
-#~ msgstr "ਪਰਿੰਟਰ"
-
-#~ msgctxt ""
-#~ "This device is an Imaging device (printer, scanner, camera, display, …)"
-#~ msgid "Imaging"
-#~ msgstr "ਚਿੱਤਰਣ"
-
-#~ msgctxt "This device is a Wearable"
-#~ msgid "Wearable"
-#~ msgstr "ਪਹਿਨਣਯੋਗ"
-
-#~ msgctxt "This device is a Toy"
-#~ msgid "Toy"
-#~ msgstr "ਖਿਡੌਣਾ"
-
-#~ msgctxt "This device is a Health device"
-#~ msgid "Health"
-#~ msgstr "ਸੇਹਤ"
 
 #~ msgctxt "Type of device: could not be determined"
 #~ msgid "Unknown"
@@ -369,10 +452,6 @@ msgstr "%1% ਬੈਟਰੀ"
 
 #~ msgid "Add…"
 #~ msgstr "…ਜੋੜੋ"
-
-#~ msgctxt "This device is an Audio device"
-#~ msgid "Audio"
-#~ msgstr "ਆਡੀਓ"
 
 #~ msgid "Add..."
 #~ msgstr "...ਜੋੜੋ"
