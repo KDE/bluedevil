@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-06 00:40+0000\n"
-"PO-Revision-Date: 2024-03-17 10:52+0100\n"
+"PO-Revision-Date: 2024-08-10 12:37+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -16,6 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: package/contents/ui/DeviceItem.qml:39
 #, kde-format
@@ -170,10 +171,9 @@ msgid "Bluetooth is disabled"
 msgstr "Bluetooth jest wyłączony"
 
 #: package/contents/ui/FullRepresentation.qml:165
-#, fuzzy, kde-format
-#| msgid "No devices found"
+#, kde-format
 msgid "No devices paired"
-msgstr "Nie znaleziono żadnego urządzenia"
+msgstr "Nie sparowano żadnego urządzenia"
 
 #: package/contents/ui/main.qml:55
 #, kde-format
@@ -220,10 +220,9 @@ msgstr[1] "%1 podłączone urządzenia"
 msgstr[2] "%1 podłączonych urządzeń"
 
 #: package/contents/ui/main.qml:106
-#, fuzzy, kde-format
-#| msgid "Add New Device…"
+#, kde-format
 msgid "Pair Device…"
-msgstr "Dodaj nowe urządzenie..."
+msgstr "Sparuj urządzenie…"
 
 #: package/contents/ui/main.qml:113
 #, kde-format

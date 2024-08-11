@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-10 00:42+0000\n"
-"PO-Revision-Date: 2024-06-30 11:16+0900\n"
+"PO-Revision-Date: 2024-08-09 03:41+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -223,10 +223,9 @@ msgid "Enabled"
 msgstr "已啟用"
 
 #: ui/main.qml:47
-#, fuzzy, kde-format
-#| msgid "Add New Device…"
+#, kde-format
 msgid "Pair Device…"
-msgstr "新增裝置…"
+msgstr "配對裝置…"
 
 #: ui/main.qml:53
 #, kde-format
@@ -259,12 +258,10 @@ msgid "No devices paired"
 msgstr "沒有配對裝置"
 
 #: ui/main.qml:151
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click <interface>Add New Device…</interface> to pair some"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
-msgstr "點擊 <interface>新增裝置…</interface> 來配對一些"
+msgstr "點擊 <interface>配對裝置…</interface> 來配對一些"
 
 #: ui/main.qml:180
 #, kde-format
