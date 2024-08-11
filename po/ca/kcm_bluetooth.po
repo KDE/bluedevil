@@ -3,14 +3,14 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2020, 2022, 2023, 2024.
+# SPDX-FileCopyrightText: 2020, 2022, 2023, 2024 Josep M. Ferrer <txemaq@gmail.com>
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-10 02:40+0000\n"
-"PO-Revision-Date: 2024-02-18 10:38+0100\n"
+"PO-Revision-Date: 2024-08-10 10:22+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -268,143 +268,137 @@ msgstr "Bateria %1%"
 #, kde-format
 msgctxt "This device is a Phone"
 msgid "Phone"
-msgstr ""
+msgstr "Telèfon"
 
 #: ui/script.js:6
 #, kde-format
 msgctxt "This device is a Modem"
 msgid "Modem"
-msgstr ""
+msgstr "Mòdem"
 
 #: ui/script.js:8
 #, kde-format
 msgctxt "This device is a Computer"
 msgid "Computer"
-msgstr ""
+msgstr "Ordinador"
 
 #: ui/script.js:10
-#, fuzzy, kde-format
-#| msgctxt "DeviceName Network (Service)"
-#| msgid "%1 Network (%2)"
+#, kde-format
 msgctxt "This device is of type Network"
 msgid "Network"
-msgstr "Xarxa %1 (%2)"
+msgstr "Xarxa"
 
 #: ui/script.js:12
 #, kde-format
 msgctxt "This device is a Headset"
 msgid "Headset"
-msgstr ""
+msgstr "Auricular amb micròfon"
 
 #: ui/script.js:14
 #, kde-format
 msgctxt "This device is a Headphones"
 msgid "Headphones"
-msgstr ""
+msgstr "Auriculars"
 
 #: ui/script.js:16
 #, kde-format
 msgctxt "This device is an Audio/Video device"
 msgid "Multimedia"
-msgstr ""
+msgstr "Multimèdia"
 
 #: ui/script.js:18
 #, kde-format
 msgctxt "This device is a Keyboard"
 msgid "Keyboard"
-msgstr ""
+msgstr "Teclat"
 
 #: ui/script.js:20
 #, kde-format
 msgctxt "This device is a Mouse"
 msgid "Mouse"
-msgstr ""
+msgstr "Ratolí"
 
 #: ui/script.js:22
 #, kde-format
 msgctxt "This device is a Game controller"
 msgid "Game controller"
-msgstr ""
+msgstr "Controlador de jocs"
 
 #: ui/script.js:24
-#, fuzzy, kde-format
-#| msgid "Enable"
+#, kde-format
 msgctxt "This device is a Graphics Tablet (input device)"
 msgid "Tablet"
-msgstr "Activa"
+msgstr "Tauleta"
 
 #: ui/script.js:26
 #, kde-format
 msgctxt "This device is a Peripheral device"
 msgid "Peripheral"
-msgstr ""
+msgstr "Perifèric"
 
 #: ui/script.js:28
 #, kde-format
 msgctxt "This device is a Camera"
 msgid "Camera"
-msgstr ""
+msgstr "Càmera"
 
 #: ui/script.js:30
 #, kde-format
 msgctxt "This device is a Printer"
 msgid "Printer"
-msgstr ""
+msgstr "Impressora"
 
 #: ui/script.js:32
 #, kde-format
 msgctxt ""
 "This device is an Imaging device (printer, scanner, camera, display, …)"
 msgid "Imaging"
-msgstr ""
+msgstr "Obtenció d'imatges"
 
 #: ui/script.js:34
 #, kde-format
 msgctxt "This device is a Wearable"
 msgid "Wearable"
-msgstr ""
+msgstr "Portable"
 
 #: ui/script.js:36
 #, kde-format
 msgctxt "This device is a Toy"
 msgid "Toy"
-msgstr ""
+msgstr "Joguina"
 
 #: ui/script.js:38
 #, kde-format
 msgctxt "This device is a Health device"
 msgid "Health"
-msgstr ""
+msgstr "Salut"
 
 #: ui/script.js:43
 #, kde-format
 msgid "File transfer"
-msgstr ""
+msgstr "Transferència de fitxers"
 
 #: ui/script.js:46
-#, fuzzy, kde-format
-#| msgid "Send File"
+#, kde-format
 msgid "Send file"
-msgstr "Envia un fitxer"
+msgstr "Enviament de fitxers"
 
 #: ui/script.js:49
 #, kde-format
 msgid "Input"
-msgstr ""
+msgstr "Entrada"
 
 #: ui/script.js:52
 #, kde-format
 msgid "Audio"
-msgstr ""
+msgstr "Àudio"
 
 #: ui/script.js:55
-#, fuzzy, kde-format
-#| msgctxt "DeviceName Network (Service)"
-#| msgid "%1 Network (%2)"
+#, kde-format
 msgid "Network"
-msgstr "Xarxa %1 (%2)"
+msgstr "Xarxa"
 
 #: ui/script.js:59
 #, kde-format
 msgid "Other"
-msgstr ""
+msgstr "Altres"

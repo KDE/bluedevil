@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-10 02:40+0000\n"
-"PO-Revision-Date: 2024-02-18 05:52+0100\n"
+"PO-Revision-Date: 2024-08-10 06:55+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -296,12 +296,10 @@ msgid "Headphones"
 msgstr "Slušalke z mikrofonom"
 
 #: ui/script.js:16
-#, fuzzy, kde-format
-#| msgctxt "This device is an Audio/Video device"
-#| msgid "Multimedia Device"
+#, kde-format
 msgctxt "This device is an Audio/Video device"
 msgid "Multimedia"
-msgstr "Večpredstavnostna naprava"
+msgstr "Večpredstavnost"
 
 #: ui/script.js:18
 #, kde-format
@@ -319,7 +317,7 @@ msgstr "Miška"
 #, kde-format
 msgctxt "This device is a Game controller"
 msgid "Game controller"
-msgstr ""
+msgstr "Krmilnik iger"
 
 #: ui/script.js:24
 #, kde-format
@@ -373,35 +371,32 @@ msgstr "Zdravje"
 #: ui/script.js:43
 #, kde-format
 msgid "File transfer"
-msgstr ""
+msgstr "Prenos datoteke"
 
 #: ui/script.js:46
-#, fuzzy, kde-format
-#| msgid "Send File"
+#, kde-format
 msgid "Send file"
 msgstr "Pošlji datoteko"
 
 #: ui/script.js:49
 #, kde-format
 msgid "Input"
-msgstr ""
+msgstr "Vhod"
 
 #: ui/script.js:52
 #, kde-format
 msgid "Audio"
-msgstr ""
+msgstr "Avdio"
 
 #: ui/script.js:55
-#, fuzzy, kde-format
-#| msgctxt "This device is of type Network"
-#| msgid "Network"
+#, kde-format
 msgid "Network"
 msgstr "Omrežje"
 
 #: ui/script.js:59
 #, kde-format
 msgid "Other"
-msgstr ""
+msgstr "Ostalo"
 
 #~ msgctxt "This device is a Joypad"
 #~ msgid "Joypad"
