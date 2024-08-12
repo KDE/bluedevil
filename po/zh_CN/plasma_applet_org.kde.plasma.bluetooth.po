@@ -171,10 +171,9 @@ msgid "Bluetooth is disabled"
 msgstr "蓝牙已禁用"
 
 #: package/contents/ui/FullRepresentation.qml:165
-#, fuzzy, kde-format
-#| msgid "No devices found"
+#, kde-format
 msgid "No devices paired"
-msgstr "没有找到设备"
+msgstr "没有已配对的设备"
 
 #: package/contents/ui/main.qml:55
 #, kde-format
@@ -219,10 +218,9 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 个已连接设备"
 
 #: package/contents/ui/main.qml:106
-#, fuzzy, kde-format
-#| msgid "Add New Device…"
+#, kde-format
 msgid "Pair Device…"
-msgstr "添加新设备…"
+msgstr "配对设备…"
 
 #: package/contents/ui/main.qml:113
 #, kde-format
