@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-10 02:40+0000\n"
-"PO-Revision-Date: 2024-08-06 11:32+0300\n"
+"PO-Revision-Date: 2024-08-11 23:03+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -296,12 +296,10 @@ msgid "Headphones"
 msgstr "Baş Üstü Kulaklık"
 
 #: ui/script.js:16
-#, fuzzy, kde-format
-#| msgctxt "This device is an Audio/Video device"
-#| msgid "Multimedia Device"
+#, kde-format
 msgctxt "This device is an Audio/Video device"
 msgid "Multimedia"
-msgstr "Çoklu Ortam Aygıtı"
+msgstr "Çoklu Ortam"
 
 #: ui/script.js:18
 #, kde-format
@@ -319,7 +317,7 @@ msgstr "Fare"
 #, kde-format
 msgctxt "This device is a Game controller"
 msgid "Game controller"
-msgstr ""
+msgstr "Oyun Kumandası"
 
 #: ui/script.js:24
 #, kde-format
@@ -350,7 +348,7 @@ msgstr "Yazıcı"
 msgctxt ""
 "This device is an Imaging device (printer, scanner, camera, display, …)"
 msgid "Imaging"
-msgstr "Görüntüleme"
+msgstr "Görselleştirici"
 
 #: ui/script.js:34
 #, kde-format
@@ -373,35 +371,32 @@ msgstr "Sağlık"
 #: ui/script.js:43
 #, kde-format
 msgid "File transfer"
-msgstr ""
+msgstr "Do"
 
 #: ui/script.js:46
-#, fuzzy, kde-format
-#| msgid "Send File"
+#, kde-format
 msgid "Send file"
 msgstr "Dosya Gönder"
 
 #: ui/script.js:49
 #, kde-format
 msgid "Input"
-msgstr ""
+msgstr "Giriş"
 
 #: ui/script.js:52
 #, kde-format
 msgid "Audio"
-msgstr ""
+msgstr "Ses"
 
 #: ui/script.js:55
-#, fuzzy, kde-format
-#| msgctxt "This device is of type Network"
-#| msgid "Network"
+#, kde-format
 msgid "Network"
 msgstr "Ağ"
 
 #: ui/script.js:59
 #, kde-format
 msgid "Other"
-msgstr ""
+msgstr "Diğer"
 
 #~ msgctxt "This device is a Joypad"
 #~ msgid "Joypad"
