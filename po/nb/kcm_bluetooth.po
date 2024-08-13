@@ -281,31 +281,31 @@ msgstr ""
 #, kde-format
 msgctxt "This device is a Phone"
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
 #: ui/script.js:15
 #, kde-format
 msgctxt "This device is a Modem"
 msgid "Modem"
-msgstr ""
+msgstr "Modem"
 
 #: ui/script.js:17
 #, kde-format
 msgctxt "This device is a Computer"
 msgid "Computer"
-msgstr ""
+msgstr "Datamaskin"
 
 #: ui/script.js:19
 #, kde-format
 msgctxt "This device is of type Network"
 msgid "Network"
-msgstr ""
+msgstr "Nettverk"
 
 #: ui/script.js:21
 #, kde-format
 msgctxt "This device is a Headset"
 msgid "Headset"
-msgstr ""
+msgstr "Hodesett"
 
 #: ui/script.js:23
 #, kde-format
@@ -323,13 +323,13 @@ msgstr ""
 #, kde-format
 msgctxt "This device is a Keyboard"
 msgid "Keyboard"
-msgstr ""
+msgstr "Tastatur"
 
 #: ui/script.js:29
 #, kde-format
 msgctxt "This device is a Mouse"
 msgid "Mouse"
-msgstr ""
+msgstr "Mus"
 
 #: ui/script.js:31
 #, kde-format
@@ -353,13 +353,13 @@ msgstr ""
 #, kde-format
 msgctxt "This device is a Camera"
 msgid "Camera"
-msgstr ""
+msgstr "Kamera"
 
 #: ui/script.js:39
 #, kde-format
 msgctxt "This device is a Printer"
 msgid "Printer"
-msgstr ""
+msgstr "Skriver"
 
 #: ui/script.js:41
 #, kde-format

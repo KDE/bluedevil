@@ -282,39 +282,37 @@ msgstr "%1 % batteri"
 #, kde-format
 msgctxt "This device is a Phone"
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
 #: ui/script.js:15
 #, kde-format
 msgctxt "This device is a Modem"
 msgid "Modem"
-msgstr ""
+msgstr "Modem"
 
 #: ui/script.js:17
 #, kde-format
 msgctxt "This device is a Computer"
 msgid "Computer"
-msgstr ""
+msgstr "Datamaskin"
 
 #: ui/script.js:19
-#, fuzzy, kde-format
-#| msgctxt "DeviceName Network (Service)"
-#| msgid "%1 Network (%2)"
+#, kde-format
 msgctxt "This device is of type Network"
 msgid "Network"
-msgstr "%1 nettverk (%2)"
+msgstr "Nettverk"
 
 #: ui/script.js:21
 #, kde-format
 msgctxt "This device is a Headset"
 msgid "Headset"
-msgstr ""
+msgstr "Hovudsett"
 
 #: ui/script.js:23
 #, kde-format
 msgctxt "This device is a Headphones"
 msgid "Headphones"
-msgstr ""
+msgstr "Hovudtelefonar"
 
 #: ui/script.js:25
 #, kde-format
@@ -326,13 +324,13 @@ msgstr ""
 #, kde-format
 msgctxt "This device is a Keyboard"
 msgid "Keyboard"
-msgstr ""
+msgstr "Tastatur"
 
 #: ui/script.js:29
 #, kde-format
 msgctxt "This device is a Mouse"
 msgid "Mouse"
-msgstr ""
+msgstr "Mus"
 
 #: ui/script.js:31
 #, kde-format
@@ -341,54 +339,53 @@ msgid "Game controller"
 msgstr ""
 
 #: ui/script.js:33
-#, fuzzy, kde-format
-#| msgid "Enable"
+#, kde-format
 msgctxt "This device is a Graphics Tablet (input device)"
 msgid "Tablet"
-msgstr "Slå på"
+msgstr "Teikneplate"
 
 #: ui/script.js:35
 #, kde-format
 msgctxt "This device is a Peripheral device"
 msgid "Peripheral"
-msgstr ""
+msgstr "Tilleggseining"
 
 #: ui/script.js:37
 #, kde-format
 msgctxt "This device is a Camera"
 msgid "Camera"
-msgstr ""
+msgstr "Kamera"
 
 #: ui/script.js:39
 #, kde-format
 msgctxt "This device is a Printer"
 msgid "Printer"
-msgstr ""
+msgstr "Skrivar"
 
 #: ui/script.js:41
 #, kde-format
 msgctxt ""
 "This device is an Imaging device (printer, scanner, camera, display, …)"
 msgid "Imaging"
-msgstr ""
+msgstr "Bilete"
 
 #: ui/script.js:43
 #, kde-format
 msgctxt "This device is a Wearable"
 msgid "Wearable"
-msgstr ""
+msgstr "Kroppsboren"
 
 #: ui/script.js:45
 #, kde-format
 msgctxt "This device is a Toy"
 msgid "Toy"
-msgstr ""
+msgstr "Leiketøy"
 
 #: ui/script.js:47
 #, kde-format
 msgctxt "This device is a Health device"
 msgid "Health"
-msgstr ""
+msgstr "Helse"
 
 #: ui/script.js:53
 #, kde-format

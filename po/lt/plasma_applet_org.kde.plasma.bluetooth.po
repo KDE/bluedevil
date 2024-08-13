@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: trunk-kf 5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-06 00:40+0000\n"
-"PO-Revision-Date: 2024-05-16 21:33+0300\n"
+"PO-Revision-Date: 2024-08-12 16:05+0300\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -173,10 +173,9 @@ msgid "Bluetooth is disabled"
 msgstr "Bluetooth yra išjungtas"
 
 #: package/contents/ui/FullRepresentation.qml:165
-#, fuzzy, kde-format
-#| msgid "No devices found"
+#, kde-format
 msgid "No devices paired"
-msgstr "Nerasta jokių įrenginių"
+msgstr "Nėra suporuotų įrenginių"
 
 #: package/contents/ui/main.qml:55
 #, kde-format
@@ -226,10 +225,9 @@ msgstr[2] "%1 prijungtų įrenginių"
 msgstr[3] "%1 prijungtas įrenginys"
 
 #: package/contents/ui/main.qml:106
-#, fuzzy, kde-format
-#| msgid "Add New Device…"
+#, kde-format
 msgid "Pair Device…"
-msgstr "Pridėti naują įrenginį…"
+msgstr "Suporuoti įrenginį…"
 
 #: package/contents/ui/main.qml:113
 #, kde-format
