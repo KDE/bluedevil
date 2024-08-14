@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-10 00:42+0000\n"
-"PO-Revision-Date: 2024-08-06 11:46+0200\n"
+"PO-Revision-Date: 2024-08-13 12:51+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -317,12 +317,10 @@ msgid "Headphones"
 msgstr "Entzungailua"
 
 #: ui/script.js:25
-#, fuzzy, kde-format
-#| msgctxt "This device is an Audio/Video device"
-#| msgid "Multimedia Device"
+#, kde-format
 msgctxt "This device is an Audio/Video device"
 msgid "Multimedia"
-msgstr "Multimedia gailua"
+msgstr "Multimedia"
 
 #: ui/script.js:27
 #, kde-format
@@ -340,7 +338,7 @@ msgstr "Sagua"
 #, kde-format
 msgctxt "This device is a Game controller"
 msgid "Game controller"
-msgstr ""
+msgstr "Joko-kontrolatzailea"
 
 #: ui/script.js:33
 #, kde-format
@@ -394,43 +392,38 @@ msgstr "Osasuna"
 #: ui/script.js:53
 #, kde-format
 msgid "File transfer"
-msgstr ""
+msgstr "Fitxategi-transferentzia"
 
 #: ui/script.js:56
-#, fuzzy, kde-format
-#| msgid "Send File"
+#, kde-format
 msgid "Send file"
 msgstr "Bidali fitxategia"
 
 #: ui/script.js:59
 #, kde-format
 msgid "Input"
-msgstr ""
+msgstr "Sarrera"
 
 #: ui/script.js:62
-#, fuzzy, kde-format
-#| msgctxt "This device is an Audio device"
-#| msgid "Audio"
+#, kde-format
 msgid "Audio"
 msgstr "Audioa"
 
 #: ui/script.js:65
-#, fuzzy, kde-format
-#| msgctxt "This device is of type Network"
-#| msgid "Network"
+#, kde-format
 msgid "Network"
 msgstr "Sarea"
 
 #: ui/script.js:69
 #, kde-format
 msgid "Other"
-msgstr ""
+msgstr "Bestelakoa"
 
 #: ui/script.js:72
 #, kde-format
 msgctxt "List separator"
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #~ msgctxt "This device is a Joypad"
 #~ msgid "Joypad"
