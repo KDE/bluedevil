@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-10 00:42+0000\n"
-"PO-Revision-Date: 2024-08-09 03:41+0900\n"
+"PO-Revision-Date: 2024-08-15 06:00+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -315,12 +315,10 @@ msgid "Headphones"
 msgstr "耳罩式耳機"
 
 #: ui/script.js:25
-#, fuzzy, kde-format
-#| msgctxt "This device is an Audio/Video device"
-#| msgid "Multimedia Device"
+#, kde-format
 msgctxt "This device is an Audio/Video device"
 msgid "Multimedia"
-msgstr "多媒體裝置"
+msgstr "多媒體"
 
 #: ui/script.js:27
 #, kde-format
@@ -338,7 +336,7 @@ msgstr "滑鼠"
 #, kde-format
 msgctxt "This device is a Game controller"
 msgid "Game controller"
-msgstr ""
+msgstr "遊戲控制器"
 
 #: ui/script.js:33
 #, kde-format
@@ -392,41 +390,38 @@ msgstr "健康"
 #: ui/script.js:53
 #, kde-format
 msgid "File transfer"
-msgstr ""
+msgstr "檔案傳輸"
 
 #: ui/script.js:56
-#, fuzzy, kde-format
-#| msgid "Send File"
+#, kde-format
 msgid "Send file"
 msgstr "傳送檔案"
 
 #: ui/script.js:59
 #, kde-format
 msgid "Input"
-msgstr ""
+msgstr "輸入"
 
 #: ui/script.js:62
 #, kde-format
 msgid "Audio"
-msgstr ""
+msgstr "音訊"
 
 #: ui/script.js:65
-#, fuzzy, kde-format
-#| msgctxt "This device is of type Network"
-#| msgid "Network"
+#, kde-format
 msgid "Network"
 msgstr "網路"
 
 #: ui/script.js:69
 #, kde-format
 msgid "Other"
-msgstr ""
+msgstr "其他"
 
 #: ui/script.js:72
 #, kde-format
 msgctxt "List separator"
 msgid ", "
-msgstr ""
+msgstr "、"
 
 #~ msgctxt "This device is a Joypad"
 #~ msgid "Joypad"

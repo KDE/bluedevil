@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kcm_bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-10 00:42+0000\n"
-"PO-Revision-Date: 2024-08-07 00:45+0200\n"
+"PO-Revision-Date: 2024-08-14 12:28+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -316,12 +316,10 @@ msgid "Headphones"
 msgstr "Auriculares"
 
 #: ui/script.js:25
-#, fuzzy, kde-format
-#| msgctxt "This device is an Audio/Video device"
-#| msgid "Multimedia Device"
+#, kde-format
 msgctxt "This device is an Audio/Video device"
 msgid "Multimedia"
-msgstr "Dispositivo multimedia"
+msgstr "Multimedia"
 
 #: ui/script.js:27
 #, kde-format
@@ -339,7 +337,7 @@ msgstr "Ratón"
 #, kde-format
 msgctxt "This device is a Game controller"
 msgid "Game controller"
-msgstr ""
+msgstr "Mando de juegos"
 
 #: ui/script.js:33
 #, kde-format
@@ -393,43 +391,38 @@ msgstr "Dispositivo de salud"
 #: ui/script.js:53
 #, kde-format
 msgid "File transfer"
-msgstr ""
+msgstr "Transferencia de archivos"
 
 #: ui/script.js:56
-#, fuzzy, kde-format
-#| msgid "Send File"
+#, kde-format
 msgid "Send file"
 msgstr "Enviar archivo"
 
 #: ui/script.js:59
 #, kde-format
 msgid "Input"
-msgstr ""
+msgstr "Entrada"
 
 #: ui/script.js:62
-#, fuzzy, kde-format
-#| msgctxt "This device is an Audio device"
-#| msgid "Audio"
+#, kde-format
 msgid "Audio"
 msgstr "Sonido"
 
 #: ui/script.js:65
-#, fuzzy, kde-format
-#| msgctxt "This device is of type Network"
-#| msgid "Network"
+#, kde-format
 msgid "Network"
 msgstr "Red"
 
 #: ui/script.js:69
 #, kde-format
 msgid "Other"
-msgstr ""
+msgstr "Otros"
 
 #: ui/script.js:72
 #, kde-format
 msgctxt "List separator"
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #~ msgctxt "This device is a Joypad"
 #~ msgid "Joypad"
