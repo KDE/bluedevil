@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-06 00:40+0000\n"
-"PO-Revision-Date: 2024-03-30 10:47+0400\n"
+"PO-Revision-Date: 2024-08-15 12:08+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: package/contents/ui/DeviceItem.qml:39
 #, kde-format
@@ -171,10 +172,9 @@ msgid "Bluetooth is disabled"
 msgstr "بلوتوث معطّلة"
 
 #: package/contents/ui/FullRepresentation.qml:165
-#, fuzzy, kde-format
-#| msgid "No devices found"
+#, kde-format
 msgid "No devices paired"
-msgstr "لم يُعثر على أجهزة"
+msgstr "لا يوجد أجهزة مقترنة"
 
 #: package/contents/ui/main.qml:55
 #, kde-format
@@ -224,10 +224,9 @@ msgstr[4] "‏%1 جهازًا متّصلًا"
 msgstr[5] "‏%1 جهاز متّصل"
 
 #: package/contents/ui/main.qml:106
-#, fuzzy, kde-format
-#| msgid "Add New Device…"
+#, kde-format
 msgid "Pair Device…"
-msgstr "أضف جهازًا جديدًا..."
+msgstr "اقرن جهاز…"
 
 #: package/contents/ui/main.qml:113
 #, kde-format
