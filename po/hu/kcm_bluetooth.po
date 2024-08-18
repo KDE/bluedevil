@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-10 02:40+0000\n"
-"PO-Revision-Date: 2024-03-03 22:27+0100\n"
+"PO-Revision-Date: 2024-08-17 21:05+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -298,12 +298,10 @@ msgid "Headphones"
 msgstr "Fülhallgatók"
 
 #: ui/script.js:16
-#, fuzzy, kde-format
-#| msgctxt "This device is an Audio/Video device"
-#| msgid "Multimedia Device"
+#, kde-format
 msgctxt "This device is an Audio/Video device"
 msgid "Multimedia"
-msgstr "Multimédiás eszköz"
+msgstr "Multimédia"
 
 #: ui/script.js:18
 #, kde-format
@@ -321,7 +319,7 @@ msgstr "Egér"
 #, kde-format
 msgctxt "This device is a Game controller"
 msgid "Game controller"
-msgstr ""
+msgstr "Játékvezérlők"
 
 #: ui/script.js:24
 #, kde-format
@@ -375,37 +373,32 @@ msgstr "Egészség"
 #: ui/script.js:43
 #, kde-format
 msgid "File transfer"
-msgstr ""
+msgstr "Fájlátvitel"
 
 #: ui/script.js:46
-#, fuzzy, kde-format
-#| msgid "Send File"
+#, kde-format
 msgid "Send file"
 msgstr "Fájl küldése"
 
 #: ui/script.js:49
 #, kde-format
 msgid "Input"
-msgstr ""
+msgstr "Bemenet"
 
 #: ui/script.js:52
-#, fuzzy, kde-format
-#| msgctxt "This device is an Audio device"
-#| msgid "Audio"
+#, kde-format
 msgid "Audio"
 msgstr "Hang"
 
 #: ui/script.js:55
-#, fuzzy, kde-format
-#| msgctxt "This device is of type Network"
-#| msgid "Network"
+#, kde-format
 msgid "Network"
 msgstr "Hálózat"
 
 #: ui/script.js:59
 #, kde-format
 msgid "Other"
-msgstr ""
+msgstr "Egyéb"
 
 #~ msgctxt "This device is a Joypad"
 #~ msgid "Joypad"
