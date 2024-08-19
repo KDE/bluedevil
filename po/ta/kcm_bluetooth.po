@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-10 02:40+0000\n"
-"PO-Revision-Date: 2024-02-18 18:36+0530\n"
+"PO-Revision-Date: 2024-08-18 17:28+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -262,70 +262,67 @@ msgstr "%1% மின்கலம்"
 #, kde-format
 msgctxt "This device is a Phone"
 msgid "Phone"
-msgstr ""
+msgstr "தொலைபேசி"
 
 #: ui/script.js:6
 #, kde-format
 msgctxt "This device is a Modem"
 msgid "Modem"
-msgstr ""
+msgstr "இணக்கி"
 
 #: ui/script.js:8
 #, kde-format
 msgctxt "This device is a Computer"
 msgid "Computer"
-msgstr ""
+msgstr "கணினி"
 
 #: ui/script.js:10
-#, fuzzy, kde-format
-#| msgctxt "DeviceName Network (Service)"
-#| msgid "%1 Network (%2)"
+#, kde-format
 msgctxt "This device is of type Network"
 msgid "Network"
-msgstr "%1 பிணையம் (%2)"
+msgstr "பிணையம்"
 
 #: ui/script.js:12
 #, kde-format
 msgctxt "This device is a Headset"
 msgid "Headset"
-msgstr ""
+msgstr "தலையணி ஒலிவாங்கி"
 
 #: ui/script.js:14
 #, kde-format
 msgctxt "This device is a Headphones"
 msgid "Headphones"
-msgstr ""
+msgstr "தலைப்பேசி"
 
 #: ui/script.js:16
 #, kde-format
 msgctxt "This device is an Audio/Video device"
 msgid "Multimedia"
-msgstr ""
+msgstr "பல்லூடகம்"
 
 #: ui/script.js:18
 #, kde-format
 msgctxt "This device is a Keyboard"
 msgid "Keyboard"
-msgstr ""
+msgstr "விசைப்பலகை"
 
 #: ui/script.js:20
 #, kde-format
 msgctxt "This device is a Mouse"
 msgid "Mouse"
-msgstr ""
+msgstr "சுட்டி"
 
 #: ui/script.js:22
 #, kde-format
 msgctxt "This device is a Game controller"
 msgid "Game controller"
-msgstr ""
+msgstr "விளையாட்டு கட்டுப்படுத்தி"
 
 #: ui/script.js:24
-#, fuzzy, kde-format
-#| msgid "Enable"
+#, kde-format
 msgctxt "This device is a Graphics Tablet (input device)"
 msgid "Tablet"
-msgstr "இயக்கு"
+msgstr "வரைகலை பலகை"
 
 #: ui/script.js:26
 #, kde-format
@@ -337,68 +334,65 @@ msgstr ""
 #, kde-format
 msgctxt "This device is a Camera"
 msgid "Camera"
-msgstr ""
+msgstr "படக்கருவி"
 
 #: ui/script.js:30
 #, kde-format
 msgctxt "This device is a Printer"
 msgid "Printer"
-msgstr ""
+msgstr "அச்சுப்பொறி"
 
 #: ui/script.js:32
 #, kde-format
 msgctxt ""
 "This device is an Imaging device (printer, scanner, camera, display, …)"
 msgid "Imaging"
-msgstr ""
+msgstr "படமெடுப்பது"
 
 #: ui/script.js:34
 #, kde-format
 msgctxt "This device is a Wearable"
 msgid "Wearable"
-msgstr ""
+msgstr "அணியக்கூடியது"
 
 #: ui/script.js:36
 #, kde-format
 msgctxt "This device is a Toy"
 msgid "Toy"
-msgstr ""
+msgstr "விளையாட்டுப்பொருள்"
 
 #: ui/script.js:38
 #, kde-format
 msgctxt "This device is a Health device"
 msgid "Health"
-msgstr ""
+msgstr "மருத்துவக்கருவி"
 
 #: ui/script.js:43
 #, kde-format
 msgid "File transfer"
-msgstr ""
+msgstr "கோப்பு இடமாற்றம்"
 
 #: ui/script.js:46
-#, fuzzy, kde-format
-#| msgid "Send File"
+#, kde-format
 msgid "Send file"
 msgstr "கோப்பை அனுப்பு"
 
 #: ui/script.js:49
 #, kde-format
 msgid "Input"
-msgstr ""
+msgstr "உள்ளீடு"
 
 #: ui/script.js:52
 #, kde-format
 msgid "Audio"
-msgstr ""
+msgstr "ஒலி"
 
 #: ui/script.js:55
-#, fuzzy, kde-format
-#| msgctxt "DeviceName Network (Service)"
-#| msgid "%1 Network (%2)"
+#, kde-format
 msgid "Network"
-msgstr "%1 பிணையம் (%2)"
+msgstr "பிணையம்"
 
 #: ui/script.js:59
 #, kde-format
 msgid "Other"
-msgstr ""
+msgstr "மற்றவை"
