@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-06 00:40+0000\n"
-"PO-Revision-Date: 2024-03-08 21:46+0530\n"
+"PO-Revision-Date: 2024-08-18 17:24+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.02.0\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #: package/contents/ui/DeviceItem.qml:39
 #, kde-format
@@ -71,7 +71,7 @@ msgstr "முகவரி"
 #: package/contents/ui/DeviceItem.qml:226
 #, kde-format
 msgid "Paired"
-msgstr ""
+msgstr "ஜோடியாக்கப்பட்டுள்ளது"
 
 #: package/contents/ui/DeviceItem.qml:229
 #, kde-format
@@ -170,10 +170,9 @@ msgid "Bluetooth is disabled"
 msgstr "ஊடலை முடக்கப்பட்டுள்ளது"
 
 #: package/contents/ui/FullRepresentation.qml:165
-#, fuzzy, kde-format
-#| msgid "No devices found"
+#, kde-format
 msgid "No devices paired"
-msgstr "எந்த சாதனங்களும் கண்டுபிடிக்கப்படவில்லை"
+msgstr "எந்த சாதனங்களும் ஜோடியாக்கப்படவில்லை"
 
 #: package/contents/ui/main.qml:55
 #, kde-format
@@ -219,10 +218,9 @@ msgstr[0] "%1 இணைந்துள்ள சாதனம்"
 msgstr[1] "%1 இணைந்துள்ள சாதனங்கள்"
 
 #: package/contents/ui/main.qml:106
-#, fuzzy, kde-format
-#| msgid "Add New Device…"
+#, kde-format
 msgid "Pair Device…"
-msgstr "புதிய சாதனத்தை சேர்…"
+msgstr "சாதனத்தை ஜோடியாக்கு…"
 
 #: package/contents/ui/main.qml:113
 #, kde-format
