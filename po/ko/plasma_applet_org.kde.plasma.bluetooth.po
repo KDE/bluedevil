@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# Shinjo Park <kde@peremen.name>, 2015, 2018, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2015, 2018, 2020, 2021, 2022, 2023, 2024 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-06 00:40+0000\n"
-"PO-Revision-Date: 2023-03-01 00:45+0100\n"
+"PO-Revision-Date: 2024-08-19 22:09+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: package/contents/ui/DeviceItem.qml:39
 #, kde-format
@@ -99,11 +99,9 @@ msgid "Connected"
 msgstr "연결됨"
 
 #: package/contents/ui/DeviceItem.qml:248
-#, fuzzy, kde-format
-#| msgctxt "Notification when the connection failed due to Failed"
-#| msgid "Connection to the device failed"
+#, kde-format
 msgid "Connection failed"
-msgstr "장치에 연결할 수 없음"
+msgstr "연결 실패"
 
 #: package/contents/ui/DeviceItem.qml:255
 #, kde-format
@@ -172,10 +170,9 @@ msgid "Bluetooth is disabled"
 msgstr "블루투스가 비활성화되어 있음"
 
 #: package/contents/ui/FullRepresentation.qml:165
-#, fuzzy, kde-format
-#| msgid "No devices found"
+#, kde-format
 msgid "No devices paired"
-msgstr "장치를 찾을 수 없음"
+msgstr "페어링된 장치 없음"
 
 #: package/contents/ui/main.qml:55
 #, kde-format
@@ -220,10 +217,9 @@ msgid_plural "%1 connected devices"
 msgstr[0] "연결된 장치 %1개"
 
 #: package/contents/ui/main.qml:106
-#, fuzzy, kde-format
-#| msgid "Add New Device…"
+#, kde-format
 msgid "Pair Device…"
-msgstr "새 장치 추가…"
+msgstr "장치 페어링…"
 
 #: package/contents/ui/main.qml:113
 #, kde-format
