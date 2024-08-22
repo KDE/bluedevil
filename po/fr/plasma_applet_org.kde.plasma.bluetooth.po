@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-06 00:40+0000\n"
-"PO-Revision-Date: 2024-03-07 08:08+0100\n"
-"Last-Translator: xavier <xyz@yahoo.com>\n"
+"PO-Revision-Date: 2024-08-07 10:11+0200\n"
+"Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -178,10 +178,9 @@ msgid "Bluetooth is disabled"
 msgstr "Le Bluetooth est désactivé"
 
 #: package/contents/ui/FullRepresentation.qml:165
-#, fuzzy, kde-format
-#| msgid "No devices found"
+#, kde-format
 msgid "No devices paired"
-msgstr "Aucun périphérique trouvé"
+msgstr "Aucun périphérique associé"
 
 #: package/contents/ui/main.qml:55
 #, kde-format
@@ -227,10 +226,9 @@ msgstr[0] "%1 périphérique connecté"
 msgstr[1] "%1 périphériques connectés"
 
 #: package/contents/ui/main.qml:106
-#, fuzzy, kde-format
-#| msgid "Add New Device…"
+#, kde-format
 msgid "Pair Device…"
-msgstr "Ajouter un nouveau périphérique..."
+msgstr "Associer un périphérique..."
 
 #: package/contents/ui/main.qml:113
 #, kde-format

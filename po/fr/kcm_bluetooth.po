@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-10 00:42+0000\n"
-"PO-Revision-Date: 2024-06-30 11:17+0200\n"
+"PO-Revision-Date: 2024-08-11 13:39+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -237,10 +237,9 @@ msgid "Enabled"
 msgstr "Activé"
 
 #: ui/main.qml:47
-#, fuzzy, kde-format
-#| msgid "Add New Device…"
+#, kde-format
 msgid "Pair Device…"
-msgstr "Ajouter un nouveau périphérique..."
+msgstr "Associer un périphérique..."
 
 #: ui/main.qml:53
 #, kde-format
@@ -273,13 +272,11 @@ msgid "No devices paired"
 msgstr "Aucun périphérique associé"
 
 #: ui/main.qml:151
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click <interface>Add New Device…</interface> to pair some"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr ""
-"Cliquez sur <interface>Ajouter un nouveau périphérique...</interface> pour "
+"Cliquez sur <interface>Associer un périphérique...</interface> pour "
 "l'associer à d'autres"
 
 #: ui/main.qml:180
@@ -334,12 +331,10 @@ msgid "Headphones"
 msgstr "Écouteurs"
 
 #: ui/script.js:25
-#, fuzzy, kde-format
-#| msgctxt "This device is an Audio/Video device"
-#| msgid "Multimedia Device"
+#, kde-format
 msgctxt "This device is an Audio/Video device"
 msgid "Multimedia"
-msgstr "Périphériques multimédia"
+msgstr "Multimédia"
 
 #: ui/script.js:27
 #, kde-format
@@ -357,7 +352,7 @@ msgstr "Souris"
 #, kde-format
 msgctxt "This device is a Game controller"
 msgid "Game controller"
-msgstr ""
+msgstr "Contrôleur de jeu"
 
 #: ui/script.js:33
 #, kde-format
@@ -411,43 +406,38 @@ msgstr "Santé"
 #: ui/script.js:53
 #, kde-format
 msgid "File transfer"
-msgstr ""
+msgstr "Transfert de fichiers"
 
 #: ui/script.js:56
-#, fuzzy, kde-format
-#| msgid "Send File"
+#, kde-format
 msgid "Send file"
 msgstr "Envoyer un fichier"
 
 #: ui/script.js:59
 #, kde-format
 msgid "Input"
-msgstr ""
+msgstr "Entrée"
 
 #: ui/script.js:62
-#, fuzzy, kde-format
-#| msgctxt "This device is an Audio device"
-#| msgid "Audio"
+#, kde-format
 msgid "Audio"
 msgstr "Audio"
 
 #: ui/script.js:65
-#, fuzzy, kde-format
-#| msgctxt "This device is of type Network"
-#| msgid "Network"
+#, kde-format
 msgid "Network"
 msgstr "Réseau"
 
 #: ui/script.js:69
 #, kde-format
 msgid "Other"
-msgstr ""
+msgstr "Autre"
 
 #: ui/script.js:72
 #, kde-format
 msgctxt "List separator"
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #~ msgctxt "This device is a Joypad"
 #~ msgid "Joypad"
