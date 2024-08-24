@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-10 00:42+0000\n"
-"PO-Revision-Date: 2024-08-08 22:04+0200\n"
+"PO-Revision-Date: 2024-08-19 20:56+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -318,7 +318,7 @@ msgstr "Hovudtelefonar"
 #, kde-format
 msgctxt "This device is an Audio/Video device"
 msgid "Multimedia"
-msgstr ""
+msgstr "Multimedia"
 
 #: ui/script.js:27
 #, kde-format
@@ -336,7 +336,7 @@ msgstr "Mus"
 #, kde-format
 msgctxt "This device is a Game controller"
 msgid "Game controller"
-msgstr ""
+msgstr "Spelkontrollar"
 
 #: ui/script.js:33
 #, kde-format
@@ -390,38 +390,35 @@ msgstr "Helse"
 #: ui/script.js:53
 #, kde-format
 msgid "File transfer"
-msgstr ""
+msgstr "Filoverføring"
 
 #: ui/script.js:56
-#, fuzzy, kde-format
-#| msgid "Send File"
+#, kde-format
 msgid "Send file"
 msgstr "Send fil"
 
 #: ui/script.js:59
 #, kde-format
 msgid "Input"
-msgstr ""
+msgstr "Inndata"
 
 #: ui/script.js:62
 #, kde-format
 msgid "Audio"
-msgstr ""
+msgstr "Lyd"
 
 #: ui/script.js:65
-#, fuzzy, kde-format
-#| msgctxt "DeviceName Network (Service)"
-#| msgid "%1 Network (%2)"
+#, kde-format
 msgid "Network"
-msgstr "%1 nettverk (%2)"
+msgstr "Nettverk"
 
 #: ui/script.js:69
 #, kde-format
 msgid "Other"
-msgstr ""
+msgstr "Anna"
 
 #: ui/script.js:72
 #, kde-format
 msgctxt "List separator"
 msgid ", "
-msgstr ""
+msgstr ", "
