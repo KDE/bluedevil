@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-30 00:54+0000\n"
-"PO-Revision-Date: 2022-08-20 20:34+0200\n"
-"Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
+"PO-Revision-Date: 2024-08-19 23:21+0200\n"
+"Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.02.1\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -83,12 +83,12 @@ msgstr "Datei senden"
 #: package/contents/ui/Device.qml:139
 #, kde-format
 msgid "Setup NAP Network…"
-msgstr "NAP-Netzwerk einrichten ..."
+msgstr "NAP-Netzwerk einrichten …"
 
 #: package/contents/ui/Device.qml:146
 #, kde-format
 msgid "Setup DUN Network…"
-msgstr "DUN-Netzwerk einrichten ..."
+msgstr "DUN-Netzwerk einrichten …"
 
 #: package/contents/ui/Device.qml:156
 #, kde-format
@@ -336,12 +336,12 @@ msgstr "„%1“ vergessen"
 #: package/contents/ui/main.qml:241
 #, kde-format
 msgid "Add New Device…"
-msgstr "Neues Gerät hinzufügen ..."
+msgstr "Neues Gerät hinzufügen …"
 
 #: package/contents/ui/main.qml:259
 #, kde-format
 msgid "Configure…"
-msgstr "Einrichten ..."
+msgstr "Einrichten …"
 
 #~ msgid "Confirm Deletion of Device"
 #~ msgstr "Löschen des Geräts bestätigen"
