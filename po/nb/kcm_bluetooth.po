@@ -393,7 +393,6 @@ msgstr ""
 
 #: ui/script.js:56
 #, fuzzy, kde-format
-#| msgid "Send File"
 msgid "Send file"
 msgstr "Send fil"
 

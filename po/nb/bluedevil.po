@@ -38,21 +38,18 @@ msgstr ""
 
 #: applet/plugin/devicesstateproxymodel.cpp:235
 #, fuzzy, kde-format
-#| msgid "This address is unavailable."
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "Denne adressen er ikke tilgjengelig."
 
 #: applet/plugin/devicesstateproxymodel.cpp:236
 #, fuzzy, kde-format
-#| msgid "Connecting to the device"
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "Kobler til enheten"
 
 #: applet/plugin/devicesstateproxymodel.cpp:239
 #, fuzzy, kde-format
-#| msgid "Obexd service is not running."
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Obexd-tjenesten kjører ikke."
