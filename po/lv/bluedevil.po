@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-22 00:40+0000\n"
-"PO-Revision-Date: 2024-02-26 14:46+0200\n"
+"PO-Revision-Date: 2024-08-20 18:41+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -29,34 +29,29 @@ msgid "Your emails"
 msgstr "toms.trasuns@posteo.net"
 
 #: applet/plugin/devicesstateproxymodel.cpp:220
-#, fuzzy, kde-format
-#| msgctxt "DeviceName Network (Service)"
-#| msgid "%1 Network (%2)"
+#, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
-msgstr "„%1“ tīkls („%2“)"
+msgstr "„%1“ (%2)"
 
 #: applet/plugin/devicesstateproxymodel.cpp:235
-#, fuzzy, kde-format
-#| msgid "This address is unavailable."
+#, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
-msgstr "Adrese nav pieejama"
+msgstr "Ierīce nav sasniedzama"
 
 #: applet/plugin/devicesstateproxymodel.cpp:236
-#, fuzzy, kde-format
-#| msgid "Connecting to the device"
+#, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
-msgstr "Savienojas ar ierīci"
+msgstr "Savienojums ar ierīci nav izdevies"
 
 #: applet/plugin/devicesstateproxymodel.cpp:239
-#, fuzzy, kde-format
-#| msgid "Obexd service is not running."
+#, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
-msgstr "„Obexd“ serviss nav palaists."
+msgstr "Ierīce nav gatava"
 
 #: kcm/bluetooth.cpp:102
 #, kde-format
@@ -245,7 +240,7 @@ msgstr "Nav atrasts neviens „Bluetooth“ adapteris."
 #: kio/bluetooth/kiobluetooth.cpp:92
 #, kde-format
 msgid "Retrieving services…"
-msgstr "Izgūst servisus..."
+msgstr "Izgūst servisus…"
 
 #: kio/bluetooth/kiobluetooth.cpp:99
 #, kde-format
@@ -260,7 +255,7 @@ msgstr "Saņemtās datnes"
 #: kio/bluetooth/kiobluetooth.cpp:167
 #, kde-format
 msgid "Scanning for new devices…"
-msgstr "Skenē jaunas ierīces..."
+msgstr "Skenē jaunas ierīces…"
 
 #: kio/obexftp/kioobexftp.cpp:96
 #, kde-format
@@ -270,7 +265,7 @@ msgstr "„Obexd“ serviss nav palaists."
 #: kio/obexftp/kioobexftp.cpp:140
 #, kde-format
 msgid "Retrieving information from remote device…"
-msgstr "Izgūst informāciju no attālās ierīces..."
+msgstr "Izgūst informāciju no attālās ierīces…"
 
 #: kio/obexftp/kioobexftp.cpp:222
 #, kde-format
@@ -338,7 +333,7 @@ msgstr "Nosūtāmās datnes."
 #, kde-format
 msgctxt "Connecting to a Bluetooth device"
 msgid "Connecting to %1…"
-msgstr "Savienojas ar %1..."
+msgstr "Savienojas ar „%1“…"
 
 #: sendfile/pages/failpage.cpp:43
 #, kde-format
@@ -354,7 +349,7 @@ msgstr "Savienošanās ar „%1“ nav izdevusies: %2"
 #: sendfile/pages/selectdeviceandfilespage.cpp:53
 #, kde-format
 msgid "Open file…"
-msgstr "Atvērt dati..."
+msgstr "Atvērt dati…"
 
 #. i18n: ectx: property (text), widget (KSqueezedTextLabel, selectLbl)
 #: sendfile/pages/selectdeviceandfilespage.cpp:58
@@ -456,13 +451,13 @@ msgstr "Padarīt sapārojamu"
 #: wizard/pages/discover.ui:19
 #, kde-format
 msgid "Search…"
-msgstr "Meklēt..."
+msgstr "Meklēt…"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: wizard/pages/discover.ui:64
 #, kde-format
 msgid "Scanning…"
-msgstr "Skenē..."
+msgstr "Skenē…"
 
 #. i18n: ectx: property (text), widget (QCheckBox, manualPin)
 #: wizard/pages/discover.ui:84
@@ -503,7 +498,7 @@ msgstr "„%1“ iestatīšana nav izdevusies"
 #: wizard/pages/pairing.cpp:60
 #, kde-format
 msgid "Connecting to %1…"
-msgstr "Savienojas ar „%1“..."
+msgstr "Savienojas ar „%1“…"
 
 #: wizard/pages/pairing.cpp:96
 #, kde-format

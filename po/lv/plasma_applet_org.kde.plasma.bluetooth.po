@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-06 00:40+0000\n"
-"PO-Revision-Date: 2024-02-26 15:07+0200\n"
+"PO-Revision-Date: 2024-08-20 18:47+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #: package/contents/ui/DeviceItem.qml:39
 #, kde-format
@@ -100,11 +100,9 @@ msgid "Connected"
 msgstr "Savienots"
 
 #: package/contents/ui/DeviceItem.qml:248
-#, fuzzy, kde-format
-#| msgctxt "Notification when the connection failed due to Failed"
-#| msgid "Connection to the device failed"
+#, kde-format
 msgid "Connection failed"
-msgstr "Savienojums ar šo ierīci nav izdevies"
+msgstr "Savienojums nav izdevies"
 
 #: package/contents/ui/DeviceItem.qml:255
 #, kde-format
@@ -173,10 +171,9 @@ msgid "Bluetooth is disabled"
 msgstr "„Bluetooth“ ir izslēgts"
 
 #: package/contents/ui/FullRepresentation.qml:165
-#, fuzzy, kde-format
-#| msgid "No devices found"
+#, kde-format
 msgid "No devices paired"
-msgstr "Ierīces nav atrastas"
+msgstr "Nav sapārotu ierīču"
 
 #: package/contents/ui/main.qml:55
 #, kde-format
@@ -223,10 +220,9 @@ msgstr[1] "%1 pievienotas ierīces"
 msgstr[2] "%1 pievienotu ierīču"
 
 #: package/contents/ui/main.qml:106
-#, fuzzy, kde-format
-#| msgid "Add New Device…"
+#, kde-format
 msgid "Pair Device…"
-msgstr "Pievienot jaunu ierīci..."
+msgstr "Sapārot ierīci…"
 
 #: package/contents/ui/main.qml:113
 #, kde-format

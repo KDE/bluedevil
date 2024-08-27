@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-10 00:42+0000\n"
-"PO-Revision-Date: 2024-02-26 13:38+0200\n"
+"PO-Revision-Date: 2024-08-20 18:46+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -47,7 +47,7 @@ msgstr "Savienot"
 #: ui/Device.qml:111
 #, kde-format
 msgid "Unblock the device first to be able to connect to it"
-msgstr ""
+msgstr "Lai savienotos ar ierīci, vispirms to atbloķējiet"
 
 #: ui/Device.qml:132
 #, kde-format
@@ -94,6 +94,7 @@ msgstr "Bloķēta"
 msgid ""
 "Any incoming connections from a blocked device will be immediately rejected."
 msgstr ""
+"Visi ienākošie savienojumi no bloķētas ierīces tiks automātiski noraidīti."
 
 #: ui/Device.qml:179
 #, kde-format
@@ -103,20 +104,18 @@ msgstr "Sūtīt datni"
 #: ui/Device.qml:187
 #, kde-format
 msgid "Setup NAP Network…"
-msgstr "Iestatīt NAP tīklu..."
+msgstr "Iestatīt NAP tīklu…"
 
 #: ui/Device.qml:195
 #, kde-format
 msgid "Setup DUN Network…"
-msgstr "Iestatīt DUN tīklu..."
+msgstr "Iestatīt DUN tīklu…"
 
 #: ui/Device.qml:210
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the name of a Bluetooth device"
-#| msgid "Forget \"%1\""
+#, kde-format
 msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"
-msgstr "Aizmirst „%1“"
+msgstr "Aizmirst"
 
 #: ui/ForgetDeviceAction.qml:17
 #, kde-format
@@ -223,15 +222,14 @@ msgid "Enabled"
 msgstr "Ieslēgts"
 
 #: ui/main.qml:47
-#, fuzzy, kde-format
-#| msgid "Add New Device…"
+#, kde-format
 msgid "Pair Device…"
-msgstr "Pievienot jaunu ierīci..."
+msgstr "Sapārot ierīci…"
 
 #: ui/main.qml:53
 #, kde-format
 msgid "Configure…"
-msgstr "Konfigurēt..."
+msgstr "Konfigurēt…"
 
 #: ui/main.qml:124
 #, kde-format
@@ -259,13 +257,10 @@ msgid "No devices paired"
 msgstr "Nav sapārotu ierīču"
 
 #: ui/main.qml:151
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click <interface>Add New Device…</interface> to pair some"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
-msgstr ""
-"Spiediet uz <interface>Pievienot jaunu ierīci…</interface>, lai sapārotu"
+msgstr "Spiediet uz <interface>Sapārot ierīci…</interface>, lai sapārotu"
 
 #: ui/main.qml:180
 #, kde-format
@@ -286,149 +281,143 @@ msgstr "%1% baterija"
 #, kde-format
 msgctxt "This device is a Phone"
 msgid "Phone"
-msgstr ""
+msgstr "Tālrunis"
 
 #: ui/script.js:15
 #, kde-format
 msgctxt "This device is a Modem"
 msgid "Modem"
-msgstr ""
+msgstr "Modems"
 
 #: ui/script.js:17
 #, kde-format
 msgctxt "This device is a Computer"
 msgid "Computer"
-msgstr ""
+msgstr "Dators"
 
 #: ui/script.js:19
-#, fuzzy, kde-format
-#| msgctxt "DeviceName Network (Service)"
-#| msgid "%1 Network (%2)"
+#, kde-format
 msgctxt "This device is of type Network"
 msgid "Network"
-msgstr "„%1“ tīkls („%2“)"
+msgstr "Tīkls"
 
 #: ui/script.js:21
 #, kde-format
 msgctxt "This device is a Headset"
 msgid "Headset"
-msgstr ""
+msgstr "Uzgalvas ierīce"
 
 #: ui/script.js:23
 #, kde-format
 msgctxt "This device is a Headphones"
 msgid "Headphones"
-msgstr ""
+msgstr "Austiņas"
 
 #: ui/script.js:25
 #, kde-format
 msgctxt "This device is an Audio/Video device"
 msgid "Multimedia"
-msgstr ""
+msgstr "Multivide"
 
 #: ui/script.js:27
 #, kde-format
 msgctxt "This device is a Keyboard"
 msgid "Keyboard"
-msgstr ""
+msgstr "Tastatūra"
 
 #: ui/script.js:29
 #, kde-format
 msgctxt "This device is a Mouse"
 msgid "Mouse"
-msgstr ""
+msgstr "Pele"
 
 #: ui/script.js:31
 #, kde-format
 msgctxt "This device is a Game controller"
 msgid "Game controller"
-msgstr ""
+msgstr "Spēļu vadāmierīce"
 
 #: ui/script.js:33
-#, fuzzy, kde-format
-#| msgid "Enable"
+#, kde-format
 msgctxt "This device is a Graphics Tablet (input device)"
 msgid "Tablet"
-msgstr "Ieslēgt"
+msgstr "Planšetdators"
 
 #: ui/script.js:35
 #, kde-format
 msgctxt "This device is a Peripheral device"
 msgid "Peripheral"
-msgstr ""
+msgstr "Perifērijas ierīce"
 
 #: ui/script.js:37
 #, kde-format
 msgctxt "This device is a Camera"
 msgid "Camera"
-msgstr ""
+msgstr "Kamera"
 
 #: ui/script.js:39
 #, kde-format
 msgctxt "This device is a Printer"
 msgid "Printer"
-msgstr ""
+msgstr "Printeris"
 
 #: ui/script.js:41
 #, kde-format
 msgctxt ""
 "This device is an Imaging device (printer, scanner, camera, display, …)"
 msgid "Imaging"
-msgstr ""
+msgstr "Attēlu uzņēmējiekārta"
 
 #: ui/script.js:43
 #, kde-format
 msgctxt "This device is a Wearable"
 msgid "Wearable"
-msgstr ""
+msgstr "Valkājamierīce"
 
 #: ui/script.js:45
 #, kde-format
 msgctxt "This device is a Toy"
 msgid "Toy"
-msgstr ""
+msgstr "Rotaļlieta"
 
 #: ui/script.js:47
 #, kde-format
 msgctxt "This device is a Health device"
 msgid "Health"
-msgstr ""
+msgstr "Veselības ierīce"
 
 #: ui/script.js:53
 #, kde-format
 msgid "File transfer"
-msgstr ""
+msgstr "Datņu pārsūtīšana"
 
 #: ui/script.js:56
-#, fuzzy, kde-format
-#| msgid "Send File"
+#, kde-format
 msgid "Send file"
-msgstr "Sūtīt datni"
+msgstr "Nosūtīt datni"
 
 #: ui/script.js:59
 #, kde-format
 msgid "Input"
-msgstr ""
+msgstr "Ievade"
 
 #: ui/script.js:62
 #, kde-format
 msgid "Audio"
-msgstr ""
+msgstr "Audio"
 
 #: ui/script.js:65
-#, fuzzy, kde-format
-#| msgctxt "DeviceName Network (Service)"
-#| msgid "%1 Network (%2)"
+#, kde-format
 msgid "Network"
-msgstr "„%1“ tīkls („%2“)"
+msgstr "Tīkls"
 
 #: ui/script.js:69
 #, kde-format
 msgid "Other"
-msgstr ""
+msgstr "Cita"
 
 #: ui/script.js:72
 #, kde-format
 msgctxt "List separator"
 msgid ", "
-msgstr ""
+msgstr ", "
