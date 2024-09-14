@@ -149,6 +149,7 @@
         "Website": "http://kde.org"
     },
     "X-KDE-Keywords": "bluetooth,hardware,connection,devices,find devices,connect,disconnect,send file,receive file,transfer,wireless,visible,adapter,pin,trusted devices",
+    "X-KDE-Keywords[x-test]": "xxbluetoothxx,xxhardwarexx,xxconnectionxx,xxdevicesxx,xxfind devicesxx,xxconnectxx,xxdisconnectxx,xxsend filexx,xxreceive filexx,xxtransferxx,xxwirelessxx,xxvisiblexx,xxadapterxx,xxpinxx,xxtrusted devicesxx",
     "X-KDE-ParentApp": "kcontrol",
     "X-KDE-System-Settings-Parent-Category": "hardware"
 }
