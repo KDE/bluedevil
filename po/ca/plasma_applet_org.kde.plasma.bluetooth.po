@@ -235,20 +235,3 @@ msgstr "Activa el Bluetooth"
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Configura el &Bluetooth…"
-
-#~ msgctxt "Notification when the connection failed due to Failed:HostIsDown"
-#~ msgid "The device is unreachable"
-#~ msgstr "No es pot accedir al dispositiu"
-
-#~ msgctxt "Notification when the connection failed due to Failed"
-#~ msgid "Connection to the device failed"
-#~ msgstr "Ha fallat la connexió amb el dispositiu"
-
-#~ msgctxt "Notification when the connection failed due to NotReady"
-#~ msgid "The device is not ready"
-#~ msgstr "El dispositiu no està preparat"
-
-#~ msgctxt ""
-#~ "@label %1 is human-readable device name, %2 is low-level device address"
-#~ msgid "%1 (%2)"
-#~ msgstr "%1 (%2)"

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-10 00:42+0000\n"
-"PO-Revision-Date: 2024-09-10 16:18+0300\n"
+"PO-Revision-Date: 2024-09-13 11:06+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
@@ -118,10 +118,10 @@ msgid "Setup DUN Network…"
 msgstr "Настроить сеть DUN..."
 
 #: ui/Device.qml:210
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"
-msgstr "Удалить «%1»"
+msgstr "Удалить"
 
 #: ui/ForgetDeviceAction.qml:17
 #, kde-format
@@ -229,9 +229,9 @@ msgid "Enabled"
 msgstr "Включить"
 
 #: ui/main.qml:47
-#, fuzzy, kde-format
+#, kde-format
 msgid "Pair Device…"
-msgstr "Добавить новое устройство…"
+msgstr "Выполнить сопряжение устройства…"
 
 #: ui/main.qml:53
 #, kde-format
@@ -264,12 +264,12 @@ msgid "No devices paired"
 msgstr "Нет ни одного настроенного устройства"
 
 #: ui/main.qml:151
-#, fuzzy, kde-kuit-format
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr ""
-"Нажмите <interface>Добавить новое устройство…</interface> чтобы настроить "
-"новое подключение"
+"Нажмите <interface>Выполнить сопряжение устройства…</interface> для "
+"настройки нового подключения"
 
 #: ui/main.qml:180
 #, kde-format
@@ -429,7 +429,7 @@ msgstr "Другое"
 #, kde-format
 msgctxt "List separator"
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #~ msgctxt "This device is a Joypad"
 #~ msgid "Joypad"
