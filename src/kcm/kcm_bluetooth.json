@@ -149,6 +149,11 @@
         "Website": "http://kde.org"
     },
     "X-KDE-Keywords": "bluetooth,hardware,connection,devices,find devices,connect,disconnect,send file,receive file,transfer,wireless,visible,adapter,pin,trusted devices",
+    "X-KDE-Keywords[ca]": "bluetooth,maquinari,connexió,dispositius,troba dispositius,connecta,desconnecta,envia fitxer,rep fitxer,transfereix,sense fils,visible,adaptador,pin,dispositius fiables",
+    "X-KDE-Keywords[es]": "bluetooth,hardware,conexión,dispositivos,encontrar dispositivos,buscar dispositivos,conectar,desconectar,enviar archivo,recibir archivo,transferir,inalámbrica,visible,adaptador,pin,dispositivos de confianza",
+    "X-KDE-Keywords[nl]": "bluetooth,hardware,verbinding,apparaten,zoek apparaten,verbinden,verbinding verbreken,bestand verzenden,bestand ontvangen,overdracht,draadloos,zichtbaar,adapter,pin,vertrouwde apparaten",
+    "X-KDE-Keywords[sl]": "bluetooth,strojna oprema,povezava,naprave,poišči naprave,poveži,prekini povezavo,pošlji datoteko,prejmi datoteko,prenesi,brezžično,vidno,adapter,pin,zaupanja vredne naprave",
+    "X-KDE-Keywords[sv]": "blåtand,maskinvara,anslutning,enheter,sök enheter,anslut,koppla ner,skicka fil,ta emot fil,överför,trådlös,synlig,adapter,pin-kod,pålitliga enheter",
     "X-KDE-Keywords[x-test]": "xxbluetoothxx,xxhardwarexx,xxconnectionxx,xxdevicesxx,xxfind devicesxx,xxconnectxx,xxdisconnectxx,xxsend filexx,xxreceive filexx,xxtransferxx,xxwirelessxx,xxvisiblexx,xxadapterxx,xxpinxx,xxtrusted devicesxx",
     "X-KDE-ParentApp": "kcontrol",
     "X-KDE-System-Settings-Parent-Category": "hardware"
