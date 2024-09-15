@@ -162,6 +162,11 @@
         "Website": "http://kde.org"
     },
     "X-KDE-Keywords": "bluetooth,hardware,connection,devices,find devices,connect,disconnect,send file,receive file,transfer,wireless,visible,adapter,pin,trusted devices",
+    "X-KDE-Keywords[ca]": "bluetooth,maquinari,connexió,dispositius,troba dispositius,connecta,desconnecta,envia fitxer,rep fitxer,transfereix,sense fils,visible,adaptador,pin,dispositius fiables",
+    "X-KDE-Keywords[ru]": "bluetooth,hardware,connection,devices,find devices,connect,disconnect,send file,receive file,transfer,wireless,visible,adapter,pin,trusted devices,аппаратное обеспечение,подключение,устройства,найти устройства,подключиться,отключиться,отправить файл,получить файл,передача,беспроводной,видимый,адаптер,пин-код,доверенные устройства",
+    "X-KDE-Keywords[sl]": "bluetooth,strojna oprema,povezava,naprave,najdi naprave,priklopi,odklopi,pošlji datoteko,prejmi datoteko,,prenos,brezžično,vidno,adapter,pin,zaupanja vredne naprave",
+    "X-KDE-Keywords[sv]": "blåtand,maskinvara,anslutning,enheter,sök enheter,anslut,koppla ner,skicka fil,ta emot fil,överför,trådlös,synlig,adapter,pin-kod,pålitliga enheter",
+    "X-KDE-Keywords[tr]": "bluetooth,donanım,bağlantı,aygıtlar,cihazlar,aygıt bul,cihaz bul,bağlan,bağlantıyı kes,bağlantı kes,dosya gönder,dosya al,aktar,transfer,kablosuz,wireless,görünür,adaptör,bağdaştırıcı,pin,güvenilen aygıt,güvenilen cihaz",
     "X-KDE-ParentApp": "kcontrol",
     "X-KDE-System-Settings-Parent-Category": "hardware",
     "X-KDE-Weight": 20
