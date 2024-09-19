@@ -149,6 +149,7 @@
         "Website": "http://kde.org"
     },
     "X-KDE-Keywords": "bluetooth,hardware,connection,devices,find devices,connect,disconnect,send file,receive file,transfer,wireless,visible,adapter,pin,trusted devices",
+    "X-KDE-Keywords[ar]": "بلوتوث,أجهزة,اتصال,أجهزة,البحث عن أجهزة,الاتصال,قطع الاتصال,إرسال ملف,استقبال ملف,نقل,لاسلكي,مرئي,محول,رقم التعريف الشخصي,أجهزة موثوقة",
     "X-KDE-Keywords[ca@valencia]": "bluetooth,maquinari,connexió,dispositius,troba dispositius,connecta,desconnecta,envia fitxer,rep fitxer,transferix,sense fils,visible,adaptador,pin,dispositius fiables",
     "X-KDE-Keywords[ca]": "bluetooth,maquinari,connexió,dispositius,troba dispositius,connecta,desconnecta,envia fitxer,rep fitxer,transfereix,sense fils,visible,adaptador,pin,dispositius fiables",
     "X-KDE-Keywords[en_GB]": "bluetooth,hardware,connection,devices,find devices,connect,disconnect,send file,receive file,transfer,wireless,visible,adapter,pin,trusted devices",
