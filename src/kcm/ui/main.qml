@@ -204,6 +204,7 @@ KCMUtils.ScrollViewKCM {
                     icon.name: delegate.model.Icon
                     icon.width: Kirigami.Units.iconSizes.medium
                     Layout.fillWidth: true
+                    selected: delegate.highlighted || delegate.down
                 }
 
                 QQC2.ToolButton {
