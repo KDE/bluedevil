@@ -154,7 +154,7 @@ KCMUtils.SimpleKCM {
                 Kirigami.FormData.label: i18n("Name:")
             }
 
-            QQC2.CheckBox {
+            QQC2.Switch {
                 text: i18n("Trusted")
                 checked: root.device.trusted
                 onClicked: root.device.trusted = !root.device.trusted
@@ -163,7 +163,7 @@ KCMUtils.SimpleKCM {
             RowLayout {
                 spacing: Kirigami.Units.smallSpacing
 
-                QQC2.CheckBox {
+                QQC2.Switch {
                     text: i18n("Blocked")
                     checked: root.device.blocked
                     onClicked: root.device.blocked = !root.device.blocked

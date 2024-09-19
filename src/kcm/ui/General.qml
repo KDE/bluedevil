@@ -49,13 +49,13 @@ KCMUtils.SimpleKCM {
             Kirigami.FormData.label: i18n("Address:")
         }
 
-        QQC2.CheckBox {
+        QQC2.Switch {
             Kirigami.FormData.label: i18n("Enabled:")
             checked: root.adapter.powered
             onToggled: root.adapter.powered = checked
         }
 
-        QQC2.CheckBox {
+        QQC2.Switch {
             Kirigami.FormData.label: i18n("Visible:")
             checked: root.adapter.discoverable
             onToggled: root.adapter.discoverable = checked
