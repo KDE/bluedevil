@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-10 00:42+0000\n"
+"POT-Creation-Date: 2024-09-20 00:42+0000\n"
 "PO-Revision-Date: 2024-09-13 11:06+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -40,12 +40,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "Сеть %1 (%2)"
 
-#: ui/Device.qml:108 ui/main.qml:210
+#: ui/Device.qml:108 ui/main.qml:211
 #, kde-format
 msgid "Disconnect"
 msgstr "Отключить"
 
-#: ui/Device.qml:108 ui/main.qml:210
+#: ui/Device.qml:108 ui/main.qml:211
 #, kde-format
 msgid "Connect"
 msgstr "Подключить"
@@ -281,7 +281,7 @@ msgstr "Подключено"
 msgid "Available"
 msgstr "Доступно"
 
-#: ui/main.qml:246
+#: ui/main.qml:247
 #, kde-format
 msgid "%1% Battery"
 msgstr "Батарея %1%"

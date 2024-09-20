@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-10 00:42+0000\n"
+"POT-Creation-Date: 2024-09-20 00:42+0000\n"
 "PO-Revision-Date: 2024-09-04 14:31+0300\n"
 "Last-Translator: Αντώνης Γέραλης <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
@@ -35,12 +35,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 Δίκτυο (%2)"
 
-#: ui/Device.qml:108 ui/main.qml:210
+#: ui/Device.qml:108 ui/main.qml:211
 #, kde-format
 msgid "Disconnect"
 msgstr "Αποσύνδεση"
 
-#: ui/Device.qml:108 ui/main.qml:210
+#: ui/Device.qml:108 ui/main.qml:211
 #, kde-format
 msgid "Connect"
 msgstr "Σύνδεση"
@@ -275,7 +275,7 @@ msgstr "Συνδεδεμένο"
 msgid "Available"
 msgstr "Διαθέσιμο"
 
-#: ui/main.qml:246
+#: ui/main.qml:247
 #, kde-format
 msgid "%1% Battery"
 msgstr "Μπαταρία %1%"
