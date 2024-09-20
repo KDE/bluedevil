@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-06 00:40+0000\n"
-"PO-Revision-Date: 2024-03-20 14:22+0100\n"
+"PO-Revision-Date: 2024-09-19 14:30+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.04.70\n"
+"X-Generator: Lokalize 24.08.0\n"
 
 #: package/contents/ui/DeviceItem.qml:39
 #, kde-format
@@ -171,10 +171,9 @@ msgid "Bluetooth is disabled"
 msgstr "A Bluetooth ki van kapcsolva"
 
 #: package/contents/ui/FullRepresentation.qml:165
-#, fuzzy, kde-format
-#| msgid "No devices found"
+#, kde-format
 msgid "No devices paired"
-msgstr "Nem találhatók eszközök"
+msgstr "Nincs párosított eszköz"
 
 #: package/contents/ui/main.qml:55
 #, kde-format
@@ -221,10 +220,9 @@ msgstr[0] "%1 kapcsolódott eszköz"
 msgstr[1] "%1 kapcsolódott eszköz"
 
 #: package/contents/ui/main.qml:106
-#, fuzzy, kde-format
-#| msgid "Add New Device…"
+#, kde-format
 msgid "Pair Device…"
-msgstr "Új eszköz hozzáadása…"
+msgstr "Eszköz párosítása…"
 
 #: package/contents/ui/main.qml:113
 #, kde-format
