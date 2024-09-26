@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-06 00:40+0000\n"
+"POT-Creation-Date: 2024-09-26 02:31+0000\n"
 "PO-Revision-Date: 2024-08-02 15:12+0700\n"
 "Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
 "Language-Team: Interlingue <>\n"
@@ -234,17 +234,32 @@ msgstr "Activar Bluetooth"
 msgid "Configure &Bluetooth…"
 msgstr "Configurar &Bluetooth"
 
-#~ msgctxt "Notification when the connection failed due to Failed:HostIsDown"
-#~ msgid "The device is unreachable"
-#~ msgstr "Li aparate es ínatingibil"
+#: plugin/devicesstateproxymodel.cpp:220
+#, fuzzy, kde-format
+#| msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
+#| msgid "%1 (%2)"
+msgctxt ""
+"@label %1 is human-readable device name, %2 is low-level device address"
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
 
-#~ msgctxt "Notification when the connection failed due to Failed"
-#~ msgid "Connection to the device failed"
-#~ msgstr "Conexion al aparate ne successat"
+#: plugin/devicesstateproxymodel.cpp:235
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed:HostIsDown"
+msgid "The device is unreachable"
+msgstr "Li aparate es ínatingibil"
 
-#~ msgctxt "Notification when the connection failed due to NotReady"
-#~ msgid "The device is not ready"
-#~ msgstr "Li aparate ne es pret"
+#: plugin/devicesstateproxymodel.cpp:236
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed"
+msgid "Connection to the device failed"
+msgstr "Conexion al aparate ne successat"
+
+#: plugin/devicesstateproxymodel.cpp:239
+#, kde-format
+msgctxt "Notification when the connection failed due to NotReady"
+msgid "The device is not ready"
+msgstr "Li aparate ne es pret"
 
 #~ msgid ""
 #~ "No connected devices\n"
