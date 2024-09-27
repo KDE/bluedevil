@@ -235,9 +235,7 @@ msgid "Configure &Bluetooth…"
 msgstr "Set opp &Bluetooth …"
 
 #: plugin/devicesstateproxymodel.cpp:220
-#, fuzzy, kde-format
-#| msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
-#| msgid "%1 (%2)"
+#, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
@@ -247,18 +245,16 @@ msgstr "%1 (%2)"
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
-msgstr ""
+msgstr "Kan ikkje nå eininga"
 
 #: plugin/devicesstateproxymodel.cpp:236
-#, fuzzy, kde-format
-#| msgid "Connection failed"
+#, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
-msgstr "Feil ved tilkopling"
+msgstr "Klarte ikkje kopla til eininga"
 
 #: plugin/devicesstateproxymodel.cpp:239
-#, fuzzy, kde-format
-#| msgid "No devices paired"
+#, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
-msgstr "Ingen einingar er para"
+msgstr "Eininga er ikkje klar"
