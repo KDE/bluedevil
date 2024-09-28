@@ -1,6 +1,6 @@
 # Spanish translations for plasma_applet_org.kde.plasma.bluetooth.po package.
 # Copyright (C) 2015 This_file_is_part_of_KDE
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the bluedevil package.
 #
 # Automatically generated, 2015.
 # SPDX-FileCopyrightText: 2015, 2017, 2020, 2021, 2022, 2024 Eloy Cuadra <ecuadra@eloihr.net>
