@@ -235,9 +235,7 @@ msgid "Configure &Bluetooth…"
 msgstr "Nastavit &Bluetooth..."
 
 #: plugin/devicesstateproxymodel.cpp:220
-#, fuzzy, kde-format
-#| msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
-#| msgid "%1 (%2)"
+#, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
@@ -247,18 +245,16 @@ msgstr "%1 (%2)"
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
-msgstr ""
+msgstr "Zařízení je nedostupné"
 
 #: plugin/devicesstateproxymodel.cpp:236
-#, fuzzy, kde-format
-#| msgid "Connection failed"
+#, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
-msgstr "Připojení selhalo"
+msgstr "Připojení k zařízení selhalo"
 
 #: plugin/devicesstateproxymodel.cpp:239
-#, fuzzy, kde-format
-#| msgid "No devices paired"
+#, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
-msgstr "Žádné zařízení není spárováno"
+msgstr "Zařízení není připraveno"
