@@ -14,9 +14,9 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf6-trunk/messages/bluedevil/plasma_applet_org.kde.plasma."
+"X-Crowdin-File: /kf6-stable/messages/bluedevil/plasma_applet_org.kde.plasma."
 "bluetooth.pot\n"
-"X-Crowdin-File-ID: 43113\n"
+"X-Crowdin-File-ID: 51992\n"
 
 #: package/contents/ui/DeviceItem.qml:39
 #, kde-format
@@ -233,9 +233,7 @@ msgid "Configure &Bluetooth…"
 msgstr "配置蓝牙(&B)…"
 
 #: plugin/devicesstateproxymodel.cpp:220
-#, fuzzy, kde-format
-#| msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
-#| msgid "%1 (%2)"
+#, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
@@ -245,18 +243,16 @@ msgstr "%1 (%2)"
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
-msgstr ""
+msgstr "设备无法访问"
 
 #: plugin/devicesstateproxymodel.cpp:236
-#, fuzzy, kde-format
-#| msgid "Connection failed"
+#, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
-msgstr "连接失败"
+msgstr "设备连接失败"
 
 #: plugin/devicesstateproxymodel.cpp:239
-#, fuzzy, kde-format
-#| msgid "No devices paired"
+#, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
-msgstr "没有已配对的设备"
+msgstr "设备未就绪"
