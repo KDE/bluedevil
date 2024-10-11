@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: trunk-kf 5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-26 00:40+0000\n"
+"POT-Creation-Date: 2024-10-11 00:41+0000\n"
 "PO-Revision-Date: 2024-08-12 16:05+0300\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -151,8 +151,8 @@ msgstr "Tinklas"
 msgid "Other device"
 msgstr "Kitas įrenginys"
 
-#: package/contents/ui/DeviceItem.qml:297 package/contents/ui/main.qml:78
-#: package/contents/ui/main.qml:87
+#: package/contents/ui/DeviceItem.qml:297 package/contents/ui/main.qml:70
+#: package/contents/ui/main.qml:79
 #, kde-format
 msgid "%1% Battery"
 msgstr "Akumuliatorius %1%"
@@ -177,44 +177,44 @@ msgstr "Bluetooth yra išjungtas"
 msgid "No devices paired"
 msgstr "Nėra suporuotų įrenginių"
 
-#: package/contents/ui/main.qml:55
+#: package/contents/ui/main.qml:47
 #, kde-format
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
-#: package/contents/ui/main.qml:59
+#: package/contents/ui/main.qml:51
 #, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
 msgstr ""
 "Bluetooth yra išjungtas; spustelėkite viduriniuoju pelės mygtuku, norėdami "
 "įjungti"
 
-#: package/contents/ui/main.qml:63
+#: package/contents/ui/main.qml:55
 #, kde-format
 msgid "No adapters available"
 msgstr "Nėra prieinamų adapterių"
 
-#: package/contents/ui/main.qml:65
+#: package/contents/ui/main.qml:57
 #, kde-format
 msgid "Bluetooth is offline"
 msgstr "Bluetooth yra atjungtas"
 
-#: package/contents/ui/main.qml:68
+#: package/contents/ui/main.qml:60
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr "Spustelėkite viduriniuoju pelės mygtuku, norėdami išjungti Bluetooth"
 
-#: package/contents/ui/main.qml:71
+#: package/contents/ui/main.qml:63
 #, kde-format
 msgid "No connected devices"
 msgstr "Nėra prijungtų įrenginių"
 
-#: package/contents/ui/main.qml:76
+#: package/contents/ui/main.qml:68
 #, kde-format
 msgid "%1 connected"
 msgstr "%1 prijungtas"
 
-#: package/contents/ui/main.qml:83
+#: package/contents/ui/main.qml:75
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -224,17 +224,17 @@ msgstr[1] "%1 prijungti įrenginiai"
 msgstr[2] "%1 prijungtų įrenginių"
 msgstr[3] "%1 prijungtas įrenginys"
 
-#: package/contents/ui/main.qml:106
+#: package/contents/ui/main.qml:102
 #, kde-format
 msgid "Pair Device…"
 msgstr "Suporuoti įrenginį…"
 
-#: package/contents/ui/main.qml:113
+#: package/contents/ui/main.qml:109
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Įjungti Bluetooth"
 
-#: package/contents/ui/main.qml:127
+#: package/contents/ui/main.qml:123
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Konfigūruoti &Bluetooth…"

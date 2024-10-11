@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-26 00:40+0000\n"
+"POT-Creation-Date: 2024-10-11 00:41+0000\n"
 "PO-Revision-Date: 2024-08-06 11:46+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -151,8 +151,8 @@ msgstr "Sarea"
 msgid "Other device"
 msgstr "Beste gailu batzuk"
 
-#: package/contents/ui/DeviceItem.qml:297 package/contents/ui/main.qml:78
-#: package/contents/ui/main.qml:87
+#: package/contents/ui/DeviceItem.qml:297 package/contents/ui/main.qml:70
+#: package/contents/ui/main.qml:79
 #, kde-format
 msgid "%1% Battery"
 msgstr "%%1 bateria"
@@ -177,42 +177,42 @@ msgstr "Bluetooth desgaituta dago"
 msgid "No devices paired"
 msgstr "Ez dago parekatutako gailurik"
 
-#: package/contents/ui/main.qml:55
+#: package/contents/ui/main.qml:47
 #, kde-format
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
-#: package/contents/ui/main.qml:59
+#: package/contents/ui/main.qml:51
 #, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
 msgstr "Bluetooth desgaituta dago; erdiko-klik gaitzeko"
 
-#: package/contents/ui/main.qml:63
+#: package/contents/ui/main.qml:55
 #, kde-format
 msgid "No adapters available"
 msgstr "Ez dago moldagailurik erabilgarri"
 
-#: package/contents/ui/main.qml:65
+#: package/contents/ui/main.qml:57
 #, kde-format
 msgid "Bluetooth is offline"
 msgstr "Bluetooth lerroz kanpo dago"
 
-#: package/contents/ui/main.qml:68
+#: package/contents/ui/main.qml:60
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr "Erdiko-klik Bluetooth ezgaitzeko"
 
-#: package/contents/ui/main.qml:71
+#: package/contents/ui/main.qml:63
 #, kde-format
 msgid "No connected devices"
 msgstr "Ez dago konektatutako gailurik"
 
-#: package/contents/ui/main.qml:76
+#: package/contents/ui/main.qml:68
 #, kde-format
 msgid "%1 connected"
 msgstr "%1 konektatuta"
 
-#: package/contents/ui/main.qml:83
+#: package/contents/ui/main.qml:75
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -220,17 +220,17 @@ msgid_plural "%1 connected devices"
 msgstr[0] "gailu %1 konektatuta"
 msgstr[1] "%1 gailu konektatuta"
 
-#: package/contents/ui/main.qml:106
+#: package/contents/ui/main.qml:102
 #, kde-format
 msgid "Pair Device…"
 msgstr "Gailua parekatu..."
 
-#: package/contents/ui/main.qml:113
+#: package/contents/ui/main.qml:109
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Gaitu Bluetooth"
 
-#: package/contents/ui/main.qml:127
+#: package/contents/ui/main.qml:123
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Konfiguratu &Bluetooth..."
