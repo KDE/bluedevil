@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-11 00:41+0000\n"
-"PO-Revision-Date: 2024-07-31 12:32+0200\n"
+"PO-Revision-Date: 2024-10-21 11:48+0200\n"
 "Last-Translator: rasmus rosendahl-kaa <rasmus@rosendahl-kaa.name>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
 "Language: da\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #: package/contents/ui/DeviceItem.qml:39
 #, kde-format
@@ -171,10 +171,9 @@ msgid "Bluetooth is disabled"
 msgstr "Bluetooth er deaktiveret"
 
 #: package/contents/ui/FullRepresentation.qml:165
-#, fuzzy, kde-format
-#| msgid "No devices found"
+#, kde-format
 msgid "No devices paired"
-msgstr "Ingen enheder fundet"
+msgstr "Ingen enheder parret"
 
 #: package/contents/ui/main.qml:47
 #, kde-format
@@ -220,10 +219,9 @@ msgstr[0] "%1 forbundet enhed"
 msgstr[1] "%1 forbundne enheder"
 
 #: package/contents/ui/main.qml:102
-#, fuzzy, kde-format
-#| msgid "Add New Device…"
+#, kde-format
 msgid "Pair Device…"
-msgstr "Tilføj ny enhed…"
+msgstr "Par enhed…"
 
 #: package/contents/ui/main.qml:109
 #, kde-format
@@ -236,9 +234,7 @@ msgid "Configure &Bluetooth…"
 msgstr "Indstil Bluetooth…"
 
 #: plugin/devicesstateproxymodel.cpp:220
-#, fuzzy, kde-format
-#| msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
-#| msgid "%1 (%2)"
+#, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
