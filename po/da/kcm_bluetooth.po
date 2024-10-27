@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-20 00:42+0000\n"
-"PO-Revision-Date: 2024-10-21 11:52+0200\n"
+"PO-Revision-Date: 2024-10-26 12:48+0200\n"
 "Last-Translator: rasmus rosendahl-kaa <rasmus@rosendahl-kaa.name>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
 "Language: da\n"
@@ -319,7 +319,7 @@ msgstr "Høretelefoner"
 #, kde-format
 msgctxt "This device is an Audio/Video device"
 msgid "Multimedia"
-msgstr ""
+msgstr "Multimedie"
 
 #: ui/script.js:27
 #, kde-format
