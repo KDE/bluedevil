@@ -157,7 +157,7 @@ void DiscoverPage::initializePage()
 
     connect(manualPin, &QCheckBox::toggled, pinText, &QLineEdit::setEnabled);
     connect(manualPin, &QCheckBox::toggled, this, &DiscoverPage::completeChanged);
-    connect(pinText, &QLineEdit::textChanged, this, &DiscoverPage::completeChanged);
+    connect(pinText, &QLineEdit::editingFinished, this, &DiscoverPage::completeChanged);
 
     m_manager = m_wizard->manager();
 
