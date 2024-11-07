@@ -7,14 +7,14 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-10 00:42+0000\n"
-"PO-Revision-Date: 2024-08-12 23:14+0200\n"
+"PO-Revision-Date: 2024-11-06 23:19+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.07.70\n"
+"X-Generator: Lokalize 24.11.70\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -120,7 +120,7 @@ msgstr "Забравяне"
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
-msgstr "Забравяне на \"%1\"?"
+msgstr "Забравяне на „%1“?"
 
 #: ui/ForgetDeviceDialog.qml:34
 #, kde-format
@@ -130,7 +130,7 @@ msgstr "Да се забрави ли това устройството?"
 #: ui/ForgetDeviceDialog.qml:35
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
-msgstr "Наистина ли искате да забравите \"%1\"?"
+msgstr "Наистина ли искате да забравите „%1“?"
 
 #: ui/ForgetDeviceDialog.qml:47
 #, kde-format
