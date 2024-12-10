@@ -1,14 +1,14 @@
 
 set(kded_bluedevil_SRCS
-    bluedevildaemon.cpp
-    devicemonitor.cpp
-    bluezagent.cpp
+    bluedevildaemon.cpp bluedevildaemon.h
+    devicemonitor.cpp devicemonitor.h
+    bluezagent.cpp bluezagent.h
     obexftp.cpp
-    obexagent.cpp
-    receivefilejob.cpp
-    helpers/requestauthorization.cpp
-    helpers/requestconfirmation.cpp
-    helpers/requestpin.cpp
+    obexagent.cpp obexagent.h
+    receivefilejob.cpp receivefilejob.h
+    helpers/requestauthorization.cpp helpers/requestauthorization.h
+    helpers/requestconfirmation.cpp helpers/requestconfirmation.h
+    helpers/requestpin.cpp helpers/requestpin.h
 )
 
 ecm_qt_declare_logging_category(kded_bluedevil_SRCS

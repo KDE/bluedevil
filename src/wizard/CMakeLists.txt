@@ -1,12 +1,12 @@
 set(wizard_SRCS
-    bluewizard.cpp
+    bluewizard.cpp bluewizard.h
     main.cpp
-    pages/connect.cpp
-    pages/discover.cpp
-    pages/fail.cpp
-    pages/pairing.cpp
-    pages/success.cpp
-    wizardagent.cpp
+    pages/connect.cpp pages/connect.h
+    pages/discover.cpp pages/discover.h
+    pages/fail.cpp pages/fail.h
+    pages/pairing.cpp pages/pairing.h
+    pages/success.cpp pages/success.h
+    wizardagent.cpp wizardagent.h
 )
 
 ecm_qt_declare_logging_category(wizard_SRCS

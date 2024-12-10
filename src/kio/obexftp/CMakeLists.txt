@@ -1,6 +1,6 @@
 set(kio_obexftp_SRCS
-    kioobexftp.cpp
-    transferfilejob.cpp
+    kioobexftp.cpp kioobexftp.h
+    transferfilejob.cpp transferfilejob.h
 )
 
 set(kded_obexftp.xml ${CMAKE_SOURCE_DIR}/src/interfaces/kded_obexftp.xml)
