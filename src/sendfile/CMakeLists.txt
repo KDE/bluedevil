@@ -1,14 +1,14 @@
 set(sendfilehelper_SRCS
-    discoverwidget.cpp
+    discoverwidget.cpp discoverwidget.h
     main.cpp
-    sendfilesjob.cpp
-    sendfilewizard.cpp
+    sendfilesjob.cpp sendfilesjob.h
+    sendfilewizard.cpp sendfilewizard.h
 
-    pages/connectingpage.cpp
-    pages/failpage.cpp
-    pages/selectdeviceandfilespage.cpp
-    pages/selectdevicepage.cpp
-    pages/selectfilespage.cpp
+    pages/connectingpage.cpp pages/connectingpage.h
+    pages/failpage.cpp pages/failpage.h
+    pages/selectdeviceandfilespage.cpp pages/selectdeviceandfilespage.h
+    pages/selectdevicepage.cpp pages/selectdevicepage.h
+    pages/selectfilespage.cpp pages/selectfilespage.h
 )
 
 ecm_qt_declare_logging_category(sendfilehelper_SRCS

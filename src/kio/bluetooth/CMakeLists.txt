@@ -1,5 +1,5 @@
 set(kio_bluetooth_SRCS
-    kiobluetooth.cpp
+    kiobluetooth.cpp kiobluetooth.h
 )
 
 set(kded_bluedevil.xml ${CMAKE_SOURCE_DIR}/src/interfaces/kded_bluedevil.xml)
