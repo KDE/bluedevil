@@ -27,7 +27,6 @@ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     BluezQt
     CoreAddons
     DBusAddons
-    DocTools
     I18n
     JobWidgets
     KCMUtils
@@ -43,6 +42,11 @@ find_package(Plasma ${PROJECT_DEP_VERSION} REQUIRED)
 
 find_package(SharedMimeInfo REQUIRED)
 
+find_package(KF6DocTools ${KF6_MIN_VERSION})
+set_package_properties(KF6DocTools PROPERTIES
+    DESCRIPTION "Tools to generate documentation"
+    TYPE OPTIONAL
+)
 find_package(KF6Kirigami ${KF6_MIN_VERSION} CONFIG)
 set_package_properties(KF6Kirigami PROPERTIES
     TYPE RUNTIME
@@ -83,7 +87,9 @@ ecm_qt_install_logging_categories(
     DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
 )
 
-add_subdirectory(doc)
-kdoctools_install(po)
+if(KF6DocTools_FOUND)
+    add_subdirectory(doc)
+    kdoctools_install(po)
+endif()
 
 ki18n_install(po)
