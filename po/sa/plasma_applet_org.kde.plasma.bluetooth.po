@@ -1,0 +1,260 @@
+# Sanskrit translations for bluedevil package.
+# Copyright (C) 2024 This file is copyright:
+# This file is distributed under the same license as the bluedevil package.
+# Kali <EMAIL@ADDRESS>, 2024.
+#
+# SPDX-FileCopyrightText: 2024 kali <skkalwar999@gmail.com>
+msgid ""
+msgstr ""
+"Project-Id-Version: bluedevil\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-10-11 00:41+0000\n"
+"PO-Revision-Date: 2024-12-14 01:48+0530\n"
+"Last-Translator: kali <skkalwar999@gmail.com>\n"
+"Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
+"Language: sa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n>2);\n"
+"X-Generator: Lokalize 24.08.2\n"
+
+#: package/contents/ui/DeviceItem.qml:39
+#, kde-format
+msgid "Disconnect"
+msgstr "विच्छेदं कुर्वन्तु"
+
+#: package/contents/ui/DeviceItem.qml:39
+#, kde-format
+msgid "Connect"
+msgstr "संयुज्"
+
+#: package/contents/ui/DeviceItem.qml:50
+#, kde-format
+msgid "Browse Files"
+msgstr "सञ्चिकाः ब्राउज् कुर्वन्तु"
+
+#: package/contents/ui/DeviceItem.qml:61
+#, kde-format
+msgid "Send File"
+msgstr "सञ्चिका प्रेषयतु"
+
+#: package/contents/ui/DeviceItem.qml:109
+#, kde-format
+msgid "Copy"
+msgstr "प्रतिलिपि"
+
+#: package/contents/ui/DeviceItem.qml:205
+#, kde-format
+msgid "Yes"
+msgstr "आम्‌"
+
+#: package/contents/ui/DeviceItem.qml:205
+#, kde-format
+msgid "No"
+msgstr "नहि"
+
+#: package/contents/ui/DeviceItem.qml:211
+#, kde-format
+msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
+msgid "%1 (%2)"
+msgstr "%1 (%2) २."
+
+#: package/contents/ui/DeviceItem.qml:219
+#, kde-format
+msgid "Remote Name"
+msgstr "दूरस्थ नाम"
+
+#: package/contents/ui/DeviceItem.qml:223
+#, kde-format
+msgid "Address"
+msgstr "पत्रसङ्केतः"
+
+#: package/contents/ui/DeviceItem.qml:226
+#, kde-format
+msgid "Paired"
+msgstr "युग्मितम्"
+
+#: package/contents/ui/DeviceItem.qml:229
+#, kde-format
+msgid "Trusted"
+msgstr "विश्वासः"
+
+#: package/contents/ui/DeviceItem.qml:232
+#, kde-format
+msgid "Adapter"
+msgstr "एडाप्टर"
+
+#: package/contents/ui/DeviceItem.qml:240
+#, kde-format
+msgid "Disconnecting"
+msgstr "विच्छेदनम्"
+
+#: package/contents/ui/DeviceItem.qml:240
+#, kde-format
+msgid "Connecting"
+msgstr "संयोजयन्"
+
+#: package/contents/ui/DeviceItem.qml:246
+#, kde-format
+msgid "Connected"
+msgstr "संबद्धः"
+
+#: package/contents/ui/DeviceItem.qml:248
+#, kde-format
+msgid "Connection failed"
+msgstr "संयोजनं विफलम् अभवत्"
+
+#: package/contents/ui/DeviceItem.qml:255
+#, kde-format
+msgid "Audio device"
+msgstr "श्रव्ययन्त्रम्"
+
+#: package/contents/ui/DeviceItem.qml:262
+#, kde-format
+msgid "Input device"
+msgstr "इनपुट् यन्त्रम्"
+
+#: package/contents/ui/DeviceItem.qml:266
+#, kde-format
+msgid "Phone"
+msgstr "फोनं"
+
+#: package/contents/ui/DeviceItem.qml:273
+#, kde-format
+msgid "File transfer"
+msgstr "सञ्चिका स्थानान्तरणम्"
+
+#: package/contents/ui/DeviceItem.qml:276
+#, kde-format
+msgid "Send file"
+msgstr "सञ्चिकां प्रेषयन्तु"
+
+#: package/contents/ui/DeviceItem.qml:279
+#, kde-format
+msgid "Input"
+msgstr "निवेशः"
+
+#: package/contents/ui/DeviceItem.qml:282
+#, kde-format
+msgid "Audio"
+msgstr "श्रव्यः"
+
+#: package/contents/ui/DeviceItem.qml:285
+#, kde-format
+msgid "Network"
+msgstr "जाल"
+
+#: package/contents/ui/DeviceItem.qml:290
+#, kde-format
+msgid "Other device"
+msgstr "अन्यत् यन्त्रम्"
+
+#: package/contents/ui/DeviceItem.qml:297 package/contents/ui/main.qml:70
+#: package/contents/ui/main.qml:79
+#, kde-format
+msgid "%1% Battery"
+msgstr "%1% बैटरी"
+
+#: package/contents/ui/FullRepresentation.qml:69
+#, kde-format
+msgid "Enable"
+msgstr "सक्रियं करोतु"
+
+#: package/contents/ui/FullRepresentation.qml:161
+#, kde-format
+msgid "No Bluetooth adapters available"
+msgstr "ब्लूटूथ एडाप्टर् उपलब्धः नास्ति"
+
+#: package/contents/ui/FullRepresentation.qml:163
+#, kde-format
+msgid "Bluetooth is disabled"
+msgstr "ब्लूटूथ् अक्षमम् अस्ति"
+
+#: package/contents/ui/FullRepresentation.qml:165
+#, kde-format
+msgid "No devices paired"
+msgstr "न यन्त्राणि युग्मिताः"
+
+#: package/contents/ui/main.qml:47
+#, kde-format
+msgid "Bluetooth"
+msgstr "ब्लूटूथ"
+
+#: package/contents/ui/main.qml:51
+#, kde-format
+msgid "Bluetooth is disabled; middle-click to enable"
+msgstr "ब्लूटूथ् अक्षमम् अस्ति; सक्षमं कर्तुं मध्य-क्लिक् कुर्वन्तु"
+
+#: package/contents/ui/main.qml:55
+#, kde-format
+msgid "No adapters available"
+msgstr "एडाप्टर् उपलब्धः नास्ति"
+
+#: package/contents/ui/main.qml:57
+#, kde-format
+msgid "Bluetooth is offline"
+msgstr "ब्लूटूथ् अफलाइन अस्ति"
+
+#: package/contents/ui/main.qml:60
+#, kde-format
+msgid "Middle-click to disable Bluetooth"
+msgstr "ब्लूटूथं निष्क्रियं कर्तुं मध्य-क्लिक् कुर्वन्तु"
+
+#: package/contents/ui/main.qml:63
+#, kde-format
+msgid "No connected devices"
+msgstr "न सम्बद्धानि उपकरणानि"
+
+#: package/contents/ui/main.qml:68
+#, kde-format
+msgid "%1 connected"
+msgstr "%1 सम्बद्धम्"
+
+#: package/contents/ui/main.qml:75
+#, kde-format
+msgctxt "Number of connected devices"
+msgid "%1 connected device"
+msgid_plural "%1 connected devices"
+msgstr[0] "%1 सम्बद्धं यन्त्रम्"
+msgstr[1] "%1 सम्बद्धानि उपकरणानि"
+
+#: package/contents/ui/main.qml:102
+#, kde-format
+msgid "Pair Device…"
+msgstr "युग्मयन्त्रम्…"
+
+#: package/contents/ui/main.qml:109
+#, kde-format
+msgid "Enable Bluetooth"
+msgstr "ब्लूटूथं सक्षमं कुर्वन्तु"
+
+#: package/contents/ui/main.qml:123
+#, kde-format
+msgid "Configure &Bluetooth…"
+msgstr "&Bluetooth विन्यस्तं कुर्वन्तु…"
+
+#: plugin/devicesstateproxymodel.cpp:220
+#, kde-format
+msgctxt ""
+"@label %1 is human-readable device name, %2 is low-level device address"
+msgid "%1 (%2)"
+msgstr "%1 (%2) २."
+
+#: plugin/devicesstateproxymodel.cpp:235
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed:HostIsDown"
+msgid "The device is unreachable"
+msgstr "यन्त्रम् अप्राप्यम् अस्ति"
+
+#: plugin/devicesstateproxymodel.cpp:236
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed"
+msgid "Connection to the device failed"
+msgstr "यन्त्रेण सह संयोजनं विफलम् अभवत्"
+
+#: plugin/devicesstateproxymodel.cpp:239
+#, kde-format
+msgctxt "Notification when the connection failed due to NotReady"
+msgid "The device is not ready"
+msgstr "यन्त्रं सज्जं नास्ति"
