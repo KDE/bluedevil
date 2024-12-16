@@ -1,59 +1,56 @@
-# Sanskrit translations for bluedevil package.
+# Hindi translations for bluedevil package.
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the bluedevil package.
 # Kali <EMAIL@ADDRESS>, 2024.
 #
-# SPDX-FileCopyrightText: 2024 kali <skkalwar999@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-20 00:42+0000\n"
-"PO-Revision-Date: 2024-12-14 01:48+0530\n"
-"Last-Translator: kali <skkalwar999@gmail.com>\n"
-"Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
-"Language: sa\n"
+"PO-Revision-Date: 2024-12-15 17:36+0530\n"
+"Last-Translator: Kali <EMAIL@ADDRESS>\n"
+"Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
+"Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.08.2\n"
-"Plural-Forms: nplurals=2; plural=(n>2);\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "भवतः नामानि"
+msgstr "तुम्हारे नाम"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "भवतः ईमेलपत्राणि"
+msgstr "आपके ईमेल"
 
 #: bluetooth.cpp:102
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
-msgstr "%1 संजाल (%2) ."
+msgstr "%1 नेटवर्क (%2)"
 
 #: ui/Device.qml:108 ui/main.qml:211
 #, kde-format
 msgid "Disconnect"
-msgstr "विच्छेदं कुर्वन्तु"
+msgstr "डिस्कनेक्ट"
 
 #: ui/Device.qml:108 ui/main.qml:211
 #, kde-format
 msgid "Connect"
-msgstr "संयुज्"
+msgstr "जोड़ना"
 
 #: ui/Device.qml:111
 #, kde-format
 msgid "Unblock the device first to be able to connect to it"
-msgstr "प्रथमं यन्त्रं अनब्लॉक् कुर्वन्तु यत् तेन सह सम्बद्धं कर्तुं शक्नुवन्ति"
+msgstr "डिवाइस से कनेक्ट होने के लिए पहले उसे अनब्लॉक करें"
 
 #: ui/Device.qml:132
 #, kde-format
 msgid "Type:"
-msgstr "प्रकारः:"
+msgstr "प्रकार:"
 
 #: ui/Device.qml:136
 #, kde-format
@@ -63,214 +60,216 @@ msgstr "%1%"
 #: ui/Device.qml:138
 #, kde-format
 msgid "Battery:"
-msgstr "विद्युत्कोष:"
+msgstr "बैटरी:"
 
 #: ui/Device.qml:143 ui/General.qml:49
 #, kde-format
 msgid "Address:"
-msgstr "पत्रसङ्केतः:"
+msgstr "पता:"
 
 #: ui/Device.qml:148
 #, kde-format
 msgid "Adapter:"
-msgstr "एडाप्टर : १."
+msgstr "एडाप्टर:"
 
 #: ui/Device.qml:154 ui/General.qml:43
 #, kde-format
 msgid "Name:"
-msgstr "नामः:"
+msgstr "नाम:"
 
 #: ui/Device.qml:158
 #, kde-format
 msgid "Trusted"
-msgstr "विश्वासः"
+msgstr "विश्वस्त"
 
 #: ui/Device.qml:167 ui/main.qml:178
 #, kde-format
 msgid "Blocked"
-msgstr "अवरुद्धम्"
+msgstr "अवरोधित"
 
 #: ui/Device.qml:173
 #, kde-format
 msgid ""
 "Any incoming connections from a blocked device will be immediately rejected."
-msgstr "अवरुद्धयन्त्रात् आगच्छन्तं किमपि संयोजनं तत्क्षणमेव अङ्गीकृतं भविष्यति ।"
+msgstr ""
+"किसी भी अवरुद्ध डिवाइस से आने वाले किसी भी कनेक्शन को तुरंत अस्वीकार कर दिया जाएगा।"
 
 #: ui/Device.qml:179
 #, kde-format
 msgid "Send File"
-msgstr "सञ्चिका प्रेषयतु"
+msgstr "लेख्यपत्र भेज दें"
 
 #: ui/Device.qml:187
 #, kde-format
 msgid "Setup NAP Network…"
-msgstr "NAP Network सेटअप…"
+msgstr "NAP नेटवर्क सेटअप करें…"
 
 #: ui/Device.qml:195
 #, kde-format
 msgid "Setup DUN Network…"
-msgstr "DUN Network सेटअप…"
+msgstr "DUN नेटवर्क सेटअप करें…"
 
 #: ui/Device.qml:210
 #, kde-format
 msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"
-msgstr "विस्मृत"
+msgstr "भूल जाओ"
 
 #: ui/ForgetDeviceAction.qml:17
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
-msgstr "\"%1\" विस्मरतु।"
+msgstr "\"%1\" भूल जाओ"
 
 #: ui/ForgetDeviceDialog.qml:34
 #, kde-format
 msgid "Forget this Device?"
-msgstr "एतत् Device विस्मरतु?"
+msgstr "इस डिवाइस को भूल गए?"
 
 #: ui/ForgetDeviceDialog.qml:35
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
-msgstr "किं भवन्तः \"%1\" विस्मर्तुं इच्छन्ति इति निश्चितम्?"
+msgstr "क्या आप वाकई \"%1\" को भूलना चाहते हैं?"
 
 #: ui/ForgetDeviceDialog.qml:47
 #, kde-format
 msgctxt "@action:button"
 msgid "Forget Device"
-msgstr "Device विस्मरतु"
+msgstr "डिवाइस भूल गए"
 
 #: ui/ForgetDeviceDialog.qml:54
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
-msgstr "निरसयतु"
+msgstr "रद्द करना"
 
 #: ui/General.qml:24
 #, kde-format
 msgid "Settings"
-msgstr "सेटिंग्स्"
+msgstr "सेटिंग्स"
 
 #: ui/General.qml:35
 #, kde-format
 msgid "Device:"
-msgstr "उपकरणम्‌:"
+msgstr "उपकरण:"
 
 #: ui/General.qml:53
 #, kde-format
 msgid "Enabled:"
-msgstr "सक्षमम् : १."
+msgstr "सक्षम:"
 
 #: ui/General.qml:59
 #, kde-format
 msgid "Visible:"
-msgstr "दृश्यमानः : १."
+msgstr "दृश्यमान:"
 
 #: ui/General.qml:73
 #, kde-format
 msgid "On login:"
-msgstr "प्रवेशे : १."
+msgstr "लॉगिन पर:"
 
 #: ui/General.qml:74
 #, kde-format
 msgid "Enable Bluetooth"
-msgstr "ब्लूटूथं सक्षमं कुर्वन्तु"
+msgstr "ब्लूटूथ सक्षम करें"
 
 #: ui/General.qml:84
 #, kde-format
 msgid "Disable Bluetooth"
-msgstr "ब्लूटूथं निष्क्रियं कुर्वन्तु"
+msgstr "ब्लूटूथ अक्षम करें"
 
 #: ui/General.qml:94
 #, kde-format
 msgid "Restore previous status"
-msgstr "पूर्वस्थितिं पुनः स्थापयन्तु"
+msgstr "पिछली स्थिति बहाल करें"
 
 #: ui/General.qml:113
 #, kde-format
 msgid "When receiving files:"
-msgstr "सञ्चिकाः प्राप्यन्ते सति : १."
+msgstr "फ़ाइलें प्राप्त करते समय:"
 
 #: ui/General.qml:115
 #, kde-format
 msgid "Ask for confirmation"
-msgstr "पुष्टिं याचत"
+msgstr "पुष्टि हेतु पूछें"
 
 #: ui/General.qml:124
 #, kde-format
 msgid "Accept for trusted devices"
-msgstr "विश्वसनीययन्त्राणि स्वीकुरुत"
+msgstr "विश्वसनीय डिवाइस के लिए स्वीकार करें"
 
 #: ui/General.qml:134
 #, kde-format
 msgid "Always accept"
-msgstr "सदा स्वीकुरुत"
+msgstr "सदैव स्वीकार करें"
 
 #: ui/General.qml:144
 #, kde-format
 msgid "Save files in:"
-msgstr "सञ्चिकाः अत्र रक्षन्तु :"
+msgstr "फ़ाइलें यहां सहेजें:"
 
 #: ui/General.qml:169 ui/General.qml:180
 #, kde-format
 msgid "Select folder"
-msgstr "फोल्डरं चिनोतु"
+msgstr "फ़ोल्डर चुनें"
 
 #: ui/main.qml:34
 #, kde-format
 msgctxt "@action: button as in, 'enable Bluetooth'"
 msgid "Enabled"
-msgstr "सक्षमम्"
+msgstr "सक्रिय"
 
 #: ui/main.qml:47
 #, kde-format
 msgid "Pair Device…"
-msgstr "युग्मयन्त्रम्…"
+msgstr "डिवाइस युग्मित करें…"
 
 #: ui/main.qml:53
 #, kde-format
 msgid "Configure…"
-msgstr "विन्यस्तं कुर्वन्तु…"
+msgstr "कॉन्फ़िगर करें…"
 
 #: ui/main.qml:124
 #, kde-format
 msgid "No Bluetooth adapters found"
-msgstr "कोऽपि ब्लूटूथ एडाप्टरः न प्राप्तः"
+msgstr "कोई ब्लूटूथ एडाप्टर नहीं मिला"
 
 #: ui/main.qml:125
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
-msgstr "बाह्यं Bluetooth एडाप्टरं संयोजयन्तु"
+msgstr "बाहरी ब्लूटूथ एडाप्टर कनेक्ट करें"
 
 #: ui/main.qml:134
 #, kde-format
 msgid "Bluetooth is disabled"
-msgstr "ब्लूटूथ् अक्षमम् अस्ति"
+msgstr "ब्लूटूथ अक्षम है"
 
 #: ui/main.qml:140
 #, kde-format
 msgid "Enable"
-msgstr "सक्रियं करोतु"
+msgstr "सक्षम"
 
 #: ui/main.qml:150
 #, kde-format
 msgid "No devices paired"
-msgstr "न यन्त्राणि युग्मिताः"
+msgstr "कोई डिवाइस युग्मित नहीं है"
 
 #: ui/main.qml:151
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
-msgstr "केचन युग्मीकरणं कर्तुं <interface>Pair Device…</interface> नुदन्तु"
+msgstr ""
+"कुछ डिवाइस को पेयर करने के लिए <interface>Pair Device…</interface> पर क्लिक करें"
 
 #: ui/main.qml:180
 #, kde-format
 msgid "Connected"
-msgstr "संबद्धः"
+msgstr "जुड़े हुए"
 
 #: ui/main.qml:182
 #, kde-format
 msgid "Available"
-msgstr "उपलब्धः"
+msgstr "उपलब्ध"
 
 #: ui/main.qml:247
 #, kde-format
@@ -281,43 +280,43 @@ msgstr "%1% बैटरी"
 #, kde-format
 msgctxt "This device is a Phone"
 msgid "Phone"
-msgstr "फोनं"
+msgstr "फ़ोन"
 
 #: ui/script.js:15
 #, kde-format
 msgctxt "This device is a Modem"
 msgid "Modem"
-msgstr "मोडेम"
+msgstr "मोडम"
 
 #: ui/script.js:17
 #, kde-format
 msgctxt "This device is a Computer"
 msgid "Computer"
-msgstr "संगणक"
+msgstr "कंप्यूटर"
 
 #: ui/script.js:19
 #, kde-format
 msgctxt "This device is of type Network"
 msgid "Network"
-msgstr "जाल"
+msgstr "नेटवर्क"
 
 #: ui/script.js:21
 #, kde-format
 msgctxt "This device is a Headset"
 msgid "Headset"
-msgstr "हेडसेट्"
+msgstr "हेडसेट"
 
 #: ui/script.js:23
 #, kde-format
 msgctxt "This device is a Headphones"
 msgid "Headphones"
-msgstr "हेडफोन"
+msgstr "हेडफ़ोन"
 
 #: ui/script.js:25
 #, kde-format
 msgctxt "This device is an Audio/Video device"
 msgid "Multimedia"
-msgstr "बहुमाध्यमम्"
+msgstr "मल्टीमीडिया"
 
 #: ui/script.js:27
 #, kde-format
@@ -329,19 +328,19 @@ msgstr "कीबोर्ड"
 #, kde-format
 msgctxt "This device is a Mouse"
 msgid "Mouse"
-msgstr "मूषकः"
+msgstr "चूहा"
 
 #: ui/script.js:31
 #, kde-format
 msgctxt "This device is a Game controller"
 msgid "Game controller"
-msgstr "गेम नियन्त्रक"
+msgstr "खेल नियंत्रक"
 
 #: ui/script.js:33
 #, kde-format
 msgctxt "This device is a Graphics Tablet (input device)"
 msgid "Tablet"
-msgstr "फलकम्"
+msgstr "टैबलेट"
 
 #: ui/script.js:35
 #, kde-format
@@ -353,13 +352,13 @@ msgstr "परिधीय"
 #, kde-format
 msgctxt "This device is a Camera"
 msgid "Camera"
-msgstr "कॅमेरा"
+msgstr "कैमरा"
 
 #: ui/script.js:39
 #, kde-format
 msgctxt "This device is a Printer"
 msgid "Printer"
-msgstr "मुद्रक"
+msgstr "प्रिंटर"
 
 #: ui/script.js:41
 #, kde-format
@@ -372,52 +371,52 @@ msgstr "इमेजिंग"
 #, kde-format
 msgctxt "This device is a Wearable"
 msgid "Wearable"
-msgstr "धारणीयम्"
+msgstr "पहनने योग्य"
 
 #: ui/script.js:45
 #, kde-format
 msgctxt "This device is a Toy"
 msgid "Toy"
-msgstr "खिलौना"
+msgstr "खिलौने"
 
 #: ui/script.js:47
 #, kde-format
 msgctxt "This device is a Health device"
 msgid "Health"
-msgstr "आरोग्यम्‌"
+msgstr "स्वास्थ्य"
 
 #: ui/script.js:53
 #, kde-format
 msgid "File transfer"
-msgstr "सञ्चिका स्थानान्तरणम्"
+msgstr "दस्तावेज हस्तांतरण"
 
 #: ui/script.js:56
 #, kde-format
 msgid "Send file"
-msgstr "सञ्चिकां प्रेषयन्तु"
+msgstr "लेख्यपत्र भेज दें"
 
 #: ui/script.js:59
 #, kde-format
 msgid "Input"
-msgstr "निवेशः"
+msgstr "इनपुट"
 
 #: ui/script.js:62
 #, kde-format
 msgid "Audio"
-msgstr "श्रव्यः"
+msgstr "ऑडियो"
 
 #: ui/script.js:65
 #, kde-format
 msgid "Network"
-msgstr "जाल"
+msgstr "नेटवर्क"
 
 #: ui/script.js:69
 #, kde-format
 msgid "Other"
-msgstr "इतर"
+msgstr "अन्य"
 
 #: ui/script.js:72
 #, kde-format
 msgctxt "List separator"
 msgid ", "
-msgstr ", ९. "
+msgstr ","
