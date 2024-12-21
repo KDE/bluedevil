@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-20 00:42+0000\n"
-"PO-Revision-Date: 2024-12-14 01:48+0530\n"
+"PO-Revision-Date: 2024-12-20 21:51+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
@@ -73,7 +73,7 @@ msgstr "पत्रसङ्केतः:"
 #: ui/Device.qml:148
 #, kde-format
 msgid "Adapter:"
-msgstr "एडाप्टर : १."
+msgstr "एडाप्टर :"
 
 #: ui/Device.qml:154 ui/General.qml:43
 #, kde-format
@@ -158,17 +158,17 @@ msgstr "उपकरणम्‌:"
 #: ui/General.qml:53
 #, kde-format
 msgid "Enabled:"
-msgstr "सक्षमम् : १."
+msgstr "सक्षमम् :"
 
 #: ui/General.qml:59
 #, kde-format
 msgid "Visible:"
-msgstr "दृश्यमानः : १."
+msgstr "दृश्यमानः :"
 
 #: ui/General.qml:73
 #, kde-format
 msgid "On login:"
-msgstr "प्रवेशे : १."
+msgstr "प्रवेशे :"
 
 #: ui/General.qml:74
 #, kde-format
@@ -188,7 +188,7 @@ msgstr "पूर्वस्थितिं पुनः स्थापयन�
 #: ui/General.qml:113
 #, kde-format
 msgid "When receiving files:"
-msgstr "सञ्चिकाः प्राप्यन्ते सति : १."
+msgstr "सञ्चिकाः प्राप्यन्ते सति :"
 
 #: ui/General.qml:115
 #, kde-format
