@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-11 00:41+0000\n"
-"PO-Revision-Date: 2024-12-20 12:25+0530\n"
-"Last-Translator: kali <skkalwar999@gmail.com>\n"
+"PO-Revision-Date: 2024-12-25 19:35+0530\n"
+"Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
 "MIME-Version: 1.0\n"
@@ -143,7 +143,7 @@ msgstr "श्रव्यः"
 #: package/contents/ui/DeviceItem.qml:285
 #, kde-format
 msgid "Network"
-msgstr "जाल"
+msgstr "जालकृति"
 
 #: package/contents/ui/DeviceItem.qml:290
 #, kde-format
