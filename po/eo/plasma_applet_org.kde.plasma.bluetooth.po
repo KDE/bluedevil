@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-11 00:41+0000\n"
-"PO-Revision-Date: 2024-08-19 21:47+0200\n"
+"PO-Revision-Date: 2024-12-26 21:43+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -234,9 +234,7 @@ msgid "Configure &Bluetooth…"
 msgstr "Agordi &Bludenton…"
 
 #: plugin/devicesstateproxymodel.cpp:220
-#, fuzzy, kde-format
-#| msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
-#| msgid "%1 (%2)"
+#, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
@@ -246,18 +244,16 @@ msgstr "%1 (%2)"
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
-msgstr ""
+msgstr "La aparato estas neatingebla"
 
 #: plugin/devicesstateproxymodel.cpp:236
-#, fuzzy, kde-format
-#| msgid "Connection failed"
+#, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "Konekto malsukcesis"
 
 #: plugin/devicesstateproxymodel.cpp:239
-#, fuzzy, kde-format
-#| msgid "No devices paired"
+#, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
-msgstr "Neniuj aparatoj pariĝis"
+msgstr "La aparato ne estas preta"
