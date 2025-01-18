@@ -131,6 +131,18 @@ void Bluetooth::setBluetoothStatusAtLogin(const QString &newStatus)
     Q_EMIT bluetoothStatusAtLoginChanged(newStatus);
 }
 
+QString Bluetooth::receiveFolderPath() const
+{
+    return FileReceiverSettings::saveUrl().toLocalFile();
+}
+
+void Bluetooth::setReceiveFolderPath(const QString &path)
+{
+    const QUrl url = QUrl::fromUserInput(path, QString(), QUrl::AssumeLocalFile);
+    FileReceiverSettings::setSaveUrl(url);
+    Q_EMIT receiveFolderPathChanged();
+}
+
 #include "bluetooth.moc"
 
 #include "moc_bluetooth.cpp"

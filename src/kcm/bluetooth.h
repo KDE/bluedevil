@@ -12,6 +12,7 @@
 class Bluetooth : public KQuickConfigModule
 {
     Q_OBJECT
+    Q_PROPERTY(QString receiveFolderPath READ receiveFolderPath WRITE setReceiveFolderPath NOTIFY receiveFolderPathChanged)
 
 public:
     Bluetooth(QObject *parent, const KPluginMetaData &data);
@@ -26,6 +27,10 @@ public:
 
     QString bluetoothStatusAtLogin() const;
     void setBluetoothStatusAtLogin(const QString &newStatus);
+
+    QString receiveFolderPath() const;
+    void setReceiveFolderPath(const QString &path);
+    Q_SIGNAL void receiveFolderPathChanged();
 
 Q_SIGNALS:
     void networkAvailable(const QString &service, bool available);
