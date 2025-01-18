@@ -8,6 +8,7 @@
 #include "devicemonitor.h"
 #include "bluedevil_kded.h"
 #include "bluedevildaemon.h"
+#include "bluedevilglobalsettings.h"
 
 #include <QTimer>
 
@@ -24,7 +25,6 @@ DeviceMonitor::DeviceMonitor(BlueDevilDaemon *daemon)
     : QObject(daemon)
     , m_manager(daemon->manager())
     , m_isParentValid(true)
-    , m_config(KSharedConfig::openConfig(QStringLiteral("bluedevilglobalrc")))
 {
     Q_FOREACH (BluezQt::AdapterPtr adapter, m_manager->adapters()) {
         adapterAdded(adapter);
@@ -77,11 +77,9 @@ void DeviceMonitor::readyToSetInitialState(bool operational)
 void DeviceMonitor::setInitialState()
 {
     // Set initial state
-    const KConfigGroup globalGroup = m_config->group("Global");
-    const QString launchState = globalGroup.readEntry("launchState", "remember");
-    if (launchState == QLatin1String("remember")) {
+    if (GlobalSettings::launchState() == GlobalSettings::Remember) {
         restoreState();
-    } else if (launchState == QLatin1String("enable")) {
+    } else if (GlobalSettings::launchState() == GlobalSettings::Enable) {
         // Un-block Bluetooth and turn on everything
         m_manager->setBluetoothBlocked(false);
         for (BluezQt::AdapterPtr adapter : m_manager->adapters()) {
@@ -90,7 +88,7 @@ void DeviceMonitor::setInitialState()
         // restoreAdapter() is scheduled to be called after 1 second when adapterAdded is emitted,
         // so we need to save state to make sure that adapter won't be turned off after restoreAdapter()
         saveState();
-    } else if (launchState == QLatin1String("disable")) {
+    } else if (GlobalSettings::launchState() == GlobalSettings::Disable) {
         // Turn off everything and block Bluetooth
         for (BluezQt::AdapterPtr adapter : m_manager->adapters()) {
             adapter->setPowered(false);
@@ -160,13 +158,12 @@ void DeviceMonitor::login1PrepareForSleep(bool active)
 
 void DeviceMonitor::saveState()
 {
-    KConfigGroup adaptersGroup = m_config->group("Adapters");
-    KConfigGroup globalGroup = m_config->group("Global");
+    KConfigGroup adaptersGroup = GlobalSettings::self()->config()->group("Adapters");
 
     if (m_manager->isBluetoothBlocked()) {
-        globalGroup.writeEntry<bool>("bluetoothBlocked", true);
+        GlobalSettings::setBluetoothBlocked(true);
     } else {
-        globalGroup.deleteEntry("bluetoothBlocked");
+        GlobalSettings::setBluetoothBlocked(false);
 
         // Save powered state for each adapter
         Q_FOREACH (BluezQt::AdapterPtr adapter, m_manager->adapters()) {
@@ -183,27 +180,24 @@ void DeviceMonitor::saveState()
         }
     }
 
-    KConfigGroup devicesGroup = m_config->group("Devices");
-    devicesGroup.writeEntry<QStringList>(QStringLiteral("connectedDevices"), connectedDevices);
+    GlobalSettings::setConnectedDevices(connectedDevices);
 
-    m_config->sync();
+    GlobalSettings::self()->save();
 }
 
 void DeviceMonitor::restoreState()
 {
-    KConfigGroup adaptersGroup = m_config->group("Adapters");
-    const KConfigGroup globalGroup = m_config->group("Global");
+    KConfigGroup adaptersGroup = GlobalSettings::self()->config()->group("Adapters");
 
     // Restore blocked/unblocked state
-    m_manager->setBluetoothBlocked(globalGroup.readEntry<bool>("bluetoothBlocked", false));
+    m_manager->setBluetoothBlocked(GlobalSettings::bluetoothBlocked());
 
     Q_FOREACH (BluezQt::AdapterPtr adapter, m_manager->adapters()) {
         const QString key = QStringLiteral("%1_powered").arg(adapter->address());
         adapter->setPowered(adaptersGroup.readEntry<bool>(key, true));
     }
 
-    KConfigGroup devicesGroup = m_config->group("Devices");
-    const QStringList &connectedDevices = devicesGroup.readEntry<QStringList>(QStringLiteral("connectedDevices"), QStringList());
+    const QStringList &connectedDevices = GlobalSettings::connectedDevices();
 
     for (const QString &addr : connectedDevices) {
         BluezQt::DevicePtr device = m_manager->deviceForAddress(addr);
@@ -215,7 +209,7 @@ void DeviceMonitor::restoreState()
 
 void DeviceMonitor::restoreAdapter(BluezQt::AdapterPtr adapter)
 {
-    KConfigGroup adaptersGroup = m_config->group("Adapters");
+    KConfigGroup adaptersGroup = GlobalSettings::self()->config()->group("Adapters");
 
     const QString &key = QStringLiteral("%1_powered").arg(adapter->address());
     adapter->setPowered(adaptersGroup.readEntry<bool>(key, true));

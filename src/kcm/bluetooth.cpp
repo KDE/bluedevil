@@ -22,6 +22,7 @@
 
 #include <BluezQt/Services>
 
+#include "bluedevilglobalsettings.h"
 #include "filereceiversettings.h"
 
 K_PLUGIN_CLASS_WITH_JSON(Bluetooth, "kcm_bluetooth.json")
@@ -33,6 +34,7 @@ Bluetooth::Bluetooth(QObject *parent, const KPluginMetaData &data)
 
     qmlRegisterAnonymousType<QAbstractItemModel>("org.kde.bluedevil.kcm", 1);
     qmlRegisterSingletonInstance("org.kde.bluedevil.kcm", 1, 0, "FileReceiverSettings", FileReceiverSettings::self());
+    qmlRegisterSingletonInstance("org.kde.bluedevil.kcm", 1, 0, "GlobalSettings", GlobalSettings::self());
 }
 
 void Bluetooth::runWizard()
@@ -102,33 +104,6 @@ void Bluetooth::setupNetworkConnection(const QString &service, const QString &ad
     msg << i18nc("DeviceName Network (Service)", "%1 Network (%2)", deviceName, service);
 
     QDBusConnection::sessionBus().call(msg, QDBus::NoBlock);
-}
-
-QString Bluetooth::bluetoothStatusAtLogin() const
-{
-    const auto config = KSharedConfig::openConfig(QStringLiteral("bluedevilglobalrc"));
-    const KConfigGroup globalGroup = config->group("Global");
-    return globalGroup.readEntry("launchState", "remember");
-}
-
-void Bluetooth::setBluetoothStatusAtLogin(const QString &newStatus)
-{
-    auto config = KSharedConfig::openConfig(QStringLiteral("bluedevilglobalrc"));
-    KConfigGroup globalGroup = config->group("Global");
-    const QString currentValue = (globalGroup.readEntry("launchState", "remember"));
-
-    if (newStatus == currentValue) {
-        return;
-    }
-
-    if (newStatus == "remember") {
-        // Default value
-        globalGroup.deleteEntry("launchState");
-    } else {
-        globalGroup.writeEntry("launchState", newStatus);
-    }
-
-    Q_EMIT bluetoothStatusAtLoginChanged(newStatus);
 }
 
 #include "bluetooth.moc"

@@ -73,30 +73,33 @@ KCMUtils.SimpleKCM {
             Kirigami.FormData.label: i18n("On login:")
             text: i18n("Enable Bluetooth")
             QQC2.ButtonGroup.group: loginStateRadioGroup
-            checked: root.KCMUtils.ConfigModule.bluetoothStatusAtLogin === "enable"
+            checked: GlobalSettings.launchState === GlobalSettings.Enable
             onToggled: {
                 if (enabled) {
-                    root.KCMUtils.ConfigModule.bluetoothStatusAtLogin = "enable";
+                    GlobalSettings.launchState = GlobalSettings.Enable;
+                    GlobalSettings.save()
                 }
             }
         }
         QQC2.RadioButton {
             text: i18n("Disable Bluetooth")
             QQC2.ButtonGroup.group: loginStateRadioGroup
-            checked: root.KCMUtils.ConfigModule.bluetoothStatusAtLogin === "disable"
+            checked: GlobalSettings.launchState === GlobalSettings.Disable
             onToggled: {
                 if (enabled) {
-                    root.KCMUtils.ConfigModule.bluetoothStatusAtLogin = "disable"
+                    GlobalSettings.launchState = GlobalSettings.Disable
+                    GlobalSettings.save()
                 }
             }
         }
         QQC2.RadioButton {
             text: i18n("Restore previous status")
             QQC2.ButtonGroup.group: loginStateRadioGroup
-            checked: root.KCMUtils.ConfigModule.bluetoothStatusAtLogin === "remember"
+            checked: GlobalSettings.launchState === GlobalSettings.Remember
             onToggled: {
                 if (enabled) {
-                    root.KCMUtils.ConfigModule.bluetoothStatusAtLogin = "remember"
+                    GlobalSettings.launchState = GlobalSettings.Remember
+                    GlobalSettings.save()
                 }
             }
         }

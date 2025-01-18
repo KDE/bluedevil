@@ -24,6 +24,7 @@ ki18n_wrap_ui(kded_bluedevil_SRCS
 )
 
 kconfig_add_kcfg_files(kded_bluedevil_SRCS GENERATE_MOC ../settings/filereceiversettings.kcfgc)
+kconfig_add_kcfg_files(kded_bluedevil_SRCS GENERATE_MOC ../settings/bluedevilglobalsettings.kcfgc)
 
 kcoreaddons_add_plugin(kded_bluedevil INSTALL_NAMESPACE "kf6/kded" SOURCES ${kded_bluedevil_SRCS})
 set_target_properties(kded_bluedevil PROPERTIES OUTPUT_NAME bluedevil)

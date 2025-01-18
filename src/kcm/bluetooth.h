@@ -22,14 +22,8 @@ public:
     Q_INVOKABLE void checkNetworkConnection(const QStringList &uuids, const QString &address);
     Q_INVOKABLE void setupNetworkConnection(const QString &service, const QString &address, const QString &deviceName);
 
-    Q_PROPERTY(QString bluetoothStatusAtLogin READ bluetoothStatusAtLogin WRITE setBluetoothStatusAtLogin NOTIFY bluetoothStatusAtLoginChanged)
-
-    QString bluetoothStatusAtLogin() const;
-    void setBluetoothStatusAtLogin(const QString &newStatus);
-
 Q_SIGNALS:
     void networkAvailable(const QString &service, bool available);
-    QString bluetoothStatusAtLoginChanged(QString newStatus);
     void errorOccured(const QString &errorMessage);
 
 private:
