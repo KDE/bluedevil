@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-20 00:42+0000\n"
+"POT-Creation-Date: 2025-01-21 00:42+0000\n"
 "PO-Revision-Date: 2024-06-08 15:59+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -28,7 +28,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "sergiu@cip.md"
 
-#: bluetooth.cpp:102
+#: bluetooth.cpp:104
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
@@ -174,42 +174,42 @@ msgstr "La autentificare:"
 msgid "Enable Bluetooth"
 msgstr "Activează Bluetooth"
 
-#: ui/General.qml:84
+#: ui/General.qml:85
 #, kde-format
 msgid "Disable Bluetooth"
 msgstr "Dezactivează Bluetooth"
 
-#: ui/General.qml:94
+#: ui/General.qml:96
 #, kde-format
 msgid "Restore previous status"
 msgstr "Restabilește starea precedentă"
 
-#: ui/General.qml:113
+#: ui/General.qml:116
 #, kde-format
 msgid "When receiving files:"
 msgstr "La primirea fișierelor:"
 
-#: ui/General.qml:115
+#: ui/General.qml:118
 #, kde-format
 msgid "Ask for confirmation"
 msgstr "Cere confirmare"
 
-#: ui/General.qml:124
+#: ui/General.qml:127
 #, kde-format
 msgid "Accept for trusted devices"
 msgstr "Acceptă pentru dispozitive de încredere"
 
-#: ui/General.qml:134
+#: ui/General.qml:137
 #, kde-format
 msgid "Always accept"
 msgstr "Acceptă întotdeauna"
 
-#: ui/General.qml:144
+#: ui/General.qml:147
 #, kde-format
 msgid "Save files in:"
 msgstr "Salvează fișierele în:"
 
-#: ui/General.qml:169 ui/General.qml:180
+#: ui/General.qml:172 ui/General.qml:183
 #, kde-format
 msgid "Select folder"
 msgstr "Alege dosarul"

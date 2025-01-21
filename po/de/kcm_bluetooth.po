@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-20 00:42+0000\n"
+"POT-Creation-Date: 2025-01-21 00:42+0000\n"
 "PO-Revision-Date: 2024-08-19 23:21+0200\n"
 "Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -29,7 +29,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde-i18n-de@kde.org"
 
-#: bluetooth.cpp:102
+#: bluetooth.cpp:104
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
@@ -179,42 +179,42 @@ msgstr "Bei der Anmeldung:"
 msgid "Enable Bluetooth"
 msgstr "Bluetooth aktivieren"
 
-#: ui/General.qml:84
+#: ui/General.qml:85
 #, kde-format
 msgid "Disable Bluetooth"
 msgstr "Bluetooth abschalten"
 
-#: ui/General.qml:94
+#: ui/General.qml:96
 #, kde-format
 msgid "Restore previous status"
 msgstr "Vorherigen Status wiederherstellen"
 
-#: ui/General.qml:113
+#: ui/General.qml:116
 #, kde-format
 msgid "When receiving files:"
 msgstr "Beim Empfang von Dateien:"
 
-#: ui/General.qml:115
+#: ui/General.qml:118
 #, kde-format
 msgid "Ask for confirmation"
 msgstr "Um Bestätigung bitten"
 
-#: ui/General.qml:124
+#: ui/General.qml:127
 #, kde-format
 msgid "Accept for trusted devices"
 msgstr "Außer bei vertrauenswürdigen Geräten"
 
-#: ui/General.qml:134
+#: ui/General.qml:137
 #, kde-format
 msgid "Always accept"
 msgstr "Immer akzeptieren"
 
-#: ui/General.qml:144
+#: ui/General.qml:147
 #, kde-format
 msgid "Save files in:"
 msgstr "Dateien speichern unter:"
 
-#: ui/General.qml:169 ui/General.qml:180
+#: ui/General.qml:172 ui/General.qml:183
 #, kde-format
 msgid "Select folder"
 msgstr "Ordner auswählen"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-20 00:42+0000\n"
+"POT-Creation-Date: 2025-01-21 00:42+0000\n"
 "PO-Revision-Date: 2025-01-06 16:36+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -30,7 +30,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "mail@kisaragi-hiu.com"
 
-#: bluetooth.cpp:102
+#: bluetooth.cpp:104
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
@@ -176,42 +176,42 @@ msgstr "登入時："
 msgid "Enable Bluetooth"
 msgstr "啟用藍牙(&N)"
 
-#: ui/General.qml:84
+#: ui/General.qml:85
 #, kde-format
 msgid "Disable Bluetooth"
 msgstr "停用藍牙(&D)"
 
-#: ui/General.qml:94
+#: ui/General.qml:96
 #, kde-format
 msgid "Restore previous status"
 msgstr "回復先前狀態(&R)"
 
-#: ui/General.qml:113
+#: ui/General.qml:116
 #, kde-format
 msgid "When receiving files:"
 msgstr "接收檔案時："
 
-#: ui/General.qml:115
+#: ui/General.qml:118
 #, kde-format
 msgid "Ask for confirmation"
 msgstr "詢問確認(&A)"
 
-#: ui/General.qml:124
+#: ui/General.qml:127
 #, kde-format
 msgid "Accept for trusted devices"
 msgstr "只接受來自受信任裝置的(&C)"
 
-#: ui/General.qml:134
+#: ui/General.qml:137
 #, kde-format
 msgid "Always accept"
 msgstr "總是接受(&L)"
 
-#: ui/General.qml:144
+#: ui/General.qml:147
 #, kde-format
 msgid "Save files in:"
 msgstr "檔案儲存於："
 
-#: ui/General.qml:169 ui/General.qml:180
+#: ui/General.qml:172 ui/General.qml:183
 #, kde-format
 msgid "Select folder"
 msgstr "選擇資料夾"

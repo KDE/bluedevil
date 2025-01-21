@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-20 00:42+0000\n"
+"POT-Creation-Date: 2025-01-21 00:42+0000\n"
 "PO-Revision-Date: 2015-08-27 16:56+0200\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -29,7 +29,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "bjornst@skogkatt.homelinux.org"
 
-#: bluetooth.cpp:102
+#: bluetooth.cpp:104
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
@@ -175,42 +175,42 @@ msgstr ""
 msgid "Enable Bluetooth"
 msgstr ""
 
-#: ui/General.qml:84
+#: ui/General.qml:85
 #, kde-format
 msgid "Disable Bluetooth"
 msgstr ""
 
-#: ui/General.qml:94
+#: ui/General.qml:96
 #, kde-format
 msgid "Restore previous status"
 msgstr ""
 
-#: ui/General.qml:113
+#: ui/General.qml:116
 #, kde-format
 msgid "When receiving files:"
 msgstr ""
 
-#: ui/General.qml:115
+#: ui/General.qml:118
 #, kde-format
 msgid "Ask for confirmation"
 msgstr ""
 
-#: ui/General.qml:124
+#: ui/General.qml:127
 #, kde-format
 msgid "Accept for trusted devices"
 msgstr ""
 
-#: ui/General.qml:134
+#: ui/General.qml:137
 #, kde-format
 msgid "Always accept"
 msgstr ""
 
-#: ui/General.qml:144
+#: ui/General.qml:147
 #, kde-format
 msgid "Save files in:"
 msgstr "Lagre filer til:"
 
-#: ui/General.qml:169 ui/General.qml:180
+#: ui/General.qml:172 ui/General.qml:183
 #, kde-format
 msgid "Select folder"
 msgstr ""

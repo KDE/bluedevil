@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-20 00:42+0000\n"
+"POT-Creation-Date: 2025-01-21 00:42+0000\n"
 "PO-Revision-Date: 2022-07-26 09:25+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -23,7 +23,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "zepires@gmail.com"
 
-#: bluetooth.cpp:102
+#: bluetooth.cpp:104
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
@@ -171,42 +171,42 @@ msgstr "No início da sessão:"
 msgid "Enable Bluetooth"
 msgstr "Activar o Bluetooth"
 
-#: ui/General.qml:84
+#: ui/General.qml:85
 #, kde-format
 msgid "Disable Bluetooth"
 msgstr "Desactivar o Bluetooth"
 
-#: ui/General.qml:94
+#: ui/General.qml:96
 #, kde-format
 msgid "Restore previous status"
 msgstr "Repor o estado anterior"
 
-#: ui/General.qml:113
+#: ui/General.qml:116
 #, kde-format
 msgid "When receiving files:"
 msgstr "Ao receber ficheiros:"
 
-#: ui/General.qml:115
+#: ui/General.qml:118
 #, kde-format
 msgid "Ask for confirmation"
 msgstr "Pedir a confirmação"
 
-#: ui/General.qml:124
+#: ui/General.qml:127
 #, kde-format
 msgid "Accept for trusted devices"
 msgstr "Aceitar para os dispositivos fidedignos"
 
-#: ui/General.qml:134
+#: ui/General.qml:137
 #, kde-format
 msgid "Always accept"
 msgstr "Aceitar sempre"
 
-#: ui/General.qml:144
+#: ui/General.qml:147
 #, kde-format
 msgid "Save files in:"
 msgstr "Gravar os ficheiros em:"
 
-#: ui/General.qml:169 ui/General.qml:180
+#: ui/General.qml:172 ui/General.qml:183
 #, kde-format
 msgid "Select folder"
 msgstr "Seleccionar a pasta"
