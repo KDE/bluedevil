@@ -400,7 +400,7 @@ msgstr "启动 org.bluez.obex 服务失败：%1"
 #: settings/bluedevilglobalsettings.kcfg:10
 #, kde-format
 msgid "Option to determine the bluetooth state at launch"
-msgstr ""
+msgstr "用于指定启动时蓝牙状态的选项"
 
 #. i18n: ectx: label, entry (saveUrl), group (General)
 #: settings/filereceiver.kcfg:11
