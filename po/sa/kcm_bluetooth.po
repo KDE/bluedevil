@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-21 00:42+0000\n"
+"POT-Creation-Date: 2025-01-25 00:42+0000\n"
 "PO-Revision-Date: 2024-12-25 19:35+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -210,7 +210,7 @@ msgstr "सदा स्वीकुरुत"
 msgid "Save files in:"
 msgstr "सञ्चिकाः अत्र रक्षन्तु :"
 
-#: ui/General.qml:172 ui/General.qml:183
+#: ui/General.qml:160 ui/General.qml:171
 #, kde-format
 msgid "Select folder"
 msgstr "फोल्डरं चिनोतु"
