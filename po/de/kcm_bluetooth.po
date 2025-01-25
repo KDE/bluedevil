@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-20 00:42+0000\n"
+"POT-Creation-Date: 2025-01-25 02:37+0000\n"
 "PO-Revision-Date: 2024-08-19 23:21+0200\n"
 "Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -214,7 +214,7 @@ msgstr "Immer akzeptieren"
 msgid "Save files in:"
 msgstr "Dateien speichern unter:"
 
-#: ui/General.qml:169 ui/General.qml:180
+#: ui/General.qml:157 ui/General.qml:168
 #, kde-format
 msgid "Select folder"
 msgstr "Ordner auswählen"

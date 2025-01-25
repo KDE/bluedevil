@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-20 00:42+0000\n"
+"POT-Creation-Date: 2025-01-25 02:37+0000\n"
 "PO-Revision-Date: 2024-09-13 11:06+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -217,7 +217,7 @@ msgid "Save files in:"
 msgstr "Сохранять полученные файлы в:"
 
 # BUGME: please split strings: windowtitle/button --aspotashev
-#: ui/General.qml:169 ui/General.qml:180
+#: ui/General.qml:157 ui/General.qml:168
 #, kde-format
 msgid "Select folder"
 msgstr "Выбор папки"

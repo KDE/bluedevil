@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-20 00:42+0000\n"
+"POT-Creation-Date: 2025-01-25 02:37+0000\n"
 "PO-Revision-Date: 2024-08-18 17:28+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -208,7 +208,7 @@ msgstr "எப்போதும் ஏற்றுக்கொள்"
 msgid "Save files in:"
 msgstr "கோப்புகளை இங்கு சேமி:"
 
-#: ui/General.qml:169 ui/General.qml:180
+#: ui/General.qml:157 ui/General.qml:168
 #, kde-format
 msgid "Select folder"
 msgstr "அடைவைத் தேர்ந்தெடு"

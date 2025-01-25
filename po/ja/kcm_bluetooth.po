@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-20 00:42+0000\n"
+"POT-Creation-Date: 2025-01-25 02:37+0000\n"
 "PO-Revision-Date: 2024-02-23 21:57+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: ja\n"
@@ -211,7 +211,7 @@ msgstr "常に受け入れる"
 msgid "Save files in:"
 msgstr "ファイルの保存先:"
 
-#: ui/General.qml:169 ui/General.qml:180
+#: ui/General.qml:157 ui/General.qml:168
 #, kde-format
 msgid "Select folder"
 msgstr "フォルダを選択"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-20 00:42+0000\n"
+"POT-Creation-Date: 2025-01-25 02:37+0000\n"
 "PO-Revision-Date: 2024-08-19 22:09+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -208,7 +208,7 @@ msgstr "항상 수락"
 msgid "Save files in:"
 msgstr "파일을 저장할 위치:"
 
-#: ui/General.qml:169 ui/General.qml:180
+#: ui/General.qml:157 ui/General.qml:168
 #, kde-format
 msgid "Select folder"
 msgstr "폴더 선택"
