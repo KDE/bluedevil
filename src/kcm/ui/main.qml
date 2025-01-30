@@ -48,6 +48,7 @@ KCMUtils.ScrollViewKCM {
             icon.name: "list-add-symbolic"
             onTriggered: root.KCMUtils.ConfigModule.runWizard()
             visible: BluezQt.Manager.bluetoothOperational
+            displayHint: Kirigami.DisplayHint.KeepVisible
         },
         Kirigami.Action {
             text: i18n("Configure…")
