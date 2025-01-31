@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-25 02:37+0000\n"
+"POT-Creation-Date: 2025-01-31 02:35+0000\n"
 "PO-Revision-Date: 2024-08-19 20:56+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -35,12 +35,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 nettverk (%2)"
 
-#: ui/Device.qml:108 ui/main.qml:211
+#: ui/Device.qml:108 ui/main.qml:212
 #, kde-format
 msgid "Disconnect"
 msgstr "Kopla frå"
 
-#: ui/Device.qml:108 ui/main.qml:211
+#: ui/Device.qml:108 ui/main.qml:212
 #, kde-format
 msgid "Connect"
 msgstr "Kopla til"
@@ -85,7 +85,7 @@ msgstr "Namn:"
 msgid "Trusted"
 msgstr "Tiltrudd"
 
-#: ui/Device.qml:167 ui/main.qml:178
+#: ui/Device.qml:167 ui/main.qml:179
 #, kde-format
 msgid "Blocked"
 msgstr "Blokkert"
@@ -227,53 +227,53 @@ msgstr "Slått på"
 msgid "Pair Device…"
 msgstr "Par ny eining …"
 
-#: ui/main.qml:53
+#: ui/main.qml:54
 #, kde-format
 msgid "Configure…"
 msgstr "Set opp …"
 
-#: ui/main.qml:124
+#: ui/main.qml:125
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "Fann ingen Bluetooth-adapterar"
 
-#: ui/main.qml:125
+#: ui/main.qml:126
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
 msgstr "Kopla til ekstern Bluetooth-adapter"
 
-#: ui/main.qml:134
+#: ui/main.qml:135
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth er avslått"
 
-#: ui/main.qml:140
+#: ui/main.qml:141
 #, kde-format
 msgid "Enable"
 msgstr "Slå på"
 
-#: ui/main.qml:150
+#: ui/main.qml:151
 #, kde-format
 msgid "No devices paired"
 msgstr "Ingen einingar er para"
 
-#: ui/main.qml:151
+#: ui/main.qml:152
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr "Trykk <interface>Par ny eining</interface> for å para ei eining"
 
-#: ui/main.qml:180
+#: ui/main.qml:181
 #, kde-format
 msgid "Connected"
 msgstr "Kopla til"
 
-#: ui/main.qml:182
+#: ui/main.qml:183
 #, kde-format
 msgid "Available"
 msgstr "Tilgjengeleg"
 
-#: ui/main.qml:247
+#: ui/main.qml:248
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1 % batteri"

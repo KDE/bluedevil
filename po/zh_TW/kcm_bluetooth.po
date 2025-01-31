@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-25 02:37+0000\n"
+"POT-Creation-Date: 2025-01-31 02:35+0000\n"
 "PO-Revision-Date: 2025-01-06 16:36+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -36,12 +36,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 網路 (%2)"
 
-#: ui/Device.qml:108 ui/main.qml:211
+#: ui/Device.qml:108 ui/main.qml:212
 #, kde-format
 msgid "Disconnect"
 msgstr "斷線"
 
-#: ui/Device.qml:108 ui/main.qml:211
+#: ui/Device.qml:108 ui/main.qml:212
 #, kde-format
 msgid "Connect"
 msgstr "連線"
@@ -86,7 +86,7 @@ msgstr "名稱(&M)："
 msgid "Trusted"
 msgstr "受信任的"
 
-#: ui/Device.qml:167 ui/main.qml:178
+#: ui/Device.qml:167 ui/main.qml:179
 #, kde-format
 msgid "Blocked"
 msgstr "已封鎖"
@@ -227,53 +227,53 @@ msgstr "已啟用(&E)"
 msgid "Pair Device…"
 msgstr "配對裝置(&P)…"
 
-#: ui/main.qml:53
+#: ui/main.qml:54
 #, kde-format
 msgid "Configure…"
 msgstr "設定(&C)…"
 
-#: ui/main.qml:124
+#: ui/main.qml:125
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "找不到藍牙轉接器"
 
-#: ui/main.qml:125
+#: ui/main.qml:126
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
 msgstr "連線到外部藍芽轉接器"
 
-#: ui/main.qml:134
+#: ui/main.qml:135
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "藍牙已停用"
 
-#: ui/main.qml:140
+#: ui/main.qml:141
 #, kde-format
 msgid "Enable"
 msgstr "啟用"
 
-#: ui/main.qml:150
+#: ui/main.qml:151
 #, kde-format
 msgid "No devices paired"
 msgstr "沒有配對裝置"
 
-#: ui/main.qml:151
+#: ui/main.qml:152
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr "點擊 <interface>配對裝置…</interface> 來配對一些"
 
-#: ui/main.qml:180
+#: ui/main.qml:181
 #, kde-format
 msgid "Connected"
 msgstr "已連線"
 
-#: ui/main.qml:182
+#: ui/main.qml:183
 #, kde-format
 msgid "Available"
 msgstr "可用"
 
-#: ui/main.qml:247
+#: ui/main.qml:248
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% 電量"

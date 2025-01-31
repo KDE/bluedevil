@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-25 02:37+0000\n"
+"POT-Creation-Date: 2025-01-31 02:35+0000\n"
 "PO-Revision-Date: 2024-08-10 09:06+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -36,12 +36,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "Мережа %1 (%2)"
 
-#: ui/Device.qml:108 ui/main.qml:211
+#: ui/Device.qml:108 ui/main.qml:212
 #, kde-format
 msgid "Disconnect"
 msgstr "Від’єднатися"
 
-#: ui/Device.qml:108 ui/main.qml:211
+#: ui/Device.qml:108 ui/main.qml:212
 #, kde-format
 msgid "Connect"
 msgstr "З'єднатися"
@@ -88,7 +88,7 @@ msgstr "Назва:"
 msgid "Trusted"
 msgstr "Довірений"
 
-#: ui/Device.qml:167 ui/main.qml:178
+#: ui/Device.qml:167 ui/main.qml:179
 #, kde-format
 msgid "Blocked"
 msgstr "Заблокований"
@@ -231,37 +231,37 @@ msgstr "Увімкнено"
 msgid "Pair Device…"
 msgstr "Пов'язати пристрій…"
 
-#: ui/main.qml:53
+#: ui/main.qml:54
 #, kde-format
 msgid "Configure…"
 msgstr "Налаштувати…"
 
-#: ui/main.qml:124
+#: ui/main.qml:125
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "Адаптерів Bluetooth не знайдено"
 
-#: ui/main.qml:125
+#: ui/main.qml:126
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
 msgstr "Встановлення з'єднання із зовнішнім адаптером Bluetooth"
 
-#: ui/main.qml:134
+#: ui/main.qml:135
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth вимкнено"
 
-#: ui/main.qml:140
+#: ui/main.qml:141
 #, kde-format
 msgid "Enable"
 msgstr "Увімкнути"
 
-#: ui/main.qml:150
+#: ui/main.qml:151
 #, kde-format
 msgid "No devices paired"
 msgstr "Не пов'язано жодного пристрою"
 
-#: ui/main.qml:151
+#: ui/main.qml:152
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
@@ -269,17 +269,17 @@ msgstr ""
 "Натисніть <interface>Пов'язати пристрій…</interface>, щоб виконати "
 "сполучення з пристроєм"
 
-#: ui/main.qml:180
+#: ui/main.qml:181
 #, kde-format
 msgid "Connected"
 msgstr "З'єднаний"
 
-#: ui/main.qml:182
+#: ui/main.qml:183
 #, kde-format
 msgid "Available"
 msgstr "Доступний"
 
-#: ui/main.qml:247
+#: ui/main.qml:248
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% акумулятора"
