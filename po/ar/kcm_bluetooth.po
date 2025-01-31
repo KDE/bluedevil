@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-25 00:42+0000\n"
+"POT-Creation-Date: 2025-01-31 00:42+0000\n"
 "PO-Revision-Date: 2024-09-05 11:00+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -34,12 +34,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "‏%1 الشبكة (‏%2)"
 
-#: ui/Device.qml:108 ui/main.qml:211
+#: ui/Device.qml:108 ui/main.qml:212
 #, kde-format
 msgid "Disconnect"
 msgstr "اقطع الاتصال"
 
-#: ui/Device.qml:108 ui/main.qml:211
+#: ui/Device.qml:108 ui/main.qml:212
 #, kde-format
 msgid "Connect"
 msgstr "اتّصل"
@@ -84,7 +84,7 @@ msgstr "الاسم:"
 msgid "Trusted"
 msgstr "موثوق"
 
-#: ui/Device.qml:167 ui/main.qml:178
+#: ui/Device.qml:167 ui/main.qml:179
 #, kde-format
 msgid "Blocked"
 msgstr "حظر"
@@ -225,53 +225,53 @@ msgstr "ممكّن"
 msgid "Pair Device…"
 msgstr "اقرن جهاز…"
 
-#: ui/main.qml:53
+#: ui/main.qml:54
 #, kde-format
 msgid "Configure…"
 msgstr "اضبط…"
 
-#: ui/main.qml:124
+#: ui/main.qml:125
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "لم يُعثر على محوّلات بلوتوث"
 
-#: ui/main.qml:125
+#: ui/main.qml:126
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
 msgstr "صِل محول بلوتوث خارجي"
 
-#: ui/main.qml:134
+#: ui/main.qml:135
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "بلوتوث معطّلة"
 
-#: ui/main.qml:140
+#: ui/main.qml:141
 #, kde-format
 msgid "Enable"
 msgstr "مكّن"
 
-#: ui/main.qml:150
+#: ui/main.qml:151
 #, kde-format
 msgid "No devices paired"
 msgstr "لا يوجد أجهزة مقترنة"
 
-#: ui/main.qml:151
+#: ui/main.qml:152
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr "انقر <interface>اقرن جهاز…</interface> لتقرن بعضا منها"
 
-#: ui/main.qml:180
+#: ui/main.qml:181
 #, kde-format
 msgid "Connected"
 msgstr "متّصل"
 
-#: ui/main.qml:182
+#: ui/main.qml:183
 #, kde-format
 msgid "Available"
 msgstr "متوفّرة"
 
-#: ui/main.qml:247
+#: ui/main.qml:248
 #, kde-format
 msgid "%1% Battery"
 msgstr "البطارية %1٪"

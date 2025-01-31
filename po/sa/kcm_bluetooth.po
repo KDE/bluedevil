@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-25 00:42+0000\n"
+"POT-Creation-Date: 2025-01-31 00:42+0000\n"
 "PO-Revision-Date: 2024-12-25 19:35+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -35,12 +35,12 @@ msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 संजाल (%2) ."
 
-#: ui/Device.qml:108 ui/main.qml:211
+#: ui/Device.qml:108 ui/main.qml:212
 #, kde-format
 msgid "Disconnect"
 msgstr "विच्छेदं कुर्वन्तु"
 
-#: ui/Device.qml:108 ui/main.qml:211
+#: ui/Device.qml:108 ui/main.qml:212
 #, kde-format
 msgid "Connect"
 msgstr "संयुज्"
@@ -85,7 +85,7 @@ msgstr "नामः:"
 msgid "Trusted"
 msgstr "विश्वासः"
 
-#: ui/Device.qml:167 ui/main.qml:178
+#: ui/Device.qml:167 ui/main.qml:179
 #, kde-format
 msgid "Blocked"
 msgstr "अवरुद्धम्"
@@ -226,53 +226,53 @@ msgstr "सक्षमम्"
 msgid "Pair Device…"
 msgstr "युग्मयन्त्रम्…"
 
-#: ui/main.qml:53
+#: ui/main.qml:54
 #, kde-format
 msgid "Configure…"
 msgstr "विन्यस्तं कुर्वन्तु…"
 
-#: ui/main.qml:124
+#: ui/main.qml:125
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "कोऽपि ब्लूटूथ एडाप्टरः न प्राप्तः"
 
-#: ui/main.qml:125
+#: ui/main.qml:126
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
 msgstr "बाह्यं Bluetooth एडाप्टरं संयोजयन्तु"
 
-#: ui/main.qml:134
+#: ui/main.qml:135
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "ब्लूटूथ् अक्षमम् अस्ति"
 
-#: ui/main.qml:140
+#: ui/main.qml:141
 #, kde-format
 msgid "Enable"
 msgstr "सक्रियं करोतु"
 
-#: ui/main.qml:150
+#: ui/main.qml:151
 #, kde-format
 msgid "No devices paired"
 msgstr "न यन्त्राणि युग्मिताः"
 
-#: ui/main.qml:151
+#: ui/main.qml:152
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr "केचन युग्मीकरणं कर्तुं <interface>Pair Device…</interface> नुदन्तु"
 
-#: ui/main.qml:180
+#: ui/main.qml:181
 #, kde-format
 msgid "Connected"
 msgstr "संबद्धः"
 
-#: ui/main.qml:182
+#: ui/main.qml:183
 #, kde-format
 msgid "Available"
 msgstr "उपलब्धः"
 
-#: ui/main.qml:247
+#: ui/main.qml:248
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% बैटरी"
