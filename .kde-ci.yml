@@ -2,8 +2,8 @@
 # SPDX-License-Identifier: CC0-1.0
 
 Dependencies:
-- 'on': ['@all']
-  'require':
+ - 'on': ['@all']
+   'require':
     'frameworks/bluez-qt': '@latest-kf6'
     'frameworks/extra-cmake-modules': '@latest-kf6'
     'frameworks/kauth': '@latest-kf6'
@@ -25,7 +25,6 @@ Dependencies:
     'frameworks/kxmlgui': '@latest-kf6'
     'frameworks/solid': '@latest-kf6'
     'frameworks/kcmutils': '@latest-kf6'
-    'frameworks/kjobwidgets': '@latest-kf6'
     'plasma/libplasma': '@same'
 Options:
-  require-passing-tests-on: [ 'Linux', 'FreeBSD']
+ require-passing-tests-on: ['Linux', 'FreeBSD']
