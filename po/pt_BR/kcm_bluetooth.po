@@ -2,13 +2,13 @@
 # This file is distributed under the same license as the bluedevil package.
 #
 # Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2020, 2021, 2022, 2023, 2024.
-# SPDX-FileCopyrightText: 2024 Geraldo Simiao <geraldosimiao@fedoraproject.org>
+# SPDX-FileCopyrightText: 2024, 2025 Geraldo Simiao <geraldosimiao@fedoraproject.org>
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-31 00:42+0000\n"
-"PO-Revision-Date: 2024-07-08 19:04-0300\n"
+"PO-Revision-Date: 2025-02-05 20:23-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.05.0\n"
+"X-Generator: Lokalize 24.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -47,7 +47,7 @@ msgstr "Conectar"
 #: ui/Device.qml:111
 #, kde-format
 msgid "Unblock the device first to be able to connect to it"
-msgstr ""
+msgstr "Desbloqueie o dispositivo primeiro para poder se conectar a ele"
 
 #: ui/Device.qml:132
 #, kde-format
@@ -94,6 +94,8 @@ msgstr "Bloqueado"
 msgid ""
 "Any incoming connections from a blocked device will be immediately rejected."
 msgstr ""
+"Qualquer conexão de entrada de um dispositivo bloqueado será imediatamente "
+"rejeitada."
 
 #: ui/Device.qml:179
 #, kde-format
@@ -111,12 +113,10 @@ msgid "Setup DUN Network…"
 msgstr "Configurar rede DUN..."
 
 #: ui/Device.qml:210
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the name of a Bluetooth device"
-#| msgid "Forget \"%1\""
+#, kde-format
 msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"
-msgstr "Esquecer \"%1\""
+msgstr "Esquecer"
 
 #: ui/ForgetDeviceAction.qml:17
 #, kde-format
@@ -223,10 +223,9 @@ msgid "Enabled"
 msgstr "Ativado"
 
 #: ui/main.qml:47
-#, fuzzy, kde-format
-#| msgid "Add New Device…"
+#, kde-format
 msgid "Pair Device…"
-msgstr "Adicionar novo dispositivo..."
+msgstr "Emparelhar dispositivo..."
 
 #: ui/main.qml:54
 #, kde-format
@@ -259,13 +258,11 @@ msgid "No devices paired"
 msgstr "Nenhum dispositivo pareado"
 
 #: ui/main.qml:152
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click <interface>Add New Device…</interface> to pair some"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr ""
-"Clique em <interface>Adicionar novo dispositivo…</interface> para emparelhar"
+"Clique em <interface>Emparelhar dispositivo…</interface> para emparelhar"
 
 #: ui/main.qml:181
 #, kde-format
@@ -319,12 +316,10 @@ msgid "Headphones"
 msgstr "Fone de ouvido"
 
 #: ui/script.js:25
-#, fuzzy, kde-format
-#| msgctxt "This device is an Audio/Video device"
-#| msgid "Multimedia Device"
+#, kde-format
 msgctxt "This device is an Audio/Video device"
 msgid "Multimedia"
-msgstr "Dispositivo multimídia"
+msgstr "Multimídia"
 
 #: ui/script.js:27
 #, kde-format
@@ -342,7 +337,7 @@ msgstr "Mouse"
 #, kde-format
 msgctxt "This device is a Game controller"
 msgid "Game controller"
-msgstr ""
+msgstr "Controlador de jogos"
 
 #: ui/script.js:33
 #, kde-format
@@ -396,43 +391,38 @@ msgstr "Saúde"
 #: ui/script.js:53
 #, kde-format
 msgid "File transfer"
-msgstr ""
+msgstr "Transferência de arquivo"
 
 #: ui/script.js:56
-#, fuzzy, kde-format
-#| msgid "Send File"
+#, kde-format
 msgid "Send file"
 msgstr "Enviar arquivo"
 
 #: ui/script.js:59
 #, kde-format
 msgid "Input"
-msgstr ""
+msgstr "Entrada"
 
 #: ui/script.js:62
-#, fuzzy, kde-format
-#| msgctxt "This device is an Audio device"
-#| msgid "Audio"
+#, kde-format
 msgid "Audio"
 msgstr "Áudio"
 
 #: ui/script.js:65
-#, fuzzy, kde-format
-#| msgctxt "This device is of type Network"
-#| msgid "Network"
+#, kde-format
 msgid "Network"
 msgstr "Rede"
 
 #: ui/script.js:69
 #, kde-format
 msgid "Other"
-msgstr ""
+msgstr "Outro"
 
 #: ui/script.js:72
 #, kde-format
 msgctxt "List separator"
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #~ msgctxt "This device is a Joypad"
 #~ msgid "Joypad"
