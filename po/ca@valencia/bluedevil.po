@@ -510,7 +510,7 @@ msgstr "S'està connectant amb %1…"
 #, kde-format
 msgid ""
 "Please introduce the PIN in your keyboard when it appears and press Enter"
-msgstr "Introduïu el PIN al vostre teclat en aparéixer i premeu Retorn"
+msgstr "Introduïu el PIN al vostre teclat en aparéixer i premeu «Retorn»"
 
 #: wizard/pages/pairing.cpp:98
 #, kde-format
