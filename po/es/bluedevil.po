@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the bluedevil package.
 # Automatically generated, 2015.
 #
-# SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Eloy Cuadra <ecuadra@eloihr.net>
 # SPDX-FileCopyrightText: 2016, Rocio Gallego <traducciones@rociogallego.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-22 00:40+0000\n"
-"PO-Revision-Date: 2024-07-23 00:32+0200\n"
+"PO-Revision-Date: 2025-02-17 22:41+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.12.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -243,7 +243,7 @@ msgstr "No se han encontrado adaptadores Bluetooth."
 #: kio/bluetooth/kiobluetooth.cpp:92
 #, kde-format
 msgid "Retrieving services…"
-msgstr "Obteniendo servicios..."
+msgstr "Obteniendo servicios…"
 
 #: kio/bluetooth/kiobluetooth.cpp:99
 #, kde-format
@@ -258,7 +258,7 @@ msgstr "Archivos recibidos"
 #: kio/bluetooth/kiobluetooth.cpp:167
 #, kde-format
 msgid "Scanning for new devices…"
-msgstr "Buscando nuevos dispositivos..."
+msgstr "Buscando nuevos dispositivos…"
 
 #: kio/obexftp/kioobexftp.cpp:96
 #, kde-format
@@ -268,7 +268,7 @@ msgstr "El servicio Obexd no está en ejecución."
 #: kio/obexftp/kioobexftp.cpp:140
 #, kde-format
 msgid "Retrieving information from remote device…"
-msgstr "Obteniendo información del dispositivo remoto..."
+msgstr "Obteniendo información del dispositivo remoto…"
 
 #: kio/obexftp/kioobexftp.cpp:222
 #, kde-format
@@ -336,7 +336,7 @@ msgstr "Archivos a enviar."
 #, kde-format
 msgctxt "Connecting to a Bluetooth device"
 msgid "Connecting to %1…"
-msgstr "Conectando a %1..."
+msgstr "Conectando a %1…"
 
 #: sendfile/pages/failpage.cpp:43
 #, kde-format
@@ -352,7 +352,7 @@ msgstr "La conexión con %1 ha fallado: %2"
 #: sendfile/pages/selectdeviceandfilespage.cpp:53
 #, kde-format
 msgid "Open file…"
-msgstr "Abrir archivo..."
+msgstr "Abrir archivo…"
 
 #. i18n: ectx: property (text), widget (KSqueezedTextLabel, selectLbl)
 #: sendfile/pages/selectdeviceandfilespage.cpp:58
@@ -454,13 +454,13 @@ msgstr "Hacer vinculable"
 #: wizard/pages/discover.ui:19
 #, kde-format
 msgid "Search…"
-msgstr "Buscar..."
+msgstr "Buscar…"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: wizard/pages/discover.ui:64
 #, kde-format
 msgid "Scanning…"
-msgstr "Explorando..."
+msgstr "Explorando…"
 
 #. i18n: ectx: property (text), widget (QCheckBox, manualPin)
 #: wizard/pages/discover.ui:84
@@ -501,7 +501,7 @@ msgstr "Ha fallado la configuración de %1"
 #: wizard/pages/pairing.cpp:60
 #, kde-format
 msgid "Connecting to %1…"
-msgstr "Conectando a %1..."
+msgstr "Conectando a %1…"
 
 #: wizard/pages/pairing.cpp:96
 #, kde-format
