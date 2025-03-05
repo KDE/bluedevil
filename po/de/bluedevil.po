@@ -20,12 +20,12 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Panagiots Papadopoulos,Frederik Schwarzer"
+msgstr "Deutsches KDE-Übersetzungsteam"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "pano_90@gmx.net,schwarzer@kde.org"
+msgstr "kde-i18n-de@kde.org"
 
 #: applet/plugin/devicesstateproxymodel.cpp:220
 #, kde-format
