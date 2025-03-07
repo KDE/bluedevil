@@ -57,6 +57,12 @@ DeviceMonitor::DeviceMonitor(BlueDevilDaemon *daemon)
                                          QStringLiteral("PrepareForSleep"),
                                          this,
                                          SLOT(login1PrepareForSleep(bool)));
+    QDBusConnection::systemBus().connect(QStringLiteral("org.freedesktop.login1"),
+                                         QStringLiteral("/org/freedesktop/login1"),
+                                         QStringLiteral("org.freedesktop.login1.Manager"),
+                                         QStringLiteral("PrepareForShutdown"),
+                                         this,
+                                         SLOT(login1PrepareForSleep(bool)));
 
     // Before setting the initial state, we need to wait for the manager to be operational
     if (m_manager->isOperational()) {
