@@ -95,7 +95,7 @@ PlasmaExtras.Representation {
         contentItem: ListView {
             id: listView
 
-            model: BluezQt.Manager.adapters.length > 0 && !BluezQt.Manager.bluetoothBlocked ? devicesModel : null
+            model: BluezQt.Manager.bluetoothOperational ? devicesModel : null
             clip: true
             currentIndex: -1
             boundsBehavior: Flickable.StopAtBounds
@@ -150,16 +150,16 @@ PlasmaExtras.Representation {
             Loader {
                 anchors.centerIn: parent
                 width: parent.width - (4 * Kirigami.Units.gridUnit)
-                active: BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown || BluezQt.Manager.bluetoothBlocked || root.emptyList
+                active: BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown || !BluezQt.Manager.bluetoothOperational || root.emptyList
                 sourceComponent: PlasmaExtras.PlaceholderMessage {
-                    iconName: BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown || BluezQt.Manager.bluetoothBlocked ? "network-bluetooth" : "network-bluetooth-activated"
+                    iconName: BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown || !BluezQt.Manager.bluetoothOperational ? "network-bluetooth" : "network-bluetooth-activated"
 
                     text: {
                         // We cannot use the adapter count here because that can be zero when
                         // bluetooth is disabled even when there are physical devices
                         if (BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown) {
                             return i18n("No Bluetooth adapters available");
-                        } else if (BluezQt.Manager.bluetoothBlocked) {
+                        } else if (!BluezQt.Manager.bluetoothOperational) {
                             return i18n("Bluetooth is disabled");
                         } else if (root.emptyList) {
                             return i18n("No devices paired");
@@ -171,7 +171,7 @@ PlasmaExtras.Representation {
                     helpfulAction: {
                         if (BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown) {
                             return null;
-                        } else if (BluezQt.Manager.bluetoothBlocked) {
+                        } else if (!BluezQt.Manager.bluetoothOperational) {
                             return toggleBluetoothAction;
                         } else if (root.emptyList) {
                             return addBluetoothDeviceAction;
