@@ -1,5 +1,5 @@
 # Spanish translations for kcm_bluetooth.po package.
-# Copyright (C) 2020 This file is copyright:
+# Copyright (C) 2020-2025 This file is copyright:
 # This file is distributed under the same license as the bluedevil package.
 #
 # Automatically generated, 2020.
@@ -423,29 +423,3 @@ msgstr "Otros"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
-
-#~ msgctxt "This device is a Joypad"
-#~ msgid "Joypad"
-#~ msgstr "Mando de videojuegos"
-
-#~ msgctxt "Type of device: could not be determined"
-#~ msgid "Unknown"
-#~ msgstr "Desconocido"
-
-#~ msgid "Confirm Deletion of Device"
-#~ msgstr "Confirmar borrado de dispositivo"
-
-#~ msgid "Remove"
-#~ msgstr "Eliminar"
-
-#~ msgid "Bluetooth"
-#~ msgstr "Bluetooth"
-
-#~ msgid "Nicolas Fella"
-#~ msgstr "Nicolas Fella"
-
-#~ msgid "Add…"
-#~ msgstr "Añadir..."
-
-#~ msgid "Add..."
-#~ msgstr "Añadir..."
