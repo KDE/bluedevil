@@ -30,6 +30,7 @@ public:
 
 protected:
     void showEvent(QShowEvent *event) override;
+    bool eventFilter(QObject *watched, QEvent *event) override;
 
 private Q_SLOTS:
     void indexSelected(const QModelIndex &index);
@@ -45,4 +46,5 @@ private:
     BluezQt::Manager *m_manager = nullptr;
     BluezQt::AdapterPtr m_adapter;
     KMessageWidget *m_warningWidget = nullptr;
+    bool m_touchActive = false;
 };
