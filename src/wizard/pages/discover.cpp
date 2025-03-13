@@ -181,7 +181,17 @@ void DiscoverPage::initializePage()
     connect(m_manager, &BluezQt::Manager::bluetoothBlockedChanged, this, &DiscoverPage::checkAdapters);
     connect(m_manager, &BluezQt::Manager::usableAdapterChanged, this, &DiscoverPage::usableAdapterChanged);
 
-    QScroller::grabGesture(deviceView);
+    QScroller *scroller = QScroller::scroller(deviceView->viewport());
+    QScrollerProperties scrollerProp;
+    scrollerProp.setScrollMetric(QScrollerProperties::AcceleratingFlickMaximumTime, 0.2); // QTBUG-88249
+    scroller->setScrollerProperties(scrollerProp);
+    scroller->grabGesture(deviceView->viewport());
+    deviceView->viewport()->installEventFilter(this);
+    connect(scroller, &QScroller::stateChanged, this, [this](const QScroller::State newState) {
+        if (newState == QScroller::Inactive) {
+            m_touchActive = false;
+        }
+    });
 }
 
 bool DiscoverPage::isComplete() const
@@ -247,6 +257,27 @@ void DiscoverPage::showEvent(QShowEvent *event)
     Q_UNUSED(event);
     // Focus the device view by default, not the search field.
     deviceView->setFocus();
+}
+
+bool DiscoverPage::eventFilter(QObject *watched, QEvent *event)
+{
+    switch (event->type()) {
+    case QEvent::MouseMove:
+        if (m_touchActive) {
+            return true;
+        }
+        break;
+    case QEvent::TouchBegin:
+        m_touchActive = true;
+        break;
+    case QEvent::TouchEnd:
+    case QEvent::TouchCancel:
+        m_touchActive = false;
+        break;
+    default:
+        break;
+    }
+    return QWizardPage::eventFilter(watched, event);
 }
 
 void DiscoverPage::indexSelected(const QModelIndex &index)
