@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-22 00:40+0000\n"
+"POT-Creation-Date: 2025-03-14 02:43+0000\n"
 "PO-Revision-Date: 2024-07-22 08:45+0300\n"
 "Last-Translator: Fracture dept <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -291,12 +291,12 @@ msgstr "Пам’ять телефону"
 msgid "External memory"
 msgstr "Зовнішня пам’ять"
 
-#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:306
+#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:337
 #, kde-format
 msgid "Bluetooth is disabled."
 msgstr "Bluetooth вимкнено."
 
-#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:307
+#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:338
 #, kde-format
 msgctxt "Action to enable Bluetooth adapter"
 msgid "Enable"
@@ -434,18 +434,18 @@ msgstr "Додати пристрій Bluetooth"
 msgid "Select a device"
 msgstr "Виберіть пристрій"
 
-#: wizard/pages/discover.cpp:299
+#: wizard/pages/discover.cpp:330
 #, kde-format
 msgctxt "Action to fix a problem"
 msgid "Fix it"
 msgstr "Виправити"
 
-#: wizard/pages/discover.cpp:309
+#: wizard/pages/discover.cpp:340
 #, kde-format
 msgid "Your Bluetooth adapter is not pairable."
 msgstr "Адаптер Bluetooth непридатний до встановлення з’єднання."
 
-#: wizard/pages/discover.cpp:310
+#: wizard/pages/discover.cpp:341
 #, kde-format
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"

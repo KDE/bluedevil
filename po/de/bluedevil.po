@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-22 00:40+0000\n"
+"POT-Creation-Date: 2025-03-14 02:43+0000\n"
 "PO-Revision-Date: 2024-08-19 23:14+0200\n"
 "Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -287,12 +287,12 @@ msgstr "Telefonspeicher"
 msgid "External memory"
 msgstr "Externer Speicher"
 
-#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:306
+#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:337
 #, kde-format
 msgid "Bluetooth is disabled."
 msgstr "Bluetooth ist ausgeschaltet."
 
-#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:307
+#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:338
 #, kde-format
 msgctxt "Action to enable Bluetooth adapter"
 msgid "Enable"
@@ -430,18 +430,18 @@ msgstr "Bluetooth-Gerät hinzufügen"
 msgid "Select a device"
 msgstr "Wählen Sie ein Gerät"
 
-#: wizard/pages/discover.cpp:299
+#: wizard/pages/discover.cpp:330
 #, kde-format
 msgctxt "Action to fix a problem"
 msgid "Fix it"
 msgstr "Beheben"
 
-#: wizard/pages/discover.cpp:309
+#: wizard/pages/discover.cpp:340
 #, kde-format
 msgid "Your Bluetooth adapter is not pairable."
 msgstr "Ihr Bluetooth-Adapter kann nicht verbunden werden."
 
-#: wizard/pages/discover.cpp:310
+#: wizard/pages/discover.cpp:341
 #, kde-format
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"

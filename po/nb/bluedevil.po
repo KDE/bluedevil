@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-22 00:40+0000\n"
+"POT-Creation-Date: 2025-03-14 02:43+0000\n"
 "PO-Revision-Date: 2015-08-27 16:56+0200\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -287,12 +287,12 @@ msgstr "Telefonminne"
 msgid "External memory"
 msgstr "Eksternt minne"
 
-#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:306
+#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:337
 #, kde-format
 msgid "Bluetooth is disabled."
 msgstr "Bluetooth er Av."
 
-#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:307
+#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:338
 #, kde-format
 msgctxt "Action to enable Bluetooth adapter"
 msgid "Enable"
@@ -430,18 +430,18 @@ msgstr ""
 msgid "Select a device"
 msgstr "Velg en enhet"
 
-#: wizard/pages/discover.cpp:299
+#: wizard/pages/discover.cpp:330
 #, kde-format
 msgctxt "Action to fix a problem"
 msgid "Fix it"
 msgstr "Rett det"
 
-#: wizard/pages/discover.cpp:309
+#: wizard/pages/discover.cpp:340
 #, kde-format
 msgid "Your Bluetooth adapter is not pairable."
 msgstr "Ditt standard Bluetooth-adapter kan ikke danne par."
 
-#: wizard/pages/discover.cpp:310
+#: wizard/pages/discover.cpp:341
 #, kde-format
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
