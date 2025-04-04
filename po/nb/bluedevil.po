@@ -6,15 +6,15 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-14 02:43+0000\n"
-"PO-Revision-Date: 2015-08-27 16:56+0200\n"
-"Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
+"PO-Revision-Date: 2025-03-29 10:50+0100\n"
+"Last-Translator: Martin Hansen <mh306602@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 24.12.3\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -22,53 +22,53 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Bjørn Steensrud"
+msgstr "Bjørn Steensrud,Martin Hansen"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "bjornst@skogkatt.homelinux.org"
+msgstr "bjornst@skogkatt.homelinux.org,mh306602@gmail.com"
 
 #: applet/plugin/devicesstateproxymodel.cpp:220
 #, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: applet/plugin/devicesstateproxymodel.cpp:235
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
-msgstr "Denne adressen er ikke tilgjengelig."
+msgstr "Kan ikke nå enheten"
 
 #: applet/plugin/devicesstateproxymodel.cpp:236
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
-msgstr "Kobler til enheten"
+msgstr "Klarte ikke koble til enheten"
 
 #: applet/plugin/devicesstateproxymodel.cpp:239
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
-msgstr "Obexd-tjenesten kjører ikke."
+msgstr "Enheten er ikke klar"
 
 #: kcm/bluetooth.cpp:102
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
-msgstr ""
+msgstr "%1 nettverk (%2)"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
 msgid "Bluetooth Daemon"
-msgstr "Bluetooth-nisse"
+msgstr "Bluetooth-tjeneste"
 
 #: kded/bluedevildaemon.cpp:72 sendfile/main.cpp:29 wizard/main.cpp:30
 #, kde-format
 msgid "(c) 2010, UFO Coders"
-msgstr "© 2010 UFO.kodere"
+msgstr "© 2010 UFO Coders"
 
 #: kded/bluedevildaemon.cpp:75 sendfile/main.cpp:32 wizard/main.cpp:33
 #, kde-format
@@ -87,13 +87,13 @@ msgctxt ""
 "Show a notification asking to authorize or deny access to this computer from "
 "Bluetooth.The %1 is the name of the bluetooth device"
 msgid "%1 is requesting access to this computer"
-msgstr ""
+msgstr "%1 ber om tilgang til datamaskinen"
 
 #: kded/helpers/requestauthorization.cpp:33
 #, kde-format
 msgctxt "Button to trust a bluetooth remote device and authorize it to connect"
 msgid "Trust and Authorize"
-msgstr ""
+msgstr "Stol på og autoriser"
 
 #: kded/helpers/requestauthorization.cpp:34
 #, kde-format
@@ -113,7 +113,7 @@ msgctxt ""
 "The text is shown in a notification to know if the PIN is correct,%1 is the "
 "remote bluetooth device and %2 is the pin"
 msgid "%1 is asking if the PIN is correct: %2"
-msgstr ""
+msgstr "%1 spør om PIN-koden er riktig: %2"
 
 #: kded/helpers/requestconfirmation.cpp:32
 #, kde-format
@@ -133,7 +133,7 @@ msgctxt ""
 "Shown in a notification to announce that a PIN is needed to accomplish a "
 "pair action,%1 is the name of the bluetooth device"
 msgid "PIN needed to pair with %1"
-msgstr ""
+msgstr "Trenger PIN for å samvirke med %1"
 
 #: kded/helpers/requestpin.cpp:38
 #, kde-format
@@ -158,6 +158,8 @@ msgid ""
 "In order to pair this computer with %1, you have to enter a PIN. Please do "
 "it below."
 msgstr ""
+"For at denne datamaskinen skal samvirke med %1 må du taste inn en PIN. Gjør "
+"dette nedenfor."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: kded/helpers/requestpin.ui:52
@@ -197,7 +199,7 @@ msgstr "Avbryt"
 #, kde-format
 msgctxt "@title job"
 msgid "Receiving file"
-msgstr ""
+msgstr "Tar imot fil"
 
 #: kded/receivefilejob.cpp:164 sendfile/sendfilesjob.cpp:84
 #, kde-format
@@ -214,13 +216,13 @@ msgstr "Til"
 #: kded/receivefilejob.cpp:190
 #, kde-format
 msgid "Saving file failed"
-msgstr "Det lyktes ikke å lagre fila"
+msgstr "Klarte ikke lagre fila"
 
 #: kded/receivefilejob.cpp:221 kio/obexftp/transferfilejob.cpp:50
 #: sendfile/sendfilesjob.cpp:155
 #, kde-format
 msgid "Bluetooth transfer failed"
-msgstr "Bluetooth-overføring mislyktes"
+msgstr "Feil ved Bluetooth-overføring"
 
 #: kio/bluetooth/kiobluetooth.cpp:52
 #, kde-format
@@ -230,7 +232,7 @@ msgstr "Send fil"
 #: kio/bluetooth/kiobluetooth.cpp:58
 #, kde-format
 msgid "Browse Files"
-msgstr "Bla i filer"
+msgstr "Bla gjennom filer"
 
 #: kio/bluetooth/kiobluetooth.cpp:72 kio/bluetooth/kiobluetooth.cpp:200
 #, kde-format
@@ -240,7 +242,7 @@ msgstr "Fant ingen Bluetooth-adaptere."
 #: kio/bluetooth/kiobluetooth.cpp:92
 #, kde-format
 msgid "Retrieving services…"
-msgstr ""
+msgstr "Henter tjenester …"
 
 #: kio/bluetooth/kiobluetooth.cpp:99
 #, kde-format
@@ -250,12 +252,12 @@ msgstr "Denne adressen er ikke tilgjengelig."
 #: kio/bluetooth/kiobluetooth.cpp:147
 #, kde-format
 msgid "Received Files"
-msgstr ""
+msgstr "Mottatte filer"
 
 #: kio/bluetooth/kiobluetooth.cpp:167
 #, kde-format
 msgid "Scanning for new devices…"
-msgstr ""
+msgstr "Søker etter nye enheter …"
 
 #: kio/obexftp/kioobexftp.cpp:96
 #, kde-format
@@ -265,7 +267,7 @@ msgstr "Obexd-tjenesten kjører ikke."
 #: kio/obexftp/kioobexftp.cpp:140
 #, kde-format
 msgid "Retrieving information from remote device…"
-msgstr ""
+msgstr "Henter informasjon fra fjernenheten …"
 
 #: kio/obexftp/kioobexftp.cpp:222
 #, kde-format
@@ -275,7 +277,7 @@ msgstr "Kobler til enheten"
 #: kio/obexftp/kioobexftp.cpp:298
 #, kde-format
 msgid "This should not happen"
-msgstr ""
+msgstr "Dette burde aldri skje"
 
 #: kio/obexftp/kioobexftp.cpp:520
 #, kde-format
@@ -290,66 +292,66 @@ msgstr "Eksternt minne"
 #: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:337
 #, kde-format
 msgid "Bluetooth is disabled."
-msgstr "Bluetooth er Av."
+msgstr "Bluetooth er avslått."
 
 #: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:338
 #, kde-format
 msgctxt "Action to enable Bluetooth adapter"
 msgid "Enable"
-msgstr ""
+msgstr "Slå på"
 
 #: sendfile/discoverwidget.cpp:137
 #, kde-format
 msgid "Your Bluetooth adapter is powered off."
-msgstr "Ditt Bluetooth-adapter er slått av."
+msgstr "Bluetooth-adapteren din er slått av."
 
 #: sendfile/discoverwidget.cpp:138
 #, kde-format
 msgctxt "Action to turn on Bluetooth adapter"
 msgid "Turn On"
-msgstr ""
+msgstr "Slå på"
 
 #: sendfile/main.cpp:25 sendfile/main.cpp:27
 #, kde-format
 msgid "Bluetooth File Transfer"
-msgstr ""
+msgstr "Filoverføring via Bluetooth"
 
 #: sendfile/main.cpp:48
 #, kde-format
 msgid "Specify receiving device by MAC address."
-msgstr ""
+msgstr "Velg mottaksenhet basert på MAC-adresse."
 
 #: sendfile/main.cpp:52
 #, kde-format
 msgid "Specify receiving device by UBI path."
-msgstr ""
+msgstr "Velg mottaksenhet basert på UBI-adresse."
 
 #: sendfile/main.cpp:56
 #, kde-format
 msgid "Files to be sent."
-msgstr ""
+msgstr "Filer som skal sendes."
 
 #: sendfile/pages/connectingpage.cpp:32 wizard/pages/connect.cpp:39
 #, kde-format
 msgctxt "Connecting to a Bluetooth device"
 msgid "Connecting to %1…"
-msgstr ""
+msgstr "Kobler til %1 …"
 
 #: sendfile/pages/failpage.cpp:43
 #, kde-format
 msgctxt "This string is shown when the wizard fail"
 msgid "The connection to the device has failed: %1"
-msgstr ""
+msgstr "Mistet tilkobling til enheten: %1"
 
 #: sendfile/pages/failpage.cpp:45
 #, kde-format
 msgid "The connection to %1 has failed: %2"
-msgstr ""
+msgstr "Mistet tilkobling til %1: %2"
 
 #: sendfile/pages/selectdeviceandfilespage.cpp:53
 #, kde-format
 msgid "Open file…"
-msgstr ""
+msgstr "Åpne fil …"
 
 #. i18n: ectx: property (text), widget (KSqueezedTextLabel, selectLbl)
 #: sendfile/pages/selectdeviceandfilespage.cpp:58
@@ -394,13 +396,13 @@ msgstr "Avbryt"
 #, kde-format
 msgctxt "@info:status %1 error message"
 msgid "Failed to start org.bluez.obex service: %1"
-msgstr ""
+msgstr "Klarte ikke starte org.bluez.obex-tjeneste: %1"
 
 #. i18n: ectx: label, entry (saveUrl), group (General)
 #: settings/filereceiver.kcfg:11
 #, kde-format
 msgid "Save received files to:"
-msgstr "Lagre mottatte filer til:"
+msgstr "Lagre mottatte filer i:"
 
 #. i18n: ectx: label, entry (autoAccept), group (General)
 #: settings/filereceiver.kcfg:15
@@ -423,7 +425,7 @@ msgstr "Fullfør"
 #: wizard/main.cpp:26 wizard/main.cpp:28
 #, kde-format
 msgid "Add Bluetooth Device"
-msgstr ""
+msgstr "Legg til Bluetooth-enhet"
 
 #: wizard/pages/discover.cpp:131
 #, kde-format
@@ -439,25 +441,25 @@ msgstr "Rett det"
 #: wizard/pages/discover.cpp:340
 #, kde-format
 msgid "Your Bluetooth adapter is not pairable."
-msgstr "Ditt standard Bluetooth-adapter kan ikke danne par."
+msgstr "Bluetooth-adapteren kan ikke pares."
 
 #: wizard/pages/discover.cpp:341
 #, kde-format
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
-msgstr ""
+msgstr "Gjør parbar"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, searchField)
 #: wizard/pages/discover.ui:19
 #, kde-format
 msgid "Search…"
-msgstr ""
+msgstr "Søk …"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: wizard/pages/discover.ui:64
 #, kde-format
 msgid "Scanning…"
-msgstr ""
+msgstr "Søker …"
 
 #. i18n: ectx: property (text), widget (QCheckBox, manualPin)
 #: wizard/pages/discover.ui:84
@@ -488,56 +490,56 @@ msgstr "Lukk"
 #, kde-format
 msgctxt "This string is shown when the wizard fail"
 msgid "The setup of the device has failed"
-msgstr "Enhetsoppsettet mislyktes"
+msgstr "Feil ved oppsett av enheten"
 
 #: wizard/pages/fail.cpp:55
 #, kde-format
 msgid "The setup of %1 has failed"
-msgstr "Oppsett av %1 mislyktes"
+msgstr "Feil ved oppsett av %1"
 
 #: wizard/pages/pairing.cpp:60
 #, kde-format
 msgid "Connecting to %1…"
-msgstr ""
+msgstr "Kobler til %1 …"
 
 #: wizard/pages/pairing.cpp:96
 #, kde-format
 msgid ""
 "Please introduce the PIN in your keyboard when it appears and press Enter"
-msgstr "Tast inn PIN på tastaturet når det dukker opp og trykk Enter"
+msgstr "Tast inn PIN-koden på tastaturet når det dukker opp, og trykk «Enter»"
 
 #: wizard/pages/pairing.cpp:98
 #, kde-format
 msgid "Please introduce the PIN in your device when it appears"
-msgstr "Tast inn PIN på  enheten din når det dukker opp"
+msgstr "Tast inn PIN-koden på tastaturet når det dukker opp, og trykk «Enter»"
 
 #: wizard/pages/pairing.cpp:114
 #, kde-format
 msgid "Matches"
-msgstr "Stemmer overens"
+msgstr "Samsvarer"
 
 #: wizard/pages/pairing.cpp:118
 #, kde-format
 msgid "Does not match"
-msgstr "Stemmer ikke overens"
+msgstr "Samsvarer ikke"
 
 #: wizard/pages/pairing.cpp:133
 #, kde-format
 msgid "Please, confirm that the PIN displayed on %1 matches the wizard one."
-msgstr "Bekreft at PIN som vises på «%1» stemmer med veiviserens."
+msgstr "Bekreft at PIN-koden som vises på «%1» samsvarer veiviserens."
 
 #: wizard/pages/success.cpp:40
 #, kde-format
 msgid "Setup Finished"
-msgstr ""
+msgstr "Oppsett fullført"
 
 #: wizard/pages/success.cpp:42
 #, kde-format
 msgid "The device has been set up and can now be used."
-msgstr ""
+msgstr "Enheten er nå satt opp og kan tas i bruk."
 
 #: wizard/pages/success.cpp:44
 #, kde-format
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
-msgstr ""
+msgstr "Enheten «%1» er nå satt opp og kan tas i bruk."
