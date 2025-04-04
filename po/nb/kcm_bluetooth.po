@@ -6,15 +6,15 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-31 00:42+0000\n"
-"PO-Revision-Date: 2015-08-27 16:56+0200\n"
-"Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
+"PO-Revision-Date: 2025-03-29 10:54+0100\n"
+"Last-Translator: Martin Hansen <mh306602@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 24.12.3\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -22,18 +22,18 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Bjørn Steensrud"
+msgstr "Bjørn Steensrud,Martin Hansen"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "bjornst@skogkatt.homelinux.org"
+msgstr "bjornst@skogkatt.homelinux.org,mh306602@gmail.com"
 
 #: bluetooth.cpp:104
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
-msgstr ""
+msgstr "%1 nettverk (%2)"
 
 #: ui/Device.qml:108 ui/main.qml:212
 #, kde-format
@@ -48,7 +48,7 @@ msgstr "Koble til"
 #: ui/Device.qml:111
 #, kde-format
 msgid "Unblock the device first to be able to connect to it"
-msgstr ""
+msgstr "Avblokker enheten for å kunne koble til den"
 
 #: ui/Device.qml:132
 #, kde-format
@@ -58,12 +58,12 @@ msgstr "Type:"
 #: ui/Device.qml:136
 #, kde-format
 msgid "%1%"
-msgstr ""
+msgstr "%1 %"
 
 #: ui/Device.qml:138
 #, kde-format
 msgid "Battery:"
-msgstr ""
+msgstr "Batteri:"
 
 #: ui/Device.qml:143 ui/General.qml:49
 #, kde-format
@@ -73,28 +73,28 @@ msgstr "Adresse:"
 #: ui/Device.qml:148
 #, kde-format
 msgid "Adapter:"
-msgstr ""
+msgstr "Adapter:"
 
 #: ui/Device.qml:154 ui/General.qml:43
 #, kde-format
 msgid "Name:"
-msgstr ""
+msgstr "Navn:"
 
 #: ui/Device.qml:158
 #, kde-format
 msgid "Trusted"
-msgstr ""
+msgstr "Tiltrodd:"
 
 #: ui/Device.qml:167 ui/main.qml:179
 #, kde-format
 msgid "Blocked"
-msgstr ""
+msgstr "Blokkert"
 
 #: ui/Device.qml:173
 #, kde-format
 msgid ""
 "Any incoming connections from a blocked device will be immediately rejected."
-msgstr ""
+msgstr "Tilkoblingsforespørsler fra blokkerte enheter blir automatisk avviste."
 
 #: ui/Device.qml:179
 #, kde-format
@@ -104,178 +104,178 @@ msgstr "Send fil"
 #: ui/Device.qml:187
 #, kde-format
 msgid "Setup NAP Network…"
-msgstr ""
+msgstr "Sett opp NAP-nettverk …"
 
 #: ui/Device.qml:195
 #, kde-format
 msgid "Setup DUN Network…"
-msgstr ""
+msgstr "Sett opp DUN-nettverk …"
 
 #: ui/Device.qml:210
 #, kde-format
 msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"
-msgstr ""
+msgstr "Glem"
 
 #: ui/ForgetDeviceAction.qml:17
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
-msgstr ""
+msgstr "Glem «%1»"
 
 #: ui/ForgetDeviceDialog.qml:34
 #, kde-format
 msgid "Forget this Device?"
-msgstr ""
+msgstr "Glem enheten?"
 
 #: ui/ForgetDeviceDialog.qml:35
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
-msgstr ""
+msgstr "Er du sikker på at du vil glemme «%1»?"
 
 #: ui/ForgetDeviceDialog.qml:47
 #, kde-format
 msgctxt "@action:button"
 msgid "Forget Device"
-msgstr ""
+msgstr "Glem enhet"
 
 #: ui/ForgetDeviceDialog.qml:54
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
-msgstr ""
+msgstr "Avbryt"
 
 #: ui/General.qml:24
 #, kde-format
 msgid "Settings"
-msgstr ""
+msgstr "Innstillinger"
 
 #: ui/General.qml:35
 #, kde-format
 msgid "Device:"
-msgstr ""
+msgstr "Enhet:"
 
 #: ui/General.qml:53
 #, kde-format
 msgid "Enabled:"
-msgstr ""
+msgstr "Slått på:"
 
 #: ui/General.qml:59
 #, kde-format
 msgid "Visible:"
-msgstr ""
+msgstr "Synlig:"
 
 #: ui/General.qml:73
 #, kde-format
 msgid "On login:"
-msgstr ""
+msgstr "Ved innlogging:"
 
 #: ui/General.qml:74
 #, kde-format
 msgid "Enable Bluetooth"
-msgstr ""
+msgstr "Slå på Bluetooth"
 
 #: ui/General.qml:85
 #, kde-format
 msgid "Disable Bluetooth"
-msgstr ""
+msgstr "Slå av Bluetooth"
 
 #: ui/General.qml:96
 #, kde-format
 msgid "Restore previous status"
-msgstr ""
+msgstr "Gjenopprett forrige tilstand"
 
 #: ui/General.qml:116
 #, kde-format
 msgid "When receiving files:"
-msgstr ""
+msgstr "Ved mottak av filer:"
 
 #: ui/General.qml:118
 #, kde-format
 msgid "Ask for confirmation"
-msgstr ""
+msgstr "Spør om bekreftelse"
 
 #: ui/General.qml:127
 #, kde-format
 msgid "Accept for trusted devices"
-msgstr ""
+msgstr "Godta for tiltrodde enheter"
 
 #: ui/General.qml:137
 #, kde-format
 msgid "Always accept"
-msgstr ""
+msgstr "Godta alltid"
 
 #: ui/General.qml:147
 #, kde-format
 msgid "Save files in:"
-msgstr "Lagre filer til:"
+msgstr "Lagre filer i:"
 
 #: ui/General.qml:160 ui/General.qml:171
 #, kde-format
 msgid "Select folder"
-msgstr ""
+msgstr "Velg mappe"
 
 #: ui/main.qml:34
 #, kde-format
 msgctxt "@action: button as in, 'enable Bluetooth'"
 msgid "Enabled"
-msgstr ""
+msgstr "Slått på"
 
 #: ui/main.qml:47
 #, kde-format
 msgid "Pair Device…"
-msgstr ""
+msgstr "Par ny enhet …"
 
 #: ui/main.qml:54
 #, kde-format
 msgid "Configure…"
-msgstr ""
+msgstr "Sett opp …"
 
 #: ui/main.qml:125
 #, kde-format
 msgid "No Bluetooth adapters found"
-msgstr ""
+msgstr "Fant ingen Bluetooth-adaptere"
 
 #: ui/main.qml:126
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
-msgstr ""
+msgstr "Koble til ekstern Bluetooth-adapter"
 
 #: ui/main.qml:135
 #, kde-format
 msgid "Bluetooth is disabled"
-msgstr ""
+msgstr "Bluetooth er avslått."
 
 #: ui/main.qml:141
 #, kde-format
 msgid "Enable"
-msgstr ""
+msgstr "Slå på"
 
 #: ui/main.qml:151
 #, kde-format
 msgid "No devices paired"
-msgstr ""
+msgstr "Ingen enheter er paret"
 
 #: ui/main.qml:152
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
-msgstr ""
+msgstr "Trykk <interface>Par ny enhet …</interface> for å pare en enhet"
 
 #: ui/main.qml:181
 #, kde-format
 msgid "Connected"
-msgstr ""
+msgstr "Tilkoblet"
 
 #: ui/main.qml:183
 #, kde-format
 msgid "Available"
-msgstr ""
+msgstr "Tilgjengelig"
 
 #: ui/main.qml:248
 #, kde-format
 msgid "%1% Battery"
-msgstr ""
+msgstr "%1 % batteri"
 
 #: ui/script.js:13
 #, kde-format
@@ -311,13 +311,13 @@ msgstr "Hodesett"
 #, kde-format
 msgctxt "This device is a Headphones"
 msgid "Headphones"
-msgstr ""
+msgstr "Hodetelefoner"
 
 #: ui/script.js:25
 #, kde-format
 msgctxt "This device is an Audio/Video device"
 msgid "Multimedia"
-msgstr ""
+msgstr "Multimedia"
 
 #: ui/script.js:27
 #, kde-format
@@ -335,19 +335,19 @@ msgstr "Mus"
 #, kde-format
 msgctxt "This device is a Game controller"
 msgid "Game controller"
-msgstr ""
+msgstr "Spillkontroller"
 
 #: ui/script.js:33
 #, kde-format
 msgctxt "This device is a Graphics Tablet (input device)"
 msgid "Tablet"
-msgstr ""
+msgstr "Tegneplate"
 
 #: ui/script.js:35
 #, kde-format
 msgctxt "This device is a Peripheral device"
 msgid "Peripheral"
-msgstr ""
+msgstr "Tilleggsenhet"
 
 #: ui/script.js:37
 #, kde-format
@@ -366,58 +366,58 @@ msgstr "Skriver"
 msgctxt ""
 "This device is an Imaging device (printer, scanner, camera, display, …)"
 msgid "Imaging"
-msgstr ""
+msgstr "Bildebehandling"
 
 #: ui/script.js:43
 #, kde-format
 msgctxt "This device is a Wearable"
 msgid "Wearable"
-msgstr ""
+msgstr "Kroppsbært"
 
 #: ui/script.js:45
 #, kde-format
 msgctxt "This device is a Toy"
 msgid "Toy"
-msgstr ""
+msgstr "Leketøy"
 
 #: ui/script.js:47
 #, kde-format
 msgctxt "This device is a Health device"
 msgid "Health"
-msgstr ""
+msgstr "Helse"
 
 #: ui/script.js:53
 #, kde-format
 msgid "File transfer"
-msgstr ""
+msgstr "Filoverføring"
 
 #: ui/script.js:56
-#, fuzzy, kde-format
+#, kde-format
 msgid "Send file"
 msgstr "Send fil"
 
 #: ui/script.js:59
 #, kde-format
 msgid "Input"
-msgstr ""
+msgstr "Inndata"
 
 #: ui/script.js:62
 #, kde-format
 msgid "Audio"
-msgstr ""
+msgstr "Lyd"
 
 #: ui/script.js:65
 #, kde-format
 msgid "Network"
-msgstr ""
+msgstr "Nettverk"
 
 #: ui/script.js:69
 #, kde-format
 msgid "Other"
-msgstr ""
+msgstr "Annet"
 
 #: ui/script.js:72
 #, kde-format
 msgctxt "List separator"
 msgid ", "
-msgstr ""
+msgstr ", "
