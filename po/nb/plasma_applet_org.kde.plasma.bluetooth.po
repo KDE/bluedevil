@@ -1,6 +1,5 @@
 # Translation of plasma_applet_org.kde.plasma.bluetooth to Norwegian Bokmål
 #
-# SPDX-FileCopyrightText: 2025 Martin Hansen <mh306602@gmail.com>
 #
 msgid ""
 msgstr ""
@@ -146,8 +145,8 @@ msgstr "Nettverk"
 msgid "Other device"
 msgstr "Annen enhet"
 
-#: package/contents/ui/DeviceItem.qml:300
-#: package/contents/ui/main.qml:64 package/contents/ui/main.qml:74
+#: package/contents/ui/DeviceItem.qml:300 package/contents/ui/main.qml:64
+#: package/contents/ui/main.qml:74
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1 % batteri"
