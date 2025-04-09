@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-11 00:41+0000\n"
+"POT-Creation-Date: 2025-04-09 00:43+0000\n"
 "PO-Revision-Date: 2024-08-06 05:55+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -17,6 +17,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.3.2\n"
+
+#: devicesstateproxymodel.cpp:220
+#, kde-format
+msgctxt ""
+"@label %1 is human-readable device name, %2 is low-level device address"
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+#: devicesstateproxymodel.cpp:235
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed:HostIsDown"
+msgid "The device is unreachable"
+msgstr "მოწყობილობა მიუწვდომელია"
+
+#: devicesstateproxymodel.cpp:236
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed"
+msgid "Connection to the device failed"
+msgstr "მოწყობილობასთან შეერთების შეცდომა"
+
+#: devicesstateproxymodel.cpp:239
+#, kde-format
+msgctxt "Notification when the connection failed due to NotReady"
+msgid "The device is not ready"
+msgstr "მოწყობილობა მზად არაა"
 
 #: package/contents/ui/DeviceItem.qml:39
 #, kde-format
@@ -232,31 +257,6 @@ msgstr "ბლუთუზის ჩართვა"
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "&ბლუთუზის მორგება…"
-
-#: plugin/devicesstateproxymodel.cpp:220
-#, kde-format
-msgctxt ""
-"@label %1 is human-readable device name, %2 is low-level device address"
-msgid "%1 (%2)"
-msgstr "%1 (%2)"
-
-#: plugin/devicesstateproxymodel.cpp:235
-#, kde-format
-msgctxt "Notification when the connection failed due to Failed:HostIsDown"
-msgid "The device is unreachable"
-msgstr "მოწყობილობა მიუწვდომელია"
-
-#: plugin/devicesstateproxymodel.cpp:236
-#, kde-format
-msgctxt "Notification when the connection failed due to Failed"
-msgid "Connection to the device failed"
-msgstr "მოწყობილობასთან შეერთების შეცდომა"
-
-#: plugin/devicesstateproxymodel.cpp:239
-#, kde-format
-msgctxt "Notification when the connection failed due to NotReady"
-msgid "The device is not ready"
-msgstr "მოწყობილობა მზად არაა"
 
 #~ msgid ""
 #~ "No connected devices\n"

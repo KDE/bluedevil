@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-11 00:41+0000\n"
+"POT-Creation-Date: 2025-04-09 00:43+0000\n"
 "PO-Revision-Date: 2024-08-11 07:28+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -23,6 +23,31 @@ msgstr ""
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
+
+#: devicesstateproxymodel.cpp:220
+#, kde-format
+msgctxt ""
+"@label %1 is human-readable device name, %2 is low-level device address"
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+#: devicesstateproxymodel.cpp:235
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed:HostIsDown"
+msgid "The device is unreachable"
+msgstr "Устройство недоступно"
+
+#: devicesstateproxymodel.cpp:236
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed"
+msgid "Connection to the device failed"
+msgstr "Не удалось подключиться к устройству"
+
+#: devicesstateproxymodel.cpp:239
+#, kde-format
+msgctxt "Notification when the connection failed due to NotReady"
+msgid "The device is not ready"
+msgstr "Устройство не готово"
 
 #: package/contents/ui/DeviceItem.qml:39
 #, kde-format
@@ -244,31 +269,6 @@ msgstr "Включить Bluetooth"
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Н&астроить Bluetooth..."
-
-#: plugin/devicesstateproxymodel.cpp:220
-#, kde-format
-msgctxt ""
-"@label %1 is human-readable device name, %2 is low-level device address"
-msgid "%1 (%2)"
-msgstr "%1 (%2)"
-
-#: plugin/devicesstateproxymodel.cpp:235
-#, kde-format
-msgctxt "Notification when the connection failed due to Failed:HostIsDown"
-msgid "The device is unreachable"
-msgstr "Устройство недоступно"
-
-#: plugin/devicesstateproxymodel.cpp:236
-#, kde-format
-msgctxt "Notification when the connection failed due to Failed"
-msgid "Connection to the device failed"
-msgstr "Не удалось подключиться к устройству"
-
-#: plugin/devicesstateproxymodel.cpp:239
-#, kde-format
-msgctxt "Notification when the connection failed due to NotReady"
-msgid "The device is not ready"
-msgstr "Устройство не готово"
 
 #~ msgid ""
 #~ "No connected devices\n"

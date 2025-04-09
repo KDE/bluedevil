@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-11 00:41+0000\n"
+"POT-Creation-Date: 2025-04-09 00:43+0000\n"
 "PO-Revision-Date: 2017-12-24 21:47+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -17,6 +17,31 @@ msgstr ""
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 "X-Environment: kde\n"
+
+#: devicesstateproxymodel.cpp:220
+#, kde-format
+msgctxt ""
+"@label %1 is human-readable device name, %2 is low-level device address"
+msgid "%1 (%2)"
+msgstr ""
+
+#: devicesstateproxymodel.cpp:235
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed:HostIsDown"
+msgid "The device is unreachable"
+msgstr "Uređaj je nedostupan"
+
+#: devicesstateproxymodel.cpp:236
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed"
+msgid "Connection to the device failed"
+msgstr "Povezivanje sa uređajem propalo"
+
+#: devicesstateproxymodel.cpp:239
+#, kde-format
+msgctxt "Notification when the connection failed due to NotReady"
+msgid "The device is not ready"
+msgstr "Uređaj nije spreman"
 
 #: package/contents/ui/DeviceItem.qml:39
 #, kde-format
@@ -246,31 +271,6 @@ msgstr "Uključi Bluetooth"
 #| msgid "Configure &Bluetooth..."
 msgid "Configure &Bluetooth…"
 msgstr "Podesi &Bluetooth..."
-
-#: plugin/devicesstateproxymodel.cpp:220
-#, kde-format
-msgctxt ""
-"@label %1 is human-readable device name, %2 is low-level device address"
-msgid "%1 (%2)"
-msgstr ""
-
-#: plugin/devicesstateproxymodel.cpp:235
-#, kde-format
-msgctxt "Notification when the connection failed due to Failed:HostIsDown"
-msgid "The device is unreachable"
-msgstr "Uređaj je nedostupan"
-
-#: plugin/devicesstateproxymodel.cpp:236
-#, kde-format
-msgctxt "Notification when the connection failed due to Failed"
-msgid "Connection to the device failed"
-msgstr "Povezivanje sa uređajem propalo"
-
-#: plugin/devicesstateproxymodel.cpp:239
-#, kde-format
-msgctxt "Notification when the connection failed due to NotReady"
-msgid "The device is not ready"
-msgstr "Uređaj nije spreman"
 
 #~ msgid "Connected devices"
 #~ msgstr "Povezani uređaji"

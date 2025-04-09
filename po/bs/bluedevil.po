@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-16 00:43+0000\n"
+"POT-Creation-Date: 2025-04-09 00:43+0000\n"
 "PO-Revision-Date: 2014-11-11 13:36+0000\n"
 "Last-Translator: Naida Čongo <ncongo1@etf.unsa.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -32,7 +32,7 @@ msgstr ""
 "Markolalic@etf.unsa.ba,samir.ribic@etf.unsa.ba,ncongo1@etf.unsa.ba,"
 "vljubovic@smartnet.ba"
 
-#: applet/plugin/devicesstateproxymodel.cpp:220
+#: applet/devicesstateproxymodel.cpp:220
 #, fuzzy, kde-format
 #| msgctxt "This device is of type Network"
 #| msgid "Network"
@@ -41,20 +41,20 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "Mreža"
 
-#: applet/plugin/devicesstateproxymodel.cpp:235
+#: applet/devicesstateproxymodel.cpp:235
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr ""
 
-#: applet/plugin/devicesstateproxymodel.cpp:236
+#: applet/devicesstateproxymodel.cpp:236
 #, fuzzy, kde-format
 #| msgid "Connecting to the device"
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "Povezujem se s uređajem"
 
-#: applet/plugin/devicesstateproxymodel.cpp:239
+#: applet/devicesstateproxymodel.cpp:239
 #, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"

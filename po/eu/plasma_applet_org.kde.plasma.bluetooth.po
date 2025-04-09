@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-11 00:41+0000\n"
+"POT-Creation-Date: 2025-04-09 00:43+0000\n"
 "PO-Revision-Date: 2024-08-06 11:46+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -19,6 +19,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 24.05.2\n"
+
+#: devicesstateproxymodel.cpp:220
+#, kde-format
+msgctxt ""
+"@label %1 is human-readable device name, %2 is low-level device address"
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+#: devicesstateproxymodel.cpp:235
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed:HostIsDown"
+msgid "The device is unreachable"
+msgstr "Ezin da gailuarekin harremanetan jarri"
+
+#: devicesstateproxymodel.cpp:236
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed"
+msgid "Connection to the device failed"
+msgstr "Gailurako konexioak huts egin du"
+
+#: devicesstateproxymodel.cpp:239
+#, kde-format
+msgctxt "Notification when the connection failed due to NotReady"
+msgid "The device is not ready"
+msgstr "Gailua ez dago prest"
 
 #: package/contents/ui/DeviceItem.qml:39
 #, kde-format
@@ -234,31 +259,6 @@ msgstr "Gaitu Bluetooth"
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Konfiguratu &Bluetooth..."
-
-#: plugin/devicesstateproxymodel.cpp:220
-#, kde-format
-msgctxt ""
-"@label %1 is human-readable device name, %2 is low-level device address"
-msgid "%1 (%2)"
-msgstr "%1 (%2)"
-
-#: plugin/devicesstateproxymodel.cpp:235
-#, kde-format
-msgctxt "Notification when the connection failed due to Failed:HostIsDown"
-msgid "The device is unreachable"
-msgstr "Ezin da gailuarekin harremanetan jarri"
-
-#: plugin/devicesstateproxymodel.cpp:236
-#, kde-format
-msgctxt "Notification when the connection failed due to Failed"
-msgid "Connection to the device failed"
-msgstr "Gailurako konexioak huts egin du"
-
-#: plugin/devicesstateproxymodel.cpp:239
-#, kde-format
-msgctxt "Notification when the connection failed due to NotReady"
-msgid "The device is not ready"
-msgstr "Gailua ez dago prest"
 
 #~ msgid ""
 #~ "No connected devices\n"

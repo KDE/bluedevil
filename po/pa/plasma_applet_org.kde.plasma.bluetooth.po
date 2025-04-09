@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-11 00:41+0000\n"
+"POT-Creation-Date: 2025-04-09 00:43+0000\n"
 "PO-Revision-Date: 2023-12-22 21:26-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -16,6 +16,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 23.08.4\n"
+
+#: devicesstateproxymodel.cpp:220
+#, kde-format
+msgctxt ""
+"@label %1 is human-readable device name, %2 is low-level device address"
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+#: devicesstateproxymodel.cpp:235
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed:HostIsDown"
+msgid "The device is unreachable"
+msgstr "ਡਿਵਾਈਸ ਪਹੁੰਚ ਵਿੱਚ ਨਹੀਂ ਹੈ"
+
+#: devicesstateproxymodel.cpp:236
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed"
+msgid "Connection to the device failed"
+msgstr "ਡਿਵਾਈਸ ਨਾਲ ਕਨੈਕਸ਼ਨ ਕਰਨ ਲਈ ਫੇਲ੍ਹ ਹੈ"
+
+#: devicesstateproxymodel.cpp:239
+#, kde-format
+msgctxt "Notification when the connection failed due to NotReady"
+msgid "The device is not ready"
+msgstr "ਡਿਵਾਈਸ ਤਿਆਰ ਨਹੀਂ ਹੈ"
 
 #: package/contents/ui/DeviceItem.qml:39
 #, kde-format
@@ -235,31 +260,6 @@ msgstr "ਬਲੂਟੁੱਥ ਨੂੰ ਸਮਰੱਥ ਕਰੋ"
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "…ਬਲੂਟੁੱਥ ਦੀ ਸੰਰਚਨਾ ਕਰੋ(&B)"
-
-#: plugin/devicesstateproxymodel.cpp:220
-#, kde-format
-msgctxt ""
-"@label %1 is human-readable device name, %2 is low-level device address"
-msgid "%1 (%2)"
-msgstr "%1 (%2)"
-
-#: plugin/devicesstateproxymodel.cpp:235
-#, kde-format
-msgctxt "Notification when the connection failed due to Failed:HostIsDown"
-msgid "The device is unreachable"
-msgstr "ਡਿਵਾਈਸ ਪਹੁੰਚ ਵਿੱਚ ਨਹੀਂ ਹੈ"
-
-#: plugin/devicesstateproxymodel.cpp:236
-#, kde-format
-msgctxt "Notification when the connection failed due to Failed"
-msgid "Connection to the device failed"
-msgstr "ਡਿਵਾਈਸ ਨਾਲ ਕਨੈਕਸ਼ਨ ਕਰਨ ਲਈ ਫੇਲ੍ਹ ਹੈ"
-
-#: plugin/devicesstateproxymodel.cpp:239
-#, kde-format
-msgctxt "Notification when the connection failed due to NotReady"
-msgid "The device is not ready"
-msgstr "ਡਿਵਾਈਸ ਤਿਆਰ ਨਹੀਂ ਹੈ"
 
 #~ msgid "Bluetooth is Disabled"
 #~ msgstr "ਬਲੂਟੁੱਥ ਅਸਮਰੱਥ ਹੈ"

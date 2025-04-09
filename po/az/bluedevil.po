@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-16 00:43+0000\n"
+"POT-Creation-Date: 2025-04-09 00:43+0000\n"
 "PO-Revision-Date: 2024-05-30 11:51+0400\n"
 "Last-Translator: Xəyyam Qocayev <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -28,7 +28,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "xxmn77@gmail.com"
 
-#: applet/plugin/devicesstateproxymodel.cpp:220
+#: applet/devicesstateproxymodel.cpp:220
 #, fuzzy, kde-format
 #| msgctxt "DeviceName Network (Service)"
 #| msgid "%1 Network (%2)"
@@ -37,21 +37,21 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 Şəbəkə (%2)"
 
-#: applet/plugin/devicesstateproxymodel.cpp:235
+#: applet/devicesstateproxymodel.cpp:235
 #, fuzzy, kde-format
 #| msgid "This address is unavailable."
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "Bu ünvan əlçatmazdır."
 
-#: applet/plugin/devicesstateproxymodel.cpp:236
+#: applet/devicesstateproxymodel.cpp:236
 #, fuzzy, kde-format
 #| msgid "Connecting to the device"
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "Cihaza qoşulma"
 
-#: applet/plugin/devicesstateproxymodel.cpp:239
+#: applet/devicesstateproxymodel.cpp:239
 #, fuzzy, kde-format
 #| msgid "Obexd service is not running."
 msgctxt "Notification when the connection failed due to NotReady"
