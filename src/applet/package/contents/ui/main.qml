@@ -84,6 +84,10 @@ PlasmoidItem {
         }
     }
 
+    badgeText: Plasmoid.configuration.showNumberOfConnectedDevices && BluezQt.Manager.connectedDevices.length > 0
+        ? BluezQt.Manager.connectedDevices.length
+        : ""
+
     Plasmoid.onSecondaryActivated: {
         toggleBluetoothAction.trigger();
     }
@@ -101,8 +105,24 @@ PlasmoidItem {
             id: addDeviceAction
             text: i18n("Pair Device…")
             icon.name: "list-add-symbolic"
+            priority: PlasmaCore.Action.HighPriority
             visible: !BluezQt.Manager.bluetoothBlocked
             onTriggered: checked => PlasmaBt.LaunchApp.launchWizard()
+        },
+        PlasmaCore.Action {
+            text: i18n("Badge icon with number of connected devices")
+            icon.name: "draw-number-symbolic"
+            checkable: true
+            checked: Plasmoid.configuration.showNumberOfConnectedDevices
+            onTriggered: checked => {
+                Plasmoid.configuration.showNumberOfConnectedDevices = checked;
+            }
+        },
+        PlasmaCore.Action {
+            id: configureAction
+            text: i18n("Configure &Bluetooth…")
+            icon.name: "configure-symbolic"
+            onTriggered: checked => KCMUtils.KCMLauncher.openSystemSettings("kcm_bluetooth")
         },
         PlasmaCore.Action {
             id: toggleBluetoothAction
@@ -118,14 +138,7 @@ PlasmoidItem {
         }
     ]
 
-    PlasmaCore.Action {
-        id: configureAction
-        text: i18n("Configure &Bluetooth…")
-        icon.name: "configure-symbolic"
-        onTriggered: checked => KCMUtils.KCMLauncher.openSystemSettings("kcm_bluetooth")
-    }
-
     Component.onCompleted: {
-        Plasmoid.setInternalAction("configure", configureAction);
+        Plasmoid.removeInternalAction("configure", configureAction);
     }
 }
