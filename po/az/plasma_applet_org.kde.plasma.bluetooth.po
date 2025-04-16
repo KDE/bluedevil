@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-09 00:43+0000\n"
+"POT-Creation-Date: 2025-04-16 00:43+0000\n"
 "PO-Revision-Date: 2024-06-04 19:07+0400\n"
 "Last-Translator: Xəyyam Qocayev <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -244,21 +244,27 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 qoşulmuş cihaz"
 msgstr[1] "%1 qoşulmuş cihaz"
 
-#: package/contents/ui/main.qml:102
+#: package/contents/ui/main.qml:106
 #, fuzzy, kde-format
 #| msgid "Add New Device…"
 msgid "Pair Device…"
 msgstr "Yeni cihaz əlavə etmək…"
 
-#: package/contents/ui/main.qml:109
-#, kde-format
-msgid "Enable Bluetooth"
-msgstr "Bluetooth-u aktiv etmək"
+#: package/contents/ui/main.qml:113
+#, fuzzy, kde-format
+#| msgid "No connected devices"
+msgid "Badge icon with number of connected devices"
+msgstr "Qoşulmuş cihaz yoxdur"
 
 #: package/contents/ui/main.qml:123
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "&Bluetooth Ayarları…"
+
+#: package/contents/ui/main.qml:129
+#, kde-format
+msgid "Enable Bluetooth"
+msgstr "Bluetooth-u aktiv etmək"
 
 #~ msgid ""
 #~ "No connected devices\n"

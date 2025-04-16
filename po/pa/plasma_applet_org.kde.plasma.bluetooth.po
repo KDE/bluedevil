@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-09 00:43+0000\n"
+"POT-Creation-Date: 2025-04-16 00:43+0000\n"
 "PO-Revision-Date: 2023-12-22 21:26-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -245,21 +245,27 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 ਕਨੈਕਟ ਹੋਇਆ ਡਿਵਾਈਸ"
 msgstr[1] "%1 ਕਨੈਕਟ ਹੋਏ ਡਿਵਾਈਸ"
 
-#: package/contents/ui/main.qml:102
+#: package/contents/ui/main.qml:106
 #, fuzzy, kde-format
 #| msgid "Add New Device…"
 msgid "Pair Device…"
 msgstr "…ਨਵਾਂ ਡਿਵਾਈਸ ਜੋੜੋ"
 
-#: package/contents/ui/main.qml:109
-#, kde-format
-msgid "Enable Bluetooth"
-msgstr "ਬਲੂਟੁੱਥ ਨੂੰ ਸਮਰੱਥ ਕਰੋ"
+#: package/contents/ui/main.qml:113
+#, fuzzy, kde-format
+#| msgid "No connected devices"
+msgid "Badge icon with number of connected devices"
+msgstr "ਕੋਈ ਕਨੈਕਟ ਹੋਇਆ ਡਿਵਾਈਸ ਨਹੀਂ ਹੈ"
 
 #: package/contents/ui/main.qml:123
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "…ਬਲੂਟੁੱਥ ਦੀ ਸੰਰਚਨਾ ਕਰੋ(&B)"
+
+#: package/contents/ui/main.qml:129
+#, kde-format
+msgid "Enable Bluetooth"
+msgstr "ਬਲੂਟੁੱਥ ਨੂੰ ਸਮਰੱਥ ਕਰੋ"
 
 #~ msgid "Bluetooth is Disabled"
 #~ msgstr "ਬਲੂਟੁੱਥ ਅਸਮਰੱਥ ਹੈ"

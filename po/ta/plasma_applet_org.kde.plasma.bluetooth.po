@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-09 00:43+0000\n"
+"POT-Creation-Date: 2025-04-16 00:43+0000\n"
 "PO-Revision-Date: 2024-08-18 17:24+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -242,17 +242,23 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 இணைந்துள்ள சாதனம்"
 msgstr[1] "%1 இணைந்துள்ள சாதனங்கள்"
 
-#: package/contents/ui/main.qml:102
+#: package/contents/ui/main.qml:106
 #, kde-format
 msgid "Pair Device…"
 msgstr "சாதனத்தை ஜோடியாக்கு…"
 
-#: package/contents/ui/main.qml:109
-#, kde-format
-msgid "Enable Bluetooth"
-msgstr "ஊடலையை இயக்கு"
+#: package/contents/ui/main.qml:113
+#, fuzzy, kde-format
+#| msgid "No connected devices"
+msgid "Badge icon with number of connected devices"
+msgstr "எந்த சாதனமும் இணைக்கப்படவில்லை"
 
 #: package/contents/ui/main.qml:123
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "&ஊடலையை அமை…"
+
+#: package/contents/ui/main.qml:129
+#, kde-format
+msgid "Enable Bluetooth"
+msgstr "ஊடலையை இயக்கு"

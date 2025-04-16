@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-09 00:43+0000\n"
+"POT-Creation-Date: 2025-04-16 00:43+0000\n"
 "PO-Revision-Date: 2024-12-25 19:35+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -244,17 +244,23 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 सम्बद्धं यन्त्रम्"
 msgstr[1] "%1 सम्बद्धानि उपकरणानि"
 
-#: package/contents/ui/main.qml:102
+#: package/contents/ui/main.qml:106
 #, kde-format
 msgid "Pair Device…"
 msgstr "युग्मयन्त्रम्…"
 
-#: package/contents/ui/main.qml:109
-#, kde-format
-msgid "Enable Bluetooth"
-msgstr "ब्लूटूथं सक्षमं कुर्वन्तु"
+#: package/contents/ui/main.qml:113
+#, fuzzy, kde-format
+#| msgid "No connected devices"
+msgid "Badge icon with number of connected devices"
+msgstr "न सम्बद्धानि उपकरणानि"
 
 #: package/contents/ui/main.qml:123
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "&Bluetooth विन्यस्तं कुर्वन्तु…"
+
+#: package/contents/ui/main.qml:129
+#, kde-format
+msgid "Enable Bluetooth"
+msgstr "ब्लूटूथं सक्षमं कुर्वन्तु"
