@@ -3,13 +3,13 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2015, 2017, 2020, 2021, 2022, 2024.
+# Yuri Chornoivan <yurchor@ukr.net>, 2015, 2017, 2020, 2021, 2022, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-16 00:43+0000\n"
-"PO-Revision-Date: 2024-08-06 09:05+0300\n"
+"PO-Revision-Date: 2025-04-16 09:24+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -253,10 +253,9 @@ msgid "Pair Device…"
 msgstr "Пов'язати пристрій…"
 
 #: package/contents/ui/main.qml:113
-#, fuzzy, kde-format
-#| msgid "No connected devices"
+#, kde-format
 msgid "Badge icon with number of connected devices"
-msgstr "Немає з’єднаних пристроїв"
+msgstr "Піктограма-значок із кількістю з’єднаних пристроїв"
 
 #: package/contents/ui/main.qml:123
 #, kde-format

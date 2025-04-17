@@ -248,10 +248,9 @@ msgid "Pair Device…"
 msgstr "配对设备…"
 
 #: package/contents/ui/main.qml:113
-#, fuzzy, kde-format
-#| msgid "No connected devices"
+#, kde-format
 msgid "Badge icon with number of connected devices"
-msgstr "尚未连接任何设备"
+msgstr ""
 
 #: package/contents/ui/main.qml:123
 #, kde-format

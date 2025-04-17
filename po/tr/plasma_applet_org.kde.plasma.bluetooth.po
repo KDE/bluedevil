@@ -249,10 +249,9 @@ msgid "Pair Device…"
 msgstr "Aygıt Eşle"
 
 #: package/contents/ui/main.qml:113
-#, fuzzy, kde-format
-#| msgid "No connected devices"
+#, kde-format
 msgid "Badge icon with number of connected devices"
-msgstr "Bağlı aygıt yok"
+msgstr "Bağlı aygıtların sayısını gösteren rozet simgesi"
 
 #: package/contents/ui/main.qml:123
 #, kde-format
@@ -263,30 +262,3 @@ msgstr "&Bluetooth’u Yapılandır…"
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Bluetooth’u Etkinleştir"
-
-#~ msgid ""
-#~ "No connected devices\n"
-#~ "Middle-click to disable Bluetooth"
-#~ msgstr ""
-#~ "Bağlı aygıt yok\n"
-#~ "Bluetooth'u devre dışı bırakmak için orta tıklayın"
-
-#~ msgid ""
-#~ "%1 connected\n"
-#~ "Middle-click to disable Bluetooth"
-#~ msgstr "%1 bağlı Bluetooth'u devre dışı bırakmak için orta tıklayın"
-
-#~ msgid "Bluetooth is Disabled"
-#~ msgstr "Bluetooth Devre Dışı"
-
-#~ msgid "Add New Device..."
-#~ msgstr "Yeni Aygıt Ekle..."
-
-#~ msgid "Connected devices"
-#~ msgstr "Bağlı aygıtlar"
-
-#~ msgid "Available devices"
-#~ msgstr "Kullanılabilir aygıtlar"
-
-#~ msgid "Configure Bluetooth..."
-#~ msgstr "Bluetooth'u Yapılandır..."
