@@ -250,7 +250,7 @@ msgstr "配对设备…"
 #: package/contents/ui/main.qml:113
 #, kde-format
 msgid "Badge icon with number of connected devices"
-msgstr ""
+msgstr "显示已连接设备数的角标"
 
 #: package/contents/ui/main.qml:123
 #, kde-format
