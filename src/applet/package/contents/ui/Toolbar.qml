@@ -24,6 +24,8 @@ PlasmaExtras.PlasmoidHeading {
     required property PlasmoidItem plasmoidItem
     required property PlasmaCore.Action addDeviceAction
     required property PlasmaCore.Action toggleBluetoothAction
+    required property PlasmaCore.Action toggleBadgeAction
+    required property PlasmaCore.Action configureAction
 
     readonly property alias onSwitch: onSwitch
 
@@ -54,6 +56,8 @@ PlasmaExtras.PlasmoidHeading {
 
             visible: !(Plasmoid.containmentDisplayHints & PlasmaCore.Types.ContainmentDrawsPlasmoidHeading)
             enabled: qAction.visible
+            text: qAction.text
+            display: PlasmaComponents3.AbstractButton.IconOnly
 
             icon.name: "list-add-symbolic"
 
@@ -62,22 +66,36 @@ PlasmaExtras.PlasmoidHeading {
             PlasmaComponents3.ToolTip {
                 text: addDeviceButton.qAction.text
             }
-            Accessible.name: qAction.text
         }
 
         PlasmaComponents3.ToolButton {
-            id: openSettingsButton
+            id: moreActionsButton
+            text: i18nc("@action:button opens hamburger menu", "More actions")
+            icon.name: "application-menu"
+            display: PlasmaComponents3.AbstractButton.IconOnly
+            Accessible.role: Accessible.ButtonMenu
+            checkable: true
+            checked: configMenu.status !== PlasmaExtras.Menu.Closed
+            onToggled: checked ? configMenu.openRelative() : configMenu.close()
 
-            readonly property PlasmaCore.Action qAction: Plasmoid.internalAction("configure")
+            PlasmaExtras.Menu {
+                id: configMenu
+                visualParent: moreActionsButton
+                placement: PlasmaExtras.Menu.BottomPosedLeftAlignedPopup
+
+                PlasmaExtras.MenuItem {
+                    action: toggleBadgeAction
+                }
+                PlasmaExtras.MenuItem {
+                    action: configureAction
+                }
+            }
 
             visible: !(Plasmoid.containmentDisplayHints & PlasmaCore.Types.ContainmentDrawsPlasmoidHeading)
-            icon.name: "configure-symbolic"
-            onClicked: qAction.trigger()
 
             PlasmaComponents3.ToolTip {
-                text: openSettingsButton.qAction.text
+                text: moreActionsButton.text
             }
-            Accessible.name: qAction.text
         }
     }
 }

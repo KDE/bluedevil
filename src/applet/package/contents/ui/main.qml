@@ -22,6 +22,8 @@ PlasmoidItem {
 
     readonly property alias addDeviceAction: addDeviceAction
     readonly property alias toggleBluetoothAction: toggleBluetoothAction
+    readonly property alias toggleBadgeAction: toggleBadgeAction
+    readonly property alias configureAction: configureAction
 
     switchWidth: Kirigami.Units.gridUnit * 15
     switchHeight: Kirigami.Units.gridUnit * 10
@@ -30,6 +32,8 @@ PlasmoidItem {
         plasmoidItem: root
         addDeviceAction: root.addDeviceAction
         toggleBluetoothAction: root.toggleBluetoothAction
+        toggleBadgeAction: root.toggleBadgeAction
+        configureAction: root.configureAction
     }
 
     Plasmoid.status: BluezQt.Manager.bluetoothOperational ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.PassiveStatus
@@ -110,6 +114,7 @@ PlasmoidItem {
             onTriggered: checked => PlasmaBt.LaunchApp.launchWizard()
         },
         PlasmaCore.Action {
+            id: toggleBadgeAction
             text: i18n("Badge icon with number of connected devices")
             icon.name: "draw-number-symbolic"
             checkable: true

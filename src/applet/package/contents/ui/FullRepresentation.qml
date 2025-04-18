@@ -26,6 +26,8 @@ PlasmaExtras.Representation {
     required property PlasmoidItem plasmoidItem
     required property PlasmaCore.Action addDeviceAction
     required property PlasmaCore.Action toggleBluetoothAction
+    required property PlasmaCore.Action toggleBadgeAction
+    required property PlasmaCore.Action configureAction
 
     readonly property bool emptyList: BluezQt.Manager.devices.length === 0
 
@@ -78,6 +80,8 @@ PlasmaExtras.Representation {
         plasmoidItem: root.plasmoidItem
         addDeviceAction: root.addDeviceAction
         toggleBluetoothAction: root.toggleBluetoothAction
+        toggleBadgeAction: root.toggleBadgeAction
+        configureAction: root.configureAction
 
         visible: BluezQt.Manager.adapters.length > 0
         focus: true
