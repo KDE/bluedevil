@@ -139,6 +139,6 @@ PlasmoidItem {
     ]
 
     Component.onCompleted: {
-        Plasmoid.removeInternalAction("configure", configureAction);
+        Plasmoid.removeInternalAction("configure");
     }
 }
