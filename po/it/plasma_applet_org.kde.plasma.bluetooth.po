@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-16 00:43+0000\n"
+"POT-Creation-Date: 2025-04-24 00:42+0000\n"
 "PO-Revision-Date: 2024-08-06 22:26+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -174,68 +174,68 @@ msgstr "Rete"
 msgid "Other device"
 msgstr "Altro dispositivo"
 
-#: package/contents/ui/DeviceItem.qml:297 package/contents/ui/main.qml:70
-#: package/contents/ui/main.qml:79
+#: package/contents/ui/DeviceItem.qml:297 package/contents/ui/main.qml:74
+#: package/contents/ui/main.qml:83
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% di batteria"
 
-#: package/contents/ui/FullRepresentation.qml:69
+#: package/contents/ui/FullRepresentation.qml:71
 #, kde-format
 msgid "Enable"
 msgstr "Abilita"
 
-#: package/contents/ui/FullRepresentation.qml:161
+#: package/contents/ui/FullRepresentation.qml:165
 #, kde-format
 msgid "No Bluetooth adapters available"
 msgstr "Nessun adattatore Bluetooth disponibile"
 
-#: package/contents/ui/FullRepresentation.qml:163
+#: package/contents/ui/FullRepresentation.qml:167
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Il Bluetooth è disabilitato"
 
-#: package/contents/ui/FullRepresentation.qml:165
+#: package/contents/ui/FullRepresentation.qml:169
 #, kde-format
 msgid "No devices paired"
 msgstr "Nessun dispositivo associato"
 
-#: package/contents/ui/main.qml:47
+#: package/contents/ui/main.qml:51
 #, kde-format
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
-#: package/contents/ui/main.qml:51
+#: package/contents/ui/main.qml:55
 #, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
 msgstr "Il Bluetooth è disabilitato; clic centrale per abilitarlo"
 
-#: package/contents/ui/main.qml:55
+#: package/contents/ui/main.qml:59
 #, kde-format
 msgid "No adapters available"
 msgstr "Nessun adattatore disponibile"
 
-#: package/contents/ui/main.qml:57
+#: package/contents/ui/main.qml:61
 #, kde-format
 msgid "Bluetooth is offline"
 msgstr "Il Bluetooth non è in linea"
 
-#: package/contents/ui/main.qml:60
+#: package/contents/ui/main.qml:64
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr "Clic centrale per disabilitare il Bluetooth"
 
-#: package/contents/ui/main.qml:63
+#: package/contents/ui/main.qml:67
 #, kde-format
 msgid "No connected devices"
 msgstr "Nessun dispositivo connesso"
 
-#: package/contents/ui/main.qml:68
+#: package/contents/ui/main.qml:72
 #, kde-format
 msgid "%1 connected"
 msgstr "%1 connesso"
 
-#: package/contents/ui/main.qml:75
+#: package/contents/ui/main.qml:79
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -243,26 +243,32 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 dispositivo connesso"
 msgstr[1] "%1 dispositivi connessi"
 
-#: package/contents/ui/main.qml:106
+#: package/contents/ui/main.qml:110
 #, kde-format
 msgid "Pair Device…"
 msgstr "Associa un dispositivo…"
 
-#: package/contents/ui/main.qml:113
+#: package/contents/ui/main.qml:118
 #, fuzzy, kde-format
 #| msgid "No connected devices"
 msgid "Badge icon with number of connected devices"
 msgstr "Nessun dispositivo connesso"
 
-#: package/contents/ui/main.qml:123
+#: package/contents/ui/main.qml:128
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Configura &Bluetooth…"
 
-#: package/contents/ui/main.qml:129
+#: package/contents/ui/main.qml:134
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Abilita il Bluetooth"
+
+#: package/contents/ui/Toolbar.qml:73
+#, kde-format
+msgctxt "@action:button opens hamburger menu"
+msgid "More actions"
+msgstr ""
 
 #~ msgid ""
 #~ "No connected devices\n"
