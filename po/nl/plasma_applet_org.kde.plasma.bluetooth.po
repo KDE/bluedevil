@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-24 00:42+0000\n"
-"PO-Revision-Date: 2025-04-16 12:32+0200\n"
+"PO-Revision-Date: 2025-04-24 16:17+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #: devicesstateproxymodel.cpp:220
 #, kde-format
@@ -266,7 +266,7 @@ msgstr "Bluetooth inschakelen"
 #, kde-format
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
-msgstr ""
+msgstr "Meer acties"
 
 #~ msgid ""
 #~ "No connected devices\n"
