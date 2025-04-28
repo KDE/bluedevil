@@ -1,6 +1,6 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the bluedevil package.
-# Luigi Toscano <luigi.toscano@tiscali.it>, 2015, 2017, 2020, 2021, 2022, 2024.
+# SPDX-FileCopyrightText: 2015, 2017, 2020, 2021, 2022, 2024, 2025 Luigi Toscano <luigi.toscano@tiscali.it>
 # Vincenzo Reale <smart2128vr@gmail.com>, 2022.
 #
 msgid ""
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-24 00:42+0000\n"
-"PO-Revision-Date: 2024-08-06 22:26+0200\n"
+"PO-Revision-Date: 2025-04-27 14:27+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 24.12.0\n"
 
 #: devicesstateproxymodel.cpp:220
 #, kde-format
@@ -249,10 +249,9 @@ msgid "Pair Device…"
 msgstr "Associa un dispositivo…"
 
 #: package/contents/ui/main.qml:118
-#, fuzzy, kde-format
-#| msgid "No connected devices"
+#, kde-format
 msgid "Badge icon with number of connected devices"
-msgstr "Nessun dispositivo connesso"
+msgstr "Icona del simbolo con il totale di dispositivi connessi"
 
 #: package/contents/ui/main.qml:128
 #, kde-format
@@ -268,7 +267,7 @@ msgstr "Abilita il Bluetooth"
 #, kde-format
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
-msgstr ""
+msgstr "Altre azioni"
 
 #~ msgid ""
 #~ "No connected devices\n"
