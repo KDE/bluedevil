@@ -1,15 +1,15 @@
 # Spanish translations for plasma_applet_org.kde.plasma.bluetooth.po package.
-# Copyright (C) 2015 This_file_is_part_of_KDE
+# Copyright (C) 2015-2025 This file is copyright:
 # This file is distributed under the same license as the bluedevil package.
 #
 # Automatically generated, 2015.
 # SPDX-FileCopyrightText: 2015, 2017, 2020, 2021, 2022, 2024, 2025 Eloy Cuadra <ecuadra@eloihr.net>
 msgid ""
 msgstr ""
-"Project-Id-Version: plasma_applet_org\n"
+"Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-11 00:41+0000\n"
-"PO-Revision-Date: 2025-03-19 14:19+0100\n"
+"PO-Revision-Date: 2025-05-04 01:54+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
