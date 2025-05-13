@@ -250,10 +250,9 @@ msgid "Pair Device…"
 msgstr "Spárovat zařízení…"
 
 #: package/contents/ui/main.qml:118
-#, fuzzy, kde-format
-#| msgid "No connected devices"
+#, kde-format
 msgid "Badge icon with number of connected devices"
-msgstr "Žádná připojená zařízení"
+msgstr ""
 
 #: package/contents/ui/main.qml:128
 #, kde-format
