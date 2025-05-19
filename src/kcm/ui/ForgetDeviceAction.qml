@@ -14,10 +14,13 @@ QQC2.Action {
     required property ForgetDeviceDialog dialog
     required property BluezQt.Device device
 
-    text: i18nc("@action:button %1 is the name of a Bluetooth device", "Forget \"%1\"", device.name);
+    text: i18nc("@action:button %1 is the name of a Bluetooth device", "Forget \"%1\"", device?.name ?? "");
     icon.name: "edit-delete-remove-symbolic"
 
     onTriggered: source => {
-        dialog.open(device);
+        // Device may get deleted, in which case the action becomes invalid and should not be triggered.
+        if (dialog !== null && device !== null) {
+            dialog.open(device);
+        }
     }
 }
