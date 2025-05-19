@@ -51,6 +51,7 @@ QtObject {
                     }
                 },
                 Kirigami.Action {
+                    id: cancelAction
                     text: i18nc("@action:button", "Cancel")
                     icon.name: "dialog-cancel-symbolic"
                     onTriggered: {
@@ -59,6 +60,9 @@ QtObject {
                     shortcut: StandardKey.Cancel
                 }
             ]
+
+            // Safe defaults
+            onOpened: customFooterButton(cancelAction)?.forceActiveFocus(Qt.PopupFocusReason)
 
             onAccepted: root.call(device.adapter.removeDevice(device))
 
