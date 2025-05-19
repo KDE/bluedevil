@@ -27,6 +27,31 @@ KCMUtils.SimpleKCM {
     title: device.name
 
     Connections {
+        target: root.device
+        function onDeviceRemoved(device: BluezQt.Device): void {
+            root.pop();
+        }
+    }
+
+    Connections {
+        target: root.device.adapter
+        function onAdapterRemoved(adapter: BluezQt.Adapter): void {
+            root.pop();
+        }
+        function onPoweredChanged(powered: bool): void {
+            if (!powered) {
+                root.pop();
+            }
+        }
+    }
+
+    function pop(): void {
+        // Surely this is the top-most page on the stack, and no-one would ever add any sub-pages,
+        // so nothing can ever go wrong here. But if it does -- fix your KCMUtils API.
+        root.KCMUtils.ConfigModule.pop();
+    }
+
+    Connections {
         target: root.KCMUtils.ConfigModule
         function onNetworkAvailable(service: string, available: bool): void {
             switch (service) {
