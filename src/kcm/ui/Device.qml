@@ -27,6 +27,29 @@ KCMUtils.SimpleKCM {
     title: device.name
 
     Connections {
+        target: root.device
+        function onDeviceRemoved(device: BluezQt.Device): void {
+            root.pop();
+        }
+    }
+
+    Connections {
+        target: root.device.adapter
+        function onAdapterRemoved(adapter: BluezQt.Adapter): void {
+            root.pop();
+        }
+        function onPoweredChanged(powered: bool): void {
+            if (!powered) {
+                root.pop();
+            }
+        }
+    }
+
+    function pop(): void {
+        root.KCMUtils.ConfigModule.pop();
+    }
+
+    Connections {
         target: root.KCMUtils.ConfigModule
         function onNetworkAvailable(service: string, available: bool): void {
             switch (service) {
