@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-31 00:42+0000\n"
+"POT-Creation-Date: 2025-05-20 00:43+0000\n"
 "PO-Revision-Date: 2024-12-25 19:35+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -139,7 +139,7 @@ msgctxt "@action:button"
 msgid "Forget Device"
 msgstr "Device विस्मरतु"
 
-#: ui/ForgetDeviceDialog.qml:54
+#: ui/ForgetDeviceDialog.qml:55
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
