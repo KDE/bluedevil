@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
+# SPDX-FileCopyrightText: 2015, 2017, 2020, 2021, 2022, 2024, 2025 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 #
-# SPDX-FileCopyrightText: 2015, 2017, 2020, 2021, 2022, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-24 00:42+0000\n"
-"PO-Revision-Date: 2024-08-10 12:37+0200\n"
+"PO-Revision-Date: 2025-05-24 08:28+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: devicesstateproxymodel.cpp:220
 #, kde-format
@@ -250,15 +250,14 @@ msgid "Pair Device…"
 msgstr "Sparuj urządzenie…"
 
 #: package/contents/ui/main.qml:118
-#, fuzzy, kde-format
-#| msgid "No connected devices"
+#, kde-format
 msgid "Badge icon with number of connected devices"
-msgstr "Brak podłączonych urządzeń"
+msgstr "Ikona z liczbą podłączonych urządzeń"
 
 #: package/contents/ui/main.qml:128
 #, kde-format
 msgid "Configure &Bluetooth…"
-msgstr "Ustawienia &Bluetooth..."
+msgstr "Ustawienia &Bluetooth…"
 
 #: package/contents/ui/main.qml:134
 #, kde-format
@@ -269,7 +268,7 @@ msgstr "Włącz Bluetooth"
 #, kde-format
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
-msgstr ""
+msgstr "Więcej działań"
 
 #~ msgid "Bluetooth is Disabled"
 #~ msgstr "Bluetooth jest wyłączony"
