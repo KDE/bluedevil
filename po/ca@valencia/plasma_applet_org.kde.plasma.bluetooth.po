@@ -206,7 +206,7 @@ msgstr "Bluetooth"
 #: package/contents/ui/main.qml:45
 #, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
-msgstr "Bluetooth està desactivat; feu un clic del mig per a activar-lo"
+msgstr "Bluetooth està desactivat; feu clic del mig per a activar-lo"
 
 #: package/contents/ui/main.qml:49
 #, kde-format
@@ -221,7 +221,7 @@ msgstr "Bluetooth està fora de línia"
 #: package/contents/ui/main.qml:54
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
-msgstr "Feu un clic del mig per a desactivar Bluetooth"
+msgstr "Feu clic del mig per a desactivar Bluetooth"
 
 #: package/contents/ui/main.qml:57
 #, kde-format
