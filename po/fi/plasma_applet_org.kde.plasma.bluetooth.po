@@ -1,14 +1,14 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 # Lasse Liehu <lasse.liehu@gmail.com>, 2015.
-# SPDX-FileCopyrightText: 2017, 2020, 2021, 2022, 2023, 2024 Tommi Nieminen <translator@legisign.org>
+# SPDX-FileCopyrightText: 2017, 2020, 2021, 2022, 2023, 2024, 2025 Tommi Nieminen <translator@legisign.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-24 00:42+0000\n"
-"PO-Revision-Date: 2024-10-17 18:10+0300\n"
+"PO-Revision-Date: 2025-05-25 08:29+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -249,10 +249,9 @@ msgid "Pair Device…"
 msgstr "Kytke laite pariksi…"
 
 #: package/contents/ui/main.qml:118
-#, fuzzy, kde-format
-#| msgid "No connected devices"
+#, kde-format
 msgid "Badge icon with number of connected devices"
-msgstr "Ei yhdistettyjä laitteita"
+msgstr "Kuvake yhdistettyjen laitteiden määrällä"
 
 #: package/contents/ui/main.qml:128
 #, kde-format
@@ -268,7 +267,7 @@ msgstr "Ota Bluetooth käyttöön"
 #, kde-format
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
-msgstr ""
+msgstr "Lisää toimintoja"
 
 #~ msgid "Bluetooth is Disabled"
 #~ msgstr "Bluetooth ei ole käytössä"

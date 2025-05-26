@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-24 00:42+0000\n"
-"PO-Revision-Date: 2025-04-16 02:18-0300\n"
+"PO-Revision-Date: 2025-05-25 00:09-0300\n"
 "Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.04.1\n"
 
 #: devicesstateproxymodel.cpp:220
 #, kde-format
@@ -270,7 +270,7 @@ msgstr "Ativar o Bluetooth"
 #, kde-format
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
-msgstr ""
+msgstr "Mais ações"
 
 #~ msgid ""
 #~ "No connected devices\n"
