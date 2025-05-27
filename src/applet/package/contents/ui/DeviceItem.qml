@@ -250,20 +250,36 @@ PlasmaExtras.ExpandableListItem {
 
         switch (model.Type) {
         case BluezQt.Device.Headset:
+            labels.push(i18n("Headset"));
+            break;
         case BluezQt.Device.Headphones:
+            labels.push("Headphones");
+            break;
         case BluezQt.Device.OtherAudio:
             labels.push(i18n("Audio device"));
             break;
 
         case BluezQt.Device.Keyboard:
+            labels.push(i18n("Keyboard"));
+            break;
         case BluezQt.Device.Mouse:
+            labels.push(i18n("Mouse"));
+            break;
         case BluezQt.Device.Joypad:
+            labels.push(i18n("Joypad"));
+            break;
         case BluezQt.Device.Tablet:
-            labels.push(i18n("Input device"));
+            labels.push(i18n("Drawing tablet"));
             break;
 
         case BluezQt.Device.Phone:
             labels.push(i18n("Phone"));
+            break;
+        case BluezQt.Device.Camera:
+            labels.push(i18n("Camera"));
+            break;
+        case BluezQt.Device.Printer:
+            labels.push(i18n("Printer"));
             break;
 
         default:
