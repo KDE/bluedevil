@@ -70,8 +70,24 @@ QVariant DevicesProxyModel::data(const QModelIndex &index, int role) const
 
 bool DevicesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const
 {
-    qint16 leftRssi = left.data(BluezQt::DevicesModel::RssiRole).toInt();
-    qint16 rightRssi = right.data(BluezQt::DevicesModel::RssiRole).toInt();
+    auto displayRoleIsAddress = [](const QModelIndex &idx) -> bool {
+        return idx.data(Qt::DisplayRole).toString() == idx.data(BluezQt::DevicesModel::AddressRole).toString().replace(':', '-');
+    };
+
+    const bool leftIsAddress = displayRoleIsAddress(left);
+    const bool rightIsAddress = displayRoleIsAddress(right);
+
+    // Sort devices whose name is not just the address first
+    if (leftIsAddress && !rightIsAddress) {
+        return true;
+    }
+    if (!leftIsAddress && rightIsAddress) {
+        return false;
+    }
+
+    // then sort them by signal power
+    const qint16 leftRssi = left.data(BluezQt::DevicesModel::RssiRole).toInt();
+    const qint16 rightRssi = right.data(BluezQt::DevicesModel::RssiRole).toInt();
 
     return leftRssi < rightRssi;
 }
