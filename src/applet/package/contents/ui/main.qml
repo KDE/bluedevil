@@ -37,7 +37,7 @@ PlasmoidItem {
     }
 
     Plasmoid.status: BluezQt.Manager.bluetoothOperational ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.PassiveStatus
-    Plasmoid.busy: PlasmaBt.SharedDevicesStateProxyModel.connecting
+    Plasmoid.busy: PlasmaBt.SharedDevicesStateProxyModel.connecting || PlasmaBt.SharedDevicesStateProxyModel.disconnecting
 
     Plasmoid.icon: {
         if (BluezQt.Manager.connectedDevices.length > 0) {

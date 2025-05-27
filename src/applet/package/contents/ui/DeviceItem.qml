@@ -32,7 +32,7 @@ PlasmaExtras.ExpandableListItem {
     icon: model.Icon
     title: model.DeviceFullName
     subtitle: infoText()
-    isBusy: model.Connecting
+    isBusy: model.Connecting || model.Disconnecting
     isDefault: model.Connected
     defaultActionButtonAction: QQC2.Action {
         icon.name: root.model.Connected ? "network-disconnect-symbolic" : "network-connect-symbolic"
@@ -237,7 +237,9 @@ PlasmaExtras.ExpandableListItem {
 
     function infoText(): string {
         if (model.Connecting) {
-            return model.Connected ? i18n("Disconnecting") : i18n("Connecting");
+            return i18n("Connecting");
+        } else if (model.Disconnecting) {
+            return i18n("Disconnecting");
         }
 
         const labels = [];
@@ -301,14 +303,16 @@ PlasmaExtras.ExpandableListItem {
     }
 
     function toggleDevice(): void {
-        if (model.Connecting) {
+        if (model.Connecting || model.Disconnecting) {
             return;
         }
 
-        const /*PendingCall*/call = model.Connected
-            ? model.Device.disconnectFromDevice()
-            : model.Device.connectToDevice();
-
-        PlasmaBt.SharedDevicesStateProxyModel.registerPendingCallForDeviceUbi(call, model.Ubi);
+        if (model.Connected) {
+            const call = model.Device.disconnectFromDevice();
+            PlasmaBt.SharedDevicesStateProxyModel.registerDisconnectingCallForDeviceUbi(call, model.Ubi);
+        } else {
+            const call = model.Device.connectToDevice();
+            PlasmaBt.SharedDevicesStateProxyModel.registerConnectingCallForDeviceUbi(call, model.Ubi);
+        }
     }
 }

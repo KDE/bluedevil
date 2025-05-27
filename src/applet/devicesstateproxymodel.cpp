@@ -22,7 +22,12 @@ DevicesStateProxyModel::DevicesStateProxyModel(QObject *parent)
 
 bool DeviceState::isConnecting() const
 {
-    return !pendingCalls.isEmpty();
+    return !connectingCalls.isEmpty();
+}
+
+bool DeviceState::isDisconnecting() const
+{
+    return !disconnectingCalls.isEmpty();
 }
 
 QHash<int, QByteArray> DevicesStateProxyModel::roleNames() const
@@ -30,6 +35,7 @@ QHash<int, QByteArray> DevicesStateProxyModel::roleNames() const
     auto roleNames = QIdentityProxyModel::roleNames();
     roleNames.insert(ConnectingRole, "Connecting");
     roleNames.insert(ConnectionFailedRole, "ConnectionFailed");
+    roleNames.insert(DisconnectingRole, "Disconnecting");
     return roleNames;
 }
 
@@ -42,7 +48,8 @@ QVariant DevicesStateProxyModel::data(const QModelIndex &index, int role) const
 
     switch (role) {
     case ConnectingRole:
-    case ConnectionFailedRole: {
+    case ConnectionFailedRole:
+    case DisconnectingRole: {
         // Don't fetch state for other roles that don't need it, such as
         // UbiRole which has to be fetched from state(), thus avoiding an
         // infinite recursion.
@@ -53,6 +60,8 @@ QVariant DevicesStateProxyModel::data(const QModelIndex &index, int role) const
             return state.isConnecting();
         case ConnectionFailedRole:
             return state.connectionFailed;
+        case DisconnectingRole:
+            return state.isDisconnecting();
         default:
             Q_UNREACHABLE();
         }
@@ -69,21 +78,54 @@ bool DevicesStateProxyModel::isConnecting() const
     });
 }
 
-void DevicesStateProxyModel::registerPendingCallForDeviceUbi(BluezQt::PendingCall *call, const QString &ubi)
+bool DevicesStateProxyModel::isDisconnecting() const
+{
+    return std::ranges::any_of(m_state, [](const DeviceState &state) {
+        return state.isDisconnecting();
+    });
+}
+
+void DevicesStateProxyModel::registerConnectingCallForDeviceUbi(BluezQt::PendingCall *call, const QString &ubi)
 {
     const auto index = indexByUbi(ubi);
-    if (call == nullptr || !index.isValid()) {
+    if (!index.isValid()) {
         return;
     }
+
+    auto &state = this->state(index);
+    registerPendingCall(call, index, state.connectingCalls);
+}
+
+void DevicesStateProxyModel::registerDisconnectingCallForDeviceUbi(BluezQt::PendingCall *call, const QString &ubi)
+{
+    const auto index = indexByUbi(ubi);
+    if (!index.isValid()) {
+        return;
+    }
+
+    auto &state = this->state(index);
+    registerPendingCall(call, index, state.disconnectingCalls);
+}
+
+void DevicesStateProxyModel::registerPendingCall(BluezQt::PendingCall *call, const QModelIndex &index, QSet<BluezQt::PendingCall *> &calls)
+{
+    if (!call) {
+        return;
+    }
+
+    Q_ASSERT(index.isValid());
 
     connect(call, &BluezQt::PendingCall::finished, this, &DevicesStateProxyModel::handlePendingCallFinished);
 
     auto &state = this->state(index);
     const auto wasConnectingGlobal = isConnecting();
     const auto wasConnecting = state.isConnecting();
+    const auto wasDisconnectingGlobal = isDisconnecting();
+    const auto wasDisconnecting = state.isDisconnecting();
     const auto wasFailed = state.connectionFailed;
 
-    state.pendingCalls.insert(call);
+    calls.insert(call);
+
     state.connectionFailed = false;
 
     QList<int> roles;
@@ -94,6 +136,9 @@ void DevicesStateProxyModel::registerPendingCallForDeviceUbi(BluezQt::PendingCal
     if (wasConnecting != state.isConnecting()) {
         roles.append(ConnectingRole);
     }
+    if (wasDisconnecting != state.isDisconnecting()) {
+        roles.append(DisconnectingRole);
+    }
     if (!roles.isEmpty()) {
         Q_EMIT dataChanged(index, index, roles);
     }
@@ -101,16 +146,23 @@ void DevicesStateProxyModel::registerPendingCallForDeviceUbi(BluezQt::PendingCal
     if (wasConnectingGlobal != isConnecting()) {
         Q_EMIT connectingChanged();
     }
+    if (wasDisconnectingGlobal != isDisconnecting()) {
+        Q_EMIT disconnectingChanged();
+    }
 }
 
 void DevicesStateProxyModel::handlePendingCallFinished(BluezQt::PendingCall *call)
 {
     const auto wasConnectingGlobal = isConnecting();
+    const auto wasDisconnectingGlobal = isDisconnecting();
 
     const auto index = unregisterPendingCall(call);
 
     if (wasConnectingGlobal != isConnecting()) {
         Q_EMIT connectingChanged();
+    }
+    if (wasDisconnectingGlobal != isDisconnecting()) {
+        Q_EMIT disconnectingChanged();
     }
 
     if (!index.isValid()) {
@@ -124,19 +176,26 @@ void DevicesStateProxyModel::handleRowsAboutToBeRemoved(const QModelIndex &paren
 {
     Q_ASSERT(parent.isValid() ? parent.model() == this : true);
     const auto wasConnectingGlobal = isConnecting();
+    const auto wasDisconnectingGlobal = isDisconnecting();
 
     for (int i = first; i <= last; i++) {
         const auto index = this->index(i, 0, parent);
         const auto ubi = index.data(BluezQt::DevicesModel::UbiRole).toString();
         // Let's hope nothing inserts it back until rowsRemoved is called to confirm the transaction
         const auto state = m_state.take(ubi);
-        for (const auto call : std::as_const(state.pendingCalls)) {
+        for (const auto call : std::as_const(state.connectingCalls)) {
+            disconnect(call, &BluezQt::PendingCall::finished, this, &DevicesStateProxyModel::handlePendingCallFinished);
+        }
+        for (const auto call : std::as_const(state.disconnectingCalls)) {
             disconnect(call, &BluezQt::PendingCall::finished, this, &DevicesStateProxyModel::handlePendingCallFinished);
         }
     }
 
     if (wasConnectingGlobal != isConnecting()) {
         Q_EMIT connectingChanged();
+    }
+    if (wasDisconnectingGlobal != isDisconnecting()) {
+        Q_EMIT disconnectingChanged();
     }
 }
 
@@ -156,10 +215,12 @@ QModelIndex DevicesStateProxyModel::unregisterPendingCall(BluezQt::PendingCall *
 {
     for (const auto &[ubi, state] : m_state.asKeyValueRange()) {
         const auto wasConnecting = state.isConnecting();
+        const auto wasDisconnecting = state.isDisconnecting();
         const auto wasFailed = state.connectionFailed;
 
-        const auto removed = state.pendingCalls.remove(call);
-        if (removed) {
+        const auto connectingRemoved = state.connectingCalls.remove(call);
+        const auto disconnectingRemoved = state.disconnectingCalls.remove(call);
+        if (connectingRemoved || disconnectingRemoved) {
             QList<int> roles;
 
             // Find out which model index this UBI delongs to
@@ -174,6 +235,9 @@ QModelIndex DevicesStateProxyModel::unregisterPendingCall(BluezQt::PendingCall *
             }
             if (wasConnecting != state.isConnecting()) {
                 roles.append(ConnectingRole);
+            }
+            if (wasDisconnecting != state.isDisconnecting()) {
+                roles.append(DisconnectingRole);
             }
             if (!roles.isEmpty()) {
                 Q_EMIT dataChanged(index, index, roles);

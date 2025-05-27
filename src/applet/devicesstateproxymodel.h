@@ -16,11 +16,13 @@
 #include "devicesproxymodel.h"
 
 struct DeviceState {
-    QSet<BluezQt::PendingCall *> pendingCalls;
+    QSet<BluezQt::PendingCall *> connectingCalls;
+    QSet<BluezQt::PendingCall *> disconnectingCalls;
     // TODO: Clear after timeout?
     bool connectionFailed = false;
 
     bool isConnecting() const;
+    bool isDisconnecting() const;
 };
 
 class DevicesStateProxyModel : public QIdentityProxyModel
@@ -29,11 +31,13 @@ class DevicesStateProxyModel : public QIdentityProxyModel
     QML_ELEMENT
 
     Q_PROPERTY(bool connecting READ isConnecting NOTIFY connectingChanged FINAL)
+    Q_PROPERTY(bool disconnecting READ isDisconnecting NOTIFY disconnectingChanged FINAL)
 
 public:
     enum Roles {
         ConnectingRole = DevicesProxyModel::LastRole + 1,
         ConnectionFailedRole,
+        DisconnectingRole,
     };
     Q_ENUM(Roles)
 
@@ -43,20 +47,24 @@ public:
     QVariant data(const QModelIndex &index, int role) const override;
 
     bool isConnecting() const;
+    bool isDisconnecting() const;
 
     // Because of wrappers and duality of C++ and declarative QML module API,
     // we can't really tell a C++ model from QML code to toggle a device,
     // because this model won't be able to issue those calls itself.
-    Q_INVOKABLE void registerPendingCallForDeviceUbi(BluezQt::PendingCall *call, const QString &ubi);
+    Q_INVOKABLE void registerConnectingCallForDeviceUbi(BluezQt::PendingCall *call, const QString &ubi);
+    Q_INVOKABLE void registerDisconnectingCallForDeviceUbi(BluezQt::PendingCall *call, const QString &ubi);
 
 Q_SIGNALS:
     void connectingChanged();
+    void disconnectingChanged();
 
 private Q_SLOTS:
     void handlePendingCallFinished(BluezQt::PendingCall *call);
     void handleRowsAboutToBeRemoved(const QModelIndex &parent, int first, int last);
 
 private:
+    void registerPendingCall(BluezQt::PendingCall *call, const QModelIndex &index, QSet<BluezQt::PendingCall *> &calls);
     QString ubi(const QModelIndex &index) const;
     DeviceState &state(const QModelIndex &index) const;
     QModelIndex unregisterPendingCall(BluezQt::PendingCall *call);
