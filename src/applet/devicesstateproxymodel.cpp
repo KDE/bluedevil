@@ -196,17 +196,6 @@ QModelIndex DevicesStateProxyModel::indexByUbi(const QString &ubi)
     return QModelIndex();
 }
 
-bool DevicesStateProxyModel::isDeviceAtIndexConnecting(const QModelIndex &index) const
-{
-    Q_ASSERT(index.isValid() ? index.model() == this : true);
-    if (!index.isValid() || index.row() >= rowCount()) {
-        return false;
-    }
-
-    const auto &state = this->state(index);
-    return !state.pendingCalls.isEmpty();
-}
-
 void DevicesStateProxyModel::notifyIfConnectionFailed(const BluezQt::PendingCall *call, const QModelIndex &index)
 {
     Q_ASSERT(index.isValid() ? index.model() == this : true);
