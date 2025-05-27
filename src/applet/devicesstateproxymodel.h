@@ -61,7 +61,6 @@ private:
     DeviceState &state(const QModelIndex &index) const;
     QModelIndex unregisterPendingCall(BluezQt::PendingCall *call);
     QModelIndex indexByUbi(const QString &ubi);
-    bool isDeviceAtIndexConnecting(const QModelIndex &index) const;
 
     void notifyIfConnectionFailed(const BluezQt::PendingCall *call, const QModelIndex &index);
     static QString errorText(const BluezQt::PendingCall *call);
