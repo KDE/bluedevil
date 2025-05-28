@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-24 00:42+0000\n"
+"POT-Creation-Date: 2025-05-28 02:38+0000\n"
 "PO-Revision-Date: 2025-04-24 04:40+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -18,26 +18,26 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.5\n"
 
-#: devicesstateproxymodel.cpp:220
+#: devicesstateproxymodel.cpp:273
 #, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: devicesstateproxymodel.cpp:235
+#: devicesstateproxymodel.cpp:288
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "მოწყობილობა მიუწვდომელია"
 
-#: devicesstateproxymodel.cpp:236
+#: devicesstateproxymodel.cpp:289
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "მოწყობილობასთან შეერთების შეცდომა"
 
-#: devicesstateproxymodel.cpp:239
+#: devicesstateproxymodel.cpp:292
 #, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
@@ -111,70 +111,70 @@ msgstr "ადაპტერი"
 
 #: package/contents/ui/DeviceItem.qml:240
 #, kde-format
-msgid "Disconnecting"
-msgstr "გათიშვა"
-
-#: package/contents/ui/DeviceItem.qml:240
-#, kde-format
 msgid "Connecting"
 msgstr "დაკავშირება"
 
-#: package/contents/ui/DeviceItem.qml:246
+#: package/contents/ui/DeviceItem.qml:242
+#, kde-format
+msgid "Disconnecting"
+msgstr "გათიშვა"
+
+#: package/contents/ui/DeviceItem.qml:248
 #, kde-format
 msgid "Connected"
 msgstr "დაკავშირებულია"
 
-#: package/contents/ui/DeviceItem.qml:248
+#: package/contents/ui/DeviceItem.qml:250
 #, kde-format
 msgid "Connection failed"
 msgstr "მიერთება ჩავარდა"
 
-#: package/contents/ui/DeviceItem.qml:255
+#: package/contents/ui/DeviceItem.qml:257
 #, kde-format
 msgid "Audio device"
 msgstr "აუდიო მოწყობილობა"
 
-#: package/contents/ui/DeviceItem.qml:262
+#: package/contents/ui/DeviceItem.qml:264
 #, kde-format
 msgid "Input device"
 msgstr "შეყვანის მოწყობილობა"
 
-#: package/contents/ui/DeviceItem.qml:266
+#: package/contents/ui/DeviceItem.qml:268
 #, kde-format
 msgid "Phone"
 msgstr "ტელეფონი"
 
-#: package/contents/ui/DeviceItem.qml:273
+#: package/contents/ui/DeviceItem.qml:275
 #, kde-format
 msgid "File transfer"
 msgstr "ფაილის მიმოცვლა"
 
-#: package/contents/ui/DeviceItem.qml:276
+#: package/contents/ui/DeviceItem.qml:278
 #, kde-format
 msgid "Send file"
 msgstr "ფაილის გაგზავნა"
 
-#: package/contents/ui/DeviceItem.qml:279
+#: package/contents/ui/DeviceItem.qml:281
 #, kde-format
 msgid "Input"
 msgstr "შეყვანა"
 
-#: package/contents/ui/DeviceItem.qml:282
+#: package/contents/ui/DeviceItem.qml:284
 #, kde-format
 msgid "Audio"
 msgstr "&აუდიო"
 
-#: package/contents/ui/DeviceItem.qml:285
+#: package/contents/ui/DeviceItem.qml:287
 #, kde-format
 msgid "Network"
 msgstr "ქსელი"
 
-#: package/contents/ui/DeviceItem.qml:290
+#: package/contents/ui/DeviceItem.qml:292
 #, kde-format
 msgid "Other device"
 msgstr "სხვა მოწყობილობა"
 
-#: package/contents/ui/DeviceItem.qml:297 package/contents/ui/main.qml:74
+#: package/contents/ui/DeviceItem.qml:299 package/contents/ui/main.qml:74
 #: package/contents/ui/main.qml:83
 #, kde-format
 msgid "%1% Battery"

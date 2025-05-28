@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-09 00:43+0000\n"
+"POT-Creation-Date: 2025-05-28 02:38+0000\n"
 "PO-Revision-Date: 2025-01-21 02:49+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -28,26 +28,26 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "Temuri.doghonadze@gmail.com"
 
-#: applet/devicesstateproxymodel.cpp:220
+#: applet/devicesstateproxymodel.cpp:273
 #, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: applet/devicesstateproxymodel.cpp:235
+#: applet/devicesstateproxymodel.cpp:288
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "მოწყობილობა მიუწვდომელია"
 
-#: applet/devicesstateproxymodel.cpp:236
+#: applet/devicesstateproxymodel.cpp:289
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "მოწყობილობასთან მიერთება ჩავარდა"
 
-#: applet/devicesstateproxymodel.cpp:239
+#: applet/devicesstateproxymodel.cpp:292
 #, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
@@ -286,12 +286,12 @@ msgstr "ტელეფონის მეხსიერება"
 msgid "External memory"
 msgstr "გარე მეხსიერება"
 
-#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:337
+#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:353
 #, kde-format
 msgid "Bluetooth is disabled."
 msgstr "ბლუთუზი გამორთულია."
 
-#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:338
+#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:354
 #, kde-format
 msgctxt "Action to enable Bluetooth adapter"
 msgid "Enable"
@@ -430,23 +430,23 @@ msgstr "დასრულება"
 msgid "Add Bluetooth Device"
 msgstr "ბლუთუზის  მოწყობილობის დამატება"
 
-#: wizard/pages/discover.cpp:131
+#: wizard/pages/discover.cpp:147
 #, kde-format
 msgid "Select a device"
 msgstr "აირჩიეთ მოწყობილობა"
 
-#: wizard/pages/discover.cpp:330
+#: wizard/pages/discover.cpp:346
 #, kde-format
 msgctxt "Action to fix a problem"
 msgid "Fix it"
 msgstr "გაასწორეთ"
 
-#: wizard/pages/discover.cpp:340
+#: wizard/pages/discover.cpp:356
 #, kde-format
 msgid "Your Bluetooth adapter is not pairable."
 msgstr "თქვენი ბლუთუზის ადაპტერი დაწყვილებადი არაა."
 
-#: wizard/pages/discover.cpp:341
+#: wizard/pages/discover.cpp:357
 #, kde-format
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"

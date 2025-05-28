@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-24 00:42+0000\n"
+"POT-Creation-Date: 2025-05-28 02:38+0000\n"
 "PO-Revision-Date: 2025-04-28 17:23+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -19,26 +19,26 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 "X-Generator: Lokalize 23.08.5\n"
 
-#: devicesstateproxymodel.cpp:220
+#: devicesstateproxymodel.cpp:273
 #, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: devicesstateproxymodel.cpp:235
+#: devicesstateproxymodel.cpp:288
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "لا يمكن الوصول إلى الجهاز"
 
-#: devicesstateproxymodel.cpp:236
+#: devicesstateproxymodel.cpp:289
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "فشل الاتّصال بالجهاز"
 
-#: devicesstateproxymodel.cpp:239
+#: devicesstateproxymodel.cpp:292
 #, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
@@ -112,70 +112,70 @@ msgstr "المحوّل"
 
 #: package/contents/ui/DeviceItem.qml:240
 #, kde-format
-msgid "Disconnecting"
-msgstr "يقطع الاتّصال"
-
-#: package/contents/ui/DeviceItem.qml:240
-#, kde-format
 msgid "Connecting"
 msgstr "يتّصل"
 
-#: package/contents/ui/DeviceItem.qml:246
+#: package/contents/ui/DeviceItem.qml:242
+#, kde-format
+msgid "Disconnecting"
+msgstr "يقطع الاتّصال"
+
+#: package/contents/ui/DeviceItem.qml:248
 #, kde-format
 msgid "Connected"
 msgstr "متّصل"
 
-#: package/contents/ui/DeviceItem.qml:248
+#: package/contents/ui/DeviceItem.qml:250
 #, kde-format
 msgid "Connection failed"
 msgstr "فشل الاتّصال"
 
-#: package/contents/ui/DeviceItem.qml:255
+#: package/contents/ui/DeviceItem.qml:257
 #, kde-format
 msgid "Audio device"
 msgstr "جهاز صوتيّ"
 
-#: package/contents/ui/DeviceItem.qml:262
+#: package/contents/ui/DeviceItem.qml:264
 #, kde-format
 msgid "Input device"
 msgstr "جهاز دخل"
 
-#: package/contents/ui/DeviceItem.qml:266
+#: package/contents/ui/DeviceItem.qml:268
 #, kde-format
 msgid "Phone"
 msgstr "هاتف"
 
-#: package/contents/ui/DeviceItem.qml:273
+#: package/contents/ui/DeviceItem.qml:275
 #, kde-format
 msgid "File transfer"
 msgstr "نقل الملفّات"
 
-#: package/contents/ui/DeviceItem.qml:276
+#: package/contents/ui/DeviceItem.qml:278
 #, kde-format
 msgid "Send file"
 msgstr "إرسال الملفّات"
 
-#: package/contents/ui/DeviceItem.qml:279
+#: package/contents/ui/DeviceItem.qml:281
 #, kde-format
 msgid "Input"
 msgstr "الدّخل"
 
-#: package/contents/ui/DeviceItem.qml:282
+#: package/contents/ui/DeviceItem.qml:284
 #, kde-format
 msgid "Audio"
 msgstr "الصّوت"
 
-#: package/contents/ui/DeviceItem.qml:285
+#: package/contents/ui/DeviceItem.qml:287
 #, kde-format
 msgid "Network"
 msgstr "الشّبكة"
 
-#: package/contents/ui/DeviceItem.qml:290
+#: package/contents/ui/DeviceItem.qml:292
 #, kde-format
 msgid "Other device"
 msgstr "جهاز آخر"
 
-#: package/contents/ui/DeviceItem.qml:297 package/contents/ui/main.qml:74
+#: package/contents/ui/DeviceItem.qml:299 package/contents/ui/main.qml:74
 #: package/contents/ui/main.qml:83
 #, kde-format
 msgid "%1% Battery"
