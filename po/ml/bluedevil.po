@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-09 00:43+0000\n"
+"POT-Creation-Date: 2025-05-28 00:43+0000\n"
 "PO-Revision-Date: 2019-12-12 22:59+0000\n"
 "Last-Translator: Vivek KJ Pazhedath <vivekkj2004@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc."
@@ -28,28 +28,28 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "shijualexonline@gmail.com,snalledam@dataone.in,vivekkj2004@gmail.com"
 
-#: applet/devicesstateproxymodel.cpp:220
+#: applet/devicesstateproxymodel.cpp:273
 #, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
 msgstr ""
 
-#: applet/devicesstateproxymodel.cpp:235
+#: applet/devicesstateproxymodel.cpp:288
 #, fuzzy, kde-format
 #| msgid "This address is unavailable."
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "ഈ വിലാസം ലഭ്യമല്ല"
 
-#: applet/devicesstateproxymodel.cpp:236
+#: applet/devicesstateproxymodel.cpp:289
 #, fuzzy, kde-format
 #| msgid "Connecting to the device"
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "ഉപകരണത്തിലേക്ക് കണക്റ്റുചെയ്യുന്നു"
 
-#: applet/devicesstateproxymodel.cpp:239
+#: applet/devicesstateproxymodel.cpp:292
 #, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
@@ -291,12 +291,12 @@ msgstr "ഫോൺ മെമ്മറി"
 msgid "External memory"
 msgstr "ബാഹ്യ മെമ്മറി"
 
-#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:337
+#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:353
 #, kde-format
 msgid "Bluetooth is disabled."
 msgstr "ബ്ലൂടൂത്ത് അപ്രാപ്തമാക്കി."
 
-#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:338
+#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:354
 #, kde-format
 msgctxt "Action to enable Bluetooth adapter"
 msgid "Enable"
@@ -443,23 +443,23 @@ msgstr "പൂർത്തീകരിക്കുക "
 msgid "Add Bluetooth Device"
 msgstr "ഒരു പുതിയ ഉപകരണം ചേർക്കുക"
 
-#: wizard/pages/discover.cpp:131
+#: wizard/pages/discover.cpp:147
 #, kde-format
 msgid "Select a device"
 msgstr ""
 
-#: wizard/pages/discover.cpp:330
+#: wizard/pages/discover.cpp:346
 #, kde-format
 msgctxt "Action to fix a problem"
 msgid "Fix it"
 msgstr "ശരിയാക്കുക"
 
-#: wizard/pages/discover.cpp:340
+#: wizard/pages/discover.cpp:356
 #, kde-format
 msgid "Your Bluetooth adapter is not pairable."
 msgstr ""
 
-#: wizard/pages/discover.cpp:341
+#: wizard/pages/discover.cpp:357
 #, kde-format
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"

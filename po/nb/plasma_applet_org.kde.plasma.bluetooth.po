@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-24 00:42+0000\n"
+"POT-Creation-Date: 2025-05-28 00:43+0000\n"
 "PO-Revision-Date: 2025-03-29 11:00+0100\n"
 "Last-Translator: Martin Hansen <mh306602@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -18,26 +18,26 @@ msgstr ""
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
-#: devicesstateproxymodel.cpp:220
+#: devicesstateproxymodel.cpp:273
 #, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: devicesstateproxymodel.cpp:235
+#: devicesstateproxymodel.cpp:288
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "Kan ikke nå enheten"
 
-#: devicesstateproxymodel.cpp:236
+#: devicesstateproxymodel.cpp:289
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "Klarte ikke koble til enheten"
 
-#: devicesstateproxymodel.cpp:239
+#: devicesstateproxymodel.cpp:292
 #, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
@@ -111,70 +111,100 @@ msgstr "Adapter"
 
 #: package/contents/ui/DeviceItem.qml:240
 #, kde-format
-msgid "Disconnecting"
-msgstr "Kobler fra"
-
-#: package/contents/ui/DeviceItem.qml:240
-#, kde-format
 msgid "Connecting"
 msgstr "Kobler til"
 
-#: package/contents/ui/DeviceItem.qml:246
+#: package/contents/ui/DeviceItem.qml:242
+#, kde-format
+msgid "Disconnecting"
+msgstr "Kobler fra"
+
+#: package/contents/ui/DeviceItem.qml:248
 #, kde-format
 msgid "Connected"
 msgstr "Tilkoblet"
 
-#: package/contents/ui/DeviceItem.qml:248
+#: package/contents/ui/DeviceItem.qml:250
 #, kde-format
 msgid "Connection failed"
 msgstr "Feil ved tilkobling"
 
 #: package/contents/ui/DeviceItem.qml:255
 #, kde-format
+msgid "Headset"
+msgstr ""
+
+#: package/contents/ui/DeviceItem.qml:261
+#, kde-format
 msgid "Audio device"
 msgstr "Lydenhet"
 
-#: package/contents/ui/DeviceItem.qml:262
+#: package/contents/ui/DeviceItem.qml:265
 #, kde-format
-msgid "Input device"
-msgstr "Innenhet"
+msgid "Keyboard"
+msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:266
+#: package/contents/ui/DeviceItem.qml:268
+#, kde-format
+msgid "Mouse"
+msgstr ""
+
+#: package/contents/ui/DeviceItem.qml:271
+#, kde-format
+msgid "Joypad"
+msgstr ""
+
+#: package/contents/ui/DeviceItem.qml:274
+#, kde-format
+msgid "Drawing tablet"
+msgstr ""
+
+#: package/contents/ui/DeviceItem.qml:278
 #, kde-format
 msgid "Phone"
 msgstr "Telefon"
 
-#: package/contents/ui/DeviceItem.qml:273
+#: package/contents/ui/DeviceItem.qml:281
+#, kde-format
+msgid "Camera"
+msgstr ""
+
+#: package/contents/ui/DeviceItem.qml:284
+#, kde-format
+msgid "Printer"
+msgstr ""
+
+#: package/contents/ui/DeviceItem.qml:291
 #, kde-format
 msgid "File transfer"
 msgstr "Filoverføring"
 
-#: package/contents/ui/DeviceItem.qml:276
+#: package/contents/ui/DeviceItem.qml:294
 #, kde-format
 msgid "Send file"
 msgstr "Send fil"
 
-#: package/contents/ui/DeviceItem.qml:279
+#: package/contents/ui/DeviceItem.qml:297
 #, kde-format
 msgid "Input"
 msgstr "Inndata"
 
-#: package/contents/ui/DeviceItem.qml:282
+#: package/contents/ui/DeviceItem.qml:300
 #, kde-format
 msgid "Audio"
 msgstr "Lyd"
 
-#: package/contents/ui/DeviceItem.qml:285
+#: package/contents/ui/DeviceItem.qml:303
 #, kde-format
 msgid "Network"
 msgstr "Nettverk"
 
-#: package/contents/ui/DeviceItem.qml:290
+#: package/contents/ui/DeviceItem.qml:308
 #, kde-format
 msgid "Other device"
 msgstr "Annen enhet"
 
-#: package/contents/ui/DeviceItem.qml:297 package/contents/ui/main.qml:74
+#: package/contents/ui/DeviceItem.qml:315 package/contents/ui/main.qml:74
 #: package/contents/ui/main.qml:83
 #, kde-format
 msgid "%1% Battery"
@@ -269,3 +299,6 @@ msgstr "Bruk Bluetooth"
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr ""
+
+#~ msgid "Input device"
+#~ msgstr "Innenhet"

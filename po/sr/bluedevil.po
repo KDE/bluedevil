@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-09 00:43+0000\n"
+"POT-Creation-Date: 2025-05-28 00:43+0000\n"
 "PO-Revision-Date: 2017-12-15 12:37+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -29,7 +29,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "caslav.ilic@gmx.net"
 
-#: applet/devicesstateproxymodel.cpp:220
+#: applet/devicesstateproxymodel.cpp:273
 #, fuzzy, kde-format
 #| msgctxt "DeviceName Network (Service)"
 #| msgid "%1 Network (%2)"
@@ -38,21 +38,21 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "Мрежа %1 (%2)"
 
-#: applet/devicesstateproxymodel.cpp:235
+#: applet/devicesstateproxymodel.cpp:288
 #, fuzzy, kde-format
 #| msgid "This address is unavailable."
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "Ова адреса није доступна."
 
-#: applet/devicesstateproxymodel.cpp:236
+#: applet/devicesstateproxymodel.cpp:289
 #, fuzzy, kde-format
 #| msgid "Connecting to the device"
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "Повезујем уређај..."
 
-#: applet/devicesstateproxymodel.cpp:239
+#: applet/devicesstateproxymodel.cpp:292
 #, fuzzy, kde-format
 #| msgid "Obexd service is not running."
 msgctxt "Notification when the connection failed due to NotReady"
@@ -302,12 +302,12 @@ msgstr "меморија телефона"
 msgid "External memory"
 msgstr "спољашња меморија"
 
-#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:337
+#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:353
 #, kde-format
 msgid "Bluetooth is disabled."
 msgstr "Блутут је деактивиран."
 
-#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:338
+#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:354
 #, fuzzy, kde-format
 #| msgctxt "This device is a Graphics Tablet (input device)"
 #| msgid "Tablet"
@@ -457,23 +457,23 @@ msgid "Add Bluetooth Device"
 msgstr "Блутут уређаји"
 
 # >> @title:window
-#: wizard/pages/discover.cpp:131
+#: wizard/pages/discover.cpp:147
 #, kde-format
 msgid "Select a device"
 msgstr "Избор уређаја"
 
-#: wizard/pages/discover.cpp:330
+#: wizard/pages/discover.cpp:346
 #, kde-format
 msgctxt "Action to fix a problem"
 msgid "Fix it"
 msgstr "Поправи"
 
-#: wizard/pages/discover.cpp:340
+#: wizard/pages/discover.cpp:356
 #, kde-format
 msgid "Your Bluetooth adapter is not pairable."
 msgstr "Блутут адаптер није упарив."
 
-#: wizard/pages/discover.cpp:341
+#: wizard/pages/discover.cpp:357
 #, fuzzy, kde-format
 #| msgctxt "This device is a Wearable"
 #| msgid "Wearable"
