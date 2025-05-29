@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-28 00:43+0000\n"
-"PO-Revision-Date: 2025-04-25 09:32+0300\n"
+"PO-Revision-Date: 2025-05-28 13:24+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.04.0\n"
+"X-Generator: Lokalize 25.04.1\n"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format
@@ -132,7 +132,7 @@ msgstr "Bağlantı kurulamadı"
 #: package/contents/ui/DeviceItem.qml:255
 #, kde-format
 msgid "Headset"
-msgstr ""
+msgstr "Mikrofonlu Kulaklık"
 
 #: package/contents/ui/DeviceItem.qml:261
 #, kde-format
@@ -142,22 +142,22 @@ msgstr "Ses aygıtı"
 #: package/contents/ui/DeviceItem.qml:265
 #, kde-format
 msgid "Keyboard"
-msgstr ""
+msgstr "Klavye"
 
 #: package/contents/ui/DeviceItem.qml:268
 #, kde-format
 msgid "Mouse"
-msgstr ""
+msgstr "Fare"
 
 #: package/contents/ui/DeviceItem.qml:271
 #, kde-format
 msgid "Joypad"
-msgstr ""
+msgstr "Oyun Kolu"
 
 #: package/contents/ui/DeviceItem.qml:274
 #, kde-format
 msgid "Drawing tablet"
-msgstr ""
+msgstr "Çizim Tableti"
 
 #: package/contents/ui/DeviceItem.qml:278
 #, kde-format
@@ -167,12 +167,12 @@ msgstr "Telefon"
 #: package/contents/ui/DeviceItem.qml:281
 #, kde-format
 msgid "Camera"
-msgstr ""
+msgstr "Kamera"
 
 #: package/contents/ui/DeviceItem.qml:284
 #, kde-format
 msgid "Printer"
-msgstr ""
+msgstr "Yazıcı"
 
 #: package/contents/ui/DeviceItem.qml:291
 #, kde-format
@@ -208,7 +208,7 @@ msgstr "Diğer aygıt"
 #: package/contents/ui/main.qml:83
 #, kde-format
 msgid "%1% Battery"
-msgstr "%​%1 Pil"
+msgstr "Pil %​%1"
 
 #: package/contents/ui/FullRepresentation.qml:71
 #, kde-format

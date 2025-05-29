@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-28 00:43+0000\n"
-"PO-Revision-Date: 2025-04-27 14:27+0200\n"
+"PO-Revision-Date: 2025-05-28 14:13+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.12.0\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format
@@ -132,7 +132,7 @@ msgstr "Connessione non riuscita"
 #: package/contents/ui/DeviceItem.qml:255
 #, kde-format
 msgid "Headset"
-msgstr ""
+msgstr "Cuffie con microfono"
 
 #: package/contents/ui/DeviceItem.qml:261
 #, kde-format
@@ -142,22 +142,22 @@ msgstr "Dispositivo audio"
 #: package/contents/ui/DeviceItem.qml:265
 #, kde-format
 msgid "Keyboard"
-msgstr ""
+msgstr "Tastiera"
 
 #: package/contents/ui/DeviceItem.qml:268
 #, kde-format
 msgid "Mouse"
-msgstr ""
+msgstr "Mouse"
 
 #: package/contents/ui/DeviceItem.qml:271
 #, kde-format
 msgid "Joypad"
-msgstr ""
+msgstr "Joypad"
 
 #: package/contents/ui/DeviceItem.qml:274
 #, kde-format
 msgid "Drawing tablet"
-msgstr ""
+msgstr "Tavoletta da disegno"
 
 #: package/contents/ui/DeviceItem.qml:278
 #, kde-format
@@ -167,12 +167,12 @@ msgstr "Telefono"
 #: package/contents/ui/DeviceItem.qml:281
 #, kde-format
 msgid "Camera"
-msgstr ""
+msgstr "Fotocamera"
 
 #: package/contents/ui/DeviceItem.qml:284
 #, kde-format
 msgid "Printer"
-msgstr ""
+msgstr "Stampante"
 
 #: package/contents/ui/DeviceItem.qml:291
 #, kde-format

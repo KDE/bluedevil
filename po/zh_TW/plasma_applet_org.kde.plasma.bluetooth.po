@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-28 00:43+0000\n"
-"PO-Revision-Date: 2025-04-30 01:55+0900\n"
+"PO-Revision-Date: 2025-05-28 23:25+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -133,7 +133,7 @@ msgstr "連線失敗"
 #: package/contents/ui/DeviceItem.qml:255
 #, kde-format
 msgid "Headset"
-msgstr ""
+msgstr "耳麥"
 
 #: package/contents/ui/DeviceItem.qml:261
 #, kde-format
@@ -143,22 +143,22 @@ msgstr "音效裝置"
 #: package/contents/ui/DeviceItem.qml:265
 #, kde-format
 msgid "Keyboard"
-msgstr ""
+msgstr "鍵盤"
 
 #: package/contents/ui/DeviceItem.qml:268
 #, kde-format
 msgid "Mouse"
-msgstr ""
+msgstr "滑鼠"
 
 #: package/contents/ui/DeviceItem.qml:271
 #, kde-format
 msgid "Joypad"
-msgstr ""
+msgstr "手把"
 
 #: package/contents/ui/DeviceItem.qml:274
 #, kde-format
 msgid "Drawing tablet"
-msgstr ""
+msgstr "繪圖平板"
 
 #: package/contents/ui/DeviceItem.qml:278
 #, kde-format
@@ -168,12 +168,12 @@ msgstr "手機"
 #: package/contents/ui/DeviceItem.qml:281
 #, kde-format
 msgid "Camera"
-msgstr ""
+msgstr "相機"
 
 #: package/contents/ui/DeviceItem.qml:284
 #, kde-format
 msgid "Printer"
-msgstr ""
+msgstr "印表機"
 
 #: package/contents/ui/DeviceItem.qml:291
 #, kde-format

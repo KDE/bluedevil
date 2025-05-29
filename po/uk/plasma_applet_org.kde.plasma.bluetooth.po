@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-28 00:43+0000\n"
-"PO-Revision-Date: 2025-04-24 11:48+0300\n"
+"PO-Revision-Date: 2025-05-28 08:41+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -134,7 +134,7 @@ msgstr "Не вдалося встановити з'єднання"
 #: package/contents/ui/DeviceItem.qml:255
 #, kde-format
 msgid "Headset"
-msgstr ""
+msgstr "Гарнітура"
 
 #: package/contents/ui/DeviceItem.qml:261
 #, kde-format
@@ -144,22 +144,22 @@ msgstr "Звуковий пристрій"
 #: package/contents/ui/DeviceItem.qml:265
 #, kde-format
 msgid "Keyboard"
-msgstr ""
+msgstr "Клавіатура"
 
 #: package/contents/ui/DeviceItem.qml:268
 #, kde-format
 msgid "Mouse"
-msgstr ""
+msgstr "Миша"
 
 #: package/contents/ui/DeviceItem.qml:271
 #, kde-format
 msgid "Joypad"
-msgstr ""
+msgstr "Ігровий пульт"
 
 #: package/contents/ui/DeviceItem.qml:274
 #, kde-format
 msgid "Drawing tablet"
-msgstr ""
+msgstr "Планшет для малювання"
 
 #: package/contents/ui/DeviceItem.qml:278
 #, kde-format
@@ -169,12 +169,12 @@ msgstr "Телефон"
 #: package/contents/ui/DeviceItem.qml:281
 #, kde-format
 msgid "Camera"
-msgstr ""
+msgstr "Камера"
 
 #: package/contents/ui/DeviceItem.qml:284
 #, kde-format
 msgid "Printer"
-msgstr ""
+msgstr "Принтер"
 
 #: package/contents/ui/DeviceItem.qml:291
 #, kde-format

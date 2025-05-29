@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-28 00:43+0000\n"
-"PO-Revision-Date: 2025-05-04 01:48+0100\n"
+"PO-Revision-Date: 2025-05-28 12:52+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.04.0\n"
+"X-Generator: Lokalize 25.04.1\n"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format
@@ -133,7 +133,7 @@ msgstr "La conexión ha fallado"
 #: package/contents/ui/DeviceItem.qml:255
 #, kde-format
 msgid "Headset"
-msgstr ""
+msgstr "Cascos"
 
 #: package/contents/ui/DeviceItem.qml:261
 #, kde-format
@@ -143,22 +143,22 @@ msgstr "Dispositivo de sonido"
 #: package/contents/ui/DeviceItem.qml:265
 #, kde-format
 msgid "Keyboard"
-msgstr ""
+msgstr "Teclado"
 
 #: package/contents/ui/DeviceItem.qml:268
 #, kde-format
 msgid "Mouse"
-msgstr ""
+msgstr "Ratón"
 
 #: package/contents/ui/DeviceItem.qml:271
 #, kde-format
 msgid "Joypad"
-msgstr ""
+msgstr "Mando"
 
 #: package/contents/ui/DeviceItem.qml:274
 #, kde-format
 msgid "Drawing tablet"
-msgstr ""
+msgstr "Tableta de dibujo"
 
 #: package/contents/ui/DeviceItem.qml:278
 #, kde-format
@@ -168,12 +168,12 @@ msgstr "Teléfono"
 #: package/contents/ui/DeviceItem.qml:281
 #, kde-format
 msgid "Camera"
-msgstr ""
+msgstr "Cámara"
 
 #: package/contents/ui/DeviceItem.qml:284
 #, kde-format
 msgid "Printer"
-msgstr ""
+msgstr "Impresora"
 
 #: package/contents/ui/DeviceItem.qml:291
 #, kde-format
@@ -299,6 +299,3 @@ msgstr "Activar Bluetooth"
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr "Más acciones"
-
-#~ msgid "Input device"
-#~ msgstr "Dispositivo de entrada"

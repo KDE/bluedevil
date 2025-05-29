@@ -132,7 +132,7 @@ msgstr "Připojení selhalo"
 #: package/contents/ui/DeviceItem.qml:255
 #, kde-format
 msgid "Headset"
-msgstr ""
+msgstr "Headset"
 
 #: package/contents/ui/DeviceItem.qml:261
 #, kde-format
@@ -142,12 +142,12 @@ msgstr "Audio zařízení"
 #: package/contents/ui/DeviceItem.qml:265
 #, kde-format
 msgid "Keyboard"
-msgstr ""
+msgstr "Klávesnice"
 
 #: package/contents/ui/DeviceItem.qml:268
 #, kde-format
 msgid "Mouse"
-msgstr ""
+msgstr "Myš"
 
 #: package/contents/ui/DeviceItem.qml:271
 #, kde-format
@@ -167,12 +167,12 @@ msgstr "Telefon"
 #: package/contents/ui/DeviceItem.qml:281
 #, kde-format
 msgid "Camera"
-msgstr ""
+msgstr "Fotoaparát"
 
 #: package/contents/ui/DeviceItem.qml:284
 #, kde-format
 msgid "Printer"
-msgstr ""
+msgstr "Tiskárna"
 
 #: package/contents/ui/DeviceItem.qml:291
 #, kde-format
