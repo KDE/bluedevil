@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-28 00:43+0000\n"
+"POT-Creation-Date: 2025-05-30 00:44+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -54,7 +54,7 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "यन्त्रं सज्जं नास्ति"
 
-#: kcm/bluetooth.cpp:104
+#: kcm/bluetooth.cpp:127
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
@@ -431,6 +431,11 @@ msgstr "समापन"
 #, kde-format
 msgid "Add Bluetooth Device"
 msgstr "Bluetooth Device योजयन्तु"
+
+#: wizard/main.cpp:51
+#, kde-format
+msgid "Parent window handle."
+msgstr ""
 
 #: wizard/pages/discover.cpp:147
 #, kde-format

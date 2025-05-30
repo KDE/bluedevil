@@ -4,13 +4,13 @@
 # SPDX-FileCopyrightText: 2020, 2021, 2022, 2024, 2025 Alexander Yavorsky <kekcuha@gmail.com>
 # Victor Ryzhykh <victorr2007@yandex.ru>, 2015.
 # Alexander Potashev <aspotashev@gmail.com>, 2015, 2018.
-# Alexander Yavorsky <kekcuha@gmail.com>, 2024.
+# Alexander Yavorsky <kekcuha@gmail.com>, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-28 00:43+0000\n"
-"PO-Revision-Date: 2025-05-22 18:20+0300\n"
+"PO-Revision-Date: 2025-05-29 13:20+0200\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 25.04.1\n"
+"X-Generator: Lokalize 21.08.3\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -140,7 +140,7 @@ msgstr "Ошибка подключения"
 #: package/contents/ui/DeviceItem.qml:255
 #, kde-format
 msgid "Headset"
-msgstr ""
+msgstr "Гарнитура"
 
 #: package/contents/ui/DeviceItem.qml:261
 #, kde-format
@@ -150,22 +150,22 @@ msgstr "Звуковое устройство"
 #: package/contents/ui/DeviceItem.qml:265
 #, kde-format
 msgid "Keyboard"
-msgstr ""
+msgstr "Клавиатура"
 
 #: package/contents/ui/DeviceItem.qml:268
 #, kde-format
 msgid "Mouse"
-msgstr ""
+msgstr "Мышь"
 
 #: package/contents/ui/DeviceItem.qml:271
 #, kde-format
 msgid "Joypad"
-msgstr ""
+msgstr "Джойстик"
 
 #: package/contents/ui/DeviceItem.qml:274
 #, kde-format
 msgid "Drawing tablet"
-msgstr ""
+msgstr "Планшет для рисования"
 
 #: package/contents/ui/DeviceItem.qml:278
 #, kde-format
@@ -175,12 +175,12 @@ msgstr "Телефон"
 #: package/contents/ui/DeviceItem.qml:281
 #, kde-format
 msgid "Camera"
-msgstr ""
+msgstr "Фотокамера"
 
 #: package/contents/ui/DeviceItem.qml:284
 #, kde-format
 msgid "Printer"
-msgstr ""
+msgstr "Принтер"
 
 # BUGME: what is difference between "File transfer" vs "Send file"? --aspotashev
 #: package/contents/ui/DeviceItem.qml:291

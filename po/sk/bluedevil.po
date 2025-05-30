@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-28 00:43+0000\n"
+"POT-Creation-Date: 2025-05-30 00:44+0000\n"
 "PO-Revision-Date: 2023-11-23 08:48+0100\n"
 "Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
 "Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
@@ -58,7 +58,7 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Služba obexd nebeží."
 
-#: kcm/bluetooth.cpp:104
+#: kcm/bluetooth.cpp:127
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
@@ -435,6 +435,11 @@ msgstr "Hotovo"
 #, kde-format
 msgid "Add Bluetooth Device"
 msgstr "Pridať zariadenie Bluetooth"
+
+#: wizard/main.cpp:51
+#, kde-format
+msgid "Parent window handle."
+msgstr ""
 
 #: wizard/pages/discover.cpp:147
 #, kde-format

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-28 00:43+0000\n"
+"POT-Creation-Date: 2025-05-30 00:44+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -54,7 +54,7 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "设备未就绪"
 
-#: kcm/bluetooth.cpp:104
+#: kcm/bluetooth.cpp:127
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
@@ -430,6 +430,11 @@ msgstr "完成"
 #, kde-format
 msgid "Add Bluetooth Device"
 msgstr "添加蓝牙设备"
+
+#: wizard/main.cpp:51
+#, kde-format
+msgid "Parent window handle."
+msgstr ""
 
 #: wizard/pages/discover.cpp:147
 #, kde-format

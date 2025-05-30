@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-28 00:43+0000\n"
+"POT-Creation-Date: 2025-05-30 00:44+0000\n"
 "PO-Revision-Date: 2014-11-11 13:36+0000\n"
 "Last-Translator: Naida Čongo <ncongo1@etf.unsa.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -60,7 +60,7 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr ""
 
-#: kcm/bluetooth.cpp:104
+#: kcm/bluetooth.cpp:127
 #, fuzzy, kde-format
 #| msgctxt "This device is of type Network"
 #| msgid "Network"
@@ -481,6 +481,11 @@ msgstr "Završi"
 #| msgid "Bluetooth Devices"
 msgid "Add Bluetooth Device"
 msgstr "Bluetooth Uređaji"
+
+#: wizard/main.cpp:51
+#, kde-format
+msgid "Parent window handle."
+msgstr ""
 
 #: wizard/pages/discover.cpp:147
 #, kde-format
