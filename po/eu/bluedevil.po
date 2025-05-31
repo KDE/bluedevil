@@ -1,7 +1,7 @@
 # Translation for bluedevil.po to Euskara/Basque (eu)
 # Copyright (C) 2016-2025 This file is copyright:
 # This file is distributed under the same license as the bluedevil package.
-# SPDX-FileCopyrightText: 2024, 2025 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
+# SPDX-FileCopyrightText: 2024, 2025 KDE euskaratzeko proiektuaren arduraduna <xalba@ni.eus>
 #
 # Translators:
 # Iñigo Salvador Azurmendi <xalba@ni.eus>, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025.
