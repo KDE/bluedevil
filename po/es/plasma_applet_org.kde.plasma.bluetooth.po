@@ -1,15 +1,15 @@
 # Spanish translations for plasma_applet_org.kde.plasma.bluetooth.po package.
-# Copyright (C) 2015 This_file_is_part_of_KDE
-# This file is distributed under the same license as the PACKAGE package.
-#
+# Copyright (C) 2015-2025 This file is copyright:
+# This file is distributed under the same license as the bluedevil package.
 # Automatically generated, 2015.
-# Eloy Cuadra <ecuadra@eloihr.net>, 2015, 2017, 2020, 2021, 2022.
+#
+# SPDX-FileCopyrightText: 2015, 2017, 2020, 2021, 2022, 2025 Eloy Cuadra <ecuadra@eloihr.net>
 msgid ""
 msgstr ""
-"Project-Id-Version: plasma_applet_org\n"
+"Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-26 02:49+0000\n"
-"PO-Revision-Date: 2022-12-07 03:46+0100\n"
+"PO-Revision-Date: 2025-06-06 19:37+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -242,43 +242,14 @@ msgstr[1] "%1 dispositivos conectados"
 #: package/contents/ui/main.qml:141
 #, kde-format
 msgid "Configure &Bluetooth…"
-msgstr "Configurar &Bluetooth..."
+msgstr "Configurar &Bluetooth…"
 
 #: package/contents/ui/main.qml:143
 #, kde-format
 msgid "Add New Device…"
-msgstr "Añadir nuevo dispositivo..."
+msgstr "Añadir nuevo dispositivo…"
 
 #: package/contents/ui/main.qml:146 package/contents/ui/Toolbar.qml:32
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Activar Bluetooth"
-
-#~ msgid ""
-#~ "No connected devices\n"
-#~ "Middle-click to disable Bluetooth"
-#~ msgstr ""
-#~ "No hay dispositivos conectados\n"
-#~ "Pulse con el botón central para desactivar Bluetooth"
-
-#~ msgid ""
-#~ "%1 connected\n"
-#~ "Middle-click to disable Bluetooth"
-#~ msgstr ""
-#~ "%1 conectado\n"
-#~ "Clic centrar para desactivar Bluetooth"
-
-#~ msgid "Bluetooth is Disabled"
-#~ msgstr "Bluetooth está desactivado"
-
-#~ msgid "Add New Device..."
-#~ msgstr "Añadir nuevo dispositivo..."
-
-#~ msgid "Connected devices"
-#~ msgstr "Dispositivos conectados"
-
-#~ msgid "Available devices"
-#~ msgstr "Dispositivos disponibles"
-
-#~ msgid "Configure Bluetooth..."
-#~ msgstr "Configurar Bluetooth..."

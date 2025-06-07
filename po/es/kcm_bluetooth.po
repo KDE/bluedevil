@@ -1,15 +1,15 @@
 # Spanish translations for kcm_bluetooth.po package.
-# Copyright (C) 2020 This file is copyright:
+# Copyright (C) 2020-2025 This file is copyright:
 # This file is distributed under the same license as the bluedevil package.
-#
 # Automatically generated, 2020.
-# Eloy Cuadra <ecuadra@eloihr.net>, 2020, 2021, 2022.
+#
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2025 Eloy Cuadra <ecuadra@eloihr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-30 00:54+0000\n"
-"PO-Revision-Date: 2022-07-27 14:57+0200\n"
+"PO-Revision-Date: 2025-06-06 19:36+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -83,12 +83,12 @@ msgstr "Enviar archivo"
 #: package/contents/ui/Device.qml:139
 #, kde-format
 msgid "Setup NAP Network…"
-msgstr "Configurar red NAP..."
+msgstr "Configurar red NAP…"
 
 #: package/contents/ui/Device.qml:146
 #, kde-format
 msgid "Setup DUN Network…"
-msgstr "Configurar red DUN..."
+msgstr "Configurar red DUN…"
 
 #: package/contents/ui/Device.qml:156
 #, kde-format
@@ -336,31 +336,9 @@ msgstr "Olvidar «%1»"
 #: package/contents/ui/main.qml:241
 #, kde-format
 msgid "Add New Device…"
-msgstr "Añadir nuevo dispositivo..."
+msgstr "Añadir nuevo dispositivo…"
 
 #: package/contents/ui/main.qml:259
 #, kde-format
 msgid "Configure…"
-msgstr "Configurar..."
-
-#~ msgid "Confirm Deletion of Device"
-#~ msgstr "Confirmar borrado de dispositivo"
-
-#~ msgid "Remove"
-#~ msgstr "Eliminar"
-
-#~ msgid "Bluetooth"
-#~ msgstr "Bluetooth"
-
-#~ msgid "Nicolas Fella"
-#~ msgstr "Nicolas Fella"
-
-#~ msgid "Add…"
-#~ msgstr "Añadir..."
-
-#~ msgctxt "This device is an Audio device"
-#~ msgid "Audio"
-#~ msgstr "Sonido"
-
-#~ msgid "Add..."
-#~ msgstr "Añadir..."
+msgstr "Configurar…"
