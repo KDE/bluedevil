@@ -209,5 +209,6 @@
     "X-KDE-Keywords[zh_TW]": "藍牙,藍芽,硬體,連線,連接,裝置,尋找裝置,找裝置,斷線,中斷連接,傳送檔案,接收檔案,傳輸,無線,可見,轉接器,pin 碼,信任裝置",
     "X-KDE-ParentApp": "kcontrol",
     "X-KDE-System-Settings-Parent-Category": "hardware",
+    "X-KDE-System-Settings-Uses-ModuleData": true,
     "X-KDE-Weight": 20
 }

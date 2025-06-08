@@ -1,4 +1,4 @@
-kcmutils_add_qml_kcm(kcm_bluetooth SOURCES bluetooth.cpp bluetooth.h)
+kcmutils_add_qml_kcm(kcm_bluetooth SOURCES bluetooth.cpp bluetooth.h bluetoothmoduledata.cpp bluetoothmoduledata.h)
 
 kconfig_add_kcfg_files(kcm_bluetooth GENERATE_MOC ../settings/filereceiversettings.kcfgc)
 kconfig_add_kcfg_files(kcm_bluetooth GENERATE_MOC ../settings/bluedevilglobalsettings.kcfgc)
