@@ -29,7 +29,9 @@
 #include "bluedevilglobalsettings.h"
 #include "filereceiversettings.h"
 
-K_PLUGIN_CLASS_WITH_JSON(Bluetooth, "kcm_bluetooth.json")
+#include "bluetoothmoduledata.h"
+
+K_PLUGIN_FACTORY_WITH_JSON(KCMBluetoothFactory, "kcm_bluetooth.json", registerPlugin<Bluetooth>(); registerPlugin<BluetoothModuleData>();)
 
 Bluetooth::Bluetooth(QObject *parent, const KPluginMetaData &data)
     : KQuickConfigModule(parent, data)
