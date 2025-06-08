@@ -434,7 +434,7 @@ msgstr "添加蓝牙设备"
 #: wizard/main.cpp:51
 #, kde-format
 msgid "Parent window handle."
-msgstr ""
+msgstr "父窗口处理。"
 
 #: wizard/pages/discover.cpp:147
 #, kde-format
