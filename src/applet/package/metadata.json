@@ -52,6 +52,7 @@
                 "Name[zh_TW]": "David Rosca"
             }
         ],
+        "BugReportUrl": "https://bugs.kde.org/enter_bug.cgi?product=plasmashell&component=Bluetooth%20widget",
         "Category": "System Information",
         "Description": "Bluetooth status and control",
         "Description[ar]": "حالة بلوتوث والتّحكّم بها",
