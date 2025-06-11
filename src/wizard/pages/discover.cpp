@@ -143,7 +143,7 @@ void DevicesProxyModel::setSearchString(const QString &searchString)
     }
 
     m_searchString = searchString;
-    invalidateFilter();
+    invalidateRowsFilter();
 }
 
 bool DevicesProxyModel::showUnnamedDevices() const
