@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# SPDX-FileCopyrightText: 2015, 2018, 2020, 2021, 2022, 2023, 2024 Shinjo Park <kde@peremen.name>
+# SPDX-FileCopyrightText: 2015, 2018, 2020, 2021, 2022, 2023, 2024, 2025 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-28 00:43+0000\n"
-"PO-Revision-Date: 2024-08-19 22:09+0200\n"
+"PO-Revision-Date: 2025-06-11 00:13+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format
@@ -131,7 +131,7 @@ msgstr "연결 실패"
 #: package/contents/ui/DeviceItem.qml:255
 #, kde-format
 msgid "Headset"
-msgstr ""
+msgstr "헤드셋"
 
 #: package/contents/ui/DeviceItem.qml:261
 #, kde-format
@@ -141,22 +141,22 @@ msgstr "오디오 장치"
 #: package/contents/ui/DeviceItem.qml:265
 #, kde-format
 msgid "Keyboard"
-msgstr ""
+msgstr "키보드"
 
 #: package/contents/ui/DeviceItem.qml:268
 #, kde-format
 msgid "Mouse"
-msgstr ""
+msgstr "마우스"
 
 #: package/contents/ui/DeviceItem.qml:271
 #, kde-format
 msgid "Joypad"
-msgstr ""
+msgstr "조이스틱"
 
 #: package/contents/ui/DeviceItem.qml:274
 #, kde-format
 msgid "Drawing tablet"
-msgstr ""
+msgstr "그래픽 태블릿"
 
 #: package/contents/ui/DeviceItem.qml:278
 #, kde-format
@@ -166,12 +166,12 @@ msgstr "휴대폰"
 #: package/contents/ui/DeviceItem.qml:281
 #, kde-format
 msgid "Camera"
-msgstr ""
+msgstr "카메라"
 
 #: package/contents/ui/DeviceItem.qml:284
 #, kde-format
 msgid "Printer"
-msgstr ""
+msgstr "프린터"
 
 #: package/contents/ui/DeviceItem.qml:291
 #, kde-format
@@ -277,10 +277,9 @@ msgid "Pair Device…"
 msgstr "장치 페어링…"
 
 #: package/contents/ui/main.qml:118
-#, fuzzy, kde-format
-#| msgid "No connected devices"
+#, kde-format
 msgid "Badge icon with number of connected devices"
-msgstr "연결된 장치 없음"
+msgstr "연결된 장치 개수가 표시된 배지 아이콘"
 
 #: package/contents/ui/main.qml:128
 #, kde-format
@@ -296,7 +295,7 @@ msgstr "블루투스 활성화"
 #, kde-format
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
-msgstr ""
+msgstr "더 많은 동작"
 
 #~ msgid "Input device"
 #~ msgstr "입력 장치"
