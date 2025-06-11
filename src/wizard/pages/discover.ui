@@ -37,6 +37,13 @@
       </widget>
      </item>
      <item>
+      <widget class="QCheckBox" name="showUnnamedDevicesCheckBox">
+       <property name="text">
+        <string>Show unnamed devices</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
         <widget class="KBusyIndicatorWidget" name="busyIndicator" native="true">
