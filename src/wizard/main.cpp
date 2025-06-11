@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
     QCommandLineParser parser;
 
     QCommandLineOption parentWindowOption(QStringList() << QStringLiteral("parentWindow"));
-    parentWindowOption.setDescription(i18n("Parent window handle."));
+    parentWindowOption.setFlags(QCommandLineOption::HiddenFromHelp);
     parentWindowOption.setValueName(QStringLiteral("parentWindow"));
 
     parser.addOption(parentWindowOption);
