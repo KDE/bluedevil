@@ -39,9 +39,13 @@ public:
     QString searchString() const;
     void setSearchString(const QString &searchString);
 
+    bool showUnnamedDevices() const;
+    void setShowUnnamedDevices(bool showAll);
+
 private:
     BluezQt::DevicesModel *m_devicesModel = nullptr;
     QString m_searchString;
+    bool m_showUnnamedDevices { false };
 };
 
 DevicesProxyModel::DevicesProxyModel(QObject *parent)
@@ -114,6 +118,10 @@ bool DevicesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
         }
     }
 
+    if (!m_showUnnamedDevices && index.data(BluezQt::DevicesModel::RemoteNameRole).toString().isEmpty()) {
+        return false;
+    }
+
     return true;
 }
 
@@ -138,6 +146,21 @@ void DevicesProxyModel::setSearchString(const QString &searchString)
     invalidateFilter();
 }
 
+bool DevicesProxyModel::showUnnamedDevices() const
+{
+    return m_showUnnamedDevices;
+}
+
+void DevicesProxyModel::setShowUnnamedDevices(bool showAll)
+{
+    if (showAll == m_showUnnamedDevices) {
+        return;
+    }
+
+    m_showUnnamedDevices = showAll;
+    invalidateRowsFilter();
+}
+
 DiscoverPage::DiscoverPage(BlueWizard *parent)
     : QWizardPage(parent)
     , m_wizard(parent)
@@ -156,6 +179,8 @@ DiscoverPage::DiscoverPage(BlueWizard *parent)
     findAction->setShortcut(QKeySequence::Find);
     connect(searchField, &QLineEdit::textChanged, m_model, &DevicesProxyModel::setSearchString);
     addAction(findAction);
+
+    connect(showUnnamedDevicesCheckBox, &QAbstractButton::toggled, m_model, &DevicesProxyModel::setShowUnnamedDevices);
 }
 
 void DiscoverPage::initializePage()
