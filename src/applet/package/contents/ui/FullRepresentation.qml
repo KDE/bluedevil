@@ -105,7 +105,8 @@ PlasmaExtras.Representation {
             boundsBehavior: Flickable.StopAtBounds
 
             spacing: Kirigami.Units.smallSpacing
-            topMargin: Kirigami.Units.largeSpacing
+
+            // No topMargin because ListSectionHeader brings its own
             leftMargin: Kirigami.Units.largeSpacing
             rightMargin: Kirigami.Units.largeSpacing
             bottomMargin: Kirigami.Units.largeSpacing
