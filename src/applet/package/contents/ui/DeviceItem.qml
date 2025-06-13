@@ -33,7 +33,6 @@ PlasmaExtras.ExpandableListItem {
     title: model.DeviceFullName
     subtitle: infoText()
     isBusy: model.Connecting || model.Disconnecting
-    isDefault: model.Connected
     defaultActionButtonAction: QQC2.Action {
         icon.name: root.model.Connected ? "network-disconnect-symbolic" : "network-connect-symbolic"
         text: root.model.Connected ? i18n("Disconnect") : i18n("Connect")
@@ -244,9 +243,7 @@ PlasmaExtras.ExpandableListItem {
 
         const labels = [];
 
-        if (model.Connected) {
-            labels.push(i18n("Connected"));
-        } else if (model.ConnectionFailed) {
+        if (model.ConnectionFailed) {
             labels.push(i18n("Connection failed"));
         }
 
