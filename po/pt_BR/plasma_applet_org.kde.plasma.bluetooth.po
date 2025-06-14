@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-28 00:43+0000\n"
+"POT-Creation-Date: 2025-06-14 00:43+0000\n"
 "PO-Revision-Date: 2025-06-02 00:06-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -46,168 +46,163 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "O dispositivo não está pronto"
 
-#: package/contents/ui/DeviceItem.qml:39
+#: package/contents/ui/DeviceItem.qml:38
 #, kde-format
 msgid "Disconnect"
 msgstr "Desconectar"
 
-#: package/contents/ui/DeviceItem.qml:39
+#: package/contents/ui/DeviceItem.qml:38
 #, kde-format
 msgid "Connect"
 msgstr "Conectar"
 
-#: package/contents/ui/DeviceItem.qml:50
+#: package/contents/ui/DeviceItem.qml:49
 #, kde-format
 msgid "Browse Files"
 msgstr "Navegar pelos arquivos"
 
-#: package/contents/ui/DeviceItem.qml:61
+#: package/contents/ui/DeviceItem.qml:60
 #, kde-format
 msgid "Send File"
 msgstr "Enviar arquivo"
 
-#: package/contents/ui/DeviceItem.qml:109
+#: package/contents/ui/DeviceItem.qml:108
 #, kde-format
 msgid "Copy"
 msgstr "Copiar"
 
-#: package/contents/ui/DeviceItem.qml:205
+#: package/contents/ui/DeviceItem.qml:204
 #, kde-format
 msgid "Yes"
 msgstr "Sim"
 
-#: package/contents/ui/DeviceItem.qml:205
+#: package/contents/ui/DeviceItem.qml:204
 #, kde-format
 msgid "No"
 msgstr "Não"
 
-#: package/contents/ui/DeviceItem.qml:211
+#: package/contents/ui/DeviceItem.qml:210
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: package/contents/ui/DeviceItem.qml:219
+#: package/contents/ui/DeviceItem.qml:218
 #, kde-format
 msgid "Remote Name"
 msgstr "Nome remoto"
 
-#: package/contents/ui/DeviceItem.qml:223
+#: package/contents/ui/DeviceItem.qml:222
 #, kde-format
 msgid "Address"
 msgstr "Endereço"
 
-#: package/contents/ui/DeviceItem.qml:226
+#: package/contents/ui/DeviceItem.qml:225
 #, kde-format
 msgid "Paired"
 msgstr "Emparelhado"
 
-#: package/contents/ui/DeviceItem.qml:229
+#: package/contents/ui/DeviceItem.qml:228
 #, kde-format
 msgid "Trusted"
 msgstr "Confiável"
 
-#: package/contents/ui/DeviceItem.qml:232
+#: package/contents/ui/DeviceItem.qml:231
 #, kde-format
 msgid "Adapter"
 msgstr "Adaptador"
 
-#: package/contents/ui/DeviceItem.qml:240
+#: package/contents/ui/DeviceItem.qml:239
 #, kde-format
 msgid "Connecting"
 msgstr "Conectando"
 
-#: package/contents/ui/DeviceItem.qml:242
+#: package/contents/ui/DeviceItem.qml:241
 #, kde-format
 msgid "Disconnecting"
 msgstr "Desconectando"
 
-#: package/contents/ui/DeviceItem.qml:248
-#, kde-format
-msgid "Connected"
-msgstr "Conectado"
-
-#: package/contents/ui/DeviceItem.qml:250
+#: package/contents/ui/DeviceItem.qml:247
 #, kde-format
 msgid "Connection failed"
 msgstr "Falha na conexão "
 
-#: package/contents/ui/DeviceItem.qml:255
+#: package/contents/ui/DeviceItem.qml:252
 #, kde-format
 msgid "Headset"
 msgstr "Fone de ouvido com microfone"
 
-#: package/contents/ui/DeviceItem.qml:261
+#: package/contents/ui/DeviceItem.qml:258
 #, kde-format
 msgid "Audio device"
 msgstr "Dispositivo de áudio"
 
-#: package/contents/ui/DeviceItem.qml:265
+#: package/contents/ui/DeviceItem.qml:262
 #, kde-format
 msgid "Keyboard"
 msgstr "Teclado"
 
-#: package/contents/ui/DeviceItem.qml:268
+#: package/contents/ui/DeviceItem.qml:265
 #, kde-format
 msgid "Mouse"
 msgstr "Mouse"
 
-#: package/contents/ui/DeviceItem.qml:271
+#: package/contents/ui/DeviceItem.qml:268
 #, kde-format
 msgid "Joypad"
 msgstr "Joypad"
 
-#: package/contents/ui/DeviceItem.qml:274
+#: package/contents/ui/DeviceItem.qml:271
 #, kde-format
 msgid "Drawing tablet"
 msgstr "Tablet de desenho"
 
-#: package/contents/ui/DeviceItem.qml:278
+#: package/contents/ui/DeviceItem.qml:275
 #, kde-format
 msgid "Phone"
 msgstr "Celular"
 
-#: package/contents/ui/DeviceItem.qml:281
+#: package/contents/ui/DeviceItem.qml:278
 #, kde-format
 msgid "Camera"
 msgstr "Câmera"
 
-#: package/contents/ui/DeviceItem.qml:284
+#: package/contents/ui/DeviceItem.qml:281
 #, kde-format
 msgid "Printer"
 msgstr "Impressora"
 
-#: package/contents/ui/DeviceItem.qml:291
+#: package/contents/ui/DeviceItem.qml:288
 #, kde-format
 msgid "File transfer"
 msgstr "Transferência de arquivo"
 
-#: package/contents/ui/DeviceItem.qml:294
+#: package/contents/ui/DeviceItem.qml:291
 #, kde-format
 msgid "Send file"
 msgstr "Enviar arquivo"
 
-#: package/contents/ui/DeviceItem.qml:297
+#: package/contents/ui/DeviceItem.qml:294
 #, kde-format
 msgid "Input"
 msgstr "Entrada"
 
-#: package/contents/ui/DeviceItem.qml:300
+#: package/contents/ui/DeviceItem.qml:297
 #, kde-format
 msgid "Audio"
 msgstr "Áudio"
 
-#: package/contents/ui/DeviceItem.qml:303
+#: package/contents/ui/DeviceItem.qml:300
 #, kde-format
 msgid "Network"
 msgstr "Rede"
 
-#: package/contents/ui/DeviceItem.qml:308
+#: package/contents/ui/DeviceItem.qml:305
 #, kde-format
 msgid "Other device"
 msgstr "Outro dispositivo"
 
-#: package/contents/ui/DeviceItem.qml:315 package/contents/ui/main.qml:74
+#: package/contents/ui/DeviceItem.qml:312 package/contents/ui/main.qml:74
 #: package/contents/ui/main.qml:83
 #, kde-format
 msgid "%1% Battery"
@@ -218,17 +213,17 @@ msgstr "%1% de bateria"
 msgid "Enable"
 msgstr "Habilitar"
 
-#: package/contents/ui/FullRepresentation.qml:165
+#: package/contents/ui/FullRepresentation.qml:145
 #, kde-format
 msgid "No Bluetooth adapters available"
 msgstr "Nenhum adaptador Bluetooth disponível"
 
-#: package/contents/ui/FullRepresentation.qml:167
+#: package/contents/ui/FullRepresentation.qml:147
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "O Bluetooth está desativado"
 
-#: package/contents/ui/FullRepresentation.qml:169
+#: package/contents/ui/FullRepresentation.qml:149
 #, kde-format
 msgid "No devices paired"
 msgstr "Nenhum dispositivo pareado"
@@ -301,6 +296,9 @@ msgstr "Ativar o Bluetooth"
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr "Mais ações"
+
+#~ msgid "Connected"
+#~ msgstr "Conectado"
 
 #~ msgid "Input device"
 #~ msgstr "Dispositivo de entrada"

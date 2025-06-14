@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-28 00:43+0000\n"
+"POT-Creation-Date: 2025-06-14 00:43+0000\n"
 "PO-Revision-Date: 2024-12-25 19:35+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -44,168 +44,163 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "यन्त्रं सज्जं नास्ति"
 
-#: package/contents/ui/DeviceItem.qml:39
+#: package/contents/ui/DeviceItem.qml:38
 #, kde-format
 msgid "Disconnect"
 msgstr "विच्छेदं कुर्वन्तु"
 
-#: package/contents/ui/DeviceItem.qml:39
+#: package/contents/ui/DeviceItem.qml:38
 #, kde-format
 msgid "Connect"
 msgstr "संयुज्"
 
-#: package/contents/ui/DeviceItem.qml:50
+#: package/contents/ui/DeviceItem.qml:49
 #, kde-format
 msgid "Browse Files"
 msgstr "सञ्चिकाः ब्राउज् कुर्वन्तु"
 
-#: package/contents/ui/DeviceItem.qml:61
+#: package/contents/ui/DeviceItem.qml:60
 #, kde-format
 msgid "Send File"
 msgstr "सञ्चिका प्रेषयतु"
 
-#: package/contents/ui/DeviceItem.qml:109
+#: package/contents/ui/DeviceItem.qml:108
 #, kde-format
 msgid "Copy"
 msgstr "प्रतिलिपि"
 
-#: package/contents/ui/DeviceItem.qml:205
+#: package/contents/ui/DeviceItem.qml:204
 #, kde-format
 msgid "Yes"
 msgstr "आम्‌"
 
-#: package/contents/ui/DeviceItem.qml:205
+#: package/contents/ui/DeviceItem.qml:204
 #, kde-format
 msgid "No"
 msgstr "नहि"
 
-#: package/contents/ui/DeviceItem.qml:211
+#: package/contents/ui/DeviceItem.qml:210
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: package/contents/ui/DeviceItem.qml:219
+#: package/contents/ui/DeviceItem.qml:218
 #, kde-format
 msgid "Remote Name"
 msgstr "दूरस्थ नाम"
 
-#: package/contents/ui/DeviceItem.qml:223
+#: package/contents/ui/DeviceItem.qml:222
 #, kde-format
 msgid "Address"
 msgstr "पत्रसङ्केतः"
 
-#: package/contents/ui/DeviceItem.qml:226
+#: package/contents/ui/DeviceItem.qml:225
 #, kde-format
 msgid "Paired"
 msgstr "युग्मितम्"
 
-#: package/contents/ui/DeviceItem.qml:229
+#: package/contents/ui/DeviceItem.qml:228
 #, kde-format
 msgid "Trusted"
 msgstr "विश्वासः"
 
-#: package/contents/ui/DeviceItem.qml:232
+#: package/contents/ui/DeviceItem.qml:231
 #, kde-format
 msgid "Adapter"
 msgstr "एडाप्टर"
 
-#: package/contents/ui/DeviceItem.qml:240
+#: package/contents/ui/DeviceItem.qml:239
 #, kde-format
 msgid "Connecting"
 msgstr "संयोजयन्"
 
-#: package/contents/ui/DeviceItem.qml:242
+#: package/contents/ui/DeviceItem.qml:241
 #, kde-format
 msgid "Disconnecting"
 msgstr "विच्छेदनम्"
 
-#: package/contents/ui/DeviceItem.qml:248
-#, kde-format
-msgid "Connected"
-msgstr "संबद्धः"
-
-#: package/contents/ui/DeviceItem.qml:250
+#: package/contents/ui/DeviceItem.qml:247
 #, kde-format
 msgid "Connection failed"
 msgstr "संयोजनं विफलम् अभवत्"
 
-#: package/contents/ui/DeviceItem.qml:255
+#: package/contents/ui/DeviceItem.qml:252
 #, kde-format
 msgid "Headset"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:261
+#: package/contents/ui/DeviceItem.qml:258
 #, kde-format
 msgid "Audio device"
 msgstr "श्रव्ययन्त्रम्"
 
-#: package/contents/ui/DeviceItem.qml:265
+#: package/contents/ui/DeviceItem.qml:262
 #, kde-format
 msgid "Keyboard"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:268
+#: package/contents/ui/DeviceItem.qml:265
 #, kde-format
 msgid "Mouse"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:271
+#: package/contents/ui/DeviceItem.qml:268
 #, kde-format
 msgid "Joypad"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:274
+#: package/contents/ui/DeviceItem.qml:271
 #, kde-format
 msgid "Drawing tablet"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:278
+#: package/contents/ui/DeviceItem.qml:275
 #, kde-format
 msgid "Phone"
 msgstr "फोनं"
 
-#: package/contents/ui/DeviceItem.qml:281
+#: package/contents/ui/DeviceItem.qml:278
 #, kde-format
 msgid "Camera"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:284
+#: package/contents/ui/DeviceItem.qml:281
 #, kde-format
 msgid "Printer"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:291
+#: package/contents/ui/DeviceItem.qml:288
 #, kde-format
 msgid "File transfer"
 msgstr "सञ्चिका स्थानान्तरणम्"
 
-#: package/contents/ui/DeviceItem.qml:294
+#: package/contents/ui/DeviceItem.qml:291
 #, kde-format
 msgid "Send file"
 msgstr "सञ्चिकां प्रेषयन्तु"
 
-#: package/contents/ui/DeviceItem.qml:297
+#: package/contents/ui/DeviceItem.qml:294
 #, kde-format
 msgid "Input"
 msgstr "निवेशः"
 
-#: package/contents/ui/DeviceItem.qml:300
+#: package/contents/ui/DeviceItem.qml:297
 #, kde-format
 msgid "Audio"
 msgstr "श्रव्यः"
 
-#: package/contents/ui/DeviceItem.qml:303
+#: package/contents/ui/DeviceItem.qml:300
 #, kde-format
 msgid "Network"
 msgstr "जालकृति"
 
-#: package/contents/ui/DeviceItem.qml:308
+#: package/contents/ui/DeviceItem.qml:305
 #, kde-format
 msgid "Other device"
 msgstr "अन्यत् यन्त्रम्"
 
-#: package/contents/ui/DeviceItem.qml:315 package/contents/ui/main.qml:74
+#: package/contents/ui/DeviceItem.qml:312 package/contents/ui/main.qml:74
 #: package/contents/ui/main.qml:83
 #, kde-format
 msgid "%1% Battery"
@@ -216,17 +211,17 @@ msgstr "%1% बैटरी"
 msgid "Enable"
 msgstr "सक्रियं करोतु"
 
-#: package/contents/ui/FullRepresentation.qml:165
+#: package/contents/ui/FullRepresentation.qml:145
 #, kde-format
 msgid "No Bluetooth adapters available"
 msgstr "ब्लूटूथ एडाप्टर् उपलब्धः नास्ति"
 
-#: package/contents/ui/FullRepresentation.qml:167
+#: package/contents/ui/FullRepresentation.qml:147
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "ब्लूटूथ् अक्षमम् अस्ति"
 
-#: package/contents/ui/FullRepresentation.qml:169
+#: package/contents/ui/FullRepresentation.qml:149
 #, kde-format
 msgid "No devices paired"
 msgstr "न यन्त्राणि युग्मिताः"
@@ -300,6 +295,9 @@ msgstr "ब्लूटूथं सक्षमं कुर्वन्तु"
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr ""
+
+#~ msgid "Connected"
+#~ msgstr "संबद्धः"
 
 #~ msgid "Input device"
 #~ msgstr "इनपुट् यन्त्रम्"
