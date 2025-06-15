@@ -292,6 +292,3 @@ msgstr "启用蓝牙"
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr "更多操作"
-
-#~ msgid "Connected"
-#~ msgstr "已连接"
