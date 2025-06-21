@@ -11,15 +11,15 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-14 00:43+0000\n"
-"PO-Revision-Date: 2025-06-02 00:06-0300\n"
-"Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
+"PO-Revision-Date: 2025-06-19 23:29-0300\n"
+"Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.04.1\n"
+"X-Generator: Lokalize 25.04.2\n"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format
@@ -221,7 +221,7 @@ msgstr "Nenhum adaptador Bluetooth disponível"
 #: package/contents/ui/FullRepresentation.qml:147
 #, kde-format
 msgid "Bluetooth is disabled"
-msgstr "O Bluetooth está desativado"
+msgstr "O Bluetooth está desabilitado"
 
 #: package/contents/ui/FullRepresentation.qml:149
 #, kde-format
@@ -236,7 +236,8 @@ msgstr "Bluetooth"
 #: package/contents/ui/main.qml:55
 #, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
-msgstr "O Bluetooth está desativado; clique com o botão do meio para habilitar"
+msgstr ""
+"O Bluetooth está desabilitado; clique com o botão do meio para habilitar"
 
 #: package/contents/ui/main.qml:59
 #, kde-format
@@ -289,7 +290,7 @@ msgstr "Configurar o &Bluetooth..."
 #: package/contents/ui/main.qml:134
 #, kde-format
 msgid "Enable Bluetooth"
-msgstr "Ativar o Bluetooth"
+msgstr "Habilitar o Bluetooth"
 
 #: package/contents/ui/Toolbar.qml:73
 #, kde-format
