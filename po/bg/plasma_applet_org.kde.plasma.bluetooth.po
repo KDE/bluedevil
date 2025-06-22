@@ -294,9 +294,3 @@ msgstr "Активиране на Bluetooth"
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr "Допълнителни действия"
-
-#~ msgid "Connected"
-#~ msgstr "Свързано"
-
-#~ msgid "Input device"
-#~ msgstr "Устройство за въвеждане"

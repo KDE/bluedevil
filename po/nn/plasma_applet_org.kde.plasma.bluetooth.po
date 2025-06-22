@@ -295,6 +295,3 @@ msgstr "Bruk Bluetooth"
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr ""
-
-#~ msgid "Connected"
-#~ msgstr "Tilkopla"
