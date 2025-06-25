@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-14 00:43+0000\n"
-"PO-Revision-Date: 2025-05-25 08:29+0300\n"
+"PO-Revision-Date: 2025-06-04 09:10+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -127,7 +127,7 @@ msgstr "Yhteydenotto epäonnistui"
 #: package/contents/ui/DeviceItem.qml:252
 #, kde-format
 msgid "Headset"
-msgstr ""
+msgstr "Kuulokemikrofoni"
 
 #: package/contents/ui/DeviceItem.qml:258
 #, kde-format
@@ -137,22 +137,22 @@ msgstr "Äänilaite"
 #: package/contents/ui/DeviceItem.qml:262
 #, kde-format
 msgid "Keyboard"
-msgstr ""
+msgstr "Näppäimistö"
 
 #: package/contents/ui/DeviceItem.qml:265
 #, kde-format
 msgid "Mouse"
-msgstr ""
+msgstr "Hiiri"
 
 #: package/contents/ui/DeviceItem.qml:268
 #, kde-format
 msgid "Joypad"
-msgstr ""
+msgstr "Peliohjain"
 
 #: package/contents/ui/DeviceItem.qml:271
 #, kde-format
 msgid "Drawing tablet"
-msgstr ""
+msgstr "Piirtopöytä"
 
 #: package/contents/ui/DeviceItem.qml:275
 #, kde-format
@@ -162,12 +162,12 @@ msgstr "Puhelin"
 #: package/contents/ui/DeviceItem.qml:278
 #, kde-format
 msgid "Camera"
-msgstr ""
+msgstr "Kamera"
 
 #: package/contents/ui/DeviceItem.qml:281
 #, kde-format
 msgid "Printer"
-msgstr ""
+msgstr "Tulostin"
 
 #: package/contents/ui/DeviceItem.qml:288
 #, kde-format
