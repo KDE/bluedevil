@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-30 00:44+0000\n"
+"POT-Creation-Date: 2025-07-01 00:43+0000\n"
 "PO-Revision-Date: 2025-06-04 07:27+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -289,12 +289,12 @@ msgstr "電話記憶體"
 msgid "External memory"
 msgstr "外部記憶體"
 
-#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:353
+#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:378
 #, kde-format
 msgid "Bluetooth is disabled."
 msgstr "藍牙裝置已關閉。"
 
-#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:354
+#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:379
 #, kde-format
 msgctxt "Action to enable Bluetooth adapter"
 msgid "Enable"
@@ -438,23 +438,23 @@ msgstr "新增藍牙裝置"
 msgid "Parent window handle."
 msgstr "上層視窗控制柄。"
 
-#: wizard/pages/discover.cpp:147
+#: wizard/pages/discover.cpp:170
 #, kde-format
 msgid "Select a device"
 msgstr "選擇裝置"
 
-#: wizard/pages/discover.cpp:346
+#: wizard/pages/discover.cpp:371
 #, kde-format
 msgctxt "Action to fix a problem"
 msgid "Fix it"
 msgstr "修正它"
 
-#: wizard/pages/discover.cpp:356
+#: wizard/pages/discover.cpp:381
 #, kde-format
 msgid "Your Bluetooth adapter is not pairable."
 msgstr "您的藍牙轉接器無法配對。"
 
-#: wizard/pages/discover.cpp:357
+#: wizard/pages/discover.cpp:382
 #, kde-format
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
@@ -466,20 +466,28 @@ msgstr "讓它能夠配對"
 msgid "Search…"
 msgstr "搜尋…"
 
+#. i18n: ectx: property (text), widget (QCheckBox, showUnnamedDevicesCheckBox)
+#: wizard/pages/discover.ui:42
+#, fuzzy, kde-format
+#| msgctxt "'Auto accept' option value"
+#| msgid "Trusted devices"
+msgid "Show unnamed devices"
+msgstr "信任的裝置"
+
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: wizard/pages/discover.ui:64
+#: wizard/pages/discover.ui:71
 #, kde-format
 msgid "Scanning…"
 msgstr "掃描中…"
 
 #. i18n: ectx: property (text), widget (QCheckBox, manualPin)
-#: wizard/pages/discover.ui:84
+#: wizard/pages/discover.ui:91
 #, kde-format
 msgid "Manual PIN:"
 msgstr "手動輸入 PIN 碼："
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, pinText)
-#: wizard/pages/discover.ui:112
+#: wizard/pages/discover.ui:119
 #, kde-format
 msgid "0000"
 msgstr "0000"
@@ -794,10 +802,6 @@ msgstr "「%1」裝置已設定完成，現可使用。"
 #~ msgctxt "'Auto accept' option value"
 #~ msgid "Never"
 #~ msgstr "永不"
-
-#~ msgctxt "'Auto accept' option value"
-#~ msgid "Trusted devices"
-#~ msgstr "信任的裝置"
 
 #~ msgctxt "'Auto accept' option value"
 #~ msgid "All devices"

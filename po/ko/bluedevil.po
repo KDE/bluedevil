@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-30 00:44+0000\n"
+"POT-Creation-Date: 2025-07-01 00:43+0000\n"
 "PO-Revision-Date: 2025-06-11 00:12+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -285,12 +285,12 @@ msgstr "폰 메모리"
 msgid "External memory"
 msgstr "외장 메모리"
 
-#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:353
+#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:378
 #, kde-format
 msgid "Bluetooth is disabled."
 msgstr "블루투스가 비활성화되어 있습니다."
 
-#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:354
+#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:379
 #, kde-format
 msgctxt "Action to enable Bluetooth adapter"
 msgid "Enable"
@@ -434,23 +434,23 @@ msgstr "블루투스 장치 추가"
 msgid "Parent window handle."
 msgstr "부모 창 핸들입니다."
 
-#: wizard/pages/discover.cpp:147
+#: wizard/pages/discover.cpp:170
 #, kde-format
 msgid "Select a device"
 msgstr "장치 선택"
 
-#: wizard/pages/discover.cpp:346
+#: wizard/pages/discover.cpp:371
 #, kde-format
 msgctxt "Action to fix a problem"
 msgid "Fix it"
 msgstr "고치기"
 
-#: wizard/pages/discover.cpp:356
+#: wizard/pages/discover.cpp:381
 #, kde-format
 msgid "Your Bluetooth adapter is not pairable."
 msgstr "블루투스 어댑터에서 페어링을 사용할 수 없습니다."
 
-#: wizard/pages/discover.cpp:357
+#: wizard/pages/discover.cpp:382
 #, kde-format
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
@@ -462,20 +462,28 @@ msgstr "페어링 가능하도록 변경"
 msgid "Search…"
 msgstr "검색…"
 
+#. i18n: ectx: property (text), widget (QCheckBox, showUnnamedDevicesCheckBox)
+#: wizard/pages/discover.ui:42
+#, fuzzy, kde-format
+#| msgctxt "'Auto accept' option value"
+#| msgid "Trusted devices"
+msgid "Show unnamed devices"
+msgstr "신뢰하는 장치"
+
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: wizard/pages/discover.ui:64
+#: wizard/pages/discover.ui:71
 #, kde-format
 msgid "Scanning…"
 msgstr "검색 중…"
 
 #. i18n: ectx: property (text), widget (QCheckBox, manualPin)
-#: wizard/pages/discover.ui:84
+#: wizard/pages/discover.ui:91
 #, kde-format
 msgid "Manual PIN:"
 msgstr "수동 PIN:"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, pinText)
-#: wizard/pages/discover.ui:112
+#: wizard/pages/discover.ui:119
 #, kde-format
 msgid "0000"
 msgstr "0000"
@@ -790,10 +798,6 @@ msgstr "'%1' 장치가 설정되었고 사용할 수 있습니다."
 #~ msgctxt "'Auto accept' option value"
 #~ msgid "Never"
 #~ msgstr "하지 않음"
-
-#~ msgctxt "'Auto accept' option value"
-#~ msgid "Trusted devices"
-#~ msgstr "신뢰하는 장치"
 
 #~ msgctxt "'Auto accept' option value"
 #~ msgid "All devices"

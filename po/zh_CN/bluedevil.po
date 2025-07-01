@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-30 00:44+0000\n"
+"POT-Creation-Date: 2025-07-01 00:43+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -287,12 +287,12 @@ msgstr "手机存储"
 msgid "External memory"
 msgstr "外部存储"
 
-#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:353
+#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:378
 #, kde-format
 msgid "Bluetooth is disabled."
 msgstr "蓝牙已禁用。"
 
-#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:354
+#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:379
 #, kde-format
 msgctxt "Action to enable Bluetooth adapter"
 msgid "Enable"
@@ -436,23 +436,23 @@ msgstr "添加蓝牙设备"
 msgid "Parent window handle."
 msgstr "父窗口处理。"
 
-#: wizard/pages/discover.cpp:147
+#: wizard/pages/discover.cpp:170
 #, kde-format
 msgid "Select a device"
 msgstr "选择设备"
 
-#: wizard/pages/discover.cpp:346
+#: wizard/pages/discover.cpp:371
 #, kde-format
 msgctxt "Action to fix a problem"
 msgid "Fix it"
 msgstr "修复"
 
-#: wizard/pages/discover.cpp:356
+#: wizard/pages/discover.cpp:381
 #, kde-format
 msgid "Your Bluetooth adapter is not pairable."
 msgstr "您的蓝牙适配器不允许配对。"
 
-#: wizard/pages/discover.cpp:357
+#: wizard/pages/discover.cpp:382
 #, kde-format
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
@@ -464,20 +464,26 @@ msgstr "允许配对"
 msgid "Search…"
 msgstr "搜索…"
 
+#. i18n: ectx: property (text), widget (QCheckBox, showUnnamedDevicesCheckBox)
+#: wizard/pages/discover.ui:42
+#, kde-format
+msgid "Show unnamed devices"
+msgstr ""
+
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: wizard/pages/discover.ui:64
+#: wizard/pages/discover.ui:71
 #, kde-format
 msgid "Scanning…"
 msgstr "正在扫描…"
 
 #. i18n: ectx: property (text), widget (QCheckBox, manualPin)
-#: wizard/pages/discover.ui:84
+#: wizard/pages/discover.ui:91
 #, kde-format
 msgid "Manual PIN:"
 msgstr "手动输入验证码 (PIN)："
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, pinText)
-#: wizard/pages/discover.ui:112
+#: wizard/pages/discover.ui:119
 #, kde-format
 msgid "0000"
 msgstr "0000"

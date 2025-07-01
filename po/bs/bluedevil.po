@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-30 00:44+0000\n"
+"POT-Creation-Date: 2025-07-01 00:43+0000\n"
 "PO-Revision-Date: 2014-11-11 13:36+0000\n"
 "Last-Translator: Naida Čongo <ncongo1@etf.unsa.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -327,13 +327,13 @@ msgstr ""
 msgid "External memory"
 msgstr ""
 
-#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:353
+#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:378
 #, fuzzy, kde-format
 #| msgid "Bluetooth is not enabled"
 msgid "Bluetooth is disabled."
 msgstr "Bluetooth nije omogućen"
 
-#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:354
+#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:379
 #, fuzzy, kde-format
 #| msgctxt "This device is a Tablet"
 #| msgid "Tablet"
@@ -487,24 +487,24 @@ msgstr "Bluetooth Uređaji"
 msgid "Parent window handle."
 msgstr ""
 
-#: wizard/pages/discover.cpp:147
+#: wizard/pages/discover.cpp:170
 #, kde-format
 msgid "Select a device"
 msgstr "Izbor uređaja"
 
-#: wizard/pages/discover.cpp:346
+#: wizard/pages/discover.cpp:371
 #, kde-format
 msgctxt "Action to fix a problem"
 msgid "Fix it"
 msgstr "Popravi to"
 
-#: wizard/pages/discover.cpp:356
+#: wizard/pages/discover.cpp:381
 #, fuzzy, kde-format
 #| msgid "Your default Bluetooth adapter is not visible for remote devices."
 msgid "Your Bluetooth adapter is not pairable."
 msgstr "Vaš podrazumijevani Bluetooth adapter nije vidljiv drugim uređajima."
 
-#: wizard/pages/discover.cpp:357
+#: wizard/pages/discover.cpp:382
 #, fuzzy, kde-format
 #| msgid "Discoverable"
 msgctxt "Action to make Bluetooth adapter pairable"
@@ -517,21 +517,28 @@ msgstr "Za otkrivanje"
 msgid "Search…"
 msgstr ""
 
+#. i18n: ectx: property (text), widget (QCheckBox, showUnnamedDevicesCheckBox)
+#: wizard/pages/discover.ui:42
+#, fuzzy, kde-format
+#| msgid "Browse devices"
+msgid "Show unnamed devices"
+msgstr "Pregledaj uređaje"
+
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: wizard/pages/discover.ui:64
+#: wizard/pages/discover.ui:71
 #, fuzzy, kde-format
 #| msgid "Scanning"
 msgid "Scanning…"
 msgstr "Skeniranje"
 
 #. i18n: ectx: property (text), widget (QCheckBox, manualPin)
-#: wizard/pages/discover.ui:84
+#: wizard/pages/discover.ui:91
 #, kde-format
 msgid "Manual PIN:"
 msgstr "Ručni PIN:"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, pinText)
-#: wizard/pages/discover.ui:112
+#: wizard/pages/discover.ui:119
 #, kde-format
 msgid "0000"
 msgstr "0000"
@@ -1053,9 +1060,6 @@ msgstr ""
 
 #~ msgid "Turn Bluetooth On"
 #~ msgstr "Uključi Bluetooth"
-
-#~ msgid "Browse devices"
-#~ msgstr "Pregledaj uređaje"
 
 #~ msgid "Known Devices"
 #~ msgstr "Poznati uređaji"

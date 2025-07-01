@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-30 00:44+0000\n"
+"POT-Creation-Date: 2025-07-01 00:43+0000\n"
 "PO-Revision-Date: 2025-06-09 15:04+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -290,12 +290,12 @@ msgstr "Memoria del telefono"
 msgid "External memory"
 msgstr "Memoria esterna"
 
-#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:353
+#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:378
 #, kde-format
 msgid "Bluetooth is disabled."
 msgstr "Il Bluetooth non è abilitato."
 
-#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:354
+#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:379
 #, kde-format
 msgctxt "Action to enable Bluetooth adapter"
 msgid "Enable"
@@ -439,23 +439,23 @@ msgstr "Aggiungi dispositivo Bluetooth"
 msgid "Parent window handle."
 msgstr "Handle della finestra genitrice."
 
-#: wizard/pages/discover.cpp:147
+#: wizard/pages/discover.cpp:170
 #, kde-format
 msgid "Select a device"
 msgstr "Scegli un dispositivo"
 
-#: wizard/pages/discover.cpp:346
+#: wizard/pages/discover.cpp:371
 #, kde-format
 msgctxt "Action to fix a problem"
 msgid "Fix it"
 msgstr "Risolvi il problema"
 
-#: wizard/pages/discover.cpp:356
+#: wizard/pages/discover.cpp:381
 #, kde-format
 msgid "Your Bluetooth adapter is not pairable."
 msgstr "Non è possibile associarsi con il tuo adattatore Bluetooth."
 
-#: wizard/pages/discover.cpp:357
+#: wizard/pages/discover.cpp:382
 #, kde-format
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
@@ -467,20 +467,27 @@ msgstr "Rendi associabile"
 msgid "Search…"
 msgstr "Cerca…"
 
+#. i18n: ectx: property (text), widget (QCheckBox, showUnnamedDevicesCheckBox)
+#: wizard/pages/discover.ui:42
+#, fuzzy, kde-format
+#| msgid "Browse devices"
+msgid "Show unnamed devices"
+msgstr "Sfoglia dispositivi"
+
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: wizard/pages/discover.ui:64
+#: wizard/pages/discover.ui:71
 #, kde-format
 msgid "Scanning…"
 msgstr "Scansione…"
 
 #. i18n: ectx: property (text), widget (QCheckBox, manualPin)
-#: wizard/pages/discover.ui:84
+#: wizard/pages/discover.ui:91
 #, kde-format
 msgid "Manual PIN:"
 msgstr "PIN manuale:"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, pinText)
-#: wizard/pages/discover.ui:112
+#: wizard/pages/discover.ui:119
 #, kde-format
 msgid "0000"
 msgstr "0000"
@@ -959,9 +966,6 @@ msgstr "Il dispositivo «%1» è stato configurato e può essere usato."
 
 #~ msgid "Turn Bluetooth On"
 #~ msgstr "Attiva il Bluetooth"
-
-#~ msgid "Browse devices"
-#~ msgstr "Sfoglia dispositivi"
 
 #~ msgid "Known Devices"
 #~ msgstr "Dispositivi conosciuti"

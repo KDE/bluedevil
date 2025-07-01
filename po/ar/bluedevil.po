@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-30 00:44+0000\n"
+"POT-Creation-Date: 2025-07-01 00:43+0000\n"
 "PO-Revision-Date: 2025-05-31 10:54+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -287,12 +287,12 @@ msgstr "ذاكرة الهاتف"
 msgid "External memory"
 msgstr "الذّاكرة الخارجيّة"
 
-#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:353
+#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:378
 #, kde-format
 msgid "Bluetooth is disabled."
 msgstr "بلوتوث معطّلة."
 
-#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:354
+#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:379
 #, kde-format
 msgctxt "Action to enable Bluetooth adapter"
 msgid "Enable"
@@ -436,23 +436,23 @@ msgstr "أضف جهاز بلوتوث"
 msgid "Parent window handle."
 msgstr "مقبض النافذة الأم."
 
-#: wizard/pages/discover.cpp:147
+#: wizard/pages/discover.cpp:170
 #, kde-format
 msgid "Select a device"
 msgstr "اختر جهازًا"
 
-#: wizard/pages/discover.cpp:346
+#: wizard/pages/discover.cpp:371
 #, kde-format
 msgctxt "Action to fix a problem"
 msgid "Fix it"
 msgstr "أصلحها"
 
-#: wizard/pages/discover.cpp:356
+#: wizard/pages/discover.cpp:381
 #, kde-format
 msgid "Your Bluetooth adapter is not pairable."
 msgstr "محوّل بلوتوث لا يمكن الاقتران به."
 
-#: wizard/pages/discover.cpp:357
+#: wizard/pages/discover.cpp:382
 #, kde-format
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
@@ -464,20 +464,28 @@ msgstr "اجعله قابل للاقتران"
 msgid "Search…"
 msgstr "ابحث..."
 
+#. i18n: ectx: property (text), widget (QCheckBox, showUnnamedDevicesCheckBox)
+#: wizard/pages/discover.ui:42
+#, fuzzy, kde-format
+#| msgctxt "'Auto accept' option value"
+#| msgid "Trusted devices"
+msgid "Show unnamed devices"
+msgstr "الأجهزة الموثوقة"
+
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: wizard/pages/discover.ui:64
+#: wizard/pages/discover.ui:71
 #, kde-format
 msgid "Scanning…"
 msgstr "يكتشف..."
 
 #. i18n: ectx: property (text), widget (QCheckBox, manualPin)
-#: wizard/pages/discover.ui:84
+#: wizard/pages/discover.ui:91
 #, kde-format
 msgid "Manual PIN:"
 msgstr "رمز يدويّ:"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, pinText)
-#: wizard/pages/discover.ui:112
+#: wizard/pages/discover.ui:119
 #, kde-format
 msgid "0000"
 msgstr "0000"
@@ -818,10 +826,6 @@ msgstr "الجهاز '%1' أُعد ويمكن استخدامه الآن."
 #~ msgctxt "'Auto accept' option value"
 #~ msgid "Never"
 #~ msgstr "أبدًا"
-
-#~ msgctxt "'Auto accept' option value"
-#~ msgid "Trusted devices"
-#~ msgstr "الأجهزة الموثوقة"
 
 #~ msgctxt "'Auto accept' option value"
 #~ msgid "All devices"

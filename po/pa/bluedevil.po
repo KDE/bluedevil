@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-30 00:44+0000\n"
+"POT-Creation-Date: 2025-07-01 00:43+0000\n"
 "PO-Revision-Date: 2024-01-03 14:20-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -290,12 +290,12 @@ msgstr "ਫ਼ੋਨ ਮੈਮੋਰੀ"
 msgid "External memory"
 msgstr "ਬਾਹਰੀ ਮੈਮੋਰੀ"
 
-#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:353
+#: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:378
 #, kde-format
 msgid "Bluetooth is disabled."
 msgstr "ਬਲੂਟੁੱਥ ਅਸਮਰੱਥ ਹੈ।"
 
-#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:354
+#: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:379
 #, kde-format
 msgctxt "Action to enable Bluetooth adapter"
 msgid "Enable"
@@ -439,23 +439,23 @@ msgstr "ਬਲੂਟੁੱਥ ਡਿਵਾਈਸ ਜੋੜੋ"
 msgid "Parent window handle."
 msgstr ""
 
-#: wizard/pages/discover.cpp:147
+#: wizard/pages/discover.cpp:170
 #, kde-format
 msgid "Select a device"
 msgstr "ਡਿਵਾਈਸ ਚੁਣੋ"
 
-#: wizard/pages/discover.cpp:346
+#: wizard/pages/discover.cpp:371
 #, kde-format
 msgctxt "Action to fix a problem"
 msgid "Fix it"
 msgstr "ਠੀਕ ਕਰੋ"
 
-#: wizard/pages/discover.cpp:356
+#: wizard/pages/discover.cpp:381
 #, kde-format
 msgid "Your Bluetooth adapter is not pairable."
 msgstr "ਤੁਹਾਡੇ ਬਲੂਟੁੱਥ ਐਡਪਟਰ ਜੋੜਾ (ਪੇਅਰ) ਬਣਾਉਣ ਯੋਗ ਨਹੀਂ ਹੈ।"
 
-#: wizard/pages/discover.cpp:357
+#: wizard/pages/discover.cpp:382
 #, kde-format
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
@@ -467,20 +467,28 @@ msgstr "ਪੇਅਰ ਕਰਨ ਯੋਗ ਬਣਾਓ"
 msgid "Search…"
 msgstr "…ਖੋਜੋ"
 
+#. i18n: ectx: property (text), widget (QCheckBox, showUnnamedDevicesCheckBox)
+#: wizard/pages/discover.ui:42
+#, fuzzy, kde-format
+#| msgctxt "'Auto accept' option value"
+#| msgid "Trusted devices"
+msgid "Show unnamed devices"
+msgstr "ਭਰੋਸੇਯੋਗ ਡਿਵਾਈਸ"
+
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: wizard/pages/discover.ui:64
+#: wizard/pages/discover.ui:71
 #, kde-format
 msgid "Scanning…"
 msgstr "…ਸਕੈਨ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
 
 #. i18n: ectx: property (text), widget (QCheckBox, manualPin)
-#: wizard/pages/discover.ui:84
+#: wizard/pages/discover.ui:91
 #, kde-format
 msgid "Manual PIN:"
 msgstr "ਖੁਦ ਪਿੰਨ ਦਿਓ:"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, pinText)
-#: wizard/pages/discover.ui:112
+#: wizard/pages/discover.ui:119
 #, kde-format
 msgid "0000"
 msgstr "0000"
@@ -798,10 +806,6 @@ msgstr "ਡਿਵਾਈਸ '%1' ਸੈਟ ਅੱਪ ਪੂਰਾ ਹੋਇਆ �
 #~ msgctxt "'Auto accept' option value"
 #~ msgid "Never"
 #~ msgstr "ਕਦੇ ਨਹੀਂ"
-
-#~ msgctxt "'Auto accept' option value"
-#~ msgid "Trusted devices"
-#~ msgstr "ਭਰੋਸੇਯੋਗ ਡਿਵਾਈਸ"
 
 #~ msgctxt "'Auto accept' option value"
 #~ msgid "All devices"
