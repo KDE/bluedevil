@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-01 00:43+0000\n"
-"PO-Revision-Date: 2025-05-30 06:47+0200\n"
+"PO-Revision-Date: 2025-07-01 07:17+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -470,10 +470,9 @@ msgstr "Išči…"
 
 #. i18n: ectx: property (text), widget (QCheckBox, showUnnamedDevicesCheckBox)
 #: wizard/pages/discover.ui:42
-#, fuzzy, kde-format
-#| msgid "Browse devices"
+#, kde-format
 msgid "Show unnamed devices"
-msgstr "Brskanje po napravah"
+msgstr "Prikaži neimenovane naprave"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: wizard/pages/discover.ui:71

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-01 00:43+0000\n"
-"PO-Revision-Date: 2025-05-30 04:48+0200\n"
+"PO-Revision-Date: 2025-07-01 04:07+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -467,7 +467,7 @@ msgstr "ძებნა…"
 #: wizard/pages/discover.ui:42
 #, kde-format
 msgid "Show unnamed devices"
-msgstr ""
+msgstr "უსახელო მოწყობილობების ჩვენება"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: wizard/pages/discover.ui:71
