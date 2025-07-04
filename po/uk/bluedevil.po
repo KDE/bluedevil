@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-01 00:43+0000\n"
+"POT-Creation-Date: 2025-07-04 00:43+0000\n"
 "PO-Revision-Date: 2025-07-01 15:32+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -435,11 +435,6 @@ msgstr "Завершити"
 msgid "Add Bluetooth Device"
 msgstr "Додати пристрій Bluetooth"
 
-#: wizard/main.cpp:51
-#, kde-format
-msgid "Parent window handle."
-msgstr "Елемент керування батьківським вікном."
-
 #: wizard/pages/discover.cpp:170
 #, kde-format
 msgid "Select a device"
@@ -566,6 +561,9 @@ msgstr "Пристрій налаштовано. Тепер ним можна к
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "Пристрій «%1» налаштовано. Тепер ним можна користуватися."
+
+#~ msgid "Parent window handle."
+#~ msgstr "Елемент керування батьківським вікном."
 
 #~ msgid "Bluetooth"
 #~ msgstr "Bluetooth"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-01 00:43+0000\n"
+"POT-Creation-Date: 2025-07-04 00:43+0000\n"
 "PO-Revision-Date: 2025-06-11 00:12+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -429,11 +429,6 @@ msgstr "완료"
 msgid "Add Bluetooth Device"
 msgstr "블루투스 장치 추가"
 
-#: wizard/main.cpp:51
-#, kde-format
-msgid "Parent window handle."
-msgstr "부모 창 핸들입니다."
-
 #: wizard/pages/discover.cpp:170
 #, kde-format
 msgid "Select a device"
@@ -558,6 +553,9 @@ msgstr "장치가 설정되었고 사용할 수 있습니다."
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "'%1' 장치가 설정되었고 사용할 수 있습니다."
+
+#~ msgid "Parent window handle."
+#~ msgstr "부모 창 핸들입니다."
 
 #~ msgid "Bluetooth"
 #~ msgstr "블루투스"

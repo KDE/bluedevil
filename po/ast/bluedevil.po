@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-01 00:43+0000\n"
+"POT-Creation-Date: 2025-07-04 00:43+0000\n"
 "PO-Revision-Date: 2024-03-15 01:17+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: Assamese <alministradores@softastur.org>\n"
@@ -428,11 +428,6 @@ msgstr "Finar"
 #: wizard/main.cpp:26 wizard/main.cpp:28
 #, kde-format
 msgid "Add Bluetooth Device"
-msgstr ""
-
-#: wizard/main.cpp:51
-#, kde-format
-msgid "Parent window handle."
 msgstr ""
 
 #: wizard/pages/discover.cpp:170

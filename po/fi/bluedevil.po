@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-01 00:43+0000\n"
+"POT-Creation-Date: 2025-07-04 00:43+0000\n"
 "PO-Revision-Date: 2025-06-04 09:10+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -438,11 +438,6 @@ msgstr "Valmis"
 msgid "Add Bluetooth Device"
 msgstr "Lisää Bluetooth-laite"
 
-#: wizard/main.cpp:51
-#, kde-format
-msgid "Parent window handle."
-msgstr "Emoikkunan kahva."
-
 #: wizard/pages/discover.cpp:170
 #, kde-format
 msgid "Select a device"
@@ -567,6 +562,9 @@ msgstr "Laite on asetettu ja valmis käyttöön."
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "Laite ”%1” on asetettu ja valmis käyttöön."
+
+#~ msgid "Parent window handle."
+#~ msgstr "Emoikkunan kahva."
 
 #~ msgid "Bluetooth"
 #~ msgstr "Bluetooth"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-01 00:43+0000\n"
+"POT-Creation-Date: 2025-07-04 00:43+0000\n"
 "PO-Revision-Date: 2025-07-02 13:23+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -433,11 +433,6 @@ msgstr "סיום"
 msgid "Add Bluetooth Device"
 msgstr "הוספת התקן בלוטות׳"
 
-#: wizard/main.cpp:51
-#, kde-format
-msgid "Parent window handle."
-msgstr "ידית חלון הורה."
-
 #: wizard/pages/discover.cpp:170
 #, kde-format
 msgid "Select a device"
@@ -560,6 +555,9 @@ msgstr "ההתקן הוגדר וניתן להשתמש בו מעתה."
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "ההתקן ‚%1’ הוגדר וניתן להשתמש בו מעתה."
+
+#~ msgid "Parent window handle."
+#~ msgstr "ידית חלון הורה."
 
 #, fuzzy
 #~| msgid "Bluetooth Daemon"

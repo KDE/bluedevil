@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-01 00:43+0000\n"
+"POT-Creation-Date: 2025-07-04 00:43+0000\n"
 "PO-Revision-Date: 2025-07-01 04:07+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -430,11 +430,6 @@ msgstr "დასრულება"
 msgid "Add Bluetooth Device"
 msgstr "ბლუთუზის  მოწყობილობის დამატება"
 
-#: wizard/main.cpp:51
-#, kde-format
-msgid "Parent window handle."
-msgstr "მშობელი ფანჯრის დამმუშავებელი."
-
 #: wizard/pages/discover.cpp:170
 #, kde-format
 msgid "Select a device"
@@ -558,3 +553,6 @@ msgstr "მოწყობილობა მორგებულია და 
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "მოწყობილობა \"%1\" მორგებულია და შეგიძლიათ, გამოიყენოთ."
+
+#~ msgid "Parent window handle."
+#~ msgstr "მშობელი ფანჯრის დამმუშავებელი."

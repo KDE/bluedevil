@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-01 00:43+0000\n"
+"POT-Creation-Date: 2025-07-04 00:43+0000\n"
 "PO-Revision-Date: 2025-05-31 09:21+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -447,11 +447,6 @@ msgstr "Terminer"
 msgid "Add Bluetooth Device"
 msgstr "Ajouter un Périphérique Bluetooth"
 
-#: wizard/main.cpp:51
-#, kde-format
-msgid "Parent window handle."
-msgstr "Poignée de fenêtre parent."
-
 #: wizard/pages/discover.cpp:170
 #, kde-format
 msgid "Select a device"
@@ -582,6 +577,9 @@ msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr ""
 "Le périphérique « %1 » a été configuré, vous pouvez désormais l'utiliser."
+
+#~ msgid "Parent window handle."
+#~ msgstr "Poignée de fenêtre parent."
 
 #~ msgid "Bluetooth"
 #~ msgstr "Bluetooth"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-01 00:43+0000\n"
+"POT-Creation-Date: 2025-07-04 00:43+0000\n"
 "PO-Revision-Date: 2025-07-02 16:51+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -435,11 +435,6 @@ msgstr "Bitir"
 msgid "Add Bluetooth Device"
 msgstr "Bluetooth Aygıtı Ekle"
 
-#: wizard/main.cpp:51
-#, kde-format
-msgid "Parent window handle."
-msgstr "Üst pencere tutacı."
-
 #: wizard/pages/discover.cpp:170
 #, kde-format
 msgid "Select a device"
@@ -565,3 +560,6 @@ msgstr "Aygıt kuruldu ve şu anda kullanılabilir."
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "'%1' aygıtı kuruldu ve şu anda kullanılabilir."
+
+#~ msgid "Parent window handle."
+#~ msgstr "Üst pencere tutacı."

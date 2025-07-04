@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-01 00:43+0000\n"
-"PO-Revision-Date: 2025-06-09 15:04+0200\n"
+"POT-Creation-Date: 2025-07-04 00:43+0000\n"
+"PO-Revision-Date: 2025-07-03 12:48+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -434,11 +434,6 @@ msgstr "Fine"
 msgid "Add Bluetooth Device"
 msgstr "Aggiungi dispositivo Bluetooth"
 
-#: wizard/main.cpp:51
-#, kde-format
-msgid "Parent window handle."
-msgstr "Handle della finestra genitrice."
-
 #: wizard/pages/discover.cpp:170
 #, kde-format
 msgid "Select a device"
@@ -469,10 +464,9 @@ msgstr "Cerca…"
 
 #. i18n: ectx: property (text), widget (QCheckBox, showUnnamedDevicesCheckBox)
 #: wizard/pages/discover.ui:42
-#, fuzzy, kde-format
-#| msgid "Browse devices"
+#, kde-format
 msgid "Show unnamed devices"
-msgstr "Sfoglia dispositivi"
+msgstr "Mostra i dispositivi senza nome"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: wizard/pages/discover.ui:71
@@ -564,6 +558,9 @@ msgstr "Il dispositivo è stato configurato e può essere usato."
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "Il dispositivo «%1» è stato configurato e può essere usato."
+
+#~ msgid "Parent window handle."
+#~ msgstr "Handle della finestra genitrice."
 
 #~ msgid "Bluetooth"
 #~ msgstr "Bluetooth"

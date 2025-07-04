@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-01 00:43+0000\n"
-"PO-Revision-Date: 2025-05-30 21:09+0200\n"
+"POT-Creation-Date: 2025-07-04 00:43+0000\n"
+"PO-Revision-Date: 2025-07-03 15:36+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -432,11 +432,6 @@ msgstr "Slutför"
 msgid "Add Bluetooth Device"
 msgstr "Lägg till Blåtandsenheter"
 
-#: wizard/main.cpp:51
-#, kde-format
-msgid "Parent window handle."
-msgstr "Grepp för överliggande fönster."
-
 #: wizard/pages/discover.cpp:170
 #, kde-format
 msgid "Select a device"
@@ -467,10 +462,9 @@ msgstr "Sök…"
 
 #. i18n: ectx: property (text), widget (QCheckBox, showUnnamedDevicesCheckBox)
 #: wizard/pages/discover.ui:42
-#, fuzzy, kde-format
-#| msgid "Browse devices"
+#, kde-format
 msgid "Show unnamed devices"
-msgstr "Bläddra bland enheter"
+msgstr "Visa namnlösa enheter"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: wizard/pages/discover.ui:71
@@ -561,6 +555,9 @@ msgstr "Enheten har ställts in och kan nu användas."
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "Enheten '%1' har ställts in och kan nu användas."
+
+#~ msgid "Parent window handle."
+#~ msgstr "Grepp för överliggande fönster."
 
 #~ msgid "Bluetooth"
 #~ msgstr "Blåtand"

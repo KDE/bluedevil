@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-01 00:43+0000\n"
+"POT-Creation-Date: 2025-07-04 00:43+0000\n"
 "PO-Revision-Date: 2021-09-17 23:44+0900\n"
 "Last-Translator: Tomohiro Hyakutake <tomhioo@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -442,11 +442,6 @@ msgstr "完了"
 #| msgid "Bluetooth Device Wizard"
 msgid "Add Bluetooth Device"
 msgstr "Bluetooth デバイスウィザード"
-
-#: wizard/main.cpp:51
-#, kde-format
-msgid "Parent window handle."
-msgstr ""
 
 #: wizard/pages/discover.cpp:170
 #, kde-format

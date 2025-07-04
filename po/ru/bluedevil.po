@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-01 00:43+0000\n"
+"POT-Creation-Date: 2025-07-04 00:43+0000\n"
 "PO-Revision-Date: 2025-06-30 15:19+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -438,11 +438,6 @@ msgstr "Готово"
 msgid "Add Bluetooth Device"
 msgstr "Добавление устройства Bluetooth"
 
-#: wizard/main.cpp:51
-#, kde-format
-msgid "Parent window handle."
-msgstr "Дескриптор родительского окна."
-
 #: wizard/pages/discover.cpp:170
 #, kde-format
 msgid "Select a device"
@@ -569,6 +564,9 @@ msgstr "Устройство настроено и готово к работе.
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "Устройство «%1» настроено и готово к работе."
+
+#~ msgid "Parent window handle."
+#~ msgstr "Дескриптор родительского окна."
 
 #~ msgid "Bluetooth"
 #~ msgstr "Bluetooth"

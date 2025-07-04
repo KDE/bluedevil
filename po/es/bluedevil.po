@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-01 00:43+0000\n"
+"POT-Creation-Date: 2025-07-04 00:43+0000\n"
 "PO-Revision-Date: 2025-07-01 12:27+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -434,11 +434,6 @@ msgstr "Finalizar"
 msgid "Add Bluetooth Device"
 msgstr "Añadir dispositivo Bluetooth"
 
-#: wizard/main.cpp:51
-#, kde-format
-msgid "Parent window handle."
-msgstr "Manejador de la ventana padre."
-
 #: wizard/pages/discover.cpp:170
 #, kde-format
 msgid "Select a device"
@@ -563,3 +558,6 @@ msgstr "El dispositivo se ha configurado y ya se puede usar."
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "El dispositivo «%1» se ha configurado y ya se puede usar."
+
+#~ msgid "Parent window handle."
+#~ msgstr "Manejador de la ventana padre."

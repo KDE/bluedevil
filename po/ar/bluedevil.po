@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-01 00:43+0000\n"
+"POT-Creation-Date: 2025-07-04 00:43+0000\n"
 "PO-Revision-Date: 2025-07-03 09:55+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -431,11 +431,6 @@ msgstr "أنهِ"
 msgid "Add Bluetooth Device"
 msgstr "أضف جهاز بلوتوث"
 
-#: wizard/main.cpp:51
-#, kde-format
-msgid "Parent window handle."
-msgstr "مقبض النافذة الأم."
-
 #: wizard/pages/discover.cpp:170
 #, kde-format
 msgid "Select a device"
@@ -558,6 +553,9 @@ msgstr "أُعد الجهاز ويمكن استخدامه الآن."
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "الجهاز '%1' أُعد ويمكن استخدامه الآن."
+
+#~ msgid "Parent window handle."
+#~ msgstr "مقبض النافذة الأم."
 
 #~ msgid "Bluetooth"
 #~ msgstr "بلوتوث"

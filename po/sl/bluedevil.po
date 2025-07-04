@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-01 00:43+0000\n"
+"POT-Creation-Date: 2025-07-04 00:43+0000\n"
 "PO-Revision-Date: 2025-07-01 07:17+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -435,11 +435,6 @@ msgstr "Končaj"
 msgid "Add Bluetooth Device"
 msgstr "Dodaj Bluetooth napravo"
 
-#: wizard/main.cpp:51
-#, kde-format
-msgid "Parent window handle."
-msgstr "Ročka nadrejenega okna."
-
 #: wizard/pages/discover.cpp:170
 #, kde-format
 msgid "Select a device"
@@ -563,6 +558,9 @@ msgstr "Naprava je nastavljena in je pripravljena za uporabo."
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "Naprava '%1' je bila nastavljena in je pripravljena za uporabo."
+
+#~ msgid "Parent window handle."
+#~ msgstr "Ročka nadrejenega okna."
 
 #~ msgid "Bluetooth"
 #~ msgstr "Bluetooth"

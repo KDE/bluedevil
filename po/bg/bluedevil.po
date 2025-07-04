@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-01 00:43+0000\n"
+"POT-Creation-Date: 2025-07-04 00:43+0000\n"
 "PO-Revision-Date: 2025-05-31 10:45+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -431,11 +431,6 @@ msgstr "Завършено"
 msgid "Add Bluetooth Device"
 msgstr "Добавяне на Bluetooth устройство"
 
-#: wizard/main.cpp:51
-#, kde-format
-msgid "Parent window handle."
-msgstr "Манипулатор на родителски прозорец."
-
 #: wizard/pages/discover.cpp:170
 #, kde-format
 msgid "Select a device"
@@ -560,3 +555,6 @@ msgstr "Устройството е настроено и вече може да
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "Устройството „%1“ беше конфигурирано и сега може да се използва."
+
+#~ msgid "Parent window handle."
+#~ msgstr "Манипулатор на родителски прозорец."
