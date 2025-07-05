@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-05 03:22+0000\n"
+"POT-Creation-Date: 2025-07-05 05:54+0000\n"
 "PO-Revision-Date: 2022-11-15 20:37+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -133,6 +133,18 @@ msgid ""
 msgstr ""
 "Трябва да се въведе ПИН, за да се сдвои компютърът с %1. Моля, въведете го "
 "по-долу."
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: kded/helpers/requestpin.ui:52
+#, kde-format
+msgid "PIN:"
+msgstr "ПИН код:"
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, pin)
+#: kded/helpers/requestpin.ui:65
+#, kde-format
+msgid "1234"
+msgstr "1234"
 
 #: kded/receivefilejob.cpp:132
 #, kde-format
@@ -309,7 +321,9 @@ msgstr "Връзката с %1 е неуспешна: %2"
 msgid "Open file…"
 msgstr "Отваряне на файл…"
 
+#. i18n: ectx: property (text), widget (KSqueezedTextLabel, selectLbl)
 #: sendfile/pages/selectdeviceandfilespage.cpp:58
+#: sendfile/pages/selectfilediscover.ui:99
 #, kde-format
 msgid "Select one or more files:"
 msgstr "Изберете един или повече файлове:"
@@ -318,6 +332,12 @@ msgstr "Изберете един или повече файлове:"
 #, kde-format
 msgid "Selected files: <b>%1</b>"
 msgstr "Избрани файлове: <b>%1</b>"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: sendfile/pages/selectfilediscover.ui:38
+#, kde-format
+msgid "Select a device from the list:"
+msgstr "Изберете устройство от списъка:"
 
 #: sendfile/pages/selectfilespage.cpp:46
 #, kde-format
@@ -345,6 +365,18 @@ msgstr "Отказ"
 msgctxt "@info:status %1 error message"
 msgid "Failed to start org.bluez.obex service: %1"
 msgstr "Стартирането на услугата org.bluez.obex е неуспешно: %1"
+
+#. i18n: ectx: label, entry (saveUrl), group (General)
+#: settings/filereceiver.kcfg:11
+#, kde-format
+msgid "Save received files to:"
+msgstr "Запазване на получените файлове в:"
+
+#. i18n: ectx: label, entry (autoAccept), group (General)
+#: settings/filereceiver.kcfg:15
+#, kde-format
+msgid "Whether allow to modify shared files"
+msgstr "Позволява да се модифицират споделени файлове"
 
 #: wizard/bluewizard.cpp:57
 #, kde-format
@@ -384,6 +416,30 @@ msgstr "Вашият Bluetooth адаптер не може да бъде свъ
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
 msgstr "Установяване на връзка"
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, searchField)
+#: wizard/pages/discover.ui:19
+#, kde-format
+msgid "Search…"
+msgstr "Търсене…"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: wizard/pages/discover.ui:64
+#, kde-format
+msgid "Scanning…"
+msgstr "Сканиране…"
+
+#. i18n: ectx: property (text), widget (QCheckBox, manualPin)
+#: wizard/pages/discover.ui:84
+#, kde-format
+msgid "Manual PIN:"
+msgstr "Ръчно въвеждане на ПИН:"
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, pinText)
+#: wizard/pages/discover.ui:112
+#, kde-format
+msgid "0000"
+msgstr "0000"
 
 #: wizard/pages/fail.cpp:37
 #, kde-format
@@ -457,30 +513,3 @@ msgstr "Устройството е настроено и вече може да
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "Устройството \"%1\" беше конфигурирано и сега може да се използва."
-
-#~ msgid "PIN:"
-#~ msgstr "ПИН код:"
-
-#~ msgid "1234"
-#~ msgstr "1234"
-
-#~ msgid "Select a device from the list:"
-#~ msgstr "Изберете устройство от списъка:"
-
-#~ msgid "Save received files to:"
-#~ msgstr "Запазване на получените файлове в:"
-
-#~ msgid "Whether allow to modify shared files"
-#~ msgstr "Позволява да се модифицират споделени файлове"
-
-#~ msgid "Search…"
-#~ msgstr "Търсене…"
-
-#~ msgid "Scanning…"
-#~ msgstr "Сканиране…"
-
-#~ msgid "Manual PIN:"
-#~ msgstr "Ръчно въвеждане на ПИН:"
-
-#~ msgid "0000"
-#~ msgstr "0000"

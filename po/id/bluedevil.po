@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-05 03:22+0000\n"
+"POT-Creation-Date: 2025-07-05 05:54+0000\n"
 "PO-Revision-Date: 2023-05-28 11:25+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -137,6 +137,18 @@ msgid ""
 msgstr ""
 "Agar tersandingnya komputer ini dengan %1, kamu harus memasukkan sebuah PIN. "
 "Silakan lakukan itu di bawah ini."
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: kded/helpers/requestpin.ui:52
+#, kde-format
+msgid "PIN:"
+msgstr "PIN:"
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, pin)
+#: kded/helpers/requestpin.ui:65
+#, kde-format
+msgid "1234"
+msgstr "1234"
 
 #: kded/receivefilejob.cpp:132
 #, kde-format
@@ -313,7 +325,9 @@ msgstr "Koneksi ke %1 telah gagal: %2"
 msgid "Open file…"
 msgstr "Buka file..."
 
+#. i18n: ectx: property (text), widget (KSqueezedTextLabel, selectLbl)
 #: sendfile/pages/selectdeviceandfilespage.cpp:58
+#: sendfile/pages/selectfilediscover.ui:99
 #, kde-format
 msgid "Select one or more files:"
 msgstr "Pilih file satu atau lebih:"
@@ -322,6 +336,12 @@ msgstr "Pilih file satu atau lebih:"
 #, kde-format
 msgid "Selected files: <b>%1</b>"
 msgstr "File dipilih: <b>%1</b>"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: sendfile/pages/selectfilediscover.ui:38
+#, kde-format
+msgid "Select a device from the list:"
+msgstr "Pilih peranti dari daftar:"
 
 #: sendfile/pages/selectfilespage.cpp:46
 #, kde-format
@@ -349,6 +369,18 @@ msgstr "Batal"
 msgctxt "@info:status %1 error message"
 msgid "Failed to start org.bluez.obex service: %1"
 msgstr "Gagal menjalankan layanan org.bluez.obex: %1"
+
+#. i18n: ectx: label, entry (saveUrl), group (General)
+#: settings/filereceiver.kcfg:11
+#, kde-format
+msgid "Save received files to:"
+msgstr "Simpan file yang diterima ke:"
+
+#. i18n: ectx: label, entry (autoAccept), group (General)
+#: settings/filereceiver.kcfg:15
+#, kde-format
+msgid "Whether allow to modify shared files"
+msgstr "Apakah memungkinkan untuk memodifikasi file berbagi"
 
 #: wizard/bluewizard.cpp:57
 #, kde-format
@@ -388,6 +420,30 @@ msgstr "Adaptor Bluetooth-mu tidak bisa disandingkan."
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
 msgstr "Buat Bisa Disandingkan"
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, searchField)
+#: wizard/pages/discover.ui:19
+#, kde-format
+msgid "Search…"
+msgstr "Cari..."
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: wizard/pages/discover.ui:64
+#, kde-format
+msgid "Scanning…"
+msgstr "Memindai..."
+
+#. i18n: ectx: property (text), widget (QCheckBox, manualPin)
+#: wizard/pages/discover.ui:84
+#, kde-format
+msgid "Manual PIN:"
+msgstr "PIN manual:"
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, pinText)
+#: wizard/pages/discover.ui:112
+#, kde-format
+msgid "0000"
+msgstr "0000"
 
 #: wizard/pages/fail.cpp:37
 #, kde-format
@@ -461,33 +517,6 @@ msgstr "Perangkat sudah diset dan sekarang bisa digunakan."
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "Perangkat '%1' sudah diset dan sekarang bisa digunakan."
-
-#~ msgid "PIN:"
-#~ msgstr "PIN:"
-
-#~ msgid "1234"
-#~ msgstr "1234"
-
-#~ msgid "Select a device from the list:"
-#~ msgstr "Pilih peranti dari daftar:"
-
-#~ msgid "Save received files to:"
-#~ msgstr "Simpan file yang diterima ke:"
-
-#~ msgid "Whether allow to modify shared files"
-#~ msgstr "Apakah memungkinkan untuk memodifikasi file berbagi"
-
-#~ msgid "Search…"
-#~ msgstr "Cari..."
-
-#~ msgid "Scanning…"
-#~ msgstr "Memindai..."
-
-#~ msgid "Manual PIN:"
-#~ msgstr "PIN manual:"
-
-#~ msgid "0000"
-#~ msgstr "0000"
 
 #~ msgid "Bluetooth"
 #~ msgstr "Bluetooth"

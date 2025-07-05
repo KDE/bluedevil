@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-05 03:22+0000\n"
+"POT-Creation-Date: 2025-07-05 05:54+0000\n"
 "PO-Revision-Date: 2022-11-14 08:50+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -139,6 +139,18 @@ msgid ""
 msgstr ""
 "Per tal d'emparellar aquest ordinador amb %1 heu d'introduir un PIN, feu-ho "
 "a sota."
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: kded/helpers/requestpin.ui:52
+#, kde-format
+msgid "PIN:"
+msgstr ""
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, pin)
+#: kded/helpers/requestpin.ui:65
+#, kde-format
+msgid "1234"
+msgstr ""
 
 #: kded/receivefilejob.cpp:132
 #, kde-format
@@ -315,7 +327,9 @@ msgstr "Ha fallat la connexió amb %1: %2"
 msgid "Open file…"
 msgstr "Obre un fitxer…"
 
+#. i18n: ectx: property (text), widget (KSqueezedTextLabel, selectLbl)
 #: sendfile/pages/selectdeviceandfilespage.cpp:58
+#: sendfile/pages/selectfilediscover.ui:99
 #, kde-format
 msgid "Select one or more files:"
 msgstr "Seleccioneu un o més fitxers:"
@@ -324,6 +338,13 @@ msgstr "Seleccioneu un o més fitxers:"
 #, kde-format
 msgid "Selected files: <b>%1</b>"
 msgstr "Fitxers seleccionats: <b>%1</b>"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: sendfile/pages/selectfilediscover.ui:38
+#, fuzzy, kde-format
+#| msgid "Select a device"
+msgid "Select a device from the list:"
+msgstr "Seleccioneu un dispositiu"
 
 #: sendfile/pages/selectfilespage.cpp:46
 #, kde-format
@@ -351,6 +372,19 @@ msgstr "Cancel·la"
 msgctxt "@info:status %1 error message"
 msgid "Failed to start org.bluez.obex service: %1"
 msgstr "Ha fallat en iniciar el servei «org.bluez.obex»: %1"
+
+#. i18n: ectx: label, entry (saveUrl), group (General)
+#: settings/filereceiver.kcfg:11
+#, fuzzy, kde-format
+#| msgid "Received Files"
+msgid "Save received files to:"
+msgstr "Fitxers rebuts"
+
+#. i18n: ectx: label, entry (autoAccept), group (General)
+#: settings/filereceiver.kcfg:15
+#, kde-format
+msgid "Whether allow to modify shared files"
+msgstr ""
 
 #: wizard/bluewizard.cpp:57
 #, kde-format
@@ -390,6 +424,30 @@ msgstr "L'adaptador Bluetooth no es pot emparellar."
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
 msgstr "Fes que es pugui emparellar"
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, searchField)
+#: wizard/pages/discover.ui:19
+#, kde-format
+msgid "Search…"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: wizard/pages/discover.ui:64
+#, kde-format
+msgid "Scanning…"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, manualPin)
+#: wizard/pages/discover.ui:84
+#, kde-format
+msgid "Manual PIN:"
+msgstr ""
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, pinText)
+#: wizard/pages/discover.ui:112
+#, kde-format
+msgid "0000"
+msgstr ""
 
 #: wizard/pages/fail.cpp:37
 #, kde-format
@@ -461,30 +519,3 @@ msgstr "S'ha configurat el dispositiu i ara ja es pot usar."
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "S'ha configurat el dispositiu «%1» i ara ja es pot usar."
-
-#~ msgid "PIN:"
-#~ msgstr "PIN:"
-
-#~ msgid "1234"
-#~ msgstr "1234"
-
-#~ msgid "Select a device from the list:"
-#~ msgstr "Seleccioneu un dispositiu de la llista:"
-
-#~ msgid "Save received files to:"
-#~ msgstr "Desa els fitxers rebuts a:"
-
-#~ msgid "Whether allow to modify shared files"
-#~ msgstr "Si es permet modificar fitxers compartits o no"
-
-#~ msgid "Search…"
-#~ msgstr "Cerca…"
-
-#~ msgid "Scanning…"
-#~ msgstr "S'està explorant…"
-
-#~ msgid "Manual PIN:"
-#~ msgstr "PIN manual:"
-
-#~ msgid "0000"
-#~ msgstr "0000"

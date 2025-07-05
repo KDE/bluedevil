@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-05 03:22+0000\n"
+"POT-Creation-Date: 2025-07-05 05:54+0000\n"
 "PO-Revision-Date: 2024-03-30 19:46\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -133,6 +133,18 @@ msgid ""
 "In order to pair this computer with %1, you have to enter a PIN. Please do "
 "it below."
 msgstr "要将本机与 %1 配对，您必须输入一组验证码 (PIN)。请在下方填写。"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: kded/helpers/requestpin.ui:52
+#, kde-format
+msgid "PIN:"
+msgstr "验证码 (PIN)："
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, pin)
+#: kded/helpers/requestpin.ui:65
+#, kde-format
+msgid "1234"
+msgstr "1234"
 
 #: kded/receivefilejob.cpp:132
 #, kde-format
@@ -309,7 +321,9 @@ msgstr "连接设备 %1 失败：%2"
 msgid "Open file…"
 msgstr "打开文件…"
 
+#. i18n: ectx: property (text), widget (KSqueezedTextLabel, selectLbl)
 #: sendfile/pages/selectdeviceandfilespage.cpp:58
+#: sendfile/pages/selectfilediscover.ui:99
 #, kde-format
 msgid "Select one or more files:"
 msgstr "选择文件："
@@ -318,6 +332,12 @@ msgstr "选择文件："
 #, kde-format
 msgid "Selected files: <b>%1</b>"
 msgstr "已选文件：<b>%1</b>"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: sendfile/pages/selectfilediscover.ui:38
+#, kde-format
+msgid "Select a device from the list:"
+msgstr "从列表中选择设备："
 
 #: sendfile/pages/selectfilespage.cpp:46
 #, kde-format
@@ -345,6 +365,18 @@ msgstr "取消"
 msgctxt "@info:status %1 error message"
 msgid "Failed to start org.bluez.obex service: %1"
 msgstr "启动 org.bluez.obex 服务失败：%1"
+
+#. i18n: ectx: label, entry (saveUrl), group (General)
+#: settings/filereceiver.kcfg:11
+#, kde-format
+msgid "Save received files to:"
+msgstr "保存已接收文件到："
+
+#. i18n: ectx: label, entry (autoAccept), group (General)
+#: settings/filereceiver.kcfg:15
+#, kde-format
+msgid "Whether allow to modify shared files"
+msgstr "是否允许修改共享文件"
 
 #: wizard/bluewizard.cpp:57
 #, kde-format
@@ -384,6 +416,30 @@ msgstr "您的蓝牙适配器不允许配对。"
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
 msgstr "允许配对"
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, searchField)
+#: wizard/pages/discover.ui:19
+#, kde-format
+msgid "Search…"
+msgstr "搜索…"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: wizard/pages/discover.ui:64
+#, kde-format
+msgid "Scanning…"
+msgstr "正在扫描…"
+
+#. i18n: ectx: property (text), widget (QCheckBox, manualPin)
+#: wizard/pages/discover.ui:84
+#, kde-format
+msgid "Manual PIN:"
+msgstr "手动输入验证码 (PIN)："
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, pinText)
+#: wizard/pages/discover.ui:112
+#, kde-format
+msgid "0000"
+msgstr "0000"
 
 #: wizard/pages/fail.cpp:37
 #, kde-format
@@ -455,30 +511,3 @@ msgstr "设备已经连接，现在即可使用。"
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "设备“%1”已经连接，现在即可使用。"
-
-#~ msgid "PIN:"
-#~ msgstr "验证码 (PIN)："
-
-#~ msgid "1234"
-#~ msgstr "1234"
-
-#~ msgid "Select a device from the list:"
-#~ msgstr "从列表中选择设备："
-
-#~ msgid "Save received files to:"
-#~ msgstr "保存已接收文件到："
-
-#~ msgid "Whether allow to modify shared files"
-#~ msgstr "是否允许修改共享文件"
-
-#~ msgid "Search…"
-#~ msgstr "搜索…"
-
-#~ msgid "Scanning…"
-#~ msgstr "正在扫描…"
-
-#~ msgid "Manual PIN:"
-#~ msgstr "手动输入验证码 (PIN)："
-
-#~ msgid "0000"
-#~ msgstr "0000"

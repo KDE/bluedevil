@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-05 03:22+0000\n"
+"POT-Creation-Date: 2025-07-05 05:54+0000\n"
 "PO-Revision-Date: 2022-11-01 00:34+0700\n"
 "Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
 "Language-Team: Interlingue <kde-i18n-doc@kde.org>\n"
@@ -136,6 +136,18 @@ msgid ""
 msgstr ""
 "Por acuplar to computator con %1, vu deve provider un PIN. Ples far to ad-"
 "infra."
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: kded/helpers/requestpin.ui:52
+#, kde-format
+msgid "PIN:"
+msgstr "PIN:"
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, pin)
+#: kded/helpers/requestpin.ui:65
+#, kde-format
+msgid "1234"
+msgstr "1234"
 
 #: kded/receivefilejob.cpp:132
 #, kde-format
@@ -312,7 +324,9 @@ msgstr "Li conexion a %1 ne successat: %2"
 msgid "Open file…"
 msgstr "Aperter un file..."
 
+#. i18n: ectx: property (text), widget (KSqueezedTextLabel, selectLbl)
 #: sendfile/pages/selectdeviceandfilespage.cpp:58
+#: sendfile/pages/selectfilediscover.ui:99
 #, kde-format
 msgid "Select one or more files:"
 msgstr "Selecte un o multiplic files:"
@@ -321,6 +335,12 @@ msgstr "Selecte un o multiplic files:"
 #, kde-format
 msgid "Selected files: <b>%1</b>"
 msgstr "Selectet files: <b>%1</b>"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: sendfile/pages/selectfilediscover.ui:38
+#, fuzzy, kde-format
+msgid "Select a device from the list:"
+msgstr "Selecter un audioaparate"
 
 #: sendfile/pages/selectfilespage.cpp:46
 #, kde-format
@@ -347,6 +367,18 @@ msgstr "Anullar"
 #, kde-format
 msgctxt "@info:status %1 error message"
 msgid "Failed to start org.bluez.obex service: %1"
+msgstr ""
+
+#. i18n: ectx: label, entry (saveUrl), group (General)
+#: settings/filereceiver.kcfg:11
+#, fuzzy, kde-format
+msgid "Save received files to:"
+msgstr "_Notificar pri recivet files"
+
+#. i18n: ectx: label, entry (autoAccept), group (General)
+#: settings/filereceiver.kcfg:15
+#, kde-format
+msgid "Whether allow to modify shared files"
 msgstr ""
 
 #: wizard/bluewizard.cpp:57
@@ -387,6 +419,30 @@ msgstr "Controla li status de energie de adaptator Bluetooth"
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
 msgstr "_Preparar"
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, searchField)
+#: wizard/pages/discover.ui:19
+#, fuzzy, kde-format
+msgid "Search…"
+msgstr "_Serchar:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: wizard/pages/discover.ui:64
+#, fuzzy, kde-format
+msgid "Scanning…"
+msgstr "Examination..."
+
+#. i18n: ectx: property (text), widget (QCheckBox, manualPin)
+#: wizard/pages/discover.ui:84
+#, fuzzy, kde-format
+msgid "Manual PIN:"
+msgstr "PIN"
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, pinText)
+#: wizard/pages/discover.ui:112
+#, kde-format
+msgid "0000"
+msgstr "0000"
 
 #: wizard/pages/fail.cpp:37
 #, kde-format
@@ -458,32 +514,3 @@ msgstr "Li aparate «%1» esset configurat e posse esser usat."
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "Li aparate «%1» esset configurat e posse esser usat."
-
-#~ msgid "PIN:"
-#~ msgstr "PIN:"
-
-#~ msgid "1234"
-#~ msgstr "1234"
-
-#, fuzzy
-#~ msgid "Select a device from the list:"
-#~ msgstr "Selecter un audioaparate"
-
-#, fuzzy
-#~ msgid "Save received files to:"
-#~ msgstr "_Notificar pri recivet files"
-
-#, fuzzy
-#~ msgid "Search…"
-#~ msgstr "_Serchar:"
-
-#, fuzzy
-#~ msgid "Scanning…"
-#~ msgstr "Examination..."
-
-#, fuzzy
-#~ msgid "Manual PIN:"
-#~ msgstr "PIN"
-
-#~ msgid "0000"
-#~ msgstr "0000"

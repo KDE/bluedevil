@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-05 03:22+0000\n"
+"POT-Creation-Date: 2025-07-05 05:54+0000\n"
 "PO-Revision-Date: 2019-12-12 22:59+0000\n"
 "Last-Translator: Vivek KJ Pazhedath <vivekkj2004@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc."
@@ -131,6 +131,18 @@ msgctxt ""
 msgid ""
 "In order to pair this computer with %1, you have to enter a PIN. Please do "
 "it below."
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: kded/helpers/requestpin.ui:52
+#, kde-format
+msgid "PIN:"
+msgstr "പിന്‍"
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, pin)
+#: kded/helpers/requestpin.ui:65
+#, kde-format
+msgid "1234"
 msgstr ""
 
 #: kded/receivefilejob.cpp:132
@@ -318,7 +330,9 @@ msgstr "കണക്ഷൻ പരാജയപ്പെട്ടു"
 msgid "Open file…"
 msgstr "ഫയൽ തുറക്കുക "
 
+#. i18n: ectx: property (text), widget (KSqueezedTextLabel, selectLbl)
 #: sendfile/pages/selectdeviceandfilespage.cpp:58
+#: sendfile/pages/selectfilediscover.ui:99
 #, kde-format
 msgid "Select one or more files:"
 msgstr "ഒന്നിൽ കൂടുതൽ ഫയൽ  എടുക്കുക  "
@@ -327,6 +341,12 @@ msgstr "ഒന്നിൽ കൂടുതൽ ഫയൽ  എടുക്കു�
 #, kde-format
 msgid "Selected files: <b>%1</b>"
 msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: sendfile/pages/selectfilediscover.ui:38
+#, kde-format
+msgid "Select a device from the list:"
+msgstr "ഒരു ഉപകരണം സെലക്ട് ചെയ്യുക "
 
 #: sendfile/pages/selectfilespage.cpp:46
 #, kde-format
@@ -353,6 +373,19 @@ msgstr ""
 #, kde-format
 msgctxt "@info:status %1 error message"
 msgid "Failed to start org.bluez.obex service: %1"
+msgstr ""
+
+#. i18n: ectx: label, entry (saveUrl), group (General)
+#: settings/filereceiver.kcfg:11
+#, fuzzy, kde-format
+#| msgid "Received Files"
+msgid "Save received files to:"
+msgstr "ലഭിച്ച ഫയലുകൾ "
+
+#. i18n: ectx: label, entry (autoAccept), group (General)
+#: settings/filereceiver.kcfg:15
+#, kde-format
+msgid "Whether allow to modify shared files"
 msgstr ""
 
 #: wizard/bluewizard.cpp:57
@@ -394,6 +427,31 @@ msgstr ""
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
 msgstr ""
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, searchField)
+#: wizard/pages/discover.ui:19
+#, kde-format
+msgid "Search…"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: wizard/pages/discover.ui:64
+#, fuzzy, kde-format
+#| msgid "Scanning..."
+msgid "Scanning…"
+msgstr "തിരയുന്നു..."
+
+#. i18n: ectx: property (text), widget (QCheckBox, manualPin)
+#: wizard/pages/discover.ui:84
+#, kde-format
+msgid "Manual PIN:"
+msgstr ""
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, pinText)
+#: wizard/pages/discover.ui:112
+#, kde-format
+msgid "0000"
+msgstr "0000"
 
 #: wizard/pages/fail.cpp:37
 #, kde-format
@@ -466,20 +524,6 @@ msgstr ""
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr ""
-
-#~ msgid "PIN:"
-#~ msgstr "പിന്‍"
-
-#~ msgid "Select a device from the list:"
-#~ msgstr "ഒരു ഉപകരണം സെലക്ട് ചെയ്യുക "
-
-#, fuzzy
-#~| msgid "Scanning..."
-#~ msgid "Scanning…"
-#~ msgstr "തിരയുന്നു..."
-
-#~ msgid "0000"
-#~ msgstr "0000"
 
 #, fuzzy
 #~| msgid "Bluetooth Devices"
