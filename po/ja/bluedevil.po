@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-22 00:48+0000\n"
+"POT-Creation-Date: 2025-07-05 03:22+0000\n"
 "PO-Revision-Date: 2021-09-17 23:44+0900\n"
 "Last-Translator: Tomohiro Hyakutake <tomhioo@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -135,18 +135,6 @@ msgid ""
 msgstr ""
 "%1 とこのコンピュータをペアするには、PIN を入力する必要があります。以下にして"
 "ください。"
-
-#. i18n: ectx: property (text), widget (QLabel, label)
-#: kded/helpers/requestpin.ui:52
-#, kde-format
-msgid "PIN:"
-msgstr "PIN:"
-
-#. i18n: ectx: property (placeholderText), widget (QLineEdit, pin)
-#: kded/helpers/requestpin.ui:65
-#, kde-format
-msgid "1234"
-msgstr "1234"
 
 #: kded/receivefilejob.cpp:132
 #, kde-format
@@ -328,9 +316,7 @@ msgstr "%1 への接続に失敗しました"
 msgid "Open file…"
 msgstr "ファイルを開く…"
 
-#. i18n: ectx: property (text), widget (KSqueezedTextLabel, selectLbl)
 #: sendfile/pages/selectdeviceandfilespage.cpp:58
-#: sendfile/pages/selectfilediscover.ui:99
 #, kde-format
 msgid "Select one or more files:"
 msgstr "1 個以上のファイルを選択してください:"
@@ -339,12 +325,6 @@ msgstr "1 個以上のファイルを選択してください:"
 #, kde-format
 msgid "Selected files: <b>%1</b>"
 msgstr "選択されたファイル:<b>%1</b>"
-
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-#: sendfile/pages/selectfilediscover.ui:38
-#, kde-format
-msgid "Select a device from the list:"
-msgstr "リストからデバイスを選択してください:"
 
 #: sendfile/pages/selectfilespage.cpp:46
 #, kde-format
@@ -372,18 +352,6 @@ msgstr "キャンセル"
 msgctxt "@info:status %1 error message"
 msgid "Failed to start org.bluez.obex service: %1"
 msgstr ""
-
-#. i18n: ectx: label, entry (saveUrl), group (General)
-#: settings/filereceiver.kcfg:11
-#, kde-format
-msgid "Save received files to:"
-msgstr "受信したファイルの保存先:"
-
-#. i18n: ectx: label, entry (autoAccept), group (General)
-#: settings/filereceiver.kcfg:15
-#, kde-format
-msgid "Whether allow to modify shared files"
-msgstr "共有されたファイルの変更を許可するか"
 
 #: wizard/bluewizard.cpp:57
 #, kde-format
@@ -426,30 +394,6 @@ msgstr "あなたの Bluetooth アダプタはペア不可です。"
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
 msgstr "ウェアラブル"
-
-#. i18n: ectx: property (placeholderText), widget (QLineEdit, searchField)
-#: wizard/pages/discover.ui:19
-#, kde-format
-msgid "Search…"
-msgstr ""
-
-#. i18n: ectx: property (text), widget (QLabel, label)
-#: wizard/pages/discover.ui:64
-#, kde-format
-msgid "Scanning…"
-msgstr "スキャンしています…"
-
-#. i18n: ectx: property (text), widget (QCheckBox, manualPin)
-#: wizard/pages/discover.ui:84
-#, kde-format
-msgid "Manual PIN:"
-msgstr "手動 PIN:"
-
-#. i18n: ectx: property (placeholderText), widget (QLineEdit, pinText)
-#: wizard/pages/discover.ui:112
-#, kde-format
-msgid "0000"
-msgstr ""
 
 #: wizard/pages/fail.cpp:37
 #, kde-format
@@ -522,3 +466,24 @@ msgstr "デバイスのセットアップが完了し、利用可能になりま
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "デバイス '%1' のセットアップが完了し、利用可能になりました。"
+
+#~ msgid "PIN:"
+#~ msgstr "PIN:"
+
+#~ msgid "1234"
+#~ msgstr "1234"
+
+#~ msgid "Select a device from the list:"
+#~ msgstr "リストからデバイスを選択してください:"
+
+#~ msgid "Save received files to:"
+#~ msgstr "受信したファイルの保存先:"
+
+#~ msgid "Whether allow to modify shared files"
+#~ msgstr "共有されたファイルの変更を許可するか"
+
+#~ msgid "Scanning…"
+#~ msgstr "スキャンしています…"
+
+#~ msgid "Manual PIN:"
+#~ msgstr "手動 PIN:"

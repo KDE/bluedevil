@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-22 00:48+0000\n"
+"POT-Creation-Date: 2025-07-05 03:22+0000\n"
 "PO-Revision-Date: 2022-11-17 22:59+0200\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: lt <kde-i18n-lt@kde.org>\n"
@@ -135,18 +135,6 @@ msgid ""
 msgstr ""
 "Norėdami suporuoti šį kompiuterį su %1, turite įvesti PIN. Padarykite tai "
 "žemiau."
-
-#. i18n: ectx: property (text), widget (QLabel, label)
-#: kded/helpers/requestpin.ui:52
-#, kde-format
-msgid "PIN:"
-msgstr "PIN:"
-
-#. i18n: ectx: property (placeholderText), widget (QLineEdit, pin)
-#: kded/helpers/requestpin.ui:65
-#, kde-format
-msgid "1234"
-msgstr "1234"
 
 #: kded/receivefilejob.cpp:132
 #, kde-format
@@ -323,9 +311,7 @@ msgstr "Nepavyko prisijungti prie %1: %2"
 msgid "Open file…"
 msgstr "Atverti failą…"
 
-#. i18n: ectx: property (text), widget (KSqueezedTextLabel, selectLbl)
 #: sendfile/pages/selectdeviceandfilespage.cpp:58
-#: sendfile/pages/selectfilediscover.ui:99
 #, kde-format
 msgid "Select one or more files:"
 msgstr "Pasirinkite vieną ar daugiau failų:"
@@ -334,12 +320,6 @@ msgstr "Pasirinkite vieną ar daugiau failų:"
 #, kde-format
 msgid "Selected files: <b>%1</b>"
 msgstr "Pasirinkti failai: <b>%1</b>"
-
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-#: sendfile/pages/selectfilediscover.ui:38
-#, kde-format
-msgid "Select a device from the list:"
-msgstr "Pasirinkite įrenginį iš sąrašo:"
 
 #: sendfile/pages/selectfilespage.cpp:46
 #, kde-format
@@ -367,18 +347,6 @@ msgstr "Atsisakyti"
 msgctxt "@info:status %1 error message"
 msgid "Failed to start org.bluez.obex service: %1"
 msgstr "Nepavyko paleisti org.bluez.obex tarnybos: %1"
-
-#. i18n: ectx: label, entry (saveUrl), group (General)
-#: settings/filereceiver.kcfg:11
-#, kde-format
-msgid "Save received files to:"
-msgstr "Įrašyti gautus failus į:"
-
-#. i18n: ectx: label, entry (autoAccept), group (General)
-#: settings/filereceiver.kcfg:15
-#, kde-format
-msgid "Whether allow to modify shared files"
-msgstr "Ar leisti modifikuoti bendrintus failus"
 
 #: wizard/bluewizard.cpp:57
 #, kde-format
@@ -418,30 +386,6 @@ msgstr "Jūsų Bluetooth adapteris yra nesuporuojamas."
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
 msgstr "Paversti suporuojamu"
-
-#. i18n: ectx: property (placeholderText), widget (QLineEdit, searchField)
-#: wizard/pages/discover.ui:19
-#, kde-format
-msgid "Search…"
-msgstr "Ieškoti…"
-
-#. i18n: ectx: property (text), widget (QLabel, label)
-#: wizard/pages/discover.ui:64
-#, kde-format
-msgid "Scanning…"
-msgstr "Ieškoma…"
-
-#. i18n: ectx: property (text), widget (QCheckBox, manualPin)
-#: wizard/pages/discover.ui:84
-#, kde-format
-msgid "Manual PIN:"
-msgstr "Rankinis PIN:"
-
-#. i18n: ectx: property (placeholderText), widget (QLineEdit, pinText)
-#: wizard/pages/discover.ui:112
-#, kde-format
-msgid "0000"
-msgstr "0000"
 
 #: wizard/pages/fail.cpp:37
 #, kde-format
@@ -516,6 +460,33 @@ msgstr "Įrenginys nustatytas ir dabar gali būti naudojamas."
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "Įrenginys \"%1\" nustatytas ir dabar gali būti naudojamas."
+
+#~ msgid "PIN:"
+#~ msgstr "PIN:"
+
+#~ msgid "1234"
+#~ msgstr "1234"
+
+#~ msgid "Select a device from the list:"
+#~ msgstr "Pasirinkite įrenginį iš sąrašo:"
+
+#~ msgid "Save received files to:"
+#~ msgstr "Įrašyti gautus failus į:"
+
+#~ msgid "Whether allow to modify shared files"
+#~ msgstr "Ar leisti modifikuoti bendrintus failus"
+
+#~ msgid "Search…"
+#~ msgstr "Ieškoti…"
+
+#~ msgid "Scanning…"
+#~ msgstr "Ieškoma…"
+
+#~ msgid "Manual PIN:"
+#~ msgstr "Rankinis PIN:"
+
+#~ msgid "0000"
+#~ msgstr "0000"
 
 #~ msgid "Bluetooth"
 #~ msgstr "Bluetooth"

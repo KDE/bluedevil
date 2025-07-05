@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-22 00:48+0000\n"
+"POT-Creation-Date: 2025-07-05 03:22+0000\n"
 "PO-Revision-Date: 2022-11-15 09:27+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -135,18 +135,6 @@ msgid ""
 msgstr ""
 "Para emparelhar este computador com %1, terá de introduzir um PIN. Faça-o em "
 "baixo, por favor."
-
-#. i18n: ectx: property (text), widget (QLabel, label)
-#: kded/helpers/requestpin.ui:52
-#, kde-format
-msgid "PIN:"
-msgstr "PIN:"
-
-#. i18n: ectx: property (placeholderText), widget (QLineEdit, pin)
-#: kded/helpers/requestpin.ui:65
-#, kde-format
-msgid "1234"
-msgstr "1234"
 
 #: kded/receivefilejob.cpp:132
 #, kde-format
@@ -323,9 +311,7 @@ msgstr "A ligação ao %1 foi mal-sucedida: %2"
 msgid "Open file…"
 msgstr "Abrir um ficheiro…"
 
-#. i18n: ectx: property (text), widget (KSqueezedTextLabel, selectLbl)
 #: sendfile/pages/selectdeviceandfilespage.cpp:58
-#: sendfile/pages/selectfilediscover.ui:99
 #, kde-format
 msgid "Select one or more files:"
 msgstr "Seleccione um ou mais ficheiros:"
@@ -334,12 +320,6 @@ msgstr "Seleccione um ou mais ficheiros:"
 #, kde-format
 msgid "Selected files: <b>%1</b>"
 msgstr "Ficheiros seleccionados: <b>%1</b>"
-
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-#: sendfile/pages/selectfilediscover.ui:38
-#, kde-format
-msgid "Select a device from the list:"
-msgstr "Seleccione um dispositivo na lista:"
 
 #: sendfile/pages/selectfilespage.cpp:46
 #, kde-format
@@ -367,18 +347,6 @@ msgstr "Cancelar"
 msgctxt "@info:status %1 error message"
 msgid "Failed to start org.bluez.obex service: %1"
 msgstr "Não foi possível iniciar o serviço 'org.bluez.obex': %1"
-
-#. i18n: ectx: label, entry (saveUrl), group (General)
-#: settings/filereceiver.kcfg:11
-#, kde-format
-msgid "Save received files to:"
-msgstr "Gravar os ficheiros recebidos em:"
-
-#. i18n: ectx: label, entry (autoAccept), group (General)
-#: settings/filereceiver.kcfg:15
-#, kde-format
-msgid "Whether allow to modify shared files"
-msgstr "Se permitir a modificação dos ficheiros partilhados"
 
 #: wizard/bluewizard.cpp:57
 #, kde-format
@@ -418,30 +386,6 @@ msgstr "O seu dispositivo Bluetooth não pode ser emparelhado."
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
 msgstr "Tornar Emparelhável"
-
-#. i18n: ectx: property (placeholderText), widget (QLineEdit, searchField)
-#: wizard/pages/discover.ui:19
-#, kde-format
-msgid "Search…"
-msgstr "Procurar…"
-
-#. i18n: ectx: property (text), widget (QLabel, label)
-#: wizard/pages/discover.ui:64
-#, kde-format
-msgid "Scanning…"
-msgstr "A analisar…"
-
-#. i18n: ectx: property (text), widget (QCheckBox, manualPin)
-#: wizard/pages/discover.ui:84
-#, kde-format
-msgid "Manual PIN:"
-msgstr "PIN Manual:"
-
-#. i18n: ectx: property (placeholderText), widget (QLineEdit, pinText)
-#: wizard/pages/discover.ui:112
-#, kde-format
-msgid "0000"
-msgstr "0000"
 
 #: wizard/pages/fail.cpp:37
 #, kde-format
@@ -517,3 +461,30 @@ msgstr "O dispositivo foi configurado e pode agora ser usado."
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "O dispositivo '%1' foi configurado e pode agora ser usado."
+
+#~ msgid "PIN:"
+#~ msgstr "PIN:"
+
+#~ msgid "1234"
+#~ msgstr "1234"
+
+#~ msgid "Select a device from the list:"
+#~ msgstr "Seleccione um dispositivo na lista:"
+
+#~ msgid "Save received files to:"
+#~ msgstr "Gravar os ficheiros recebidos em:"
+
+#~ msgid "Whether allow to modify shared files"
+#~ msgstr "Se permitir a modificação dos ficheiros partilhados"
+
+#~ msgid "Search…"
+#~ msgstr "Procurar…"
+
+#~ msgid "Scanning…"
+#~ msgstr "A analisar…"
+
+#~ msgid "Manual PIN:"
+#~ msgstr "PIN Manual:"
+
+#~ msgid "0000"
+#~ msgstr "0000"

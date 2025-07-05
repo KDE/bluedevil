@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-22 00:48+0000\n"
+"POT-Creation-Date: 2025-07-05 03:22+0000\n"
 "PO-Revision-Date: 2022-01-01 09:01-0800\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -131,18 +131,6 @@ msgid ""
 "In order to pair this computer with %1, you have to enter a PIN. Please do "
 "it below."
 msgstr "ਇਹ ਕੰਪਿਊਟਰ ਨਾਲ %1 ਨੂੰ ਜੋੜਨ (ਪੇਅਰ ਕਰਨ) ਲਈ ਤੁਹਾਨੂੰ ਪਿੰਨ ਦੇਣਾ ਪਵੇਗਾ। ਹੇਠਾਂ ਦਿਉ ਜੀ।"
-
-#. i18n: ectx: property (text), widget (QLabel, label)
-#: kded/helpers/requestpin.ui:52
-#, kde-format
-msgid "PIN:"
-msgstr "ਪਿੰਨ:"
-
-#. i18n: ectx: property (placeholderText), widget (QLineEdit, pin)
-#: kded/helpers/requestpin.ui:65
-#, kde-format
-msgid "1234"
-msgstr "1234"
 
 #: kded/receivefilejob.cpp:132
 #, kde-format
@@ -319,9 +307,7 @@ msgstr "%1 ਨਾਲ ਕਨੈਕਸ਼ਨ ਫੇਲ੍ਹ ਹੈ: %2"
 msgid "Open file…"
 msgstr "…ਫ਼ਾਇਲ ਖੋਲ੍ਹੋ"
 
-#. i18n: ectx: property (text), widget (KSqueezedTextLabel, selectLbl)
 #: sendfile/pages/selectdeviceandfilespage.cpp:58
-#: sendfile/pages/selectfilediscover.ui:99
 #, kde-format
 msgid "Select one or more files:"
 msgstr "ਇੱਕ ਜਾਂ ਵੱਧ ਫਾਇਲਾਂ ਚੁਣੋ:"
@@ -330,12 +316,6 @@ msgstr "ਇੱਕ ਜਾਂ ਵੱਧ ਫਾਇਲਾਂ ਚੁਣੋ:"
 #, kde-format
 msgid "Selected files: <b>%1</b>"
 msgstr "ਚੁਣੀਆਂ ਫਾਇਲਾਂ:<b>%1</b>"
-
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-#: sendfile/pages/selectfilediscover.ui:38
-#, kde-format
-msgid "Select a device from the list:"
-msgstr "ਲਿਸਟ ਵਿੱਚੋਂ ਡਿਵਾਈਸ ਚੁਣੋ:"
 
 #: sendfile/pages/selectfilespage.cpp:46
 #, kde-format
@@ -363,18 +343,6 @@ msgstr "ਰੱਦ ਕਰੋ"
 msgctxt "@info:status %1 error message"
 msgid "Failed to start org.bluez.obex service: %1"
 msgstr ""
-
-#. i18n: ectx: label, entry (saveUrl), group (General)
-#: settings/filereceiver.kcfg:11
-#, kde-format
-msgid "Save received files to:"
-msgstr "ਪ੍ਰਾਪਤ ਹੋਈਆਂ ਫਾਇਲਾਂ ਨੂੰ ਇੱਥੇ ਸੰਭਾਲੋ:"
-
-#. i18n: ectx: label, entry (autoAccept), group (General)
-#: settings/filereceiver.kcfg:15
-#, kde-format
-msgid "Whether allow to modify shared files"
-msgstr "ਕੀ ਸਾਂਝੀਆਂ ਕੀਤੀਆਂ ਫਾਇਲਾਂ ਸੋਧਣਾ ਮਨਜ਼ੂਰ"
 
 #: wizard/bluewizard.cpp:57
 #, kde-format
@@ -414,30 +382,6 @@ msgstr "ਤੁਹਾਡੇ ਬਲੂਟੁੱਥ ਐਡਪਟਰ ਜੋੜਾ (�
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
 msgstr "ਪੇਅਰ ਕਰਨ ਯੋਗ ਬਣਾਓ"
-
-#. i18n: ectx: property (placeholderText), widget (QLineEdit, searchField)
-#: wizard/pages/discover.ui:19
-#, kde-format
-msgid "Search…"
-msgstr ""
-
-#. i18n: ectx: property (text), widget (QLabel, label)
-#: wizard/pages/discover.ui:64
-#, kde-format
-msgid "Scanning…"
-msgstr "…ਸਕੈਨ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
-
-#. i18n: ectx: property (text), widget (QCheckBox, manualPin)
-#: wizard/pages/discover.ui:84
-#, kde-format
-msgid "Manual PIN:"
-msgstr "ਖੁਦ ਪਿੰਨ ਦਿਓ:"
-
-#. i18n: ectx: property (placeholderText), widget (QLineEdit, pinText)
-#: wizard/pages/discover.ui:112
-#, kde-format
-msgid "0000"
-msgstr "0000"
 
 #: wizard/pages/fail.cpp:37
 #, kde-format
@@ -509,6 +453,30 @@ msgstr "ਡਿਵਾਈਸ ਸੈਟ ਅੱਪ ਪੂਰਾ ਹੋਇਆ ਅਤ�
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "ਡਿਵਾਈਸ '%1' ਸੈਟ ਅੱਪ ਪੂਰਾ ਹੋਇਆ ਅਤੇ ਹੁਣ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।"
+
+#~ msgid "PIN:"
+#~ msgstr "ਪਿੰਨ:"
+
+#~ msgid "1234"
+#~ msgstr "1234"
+
+#~ msgid "Select a device from the list:"
+#~ msgstr "ਲਿਸਟ ਵਿੱਚੋਂ ਡਿਵਾਈਸ ਚੁਣੋ:"
+
+#~ msgid "Save received files to:"
+#~ msgstr "ਪ੍ਰਾਪਤ ਹੋਈਆਂ ਫਾਇਲਾਂ ਨੂੰ ਇੱਥੇ ਸੰਭਾਲੋ:"
+
+#~ msgid "Whether allow to modify shared files"
+#~ msgstr "ਕੀ ਸਾਂਝੀਆਂ ਕੀਤੀਆਂ ਫਾਇਲਾਂ ਸੋਧਣਾ ਮਨਜ਼ੂਰ"
+
+#~ msgid "Scanning…"
+#~ msgstr "…ਸਕੈਨ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
+
+#~ msgid "Manual PIN:"
+#~ msgstr "ਖੁਦ ਪਿੰਨ ਦਿਓ:"
+
+#~ msgid "0000"
+#~ msgstr "0000"
 
 #~ msgid "Bluetooth"
 #~ msgstr "ਬਲੂਟੁੱਥ"

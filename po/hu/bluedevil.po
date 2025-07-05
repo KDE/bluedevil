@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-22 00:48+0000\n"
+"POT-Creation-Date: 2025-07-05 03:22+0000\n"
 "PO-Revision-Date: 2021-12-29 16:51+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -133,18 +133,6 @@ msgid ""
 "In order to pair this computer with %1, you have to enter a PIN. Please do "
 "it below."
 msgstr "Adja meg lentebb a PIN-kódját a számítógép és a(z) %1 párosításához."
-
-#. i18n: ectx: property (text), widget (QLabel, label)
-#: kded/helpers/requestpin.ui:52
-#, kde-format
-msgid "PIN:"
-msgstr "PIN:"
-
-#. i18n: ectx: property (placeholderText), widget (QLineEdit, pin)
-#: kded/helpers/requestpin.ui:65
-#, kde-format
-msgid "1234"
-msgstr "1234"
 
 #: kded/receivefilejob.cpp:132
 #, kde-format
@@ -321,9 +309,7 @@ msgstr "Nem sikerült kapcsolódni ehhez: %1: %2"
 msgid "Open file…"
 msgstr "Fájl megnyitása…"
 
-#. i18n: ectx: property (text), widget (KSqueezedTextLabel, selectLbl)
 #: sendfile/pages/selectdeviceandfilespage.cpp:58
-#: sendfile/pages/selectfilediscover.ui:99
 #, kde-format
 msgid "Select one or more files:"
 msgstr "Válasszon ki egy vagy több fájlt:"
@@ -332,12 +318,6 @@ msgstr "Válasszon ki egy vagy több fájlt:"
 #, kde-format
 msgid "Selected files: <b>%1</b>"
 msgstr "Kiválasztott fájlok: <b>%1</b>"
-
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-#: sendfile/pages/selectfilediscover.ui:38
-#, kde-format
-msgid "Select a device from the list:"
-msgstr "Válasszon ki egy eszközt a listából:"
 
 #: sendfile/pages/selectfilespage.cpp:46
 #, kde-format
@@ -365,18 +345,6 @@ msgstr "Mégsem"
 msgctxt "@info:status %1 error message"
 msgid "Failed to start org.bluez.obex service: %1"
 msgstr ""
-
-#. i18n: ectx: label, entry (saveUrl), group (General)
-#: settings/filereceiver.kcfg:11
-#, kde-format
-msgid "Save received files to:"
-msgstr "Fogadott fájlok mentése ide:"
-
-#. i18n: ectx: label, entry (autoAccept), group (General)
-#: settings/filereceiver.kcfg:15
-#, kde-format
-msgid "Whether allow to modify shared files"
-msgstr "Engedélyezve van-e a megosztott fájlok módosítása"
 
 #: wizard/bluewizard.cpp:57
 #, kde-format
@@ -416,30 +384,6 @@ msgstr "A Bluetooth adaptere nem párosítható."
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
 msgstr "Legyen párosítható"
-
-#. i18n: ectx: property (placeholderText), widget (QLineEdit, searchField)
-#: wizard/pages/discover.ui:19
-#, kde-format
-msgid "Search…"
-msgstr ""
-
-#. i18n: ectx: property (text), widget (QLabel, label)
-#: wizard/pages/discover.ui:64
-#, kde-format
-msgid "Scanning…"
-msgstr "Keresés…"
-
-#. i18n: ectx: property (text), widget (QCheckBox, manualPin)
-#: wizard/pages/discover.ui:84
-#, kde-format
-msgid "Manual PIN:"
-msgstr "Kézi PIN:"
-
-#. i18n: ectx: property (placeholderText), widget (QLineEdit, pinText)
-#: wizard/pages/discover.ui:112
-#, kde-format
-msgid "0000"
-msgstr "0000"
 
 #: wizard/pages/fail.cpp:37
 #, kde-format
@@ -514,6 +458,30 @@ msgstr "Az eszköz beállítása befejeződött, és most már használható."
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "A(z) „%1” eszköz beállítása befejeződött, és most már használható."
+
+#~ msgid "PIN:"
+#~ msgstr "PIN:"
+
+#~ msgid "1234"
+#~ msgstr "1234"
+
+#~ msgid "Select a device from the list:"
+#~ msgstr "Válasszon ki egy eszközt a listából:"
+
+#~ msgid "Save received files to:"
+#~ msgstr "Fogadott fájlok mentése ide:"
+
+#~ msgid "Whether allow to modify shared files"
+#~ msgstr "Engedélyezve van-e a megosztott fájlok módosítása"
+
+#~ msgid "Scanning…"
+#~ msgstr "Keresés…"
+
+#~ msgid "Manual PIN:"
+#~ msgstr "Kézi PIN:"
+
+#~ msgid "0000"
+#~ msgstr "0000"
 
 #~ msgid "Bluetooth"
 #~ msgstr "Bluetooth"
