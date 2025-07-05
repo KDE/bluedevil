@@ -463,7 +463,7 @@ msgstr "搜索…"
 #: wizard/pages/discover.ui:42
 #, kde-format
 msgid "Show unnamed devices"
-msgstr ""
+msgstr "显示未命名设备"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: wizard/pages/discover.ui:71
@@ -553,6 +553,3 @@ msgstr "设备已经连接，现在即可使用。"
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "设备“%1”已经连接，现在即可使用。"
-
-#~ msgid "Parent window handle."
-#~ msgstr "父窗口处理。"
