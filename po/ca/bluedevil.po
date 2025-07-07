@@ -1,10 +1,10 @@
 # Translation of bluedevil.po to Catalan
-# Copyright (C) 2010-2022 This_file_is_part_of_KDE
+# Copyright (C) 2010-2025 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2 or later.
 #
 # Manuel Tortosa <manutortosa@chakra-project.org>, 2010, 2011.
 # Josep David Capdevila Cano <josepd.capdevila@gmail.com>, 2010.
-# Josep M. Ferrer <txemaq@gmail.com>, 2010, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Josep M. Ferrer <txemaq@gmail.com>, 2010, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2025.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2013, 2014, 2015, 2017, 2020, 2021.
 # Empar Montoro Martín <montoro_mde@gva.es>, 2019.
 msgid ""
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-05 05:54+0000\n"
-"PO-Revision-Date: 2022-11-14 08:50+0100\n"
+"PO-Revision-Date: 2025-07-06 10:56+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 20.12.0\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -144,13 +144,13 @@ msgstr ""
 #: kded/helpers/requestpin.ui:52
 #, kde-format
 msgid "PIN:"
-msgstr ""
+msgstr "PIN:"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, pin)
 #: kded/helpers/requestpin.ui:65
 #, kde-format
 msgid "1234"
-msgstr ""
+msgstr "1234"
 
 #: kded/receivefilejob.cpp:132
 #, kde-format
@@ -341,10 +341,9 @@ msgstr "Fitxers seleccionats: <b>%1</b>"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: sendfile/pages/selectfilediscover.ui:38
-#, fuzzy, kde-format
-#| msgid "Select a device"
+#, kde-format
 msgid "Select a device from the list:"
-msgstr "Seleccioneu un dispositiu"
+msgstr "Seleccioneu un dispositiu de la llista:"
 
 #: sendfile/pages/selectfilespage.cpp:46
 #, kde-format
@@ -375,16 +374,15 @@ msgstr "Ha fallat en iniciar el servei «org.bluez.obex»: %1"
 
 #. i18n: ectx: label, entry (saveUrl), group (General)
 #: settings/filereceiver.kcfg:11
-#, fuzzy, kde-format
-#| msgid "Received Files"
+#, kde-format
 msgid "Save received files to:"
-msgstr "Fitxers rebuts"
+msgstr "Desa els fitxers rebuts a:"
 
 #. i18n: ectx: label, entry (autoAccept), group (General)
 #: settings/filereceiver.kcfg:15
 #, kde-format
 msgid "Whether allow to modify shared files"
-msgstr ""
+msgstr "Si es permet modificar fitxers compartits o no"
 
 #: wizard/bluewizard.cpp:57
 #, kde-format
@@ -429,25 +427,25 @@ msgstr "Fes que es pugui emparellar"
 #: wizard/pages/discover.ui:19
 #, kde-format
 msgid "Search…"
-msgstr ""
+msgstr "Cerca…"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: wizard/pages/discover.ui:64
 #, kde-format
 msgid "Scanning…"
-msgstr ""
+msgstr "S'està explorant…"
 
 #. i18n: ectx: property (text), widget (QCheckBox, manualPin)
 #: wizard/pages/discover.ui:84
 #, kde-format
 msgid "Manual PIN:"
-msgstr ""
+msgstr "PIN manual:"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, pinText)
 #: wizard/pages/discover.ui:112
 #, kde-format
 msgid "0000"
-msgstr ""
+msgstr "0000"
 
 #: wizard/pages/fail.cpp:37
 #, kde-format
