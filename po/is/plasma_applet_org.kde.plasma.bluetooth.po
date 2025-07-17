@@ -1,22 +1,22 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the bluedevil package.
 #
-# SPDX-FileCopyrightText: 2024 Guðmundur Erlingsson <gudmundure@gmail.com>
+# SPDX-FileCopyrightText: 2024, 2025 Guðmundur Erlingsson <gudmundure@gmail.com>
 # SPDX-FileCopyrightText: 2025 Sveinn í Felli <sv1@fellsnet.is>
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-14 00:43+0000\n"
-"PO-Revision-Date: 2025-04-06 15:31+0000\n"
-"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
-"Language-Team: Icelandic\n"
+"PO-Revision-Date: 2025-07-11 18:55+0000\n"
+"Last-Translator: Gummi <gudmundure@gmail.com>\n"
+"Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
 "Language: is\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format
@@ -127,7 +127,7 @@ msgstr "Tenging mistókst"
 #: package/contents/ui/DeviceItem.qml:252
 #, kde-format
 msgid "Headset"
-msgstr ""
+msgstr "Höfuðtól"
 
 #: package/contents/ui/DeviceItem.qml:258
 #, kde-format
@@ -137,22 +137,22 @@ msgstr "Hljóðtæki"
 #: package/contents/ui/DeviceItem.qml:262
 #, kde-format
 msgid "Keyboard"
-msgstr ""
+msgstr "Lyklaborð"
 
 #: package/contents/ui/DeviceItem.qml:265
 #, kde-format
 msgid "Mouse"
-msgstr ""
+msgstr "Mús"
 
 #: package/contents/ui/DeviceItem.qml:268
 #, kde-format
 msgid "Joypad"
-msgstr ""
+msgstr "Leikjastýring"
 
 #: package/contents/ui/DeviceItem.qml:271
 #, kde-format
 msgid "Drawing tablet"
-msgstr ""
+msgstr "Teikniborð"
 
 #: package/contents/ui/DeviceItem.qml:275
 #, kde-format
@@ -162,12 +162,12 @@ msgstr "Sími"
 #: package/contents/ui/DeviceItem.qml:278
 #, kde-format
 msgid "Camera"
-msgstr ""
+msgstr "Myndavél"
 
 #: package/contents/ui/DeviceItem.qml:281
 #, kde-format
 msgid "Printer"
-msgstr ""
+msgstr "Prentari"
 
 #: package/contents/ui/DeviceItem.qml:288
 #, kde-format
@@ -274,10 +274,9 @@ msgid "Pair Device…"
 msgstr "Para tæki…"
 
 #: package/contents/ui/main.qml:118
-#, fuzzy, kde-format
-#| msgid "No connected devices"
+#, kde-format
 msgid "Badge icon with number of connected devices"
-msgstr "Engin tengd tæki"
+msgstr "Táknskjöldur með fjölda tengdra tækja"
 
 #: package/contents/ui/main.qml:128
 #, kde-format
@@ -293,7 +292,7 @@ msgstr "Kveikja á Bluetooth"
 #, kde-format
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
-msgstr ""
+msgstr "Fleiri aðgerðir"
 
 #~ msgid "Connected"
 #~ msgstr "Tengt"
