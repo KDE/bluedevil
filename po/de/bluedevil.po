@@ -2,20 +2,21 @@
 # Burkhard Lück <lueck@hube-lueck.de>, 2015, 2017, 2018, 2019, 2020, 2021.
 # Frederik Schwarzer <schwarzer@kde.org>, 2015, 2016, 2020, 2022.
 # Frank Steinmetzger <dev-kde@felsenfleischer.de>, 2022.
+# SPDX-FileCopyrightText: 2025 Philipp Kiemle <l10n@prly.mozmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-28 02:38+0000\n"
-"PO-Revision-Date: 2024-08-19 23:14+0200\n"
-"Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
+"PO-Revision-Date: 2025-07-11 09:00+0200\n"
+"Last-Translator: Philipp Kiemle <l10n@prly.mozmail.com>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 25.04.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -66,7 +67,7 @@ msgstr "Bluetooth-Dienst"
 #: kded/bluedevildaemon.cpp:72 sendfile/main.cpp:29 wizard/main.cpp:30
 #, kde-format
 msgid "(c) 2010, UFO Coders"
-msgstr "© 2010, UFO Coders"
+msgstr "© 2010 UFO Coders"
 
 #: kded/bluedevildaemon.cpp:75 sendfile/main.cpp:32 wizard/main.cpp:33
 #, kde-format
@@ -111,7 +112,7 @@ msgctxt ""
 "The text is shown in a notification to know if the PIN is correct,%1 is the "
 "remote bluetooth device and %2 is the pin"
 msgid "%1 is asking if the PIN is correct: %2"
-msgstr "%1 fragt ob die PIN korrekt ist: %2"
+msgstr "%1 fragt, ob die PIN korrekt ist: %2"
 
 #: kded/helpers/requestconfirmation.cpp:32
 #, kde-format
@@ -131,7 +132,7 @@ msgctxt ""
 "Shown in a notification to announce that a PIN is needed to accomplish a "
 "pair action,%1 is the name of the bluetooth device"
 msgid "PIN needed to pair with %1"
-msgstr "Für das Pairing mit %1 ist eine PIN erforderlich"
+msgstr "Für das Koppeln mit %1 ist eine PIN erforderlich"
 
 #: kded/helpers/requestpin.cpp:39
 #, kde-format
@@ -156,8 +157,8 @@ msgid ""
 "In order to pair this computer with %1, you have to enter a PIN. Please do "
 "it below."
 msgstr ""
-"Für das Pairing des Rechners mit „%1“ muss eine PIN eingegeben werden. Bitte "
-"geben Sie diese unten ein."
+"Um „%1“ mit diesem Rechner zu koppeln, muss eine PIN eingegeben werden. "
+"Bitte geben Sie diese unten ein."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: kded/helpers/requestpin.ui:52
@@ -235,17 +236,17 @@ msgstr "Dateien durchsuchen"
 #: kio/bluetooth/kiobluetooth.cpp:72 kio/bluetooth/kiobluetooth.cpp:200
 #, kde-format
 msgid "No Bluetooth adapters have been found."
-msgstr "Es sind keine Bluetooth-Adapter gefunden worden."
+msgstr "Es wurden keine Bluetooth-Adapter gefunden."
 
 #: kio/bluetooth/kiobluetooth.cpp:92
 #, kde-format
 msgid "Retrieving services…"
-msgstr "Erhalten der Dienste ..."
+msgstr "Dienste werden abgerufen …"
 
 #: kio/bluetooth/kiobluetooth.cpp:99
 #, kde-format
 msgid "This address is unavailable."
-msgstr "Diese Adresse ist nicht vorhanden."
+msgstr "Diese Adresse ist nicht verfügbar."
 
 #: kio/bluetooth/kiobluetooth.cpp:147
 #, kde-format
@@ -255,7 +256,7 @@ msgstr "Empfangene Dateien"
 #: kio/bluetooth/kiobluetooth.cpp:167
 #, kde-format
 msgid "Scanning for new devices…"
-msgstr "Suchen nach neuen Geräten ..."
+msgstr "Suche nach neuen Geräten läuft …"
 
 #: kio/obexftp/kioobexftp.cpp:96
 #, kde-format
@@ -265,12 +266,12 @@ msgstr "Der Obexd-Dienst läuft nicht."
 #: kio/obexftp/kioobexftp.cpp:140
 #, kde-format
 msgid "Retrieving information from remote device…"
-msgstr "Informationen vom entfernten Gerät werden abgerufen ..."
+msgstr "Informationen vom fernen Gerät werden abgerufen …"
 
 #: kio/obexftp/kioobexftp.cpp:222
 #, kde-format
 msgid "Connecting to the device"
-msgstr "Verbindung wird hergestellt"
+msgstr "Verbindung zum Gerät wird hergestellt"
 
 #: kio/obexftp/kioobexftp.cpp:298
 #, kde-format
@@ -290,7 +291,7 @@ msgstr "Externer Speicher"
 #: sendfile/discoverwidget.cpp:134 wizard/pages/discover.cpp:353
 #, kde-format
 msgid "Bluetooth is disabled."
-msgstr "Bluetooth ist ausgeschaltet."
+msgstr "Bluetooth ist deaktiviert."
 
 #: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:354
 #, kde-format
@@ -301,7 +302,7 @@ msgstr "Aktivieren"
 #: sendfile/discoverwidget.cpp:137
 #, kde-format
 msgid "Your Bluetooth adapter is powered off."
-msgstr "Ihr Bluetooth-Adapter ist abgeschaltet."
+msgstr "Ihr Bluetooth-Adapter ist ausgeschaltet."
 
 #: sendfile/discoverwidget.cpp:138
 #, kde-format
@@ -327,13 +328,13 @@ msgstr "Empfangsgerät durch UBI-Pfad angeben."
 #: sendfile/main.cpp:56
 #, kde-format
 msgid "Files to be sent."
-msgstr "Dateien, die gesendet werden."
+msgstr "Zu sendende Dateien"
 
 #: sendfile/pages/connectingpage.cpp:32 wizard/pages/connect.cpp:39
 #, kde-format
 msgctxt "Connecting to a Bluetooth device"
 msgid "Connecting to %1…"
-msgstr "Verbindung herstellen zu %1 ..."
+msgstr "Verbindung zu %1 wird hergestellt …"
 
 #: sendfile/pages/failpage.cpp:43
 #, kde-format
@@ -349,7 +350,7 @@ msgstr "Die Verbindung zu %1 ist fehlgeschlagen: %2"
 #: sendfile/pages/selectdeviceandfilespage.cpp:53
 #, kde-format
 msgid "Open file…"
-msgstr "Datei öffnen ..."
+msgstr "Datei öffnen …"
 
 #. i18n: ectx: property (text), widget (KSqueezedTextLabel, selectLbl)
 #: sendfile/pages/selectdeviceandfilespage.cpp:58
@@ -400,7 +401,7 @@ msgstr "Der Dienst org.bluez.obex kann nicht gestartet werden: %1"
 #: settings/bluedevilglobalsettings.kcfg:10
 #, kde-format
 msgid "Option to determine the bluetooth state at launch"
-msgstr ""
+msgstr "Einstellung, um den Bluetooth-Status beim Start zu ermitteln"
 
 #. i18n: ectx: label, entry (saveUrl), group (General)
 #: settings/filereceiver.kcfg:11
@@ -445,25 +446,25 @@ msgstr "Beheben"
 #: wizard/pages/discover.cpp:356
 #, kde-format
 msgid "Your Bluetooth adapter is not pairable."
-msgstr "Ihr Bluetooth-Adapter kann nicht verbunden werden."
+msgstr "Ihr Bluetooth-Adapter ist nicht zum Koppeln bereit."
 
 #: wizard/pages/discover.cpp:357
 #, kde-format
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
-msgstr "Verbindung herstellen"
+msgstr "Kopplungsmodus aktivieren"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, searchField)
 #: wizard/pages/discover.ui:19
 #, kde-format
 msgid "Search…"
-msgstr "Suchen ..."
+msgstr "Suchen …"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: wizard/pages/discover.ui:64
 #, kde-format
 msgid "Scanning…"
-msgstr "Scannen ..."
+msgstr "Scannen läuft …"
 
 #. i18n: ectx: property (text), widget (QCheckBox, manualPin)
 #: wizard/pages/discover.ui:84
@@ -482,7 +483,7 @@ msgstr "0000"
 msgctxt ""
 "Button offered when the wizard fail. This button will restart the wizard"
 msgid "Restart the wizard"
-msgstr "Assistenten neu starten"
+msgstr "Den Assistenten neu starten"
 
 #: wizard/pages/fail.cpp:41
 #, kde-format
@@ -494,7 +495,7 @@ msgstr "Schließen"
 #, kde-format
 msgctxt "This string is shown when the wizard fail"
 msgid "The setup of the device has failed"
-msgstr "Die Einrichtung des Gerätes ist fehlgeschlagen"
+msgstr "Die Einrichtung des Geräts ist fehlgeschlagen"
 
 #: wizard/pages/fail.cpp:55
 #, kde-format
@@ -504,37 +505,37 @@ msgstr "Die Einrichtung von %1 ist fehlgeschlagen"
 #: wizard/pages/pairing.cpp:60
 #, kde-format
 msgid "Connecting to %1…"
-msgstr "Verbindung herstellen zu %1 ..."
+msgstr "Verbindung zu %1 wird hergestellt …"
 
 #: wizard/pages/pairing.cpp:96
 #, kde-format
 msgid ""
 "Please introduce the PIN in your keyboard when it appears and press Enter"
 msgstr ""
-"Geben Sie bitte die PIN in ihr Gerät ein, sobald sie angezeigt wird und "
-"drücken Sie Eingabe"
+"Bitte geben Sie die PIN ein, sobald sie angezeigt wird und drücken Sie "
+"Eingabe"
 
 #: wizard/pages/pairing.cpp:98
 #, kde-format
 msgid "Please introduce the PIN in your device when it appears"
-msgstr "Geben Sie bitte die PIN in ihr Gerät ein, sobald sie angezeigt wird"
+msgstr "Bitte geben Sie die PIN ein, sobald sie angezeigt wird"
 
 #: wizard/pages/pairing.cpp:114
 #, kde-format
 msgid "Matches"
-msgstr "Passt"
+msgstr "Stimmt überein"
 
 #: wizard/pages/pairing.cpp:118
 #, kde-format
 msgid "Does not match"
-msgstr "Passt nicht"
+msgstr "Stimmt nicht überein"
 
 #: wizard/pages/pairing.cpp:133
 #, kde-format
 msgid "Please, confirm that the PIN displayed on %1 matches the wizard one."
 msgstr ""
-"Bestätigen Sie, dass die PIN, die auf „%1“ angezeigt wird, zu der im "
-"Assistenten passt."
+"Bitte bestätigen Sie, dass die auf „%1“ angezeigte PIN mit der im "
+"Assistenten übereinstimmt."
 
 #: wizard/pages/success.cpp:40
 #, kde-format
@@ -544,13 +545,13 @@ msgstr "Einrichtung abgeschlossen"
 #: wizard/pages/success.cpp:42
 #, kde-format
 msgid "The device has been set up and can now be used."
-msgstr "Das Gerät wurde eingerichtet und kann jetzt benutzt werden."
+msgstr "Das Gerät wurde eingerichtet und kann jetzt verwendet werden."
 
 #: wizard/pages/success.cpp:44
 #, kde-format
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
-msgstr "Das Gerät „%1“ wurde eingerichtet und kann jetzt benutzt werden."
+msgstr "Das Gerät „%1“ wurde eingerichtet und kann jetzt verwendet werden."
 
 #~ msgid "Bluetooth"
 #~ msgstr "Bluetooth"
