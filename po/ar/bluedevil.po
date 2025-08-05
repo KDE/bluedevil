@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-05 05:54+0000\n"
-"PO-Revision-Date: 2022-11-21 19:08+0400\n"
+"PO-Revision-Date: 2025-07-03 09:55+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -48,13 +48,13 @@ msgstr "(c) 2010, مبرمج UFO "
 #: kded/bluedevildaemon.cpp:75 sendfile/main.cpp:32 wizard/main.cpp:33
 #, kde-format
 msgid "Maintainer"
-msgstr "المصين"
+msgstr "الصائن"
 
 #: kded/bluedevildaemon.cpp:80 kded/bluedevildaemon.cpp:85 sendfile/main.cpp:37
 #: wizard/main.cpp:38
 #, kde-format
 msgid "Previous Maintainer"
-msgstr "المصين السّابق"
+msgstr "الصائن السّابق"
 
 #: kded/helpers/requestauthorization.cpp:29
 #, kde-format

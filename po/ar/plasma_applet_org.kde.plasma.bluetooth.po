@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-26 02:49+0000\n"
-"PO-Revision-Date: 2022-12-22 09:27+0400\n"
+"PO-Revision-Date: 2025-08-03 23:06+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -256,7 +256,7 @@ msgstr "أضف جهازًا جديدًا..."
 #: package/contents/ui/main.qml:146 package/contents/ui/Toolbar.qml:32
 #, kde-format
 msgid "Enable Bluetooth"
-msgstr "فعّل بلوتوث"
+msgstr "مكّن بلوتوث"
 
 #~ msgid ""
 #~ "No connected devices\n"

@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the bluedevil package.
-# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
+# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024, 2025 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-30 00:54+0000\n"
-"PO-Revision-Date: 2022-08-08 21:27+0400\n"
+"PO-Revision-Date: 2025-08-03 23:12+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -217,7 +217,7 @@ msgstr "الجهاز:"
 #: package/contents/ui/General.qml:46
 #, kde-format
 msgid "Enabled:"
-msgstr "ممكّن"
+msgstr "ممكّن:"
 
 #: package/contents/ui/General.qml:52
 #, kde-format
@@ -232,7 +232,7 @@ msgstr "عند الولوج"
 #: package/contents/ui/General.qml:67
 #, kde-format
 msgid "Enable Bluetooth"
-msgstr "فعّل بلوتوث"
+msgstr "مكّن بلوتوث"
 
 #: package/contents/ui/General.qml:77 package/contents/ui/main.qml:247
 #, kde-format
@@ -288,7 +288,7 @@ msgstr "أمتأكد أنك تريد نسيان \"%1\"؟"
 #, kde-format
 msgctxt "@action:button"
 msgid "Forget Device"
-msgstr "انس الجهاز"
+msgstr "انسَ الجهاز"
 
 #: package/contents/ui/main.qml:73
 #, kde-format
