@@ -162,6 +162,7 @@ void DeviceMonitor::saveState()
 
     if (m_manager->isBluetoothBlocked()) {
         GlobalSettings::setBluetoothBlocked(true);
+        GlobalSettings::self()->config()->deleteGroup("Adapters");
     } else {
         GlobalSettings::setBluetoothBlocked(false);
 
@@ -194,7 +195,10 @@ void DeviceMonitor::restoreState()
 
     Q_FOREACH (BluezQt::AdapterPtr adapter, m_manager->adapters()) {
         const QString key = QStringLiteral("%1_powered").arg(adapter->address());
-        adapter->setPowered(adaptersGroup.readEntry<bool>(key, true));
+
+        if (adaptersGroup.hasKey(key)) {
+            adapter->setPowered(adaptersGroup.readEntry<bool>(key, true));
+        }
     }
 
     const QStringList &connectedDevices = GlobalSettings::connectedDevices();
