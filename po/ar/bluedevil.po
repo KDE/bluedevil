@@ -73,13 +73,13 @@ msgstr "(c) 2010, مبرمج UFO "
 #: kded/bluedevildaemon.cpp:75 sendfile/main.cpp:32 wizard/main.cpp:33
 #, kde-format
 msgid "Maintainer"
-msgstr "المصين"
+msgstr "الصائن"
 
 #: kded/bluedevildaemon.cpp:80 kded/bluedevildaemon.cpp:85 sendfile/main.cpp:37
 #: wizard/main.cpp:38
 #, kde-format
 msgid "Previous Maintainer"
-msgstr "المصين السّابق"
+msgstr "الصائن السّابق"
 
 #: kded/helpers/requestauthorization.cpp:29
 #, kde-format
