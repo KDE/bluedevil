@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: trunk-kf 5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-14 00:43+0000\n"
-"PO-Revision-Date: 2024-08-12 16:05+0300\n"
+"PO-Revision-Date: 2025-08-06 19:38+0300\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.6\n"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format
@@ -129,7 +129,7 @@ msgstr "Ryšys patyrė nesėkmę"
 #: package/contents/ui/DeviceItem.qml:252
 #, kde-format
 msgid "Headset"
-msgstr ""
+msgstr "Ausinės su mikrofonu"
 
 #: package/contents/ui/DeviceItem.qml:258
 #, kde-format
@@ -139,22 +139,22 @@ msgstr "Garso įrenginys"
 #: package/contents/ui/DeviceItem.qml:262
 #, kde-format
 msgid "Keyboard"
-msgstr ""
+msgstr "Klaviatūra"
 
 #: package/contents/ui/DeviceItem.qml:265
 #, kde-format
 msgid "Mouse"
-msgstr ""
+msgstr "Pelė"
 
 #: package/contents/ui/DeviceItem.qml:268
 #, kde-format
 msgid "Joypad"
-msgstr ""
+msgstr "Žaidimų pultas"
 
 #: package/contents/ui/DeviceItem.qml:271
 #, kde-format
 msgid "Drawing tablet"
-msgstr ""
+msgstr "Piešimo planšetė"
 
 #: package/contents/ui/DeviceItem.qml:275
 #, kde-format
@@ -164,12 +164,12 @@ msgstr "Telefonas"
 #: package/contents/ui/DeviceItem.qml:278
 #, kde-format
 msgid "Camera"
-msgstr ""
+msgstr "Kamera"
 
 #: package/contents/ui/DeviceItem.qml:281
 #, kde-format
 msgid "Printer"
-msgstr ""
+msgstr "Spausdintuvas"
 
 #: package/contents/ui/DeviceItem.qml:288
 #, kde-format
@@ -280,10 +280,9 @@ msgid "Pair Device…"
 msgstr "Suporuoti įrenginį…"
 
 #: package/contents/ui/main.qml:118
-#, fuzzy, kde-format
-#| msgid "No connected devices"
+#, kde-format
 msgid "Badge icon with number of connected devices"
-msgstr "Nėra prijungtų įrenginių"
+msgstr "Ženkliuko piktograma su prijungtų įrenginių skaičiumi"
 
 #: package/contents/ui/main.qml:128
 #, kde-format
@@ -299,7 +298,7 @@ msgstr "Įjungti Bluetooth"
 #, kde-format
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
-msgstr ""
+msgstr "Daugiau veiksmų"
 
 #~ msgid "Connected"
 #~ msgstr "Prisijungta"
