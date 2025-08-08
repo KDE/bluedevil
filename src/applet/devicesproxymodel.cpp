@@ -7,6 +7,8 @@
 #include "devicesproxymodel.h"
 #include "utils.h"
 
+#include <KLocalizedString>
+
 #include <BluezQt/Adapter>
 #include <BluezQt/Device>
 
@@ -46,12 +48,12 @@ QVariant DevicesProxyModel::data(const QModelIndex &index, int role) const
     switch (role) {
     case SectionRole:
         if (index.data(BluezQt::DevicesModel::BlockedRole).toBool()) {
-            return QStringLiteral("Blocked");
+            return i18nc("@title:column Blocked Bluetooth devices", "Blocked");
         }
         if (index.data(BluezQt::DevicesModel::ConnectedRole).toBool()) {
-            return QStringLiteral("Connected");
+            return i18nc("@title:column Connected Bluetooth devices", "Connected");
         }
-        return QStringLiteral("Available");
+        return i18nc("@title:column Available but not connected Bluetooth devices", "Available");
 
     case DeviceFullNameRole:
         if (duplicateIndexAddress(index)) {
