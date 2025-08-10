@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-30 00:44+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2024-08-28 11:23+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -31,11 +31,18 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "vit@pelcak.org, tomas.chvatal@gmail.com"
 
-#: bluetooth.cpp:127
+#: bluetooth.cpp:129
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 Síť (%2)"
+
+#: bluetoothmoduledata.cpp:20
+#, fuzzy, kde-format
+#| msgid "Enable Bluetooth"
+msgctxt "@info:tooltip"
+msgid "Enable Bluetooth"
+msgstr "Povolit Bluetooth"
 
 #: ui/Device.qml:108 ui/main.qml:212
 #, kde-format

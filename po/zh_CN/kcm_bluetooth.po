@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-30 00:44+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -28,11 +28,18 @@ msgid "Your emails"
 msgstr ""
 "kde-china@kde.org, liuhongwu2003@outlook.com, i@guoyunhe.me, tds00@qq.com"
 
-#: bluetooth.cpp:127
+#: bluetooth.cpp:129
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 网络 (%2)"
+
+#: bluetoothmoduledata.cpp:20
+#, fuzzy, kde-format
+#| msgid "Enable Bluetooth"
+msgctxt "@info:tooltip"
+msgid "Enable Bluetooth"
+msgstr "启用蓝牙"
 
 #: ui/Device.qml:108 ui/main.qml:212
 #, kde-format

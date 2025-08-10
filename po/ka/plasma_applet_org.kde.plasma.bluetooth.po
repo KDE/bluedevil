@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-14 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2025-05-28 04:35+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -17,6 +17,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.6\n"
+
+#: devicesproxymodel.cpp:51
+#, kde-format
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr ""
+
+#: devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connected"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "დაკავშირებულია"
+
+#: devicesproxymodel.cpp:56
+#, kde-format
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr ""
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format
@@ -293,9 +312,6 @@ msgstr "ბლუთუზის ჩართვა"
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr "მეტი ქმედება"
-
-#~ msgid "Connected"
-#~ msgstr "დაკავშირებულია"
 
 #~ msgid "Input device"
 #~ msgstr "შეყვანის მოწყობილობა"

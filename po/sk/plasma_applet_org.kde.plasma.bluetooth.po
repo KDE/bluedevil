@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-14 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2023-01-11 21:03+0100\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -16,6 +16,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 22.12.1\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#: devicesproxymodel.cpp:51
+#, kde-format
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr ""
+
+#: devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connected"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "Pripojené"
+
+#: devicesproxymodel.cpp:56
+#, fuzzy, kde-format
+#| msgid "Available devices"
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr "Dostupné zariadenia"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format
@@ -299,9 +319,6 @@ msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr ""
 
-#~ msgid "Connected"
-#~ msgstr "Pripojené"
-
 #~ msgid "Input device"
 #~ msgstr "Vstupné zariadenie"
 
@@ -313,9 +330,6 @@ msgstr ""
 
 #~ msgid "Connected devices"
 #~ msgstr "Pripojené zariadenia"
-
-#~ msgid "Available devices"
-#~ msgstr "Dostupné zariadenia"
 
 #~ msgid "Configure Bluetooth..."
 #~ msgstr "Nastaviť Bluetooth..."

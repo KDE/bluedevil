@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-30 00:44+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2024-08-10 11:10+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -27,11 +27,18 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "freekdekruijf@kde.nl"
 
-#: bluetooth.cpp:127
+#: bluetooth.cpp:129
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 Netwerk (%2)"
+
+#: bluetoothmoduledata.cpp:20
+#, fuzzy, kde-format
+#| msgid "Enable Bluetooth"
+msgctxt "@info:tooltip"
+msgid "Enable Bluetooth"
+msgstr "Bluetooth inschakelen"
 
 #: ui/Device.qml:108 ui/main.qml:212
 #, kde-format

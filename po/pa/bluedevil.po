@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-04 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2024-01-03 14:20-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -26,6 +26,26 @@ msgstr "ਅ ਸ ਆਲਮ"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "alam.yellow@gmail.com"
+
+#: applet/devicesproxymodel.cpp:51
+#, fuzzy, kde-format
+#| msgid "Blocked:"
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr "ਪਾਬੰਦੀ ਲਗਾਏ:"
+
+#: applet/devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connect"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "ਕਨੈਕਟ ਕਰੋ"
+
+#: applet/devicesproxymodel.cpp:56
+#, kde-format
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr ""
 
 #: applet/devicesstateproxymodel.cpp:273
 #, fuzzy, kde-format
@@ -57,11 +77,18 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Obexd ਸੇਵਾ ਚੱਲ ਨਹੀਂ ਰਹੀ ਹੈ।"
 
-#: kcm/bluetooth.cpp:127
+#: kcm/bluetooth.cpp:129
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 ਨੈੱਟਵਰਕ (%2)"
+
+#: kcm/bluetoothmoduledata.cpp:20
+#, fuzzy, kde-format
+#| msgid "Enable Bluetooth integration"
+msgctxt "@info:tooltip"
+msgid "Enable Bluetooth"
+msgstr "ਬਲੂਟੁੱਥ ਐਟੀਗਰੇਸ਼ਨ ਸਮਰੱਥ ਕਰੋ"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -649,9 +676,6 @@ msgstr "ਡਿਵਾਈਸ '%1' ਸੈਟ ਅੱਪ ਪੂਰਾ ਹੋਇਆ �
 #~ msgid "Disconnect"
 #~ msgstr "ਡਿਸ-ਕਨੈਕਟ ਕਰੋ"
 
-#~ msgid "Connect"
-#~ msgstr "ਕਨੈਕਟ ਕਰੋ"
-
 #~ msgctxt "This device is a Phone"
 #~ msgid "Phone"
 #~ msgstr "ਫ਼ੋਨ"
@@ -741,9 +765,6 @@ msgstr "ਡਿਵਾਈਸ '%1' ਸੈਟ ਅੱਪ ਪੂਰਾ ਹੋਇਆ �
 #~ msgid "Trusted:"
 #~ msgstr "ਭਰੋਸੇਯੋਗ:"
 
-#~ msgid "Blocked:"
-#~ msgstr "ਪਾਬੰਦੀ ਲਗਾਏ:"
-
 #~ msgid "Actions:"
 #~ msgstr "ਕਾਰਵਾਈਆਂ:"
 
@@ -820,9 +841,6 @@ msgstr "ਡਿਵਾਈਸ '%1' ਸੈਟ ਅੱਪ ਪੂਰਾ ਹੋਇਆ �
 
 #~ msgid "Enable or disable the global KDE Bluetooth integration"
 #~ msgstr "ਗਲੋਬਲ KDE ਬਲੂਟੁੱਥ ਐਂਟੀਗਰੇਸ਼ਨ ਨੂੰ ਸਮਰੱਥ ਜਾਂ ਅਸਮਰੱਥ ਕਰੋ"
-
-#~ msgid "Enable Bluetooth integration"
-#~ msgstr "ਬਲੂਟੁੱਥ ਐਟੀਗਰੇਸ਼ਨ ਸਮਰੱਥ ਕਰੋ"
 
 #~ msgctxt "This string is shown when the wizard succeeds"
 #~ msgid "The setup of the device has succeeded"

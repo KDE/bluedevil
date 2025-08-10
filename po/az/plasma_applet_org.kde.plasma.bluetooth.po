@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-14 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2024-06-04 19:07+0400\n"
 "Last-Translator: Xəyyam Qocayev <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -17,6 +17,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 24.05.0\n"
+
+#: devicesproxymodel.cpp:51
+#, kde-format
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr ""
+
+#: devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connected"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "Qoşuldu"
+
+#: devicesproxymodel.cpp:56
+#, fuzzy, kde-format
+#| msgid "Available devices"
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr "Mövcud cihazlar"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format
@@ -297,9 +317,6 @@ msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr ""
 
-#~ msgid "Connected"
-#~ msgstr "Qoşuldu"
-
 #~ msgid "Input device"
 #~ msgstr "Daxiletmə cihazı"
 
@@ -325,9 +342,6 @@ msgstr ""
 
 #~ msgid "Connected devices"
 #~ msgstr "Qoşulmuş cihazlar"
-
-#~ msgid "Available devices"
-#~ msgstr "Mövcud cihazlar"
 
 #~ msgid "Configure Bluetooth..."
 #~ msgstr "Bluetooth Ayarları..."

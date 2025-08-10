@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-04 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2019-09-30 19:29+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -26,6 +26,25 @@ msgstr "Victor Ibragimov"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "victor.ibragimov@gmail.com"
+
+#: applet/devicesproxymodel.cpp:51
+#, kde-format
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr ""
+
+#: applet/devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connect"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "Пайваст кардан"
+
+#: applet/devicesproxymodel.cpp:56
+#, kde-format
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr ""
 
 #: applet/devicesstateproxymodel.cpp:273
 #, kde-format
@@ -52,11 +71,18 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr ""
 
-#: kcm/bluetooth.cpp:127
+#: kcm/bluetooth.cpp:129
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr ""
+
+#: kcm/bluetoothmoduledata.cpp:20
+#, fuzzy, kde-format
+#| msgid "Bluetooth Devices"
+msgctxt "@info:tooltip"
+msgid "Enable Bluetooth"
+msgstr "Дастгоҳҳои Bluetooth"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -558,11 +584,6 @@ msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr ""
 
-#, fuzzy
-#~| msgid "Bluetooth Devices"
-#~ msgid "Bluetooth"
-#~ msgstr "Дастгоҳҳои Bluetooth"
-
 #~ msgctxt "Radio widget to set if we want the adapter to be hidden"
 #~ msgid "Hidden"
 #~ msgstr "Ноаён"
@@ -618,9 +639,6 @@ msgstr ""
 
 #~ msgid "Disconnect"
 #~ msgstr "Қатъ кардани пайваст"
-
-#~ msgid "Connect"
-#~ msgstr "Пайваст кардан"
 
 #~ msgctxt "This device is a Phone"
 #~ msgid "Phone"

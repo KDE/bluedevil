@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-14 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2024-06-08 15:59+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -17,6 +17,26 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
 "X-Generator: Lokalize 21.12.3\n"
+
+#: devicesproxymodel.cpp:51
+#, kde-format
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr ""
+
+#: devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connected"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "Conectat"
+
+#: devicesproxymodel.cpp:56
+#, fuzzy, kde-format
+#| msgid "Available devices"
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr "Dispozitive disponibile"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format
@@ -298,9 +318,6 @@ msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr ""
 
-#~ msgid "Connected"
-#~ msgstr "Conectat"
-
 #~ msgid "Input device"
 #~ msgstr "Dispozitiv de intrare"
 
@@ -312,9 +329,6 @@ msgstr ""
 
 #~ msgid "Connected devices"
 #~ msgstr "Dispozitive conectate"
-
-#~ msgid "Available devices"
-#~ msgstr "Dispozitive disponibile"
 
 #~ msgid "Configure Bluetooth..."
 #~ msgstr "Configurează Bluetooth..."

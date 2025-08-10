@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-04 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2019-12-12 22:59+0000\n"
 "Last-Translator: Vivek KJ Pazhedath <vivekkj2004@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc."
@@ -27,6 +27,26 @@ msgstr "കിരൺ ജോൺസ്"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "shijualexonline@gmail.com,snalledam@dataone.in,vivekkj2004@gmail.com"
+
+#: applet/devicesproxymodel.cpp:51
+#, fuzzy, kde-format
+#| msgid "Blocked:"
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr "തടഞ്ഞു"
+
+#: applet/devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connect"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "ബന്ധിപ്പിക്കുക"
+
+#: applet/devicesproxymodel.cpp:56
+#, kde-format
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr ""
 
 #: applet/devicesstateproxymodel.cpp:273
 #, kde-format
@@ -55,11 +75,18 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr ""
 
-#: kcm/bluetooth.cpp:127
+#: kcm/bluetooth.cpp:129
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr ""
+
+#: kcm/bluetoothmoduledata.cpp:20
+#, fuzzy, kde-format
+#| msgid "Bluetooth Devices"
+msgctxt "@info:tooltip"
+msgid "Enable Bluetooth"
+msgstr "ബ്ലൂടൂത്ത് ഉപകരണങ്ങൾ "
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -570,11 +597,6 @@ msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr ""
 
-#, fuzzy
-#~| msgid "Bluetooth Devices"
-#~ msgid "Bluetooth"
-#~ msgstr "ബ്ലൂടൂത്ത് ഉപകരണങ്ങൾ "
-
 #~ msgid "Receiving file over Bluetooth"
 #~ msgstr "ബ്ലൂടൂത്ത് വഴി ഫയൽ സ്വീകരിക്കുക "
 
@@ -623,9 +645,6 @@ msgstr ""
 
 #~ msgid "Disconnect"
 #~ msgstr "വേര്പ്പെടുത്തുക"
-
-#~ msgid "Connect"
-#~ msgstr "ബന്ധിപ്പിക്കുക"
 
 #~ msgctxt "This device is a Phone"
 #~ msgid "Phone"
@@ -702,9 +721,6 @@ msgstr ""
 
 #~ msgid "Trusted:"
 #~ msgstr "വിശ്വസ്തo"
-
-#~ msgid "Blocked:"
-#~ msgstr "തടഞ്ഞു"
 
 #~ msgid "Actions:"
 #~ msgstr "പ്രവർത്തികൾ "

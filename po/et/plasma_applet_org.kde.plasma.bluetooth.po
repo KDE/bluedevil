@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-14 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2020-04-24 13:19+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -16,6 +16,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 19.12.3\n"
+
+#: devicesproxymodel.cpp:51
+#, kde-format
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr ""
+
+#: devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connect"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "Ühenda"
+
+#: devicesproxymodel.cpp:56
+#, fuzzy, kde-format
+#| msgid "Available devices"
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr "Saadaolevad seadmed"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format
@@ -301,11 +321,6 @@ msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr ""
 
-#, fuzzy
-#~| msgid "Connect"
-#~ msgid "Connected"
-#~ msgstr "Ühenda"
-
 #~ msgid "Input device"
 #~ msgstr "Sisendseade"
 
@@ -317,9 +332,6 @@ msgstr ""
 
 #~ msgid "Connected devices"
 #~ msgstr "Ühendatud seadmed"
-
-#~ msgid "Available devices"
-#~ msgstr "Saadaolevad seadmed"
 
 #~ msgid "Configure Bluetooth..."
 #~ msgstr "Seadista Bluetoothi ..."

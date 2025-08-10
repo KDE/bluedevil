@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-04 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2025-07-11 18:55+0000\n"
 "Last-Translator: Gummi <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -27,6 +27,24 @@ msgstr "Guðmundur Erlingsson"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "gudmundure@gmail.com"
+
+#: applet/devicesproxymodel.cpp:51
+#, kde-format
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr ""
+
+#: applet/devicesproxymodel.cpp:54
+#, kde-format
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr ""
+
+#: applet/devicesproxymodel.cpp:56
+#, kde-format
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr ""
 
 #: applet/devicesstateproxymodel.cpp:273
 #, kde-format
@@ -53,11 +71,18 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Tækið er ekki tilbúið"
 
-#: kcm/bluetooth.cpp:127
+#: kcm/bluetooth.cpp:129
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 net (%2)"
+
+#: kcm/bluetoothmoduledata.cpp:20
+#, fuzzy, kde-format
+#| msgid "Sending file over Bluetooth"
+msgctxt "@info:tooltip"
+msgid "Enable Bluetooth"
+msgstr "Sendi skrár með Bluetooth"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format

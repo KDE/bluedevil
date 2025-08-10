@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-14 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2025-08-03 23:06+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -18,6 +18,26 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
 "X-Generator: Lokalize 23.08.5\n"
+
+#: devicesproxymodel.cpp:51
+#, kde-format
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr ""
+
+#: devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connected"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "متّصل"
+
+#: devicesproxymodel.cpp:56
+#, fuzzy, kde-format
+#| msgid "Available devices"
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr "الأجهزة المتوفّرة"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format
@@ -299,9 +319,6 @@ msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr "إجراءات أكثر"
 
-#~ msgid "Connected"
-#~ msgstr "متّصل"
-
 #~ msgid "Input device"
 #~ msgstr "جهاز دخل"
 
@@ -327,9 +344,6 @@ msgstr "إجراءات أكثر"
 
 #~ msgid "Connected devices"
 #~ msgstr "الأجهزة المتّصلة"
-
-#~ msgid "Available devices"
-#~ msgstr "الأجهزة المتوفّرة"
 
 #~ msgid "Configure Bluetooth..."
 #~ msgstr "اضبط بلوتوث..."

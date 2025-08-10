@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-04 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2025-02-03 21:14+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -28,6 +28,26 @@ msgstr "Kiszel Kristóf"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kiszel.kristof@gmail.com"
+
+#: applet/devicesproxymodel.cpp:51
+#, fuzzy, kde-format
+#| msgid "Blocked:"
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr "Blokkolt:"
+
+#: applet/devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connect"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "Kapcsolódás"
+
+#: applet/devicesproxymodel.cpp:56
+#, kde-format
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr ""
 
 #: applet/devicesstateproxymodel.cpp:273
 #, kde-format
@@ -54,11 +74,18 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Az eszköz nem áll készen"
 
-#: kcm/bluetooth.cpp:127
+#: kcm/bluetooth.cpp:129
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 hálózat (%2)"
+
+#: kcm/bluetoothmoduledata.cpp:20
+#, fuzzy, kde-format
+#| msgid "Enable Bluetooth integration"
+msgctxt "@info:tooltip"
+msgid "Enable Bluetooth"
+msgstr "Bluetooth integráció bekapcsolása"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -665,9 +692,6 @@ msgstr "A(z) „%1” eszköz beállítása befejeződött, és most már haszn�
 #~ msgid "Disconnect"
 #~ msgstr "Leválasztás"
 
-#~ msgid "Connect"
-#~ msgstr "Kapcsolódás"
-
 #~ msgctxt "This device is a Phone"
 #~ msgid "Phone"
 #~ msgstr "Telefon"
@@ -757,9 +781,6 @@ msgstr "A(z) „%1” eszköz beállítása befejeződött, és most már haszn�
 #~ msgid "Trusted:"
 #~ msgstr "Megbízható:"
 
-#~ msgid "Blocked:"
-#~ msgstr "Blokkolt:"
-
 #~ msgid "Actions:"
 #~ msgstr "Műveletek:"
 
@@ -842,9 +863,6 @@ msgstr "A(z) „%1” eszköz beállítása befejeződött, és most már haszn�
 
 #~ msgid "Enable or disable the global KDE Bluetooth integration"
 #~ msgstr "KDE Bluetooth-integráció engedélyezése vagy letiltása"
-
-#~ msgid "Enable Bluetooth integration"
-#~ msgstr "Bluetooth integráció bekapcsolása"
 
 #~ msgctxt "This string is shown when the wizard succeeds"
 #~ msgid "The setup of the device has succeeded"

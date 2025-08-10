@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-04 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2025-07-01 07:17+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -31,6 +31,26 @@ msgid "Your emails"
 msgstr ""
 "jlp@holodeck1.com,andrej.znidarsic@gmail.com,mihec.gaspersic@gmail.com,"
 "andrejm@ubuntu.si,matjaz.jeran@amis.net"
+
+#: applet/devicesproxymodel.cpp:51
+#, fuzzy, kde-format
+#| msgid "Blocked:"
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr "Blokirana:"
+
+#: applet/devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connect"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "Poveži"
+
+#: applet/devicesproxymodel.cpp:56
+#, kde-format
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr ""
 
 #: applet/devicesstateproxymodel.cpp:273
 #, kde-format
@@ -57,11 +77,18 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Naprava ni pripravljena"
 
-#: kcm/bluetooth.cpp:127
+#: kcm/bluetooth.cpp:129
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "Omrežje %1 (%2)"
+
+#: kcm/bluetoothmoduledata.cpp:20
+#, fuzzy, kde-format
+#| msgid "Enable Bluetooth integration"
+msgctxt "@info:tooltip"
+msgid "Enable Bluetooth"
+msgstr "Omogoči podporo za Bluetooth"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -666,9 +693,6 @@ msgstr "Naprava '%1' je bila nastavljena in je pripravljena za uporabo."
 #~ msgid "Disconnect"
 #~ msgstr "Prekini povezavo"
 
-#~ msgid "Connect"
-#~ msgstr "Poveži"
-
 #~ msgctxt "This device is a Phone"
 #~ msgid "Phone"
 #~ msgstr "Telefon"
@@ -757,9 +781,6 @@ msgstr "Naprava '%1' je bila nastavljena in je pripravljena za uporabo."
 
 #~ msgid "Trusted:"
 #~ msgstr "Zaupanja vredna:"
-
-#~ msgid "Blocked:"
-#~ msgstr "Blokirana:"
 
 #~ msgid "Actions:"
 #~ msgstr "Dejanja:"
@@ -853,9 +874,6 @@ msgstr "Naprava '%1' je bila nastavljena in je pripravljena za uporabo."
 
 #~ msgid "Enable or disable the global KDE Bluetooth integration"
 #~ msgstr "Omogoči ali onemogoči splošno vključitev KDE Bluetooth"
-
-#~ msgid "Enable Bluetooth integration"
-#~ msgstr "Omogoči podporo za Bluetooth"
 
 #~ msgctxt "This string is shown when the wizard succeeds"
 #~ msgid "The setup of the device has succeeded"

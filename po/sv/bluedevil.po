@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-04 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2025-07-03 15:36+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -27,6 +27,26 @@ msgstr "Stefan Asserhäll"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "stefan.asserhall@gmail.com"
+
+#: applet/devicesproxymodel.cpp:51
+#, fuzzy, kde-format
+#| msgid "Blocked:"
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr "Blockerad:"
+
+#: applet/devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connect"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "Anslut"
+
+#: applet/devicesproxymodel.cpp:56
+#, kde-format
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr ""
 
 #: applet/devicesstateproxymodel.cpp:273
 #, kde-format
@@ -53,11 +73,18 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Enheten är inte redo"
 
-#: kcm/bluetooth.cpp:127
+#: kcm/bluetooth.cpp:129
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 nätverk (%2)"
+
+#: kcm/bluetoothmoduledata.cpp:20
+#, fuzzy, kde-format
+#| msgid "Enable Bluetooth integration"
+msgctxt "@info:tooltip"
+msgid "Enable Bluetooth"
+msgstr "Aktivera Blåtandintegrering"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -659,9 +686,6 @@ msgstr "Enheten '%1' har ställts in och kan nu användas."
 #~ msgid "Disconnect"
 #~ msgstr "Koppla ner"
 
-#~ msgid "Connect"
-#~ msgstr "Anslut"
-
 #~ msgctxt "This device is a Phone"
 #~ msgid "Phone"
 #~ msgstr "Telefon"
@@ -751,9 +775,6 @@ msgstr "Enheten '%1' har ställts in och kan nu användas."
 #~ msgid "Trusted:"
 #~ msgstr "Pålitlig:"
 
-#~ msgid "Blocked:"
-#~ msgstr "Blockerad:"
-
 #~ msgid "Actions:"
 #~ msgstr "Åtgärder:"
 
@@ -839,9 +860,6 @@ msgstr "Enheten '%1' har ställts in och kan nu användas."
 
 #~ msgid "Enable or disable the global KDE Bluetooth integration"
 #~ msgstr "Aktivera eller inaktivera global integrering med Blåtand i KDE"
-
-#~ msgid "Enable Bluetooth integration"
-#~ msgstr "Aktivera Blåtandintegrering"
 
 #~ msgctxt "This string is shown when the wizard succeeds"
 #~ msgid "The setup of the device has succeeded"

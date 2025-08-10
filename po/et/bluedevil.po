@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-04 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2020-09-25 16:25+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -27,6 +27,26 @@ msgstr "Marek Laane"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "qiilaq69@gmail.com"
+
+#: applet/devicesproxymodel.cpp:51
+#, fuzzy, kde-format
+#| msgid "Blocked:"
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr "Blokeeritud:"
+
+#: applet/devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connect"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "Ühenda"
+
+#: applet/devicesproxymodel.cpp:56
+#, kde-format
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr ""
 
 #: applet/devicesstateproxymodel.cpp:273
 #, fuzzy, kde-format
@@ -58,11 +78,18 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Obexd teenus ei tööta."
 
-#: kcm/bluetooth.cpp:127
+#: kcm/bluetooth.cpp:129
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 võrk (%2)"
+
+#: kcm/bluetoothmoduledata.cpp:20
+#, fuzzy, kde-format
+#| msgid "Enable Bluetooth integration"
+msgctxt "@info:tooltip"
+msgid "Enable Bluetooth"
+msgstr "Bluetoothi lõimimise lubamine"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -669,9 +696,6 @@ msgstr "Seade \"%1\" on seadistatud ja valmis kasutamiseks."
 #~ msgid "Disconnect"
 #~ msgstr "Katkesta ühendus"
 
-#~ msgid "Connect"
-#~ msgstr "Ühenda"
-
 #~ msgctxt "This device is a Phone"
 #~ msgid "Phone"
 #~ msgstr "Telefon"
@@ -761,9 +785,6 @@ msgstr "Seade \"%1\" on seadistatud ja valmis kasutamiseks."
 #~ msgid "Trusted:"
 #~ msgstr "Usaldatav:"
 
-#~ msgid "Blocked:"
-#~ msgstr "Blokeeritud:"
-
 #~ msgid "Actions:"
 #~ msgstr "Toimingud:"
 
@@ -840,9 +861,6 @@ msgstr "Seade \"%1\" on seadistatud ja valmis kasutamiseks."
 
 #~ msgid "Enable or disable the global KDE Bluetooth integration"
 #~ msgstr "Kogu KDE Bluetoothi lõimimise lubamine või keelamine"
-
-#~ msgid "Enable Bluetooth integration"
-#~ msgstr "Bluetoothi lõimimise lubamine"
 
 #~ msgctxt "This string is shown when the wizard succeeds"
 #~ msgid "The setup of the device has succeeded"

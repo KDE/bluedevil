@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-04 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2014-11-11 13:36+0000\n"
 "Last-Translator: Naida Čongo <ncongo1@etf.unsa.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -31,6 +31,27 @@ msgid "Your emails"
 msgstr ""
 "Markolalic@etf.unsa.ba,samir.ribic@etf.unsa.ba,ncongo1@etf.unsa.ba,"
 "vljubovic@smartnet.ba"
+
+#: applet/devicesproxymodel.cpp:51
+#, fuzzy, kde-format
+#| msgctxt "Device is blocked"
+#| msgid "Blocked"
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr "Blokiran"
+
+#: applet/devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connect"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "Povezati"
+
+#: applet/devicesproxymodel.cpp:56
+#, kde-format
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr ""
 
 #: applet/devicesstateproxymodel.cpp:273
 #, fuzzy, kde-format
@@ -60,13 +81,20 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr ""
 
-#: kcm/bluetooth.cpp:127
+#: kcm/bluetooth.cpp:129
 #, fuzzy, kde-format
 #| msgctxt "This device is of type Network"
 #| msgid "Network"
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "Mreža"
+
+#: kcm/bluetoothmoduledata.cpp:20
+#, fuzzy, kde-format
+#| msgid "Enable KDE Bluetooth Integration"
+msgctxt "@info:tooltip"
+msgid "Enable Bluetooth"
+msgstr "Omogući KDE bluetooth integraciju"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -723,9 +751,6 @@ msgstr ""
 #~ msgid "Disconnect"
 #~ msgstr "Prekini vezu"
 
-#~ msgid "Connect"
-#~ msgstr "Povezati"
-
 #~ msgctxt "This device is a Phone"
 #~ msgid "Phone"
 #~ msgstr "Telefon"
@@ -829,12 +854,6 @@ msgstr ""
 #~ msgstr "Povjerljiv"
 
 #, fuzzy
-#~| msgctxt "Device is blocked"
-#~| msgid "Blocked"
-#~ msgid "Blocked:"
-#~ msgstr "Blokiran"
-
-#, fuzzy
 #~| msgid "Adapter: %1 (%2)"
 #~ msgid "Adapter:"
 #~ msgstr "Adapter: %1 (%2)"
@@ -936,11 +955,6 @@ msgstr ""
 
 #~ msgid "Enable or disable the global KDE Bluetooth integration"
 #~ msgstr "Omogućavanje ili onemogućavanje globalne KDE Bluetooth-integracije"
-
-#, fuzzy
-#~| msgid "Enable KDE Bluetooth Integration"
-#~ msgid "Enable Bluetooth integration"
-#~ msgstr "Omogući KDE bluetooth integraciju"
 
 #, fuzzy
 #~| msgctxt "This string is shown when the wizard fail"

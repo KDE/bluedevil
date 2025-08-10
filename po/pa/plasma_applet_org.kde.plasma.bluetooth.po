@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-14 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2023-12-22 21:26-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -16,6 +16,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 23.08.4\n"
+
+#: devicesproxymodel.cpp:51
+#, kde-format
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr ""
+
+#: devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connected"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "ਕਨੈਕਟ ਕਰੋ"
+
+#: devicesproxymodel.cpp:56
+#, fuzzy, kde-format
+#| msgid "Available devices"
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr "ਮੌਜੂਦ ਡਿਵਾਈਸ"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format
@@ -298,9 +318,6 @@ msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr ""
 
-#~ msgid "Connected"
-#~ msgstr "ਕਨੈਕਟ ਕਰੋ"
-
 #~ msgid "Input device"
 #~ msgstr "ਇੰਪੁੱਟ ਡਿਵਾਈਸ"
 
@@ -312,9 +329,6 @@ msgstr ""
 
 #~ msgid "Connected devices"
 #~ msgstr "ਕਨੈਕਟ ਹੋਏ ਡਿਵਾਈਸ"
-
-#~ msgid "Available devices"
-#~ msgstr "ਮੌਜੂਦ ਡਿਵਾਈਸ"
 
 #~ msgid "Configure Bluetooth..."
 #~ msgstr "... ਬਲੂਟੁੱਲ ਦੀ ਸੰਰਚਨਾ ਕਰੋ"

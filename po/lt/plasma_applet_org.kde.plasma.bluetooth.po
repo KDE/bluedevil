@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: trunk-kf 5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-14 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2025-08-06 19:38+0300\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -19,6 +19,26 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
 "X-Generator: Poedit 3.6\n"
+
+#: devicesproxymodel.cpp:51
+#, kde-format
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr ""
+
+#: devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connected"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "Prisijungta"
+
+#: devicesproxymodel.cpp:56
+#, fuzzy, kde-format
+#| msgid "Available devices"
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr "Prieinami įrenginiai"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format
@@ -300,9 +320,6 @@ msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr "Daugiau veiksmų"
 
-#~ msgid "Connected"
-#~ msgstr "Prisijungta"
-
 #~ msgid "Input device"
 #~ msgstr "Įvesties įrenginys"
 
@@ -328,9 +345,6 @@ msgstr "Daugiau veiksmų"
 
 #~ msgid "Connected devices"
 #~ msgstr "Prijungti įrenginiai"
-
-#~ msgid "Available devices"
-#~ msgstr "Prieinami įrenginiai"
 
 #~ msgid "Configure Bluetooth..."
 #~ msgstr "Konfigūruoti Bluetooth..."

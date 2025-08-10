@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-14 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2025-06-11 00:13+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -16,6 +16,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Lokalize 24.12.3\n"
+
+#: devicesproxymodel.cpp:51
+#, kde-format
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr ""
+
+#: devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connected"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "연결됨"
+
+#: devicesproxymodel.cpp:56
+#, fuzzy, kde-format
+#| msgid "Available devices"
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr "사용 가능한 장치"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format
@@ -292,9 +312,6 @@ msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr "더 많은 동작"
 
-#~ msgid "Connected"
-#~ msgstr "연결됨"
-
 #~ msgid "Input device"
 #~ msgstr "입력 장치"
 
@@ -306,9 +323,6 @@ msgstr "더 많은 동작"
 
 #~ msgid "Connected devices"
 #~ msgstr "연결된 장치"
-
-#~ msgid "Available devices"
-#~ msgstr "사용 가능한 장치"
 
 #~ msgid "Configure Bluetooth..."
 #~ msgstr "블루투스 설정..."

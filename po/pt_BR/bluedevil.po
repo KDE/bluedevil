@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-04 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2025-07-30 19:14-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -31,6 +31,26 @@ msgstr "André Marcelo Alvarenga, Geraldo Simião"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "alvarenga@kde.org, geraldosimiao@fedoraproject.org"
+
+#: applet/devicesproxymodel.cpp:51
+#, fuzzy, kde-format
+#| msgid "Blocked:"
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr "Bloqueado:"
+
+#: applet/devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connect"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "Conectar"
+
+#: applet/devicesproxymodel.cpp:56
+#, kde-format
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr ""
 
 #: applet/devicesstateproxymodel.cpp:273
 #, kde-format
@@ -57,11 +77,18 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "O dispositivo não está pronto"
 
-#: kcm/bluetooth.cpp:127
+#: kcm/bluetooth.cpp:129
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "Rede %1 (%2)"
+
+#: kcm/bluetoothmoduledata.cpp:20
+#, fuzzy, kde-format
+#| msgid "Enable Bluetooth integration"
+msgctxt "@info:tooltip"
+msgid "Enable Bluetooth"
+msgstr "Ativar a integração do Bluetooth"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -651,9 +678,6 @@ msgstr "O dispositivo '%1' foi configurado e pode ser utilizado."
 #~ msgid "Disconnect"
 #~ msgstr "Desconectar"
 
-#~ msgid "Connect"
-#~ msgstr "Conectar"
-
 #~ msgctxt "This device is a Phone"
 #~ msgid "Phone"
 #~ msgstr "Telefone"
@@ -743,9 +767,6 @@ msgstr "O dispositivo '%1' foi configurado e pode ser utilizado."
 #~ msgid "Trusted:"
 #~ msgstr "Confiável:"
 
-#~ msgid "Blocked:"
-#~ msgstr "Bloqueado:"
-
 #~ msgid "Actions:"
 #~ msgstr "Ações:"
 
@@ -829,6 +850,3 @@ msgstr "O dispositivo '%1' foi configurado e pode ser utilizado."
 
 #~ msgid "Enable or disable the global KDE Bluetooth integration"
 #~ msgstr "Ativar ou desativar a integração global do Bluetooth com o KDE"
-
-#~ msgid "Enable Bluetooth integration"
-#~ msgstr "Ativar a integração do Bluetooth"

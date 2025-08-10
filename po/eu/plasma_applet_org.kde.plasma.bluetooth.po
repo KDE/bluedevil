@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-14 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2025-05-29 22:14+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -19,6 +19,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 25.04.1\n"
+
+#: devicesproxymodel.cpp:51
+#, kde-format
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr ""
+
+#: devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connected"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "Konektatuta"
+
+#: devicesproxymodel.cpp:56
+#, fuzzy, kde-format
+#| msgid "Available devices"
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr "Gailu eskuragarriak"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format
@@ -296,9 +316,6 @@ msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr "Ekintza gehiago"
 
-#~ msgid "Connected"
-#~ msgstr "Konektatuta"
-
 #~ msgid "Input device"
 #~ msgstr "Sarrerako gailua"
 
@@ -324,9 +341,6 @@ msgstr "Ekintza gehiago"
 
 #~ msgid "Connected devices"
 #~ msgstr "Konektatutako gailuak"
-
-#~ msgid "Available devices"
-#~ msgstr "Gailu eskuragarriak"
 
 #~ msgid "Configure Bluetooth..."
 #~ msgstr "Konfiguratu Bluetooth..."

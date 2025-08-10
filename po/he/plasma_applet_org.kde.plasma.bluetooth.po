@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-14 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2025-05-28 09:53+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -19,6 +19,26 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
 "X-Generator: Lokalize 25.04.1\n"
+
+#: devicesproxymodel.cpp:51
+#, kde-format
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr ""
+
+#: devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connected"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "מחובר"
+
+#: devicesproxymodel.cpp:56
+#, fuzzy, kde-format
+#| msgid "Available devices"
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr "התקנים זמינים"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format
@@ -298,9 +318,6 @@ msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr "פעולות נוספות"
 
-#~ msgid "Connected"
-#~ msgstr "מחובר"
-
 #~ msgid "Input device"
 #~ msgstr "התקן קלט"
 
@@ -312,9 +329,6 @@ msgstr "פעולות נוספות"
 
 #~ msgid "Connected devices"
 #~ msgstr "התקנים מחוברים"
-
-#~ msgid "Available devices"
-#~ msgstr "התקנים זמינים"
 
 #~ msgid "Configure Bluetooth..."
 #~ msgstr "הגדרות בלוטוס..."

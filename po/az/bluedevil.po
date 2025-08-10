@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-04 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2024-05-30 11:51+0400\n"
 "Last-Translator: Xəyyam Qocayev <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -27,6 +27,26 @@ msgstr "Xəyyam Qocayev"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "xxmn77@gmail.com"
+
+#: applet/devicesproxymodel.cpp:51
+#, fuzzy, kde-format
+#| msgid "Blocked:"
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr "Kilidli:"
+
+#: applet/devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connect"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "Qoşmaq"
+
+#: applet/devicesproxymodel.cpp:56
+#, kde-format
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr ""
 
 #: applet/devicesstateproxymodel.cpp:273
 #, fuzzy, kde-format
@@ -58,11 +78,18 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Obexd xidməti başladılmadı."
 
-#: kcm/bluetooth.cpp:127
+#: kcm/bluetooth.cpp:129
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 Şəbəkə (%2)"
+
+#: kcm/bluetoothmoduledata.cpp:20
+#, fuzzy, kde-format
+#| msgid "Bluetooth"
+msgctxt "@info:tooltip"
+msgid "Enable Bluetooth"
+msgstr "Bluetooth"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -564,9 +591,6 @@ msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "%1 cihazı artıq ayarlanıb və istifadəyə hazırdır."
 
-#~ msgid "Bluetooth"
-#~ msgstr "Bluetooth"
-
 #~ msgid "Nicolas Fella"
 #~ msgstr "Nicolas Fella"
 
@@ -653,9 +677,6 @@ msgstr "%1 cihazı artıq ayarlanıb və istifadəyə hazırdır."
 
 #~ msgid "Disconnect"
 #~ msgstr "Ayırmaq"
-
-#~ msgid "Connect"
-#~ msgstr "Qoşmaq"
 
 #~ msgctxt "This device is a Phone"
 #~ msgid "Phone"
@@ -745,9 +766,6 @@ msgstr "%1 cihazı artıq ayarlanıb və istifadəyə hazırdır."
 
 #~ msgid "Trusted:"
 #~ msgstr "Etibarlılıq:"
-
-#~ msgid "Blocked:"
-#~ msgstr "Kilidli:"
 
 #~ msgid "Actions:"
 #~ msgstr "Fəaliyyətlər:"

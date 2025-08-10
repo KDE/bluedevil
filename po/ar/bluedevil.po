@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-04 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2025-07-03 09:55+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -28,6 +28,26 @@ msgstr "صفا الفليج"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "safa1996alfulaij@gmail.com"
+
+#: applet/devicesproxymodel.cpp:51
+#, fuzzy, kde-format
+#| msgid "Blocked:"
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr "محظور:"
+
+#: applet/devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connect"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "اتّصل"
+
+#: applet/devicesproxymodel.cpp:56
+#, kde-format
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr ""
 
 #: applet/devicesstateproxymodel.cpp:273
 #, kde-format
@@ -54,11 +74,18 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "الجهاز غير جاهز"
 
-#: kcm/bluetooth.cpp:127
+#: kcm/bluetooth.cpp:129
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 الشبكة (%2)"
+
+#: kcm/bluetoothmoduledata.cpp:20
+#, fuzzy, kde-format
+#| msgid "Enable Bluetooth integration"
+msgctxt "@info:tooltip"
+msgid "Enable Bluetooth"
+msgstr "فعّل تكامل بلوتوث"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -665,9 +692,6 @@ msgstr "الجهاز '%1' أُعد ويمكن استخدامه الآن."
 #~ msgid "Disconnect"
 #~ msgstr "اقطع الاتّصال"
 
-#~ msgid "Connect"
-#~ msgstr "اتّصل"
-
 #~ msgctxt "This device is a Phone"
 #~ msgid "Phone"
 #~ msgstr "هاتف"
@@ -751,9 +775,6 @@ msgstr "الجهاز '%1' أُعد ويمكن استخدامه الآن."
 
 #~ msgid "Trusted:"
 #~ msgstr "موثوق:"
-
-#~ msgid "Blocked:"
-#~ msgstr "محظور:"
 
 #~ msgid "Actions:"
 #~ msgstr "الإجراءات:"
@@ -841,9 +862,6 @@ msgstr "الجهاز '%1' أُعد ويمكن استخدامه الآن."
 
 #~ msgid "Enable or disable the global KDE Bluetooth integration"
 #~ msgstr "فعّل تكامل كِيدِي العموميّ مع بلوتوث أو عطّله"
-
-#~ msgid "Enable Bluetooth integration"
-#~ msgstr "فعّل تكامل بلوتوث"
 
 #~ msgctxt "This string is shown when the wizard succeeds"
 #~ msgid "The setup of the device has succeeded"

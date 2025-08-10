@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-04 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2024-08-26 21:18+0300\n"
 "Last-Translator: Αντώνης Γέραλης <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
@@ -30,6 +30,26 @@ msgstr "Δημήτρης Καρδαράκος, Πέτρος Βιδάλης, Γι
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "dimkard@gmail.com, pvidalis@gmail.com"
+
+#: applet/devicesproxymodel.cpp:51
+#, fuzzy, kde-format
+#| msgid "Blocked:"
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr "Σε φραγή:"
+
+#: applet/devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connect"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "Σύνδεση"
+
+#: applet/devicesproxymodel.cpp:56
+#, kde-format
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr ""
 
 #: applet/devicesstateproxymodel.cpp:273
 #, kde-format
@@ -56,11 +76,18 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Η συσκευή δεν είναι έτοιμη"
 
-#: kcm/bluetooth.cpp:127
+#: kcm/bluetooth.cpp:129
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 Δίκτυο (%2)"
+
+#: kcm/bluetoothmoduledata.cpp:20
+#, fuzzy, kde-format
+#| msgid "Enable Bluetooth integration"
+msgctxt "@info:tooltip"
+msgid "Enable Bluetooth"
+msgstr "Ενεργοποίηση ενσωμάτωσης Bluetooth"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -665,9 +692,6 @@ msgstr "Η συσκευή '%1' έχει ρυθμιστεί και είναι έ�
 #~ msgid "Disconnect"
 #~ msgstr "Αποσύνδεση"
 
-#~ msgid "Connect"
-#~ msgstr "Σύνδεση"
-
 #~ msgctxt "This device is a Phone"
 #~ msgid "Phone"
 #~ msgstr "Τηλέφωνο"
@@ -757,9 +781,6 @@ msgstr "Η συσκευή '%1' έχει ρυθμιστεί και είναι έ�
 #~ msgid "Trusted:"
 #~ msgstr "Έμπιστη:"
 
-#~ msgid "Blocked:"
-#~ msgstr "Σε φραγή:"
-
 #~ msgid "Actions:"
 #~ msgstr "Ενέργειες:"
 
@@ -848,9 +869,6 @@ msgstr "Η συσκευή '%1' έχει ρυθμιστεί και είναι έ�
 #~ msgstr ""
 #~ "Ενεργοποίηση ή απενεργοποίηση της καθολικής ενσωμάτωσης του Bluetooth στο "
 #~ "KDE"
-
-#~ msgid "Enable Bluetooth integration"
-#~ msgstr "Ενεργοποίηση ενσωμάτωσης Bluetooth"
 
 #~ msgctxt "This string is shown when the wizard succeeds"
 #~ msgid "The setup of the device has succeeded"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-04 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2023-05-28 11:25+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -30,6 +30,26 @@ msgstr "Wantoyo,Linerly"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "wantoyek@gmail.com,linerly@protonmail.com"
+
+#: applet/devicesproxymodel.cpp:51
+#, fuzzy, kde-format
+#| msgid "Blocked:"
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr "Dihalang:"
+
+#: applet/devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connect"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "Sambungkan"
+
+#: applet/devicesproxymodel.cpp:56
+#, kde-format
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr ""
 
 #: applet/devicesstateproxymodel.cpp:273
 #, fuzzy, kde-format
@@ -61,11 +81,18 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Layanan Obexd tidak berjalan."
 
-#: kcm/bluetooth.cpp:127
+#: kcm/bluetooth.cpp:129
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 Jaringan (%2)"
+
+#: kcm/bluetoothmoduledata.cpp:20
+#, fuzzy, kde-format
+#| msgid "Enable Bluetooth integration"
+msgctxt "@info:tooltip"
+msgid "Enable Bluetooth"
+msgstr "Fungsikan integrasi Bluetooth"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -658,9 +685,6 @@ msgstr "Perangkat '%1' sudah diset dan sekarang bisa digunakan."
 #~ msgid "Disconnect"
 #~ msgstr "Diskoneksikan"
 
-#~ msgid "Connect"
-#~ msgstr "Sambungkan"
-
 #~ msgctxt "This device is a Phone"
 #~ msgid "Phone"
 #~ msgstr "Phone"
@@ -750,9 +774,6 @@ msgstr "Perangkat '%1' sudah diset dan sekarang bisa digunakan."
 #~ msgid "Trusted:"
 #~ msgstr "Dipercaya:"
 
-#~ msgid "Blocked:"
-#~ msgstr "Dihalang:"
-
 #~ msgid "Actions:"
 #~ msgstr "Aksi:"
 
@@ -835,9 +856,6 @@ msgstr "Perangkat '%1' sudah diset dan sekarang bisa digunakan."
 
 #~ msgid "Enable or disable the global KDE Bluetooth integration"
 #~ msgstr "Mengfungsikan atau menonfungsikan integrasi Bluetooth KDE global"
-
-#~ msgid "Enable Bluetooth integration"
-#~ msgstr "Fungsikan integrasi Bluetooth"
 
 #~ msgctxt "This string is shown when the wizard succeeds"
 #~ msgid "The setup of the device has succeeded"

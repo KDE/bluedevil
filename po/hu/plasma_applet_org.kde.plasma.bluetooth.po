@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-14 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2025-04-27 22:25+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -17,6 +17,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 25.04.0\n"
+
+#: devicesproxymodel.cpp:51
+#, kde-format
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr ""
+
+#: devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connected"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "Kapcsolódva"
+
+#: devicesproxymodel.cpp:56
+#, fuzzy, kde-format
+#| msgid "Available devices"
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr "Elérhető eszközök"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format
@@ -295,9 +315,6 @@ msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr "További műveletek"
 
-#~ msgid "Connected"
-#~ msgstr "Kapcsolódva"
-
 #~ msgid "Input device"
 #~ msgstr "Bemeneti eszköz"
 
@@ -309,9 +326,6 @@ msgstr "További műveletek"
 
 #~ msgid "Connected devices"
 #~ msgstr "Kapcsolódott eszközök"
-
-#~ msgid "Available devices"
-#~ msgstr "Elérhető eszközök"
 
 #~ msgid "Configure Bluetooth..."
 #~ msgstr "A Bluetooth beállítása…"

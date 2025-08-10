@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-14 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2025-05-31 09:11+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -17,6 +17,26 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Lokalize 24.12.3\n"
+
+#: devicesproxymodel.cpp:51
+#, kde-format
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr ""
+
+#: devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connected"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "Połączony"
+
+#: devicesproxymodel.cpp:56
+#, fuzzy, kde-format
+#| msgid "Available devices"
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr "Dostępne urządzenia"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format
@@ -295,9 +315,6 @@ msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr "Więcej działań"
 
-#~ msgid "Connected"
-#~ msgstr "Połączony"
-
 #~ msgid "Input device"
 #~ msgstr "Urządzenie wejściowe"
 
@@ -309,9 +326,6 @@ msgstr "Więcej działań"
 
 #~ msgid "Connected devices"
 #~ msgstr "Podłączone urządzenia"
-
-#~ msgid "Available devices"
-#~ msgstr "Dostępne urządzenia"
 
 #~ msgid "Configure Bluetooth..."
 #~ msgstr "Ustawienia Bluetooth..."

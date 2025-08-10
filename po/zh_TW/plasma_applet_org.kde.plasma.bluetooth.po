@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-14 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2025-05-28 23:25+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -18,6 +18,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Lokalize 25.07.70\n"
+
+#: devicesproxymodel.cpp:51
+#, kde-format
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr ""
+
+#: devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connected"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "已連線"
+
+#: devicesproxymodel.cpp:56
+#, fuzzy, kde-format
+#| msgid "Available devices"
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr "可用的裝置"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format
@@ -294,9 +314,6 @@ msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr "更多動作"
 
-#~ msgid "Connected"
-#~ msgstr "已連線"
-
 #~ msgid "Input device"
 #~ msgstr "輸入裝置"
 
@@ -308,9 +325,6 @@ msgstr "更多動作"
 
 #~ msgid "Connected devices"
 #~ msgstr "已連線的裝置"
-
-#~ msgid "Available devices"
-#~ msgstr "可用的裝置"
 
 #~ msgid "Configure Bluetooth..."
 #~ msgstr "設定藍牙裝置..."

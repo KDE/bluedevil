@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-04 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2025-07-11 19:57+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -29,6 +29,26 @@ msgstr "Iñigo Salvador Azurmendi"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "xalba@ni.eus"
+
+#: applet/devicesproxymodel.cpp:51
+#, fuzzy, kde-format
+#| msgid "Blocked:"
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr "Blokeatua:"
+
+#: applet/devicesproxymodel.cpp:54
+#, fuzzy, kde-format
+#| msgid "Connect"
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr "Konektatu"
+
+#: applet/devicesproxymodel.cpp:56
+#, kde-format
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr ""
 
 #: applet/devicesstateproxymodel.cpp:273
 #, kde-format
@@ -55,11 +75,18 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Gailua ez dago prest"
 
-#: kcm/bluetooth.cpp:127
+#: kcm/bluetooth.cpp:129
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
 msgstr "%1 sarea (%2)"
+
+#: kcm/bluetoothmoduledata.cpp:20
+#, fuzzy, kde-format
+#| msgid "Enable Bluetooth integration"
+msgctxt "@info:tooltip"
+msgid "Enable Bluetooth"
+msgstr "Gaitu Bluetooth bateratzea"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -652,9 +679,6 @@ msgstr "'%1' gailua ezarri egin da eta orain erabil daiteke."
 #~ msgid "Disconnect"
 #~ msgstr "Deskonektatu"
 
-#~ msgid "Connect"
-#~ msgstr "Konektatu"
-
 #~ msgctxt "This device is a Phone"
 #~ msgid "Phone"
 #~ msgstr "Telefonoa"
@@ -744,9 +768,6 @@ msgstr "'%1' gailua ezarri egin da eta orain erabil daiteke."
 #~ msgid "Trusted:"
 #~ msgstr "Fidagarria:"
 
-#~ msgid "Blocked:"
-#~ msgstr "Blokeatua:"
-
 #~ msgid "Actions:"
 #~ msgstr "Ekintzak:"
 
@@ -826,9 +847,6 @@ msgstr "'%1' gailua ezarri egin da eta orain erabil daiteke."
 
 #~ msgid "Enable or disable the global KDE Bluetooth integration"
 #~ msgstr "Gaitu edo desgaitu KDEren Bluetooth bateratze globala"
-
-#~ msgid "Enable Bluetooth integration"
-#~ msgstr "Gaitu Bluetooth bateratzea"
 
 #~ msgctxt "This string is shown when the wizard succeeds"
 #~ msgid "The setup of the device has succeeded"
