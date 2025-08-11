@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-10 00:44+0000\n"
-"PO-Revision-Date: 2025-07-01 04:07+0200\n"
+"PO-Revision-Date: 2025-08-10 06:14+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -32,19 +32,19 @@ msgstr "Temuri.doghonadze@gmail.com"
 #, kde-format
 msgctxt "@title:column Blocked Bluetooth devices"
 msgid "Blocked"
-msgstr ""
+msgstr "დაბლოკილია"
 
 #: applet/devicesproxymodel.cpp:54
 #, kde-format
 msgctxt "@title:column Connected Bluetooth devices"
 msgid "Connected"
-msgstr ""
+msgstr "დაკავშირებულია"
 
 #: applet/devicesproxymodel.cpp:56
 #, kde-format
 msgctxt "@title:column Available but not connected Bluetooth devices"
 msgid "Available"
-msgstr ""
+msgstr "ხელმისაწვდომია"
 
 #: applet/devicesstateproxymodel.cpp:273
 #, kde-format
@@ -78,11 +78,10 @@ msgid "%1 Network (%2)"
 msgstr "%1 ქსელი (%2)"
 
 #: kcm/bluetoothmoduledata.cpp:20
-#, fuzzy, kde-format
-#| msgid "Sending file over Bluetooth"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
-msgstr "ფაილის გაგზავნა Bluetooth-ით"
+msgstr "ბლუთუზის ჩართვა"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format

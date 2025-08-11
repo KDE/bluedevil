@@ -35,8 +35,7 @@ msgid "%1 Network (%2)"
 msgstr "%1 网络 (%2)"
 
 #: bluetoothmoduledata.cpp:20
-#, fuzzy, kde-format
-#| msgid "Enable Bluetooth"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "启用蓝牙"

@@ -79,11 +79,10 @@ msgid "%1 Network (%2)"
 msgstr "%1 网络 (%2)"
 
 #: kcm/bluetoothmoduledata.cpp:20
-#, fuzzy, kde-format
-#| msgid "Sending file over Bluetooth"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
-msgstr "通过蓝牙发送文件"
+msgstr ""
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format

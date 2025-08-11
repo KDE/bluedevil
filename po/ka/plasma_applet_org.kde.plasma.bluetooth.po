@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-10 00:44+0000\n"
-"PO-Revision-Date: 2025-05-28 04:35+0200\n"
+"PO-Revision-Date: 2025-08-10 06:15+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -22,11 +22,10 @@ msgstr ""
 #, kde-format
 msgctxt "@title:column Blocked Bluetooth devices"
 msgid "Blocked"
-msgstr ""
+msgstr "დაბლოკილია"
 
 #: devicesproxymodel.cpp:54
-#, fuzzy, kde-format
-#| msgid "Connected"
+#, kde-format
 msgctxt "@title:column Connected Bluetooth devices"
 msgid "Connected"
 msgstr "დაკავშირებულია"
@@ -35,7 +34,7 @@ msgstr "დაკავშირებულია"
 #, kde-format
 msgctxt "@title:column Available but not connected Bluetooth devices"
 msgid "Available"
-msgstr ""
+msgstr "ხელმისაწვდომია"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format

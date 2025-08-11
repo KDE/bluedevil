@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-10 00:44+0000\n"
-"PO-Revision-Date: 2025-05-28 08:41+0300\n"
+"PO-Revision-Date: 2025-08-10 19:34+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -24,21 +24,19 @@ msgstr ""
 #, kde-format
 msgctxt "@title:column Blocked Bluetooth devices"
 msgid "Blocked"
-msgstr ""
+msgstr "Заблоковані"
 
 #: devicesproxymodel.cpp:54
-#, fuzzy, kde-format
-#| msgid "Connected"
+#, kde-format
 msgctxt "@title:column Connected Bluetooth devices"
 msgid "Connected"
-msgstr "З'єднано"
+msgstr "З'єднані"
 
 #: devicesproxymodel.cpp:56
-#, fuzzy, kde-format
-#| msgid "Available devices"
+#, kde-format
 msgctxt "@title:column Available but not connected Bluetooth devices"
 msgid "Available"
-msgstr "Доступні пристрої"
+msgstr "Доступні"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format

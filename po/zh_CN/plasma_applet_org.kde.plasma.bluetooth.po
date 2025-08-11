@@ -25,11 +25,10 @@ msgid "Blocked"
 msgstr ""
 
 #: devicesproxymodel.cpp:54
-#, fuzzy, kde-format
-#| msgid "Connect"
+#, kde-format
 msgctxt "@title:column Connected Bluetooth devices"
 msgid "Connected"
-msgstr "连接"
+msgstr "已连接"
 
 #: devicesproxymodel.cpp:56
 #, kde-format
