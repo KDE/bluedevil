@@ -33,19 +33,19 @@ msgstr ""
 #, kde-format
 msgctxt "@title:column Blocked Bluetooth devices"
 msgid "Blocked"
-msgstr ""
+msgstr "已屏蔽"
 
 #: applet/devicesproxymodel.cpp:54
 #, kde-format
 msgctxt "@title:column Connected Bluetooth devices"
 msgid "Connected"
-msgstr ""
+msgstr "已连接"
 
 #: applet/devicesproxymodel.cpp:56
 #, kde-format
 msgctxt "@title:column Available but not connected Bluetooth devices"
 msgid "Available"
-msgstr ""
+msgstr "可用"
 
 #: applet/devicesstateproxymodel.cpp:273
 #, kde-format
@@ -82,7 +82,7 @@ msgstr "%1 网络 (%2)"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
-msgstr ""
+msgstr "启用蓝牙"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
