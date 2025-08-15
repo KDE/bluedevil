@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-10 00:44+0000\n"
-"PO-Revision-Date: 2025-05-28 14:13+0200\n"
+"PO-Revision-Date: 2025-08-11 14:30+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -22,21 +22,19 @@ msgstr ""
 #, kde-format
 msgctxt "@title:column Blocked Bluetooth devices"
 msgid "Blocked"
-msgstr ""
+msgstr "Blocked"
 
 #: devicesproxymodel.cpp:54
-#, fuzzy, kde-format
-#| msgid "Connected"
+#, kde-format
 msgctxt "@title:column Connected Bluetooth devices"
 msgid "Connected"
 msgstr "Connesso"
 
 #: devicesproxymodel.cpp:56
-#, fuzzy, kde-format
-#| msgid "Available devices"
+#, kde-format
 msgctxt "@title:column Available but not connected Bluetooth devices"
 msgid "Available"
-msgstr "Dispositivi disponibili"
+msgstr "Disponibile"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format
