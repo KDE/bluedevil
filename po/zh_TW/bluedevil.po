@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-10 00:44+0000\n"
-"PO-Revision-Date: 2025-07-01 22:11+0900\n"
+"PO-Revision-Date: 2025-08-19 05:02+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 25.07.70\n"
+"X-Generator: Lokalize 25.11.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -32,24 +32,22 @@ msgid "Your emails"
 msgstr "franklin@goodhorse.idv.tw, s8321414@gmail.com, mail@kisaragi-hiu.com"
 
 #: applet/devicesproxymodel.cpp:51
-#, fuzzy, kde-format
-#| msgid "Blocked:"
+#, kde-format
 msgctxt "@title:column Blocked Bluetooth devices"
 msgid "Blocked"
-msgstr "已封鎖："
+msgstr "已封鎖"
 
 #: applet/devicesproxymodel.cpp:54
-#, fuzzy, kde-format
-#| msgid "Connect"
+#, kde-format
 msgctxt "@title:column Connected Bluetooth devices"
 msgid "Connected"
-msgstr "連線"
+msgstr "已連線"
 
 #: applet/devicesproxymodel.cpp:56
 #, kde-format
 msgctxt "@title:column Available but not connected Bluetooth devices"
 msgid "Available"
-msgstr ""
+msgstr "可用"
 
 #: applet/devicesstateproxymodel.cpp:273
 #, kde-format
@@ -83,11 +81,10 @@ msgid "%1 Network (%2)"
 msgstr "%1 網路 (%2)"
 
 #: kcm/bluetoothmoduledata.cpp:20
-#, fuzzy, kde-format
-#| msgid "Enable Bluetooth integration"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
-msgstr "開啟藍牙整合"
+msgstr "開啟藍牙"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
