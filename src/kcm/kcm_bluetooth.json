@@ -106,7 +106,6 @@
         "FormFactors": [
             "handset",
             "tablet",
-            "mediacenter",
             "desktop"
         ],
         "Icon": "preferences-system-bluetooth",
