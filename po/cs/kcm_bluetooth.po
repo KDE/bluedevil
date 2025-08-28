@@ -38,11 +38,10 @@ msgid "%1 Network (%2)"
 msgstr "%1 Síť (%2)"
 
 #: bluetoothmoduledata.cpp:20
-#, fuzzy, kde-format
-#| msgid "Enable Bluetooth"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
-msgstr "Povolit Bluetooth"
+msgstr ""
 
 #: ui/Device.qml:108 ui/main.qml:212
 #, kde-format

@@ -25,11 +25,10 @@ msgid "Blocked"
 msgstr ""
 
 #: devicesproxymodel.cpp:54
-#, fuzzy, kde-format
-#| msgid "Connected"
+#, kde-format
 msgctxt "@title:column Connected Bluetooth devices"
 msgid "Connected"
-msgstr "Připojen"
+msgstr ""
 
 #: devicesproxymodel.cpp:56
 #, kde-format
@@ -313,6 +312,3 @@ msgstr "Povolit Bluetooth"
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr ""
-
-#~ msgid "Input device"
-#~ msgstr "Vstupní zařízení"
