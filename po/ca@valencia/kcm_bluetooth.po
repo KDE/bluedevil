@@ -275,7 +275,7 @@ msgstr "Guarda els fitxers a:"
 #: package/contents/ui/General.qml:161 package/contents/ui/General.qml:172
 #, kde-format
 msgid "Select folder"
-msgstr "Seleccioneu una carpeta"
+msgstr "Trieu una carpeta"
 
 #: package/contents/ui/main.qml:54
 #, kde-format

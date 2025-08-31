@@ -332,7 +332,7 @@ msgstr "Obri un fitxer…"
 #: sendfile/pages/selectfilediscover.ui:99
 #, kde-format
 msgid "Select one or more files:"
-msgstr "Seleccioneu un o més fitxers:"
+msgstr "Trieu un o més fitxers:"
 
 #: sendfile/pages/selectdeviceandfilespage.cpp:65
 #, kde-format
@@ -343,7 +343,7 @@ msgstr "Fitxers seleccionats: <b>%1</b>"
 #: sendfile/pages/selectfilediscover.ui:38
 #, kde-format
 msgid "Select a device from the list:"
-msgstr "Seleccioneu un dispositiu de la llista:"
+msgstr "Trieu un dispositiu de la llista:"
 
 #: sendfile/pages/selectfilespage.cpp:46
 #, kde-format
@@ -404,7 +404,7 @@ msgstr "Afig un dispositiu Bluetooth"
 #: wizard/pages/discover.cpp:131
 #, kde-format
 msgid "Select a device"
-msgstr "Seleccioneu un dispositiu"
+msgstr "Trieu un dispositiu"
 
 #: wizard/pages/discover.cpp:299
 #, kde-format
