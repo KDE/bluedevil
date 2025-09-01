@@ -217,7 +217,7 @@ msgstr "Guarda els fitxers a:"
 #: ui/General.qml:160 ui/General.qml:171
 #, kde-format
 msgid "Select folder"
-msgstr "Seleccioneu una carpeta"
+msgstr "Trieu una carpeta"
 
 #: ui/main.qml:34
 #, kde-format
@@ -265,8 +265,8 @@ msgstr "No hi ha cap dispositiu aparellat"
 msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr ""
-"Feu clic en <interface>Aparella un dispositiu…</interface> per a aparellar-"
-"ne un"
+"Cliqueu damunt <interface>Aparella un dispositiu…</interface> per a "
+"aparellar-ne un"
 
 #: ui/main.qml:181
 #, kde-format
