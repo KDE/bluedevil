@@ -48,7 +48,6 @@ Name[sv]=Blåtand
 Name[tg]=Bluetooth
 Name[tr]=Bluetooth
 Name[uk]=Bluetooth
-Name[x-test]=xxBluetoothxx
 Name[zh_CN]=蓝牙
 Name[zh_TW]=藍牙
 
@@ -101,7 +100,6 @@ Comment[sv]=Bllåtandstatus och kontroll
 Comment[tg]=Вазъият ва идоракунии Bluetooth
 Comment[tr]=Bluetooth denetim ve durum izleme
 Comment[uk]=Стан Bluetooth і керування ним
-Comment[x-test]=xxBluetooth status and controlxx
 Comment[zh_CN]=蓝牙状态和控制
 Comment[zh_TW]=藍牙狀態與控制
 
