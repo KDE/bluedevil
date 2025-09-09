@@ -47,7 +47,6 @@
                 "Name[sv]": "David Rosca",
                 "Name[tr]": "David Rosca",
                 "Name[uk]": "David Rosca",
-                "Name[x-test]": "xxDavid Roscaxx",
                 "Name[zh_CN]": "David Rosca",
                 "Name[zh_TW]": "David Rosca"
             }
@@ -96,7 +95,6 @@
         "Description[sv]": "Blåtand status och kontroll",
         "Description[tr]": "Bluetooth durumu ve denetimi",
         "Description[uk]": "Стан Bluetooth і керування ним",
-        "Description[x-test]": "xxBluetooth status and controlxx",
         "Description[zh_CN]": "蓝牙状态和控制",
         "Description[zh_TW]": "藍牙狀態與控制",
         "EnabledByDefault": true,
@@ -156,7 +154,6 @@
         "Name[tg]": "Bluetooth",
         "Name[tr]": "Bluetooth",
         "Name[uk]": "Bluetooth",
-        "Name[x-test]": "xxBluetoothxx",
         "Name[zh_CN]": "蓝牙",
         "Name[zh_TW]": "藍牙",
         "Website": "https://kde.org/plasma-desktop"
