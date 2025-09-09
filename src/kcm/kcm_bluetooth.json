@@ -49,7 +49,6 @@
                 "Name[sv]": "Nicolas Fella",
                 "Name[tr]": "Nicolas Fella",
                 "Name[uk]": "Nicolas Fella",
-                "Name[x-test]": "xxNicolas Fellaxx",
                 "Name[zh_CN]": "Nicolas Fella",
                 "Name[zh_TW]": "Nicolas Fella"
             }
@@ -100,7 +99,6 @@
         "Description[sv]": "Hantera Blåtandsenheter",
         "Description[tr]": "Bluetooth Aygıtlarını Yönet",
         "Description[uk]": "Керування пристроями Bluetooth",
-        "Description[x-test]": "xxManage Bluetooth devicesxx",
         "Description[zh_CN]": "管理蓝牙设备",
         "Description[zh_TW]": "管理藍牙裝置",
         "FormFactors": [
@@ -163,7 +161,6 @@
         "Name[tg]": "Bluetooth",
         "Name[tr]": "Bluetooth",
         "Name[uk]": "Bluetooth",
-        "Name[x-test]": "xxBluetoothxx",
         "Name[zh_CN]": "蓝牙",
         "Name[zh_TW]": "藍牙",
         "Website": "http://kde.org"
@@ -203,7 +200,6 @@
     "X-KDE-Keywords[sv]": "blåtand,maskinvara,anslutning,enheter,sök enheter,anslut,koppla ner,skicka fil,ta emot fil,överför,trådlös,synlig,adapter,pin-kod,pålitliga enheter",
     "X-KDE-Keywords[tr]": "bluetooth,donanım,bağlantı,aygıtlar,cihazlar,aygıt bul,cihaz bul,bağlan,bağlantıyı kes,bağlantı kes,dosya gönder,dosya al,aktar,transfer,kablosuz,wireless,görünür,adaptör,bağdaştırıcı,pin,güvenilen aygıt,güvenilen cihaz",
     "X-KDE-Keywords[uk]": "bluetooth,hardware,connection,devices,find devices,connect,disconnect,send file,receive file,transfer,wireless,visible,adapter,pin,trusted devices,блютуз,обладнання,з'єднання,пристрої,пошук,з'єднати,від'єднати,надіслати файл,отримати файл,передавання,бездротове,видимість,адаптер,пінкод,пін-код,довірені,надійні",
-    "X-KDE-Keywords[x-test]": "xxbluetoothxx,xxhardwarexx,xxconnectionxx,xxdevicesxx,xxfind devicesxx,xxconnectxx,xxdisconnectxx,xxsend filexx,xxreceive filexx,xxtransferxx,xxwirelessxx,xxvisiblexx,xxadapterxx,xxpinxx,xxtrusted devicesxx",
     "X-KDE-Keywords[zh_CN]": "bluetooth,hardware,connection,devices,find devices,connect,disconnect,send file,receive file,transfer,wireless,visible,adapter,pin,trusted devices,lanya,yingjian,lianjie,shebei,chazhaoshebei,duankailianjie,fasongwenjian,jieshouwenjian,chuanshu,wuxian,kejianxing,shipeiqi,yixinrenshebei,xinrenshebei,yixinrendeshebei,xinrendeshebei,蓝牙,硬件,连接,设备,查找设备,断开连接,发送文件,接收文件,传输,无线,可见性,适配器,已信任设备,信任设备,已信任的设备,信任的设备",
     "X-KDE-Keywords[zh_TW]": "藍牙,藍芽,硬體,連線,連接,裝置,尋找裝置,找裝置,斷線,中斷連接,傳送檔案,接收檔案,傳輸,無線,可見,轉接器,pin 碼,信任裝置",
     "X-KDE-ParentApp": "kcontrol",
