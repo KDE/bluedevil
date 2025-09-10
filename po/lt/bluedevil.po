@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-10 00:44+0000\n"
-"PO-Revision-Date: 2025-08-06 19:39+0300\n"
+"PO-Revision-Date: 2025-09-10 01:51+0300\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: lt <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -30,24 +30,22 @@ msgid "Your emails"
 msgstr "liudas@akmc.lt, <>"
 
 #: applet/devicesproxymodel.cpp:51
-#, fuzzy, kde-format
-#| msgid "Blocked:"
+#, kde-format
 msgctxt "@title:column Blocked Bluetooth devices"
 msgid "Blocked"
-msgstr "Užblokuotas:"
+msgstr "Užblokuotas"
 
 #: applet/devicesproxymodel.cpp:54
-#, fuzzy, kde-format
-#| msgid "Connect"
+#, kde-format
 msgctxt "@title:column Connected Bluetooth devices"
 msgid "Connected"
-msgstr "Prisijungti"
+msgstr "Prijungtas"
 
 #: applet/devicesproxymodel.cpp:56
 #, kde-format
 msgctxt "@title:column Available but not connected Bluetooth devices"
 msgid "Available"
-msgstr ""
+msgstr "Prieinamas"
 
 #: applet/devicesstateproxymodel.cpp:273
 #, kde-format
@@ -81,11 +79,10 @@ msgid "%1 Network (%2)"
 msgstr "%1 Tinklas (%2)"
 
 #: kcm/bluetoothmoduledata.cpp:20
-#, fuzzy, kde-format
-#| msgid "Enable Bluetooth integration"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
-msgstr "Įjungti Bluetooth integraciją"
+msgstr "Įjungti Bluetooth"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
