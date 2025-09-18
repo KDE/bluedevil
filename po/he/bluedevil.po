@@ -3,20 +3,21 @@
 #
 # elkana bardugo <ttv200@gmail.com>, 2016.
 # Elkana Bardugo <ttv200@gmail.com>, 2017. #zanata
+# SPDX-FileCopyrightText: 2025 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-05 05:54+0000\n"
-"PO-Revision-Date: 2017-05-16 06:51-0400\n"
-"Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
-"Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2025-09-08 20:15+0300\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Zanata 3.9.6\n"
+"X-Generator: Lokalize 25.08.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -64,13 +65,10 @@ msgid "%1 is requesting access to this computer"
 msgstr "%1 מבקש גישה למחשב זה"
 
 #: kded/helpers/requestauthorization.cpp:33
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "Button to trust a bluetooth remote device and authorize it to connect"
-#| msgid "Trust && Authorize"
+#, kde-format
 msgctxt "Button to trust a bluetooth remote device and authorize it to connect"
 msgid "Trust and Authorize"
-msgstr "אשר והוסף להתקנים מהימנים"
+msgstr "מתן אמון ואישור"
 
 #: kded/helpers/requestauthorization.cpp:34
 #, kde-format
@@ -172,11 +170,10 @@ msgid "Cancel"
 msgstr "בטל"
 
 #: kded/receivefilejob.cpp:164
-#, fuzzy, kde-format
-#| msgid "<b>Receiving files</b>"
+#, kde-format
 msgctxt "@title job"
 msgid "Receiving file"
-msgstr "<b>מקבל קבצים</b>"
+msgstr "קובץ מתקבל"
 
 #: kded/receivefilejob.cpp:165 sendfile/sendfilesjob.cpp:84
 #, kde-format
@@ -217,10 +214,9 @@ msgid "No Bluetooth adapters have been found."
 msgstr "לא נמצאו מתאמי בלוטוס"
 
 #: kio/bluetooth/kiobluetooth.cpp:92
-#, fuzzy, kde-format
-#| msgid "Retrieving services..."
+#, kde-format
 msgid "Retrieving services…"
-msgstr "מאחר שירותים..."
+msgstr "השירותים מתקבלים…"
 
 #: kio/bluetooth/kiobluetooth.cpp:99
 #, kde-format
@@ -233,10 +229,9 @@ msgid "Received Files"
 msgstr "מקבל קבצים"
 
 #: kio/bluetooth/kiobluetooth.cpp:168
-#, fuzzy, kde-format
-#| msgid "Scanning for new devices..."
+#, kde-format
 msgid "Scanning for new devices…"
-msgstr "מחפש התקנים חדשים..."
+msgstr "סריקה לאיתור התקנים חדש…"
 
 #: kio/obexftp/kioobexftp.cpp:97 kio/obexftp/kioobexftp.cpp:99
 #, kde-format
@@ -244,10 +239,9 @@ msgid "Obexd service is not running."
 msgstr "השירות Obexd לא רץ."
 
 #: kio/obexftp/kioobexftp.cpp:146
-#, fuzzy, kde-format
-#| msgid "Retrieving information from remote device..."
+#, kde-format
 msgid "Retrieving information from remote device…"
-msgstr "מאחזר מידע מההתקן המרוחק"
+msgstr "מתקבל מידע מההתקן המרוחק…"
 
 #: kio/obexftp/kioobexftp.cpp:229
 #, kde-format
@@ -270,12 +264,10 @@ msgid "Bluetooth is disabled."
 msgstr "הבלוטוס כבוי"
 
 #: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:307
-#, fuzzy, kde-format
-#| msgctxt "This device is a Graphics Tablet (input device)"
-#| msgid "Tablet"
+#, kde-format
 msgctxt "Action to enable Bluetooth adapter"
 msgid "Enable"
-msgstr "טבלט"
+msgstr "הפעלה"
 
 #: sendfile/discoverwidget.cpp:137
 #, kde-format
@@ -286,44 +278,39 @@ msgstr "התקן הבלוטוס כבוי."
 #, kde-format
 msgctxt "Action to turn on Bluetooth adapter"
 msgid "Turn On"
-msgstr ""
+msgstr "הפעלה"
 
 #: sendfile/main.cpp:25 sendfile/main.cpp:27
-#, fuzzy, kde-format
-#| msgid "Bluetooth transfer failed"
+#, kde-format
 msgid "Bluetooth File Transfer"
-msgstr "העברת הבלוטוס נכשלה"
+msgstr "העברת קבצים בבלוטות׳"
 
 #: sendfile/main.cpp:50
 #, kde-format
 msgid "Specify receiving device by MAC address."
-msgstr ""
+msgstr "ציון התקן מקבל לפי כתובת חומרה (MAC)."
 
 #: sendfile/main.cpp:54
 #, kde-format
 msgid "Specify receiving device by UBI path."
-msgstr ""
+msgstr "ציון התקן מקבל לפי נתיב UBI."
 
 #: sendfile/main.cpp:58
 #, kde-format
 msgid "Files to be sent."
-msgstr ""
+msgstr "קבצים לשליחה."
 
 #: sendfile/pages/connectingpage.cpp:32 wizard/pages/connect.cpp:39
-#, fuzzy, kde-format
-#| msgctxt "Connecting to a Bluetooth device"
-#| msgid "Connecting to %1..."
+#, kde-format
 msgctxt "Connecting to a Bluetooth device"
 msgid "Connecting to %1…"
-msgstr "מתחבר ל־%1..."
+msgstr "התחברות ל־%1…"
 
 #: sendfile/pages/failpage.cpp:43
-#, fuzzy, kde-format
-#| msgctxt "This string is shown when the wizard fail"
-#| msgid "The connection to the device has failed"
+#, kde-format
 msgctxt "This string is shown when the wizard fail"
 msgid "The connection to the device has failed: %1"
-msgstr "ההתחברות להתקן נכשלה"
+msgstr "ההתחברות להתקן נכשלה: %1"
 
 #: sendfile/pages/failpage.cpp:45
 #, fuzzy, kde-format
@@ -380,7 +367,7 @@ msgstr "בטל"
 #, kde-format
 msgctxt "@info:status %1 error message"
 msgid "Failed to start org.bluez.obex service: %1"
-msgstr ""
+msgstr "הפעלת השירות org.bluez.obex נכשלה: %1"
 
 #. i18n: ectx: label, entry (saveUrl), group (General)
 #: settings/filereceiver.kcfg:11
@@ -440,7 +427,7 @@ msgstr "לביש"
 #: wizard/pages/discover.ui:19
 #, kde-format
 msgid "Search…"
-msgstr ""
+msgstr "חיפוש…"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: wizard/pages/discover.ui:64
@@ -520,18 +507,18 @@ msgstr "אשר שהקוד PIN שמוצג ב־%1 מתאים לקוד שבאשף."
 #: wizard/pages/success.cpp:40
 #, kde-format
 msgid "Setup Finished"
-msgstr ""
+msgstr "ההגדרות הושלמו"
 
 #: wizard/pages/success.cpp:42
 #, kde-format
 msgid "The device has been set up and can now be used."
-msgstr ""
+msgstr "ההתקן הוגדר וניתן להשתמש בו מעתה."
 
 #: wizard/pages/success.cpp:44
 #, kde-format
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
-msgstr ""
+msgstr "ההתקן ‚%1’ הוגדר וניתן להשתמש בו מעתה."
 
 #, fuzzy
 #~| msgid "Bluetooth Daemon"
