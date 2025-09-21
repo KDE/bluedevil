@@ -29,7 +29,6 @@
 #include <BluezQt/Device>
 #include <BluezQt/InitManagerJob>
 #include <BluezQt/ObexManager>
-#include <BluezQt/PendingCall>
 
 SendFileWizard::SendFileWizard(const QString &device, const QStringList &files)
     : QWizard()
