@@ -30,6 +30,19 @@ KCMUtils.ScrollViewKCM {
 
     actions: [
         Kirigami.Action {
+            text: i18n("Pair Device…")
+            icon.name: "list-add-symbolic"
+            onTriggered: root.KCMUtils.ConfigModule.runWizard(root)
+            visible: BluezQt.Manager.bluetoothOperational
+            displayHint: Kirigami.DisplayHint.KeepVisible
+        },
+        Kirigami.Action {
+            text: i18n("Configure…")
+            icon.name: "configure-symbolic"
+            onTriggered: root.KCMUtils.ConfigModule.push("General.qml")
+            visible: BluezQt.Manager.bluetoothOperational
+        },
+        Kirigami.Action {
             id: toggleBluetoothAction
             text: i18nc("@action: button as in, 'enable Bluetooth'", "Enabled")
             icon.name: "network-bluetooth-symbolic"
@@ -42,19 +55,6 @@ KCMUtils.ScrollViewKCM {
             displayComponent: QQC2.Switch {
                 action: toggleBluetoothAction
             }
-        },
-        Kirigami.Action {
-            text: i18n("Pair Device…")
-            icon.name: "list-add-symbolic"
-            onTriggered: root.KCMUtils.ConfigModule.runWizard(root)
-            visible: BluezQt.Manager.bluetoothOperational
-            displayHint: Kirigami.DisplayHint.KeepVisible
-        },
-        Kirigami.Action {
-            text: i18n("Configure…")
-            icon.name: "configure-symbolic"
-            onTriggered: root.KCMUtils.ConfigModule.push("General.qml")
-            visible: BluezQt.Manager.bluetoothOperational
         }
     ]
 
