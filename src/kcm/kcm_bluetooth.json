@@ -175,6 +175,7 @@
     "X-KDE-Keywords[sl]": "bluetooth,strojna oprema,povezava,naprave,poišči naprave,poveži,prekini povezavo,pošlji datoteko,prejmi datoteko,prenesi,brezžično,vidno,adapter,pin,zaupanja vredne naprave",
     "X-KDE-Keywords[sv]": "blåtand,maskinvara,anslutning,enheter,sök enheter,anslut,koppla ner,skicka fil,ta emot fil,överför,trådlös,synlig,adapter,pin-kod,pålitliga enheter",
     "X-KDE-Keywords[uk]": "bluetooth,hardware,connection,devices,find devices,connect,disconnect,send file,receive file,transfer,wireless,visible,adapter,pin,trusted devices,блютуз,обладнання,з'єднання,пристрої,пошук,з'єднати,від'єднати,надіслати файл,отримати файл,передавання,бездротове,видимість,адаптер,пінкод,пін-код,довірені,надійні",
+    "X-KDE-Keywords[zh_TW]": "藍牙,藍芽,硬體,連線,連接,裝置,尋找裝置,找裝置,斷線,中斷連接,傳送檔案,接收檔案,傳輸,無線,可見,轉接器,pin 碼,信任裝置",
     "X-KDE-ParentApp": "kcontrol",
     "X-KDE-System-Settings-Parent-Category": "hardware"
 }
