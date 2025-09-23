@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-10 00:44+0000\n"
+"POT-Creation-Date: 2025-09-23 00:44+0000\n"
 "PO-Revision-Date: 2025-08-11 09:39+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -236,21 +236,21 @@ msgstr "Enregistrer des fichiers dans :"
 msgid "Select folder"
 msgstr "Sélectionner un dossier"
 
-#: ui/main.qml:34
-#, kde-format
-msgctxt "@action: button as in, 'enable Bluetooth'"
-msgid "Enabled"
-msgstr "Activé"
-
-#: ui/main.qml:47
+#: ui/main.qml:33
 #, kde-format
 msgid "Pair Device…"
 msgstr "Associer un périphérique..."
 
-#: ui/main.qml:54
+#: ui/main.qml:40
 #, kde-format
 msgid "Configure…"
 msgstr "Configurer..."
+
+#: ui/main.qml:47
+#, kde-format
+msgctxt "@action: button as in, 'enable Bluetooth'"
+msgid "Enabled"
+msgstr "Activé"
 
 #: ui/main.qml:125
 #, kde-format

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-10 00:44+0000\n"
+"POT-Creation-Date: 2025-09-23 00:44+0000\n"
 "PO-Revision-Date: 2023-11-23 08:48+0100\n"
 "Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
 "Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
@@ -412,17 +412,17 @@ msgstr "Odoslať do zariadenia %1"
 msgid "Sending file over Bluetooth"
 msgstr "Odosielanie súboru cez Bluetooth"
 
-#: sendfile/sendfilewizard.cpp:41
+#: sendfile/sendfilewizard.cpp:40
 #, kde-format
 msgid "Send Files"
 msgstr "Odoslať súbory"
 
-#: sendfile/sendfilewizard.cpp:42
+#: sendfile/sendfilewizard.cpp:41
 #, kde-format
 msgid "Cancel"
 msgstr "Zrušiť"
 
-#: sendfile/sendfilewizard.cpp:149
+#: sendfile/sendfilewizard.cpp:148
 #, kde-format
 msgctxt "@info:status %1 error message"
 msgid "Failed to start org.bluez.obex service: %1"

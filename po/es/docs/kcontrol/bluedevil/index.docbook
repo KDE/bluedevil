@@ -125,7 +125,7 @@
         
         <para
 >Pulse el botón <guibutton
->Configurar...</guibutton
+>Configurar…</guibutton
 > para cambiar los ajustes de &bluetooth; del espacio de trabajo &plasma;. </para>
         
         <screenshot>
@@ -344,7 +344,7 @@
             
             <para
 >El botón <guibutton
->Enviar archivo...</guibutton
+>Enviar archivo…</guibutton
 > se mostrará solo si el correspondiente dispositivo está conectado y preparado para recibir archivos. Esta función puede necesitar que instale cierto software adicional. Si es necesario, siga las instrucciones y consulte la documentación de su distribución. </para>
             
         </sect2>

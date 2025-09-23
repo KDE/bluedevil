@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-10 00:44+0000\n"
+"POT-Creation-Date: 2025-09-23 00:44+0000\n"
 "PO-Revision-Date: 2025-08-10 06:15+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -222,21 +222,21 @@ msgstr "ფაილების შენახვა:"
 msgid "Select folder"
 msgstr "საქაღალდეს არჩევა"
 
-#: ui/main.qml:34
-#, kde-format
-msgctxt "@action: button as in, 'enable Bluetooth'"
-msgid "Enabled"
-msgstr "ჩართულია"
-
-#: ui/main.qml:47
+#: ui/main.qml:33
 #, kde-format
 msgid "Pair Device…"
 msgstr "მოწყობილობის დაწყვილება…"
 
-#: ui/main.qml:54
+#: ui/main.qml:40
 #, kde-format
 msgid "Configure…"
 msgstr "მორგება…"
+
+#: ui/main.qml:47
+#, kde-format
+msgctxt "@action: button as in, 'enable Bluetooth'"
+msgid "Enabled"
+msgstr "ჩართულია"
 
 #: ui/main.qml:125
 #, kde-format

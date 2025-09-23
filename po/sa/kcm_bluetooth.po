@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-10 00:44+0000\n"
+"POT-Creation-Date: 2025-09-23 00:44+0000\n"
 "PO-Revision-Date: 2024-12-25 19:35+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -222,21 +222,21 @@ msgstr "सञ्चिकाः अत्र रक्षन्तु :"
 msgid "Select folder"
 msgstr "फोल्डरं चिनोतु"
 
-#: ui/main.qml:34
-#, kde-format
-msgctxt "@action: button as in, 'enable Bluetooth'"
-msgid "Enabled"
-msgstr "सक्षमम्"
-
-#: ui/main.qml:47
+#: ui/main.qml:33
 #, kde-format
 msgid "Pair Device…"
 msgstr "युग्मयन्त्रम्…"
 
-#: ui/main.qml:54
+#: ui/main.qml:40
 #, kde-format
 msgid "Configure…"
 msgstr "विन्यस्तं कुर्वन्तु…"
+
+#: ui/main.qml:47
+#, kde-format
+msgctxt "@action: button as in, 'enable Bluetooth'"
+msgid "Enabled"
+msgstr "सक्षमम्"
 
 #: ui/main.qml:125
 #, kde-format

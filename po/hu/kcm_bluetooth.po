@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-10 00:44+0000\n"
+"POT-Creation-Date: 2025-09-23 00:44+0000\n"
 "PO-Revision-Date: 2024-09-19 14:30+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -223,21 +223,21 @@ msgstr "Fájlok mentése ide:"
 msgid "Select folder"
 msgstr "Mappa kiválasztása"
 
-#: ui/main.qml:34
-#, kde-format
-msgctxt "@action: button as in, 'enable Bluetooth'"
-msgid "Enabled"
-msgstr "Bekapcsolva"
-
-#: ui/main.qml:47
+#: ui/main.qml:33
 #, kde-format
 msgid "Pair Device…"
 msgstr "Eszköz párosítása…"
 
-#: ui/main.qml:54
+#: ui/main.qml:40
 #, kde-format
 msgid "Configure…"
 msgstr "Beállítások…"
+
+#: ui/main.qml:47
+#, kde-format
+msgctxt "@action: button as in, 'enable Bluetooth'"
+msgid "Enabled"
+msgstr "Bekapcsolva"
 
 #: ui/main.qml:125
 #, kde-format

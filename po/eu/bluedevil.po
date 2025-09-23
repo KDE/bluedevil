@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-10 00:44+0000\n"
+"POT-Creation-Date: 2025-09-23 00:44+0000\n"
 "PO-Revision-Date: 2025-08-10 20:16+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -407,17 +407,17 @@ msgstr "Bidali %1-era"
 msgid "Sending file over Bluetooth"
 msgstr "Bidali fitxategia Bluetooth bidez"
 
-#: sendfile/sendfilewizard.cpp:41
+#: sendfile/sendfilewizard.cpp:40
 #, kde-format
 msgid "Send Files"
 msgstr "Bidali fitxategiak"
 
-#: sendfile/sendfilewizard.cpp:42
+#: sendfile/sendfilewizard.cpp:41
 #, kde-format
 msgid "Cancel"
 msgstr "Utzi"
 
-#: sendfile/sendfilewizard.cpp:149
+#: sendfile/sendfilewizard.cpp:148
 #, kde-format
 msgctxt "@info:status %1 error message"
 msgid "Failed to start org.bluez.obex service: %1"

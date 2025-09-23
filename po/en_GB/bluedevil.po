@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-10 00:44+0000\n"
+"POT-Creation-Date: 2025-09-23 00:44+0000\n"
 "PO-Revision-Date: 2024-08-03 13:05+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -408,17 +408,17 @@ msgstr "Send to %1"
 msgid "Sending file over Bluetooth"
 msgstr "Sending file over Bluetooth"
 
-#: sendfile/sendfilewizard.cpp:41
+#: sendfile/sendfilewizard.cpp:40
 #, kde-format
 msgid "Send Files"
 msgstr "Send Files"
 
-#: sendfile/sendfilewizard.cpp:42
+#: sendfile/sendfilewizard.cpp:41
 #, kde-format
 msgid "Cancel"
 msgstr "Cancel"
 
-#: sendfile/sendfilewizard.cpp:149
+#: sendfile/sendfilewizard.cpp:148
 #, kde-format
 msgctxt "@info:status %1 error message"
 msgid "Failed to start org.bluez.obex service: %1"
