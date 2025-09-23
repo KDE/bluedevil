@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-10 00:44+0000\n"
+"POT-Creation-Date: 2025-09-23 02:47+0000\n"
 "PO-Revision-Date: 2020-09-28 02:19+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -225,23 +225,23 @@ msgstr "Failide salvestamise asukoht:"
 msgid "Select folder"
 msgstr "Kataloogi valimine"
 
-#: ui/main.qml:34
+#: ui/main.qml:33
+#, kde-format
+msgid "Pair Device…"
+msgstr ""
+
+#: ui/main.qml:40
+#, fuzzy, kde-format
+#| msgid "Configure..."
+msgid "Configure…"
+msgstr "Seadista ..."
+
+#: ui/main.qml:47
 #, fuzzy, kde-format
 #| msgid "Enabled:"
 msgctxt "@action: button as in, 'enable Bluetooth'"
 msgid "Enabled"
 msgstr "Sisse lülitatud:"
-
-#: ui/main.qml:47
-#, kde-format
-msgid "Pair Device…"
-msgstr ""
-
-#: ui/main.qml:54
-#, fuzzy, kde-format
-#| msgid "Configure..."
-msgid "Configure…"
-msgstr "Seadista ..."
 
 #: ui/main.qml:125
 #, kde-format
