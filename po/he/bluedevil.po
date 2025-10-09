@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-05 05:54+0000\n"
-"PO-Revision-Date: 2025-09-08 20:15+0300\n"
+"PO-Revision-Date: 2025-10-07 09:29+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.08.0\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -313,16 +313,14 @@ msgid "The connection to the device has failed: %1"
 msgstr "ההתחברות להתקן נכשלה: %1"
 
 #: sendfile/pages/failpage.cpp:45
-#, fuzzy, kde-format
-#| msgid "The connection to %1 has failed"
+#, kde-format
 msgid "The connection to %1 has failed: %2"
-msgstr "ההתחברות ל־%1 נכשלה"
+msgstr "החיבור ל־%1 נכשל: %2"
 
 #: sendfile/pages/selectdeviceandfilespage.cpp:53
-#, fuzzy, kde-format
-#| msgid "Open file..."
+#, kde-format
 msgid "Open file…"
-msgstr "פתח קובץ..."
+msgstr "פתיחת קובץ…"
 
 #. i18n: ectx: property (text), widget (KSqueezedTextLabel, selectLbl)
 #: sendfile/pages/selectdeviceandfilespage.cpp:58
@@ -394,10 +392,9 @@ msgid "Finish"
 msgstr "סיים"
 
 #: wizard/main.cpp:26 wizard/main.cpp:28
-#, fuzzy, kde-format
-#| msgid "Bluetooth Devices"
+#, kde-format
 msgid "Add Bluetooth Device"
-msgstr "התקני בלוטוס"
+msgstr "הוספת התקן בלוטות׳"
 
 #: wizard/pages/discover.cpp:131
 #, kde-format
@@ -416,12 +413,10 @@ msgid "Your Bluetooth adapter is not pairable."
 msgstr "התקן הבלוטוס שלך אינו בר התאמה"
 
 #: wizard/pages/discover.cpp:310
-#, fuzzy, kde-format
-#| msgctxt "This device is a Wearable"
-#| msgid "Wearable"
+#, kde-format
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
-msgstr "לביש"
+msgstr "להנגיש צימוד"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, searchField)
 #: wizard/pages/discover.ui:19
@@ -431,10 +426,9 @@ msgstr "חיפוש…"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: wizard/pages/discover.ui:64
-#, fuzzy, kde-format
-#| msgid "Scanning..."
+#, kde-format
 msgid "Scanning…"
-msgstr "סורק..."
+msgstr "מתבצעת סריקה…"
 
 #. i18n: ectx: property (text), widget (QCheckBox, manualPin)
 #: wizard/pages/discover.ui:84
@@ -473,10 +467,9 @@ msgid "The setup of %1 has failed"
 msgstr "ההגדרה של %1 נכשלה"
 
 #: wizard/pages/pairing.cpp:60
-#, fuzzy, kde-format
-#| msgid "Connecting to %1..."
+#, kde-format
 msgid "Connecting to %1…"
-msgstr "מתחבר ל־%1"
+msgstr "מתבצעת התחברות אל %1…"
 
 #: wizard/pages/pairing.cpp:91
 #, kde-format
