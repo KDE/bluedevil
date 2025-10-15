@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-23 00:44+0000\n"
-"PO-Revision-Date: 2025-02-03 21:14+0100\n"
+"PO-Revision-Date: 2025-10-14 22:10+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.12.1\n"
+"X-Generator: Lokalize 25.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -30,24 +30,22 @@ msgid "Your emails"
 msgstr "kiszel.kristof@gmail.com"
 
 #: applet/devicesproxymodel.cpp:51
-#, fuzzy, kde-format
-#| msgid "Blocked:"
+#, kde-format
 msgctxt "@title:column Blocked Bluetooth devices"
 msgid "Blocked"
-msgstr "Blokkolt:"
+msgstr "Blokkolt"
 
 #: applet/devicesproxymodel.cpp:54
-#, fuzzy, kde-format
-#| msgid "Connect"
+#, kde-format
 msgctxt "@title:column Connected Bluetooth devices"
 msgid "Connected"
-msgstr "Kapcsolódás"
+msgstr "Kapcsolódva"
 
 #: applet/devicesproxymodel.cpp:56
 #, kde-format
 msgctxt "@title:column Available but not connected Bluetooth devices"
 msgid "Available"
-msgstr ""
+msgstr "Elérhető"
 
 #: applet/devicesstateproxymodel.cpp:273
 #, kde-format
@@ -81,11 +79,10 @@ msgid "%1 Network (%2)"
 msgstr "%1 hálózat (%2)"
 
 #: kcm/bluetoothmoduledata.cpp:20
-#, fuzzy, kde-format
-#| msgid "Enable Bluetooth integration"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
-msgstr "Bluetooth integráció bekapcsolása"
+msgstr "Bluetooth bekapcsolása"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -488,10 +485,9 @@ msgstr "Keresés…"
 
 #. i18n: ectx: property (text), widget (QCheckBox, showUnnamedDevicesCheckBox)
 #: wizard/pages/discover.ui:42
-#, fuzzy, kde-format
-#| msgid "Browse devices"
+#, kde-format
 msgid "Show unnamed devices"
-msgstr "Eszközök böngészése"
+msgstr "Névtelen eszközök megjelenítése"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: wizard/pages/discover.ui:71
