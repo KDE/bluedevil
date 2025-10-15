@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-10 00:44+0000\n"
-"PO-Revision-Date: 2025-04-27 22:25+0200\n"
+"PO-Revision-Date: 2025-10-14 22:10+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -16,27 +16,25 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.04.0\n"
+"X-Generator: Lokalize 25.08.2\n"
 
 #: devicesproxymodel.cpp:51
 #, kde-format
 msgctxt "@title:column Blocked Bluetooth devices"
 msgid "Blocked"
-msgstr ""
+msgstr "Blokkolt"
 
 #: devicesproxymodel.cpp:54
-#, fuzzy, kde-format
-#| msgid "Connected"
+#, kde-format
 msgctxt "@title:column Connected Bluetooth devices"
 msgid "Connected"
 msgstr "Kapcsolódva"
 
 #: devicesproxymodel.cpp:56
-#, fuzzy, kde-format
-#| msgid "Available devices"
+#, kde-format
 msgctxt "@title:column Available but not connected Bluetooth devices"
 msgid "Available"
-msgstr "Elérhető eszközök"
+msgstr "Elérhető"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format
@@ -147,7 +145,7 @@ msgstr "Kapcsolódás sikertelen"
 #: package/contents/ui/DeviceItem.qml:252
 #, kde-format
 msgid "Headset"
-msgstr ""
+msgstr "Fejhallgató"
 
 #: package/contents/ui/DeviceItem.qml:258
 #, kde-format
@@ -157,22 +155,22 @@ msgstr "Hangeszköz"
 #: package/contents/ui/DeviceItem.qml:262
 #, kde-format
 msgid "Keyboard"
-msgstr ""
+msgstr "Billentyűzet"
 
 #: package/contents/ui/DeviceItem.qml:265
 #, kde-format
 msgid "Mouse"
-msgstr ""
+msgstr "Egér"
 
 #: package/contents/ui/DeviceItem.qml:268
 #, kde-format
 msgid "Joypad"
-msgstr ""
+msgstr "Játékvezérlő"
 
 #: package/contents/ui/DeviceItem.qml:271
 #, kde-format
 msgid "Drawing tablet"
-msgstr ""
+msgstr "Rajztábla"
 
 #: package/contents/ui/DeviceItem.qml:275
 #, kde-format
@@ -182,12 +180,12 @@ msgstr "Telefon"
 #: package/contents/ui/DeviceItem.qml:278
 #, kde-format
 msgid "Camera"
-msgstr ""
+msgstr "Fényképezőgép"
 
 #: package/contents/ui/DeviceItem.qml:281
 #, kde-format
 msgid "Printer"
-msgstr ""
+msgstr "Nyomtató"
 
 #: package/contents/ui/DeviceItem.qml:288
 #, kde-format
