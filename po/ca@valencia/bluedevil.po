@@ -2,11 +2,11 @@
 # Copyright (C) 2010-2025 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2 or later.
 #
-# Manuel Tortosa <manutortosa@chakra-project.org>, 2010, 2011.
-# Josep David Capdevila Cano <josepd.capdevila@gmail.com>, 2010.
-# Josep M. Ferrer <txemaq@gmail.com>, 2010, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2025.
-# Antoni Bella Pérez <antonibella5@yahoo.com>, 2013, 2014, 2015, 2017, 2020, 2021.
-# Empar Montoro Martín <montoro_mde@gva.es>, 2019.
+# SPDX-FileCopyrightText: 2010, 2011 Manuel Tortosa <manutortosa@chakra-project.org>
+# SPDX-FileCopyrightText: 2010 Josep David Capdevila Cano <josepd.capdevila@gmail.com>
+# SPDX-FileCopyrightText: 2010, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2025 Josep M. Ferrer <txemaq@gmail.com>
+# SPDX-FileCopyrightText: 2013, 2014, 2015, 2017, 2020, 2021 Antoni Bella Pérez <antonibella5@yahoo.com>
+# SPDX-FileCopyrightText: 2019 Empar Montoro Martín <montoro_mde@gva.es>
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
@@ -26,7 +26,8 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Empar Montoro Martín,Manuel Tortosa Moreno"
+msgstr ""
+"SPDX-FileCopyrightText: 2019 Empar Montoro Martín,Manuel Tortosa Moreno"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
