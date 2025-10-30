@@ -208,13 +208,10 @@ KCMUtils.ScrollViewKCM {
                     selected: delegate.highlighted || delegate.down
                 }
 
-                QQC2.ToolButton {
+                QQC2.Button {
                     text: delegate.model.Connected ? i18n("Disconnect") : i18n("Connect")
                     icon.name: delegate.model.Connected ? "network-disconnect-symbolic" : "network-connect-symbolic"
-                    display: QQC2.AbstractButton.IconOnly
                     visible: !delegate.model.Blocked
-                    QQC2.ToolTip.text: text
-                    QQC2.ToolTip.visible: hovered
 
                     onClicked: {
                         if (delegate.model.Connected) {
@@ -225,7 +222,7 @@ KCMUtils.ScrollViewKCM {
                     }
                 }
 
-                QQC2.ToolButton {
+                QQC2.Button {
                     action: ForgetDeviceAction {
                         dialog: forgetDeviceDialog
                         device: delegate.model.Device
