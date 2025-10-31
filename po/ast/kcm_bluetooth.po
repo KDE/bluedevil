@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-23 00:44+0000\n"
+"POT-Creation-Date: 2025-10-31 00:43+0000\n"
 "PO-Revision-Date: 2023-10-26 00:34+0200\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: \n"
@@ -40,83 +40,83 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "Habilitar el Bluetooth"
 
-#: ui/Device.qml:108 ui/main.qml:212
+#: ui/Device.qml:131 ui/main.qml:212
 #, kde-format
 msgid "Disconnect"
 msgstr "Desconectar"
 
-#: ui/Device.qml:108 ui/main.qml:212
+#: ui/Device.qml:131 ui/main.qml:212
 #, kde-format
 msgid "Connect"
 msgstr "Conectar"
 
-#: ui/Device.qml:111
+#: ui/Device.qml:134
 #, kde-format
 msgid "Unblock the device first to be able to connect to it"
 msgstr ""
 
-#: ui/Device.qml:132
+#: ui/Device.qml:155
 #, kde-format
 msgid "Type:"
 msgstr "Tipu:"
 
-#: ui/Device.qml:136
+#: ui/Device.qml:159
 #, kde-format
 msgid "%1%"
 msgstr ""
 
-#: ui/Device.qml:138
+#: ui/Device.qml:161
 #, kde-format
 msgid "Battery:"
 msgstr ""
 
-#: ui/Device.qml:143 ui/General.qml:49
+#: ui/Device.qml:166 ui/General.qml:49
 #, kde-format
 msgid "Address:"
 msgstr "Direición:"
 
-#: ui/Device.qml:148
+#: ui/Device.qml:171
 #, kde-format
 msgid "Adapter:"
 msgstr "Adautador:"
 
-#: ui/Device.qml:154 ui/General.qml:43
+#: ui/Device.qml:177 ui/General.qml:43
 #, kde-format
 msgid "Name:"
 msgstr "Nome:"
 
-#: ui/Device.qml:158
+#: ui/Device.qml:181
 #, kde-format
 msgid "Trusted"
 msgstr "D'enfotu"
 
-#: ui/Device.qml:167 ui/main.qml:179
+#: ui/Device.qml:190 ui/main.qml:179
 #, kde-format
 msgid "Blocked"
 msgstr ""
 
-#: ui/Device.qml:173
+#: ui/Device.qml:196
 #, kde-format
 msgid ""
 "Any incoming connections from a blocked device will be immediately rejected."
 msgstr ""
 
-#: ui/Device.qml:179
+#: ui/Device.qml:202
 #, kde-format
 msgid "Send File"
 msgstr ""
 
-#: ui/Device.qml:187
+#: ui/Device.qml:210
 #, kde-format
 msgid "Setup NAP Network…"
 msgstr "Configurar la rede NAP…"
 
-#: ui/Device.qml:195
+#: ui/Device.qml:218
 #, kde-format
 msgid "Setup DUN Network…"
 msgstr "Configurar la rede DUN…"
 
-#: ui/Device.qml:210
+#: ui/Device.qml:233
 #, fuzzy, kde-format
 #| msgctxt "@action:button %1 is the name of a Bluetooth device"
 #| msgid "Forget \"%1\""
@@ -280,7 +280,7 @@ msgstr ""
 msgid "Available"
 msgstr "Preseos disponibles"
 
-#: ui/main.qml:248
+#: ui/main.qml:245
 #, kde-format
 msgid "%1% Battery"
 msgstr ""

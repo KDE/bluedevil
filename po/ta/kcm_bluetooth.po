@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-23 00:44+0000\n"
+"POT-Creation-Date: 2025-10-31 00:43+0000\n"
 "PO-Revision-Date: 2025-08-10 19:52+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
@@ -39,83 +39,83 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "ஊடலையை இயக்கு"
 
-#: ui/Device.qml:108 ui/main.qml:212
+#: ui/Device.qml:131 ui/main.qml:212
 #, kde-format
 msgid "Disconnect"
 msgstr "இணைப்பை துண்டி"
 
-#: ui/Device.qml:108 ui/main.qml:212
+#: ui/Device.qml:131 ui/main.qml:212
 #, kde-format
 msgid "Connect"
 msgstr "இணை "
 
-#: ui/Device.qml:111
+#: ui/Device.qml:134
 #, kde-format
 msgid "Unblock the device first to be able to connect to it"
 msgstr "சாதனத்துடன் இணைய அதைத் தடுத்ததைத் திரும்பப்பெறவும்"
 
-#: ui/Device.qml:132
+#: ui/Device.qml:155
 #, kde-format
 msgid "Type:"
 msgstr "வகை:"
 
-#: ui/Device.qml:136
+#: ui/Device.qml:159
 #, kde-format
 msgid "%1%"
 msgstr "%1%"
 
-#: ui/Device.qml:138
+#: ui/Device.qml:161
 #, kde-format
 msgid "Battery:"
 msgstr "மின்கலம்:"
 
-#: ui/Device.qml:143 ui/General.qml:49
+#: ui/Device.qml:166 ui/General.qml:49
 #, kde-format
 msgid "Address:"
 msgstr "முகவரி:"
 
-#: ui/Device.qml:148
+#: ui/Device.qml:171
 #, kde-format
 msgid "Adapter:"
 msgstr "செருகி"
 
-#: ui/Device.qml:154 ui/General.qml:43
+#: ui/Device.qml:177 ui/General.qml:43
 #, kde-format
 msgid "Name:"
 msgstr "பெயர்:"
 
-#: ui/Device.qml:158
+#: ui/Device.qml:181
 #, kde-format
 msgid "Trusted"
 msgstr "நம்பகமானது"
 
-#: ui/Device.qml:167 ui/main.qml:179
+#: ui/Device.qml:190 ui/main.qml:179
 #, kde-format
 msgid "Blocked"
 msgstr "தடுக்கப்பட்டது"
 
-#: ui/Device.qml:173
+#: ui/Device.qml:196
 #, kde-format
 msgid ""
 "Any incoming connections from a blocked device will be immediately rejected."
 msgstr "தடுக்கப்பட்டுள்ள சாதனத்திலிருந்து உள்வரும் இணைப்புக் கோரிக்கைகள் தானாக மறுக்கப்படும்."
 
-#: ui/Device.qml:179
+#: ui/Device.qml:202
 #, kde-format
 msgid "Send File"
 msgstr "கோப்பை அனுப்பு"
 
-#: ui/Device.qml:187
+#: ui/Device.qml:210
 #, kde-format
 msgid "Setup NAP Network…"
 msgstr "NAP பிணையத்தை அமை…"
 
-#: ui/Device.qml:195
+#: ui/Device.qml:218
 #, kde-format
 msgid "Setup DUN Network…"
 msgstr "DUN பிணையத்தை அமை…"
 
-#: ui/Device.qml:210
+#: ui/Device.qml:233
 #, kde-format
 msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"
@@ -277,7 +277,7 @@ msgstr "இணைந்துள்ளது"
 msgid "Available"
 msgstr "கிடைக்கிறது"
 
-#: ui/main.qml:248
+#: ui/main.qml:245
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% மின்கலம்"
