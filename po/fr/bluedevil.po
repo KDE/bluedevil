@@ -559,13 +559,13 @@ msgstr "Connexion à %1 en cours..."
 msgid ""
 "Please introduce the PIN in your keyboard when it appears and press Enter"
 msgstr ""
-"Veuillez introduire le PIN dans votre clavier lorsqu'il apparaît et appuyer "
+"Veuillez introduire le PIN dans votre clavier lorsqu'il apparait et appuyer "
 "sur Entrée"
 
 #: wizard/pages/pairing.cpp:98
 #, kde-format
 msgid "Please introduce the PIN in your device when it appears"
-msgstr "Veuillez introduire le PIN dans votre périphérique lorsqu'il apparaît"
+msgstr "Veuillez introduire le PIN dans votre périphérique lorsqu'il apparait"
 
 #: wizard/pages/pairing.cpp:114
 #, kde-format
