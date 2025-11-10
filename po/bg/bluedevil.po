@@ -579,6 +579,3 @@ msgstr "Устройството е настроено и вече може да
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "Устройството „%1“ беше конфигурирано и сега може да се използва."
-
-#~ msgid "Parent window handle."
-#~ msgstr "Манипулатор на родителски прозорец."
