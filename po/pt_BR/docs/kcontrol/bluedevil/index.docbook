@@ -1,0 +1,357 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+<!ENTITY bluetooth "<application
+>Bluetooth</application
+>">
+<!ENTITY % addindex "IGNORE">
+<!ENTITY % Brazilian-Portuguese "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<article id="bluedevil" lang="&language;">
+    <articleinfo>
+        <title
+>Bluedevil</title>
+        <authorgroup>
+            <author
+><firstname
+>Yuri</firstname
+><surname
+>Chornoivan</surname
+> <email
+>yurchor@ukr.net</email
+></author>
+            <othercredit role="translator"
+><firstname
+>Marcus</firstname
+><surname
+>Gama</surname
+><affiliation
+><address
+><email
+>marcus.gama@gmail.com</email
+></address
+></affiliation
+><contrib
+>Tradução</contrib
+></othercredit
+> 
+        </authorgroup>
+        
+        <date
+>05/06/2022</date>
+        <releaseinfo
+>Plasma 5.25</releaseinfo>
+        
+        <keywordset>
+            <keyword
+>KDE</keyword>
+            <keyword
+>Configurações do Sistema</keyword>
+            <keyword
+>bluetooth</keyword>
+            <keyword
+>telefone</keyword>
+            <keyword
+>fone de ouvido</keyword>
+            <keyword
+>fone auricular</keyword>
+            <keyword
+>modem</keyword>
+            <keyword
+>computador</keyword>
+            <keyword
+>fone de ouvido</keyword>
+            <keyword
+>multimídia</keyword>
+            <keyword
+>dispositivo</keyword>
+            <keyword
+>teclado</keyword>
+            <keyword
+>mouse</keyword>
+            <keyword
+>joypad</keyword>
+            <keyword
+>controlador</keyword>
+            <keyword
+>tablet</keyword>
+            <keyword
+>câmera</keyword>
+            <keyword
+>impressora</keyword>
+            <keyword
+>imageamento</keyword>
+            <keyword
+>vestível</keyword>
+            <keyword
+>brinquedo</keyword>
+            <keyword
+>saúde</keyword>
+            <keyword
+>periférico</keyword>
+            <keyword
+>rede</keyword>
+        </keywordset>
+    </articleinfo>
+    
+    <sect1 id="kcmbluetooth">
+        <title
+>Bluetooth</title>
+        
+        <para
+>Nesta página, você pode configurar seus dispositivos Bluetooth para o espaço de trabalho &plasma;. </para>
+        
+        <note>
+            <para
+>Por favor, pressione o botão <guibutton
+>Ativar</guibutton
+> para ativar o subsistema &bluetooth; no seu sistema operacional. </para>
+        </note>
+        <screenshot>
+            <screeninfo
+>módulo &bluetooth; das &systemsettings;</screeninfo>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="bluetooth-kcm.png" format="PNG"/>
+                </imageobject>
+                <textobject>
+                    <phrase
+>módulo &bluetooth; das &systemsettings;</phrase>
+                </textobject>
+            </mediaobject>
+        </screenshot>
+        
+        <para
+>Pressione o botão <guibutton
+>Configurar...</guibutton
+> para alterar as configurações gerais de &bluetooth; do seu espaço de trabalho &plasma;. </para>
+        
+        <screenshot>
+            <screeninfo
+>Configurando as definições gerais do módulo</screeninfo>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="bluetooth-configure.png" format="PNG"/>
+                </imageobject>
+                <textobject>
+                    <phrase
+>Configurando as definições gerais do módulo</phrase>
+                </textobject>
+            </mediaobject>
+        </screenshot>
+        <para
+>Você pode <guilabel
+>Ativar</guilabel
+> seu dispositivo &bluetooth; e torná-lo <guilabel
+>Visível</guilabel
+> para outros dispositivos &bluetooth; com os itens correspondentes. </para>
+        
+        <para
+>É possível alterar o comportamento do subsistema &bluetooth; ao receber um arquivo. Seu espaço de trabalho &plasma; pode <guilabel
+>Pedir confirmação</guilabel
+>, <guilabel
+>Aceitar apenas dispositivos confiáveis </guilabel
+> ​(consulte a seção <guilabel
+>Confiáveis</guilabel
+> nas configurações do dispositivo abaixo) e <guilabel
+>Sempre aceitar</guilabel
+> os arquivos enviados. Você também pode configurar a pasta para armazenar os arquivos recebidos. </para>
+        
+        <para
+>Por favor, pressione o botão Voltar na parte superior da página para retornar à página principal do módulo de configuração. </para>
+        
+        <para id="adddevice"
+>Você pode adicionar um dispositivo &bluetooth; à lista principal clicando no botão <guibutton
+>Adicionar...</guibutton
+>. Sua vizinhança será escaneada em busca de dispositivos disponíveis. Se o dispositivo que você deseja usar não aparecer na lista de escaneamento, você precisará consultar o manual para obter instruções sobre como configurá-lo. </para>
+        
+        <para
+>Configure o <guilabel
+>PIN Manual</guilabel
+> se necessário e clique com o botão <mousebutton
+>esquerdo</mousebutton
+> do mouse no dispositivo detectado para emparelhá-lo com o seu computador. Consulte o manual do dispositivo para obter informações sobre o procedimento de emparelhamento. A experiência pode variar, mas geralmente é muito simples. </para>
+        
+        <screenshot>
+            <screeninfo
+>Adicionando dispositivo &bluetooth;</screeninfo>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="bluetooth-add.png" format="PNG"/>
+                </imageobject>
+                <textobject>
+                    <phrase
+>Adicionando dispositivo &bluetooth;</phrase>
+                </textobject>
+            </mediaobject>
+        </screenshot>
+        
+        <para
+>Clique-<mousebutton
+>esquerdo</mousebutton
+> no item da lista para configurar seu nome na lista de dispositivos e torná-lo <guilabel
+>Confiável</guilabel
+> e <guilabel
+>Bloqueado</guilabel
+>. </para>
+        
+        <screenshot>
+            <screeninfo
+>Configurações do dispositivo</screeninfo>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="bluetooth-phone.png" format="PNG"/>
+                </imageobject>
+                <textobject>
+                    <phrase
+>Configurações do dispositivo</phrase>
+                </textobject>
+            </mediaobject>
+        </screenshot>
+        
+        <para
+>Por favor, pressione o botão Voltar na parte superior da página para retornar à página principal do módulo de configuração. </para>
+        
+        <para
+>Ao posicionar o cursor do mouse sobre cada dispositivo &bluetooth; na lista principal, dois botões são exibidos à direita. </para>
+        
+        <para
+>Use <guiicon
+><inlinemediaobject
+><imageobject
+><imagedata fileref="network-connect.png" format="PNG"/></imageobject
+></inlinemediaobject
+></guiicon
+> ou <guiicon
+><inlinemediaobject
+><imageobject
+><imagedata fileref="network-disconnect.png" format="PNG"/></imageobject
+></inlinemediaobject
+></guiicon
+> para conectar ou desconectar um dispositivo. </para>
+        
+        <para
+>Você pode remover um dispositivo da lista principal selecionando-o e clicando no ícone <inlinemediaobject
+><imageobject
+><imagedata fileref="list-remove.png" format="PNG"/></imageobject
+></inlinemediaobject
+>. </para>
+        
+        <para
+>Se você precisar desativar o &bluetooth; por algum motivo, pressione o botão <guibutton
+>Desativar &bluetooth;</guibutton
+>. </para>
+        
+    </sect1>
+    
+    <sect1 id="system-tray">
+        <title
+>Operação na área de notificação</title>
+        
+        <note>
+            <para
+>Você deverá estar rodando o ambiente de trabalho &plasma; ou outro gerenciador de janelas adequado para mostrar o &bluetooth; na área de notificação. </para>
+        </note>
+        
+        <para
+>O módulo &bluetooth; exibe, por padrão, um ícone na bandeja do sistema. O ícone fornece indicações de status de controle e monitoramento. Um ícone &bluetooth; normal indica que todos os dispositivos estão desconectados, enquanto o ícone com a linha pontilhada horizontal indica que alguns dispositivos estão conectados ao seu computador. </para>
+        
+        <para
+>Se você posicionar o cursor do mouse sobre o ícone da bandeja do sistema, um resumo da lista de dispositivos conectados será exibido como uma dica de ferramenta. </para>
+        
+        <para
+>Clique-<mousebutton
+>esquerdo</mousebutton
+> no ícone da bandeja do sistema para alternar entre exibir e ocultar o <link linkend="controlpanel"
+>painel de controle principal do &bluetooth;</link
+>. </para>
+        
+        <para
+>Clique-<mousebutton
+>direito</mousebutton
+> no ícone da bandeja do sistema para exibir o menu de contexto com apenas um item: </para>
+        
+        <variablelist>
+            <varlistentry>
+                <term
+><menuchoice
+><guimenuitem
+>Configurar o &bluetooth;</guimenuitem
+></menuchoice
+></term>
+                <listitem
+><para
+><action
+>Inicia o <link linkend="kcmbluetooth"
+>módulo de configuração do &bluetooth; no &plasma;</link
+>.</action
+></para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+        
+        <sect2 id="controlpanel">
+            <title
+>O painel de controle principal do &bluetooth;</title>
+            
+            <para
+>O painel de controle principal do &bluetooth; pode ser usado para controlar o subsistema &bluetooth; do seu computador. </para>
+            
+            <screenshot>
+                <screeninfo
+>Painel de controle da bandeja do &bluetooth;</screeninfo>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="bluetooth-tray.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                        <phrase
+>Painel de controle da bandeja do &bluetooth;</phrase>
+                    </textobject>
+                </mediaobject>
+            </screenshot>
+            
+            <para
+>A linha superior do painel contém o seletor de &bluetooth; para ativar ou desativar o módulo de &bluetooth;, o botão de <quote
+>adição</quote
+> para <link linkend="adddevice"
+>adicionar dispositivos &bluetooth;</link
+> e o botão para <quote
+>configurar</quote
+> para iniciar o <link linkend="kcmbluetooth"
+>módulo de configuração &bluetooth; do &plasma;</link
+>. </para>
+            
+            <para
+>O espaço principal do painel é dedicado aos dispositivos emparelhados. </para>
+            <para
+>Use <guiicon
+><inlinemediaobject
+><imageobject
+><imagedata fileref="network-connect.png" format="PNG"/></imageobject
+></inlinemediaobject
+></guiicon
+> ou <guiicon
+><inlinemediaobject
+><imageobject
+><imagedata fileref="network-disconnect.png" format="PNG"/></imageobject
+></inlinemediaobject
+></guiicon
+> para conectar ou desconectar um dispositivo. </para>
+            
+            <para
+>Clique no botão <guilabel
+>v</guilabel
+> à direita do item do dispositivo. Para expandir suas propriedades. </para>
+            
+            <para
+>O botão <guibutton
+>Enviar arquivo...</guibutton
+> será exibido somente se o dispositivo correspondente estiver conectado e pronto para receber arquivos. Este recurso pode exigir a instalação de software adicional. Se necessário, siga as instruções e consulte a documentação da sua distribuição. </para>
+            
+        </sect2>
+    </sect1>
+    
+</article>
