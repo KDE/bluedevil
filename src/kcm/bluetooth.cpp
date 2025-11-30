@@ -13,6 +13,7 @@
 #include <QDBusPendingReply>
 #include <QQuickItem>
 #include <QQuickRenderControl>
+#include <QQuickWindow>
 
 #include <KAboutData>
 #include <KConfigGroup>
@@ -57,6 +58,11 @@ void Bluetooth::runWizard(QQuickItem *context)
     };
 
     QWindow *actualWindow = QQuickRenderControl::renderWindowFor(context->window());
+
+    // In full Qt Quick apps like plasma-settings, you just use the window directly
+    if (!actualWindow) {
+        actualWindow = context->window();
+    }
 
     if (KWindowSystem::isPlatformWayland()) {
         KWaylandExtras::exportWindow(actualWindow);
