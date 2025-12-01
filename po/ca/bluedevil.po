@@ -583,6 +583,3 @@ msgstr "S'ha configurat el dispositiu i ara ja es pot usar."
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "S'ha configurat el dispositiu «%1» i ara ja es pot usar."
-
-#~ msgid "Parent window handle."
-#~ msgstr "Gestió de la finestra pare."

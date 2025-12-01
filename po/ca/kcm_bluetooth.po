@@ -433,11 +433,3 @@ msgstr "Altres"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
-
-#~ msgctxt "This device is a Joypad"
-#~ msgid "Joypad"
-#~ msgstr "Comandament de joc"
-
-#~ msgctxt "Type of device: could not be determined"
-#~ msgid "Unknown"
-#~ msgstr "Desconegut"

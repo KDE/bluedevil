@@ -314,6 +314,3 @@ msgstr "Activa el Bluetooth"
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr "Més accions"
-
-#~ msgid "Input device"
-#~ msgstr "Dispositiu d'entrada"

@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2025 This file is copyright:
 # This file is distributed under the same license as the bluedevil package.
-# Sergiu Bivol <sergiu@cip.md>, 2020, 2021, 2022, 2023, 2024.
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024, 2025 Sergiu Bivol <sergiu@cip.md>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 14:41+0000\n"
-"PO-Revision-Date: 2024-01-07 12:57+0000\n"
+"PO-Revision-Date: 2025-11-30 12:47+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -29,54 +29,47 @@ msgid "Your emails"
 msgstr "sergiu@cip.md"
 
 #: applet/devicesproxymodel.cpp:51
-#, fuzzy, kde-format
-#| msgid "Blocked:"
+#, kde-format
 msgctxt "@title:column Blocked Bluetooth devices"
 msgid "Blocked"
-msgstr "Blocat:"
+msgstr "Blocate"
 
 #: applet/devicesproxymodel.cpp:54
-#, fuzzy, kde-format
-#| msgid "Connect"
+#, kde-format
 msgctxt "@title:column Connected Bluetooth devices"
 msgid "Connected"
-msgstr "Conectează"
+msgstr "Conectate"
 
 #: applet/devicesproxymodel.cpp:56
 #, kde-format
 msgctxt "@title:column Available but not connected Bluetooth devices"
 msgid "Available"
-msgstr ""
+msgstr "Disponibile"
 
 #: applet/devicesstateproxymodel.cpp:273
-#, fuzzy, kde-format
-#| msgctxt "DeviceName Network (Service)"
-#| msgid "%1 Network (%2)"
+#, kde-format
 msgctxt ""
 "@label %1 is human-readable device name, %2 is low-level device address"
 msgid "%1 (%2)"
-msgstr "Rețea %1 (%2)"
+msgstr "%1 (%2)"
 
 #: applet/devicesstateproxymodel.cpp:288
-#, fuzzy, kde-format
-#| msgid "This address is unavailable."
+#, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
-msgstr "Această adresă nu e disponibilă."
+msgstr "Dispozitivul e inaccesibil"
 
 #: applet/devicesstateproxymodel.cpp:289
-#, fuzzy, kde-format
-#| msgid "Connecting to the device"
+#, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
-msgstr "Se conectează la dispozitiv"
+msgstr "Conectarea la dispozitiv a eșuat"
 
 #: applet/devicesstateproxymodel.cpp:292
-#, fuzzy, kde-format
-#| msgid "Obexd service is not running."
+#, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
-msgstr "Serviciul Obexd nu rulează."
+msgstr "Dispozitivul nu este gata"
 
 #: kcm/bluetooth.cpp:129
 #, kde-format
@@ -85,11 +78,10 @@ msgid "%1 Network (%2)"
 msgstr "Rețea %1 (%2)"
 
 #: kcm/bluetoothmoduledata.cpp:20
-#, fuzzy, kde-format
-#| msgid "Bluetooth"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
-msgstr "Bluetooth"
+msgstr "Activează Bluetooth"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -110,7 +102,7 @@ msgstr "Responsabil"
 #: wizard/main.cpp:38
 #, kde-format
 msgid "Previous Maintainer"
-msgstr "Responsabil precedent"
+msgstr "Fostul responsabil"
 
 #: kded/helpers/requestauthorization.cpp:29
 #, kde-format
@@ -433,7 +425,7 @@ msgstr "Serviciul org.bluez.obex nu a putut fi pornit: %1"
 #: settings/bluedevilglobalsettings.kcfg:10
 #, kde-format
 msgid "Option to determine the bluetooth state at launch"
-msgstr ""
+msgstr "Opțiune ce determină starea Bluetooth la lansare"
 
 #. i18n: ectx: label, entry (saveUrl), group (General)
 #: settings/filereceiver.kcfg:11
@@ -494,11 +486,9 @@ msgstr "Caută…"
 
 #. i18n: ectx: property (text), widget (QCheckBox, showUnnamedDevicesCheckBox)
 #: wizard/pages/discover.ui:42
-#, fuzzy, kde-format
-#| msgctxt "'Auto accept' option value"
-#| msgid "Trusted devices"
+#, kde-format
 msgid "Show unnamed devices"
-msgstr "Dispozitive de încredere"
+msgstr "Arată dispozitivele nedenumite"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: wizard/pages/discover.ui:71
