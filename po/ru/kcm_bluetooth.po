@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2025-12-02 00:43+0000\n"
 "PO-Revision-Date: 2025-10-28 19:24+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -34,7 +34,7 @@ msgstr ""
 "vovan2482@mail.ru,aspotashev@gmail.com,kekcuha@gmail.com,translation-"
 "team@basealt.ru"
 
-#: bluetooth.cpp:129
+#: bluetooth.cpp:135
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
