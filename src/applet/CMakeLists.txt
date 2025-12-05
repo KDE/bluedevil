@@ -39,4 +39,14 @@ target_link_libraries(bluetoothplugin PRIVATE
 
 ecm_finalize_qml_module(bluetoothplugin)
 
-plasma_install_package(package org.kde.plasma.bluetooth)
+plasma_add_applet(org.kde.plasma.bluetooth
+    QML_SOURCES
+        qml/main.qml
+        qml/DeviceItem.qml
+        qml/FullRepresentation.qml
+        qml/MediaPlayerItem.qml
+        qml/Toolbar.qml
+    RESOURCES
+        main.xml
+    GENERATE_APPLET_CLASS
+)
