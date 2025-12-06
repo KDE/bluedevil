@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2025-12-06 00:44+0000\n"
 "PO-Revision-Date: 2024-06-04 19:07+0400\n"
 "Last-Translator: Xəyyam Qocayev <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -63,225 +63,224 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Bu cihaz hazır deyil"
 
-#: package/contents/ui/DeviceItem.qml:38
+#: qml/DeviceItem.qml:38
 #, kde-format
 msgid "Disconnect"
 msgstr "Ayırmaq"
 
-#: package/contents/ui/DeviceItem.qml:38
+#: qml/DeviceItem.qml:38
 #, kde-format
 msgid "Connect"
 msgstr "Qoşmaq"
 
-#: package/contents/ui/DeviceItem.qml:49
+#: qml/DeviceItem.qml:49
 #, kde-format
 msgid "Browse Files"
 msgstr "Fayllara baxış"
 
-#: package/contents/ui/DeviceItem.qml:60
+#: qml/DeviceItem.qml:60
 #, kde-format
 msgid "Send File"
 msgstr "Fayl göndərmək"
 
-#: package/contents/ui/DeviceItem.qml:108
+#: qml/DeviceItem.qml:108
 #, kde-format
 msgid "Copy"
 msgstr "Surətini çıxarmaq"
 
-#: package/contents/ui/DeviceItem.qml:204
+#: qml/DeviceItem.qml:204
 #, kde-format
 msgid "Yes"
 msgstr "Bəli"
 
-#: package/contents/ui/DeviceItem.qml:204
+#: qml/DeviceItem.qml:204
 #, kde-format
 msgid "No"
 msgstr "Xeyr"
 
-#: package/contents/ui/DeviceItem.qml:210
+#: qml/DeviceItem.qml:210
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: package/contents/ui/DeviceItem.qml:218
+#: qml/DeviceItem.qml:218
 #, kde-format
 msgid "Remote Name"
 msgstr "Cihazın adı"
 
-#: package/contents/ui/DeviceItem.qml:222
+#: qml/DeviceItem.qml:222
 #, kde-format
 msgid "Address"
 msgstr "Ünvan"
 
-#: package/contents/ui/DeviceItem.qml:225
+#: qml/DeviceItem.qml:225
 #, kde-format
 msgid "Paired"
 msgstr "Qoşuldu"
 
-#: package/contents/ui/DeviceItem.qml:228
+#: qml/DeviceItem.qml:228
 #, kde-format
 msgid "Trusted"
 msgstr "Etibarlıdır"
 
-#: package/contents/ui/DeviceItem.qml:231
+#: qml/DeviceItem.qml:231
 #, kde-format
 msgid "Adapter"
 msgstr "Uzlaşdırıcı"
 
-#: package/contents/ui/DeviceItem.qml:239
+#: qml/DeviceItem.qml:239
 #, kde-format
 msgid "Connecting"
 msgstr "Qoşulur"
 
-#: package/contents/ui/DeviceItem.qml:241
+#: qml/DeviceItem.qml:241
 #, kde-format
 msgid "Disconnecting"
 msgstr "Ayrılır"
 
-#: package/contents/ui/DeviceItem.qml:247
+#: qml/DeviceItem.qml:247
 #, kde-format
 msgid "Connection failed"
 msgstr "Bağlantı baş tutmadı"
 
-#: package/contents/ui/DeviceItem.qml:252
+#: qml/DeviceItem.qml:252
 #, kde-format
 msgid "Headset"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:258
+#: qml/DeviceItem.qml:258
 #, kde-format
 msgid "Audio device"
 msgstr "Səs cihazı"
 
-#: package/contents/ui/DeviceItem.qml:262
+#: qml/DeviceItem.qml:262
 #, kde-format
 msgid "Keyboard"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:265
+#: qml/DeviceItem.qml:265
 #, kde-format
 msgid "Mouse"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:268
+#: qml/DeviceItem.qml:268
 #, kde-format
 msgid "Joypad"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:271
+#: qml/DeviceItem.qml:271
 #, kde-format
 msgid "Drawing tablet"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:275
+#: qml/DeviceItem.qml:275
 #, kde-format
 msgid "Phone"
 msgstr "Telefon"
 
-#: package/contents/ui/DeviceItem.qml:278
+#: qml/DeviceItem.qml:278
 #, kde-format
 msgid "Camera"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:281
+#: qml/DeviceItem.qml:281
 #, kde-format
 msgid "Printer"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:288
+#: qml/DeviceItem.qml:288
 #, kde-format
 msgid "File transfer"
 msgstr "Fayl ötürməsi"
 
-#: package/contents/ui/DeviceItem.qml:291
+#: qml/DeviceItem.qml:291
 #, kde-format
 msgid "Send file"
 msgstr "Fayl göndərmək"
 
-#: package/contents/ui/DeviceItem.qml:294
+#: qml/DeviceItem.qml:294
 #, kde-format
 msgid "Input"
 msgstr "Daxil etmək"
 
-#: package/contents/ui/DeviceItem.qml:297
+#: qml/DeviceItem.qml:297
 #, kde-format
 msgid "Audio"
 msgstr "Səs"
 
-#: package/contents/ui/DeviceItem.qml:300
+#: qml/DeviceItem.qml:300
 #, kde-format
 msgid "Network"
 msgstr "Şəbəkə"
 
-#: package/contents/ui/DeviceItem.qml:305
+#: qml/DeviceItem.qml:305
 #, kde-format
 msgid "Other device"
 msgstr "Digər cihaz"
 
-#: package/contents/ui/DeviceItem.qml:312 package/contents/ui/main.qml:74
-#: package/contents/ui/main.qml:83
+#: qml/DeviceItem.qml:312 qml/main.qml:74 qml/main.qml:83
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% Batareya"
 
-#: package/contents/ui/FullRepresentation.qml:71
+#: qml/FullRepresentation.qml:71
 #, kde-format
 msgid "Enable"
 msgstr "Aktiv edin"
 
-#: package/contents/ui/FullRepresentation.qml:145
+#: qml/FullRepresentation.qml:145
 #, kde-format
 msgid "No Bluetooth adapters available"
 msgstr "Əlçatan Bluetooth uzlaşdırıcıları yoxdur"
 
-#: package/contents/ui/FullRepresentation.qml:147
+#: qml/FullRepresentation.qml:147
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth söndürülüb"
 
-#: package/contents/ui/FullRepresentation.qml:149
+#: qml/FullRepresentation.qml:149
 #, fuzzy, kde-format
 #| msgid "No devices found"
 msgid "No devices paired"
 msgstr "Cihaz tapılmadı"
 
-#: package/contents/ui/main.qml:51
+#: qml/main.qml:51
 #, kde-format
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
-#: package/contents/ui/main.qml:55
+#: qml/main.qml:55
 #, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
 msgstr "Bluetooth söndürülüb, açmaq üçün orta düyməyə vur"
 
-#: package/contents/ui/main.qml:59
+#: qml/main.qml:59
 #, kde-format
 msgid "No adapters available"
 msgstr "Əlçatan uzlaşdırıcılar yoxdur"
 
-#: package/contents/ui/main.qml:61
+#: qml/main.qml:61
 #, kde-format
 msgid "Bluetooth is offline"
 msgstr "Aktiv Bluetooth yoxdur"
 
-#: package/contents/ui/main.qml:64
+#: qml/main.qml:64
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr "Bluetooth-u söndürmək üçün orta düyməyə vur"
 
-#: package/contents/ui/main.qml:67
+#: qml/main.qml:67
 #, kde-format
 msgid "No connected devices"
 msgstr "Qoşulmuş cihaz yoxdur"
 
-#: package/contents/ui/main.qml:72
+#: qml/main.qml:72
 #, kde-format
 msgid "%1 connected"
 msgstr "%1 qoşulub"
 
-#: package/contents/ui/main.qml:79
+#: qml/main.qml:79
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -289,29 +288,29 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 qoşulmuş cihaz"
 msgstr[1] "%1 qoşulmuş cihaz"
 
-#: package/contents/ui/main.qml:110
+#: qml/main.qml:110
 #, fuzzy, kde-format
 #| msgid "Add New Device…"
 msgid "Pair Device…"
 msgstr "Yeni cihaz əlavə etmək…"
 
-#: package/contents/ui/main.qml:118
+#: qml/main.qml:118
 #, fuzzy, kde-format
 #| msgid "No connected devices"
 msgid "Badge icon with number of connected devices"
 msgstr "Qoşulmuş cihaz yoxdur"
 
-#: package/contents/ui/main.qml:128
+#: qml/main.qml:128
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "&Bluetooth Ayarları…"
 
-#: package/contents/ui/main.qml:134
+#: qml/main.qml:134
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Bluetooth-u aktiv etmək"
 
-#: package/contents/ui/Toolbar.qml:73
+#: qml/Toolbar.qml:73
 #, kde-format
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"

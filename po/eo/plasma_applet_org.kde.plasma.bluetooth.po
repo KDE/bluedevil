@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2025-12-06 00:44+0000\n"
 "PO-Revision-Date: 2024-12-26 21:43+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -62,224 +62,223 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "La aparato ne estas preta"
 
-#: package/contents/ui/DeviceItem.qml:38
+#: qml/DeviceItem.qml:38
 #, kde-format
 msgid "Disconnect"
 msgstr "Malkonekti"
 
-#: package/contents/ui/DeviceItem.qml:38
+#: qml/DeviceItem.qml:38
 #, kde-format
 msgid "Connect"
 msgstr "Konekti"
 
-#: package/contents/ui/DeviceItem.qml:49
+#: qml/DeviceItem.qml:49
 #, kde-format
 msgid "Browse Files"
 msgstr "Foliumi Dosieroj"
 
-#: package/contents/ui/DeviceItem.qml:60
+#: qml/DeviceItem.qml:60
 #, kde-format
 msgid "Send File"
 msgstr "Sendi Dosieron"
 
-#: package/contents/ui/DeviceItem.qml:108
+#: qml/DeviceItem.qml:108
 #, kde-format
 msgid "Copy"
 msgstr "Kopii"
 
-#: package/contents/ui/DeviceItem.qml:204
+#: qml/DeviceItem.qml:204
 #, kde-format
 msgid "Yes"
 msgstr "Jes"
 
-#: package/contents/ui/DeviceItem.qml:204
+#: qml/DeviceItem.qml:204
 #, kde-format
 msgid "No"
 msgstr "Ne"
 
-#: package/contents/ui/DeviceItem.qml:210
+#: qml/DeviceItem.qml:210
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: package/contents/ui/DeviceItem.qml:218
+#: qml/DeviceItem.qml:218
 #, kde-format
 msgid "Remote Name"
 msgstr "Fora Nomo"
 
-#: package/contents/ui/DeviceItem.qml:222
+#: qml/DeviceItem.qml:222
 #, kde-format
 msgid "Address"
 msgstr "Adreso"
 
-#: package/contents/ui/DeviceItem.qml:225
+#: qml/DeviceItem.qml:225
 #, kde-format
 msgid "Paired"
 msgstr "Parigita"
 
-#: package/contents/ui/DeviceItem.qml:228
+#: qml/DeviceItem.qml:228
 #, kde-format
 msgid "Trusted"
 msgstr "Fidinda"
 
-#: package/contents/ui/DeviceItem.qml:231
+#: qml/DeviceItem.qml:231
 #, kde-format
 msgid "Adapter"
 msgstr "Adaptilo"
 
-#: package/contents/ui/DeviceItem.qml:239
+#: qml/DeviceItem.qml:239
 #, kde-format
 msgid "Connecting"
 msgstr "Konektante"
 
-#: package/contents/ui/DeviceItem.qml:241
+#: qml/DeviceItem.qml:241
 #, kde-format
 msgid "Disconnecting"
 msgstr "Malkonekti"
 
-#: package/contents/ui/DeviceItem.qml:247
+#: qml/DeviceItem.qml:247
 #, kde-format
 msgid "Connection failed"
 msgstr "Konekto malsukcesis"
 
-#: package/contents/ui/DeviceItem.qml:252
+#: qml/DeviceItem.qml:252
 #, kde-format
 msgid "Headset"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:258
+#: qml/DeviceItem.qml:258
 #, kde-format
 msgid "Audio device"
 msgstr "Sona aparato"
 
-#: package/contents/ui/DeviceItem.qml:262
+#: qml/DeviceItem.qml:262
 #, kde-format
 msgid "Keyboard"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:265
+#: qml/DeviceItem.qml:265
 #, kde-format
 msgid "Mouse"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:268
+#: qml/DeviceItem.qml:268
 #, kde-format
 msgid "Joypad"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:271
+#: qml/DeviceItem.qml:271
 #, kde-format
 msgid "Drawing tablet"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:275
+#: qml/DeviceItem.qml:275
 #, kde-format
 msgid "Phone"
 msgstr "Telefono"
 
-#: package/contents/ui/DeviceItem.qml:278
+#: qml/DeviceItem.qml:278
 #, kde-format
 msgid "Camera"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:281
+#: qml/DeviceItem.qml:281
 #, kde-format
 msgid "Printer"
 msgstr ""
 
-#: package/contents/ui/DeviceItem.qml:288
+#: qml/DeviceItem.qml:288
 #, kde-format
 msgid "File transfer"
 msgstr "Dosiera translokigo"
 
-#: package/contents/ui/DeviceItem.qml:291
+#: qml/DeviceItem.qml:291
 #, kde-format
 msgid "Send file"
 msgstr "Sendi dosieron"
 
-#: package/contents/ui/DeviceItem.qml:294
+#: qml/DeviceItem.qml:294
 #, kde-format
 msgid "Input"
 msgstr "Enigo"
 
-#: package/contents/ui/DeviceItem.qml:297
+#: qml/DeviceItem.qml:297
 #, kde-format
 msgid "Audio"
 msgstr "Aŭdio"
 
-#: package/contents/ui/DeviceItem.qml:300
+#: qml/DeviceItem.qml:300
 #, kde-format
 msgid "Network"
 msgstr "Reto"
 
-#: package/contents/ui/DeviceItem.qml:305
+#: qml/DeviceItem.qml:305
 #, kde-format
 msgid "Other device"
 msgstr "Alia aparato"
 
-#: package/contents/ui/DeviceItem.qml:312 package/contents/ui/main.qml:74
-#: package/contents/ui/main.qml:83
+#: qml/DeviceItem.qml:312 qml/main.qml:74 qml/main.qml:83
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% Baterio"
 
-#: package/contents/ui/FullRepresentation.qml:71
+#: qml/FullRepresentation.qml:71
 #, kde-format
 msgid "Enable"
 msgstr "Ebligi"
 
-#: package/contents/ui/FullRepresentation.qml:145
+#: qml/FullRepresentation.qml:145
 #, kde-format
 msgid "No Bluetooth adapters available"
 msgstr "Neniuj Bluetooth-adaptiloj haveblaj"
 
-#: package/contents/ui/FullRepresentation.qml:147
+#: qml/FullRepresentation.qml:147
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth estas malŝaltita"
 
-#: package/contents/ui/FullRepresentation.qml:149
+#: qml/FullRepresentation.qml:149
 #, kde-format
 msgid "No devices paired"
 msgstr "Neniuj aparatoj pariĝis"
 
-#: package/contents/ui/main.qml:51
+#: qml/main.qml:51
 #, kde-format
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
-#: package/contents/ui/main.qml:55
+#: qml/main.qml:55
 #, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
 msgstr "Bluetooth estas malŝaltita; mezklaku por ebligi"
 
-#: package/contents/ui/main.qml:59
+#: qml/main.qml:59
 #, kde-format
 msgid "No adapters available"
 msgstr "Neniuj adaptiloj haveblaj"
 
-#: package/contents/ui/main.qml:61
+#: qml/main.qml:61
 #, kde-format
 msgid "Bluetooth is offline"
 msgstr "Bluetooth estas eksterrete"
 
-#: package/contents/ui/main.qml:64
+#: qml/main.qml:64
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr "Mezklaku por malŝalti Bluetooth"
 
-#: package/contents/ui/main.qml:67
+#: qml/main.qml:67
 #, kde-format
 msgid "No connected devices"
 msgstr "Neniuj konektitaj aparatoj"
 
-#: package/contents/ui/main.qml:72
+#: qml/main.qml:72
 #, kde-format
 msgid "%1 connected"
 msgstr "%1 konektita"
 
-#: package/contents/ui/main.qml:79
+#: qml/main.qml:79
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -287,28 +286,28 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 konektita aparato"
 msgstr[1] "%1 konektitaj aparatoj"
 
-#: package/contents/ui/main.qml:110
+#: qml/main.qml:110
 #, kde-format
 msgid "Pair Device…"
 msgstr "Parigi Aparaton…"
 
-#: package/contents/ui/main.qml:118
+#: qml/main.qml:118
 #, fuzzy, kde-format
 #| msgid "No connected devices"
 msgid "Badge icon with number of connected devices"
 msgstr "Neniuj konektitaj aparatoj"
 
-#: package/contents/ui/main.qml:128
+#: qml/main.qml:128
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Agordi &Bludenton…"
 
-#: package/contents/ui/main.qml:134
+#: qml/main.qml:134
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Ebligi Bluetooth"
 
-#: package/contents/ui/Toolbar.qml:73
+#: qml/Toolbar.qml:73
 #, kde-format
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"

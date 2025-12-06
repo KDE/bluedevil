@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2025-12-06 00:44+0000\n"
 "PO-Revision-Date: 2025-08-16 06:52+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
@@ -61,224 +61,223 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Urządzenie nie jest gotowe"
 
-#: package/contents/ui/DeviceItem.qml:38
+#: qml/DeviceItem.qml:38
 #, kde-format
 msgid "Disconnect"
 msgstr "Rozłącz"
 
-#: package/contents/ui/DeviceItem.qml:38
+#: qml/DeviceItem.qml:38
 #, kde-format
 msgid "Connect"
 msgstr "Połącz"
 
-#: package/contents/ui/DeviceItem.qml:49
+#: qml/DeviceItem.qml:49
 #, kde-format
 msgid "Browse Files"
 msgstr "Przeglądaj pliki"
 
-#: package/contents/ui/DeviceItem.qml:60
+#: qml/DeviceItem.qml:60
 #, kde-format
 msgid "Send File"
 msgstr "Wyślij plik"
 
-#: package/contents/ui/DeviceItem.qml:108
+#: qml/DeviceItem.qml:108
 #, kde-format
 msgid "Copy"
 msgstr "Skopiuj"
 
-#: package/contents/ui/DeviceItem.qml:204
+#: qml/DeviceItem.qml:204
 #, kde-format
 msgid "Yes"
 msgstr "Tak"
 
-#: package/contents/ui/DeviceItem.qml:204
+#: qml/DeviceItem.qml:204
 #, kde-format
 msgid "No"
 msgstr "Nie"
 
-#: package/contents/ui/DeviceItem.qml:210
+#: qml/DeviceItem.qml:210
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: package/contents/ui/DeviceItem.qml:218
+#: qml/DeviceItem.qml:218
 #, kde-format
 msgid "Remote Name"
 msgstr "Zdalna nazwa"
 
-#: package/contents/ui/DeviceItem.qml:222
+#: qml/DeviceItem.qml:222
 #, kde-format
 msgid "Address"
 msgstr "Adres"
 
-#: package/contents/ui/DeviceItem.qml:225
+#: qml/DeviceItem.qml:225
 #, kde-format
 msgid "Paired"
 msgstr "Sparowane"
 
-#: package/contents/ui/DeviceItem.qml:228
+#: qml/DeviceItem.qml:228
 #, kde-format
 msgid "Trusted"
 msgstr "Zaufane"
 
-#: package/contents/ui/DeviceItem.qml:231
+#: qml/DeviceItem.qml:231
 #, kde-format
 msgid "Adapter"
 msgstr "Adapter"
 
-#: package/contents/ui/DeviceItem.qml:239
+#: qml/DeviceItem.qml:239
 #, kde-format
 msgid "Connecting"
 msgstr "Łączenie"
 
-#: package/contents/ui/DeviceItem.qml:241
+#: qml/DeviceItem.qml:241
 #, kde-format
 msgid "Disconnecting"
 msgstr "Rozłączanie"
 
-#: package/contents/ui/DeviceItem.qml:247
+#: qml/DeviceItem.qml:247
 #, kde-format
 msgid "Connection failed"
 msgstr "Nie udało się połączyć"
 
-#: package/contents/ui/DeviceItem.qml:252
+#: qml/DeviceItem.qml:252
 #, kde-format
 msgid "Headset"
 msgstr "Zestaw słuchawkowy"
 
-#: package/contents/ui/DeviceItem.qml:258
+#: qml/DeviceItem.qml:258
 #, kde-format
 msgid "Audio device"
 msgstr "Urządzenie dźwiękowe"
 
-#: package/contents/ui/DeviceItem.qml:262
+#: qml/DeviceItem.qml:262
 #, kde-format
 msgid "Keyboard"
 msgstr "Klawiatura"
 
-#: package/contents/ui/DeviceItem.qml:265
+#: qml/DeviceItem.qml:265
 #, kde-format
 msgid "Mouse"
 msgstr "Mysz"
 
-#: package/contents/ui/DeviceItem.qml:268
+#: qml/DeviceItem.qml:268
 #, kde-format
 msgid "Joypad"
 msgstr "Deska sterowania"
 
-#: package/contents/ui/DeviceItem.qml:271
+#: qml/DeviceItem.qml:271
 #, kde-format
 msgid "Drawing tablet"
 msgstr "Tablet rysunkowy"
 
-#: package/contents/ui/DeviceItem.qml:275
+#: qml/DeviceItem.qml:275
 #, kde-format
 msgid "Phone"
 msgstr "Telefon"
 
-#: package/contents/ui/DeviceItem.qml:278
+#: qml/DeviceItem.qml:278
 #, kde-format
 msgid "Camera"
 msgstr "Aparat"
 
-#: package/contents/ui/DeviceItem.qml:281
+#: qml/DeviceItem.qml:281
 #, kde-format
 msgid "Printer"
 msgstr "Drukarka"
 
-#: package/contents/ui/DeviceItem.qml:288
+#: qml/DeviceItem.qml:288
 #, kde-format
 msgid "File transfer"
 msgstr "Przeglądanie plików"
 
-#: package/contents/ui/DeviceItem.qml:291
+#: qml/DeviceItem.qml:291
 #, kde-format
 msgid "Send file"
 msgstr "Wysyłanie plików"
 
-#: package/contents/ui/DeviceItem.qml:294
+#: qml/DeviceItem.qml:294
 #, kde-format
 msgid "Input"
 msgstr "Sterowanie"
 
-#: package/contents/ui/DeviceItem.qml:297
+#: qml/DeviceItem.qml:297
 #, kde-format
 msgid "Audio"
 msgstr "Dźwięk"
 
-#: package/contents/ui/DeviceItem.qml:300
+#: qml/DeviceItem.qml:300
 #, kde-format
 msgid "Network"
 msgstr "Sieć"
 
-#: package/contents/ui/DeviceItem.qml:305
+#: qml/DeviceItem.qml:305
 #, kde-format
 msgid "Other device"
 msgstr "Inne urządzenie"
 
-#: package/contents/ui/DeviceItem.qml:312 package/contents/ui/main.qml:74
-#: package/contents/ui/main.qml:83
+#: qml/DeviceItem.qml:312 qml/main.qml:74 qml/main.qml:83
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% Bateria"
 
-#: package/contents/ui/FullRepresentation.qml:71
+#: qml/FullRepresentation.qml:71
 #, kde-format
 msgid "Enable"
 msgstr "Włącz"
 
-#: package/contents/ui/FullRepresentation.qml:145
+#: qml/FullRepresentation.qml:145
 #, kde-format
 msgid "No Bluetooth adapters available"
 msgstr "Nie wykryto żadnych adapterów Bluetooth"
 
-#: package/contents/ui/FullRepresentation.qml:147
+#: qml/FullRepresentation.qml:147
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth jest wyłączony"
 
-#: package/contents/ui/FullRepresentation.qml:149
+#: qml/FullRepresentation.qml:149
 #, kde-format
 msgid "No devices paired"
 msgstr "Nie sparowano żadnego urządzenia"
 
-#: package/contents/ui/main.qml:51
+#: qml/main.qml:51
 #, kde-format
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
-#: package/contents/ui/main.qml:55
+#: qml/main.qml:55
 #, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
 msgstr "Bluetooth jest wyłączony; naciśnij środkowym, aby go włączyć"
 
-#: package/contents/ui/main.qml:59
+#: qml/main.qml:59
 #, kde-format
 msgid "No adapters available"
 msgstr "Brak adapterów"
 
-#: package/contents/ui/main.qml:61
+#: qml/main.qml:61
 #, kde-format
 msgid "Bluetooth is offline"
 msgstr "Bluetooth jest niedostępny"
 
-#: package/contents/ui/main.qml:64
+#: qml/main.qml:64
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr "Kliknij środkowym, aby wyłączyć Bluetooth"
 
-#: package/contents/ui/main.qml:67
+#: qml/main.qml:67
 #, kde-format
 msgid "No connected devices"
 msgstr "Brak podłączonych urządzeń"
 
-#: package/contents/ui/main.qml:72
+#: qml/main.qml:72
 #, kde-format
 msgid "%1 connected"
 msgstr "Podłączony %1"
 
-#: package/contents/ui/main.qml:79
+#: qml/main.qml:79
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -287,27 +286,27 @@ msgstr[0] "%1 podłączone urządzenie"
 msgstr[1] "%1 podłączone urządzenia"
 msgstr[2] "%1 podłączonych urządzeń"
 
-#: package/contents/ui/main.qml:110
+#: qml/main.qml:110
 #, kde-format
 msgid "Pair Device…"
 msgstr "Sparuj urządzenie…"
 
-#: package/contents/ui/main.qml:118
+#: qml/main.qml:118
 #, kde-format
 msgid "Badge icon with number of connected devices"
 msgstr "Ikona z liczbą podłączonych urządzeń"
 
-#: package/contents/ui/main.qml:128
+#: qml/main.qml:128
 #, kde-format
 msgid "Configure &Bluetooth…"
 msgstr "Ustawienia &Bluetooth…"
 
-#: package/contents/ui/main.qml:134
+#: qml/main.qml:134
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Włącz Bluetooth"
 
-#: package/contents/ui/Toolbar.qml:73
+#: qml/Toolbar.qml:73
 #, kde-format
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
