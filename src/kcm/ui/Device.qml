@@ -193,7 +193,7 @@ KCMUtils.SimpleKCM {
                 }
 
                 Kirigami.ContextualHelpButton {
-                    toolTipText: i18n("Any incoming connections from a blocked device will be immediately rejected.")
+                    toolTipText: i18n("When enabled, all incoming connections from this device will be rejected.")
                 }
             }
 
