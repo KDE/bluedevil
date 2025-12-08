@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-02 00:43+0000\n"
+"POT-Creation-Date: 2025-12-08 00:44+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -96,9 +96,12 @@ msgid "Blocked"
 msgstr "已屏蔽"
 
 #: ui/Device.qml:196
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Any incoming connections from a blocked device will be immediately "
+#| "rejected."
 msgid ""
-"Any incoming connections from a blocked device will be immediately rejected."
+"When enabled, all incoming connections from this device will be rejected."
 msgstr "来自已屏蔽设备的任何传入连接将被立即拒绝。"
 
 #: ui/Device.qml:202

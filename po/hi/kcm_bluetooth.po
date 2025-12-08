@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-02 00:43+0000\n"
+"POT-Creation-Date: 2025-12-08 00:44+0000\n"
 "PO-Revision-Date: 2024-12-15 17:36+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
 "Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
@@ -96,9 +96,12 @@ msgid "Blocked"
 msgstr "अवरोधित"
 
 #: ui/Device.qml:196
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Any incoming connections from a blocked device will be immediately "
+#| "rejected."
 msgid ""
-"Any incoming connections from a blocked device will be immediately rejected."
+"When enabled, all incoming connections from this device will be rejected."
 msgstr ""
 "किसी भी अवरुद्ध डिवाइस से आने वाले किसी भी कनेक्शन को तुरंत अस्वीकार कर दिया जाएगा।"
 

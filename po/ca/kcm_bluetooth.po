@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-02 00:43+0000\n"
+"POT-Creation-Date: 2025-12-08 00:44+0000\n"
 "PO-Revision-Date: 2025-08-10 08:41+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -99,9 +99,12 @@ msgid "Blocked"
 msgstr "Blocat"
 
 #: ui/Device.qml:196
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Any incoming connections from a blocked device will be immediately "
+#| "rejected."
 msgid ""
-"Any incoming connections from a blocked device will be immediately rejected."
+"When enabled, all incoming connections from this device will be rejected."
 msgstr ""
 "Qualsevol connexió entrant d'un dispositiu bloquejat es rebutjarà "
 "immediatament."

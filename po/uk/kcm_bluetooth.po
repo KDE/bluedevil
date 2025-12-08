@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-02 00:43+0000\n"
+"POT-Creation-Date: 2025-12-08 00:44+0000\n"
 "PO-Revision-Date: 2025-08-10 19:34+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -100,9 +100,12 @@ msgid "Blocked"
 msgstr "Заблокований"
 
 #: ui/Device.qml:196
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Any incoming connections from a blocked device will be immediately "
+#| "rejected."
 msgid ""
-"Any incoming connections from a blocked device will be immediately rejected."
+"When enabled, all incoming connections from this device will be rejected."
 msgstr ""
 "У запитах щодо вхідних з'єднань від заблокованого пристрою буде негайно "
 "відмовлено."
