@@ -165,6 +165,7 @@
         "Name[zh_TW]": "藍牙",
         "Website": "http://kde.org"
     },
+    "X-DocPath": "kcontrol/bluedevil/index.html",
     "X-KDE-Keywords": "bluetooth,hardware,connection,devices,find devices,connect,disconnect,send file,receive file,transfer,wireless,visible,adapter,pin,trusted devices",
     "X-KDE-Keywords[ar]": "بلوتوث,أجهزة,اتصال,أجهزة,البحث عن أجهزة,الاتصال,قطع الاتصال,إرسال ملف,استقبال ملف,نقل,لاسلكي,مرئي,محول,رقم التعريف الشخصي,أجهزة موثوقة",
     "X-KDE-Keywords[bg]": "bluetooth,хардуер,връзка,устройства,намиране на устройства,свързване,прекъсване,изпращанефайл,получаване на файл,прехвърляне,безжично,видимо,адаптер,пин,доверени устройства",
