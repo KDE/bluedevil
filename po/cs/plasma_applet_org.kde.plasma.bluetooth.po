@@ -1,6 +1,6 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# SPDX-FileCopyrightText: 2015, 2024 Vít Pelčák <vit@pelcak.org>
+# SPDX-FileCopyrightText: 2015, 2024, 2025 Vít Pelčák <vit@pelcak.org>
 # Vit Pelcak <vit@pelcak.org>, 2015, 2020, 2021, 2022, 2023.
 #
 msgid ""
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 14:41+0000\n"
-"PO-Revision-Date: 2024-08-06 11:15+0200\n"
+"PO-Revision-Date: 2025-12-02 11:45+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -16,25 +16,25 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #: devicesproxymodel.cpp:51
 #, kde-format
 msgctxt "@title:column Blocked Bluetooth devices"
 msgid "Blocked"
-msgstr ""
+msgstr "Blokován"
 
 #: devicesproxymodel.cpp:54
 #, kde-format
 msgctxt "@title:column Connected Bluetooth devices"
 msgid "Connected"
-msgstr ""
+msgstr "Připojen"
 
 #: devicesproxymodel.cpp:56
 #, kde-format
 msgctxt "@title:column Available but not connected Bluetooth devices"
 msgid "Available"
-msgstr ""
+msgstr "Dostupné"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format
@@ -165,12 +165,12 @@ msgstr "Myš"
 #: package/contents/ui/DeviceItem.qml:268
 #, kde-format
 msgid "Joypad"
-msgstr ""
+msgstr "Joypad"
 
 #: package/contents/ui/DeviceItem.qml:271
 #, kde-format
 msgid "Drawing tablet"
-msgstr ""
+msgstr "Grafický tablet"
 
 #: package/contents/ui/DeviceItem.qml:275
 #, kde-format
@@ -311,4 +311,4 @@ msgstr "Povolit Bluetooth"
 #, kde-format
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
-msgstr ""
+msgstr "Další činnosti"

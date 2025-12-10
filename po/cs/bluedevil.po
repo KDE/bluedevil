@@ -1,6 +1,6 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# SPDX-FileCopyrightText: 2010, 2011, 2013, 2014, 2015, 2016, 2017, 2023 Vít Pelčák <vit@pelcak.org>
+# SPDX-FileCopyrightText: 2010, 2011, 2013, 2014, 2015, 2016, 2017, 2023, 2025 Vít Pelčák <vit@pelcak.org>
 # Tomáš Chvátal <tomas.chvatal@gmail.com>, 2012, 2013.
 # Vit Pelcak <vit@pelcak.org>, 2015, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 #
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-03 02:41+0000\n"
-"PO-Revision-Date: 2023-10-12 16:38+0200\n"
+"PO-Revision-Date: 2025-12-02 11:45+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 25.08.3\n"
 "X-Language: cs_CZ\n"
 "X-Source-Language: en_US\n"
 
@@ -35,19 +35,19 @@ msgstr "vit@pelcak.org, tomas.chvatal@gmail.com"
 #, kde-format
 msgctxt "@title:column Blocked Bluetooth devices"
 msgid "Blocked"
-msgstr ""
+msgstr "Blokován"
 
 #: applet/devicesproxymodel.cpp:54
 #, kde-format
 msgctxt "@title:column Connected Bluetooth devices"
 msgid "Connected"
-msgstr ""
+msgstr "Připojen"
 
 #: applet/devicesproxymodel.cpp:56
 #, kde-format
 msgctxt "@title:column Available but not connected Bluetooth devices"
 msgid "Available"
-msgstr ""
+msgstr "Dostupné"
 
 #: applet/devicesstateproxymodel.cpp:273
 #, kde-format
@@ -84,7 +84,7 @@ msgstr "%1 Síť (%2)"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
-msgstr ""
+msgstr "Povolit Bluetooth"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -489,7 +489,7 @@ msgstr "Hledat…"
 #: wizard/pages/discover.ui:42
 #, kde-format
 msgid "Show unnamed devices"
-msgstr ""
+msgstr "Zobrazit nepojmenovaná zařízení"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: wizard/pages/discover.ui:71
