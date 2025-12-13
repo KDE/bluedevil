@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the bluedevil package.
-# Sergiu Bivol <sergiu@cip.md>, 2015, 2020, 2021, 2022, 2023, 2024.
+# SPDX-FileCopyrightText: 2015, 2020, 2021, 2022, 2023, 2024, 2025 Sergiu Bivol <sergiu@cip.md>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-06 00:44+0000\n"
-"PO-Revision-Date: 2024-06-08 15:59+0100\n"
+"PO-Revision-Date: 2025-12-12 10:51+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
@@ -16,27 +16,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #: devicesproxymodel.cpp:51
 #, kde-format
 msgctxt "@title:column Blocked Bluetooth devices"
 msgid "Blocked"
-msgstr ""
+msgstr "Blocate"
 
 #: devicesproxymodel.cpp:54
-#, fuzzy, kde-format
-#| msgid "Connected"
+#, kde-format
 msgctxt "@title:column Connected Bluetooth devices"
 msgid "Connected"
-msgstr "Conectat"
+msgstr "Conectate"
 
 #: devicesproxymodel.cpp:56
-#, fuzzy, kde-format
-#| msgid "Available devices"
+#, kde-format
 msgctxt "@title:column Available but not connected Bluetooth devices"
 msgid "Available"
-msgstr "Dispozitive disponibile"
+msgstr "Disponibile"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format
@@ -147,7 +145,7 @@ msgstr "Conexiunea a eșuat"
 #: qml/DeviceItem.qml:252
 #, kde-format
 msgid "Headset"
-msgstr ""
+msgstr "Set cu cască"
 
 #: qml/DeviceItem.qml:258
 #, kde-format
@@ -157,22 +155,22 @@ msgstr "Dispozitiv audio"
 #: qml/DeviceItem.qml:262
 #, kde-format
 msgid "Keyboard"
-msgstr ""
+msgstr "Tastatură"
 
 #: qml/DeviceItem.qml:265
 #, kde-format
 msgid "Mouse"
-msgstr ""
+msgstr "Maus"
 
 #: qml/DeviceItem.qml:268
 #, kde-format
 msgid "Joypad"
-msgstr ""
+msgstr "Joypad"
 
 #: qml/DeviceItem.qml:271
 #, kde-format
 msgid "Drawing tablet"
-msgstr ""
+msgstr "Planșetă grafică"
 
 #: qml/DeviceItem.qml:275
 #, kde-format
@@ -182,12 +180,12 @@ msgstr "Telefon"
 #: qml/DeviceItem.qml:278
 #, kde-format
 msgid "Camera"
-msgstr ""
+msgstr "Cameră"
 
 #: qml/DeviceItem.qml:281
 #, kde-format
 msgid "Printer"
-msgstr ""
+msgstr "Imprimantă"
 
 #: qml/DeviceItem.qml:288
 #, kde-format
@@ -240,10 +238,9 @@ msgid "Bluetooth is disabled"
 msgstr "Bluetooth este dezactivat"
 
 #: qml/FullRepresentation.qml:149
-#, fuzzy, kde-format
-#| msgid "No devices found"
+#, kde-format
 msgid "No devices paired"
-msgstr "Niciun dispozitiv găsit"
+msgstr "Niciun dispozitiv asociat"
 
 #: qml/main.qml:51
 #, kde-format
@@ -290,16 +287,14 @@ msgstr[1] "%1 dispozitive conectate"
 msgstr[2] "%1 de dispozitive conectate"
 
 #: qml/main.qml:110
-#, fuzzy, kde-format
-#| msgid "Add New Device…"
+#, kde-format
 msgid "Pair Device…"
-msgstr "Adaugă dispozitiv nou…"
+msgstr "Asociază dispozitiv…"
 
 #: qml/main.qml:118
-#, fuzzy, kde-format
-#| msgid "No connected devices"
+#, kde-format
 msgid "Badge icon with number of connected devices"
-msgstr "Niciun dispozitiv conectat"
+msgstr "Insignă cu numărul de dispozitive conectate"
 
 #: qml/main.qml:128
 #, kde-format
@@ -315,7 +310,7 @@ msgstr "Activează Bluetooth"
 #, kde-format
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
-msgstr ""
+msgstr "Acțiuni suplimentare"
 
 #~ msgid "Input device"
 #~ msgstr "Dispozitiv de intrare"
