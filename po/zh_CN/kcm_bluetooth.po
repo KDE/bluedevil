@@ -425,4 +425,4 @@ msgstr "其他"
 #, kde-format
 msgctxt "List separator"
 msgid ", "
-msgstr ""
+msgstr "，"
