@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-08 00:44+0000\n"
-"PO-Revision-Date: 2025-12-02 11:45+0100\n"
+"PO-Revision-Date: 2025-12-15 13:46+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -103,6 +103,8 @@ msgstr "Blokován"
 msgid ""
 "When enabled, all incoming connections from this device will be rejected."
 msgstr ""
+"Pokud povoleno, každé příchozí spojení z tohoto zařízení bude automaticky "
+"odmítnuto."
 
 #: ui/Device.qml:202
 #, kde-format
