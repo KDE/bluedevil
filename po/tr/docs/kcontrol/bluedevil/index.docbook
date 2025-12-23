@@ -40,7 +40,7 @@
         </authorgroup>
         
         <date
->2022-06-05</date>
+>2022‒06‒05</date>
         <releaseinfo
 >Plasma 5.25</releaseinfo>
         
@@ -73,6 +73,8 @@
 >fare</keyword>
             <keyword
 >oyun pedi</keyword>
+            <keyword
+>denetimci</keyword>
             <keyword
 >tablet</keyword>
             <keyword
@@ -123,7 +125,7 @@
         
         <para
 >&plasma; Çalışma Alanı için olan genel &bluetooth; ayarlarını değiştirmek için <guibutton
->Yapılandır...</guibutton
+>Yapılandır…</guibutton
 > düğmesine basın. </para>
         
         <screenshot>
@@ -162,13 +164,13 @@
         
         <para id="adddevice"
 ><guibutton
->Ekle...</guibutton
+>Ekle…</guibutton
 > düğmesine basarak ana listeye bir &bluetooth; aygıtı ekleyebilirsiniz. Çevreniz, kullanılabilir aygıtları bulmak için taranacaktır. Kullanmak istediğiniz aygıt listede yoksa onu ayarlama yönergeleri için aygıtın kılavuzuna başvurun. </para>
         
         <para
 >Gerekirse <guilabel
 >Elle PIN</guilabel
->'i yapılandırın ve aygıtı bilgisayarınızla eşleştirmek için algılanan aygıta <mousebutton
+>’i yapılandırın ve aygıtı bilgisayarınızla eşleştirmek için algılanan aygıta <mousebutton
 >sol</mousebutton
 >-fare düğmesiyle tıklayın. Eşleştirme prosedürü için aygıtın kılavuzuna bakabilirsiniz; bazı aygıtlar için farklı olabilir; ancak genelde çok kolaydır. </para>
         
@@ -238,8 +240,8 @@
 > simgesine tıklayın. </para>
         
         <para
->Herhangi bir nedenden dolayı &bluetooth;'u kapatmanız gerekirse <guibutton
->&bluetooth;'u Devre Dışı Bırak</guibutton
+>Herhangi bir nedenden dolayı &bluetooth;’u kapatmanız gerekirse <guibutton
+>&bluetooth;’u Devre Dışı Bırak</guibutton
 > düğmesine basın. </para>
         
     </sect1>
@@ -276,7 +278,7 @@
                 <term
 ><menuchoice
 ><guimenuitem
->&bluetooth;'u Yapılandır</guimenuitem
+>&bluetooth;’u Yapılandır</guimenuitem
 ></menuchoice
 ></term>
                 <listitem
