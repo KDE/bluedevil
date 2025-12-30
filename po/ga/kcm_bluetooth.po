@@ -1,456 +1,427 @@
-# Copyright (C) 2024 This file is copyright:
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the bluedevil package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024, 2025 giovanni <g.sora@tiscali.it>
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-08 00:44+0000\n"
-"PO-Revision-Date: 2025-12-29 16:56+0100\n"
-"Last-Translator: giovanni <g.sora@tiscali.it>\n"
-"Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
-"Language: ia\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <kde-i18n-doc@kde.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Giovanni Sora"
+msgstr ""
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "g.sora@tiscali.it"
+msgstr ""
 
 #: bluetooth.cpp:135
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
-msgstr "%1 Rete (%2)"
+msgstr ""
 
 #: bluetoothmoduledata.cpp:20
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
-msgstr "Activar Bluetooth"
+msgstr ""
 
 #: ui/Device.qml:131 ui/main.qml:212
 #, kde-format
 msgid "Disconnect"
-msgstr "Disconnecte"
+msgstr ""
 
 #: ui/Device.qml:131 ui/main.qml:212
 #, kde-format
 msgid "Connect"
-msgstr "Connecte"
+msgstr ""
 
 #: ui/Device.qml:134
 #, kde-format
 msgid "Unblock the device first to be able to connect to it"
-msgstr "Antea disbloca le dispositivo per poter connecter a illo"
+msgstr ""
 
 #: ui/Device.qml:155
 #, kde-format
 msgid "Type:"
-msgstr "Typo:"
+msgstr ""
 
 #: ui/Device.qml:159
 #, kde-format
 msgid "%1%"
-msgstr "%1%"
+msgstr ""
 
 #: ui/Device.qml:161
 #, kde-format
 msgid "Battery:"
-msgstr "Batteria:"
+msgstr ""
 
 #: ui/Device.qml:166 ui/General.qml:49
 #, kde-format
 msgid "Address:"
-msgstr "Adresse:"
+msgstr ""
 
 #: ui/Device.qml:171
 #, kde-format
 msgid "Adapter:"
-msgstr "Adaptator:"
+msgstr ""
 
 #: ui/Device.qml:177 ui/General.qml:43
 #, kde-format
 msgid "Name:"
-msgstr "Nomine:"
+msgstr ""
 
 #: ui/Device.qml:181
 #, kde-format
 msgid "Trusted"
-msgstr "Es credibile"
+msgstr ""
 
 #: ui/Device.qml:190 ui/main.qml:179
 #, kde-format
 msgid "Blocked"
-msgstr "Blocate"
+msgstr ""
 
 #: ui/Device.qml:196
 #, kde-format
 msgid ""
 "When enabled, all incoming connections from this device will be rejected."
 msgstr ""
-"Quando habilitate, ulle connexiones in arrivata ex iste dispositivo blocate "
-"essera refusate."
 
 #: ui/Device.qml:202
 #, kde-format
 msgid "Send File"
-msgstr "Invia file"
+msgstr ""
 
 #: ui/Device.qml:210
 #, kde-format
 msgid "Setup NAP Network…"
-msgstr "Configura rete NAP ..."
+msgstr ""
 
 #: ui/Device.qml:218
 #, kde-format
 msgid "Setup DUN Network…"
-msgstr "Configura rete DUN …"
+msgstr ""
 
 #: ui/Device.qml:233
 #, kde-format
 msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"
-msgstr "Oblida"
+msgstr ""
 
 #: ui/ForgetDeviceAction.qml:17
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
-msgstr "Oblida \"%1\""
+msgstr ""
 
 #: ui/ForgetDeviceDialog.qml:34
 #, kde-format
 msgid "Forget this Device?"
-msgstr "Oblida iste dispositivo?"
+msgstr ""
 
 #: ui/ForgetDeviceDialog.qml:35
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
-msgstr "Tu es secur que tu vole oblidar \"%1\""
+msgstr ""
 
 #: ui/ForgetDeviceDialog.qml:47
 #, kde-format
 msgctxt "@action:button"
 msgid "Forget Device"
-msgstr "Oblida dispositivo"
+msgstr ""
 
 #: ui/ForgetDeviceDialog.qml:55
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
-msgstr "Cancella"
+msgstr ""
 
 #: ui/General.qml:24
 #, kde-format
 msgid "Settings"
-msgstr "Preferentias"
+msgstr ""
 
 #: ui/General.qml:35
 #, kde-format
 msgid "Device:"
-msgstr "Dispositivo:"
+msgstr ""
 
 #: ui/General.qml:53
 #, kde-format
 msgid "Enabled:"
-msgstr "Habilitate:"
+msgstr ""
 
 #: ui/General.qml:59
 #, kde-format
 msgid "Visible:"
-msgstr "Visibile:"
+msgstr ""
 
 #: ui/General.qml:73
 #, kde-format
 msgid "On login:"
-msgstr "Sur Accesso de Identification (Login):"
+msgstr ""
 
 #: ui/General.qml:74
 #, kde-format
 msgid "Enable Bluetooth"
-msgstr "Activar Bluetooth"
+msgstr ""
 
 #: ui/General.qml:85
 #, kde-format
 msgid "Disable Bluetooth"
-msgstr "Deactiva Bluetooth"
+msgstr ""
 
 #: ui/General.qml:96
 #, kde-format
 msgid "Restore previous status"
-msgstr "Restabili previe stato"
+msgstr ""
 
 #: ui/General.qml:116
 #, kde-format
 msgid "When receiving files:"
-msgstr "Quando recipiente files:"
+msgstr ""
 
 #: ui/General.qml:118
 #, kde-format
 msgid "Ask for confirmation"
-msgstr "Demanda pro confirmation"
+msgstr ""
 
 #: ui/General.qml:127
 #, kde-format
 msgid "Accept for trusted devices"
-msgstr "Accepta per dispositivos fidate"
+msgstr ""
 
 #: ui/General.qml:137
 #, kde-format
 msgid "Always accept"
-msgstr "Accepta sempre"
+msgstr ""
 
 #: ui/General.qml:147
 #, kde-format
 msgid "Save files in:"
-msgstr "Salveguarda files in:"
+msgstr ""
 
 #: ui/General.qml:160 ui/General.qml:171
 #, kde-format
 msgid "Select folder"
-msgstr "Selige dossier"
+msgstr ""
 
 #: ui/main.qml:33
 #, kde-format
 msgid "Pair Device…"
-msgstr "Associa dispositivo…"
+msgstr ""
 
 #: ui/main.qml:40
 #, kde-format
 msgid "Configure…"
-msgstr "Configura…"
+msgstr ""
 
 #: ui/main.qml:47
 #, kde-format
 msgctxt "@action: button as in, 'enable Bluetooth'"
 msgid "Enabled"
-msgstr "Habilitate"
+msgstr ""
 
 #: ui/main.qml:125
 #, kde-format
 msgid "No Bluetooth adapters found"
-msgstr "Non ha trovate alcun adaptatores de Bluetooth"
+msgstr ""
 
 #: ui/main.qml:126
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
-msgstr "Connecte un adaptator de Bluetooth externe"
+msgstr ""
 
 #: ui/main.qml:135
 #, kde-format
 msgid "Bluetooth is disabled"
-msgstr "Bluetooth es disactivate"
+msgstr ""
 
 #: ui/main.qml:141
 #, kde-format
 msgid "Enable"
-msgstr "Habilita"
+msgstr ""
 
 #: ui/main.qml:151
 #, kde-format
 msgid "No devices paired"
-msgstr "Necun dispositivo associate"
+msgstr ""
 
 #: ui/main.qml:152
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr ""
-"Clicca <interface>Associa Dispositivo ...</interface>  per associar alcun"
 
 #: ui/main.qml:181
 #, kde-format
 msgid "Connected"
-msgstr "Connectite"
+msgstr ""
 
 #: ui/main.qml:183
 #, kde-format
 msgid "Available"
-msgstr "Disponibile"
+msgstr ""
 
 #: ui/main.qml:245
 #, kde-format
 msgid "%1% Battery"
-msgstr "%1% Batteria"
+msgstr ""
 
 #: ui/script.js:13
 #, kde-format
 msgctxt "This device is a Phone"
 msgid "Phone"
-msgstr "Telephono"
+msgstr ""
 
 #: ui/script.js:15
 #, kde-format
 msgctxt "This device is a Modem"
 msgid "Modem"
-msgstr "Modem"
+msgstr ""
 
 #: ui/script.js:17
 #, kde-format
 msgctxt "This device is a Computer"
 msgid "Computer"
-msgstr "Computator"
+msgstr ""
 
 #: ui/script.js:19
 #, kde-format
 msgctxt "This device is of type Network"
 msgid "Network"
-msgstr "Rete"
+msgstr ""
 
 #: ui/script.js:21
 #, kde-format
 msgctxt "This device is a Headset"
 msgid "Headset"
-msgstr "Receptor de testa"
+msgstr ""
 
 #: ui/script.js:23
 #, kde-format
 msgctxt "This device is a Headphones"
 msgid "Headphones"
-msgstr "Receptores de testa"
+msgstr ""
 
 #: ui/script.js:25
 #, kde-format
 msgctxt "This device is an Audio/Video device"
 msgid "Multimedia"
-msgstr "Multimedia"
+msgstr ""
 
 #: ui/script.js:27
 #, kde-format
 msgctxt "This device is a Keyboard"
 msgid "Keyboard"
-msgstr "Claviero"
+msgstr ""
 
 #: ui/script.js:29
 #, kde-format
 msgctxt "This device is a Mouse"
 msgid "Mouse"
-msgstr "Mus"
+msgstr ""
 
 #: ui/script.js:31
 #, kde-format
 msgctxt "This device is a Game controller"
 msgid "Game controller"
-msgstr "Controlator de Joco"
+msgstr ""
 
 #: ui/script.js:33
 #, kde-format
 msgctxt "This device is a Graphics Tablet (input device)"
 msgid "Tablet"
-msgstr "Tabletta"
+msgstr ""
 
 #: ui/script.js:35
 #, kde-format
 msgctxt "This device is a Peripheral device"
 msgid "Peripheral"
-msgstr "Peripheric"
+msgstr ""
 
 #: ui/script.js:37
 #, kde-format
 msgctxt "This device is a Camera"
 msgid "Camera"
-msgstr "Camera"
+msgstr ""
 
 #: ui/script.js:39
 #, kde-format
 msgctxt "This device is a Printer"
 msgid "Printer"
-msgstr "Imprimitor"
+msgstr ""
 
 #: ui/script.js:41
 #, kde-format
 msgctxt ""
 "This device is an Imaging device (printer, scanner, camera, display, …)"
 msgid "Imaging"
-msgstr "Imaging"
+msgstr ""
 
 #: ui/script.js:43
 #, kde-format
 msgctxt "This device is a Wearable"
 msgid "Wearable"
-msgstr "Wearable (portabile como vestimento)"
+msgstr ""
 
 #: ui/script.js:45
 #, kde-format
 msgctxt "This device is a Toy"
 msgid "Toy"
-msgstr "Joculo"
+msgstr ""
 
 #: ui/script.js:47
 #, kde-format
 msgctxt "This device is a Health device"
 msgid "Health"
-msgstr "Sanitate"
+msgstr ""
 
 #: ui/script.js:53
 #, kde-format
 msgid "File transfer"
-msgstr "Transferimento de file"
+msgstr ""
 
 #: ui/script.js:56
 #, kde-format
 msgid "Send file"
-msgstr "Invia file"
+msgstr ""
 
 #: ui/script.js:59
 #, kde-format
 msgid "Input"
-msgstr "Ingresso"
+msgstr ""
 
 #: ui/script.js:62
 #, kde-format
 msgid "Audio"
-msgstr "Audio"
+msgstr ""
 
 #: ui/script.js:65
 #, kde-format
 msgid "Network"
-msgstr "Rete"
+msgstr ""
 
 #: ui/script.js:69
 #, kde-format
 msgid "Other"
-msgstr "Altere"
+msgstr ""
 
 #: ui/script.js:72
 #, kde-format
 msgctxt "List separator"
 msgid ", "
-msgstr ", "
-
-#~ msgctxt "This device is a Joypad"
-#~ msgid "Joypad"
-#~ msgstr "Joypad"
-
-#~ msgctxt "Type of device: could not be determined"
-#~ msgid "Unknown"
-#~ msgstr "Incognite"
-
-#~ msgid "Confirm Deletion of Device"
-#~ msgstr "Confirma deletion de Dispositivo"
-
-#~ msgid "Remove"
-#~ msgstr "Remove"
-
-#~ msgid "Bluetooth"
-#~ msgstr "Bluetooth"
-
-#~ msgid "Nicolas Fella"
-#~ msgstr "Nicolas Fella"
-
-#~ msgid "Add…"
-#~ msgstr "Adde…"
-
-#~ msgid "Add..."
-#~ msgstr "Adde..."
+msgstr ""

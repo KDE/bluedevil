@@ -1,0 +1,313 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the bluedevil package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: bluedevil\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2025-12-06 00:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <kde-i18n-doc@kde.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n < 11 ? "
+"3 : 4\n"
+
+#: devicesproxymodel.cpp:51
+#, kde-format
+msgctxt "@title:column Blocked Bluetooth devices"
+msgid "Blocked"
+msgstr ""
+
+#: devicesproxymodel.cpp:54
+#, kde-format
+msgctxt "@title:column Connected Bluetooth devices"
+msgid "Connected"
+msgstr ""
+
+#: devicesproxymodel.cpp:56
+#, kde-format
+msgctxt "@title:column Available but not connected Bluetooth devices"
+msgid "Available"
+msgstr ""
+
+#: devicesstateproxymodel.cpp:273
+#, kde-format
+msgctxt ""
+"@label %1 is human-readable device name, %2 is low-level device address"
+msgid "%1 (%2)"
+msgstr ""
+
+#: devicesstateproxymodel.cpp:288
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed:HostIsDown"
+msgid "The device is unreachable"
+msgstr ""
+
+#: devicesstateproxymodel.cpp:289
+#, kde-format
+msgctxt "Notification when the connection failed due to Failed"
+msgid "Connection to the device failed"
+msgstr ""
+
+#: devicesstateproxymodel.cpp:292
+#, kde-format
+msgctxt "Notification when the connection failed due to NotReady"
+msgid "The device is not ready"
+msgstr ""
+
+#: qml/DeviceItem.qml:38
+#, kde-format
+msgid "Disconnect"
+msgstr ""
+
+#: qml/DeviceItem.qml:38
+#, kde-format
+msgid "Connect"
+msgstr ""
+
+#: qml/DeviceItem.qml:49
+#, kde-format
+msgid "Browse Files"
+msgstr ""
+
+#: qml/DeviceItem.qml:60
+#, kde-format
+msgid "Send File"
+msgstr ""
+
+#: qml/DeviceItem.qml:108
+#, kde-format
+msgid "Copy"
+msgstr ""
+
+#: qml/DeviceItem.qml:204
+#, kde-format
+msgid "Yes"
+msgstr ""
+
+#: qml/DeviceItem.qml:204
+#, kde-format
+msgid "No"
+msgstr ""
+
+#: qml/DeviceItem.qml:210
+#, kde-format
+msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
+msgid "%1 (%2)"
+msgstr ""
+
+#: qml/DeviceItem.qml:218
+#, kde-format
+msgid "Remote Name"
+msgstr ""
+
+#: qml/DeviceItem.qml:222
+#, kde-format
+msgid "Address"
+msgstr ""
+
+#: qml/DeviceItem.qml:225
+#, kde-format
+msgid "Paired"
+msgstr ""
+
+#: qml/DeviceItem.qml:228
+#, kde-format
+msgid "Trusted"
+msgstr ""
+
+#: qml/DeviceItem.qml:231
+#, kde-format
+msgid "Adapter"
+msgstr ""
+
+#: qml/DeviceItem.qml:239
+#, kde-format
+msgid "Connecting"
+msgstr ""
+
+#: qml/DeviceItem.qml:241
+#, kde-format
+msgid "Disconnecting"
+msgstr ""
+
+#: qml/DeviceItem.qml:247
+#, kde-format
+msgid "Connection failed"
+msgstr ""
+
+#: qml/DeviceItem.qml:252
+#, kde-format
+msgid "Headset"
+msgstr ""
+
+#: qml/DeviceItem.qml:258
+#, kde-format
+msgid "Audio device"
+msgstr ""
+
+#: qml/DeviceItem.qml:262
+#, kde-format
+msgid "Keyboard"
+msgstr ""
+
+#: qml/DeviceItem.qml:265
+#, kde-format
+msgid "Mouse"
+msgstr ""
+
+#: qml/DeviceItem.qml:268
+#, kde-format
+msgid "Joypad"
+msgstr ""
+
+#: qml/DeviceItem.qml:271
+#, kde-format
+msgid "Drawing tablet"
+msgstr ""
+
+#: qml/DeviceItem.qml:275
+#, kde-format
+msgid "Phone"
+msgstr ""
+
+#: qml/DeviceItem.qml:278
+#, kde-format
+msgid "Camera"
+msgstr ""
+
+#: qml/DeviceItem.qml:281
+#, kde-format
+msgid "Printer"
+msgstr ""
+
+#: qml/DeviceItem.qml:288
+#, kde-format
+msgid "File transfer"
+msgstr ""
+
+#: qml/DeviceItem.qml:291
+#, kde-format
+msgid "Send file"
+msgstr ""
+
+#: qml/DeviceItem.qml:294
+#, kde-format
+msgid "Input"
+msgstr ""
+
+#: qml/DeviceItem.qml:297
+#, kde-format
+msgid "Audio"
+msgstr ""
+
+#: qml/DeviceItem.qml:300
+#, kde-format
+msgid "Network"
+msgstr ""
+
+#: qml/DeviceItem.qml:305
+#, kde-format
+msgid "Other device"
+msgstr ""
+
+#: qml/DeviceItem.qml:312 qml/main.qml:74 qml/main.qml:83
+#, kde-format
+msgid "%1% Battery"
+msgstr ""
+
+#: qml/FullRepresentation.qml:71
+#, kde-format
+msgid "Enable"
+msgstr ""
+
+#: qml/FullRepresentation.qml:145
+#, kde-format
+msgid "No Bluetooth adapters available"
+msgstr ""
+
+#: qml/FullRepresentation.qml:147
+#, kde-format
+msgid "Bluetooth is disabled"
+msgstr ""
+
+#: qml/FullRepresentation.qml:149
+#, kde-format
+msgid "No devices paired"
+msgstr ""
+
+#: qml/main.qml:51
+#, kde-format
+msgid "Bluetooth"
+msgstr ""
+
+#: qml/main.qml:55
+#, kde-format
+msgid "Bluetooth is disabled; middle-click to enable"
+msgstr ""
+
+#: qml/main.qml:59
+#, kde-format
+msgid "No adapters available"
+msgstr ""
+
+#: qml/main.qml:61
+#, kde-format
+msgid "Bluetooth is offline"
+msgstr ""
+
+#: qml/main.qml:64
+#, kde-format
+msgid "Middle-click to disable Bluetooth"
+msgstr ""
+
+#: qml/main.qml:67
+#, kde-format
+msgid "No connected devices"
+msgstr ""
+
+#: qml/main.qml:72
+#, kde-format
+msgid "%1 connected"
+msgstr ""
+
+#: qml/main.qml:79
+#, kde-format
+msgctxt "Number of connected devices"
+msgid "%1 connected device"
+msgid_plural "%1 connected devices"
+msgstr[0] ""
+msgstr[1] ""
+
+#: qml/main.qml:110
+#, kde-format
+msgid "Pair Device…"
+msgstr ""
+
+#: qml/main.qml:118
+#, kde-format
+msgid "Badge icon with number of connected devices"
+msgstr ""
+
+#: qml/main.qml:128
+#, kde-format
+msgid "Configure &Bluetooth…"
+msgstr ""
+
+#: qml/main.qml:134
+#, kde-format
+msgid "Enable Bluetooth"
+msgstr ""
+
+#: qml/Toolbar.qml:73
+#, kde-format
+msgctxt "@action:button opens hamburger menu"
+msgid "More actions"
+msgstr ""
