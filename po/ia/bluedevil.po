@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-03 02:41+0000\n"
-"PO-Revision-Date: 2025-05-30 19:02+0200\n"
+"PO-Revision-Date: 2025-12-29 17:08+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -28,24 +28,22 @@ msgid "Your emails"
 msgstr "g.sora@tiscali.it"
 
 #: applet/devicesproxymodel.cpp:51
-#, fuzzy, kde-format
-#| msgid "Blocked:"
+#, kde-format
 msgctxt "@title:column Blocked Bluetooth devices"
 msgid "Blocked"
-msgstr "Blocate:"
+msgstr "Blocate"
 
 #: applet/devicesproxymodel.cpp:54
-#, fuzzy, kde-format
-#| msgid "Connect"
+#, kde-format
 msgctxt "@title:column Connected Bluetooth devices"
 msgid "Connected"
-msgstr "Connecte"
+msgstr "Connectite"
 
 #: applet/devicesproxymodel.cpp:56
 #, kde-format
 msgctxt "@title:column Available but not connected Bluetooth devices"
 msgid "Available"
-msgstr ""
+msgstr "Disponibile"
 
 #: applet/devicesstateproxymodel.cpp:273
 #, kde-format
@@ -79,11 +77,10 @@ msgid "%1 Network (%2)"
 msgstr "%1 Rete (%2)"
 
 #: kcm/bluetoothmoduledata.cpp:20
-#, fuzzy, kde-format
-#| msgid "Enable Bluetooth integration"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
-msgstr "Activa integration de Bluetooth"
+msgstr "Activar Bluetooth"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -488,11 +485,9 @@ msgstr "Cerca…"
 
 #. i18n: ectx: property (text), widget (QCheckBox, showUnnamedDevicesCheckBox)
 #: wizard/pages/discover.ui:42
-#, fuzzy, kde-format
-#| msgctxt "'Auto accept' option value"
-#| msgid "Trusted devices"
+#, kde-format
 msgid "Show unnamed devices"
-msgstr "Dispositivos credibile"
+msgstr "Monstra dispositivo sin nomine"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: wizard/pages/discover.ui:71
