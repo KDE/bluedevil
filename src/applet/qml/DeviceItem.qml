@@ -24,7 +24,7 @@ import org.kde.plasma.private.bluetooth as PlasmaBt
 PlasmaExtras.ExpandableListItem {
     id: root
 
-    required property int index
+    required index
     required property var model
 
     property list<string> currentDeviceDetails
