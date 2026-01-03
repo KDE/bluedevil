@@ -16,6 +16,9 @@ QtObject {
 
     required property Item parent
 
+    // Optional function property for applet to register calls
+    property var registerCallForDeviceUbi: null
+
     function open(device: BluezQt.Device): void {
         const dialog = dialogComponent.createObject(this, { device });
         dialog.open();
@@ -64,7 +67,14 @@ QtObject {
             // Safe defaults
             onOpened: customFooterButton(cancelAction)?.forceActiveFocus(Qt.PopupFocusReason)
 
-            onAccepted: root.call(device.adapter.removeDevice(device))
+            onAccepted: {
+                const pendingCall = device.adapter.removeDevice(device);
+                // If the applet provides a registration function, use it
+                if (root.registerCallForDeviceUbi && typeof root.registerCallForDeviceUbi === "function") {
+                    root.registerCallForDeviceUbi(pendingCall, device.ubi);
+                }
+                root.call(pendingCall);
+            }
 
             onClosed: destroy()
 

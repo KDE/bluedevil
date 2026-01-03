@@ -1,5 +1,6 @@
 add_definitions(-DTRANSLATION_DOMAIN="bluedevil")
 
+add_subdirectory(components)
 add_subdirectory(applet)
 add_subdirectory(kcm)
 add_subdirectory(kded)

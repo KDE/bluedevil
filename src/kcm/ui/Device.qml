@@ -16,6 +16,7 @@ import org.kde.kirigami as Kirigami
 import org.kde.kcmutils as KCMUtils
 
 import org.kde.bluezqt as BluezQt
+import org.kde.bluedevil.components as BluedevilComponents
 
 import "script.js" as Script
 
@@ -92,7 +93,7 @@ KCMUtils.SimpleKCM {
         })
     }
 
-    ForgetDeviceDialog {
+    BluedevilComponents.ForgetDeviceDialog {
         id: forgetDeviceDialog
 
         parent: root.QQC2.Overlay.overlay

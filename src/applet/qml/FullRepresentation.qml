@@ -19,6 +19,7 @@ import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.extras as PlasmaExtras
 import org.kde.plasma.plasmoid
 import org.kde.plasma.private.bluetooth as PlasmaBt
+import org.kde.bluedevil.components as BluedevilComponents
 
 PlasmaExtras.Representation {
     id: root
@@ -36,6 +37,14 @@ PlasmaExtras.Representation {
 
     focus: true
     collapseMarginsHint: true
+
+    BluedevilComponents.ForgetDeviceDialog {
+        id: forgetDeviceDialog
+        parent: root
+        registerCallForDeviceUbi: (call, ubi) => {
+            PlasmaBt.SharedDevicesStateProxyModel.registerDisconnectingCallForDeviceUbi(call, ubi);
+        }
+    }
 
     PlasmaBt.DevicesProxyModel {
         id: devicesModel
@@ -120,7 +129,9 @@ PlasmaExtras.Representation {
             highlight: PlasmaExtras.Highlight {}
             highlightMoveDuration: Kirigami.Units.shortDuration
             highlightResizeDuration: Kirigami.Units.shortDuration
-            delegate: DeviceItem {}
+            delegate: DeviceItem {
+                forgetDeviceDialog: forgetDeviceDialog
+            }
 
             Keys.onUpPressed: event => {
                 if (listView.currentIndex === 0) {

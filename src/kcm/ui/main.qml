@@ -20,6 +20,7 @@ import org.kde.kirigami.delegates as KD
 import org.kde.kcmutils as KCMUtils
 
 import org.kde.bluezqt as BluezQt
+import org.kde.bluedevil.components as BluedevilComponents
 
 import org.kde.plasma.private.bluetooth
 
@@ -78,7 +79,7 @@ KCMUtils.ScrollViewKCM {
         }
     }
 
-    ForgetDeviceDialog {
+    BluedevilComponents.ForgetDeviceDialog {
         id: forgetDeviceDialog
 
         parent: root.QQC2.Overlay.overlay
