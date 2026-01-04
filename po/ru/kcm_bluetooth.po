@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-08 00:44+0000\n"
+"POT-Creation-Date: 2026-01-04 00:45+0000\n"
 "PO-Revision-Date: 2025-12-11 18:33+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -46,62 +46,62 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "Включить Bluetooth"
 
-#: ui/Device.qml:131 ui/main.qml:212
+#: ui/Device.qml:132 ui/main.qml:213
 #, kde-format
 msgid "Disconnect"
 msgstr "Отключить"
 
-#: ui/Device.qml:131 ui/main.qml:212
+#: ui/Device.qml:132 ui/main.qml:213
 #, kde-format
 msgid "Connect"
 msgstr "Подключить"
 
-#: ui/Device.qml:134
+#: ui/Device.qml:135
 #, kde-format
 msgid "Unblock the device first to be able to connect to it"
 msgstr "Разблокируйте устройство для подключения"
 
-#: ui/Device.qml:155
+#: ui/Device.qml:156
 #, kde-format
 msgid "Type:"
 msgstr "Тип:"
 
-#: ui/Device.qml:159
+#: ui/Device.qml:160
 #, kde-format
 msgid "%1%"
 msgstr "%1%"
 
-#: ui/Device.qml:161
+#: ui/Device.qml:162
 #, kde-format
 msgid "Battery:"
 msgstr "Батарея:"
 
-#: ui/Device.qml:166 ui/General.qml:49
+#: ui/Device.qml:167 ui/General.qml:49
 #, kde-format
 msgid "Address:"
 msgstr "Адрес:"
 
-#: ui/Device.qml:171
+#: ui/Device.qml:172
 #, kde-format
 msgid "Adapter:"
 msgstr "Адаптер:"
 
-#: ui/Device.qml:177 ui/General.qml:43
+#: ui/Device.qml:178 ui/General.qml:43
 #, kde-format
 msgid "Name:"
 msgstr "Название:"
 
-#: ui/Device.qml:181
+#: ui/Device.qml:182
 #, kde-format
 msgid "Trusted"
 msgstr "Доверенное"
 
-#: ui/Device.qml:190 ui/main.qml:179
+#: ui/Device.qml:191 ui/main.qml:180
 #, kde-format
 msgid "Blocked"
 msgstr "Заблокировано"
 
-#: ui/Device.qml:196
+#: ui/Device.qml:197
 #, kde-format
 msgid ""
 "When enabled, all incoming connections from this device will be rejected."
@@ -109,54 +109,32 @@ msgstr ""
 "При включении, все входящие подключения с заблокированного устройства будут "
 "отклонены."
 
-#: ui/Device.qml:202
+#: ui/Device.qml:203
 #, kde-format
 msgid "Send File"
 msgstr "Передать файл"
 
-#: ui/Device.qml:210
+#: ui/Device.qml:211
 #, kde-format
 msgid "Setup NAP Network…"
 msgstr "Настроить сеть NAP..."
 
-#: ui/Device.qml:218
+#: ui/Device.qml:219
 #, kde-format
 msgid "Setup DUN Network…"
 msgstr "Настроить сеть DUN..."
 
-#: ui/Device.qml:233
+#: ui/Device.qml:234
 #, kde-format
 msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"
 msgstr "Удалить"
 
-#: ui/ForgetDeviceAction.qml:17
+#: ui/ForgetDeviceAction.qml:18
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "Удалить «%1»"
-
-#: ui/ForgetDeviceDialog.qml:34
-#, kde-format
-msgid "Forget this Device?"
-msgstr "Удалить данные подключения этого устройства?"
-
-#: ui/ForgetDeviceDialog.qml:35
-#, kde-format
-msgid "Are you sure you want to forget \"%1\"?"
-msgstr "Удалить данные для подключения «%1»?"
-
-#: ui/ForgetDeviceDialog.qml:47
-#, kde-format
-msgctxt "@action:button"
-msgid "Forget Device"
-msgstr "Удалить устройство"
-
-#: ui/ForgetDeviceDialog.qml:55
-#, kde-format
-msgctxt "@action:button"
-msgid "Cancel"
-msgstr "Отмена"
 
 #: ui/General.qml:24
 #, kde-format
@@ -229,48 +207,48 @@ msgstr "Сохранять полученные файлы в:"
 msgid "Select folder"
 msgstr "Выбор папки"
 
-#: ui/main.qml:33
+#: ui/main.qml:34
 #, kde-format
 msgid "Pair Device…"
 msgstr "Выполнить сопряжение устройства…"
 
-#: ui/main.qml:40
+#: ui/main.qml:41
 #, kde-format
 msgid "Configure…"
 msgstr "Настроить..."
 
-#: ui/main.qml:47
+#: ui/main.qml:48
 #, kde-format
 msgctxt "@action: button as in, 'enable Bluetooth'"
 msgid "Enabled"
 msgstr "Включить"
 
-#: ui/main.qml:125
+#: ui/main.qml:126
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "Адаптеры Bluetooth не найдены."
 
-#: ui/main.qml:126
+#: ui/main.qml:127
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
 msgstr "Подключите внешний адаптер Bluetooth"
 
-#: ui/main.qml:135
+#: ui/main.qml:136
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth выключен"
 
-#: ui/main.qml:141
+#: ui/main.qml:142
 #, kde-format
 msgid "Enable"
 msgstr "Задействовать"
 
-#: ui/main.qml:151
+#: ui/main.qml:152
 #, kde-format
 msgid "No devices paired"
 msgstr "Нет ни одного настроенного устройства"
 
-#: ui/main.qml:152
+#: ui/main.qml:153
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
@@ -278,17 +256,17 @@ msgstr ""
 "Нажмите <interface>Выполнить сопряжение устройства…</interface> для "
 "настройки нового подключения"
 
-#: ui/main.qml:181
+#: ui/main.qml:182
 #, kde-format
 msgid "Connected"
 msgstr "Подключено"
 
-#: ui/main.qml:183
+#: ui/main.qml:184
 #, kde-format
 msgid "Available"
 msgstr "Доступно"
 
-#: ui/main.qml:245
+#: ui/main.qml:246
 #, kde-format
 msgid "%1% Battery"
 msgstr "Батарея %1%"
@@ -437,6 +415,20 @@ msgstr "Другое"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
+
+#~ msgid "Forget this Device?"
+#~ msgstr "Удалить данные подключения этого устройства?"
+
+#~ msgid "Are you sure you want to forget \"%1\"?"
+#~ msgstr "Удалить данные для подключения «%1»?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Forget Device"
+#~ msgstr "Удалить устройство"
+
+#~ msgctxt "@action:button"
+#~ msgid "Cancel"
+#~ msgstr "Отмена"
 
 #~ msgctxt "This device is a Joypad"
 #~ msgid "Joypad"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-06 00:44+0000\n"
+"POT-Creation-Date: 2026-01-04 00:45+0000\n"
 "PO-Revision-Date: 2023-03-03 09:57+0700\n"
 "Last-Translator: Linerly <linerly@protonmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -64,185 +64,191 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Perangkat belum siap"
 
-#: qml/DeviceItem.qml:38
+#: qml/DeviceItem.qml:40
 #, kde-format
 msgid "Disconnect"
 msgstr "Diskoneksikan"
 
-#: qml/DeviceItem.qml:38
+#: qml/DeviceItem.qml:40
 #, kde-format
 msgid "Connect"
 msgstr "Sambung"
 
-#: qml/DeviceItem.qml:49
+#: qml/DeviceItem.qml:51
 #, kde-format
 msgid "Browse Files"
 msgstr "Telusuri File"
 
-#: qml/DeviceItem.qml:60
+#: qml/DeviceItem.qml:62
 #, kde-format
 msgid "Send File"
 msgstr "Kirim File"
 
-#: qml/DeviceItem.qml:108
+#: qml/DeviceItem.qml:71
+#, kde-format
+msgctxt "@action:button %1 is the name of a Bluetooth device"
+msgid "Forget"
+msgstr ""
+
+#: qml/DeviceItem.qml:118
 #, kde-format
 msgid "Copy"
 msgstr "Salin"
 
-#: qml/DeviceItem.qml:204
+#: qml/DeviceItem.qml:214
 #, kde-format
 msgid "Yes"
 msgstr "Ya"
 
-#: qml/DeviceItem.qml:204
+#: qml/DeviceItem.qml:214
 #, kde-format
 msgid "No"
 msgstr "Tidak"
 
-#: qml/DeviceItem.qml:210
+#: qml/DeviceItem.qml:220
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: qml/DeviceItem.qml:218
+#: qml/DeviceItem.qml:228
 #, kde-format
 msgid "Remote Name"
 msgstr "Nama Remot"
 
-#: qml/DeviceItem.qml:222
+#: qml/DeviceItem.qml:232
 #, kde-format
 msgid "Address"
 msgstr "Alamat"
 
-#: qml/DeviceItem.qml:225
+#: qml/DeviceItem.qml:235
 #, kde-format
 msgid "Paired"
 msgstr "Disandingkan"
 
-#: qml/DeviceItem.qml:228
+#: qml/DeviceItem.qml:238
 #, kde-format
 msgid "Trusted"
 msgstr "Dipercaya"
 
-#: qml/DeviceItem.qml:231
+#: qml/DeviceItem.qml:241
 #, kde-format
 msgid "Adapter"
 msgstr "Adaptor"
 
-#: qml/DeviceItem.qml:239
+#: qml/DeviceItem.qml:249
 #, kde-format
 msgid "Connecting"
 msgstr "Menghubungkan"
 
-#: qml/DeviceItem.qml:241
+#: qml/DeviceItem.qml:251
 #, kde-format
 msgid "Disconnecting"
 msgstr "Memutuskan"
 
-#: qml/DeviceItem.qml:247
+#: qml/DeviceItem.qml:257
 #, fuzzy, kde-format
 #| msgctxt "Notification when the connection failed due to Failed"
 #| msgid "Connection to the device failed"
 msgid "Connection failed"
 msgstr "Koneksi ke peranti gagal"
 
-#: qml/DeviceItem.qml:252
+#: qml/DeviceItem.qml:262
 #, kde-format
 msgid "Headset"
 msgstr ""
 
-#: qml/DeviceItem.qml:258
+#: qml/DeviceItem.qml:268
 #, kde-format
 msgid "Audio device"
 msgstr "Perangkat audio"
 
-#: qml/DeviceItem.qml:262
+#: qml/DeviceItem.qml:272
 #, kde-format
 msgid "Keyboard"
 msgstr ""
 
-#: qml/DeviceItem.qml:265
+#: qml/DeviceItem.qml:275
 #, kde-format
 msgid "Mouse"
 msgstr ""
 
-#: qml/DeviceItem.qml:268
+#: qml/DeviceItem.qml:278
 #, kde-format
 msgid "Joypad"
 msgstr ""
 
-#: qml/DeviceItem.qml:271
+#: qml/DeviceItem.qml:281
 #, kde-format
 msgid "Drawing tablet"
 msgstr ""
 
-#: qml/DeviceItem.qml:275
+#: qml/DeviceItem.qml:285
 #, kde-format
 msgid "Phone"
 msgstr "Telepon"
 
-#: qml/DeviceItem.qml:278
+#: qml/DeviceItem.qml:288
 #, kde-format
 msgid "Camera"
 msgstr ""
 
-#: qml/DeviceItem.qml:281
+#: qml/DeviceItem.qml:291
 #, kde-format
 msgid "Printer"
 msgstr ""
 
-#: qml/DeviceItem.qml:288
+#: qml/DeviceItem.qml:298
 #, kde-format
 msgid "File transfer"
 msgstr "Transfer berkas"
 
-#: qml/DeviceItem.qml:291
+#: qml/DeviceItem.qml:301
 #, kde-format
 msgid "Send file"
 msgstr "Kirim berkas"
 
-#: qml/DeviceItem.qml:294
+#: qml/DeviceItem.qml:304
 #, kde-format
 msgid "Input"
 msgstr "Masukan"
 
-#: qml/DeviceItem.qml:297
+#: qml/DeviceItem.qml:307
 #, kde-format
 msgid "Audio"
 msgstr "Audio"
 
-#: qml/DeviceItem.qml:300
+#: qml/DeviceItem.qml:310
 #, kde-format
 msgid "Network"
 msgstr "Jaringan"
 
-#: qml/DeviceItem.qml:305
+#: qml/DeviceItem.qml:315
 #, kde-format
 msgid "Other device"
 msgstr "Perangkat lain"
 
-#: qml/DeviceItem.qml:312 qml/main.qml:74 qml/main.qml:83
+#: qml/DeviceItem.qml:322 qml/main.qml:74 qml/main.qml:83
 #, kde-format
 msgid "%1% Battery"
 msgstr "Baterai %1%"
 
-#: qml/FullRepresentation.qml:71
+#: qml/FullRepresentation.qml:80
 #, kde-format
 msgid "Enable"
 msgstr "Fungsikan"
 
-#: qml/FullRepresentation.qml:145
+#: qml/FullRepresentation.qml:156
 #, kde-format
 msgid "No Bluetooth adapters available"
 msgstr "Tidak Ada adaptor Bluetooth yang tersedia"
 
-#: qml/FullRepresentation.qml:147
+#: qml/FullRepresentation.qml:158
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth telah dinonfungsikan"
 
-#: qml/FullRepresentation.qml:149
+#: qml/FullRepresentation.qml:160
 #, fuzzy, kde-format
 #| msgid "No devices found"
 msgid "No devices paired"

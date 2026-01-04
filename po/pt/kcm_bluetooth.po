@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-08 00:44+0000\n"
+"POT-Creation-Date: 2026-01-04 00:45+0000\n"
 "PO-Revision-Date: 2022-07-26 09:25+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -36,83 +36,83 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "Activar o Bluetooth"
 
-#: ui/Device.qml:131 ui/main.qml:212
+#: ui/Device.qml:132 ui/main.qml:213
 #, kde-format
 msgid "Disconnect"
 msgstr "Desligar"
 
-#: ui/Device.qml:131 ui/main.qml:212
+#: ui/Device.qml:132 ui/main.qml:213
 #, kde-format
 msgid "Connect"
 msgstr "Ligar"
 
-#: ui/Device.qml:134
+#: ui/Device.qml:135
 #, kde-format
 msgid "Unblock the device first to be able to connect to it"
 msgstr ""
 
-#: ui/Device.qml:155
+#: ui/Device.qml:156
 #, kde-format
 msgid "Type:"
 msgstr "Tipo:"
 
-#: ui/Device.qml:159
+#: ui/Device.qml:160
 #, kde-format
 msgid "%1%"
 msgstr ""
 
-#: ui/Device.qml:161
+#: ui/Device.qml:162
 #, kde-format
 msgid "Battery:"
 msgstr ""
 
-#: ui/Device.qml:166 ui/General.qml:49
+#: ui/Device.qml:167 ui/General.qml:49
 #, kde-format
 msgid "Address:"
 msgstr "Endereço:"
 
-#: ui/Device.qml:171
+#: ui/Device.qml:172
 #, kde-format
 msgid "Adapter:"
 msgstr "Adaptador:"
 
-#: ui/Device.qml:177 ui/General.qml:43
+#: ui/Device.qml:178 ui/General.qml:43
 #, kde-format
 msgid "Name:"
 msgstr "Nome:"
 
-#: ui/Device.qml:181
+#: ui/Device.qml:182
 #, kde-format
 msgid "Trusted"
 msgstr "Fidedigno"
 
-#: ui/Device.qml:190 ui/main.qml:179
+#: ui/Device.qml:191 ui/main.qml:180
 #, kde-format
 msgid "Blocked"
 msgstr "Bloqueado"
 
-#: ui/Device.qml:196
+#: ui/Device.qml:197
 #, kde-format
 msgid ""
 "When enabled, all incoming connections from this device will be rejected."
 msgstr ""
 
-#: ui/Device.qml:202
+#: ui/Device.qml:203
 #, kde-format
 msgid "Send File"
 msgstr "Enviar o Ficheiro"
 
-#: ui/Device.qml:210
+#: ui/Device.qml:211
 #, kde-format
 msgid "Setup NAP Network…"
 msgstr "Configurar uma Rede NAP…"
 
-#: ui/Device.qml:218
+#: ui/Device.qml:219
 #, kde-format
 msgid "Setup DUN Network…"
 msgstr "Configurar uma Rede DUN…"
 
-#: ui/Device.qml:233
+#: ui/Device.qml:234
 #, fuzzy, kde-format
 #| msgctxt "@action:button %1 is the name of a Bluetooth device"
 #| msgid "Forget \"%1\""
@@ -120,33 +120,11 @@ msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"
 msgstr "Esquecer o \"%1\""
 
-#: ui/ForgetDeviceAction.qml:17
+#: ui/ForgetDeviceAction.qml:18
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "Esquecer o \"%1\""
-
-#: ui/ForgetDeviceDialog.qml:34
-#, kde-format
-msgid "Forget this Device?"
-msgstr "Esquecer este Dispositivo?"
-
-#: ui/ForgetDeviceDialog.qml:35
-#, kde-format
-msgid "Are you sure you want to forget \"%1\"?"
-msgstr "Tem a certeza que deseja esquecer o \"%1\"?"
-
-#: ui/ForgetDeviceDialog.qml:47
-#, kde-format
-msgctxt "@action:button"
-msgid "Forget Device"
-msgstr "Esquecer o Dispositivo"
-
-#: ui/ForgetDeviceDialog.qml:55
-#, kde-format
-msgctxt "@action:button"
-msgid "Cancel"
-msgstr "Cancelar"
 
 #: ui/General.qml:24
 #, kde-format
@@ -218,66 +196,66 @@ msgstr "Gravar os ficheiros em:"
 msgid "Select folder"
 msgstr "Seleccionar a pasta"
 
-#: ui/main.qml:33
+#: ui/main.qml:34
 #, fuzzy, kde-format
 #| msgid "Add New Device…"
 msgid "Pair Device…"
 msgstr "Adicionar um Novo Dispositivo…"
 
-#: ui/main.qml:40
+#: ui/main.qml:41
 #, kde-format
 msgid "Configure…"
 msgstr "Configurar…"
 
-#: ui/main.qml:47
+#: ui/main.qml:48
 #, fuzzy, kde-format
 #| msgid "Enabled:"
 msgctxt "@action: button as in, 'enable Bluetooth'"
 msgid "Enabled"
 msgstr "Activo:"
 
-#: ui/main.qml:125
+#: ui/main.qml:126
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "Nenhum adaptador Bluetooth detectado"
 
-#: ui/main.qml:126
+#: ui/main.qml:127
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
 msgstr ""
 
-#: ui/main.qml:135
+#: ui/main.qml:136
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "O Bluetooth está desactivado"
 
-#: ui/main.qml:141
+#: ui/main.qml:142
 #, kde-format
 msgid "Enable"
 msgstr "Activar"
 
-#: ui/main.qml:151
+#: ui/main.qml:152
 #, kde-format
 msgid "No devices paired"
 msgstr "Sem dispositivos emparelhados"
 
-#: ui/main.qml:152
+#: ui/main.qml:153
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr ""
 
-#: ui/main.qml:181
+#: ui/main.qml:182
 #, kde-format
 msgid "Connected"
 msgstr "Ligado"
 
-#: ui/main.qml:183
+#: ui/main.qml:184
 #, kde-format
 msgid "Available"
 msgstr "Disponível"
 
-#: ui/main.qml:245
+#: ui/main.qml:246
 #, kde-format
 msgid "%1% Battery"
 msgstr ""
@@ -431,6 +409,20 @@ msgstr ""
 msgctxt "List separator"
 msgid ", "
 msgstr ""
+
+#~ msgid "Forget this Device?"
+#~ msgstr "Esquecer este Dispositivo?"
+
+#~ msgid "Are you sure you want to forget \"%1\"?"
+#~ msgstr "Tem a certeza que deseja esquecer o \"%1\"?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Forget Device"
+#~ msgstr "Esquecer o Dispositivo"
+
+#~ msgctxt "@action:button"
+#~ msgid "Cancel"
+#~ msgstr "Cancelar"
 
 #~ msgctxt "This device is a Joypad"
 #~ msgid "Joypad"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-06 00:44+0000\n"
+"POT-Creation-Date: 2026-01-04 00:45+0000\n"
 "PO-Revision-Date: 2025-09-04 10:11+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -61,183 +61,189 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Laite ei ole valmis"
 
-#: qml/DeviceItem.qml:38
+#: qml/DeviceItem.qml:40
 #, kde-format
 msgid "Disconnect"
 msgstr "Katkaise yhteys"
 
-#: qml/DeviceItem.qml:38
+#: qml/DeviceItem.qml:40
 #, kde-format
 msgid "Connect"
 msgstr "Yhdistä"
 
-#: qml/DeviceItem.qml:49
+#: qml/DeviceItem.qml:51
 #, kde-format
 msgid "Browse Files"
 msgstr "Selaa tiedostoja"
 
-#: qml/DeviceItem.qml:60
+#: qml/DeviceItem.qml:62
 #, kde-format
 msgid "Send File"
 msgstr "Lähetä tiedosto"
 
-#: qml/DeviceItem.qml:108
+#: qml/DeviceItem.qml:71
+#, kde-format
+msgctxt "@action:button %1 is the name of a Bluetooth device"
+msgid "Forget"
+msgstr ""
+
+#: qml/DeviceItem.qml:118
 #, kde-format
 msgid "Copy"
 msgstr "Kopioi"
 
-#: qml/DeviceItem.qml:204
+#: qml/DeviceItem.qml:214
 #, kde-format
 msgid "Yes"
 msgstr "Kyllä"
 
-#: qml/DeviceItem.qml:204
+#: qml/DeviceItem.qml:214
 #, kde-format
 msgid "No"
 msgstr "Ei"
 
-#: qml/DeviceItem.qml:210
+#: qml/DeviceItem.qml:220
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: qml/DeviceItem.qml:218
+#: qml/DeviceItem.qml:228
 #, kde-format
 msgid "Remote Name"
 msgstr "Etänimi"
 
-#: qml/DeviceItem.qml:222
+#: qml/DeviceItem.qml:232
 #, kde-format
 msgid "Address"
 msgstr "Osoite"
 
-#: qml/DeviceItem.qml:225
+#: qml/DeviceItem.qml:235
 #, kde-format
 msgid "Paired"
 msgstr "Laitepari"
 
-#: qml/DeviceItem.qml:228
+#: qml/DeviceItem.qml:238
 #, kde-format
 msgid "Trusted"
 msgstr "Luotettu"
 
-#: qml/DeviceItem.qml:231
+#: qml/DeviceItem.qml:241
 #, kde-format
 msgid "Adapter"
 msgstr "Sovitin"
 
-#: qml/DeviceItem.qml:239
+#: qml/DeviceItem.qml:249
 #, kde-format
 msgid "Connecting"
 msgstr "Yhdistetään"
 
-#: qml/DeviceItem.qml:241
+#: qml/DeviceItem.qml:251
 #, kde-format
 msgid "Disconnecting"
 msgstr "Katkaistaan yhteys"
 
-#: qml/DeviceItem.qml:247
+#: qml/DeviceItem.qml:257
 #, kde-format
 msgid "Connection failed"
 msgstr "Yhteydenotto epäonnistui"
 
-#: qml/DeviceItem.qml:252
+#: qml/DeviceItem.qml:262
 #, kde-format
 msgid "Headset"
 msgstr "Kuulokemikrofoni"
 
-#: qml/DeviceItem.qml:258
+#: qml/DeviceItem.qml:268
 #, kde-format
 msgid "Audio device"
 msgstr "Äänilaite"
 
-#: qml/DeviceItem.qml:262
+#: qml/DeviceItem.qml:272
 #, kde-format
 msgid "Keyboard"
 msgstr "Näppäimistö"
 
-#: qml/DeviceItem.qml:265
+#: qml/DeviceItem.qml:275
 #, kde-format
 msgid "Mouse"
 msgstr "Hiiri"
 
-#: qml/DeviceItem.qml:268
+#: qml/DeviceItem.qml:278
 #, kde-format
 msgid "Joypad"
 msgstr "Peliohjain"
 
-#: qml/DeviceItem.qml:271
+#: qml/DeviceItem.qml:281
 #, kde-format
 msgid "Drawing tablet"
 msgstr "Piirtopöytä"
 
-#: qml/DeviceItem.qml:275
+#: qml/DeviceItem.qml:285
 #, kde-format
 msgid "Phone"
 msgstr "Puhelin"
 
-#: qml/DeviceItem.qml:278
+#: qml/DeviceItem.qml:288
 #, kde-format
 msgid "Camera"
 msgstr "Kamera"
 
-#: qml/DeviceItem.qml:281
+#: qml/DeviceItem.qml:291
 #, kde-format
 msgid "Printer"
 msgstr "Tulostin"
 
-#: qml/DeviceItem.qml:288
+#: qml/DeviceItem.qml:298
 #, kde-format
 msgid "File transfer"
 msgstr "Tiedostonsiirto"
 
-#: qml/DeviceItem.qml:291
+#: qml/DeviceItem.qml:301
 #, kde-format
 msgid "Send file"
 msgstr "Tiedoston lähetys"
 
-#: qml/DeviceItem.qml:294
+#: qml/DeviceItem.qml:304
 #, kde-format
 msgid "Input"
 msgstr "Syöte"
 
-#: qml/DeviceItem.qml:297
+#: qml/DeviceItem.qml:307
 #, kde-format
 msgid "Audio"
 msgstr "Ääni"
 
-#: qml/DeviceItem.qml:300
+#: qml/DeviceItem.qml:310
 #, kde-format
 msgid "Network"
 msgstr "Verkko"
 
-#: qml/DeviceItem.qml:305
+#: qml/DeviceItem.qml:315
 #, kde-format
 msgid "Other device"
 msgstr "Muu laite"
 
-#: qml/DeviceItem.qml:312 qml/main.qml:74 qml/main.qml:83
+#: qml/DeviceItem.qml:322 qml/main.qml:74 qml/main.qml:83
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1 % akkua"
 
-#: qml/FullRepresentation.qml:71
+#: qml/FullRepresentation.qml:80
 #, kde-format
 msgid "Enable"
 msgstr "Käytä"
 
-#: qml/FullRepresentation.qml:145
+#: qml/FullRepresentation.qml:156
 #, kde-format
 msgid "No Bluetooth adapters available"
 msgstr "Ei Bluetooth-sovittimia käytettävissä"
 
-#: qml/FullRepresentation.qml:147
+#: qml/FullRepresentation.qml:158
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth ei ole käytössä"
 
-#: qml/FullRepresentation.qml:149
+#: qml/FullRepresentation.qml:160
 #, kde-format
 msgid "No devices paired"
 msgstr "Ei paritettuja laitteita"

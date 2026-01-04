@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-08 00:44+0000\n"
+"POT-Creation-Date: 2026-01-04 00:45+0000\n"
 "PO-Revision-Date: 2024-10-26 12:48+0200\n"
 "Last-Translator: rasmus rosendahl-kaa <rasmus@rosendahl-kaa.name>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -41,63 +41,63 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "Aktivér Bluetooth"
 
-#: ui/Device.qml:131 ui/main.qml:212
+#: ui/Device.qml:132 ui/main.qml:213
 #, kde-format
 msgid "Disconnect"
 msgstr "Afbryd forbindelse"
 
-#: ui/Device.qml:131 ui/main.qml:212
+#: ui/Device.qml:132 ui/main.qml:213
 #, kde-format
 msgid "Connect"
 msgstr "Forbind"
 
-#: ui/Device.qml:134
+#: ui/Device.qml:135
 #, kde-format
 msgid "Unblock the device first to be able to connect to it"
 msgstr ""
 "Du skal først fjerne blokeringen af enheden, før du kan forbinde til den"
 
-#: ui/Device.qml:155
+#: ui/Device.qml:156
 #, kde-format
 msgid "Type:"
 msgstr "Type:"
 
-#: ui/Device.qml:159
+#: ui/Device.qml:160
 #, kde-format
 msgid "%1%"
 msgstr "%1%"
 
-#: ui/Device.qml:161
+#: ui/Device.qml:162
 #, kde-format
 msgid "Battery:"
 msgstr "Batteri:"
 
-#: ui/Device.qml:166 ui/General.qml:49
+#: ui/Device.qml:167 ui/General.qml:49
 #, kde-format
 msgid "Address:"
 msgstr "Adresse:"
 
-#: ui/Device.qml:171
+#: ui/Device.qml:172
 #, kde-format
 msgid "Adapter:"
 msgstr "Adapter:"
 
-#: ui/Device.qml:177 ui/General.qml:43
+#: ui/Device.qml:178 ui/General.qml:43
 #, kde-format
 msgid "Name:"
 msgstr "Navn:"
 
-#: ui/Device.qml:181
+#: ui/Device.qml:182
 #, kde-format
 msgid "Trusted"
 msgstr "Betroet"
 
-#: ui/Device.qml:190 ui/main.qml:179
+#: ui/Device.qml:191 ui/main.qml:180
 #, kde-format
 msgid "Blocked"
 msgstr "Blokeret"
 
-#: ui/Device.qml:196
+#: ui/Device.qml:197
 #, fuzzy, kde-format
 #| msgid ""
 #| "Any incoming connections from a blocked device will be immediately "
@@ -108,54 +108,32 @@ msgstr ""
 "Enhver indkommende forbindelser fra en blokeret enhed vil afvises med det "
 "samme."
 
-#: ui/Device.qml:202
+#: ui/Device.qml:203
 #, kde-format
 msgid "Send File"
 msgstr "Send fil"
 
-#: ui/Device.qml:210
+#: ui/Device.qml:211
 #, kde-format
 msgid "Setup NAP Network…"
 msgstr "Sæt NAP-netværk op…"
 
-#: ui/Device.qml:218
+#: ui/Device.qml:219
 #, kde-format
 msgid "Setup DUN Network…"
 msgstr "Sæt DUN-netværk op…"
 
-#: ui/Device.qml:233
+#: ui/Device.qml:234
 #, kde-format
 msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"
 msgstr "Glem"
 
-#: ui/ForgetDeviceAction.qml:17
+#: ui/ForgetDeviceAction.qml:18
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "Glem \"%1\""
-
-#: ui/ForgetDeviceDialog.qml:34
-#, kde-format
-msgid "Forget this Device?"
-msgstr "Glem denne enhed?"
-
-#: ui/ForgetDeviceDialog.qml:35
-#, kde-format
-msgid "Are you sure you want to forget \"%1\"?"
-msgstr "Er du sikker på, at du vil glemme \"%1\"?"
-
-#: ui/ForgetDeviceDialog.qml:47
-#, kde-format
-msgctxt "@action:button"
-msgid "Forget Device"
-msgstr "Glem enhed"
-
-#: ui/ForgetDeviceDialog.qml:55
-#, kde-format
-msgctxt "@action:button"
-msgid "Cancel"
-msgstr "Annullér"
 
 #: ui/General.qml:24
 #, kde-format
@@ -227,64 +205,64 @@ msgstr "Gem filer i:"
 msgid "Select folder"
 msgstr "Vælg mappe"
 
-#: ui/main.qml:33
+#: ui/main.qml:34
 #, kde-format
 msgid "Pair Device…"
 msgstr "Par enhed…"
 
-#: ui/main.qml:40
+#: ui/main.qml:41
 #, kde-format
 msgid "Configure…"
 msgstr "Indstil…"
 
-#: ui/main.qml:47
+#: ui/main.qml:48
 #, kde-format
 msgctxt "@action: button as in, 'enable Bluetooth'"
 msgid "Enabled"
 msgstr "Aktiveret"
 
-#: ui/main.qml:125
+#: ui/main.qml:126
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "Ingen Bluetooth-adaptere fundet"
 
-#: ui/main.qml:126
+#: ui/main.qml:127
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
 msgstr "Forbind en ekstern Bluetooth-adapter"
 
-#: ui/main.qml:135
+#: ui/main.qml:136
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "Bluetooth er deaktiveret"
 
-#: ui/main.qml:141
+#: ui/main.qml:142
 #, kde-format
 msgid "Enable"
 msgstr "Aktivér"
 
-#: ui/main.qml:151
+#: ui/main.qml:152
 #, kde-format
 msgid "No devices paired"
 msgstr "Ingen enheder parret"
 
-#: ui/main.qml:152
+#: ui/main.qml:153
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr "Klik <interface>Par enhed…</interface> for at parre nogle"
 
-#: ui/main.qml:181
+#: ui/main.qml:182
 #, kde-format
 msgid "Connected"
 msgstr "Forbundet"
 
-#: ui/main.qml:183
+#: ui/main.qml:184
 #, kde-format
 msgid "Available"
 msgstr "Tilgængelig"
 
-#: ui/main.qml:245
+#: ui/main.qml:246
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% batteri"
@@ -433,6 +411,20 @@ msgstr "Output"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
+
+#~ msgid "Forget this Device?"
+#~ msgstr "Glem denne enhed?"
+
+#~ msgid "Are you sure you want to forget \"%1\"?"
+#~ msgstr "Er du sikker på, at du vil glemme \"%1\"?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Forget Device"
+#~ msgstr "Glem enhed"
+
+#~ msgctxt "@action:button"
+#~ msgid "Cancel"
+#~ msgstr "Annullér"
 
 #~ msgctxt "This device is a Joypad"
 #~ msgid "Joypad"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-08 00:44+0000\n"
+"POT-Creation-Date: 2026-01-04 00:45+0000\n"
 "PO-Revision-Date: 2024-12-25 19:35+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -42,62 +42,62 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "ब्लूटूथं सक्षमं कुर्वन्तु"
 
-#: ui/Device.qml:131 ui/main.qml:212
+#: ui/Device.qml:132 ui/main.qml:213
 #, kde-format
 msgid "Disconnect"
 msgstr "विच्छेदं कुर्वन्तु"
 
-#: ui/Device.qml:131 ui/main.qml:212
+#: ui/Device.qml:132 ui/main.qml:213
 #, kde-format
 msgid "Connect"
 msgstr "संयुज्"
 
-#: ui/Device.qml:134
+#: ui/Device.qml:135
 #, kde-format
 msgid "Unblock the device first to be able to connect to it"
 msgstr "प्रथमं यन्त्रं अनब्लॉक् कुर्वन्तु यत् तेन सह सम्बद्धं कर्तुं शक्नुवन्ति"
 
-#: ui/Device.qml:155
+#: ui/Device.qml:156
 #, kde-format
 msgid "Type:"
 msgstr "प्रकारः:"
 
-#: ui/Device.qml:159
+#: ui/Device.qml:160
 #, kde-format
 msgid "%1%"
 msgstr "%1%"
 
-#: ui/Device.qml:161
+#: ui/Device.qml:162
 #, kde-format
 msgid "Battery:"
 msgstr "विद्युत्कोष:"
 
-#: ui/Device.qml:166 ui/General.qml:49
+#: ui/Device.qml:167 ui/General.qml:49
 #, kde-format
 msgid "Address:"
 msgstr "पत्रसङ्केतः:"
 
-#: ui/Device.qml:171
+#: ui/Device.qml:172
 #, kde-format
 msgid "Adapter:"
 msgstr "एडाप्टर :"
 
-#: ui/Device.qml:177 ui/General.qml:43
+#: ui/Device.qml:178 ui/General.qml:43
 #, kde-format
 msgid "Name:"
 msgstr "नामः:"
 
-#: ui/Device.qml:181
+#: ui/Device.qml:182
 #, kde-format
 msgid "Trusted"
 msgstr "विश्वासः"
 
-#: ui/Device.qml:190 ui/main.qml:179
+#: ui/Device.qml:191 ui/main.qml:180
 #, kde-format
 msgid "Blocked"
 msgstr "अवरुद्धम्"
 
-#: ui/Device.qml:196
+#: ui/Device.qml:197
 #, fuzzy, kde-format
 #| msgid ""
 #| "Any incoming connections from a blocked device will be immediately "
@@ -106,54 +106,32 @@ msgid ""
 "When enabled, all incoming connections from this device will be rejected."
 msgstr "अवरुद्धयन्त्रात् आगच्छन्तं किमपि संयोजनं तत्क्षणमेव अङ्गीकृतं भविष्यति ।"
 
-#: ui/Device.qml:202
+#: ui/Device.qml:203
 #, kde-format
 msgid "Send File"
 msgstr "सञ्चिका प्रेषयतु"
 
-#: ui/Device.qml:210
+#: ui/Device.qml:211
 #, kde-format
 msgid "Setup NAP Network…"
 msgstr "NAP Network सेटअप…"
 
-#: ui/Device.qml:218
+#: ui/Device.qml:219
 #, kde-format
 msgid "Setup DUN Network…"
 msgstr "DUN Network सेटअप…"
 
-#: ui/Device.qml:233
+#: ui/Device.qml:234
 #, kde-format
 msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"
 msgstr "विस्मृत"
 
-#: ui/ForgetDeviceAction.qml:17
+#: ui/ForgetDeviceAction.qml:18
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
 msgstr "\"%1\" विस्मरतु।"
-
-#: ui/ForgetDeviceDialog.qml:34
-#, kde-format
-msgid "Forget this Device?"
-msgstr "एतत् Device विस्मरतु?"
-
-#: ui/ForgetDeviceDialog.qml:35
-#, kde-format
-msgid "Are you sure you want to forget \"%1\"?"
-msgstr "किं भवन्तः \"%1\" विस्मर्तुं इच्छन्ति इति निश्चितम्?"
-
-#: ui/ForgetDeviceDialog.qml:47
-#, kde-format
-msgctxt "@action:button"
-msgid "Forget Device"
-msgstr "Device विस्मरतु"
-
-#: ui/ForgetDeviceDialog.qml:55
-#, kde-format
-msgctxt "@action:button"
-msgid "Cancel"
-msgstr "निरसयतु"
 
 #: ui/General.qml:24
 #, kde-format
@@ -225,64 +203,64 @@ msgstr "सञ्चिकाः अत्र रक्षन्तु :"
 msgid "Select folder"
 msgstr "फोल्डरं चिनोतु"
 
-#: ui/main.qml:33
+#: ui/main.qml:34
 #, kde-format
 msgid "Pair Device…"
 msgstr "युग्मयन्त्रम्…"
 
-#: ui/main.qml:40
+#: ui/main.qml:41
 #, kde-format
 msgid "Configure…"
 msgstr "विन्यस्तं कुर्वन्तु…"
 
-#: ui/main.qml:47
+#: ui/main.qml:48
 #, kde-format
 msgctxt "@action: button as in, 'enable Bluetooth'"
 msgid "Enabled"
 msgstr "सक्षमम्"
 
-#: ui/main.qml:125
+#: ui/main.qml:126
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "कोऽपि ब्लूटूथ एडाप्टरः न प्राप्तः"
 
-#: ui/main.qml:126
+#: ui/main.qml:127
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
 msgstr "बाह्यं Bluetooth एडाप्टरं संयोजयन्तु"
 
-#: ui/main.qml:135
+#: ui/main.qml:136
 #, kde-format
 msgid "Bluetooth is disabled"
 msgstr "ब्लूटूथ् अक्षमम् अस्ति"
 
-#: ui/main.qml:141
+#: ui/main.qml:142
 #, kde-format
 msgid "Enable"
 msgstr "सक्रियं करोतु"
 
-#: ui/main.qml:151
+#: ui/main.qml:152
 #, kde-format
 msgid "No devices paired"
 msgstr "न यन्त्राणि युग्मिताः"
 
-#: ui/main.qml:152
+#: ui/main.qml:153
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr "केचन युग्मीकरणं कर्तुं <interface>Pair Device…</interface> नुदन्तु"
 
-#: ui/main.qml:181
+#: ui/main.qml:182
 #, kde-format
 msgid "Connected"
 msgstr "संबद्धः"
 
-#: ui/main.qml:183
+#: ui/main.qml:184
 #, kde-format
 msgid "Available"
 msgstr "उपलब्धः"
 
-#: ui/main.qml:245
+#: ui/main.qml:246
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% बैटरी"
@@ -431,3 +409,17 @@ msgstr "इतर"
 msgctxt "List separator"
 msgid ", "
 msgstr ", ९. "
+
+#~ msgid "Forget this Device?"
+#~ msgstr "एतत् Device विस्मरतु?"
+
+#~ msgid "Are you sure you want to forget \"%1\"?"
+#~ msgstr "किं भवन्तः \"%1\" विस्मर्तुं इच्छन्ति इति निश्चितम्?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Forget Device"
+#~ msgstr "Device विस्मरतु"
+
+#~ msgctxt "@action:button"
+#~ msgid "Cancel"
+#~ msgstr "निरसयतु"
