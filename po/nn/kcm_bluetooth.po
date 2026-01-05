@@ -410,17 +410,3 @@ msgstr "Anna"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
-
-#~ msgid "Forget this Device?"
-#~ msgstr "Gløyma eininga?"
-
-#~ msgid "Are you sure you want to forget \"%1\"?"
-#~ msgstr "Er du sikker på at du vil gløyma «%1»?"
-
-#~ msgctxt "@action:button"
-#~ msgid "Forget Device"
-#~ msgstr "Gløym eininga"
-
-#~ msgctxt "@action:button"
-#~ msgid "Cancel"
-#~ msgstr "Avbryt"
