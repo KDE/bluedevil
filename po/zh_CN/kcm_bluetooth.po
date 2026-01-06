@@ -404,17 +404,3 @@ msgstr "其他"
 msgctxt "List separator"
 msgid ", "
 msgstr "，"
-
-#~ msgid "Forget this Device?"
-#~ msgstr "忘记此设备？"
-
-#~ msgid "Are you sure you want to forget \"%1\"?"
-#~ msgstr "您确定要忘记“%1”吗？"
-
-#~ msgctxt "@action:button"
-#~ msgid "Forget Device"
-#~ msgstr "忘记设备"
-
-#~ msgctxt "@action:button"
-#~ msgid "Cancel"
-#~ msgstr "取消"
