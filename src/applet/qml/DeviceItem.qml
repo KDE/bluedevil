@@ -68,7 +68,7 @@ PlasmaExtras.ExpandableListItem {
         QQC2.Action {
             id: forgetButton
             icon.name: "edit-delete-remove-symbolic"
-            text: i18nc("@action:button %1 is the name of a Bluetooth device", "Forget")
+            text: i18nc("@action:button Forget a Bluetooth device", "Forget")
             onTriggered: source => {
                 root.forgetDeviceDialog.open(root.model.Device);
             }
