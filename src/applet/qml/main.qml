@@ -107,7 +107,7 @@ PlasmoidItem {
     Plasmoid.contextualActions: [
         PlasmaCore.Action {
             id: addDeviceAction
-            text: i18n("Pair Device…")
+            text: i18nc("@action:button", "Pair Device…")
             icon.name: "list-add-symbolic"
             priority: PlasmaCore.Action.HighPriority
             visible: !BluezQt.Manager.bluetoothBlocked
@@ -115,7 +115,7 @@ PlasmoidItem {
         },
         PlasmaCore.Action {
             id: toggleBadgeAction
-            text: i18n("Badge icon with number of connected devices")
+            text: i18nc("@item:inmenu", "Show badge with number of connected devices")
             icon.name: "draw-number-symbolic"
             checkable: true
             checked: Plasmoid.configuration.showNumberOfConnectedDevices
@@ -125,13 +125,13 @@ PlasmoidItem {
         },
         PlasmaCore.Action {
             id: configureAction
-            text: i18n("Configure &Bluetooth…")
+            text: i18nc("@action:inmenu", "Configure &Bluetooth…")
             icon.name: "configure-symbolic"
             onTriggered: checked => KCMUtils.KCMLauncher.openSystemSettings("kcm_bluetooth")
         },
         PlasmaCore.Action {
             id: toggleBluetoothAction
-            text: i18n("Enable Bluetooth")
+            text: i18nc("@option:check", "Enable Bluetooth")
             icon.name: "preferences-system-bluetooth-symbolic"
             priority: PlasmaCore.Action.LowPriority
             checkable: true
