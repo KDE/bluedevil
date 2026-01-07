@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-04 00:45+0000\n"
+"POT-Creation-Date: 2026-01-07 00:45+0000\n"
 "PO-Revision-Date: 2026-01-05 01:13+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -83,8 +83,10 @@ msgid "Send File"
 msgstr "傳送檔案"
 
 #: qml/DeviceItem.qml:71
-#, kde-format
-msgctxt "@action:button %1 is the name of a Bluetooth device"
+#, fuzzy, kde-format
+#| msgctxt "@action:button %1 is the name of a Bluetooth device"
+#| msgid "Forget"
+msgctxt "@action:button Forget a Bluetooth device"
 msgid "Forget"
 msgstr "忘記"
 

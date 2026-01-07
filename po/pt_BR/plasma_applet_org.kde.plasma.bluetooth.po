@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-04 00:45+0000\n"
+"POT-Creation-Date: 2026-01-07 00:45+0000\n"
 "PO-Revision-Date: 2026-01-04 06:11-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -86,8 +86,10 @@ msgid "Send File"
 msgstr "Enviar arquivo"
 
 #: qml/DeviceItem.qml:71
-#, kde-format
-msgctxt "@action:button %1 is the name of a Bluetooth device"
+#, fuzzy, kde-format
+#| msgctxt "@action:button %1 is the name of a Bluetooth device"
+#| msgid "Forget"
+msgctxt "@action:button Forget a Bluetooth device"
 msgid "Forget"
 msgstr "Esquecer"
 
