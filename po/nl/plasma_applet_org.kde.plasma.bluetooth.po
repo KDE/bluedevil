@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-07 00:45+0000\n"
-"PO-Revision-Date: 2026-01-04 14:04+0100\n"
+"PO-Revision-Date: 2026-01-07 12:37+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -81,9 +81,7 @@ msgid "Send File"
 msgstr "Bestand verzenden"
 
 #: qml/DeviceItem.qml:71
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the name of a Bluetooth device"
-#| msgid "Forget"
+#, kde-format
 msgctxt "@action:button Forget a Bluetooth device"
 msgid "Forget"
 msgstr "Vergeten"
