@@ -106,6 +106,18 @@ PlasmoidItem {
 
     Plasmoid.contextualActions: [
         PlasmaCore.Action {
+            id: toggleBluetoothAction
+            text: i18nc("@option:check", "Enable Bluetooth")
+            icon.name: "preferences-system-bluetooth-symbolic"
+            priority: PlasmaCore.Action.LowPriority
+            checkable: true
+            checked: BluezQt.Manager.bluetoothOperational
+            visible: BluezQt.Manager.bluetoothBlocked || BluezQt.Manager.adapters.length > 0
+            onTriggered: checked => {
+                root.setBluetoothEnabled(checked);
+            }
+        },
+        PlasmaCore.Action {
             id: addDeviceAction
             text: i18nc("@action:button", "Pair Device…")
             icon.name: "list-add-symbolic"
@@ -128,18 +140,6 @@ PlasmoidItem {
             text: i18nc("@action:inmenu", "Configure &Bluetooth…")
             icon.name: "configure-symbolic"
             onTriggered: checked => KCMUtils.KCMLauncher.openSystemSettings("kcm_bluetooth")
-        },
-        PlasmaCore.Action {
-            id: toggleBluetoothAction
-            text: i18nc("@option:check", "Enable Bluetooth")
-            icon.name: "preferences-system-bluetooth-symbolic"
-            priority: PlasmaCore.Action.LowPriority
-            checkable: true
-            checked: BluezQt.Manager.bluetoothOperational
-            visible: BluezQt.Manager.bluetoothBlocked || BluezQt.Manager.adapters.length > 0
-            onTriggered: checked => {
-                root.setBluetoothEnabled(checked);
-            }
         }
     ]
 
