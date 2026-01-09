@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-07 00:45+0000\n"
+"POT-Creation-Date: 2026-01-09 00:44+0000\n"
 "PO-Revision-Date: 2026-01-07 18:40+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -292,24 +292,32 @@ msgstr[0] "%1 bağlı aygıt"
 msgstr[1] "%1 bağlı aygıt"
 
 #: qml/main.qml:110
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Enable Bluetooth"
+msgctxt "@option:check"
+msgid "Enable Bluetooth"
+msgstr "Bluetooth’u Etkinleştir"
+
+#: qml/main.qml:122
+#, fuzzy, kde-format
+#| msgid "Pair Device…"
+msgctxt "@action:button"
 msgid "Pair Device…"
 msgstr "Aygıt Eşle"
 
-#: qml/main.qml:118
-#, kde-format
-msgid "Badge icon with number of connected devices"
+#: qml/main.qml:130
+#, fuzzy, kde-format
+#| msgid "Badge icon with number of connected devices"
+msgctxt "@item:inmenu"
+msgid "Show badge with number of connected devices"
 msgstr "Bağlı aygıtların sayısını gösteren rozet simgesi"
 
-#: qml/main.qml:128
-#, kde-format
+#: qml/main.qml:140
+#, fuzzy, kde-format
+#| msgid "Configure &Bluetooth…"
+msgctxt "@action:inmenu"
 msgid "Configure &Bluetooth…"
 msgstr "&Bluetooth’u Yapılandır…"
-
-#: qml/main.qml:134
-#, kde-format
-msgid "Enable Bluetooth"
-msgstr "Bluetooth’u Etkinleştir"
 
 #: qml/Toolbar.qml:73
 #, kde-format

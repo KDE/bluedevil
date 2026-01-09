@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-07 00:45+0000\n"
+"POT-Creation-Date: 2026-01-09 00:44+0000\n"
 "PO-Revision-Date: 2023-11-01 12:32+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: \n"
@@ -294,23 +294,28 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: qml/main.qml:110
+#, fuzzy, kde-format
+#| msgid "Bluetooth"
+msgctxt "@option:check"
+msgid "Enable Bluetooth"
+msgstr "Bluetooth"
+
+#: qml/main.qml:122
 #, kde-format
+msgctxt "@action:button"
 msgid "Pair Device…"
 msgstr ""
 
-#: qml/main.qml:118
+#: qml/main.qml:130
 #, kde-format
-msgid "Badge icon with number of connected devices"
+msgctxt "@item:inmenu"
+msgid "Show badge with number of connected devices"
 msgstr ""
 
-#: qml/main.qml:128
+#: qml/main.qml:140
 #, kde-format
+msgctxt "@action:inmenu"
 msgid "Configure &Bluetooth…"
-msgstr ""
-
-#: qml/main.qml:134
-#, kde-format
-msgid "Enable Bluetooth"
 msgstr ""
 
 #: qml/Toolbar.qml:73

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-07 00:45+0000\n"
+"POT-Creation-Date: 2026-01-09 00:44+0000\n"
 "PO-Revision-Date: 2017-12-24 21:47+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -306,26 +306,31 @@ msgstr[3] "%1 повезан уређај"
 
 #: qml/main.qml:110
 #, fuzzy, kde-format
+#| msgid "Enable Bluetooth"
+msgctxt "@option:check"
+msgid "Enable Bluetooth"
+msgstr "Укључи блутут"
+
+#: qml/main.qml:122
+#, fuzzy, kde-format
 #| msgid "Add New Device"
+msgctxt "@action:button"
 msgid "Pair Device…"
 msgstr "Додај нови уређај"
 
-#: qml/main.qml:118
+#: qml/main.qml:130
 #, fuzzy, kde-format
 #| msgid "No connected devices"
-msgid "Badge icon with number of connected devices"
+msgctxt "@item:inmenu"
+msgid "Show badge with number of connected devices"
 msgstr "Нема повезаних уређаја"
 
-#: qml/main.qml:128
+#: qml/main.qml:140
 #, fuzzy, kde-format
 #| msgid "Configure &Bluetooth..."
+msgctxt "@action:inmenu"
 msgid "Configure &Bluetooth…"
 msgstr "Подеси &блутут..."
-
-#: qml/main.qml:134
-#, kde-format
-msgid "Enable Bluetooth"
-msgstr "Укључи блутут"
 
 #: qml/Toolbar.qml:73
 #, kde-format

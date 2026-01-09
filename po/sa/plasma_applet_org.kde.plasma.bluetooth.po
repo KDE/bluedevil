@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-07 00:45+0000\n"
+"POT-Creation-Date: 2026-01-09 00:44+0000\n"
 "PO-Revision-Date: 2024-12-25 19:35+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -294,25 +294,32 @@ msgstr[0] "%1 सम्बद्धं यन्त्रम्"
 msgstr[1] "%1 सम्बद्धानि उपकरणानि"
 
 #: qml/main.qml:110
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Enable Bluetooth"
+msgctxt "@option:check"
+msgid "Enable Bluetooth"
+msgstr "ब्लूटूथं सक्षमं कुर्वन्तु"
+
+#: qml/main.qml:122
+#, fuzzy, kde-format
+#| msgid "Pair Device…"
+msgctxt "@action:button"
 msgid "Pair Device…"
 msgstr "युग्मयन्त्रम्…"
 
-#: qml/main.qml:118
+#: qml/main.qml:130
 #, fuzzy, kde-format
 #| msgid "No connected devices"
-msgid "Badge icon with number of connected devices"
+msgctxt "@item:inmenu"
+msgid "Show badge with number of connected devices"
 msgstr "न सम्बद्धानि उपकरणानि"
 
-#: qml/main.qml:128
-#, kde-format
+#: qml/main.qml:140
+#, fuzzy, kde-format
+#| msgid "Configure &Bluetooth…"
+msgctxt "@action:inmenu"
 msgid "Configure &Bluetooth…"
 msgstr "&Bluetooth विन्यस्तं कुर्वन्तु…"
-
-#: qml/main.qml:134
-#, kde-format
-msgid "Enable Bluetooth"
-msgstr "ब्लूटूथं सक्षमं कुर्वन्तु"
 
 #: qml/Toolbar.qml:73
 #, kde-format

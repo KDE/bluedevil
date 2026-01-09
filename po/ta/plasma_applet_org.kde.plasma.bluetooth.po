@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-07 00:45+0000\n"
+"POT-Creation-Date: 2026-01-09 00:44+0000\n"
 "PO-Revision-Date: 2025-08-10 21:09+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
@@ -291,24 +291,32 @@ msgstr[0] "%1 இணைந்துள்ள சாதனம்"
 msgstr[1] "%1 இணைந்துள்ள சாதனங்கள்"
 
 #: qml/main.qml:110
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Enable Bluetooth"
+msgctxt "@option:check"
+msgid "Enable Bluetooth"
+msgstr "ஊடலையை இயக்கு"
+
+#: qml/main.qml:122
+#, fuzzy, kde-format
+#| msgid "Pair Device…"
+msgctxt "@action:button"
 msgid "Pair Device…"
 msgstr "சாதனத்தை ஜோடியாக்கு…"
 
-#: qml/main.qml:118
-#, kde-format
-msgid "Badge icon with number of connected devices"
+#: qml/main.qml:130
+#, fuzzy, kde-format
+#| msgid "Badge icon with number of connected devices"
+msgctxt "@item:inmenu"
+msgid "Show badge with number of connected devices"
 msgstr "இணைக்கப்பட்டுள்ள சாதனங்களின் எண்ணிக்கையை சின்னத்தில் காட்டு"
 
-#: qml/main.qml:128
-#, kde-format
+#: qml/main.qml:140
+#, fuzzy, kde-format
+#| msgid "Configure &Bluetooth…"
+msgctxt "@action:inmenu"
 msgid "Configure &Bluetooth…"
 msgstr "&ஊடலையை அமை…"
-
-#: qml/main.qml:134
-#, kde-format
-msgid "Enable Bluetooth"
-msgstr "ஊடலையை இயக்கு"
 
 #: qml/Toolbar.qml:73
 #, kde-format

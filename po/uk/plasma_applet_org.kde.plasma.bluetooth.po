@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-07 00:45+0000\n"
+"POT-Creation-Date: 2026-01-09 00:44+0000\n"
 "PO-Revision-Date: 2026-01-07 18:17+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -296,24 +296,32 @@ msgstr[2] "%1 з’єднаних пристроїв"
 msgstr[3] "%1 з’єднаний пристрій"
 
 #: qml/main.qml:110
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Enable Bluetooth"
+msgctxt "@option:check"
+msgid "Enable Bluetooth"
+msgstr "Увімкнути Bluetooth"
+
+#: qml/main.qml:122
+#, fuzzy, kde-format
+#| msgid "Pair Device…"
+msgctxt "@action:button"
 msgid "Pair Device…"
 msgstr "Пов'язати пристрій…"
 
-#: qml/main.qml:118
-#, kde-format
-msgid "Badge icon with number of connected devices"
+#: qml/main.qml:130
+#, fuzzy, kde-format
+#| msgid "Badge icon with number of connected devices"
+msgctxt "@item:inmenu"
+msgid "Show badge with number of connected devices"
 msgstr "Піктограма-значок із кількістю з’єднаних пристроїв"
 
-#: qml/main.qml:128
-#, kde-format
+#: qml/main.qml:140
+#, fuzzy, kde-format
+#| msgid "Configure &Bluetooth…"
+msgctxt "@action:inmenu"
 msgid "Configure &Bluetooth…"
 msgstr "Нала&штувати Bluetooth…"
-
-#: qml/main.qml:134
-#, kde-format
-msgid "Enable Bluetooth"
-msgstr "Увімкнути Bluetooth"
 
 #: qml/Toolbar.qml:73
 #, kde-format

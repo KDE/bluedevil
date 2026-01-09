@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-07 00:45+0000\n"
+"POT-Creation-Date: 2026-01-09 00:44+0000\n"
 "PO-Revision-Date: 2023-04-07 23:40-0700\n"
 "Last-Translator: Fumiaki Okushi <fumiaki.okushi@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -296,25 +296,31 @@ msgstr[0] "%1個の接続済みデバイス"
 
 #: qml/main.qml:110
 #, fuzzy, kde-format
+#| msgid "Enable Bluetooth"
+msgctxt "@option:check"
+msgid "Enable Bluetooth"
+msgstr "Bluetooth を有効化"
+
+#: qml/main.qml:122
+#, fuzzy, kde-format
 #| msgid "Add New Device…"
+msgctxt "@action:button"
 msgid "Pair Device…"
 msgstr "新しいデバイスを追加..."
 
-#: qml/main.qml:118
+#: qml/main.qml:130
 #, fuzzy, kde-format
 #| msgid "No connected devices"
-msgid "Badge icon with number of connected devices"
+msgctxt "@item:inmenu"
+msgid "Show badge with number of connected devices"
 msgstr "接続されたデバイスなし"
 
-#: qml/main.qml:128
-#, kde-format
+#: qml/main.qml:140
+#, fuzzy, kde-format
+#| msgid "Configure &Bluetooth…"
+msgctxt "@action:inmenu"
 msgid "Configure &Bluetooth…"
 msgstr "Bluetooth を設定(&B)..."
-
-#: qml/main.qml:134
-#, kde-format
-msgid "Enable Bluetooth"
-msgstr "Bluetooth を有効化"
 
 #: qml/Toolbar.qml:73
 #, kde-format
