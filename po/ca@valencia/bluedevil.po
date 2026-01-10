@@ -1,10 +1,10 @@
 # Translation of bluedevil.po to Catalan (Valencian)
-# Copyright (C) 2010-2025 This_file_is_part_of_KDE
+# Copyright (C) 2010-2026 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2 or later.
 #
 # SPDX-FileCopyrightText: 2010, 2011 Manuel Tortosa <manutortosa@chakra-project.org>
 # SPDX-FileCopyrightText: 2010 Josep David Capdevila Cano <josepd.capdevila@gmail.com>
-# SPDX-FileCopyrightText: 2010, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2025 Josep M. Ferrer <txemaq@gmail.com>
+# SPDX-FileCopyrightText: 2010, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2025, 2026 Josep M. Ferrer <txemaq@gmail.com>
 # SPDX-FileCopyrightText: 2013, 2014, 2015, 2017, 2020, 2021 Antoni Bella Pérez <antonibella5@yahoo.com>
 # SPDX-FileCopyrightText: 2019 Empar Montoro Martín <montoro_mde@gva.es>
 msgid ""
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 16:18+0000\n"
-"PO-Revision-Date: 2025-07-06 10:56+0200\n"
+"PO-Revision-Date: 2026-01-09 11:47+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -21,13 +21,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
-"SPDX-FileCopyrightText: 2019 Empar Montoro Martín,Manuel Tortosa Moreno"
+msgstr "Empar Montoro Martín,Manuel Tortosa Moreno"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
@@ -113,7 +112,7 @@ msgctxt ""
 "Shown in a notification to announce that a PIN is needed to accomplish a "
 "pair action,%1 is the name of the bluetooth device"
 msgid "PIN needed to pair with %1"
-msgstr "Cal un PIN per a emparellar amb %1"
+msgstr "Cal un PIN per a aparellar amb %1"
 
 #: kded/helpers/requestpin.cpp:39
 #, kde-format
@@ -138,7 +137,7 @@ msgid ""
 "In order to pair this computer with %1, you have to enter a PIN. Please do "
 "it below."
 msgstr ""
-"Per tal d'emparellar este ordinador amb %1 heu d'introduir un PIN, feu-ho "
+"Per tal d'aparellar este ordinador amb %1 heu d'introduir un PIN, feu-ho "
 "davall."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -371,7 +370,7 @@ msgstr "Cancel·la"
 #, kde-format
 msgctxt "@info:status %1 error message"
 msgid "Failed to start org.bluez.obex service: %1"
-msgstr "No s'ha pogut iniciar el servei «org.bluez.obex»: %1"
+msgstr "Ha fallat mentre s'iniciava el servei «org.bluez.obex»: %1"
 
 #. i18n: ectx: label, entry (saveUrl), group (General)
 #: settings/filereceiver.kcfg:11
@@ -416,13 +415,13 @@ msgstr "Arregla-ho"
 #: wizard/pages/discover.cpp:309
 #, kde-format
 msgid "Your Bluetooth adapter is not pairable."
-msgstr "L'adaptador Bluetooth no es pot emparellar."
+msgstr "L'adaptador Bluetooth no es pot aparellar."
 
 #: wizard/pages/discover.cpp:310
 #, kde-format
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
-msgstr "Fes que es puga emparellar"
+msgstr "Fes que es puga aparellar"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, searchField)
 #: wizard/pages/discover.ui:19
