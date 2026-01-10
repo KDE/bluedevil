@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-09 00:44+0000\n"
-"PO-Revision-Date: 2026-01-04 08:39+0100\n"
+"PO-Revision-Date: 2026-01-09 09:07+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 25.12.0\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #: devicesproxymodel.cpp:51
 #, kde-format
@@ -85,9 +85,7 @@ msgid "Send File"
 msgstr "Envia un fitxer"
 
 #: qml/DeviceItem.qml:71
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the name of a Bluetooth device"
-#| msgid "Forget"
+#, kde-format
 msgctxt "@action:button Forget a Bluetooth device"
 msgid "Forget"
 msgstr "Oblida"
@@ -126,7 +124,7 @@ msgstr "Adreça"
 #: qml/DeviceItem.qml:235
 #, kde-format
 msgid "Paired"
-msgstr "Emparellat"
+msgstr "Aparellat"
 
 #: qml/DeviceItem.qml:238
 #, kde-format
@@ -297,29 +295,25 @@ msgstr[0] "%1 dispositiu connectat"
 msgstr[1] "%1 dispositius connectats"
 
 #: qml/main.qml:110
-#, fuzzy, kde-format
-#| msgid "Enable Bluetooth"
+#, kde-format
 msgctxt "@option:check"
 msgid "Enable Bluetooth"
 msgstr "Activa Bluetooth"
 
 #: qml/main.qml:122
-#, fuzzy, kde-format
-#| msgid "Pair Device…"
+#, kde-format
 msgctxt "@action:button"
 msgid "Pair Device…"
 msgstr "Aparella un dispositiu…"
 
 #: qml/main.qml:130
-#, fuzzy, kde-format
-#| msgid "Badge icon with number of connected devices"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Show badge with number of connected devices"
-msgstr "Icona de distintiu amb el nombre de dispositius connectats"
+msgstr "Mostra un distintiu amb el nombre de dispositius connectats"
 
 #: qml/main.qml:140
-#, fuzzy, kde-format
-#| msgid "Configure &Bluetooth…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Bluetooth…"
 msgstr "Configura &Bluetooth…"

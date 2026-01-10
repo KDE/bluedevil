@@ -85,7 +85,7 @@ msgstr "发送文件"
 #, kde-format
 msgctxt "@action:button Forget a Bluetooth device"
 msgid "Forget"
-msgstr ""
+msgstr "忘记"
 
 #: qml/DeviceItem.qml:118
 #, kde-format
@@ -291,32 +291,28 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 个已连接设备"
 
 #: qml/main.qml:110
-#, fuzzy, kde-format
-#| msgid "Enable Bluetooth"
+#, kde-format
 msgctxt "@option:check"
 msgid "Enable Bluetooth"
-msgstr "启用蓝牙"
+msgstr ""
 
 #: qml/main.qml:122
-#, fuzzy, kde-format
-#| msgid "Pair Device…"
+#, kde-format
 msgctxt "@action:button"
 msgid "Pair Device…"
-msgstr "配对设备…"
+msgstr ""
 
 #: qml/main.qml:130
-#, fuzzy, kde-format
-#| msgid "Badge icon with number of connected devices"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Show badge with number of connected devices"
-msgstr "显示已连接设备数的角标"
+msgstr ""
 
 #: qml/main.qml:140
-#, fuzzy, kde-format
-#| msgid "Configure &Bluetooth…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Bluetooth…"
-msgstr "配置蓝牙(&B)…"
+msgstr ""
 
 #: qml/Toolbar.qml:73
 #, kde-format
