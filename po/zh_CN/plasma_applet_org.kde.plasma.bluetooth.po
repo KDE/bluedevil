@@ -294,25 +294,25 @@ msgstr[0] "%1 个已连接设备"
 #, kde-format
 msgctxt "@option:check"
 msgid "Enable Bluetooth"
-msgstr ""
+msgstr "启用蓝牙"
 
 #: qml/main.qml:122
 #, kde-format
 msgctxt "@action:button"
 msgid "Pair Device…"
-msgstr ""
+msgstr "配对设备…"
 
 #: qml/main.qml:130
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Show badge with number of connected devices"
-msgstr ""
+msgstr "显示已连接设备数的角标"
 
 #: qml/main.qml:140
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Bluetooth…"
-msgstr ""
+msgstr "配置蓝牙(&B)…"
 
 #: qml/Toolbar.qml:73
 #, kde-format
