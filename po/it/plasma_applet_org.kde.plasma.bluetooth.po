@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-09 00:44+0000\n"
-"PO-Revision-Date: 2026-01-04 16:55+0100\n"
+"PO-Revision-Date: 2026-01-14 22:37+0100\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -82,9 +82,7 @@ msgid "Send File"
 msgstr "Invia file"
 
 #: qml/DeviceItem.qml:71
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the name of a Bluetooth device"
-#| msgid "Forget"
+#, kde-format
 msgctxt "@action:button Forget a Bluetooth device"
 msgid "Forget"
 msgstr "Dimentica"
@@ -294,29 +292,25 @@ msgstr[0] "%1 dispositivo connesso"
 msgstr[1] "%1 dispositivi connessi"
 
 #: qml/main.qml:110
-#, fuzzy, kde-format
-#| msgid "Enable Bluetooth"
+#, kde-format
 msgctxt "@option:check"
 msgid "Enable Bluetooth"
 msgstr "Abilita il Bluetooth"
 
 #: qml/main.qml:122
-#, fuzzy, kde-format
-#| msgid "Pair Device…"
+#, kde-format
 msgctxt "@action:button"
 msgid "Pair Device…"
 msgstr "Associa un dispositivo…"
 
 #: qml/main.qml:130
-#, fuzzy, kde-format
-#| msgid "Badge icon with number of connected devices"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Show badge with number of connected devices"
-msgstr "Icona del simbolo con il totale di dispositivi connessi"
+msgstr "Mostra il simbolo con il totale di dispositivi connessi"
 
 #: qml/main.qml:140
-#, fuzzy, kde-format
-#| msgid "Configure &Bluetooth…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Bluetooth…"
 msgstr "Configura &Bluetooth…"
