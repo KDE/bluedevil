@@ -29,7 +29,7 @@ RequestPin::RequestPin(BluezQt::DevicePtr device, bool numeric, QObject *parent)
     m_notification = new KNotification(QStringLiteral("RequestPin"), KNotification::Persistent, this);
 
     m_notification->setComponentName(QStringLiteral("bluedevil"));
-    m_notification->setTitle(QStringLiteral("%1 (%2)").arg(m_device->name().toHtmlEscaped(), m_device->address().toHtmlEscaped()));
+    m_notification->setTitle(i18nc("@label %1 is the name of a Bluetooth device", "PIN for device “%1”", m_device->name().toHtmlEscaped()));
     m_notification->setText(
         i18nc("Shown in a notification to announce that a PIN is needed to accomplish a pair action,"
               "%1 is the name of the bluetooth device",

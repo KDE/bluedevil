@@ -22,7 +22,7 @@ RequestAuthorization::RequestAuthorization(BluezQt::DevicePtr device, QObject *p
     KNotification *notification = new KNotification(QStringLiteral("Authorize"), KNotification::Persistent, this);
 
     notification->setComponentName(QStringLiteral("bluedevil"));
-    notification->setTitle(QStringLiteral("%1 (%2)").arg(m_device->name().toHtmlEscaped(), m_device->address().toHtmlEscaped()));
+    notification->setTitle(i18nc("@label %1 is the name of a Bluetooth device", "Access request from device “%1”", m_device->name().toHtmlEscaped()));
     notification->setText(
         i18nc("Show a notification asking to authorize or deny access to this computer from Bluetooth."
               "The %1 is the name of the bluetooth device",

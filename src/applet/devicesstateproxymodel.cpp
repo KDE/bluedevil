@@ -270,7 +270,7 @@ void DevicesStateProxyModel::notifyIfConnectionFailed(const BluezQt::PendingCall
     const auto name = index.data(BluezQt::DevicesModel::NameRole).toString();
     const auto address = index.data(BluezQt::DevicesModel::AddressRole).toString();
 
-    const auto title = i18nc("@label %1 is human-readable device name, %2 is low-level device address", "%1 (%2)", name, address);
+    const auto title = i18nc("@label %1 is the name of a Bluetooth device", "Could not connect to device “%1”", name);
     const auto text = errorText(call);
 
     KNotification *notification = new KNotification(QStringLiteral("ConnectionFailed"), KNotification::CloseOnTimeout, this);

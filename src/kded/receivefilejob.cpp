@@ -128,7 +128,7 @@ void ReceiveFileJob::showNotification()
 {
     KNotification *notification = new KNotification(QStringLiteral("IncomingFile"), KNotification::Persistent, this);
 
-    notification->setTitle(QStringLiteral("%1 (%2)").arg(m_deviceName.toHtmlEscaped(), m_deviceAddress));
+    notification->setTitle(i18nc("%1 is the name of a Bluetooth device", "Incoming file from device “%1”", m_deviceName.toHtmlEscaped()));
     notification->setText(i18nc("Show a notification asking to authorize or deny an incoming file transfer to this computer from a Bluetooth device.",
                                 "%1 is sending you the file %2",
                                 m_deviceName.toHtmlEscaped(),

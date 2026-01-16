@@ -21,7 +21,7 @@ RequestConfirmation::RequestConfirmation(BluezQt::DevicePtr device, const QStrin
     KNotification *notification = new KNotification(QStringLiteral("RequestConfirmation"), KNotification::Persistent, this);
 
     notification->setComponentName(QStringLiteral("bluedevil"));
-    notification->setTitle(QStringLiteral("%1 (%2)").arg(m_device->name().toHtmlEscaped(), m_device->address()));
+    notification->setTitle(i18nc("@label %1 is the name of a Bluetooth device", "Verify PIN for device “%1”", m_device->name().toHtmlEscaped()));
     notification->setText(
         i18nc("The text is shown in a notification to know if the PIN is correct,"
               "%1 is the remote bluetooth device and %2 is the pin",
