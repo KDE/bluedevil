@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-02 00:43+0000\n"
+"POT-Creation-Date: 2026-01-16 03:01+0000\n"
 "PO-Revision-Date: 2024-12-15 19:32+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Hindi <kde-i18n-doc@kde.org>\n"
@@ -49,10 +49,9 @@ msgstr ""
 
 #: applet/devicesstateproxymodel.cpp:273
 #, kde-format
-msgctxt ""
-"@label %1 is human-readable device name, %2 is low-level device address"
-msgid "%1 (%2)"
-msgstr "%1 (%2)"
+msgctxt "@label %1 is the name of a Bluetooth device"
+msgid "Could not connect to device “%1”"
+msgstr ""
 
 #: applet/devicesstateproxymodel.cpp:288
 #, kde-format
@@ -106,6 +105,12 @@ msgstr "मेंटेनर"
 msgid "Previous Maintainer"
 msgstr "पिछला अनुरक्षक"
 
+#: kded/helpers/requestauthorization.cpp:25
+#, kde-format
+msgctxt "@label %1 is the name of a Bluetooth device"
+msgid "Access request from device “%1”"
+msgstr ""
+
 #: kded/helpers/requestauthorization.cpp:29
 #, kde-format
 msgctxt ""
@@ -132,6 +137,12 @@ msgctxt "Deny access to a remote bluetooth device"
 msgid "Deny"
 msgstr "अस्वीकार करना"
 
+#: kded/helpers/requestconfirmation.cpp:24
+#, kde-format
+msgctxt "@label %1 is the name of a Bluetooth device"
+msgid "Verify PIN for device “%1”"
+msgstr ""
+
 #: kded/helpers/requestconfirmation.cpp:28
 #, kde-format
 msgctxt ""
@@ -151,6 +162,12 @@ msgstr "पिन सही"
 msgctxt "Notification button to say that the PIN is wrong"
 msgid "PIN incorrect"
 msgstr "पिन ग़लत है"
+
+#: kded/helpers/requestpin.cpp:32
+#, kde-format
+msgctxt "@label %1 is the name of a Bluetooth device"
+msgid "PIN for device “%1”"
+msgstr ""
 
 #: kded/helpers/requestpin.cpp:36
 #, kde-format
@@ -197,6 +214,12 @@ msgstr "नत्थी करना:"
 #, kde-format
 msgid "1234"
 msgstr "1234"
+
+#: kded/receivefilejob.cpp:131
+#, kde-format
+msgctxt "%1 is the name of a Bluetooth device"
+msgid "Incoming file from device “%1”"
+msgstr ""
 
 #: kded/receivefilejob.cpp:133
 #, kde-format
@@ -580,3 +603,8 @@ msgstr "डिवाइस स्थापित हो चुका है औ�
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "डिवाइस '%1' सेट हो गया है और अब इसका उपयोग किया जा सकता है।"
+
+#~ msgctxt ""
+#~ "@label %1 is human-readable device name, %2 is low-level device address"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 (%2)"

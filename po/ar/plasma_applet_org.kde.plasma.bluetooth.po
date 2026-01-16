@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-09 00:44+0000\n"
+"POT-Creation-Date: 2026-01-16 03:01+0000\n"
 "PO-Revision-Date: 2026-01-10 10:21+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -39,10 +39,9 @@ msgstr "متوفر"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format
-msgctxt ""
-"@label %1 is human-readable device name, %2 is low-level device address"
-msgid "%1 (%2)"
-msgstr "%1 (%2)"
+msgctxt "@label %1 is the name of a Bluetooth device"
+msgid "Could not connect to device “%1”"
+msgstr ""
 
 #: devicesstateproxymodel.cpp:288
 #, kde-format
@@ -325,6 +324,11 @@ msgstr "اضبط بلوتو&ث…"
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr "إجراءات أكثر"
+
+#~ msgctxt ""
+#~ "@label %1 is human-readable device name, %2 is low-level device address"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 (%2)"
 
 #~ msgid "Input device"
 #~ msgstr "جهاز دخل"
