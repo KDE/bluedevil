@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-02 00:43+0000\n"
+"POT-Creation-Date: 2026-01-16 00:45+0000\n"
 "PO-Revision-Date: 2025-08-19 05:02+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -51,10 +51,9 @@ msgstr "可用"
 
 #: applet/devicesstateproxymodel.cpp:273
 #, kde-format
-msgctxt ""
-"@label %1 is human-readable device name, %2 is low-level device address"
-msgid "%1 (%2)"
-msgstr "%1 (%2)"
+msgctxt "@label %1 is the name of a Bluetooth device"
+msgid "Could not connect to device “%1”"
+msgstr ""
 
 #: applet/devicesstateproxymodel.cpp:288
 #, kde-format
@@ -107,6 +106,12 @@ msgstr "維護者"
 msgid "Previous Maintainer"
 msgstr "前任維護者"
 
+#: kded/helpers/requestauthorization.cpp:25
+#, kde-format
+msgctxt "@label %1 is the name of a Bluetooth device"
+msgid "Access request from device “%1”"
+msgstr ""
+
 #: kded/helpers/requestauthorization.cpp:29
 #, kde-format
 msgctxt ""
@@ -133,6 +138,12 @@ msgctxt "Deny access to a remote bluetooth device"
 msgid "Deny"
 msgstr "拒絕"
 
+#: kded/helpers/requestconfirmation.cpp:24
+#, kde-format
+msgctxt "@label %1 is the name of a Bluetooth device"
+msgid "Verify PIN for device “%1”"
+msgstr ""
+
 #: kded/helpers/requestconfirmation.cpp:28
 #, kde-format
 msgctxt ""
@@ -152,6 +163,12 @@ msgstr "PIN 碼正確"
 msgctxt "Notification button to say that the PIN is wrong"
 msgid "PIN incorrect"
 msgstr "PIN 碼不正確"
+
+#: kded/helpers/requestpin.cpp:32
+#, kde-format
+msgctxt "@label %1 is the name of a Bluetooth device"
+msgid "PIN for device “%1”"
+msgstr ""
 
 #: kded/helpers/requestpin.cpp:36
 #, kde-format
@@ -196,6 +213,12 @@ msgstr "PIN 碼："
 #, kde-format
 msgid "1234"
 msgstr "1234"
+
+#: kded/receivefilejob.cpp:131
+#, kde-format
+msgctxt "%1 is the name of a Bluetooth device"
+msgid "Incoming file from device “%1”"
+msgstr ""
 
 #: kded/receivefilejob.cpp:133
 #, kde-format
@@ -579,6 +602,11 @@ msgstr "裝置已設定完成，現可使用。"
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "「%1」裝置已設定完成，現可使用。"
+
+#~ msgctxt ""
+#~ "@label %1 is human-readable device name, %2 is low-level device address"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 (%2)"
 
 #~ msgid "Parent window handle."
 #~ msgstr "上層視窗控制柄。"

@@ -2,13 +2,13 @@
 # This file is distributed under the same license as the bluedevil package.
 #
 # SPDX-FileCopyrightText: 2024, 2025 Guðmundur Erlingsson <gudmundure@gmail.com>
-# SPDX-FileCopyrightText: 2025 Sveinn í Felli <sv1@fellsnet.is>
+# SPDX-FileCopyrightText: 2025, 2026 Sveinn í Felli <sv1@fellsnet.is>
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-09 00:44+0000\n"
-"PO-Revision-Date: 2025-10-08 09:30+0000\n"
+"POT-Creation-Date: 2026-01-16 00:45+0000\n"
+"PO-Revision-Date: 2026-01-15 16:25+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
 "Language: is\n"
@@ -38,10 +38,9 @@ msgstr "Tiltækt"
 
 #: devicesstateproxymodel.cpp:273
 #, kde-format
-msgctxt ""
-"@label %1 is human-readable device name, %2 is low-level device address"
-msgid "%1 (%2)"
-msgstr "%1 (%2)"
+msgctxt "@label %1 is the name of a Bluetooth device"
+msgid "Could not connect to device “%1”"
+msgstr ""
 
 #: devicesstateproxymodel.cpp:288
 #, kde-format
@@ -85,7 +84,7 @@ msgstr "Senda skrá"
 #, kde-format
 msgctxt "@action:button Forget a Bluetooth device"
 msgid "Forget"
-msgstr ""
+msgstr "Gleyma"
 
 #: qml/DeviceItem.qml:118
 #, kde-format
@@ -292,29 +291,25 @@ msgstr[0] "%1 tengt tæki"
 msgstr[1] "%1 tengd tæki"
 
 #: qml/main.qml:110
-#, fuzzy, kde-format
-#| msgid "Enable Bluetooth"
+#, kde-format
 msgctxt "@option:check"
 msgid "Enable Bluetooth"
-msgstr "Kveikja á Bluetooth"
+msgstr "Virkja Bluetooth"
 
 #: qml/main.qml:122
-#, fuzzy, kde-format
-#| msgid "Pair Device…"
+#, kde-format
 msgctxt "@action:button"
 msgid "Pair Device…"
 msgstr "Para tæki…"
 
 #: qml/main.qml:130
-#, fuzzy, kde-format
-#| msgid "Badge icon with number of connected devices"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Show badge with number of connected devices"
-msgstr "Táknskjöldur með fjölda tengdra tækja"
+msgstr "Sýna táknskjöld með fjölda tengdra tækja"
 
 #: qml/main.qml:140
-#, fuzzy, kde-format
-#| msgid "Configure &Bluetooth…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Bluetooth…"
 msgstr "Grunnstilla &Bluetooth…"
@@ -324,6 +319,11 @@ msgstr "Grunnstilla &Bluetooth…"
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr "Fleiri aðgerðir"
+
+#~ msgctxt ""
+#~ "@label %1 is human-readable device name, %2 is low-level device address"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 (%2)"
 
 #~ msgid "Input device"
 #~ msgstr "Inntakstæki"

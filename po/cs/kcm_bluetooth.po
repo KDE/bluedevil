@@ -410,17 +410,3 @@ msgstr "Jiné"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
-
-#~ msgid "Forget this Device?"
-#~ msgstr "Zapomenout zařízení?"
-
-#~ msgid "Are you sure you want to forget \"%1\"?"
-#~ msgstr "Opravdu si přejete zapomenout '%1'?"
-
-#~ msgctxt "@action:button"
-#~ msgid "Forget Device"
-#~ msgstr "Zapomenout zařízení"
-
-#~ msgctxt "@action:button"
-#~ msgid "Cancel"
-#~ msgstr "Zrušit"
