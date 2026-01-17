@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-16 03:01+0000\n"
-"PO-Revision-Date: 2025-08-10 06:14+0200\n"
+"PO-Revision-Date: 2026-01-17 03:23+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.8\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -50,7 +50,7 @@ msgstr "ხელმისაწვდომია"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Could not connect to device “%1”"
-msgstr ""
+msgstr "მოწყობილობასთან \"%1\" დაკავშირება შეუძლებელია"
 
 #: applet/devicesstateproxymodel.cpp:288
 #, kde-format
@@ -107,7 +107,7 @@ msgstr "წინა ხელმძღვანელი"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Access request from device “%1”"
-msgstr ""
+msgstr "წვდომის მოთხოვნა მოწყობილობიდან \"%1\""
 
 #: kded/helpers/requestauthorization.cpp:29
 #, kde-format
@@ -139,7 +139,7 @@ msgstr "უარყოფა"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Verify PIN for device “%1”"
-msgstr ""
+msgstr "PIN-კოდის გადამოწმება მოწყობილობისთვის \"%1\""
 
 #: kded/helpers/requestconfirmation.cpp:28
 #, kde-format
@@ -165,7 +165,7 @@ msgstr "PIN არასწორია"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "PIN for device “%1”"
-msgstr ""
+msgstr "PIN-კოდი მოწყობილობისთვის \"%1\""
 
 #: kded/helpers/requestpin.cpp:36
 #, kde-format
@@ -215,7 +215,7 @@ msgstr "1234"
 #, kde-format
 msgctxt "%1 is the name of a Bluetooth device"
 msgid "Incoming file from device “%1”"
-msgstr ""
+msgstr "შემომავალი ფაილი მოწყობილობიდან \"%1\""
 
 #: kded/receivefilejob.cpp:133
 #, kde-format

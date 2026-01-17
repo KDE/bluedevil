@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-16 03:01+0000\n"
-"PO-Revision-Date: 2026-01-09 09:07+0100\n"
+"PO-Revision-Date: 2026-01-16 10:11+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -43,7 +43,7 @@ msgstr "Disponible"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Could not connect to device “%1”"
-msgstr ""
+msgstr "No s'ha pogut connectar amb el dispositiu «%1»"
 
 #: devicesstateproxymodel.cpp:288
 #, kde-format
@@ -322,8 +322,3 @@ msgstr "Configura &Bluetooth…"
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr "Més accions"
-
-#~ msgctxt ""
-#~ "@label %1 is human-readable device name, %2 is low-level device address"
-#~ msgid "%1 (%2)"
-#~ msgstr "%1 (%2)"
