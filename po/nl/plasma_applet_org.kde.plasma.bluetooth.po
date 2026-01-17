@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-16 00:45+0000\n"
-"PO-Revision-Date: 2026-01-09 11:18+0100\n"
+"PO-Revision-Date: 2026-01-16 10:02+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.12.0\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #: devicesproxymodel.cpp:51
 #, kde-format
@@ -39,7 +39,7 @@ msgstr "Beschikbaar"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Could not connect to device “%1”"
-msgstr ""
+msgstr "Kan geen verbinding maken met apparaat “%1”"
 
 #: devicesstateproxymodel.cpp:288
 #, kde-format
