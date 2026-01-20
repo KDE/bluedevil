@@ -51,7 +51,7 @@ msgstr "可用"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Could not connect to device “%1”"
-msgstr ""
+msgstr "无法连接到设备“%1”"
 
 #: applet/devicesstateproxymodel.cpp:288
 #, kde-format
@@ -108,7 +108,7 @@ msgstr "前任维护者"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Access request from device “%1”"
-msgstr ""
+msgstr "来自设备“%1”的访问请求"
 
 #: kded/helpers/requestauthorization.cpp:29
 #, kde-format
@@ -140,7 +140,7 @@ msgstr "拒绝"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Verify PIN for device “%1”"
-msgstr ""
+msgstr "验证设备“%1”的 PIN 码"
 
 #: kded/helpers/requestconfirmation.cpp:28
 #, kde-format
@@ -166,7 +166,7 @@ msgstr "验证码 (PIN) 错误"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "PIN for device “%1”"
-msgstr ""
+msgstr "设备“%1”的 PIN 码"
 
 #: kded/helpers/requestpin.cpp:36
 #, kde-format
@@ -216,7 +216,7 @@ msgstr "1234"
 #, kde-format
 msgctxt "%1 is the name of a Bluetooth device"
 msgid "Incoming file from device “%1”"
-msgstr ""
+msgstr "来自设备“%1”的传入文件"
 
 #: kded/receivefilejob.cpp:133
 #, kde-format

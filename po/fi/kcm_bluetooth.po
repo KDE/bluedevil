@@ -1,7 +1,7 @@
 # Finnish messages for bluedevil.
 # Copyright © 2011 This_file_is_part_of_KDE
 # This file is distributed under the same license as the extragear-base package.
-# SPDX-FileCopyrightText: 2011, 2015, 2017, 2018, 2020, 2021, 2022, 2023, 2024, 2025 Tommi Nieminen <translator@legisign.org>
+# SPDX-FileCopyrightText: 2011, 2015, 2017, 2018, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Tommi Nieminen <translator@legisign.org>
 # Jorma Karvonen <karvonen.jorma@gmail.com>, 2011.
 # SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2024 Lasse Liehu <lasse.liehu@gmail.com>
 #
@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-04 00:45+0000\n"
-"PO-Revision-Date: 2025-09-04 10:10+0300\n"
+"PO-Revision-Date: 2026-01-10 20:42+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -101,13 +101,10 @@ msgid "Blocked"
 msgstr "Estetty"
 
 #: ui/Device.qml:197
-#, fuzzy, kde-format
-#| msgid ""
-#| "Any incoming connections from a blocked device will be immediately "
-#| "rejected."
+#, kde-format
 msgid ""
 "When enabled, all incoming connections from this device will be rejected."
-msgstr "Estetyltä laitteelta saapuvat yhteydet hylätään välittömästi."
+msgstr "Kun käytössä, kaikki tältä laitteelta saapuvat yhteydet hylätään."
 
 #: ui/Device.qml:203
 #, kde-format
