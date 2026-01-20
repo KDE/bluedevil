@@ -40,7 +40,7 @@ msgstr "可用"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Could not connect to device “%1”"
-msgstr ""
+msgstr "无法连接到设备“%1”"
 
 #: devicesstateproxymodel.cpp:288
 #, kde-format

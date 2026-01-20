@@ -1,20 +1,20 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the bluedevil package.
 #
-# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Mincho Kondarev <mkondarev@yahoo.de>
+# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025, 2026 Mincho Kondarev <mkondarev@yahoo.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-16 03:01+0000\n"
-"PO-Revision-Date: 2025-08-31 23:46+0200\n"
+"PO-Revision-Date: 2026-01-19 20:04+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.07.70\n"
+"X-Generator: Lokalize 26.03.70\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -49,7 +49,7 @@ msgstr "Налични"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Could not connect to device “%1”"
-msgstr ""
+msgstr "Неуспешна връзка с устройство “%1”"
 
 #: applet/devicesstateproxymodel.cpp:288
 #, kde-format
@@ -106,7 +106,7 @@ msgstr "Предишен поддръжник"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Access request from device “%1”"
-msgstr ""
+msgstr "Заявяване достъп от устройство „%1“"
 
 #: kded/helpers/requestauthorization.cpp:29
 #, kde-format
@@ -138,7 +138,7 @@ msgstr "Отказване"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Verify PIN for device “%1”"
-msgstr ""
+msgstr "Потвърдете ПИН кода за устройство „%1”"
 
 #: kded/helpers/requestconfirmation.cpp:28
 #, kde-format
@@ -164,7 +164,7 @@ msgstr "ПИН кодът е неправилен"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "PIN for device “%1”"
-msgstr ""
+msgstr "ПИН код за устройство „%1”"
 
 #: kded/helpers/requestpin.cpp:36
 #, kde-format
@@ -204,7 +204,7 @@ msgstr ""
 #: kded/helpers/requestpin.ui:52
 #, kde-format
 msgid "PIN:"
-msgstr "ПИН код:"
+msgstr "ПИН:"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, pin)
 #: kded/helpers/requestpin.ui:65
@@ -216,7 +216,7 @@ msgstr "1234"
 #, kde-format
 msgctxt "%1 is the name of a Bluetooth device"
 msgid "Incoming file from device “%1”"
-msgstr ""
+msgstr "Пристигащ файл от устройство „%1“"
 
 #: kded/receivefilejob.cpp:133
 #, kde-format

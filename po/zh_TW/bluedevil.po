@@ -5,13 +5,13 @@
 # Jeff Huang <s8321414@gmail.com>, 2016, 2020.
 # Franklin Weng <franklin@goodhorse.idv.tw>, 2017.
 # pan93412 <pan93412@gmail.com>, 2018, 2019, 2020.
-# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Kisaragi Hiu <mail@kisaragi-hiu.com>
+# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025, 2026 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-16 03:01+0000\n"
-"PO-Revision-Date: 2025-08-19 05:02+0900\n"
+"PO-Revision-Date: 2026-01-19 19:16+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -53,7 +53,7 @@ msgstr "可用"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Could not connect to device “%1”"
-msgstr ""
+msgstr "無法連線至裝置「%1」"
 
 #: applet/devicesstateproxymodel.cpp:288
 #, kde-format
@@ -110,7 +110,7 @@ msgstr "前任維護者"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Access request from device “%1”"
-msgstr ""
+msgstr "裝置「%1」請求存取"
 
 #: kded/helpers/requestauthorization.cpp:29
 #, kde-format
@@ -142,7 +142,7 @@ msgstr "拒絕"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Verify PIN for device “%1”"
-msgstr ""
+msgstr "為裝置「%1」驗證 PIN 碼"
 
 #: kded/helpers/requestconfirmation.cpp:28
 #, kde-format
@@ -168,7 +168,7 @@ msgstr "PIN 碼不正確"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "PIN for device “%1”"
-msgstr ""
+msgstr "裝置「%1」的 PIN 碼"
 
 #: kded/helpers/requestpin.cpp:36
 #, kde-format
@@ -218,7 +218,7 @@ msgstr "1234"
 #, kde-format
 msgctxt "%1 is the name of a Bluetooth device"
 msgid "Incoming file from device “%1”"
-msgstr ""
+msgstr "裝置「%1」傳來檔案"
 
 #: kded/receivefilejob.cpp:133
 #, kde-format

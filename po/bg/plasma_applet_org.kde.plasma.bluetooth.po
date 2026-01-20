@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the bluedevil package.
 #
-# SPDX-FileCopyrightText: 2022, 2024, 2025 Mincho Kondarev <mkondarev@yahoo.de>
+# SPDX-FileCopyrightText: 2022, 2024, 2025, 2026 Mincho Kondarev <mkondarev@yahoo.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-16 03:01+0000\n"
-"PO-Revision-Date: 2025-08-31 23:47+0200\n"
+"PO-Revision-Date: 2026-01-19 20:05+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.07.70\n"
+"X-Generator: Lokalize 26.03.70\n"
 
 #: devicesproxymodel.cpp:51
 #, kde-format
@@ -39,7 +39,7 @@ msgstr "Налични"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Could not connect to device “%1”"
-msgstr ""
+msgstr "Неуспешна връзка с устройство „%1“"
 
 #: devicesstateproxymodel.cpp:288
 #, kde-format
@@ -83,7 +83,7 @@ msgstr "Изпращане на файл"
 #, kde-format
 msgctxt "@action:button Forget a Bluetooth device"
 msgid "Forget"
-msgstr ""
+msgstr "Забравяне"
 
 #: qml/DeviceItem.qml:118
 #, kde-format
@@ -292,29 +292,25 @@ msgstr[0] "%1 свързано устройство"
 msgstr[1] "%1 свързани устройства"
 
 #: qml/main.qml:110
-#, fuzzy, kde-format
-#| msgid "Enable Bluetooth"
+#, kde-format
 msgctxt "@option:check"
 msgid "Enable Bluetooth"
 msgstr "Активиране на Bluetooth"
 
 #: qml/main.qml:122
-#, fuzzy, kde-format
-#| msgid "Pair Device…"
+#, kde-format
 msgctxt "@action:button"
 msgid "Pair Device…"
 msgstr "Сдвояване на устройство…"
 
 #: qml/main.qml:130
-#, fuzzy, kde-format
-#| msgid "Badge icon with number of connected devices"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Show badge with number of connected devices"
 msgstr "Малка икона с броя на свързаните устройства"
 
 #: qml/main.qml:140
-#, fuzzy, kde-format
-#| msgid "Configure &Bluetooth…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Bluetooth…"
 msgstr "Настройване на &Bluetooth…"

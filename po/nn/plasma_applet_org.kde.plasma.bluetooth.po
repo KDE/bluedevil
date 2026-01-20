@@ -325,8 +325,3 @@ msgstr "Set opp &Bluetooth …"
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr ""
-
-#~ msgctxt ""
-#~ "@label %1 is human-readable device name, %2 is low-level device address"
-#~ msgid "%1 (%2)"
-#~ msgstr "%1 (%2)"
