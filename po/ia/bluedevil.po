@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# SPDX-FileCopyrightText: 2016, 2017, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Giovanni Sora <g.sora@tiscali.it>
+# SPDX-FileCopyrightText: 2016, 2017, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Giovanni Sora <g.sora@tiscali.it>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-16 00:45+0000\n"
-"PO-Revision-Date: 2025-09-24 17:07+0200\n"
+"PO-Revision-Date: 2026-01-21 12:38+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -49,7 +49,7 @@ msgstr "Disponibile"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Could not connect to device “%1”"
-msgstr ""
+msgstr "Il non pote continger a dispositivo  “%1”"
 
 #: applet/devicesstateproxymodel.cpp:288
 #, kde-format
@@ -106,7 +106,7 @@ msgstr "Previe mantenitor"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Access request from device “%1”"
-msgstr ""
+msgstr "Requesta de accesso ex dispositivo \"%1\""
 
 #: kded/helpers/requestauthorization.cpp:29
 #, kde-format
@@ -138,7 +138,7 @@ msgstr "Nega"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Verify PIN for device “%1”"
-msgstr ""
+msgstr "Verifica PIN per dispositivo “%1”"
 
 #: kded/helpers/requestconfirmation.cpp:28
 #, kde-format
@@ -164,7 +164,7 @@ msgstr "PIN incorrecte"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "PIN for device “%1”"
-msgstr ""
+msgstr "PIN per dispositivo  “%1”"
 
 #: kded/helpers/requestpin.cpp:36
 #, kde-format
@@ -216,7 +216,7 @@ msgstr "1234"
 #, kde-format
 msgctxt "%1 is the name of a Bluetooth device"
 msgid "Incoming file from device “%1”"
-msgstr ""
+msgstr "File in arrivata ex dispositivo \"%1\""
 
 #: kded/receivefilejob.cpp:133
 #, kde-format

@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the bluedevil package.
 #
-# SPDX-FileCopyrightText: 2024, 2025 Toms Trasuns <toms.trasuns@posteo.net>
+# SPDX-FileCopyrightText: 2024, 2025, 2026 Toms Trasuns <toms.trasuns@posteo.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-16 00:45+0000\n"
-"PO-Revision-Date: 2025-09-29 18:59+0300\n"
+"PO-Revision-Date: 2026-01-19 16:10+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #: devicesproxymodel.cpp:51
 #, kde-format
@@ -40,7 +40,7 @@ msgstr "Pieejams"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Could not connect to device “%1”"
-msgstr ""
+msgstr "Neizdevās savienoties ar ierīci „%1“"
 
 #: devicesstateproxymodel.cpp:288
 #, kde-format
@@ -84,7 +84,7 @@ msgstr "Nosūtīt datni"
 #, kde-format
 msgctxt "@action:button Forget a Bluetooth device"
 msgid "Forget"
-msgstr ""
+msgstr "Aizmirst"
 
 #: qml/DeviceItem.qml:118
 #, kde-format
@@ -292,32 +292,28 @@ msgstr[1] "%1 pievienotas ierīces"
 msgstr[2] "%1 pievienotu ierīču"
 
 #: qml/main.qml:110
-#, fuzzy, kde-format
-#| msgid "Enable Bluetooth"
+#, kde-format
 msgctxt "@option:check"
 msgid "Enable Bluetooth"
 msgstr "Ieslēgt „Bluetooth“"
 
 #: qml/main.qml:122
-#, fuzzy, kde-format
-#| msgid "Pair Device…"
+#, kde-format
 msgctxt "@action:button"
 msgid "Pair Device…"
 msgstr "Sapārot ierīci…"
 
 #: qml/main.qml:130
-#, fuzzy, kde-format
-#| msgid "Badge icon with number of connected devices"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Show badge with number of connected devices"
-msgstr "Ikona, uz kuras parādās savienoto ierīču skaits"
+msgstr "Uz ikonas rādīt savienoto ierīču skaitu"
 
 #: qml/main.qml:140
-#, fuzzy, kde-format
-#| msgid "Configure &Bluetooth…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Bluetooth…"
-msgstr "Konfigurēt „&Bluetooth“..."
+msgstr "Konfigurēt „&Bluetooth“…"
 
 #: qml/Toolbar.qml:73
 #, kde-format
