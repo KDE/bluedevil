@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-16 00:45+0000\n"
-"PO-Revision-Date: 2026-01-04 10:43+0100\n"
+"PO-Revision-Date: 2026-01-25 12:59+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.12.0\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #: devicesproxymodel.cpp:51
 #, kde-format
@@ -42,7 +42,7 @@ msgstr "Erabilgarri"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Could not connect to device “%1”"
-msgstr ""
+msgstr "Ezin izan du “%1” gailuarekin konektatu"
 
 #: devicesstateproxymodel.cpp:288
 #, kde-format
@@ -83,9 +83,7 @@ msgid "Send File"
 msgstr "Bidali fitxategia"
 
 #: qml/DeviceItem.qml:71
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the name of a Bluetooth device"
-#| msgid "Forget"
+#, kde-format
 msgctxt "@action:button Forget a Bluetooth device"
 msgid "Forget"
 msgstr "Ahaztu"
@@ -295,32 +293,28 @@ msgstr[0] "gailu %1 konektatuta"
 msgstr[1] "%1 gailu konektatuta"
 
 #: qml/main.qml:110
-#, fuzzy, kde-format
-#| msgid "Enable Bluetooth"
+#, kde-format
 msgctxt "@option:check"
 msgid "Enable Bluetooth"
 msgstr "Gaitu Bluetooth"
 
 #: qml/main.qml:122
-#, fuzzy, kde-format
-#| msgid "Pair Device…"
+#, kde-format
 msgctxt "@action:button"
 msgid "Pair Device…"
-msgstr "Gailua parekatu..."
+msgstr "Parekatu gailua…"
 
 #: qml/main.qml:130
-#, fuzzy, kde-format
-#| msgid "Badge icon with number of connected devices"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Show badge with number of connected devices"
-msgstr "Konektatutako gailu-kopurua duen txartel-ikonoa"
+msgstr "Erakutsi konektatutako gailu-kopurua duen ikur txikia"
 
 #: qml/main.qml:140
-#, fuzzy, kde-format
-#| msgid "Configure &Bluetooth…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Bluetooth…"
-msgstr "Konfiguratu &Bluetooth..."
+msgstr "Konfiguratu &Bluetooth…"
 
 #: qml/Toolbar.qml:73
 #, kde-format
