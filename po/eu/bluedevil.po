@@ -1,16 +1,16 @@
 # Translation for bluedevil.po to Euskara/Basque (eu)
-# Copyright (C) 2016-2025 This file is copyright:
+# Copyright (C) 2016-2026 This file is copyright:
 # This file is distributed under the same license as the bluedevil package.
-# SPDX-FileCopyrightText: 2024, 2025 KDE euskaratzeko proiektuaren arduraduna <xalba@ni.eus>
+# SPDX-FileCopyrightText: 2024, 2025, 2026 KDE euskaratzeko proiektuaren arduraduna <xalba@ni.eus>
 #
 # Translators:
-# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-16 03:01+0000\n"
-"PO-Revision-Date: 2025-08-10 20:16+0200\n"
+"PO-Revision-Date: 2026-01-25 12:38+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.04.3\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -52,7 +52,7 @@ msgstr "Erabilgarri"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Could not connect to device “%1”"
-msgstr ""
+msgstr "Ezin izan du “%1” gailurekin konektatu"
 
 #: applet/devicesstateproxymodel.cpp:288
 #, kde-format
@@ -109,7 +109,7 @@ msgstr "Aurreko arduraduna"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Access request from device “%1”"
-msgstr ""
+msgstr "“%1” gailuak sarbidea eskatu du"
 
 #: kded/helpers/requestauthorization.cpp:29
 #, kde-format
@@ -141,7 +141,7 @@ msgstr "Ukatu"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Verify PIN for device “%1”"
-msgstr ""
+msgstr "Egiaztatu “%1” gailuaren PINa"
 
 #: kded/helpers/requestconfirmation.cpp:28
 #, kde-format
@@ -167,7 +167,7 @@ msgstr "PIN okerra"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "PIN for device “%1”"
-msgstr ""
+msgstr "“%1” gailuaren PINa"
 
 #: kded/helpers/requestpin.cpp:36
 #, kde-format
@@ -219,7 +219,7 @@ msgstr "1234"
 #, kde-format
 msgctxt "%1 is the name of a Bluetooth device"
 msgid "Incoming file from device “%1”"
-msgstr ""
+msgstr "“%1” gailutik datorren sarrerako fitxategia"
 
 #: kded/receivefilejob.cpp:133
 #, kde-format
