@@ -97,7 +97,6 @@ PlasmaExtras.ExpandableListItem {
                 imagePath: "widgets/line"
                 elementId: "horizontal-line"
                 visible: mediaPlayerItem.visible
-                    || (!mediaPlayerItem.visible && !(browseFilesButton.enabled || sendFileButton.enabled))
             }
 
             KQuickControlsAddons.Clipboard {
