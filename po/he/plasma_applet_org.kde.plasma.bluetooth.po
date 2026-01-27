@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-16 03:01+0000\n"
+"POT-Creation-Date: 2026-01-27 02:39+0000\n"
 "PO-Revision-Date: 2026-01-16 10:51+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -88,143 +88,143 @@ msgctxt "@action:button Forget a Bluetooth device"
 msgid "Forget"
 msgstr "לשכוח"
 
-#: qml/DeviceItem.qml:118
+#: qml/DeviceItem.qml:117
 #, kde-format
 msgid "Copy"
 msgstr "העתקה"
 
-#: qml/DeviceItem.qml:214
+#: qml/DeviceItem.qml:213
 #, kde-format
 msgid "Yes"
 msgstr "כן"
 
-#: qml/DeviceItem.qml:214
+#: qml/DeviceItem.qml:213
 #, kde-format
 msgid "No"
 msgstr "לא"
 
-#: qml/DeviceItem.qml:220
+#: qml/DeviceItem.qml:219
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: qml/DeviceItem.qml:228
+#: qml/DeviceItem.qml:227
 #, kde-format
 msgid "Remote Name"
 msgstr "שם מרוחק"
 
-#: qml/DeviceItem.qml:232
+#: qml/DeviceItem.qml:231
 #, kde-format
 msgid "Address"
 msgstr "כתובת"
 
-#: qml/DeviceItem.qml:235
+#: qml/DeviceItem.qml:234
 #, kde-format
 msgid "Paired"
 msgstr "מתואם"
 
-#: qml/DeviceItem.qml:238
+#: qml/DeviceItem.qml:237
 #, kde-format
 msgid "Trusted"
 msgstr "אמין"
 
-#: qml/DeviceItem.qml:241
+#: qml/DeviceItem.qml:240
 #, kde-format
 msgid "Adapter"
 msgstr "מתאם"
 
-#: qml/DeviceItem.qml:249
+#: qml/DeviceItem.qml:248
 #, kde-format
 msgid "Connecting"
 msgstr "מתחבר"
 
-#: qml/DeviceItem.qml:251
+#: qml/DeviceItem.qml:250
 #, kde-format
 msgid "Disconnecting"
 msgstr "מתנתק"
 
-#: qml/DeviceItem.qml:257
+#: qml/DeviceItem.qml:256
 #, kde-format
 msgid "Connection failed"
 msgstr "החיבור נכשל"
 
-#: qml/DeviceItem.qml:262
+#: qml/DeviceItem.qml:261
 #, kde-format
 msgid "Headset"
 msgstr "אוזניות עם מיקרופון"
 
-#: qml/DeviceItem.qml:268
+#: qml/DeviceItem.qml:267
 #, kde-format
 msgid "Audio device"
 msgstr "התקן שמע"
 
-#: qml/DeviceItem.qml:272
+#: qml/DeviceItem.qml:271
 #, kde-format
 msgid "Keyboard"
 msgstr "מקלדת"
 
-#: qml/DeviceItem.qml:275
+#: qml/DeviceItem.qml:274
 #, kde-format
 msgid "Mouse"
 msgstr "עכבר"
 
-#: qml/DeviceItem.qml:278
+#: qml/DeviceItem.qml:277
 #, kde-format
 msgid "Joypad"
 msgstr "בקר משחקים"
 
-#: qml/DeviceItem.qml:281
+#: qml/DeviceItem.qml:280
 #, kde-format
 msgid "Drawing tablet"
 msgstr "לוח ציור"
 
-#: qml/DeviceItem.qml:285
+#: qml/DeviceItem.qml:284
 #, kde-format
 msgid "Phone"
 msgstr "טלפון"
 
-#: qml/DeviceItem.qml:288
+#: qml/DeviceItem.qml:287
 #, kde-format
 msgid "Camera"
 msgstr "מצלמה"
 
-#: qml/DeviceItem.qml:291
+#: qml/DeviceItem.qml:290
 #, kde-format
 msgid "Printer"
 msgstr "מדפסת"
 
-#: qml/DeviceItem.qml:298
+#: qml/DeviceItem.qml:297
 #, kde-format
 msgid "File transfer"
 msgstr "העברת קבצים"
 
-#: qml/DeviceItem.qml:301
+#: qml/DeviceItem.qml:300
 #, kde-format
 msgid "Send file"
 msgstr "שליחת קובץ"
 
-#: qml/DeviceItem.qml:304
+#: qml/DeviceItem.qml:303
 #, kde-format
 msgid "Input"
 msgstr "קלט"
 
-#: qml/DeviceItem.qml:307
+#: qml/DeviceItem.qml:306
 #, kde-format
 msgid "Audio"
 msgstr "שמע"
 
-#: qml/DeviceItem.qml:310
+#: qml/DeviceItem.qml:309
 #, kde-format
 msgid "Network"
 msgstr "רשת"
 
-#: qml/DeviceItem.qml:315
+#: qml/DeviceItem.qml:314
 #, kde-format
 msgid "Other device"
 msgstr "התקן אחר"
 
-#: qml/DeviceItem.qml:322 qml/main.qml:74 qml/main.qml:83
+#: qml/DeviceItem.qml:321 qml/main.qml:74 qml/main.qml:83
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% סוללה"

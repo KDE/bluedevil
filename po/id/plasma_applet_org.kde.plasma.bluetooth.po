@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-16 03:01+0000\n"
+"POT-Creation-Date: 2026-01-27 02:39+0000\n"
 "PO-Revision-Date: 2023-03-03 09:57+0700\n"
 "Last-Translator: Linerly <linerly@protonmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -89,145 +89,145 @@ msgctxt "@action:button Forget a Bluetooth device"
 msgid "Forget"
 msgstr ""
 
-#: qml/DeviceItem.qml:118
+#: qml/DeviceItem.qml:117
 #, kde-format
 msgid "Copy"
 msgstr "Salin"
 
-#: qml/DeviceItem.qml:214
+#: qml/DeviceItem.qml:213
 #, kde-format
 msgid "Yes"
 msgstr "Ya"
 
-#: qml/DeviceItem.qml:214
+#: qml/DeviceItem.qml:213
 #, kde-format
 msgid "No"
 msgstr "Tidak"
 
-#: qml/DeviceItem.qml:220
+#: qml/DeviceItem.qml:219
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: qml/DeviceItem.qml:228
+#: qml/DeviceItem.qml:227
 #, kde-format
 msgid "Remote Name"
 msgstr "Nama Remot"
 
-#: qml/DeviceItem.qml:232
+#: qml/DeviceItem.qml:231
 #, kde-format
 msgid "Address"
 msgstr "Alamat"
 
-#: qml/DeviceItem.qml:235
+#: qml/DeviceItem.qml:234
 #, kde-format
 msgid "Paired"
 msgstr "Disandingkan"
 
-#: qml/DeviceItem.qml:238
+#: qml/DeviceItem.qml:237
 #, kde-format
 msgid "Trusted"
 msgstr "Dipercaya"
 
-#: qml/DeviceItem.qml:241
+#: qml/DeviceItem.qml:240
 #, kde-format
 msgid "Adapter"
 msgstr "Adaptor"
 
-#: qml/DeviceItem.qml:249
+#: qml/DeviceItem.qml:248
 #, kde-format
 msgid "Connecting"
 msgstr "Menghubungkan"
 
-#: qml/DeviceItem.qml:251
+#: qml/DeviceItem.qml:250
 #, kde-format
 msgid "Disconnecting"
 msgstr "Memutuskan"
 
-#: qml/DeviceItem.qml:257
+#: qml/DeviceItem.qml:256
 #, fuzzy, kde-format
 #| msgctxt "Notification when the connection failed due to Failed"
 #| msgid "Connection to the device failed"
 msgid "Connection failed"
 msgstr "Koneksi ke peranti gagal"
 
-#: qml/DeviceItem.qml:262
+#: qml/DeviceItem.qml:261
 #, kde-format
 msgid "Headset"
 msgstr ""
 
-#: qml/DeviceItem.qml:268
+#: qml/DeviceItem.qml:267
 #, kde-format
 msgid "Audio device"
 msgstr "Perangkat audio"
 
-#: qml/DeviceItem.qml:272
+#: qml/DeviceItem.qml:271
 #, kde-format
 msgid "Keyboard"
 msgstr ""
 
-#: qml/DeviceItem.qml:275
+#: qml/DeviceItem.qml:274
 #, kde-format
 msgid "Mouse"
 msgstr ""
 
-#: qml/DeviceItem.qml:278
+#: qml/DeviceItem.qml:277
 #, kde-format
 msgid "Joypad"
 msgstr ""
 
-#: qml/DeviceItem.qml:281
+#: qml/DeviceItem.qml:280
 #, kde-format
 msgid "Drawing tablet"
 msgstr ""
 
-#: qml/DeviceItem.qml:285
+#: qml/DeviceItem.qml:284
 #, kde-format
 msgid "Phone"
 msgstr "Telepon"
 
-#: qml/DeviceItem.qml:288
+#: qml/DeviceItem.qml:287
 #, kde-format
 msgid "Camera"
 msgstr ""
 
-#: qml/DeviceItem.qml:291
+#: qml/DeviceItem.qml:290
 #, kde-format
 msgid "Printer"
 msgstr ""
 
-#: qml/DeviceItem.qml:298
+#: qml/DeviceItem.qml:297
 #, kde-format
 msgid "File transfer"
 msgstr "Transfer berkas"
 
-#: qml/DeviceItem.qml:301
+#: qml/DeviceItem.qml:300
 #, kde-format
 msgid "Send file"
 msgstr "Kirim berkas"
 
-#: qml/DeviceItem.qml:304
+#: qml/DeviceItem.qml:303
 #, kde-format
 msgid "Input"
 msgstr "Masukan"
 
-#: qml/DeviceItem.qml:307
+#: qml/DeviceItem.qml:306
 #, kde-format
 msgid "Audio"
 msgstr "Audio"
 
-#: qml/DeviceItem.qml:310
+#: qml/DeviceItem.qml:309
 #, kde-format
 msgid "Network"
 msgstr "Jaringan"
 
-#: qml/DeviceItem.qml:315
+#: qml/DeviceItem.qml:314
 #, kde-format
 msgid "Other device"
 msgstr "Perangkat lain"
 
-#: qml/DeviceItem.qml:322 qml/main.qml:74 qml/main.qml:83
+#: qml/DeviceItem.qml:321 qml/main.qml:74 qml/main.qml:83
 #, kde-format
 msgid "%1% Battery"
 msgstr "Baterai %1%"
