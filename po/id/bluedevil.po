@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-16 00:45+0000\n"
+"POT-Creation-Date: 2026-01-28 00:45+0000\n"
 "PO-Revision-Date: 2023-05-28 11:25+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -571,29 +571,29 @@ msgstr "Pengesetan %1 telah gagal"
 msgid "Connecting to %1…"
 msgstr "Menghubungkan ke %1..."
 
-#: wizard/pages/pairing.cpp:96
+#: wizard/pages/pairing.cpp:91
 #, kde-format
 msgid ""
 "Please introduce the PIN in your keyboard when it appears and press Enter"
 msgstr ""
 "Silakan memperkenalkan PIN di keyboard-mu ketika ia muncul dan tekan Enter"
 
-#: wizard/pages/pairing.cpp:98
+#: wizard/pages/pairing.cpp:93
 #, kde-format
 msgid "Please introduce the PIN in your device when it appears"
 msgstr "Silakan memperkenalkan PIN di perantimu ketika ia muncul"
 
-#: wizard/pages/pairing.cpp:114
+#: wizard/pages/pairing.cpp:109
 #, kde-format
 msgid "Matches"
 msgstr "Cocok"
 
-#: wizard/pages/pairing.cpp:118
+#: wizard/pages/pairing.cpp:113
 #, kde-format
 msgid "Does not match"
 msgstr "Tidak cocok"
 
-#: wizard/pages/pairing.cpp:133
+#: wizard/pages/pairing.cpp:128
 #, kde-format
 msgid "Please, confirm that the PIN displayed on %1 matches the wizard one."
 msgstr ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-16 00:45+0000\n"
+"POT-Creation-Date: 2026-01-28 00:45+0000\n"
 "PO-Revision-Date: 2026-01-18 19:00+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -559,28 +559,28 @@ msgstr "فشل إعداد %1"
 msgid "Connecting to %1…"
 msgstr "يتّصل بـ %1…"
 
-#: wizard/pages/pairing.cpp:96
+#: wizard/pages/pairing.cpp:91
 #, kde-format
 msgid ""
 "Please introduce the PIN in your keyboard when it appears and press Enter"
 msgstr "فضلًا قدّم الرّمز عندما يظهر عبر لوحة المفاتيح واضغط Enter"
 
-#: wizard/pages/pairing.cpp:98
+#: wizard/pages/pairing.cpp:93
 #, kde-format
 msgid "Please introduce the PIN in your device when it appears"
 msgstr "فضلًا قدّم الرّمز عندما يظهر في جهازك"
 
-#: wizard/pages/pairing.cpp:114
+#: wizard/pages/pairing.cpp:109
 #, kde-format
 msgid "Matches"
 msgstr "يطابق"
 
-#: wizard/pages/pairing.cpp:118
+#: wizard/pages/pairing.cpp:113
 #, kde-format
 msgid "Does not match"
 msgstr "لا يطابق"
 
-#: wizard/pages/pairing.cpp:133
+#: wizard/pages/pairing.cpp:128
 #, kde-format
 msgid "Please, confirm that the PIN displayed on %1 matches the wizard one."
 msgstr "فضلًا، أكّد أنّ الرّمز المعروض على %1 يطابق الّذي على المرشد."

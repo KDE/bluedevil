@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-16 00:45+0000\n"
+"POT-Creation-Date: 2026-01-28 00:45+0000\n"
 "PO-Revision-Date: 2026-01-16 11:09+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -562,29 +562,29 @@ msgstr "Ha fallado la configuración de %1"
 msgid "Connecting to %1…"
 msgstr "Conectando a %1…"
 
-#: wizard/pages/pairing.cpp:96
+#: wizard/pages/pairing.cpp:91
 #, kde-format
 msgid ""
 "Please introduce the PIN in your keyboard when it appears and press Enter"
 msgstr ""
 "Por favor, introduzca el PIN en el teclado cuando aparezca y pulse «Intro»"
 
-#: wizard/pages/pairing.cpp:98
+#: wizard/pages/pairing.cpp:93
 #, kde-format
 msgid "Please introduce the PIN in your device when it appears"
 msgstr "Por favor, introduzca el PIN en el dispositivo cuando aparezca"
 
-#: wizard/pages/pairing.cpp:114
+#: wizard/pages/pairing.cpp:109
 #, kde-format
 msgid "Matches"
 msgstr "Coincide"
 
-#: wizard/pages/pairing.cpp:118
+#: wizard/pages/pairing.cpp:113
 #, kde-format
 msgid "Does not match"
 msgstr "No coincide"
 
-#: wizard/pages/pairing.cpp:133
+#: wizard/pages/pairing.cpp:128
 #, kde-format
 msgid "Please, confirm that the PIN displayed on %1 matches the wizard one."
 msgstr ""

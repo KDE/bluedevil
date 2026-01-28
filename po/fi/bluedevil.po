@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-16 00:45+0000\n"
+"POT-Creation-Date: 2026-01-28 00:45+0000\n"
 "PO-Revision-Date: 2025-09-04 10:10+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -567,28 +567,28 @@ msgid "Connecting to %1…"
 msgstr "Yhdistetään: %1…"
 
 # *** TARKISTA: Mitä ”introduce” tässä tarkoittaa? Aiemmassa käännöksessä oli ymmärretty eri tavalla
-#: wizard/pages/pairing.cpp:96
+#: wizard/pages/pairing.cpp:91
 #, kde-format
 msgid ""
 "Please introduce the PIN in your keyboard when it appears and press Enter"
 msgstr "Anna PIN-tunniste näppäimistölläsi sen ilmestyttyä ja paina Enter"
 
-#: wizard/pages/pairing.cpp:98
+#: wizard/pages/pairing.cpp:93
 #, kde-format
 msgid "Please introduce the PIN in your device when it appears"
 msgstr "Anna PIN-tunniste näppäimistölläsi sen ilmestyttyä"
 
-#: wizard/pages/pairing.cpp:114
+#: wizard/pages/pairing.cpp:109
 #, kde-format
 msgid "Matches"
 msgstr "Täsmää"
 
-#: wizard/pages/pairing.cpp:118
+#: wizard/pages/pairing.cpp:113
 #, kde-format
 msgid "Does not match"
 msgstr "Ei täsmää"
 
-#: wizard/pages/pairing.cpp:133
+#: wizard/pages/pairing.cpp:128
 #, kde-format
 msgid "Please, confirm that the PIN displayed on %1 matches the wizard one."
 msgstr "Vahvista, että laitteella ”%1” näytetty PIN vastaa tässä olevaa."
