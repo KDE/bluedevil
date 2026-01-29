@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the bluedevil package.
-# SPDX-FileCopyrightText: 2015, 2020, 2021, 2022, 2023, 2024, 2025 Sergiu Bivol <sergiu@cip.md>
+# SPDX-FileCopyrightText: 2015, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Sergiu Bivol <sergiu@cip.md>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-27 00:45+0000\n"
-"PO-Revision-Date: 2025-12-12 10:51+0000\n"
+"PO-Revision-Date: 2026-01-28 18:47+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
@@ -40,7 +40,7 @@ msgstr "Disponibile"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Could not connect to device “%1”"
-msgstr ""
+msgstr "Nu s-a putut conecta la dispozitivul „%1”"
 
 #: devicesstateproxymodel.cpp:288
 #, kde-format
@@ -84,7 +84,7 @@ msgstr "Trimite fișier"
 #, kde-format
 msgctxt "@action:button Forget a Bluetooth device"
 msgid "Forget"
-msgstr ""
+msgstr "Uită"
 
 #: qml/DeviceItem.qml:117
 #, kde-format
@@ -292,29 +292,25 @@ msgstr[1] "%1 dispozitive conectate"
 msgstr[2] "%1 de dispozitive conectate"
 
 #: qml/main.qml:110
-#, fuzzy, kde-format
-#| msgid "Enable Bluetooth"
+#, kde-format
 msgctxt "@option:check"
 msgid "Enable Bluetooth"
 msgstr "Activează Bluetooth"
 
 #: qml/main.qml:122
-#, fuzzy, kde-format
-#| msgid "Pair Device…"
+#, kde-format
 msgctxt "@action:button"
 msgid "Pair Device…"
 msgstr "Asociază dispozitiv…"
 
 #: qml/main.qml:130
-#, fuzzy, kde-format
-#| msgid "Badge icon with number of connected devices"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Show badge with number of connected devices"
-msgstr "Insignă cu numărul de dispozitive conectate"
+msgstr "Arată insigna cu numărul de dispozitive conectate"
 
 #: qml/main.qml:140
-#, fuzzy, kde-format
-#| msgid "Configure &Bluetooth…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Bluetooth…"
 msgstr "Configurează &Bluetooth…"
