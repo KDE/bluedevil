@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-28 02:43+0000\n"
-"PO-Revision-Date: 2026-01-20 17:12+0300\n"
-"Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
+"PO-Revision-Date: 2026-01-28 16:41+0200\n"
+"Last-Translator: Alexander Yavorskiy <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -146,7 +146,7 @@ msgstr "Запретить"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Verify PIN for device “%1”"
-msgstr ""
+msgstr "Проверьте PIN-код для устройства «%1»"
 
 #: kded/helpers/requestconfirmation.cpp:28
 #, kde-format
@@ -172,7 +172,7 @@ msgstr "PIN-код неверный"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "PIN for device “%1”"
-msgstr ""
+msgstr "PIN-код для устройства «%1»"
 
 #: kded/helpers/requestpin.cpp:36
 #, kde-format
@@ -223,7 +223,7 @@ msgstr "1234"
 #, kde-format
 msgctxt "%1 is the name of a Bluetooth device"
 msgid "Incoming file from device “%1”"
-msgstr ""
+msgstr "Входящая передача файла с устройства «%1»"
 
 #: kded/receivefilejob.cpp:133
 #, kde-format

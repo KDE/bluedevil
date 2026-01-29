@@ -3,19 +3,20 @@
 # Matej Mrenica <matejm98mthw@gmail.com>, 2018, 2019, 2020, 2021, 2022, 2023.
 # Dušan Kazik <prescott66@gmail.com>, 2020.
 # Ferdinand Galko <galko.ferdinand@gmail.com>, 2023.
+# SPDX-FileCopyrightText: 2026 Lucia Mrenica <lucia.mrenica@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-28 02:43+0000\n"
-"PO-Revision-Date: 2023-11-23 08:48+0100\n"
-"Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
-"Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
+"PO-Revision-Date: 2026-01-28 16:32+0100\n"
+"Last-Translator: Lucia Mrenica <lucia.mrenica@gmail.com>\n"
+"Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 25.12.1\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #, kde-format
@@ -29,51 +30,46 @@ msgid "Your emails"
 msgstr "wizzardsk@gmail.com,prescott66@gmail.com"
 
 #: applet/devicesproxymodel.cpp:51
-#, fuzzy, kde-format
-#| msgid "Blocked:"
+#, kde-format
 msgctxt "@title:column Blocked Bluetooth devices"
 msgid "Blocked"
-msgstr "Blokované:"
+msgstr "Blokované"
 
 #: applet/devicesproxymodel.cpp:54
-#, fuzzy, kde-format
-#| msgid "Connect"
+#, kde-format
 msgctxt "@title:column Connected Bluetooth devices"
 msgid "Connected"
-msgstr "Pripojiť"
+msgstr "Pripojené"
 
 #: applet/devicesproxymodel.cpp:56
 #, kde-format
 msgctxt "@title:column Available but not connected Bluetooth devices"
 msgid "Available"
-msgstr ""
+msgstr "Dostupné"
 
 #: applet/devicesstateproxymodel.cpp:273
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Could not connect to device “%1”"
-msgstr ""
+msgstr "Nepodarilo sa pripojiť k zariadeniu \"%1\""
 
 #: applet/devicesstateproxymodel.cpp:288
-#, fuzzy, kde-format
-#| msgid "This address is unavailable."
+#, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
-msgstr "Táto adresa je nedostupná."
+msgstr "Zariadenie je nedosiahnuteľné"
 
 #: applet/devicesstateproxymodel.cpp:289
-#, fuzzy, kde-format
-#| msgid "Connecting to the device"
+#, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
-msgstr "Pripájanie k zariadeniu"
+msgstr "Pripojenie k zariadeniu zlyhalo"
 
 #: applet/devicesstateproxymodel.cpp:292
-#, fuzzy, kde-format
-#| msgid "Obexd service is not running."
+#, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
-msgstr "Služba obexd nebeží."
+msgstr "Zariadenie nie je pripravené"
 
 #: kcm/bluetooth.cpp:135
 #, kde-format
@@ -82,11 +78,10 @@ msgid "%1 Network (%2)"
 msgstr "%1 Sieť (%2)"
 
 #: kcm/bluetoothmoduledata.cpp:20
-#, fuzzy, kde-format
-#| msgid "Enable Bluetooth integration"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
-msgstr "Povoliť Bluetooth integráciu"
+msgstr "Povoliť Bluetooth"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -113,7 +108,7 @@ msgstr "Predošlý správca"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Access request from device “%1”"
-msgstr ""
+msgstr "Žiadosť o prístup zo zariadenia \"%1\""
 
 #: kded/helpers/requestauthorization.cpp:29
 #, kde-format
@@ -145,7 +140,7 @@ msgstr "Odmietnuť"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Verify PIN for device “%1”"
-msgstr ""
+msgstr "Overiť PIN pre zariadenie \"%1\""
 
 #: kded/helpers/requestconfirmation.cpp:28
 #, kde-format
@@ -171,7 +166,7 @@ msgstr "Nesprávny PIN"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "PIN for device “%1”"
-msgstr ""
+msgstr "PIN pre zariadenie \"%1\""
 
 #: kded/helpers/requestpin.cpp:36
 #, kde-format
@@ -222,7 +217,7 @@ msgstr "1234"
 #, kde-format
 msgctxt "%1 is the name of a Bluetooth device"
 msgid "Incoming file from device “%1”"
-msgstr ""
+msgstr "Prichádzajúci súbor zo zariadenia \"%1\""
 
 #: kded/receivefilejob.cpp:133
 #, kde-format
@@ -453,7 +448,7 @@ msgstr "Nepodarilo sa spustiť službu org.bluez.obex: %1"
 #: settings/bluedevilglobalsettings.kcfg:10
 #, kde-format
 msgid "Option to determine the bluetooth state at launch"
-msgstr ""
+msgstr "Možnosť určiť stav Bluetooth pri spustení"
 
 #. i18n: ectx: label, entry (saveUrl), group (General)
 #: settings/filereceiver.kcfg:11
@@ -514,10 +509,9 @@ msgstr "Hľadať..."
 
 #. i18n: ectx: property (text), widget (QCheckBox, showUnnamedDevicesCheckBox)
 #: wizard/pages/discover.ui:42
-#, fuzzy, kde-format
-#| msgid "Browse devices"
+#, kde-format
 msgid "Show unnamed devices"
-msgstr "Prehliadať zariadenia"
+msgstr "Zobraziť zariadenia bez názvu"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: wizard/pages/discover.ui:71

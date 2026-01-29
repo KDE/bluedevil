@@ -1,13 +1,13 @@
 # Copyright (C) 2025 This file is copyright:
 # This file is distributed under the same license as the bluedevil package.
-# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024, 2025 Sergiu Bivol <sergiu@cip.md>
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024, 2025, 2026 Sergiu Bivol <sergiu@cip.md>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-28 02:43+0000\n"
-"PO-Revision-Date: 2025-11-30 12:47+0000\n"
+"PO-Revision-Date: 2026-01-28 18:46+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
@@ -50,7 +50,7 @@ msgstr "Disponibile"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Could not connect to device “%1”"
-msgstr ""
+msgstr "Nu s-a putut conecta la dispozitivul „%1”"
 
 #: applet/devicesstateproxymodel.cpp:288
 #, kde-format
@@ -107,7 +107,7 @@ msgstr "Fostul responsabil"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Access request from device “%1”"
-msgstr ""
+msgstr "Cerere de acces de la dispozitivul „%1”"
 
 #: kded/helpers/requestauthorization.cpp:29
 #, kde-format
@@ -139,7 +139,7 @@ msgstr "Refuză"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Verify PIN for device “%1”"
-msgstr ""
+msgstr "Verificați PIN-ul pentru dispozitivul „%1”"
 
 #: kded/helpers/requestconfirmation.cpp:28
 #, kde-format
@@ -165,7 +165,7 @@ msgstr "PIN incorect"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "PIN for device “%1”"
-msgstr ""
+msgstr "PIN pentru dispozitivul „%1”"
 
 #: kded/helpers/requestpin.cpp:36
 #, kde-format
@@ -217,7 +217,7 @@ msgstr "1234"
 #, kde-format
 msgctxt "%1 is the name of a Bluetooth device"
 msgid "Incoming file from device “%1”"
-msgstr ""
+msgstr "Fișier de intrare de la dispozitivul „%1”"
 
 #: kded/receivefilejob.cpp:133
 #, kde-format
