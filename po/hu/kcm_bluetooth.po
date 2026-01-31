@@ -2,13 +2,13 @@
 # This file is distributed under the same license as the bluedevil package.
 #
 # Kristóf Kiszel <kiszel.kristof@gmail.com>, 2021.
-# SPDX-FileCopyrightText: 2021, 2023, 2024, 2025 Kristof Kiszel <ulysses@fsf.hu>
+# SPDX-FileCopyrightText: 2021, 2023, 2024, 2025, 2026 Kristof Kiszel <ulysses@fsf.hu>
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-04 00:45+0000\n"
-"PO-Revision-Date: 2025-10-14 22:10+0200\n"
+"PO-Revision-Date: 2026-01-30 21:06+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.08.2\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -96,15 +96,12 @@ msgid "Blocked"
 msgstr "Blokkolt"
 
 #: ui/Device.qml:197
-#, fuzzy, kde-format
-#| msgid ""
-#| "Any incoming connections from a blocked device will be immediately "
-#| "rejected."
+#, kde-format
 msgid ""
 "When enabled, all incoming connections from this device will be rejected."
 msgstr ""
-"A tiltott eszközről érkező minden bejövő kapcsolat azonnal elutasításra "
-"kerül."
+"Ha engedélyezve van, akkor az eszközről érkező összes bejövő kapcsolat el "
+"lesz utasítva."
 
 #: ui/Device.qml:203
 #, kde-format
