@@ -256,6 +256,10 @@ PlasmaExtras.ExpandableListItem {
             labels.push(i18n("Connection failed"));
         }
 
+        if (model.Battery) {
+            labels.push(i18n("%1% Battery", model.Battery.percentage));
+        }
+
         switch (model.Type) {
         case BluezQt.Device.Headset:
             labels.push(i18n("Headset"));
@@ -315,10 +319,6 @@ PlasmaExtras.ExpandableListItem {
             }
 
             labels.push(profiles.join(", "));
-        }
-
-        if (model.Battery) {
-            labels.push(i18n("%1% Battery", model.Battery.percentage));
         }
 
         return labels.join(" · ");
