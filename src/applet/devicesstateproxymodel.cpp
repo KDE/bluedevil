@@ -18,6 +18,7 @@ DevicesStateProxyModel::DevicesStateProxyModel(QObject *parent)
     : QIdentityProxyModel(parent)
 {
     connect(this, &QAbstractItemModel::rowsAboutToBeRemoved, this, &DevicesStateProxyModel::handleRowsAboutToBeRemoved);
+    connect(this, &QAbstractItemModel::dataChanged, this, &DevicesStateProxyModel::handleDataChanged);
 }
 
 bool DeviceState::isConnecting() const
@@ -199,6 +200,20 @@ void DevicesStateProxyModel::handleRowsAboutToBeRemoved(const QModelIndex &paren
     }
 }
 
+void DevicesStateProxyModel::handleDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QList<int> &roles)
+{
+    // devices are added one at a time; so we only need to handle topLeft
+    if (!topLeft.isValid() || !data(topLeft, BluezQt::DevicesModel::ConnectedRole).toBool()) {
+        return;
+    }
+
+    auto &state = this->state(topLeft);
+    if (state.connectionFailed) {
+        state.connectionFailed = false;
+        Q_EMIT dataChanged(topLeft, topLeft, QList<int>(ConnectionFailedRole));
+    }
+}
+
 QString DevicesStateProxyModel::ubi(const QModelIndex &index) const
 {
     Q_ASSERT(index.isValid() ? index.model() == this : true);
@@ -229,7 +244,7 @@ QModelIndex DevicesStateProxyModel::unregisterPendingCall(BluezQt::PendingCall *
                 return QModelIndex();
             }
 
-            state.connectionFailed = call->error() != BluezQt::PendingCall::NoError;
+            state.connectionFailed = call->error() != BluezQt::PendingCall::NoError && call->error() != BluezQt::PendingCall::AlreadyConnected;
             if (wasFailed != state.connectionFailed) {
                 roles.append(ConnectionFailedRole);
             }

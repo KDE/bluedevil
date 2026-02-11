@@ -62,6 +62,7 @@ Q_SIGNALS:
 private Q_SLOTS:
     void handlePendingCallFinished(BluezQt::PendingCall *call);
     void handleRowsAboutToBeRemoved(const QModelIndex &parent, int first, int last);
+    void handleDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QList<int> &roles);
 
 private:
     void registerPendingCall(BluezQt::PendingCall *call, const QModelIndex &index, QSet<BluezQt::PendingCall *> &calls);
