@@ -252,7 +252,7 @@ PlasmaExtras.ExpandableListItem {
 
         const labels = [];
 
-        if (model.ConnectionFailed) {
+        if (model.ConnectionFailed && !model.Connected) {
             labels.push(i18n("Connection failed"));
         }
 
