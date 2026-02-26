@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-27 00:45+0000\n"
-"PO-Revision-Date: 2026-01-15 16:25+0000\n"
+"PO-Revision-Date: 2026-02-25 12:03+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
 "Language: is\n"
@@ -40,7 +40,7 @@ msgstr "Tiltækt"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Could not connect to device “%1”"
-msgstr ""
+msgstr "Gat ekki tengst tækinu “%1”"
 
 #: devicesstateproxymodel.cpp:288
 #, kde-format

@@ -2,13 +2,13 @@
 # This file is distributed under the same license as the bluedevil package.
 #
 # SPDX-FileCopyrightText: 2024, 2025 Guðmundur Erlingsson <gudmundure@gmail.com>
-# SPDX-FileCopyrightText: 2025 Sveinn í Felli <sv1@fellsnet.is>
+# SPDX-FileCopyrightText: 2025, 2026 Sveinn í Felli <sv1@fellsnet.is>
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-28 00:45+0000\n"
-"PO-Revision-Date: 2025-10-08 09:30+0000\n"
+"PO-Revision-Date: 2026-02-25 12:05+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
 "Language: is\n"
@@ -50,7 +50,7 @@ msgstr "Tiltækt"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Could not connect to device “%1”"
-msgstr ""
+msgstr "Gat ekki tengst tækinu “%1”"
 
 #: applet/devicesstateproxymodel.cpp:288
 #, kde-format
@@ -107,7 +107,7 @@ msgstr "Fyrrverandi umsjónaraðili"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Access request from device “%1”"
-msgstr ""
+msgstr "Fékk beiðni um aðgang frá tækinu “%1”"
 
 #: kded/helpers/requestauthorization.cpp:29
 #, kde-format
@@ -139,7 +139,7 @@ msgstr "Hafna"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Verify PIN for device “%1”"
-msgstr ""
+msgstr "Sannreyna PIN-númer fyrir tækið “%1”"
 
 #: kded/helpers/requestconfirmation.cpp:28
 #, kde-format
@@ -165,7 +165,7 @@ msgstr "PIN er rangt"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "PIN for device “%1”"
-msgstr ""
+msgstr "PIN fyrir tækið “%1”"
 
 #: kded/helpers/requestpin.cpp:36
 #, kde-format
@@ -217,7 +217,7 @@ msgstr "1234"
 #, kde-format
 msgctxt "%1 is the name of a Bluetooth device"
 msgid "Incoming file from device “%1”"
-msgstr ""
+msgstr "Skrá að berast frá tækinu “%1”"
 
 #: kded/receivefilejob.cpp:133
 #, kde-format
