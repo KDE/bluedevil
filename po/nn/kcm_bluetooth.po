@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-04 00:45+0000\n"
-"PO-Revision-Date: 2024-08-19 20:56+0200\n"
+"PO-Revision-Date: 2026-03-01 20:09+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.11.70\n"
+"X-Generator: Lokalize 26.03.70\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -36,8 +36,7 @@ msgid "%1 Network (%2)"
 msgstr "%1 nettverk (%2)"
 
 #: bluetoothmoduledata.cpp:20
-#, fuzzy, kde-format
-#| msgid "Enable Bluetooth"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "Bruk Bluetooth"
@@ -98,14 +97,11 @@ msgid "Blocked"
 msgstr "Blokkert"
 
 #: ui/Device.qml:197
-#, fuzzy, kde-format
-#| msgid ""
-#| "Any incoming connections from a blocked device will be immediately "
-#| "rejected."
+#, kde-format
 msgid ""
 "When enabled, all incoming connections from this device will be rejected."
 msgstr ""
-"Tilkoplings­førespurnadar frå blokkerte einingar vert automatisk avviste."
+"Når dette er på, vert alle innkommande tilkoplingar frå denne eininga avvist."
 
 #: ui/Device.qml:203
 #, kde-format
