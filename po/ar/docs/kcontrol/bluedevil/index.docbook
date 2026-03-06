@@ -1,0 +1,353 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+<!ENTITY bluetooth "<application
+>Bluetooth</application
+>">
+<!ENTITY % addindex "IGNORE">
+<!ENTITY % English "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<article id="bluedevil" lang="&language;">
+    <articleinfo>
+        <title
+>بلو ديفل</title>
+        <authorgroup>
+            <author
+><firstname
+>Yuri</firstname
+><surname
+>Chornoivan</surname
+> <email
+>yurchor@ukr.net</email
+></author>
+            <othercredit role="translator"
+><firstname
+>زايد</firstname
+><surname
+>السعيدي</surname
+><affiliation
+><address
+><email
+>zayed.alsaidi@gmail.com</email
+></address
+></affiliation
+><contrib
+>التّرجمة العربيّة</contrib
+></othercredit
+> 
+        </authorgroup>
+        
+        <date
+>2022-06-05</date>
+        <releaseinfo
+>بلازما 5.25</releaseinfo>
+        
+        <keywordset>
+            <keyword
+>كيدي</keyword>
+            <keyword
+>إعدادات النظام</keyword>
+            <keyword
+>بلوتوث</keyword>
+            <keyword
+>هاتف</keyword>
+            <keyword
+>سماعات الرأس</keyword>
+            <keyword
+>سماعات الأذن</keyword>
+            <keyword
+>مودم</keyword>
+            <keyword
+>حاسوب</keyword>
+            <keyword
+>سماعة رأس بميكروفون</keyword>
+            <keyword
+>وسائط متعددة</keyword>
+            <keyword
+>جهاز</keyword>
+            <keyword
+>لوحة المفاتيح</keyword>
+            <keyword
+>فأرة</keyword>
+            <keyword
+>عصا الألعاب</keyword>
+            <keyword
+>متحكم</keyword>
+            <keyword
+>لوحي</keyword>
+            <keyword
+>كاميرا</keyword>
+            <keyword
+>طابعة</keyword>
+            <keyword
+>تصوير</keyword>
+            <keyword
+>قابل للارتداء</keyword>
+            <keyword
+>لعبة</keyword>
+            <keyword
+>صحة</keyword>
+            <keyword
+>طرفية</keyword>
+            <keyword
+>شبكة</keyword>
+        </keywordset>
+    </articleinfo>
+    
+    <sect1 id="kcmbluetooth">
+        <title
+>بلوتوث</title>
+        
+        <para
+>يمكنك في هذه الصفحة ضبط أجهزة البلوتوث الخاصة بك لبيئة عمل بلازما. </para>
+        
+        <note>
+            <para
+>يرجى الضغط على زر <guibutton
+>مكّن</guibutton
+> لتمكين نظام البلوتوث الفرعي في نظام تشغيلك. </para>
+        </note>
+        <screenshot>
+            <screeninfo
+>وحدة بلوتوث إعدادات النظام</screeninfo>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="bluetooth-kcm.png" format="PNG"/>
+                </imageobject>
+                <textobject>
+                    <phrase
+>وحدة بلوتوث إعدادات النظام</phrase>
+                </textobject>
+            </mediaobject>
+        </screenshot>
+        
+        <para
+>اضغط على زر <guibutton
+>اضبط...</guibutton
+> لتغيير إعدادات بلوتوث العامة لبيئة عمل بلازما. </para>
+        
+        <screenshot>
+            <screeninfo
+>ضبط إعدادات الوحدة العامة</screeninfo>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="bluetooth-configure.png" format="PNG"/>
+                </imageobject>
+                <textobject>
+                    <phrase
+>ضبط إعدادات الوحدة العامة</phrase>
+                </textobject>
+            </mediaobject>
+        </screenshot>
+        <para
+>يمكنك جعل جهاز بلوتوث الخاص بك <guilabel
+>ممكّناً</guilabel
+> و <guilabel
+>مرئياً</guilabel
+> لأجهزة بلوتوث الأخرى باستخدام العناصر المقابلة. </para>
+        
+        <para
+>يمكن تغيير سلوك نظام بلوتوث الفرعي عند استقبال ملف. يمكن لبيئة عمل بلازما أن <guilabel
+>تطلب التأكيد</guilabel
+>، أو <guilabel
+>تقبل للأجهزة الموثوقة</guilabel
+> (انظر <guilabel
+>موثوق</guilabel
+> في إعدادات الجهاز أدناه) و <guilabel
+>تقبل دائماً</guilabel
+> الملفات المرسلة. يمكنك أيضاً ضبط المجلد لتخزين الملفات المستلمة. </para>
+        
+        <para
+>يرجى الضغط على زر الرجوع في أعلى الصفحة للعودة إلى الصفحة الرئيسية لوحدة الضبط. </para>
+        
+        <para id="adddevice"
+>يمكنك إضافة جهاز بلوتوث إلى القائمة الرئيسية بالنقر على زر <guibutton
+>أضف...</guibutton
+>. سيُفحص محيطك بحثاً عن الأجهزة المتاحة. إذا لم يظهر الجهاز الذي تريد استخدامه في قائمة الفحص، فستحتاج إلى مراجعة دليله للحصول على تعليمات حول كيفية إعداده. </para>
+        
+        <para
+>اضبط <guilabel
+>رمز PIN يدوياً</guilabel
+> إذا لزم الأمر وانقر بـ <mousebutton
+>الزر الأيسر</mousebutton
+> للفأرة على الجهاز المكتشف لإقرانه مع حاسوبك. انظر دليل الجهاز لمعرفة إجراء الإقران، قد تختلف الطريقة ولكنها عادة ما تكون بسيطة جداً. </para>
+        
+        <screenshot>
+            <screeninfo
+>إضافة جهاز بلوتوث</screeninfo>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="bluetooth-add.png" format="PNG"/>
+                </imageobject>
+                <textobject>
+                    <phrase
+>إضافة جهاز بلوتوث</phrase>
+                </textobject>
+            </mediaobject>
+        </screenshot>
+        
+        <para
+>انقر بـ <mousebutton
+>الزر الأيسر</mousebutton
+> للفأرة على عنصر القائمة لضبط اسمه في قائمة الأجهزة وجعله <guilabel
+>موثوقاً</guilabel
+> و <guilabel
+>محظوراً</guilabel
+>. </para>
+        
+        <screenshot>
+            <screeninfo
+>إعدادات الجهاز</screeninfo>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="bluetooth-phone.png" format="PNG"/>
+                </imageobject>
+                <textobject>
+                    <phrase
+>إعدادات الجهاز</phrase>
+                </textobject>
+            </mediaobject>
+        </screenshot>
+        
+        <para
+>يرجى الضغط على زر الرجوع في أعلى الصفحة للعودة إلى الصفحة الرئيسية لوحدة الضبط. </para>
+        
+        <para
+>عند تحويم مؤشر الفأرة، يظهر كل جهاز بلوتوث في القائمة الرئيسية زرين على اليمين. </para>
+        
+        <para
+>استخدم <guiicon
+><inlinemediaobject
+><imageobject
+><imagedata fileref="network-connect.png" format="PNG"/></imageobject
+></inlinemediaobject
+></guiicon
+> أو <guiicon
+><inlinemediaobject
+><imageobject
+><imagedata fileref="network-disconnect.png" format="PNG"/></imageobject
+></inlinemediaobject
+></guiicon
+> لوصل جهاز أو فصله. </para>
+        
+        <para
+>يمكنك إزالة جهاز من القائمة الرئيسية باختياره ثم النقر على أيقونة <inlinemediaobject
+><imageobject
+><imagedata fileref="list-remove.png" format="PNG"/></imageobject
+></inlinemediaobject
+>. </para>
+        
+        <para
+>إذا كنت بحاجة إلى إيقاف تشغيل بلوتوث لسبب ما، فاضغط على زر <guibutton
+>عطّل بلوتوث</guibutton
+>. </para>
+        
+    </sect1>
+    
+    <sect1 id="system-tray">
+        <title
+>عملية صينية النظام</title>
+        
+        <note>
+            <para
+>يجب أن تُشغل سطح مكتب بلازما أو مدير نوافذ آخر مناسب لعرض بلوتوث في صينية النظام. </para>
+        </note>
+        
+        <para
+>تعرض وحدة بلوتوث مبدئياً أيقونة في صينية النظام. توفر الأيقونة مؤشرات للتحكم ومراقبة الحالة. تشير أيقونة بلوتوث العادية إلى أن جميع الأجهزة مفصولة، بينما تشير الأيقونة التي تحتوي على خط أفقي منقط إلى أن بعض الأجهزة متصلة بحاسوبك. </para>
+        
+        <para
+>إذا حومت بمؤشر الفأرة فوق أيقونة صينية النظام، سيُعرض ملخص لقائمة الأجهزة المتصلة كتلميحة. </para>
+        
+        <para
+>انقر بـ <mousebutton
+>الزر الأيسر</mousebutton
+> للفأرة على أيقونة صينية النظام للتبديل بين عرض وإخفاء <link linkend="controlpanel"
+>لوحة تحكم بلوتوث الرئيسية</link
+>. </para>
+        
+        <para
+>انقر بـ <mousebutton
+>الزر الأيمن</mousebutton
+> للفأرة على أيقونة صينية النظام لعرض قائمتها السياقية التي تحتوي على عنصر واحد فقط: </para>
+        
+        <variablelist>
+            <varlistentry>
+                <term
+><menuchoice
+><guimenuitem
+>اضبط بلوتوث</guimenuitem
+></menuchoice
+></term>
+                <listitem
+><para
+><action
+>يُشغل <link linkend="kcmbluetooth"
+>وحدة ضبط بلوتوث لبلازما</link
+>.</action
+></para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+        
+        <sect2 id="controlpanel">
+            <title
+>لوحة تحكم بلوتوث الرئيسية</title>
+            
+            <para
+>يمكن استخدام لوحة تحكم بلوتوث الرئيسية للتحكم في نظام بلوتوث الفرعي لحاسوبك. </para>
+            
+            <screenshot>
+                <screeninfo
+>لوحة تحكم بلوتوث في الصينية</screeninfo>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="bluetooth-tray.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                        <phrase
+>لوحة تحكم بلوتوث في الصينية</phrase>
+                    </textobject>
+                </mediaobject>
+            </screenshot>
+            
+            <para
+>يحتوي الصف العلوي من اللوحة على مفتاح بلوتوث لتمكين أو تعطيل وحدة بلوتوث، وزر "الزائد" لـ <link linkend="adddevice"
+>إضافة أجهزة بلوتوث</link
+>، وزر "الضبط" لتشغيل <link linkend="kcmbluetooth"
+>وحدة ضبط بلوتوث لبلازما</link
+>. </para>
+            
+            <para
+>المساحة الرئيسية للوحة مخصصة للأجهزة المقترنة. </para>
+            <para
+>استخدم <guiicon
+><inlinemediaobject
+><imageobject
+><imagedata fileref="network-connect.png" format="PNG"/></imageobject
+></inlinemediaobject
+></guiicon
+> أو <guiicon
+><inlinemediaobject
+><imageobject
+><imagedata fileref="network-disconnect.png" format="PNG"/></imageobject
+></inlinemediaobject
+></guiicon
+> لوصل جهاز أو فصله. </para>
+            
+            <para
+>انقر على زر <guilabel
+>v</guilabel
+> الموجود على يمين عنصر الجهاز لتوسيع خصائصه. </para>
+            
+            <para
+>سيُعرض زر <guibutton
+>أرسل ملفاً...</guibutton
+> فقط إذا كان الجهاز المقابل متصلاً وجاهزاً لاستقبال الملفات. قد تحتاج هذه الميزة إلى تثبيت بعض البرامج الإضافية. إذا لزم الأمر، يرجى اتباع التعليمات ومراجعة وثائق توزيعتك. </para>
+            
+        </sect2>
+    </sect1>
+    
+</article>
