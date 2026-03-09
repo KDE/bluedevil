@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 16:18+0000\n"
-"PO-Revision-Date: 2025-07-03 09:55+0400\n"
+"PO-Revision-Date: 2026-01-18 19:00+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -297,7 +297,7 @@ msgstr "حدد الجهاز المستقبل بواسطة مسار UBI"
 #: sendfile/main.cpp:58
 #, kde-format
 msgid "Files to be sent."
-msgstr "الملفّات الّتي ستُرسل"
+msgstr "الملفّات التي ستُرسل"
 
 #: sendfile/pages/connectingpage.cpp:32 wizard/pages/connect.cpp:39
 #, kde-format
@@ -494,7 +494,7 @@ msgstr "لا يطابق"
 #: wizard/pages/pairing.cpp:128
 #, kde-format
 msgid "Please, confirm that the PIN displayed on %1 matches the wizard one."
-msgstr "فضلًا، أكّد أنّ الرّمز المعروض على %1 يطابق الّذي على المرشد."
+msgstr "فضلًا، أكّد أنّ الرّمز المعروض على %1 يطابق الذي على المرشد."
 
 #: wizard/pages/success.cpp:40
 #, kde-format
