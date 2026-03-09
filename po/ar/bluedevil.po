@@ -374,7 +374,7 @@ msgstr "حدد الجهاز المستقبل بواسطة مسار UBI"
 #: sendfile/main.cpp:56
 #, kde-format
 msgid "Files to be sent."
-msgstr "الملفّات الّتي ستُرسل"
+msgstr "الملفّات التي ستُرسل"
 
 #: sendfile/pages/connectingpage.cpp:32 wizard/pages/connect.cpp:39
 #, kde-format
@@ -583,7 +583,7 @@ msgstr "لا يطابق"
 #: wizard/pages/pairing.cpp:128
 #, kde-format
 msgid "Please, confirm that the PIN displayed on %1 matches the wizard one."
-msgstr "فضلًا، أكّد أنّ الرّمز المعروض على %1 يطابق الّذي على المرشد."
+msgstr "فضلًا، أكّد أنّ الرّمز المعروض على %1 يطابق الذي على المرشد."
 
 #: wizard/pages/success.cpp:40
 #, kde-format
