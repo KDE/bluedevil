@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-28 00:45+0000\n"
+"POT-Creation-Date: 2026-03-18 00:46+0000\n"
 "PO-Revision-Date: 2023-05-28 11:25+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -51,27 +51,27 @@ msgctxt "@title:column Available but not connected Bluetooth devices"
 msgid "Available"
 msgstr ""
 
-#: applet/devicesstateproxymodel.cpp:273
+#: applet/devicesstateproxymodel.cpp:288
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Could not connect to device “%1”"
 msgstr ""
 
-#: applet/devicesstateproxymodel.cpp:288
+#: applet/devicesstateproxymodel.cpp:303
 #, fuzzy, kde-format
 #| msgid "This address is unavailable."
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "Alamat ini tidak tersedia."
 
-#: applet/devicesstateproxymodel.cpp:289
+#: applet/devicesstateproxymodel.cpp:304
 #, fuzzy, kde-format
 #| msgid "Connecting to the device"
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "Mengonek ke peranti"
 
-#: applet/devicesstateproxymodel.cpp:292
+#: applet/devicesstateproxymodel.cpp:307
 #, fuzzy, kde-format
 #| msgid "Obexd service is not running."
 msgctxt "Notification when the connection failed due to NotReady"

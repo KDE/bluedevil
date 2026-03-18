@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-28 00:45+0000\n"
+"POT-Creation-Date: 2026-03-18 00:46+0000\n"
 "PO-Revision-Date: 2026-01-16 10:13+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -51,25 +51,25 @@ msgctxt "@title:column Available but not connected Bluetooth devices"
 msgid "Available"
 msgstr "Disponible"
 
-#: applet/devicesstateproxymodel.cpp:273
+#: applet/devicesstateproxymodel.cpp:288
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Could not connect to device “%1”"
 msgstr "No s'ha pogut connectar amb el dispositiu «%1»"
 
-#: applet/devicesstateproxymodel.cpp:288
+#: applet/devicesstateproxymodel.cpp:303
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "No es pot accedir al dispositiu"
 
-#: applet/devicesstateproxymodel.cpp:289
+#: applet/devicesstateproxymodel.cpp:304
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "Ha fallat la connexió amb el dispositiu"
 
-#: applet/devicesstateproxymodel.cpp:292
+#: applet/devicesstateproxymodel.cpp:307
 #, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"

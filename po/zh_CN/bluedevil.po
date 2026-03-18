@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-28 00:45+0000\n"
+"POT-Creation-Date: 2026-03-18 00:46+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -47,25 +47,25 @@ msgctxt "@title:column Available but not connected Bluetooth devices"
 msgid "Available"
 msgstr "可用"
 
-#: applet/devicesstateproxymodel.cpp:273
+#: applet/devicesstateproxymodel.cpp:288
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Could not connect to device “%1”"
 msgstr "无法连接到设备“%1”"
 
-#: applet/devicesstateproxymodel.cpp:288
+#: applet/devicesstateproxymodel.cpp:303
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "设备无法访问"
 
-#: applet/devicesstateproxymodel.cpp:289
+#: applet/devicesstateproxymodel.cpp:304
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "设备连接失败"
 
-#: applet/devicesstateproxymodel.cpp:292
+#: applet/devicesstateproxymodel.cpp:307
 #, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"

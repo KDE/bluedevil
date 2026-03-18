@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-28 00:45+0000\n"
+"POT-Creation-Date: 2026-03-18 00:46+0000\n"
 "PO-Revision-Date: 2026-01-16 05:17+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -46,25 +46,25 @@ msgctxt "@title:column Available but not connected Bluetooth devices"
 msgid "Available"
 msgstr "ხელმისაწვდომია"
 
-#: applet/devicesstateproxymodel.cpp:273
+#: applet/devicesstateproxymodel.cpp:288
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Could not connect to device “%1”"
 msgstr "მოწყობილობასთან \"%1\" დაკავშირება შეუძლებელია"
 
-#: applet/devicesstateproxymodel.cpp:288
+#: applet/devicesstateproxymodel.cpp:303
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed:HostIsDown"
 msgid "The device is unreachable"
 msgstr "მოწყობილობა მიუწვდომელია"
 
-#: applet/devicesstateproxymodel.cpp:289
+#: applet/devicesstateproxymodel.cpp:304
 #, kde-format
 msgctxt "Notification when the connection failed due to Failed"
 msgid "Connection to the device failed"
 msgstr "მოწყობილობასთან მიერთება ჩავარდა"
 
-#: applet/devicesstateproxymodel.cpp:292
+#: applet/devicesstateproxymodel.cpp:307
 #, kde-format
 msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
