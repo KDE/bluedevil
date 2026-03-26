@@ -1,7 +1,7 @@
 # Finnish messages for bluedevil.
 # Copyright © 2011 This_file_is_part_of_KDE
 # This file is distributed under the same license as the extragear-base package.
-# SPDX-FileCopyrightText: 2011, 2015, 2017, 2018, 2020, 2021, 2022, 2023, 2024, 2025 Tommi Nieminen <translator@legisign.org>
+# SPDX-FileCopyrightText: 2011, 2015, 2017, 2018, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Tommi Nieminen <translator@legisign.org>
 # Jorma Karvonen <karvonen.jorma@gmail.com>, 2011.
 # Lasse Liehu <lasse.liehu@gmail.com>, 2011, 2012, 2013, 2014, 2015, 2016.
 #
@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-18 00:46+0000\n"
-"PO-Revision-Date: 2025-09-04 10:10+0300\n"
+"PO-Revision-Date: 2026-02-26 10:07+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -55,7 +55,7 @@ msgstr "Käytettävissä"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Could not connect to device “%1”"
-msgstr ""
+msgstr "Ei voitu yhdistää laitteeseen ”%1”"
 
 #: applet/devicesstateproxymodel.cpp:303
 #, kde-format
@@ -112,7 +112,7 @@ msgstr "Aiempi ylläpitäjä"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Access request from device “%1”"
-msgstr ""
+msgstr "Laite ”%1” pyytää käyttölupaa"
 
 #: kded/helpers/requestauthorization.cpp:29
 #, kde-format
@@ -144,7 +144,7 @@ msgstr "Torju"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Verify PIN for device “%1”"
-msgstr ""
+msgstr "Tarkista laitteen ”%1” PIN"
 
 #: kded/helpers/requestconfirmation.cpp:28
 #, kde-format
@@ -170,7 +170,7 @@ msgstr "PIN ei ole oikea"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "PIN for device “%1”"
-msgstr ""
+msgstr "Laitteen ”%1” PIN"
 
 #: kded/helpers/requestpin.cpp:36
 #, kde-format
@@ -222,7 +222,7 @@ msgstr "1234"
 #, kde-format
 msgctxt "%1 is the name of a Bluetooth device"
 msgid "Incoming file from device “%1”"
-msgstr ""
+msgstr "Saapuva tiedosto laitteelta ”%1”"
 
 #: kded/receivefilejob.cpp:133
 #, kde-format

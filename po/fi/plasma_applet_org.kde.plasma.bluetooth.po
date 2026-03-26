@@ -1,14 +1,14 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 # Lasse Liehu <lasse.liehu@gmail.com>, 2015.
-# SPDX-FileCopyrightText: 2017, 2020, 2021, 2022, 2023, 2024, 2025 Tommi Nieminen <translator@legisign.org>
+# SPDX-FileCopyrightText: 2017, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Tommi Nieminen <translator@legisign.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-18 00:46+0000\n"
-"PO-Revision-Date: 2025-09-04 10:11+0300\n"
+"PO-Revision-Date: 2026-02-26 10:07+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -40,7 +40,7 @@ msgstr "Käytettävissä"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Could not connect to device “%1”"
-msgstr ""
+msgstr "Ei voitu yhdistää laitteeseen ”%1”"
 
 #: devicesstateproxymodel.cpp:303
 #, kde-format
@@ -84,7 +84,7 @@ msgstr "Lähetä tiedosto"
 #, kde-format
 msgctxt "@action:button Forget a Bluetooth device"
 msgid "Forget"
-msgstr ""
+msgstr "Unohda"
 
 #: qml/DeviceItem.qml:117
 #, kde-format
@@ -291,29 +291,25 @@ msgstr[0] "%1 yhdistetty laite"
 msgstr[1] "%1 yhdistettyä laitetta"
 
 #: qml/main.qml:110
-#, fuzzy, kde-format
-#| msgid "Enable Bluetooth"
+#, kde-format
 msgctxt "@option:check"
 msgid "Enable Bluetooth"
 msgstr "Ota Bluetooth käyttöön"
 
 #: qml/main.qml:122
-#, fuzzy, kde-format
-#| msgid "Pair Device…"
+#, kde-format
 msgctxt "@action:button"
 msgid "Pair Device…"
 msgstr "Kytke laite pariksi…"
 
 #: qml/main.qml:130
-#, fuzzy, kde-format
-#| msgid "Badge icon with number of connected devices"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Show badge with number of connected devices"
 msgstr "Kuvake yhdistettyjen laitteiden määrällä"
 
 #: qml/main.qml:140
-#, fuzzy, kde-format
-#| msgid "Configure &Bluetooth…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Bluetooth…"
 msgstr "&Bluetooth-asetukset…"
