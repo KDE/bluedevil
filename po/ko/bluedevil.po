@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# SPDX-FileCopyrightText: 2010, 2011, 2014, 2015, 2016, 2017, 2018, 2020, 2021, 2022, 2023, 2024, 2025 Shinjo Park <kde@peremen.name>
+# SPDX-FileCopyrightText: 2010, 2011, 2014, 2015, 2016, 2017, 2018, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-28 02:43+0000\n"
-"PO-Revision-Date: 2025-10-09 00:08+0200\n"
+"PO-Revision-Date: 2026-04-26 22:57+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -49,7 +49,7 @@ msgstr "사용 가능"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Could not connect to device “%1”"
-msgstr ""
+msgstr "\"%1\" 장치에 연결할 수 없음"
 
 #: applet/devicesstateproxymodel.cpp:288
 #, kde-format
@@ -106,7 +106,7 @@ msgstr "이전 관리자"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Access request from device “%1”"
-msgstr ""
+msgstr "\"%1\" 장치에서 접근 요청됨"
 
 #: kded/helpers/requestauthorization.cpp:29
 #, kde-format
@@ -138,7 +138,7 @@ msgstr "거부"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Verify PIN for device “%1”"
-msgstr ""
+msgstr "\"%1\" 장치의 PIN 검증"
 
 #: kded/helpers/requestconfirmation.cpp:28
 #, kde-format
@@ -164,7 +164,7 @@ msgstr "PIN 올바르지 않음"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "PIN for device “%1”"
-msgstr ""
+msgstr "\"%1\" 장치의 PIN"
 
 #: kded/helpers/requestpin.cpp:36
 #, kde-format
@@ -214,7 +214,7 @@ msgstr "1234"
 #, kde-format
 msgctxt "%1 is the name of a Bluetooth device"
 msgid "Incoming file from device “%1”"
-msgstr ""
+msgstr "\"%1\" 장치에서 파일을 보내는 중"
 
 #: kded/receivefilejob.cpp:133
 #, kde-format
