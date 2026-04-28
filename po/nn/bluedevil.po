@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-18 00:46+0000\n"
-"PO-Revision-Date: 2024-07-26 15:10+0200\n"
+"PO-Revision-Date: 2026-04-27 21:39+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.11.70\n"
+"X-Generator: Lokalize 26.04.0\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -33,25 +33,25 @@ msgstr "karl@huftis.org"
 #, kde-format
 msgctxt "@title:column Blocked Bluetooth devices"
 msgid "Blocked"
-msgstr ""
+msgstr "Blokkerte"
 
 #: applet/devicesproxymodel.cpp:54
 #, kde-format
 msgctxt "@title:column Connected Bluetooth devices"
 msgid "Connected"
-msgstr ""
+msgstr "Tilkopla"
 
 #: applet/devicesproxymodel.cpp:56
 #, kde-format
 msgctxt "@title:column Available but not connected Bluetooth devices"
 msgid "Available"
-msgstr ""
+msgstr "Tilgjengelege"
 
 #: applet/devicesstateproxymodel.cpp:288
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Could not connect to device “%1”"
-msgstr ""
+msgstr "Klarte ikkje kopla til eininga «%1»"
 
 #: applet/devicesstateproxymodel.cpp:303
 #, kde-format
@@ -78,11 +78,10 @@ msgid "%1 Network (%2)"
 msgstr "%1 nettverk (%2)"
 
 #: kcm/bluetoothmoduledata.cpp:20
-#, fuzzy, kde-format
-#| msgid "Sending file over Bluetooth"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
-msgstr "Sender fil over Bluetooth"
+msgstr "Bruk Bluetooth"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -109,7 +108,7 @@ msgstr "Førre vedlikehaldar"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Access request from device “%1”"
-msgstr ""
+msgstr "Tilgangsførespurnad frå eininga «%1»"
 
 #: kded/helpers/requestauthorization.cpp:29
 #, kde-format
@@ -141,7 +140,7 @@ msgstr "Avvis"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Verify PIN for device “%1”"
-msgstr ""
+msgstr "Stadfest PIN for eininga «%1»"
 
 #: kded/helpers/requestconfirmation.cpp:28
 #, kde-format
@@ -167,7 +166,7 @@ msgstr "Feil PIN"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "PIN for device “%1”"
-msgstr ""
+msgstr "PIN for eininga «%1»"
 
 #: kded/helpers/requestpin.cpp:36
 #, kde-format
@@ -219,7 +218,7 @@ msgstr "1234"
 #, kde-format
 msgctxt "%1 is the name of a Bluetooth device"
 msgid "Incoming file from device “%1”"
-msgstr ""
+msgstr "Får fil frå eininga «%1»"
 
 #: kded/receivefilejob.cpp:133
 #, kde-format
@@ -450,7 +449,7 @@ msgstr "Klarte ikkje starta org.bluez.obex-teneste: %1"
 #: settings/bluedevilglobalsettings.kcfg:10
 #, kde-format
 msgid "Option to determine the bluetooth state at launch"
-msgstr ""
+msgstr "Val å fastslå Bluetooth-tilstand ved oppstart"
 
 #. i18n: ectx: label, entry (saveUrl), group (General)
 #: settings/filereceiver.kcfg:11
@@ -513,7 +512,7 @@ msgstr "Søk …"
 #: wizard/pages/discover.ui:42
 #, kde-format
 msgid "Show unnamed devices"
-msgstr ""
+msgstr "Vis namnlause einingar"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: wizard/pages/discover.ui:71

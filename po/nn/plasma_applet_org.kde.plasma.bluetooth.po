@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-18 00:46+0000\n"
-"PO-Revision-Date: 2024-08-08 22:04+0200\n"
+"PO-Revision-Date: 2026-04-27 21:40+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -17,13 +17,13 @@ msgstr ""
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 24.11.70\n"
+"X-Generator: Lokalize 26.04.0\n"
 
 #: devicesproxymodel.cpp:51
 #, kde-format
 msgctxt "@title:column Blocked Bluetooth devices"
 msgid "Blocked"
-msgstr ""
+msgstr "Blokkerte"
 
 #: devicesproxymodel.cpp:54
 #, fuzzy, kde-format
@@ -36,13 +36,13 @@ msgstr "Kopla til"
 #, kde-format
 msgctxt "@title:column Available but not connected Bluetooth devices"
 msgid "Available"
-msgstr ""
+msgstr "Tilgjengelege"
 
 #: devicesstateproxymodel.cpp:288
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Could not connect to device “%1”"
-msgstr ""
+msgstr "Klarte ikkje kopla til eininga «%1»"
 
 #: devicesstateproxymodel.cpp:303
 #, kde-format
@@ -86,7 +86,7 @@ msgstr "Send fil"
 #, kde-format
 msgctxt "@action:button Forget a Bluetooth device"
 msgid "Forget"
-msgstr ""
+msgstr "Gløym"
 
 #: qml/DeviceItem.qml:117
 #, kde-format
@@ -157,7 +157,7 @@ msgstr "%1 % batteri"
 #: qml/DeviceItem.qml:265
 #, kde-format
 msgid "Headset"
-msgstr ""
+msgstr "Hovudsett"
 
 #: qml/DeviceItem.qml:271
 #, kde-format
@@ -167,22 +167,22 @@ msgstr "Lydeining"
 #: qml/DeviceItem.qml:275
 #, kde-format
 msgid "Keyboard"
-msgstr ""
+msgstr "Tastatur"
 
 #: qml/DeviceItem.qml:278
 #, kde-format
 msgid "Mouse"
-msgstr ""
+msgstr "Mus"
 
 #: qml/DeviceItem.qml:281
 #, kde-format
 msgid "Joypad"
-msgstr ""
+msgstr "Spelkontrollar"
 
 #: qml/DeviceItem.qml:284
 #, kde-format
 msgid "Drawing tablet"
-msgstr ""
+msgstr "Teikneplate"
 
 #: qml/DeviceItem.qml:288
 #, kde-format
@@ -192,12 +192,12 @@ msgstr "Telefon"
 #: qml/DeviceItem.qml:291
 #, kde-format
 msgid "Camera"
-msgstr ""
+msgstr "Kamera"
 
 #: qml/DeviceItem.qml:294
 #, kde-format
 msgid "Printer"
-msgstr ""
+msgstr "Skrivar"
 
 #: qml/DeviceItem.qml:301
 #, kde-format
@@ -293,29 +293,25 @@ msgstr[0] "%1 tilkopla eining"
 msgstr[1] "%1 tilkopla einingar"
 
 #: qml/main.qml:110
-#, fuzzy, kde-format
-#| msgid "Enable Bluetooth"
+#, kde-format
 msgctxt "@option:check"
 msgid "Enable Bluetooth"
 msgstr "Bruk Bluetooth"
 
 #: qml/main.qml:122
-#, fuzzy, kde-format
-#| msgid "Pair Device…"
+#, kde-format
 msgctxt "@action:button"
 msgid "Pair Device…"
 msgstr "Par ny eining …"
 
 #: qml/main.qml:130
-#, fuzzy, kde-format
-#| msgid "No connected devices"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Show badge with number of connected devices"
-msgstr "Ingen tilkopla einingar"
+msgstr "Vis symbol med talet på tilkopla einingar"
 
 #: qml/main.qml:140
-#, fuzzy, kde-format
-#| msgid "Configure &Bluetooth…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Bluetooth…"
 msgstr "Set opp &Bluetooth …"
@@ -324,4 +320,4 @@ msgstr "Set opp &Bluetooth …"
 #, kde-format
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
-msgstr ""
+msgstr "Fleire handlingar"
