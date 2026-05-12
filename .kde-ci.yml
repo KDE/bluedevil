@@ -26,7 +26,8 @@ Dependencies:
     'frameworks/solid': '@latest-kf6'
     'frameworks/kcmutils': '@latest-kf6'
     'plasma/libplasma': '@same'
+
 Options:
- require-passing-tests-on: ['Linux', 'FreeBSD']
+ require-passing-tests-on: ['@all']
  run-qmllint: true
  enable-lsan: True
