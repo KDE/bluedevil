@@ -407,17 +407,3 @@ msgstr "Друго"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
-
-#~ msgid "Forget this Device?"
-#~ msgstr "Да се забрави ли това устройството?"
-
-#~ msgid "Are you sure you want to forget \"%1\"?"
-#~ msgstr "Наистина ли искате да забравите „%1“?"
-
-#~ msgctxt "@action:button"
-#~ msgid "Forget Device"
-#~ msgstr "Забравяне на устройството"
-
-#~ msgctxt "@action:button"
-#~ msgid "Cancel"
-#~ msgstr "Отказ"
