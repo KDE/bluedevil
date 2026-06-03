@@ -18,8 +18,6 @@
 
 #include <KLocalizedString>
 #include <KNotification>
-#include <KWindowSystem>
-#include <KX11Extras>
 
 RequestPin::RequestPin(BluezQt::DevicePtr device, bool numeric, QObject *parent)
     : QObject(parent)
@@ -88,10 +86,6 @@ void RequestPin::introducePin()
     dialog->setWindowFlags(Qt::WindowStaysOnTopHint);
 
     dialog->show();
-
-    if (KWindowSystem::isPlatformX11()) {
-        KX11Extras::forceActiveWindow(dialog->winId());
-    }
 }
 
 void RequestPin::checkPin(const QString &pin)
