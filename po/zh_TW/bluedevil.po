@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-18 00:46+0000\n"
+"POT-Creation-Date: 2026-06-06 00:44+0000\n"
 "PO-Revision-Date: 2026-01-19 19:16+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -164,13 +164,13 @@ msgctxt "Notification button to say that the PIN is wrong"
 msgid "PIN incorrect"
 msgstr "PIN 碼不正確"
 
-#: kded/helpers/requestpin.cpp:32
+#: kded/helpers/requestpin.cpp:30
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "PIN for device “%1”"
 msgstr "裝置「%1」的 PIN 碼"
 
-#: kded/helpers/requestpin.cpp:36
+#: kded/helpers/requestpin.cpp:34
 #, kde-format
 msgctxt ""
 "Shown in a notification to announce that a PIN is needed to accomplish a "
@@ -178,7 +178,7 @@ msgctxt ""
 msgid "PIN needed to pair with %1"
 msgstr "PIN 碼必須與 %1 配對"
 
-#: kded/helpers/requestpin.cpp:39
+#: kded/helpers/requestpin.cpp:37
 #, kde-format
 msgctxt ""
 "Notification button which once clicked, a dialog to introduce the PIN will "
@@ -186,13 +186,13 @@ msgctxt ""
 msgid "Introduce PIN"
 msgstr "介紹 PIN 碼"
 
-#: kded/helpers/requestpin.cpp:59
+#: kded/helpers/requestpin.cpp:57
 #, kde-format
 msgctxt "Shown in the caption of a dialog where the user introduce the PIN"
 msgid "Introduce PIN"
 msgstr "介紹 PIN 碼"
 
-#: kded/helpers/requestpin.cpp:66
+#: kded/helpers/requestpin.cpp:64
 #, kde-format
 msgctxt ""
 "Shown in a dialog which asks to introduce a PIN that will be used to pair a "
