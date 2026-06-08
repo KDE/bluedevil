@@ -26,6 +26,7 @@ Dependencies:
     'frameworks/solid': '@latest-kf6'
     'frameworks/kcmutils': '@latest-kf6'
     'plasma/libplasma': '@same'
+    'plasma/plasma-workspace': '@same'
 
 Options:
  require-passing-tests-on: ['@all']

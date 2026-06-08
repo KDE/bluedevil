@@ -50,3 +50,8 @@ plasma_add_applet(org.kde.plasma.bluetooth
         main.xml
     GENERATE_APPLET_CLASS
 )
+
+add_test(NAME applet_smoketest COMMAND plasmawindowed --smoke-test org.kde.plasma.bluetooth)
+set_tests_properties(applet_smoketest PROPERTIES
+    ENVIRONMENT_MODIFICATION QT_PLUGIN_PATH=path_list_prepend:${CMAKE_BINARY_DIR}/bin
+)
