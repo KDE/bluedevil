@@ -602,8 +602,3 @@ msgstr "Устройството е настроено и вече може да
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "Устройството „%1“ беше конфигурирано и сега може да се използва."
-
-#~ msgctxt ""
-#~ "@label %1 is human-readable device name, %2 is low-level device address"
-#~ msgid "%1 (%2)"
-#~ msgstr "%1 (%2)"
