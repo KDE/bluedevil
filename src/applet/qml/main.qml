@@ -129,21 +129,23 @@ PlasmoidItem {
             id: toggleBadgeAction
             text: i18nc("@item:inmenu", "Show badge with number of connected devices")
             icon.name: "draw-number-symbolic"
+            alwaysShowAsMenu: true
             checkable: true
             checked: Plasmoid.configuration.showNumberOfConnectedDevices
             onTriggered: checked => {
                 Plasmoid.configuration.showNumberOfConnectedDevices = checked;
             }
-        },
-        PlasmaCore.Action {
-            id: configureAction
-            text: i18nc("@action:inmenu", "Configure &Bluetooth…")
-            icon.name: "configure-symbolic"
-            onTriggered: checked => KCMUtils.KCMLauncher.openSystemSettings("kcm_bluetooth")
         }
     ]
 
+    PlasmaCore.Action {
+        id: configureAction
+        text: i18nc("@action:inmenu", "Configure &Bluetooth…")
+        icon.name: "configure-symbolic"
+        onTriggered: checked => KCMUtils.KCMLauncher.openSystemSettings("kcm_bluetooth")
+    }
+
     Component.onCompleted: {
-        Plasmoid.removeInternalAction("configure");
+        Plasmoid.setInternalAction("configure", configureAction);
     }
 }

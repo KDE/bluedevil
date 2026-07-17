@@ -86,15 +86,31 @@ PlasmaExtras.PlasmoidHeading {
                 PlasmaExtras.MenuItem {
                     action: toggleBadgeAction
                 }
-                PlasmaExtras.MenuItem {
-                    action: configureAction
-                }
             }
 
             visible: !(Plasmoid.containmentDisplayHints & PlasmaCore.Types.ContainmentDrawsPlasmoidHeading)
 
             PlasmaComponents3.ToolTip {
                 text: moreActionsButton.text
+            }
+        }
+
+        PlasmaComponents3.ToolButton {
+            id: configureButton
+
+            readonly property PlasmaCore.Action qAction: root.configureAction
+
+            visible: !(Plasmoid.containmentDisplayHints & PlasmaCore.Types.ContainmentDrawsPlasmoidHeading)
+            enabled: qAction.visible
+            text: qAction.text
+            display: PlasmaComponents3.AbstractButton.IconOnly
+
+            icon.name: qAction.icon.name
+
+            onClicked: qAction.trigger()
+
+            PlasmaComponents3.ToolTip {
+                text: configureButton.qAction.text
             }
         }
     }
