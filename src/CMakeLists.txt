@@ -12,3 +12,6 @@ install(FILES bluedevil.notifyrc DESTINATION ${KDE_INSTALL_KNOTIFYRCDIR})
 
 install(FILES bluedevil-mime.xml DESTINATION ${KDE_INSTALL_MIMEDIR})
 update_xdg_mimetypes(${KDE_INSTALL_MIMEDIR})
+
+install(FILES settings/bluedevilglobalsettings.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
+install(FILES settings/filereceiver.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
