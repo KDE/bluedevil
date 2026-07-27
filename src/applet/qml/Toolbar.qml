@@ -59,7 +59,7 @@ PlasmaExtras.PlasmoidHeading {
             text: qAction.text
             display: PlasmaComponents3.AbstractButton.IconOnly
 
-            icon.name: "list-add-symbolic"
+            icon.name: qAction.icon.name
 
             onClicked: qAction.trigger()
 
