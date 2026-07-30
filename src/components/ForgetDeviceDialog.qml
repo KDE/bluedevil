@@ -34,8 +34,8 @@ QtObject {
 
             required property BluezQt.Device device
 
-            title: i18n("Forget this Device?")
-            subtitle: i18n("Are you sure you want to forget \"%1\"?", device.name)
+            title: i18nd("bluedevil", "Forget this Device?")
+            subtitle: i18nd("bluedevil", "Are you sure you want to forget \"%1\"?", device.name)
 
             parent: root.parent
             showCloseButton: false
@@ -47,7 +47,7 @@ QtObject {
             standardButtons: Kirigami.Dialog.NoButton
             customFooterActions: [
                 Kirigami.Action {
-                    text: i18nc("@action:button", "Forget Device")
+                    text: i18ndc("bluedevil", "@action:button", "Forget Device")
                     icon.name: "edit-delete-remove-symbolic"
                     onTriggered: {
                         dialog.accept();
@@ -55,7 +55,7 @@ QtObject {
                 },
                 Kirigami.Action {
                     id: cancelAction
-                    text: i18nc("@action:button", "Cancel")
+                    text: i18ndc("bluedevil", "@action:button", "Cancel")
                     icon.name: "dialog-cancel-symbolic"
                     onTriggered: {
                         dialog.reject();
