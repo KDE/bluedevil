@@ -3,8 +3,6 @@
 
 ecm_add_qml_module(bluedevilcomponents URI org.kde.bluedevil.components GENERATE_PLUGIN_SOURCE)
 
-target_compile_definitions(bluedevilcomponents PRIVATE TRANSLATION_DOMAIN="bluedevil")
-
 ecm_target_qml_sources(bluedevilcomponents SOURCES
      ForgetDeviceDialog.qml
  )
