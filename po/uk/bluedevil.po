@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-06 00:44+0000\n"
+"POT-Creation-Date: 2026-08-05 00:48+0000\n"
 "PO-Revision-Date: 2026-01-16 05:13+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -31,59 +31,29 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "yurchor@gmail.com"
 
-#: applet/devicesproxymodel.cpp:51
+#: components/ForgetDeviceDialog.qml:37
 #, kde-format
-msgctxt "@title:column Blocked Bluetooth devices"
-msgid "Blocked"
-msgstr "Заблоковані"
+msgid "Forget this Device?"
+msgstr ""
 
-#: applet/devicesproxymodel.cpp:54
+#: components/ForgetDeviceDialog.qml:38
 #, kde-format
-msgctxt "@title:column Connected Bluetooth devices"
-msgid "Connected"
-msgstr "З'єднані"
+msgid "Are you sure you want to forget \"%1\"?"
+msgstr ""
 
-#: applet/devicesproxymodel.cpp:56
-#, kde-format
-msgctxt "@title:column Available but not connected Bluetooth devices"
-msgid "Available"
-msgstr "Доступні"
+#: components/ForgetDeviceDialog.qml:50
+#, fuzzy, kde-format
+#| msgid "Known Devices"
+msgctxt "@action:button"
+msgid "Forget Device"
+msgstr "Відомі пристрої"
 
-#: applet/devicesstateproxymodel.cpp:288
-#, kde-format
-msgctxt "@label %1 is the name of a Bluetooth device"
-msgid "Could not connect to device “%1”"
-msgstr "Не вдалося встановити з’єднання з пристроєм «%1»"
-
-#: applet/devicesstateproxymodel.cpp:303
-#, kde-format
-msgctxt "Notification when the connection failed due to Failed:HostIsDown"
-msgid "The device is unreachable"
-msgstr "Пристрій недоступний"
-
-#: applet/devicesstateproxymodel.cpp:304
-#, kde-format
-msgctxt "Notification when the connection failed due to Failed"
-msgid "Connection to the device failed"
-msgstr "Не вдалося встановити з’єднання із пристроєм"
-
-#: applet/devicesstateproxymodel.cpp:307
-#, kde-format
-msgctxt "Notification when the connection failed due to NotReady"
-msgid "The device is not ready"
-msgstr "Пристрій неготовий"
-
-#: kcm/bluetooth.cpp:135
-#, kde-format
-msgctxt "DeviceName Network (Service)"
-msgid "%1 Network (%2)"
-msgstr "Мережа %1 (%2)"
-
-#: kcm/bluetoothmoduledata.cpp:20
-#, kde-format
-msgctxt "@info:tooltip"
-msgid "Enable Bluetooth"
-msgstr "Увімкнути Bluetooth"
+#: components/ForgetDeviceDialog.qml:58
+#, fuzzy, kde-format
+#| msgid "Cancel"
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr "Скасувати"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -609,6 +579,42 @@ msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "Пристрій «%1» налаштовано. Тепер ним можна користуватися."
 
+#~ msgctxt "@title:column Blocked Bluetooth devices"
+#~ msgid "Blocked"
+#~ msgstr "Заблоковані"
+
+#~ msgctxt "@title:column Connected Bluetooth devices"
+#~ msgid "Connected"
+#~ msgstr "З'єднані"
+
+#~ msgctxt "@title:column Available but not connected Bluetooth devices"
+#~ msgid "Available"
+#~ msgstr "Доступні"
+
+#~ msgctxt "@label %1 is the name of a Bluetooth device"
+#~ msgid "Could not connect to device “%1”"
+#~ msgstr "Не вдалося встановити з’єднання з пристроєм «%1»"
+
+#~ msgctxt "Notification when the connection failed due to Failed:HostIsDown"
+#~ msgid "The device is unreachable"
+#~ msgstr "Пристрій недоступний"
+
+#~ msgctxt "Notification when the connection failed due to Failed"
+#~ msgid "Connection to the device failed"
+#~ msgstr "Не вдалося встановити з’єднання із пристроєм"
+
+#~ msgctxt "Notification when the connection failed due to NotReady"
+#~ msgid "The device is not ready"
+#~ msgstr "Пристрій неготовий"
+
+#~ msgctxt "DeviceName Network (Service)"
+#~ msgid "%1 Network (%2)"
+#~ msgstr "Мережа %1 (%2)"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Enable Bluetooth"
+#~ msgstr "Увімкнути Bluetooth"
+
 #~ msgctxt ""
 #~ "@label %1 is human-readable device name, %2 is low-level device address"
 #~ msgid "%1 (%2)"
@@ -1014,9 +1020,6 @@ msgstr "Пристрій «%1» налаштовано. Тепер ним мож
 
 #~ msgid "Turn Bluetooth On"
 #~ msgstr "Увімкнути Bluetooth"
-
-#~ msgid "Known Devices"
-#~ msgstr "Відомі пристрої"
 
 #~ msgid "Configure Bluetooth"
 #~ msgstr "Налаштувати Bluetooth"

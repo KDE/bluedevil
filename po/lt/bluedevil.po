@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-06 00:44+0000\n"
+"POT-Creation-Date: 2026-08-05 00:48+0000\n"
 "PO-Revision-Date: 2026-01-18 00:02+0200\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: lt <kde-i18n-lt@kde.org>\n"
@@ -29,59 +29,29 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "liudas@akmc.lt, <>"
 
-#: applet/devicesproxymodel.cpp:51
+#: components/ForgetDeviceDialog.qml:37
 #, kde-format
-msgctxt "@title:column Blocked Bluetooth devices"
-msgid "Blocked"
-msgstr "Užblokuotas"
+msgid "Forget this Device?"
+msgstr ""
 
-#: applet/devicesproxymodel.cpp:54
+#: components/ForgetDeviceDialog.qml:38
 #, kde-format
-msgctxt "@title:column Connected Bluetooth devices"
-msgid "Connected"
-msgstr "Prijungtas"
+msgid "Are you sure you want to forget \"%1\"?"
+msgstr ""
 
-#: applet/devicesproxymodel.cpp:56
-#, kde-format
-msgctxt "@title:column Available but not connected Bluetooth devices"
-msgid "Available"
-msgstr "Prieinamas"
+#: components/ForgetDeviceDialog.qml:50
+#, fuzzy, kde-format
+#| msgid "Remove device"
+msgctxt "@action:button"
+msgid "Forget Device"
+msgstr "Šalinti įrenginį"
 
-#: applet/devicesstateproxymodel.cpp:288
-#, kde-format
-msgctxt "@label %1 is the name of a Bluetooth device"
-msgid "Could not connect to device “%1”"
-msgstr "Nepavyko prisijungti prie įrenginio „%1“"
-
-#: applet/devicesstateproxymodel.cpp:303
-#, kde-format
-msgctxt "Notification when the connection failed due to Failed:HostIsDown"
-msgid "The device is unreachable"
-msgstr "Įrenginys nepasiekiamas"
-
-#: applet/devicesstateproxymodel.cpp:304
-#, kde-format
-msgctxt "Notification when the connection failed due to Failed"
-msgid "Connection to the device failed"
-msgstr "Ryšys su įrenginiu patyrė nesėkmę"
-
-#: applet/devicesstateproxymodel.cpp:307
-#, kde-format
-msgctxt "Notification when the connection failed due to NotReady"
-msgid "The device is not ready"
-msgstr "Įrenginys nepasiruošęs"
-
-#: kcm/bluetooth.cpp:135
-#, kde-format
-msgctxt "DeviceName Network (Service)"
-msgid "%1 Network (%2)"
-msgstr "%1 Tinklas (%2)"
-
-#: kcm/bluetoothmoduledata.cpp:20
-#, kde-format
-msgctxt "@info:tooltip"
-msgid "Enable Bluetooth"
-msgstr "Įjungti Bluetooth"
+#: components/ForgetDeviceDialog.qml:58
+#, fuzzy, kde-format
+#| msgid "Cancel"
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr "Atsisakyti"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -606,6 +576,42 @@ msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "Įrenginys \"%1\" nustatytas ir dabar gali būti naudojamas."
 
+#~ msgctxt "@title:column Blocked Bluetooth devices"
+#~ msgid "Blocked"
+#~ msgstr "Užblokuotas"
+
+#~ msgctxt "@title:column Connected Bluetooth devices"
+#~ msgid "Connected"
+#~ msgstr "Prijungtas"
+
+#~ msgctxt "@title:column Available but not connected Bluetooth devices"
+#~ msgid "Available"
+#~ msgstr "Prieinamas"
+
+#~ msgctxt "@label %1 is the name of a Bluetooth device"
+#~ msgid "Could not connect to device “%1”"
+#~ msgstr "Nepavyko prisijungti prie įrenginio „%1“"
+
+#~ msgctxt "Notification when the connection failed due to Failed:HostIsDown"
+#~ msgid "The device is unreachable"
+#~ msgstr "Įrenginys nepasiekiamas"
+
+#~ msgctxt "Notification when the connection failed due to Failed"
+#~ msgid "Connection to the device failed"
+#~ msgstr "Ryšys su įrenginiu patyrė nesėkmę"
+
+#~ msgctxt "Notification when the connection failed due to NotReady"
+#~ msgid "The device is not ready"
+#~ msgstr "Įrenginys nepasiruošęs"
+
+#~ msgctxt "DeviceName Network (Service)"
+#~ msgid "%1 Network (%2)"
+#~ msgstr "%1 Tinklas (%2)"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Enable Bluetooth"
+#~ msgstr "Įjungti Bluetooth"
+
 #~ msgctxt ""
 #~ "@label %1 is human-readable device name, %2 is low-level device address"
 #~ msgid "%1 (%2)"
@@ -847,9 +853,6 @@ msgstr "Įrenginys \"%1\" nustatytas ir dabar gali būti naudojamas."
 
 #~ msgid "Add device"
 #~ msgstr "Pridėti įrenginį"
-
-#~ msgid "Remove device"
-#~ msgstr "Šalinti įrenginį"
 
 #~ msgid "Bluetooth Advanced Settings"
 #~ msgstr "Išplėstinės Bluetooth nuostatos"

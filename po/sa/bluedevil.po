@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-06 00:44+0000\n"
+"POT-Creation-Date: 2026-08-05 00:48+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -29,60 +29,28 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "skkalwar999@gmail.com"
 
-#: applet/devicesproxymodel.cpp:51
+#: components/ForgetDeviceDialog.qml:37
 #, kde-format
-msgctxt "@title:column Blocked Bluetooth devices"
-msgid "Blocked"
+msgid "Forget this Device?"
 msgstr ""
 
-#: applet/devicesproxymodel.cpp:54
+#: components/ForgetDeviceDialog.qml:38
 #, kde-format
-msgctxt "@title:column Connected Bluetooth devices"
-msgid "Connected"
+msgid "Are you sure you want to forget \"%1\"?"
 msgstr ""
 
-#: applet/devicesproxymodel.cpp:56
+#: components/ForgetDeviceDialog.qml:50
 #, kde-format
-msgctxt "@title:column Available but not connected Bluetooth devices"
-msgid "Available"
+msgctxt "@action:button"
+msgid "Forget Device"
 msgstr ""
 
-#: applet/devicesstateproxymodel.cpp:288
-#, kde-format
-msgctxt "@label %1 is the name of a Bluetooth device"
-msgid "Could not connect to device “%1”"
-msgstr ""
-
-#: applet/devicesstateproxymodel.cpp:303
-#, kde-format
-msgctxt "Notification when the connection failed due to Failed:HostIsDown"
-msgid "The device is unreachable"
-msgstr "यन्त्रम् अप्राप्यम् अस्ति"
-
-#: applet/devicesstateproxymodel.cpp:304
-#, kde-format
-msgctxt "Notification when the connection failed due to Failed"
-msgid "Connection to the device failed"
-msgstr "यन्त्रेण सह संयोजनं विफलम् अभवत्"
-
-#: applet/devicesstateproxymodel.cpp:307
-#, kde-format
-msgctxt "Notification when the connection failed due to NotReady"
-msgid "The device is not ready"
-msgstr "यन्त्रं सज्जं नास्ति"
-
-#: kcm/bluetooth.cpp:135
-#, kde-format
-msgctxt "DeviceName Network (Service)"
-msgid "%1 Network (%2)"
-msgstr "%1 संजाल (%2) ."
-
-#: kcm/bluetoothmoduledata.cpp:20
+#: components/ForgetDeviceDialog.qml:58
 #, fuzzy, kde-format
-#| msgid "Sending file over Bluetooth"
-msgctxt "@info:tooltip"
-msgid "Enable Bluetooth"
-msgstr "ब्लूटूथ् मार्गेण सञ्चिकां प्रेषयति"
+#| msgid "Cancel"
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr "निरसयतु"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -602,6 +570,28 @@ msgstr "यन्त्रं स्थापितं अधुना तस्
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "'%1' इति यन्त्रं स्थापितं अधुना उपयोक्तुं शक्यते ।"
+
+#~ msgctxt "Notification when the connection failed due to Failed:HostIsDown"
+#~ msgid "The device is unreachable"
+#~ msgstr "यन्त्रम् अप्राप्यम् अस्ति"
+
+#~ msgctxt "Notification when the connection failed due to Failed"
+#~ msgid "Connection to the device failed"
+#~ msgstr "यन्त्रेण सह संयोजनं विफलम् अभवत्"
+
+#~ msgctxt "Notification when the connection failed due to NotReady"
+#~ msgid "The device is not ready"
+#~ msgstr "यन्त्रं सज्जं नास्ति"
+
+#~ msgctxt "DeviceName Network (Service)"
+#~ msgid "%1 Network (%2)"
+#~ msgstr "%1 संजाल (%2) ."
+
+#, fuzzy
+#~| msgid "Sending file over Bluetooth"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Enable Bluetooth"
+#~ msgstr "ब्लूटूथ् मार्गेण सञ्चिकां प्रेषयति"
 
 #~ msgctxt ""
 #~ "@label %1 is human-readable device name, %2 is low-level device address"

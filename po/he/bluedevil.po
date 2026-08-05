@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-06 00:44+0000\n"
+"POT-Creation-Date: 2026-08-05 00:48+0000\n"
 "PO-Revision-Date: 2026-01-16 10:52+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -30,59 +30,29 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "ttv200@gmail.com,kde-l10n-he@kde.org"
 
-#: applet/devicesproxymodel.cpp:51
+#: components/ForgetDeviceDialog.qml:37
 #, kde-format
-msgctxt "@title:column Blocked Bluetooth devices"
-msgid "Blocked"
-msgstr "חסום"
+msgid "Forget this Device?"
+msgstr ""
 
-#: applet/devicesproxymodel.cpp:54
+#: components/ForgetDeviceDialog.qml:38
 #, kde-format
-msgctxt "@title:column Connected Bluetooth devices"
-msgid "Connected"
-msgstr "מחובר"
+msgid "Are you sure you want to forget \"%1\"?"
+msgstr ""
 
-#: applet/devicesproxymodel.cpp:56
-#, kde-format
-msgctxt "@title:column Available but not connected Bluetooth devices"
-msgid "Available"
-msgstr "זמין"
+#: components/ForgetDeviceDialog.qml:50
+#, fuzzy, kde-format
+#| msgid "Remove device"
+msgctxt "@action:button"
+msgid "Forget Device"
+msgstr "הסר התקן"
 
-#: applet/devicesstateproxymodel.cpp:288
-#, kde-format
-msgctxt "@label %1 is the name of a Bluetooth device"
-msgid "Could not connect to device “%1”"
-msgstr "לא ניתן להתחבר למכשיר „%1”"
-
-#: applet/devicesstateproxymodel.cpp:303
-#, kde-format
-msgctxt "Notification when the connection failed due to Failed:HostIsDown"
-msgid "The device is unreachable"
-msgstr "ההתקן לא נגיש"
-
-#: applet/devicesstateproxymodel.cpp:304
-#, kde-format
-msgctxt "Notification when the connection failed due to Failed"
-msgid "Connection to the device failed"
-msgstr "החיבור להתקן נכשל"
-
-#: applet/devicesstateproxymodel.cpp:307
-#, kde-format
-msgctxt "Notification when the connection failed due to NotReady"
-msgid "The device is not ready"
-msgstr "ההתקן לא מוכן"
-
-#: kcm/bluetooth.cpp:135
-#, kde-format
-msgctxt "DeviceName Network (Service)"
-msgid "%1 Network (%2)"
-msgstr "רשת %1 (%2)"
-
-#: kcm/bluetoothmoduledata.cpp:20
-#, kde-format
-msgctxt "@info:tooltip"
-msgid "Enable Bluetooth"
-msgstr "הפעלת בלוטות׳"
+#: components/ForgetDeviceDialog.qml:58
+#, fuzzy, kde-format
+#| msgid "Cancel"
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr "ביטול"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -603,6 +573,42 @@ msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "ההתקן ‚%1’ הוגדר וניתן להשתמש בו מעתה."
 
+#~ msgctxt "@title:column Blocked Bluetooth devices"
+#~ msgid "Blocked"
+#~ msgstr "חסום"
+
+#~ msgctxt "@title:column Connected Bluetooth devices"
+#~ msgid "Connected"
+#~ msgstr "מחובר"
+
+#~ msgctxt "@title:column Available but not connected Bluetooth devices"
+#~ msgid "Available"
+#~ msgstr "זמין"
+
+#~ msgctxt "@label %1 is the name of a Bluetooth device"
+#~ msgid "Could not connect to device “%1”"
+#~ msgstr "לא ניתן להתחבר למכשיר „%1”"
+
+#~ msgctxt "Notification when the connection failed due to Failed:HostIsDown"
+#~ msgid "The device is unreachable"
+#~ msgstr "ההתקן לא נגיש"
+
+#~ msgctxt "Notification when the connection failed due to Failed"
+#~ msgid "Connection to the device failed"
+#~ msgstr "החיבור להתקן נכשל"
+
+#~ msgctxt "Notification when the connection failed due to NotReady"
+#~ msgid "The device is not ready"
+#~ msgstr "ההתקן לא מוכן"
+
+#~ msgctxt "DeviceName Network (Service)"
+#~ msgid "%1 Network (%2)"
+#~ msgstr "רשת %1 (%2)"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Enable Bluetooth"
+#~ msgstr "הפעלת בלוטות׳"
+
 #~ msgctxt ""
 #~ "@label %1 is human-readable device name, %2 is low-level device address"
 #~ msgid "%1 (%2)"
@@ -848,9 +854,6 @@ msgstr "ההתקן ‚%1’ הוגדר וניתן להשתמש בו מעתה."
 
 #~ msgid "Add device"
 #~ msgstr "הוסף התקן"
-
-#~ msgid "Remove device"
-#~ msgstr "הסר התקן"
 
 #~ msgid "Bluetooth Advanced Settings"
 #~ msgstr "הגדרות בלוטוס מתקדמות"

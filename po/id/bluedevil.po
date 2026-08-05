@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-06 00:44+0000\n"
+"POT-Creation-Date: 2026-08-05 00:48+0000\n"
 "PO-Revision-Date: 2023-05-28 11:25+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -31,65 +31,29 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "wantoyek@gmail.com,linerly@protonmail.com"
 
-#: applet/devicesproxymodel.cpp:51
-#, fuzzy, kde-format
-#| msgid "Blocked:"
-msgctxt "@title:column Blocked Bluetooth devices"
-msgid "Blocked"
-msgstr "Dihalang:"
-
-#: applet/devicesproxymodel.cpp:54
-#, fuzzy, kde-format
-#| msgid "Connect"
-msgctxt "@title:column Connected Bluetooth devices"
-msgid "Connected"
-msgstr "Sambungkan"
-
-#: applet/devicesproxymodel.cpp:56
+#: components/ForgetDeviceDialog.qml:37
 #, kde-format
-msgctxt "@title:column Available but not connected Bluetooth devices"
-msgid "Available"
+msgid "Forget this Device?"
 msgstr ""
 
-#: applet/devicesstateproxymodel.cpp:288
+#: components/ForgetDeviceDialog.qml:38
 #, kde-format
-msgctxt "@label %1 is the name of a Bluetooth device"
-msgid "Could not connect to device “%1”"
+msgid "Are you sure you want to forget \"%1\"?"
 msgstr ""
 
-#: applet/devicesstateproxymodel.cpp:303
+#: components/ForgetDeviceDialog.qml:50
 #, fuzzy, kde-format
-#| msgid "This address is unavailable."
-msgctxt "Notification when the connection failed due to Failed:HostIsDown"
-msgid "The device is unreachable"
-msgstr "Alamat ini tidak tersedia."
+#| msgid "Remove device"
+msgctxt "@action:button"
+msgid "Forget Device"
+msgstr "Lepas perangkat"
 
-#: applet/devicesstateproxymodel.cpp:304
+#: components/ForgetDeviceDialog.qml:58
 #, fuzzy, kde-format
-#| msgid "Connecting to the device"
-msgctxt "Notification when the connection failed due to Failed"
-msgid "Connection to the device failed"
-msgstr "Mengonek ke peranti"
-
-#: applet/devicesstateproxymodel.cpp:307
-#, fuzzy, kde-format
-#| msgid "Obexd service is not running."
-msgctxt "Notification when the connection failed due to NotReady"
-msgid "The device is not ready"
-msgstr "Layanan Obexd tidak berjalan."
-
-#: kcm/bluetooth.cpp:135
-#, kde-format
-msgctxt "DeviceName Network (Service)"
-msgid "%1 Network (%2)"
-msgstr "%1 Jaringan (%2)"
-
-#: kcm/bluetoothmoduledata.cpp:20
-#, fuzzy, kde-format
-#| msgid "Enable Bluetooth integration"
-msgctxt "@info:tooltip"
-msgid "Enable Bluetooth"
-msgstr "Fungsikan integrasi Bluetooth"
+#| msgid "Cancel"
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr "Batal"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -616,6 +580,46 @@ msgid "The device '%1' has been set up and can now be used."
 msgstr "Perangkat '%1' sudah diset dan sekarang bisa digunakan."
 
 #, fuzzy
+#~| msgid "Blocked:"
+#~ msgctxt "@title:column Blocked Bluetooth devices"
+#~ msgid "Blocked"
+#~ msgstr "Dihalang:"
+
+#, fuzzy
+#~| msgid "Connect"
+#~ msgctxt "@title:column Connected Bluetooth devices"
+#~ msgid "Connected"
+#~ msgstr "Sambungkan"
+
+#, fuzzy
+#~| msgid "This address is unavailable."
+#~ msgctxt "Notification when the connection failed due to Failed:HostIsDown"
+#~ msgid "The device is unreachable"
+#~ msgstr "Alamat ini tidak tersedia."
+
+#, fuzzy
+#~| msgid "Connecting to the device"
+#~ msgctxt "Notification when the connection failed due to Failed"
+#~ msgid "Connection to the device failed"
+#~ msgstr "Mengonek ke peranti"
+
+#, fuzzy
+#~| msgid "Obexd service is not running."
+#~ msgctxt "Notification when the connection failed due to NotReady"
+#~ msgid "The device is not ready"
+#~ msgstr "Layanan Obexd tidak berjalan."
+
+#~ msgctxt "DeviceName Network (Service)"
+#~ msgid "%1 Network (%2)"
+#~ msgstr "%1 Jaringan (%2)"
+
+#, fuzzy
+#~| msgid "Enable Bluetooth integration"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Enable Bluetooth"
+#~ msgstr "Fungsikan integrasi Bluetooth"
+
+#, fuzzy
 #~| msgctxt "DeviceName Network (Service)"
 #~| msgid "%1 Network (%2)"
 #~ msgctxt ""
@@ -853,9 +857,6 @@ msgstr "Perangkat '%1' sudah diset dan sekarang bisa digunakan."
 
 #~ msgid "Add device"
 #~ msgstr "Tambahkan perangkat"
-
-#~ msgid "Remove device"
-#~ msgstr "Lepas perangkat"
 
 #~ msgid "Bluetooth Advanced Settings"
 #~ msgstr "Pengaturan Tingkat-lanjut Bluetooth"
