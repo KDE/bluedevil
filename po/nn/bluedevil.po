@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-05 00:48+0000\n"
-"PO-Revision-Date: 2026-04-27 21:39+0200\n"
+"PO-Revision-Date: 2026-08-05 18:44+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
 "Language: nn\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 26.04.0\n"
+"X-Generator: Lokalize 26.11.70\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -33,22 +33,21 @@ msgstr "karl@huftis.org"
 #: components/ForgetDeviceDialog.qml:37
 #, kde-format
 msgid "Forget this Device?"
-msgstr ""
+msgstr "Gløyma eininga?"
 
 #: components/ForgetDeviceDialog.qml:38
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
-msgstr ""
+msgstr "Er du sikker på at du vil gløyma «%1»?"
 
 #: components/ForgetDeviceDialog.qml:50
 #, kde-format
 msgctxt "@action:button"
 msgid "Forget Device"
-msgstr ""
+msgstr "Gløym eininga"
 
 #: components/ForgetDeviceDialog.qml:58
-#, fuzzy, kde-format
-#| msgid "Cancel"
+#, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
 msgstr "Avbryt"
@@ -572,39 +571,3 @@ msgstr "Eininga er no sett opp og kan takast i bruk."
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "Eininga «%1» er no sett opp og kan takast i bruk."
-
-#~ msgctxt "@title:column Blocked Bluetooth devices"
-#~ msgid "Blocked"
-#~ msgstr "Blokkerte"
-
-#~ msgctxt "@title:column Connected Bluetooth devices"
-#~ msgid "Connected"
-#~ msgstr "Tilkopla"
-
-#~ msgctxt "@title:column Available but not connected Bluetooth devices"
-#~ msgid "Available"
-#~ msgstr "Tilgjengelege"
-
-#~ msgctxt "@label %1 is the name of a Bluetooth device"
-#~ msgid "Could not connect to device “%1”"
-#~ msgstr "Klarte ikkje kopla til eininga «%1»"
-
-#~ msgctxt "Notification when the connection failed due to Failed:HostIsDown"
-#~ msgid "The device is unreachable"
-#~ msgstr "Kan ikkje nå eininga"
-
-#~ msgctxt "Notification when the connection failed due to Failed"
-#~ msgid "Connection to the device failed"
-#~ msgstr "Klarte ikkje kopla til eininga"
-
-#~ msgctxt "Notification when the connection failed due to NotReady"
-#~ msgid "The device is not ready"
-#~ msgstr "Eininga er ikkje klar"
-
-#~ msgctxt "DeviceName Network (Service)"
-#~ msgid "%1 Network (%2)"
-#~ msgstr "%1 nettverk (%2)"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "Enable Bluetooth"
-#~ msgstr "Bruk Bluetooth"

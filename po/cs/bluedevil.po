@@ -34,22 +34,21 @@ msgstr "vit@pelcak.org, tomas.chvatal@gmail.com"
 #: components/ForgetDeviceDialog.qml:37
 #, kde-format
 msgid "Forget this Device?"
-msgstr ""
+msgstr "Zapomenout zařízení?"
 
 #: components/ForgetDeviceDialog.qml:38
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
-msgstr ""
+msgstr "Opravdu si přejete zapomenout '%1'?"
 
 #: components/ForgetDeviceDialog.qml:50
 #, kde-format
 msgctxt "@action:button"
 msgid "Forget Device"
-msgstr ""
+msgstr "Zapomenout zařízení"
 
 #: components/ForgetDeviceDialog.qml:58
-#, fuzzy, kde-format
-#| msgid "Cancel"
+#, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
 msgstr "Zrušit"
