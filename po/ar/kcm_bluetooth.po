@@ -186,7 +186,7 @@ msgstr "اقبل من الأجهزة الموثوقة"
 #: ui/General.qml:137
 #, kde-format
 msgid "Always accept"
-msgstr "اقبل دائماً"
+msgstr "اقبل دائمًا"
 
 #: ui/General.qml:147
 #, kde-format
