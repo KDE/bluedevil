@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-04 00:45+0000\n"
-"PO-Revision-Date: 2026-08-02 22:57+0200\n"
+"PO-Revision-Date: 2026-08-16 13:50+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -130,7 +130,7 @@ msgstr "Ahaztu"
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
-msgstr "Ahaztu \"%1\""
+msgstr "\"%1\" ahaztu"
 
 #: ui/General.qml:24
 #, kde-format
