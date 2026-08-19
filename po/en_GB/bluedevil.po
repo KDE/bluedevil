@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-18 00:46+0000\n"
+"POT-Creation-Date: 2026-08-19 02:44+0000\n"
 "PO-Revision-Date: 2024-08-03 13:05+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -28,62 +28,29 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "steve.allewell@gmail.com"
 
-#: applet/devicesproxymodel.cpp:51
-#, fuzzy, kde-format
-#| msgid "Blocked:"
-msgctxt "@title:column Blocked Bluetooth devices"
-msgid "Blocked"
-msgstr "Blocked:"
-
-#: applet/devicesproxymodel.cpp:54
-#, fuzzy, kde-format
-#| msgid "Connect"
-msgctxt "@title:column Connected Bluetooth devices"
-msgid "Connected"
-msgstr "Connect"
-
-#: applet/devicesproxymodel.cpp:56
+#: components/ForgetDeviceDialog.qml:37
 #, kde-format
-msgctxt "@title:column Available but not connected Bluetooth devices"
-msgid "Available"
+msgid "Forget this Device?"
 msgstr ""
 
-#: applet/devicesstateproxymodel.cpp:288
+#: components/ForgetDeviceDialog.qml:38
 #, kde-format
-msgctxt "@label %1 is the name of a Bluetooth device"
-msgid "Could not connect to device “%1”"
+msgid "Are you sure you want to forget \"%1\"?"
 msgstr ""
 
-#: applet/devicesstateproxymodel.cpp:303
-#, kde-format
-msgctxt "Notification when the connection failed due to Failed:HostIsDown"
-msgid "The device is unreachable"
-msgstr "The device is unreachable"
-
-#: applet/devicesstateproxymodel.cpp:304
-#, kde-format
-msgctxt "Notification when the connection failed due to Failed"
-msgid "Connection to the device failed"
-msgstr "Connection to the device failed"
-
-#: applet/devicesstateproxymodel.cpp:307
-#, kde-format
-msgctxt "Notification when the connection failed due to NotReady"
-msgid "The device is not ready"
-msgstr "The device is not ready"
-
-#: kcm/bluetooth.cpp:135
-#, kde-format
-msgctxt "DeviceName Network (Service)"
-msgid "%1 Network (%2)"
-msgstr "%1 Network (%2)"
-
-#: kcm/bluetoothmoduledata.cpp:20
+#: components/ForgetDeviceDialog.qml:50
 #, fuzzy, kde-format
-#| msgid "Enable Bluetooth integration"
-msgctxt "@info:tooltip"
-msgid "Enable Bluetooth"
-msgstr "Enable Bluetooth integration"
+#| msgid "Known Devices"
+msgctxt "@action:button"
+msgid "Forget Device"
+msgstr "Known Devices"
+
+#: components/ForgetDeviceDialog.qml:58
+#, fuzzy, kde-format
+#| msgid "Cancel"
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr "Cancel"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -607,6 +574,40 @@ msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "The device '%1' has been set up and can now be used."
 
+#, fuzzy
+#~| msgid "Blocked:"
+#~ msgctxt "@title:column Blocked Bluetooth devices"
+#~ msgid "Blocked"
+#~ msgstr "Blocked:"
+
+#, fuzzy
+#~| msgid "Connect"
+#~ msgctxt "@title:column Connected Bluetooth devices"
+#~ msgid "Connected"
+#~ msgstr "Connect"
+
+#~ msgctxt "Notification when the connection failed due to Failed:HostIsDown"
+#~ msgid "The device is unreachable"
+#~ msgstr "The device is unreachable"
+
+#~ msgctxt "Notification when the connection failed due to Failed"
+#~ msgid "Connection to the device failed"
+#~ msgstr "Connection to the device failed"
+
+#~ msgctxt "Notification when the connection failed due to NotReady"
+#~ msgid "The device is not ready"
+#~ msgstr "The device is not ready"
+
+#~ msgctxt "DeviceName Network (Service)"
+#~ msgid "%1 Network (%2)"
+#~ msgstr "%1 Network (%2)"
+
+#, fuzzy
+#~| msgid "Enable Bluetooth integration"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Enable Bluetooth"
+#~ msgstr "Enable Bluetooth integration"
+
 #~ msgctxt ""
 #~ "@label %1 is human-readable device name, %2 is low-level device address"
 #~ msgid "%1 (%2)"
@@ -1002,9 +1003,6 @@ msgstr "The device '%1' has been set up and can now be used."
 
 #~ msgid "Turn Bluetooth On"
 #~ msgstr "Turn Bluetooth On"
-
-#~ msgid "Known Devices"
-#~ msgstr "Known Devices"
 
 #~ msgid "Configure Bluetooth"
 #~ msgstr "Configure Bluetooth"

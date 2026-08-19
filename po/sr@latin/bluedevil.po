@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-18 00:46+0000\n"
+"POT-Creation-Date: 2026-08-19 02:44+0000\n"
 "PO-Revision-Date: 2017-12-15 12:37+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -29,65 +29,29 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "caslav.ilic@gmx.net"
 
-#: applet/devicesproxymodel.cpp:51
-#, fuzzy, kde-format
-#| msgid "Blocked:"
-msgctxt "@title:column Blocked Bluetooth devices"
-msgid "Blocked"
-msgstr "Blokiran:"
-
-#: applet/devicesproxymodel.cpp:54
-#, fuzzy, kde-format
-#| msgid "Connect"
-msgctxt "@title:column Connected Bluetooth devices"
-msgid "Connected"
-msgstr "Poveži"
-
-#: applet/devicesproxymodel.cpp:56
+#: components/ForgetDeviceDialog.qml:37
 #, kde-format
-msgctxt "@title:column Available but not connected Bluetooth devices"
-msgid "Available"
+msgid "Forget this Device?"
 msgstr ""
 
-#: applet/devicesstateproxymodel.cpp:288
+#: components/ForgetDeviceDialog.qml:38
 #, kde-format
-msgctxt "@label %1 is the name of a Bluetooth device"
-msgid "Could not connect to device “%1”"
+msgid "Are you sure you want to forget \"%1\"?"
 msgstr ""
 
-#: applet/devicesstateproxymodel.cpp:303
+#: components/ForgetDeviceDialog.qml:50
 #, fuzzy, kde-format
-#| msgid "This address is unavailable."
-msgctxt "Notification when the connection failed due to Failed:HostIsDown"
-msgid "The device is unreachable"
-msgstr "Ova adresa nije dostupna."
+#| msgid "Remove device"
+msgctxt "@action:button"
+msgid "Forget Device"
+msgstr "Ukloni uređaj"
 
-#: applet/devicesstateproxymodel.cpp:304
+#: components/ForgetDeviceDialog.qml:58
 #, fuzzy, kde-format
-#| msgid "Connecting to the device"
-msgctxt "Notification when the connection failed due to Failed"
-msgid "Connection to the device failed"
-msgstr "Povezujem uređaj..."
-
-#: applet/devicesstateproxymodel.cpp:307
-#, fuzzy, kde-format
-#| msgid "Obexd service is not running."
-msgctxt "Notification when the connection failed due to NotReady"
-msgid "The device is not ready"
-msgstr "ObexFTP‑ov servis nije u pogonu."
-
-#: kcm/bluetooth.cpp:135
-#, kde-format
-msgctxt "DeviceName Network (Service)"
-msgid "%1 Network (%2)"
-msgstr "Mreža %1 (%2)"
-
-#: kcm/bluetoothmoduledata.cpp:20
-#, fuzzy, kde-format
-#| msgid "Sending file over Bluetooth"
-msgctxt "@info:tooltip"
-msgid "Enable Bluetooth"
-msgstr "Šaljem fajl preko Bluetootha"
+#| msgid "Cancel"
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr "Odustani"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -639,6 +603,46 @@ msgid "The device '%1' has been set up and can now be used."
 msgstr ""
 
 #, fuzzy
+#~| msgid "Blocked:"
+#~ msgctxt "@title:column Blocked Bluetooth devices"
+#~ msgid "Blocked"
+#~ msgstr "Blokiran:"
+
+#, fuzzy
+#~| msgid "Connect"
+#~ msgctxt "@title:column Connected Bluetooth devices"
+#~ msgid "Connected"
+#~ msgstr "Poveži"
+
+#, fuzzy
+#~| msgid "This address is unavailable."
+#~ msgctxt "Notification when the connection failed due to Failed:HostIsDown"
+#~ msgid "The device is unreachable"
+#~ msgstr "Ova adresa nije dostupna."
+
+#, fuzzy
+#~| msgid "Connecting to the device"
+#~ msgctxt "Notification when the connection failed due to Failed"
+#~ msgid "Connection to the device failed"
+#~ msgstr "Povezujem uređaj..."
+
+#, fuzzy
+#~| msgid "Obexd service is not running."
+#~ msgctxt "Notification when the connection failed due to NotReady"
+#~ msgid "The device is not ready"
+#~ msgstr "ObexFTP‑ov servis nije u pogonu."
+
+#~ msgctxt "DeviceName Network (Service)"
+#~ msgid "%1 Network (%2)"
+#~ msgstr "Mreža %1 (%2)"
+
+#, fuzzy
+#~| msgid "Sending file over Bluetooth"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Enable Bluetooth"
+#~ msgstr "Šaljem fajl preko Bluetootha"
+
+#, fuzzy
 #~| msgctxt "DeviceName Network (Service)"
 #~| msgid "%1 Network (%2)"
 #~ msgctxt ""
@@ -875,9 +879,6 @@ msgstr ""
 
 #~ msgid "Add device"
 #~ msgstr "Dodaj uređaj"
-
-#~ msgid "Remove device"
-#~ msgstr "Ukloni uređaj"
 
 #~ msgid "Bluetooth Advanced Settings"
 #~ msgstr "Napredne bluetooth postavke"

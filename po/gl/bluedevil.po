@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-18 00:46+0000\n"
+"POT-Creation-Date: 2026-08-19 02:44+0000\n"
 "PO-Revision-Date: 2025-06-19 09:40+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.gal>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -28,62 +28,29 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "adrian@chaves.gal"
 
-#: applet/devicesproxymodel.cpp:51
-#, fuzzy, kde-format
-#| msgid "Blocked:"
-msgctxt "@title:column Blocked Bluetooth devices"
-msgid "Blocked"
-msgstr "Bloqueado:"
-
-#: applet/devicesproxymodel.cpp:54
-#, fuzzy, kde-format
-#| msgid "Connect"
-msgctxt "@title:column Connected Bluetooth devices"
-msgid "Connected"
-msgstr "Conectar"
-
-#: applet/devicesproxymodel.cpp:56
+#: components/ForgetDeviceDialog.qml:37
 #, kde-format
-msgctxt "@title:column Available but not connected Bluetooth devices"
-msgid "Available"
+msgid "Forget this Device?"
 msgstr ""
 
-#: applet/devicesstateproxymodel.cpp:288
+#: components/ForgetDeviceDialog.qml:38
 #, kde-format
-msgctxt "@label %1 is the name of a Bluetooth device"
-msgid "Could not connect to device “%1”"
+msgid "Are you sure you want to forget \"%1\"?"
 msgstr ""
 
-#: applet/devicesstateproxymodel.cpp:303
-#, kde-format
-msgctxt "Notification when the connection failed due to Failed:HostIsDown"
-msgid "The device is unreachable"
-msgstr "Non é posíbel acadar o dispositivo."
-
-#: applet/devicesstateproxymodel.cpp:304
-#, kde-format
-msgctxt "Notification when the connection failed due to Failed"
-msgid "Connection to the device failed"
-msgstr "A conexión co dispositivo fallou."
-
-#: applet/devicesstateproxymodel.cpp:307
-#, kde-format
-msgctxt "Notification when the connection failed due to NotReady"
-msgid "The device is not ready"
-msgstr "O dispositivo non está listo."
-
-#: kcm/bluetooth.cpp:135
-#, kde-format
-msgctxt "DeviceName Network (Service)"
-msgid "%1 Network (%2)"
-msgstr "Rede %1 (%2)"
-
-#: kcm/bluetoothmoduledata.cpp:20
+#: components/ForgetDeviceDialog.qml:50
 #, fuzzy, kde-format
-#| msgid "Enable Bluetooth integration"
-msgctxt "@info:tooltip"
-msgid "Enable Bluetooth"
-msgstr "Activar a integración de Bluetooth."
+#| msgid "Known Devices"
+msgctxt "@action:button"
+msgid "Forget Device"
+msgstr "Dispositivos coñecidos"
+
+#: components/ForgetDeviceDialog.qml:58
+#, fuzzy, kde-format
+#| msgid "Cancel"
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr "Cancelar"
 
 #: kded/bluedevildaemon.cpp:68 kded/bluedevildaemon.cpp:70
 #, kde-format
@@ -606,6 +573,40 @@ msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "O dispositivo «%1» está preparado para usarse."
 
+#, fuzzy
+#~| msgid "Blocked:"
+#~ msgctxt "@title:column Blocked Bluetooth devices"
+#~ msgid "Blocked"
+#~ msgstr "Bloqueado:"
+
+#, fuzzy
+#~| msgid "Connect"
+#~ msgctxt "@title:column Connected Bluetooth devices"
+#~ msgid "Connected"
+#~ msgstr "Conectar"
+
+#~ msgctxt "Notification when the connection failed due to Failed:HostIsDown"
+#~ msgid "The device is unreachable"
+#~ msgstr "Non é posíbel acadar o dispositivo."
+
+#~ msgctxt "Notification when the connection failed due to Failed"
+#~ msgid "Connection to the device failed"
+#~ msgstr "A conexión co dispositivo fallou."
+
+#~ msgctxt "Notification when the connection failed due to NotReady"
+#~ msgid "The device is not ready"
+#~ msgstr "O dispositivo non está listo."
+
+#~ msgctxt "DeviceName Network (Service)"
+#~ msgid "%1 Network (%2)"
+#~ msgstr "Rede %1 (%2)"
+
+#, fuzzy
+#~| msgid "Enable Bluetooth integration"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Enable Bluetooth"
+#~ msgstr "Activar a integración de Bluetooth."
+
 #~ msgctxt ""
 #~ "@label %1 is human-readable device name, %2 is low-level device address"
 #~ msgid "%1 (%2)"
@@ -1009,9 +1010,6 @@ msgstr "O dispositivo «%1» está preparado para usarse."
 
 #~ msgid "Turn Bluetooth On"
 #~ msgstr "Activar o sistema Bluetooth"
-
-#~ msgid "Known Devices"
-#~ msgstr "Dispositivos coñecidos"
 
 #~ msgid "Configure Bluetooth"
 #~ msgstr "Configurar o sistema Bluetooth"
