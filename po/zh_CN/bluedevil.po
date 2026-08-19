@@ -47,7 +47,6 @@ msgstr ""
 
 #: components/ForgetDeviceDialog.qml:58
 #, fuzzy, kde-format
-#| msgid "Cancel"
 msgctxt "@action:button"
 msgid "Cancel"
 msgstr "取消"
