@@ -32,21 +32,21 @@ msgstr ""
 #: components/ForgetDeviceDialog.qml:37
 #, kde-format
 msgid "Forget this Device?"
-msgstr ""
+msgstr "忘记此设备？"
 
 #: components/ForgetDeviceDialog.qml:38
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
-msgstr ""
+msgstr "您确定要忘记“%1”吗？"
 
 #: components/ForgetDeviceDialog.qml:50
 #, kde-format
 msgctxt "@action:button"
 msgid "Forget Device"
-msgstr ""
+msgstr "忘记设备"
 
 #: components/ForgetDeviceDialog.qml:58
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
 msgstr "取消"
@@ -568,39 +568,3 @@ msgstr "设备已经连接，现在即可使用。"
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
 msgstr "设备“%1”已经连接，现在即可使用。"
-
-#~ msgctxt "@title:column Blocked Bluetooth devices"
-#~ msgid "Blocked"
-#~ msgstr "已屏蔽"
-
-#~ msgctxt "@title:column Connected Bluetooth devices"
-#~ msgid "Connected"
-#~ msgstr "已连接"
-
-#~ msgctxt "@title:column Available but not connected Bluetooth devices"
-#~ msgid "Available"
-#~ msgstr "可用"
-
-#~ msgctxt "@label %1 is the name of a Bluetooth device"
-#~ msgid "Could not connect to device “%1”"
-#~ msgstr "无法连接到设备“%1”"
-
-#~ msgctxt "Notification when the connection failed due to Failed:HostIsDown"
-#~ msgid "The device is unreachable"
-#~ msgstr "设备无法访问"
-
-#~ msgctxt "Notification when the connection failed due to Failed"
-#~ msgid "Connection to the device failed"
-#~ msgstr "设备连接失败"
-
-#~ msgctxt "Notification when the connection failed due to NotReady"
-#~ msgid "The device is not ready"
-#~ msgstr "设备未就绪"
-
-#~ msgctxt "DeviceName Network (Service)"
-#~ msgid "%1 Network (%2)"
-#~ msgstr "%1 网络 (%2)"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "Enable Bluetooth"
-#~ msgstr "启用蓝牙"
