@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-18 00:46+0000\n"
+"POT-Creation-Date: 2026-08-28 00:47+0000\n"
 "PO-Revision-Date: 2026-01-16 11:09+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -309,7 +309,7 @@ msgctxt "@item:inmenu"
 msgid "Show badge with number of connected devices"
 msgstr "Mostrar placa con el número de dispositivos conectados"
 
-#: qml/main.qml:140
+#: qml/main.qml:143
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Bluetooth…"

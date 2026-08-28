@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-18 00:46+0000\n"
+"POT-Creation-Date: 2026-08-28 00:47+0000\n"
 "PO-Revision-Date: 2026-01-28 18:47+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -309,7 +309,7 @@ msgctxt "@item:inmenu"
 msgid "Show badge with number of connected devices"
 msgstr "Arată insigna cu numărul de dispozitive conectate"
 
-#: qml/main.qml:140
+#: qml/main.qml:143
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Bluetooth…"

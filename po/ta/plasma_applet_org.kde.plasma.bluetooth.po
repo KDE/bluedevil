@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-18 00:46+0000\n"
+"POT-Creation-Date: 2026-08-28 00:47+0000\n"
 "PO-Revision-Date: 2026-02-01 16:41+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
@@ -307,7 +307,7 @@ msgctxt "@item:inmenu"
 msgid "Show badge with number of connected devices"
 msgstr "இணைக்கப்பட்டுள்ள சாதனங்களின் எண்ணிக்கையை சின்னத்தில் காட்டு"
 
-#: qml/main.qml:140
+#: qml/main.qml:143
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Bluetooth…"

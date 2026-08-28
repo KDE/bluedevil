@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-18 00:46+0000\n"
+"POT-Creation-Date: 2026-08-28 00:47+0000\n"
 "PO-Revision-Date: 2026-02-25 12:03+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
@@ -308,7 +308,7 @@ msgctxt "@item:inmenu"
 msgid "Show badge with number of connected devices"
 msgstr "Sýna táknskjöld með fjölda tengdra tækja"
 
-#: qml/main.qml:140
+#: qml/main.qml:143
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Bluetooth…"

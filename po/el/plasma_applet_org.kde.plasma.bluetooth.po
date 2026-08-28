@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-18 00:46+0000\n"
+"POT-Creation-Date: 2026-08-28 00:47+0000\n"
 "PO-Revision-Date: 2024-08-26 21:24+0300\n"
 "Last-Translator: Αντώνης Γέραλης <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
@@ -314,7 +314,7 @@ msgctxt "@item:inmenu"
 msgid "Show badge with number of connected devices"
 msgstr "Καμία συνδεδεμένη συσκευή"
 
-#: qml/main.qml:140
+#: qml/main.qml:143
 #, fuzzy, kde-format
 #| msgid "Configure &Bluetooth…"
 msgctxt "@action:inmenu"
