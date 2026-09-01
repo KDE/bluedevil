@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-19 02:44+0000\n"
-"PO-Revision-Date: 2026-01-21 12:38+0100\n"
+"PO-Revision-Date: 2026-08-31 11:55+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -30,23 +30,21 @@ msgstr "g.sora@tiscali.it"
 #: components/ForgetDeviceDialog.qml:37
 #, kde-format
 msgid "Forget this Device?"
-msgstr ""
+msgstr "Oblida iste dispositivo?"
 
 #: components/ForgetDeviceDialog.qml:38
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
-msgstr ""
+msgstr "Tu es secur que tu vole oblidar \"%1\""
 
 #: components/ForgetDeviceDialog.qml:50
-#, fuzzy, kde-format
-#| msgid "Remove device"
+#, kde-format
 msgctxt "@action:button"
 msgid "Forget Device"
-msgstr "Remove dispositivo"
+msgstr "Oblida dispositivo"
 
 #: components/ForgetDeviceDialog.qml:58
-#, fuzzy, kde-format
-#| msgid "Cancel"
+#, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
 msgstr "Cancella"
