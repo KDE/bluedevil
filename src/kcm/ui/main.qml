@@ -201,12 +201,21 @@ KCMUtils.ScrollViewKCM {
                 spacing: Kirigami.Units.smallSpacing
 
                 KD.IconTitleSubtitle {
-                    title: delegate.model.Name
+                    title: escapeHtml(delegate.model.Name)
                     subtitle: root.infoText(delegate.model.Device)
                     icon.name: delegate.model.Icon
                     icon.width: Kirigami.Units.iconSizes.medium
                     Layout.fillWidth: true
                     selected: delegate.highlighted || delegate.down
+
+                    function escapeHtml(value) {
+                        return String(value)
+                        .replace(/&/g, "&amp;")
+                        .replace(/</g, "&lt;")
+                        .replace(/>/g, "&gt;")
+                        .replace(/"/g, "&quot;")
+                        .replace(/'/g, "&#39;");
+                    }
                 }
 
                 QQC2.Button {
