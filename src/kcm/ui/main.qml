@@ -202,6 +202,7 @@ KCMUtils.ScrollViewKCM {
 
                 KD.IconTitleSubtitle {
                     title: delegate.model.Name
+                    textFormat: Text.PlainText
                     subtitle: root.infoText(delegate.model.Device)
                     icon.name: delegate.model.Icon
                     icon.width: Kirigami.Units.iconSizes.medium
