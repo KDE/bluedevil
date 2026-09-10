@@ -201,7 +201,7 @@ KCMUtils.ScrollViewKCM {
                 spacing: Kirigami.Units.smallSpacing
 
                 KD.IconTitleSubtitle {
-                    title: delegate.model.Name
+                    title: xi18nc("@label/rich", "%1", delegate.model.Name)
                     subtitle: root.infoText(delegate.model.Device)
                     icon.name: delegate.model.Icon
                     icon.width: Kirigami.Units.iconSizes.medium
