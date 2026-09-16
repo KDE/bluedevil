@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-04 00:45+0000\n"
+"POT-Creation-Date: 2026-09-16 02:44+0000\n"
 "PO-Revision-Date: 2024-01-28 15:20-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -257,6 +257,13 @@ msgstr "ਕਨੈਕਟ ਹੈ"
 #, kde-format
 msgid "Available"
 msgstr "ਉਪਲੱਬਧ"
+
+#: ui/main.qml:204
+#, fuzzy, kde-kuit-format
+#| msgid "%1%"
+msgctxt "@label/rich"
+msgid "%1"
+msgstr "%1%"
 
 #: ui/main.qml:246
 #, kde-format

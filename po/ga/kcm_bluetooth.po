@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-04 00:45+0000\n"
+"POT-Creation-Date: 2026-09-16 02:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Irish Gaelic <kde-i18n-doc@kde.org>\n"
@@ -253,6 +253,12 @@ msgstr ""
 #: ui/main.qml:184
 #, kde-format
 msgid "Available"
+msgstr ""
+
+#: ui/main.qml:204
+#, kde-kuit-format
+msgctxt "@label/rich"
+msgid "%1"
 msgstr ""
 
 #: ui/main.qml:246

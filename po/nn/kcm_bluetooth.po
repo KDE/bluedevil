@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-04 00:45+0000\n"
+"POT-Creation-Date: 2026-09-16 02:44+0000\n"
 "PO-Revision-Date: 2026-03-01 20:09+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
@@ -257,6 +257,13 @@ msgstr "Kopla til"
 #, kde-format
 msgid "Available"
 msgstr "Tilgjengeleg"
+
+#: ui/main.qml:204
+#, fuzzy, kde-kuit-format
+#| msgid "%1%"
+msgctxt "@label/rich"
+msgid "%1"
+msgstr "%1 %"
 
 #: ui/main.qml:246
 #, kde-format
