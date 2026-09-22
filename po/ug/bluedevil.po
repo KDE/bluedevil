@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-05 00:48+0000\n"
-"PO-Revision-Date: 2026-05-28 17:22-0400\n"
+"PO-Revision-Date: 2026-09-22 18:03+0900\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
 "Language: ug\n"
@@ -42,11 +42,10 @@ msgstr ""
 #, kde-format
 msgctxt "@action:button"
 msgid "Forget Device"
-msgstr ""
+msgstr "ئۈسكۈنىنى ئۇنتۇ"
 
 #: components/ForgetDeviceDialog.qml:58
-#, fuzzy, kde-format
-#| msgid "Cancel"
+#, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
 msgstr "ۋاز كەچ"
@@ -172,7 +171,7 @@ msgstr ""
 #: kded/helpers/requestpin.ui:52
 #, kde-format
 msgid "PIN:"
-msgstr "PIN:"
+msgstr ""
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, pin)
 #: kded/helpers/requestpin.ui:65

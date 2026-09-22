@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-15 00:45+0000\n"
-"PO-Revision-Date: 2026-05-28 17:22-0400\n"
+"PO-Revision-Date: 2026-09-22 18:03+0900\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
 "Language: ug\n"
@@ -38,7 +38,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
-msgstr ""
+msgstr "كۆكچىشنى قوزغات"
 
 #: ui/Device.qml:132 ui/main.qml:214
 #, kde-format
@@ -63,7 +63,7 @@ msgstr "تۈرى:"
 #: ui/Device.qml:160
 #, kde-format
 msgid "%1%"
-msgstr "%1%"
+msgstr ""
 
 #: ui/Device.qml:162
 #, kde-format
@@ -156,7 +156,7 @@ msgstr "تىزىمغا كىرگەندە:"
 #: ui/General.qml:74
 #, kde-format
 msgid "Enable Bluetooth"
-msgstr ""
+msgstr "كۆكچىشنى قوزغات"
 
 #: ui/General.qml:85
 #, kde-format
@@ -258,7 +258,7 @@ msgstr "ئىشلەتكىلى بولىدۇ"
 #: ui/main.qml:247
 #, kde-format
 msgid "%1% Battery"
-msgstr ""
+msgstr "%1% توكدان"
 
 #: ui/script.js:13
 #, kde-format
@@ -288,7 +288,7 @@ msgstr "تور"
 #, kde-format
 msgctxt "This device is a Headset"
 msgid "Headset"
-msgstr ""
+msgstr "مىكروفونلۇق تىڭشىغۇچ"
 
 #: ui/script.js:23
 #, kde-format
@@ -318,7 +318,7 @@ msgstr "چاشقىنەك"
 #, kde-format
 msgctxt "This device is a Game controller"
 msgid "Game controller"
-msgstr ""
+msgstr "ئويۇن تىزگىنىكى"
 
 #: ui/script.js:33
 #, kde-format
@@ -330,7 +330,7 @@ msgstr "سەزگۈر تاختا"
 #, kde-format
 msgctxt "This device is a Peripheral device"
 msgid "Peripheral"
-msgstr ""
+msgstr "قوشۇمچە ئۈسكۈنە"
 
 #: ui/script.js:37
 #, kde-format
@@ -355,13 +355,13 @@ msgstr "سۈرەت ئۈسكۈنىسى"
 #, kde-format
 msgctxt "This device is a Wearable"
 msgid "Wearable"
-msgstr ""
+msgstr "تاقاشچان ئۈسكۈنە"
 
 #: ui/script.js:45
 #, kde-format
 msgctxt "This device is a Toy"
 msgid "Toy"
-msgstr ""
+msgstr "ئويۇنچۇق"
 
 #: ui/script.js:47
 #, kde-format
@@ -372,12 +372,12 @@ msgstr "ساغلاملىق"
 #: ui/script.js:53
 #, kde-format
 msgid "File transfer"
-msgstr ""
+msgstr "ھۆججەت يوللاش"
 
 #: ui/script.js:56
 #, kde-format
 msgid "Send file"
-msgstr ""
+msgstr "ھۆججەت يوللا"
 
 #: ui/script.js:59
 #, kde-format
