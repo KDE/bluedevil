@@ -203,7 +203,7 @@ void DiscoverPage::initializePage()
     m_manager = m_wizard->manager();
 
     m_adapter = m_manager->usableAdapter();
-    if (m_adapter && !m_adapter->isDiscovering()) {
+    if (m_adapter) {
         qCDebug(BLUEDEVIL_WIZARD_LOG) << "Starting scanning";
         m_adapter->startDiscovery();
     }
@@ -343,7 +343,7 @@ void DiscoverPage::usableAdapterChanged(BluezQt::AdapterPtr adapter)
 {
     m_adapter = adapter;
 
-    if (m_adapter && !m_adapter->isDiscovering()) {
+    if (m_adapter) {
         m_adapter->startDiscovery();
     }
 
