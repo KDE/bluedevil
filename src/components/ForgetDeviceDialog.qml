@@ -20,7 +20,7 @@ QtObject {
     property var registerCallForDeviceUbi: null
 
     function open(device: BluezQt.Device): void {
-        const dialog = dialogComponent.createObject(this, { device });
+        const dialog = dialogComponent.createObject(this, { device, deviceName: device.name });
         dialog.open();
     }
 
@@ -33,9 +33,11 @@ QtObject {
             id: dialog
 
             required property BluezQt.Device device
+            // Not bound to the device: it can be gone while the dialog is still closing
+            required property string deviceName
 
             title: i18nd("bluedevil", "Forget this Device?")
-            subtitle: i18nd("bluedevil", "Are you sure you want to forget \"%1\"?", device.name)
+            subtitle: i18nd("bluedevil", "Are you sure you want to forget \"%1\"?", deviceName)
 
             parent: root.parent
             showCloseButton: false
@@ -86,7 +88,7 @@ QtObject {
                     }
                 },
                 Connections {
-                    target: dialog.device.adapter
+                    target: dialog.device?.adapter ?? null
                     function onAdapterRemoved(adapter: BluezQt.Adapter): void {
                         dialog.reject();
                     }
