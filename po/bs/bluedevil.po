@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-05 00:48+0000\n"
+"POT-Creation-Date: 2026-10-01 00:47+0000\n"
 "PO-Revision-Date: 2014-11-11 13:36+0000\n"
 "Last-Translator: Naida Čongo <ncongo1@etf.unsa.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -32,24 +32,24 @@ msgstr ""
 "Markolalic@etf.unsa.ba,samir.ribic@etf.unsa.ba,ncongo1@etf.unsa.ba,"
 "vljubovic@smartnet.ba"
 
-#: components/ForgetDeviceDialog.qml:37
+#: components/ForgetDeviceDialog.qml:39
 #, kde-format
 msgid "Forget this Device?"
 msgstr ""
 
-#: components/ForgetDeviceDialog.qml:38
+#: components/ForgetDeviceDialog.qml:40
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
 msgstr ""
 
-#: components/ForgetDeviceDialog.qml:50
+#: components/ForgetDeviceDialog.qml:52
 #, fuzzy, kde-format
 #| msgid "Known Devices"
 msgctxt "@action:button"
 msgid "Forget Device"
 msgstr "Poznati uređaji"
 
-#: components/ForgetDeviceDialog.qml:58
+#: components/ForgetDeviceDialog.qml:60
 #, fuzzy, kde-format
 msgctxt "@action:button"
 msgid "Cancel"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-05 00:48+0000\n"
+"POT-Creation-Date: 2026-10-01 00:47+0000\n"
 "PO-Revision-Date: 2026-08-16 13:50+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -30,23 +30,23 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "xalba@ni.eus"
 
-#: components/ForgetDeviceDialog.qml:37
+#: components/ForgetDeviceDialog.qml:39
 #, kde-format
 msgid "Forget this Device?"
 msgstr "Gailu hau ahaztu?"
 
-#: components/ForgetDeviceDialog.qml:38
+#: components/ForgetDeviceDialog.qml:40
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
 msgstr "\"%1\" ahaztu nahi duzula ziur zaude?"
 
-#: components/ForgetDeviceDialog.qml:50
+#: components/ForgetDeviceDialog.qml:52
 #, kde-format
 msgctxt "@action:button"
 msgid "Forget Device"
 msgstr "Gailua ahaztu"
 
-#: components/ForgetDeviceDialog.qml:58
+#: components/ForgetDeviceDialog.qml:60
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"

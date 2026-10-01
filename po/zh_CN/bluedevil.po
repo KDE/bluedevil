@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-05 00:48+0000\n"
+"POT-Creation-Date: 2026-10-01 00:47+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -29,23 +29,23 @@ msgstr ""
 "kde-china@kde.org, 073plan@gmail.com, i@guoyunhe.me, tds00@qq.com, "
 "wengxt@gmail.com"
 
-#: components/ForgetDeviceDialog.qml:37
+#: components/ForgetDeviceDialog.qml:39
 #, kde-format
 msgid "Forget this Device?"
 msgstr "忘记此设备？"
 
-#: components/ForgetDeviceDialog.qml:38
+#: components/ForgetDeviceDialog.qml:40
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
 msgstr "您确定要忘记“%1”吗？"
 
-#: components/ForgetDeviceDialog.qml:50
+#: components/ForgetDeviceDialog.qml:52
 #, kde-format
 msgctxt "@action:button"
 msgid "Forget Device"
 msgstr "忘记设备"
 
-#: components/ForgetDeviceDialog.qml:58
+#: components/ForgetDeviceDialog.qml:60
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"

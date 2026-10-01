@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-05 00:48+0000\n"
+"POT-Creation-Date: 2026-10-01 00:47+0000\n"
 "PO-Revision-Date: 2026-08-05 09:10+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -31,23 +31,23 @@ msgstr ""
 "tulliana@gmail.com, ozan@pardus.org.tr, volkangezer@gmail.com, "
 "doktormesut@gmail.com, emir_sari@icloud.com"
 
-#: components/ForgetDeviceDialog.qml:37
+#: components/ForgetDeviceDialog.qml:39
 #, kde-format
 msgid "Forget this Device?"
 msgstr "Aygıtı Unut?"
 
-#: components/ForgetDeviceDialog.qml:38
+#: components/ForgetDeviceDialog.qml:40
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
 msgstr "“%1” aygıtını unutmak istediğinizden emin misiniz?"
 
-#: components/ForgetDeviceDialog.qml:50
+#: components/ForgetDeviceDialog.qml:52
 #, kde-format
 msgctxt "@action:button"
 msgid "Forget Device"
 msgstr "Aygıtı Unut"
 
-#: components/ForgetDeviceDialog.qml:58
+#: components/ForgetDeviceDialog.qml:60
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
