@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-26 03:00+0000\n"
-"PO-Revision-Date: 2026-02-26 10:07+0200\n"
+"PO-Revision-Date: 2026-08-26 12:13+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -36,23 +36,21 @@ msgstr "translator@legisign.org,karvonen.jorma@gmail.com"
 #: components/ForgetDeviceDialog.qml:37
 #, kde-format
 msgid "Forget this Device?"
-msgstr ""
+msgstr "Unohdetaanko tämä laite?"
 
 #: components/ForgetDeviceDialog.qml:38
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
-msgstr ""
+msgstr "Haluatko varmasti unohtaa laitteen ”%1”?"
 
 #: components/ForgetDeviceDialog.qml:50
-#, fuzzy, kde-format
-#| msgid "Known Devices"
+#, kde-format
 msgctxt "@action:button"
 msgid "Forget Device"
-msgstr "Tunnetut laitteet"
+msgstr "Unohda laite"
 
 #: components/ForgetDeviceDialog.qml:58
-#, fuzzy, kde-format
-#| msgid "Cancel"
+#, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
 msgstr "Peru"
