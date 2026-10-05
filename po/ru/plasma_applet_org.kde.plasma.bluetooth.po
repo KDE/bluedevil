@@ -148,7 +148,7 @@ msgstr "Подключение…"
 #: qml/DeviceItem.qml:250
 #, kde-format
 msgid "Disconnecting"
-msgstr "Отключение"
+msgstr "Отключение…"
 
 #: qml/DeviceItem.qml:256
 #, kde-format
@@ -183,7 +183,7 @@ msgstr "Мышь"
 #: qml/DeviceItem.qml:281
 #, kde-format
 msgid "Joypad"
-msgstr "Джойстик"
+msgstr "Геймпад"
 
 #: qml/DeviceItem.qml:284
 #, kde-format
@@ -255,7 +255,7 @@ msgstr "Bluetooth выключен"
 #: qml/FullRepresentation.qml:160
 #, kde-format
 msgid "No devices paired"
-msgstr "Нет ни одного настроенного устройства"
+msgstr "Нет сопряжённых устройств"
 
 #: qml/main.qml:51
 #, kde-format
@@ -290,7 +290,7 @@ msgstr "Нет подключённых устройств"
 #: qml/main.qml:72
 #, kde-format
 msgid "%1 connected"
-msgstr "%1 подключено"
+msgstr "Подключено: %1"
 
 #: qml/main.qml:79
 #, kde-format

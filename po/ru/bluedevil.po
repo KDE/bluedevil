@@ -122,7 +122,7 @@ msgctxt ""
 "The text is shown in a notification to know if the PIN is correct,%1 is the "
 "remote bluetooth device and %2 is the pin"
 msgid "%1 is asking if the PIN is correct: %2"
-msgstr "%1 запрашивает, верно ли был введён PIN-код: %2."
+msgstr "%1 запрашивает подтверждение PIN-кода: %2"
 
 #: kded/helpers/requestconfirmation.cpp:32
 #, kde-format
@@ -191,7 +191,7 @@ msgstr "1234"
 #, kde-format
 msgctxt "%1 is the name of a Bluetooth device"
 msgid "Incoming file from device “%1”"
-msgstr "Входящая передача файла с устройства «%1»"
+msgstr "Входящий файл с устройства «%1»"
 
 #: kded/receivefilejob.cpp:133
 #, kde-format
@@ -225,13 +225,13 @@ msgstr "Получение файла"
 #, kde-format
 msgctxt "File transfer origin"
 msgid "From"
-msgstr "От"
+msgstr "Источник"
 
 #: kded/receivefilejob.cpp:165 sendfile/sendfilesjob.cpp:85
 #, kde-format
 msgctxt "File transfer destination"
 msgid "To"
-msgstr "К"
+msgstr "Назначение"
 
 #: kded/receivefilejob.cpp:190
 #, kde-format
@@ -262,7 +262,7 @@ msgstr "Адаптеры Bluetooth не найдены."
 #: kio/bluetooth/kiobluetooth.cpp:92
 #, kde-format
 msgid "Retrieving services…"
-msgstr "Получение списка служб..."
+msgstr "Получение списка служб…"
 
 #: kio/bluetooth/kiobluetooth.cpp:99
 #, kde-format
@@ -277,7 +277,7 @@ msgstr "Принятые файлы"
 #: kio/bluetooth/kiobluetooth.cpp:167
 #, kde-format
 msgid "Scanning for new devices…"
-msgstr "Поиск новых устройств..."
+msgstr "Поиск новых устройств…"
 
 #: kio/obexftp/kioobexftp.cpp:96
 #, kde-format
@@ -287,7 +287,7 @@ msgstr "Служба Obexd не запущена."
 #: kio/obexftp/kioobexftp.cpp:140
 #, kde-format
 msgid "Retrieving information from remote device…"
-msgstr "Получение информации от удалённого устройства..."
+msgstr "Получение информации от удалённого устройства…"
 
 #: kio/obexftp/kioobexftp.cpp:222
 #, kde-format
@@ -318,7 +318,7 @@ msgstr "Bluetooth выключен."
 #, kde-format
 msgctxt "Action to enable Bluetooth adapter"
 msgid "Enable"
-msgstr "Задействовать"
+msgstr "Включить"
 
 #: sendfile/discoverwidget.cpp:137
 #, kde-format
@@ -355,7 +355,7 @@ msgstr "Файлы для отправки."
 #, kde-format
 msgctxt "Connecting to a Bluetooth device"
 msgid "Connecting to %1…"
-msgstr "Подключение к %1..."
+msgstr "Подключение к %1…"
 
 #: sendfile/pages/failpage.cpp:43
 #, kde-format
@@ -473,7 +473,7 @@ msgstr "Адаптер Bluetooth находится в режиме запрет
 #, kde-format
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
-msgstr "Разрешить сопряжения"
+msgstr "Разрешить сопряжение"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, searchField)
 #: wizard/pages/discover.ui:19
@@ -491,7 +491,7 @@ msgstr "Показывать безымянные устройства"
 #: wizard/pages/discover.ui:71
 #, kde-format
 msgid "Scanning…"
-msgstr "Сканирование..."
+msgstr "Сканирование…"
 
 #. i18n: ectx: property (text), widget (QCheckBox, manualPin)
 #: wizard/pages/discover.ui:91
@@ -532,7 +532,7 @@ msgstr "Не удалось настроить устройство %1."
 #: wizard/pages/pairing.cpp:60
 #, kde-format
 msgid "Connecting to %1…"
-msgstr "Подключение к %1..."
+msgstr "Подключение к %1…"
 
 #: wizard/pages/pairing.cpp:91
 #, kde-format

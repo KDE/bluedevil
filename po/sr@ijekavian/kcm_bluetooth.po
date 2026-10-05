@@ -1,65 +1,61 @@
-# Copyright (C) 2024 This file is copyright:
-# This file is distributed under the same license as the bluedevil package.
-#
-# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024, 2025 Alexander Yavorsky <kekcuha@gmail.com>
-# Alexander Potashev <aspotashev@gmail.com>, 2020.
-# Alexander Yavorsky <kekcuha@gmail.com>, 2024.
-# SPDX-FileCopyrightText: 2024 Olesya Gerasimenko <translation-team@basealt.ru>
+# Translation of bluedevil.po into Serbian.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2011, 2013, 2014, 2015, 2016, 2017.
+# Dalibor Djuric <daliborddjuric@gmail.com>, 2011.
+# Nemanja Hiršl <nemhirsl@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-15 00:45+0000\n"
-"PO-Revision-Date: 2025-12-11 18:33+0300\n"
-"Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
-"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
-"Language: ru\n"
+"PO-Revision-Date: 2026-10-03 22:09+0200\n"
+"Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
+"Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
+"Language: sr@ijekavian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 25.11.90\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+"X-Environment: kde\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
-"Владимир Бухарин,Александр Поташев,Александр Яворский,Олеся Герасименко"
+msgstr "Часлав Илић,Немања Хиршл"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
-"vovan2482@mail.ru,aspotashev@gmail.com,kekcuha@gmail.com,translation-"
-"team@basealt.ru"
+msgstr "caslav.ilic@gmx.net,nemhirsl@gmail.com"
 
 #: bluetooth.cpp:135
 #, kde-format
 msgctxt "DeviceName Network (Service)"
 msgid "%1 Network (%2)"
-msgstr "Сеть %1 (%2)"
+msgstr "Мрежа %1 (%2)"
 
 #: bluetoothmoduledata.cpp:20
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
-msgstr "Включить Bluetooth"
+msgstr "Укључи блутут"
 
 #: ui/Device.qml:132 ui/main.qml:214
 #, kde-format
 msgid "Disconnect"
-msgstr "Отключить"
+msgstr "Прекини везу"
 
 #: ui/Device.qml:132 ui/main.qml:214
 #, kde-format
 msgid "Connect"
-msgstr "Подключить"
+msgstr "Повежи"
 
 #: ui/Device.qml:135
 #, kde-format
 msgid "Unblock the device first to be able to connect to it"
-msgstr "Разблокируйте устройство для подключения"
+msgstr "Прво одблокирајте уређај да бисте могли да се повежете са њим"
 
 #: ui/Device.qml:156
 #, kde-format
@@ -74,12 +70,12 @@ msgstr "%1%"
 #: ui/Device.qml:162
 #, kde-format
 msgid "Battery:"
-msgstr "Батарея:"
+msgstr "Батерија:"
 
 #: ui/Device.qml:167 ui/General.qml:49
 #, kde-format
 msgid "Address:"
-msgstr "Адрес:"
+msgstr "Адреса:"
 
 #: ui/Device.qml:172
 #, kde-format
@@ -89,187 +85,184 @@ msgstr "Адаптер:"
 #: ui/Device.qml:178 ui/General.qml:43
 #, kde-format
 msgid "Name:"
-msgstr "Название:"
+msgstr "Име:"
 
 #: ui/Device.qml:182
 #, kde-format
 msgid "Trusted"
-msgstr "Доверенное"
+msgstr "Поуздан"
 
 #: ui/Device.qml:191 ui/main.qml:180
 #, kde-format
 msgid "Blocked"
-msgstr "Заблокировано"
+msgstr "Блокиран"
 
 #: ui/Device.qml:197
 #, kde-format
 msgid ""
 "When enabled, all incoming connections from this device will be rejected."
-msgstr ""
-"Если включено, все входящие подключения от этого устройства будут "
-"отклоняться."
+msgstr "Кад је укључено, све долазне везе са овог уређаја биће одбијене."
 
 #: ui/Device.qml:203
 #, kde-format
 msgid "Send File"
-msgstr "Передать файл"
+msgstr "Слање фајла"
 
 #: ui/Device.qml:211
 #, kde-format
 msgid "Setup NAP Network…"
-msgstr "Настроить сеть NAP…"
+msgstr "Постави НАП мрежу…"
 
 #: ui/Device.qml:219
 #, kde-format
 msgid "Setup DUN Network…"
-msgstr "Настроить сеть DUN…"
+msgstr "Постави ДУН мрежу…"
 
 #: ui/Device.qml:234
 #, kde-format
 msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"
-msgstr "Удалить"
+msgstr "Заборави"
 
 #: ui/ForgetDeviceAction.qml:18
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
-msgstr "Удалить «%1»"
+msgstr "Заборави „%1“"
 
 #: ui/General.qml:24
 #, kde-format
 msgid "Settings"
-msgstr "Настройка"
+msgstr "Поставке"
 
 #: ui/General.qml:35
 #, kde-format
 msgid "Device:"
-msgstr "Устройство:"
+msgstr "Уређај:"
 
 #: ui/General.qml:53
 #, kde-format
 msgid "Enabled:"
-msgstr "Включено:"
+msgstr "Укључен:"
 
 #: ui/General.qml:59
 #, kde-format
 msgid "Visible:"
-msgstr "Видимость:"
+msgstr "Видљив:"
 
 #: ui/General.qml:73
 #, kde-format
 msgid "On login:"
-msgstr "При входе в систему:"
+msgstr "При пријављивању:"
 
 #: ui/General.qml:74
 #, kde-format
 msgid "Enable Bluetooth"
-msgstr "Включить Bluetooth"
+msgstr "Укључи блутут"
 
 #: ui/General.qml:85
 #, kde-format
 msgid "Disable Bluetooth"
-msgstr "Выключить Bluetooth"
+msgstr "Искључи блутут"
 
 #: ui/General.qml:96
 #, kde-format
 msgid "Restore previous status"
-msgstr "Восстанавливать предыдущее состояние"
+msgstr "Врати претходно стање"
 
 #: ui/General.qml:116
 #, kde-format
 msgid "When receiving files:"
-msgstr "При получении файлов:"
+msgstr "При пријему фајлова:"
 
 #: ui/General.qml:118
 #, kde-format
 msgid "Ask for confirmation"
-msgstr "Запрашивать подтверждение"
+msgstr "Тражи потврду"
 
 #: ui/General.qml:127
 #, kde-format
 msgid "Accept for trusted devices"
-msgstr "Принимать от доверенных устройств"
+msgstr "Прихватај од поузданих уређаја"
 
 #: ui/General.qml:137
 #, kde-format
 msgid "Always accept"
-msgstr "Всегда принимать"
+msgstr "Увијек прихватај"
 
 #: ui/General.qml:147
 #, kde-format
 msgid "Save files in:"
-msgstr "Сохранять полученные файлы в:"
+msgstr "Уписуј фајлове у:"
 
-# BUGME: please split strings: windowtitle/button --aspotashev
+# >> @title:window
 #: ui/General.qml:160 ui/General.qml:171
 #, kde-format
 msgid "Select folder"
-msgstr "Выбор папки"
+msgstr "Избор фасцикле"
 
 #: ui/main.qml:34
 #, kde-format
 msgid "Pair Device…"
-msgstr "Выполнить сопряжение устройства…"
+msgstr "Упари уређај…"
 
 #: ui/main.qml:41
 #, kde-format
 msgid "Configure…"
-msgstr "Настроить…"
+msgstr "Подеси…"
 
 #: ui/main.qml:48
 #, kde-format
 msgctxt "@action: button as in, 'enable Bluetooth'"
 msgid "Enabled"
-msgstr "Включить"
+msgstr "Укључено"
 
 #: ui/main.qml:126
 #, kde-format
 msgid "No Bluetooth adapters found"
-msgstr "Адаптеры Bluetooth не найдены"
+msgstr "Није нађен ниједан блутут адаптер"
 
 #: ui/main.qml:127
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
-msgstr "Подключите внешний адаптер Bluetooth"
+msgstr "Повежите спољашњи блутут адаптер"
 
 #: ui/main.qml:136
 #, kde-format
 msgid "Bluetooth is disabled"
-msgstr "Bluetooth выключен"
+msgstr "Блутут је искључен"
 
 #: ui/main.qml:142
 #, kde-format
 msgid "Enable"
-msgstr "Включить"
+msgstr "Укључи"
 
 #: ui/main.qml:152
 #, kde-format
 msgid "No devices paired"
-msgstr "Нет сопряжённых устройств"
+msgstr "Нема упарених уређаја"
 
 #: ui/main.qml:153
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr ""
-"Чтобы выполнить сопряжение, нажмите <interface>Выполнить сопряжение "
-"устройства…</interface>"
+"Кликните на <interface>Упари уређај…</interface> да бисте упарили уређаје"
 
 #: ui/main.qml:182
 #, kde-format
 msgid "Connected"
-msgstr "Подключено"
+msgstr "Повезани"
 
 #: ui/main.qml:184
 #, kde-format
 msgid "Available"
-msgstr "Доступно"
+msgstr "Доступни"
 
 #: ui/main.qml:247
 #, kde-format
 msgid "%1% Battery"
-msgstr "Батарея %1%"
+msgstr "Батерија на %1%"
 
 #: ui/script.js:13
 #, kde-format
@@ -287,171 +280,131 @@ msgstr "модем"
 #, kde-format
 msgctxt "This device is a Computer"
 msgid "Computer"
-msgstr "компьютер"
+msgstr "рачунар"
 
 #: ui/script.js:19
 #, kde-format
 msgctxt "This device is of type Network"
 msgid "Network"
-msgstr "сеть"
+msgstr "мрежа"
 
 #: ui/script.js:21
 #, kde-format
 msgctxt "This device is a Headset"
 msgid "Headset"
-msgstr "гарнитура"
+msgstr "слушалице са микрофоном"
 
 #: ui/script.js:23
 #, kde-format
 msgctxt "This device is a Headphones"
 msgid "Headphones"
-msgstr "наушники"
+msgstr "слушалице"
 
 #: ui/script.js:25
 #, kde-format
 msgctxt "This device is an Audio/Video device"
 msgid "Multimedia"
-msgstr "мультимедийное устройство"
+msgstr "мултимедија"
 
 #: ui/script.js:27
 #, kde-format
 msgctxt "This device is a Keyboard"
 msgid "Keyboard"
-msgstr "клавиатура"
+msgstr "тастатура"
 
 #: ui/script.js:29
 #, kde-format
 msgctxt "This device is a Mouse"
 msgid "Mouse"
-msgstr "мышь"
+msgstr "миш"
 
 #: ui/script.js:31
 #, kde-format
 msgctxt "This device is a Game controller"
 msgid "Game controller"
-msgstr "игровой контроллер"
+msgstr "контролор за игре"
 
 #: ui/script.js:33
 #, kde-format
 msgctxt "This device is a Graphics Tablet (input device)"
 msgid "Tablet"
-msgstr "планшет"
+msgstr "таблица"
 
 #: ui/script.js:35
 #, kde-format
 msgctxt "This device is a Peripheral device"
 msgid "Peripheral"
-msgstr "периферийное устройство"
+msgstr "периферија"
 
 #: ui/script.js:37
 #, kde-format
 msgctxt "This device is a Camera"
 msgid "Camera"
-msgstr "камера"
+msgstr "фотоапарат"
 
 #: ui/script.js:39
 #, kde-format
 msgctxt "This device is a Printer"
 msgid "Printer"
-msgstr "принтер"
+msgstr "штампач"
 
 #: ui/script.js:41
 #, kde-format
 msgctxt ""
 "This device is an Imaging device (printer, scanner, camera, display, …)"
 msgid "Imaging"
-msgstr "устройство для работы с изображениями"
+msgstr "сликање"
 
 #: ui/script.js:43
 #, kde-format
 msgctxt "This device is a Wearable"
 msgid "Wearable"
-msgstr "носимое устройство"
+msgstr "носиви"
 
 #: ui/script.js:45
 #, kde-format
 msgctxt "This device is a Toy"
 msgid "Toy"
-msgstr "игрушка"
+msgstr "играчка"
 
 #: ui/script.js:47
 #, kde-format
 msgctxt "This device is a Health device"
 msgid "Health"
-msgstr "медицинское устройство"
+msgstr "здравље"
 
 #: ui/script.js:53
 #, kde-format
 msgid "File transfer"
-msgstr "Передача файлов"
+msgstr "пренос фајлова"
 
 #: ui/script.js:56
 #, kde-format
 msgid "Send file"
-msgstr "Передать файл"
+msgstr "слање фајла"
 
 #: ui/script.js:59
 #, kde-format
 msgid "Input"
-msgstr "Ввод"
+msgstr "улаз"
 
 #: ui/script.js:62
 #, kde-format
 msgid "Audio"
-msgstr "Звук"
+msgstr "аудио"
 
 #: ui/script.js:65
 #, kde-format
 msgid "Network"
-msgstr "Сеть"
+msgstr "мрежа"
 
 #: ui/script.js:69
 #, kde-format
 msgid "Other"
-msgstr "Другое"
+msgstr "друго"
 
 #: ui/script.js:72
 #, kde-format
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
-
-#~ msgid "Forget this Device?"
-#~ msgstr "Удалить данные подключения этого устройства?"
-
-#~ msgid "Are you sure you want to forget \"%1\"?"
-#~ msgstr "Удалить данные для подключения «%1»?"
-
-#~ msgctxt "@action:button"
-#~ msgid "Forget Device"
-#~ msgstr "Удалить устройство"
-
-#~ msgctxt "@action:button"
-#~ msgid "Cancel"
-#~ msgstr "Отмена"
-
-#~ msgctxt "This device is a Joypad"
-#~ msgid "Joypad"
-#~ msgstr "геймпад"
-
-#~ msgctxt "Type of device: could not be determined"
-#~ msgid "Unknown"
-#~ msgstr "неизвестно"
-
-#~ msgid "Confirm Deletion of Device"
-#~ msgstr "Подтверждение удаления устройства"
-
-#~ msgid "Remove"
-#~ msgstr "Удалить"
-
-#~ msgid "Bluetooth"
-#~ msgstr "Bluetooth"
-
-#~ msgid "Nicolas Fella"
-#~ msgstr "Nicolas Fella"
-
-#~ msgid "Add…"
-#~ msgstr "Добавить…"
-
-#~ msgid "Add..."
-#~ msgstr "Добавить..."
