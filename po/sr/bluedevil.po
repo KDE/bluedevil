@@ -1,13 +1,14 @@
 # Translation of bluedevil.po into Serbian.
 # Chusslove Illich <caslav.ilic@gmx.net>, 2011, 2013, 2014, 2015, 2016, 2017.
 # Dalibor Djuric <daliborddjuric@gmail.com>, 2011.
+# Nemanja Hiršl <nemhirsl@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-26 03:00+0000\n"
-"PO-Revision-Date: 2017-12-15 12:37+0100\n"
-"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
+"PO-Revision-Date: 2026-10-03 22:09+0200\n"
+"Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
@@ -22,33 +23,31 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Часлав Илић"
+msgstr "Часлав Илић,Немања Хиршл"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "caslav.ilic@gmx.net"
+msgstr "caslav.ilic@gmx.net,nemhirsl@gmail.com"
 
 #: components/ForgetDeviceDialog.qml:37
 #, kde-format
 msgid "Forget this Device?"
-msgstr ""
+msgstr "Заборавити овај уређај?"
 
 #: components/ForgetDeviceDialog.qml:38
 #, kde-format
 msgid "Are you sure you want to forget \"%1\"?"
-msgstr ""
+msgstr "Желите ли заиста да заборавите „%1“?"
 
 #: components/ForgetDeviceDialog.qml:50
-#, fuzzy, kde-format
-#| msgid "Remove device"
+#, kde-format
 msgctxt "@action:button"
 msgid "Forget Device"
-msgstr "Уклони уређај"
+msgstr "Заборави уређај"
 
 #: components/ForgetDeviceDialog.qml:58
-#, fuzzy, kde-format
-#| msgid "Cancel"
+#, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
 msgstr "Одустани"
@@ -78,7 +77,7 @@ msgstr "Претходни одржавалац"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Access request from device “%1”"
-msgstr ""
+msgstr "Захтев за приступ са уређаја „%1“"
 
 #: kded/helpers/requestauthorization.cpp:29
 #, kde-format
@@ -89,10 +88,7 @@ msgid "%1 is requesting access to this computer"
 msgstr "%1 тражи приступ овом рачунару"
 
 #: kded/helpers/requestauthorization.cpp:33
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "Button to trust a bluetooth remote device and authorize it to connect"
-#| msgid "Trust && Authorize"
+#, kde-format
 msgctxt "Button to trust a bluetooth remote device and authorize it to connect"
 msgid "Trust and Authorize"
 msgstr "Веруј и овласти"
@@ -113,7 +109,7 @@ msgstr "Одбиј"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Verify PIN for device “%1”"
-msgstr ""
+msgstr "Провера ПИН‑а за уређај „%1“"
 
 #: kded/helpers/requestconfirmation.cpp:28
 #, kde-format
@@ -139,7 +135,7 @@ msgstr "ПИН није исправан"
 #, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "PIN for device “%1”"
-msgstr ""
+msgstr "ПИН за уређај „%1“"
 
 #: kded/helpers/requestpin.cpp:34
 #, kde-format
@@ -190,7 +186,7 @@ msgstr "1234"
 #, kde-format
 msgctxt "%1 is the name of a Bluetooth device"
 msgid "Incoming file from device “%1”"
-msgstr ""
+msgstr "Долазни фајл са уређаја „%1“"
 
 #: kded/receivefilejob.cpp:133
 #, kde-format
@@ -215,11 +211,10 @@ msgid "Cancel"
 msgstr "Одустани"
 
 #: kded/receivefilejob.cpp:163
-#, fuzzy, kde-format
-#| msgid "<b>Receiving files</b>"
+#, kde-format
 msgctxt "@title job"
 msgid "Receiving file"
-msgstr "<b>Пријем фајлова</b>"
+msgstr "Пријем фајла"
 
 #: kded/receivefilejob.cpp:164 sendfile/sendfilesjob.cpp:84
 #, kde-format
@@ -260,10 +255,9 @@ msgid "No Bluetooth adapters have been found."
 msgstr "Није нађен ниједан блутут адаптер."
 
 #: kio/bluetooth/kiobluetooth.cpp:92
-#, fuzzy, kde-format
-#| msgid "Retrieving services..."
+#, kde-format
 msgid "Retrieving services…"
-msgstr "Добављам сервисе..."
+msgstr "Добављам сервисе…"
 
 #: kio/bluetooth/kiobluetooth.cpp:99
 #, kde-format
@@ -276,10 +270,9 @@ msgid "Received Files"
 msgstr "Примљени фајлови"
 
 #: kio/bluetooth/kiobluetooth.cpp:167
-#, fuzzy, kde-format
-#| msgid "Scanning for new devices..."
+#, kde-format
 msgid "Scanning for new devices…"
-msgstr "Скенирам за новим уређајима..."
+msgstr "Скенирам за новим уређајима…"
 
 #: kio/obexftp/kioobexftp.cpp:96
 #, kde-format
@@ -287,10 +280,9 @@ msgid "Obexd service is not running."
 msgstr "ОбексФТП‑ов сервис није у погону."
 
 #: kio/obexftp/kioobexftp.cpp:140
-#, fuzzy, kde-format
-#| msgid "Retrieving information from remote device..."
+#, kde-format
 msgid "Retrieving information from remote device…"
-msgstr "Добављам податке са удаљеног уређаја..."
+msgstr "Добављам податке са удаљеног уређаја…"
 
 #: kio/obexftp/kioobexftp.cpp:222
 #, kde-format
@@ -300,7 +292,7 @@ msgstr "Повезујем уређај..."
 #: kio/obexftp/kioobexftp.cpp:298
 #, kde-format
 msgid "This should not happen"
-msgstr ""
+msgstr "Ово не би требало да се деси"
 
 # >> @item
 #: kio/obexftp/kioobexftp.cpp:520
@@ -320,12 +312,10 @@ msgid "Bluetooth is disabled."
 msgstr "Блутут је деактивиран."
 
 #: sendfile/discoverwidget.cpp:135 wizard/pages/discover.cpp:383
-#, fuzzy, kde-format
-#| msgctxt "This device is a Graphics Tablet (input device)"
-#| msgid "Tablet"
+#, kde-format
 msgctxt "Action to enable Bluetooth adapter"
 msgid "Enable"
-msgstr "таблица"
+msgstr "Укључи"
 
 #: sendfile/discoverwidget.cpp:137
 #, kde-format
@@ -336,13 +326,12 @@ msgstr "Блутут адаптер је угашен."
 #, kde-format
 msgctxt "Action to turn on Bluetooth adapter"
 msgid "Turn On"
-msgstr ""
+msgstr "Укључи"
 
 #: sendfile/main.cpp:25 sendfile/main.cpp:27
-#, fuzzy, kde-format
-#| msgid "Bluetooth transfer failed"
+#, kde-format
 msgid "Bluetooth File Transfer"
-msgstr "Пренос преко блутута пропао"
+msgstr "Блутут пренос фајла"
 
 #: sendfile/main.cpp:48
 #, kde-format
@@ -360,32 +349,26 @@ msgid "Files to be sent."
 msgstr "Фајлови за слање."
 
 #: sendfile/pages/connectingpage.cpp:32 wizard/pages/connect.cpp:39
-#, fuzzy, kde-format
-#| msgctxt "Connecting to a Bluetooth device"
-#| msgid "Connecting to %1..."
+#, kde-format
 msgctxt "Connecting to a Bluetooth device"
 msgid "Connecting to %1…"
-msgstr "Повезујем %1..."
+msgstr "Повезујем %1…"
 
 #: sendfile/pages/failpage.cpp:43
-#, fuzzy, kde-format
-#| msgctxt "This string is shown when the wizard fail"
-#| msgid "The connection to the device has failed"
+#, kde-format
 msgctxt "This string is shown when the wizard fail"
 msgid "The connection to the device has failed: %1"
-msgstr "Повезивање са уређајем није успело"
+msgstr "Повезивање са уређајем није успело: %1"
 
 #: sendfile/pages/failpage.cpp:45
-#, fuzzy, kde-format
-#| msgid "The connection to %1 has failed"
+#, kde-format
 msgid "The connection to %1 has failed: %2"
-msgstr "Повезивање са уређајем %1 није успело"
+msgstr "Повезивање са уређајем %1 није успело: %2"
 
 #: sendfile/pages/selectdeviceandfilespage.cpp:53
-#, fuzzy, kde-format
-#| msgid "Open file..."
+#, kde-format
 msgid "Open file…"
-msgstr "Отвори фајл..."
+msgstr "Отвори фајл…"
 
 #. i18n: ectx: property (text), widget (KSqueezedTextLabel, selectLbl)
 #: sendfile/pages/selectdeviceandfilespage.cpp:58
@@ -430,13 +413,13 @@ msgstr "Одустани"
 #, kde-format
 msgctxt "@info:status %1 error message"
 msgid "Failed to start org.bluez.obex service: %1"
-msgstr ""
+msgstr "Не могу да покренем сервис org.bluez.obex: %1"
 
 #. i18n: ectx: label, entry (launchState), group (General)
 #: settings/bluedevilglobalsettings.kcfg:10
 #, kde-format
 msgid "Option to determine the bluetooth state at launch"
-msgstr ""
+msgstr "Опција за одређивање стања блутута при покретању"
 
 #. i18n: ectx: label, entry (saveUrl), group (General)
 #: settings/filereceiver.kcfg:11
@@ -463,10 +446,9 @@ msgid "Finish"
 msgstr "Заврши"
 
 #: wizard/main.cpp:26 wizard/main.cpp:28
-#, fuzzy, kde-format
-#| msgid "Bluetooth Devices"
+#, kde-format
 msgid "Add Bluetooth Device"
-msgstr "Блутут уређаји"
+msgstr "Додавање блутут уређаја"
 
 # >> @title:window
 #: wizard/pages/discover.cpp:170
@@ -486,33 +468,28 @@ msgid "Your Bluetooth adapter is not pairable."
 msgstr "Блутут адаптер није упарив."
 
 #: wizard/pages/discover.cpp:386
-#, fuzzy, kde-format
-#| msgctxt "This device is a Wearable"
-#| msgid "Wearable"
+#, kde-format
 msgctxt "Action to make Bluetooth adapter pairable"
 msgid "Make Pairable"
-msgstr "носиви"
+msgstr "Учини упаривим"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, searchField)
 #: wizard/pages/discover.ui:19
 #, kde-format
 msgid "Search…"
-msgstr ""
+msgstr "Тражи…"
 
 #. i18n: ectx: property (text), widget (QCheckBox, showUnnamedDevicesCheckBox)
 #: wizard/pages/discover.ui:42
-#, fuzzy, kde-format
-#| msgctxt "'Auto accept' option value"
-#| msgid "Trusted devices"
+#, kde-format
 msgid "Show unnamed devices"
-msgstr "поуздани уређаји"
+msgstr "Прикажи безимене уређаје"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: wizard/pages/discover.ui:71
-#, fuzzy, kde-format
-#| msgid "Scanning..."
+#, kde-format
 msgid "Scanning…"
-msgstr "Скенирам..."
+msgstr "Скенирам…"
 
 #. i18n: ectx: property (text), widget (QCheckBox, manualPin)
 #: wizard/pages/discover.ui:91
@@ -551,10 +528,9 @@ msgid "The setup of %1 has failed"
 msgstr "Постављање уређаја %1 није успело"
 
 #: wizard/pages/pairing.cpp:60
-#, fuzzy, kde-format
-#| msgid "Connecting to %1..."
+#, kde-format
 msgid "Connecting to %1…"
-msgstr "Повезујем %1..."
+msgstr "Повезујем %1…"
 
 # ? Wtf?
 #: wizard/pages/pairing.cpp:91
@@ -589,331 +565,15 @@ msgstr "Потврдите да ПИН приказан на %1 одговара
 #: wizard/pages/success.cpp:40
 #, kde-format
 msgid "Setup Finished"
-msgstr ""
+msgstr "Постављање завршено"
 
 #: wizard/pages/success.cpp:42
 #, kde-format
 msgid "The device has been set up and can now be used."
-msgstr ""
+msgstr "Уређај је постављен и сада може да се користи."
 
 #: wizard/pages/success.cpp:44
 #, kde-format
 msgctxt "Placeholder is device name"
 msgid "The device '%1' has been set up and can now be used."
-msgstr ""
-
-#, fuzzy
-#~| msgid "Blocked:"
-#~ msgctxt "@title:column Blocked Bluetooth devices"
-#~ msgid "Blocked"
-#~ msgstr "Блокиран:"
-
-#, fuzzy
-#~| msgid "Connect"
-#~ msgctxt "@title:column Connected Bluetooth devices"
-#~ msgid "Connected"
-#~ msgstr "Повежи"
-
-#, fuzzy
-#~| msgid "This address is unavailable."
-#~ msgctxt "Notification when the connection failed due to Failed:HostIsDown"
-#~ msgid "The device is unreachable"
-#~ msgstr "Ова адреса није доступна."
-
-#, fuzzy
-#~| msgid "Connecting to the device"
-#~ msgctxt "Notification when the connection failed due to Failed"
-#~ msgid "Connection to the device failed"
-#~ msgstr "Повезујем уређај..."
-
-#, fuzzy
-#~| msgid "Obexd service is not running."
-#~ msgctxt "Notification when the connection failed due to NotReady"
-#~ msgid "The device is not ready"
-#~ msgstr "ОбексФТП‑ов сервис није у погону."
-
-#~ msgctxt "DeviceName Network (Service)"
-#~ msgid "%1 Network (%2)"
-#~ msgstr "Мрежа %1 (%2)"
-
-#, fuzzy
-#~| msgid "Sending file over Bluetooth"
-#~ msgctxt "@info:tooltip"
-#~ msgid "Enable Bluetooth"
-#~ msgstr "Шаљем фајл преко блутута"
-
-#, fuzzy
-#~| msgctxt "DeviceName Network (Service)"
-#~| msgid "%1 Network (%2)"
-#~ msgctxt ""
-#~ "@label %1 is human-readable device name, %2 is low-level device address"
-#~ msgid "%1 (%2)"
-#~ msgstr "Мрежа %1 (%2)"
-
-#~ msgctxt "Radio widget to set if we want the adapter to be hidden"
-#~ msgid "Hidden"
-#~ msgstr "скривен"
-
-#~ msgctxt "Radio widget to set if we want the adapter to be always visible"
-#~ msgid "Always visible"
-#~ msgstr "увек видљив"
-
-#~ msgctxt ""
-#~ "Radio widget to set if we want the adapter to be temporarily visible"
-#~ msgid "Temporarily visible"
-#~ msgstr "привремено видљив"
-
-#~ msgctxt "Discover time for the adapter"
-#~ msgid "1 minute"
-#~ msgid_plural "%1 minutes"
-#~ msgstr[0] "%1 минут"
-#~ msgstr[1] "%1 минута"
-#~ msgstr[2] "%1 минута"
-#~ msgstr[3] "1 минут"
-
-#~ msgctxt "Name of the adapter"
-#~ msgid "Name"
-#~ msgstr "Име"
-
-#~ msgctxt "Whether the adapter is powered or not"
-#~ msgid "Powered"
-#~ msgstr "У погону"
-
-#~ msgctxt "Whether the adapter is visible or not"
-#~ msgid "Visibility"
-#~ msgstr "Видљивост"
-
-#~ msgctxt "How long the adapter will be discoverable"
-#~ msgid "Discover Time"
-#~ msgstr "Време откривања"
-
-#~ msgid "1 minute"
-#~ msgid_plural "%1 minutes"
-#~ msgstr[0] "%1 минут"
-#~ msgstr[1] "%1 минута"
-#~ msgstr[2] "%1 минута"
-#~ msgstr[3] "1 минут"
-
-#~ msgid "Bluetooth Adapters"
-#~ msgstr "Блутут адаптери"
-
-#~ msgid "Bluetooth Adapters Control Panel Module"
-#~ msgstr "Контролни модул за блутут адаптере"
-
-#~ msgid "(c) 2010 Rafael Fernández López"
-#~ msgstr "© 2010, Рафел Фернандез Лопез"
-
-#~ msgid "Previous Developer and Maintainer"
-#~ msgstr "Претходни програмер и одржавалац"
-
-#~ msgid "No adapters found"
-#~ msgstr "Није нађен ниједан адаптер"
-
-#, fuzzy
-#~| msgctxt "Radio widget to set if we want the adapter to be always visible"
-#~| msgid "Always visible"
-#~ msgctxt "Action to fix a problem"
-#~ msgid "Make Visible"
-#~ msgstr "увек видљив"
-
-#~ msgid "Your default Bluetooth adapter is not visible for remote devices."
-#~ msgstr "Подразумевани блутут адаптер није видљив удаљеним уређајима."
-
-#~ msgid "Interaction with Bluetooth system is not optimal."
-#~ msgstr "Сарадња са блутут системом није оптимална."
-
-#, fuzzy
-#~| msgctxt "This device is a Graphics Tablet (input device)"
-#~| msgid "Tablet"
-#~ msgctxt "Action to fix a problem"
-#~ msgid "Enable"
-#~ msgstr "таблица"
-
-#~ msgid "Bluetooth is not completely enabled."
-#~ msgstr "Блутут није потпуно активиран."
-
-#~ msgid "Disconnect"
-#~ msgstr "Прекини везу"
-
-#~ msgctxt "This device is a Phone"
-#~ msgid "Phone"
-#~ msgstr "телефон"
-
-#~ msgctxt "This device is a Modem"
-#~ msgid "Modem"
-#~ msgstr "модем"
-
-#~ msgctxt "This device is a Computer"
-#~ msgid "Computer"
-#~ msgstr "рачунар"
-
-#~ msgctxt "This device is of type Network"
-#~ msgid "Network"
-#~ msgstr "мрежа"
-
-#~ msgctxt "This device is a Headset"
-#~ msgid "Headset"
-#~ msgstr "слушалице са микрофоном"
-
-#~ msgctxt "This device is a Headphones"
-#~ msgid "Headphones"
-#~ msgstr "слушалице"
-
-#~ msgctxt "This device is an Audio device"
-#~ msgid "Audio"
-#~ msgstr "аудио"
-
-#~ msgctxt "This device is a Keyboard"
-#~ msgid "Keyboard"
-#~ msgstr "тастатура"
-
-#~ msgctxt "This device is a Mouse"
-#~ msgid "Mouse"
-#~ msgstr "миш"
-
-#~ msgctxt "This device is a Joypad"
-#~ msgid "Joypad"
-#~ msgstr "џојпед"
-
-#~ msgctxt "This device is a Graphics Tablet (input device)"
-#~ msgid "Tablet"
-#~ msgstr "таблица"
-
-#~ msgctxt "This device is a Peripheral device"
-#~ msgid "Peripheral"
-#~ msgstr "периферија"
-
-#~ msgctxt "This device is a Camera"
-#~ msgid "Camera"
-#~ msgstr "фотоапарат"
-
-#~ msgctxt "This device is a Printer"
-#~ msgid "Printer"
-#~ msgstr "штампач"
-
-#~ msgctxt ""
-#~ "This device is an Imaging device (printer, scanner, camera, display, ...)"
-#~ msgid "Imaging"
-#~ msgstr "сликање"
-
-#~ msgctxt "This device is a Wearable"
-#~ msgid "Wearable"
-#~ msgstr "носиви"
-
-#~ msgctxt "This device is a Toy"
-#~ msgid "Toy"
-#~ msgstr "играчка"
-
-#~ msgctxt "This device is a Health device"
-#~ msgid "Health"
-#~ msgstr "здравље"
-
-#~ msgctxt "Type of device: could not be determined"
-#~ msgid "Unknown"
-#~ msgstr "непознат"
-
-#~ msgid "Type:"
-#~ msgstr "Тип:"
-
-#~ msgid "Address:"
-#~ msgstr "Адреса:"
-
-#~ msgid "Name:"
-#~ msgstr "Име:"
-
-#~ msgid "Trusted:"
-#~ msgstr "Поуздан:"
-
-#~ msgid "Actions:"
-#~ msgstr "Радње:"
-
-#~ msgid "Setup NAP Network..."
-#~ msgstr "Постави НАП мрежу..."
-
-#~ msgid "Setup DUN Network..."
-#~ msgstr "Постави ДУН мрежу..."
-
-#~ msgid "Adapter:"
-#~ msgstr "Адаптер:"
-
-#~ msgid "Bluetooth Devices Control Panel Module"
-#~ msgstr "Контролни модул за блутут уређаје"
-
-#, fuzzy
-#~| msgid ""
-#~| "Are you sure that you want to remove device \"%1\" from the list of "
-#~| "known devices?"
-#~ msgid ""
-#~ "Are you sure that you want to remove %1 device from the list of known "
-#~ "devices?"
-#~ msgid_plural ""
-#~ "Are you sure that you want to remove %1 devices from the list of known "
-#~ "devices?"
-#~ msgstr[0] ""
-#~ "Желите ли заиста да уклоните уређај „%1“ са списка познатих уређаја?"
-#~ msgstr[1] ""
-#~ "Желите ли заиста да уклоните уређај „%1“ са списка познатих уређаја?"
-#~ msgstr[2] ""
-#~ "Желите ли заиста да уклоните уређај „%1“ са списка познатих уређаја?"
-#~ msgstr[3] ""
-#~ "Желите ли заиста да уклоните уређај „%1“ са списка познатих уређаја?"
-
-#~ msgid ""
-#~ "Are you sure that you want to remove device \"%1\" from the list of known "
-#~ "devices?"
-#~ msgstr ""
-#~ "Желите ли заиста да уклоните уређај „%1“ са списка познатих уређаја?"
-
-#~ msgctxt "Title of window that asks for confirmation when removing a device"
-#~ msgid "Device removal"
-#~ msgstr "Уклањање уређаја"
-
-#~ msgid "Select a device to configure"
-#~ msgstr "Изаберите уређај за подешавање"
-
-#~ msgid "No devices found"
-#~ msgstr "Није нађен ниједан уређај"
-
-#~ msgid "Add new device"
-#~ msgstr "Додај нови уређај"
-
-#~ msgid "Add device"
-#~ msgstr "Додај уређај"
-
-#~ msgid "Bluetooth Advanced Settings"
-#~ msgstr "Напредне блутут поставке"
-
-#~ msgid "Bluetooth Advanced Settings Control Panel Module"
-#~ msgstr "Контролни модул за напредне блутут поставке"
-
-#~ msgctxt "'Auto accept' option value"
-#~ msgid "Never"
-#~ msgstr "никад"
-
-#~ msgctxt "'Auto accept' option value"
-#~ msgid "All devices"
-#~ msgstr "сви уређаји"
-
-#~ msgid "Receive files from remote devices"
-#~ msgstr "Примај фајлове са удаљених уређаја"
-
-#~ msgid "Accept automatically:"
-#~ msgstr "Прихватај аутоматски:"
-
-#~ msgid "Save files in:"
-#~ msgstr "Уписуј фајлове у:"
-
-#~ msgid "Receiving file over Bluetooth"
-#~ msgstr "Примам фајл преко блутута"
-
-#~ msgid "Bluetooth Send File Wizard"
-#~ msgstr "Чаробњак за слање фајлова преко блутута"
-
-#~ msgid "Enable or disable receiving files"
-#~ msgstr "Укључи или искључи пријем фајлова"
-
-#~ msgid "Enable or disable the global KDE Bluetooth integration"
-#~ msgstr "Укључи или искључи глобалну сарадњу блутута са КДЕ‑ом"
-
-#~ msgid "Bluetooth Device Wizard"
-#~ msgstr "Чаробњак блутут уређаја"
+msgstr "Уређај „%1“ је постављен и сада може да се користи."
