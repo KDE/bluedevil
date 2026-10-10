@@ -10,8 +10,9 @@ import QtQuick
 import QtQuick.Controls as QQC2
 import org.kde.bluezqt as BluezQt
 import org.kde.bluedevil.components as BluedevilComponents
+import org.kde.kirigami as Kirigami
 
-QQC2.Action {
+Kirigami.Action {
     required property BluedevilComponents.ForgetDeviceDialog dialog
     required property BluezQt.Device device
 

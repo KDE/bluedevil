@@ -188,6 +188,7 @@ KCMUtils.ScrollViewKCM {
             }
         }
 
+        // TODO: Port to IconTitleSubtitleWithActionsDelegate if and when it exists
         delegate: QQC2.ItemDelegate {
             id: delegate
 
@@ -195,43 +196,53 @@ KCMUtils.ScrollViewKCM {
 
             width: ListView.view.width
 
+            icon.name: model.Icon
+            text: model.Name
+            Accessible.description: root.infoText(model.Device)
+
             onClicked: root.KCMUtils.ConfigModule.push("Device.qml", { device: model.Device })
 
+            // TODO: Port to IconTitleSubtitleWithActions if and when it exists
             contentItem: RowLayout {
                 spacing: Kirigami.Units.smallSpacing
 
-                KD.IconTitleSubtitle {
-                    title: delegate.model.Name
-                    textFormat: Text.PlainText
-                    subtitle: root.infoText(delegate.model.Device)
-                    icon.name: delegate.model.Icon
-                    icon.width: Kirigami.Units.iconSizes.medium
-                    Layout.fillWidth: true
+                Kirigami.Icon {
+                    Layout.fillHeight: true
+
+                    source: delegate.icon.name
                     selected: delegate.highlighted || delegate.down
                 }
 
-                QQC2.Button {
-                    text: delegate.model.Connected ? i18n("Disconnect") : i18n("Connect")
-                    icon.name: delegate.model.Connected ? "network-disconnect-symbolic" : "network-connect-symbolic"
-                    visible: !delegate.model.Blocked
+                KD.TitleSubtitleWithActions {
+                    Layout.fillWidth: true
 
-                    onClicked: {
-                        if (delegate.model.Connected) {
-                            root.makeCall(delegate.model.Device.disconnectFromDevice())
-                        } else {
-                            root.makeCall(delegate.model.Device.connectToDevice())
+                    title: delegate.text
+                    subtitle: delegate.Accessible.description
+
+                    selected: delegate.highlighted || delegate.down
+                    textFormat: Text.PlainText
+
+                    actions: [
+                        Kirigami.Action {
+                            text: delegate.model.Connected ? i18n("Disconnect") : i18n("Connect")
+                            icon.name: delegate.model.Connected ? "network-disconnect-symbolic" : "network-connect-symbolic"
+                            visible: !delegate.model.Blocked
+
+                            onTriggered: {
+                                if (delegate.model.Connected) {
+                                    root.makeCall(delegate.model.Device.disconnectFromDevice())
+                                } else {
+                                    root.makeCall(delegate.model.Device.connectToDevice())
+                                }
+                            }
+                        },
+                        ForgetDeviceAction {
+                            dialog: forgetDeviceDialog
+                            device: delegate.model.Device
+                            tooltip: text
+                            displayHint: Kirigami.DisplayHint.IconOnly
                         }
-                    }
-                }
-
-                QQC2.Button {
-                    action: ForgetDeviceAction {
-                        dialog: forgetDeviceDialog
-                        device: delegate.model.Device
-                    }
-                    display: QQC2.AbstractButton.IconOnly
-                    QQC2.ToolTip.text: text
-                    QQC2.ToolTip.visible: hovered
+                    ]
                 }
             }
         }
