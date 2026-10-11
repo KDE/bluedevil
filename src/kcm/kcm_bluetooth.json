@@ -113,7 +113,8 @@
         "FormFactors": [
             "handset",
             "tablet",
-            "desktop"
+            "desktop",
+            "mediacenter"
         ],
         "Icon": "preferences-system-bluetooth",
         "License": "GPL",

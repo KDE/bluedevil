@@ -17,6 +17,7 @@ class DevicesProxyModel : public QSortFilterProxyModel
     QML_ELEMENT
 
     Q_PROPERTY(bool hideBlockedDevices READ hideBlockedDevices WRITE setHideBlockedDevices NOTIFY hideBlockedDevicesChanged FINAL)
+    Q_PROPERTY(bool unpairedOnly READ unpairedOnly WRITE setUnpairedOnly)
 
 public:
     enum AdditionalRoles {
@@ -31,6 +32,9 @@ public:
     bool hideBlockedDevices() const;
     void setHideBlockedDevices(bool Hide);
 
+    bool unpairedOnly() const;
+    void setUnpairedOnly(bool unpairedOnly);
+
     QHash<int, QByteArray> roleNames() const override;
     QVariant data(const QModelIndex &index, int role) const override;
     bool lessThan(const QModelIndex &left, const QModelIndex &right) const override;
@@ -43,4 +47,5 @@ private:
     bool duplicateIndexAddress(const QModelIndex &idx) const;
 
     bool m_hideBlockedDevices = false;
+    bool m_unpairedOnly = false;
 };

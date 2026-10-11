@@ -35,6 +35,19 @@ void DevicesProxyModel::setHideBlockedDevices(bool shouldHide)
     }
 }
 
+bool DevicesProxyModel::unpairedOnly() const
+{
+    return m_unpairedOnly;
+}
+
+void DevicesProxyModel::setUnpairedOnly(bool unpairedOnly)
+{
+    if (m_unpairedOnly != unpairedOnly) {
+        m_unpairedOnly = unpairedOnly;
+        invalidateFilter();
+    }
+}
+
 QHash<int, QByteArray> DevicesProxyModel::roleNames() const
 {
     QHash<int, QByteArray> roles = QSortFilterProxyModel::roleNames();
@@ -116,8 +129,14 @@ bool DevicesProxyModel::filterAcceptsRow(int source_row, const QModelIndex &sour
     if (m_hideBlockedDevices && index.data(BluezQt::DevicesModel::BlockedRole).toBool()) {
         return false;
     }
-    // Only show paired and connected devices in the KCM and applet
-    return index.data(BluezQt::DevicesModel::PairedRole).toBool() || index.data(BluezQt::DevicesModel::ConnectedRole).toBool();
+
+    if (m_unpairedOnly) {
+        // The Bigscreen KCM has a seperate ListView for unpaired devices, because the wizard isn't used to pair
+        return !index.data(BluezQt::DevicesModel::RemoteNameRole).toString().isEmpty() && !index.data(BluezQt::DevicesModel::PairedRole).toBool(); 
+    } else {
+        // Only show paired and connected devices in the KCM and applet
+        return index.data(BluezQt::DevicesModel::PairedRole).toBool() || index.data(BluezQt::DevicesModel::ConnectedRole).toBool();
+    }
 }
 
 #include "moc_devicesproxymodel.cpp"
