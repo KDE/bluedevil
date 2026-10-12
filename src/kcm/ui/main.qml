@@ -174,18 +174,7 @@ KCMUtils.ScrollViewKCM {
             required property string section
 
             width: ListView.view.width
-            text: {
-                switch (section) {
-                case "Blocked":
-                    return i18n("Blocked");
-                case "Connected":
-                    return i18n("Connected");
-                case "Available":
-                    return i18n("Available");
-                default:
-                    return "";
-                }
-            }
+            text: section
         }
 
         delegate: QQC2.ItemDelegate {
