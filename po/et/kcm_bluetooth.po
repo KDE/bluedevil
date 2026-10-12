@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-15 00:45+0000\n"
+"POT-Creation-Date: 2026-10-12 00:53+0000\n"
 "PO-Revision-Date: 2020-09-28 02:19+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -40,12 +40,12 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "Lülita Bluetooth välja"
 
-#: ui/Device.qml:132 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
 #, kde-format
 msgid "Disconnect"
 msgstr "Katkesta ühendus"
 
-#: ui/Device.qml:132 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
 #, kde-format
 msgid "Connect"
 msgstr "Ühenda"
@@ -85,12 +85,12 @@ msgstr "Adapter:"
 msgid "Name:"
 msgstr "Nimi:"
 
-#: ui/Device.qml:182
+#: ui/Device.qml:182 ui/DeviceConnectionSidebar.qml:120
 #, kde-format
 msgid "Trusted"
 msgstr "Usaldatav"
 
-#: ui/Device.qml:191 ui/main.qml:180
+#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135 ui/main.qml:180
 #, kde-format
 msgid "Blocked"
 msgstr "Blokeeritud"
@@ -125,6 +125,92 @@ msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"
 msgstr "Seade:"
 
+#: ui/DeviceConnectionSidebar.qml:53
+#, kde-format
+msgid "Device information"
+msgstr ""
+
+#: ui/DeviceConnectionSidebar.qml:63
+#, fuzzy, kde-format
+#| msgid "Connect"
+msgid "Connecting…"
+msgstr "Ühenda"
+
+#: ui/DeviceConnectionSidebar.qml:63
+#, fuzzy, kde-format
+#| msgid "Disconnect"
+msgid "Disconnecting…"
+msgstr "Katkesta ühendus"
+
+#: ui/DeviceConnectionSidebar.qml:63
+#, kde-format
+msgid "Pair"
+msgstr ""
+
+#: ui/DeviceConnectionSidebar.qml:87
+#, fuzzy, kde-format
+#| msgid "Device:"
+msgid "Forget device"
+msgstr "Seade:"
+
+#: ui/DeviceConnectionSidebar.qml:98
+#, kde-format
+msgid "Are you sure you want to forget the device %1?"
+msgstr ""
+
+#: ui/DeviceConnectionSidebar.qml:121
+#, kde-format
+msgid "Auto-accept incoming connections"
+msgstr ""
+
+#: ui/DeviceConnectionSidebar.qml:136
+#, kde-format
+msgid "Reject all connections from this device"
+msgstr ""
+
+#: ui/DeviceConnectionSidebar.qml:152
+#, kde-format
+msgid "Device details"
+msgstr ""
+
+#: ui/DeviceConnectionSidebar.qml:163
+#, fuzzy, kde-format
+#| msgid "Type:"
+msgid "Type: %1"
+msgstr "Tüüp:"
+
+#: ui/DeviceConnectionSidebar.qml:169
+#, fuzzy, kde-format
+#| msgid "Address:"
+msgid "Address: %1"
+msgstr "Aadress:"
+
+#: ui/DeviceConnectionSidebar.qml:176
+#, kde-format
+msgid "Battery: %1"
+msgstr ""
+
+#: ui/DeviceConnectionSidebar.qml:177
+#, kde-format
+msgctxt "Battery percentage level"
+msgid "%1%"
+msgstr ""
+
+#: ui/DeviceConnectionSidebar.qml:183 ui/DeviceConnectionSidebar.qml:190
+#, kde-format
+msgid "Change name"
+msgstr ""
+
+#: ui/DeviceDelegate.qml:25 ui/main.qml:182
+#, kde-format
+msgid "Connected"
+msgstr "Ühendatud"
+
+#: ui/DeviceDelegate.qml:31 ui/main.qml:247
+#, kde-format
+msgid "%1% Battery"
+msgstr ""
+
 #: ui/ForgetDeviceAction.qml:18
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
@@ -156,7 +242,7 @@ msgstr "Nähtav:"
 msgid "On login:"
 msgstr ""
 
-#: ui/General.qml:74
+#: ui/General.qml:74 ui/main_mediacenter.qml:74
 #, fuzzy, kde-format
 #| msgid "Disable Bluetooth"
 msgid "Enable Bluetooth"
@@ -220,12 +306,12 @@ msgctxt "@action: button as in, 'enable Bluetooth'"
 msgid "Enabled"
 msgstr "Sisse lülitatud:"
 
-#: ui/main.qml:126
+#: ui/main.qml:126 ui/main_mediacenter.qml:61
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "Ühtegi Bluetoothi adapterit ei leitud"
 
-#: ui/main.qml:127
+#: ui/main.qml:127 ui/main_mediacenter.qml:62
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
 msgstr ""
@@ -251,20 +337,26 @@ msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr ""
 
-#: ui/main.qml:182
-#, kde-format
-msgid "Connected"
-msgstr "Ühendatud"
-
 #: ui/main.qml:184
 #, kde-format
 msgid "Available"
 msgstr "Saadaval"
 
-#: ui/main.qml:247
+#: ui/main_mediacenter.qml:20
 #, kde-format
-msgid "%1% Battery"
+msgid "Bluetooth"
+msgstr "Bluetooth"
+
+#: ui/main_mediacenter.qml:92
+#, kde-format
+msgid "Paired devices"
 msgstr ""
+
+#: ui/main_mediacenter.qml:121
+#, fuzzy, kde-format
+#| msgid "Available"
+msgid "Available devices"
+msgstr "Saadaval"
 
 #: ui/script.js:13
 #, kde-format
@@ -419,12 +511,6 @@ msgctxt "List separator"
 msgid ", "
 msgstr ""
 
-#, fuzzy
-#~| msgid "Device:"
-#~ msgctxt "@action:button"
-#~ msgid "Forget Device"
-#~ msgstr "Seade:"
-
 #~ msgctxt "This device is a Joypad"
 #~ msgid "Joypad"
 #~ msgstr "Juhtpult"
@@ -435,9 +521,6 @@ msgstr ""
 
 #~ msgid "Remove"
 #~ msgstr "Eemalda"
-
-#~ msgid "Bluetooth"
-#~ msgstr "Bluetooth"
 
 #~ msgid "Nicolas Fella"
 #~ msgstr "Nicolas Fella"

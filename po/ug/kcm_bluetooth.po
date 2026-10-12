@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-15 00:45+0000\n"
+"POT-Creation-Date: 2026-10-12 00:53+0000\n"
 "PO-Revision-Date: 2026-09-23 06:56+0900\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
@@ -40,12 +40,12 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "كۆكچىشنى قوزغات"
 
-#: ui/Device.qml:132 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
 #, kde-format
 msgid "Disconnect"
 msgstr "ئۈز"
 
-#: ui/Device.qml:132 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
 #, kde-format
 msgid "Connect"
 msgstr "باغلان"
@@ -85,12 +85,12 @@ msgstr ""
 msgid "Name:"
 msgstr "ئاتى:"
 
-#: ui/Device.qml:182
+#: ui/Device.qml:182 ui/DeviceConnectionSidebar.qml:120
 #, kde-format
 msgid "Trusted"
 msgstr "ئىشەنچلىك"
 
-#: ui/Device.qml:191 ui/main.qml:180
+#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135 ui/main.qml:180
 #, kde-format
 msgid "Blocked"
 msgstr "توسۇلدى"
@@ -121,6 +121,92 @@ msgstr ""
 msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"
 msgstr ""
+
+#: ui/DeviceConnectionSidebar.qml:53
+#, kde-format
+msgid "Device information"
+msgstr ""
+
+#: ui/DeviceConnectionSidebar.qml:63
+#, fuzzy, kde-format
+#| msgid "Connect"
+msgid "Connecting…"
+msgstr "باغلان"
+
+#: ui/DeviceConnectionSidebar.qml:63
+#, fuzzy, kde-format
+#| msgid "Disconnect"
+msgid "Disconnecting…"
+msgstr "ئۈز"
+
+#: ui/DeviceConnectionSidebar.qml:63
+#, kde-format
+msgid "Pair"
+msgstr ""
+
+#: ui/DeviceConnectionSidebar.qml:87
+#, kde-format
+msgid "Forget device"
+msgstr ""
+
+#: ui/DeviceConnectionSidebar.qml:98
+#, kde-format
+msgid "Are you sure you want to forget the device %1?"
+msgstr ""
+
+#: ui/DeviceConnectionSidebar.qml:121
+#, kde-format
+msgid "Auto-accept incoming connections"
+msgstr ""
+
+#: ui/DeviceConnectionSidebar.qml:136
+#, kde-format
+msgid "Reject all connections from this device"
+msgstr ""
+
+#: ui/DeviceConnectionSidebar.qml:152
+#, kde-format
+msgid "Device details"
+msgstr ""
+
+#: ui/DeviceConnectionSidebar.qml:163
+#, fuzzy, kde-format
+#| msgid "Type:"
+msgid "Type: %1"
+msgstr "تۈرى:"
+
+#: ui/DeviceConnectionSidebar.qml:169
+#, fuzzy, kde-format
+#| msgid "Address:"
+msgid "Address: %1"
+msgstr "ئادرېس:"
+
+#: ui/DeviceConnectionSidebar.qml:176
+#, fuzzy, kde-format
+#| msgid "%1% Battery"
+msgid "Battery: %1"
+msgstr "%1% توكدان"
+
+#: ui/DeviceConnectionSidebar.qml:177
+#, kde-format
+msgctxt "Battery percentage level"
+msgid "%1%"
+msgstr ""
+
+#: ui/DeviceConnectionSidebar.qml:183 ui/DeviceConnectionSidebar.qml:190
+#, kde-format
+msgid "Change name"
+msgstr ""
+
+#: ui/DeviceDelegate.qml:25 ui/main.qml:182
+#, kde-format
+msgid "Connected"
+msgstr "باغلاندى"
+
+#: ui/DeviceDelegate.qml:31 ui/main.qml:247
+#, kde-format
+msgid "%1% Battery"
+msgstr "%1% توكدان"
 
 #: ui/ForgetDeviceAction.qml:18
 #, kde-format
@@ -153,7 +239,7 @@ msgstr "ئاشكارا:"
 msgid "On login:"
 msgstr "تىزىمغا كىرگەندە:"
 
-#: ui/General.qml:74
+#: ui/General.qml:74 ui/main_mediacenter.qml:74
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "كۆكچىشنى قوزغات"
@@ -214,12 +300,12 @@ msgctxt "@action: button as in, 'enable Bluetooth'"
 msgid "Enabled"
 msgstr "قوزغىتىلغان"
 
-#: ui/main.qml:126
+#: ui/main.qml:126 ui/main_mediacenter.qml:61
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr ""
 
-#: ui/main.qml:127
+#: ui/main.qml:127 ui/main_mediacenter.qml:62
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
 msgstr ""
@@ -245,20 +331,27 @@ msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr ""
 
-#: ui/main.qml:182
-#, kde-format
-msgid "Connected"
-msgstr "باغلاندى"
-
 #: ui/main.qml:184
 #, kde-format
 msgid "Available"
 msgstr "ئىشلەتكىلى بولىدۇ"
 
-#: ui/main.qml:247
+#: ui/main_mediacenter.qml:20
+#, fuzzy, kde-format
+#| msgid "Enable Bluetooth"
+msgid "Bluetooth"
+msgstr "كۆكچىشنى قوزغات"
+
+#: ui/main_mediacenter.qml:92
 #, kde-format
-msgid "%1% Battery"
-msgstr "%1% توكدان"
+msgid "Paired devices"
+msgstr ""
+
+#: ui/main_mediacenter.qml:121
+#, fuzzy, kde-format
+#| msgid "Available"
+msgid "Available devices"
+msgstr "ئىشلەتكىلى بولىدۇ"
 
 #: ui/script.js:13
 #, kde-format

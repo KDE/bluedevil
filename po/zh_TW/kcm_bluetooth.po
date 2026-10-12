@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-15 00:45+0000\n"
+"POT-Creation-Date: 2026-10-12 00:53+0000\n"
 "PO-Revision-Date: 2025-12-16 21:23+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -42,12 +42,12 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "開啟藍牙"
 
-#: ui/Device.qml:132 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
 #, kde-format
 msgid "Disconnect"
 msgstr "斷線"
 
-#: ui/Device.qml:132 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
 #, kde-format
 msgid "Connect"
 msgstr "連線"
@@ -87,12 +87,12 @@ msgstr "轉接器："
 msgid "Name:"
 msgstr "名稱(&M)："
 
-#: ui/Device.qml:182
+#: ui/Device.qml:182 ui/DeviceConnectionSidebar.qml:120
 #, kde-format
 msgid "Trusted"
 msgstr "受信任的"
 
-#: ui/Device.qml:191 ui/main.qml:180
+#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135 ui/main.qml:180
 #, kde-format
 msgid "Blocked"
 msgstr "已封鎖"
@@ -123,6 +123,98 @@ msgstr "設定 DUN 網路…"
 msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"
 msgstr "忘記"
+
+#: ui/DeviceConnectionSidebar.qml:53
+#, kde-format
+msgid "Device information"
+msgstr ""
+
+#: ui/DeviceConnectionSidebar.qml:63
+#, fuzzy, kde-format
+#| msgid "Connect"
+msgid "Connecting…"
+msgstr "連線"
+
+#: ui/DeviceConnectionSidebar.qml:63
+#, fuzzy, kde-format
+#| msgid "Disconnect"
+msgid "Disconnecting…"
+msgstr "斷線"
+
+#: ui/DeviceConnectionSidebar.qml:63
+#, kde-format
+msgid "Pair"
+msgstr ""
+
+#: ui/DeviceConnectionSidebar.qml:87
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Forget Device"
+msgid "Forget device"
+msgstr "忘掉裝置"
+
+#: ui/DeviceConnectionSidebar.qml:98
+#, fuzzy, kde-format
+#| msgid "Are you sure you want to forget \"%1\"?"
+msgid "Are you sure you want to forget the device %1?"
+msgstr "您確定要忘掉「%1」嗎？"
+
+#: ui/DeviceConnectionSidebar.qml:121
+#, kde-format
+msgid "Auto-accept incoming connections"
+msgstr ""
+
+#: ui/DeviceConnectionSidebar.qml:136
+#, fuzzy, kde-format
+#| msgid ""
+#| "When enabled, all incoming connections from this device will be rejected."
+msgid "Reject all connections from this device"
+msgstr "啟用時，來自此裝置的任何連線都會被回絕。"
+
+#: ui/DeviceConnectionSidebar.qml:152
+#, kde-format
+msgid "Device details"
+msgstr ""
+
+#: ui/DeviceConnectionSidebar.qml:163
+#, fuzzy, kde-format
+#| msgid "Type:"
+msgid "Type: %1"
+msgstr "類型："
+
+#: ui/DeviceConnectionSidebar.qml:169
+#, fuzzy, kde-format
+#| msgid "Address:"
+msgid "Address: %1"
+msgstr "位址："
+
+#: ui/DeviceConnectionSidebar.qml:176
+#, fuzzy, kde-format
+#| msgid "Battery:"
+msgid "Battery: %1"
+msgstr "電量："
+
+#: ui/DeviceConnectionSidebar.qml:177
+#, fuzzy, kde-format
+#| msgid "%1%"
+msgctxt "Battery percentage level"
+msgid "%1%"
+msgstr "%1%"
+
+#: ui/DeviceConnectionSidebar.qml:183 ui/DeviceConnectionSidebar.qml:190
+#, kde-format
+msgid "Change name"
+msgstr ""
+
+#: ui/DeviceDelegate.qml:25 ui/main.qml:182
+#, kde-format
+msgid "Connected"
+msgstr "已連線"
+
+#: ui/DeviceDelegate.qml:31 ui/main.qml:247
+#, kde-format
+msgid "%1% Battery"
+msgstr "%1% 電量"
 
 #: ui/ForgetDeviceAction.qml:18
 #, kde-format
@@ -155,7 +247,7 @@ msgstr "可見(&V)："
 msgid "On login:"
 msgstr "登入時："
 
-#: ui/General.qml:74
+#: ui/General.qml:74 ui/main_mediacenter.qml:74
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "啟用藍牙(&N)"
@@ -216,12 +308,12 @@ msgctxt "@action: button as in, 'enable Bluetooth'"
 msgid "Enabled"
 msgstr "已啟用(&E)"
 
-#: ui/main.qml:126
+#: ui/main.qml:126 ui/main_mediacenter.qml:61
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "找不到藍牙轉接器"
 
-#: ui/main.qml:127
+#: ui/main.qml:127 ui/main_mediacenter.qml:62
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
 msgstr "連線到外部藍芽轉接器"
@@ -247,20 +339,28 @@ msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr "點擊 <interface>配對裝置…</interface> 來配對一些"
 
-#: ui/main.qml:182
-#, kde-format
-msgid "Connected"
-msgstr "已連線"
-
 #: ui/main.qml:184
 #, kde-format
 msgid "Available"
 msgstr "可用"
 
-#: ui/main.qml:247
-#, kde-format
-msgid "%1% Battery"
-msgstr "%1% 電量"
+#: ui/main_mediacenter.qml:20
+#, fuzzy, kde-format
+#| msgid "Enable Bluetooth"
+msgid "Bluetooth"
+msgstr "啟用藍牙(&N)"
+
+#: ui/main_mediacenter.qml:92
+#, fuzzy, kde-format
+#| msgid "Pair Device…"
+msgid "Paired devices"
+msgstr "配對裝置(&P)…"
+
+#: ui/main_mediacenter.qml:121
+#, fuzzy, kde-format
+#| msgid "Available"
+msgid "Available devices"
+msgstr "可用"
 
 #: ui/script.js:13
 #, kde-format
@@ -409,13 +509,6 @@ msgstr "、"
 
 #~ msgid "Forget this Device?"
 #~ msgstr "要忘掉這個裝置嗎？"
-
-#~ msgid "Are you sure you want to forget \"%1\"?"
-#~ msgstr "您確定要忘掉「%1」嗎？"
-
-#~ msgctxt "@action:button"
-#~ msgid "Forget Device"
-#~ msgstr "忘掉裝置"
 
 #~ msgctxt "@action:button"
 #~ msgid "Cancel"

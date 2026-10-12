@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-15 00:45+0000\n"
+"POT-Creation-Date: 2026-10-12 00:53+0000\n"
 "PO-Revision-Date: 2026-10-03 22:09+0200\n"
 "Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -42,12 +42,12 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "Укључи блутут"
 
-#: ui/Device.qml:132 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
 #, kde-format
 msgid "Disconnect"
 msgstr "Прекини везу"
 
-#: ui/Device.qml:132 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
 #, kde-format
 msgid "Connect"
 msgstr "Повежи"
@@ -87,12 +87,12 @@ msgstr "Адаптер:"
 msgid "Name:"
 msgstr "Име:"
 
-#: ui/Device.qml:182
+#: ui/Device.qml:182 ui/DeviceConnectionSidebar.qml:120
 #, kde-format
 msgid "Trusted"
 msgstr "Поуздан"
 
-#: ui/Device.qml:191 ui/main.qml:180
+#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135 ui/main.qml:180
 #, kde-format
 msgid "Blocked"
 msgstr "Блокиран"
@@ -123,6 +123,97 @@ msgstr "Постави ДУН мрежу…"
 msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"
 msgstr "Заборави"
+
+#: ui/DeviceConnectionSidebar.qml:53
+#, kde-format
+msgid "Device information"
+msgstr ""
+
+#: ui/DeviceConnectionSidebar.qml:63
+#, fuzzy, kde-format
+#| msgid "Connect"
+msgid "Connecting…"
+msgstr "Повежи"
+
+#: ui/DeviceConnectionSidebar.qml:63
+#, fuzzy, kde-format
+#| msgid "Disconnect"
+msgid "Disconnecting…"
+msgstr "Прекини везу"
+
+#: ui/DeviceConnectionSidebar.qml:63
+#, kde-format
+msgid "Pair"
+msgstr ""
+
+#: ui/DeviceConnectionSidebar.qml:87
+#, fuzzy, kde-format
+#| msgctxt "@action:button Forget the Bluetooth device"
+#| msgid "Forget"
+msgid "Forget device"
+msgstr "Заборави"
+
+#: ui/DeviceConnectionSidebar.qml:98
+#, kde-format
+msgid "Are you sure you want to forget the device %1?"
+msgstr ""
+
+#: ui/DeviceConnectionSidebar.qml:121
+#, kde-format
+msgid "Auto-accept incoming connections"
+msgstr ""
+
+#: ui/DeviceConnectionSidebar.qml:136
+#, fuzzy, kde-format
+#| msgid ""
+#| "When enabled, all incoming connections from this device will be rejected."
+msgid "Reject all connections from this device"
+msgstr "Кад је укључено, све долазне везе са овог уређаја биће одбијене."
+
+#: ui/DeviceConnectionSidebar.qml:152
+#, kde-format
+msgid "Device details"
+msgstr ""
+
+#: ui/DeviceConnectionSidebar.qml:163
+#, fuzzy, kde-format
+#| msgid "Type:"
+msgid "Type: %1"
+msgstr "Тип:"
+
+#: ui/DeviceConnectionSidebar.qml:169
+#, fuzzy, kde-format
+#| msgid "Address:"
+msgid "Address: %1"
+msgstr "Адреса:"
+
+#: ui/DeviceConnectionSidebar.qml:176
+#, fuzzy, kde-format
+#| msgid "Battery:"
+msgid "Battery: %1"
+msgstr "Батерија:"
+
+#: ui/DeviceConnectionSidebar.qml:177
+#, fuzzy, kde-format
+#| msgid "%1%"
+msgctxt "Battery percentage level"
+msgid "%1%"
+msgstr "%1%"
+
+#: ui/DeviceConnectionSidebar.qml:183 ui/DeviceConnectionSidebar.qml:190
+#, kde-format
+msgid "Change name"
+msgstr ""
+
+#: ui/DeviceDelegate.qml:25 ui/main.qml:182
+#, kde-format
+msgid "Connected"
+msgstr "Повезани"
+
+#: ui/DeviceDelegate.qml:31 ui/main.qml:247
+#, kde-format
+msgid "%1% Battery"
+msgstr "Батерија на %1%"
 
 #: ui/ForgetDeviceAction.qml:18
 #, kde-format
@@ -155,7 +246,7 @@ msgstr "Видљив:"
 msgid "On login:"
 msgstr "При пријављивању:"
 
-#: ui/General.qml:74
+#: ui/General.qml:74 ui/main_mediacenter.qml:74
 #, kde-format
 msgid "Enable Bluetooth"
 msgstr "Укључи блутут"
@@ -217,12 +308,12 @@ msgctxt "@action: button as in, 'enable Bluetooth'"
 msgid "Enabled"
 msgstr "Укључено"
 
-#: ui/main.qml:126
+#: ui/main.qml:126 ui/main_mediacenter.qml:61
 #, kde-format
 msgid "No Bluetooth adapters found"
 msgstr "Није нађен ниједан блутут адаптер"
 
-#: ui/main.qml:127
+#: ui/main.qml:127 ui/main_mediacenter.qml:62
 #, kde-format
 msgid "Connect an external Bluetooth adapter"
 msgstr "Повежите спољашњи блутут адаптер"
@@ -249,20 +340,28 @@ msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr ""
 "Кликните на <interface>Упари уређај…</interface> да бисте упарили уређаје"
 
-#: ui/main.qml:182
-#, kde-format
-msgid "Connected"
-msgstr "Повезани"
-
 #: ui/main.qml:184
 #, kde-format
 msgid "Available"
 msgstr "Доступни"
 
-#: ui/main.qml:247
-#, kde-format
-msgid "%1% Battery"
-msgstr "Батерија на %1%"
+#: ui/main_mediacenter.qml:20
+#, fuzzy, kde-format
+#| msgid "Enable Bluetooth"
+msgid "Bluetooth"
+msgstr "Укључи блутут"
+
+#: ui/main_mediacenter.qml:92
+#, fuzzy, kde-format
+#| msgid "Pair Device…"
+msgid "Paired devices"
+msgstr "Упари уређај…"
+
+#: ui/main_mediacenter.qml:121
+#, fuzzy, kde-format
+#| msgid "Available"
+msgid "Available devices"
+msgstr "Доступни"
 
 #: ui/script.js:13
 #, kde-format
