@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-16 02:44+0000\n"
+"POT-Creation-Date: 2026-10-13 03:21+0000\n"
 "PO-Revision-Date: 2026-10-03 22:09+0200\n"
 "Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -42,12 +42,12 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "Укључи блутут"
 
-#: ui/Device.qml:132 ui/main.qml:213
+#: ui/Device.qml:132 ui/main.qml:202
 #, kde-format
 msgid "Disconnect"
 msgstr "Прекини везу"
 
-#: ui/Device.qml:132 ui/main.qml:213
+#: ui/Device.qml:132 ui/main.qml:202
 #, kde-format
 msgid "Connect"
 msgstr "Повежи"
@@ -92,7 +92,7 @@ msgstr "Име:"
 msgid "Trusted"
 msgstr "Поуздан"
 
-#: ui/Device.qml:191 ui/main.qml:180
+#: ui/Device.qml:191
 #, kde-format
 msgid "Blocked"
 msgstr "Блокиран"
@@ -249,23 +249,13 @@ msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr ""
 "Кликните на <interface>Упари уређај…</interface> да бисте упарили уређаје"
 
-#: ui/main.qml:182
-#, kde-format
-msgid "Connected"
-msgstr "Повезани"
-
-#: ui/main.qml:184
-#, kde-format
-msgid "Available"
-msgstr "Доступни"
-
-#: ui/main.qml:204
+#: ui/main.qml:193
 #, kde-kuit-format
 msgctxt "@label/rich"
 msgid "%1"
 msgstr "%1"
 
-#: ui/main.qml:246
+#: ui/main.qml:235
 #, kde-format
 msgid "%1% Battery"
 msgstr "Батерија на %1%"
@@ -414,3 +404,9 @@ msgstr "друго"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
+
+#~ msgid "Connected"
+#~ msgstr "Повезани"
+
+#~ msgid "Available"
+#~ msgstr "Доступни"

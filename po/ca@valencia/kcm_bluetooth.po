@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-16 02:44+0000\n"
+"POT-Creation-Date: 2026-10-13 03:21+0000\n"
 "PO-Revision-Date: 2026-09-16 10:44+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -43,12 +43,12 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "Activa Bluetooth"
 
-#: ui/Device.qml:132 ui/main.qml:213
+#: ui/Device.qml:132 ui/main.qml:202
 #, kde-format
 msgid "Disconnect"
 msgstr "Desconnecta"
 
-#: ui/Device.qml:132 ui/main.qml:213
+#: ui/Device.qml:132 ui/main.qml:202
 #, kde-format
 msgid "Connect"
 msgstr "Connecta"
@@ -93,7 +93,7 @@ msgstr "Nom:"
 msgid "Trusted"
 msgstr "De confiança"
 
-#: ui/Device.qml:191 ui/main.qml:180
+#: ui/Device.qml:191
 #, kde-format
 msgid "Blocked"
 msgstr "Blocat"
@@ -252,23 +252,13 @@ msgstr ""
 "Cliqueu damunt <interface>Aparella un dispositiu…</interface> per a "
 "aparellar-ne un"
 
-#: ui/main.qml:182
-#, kde-format
-msgid "Connected"
-msgstr "Connectat"
-
-#: ui/main.qml:184
-#, kde-format
-msgid "Available"
-msgstr "Disponible"
-
-#: ui/main.qml:204
+#: ui/main.qml:193
 #, kde-kuit-format
 msgctxt "@label/rich"
 msgid "%1"
 msgstr "%1"
 
-#: ui/main.qml:246
+#: ui/main.qml:235
 #, kde-format
 msgid "%1% Battery"
 msgstr "Bateria %1%"
@@ -417,3 +407,9 @@ msgstr "Altres"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
+
+#~ msgid "Connected"
+#~ msgstr "Connectat"
+
+#~ msgid "Available"
+#~ msgstr "Disponible"

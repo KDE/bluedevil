@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-16 02:44+0000\n"
+"POT-Creation-Date: 2026-10-13 03:21+0000\n"
 "PO-Revision-Date: 2026-09-17 00:15+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -39,12 +39,12 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "Bluetooth inschakelen"
 
-#: ui/Device.qml:132 ui/main.qml:213
+#: ui/Device.qml:132 ui/main.qml:202
 #, kde-format
 msgid "Disconnect"
 msgstr "Verbinding verbreken"
 
-#: ui/Device.qml:132 ui/main.qml:213
+#: ui/Device.qml:132 ui/main.qml:202
 #, kde-format
 msgid "Connect"
 msgstr "Verbinden"
@@ -91,7 +91,7 @@ msgstr "Naam:"
 msgid "Trusted"
 msgstr "Vertrouwd"
 
-#: ui/Device.qml:191 ui/main.qml:180
+#: ui/Device.qml:191
 #, kde-format
 msgid "Blocked"
 msgstr "Geblokkeerd"
@@ -248,23 +248,13 @@ msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr "Klik op <interface>Apparaat paren…</interface> om met iets te paren"
 
-#: ui/main.qml:182
-#, kde-format
-msgid "Connected"
-msgstr "Verbonden"
-
-#: ui/main.qml:184
-#, kde-format
-msgid "Available"
-msgstr "Beschikbaar"
-
-#: ui/main.qml:204
+#: ui/main.qml:193
 #, kde-kuit-format
 msgctxt "@label/rich"
 msgid "%1"
 msgstr "%1"
 
-#: ui/main.qml:246
+#: ui/main.qml:235
 #, kde-format
 msgid "%1% Battery"
 msgstr "Batterij %1%"
@@ -413,6 +403,12 @@ msgstr "Overig"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
+
+#~ msgid "Connected"
+#~ msgstr "Verbonden"
+
+#~ msgid "Available"
+#~ msgstr "Beschikbaar"
 
 #~ msgid "Forget this Device?"
 #~ msgstr "Dit apparaat vergeten?"

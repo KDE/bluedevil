@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-16 02:44+0000\n"
+"POT-Creation-Date: 2026-10-13 03:21+0000\n"
 "PO-Revision-Date: 2026-01-10 20:42+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -45,12 +45,12 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "Ota Bluetooth käyttöön"
 
-#: ui/Device.qml:132 ui/main.qml:213
+#: ui/Device.qml:132 ui/main.qml:202
 #, kde-format
 msgid "Disconnect"
 msgstr "Katkaise yhteys"
 
-#: ui/Device.qml:132 ui/main.qml:213
+#: ui/Device.qml:132 ui/main.qml:202
 #, kde-format
 msgid "Connect"
 msgstr "Yhdistä"
@@ -95,7 +95,7 @@ msgstr "Nimi:"
 msgid "Trusted"
 msgstr "Luotettu"
 
-#: ui/Device.qml:191 ui/main.qml:180
+#: ui/Device.qml:191
 #, kde-format
 msgid "Blocked"
 msgstr "Estetty"
@@ -252,24 +252,14 @@ msgstr ""
 "Aloita laitteiden paritus napsauttamalla <interface>Kytke laite pariksi…</"
 "interface>"
 
-#: ui/main.qml:182
-#, kde-format
-msgid "Connected"
-msgstr "Yhdistetty"
-
-#: ui/main.qml:184
-#, kde-format
-msgid "Available"
-msgstr "Käytettävissä"
-
-#: ui/main.qml:204
+#: ui/main.qml:193
 #, fuzzy, kde-kuit-format
 #| msgid "%1%"
 msgctxt "@label/rich"
 msgid "%1"
 msgstr "%1 %"
 
-#: ui/main.qml:246
+#: ui/main.qml:235
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1 % akkua"
@@ -418,6 +408,12 @@ msgstr "Muu"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
+
+#~ msgid "Connected"
+#~ msgstr "Yhdistetty"
+
+#~ msgid "Available"
+#~ msgstr "Käytettävissä"
 
 #~ msgid "Forget this Device?"
 #~ msgstr "Unohdetaanko tämä laite?"

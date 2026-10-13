@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-16 02:44+0000\n"
+"POT-Creation-Date: 2026-10-13 03:21+0000\n"
 "PO-Revision-Date: 2026-10-01 14:07+0300\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: none\n"
@@ -41,12 +41,12 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "Įjungti Bluetooth"
 
-#: ui/Device.qml:132 ui/main.qml:213
+#: ui/Device.qml:132 ui/main.qml:202
 #, kde-format
 msgid "Disconnect"
 msgstr "Atsijungti"
 
-#: ui/Device.qml:132 ui/main.qml:213
+#: ui/Device.qml:132 ui/main.qml:202
 #, kde-format
 msgid "Connect"
 msgstr "Prisijungti"
@@ -91,7 +91,7 @@ msgstr "Pavadinimas:"
 msgid "Trusted"
 msgstr "Patikimas"
 
-#: ui/Device.qml:191 ui/main.qml:180
+#: ui/Device.qml:191
 #, kde-format
 msgid "Blocked"
 msgstr "Užblokuotas"
@@ -248,23 +248,13 @@ msgstr ""
 "Norėdami juos pridėti, spustelėkite <interface>Suporuoti įrenginį…</"
 "interface>"
 
-#: ui/main.qml:182
-#, kde-format
-msgid "Connected"
-msgstr "Prisijungta"
-
-#: ui/main.qml:184
-#, kde-format
-msgid "Available"
-msgstr "Prieinamas"
-
-#: ui/main.qml:204
+#: ui/main.qml:193
 #, kde-kuit-format
 msgctxt "@label/rich"
 msgid "%1"
 msgstr "%1"
 
-#: ui/main.qml:246
+#: ui/main.qml:235
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% akumuliatorius"
@@ -413,6 +403,12 @@ msgstr "Kitas"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
+
+#~ msgid "Connected"
+#~ msgstr "Prisijungta"
+
+#~ msgid "Available"
+#~ msgstr "Prieinamas"
 
 #~ msgid "Forget this Device?"
 #~ msgstr "Pamiršti šį įrenginį?"

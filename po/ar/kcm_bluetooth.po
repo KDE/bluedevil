@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-16 02:44+0000\n"
+"POT-Creation-Date: 2026-10-13 03:21+0000\n"
 "PO-Revision-Date: 2026-09-17 08:30+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -40,12 +40,12 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "مكّن بلوتوث"
 
-#: ui/Device.qml:132 ui/main.qml:213
+#: ui/Device.qml:132 ui/main.qml:202
 #, kde-format
 msgid "Disconnect"
 msgstr "اقطع الاتصال"
 
-#: ui/Device.qml:132 ui/main.qml:213
+#: ui/Device.qml:132 ui/main.qml:202
 #, kde-format
 msgid "Connect"
 msgstr "اتّصل"
@@ -90,7 +90,7 @@ msgstr "الاسم:"
 msgid "Trusted"
 msgstr "موثوق"
 
-#: ui/Device.qml:191 ui/main.qml:180
+#: ui/Device.qml:191
 #, kde-format
 msgid "Blocked"
 msgstr "حظر"
@@ -245,23 +245,13 @@ msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr "انقر <interface>اقرن جهاز…</interface> لتقرن بعضا منها"
 
-#: ui/main.qml:182
-#, kde-format
-msgid "Connected"
-msgstr "متّصل"
-
-#: ui/main.qml:184
-#, kde-format
-msgid "Available"
-msgstr "متوفّرة"
-
-#: ui/main.qml:204
+#: ui/main.qml:193
 #, kde-kuit-format
 msgctxt "@label/rich"
 msgid "%1"
 msgstr "%1"
 
-#: ui/main.qml:246
+#: ui/main.qml:235
 #, kde-format
 msgid "%1% Battery"
 msgstr "البطارية %1٪"
@@ -410,6 +400,12 @@ msgstr "أخرى"
 msgctxt "List separator"
 msgid ", "
 msgstr "، "
+
+#~ msgid "Connected"
+#~ msgstr "متّصل"
+
+#~ msgid "Available"
+#~ msgstr "متوفّرة"
 
 #~ msgid "Forget this Device?"
 #~ msgstr "هل أنسى هذا الجهاز؟"

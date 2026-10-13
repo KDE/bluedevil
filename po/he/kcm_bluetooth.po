@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-16 02:44+0000\n"
+"POT-Creation-Date: 2026-10-13 03:21+0000\n"
 "PO-Revision-Date: 2026-04-07 14:29+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -40,12 +40,12 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "הפעלת בלוטות׳"
 
-#: ui/Device.qml:132 ui/main.qml:213
+#: ui/Device.qml:132 ui/main.qml:202
 #, kde-format
 msgid "Disconnect"
 msgstr "ניתוק"
 
-#: ui/Device.qml:132 ui/main.qml:213
+#: ui/Device.qml:132 ui/main.qml:202
 #, kde-format
 msgid "Connect"
 msgstr "חיבור"
@@ -90,7 +90,7 @@ msgstr "שם:"
 msgid "Trusted"
 msgstr "מהימן"
 
-#: ui/Device.qml:191 ui/main.qml:180
+#: ui/Device.qml:191
 #, kde-format
 msgid "Blocked"
 msgstr "חסום"
@@ -245,24 +245,14 @@ msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr "יש ללחוץ על <interface>צימוד התקן…</interface> כדי לצמד כאלה"
 
-#: ui/main.qml:182
-#, kde-format
-msgid "Connected"
-msgstr "מחובר"
-
-#: ui/main.qml:184
-#, kde-format
-msgid "Available"
-msgstr "זמין"
-
-#: ui/main.qml:204
+#: ui/main.qml:193
 #, fuzzy, kde-kuit-format
 #| msgid "%1%"
 msgctxt "@label/rich"
 msgid "%1"
 msgstr "%1%"
 
-#: ui/main.qml:246
+#: ui/main.qml:235
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% סוללה"
@@ -411,6 +401,12 @@ msgstr "אחר"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
+
+#~ msgid "Connected"
+#~ msgstr "מחובר"
+
+#~ msgid "Available"
+#~ msgstr "זמין"
 
 #~ msgid "Forget this Device?"
 #~ msgstr "לשכוח את ההתקן הזה?"

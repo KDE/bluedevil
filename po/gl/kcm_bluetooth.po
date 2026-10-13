@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-16 02:44+0000\n"
+"POT-Creation-Date: 2026-10-13 03:21+0000\n"
 "PO-Revision-Date: 2024-08-19 15:40+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -41,12 +41,12 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "Activar o Bluetooth"
 
-#: ui/Device.qml:132 ui/main.qml:213
+#: ui/Device.qml:132 ui/main.qml:202
 #, kde-format
 msgid "Disconnect"
 msgstr "Desconectar"
 
-#: ui/Device.qml:132 ui/main.qml:213
+#: ui/Device.qml:132 ui/main.qml:202
 #, kde-format
 msgid "Connect"
 msgstr "Conectar"
@@ -91,7 +91,7 @@ msgstr "Nome:"
 msgid "Trusted"
 msgstr "Validado"
 
-#: ui/Device.qml:191 ui/main.qml:180
+#: ui/Device.qml:191
 #, kde-format
 msgid "Blocked"
 msgstr "Bloqueado"
@@ -252,24 +252,14 @@ msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr ""
 "Prema <interface>Emparellar cun dispositivo…</interface> para emparellar un."
 
-#: ui/main.qml:182
-#, kde-format
-msgid "Connected"
-msgstr "Conectado"
-
-#: ui/main.qml:184
-#, kde-format
-msgid "Available"
-msgstr "Dispoñíbel"
-
-#: ui/main.qml:204
+#: ui/main.qml:193
 #, fuzzy, kde-kuit-format
 #| msgid "%1%"
 msgctxt "@label/rich"
 msgid "%1"
 msgstr "%1%"
 
-#: ui/main.qml:246
+#: ui/main.qml:235
 #, kde-format
 msgid "%1% Battery"
 msgstr "Batería: %1%"
@@ -418,6 +408,12 @@ msgstr "Outras"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
+
+#~ msgid "Connected"
+#~ msgstr "Conectado"
+
+#~ msgid "Available"
+#~ msgstr "Dispoñíbel"
 
 #~ msgid "Forget this Device?"
 #~ msgstr "Esquecer este dispositivo?"
