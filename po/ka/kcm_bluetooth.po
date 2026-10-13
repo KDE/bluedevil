@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-12 00:53+0000\n"
-"PO-Revision-Date: 2025-12-08 05:50+0100\n"
+"POT-Creation-Date: 2026-10-13 00:47+0000\n"
+"PO-Revision-Date: 2026-10-12 07:16+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -40,12 +40,12 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "ბლუთუზის ჩართვა"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
 #, kde-format
 msgid "Disconnect"
 msgstr "გათიშვა"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
 #, kde-format
 msgid "Connect"
 msgstr "დაკავშირება"
@@ -90,7 +90,7 @@ msgstr "სახელი:"
 msgid "Trusted"
 msgstr "სანდო"
 
-#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135 ui/main.qml:180
+#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135
 #, kde-format
 msgid "Blocked"
 msgstr "დაბლოკილია"
@@ -127,78 +127,65 @@ msgstr "დავიწყება"
 #: ui/DeviceConnectionSidebar.qml:53
 #, kde-format
 msgid "Device information"
-msgstr ""
+msgstr "მოწყობილობის ინფორმაცია"
 
 #: ui/DeviceConnectionSidebar.qml:63
-#, fuzzy, kde-format
-#| msgid "Connect"
+#, kde-format
 msgid "Connecting…"
-msgstr "დაკავშირება"
+msgstr "დაკავშირება…"
 
 #: ui/DeviceConnectionSidebar.qml:63
-#, fuzzy, kde-format
-#| msgid "Disconnect"
+#, kde-format
 msgid "Disconnecting…"
-msgstr "გათიშვა"
+msgstr "მიმდინარეობს გათიშვა…"
 
 #: ui/DeviceConnectionSidebar.qml:63
 #, kde-format
 msgid "Pair"
-msgstr ""
+msgstr "წყვილი"
 
 #: ui/DeviceConnectionSidebar.qml:87
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Forget Device"
+#, kde-format
 msgid "Forget device"
 msgstr "მოწყობილობის დავიწყება"
 
 #: ui/DeviceConnectionSidebar.qml:98
-#, fuzzy, kde-format
-#| msgid "Are you sure you want to forget \"%1\"?"
+#, kde-format
 msgid "Are you sure you want to forget the device %1?"
-msgstr "დარწმუნებული ბრძანდებით, რომ გსურთ დაივიწყოთ \"%1\"?"
+msgstr "მართლა გსურთ, დაივიწყოთ მოწყობილობა %1?"
 
 #: ui/DeviceConnectionSidebar.qml:121
 #, kde-format
 msgid "Auto-accept incoming connections"
-msgstr ""
+msgstr "შემომავალი კავშირების ავტოდასტური"
 
 #: ui/DeviceConnectionSidebar.qml:136
-#, fuzzy, kde-format
-#| msgid ""
-#| "When enabled, all incoming connections from this device will be rejected."
+#, kde-format
 msgid "Reject all connections from this device"
-msgstr ""
-"როცა ჩართულია, ყველა შემომავალი მიერთება დაბლოკილი მოწყობილობიდან "
-"დაუყოვნებლივ უარყოფილი იქნება."
+msgstr "ყველა კავშირის უარყოფა ამ მოწყობილობიდან"
 
 #: ui/DeviceConnectionSidebar.qml:152
 #, kde-format
 msgid "Device details"
-msgstr ""
+msgstr "მოწყობილობის დეტალები"
 
 #: ui/DeviceConnectionSidebar.qml:163
-#, fuzzy, kde-format
-#| msgid "Type:"
+#, kde-format
 msgid "Type: %1"
-msgstr "ტიპი:"
+msgstr "ტიპი: %1"
 
 #: ui/DeviceConnectionSidebar.qml:169
-#, fuzzy, kde-format
-#| msgid "Address:"
+#, kde-format
 msgid "Address: %1"
-msgstr "მისამართი:"
+msgstr "მისამართი: %1"
 
 #: ui/DeviceConnectionSidebar.qml:176
-#, fuzzy, kde-format
-#| msgid "Battery:"
+#, kde-format
 msgid "Battery: %1"
-msgstr "ელემენტი:"
+msgstr "ელემენტი: %1"
 
 #: ui/DeviceConnectionSidebar.qml:177
-#, fuzzy, kde-format
-#| msgid "%1%"
+#, kde-format
 msgctxt "Battery percentage level"
 msgid "%1%"
 msgstr "%1%"
@@ -206,14 +193,14 @@ msgstr "%1%"
 #: ui/DeviceConnectionSidebar.qml:183 ui/DeviceConnectionSidebar.qml:190
 #, kde-format
 msgid "Change name"
-msgstr ""
+msgstr "სახელის შეცვლა"
 
-#: ui/DeviceDelegate.qml:25 ui/main.qml:182
+#: ui/DeviceDelegate.qml:25
 #, kde-format
 msgid "Connected"
 msgstr "დაკავშირებულია"
 
-#: ui/DeviceDelegate.qml:31 ui/main.qml:247
+#: ui/DeviceDelegate.qml:31 ui/main.qml:236
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% ელემენტი"
@@ -343,28 +330,20 @@ msgstr ""
 "დასაწყვილებლად დააწკაპუნეთ <interface>მოწყობილობის დაწყვილების…</interface> "
 "ღილაკზე"
 
-#: ui/main.qml:184
-#, kde-format
-msgid "Available"
-msgstr "ხელმისაწვდომია"
-
 #: ui/main_mediacenter.qml:20
-#, fuzzy, kde-format
-#| msgid "Enable Bluetooth"
+#, kde-format
 msgid "Bluetooth"
-msgstr "ბლუთუზის ჩართვა"
+msgstr "ბლუთუზი"
 
 #: ui/main_mediacenter.qml:92
-#, fuzzy, kde-format
-#| msgid "Pair Device…"
+#, kde-format
 msgid "Paired devices"
-msgstr "მოწყობილობის დაწყვილება…"
+msgstr "შეწყვილებული მოწყობილობები"
 
 #: ui/main_mediacenter.qml:121
-#, fuzzy, kde-format
-#| msgid "Available"
+#, kde-format
 msgid "Available devices"
-msgstr "ხელმისაწვდომია"
+msgstr "ხელმისაწვდომი მოწყობილობები"
 
 #: ui/script.js:13
 #, kde-format
@@ -510,6 +489,9 @@ msgstr "სხვა"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
+
+#~ msgid "Available"
+#~ msgstr "ხელმისაწვდომია"
 
 #~ msgid "Forget this Device?"
 #~ msgstr "დავივიწყო ეს მოწყობილობა?"

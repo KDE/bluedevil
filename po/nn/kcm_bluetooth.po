@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-12 00:53+0000\n"
+"POT-Creation-Date: 2026-10-13 00:47+0000\n"
 "PO-Revision-Date: 2026-03-01 20:09+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
@@ -42,12 +42,12 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "Bruk Bluetooth"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
 #, kde-format
 msgid "Disconnect"
 msgstr "Kopla frå"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
 #, kde-format
 msgid "Connect"
 msgstr "Kopla til"
@@ -92,7 +92,7 @@ msgstr "Namn:"
 msgid "Trusted"
 msgstr "Tiltrudd"
 
-#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135 ui/main.qml:180
+#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135
 #, kde-format
 msgid "Blocked"
 msgstr "Blokkert"
@@ -207,12 +207,12 @@ msgstr "%1 %"
 msgid "Change name"
 msgstr ""
 
-#: ui/DeviceDelegate.qml:25 ui/main.qml:182
+#: ui/DeviceDelegate.qml:25
 #, kde-format
 msgid "Connected"
 msgstr "Kopla til"
 
-#: ui/DeviceDelegate.qml:31 ui/main.qml:247
+#: ui/DeviceDelegate.qml:31 ui/main.qml:236
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1 % batteri"
@@ -339,11 +339,6 @@ msgstr "Ingen einingar er para"
 msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr "Trykk <interface>Par ny eining</interface> for å para ei eining"
-
-#: ui/main.qml:184
-#, kde-format
-msgid "Available"
-msgstr "Tilgjengeleg"
 
 #: ui/main_mediacenter.qml:20
 #, fuzzy, kde-format
@@ -507,3 +502,6 @@ msgstr "Anna"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
+
+#~ msgid "Available"
+#~ msgstr "Tilgjengeleg"

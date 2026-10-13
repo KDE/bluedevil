@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-12 00:53+0000\n"
+"POT-Creation-Date: 2026-10-13 00:47+0000\n"
 "PO-Revision-Date: 2025-03-27 21:12+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -41,12 +41,12 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "Bluetooth を有効化"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
 #, kde-format
 msgid "Disconnect"
 msgstr "切断"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
 #, kde-format
 msgid "Connect"
 msgstr "接続"
@@ -91,7 +91,7 @@ msgstr "名前:"
 msgid "Trusted"
 msgstr "信頼済"
 
-#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135 ui/main.qml:180
+#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135
 #, kde-format
 msgid "Blocked"
 msgstr "ブロック済み"
@@ -209,12 +209,12 @@ msgstr "%1%"
 msgid "Change name"
 msgstr ""
 
-#: ui/DeviceDelegate.qml:25 ui/main.qml:182
+#: ui/DeviceDelegate.qml:25
 #, kde-format
 msgid "Connected"
 msgstr "接続済み"
 
-#: ui/DeviceDelegate.qml:31 ui/main.qml:247
+#: ui/DeviceDelegate.qml:31 ui/main.qml:236
 #, kde-format
 msgid "%1% Battery"
 msgstr "バッテリ %1%"
@@ -343,11 +343,6 @@ msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr ""
 "<interface>デバイスとペアリング...</interface>をクリックしてペアリングしてく"
 "ださい"
-
-#: ui/main.qml:184
-#, kde-format
-msgid "Available"
-msgstr "利用可能"
 
 #: ui/main_mediacenter.qml:20
 #, fuzzy, kde-format
@@ -511,6 +506,9 @@ msgstr "その他"
 msgctxt "List separator"
 msgid ", "
 msgstr "、"
+
+#~ msgid "Available"
+#~ msgstr "利用可能"
 
 #~ msgid "Forget this Device?"
 #~ msgstr "このデバイスを削除しますか？"

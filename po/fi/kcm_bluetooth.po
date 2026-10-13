@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-12 00:53+0000\n"
+"POT-Creation-Date: 2026-10-13 00:47+0000\n"
 "PO-Revision-Date: 2026-01-10 20:42+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -45,12 +45,12 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "Ota Bluetooth käyttöön"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
 #, kde-format
 msgid "Disconnect"
 msgstr "Katkaise yhteys"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
 #, kde-format
 msgid "Connect"
 msgstr "Yhdistä"
@@ -95,7 +95,7 @@ msgstr "Nimi:"
 msgid "Trusted"
 msgstr "Luotettu"
 
-#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135 ui/main.qml:180
+#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135
 #, kde-format
 msgid "Blocked"
 msgstr "Estetty"
@@ -209,12 +209,12 @@ msgstr "%1 %"
 msgid "Change name"
 msgstr ""
 
-#: ui/DeviceDelegate.qml:25 ui/main.qml:182
+#: ui/DeviceDelegate.qml:25
 #, kde-format
 msgid "Connected"
 msgstr "Yhdistetty"
 
-#: ui/DeviceDelegate.qml:31 ui/main.qml:247
+#: ui/DeviceDelegate.qml:31 ui/main.qml:236
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1 % akkua"
@@ -343,11 +343,6 @@ msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr ""
 "Aloita laitteiden paritus napsauttamalla <interface>Kytke laite pariksi…</"
 "interface>"
-
-#: ui/main.qml:184
-#, kde-format
-msgid "Available"
-msgstr "Käytettävissä"
 
 #: ui/main_mediacenter.qml:20
 #, kde-format
@@ -510,6 +505,9 @@ msgstr "Muu"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
+
+#~ msgid "Available"
+#~ msgstr "Käytettävissä"
 
 #~ msgid "Forget this Device?"
 #~ msgstr "Unohdetaanko tämä laite?"

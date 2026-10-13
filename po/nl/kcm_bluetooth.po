@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-12 00:53+0000\n"
-"PO-Revision-Date: 2026-09-17 00:15+0200\n"
+"POT-Creation-Date: 2026-10-13 00:47+0000\n"
+"PO-Revision-Date: 2026-10-12 15:33+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -39,12 +39,12 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "Bluetooth inschakelen"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
 #, kde-format
 msgid "Disconnect"
 msgstr "Verbinding verbreken"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
 #, kde-format
 msgid "Connect"
 msgstr "Verbinden"
@@ -91,7 +91,7 @@ msgstr "Naam:"
 msgid "Trusted"
 msgstr "Vertrouwd"
 
-#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135 ui/main.qml:180
+#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135
 #, kde-format
 msgid "Blocked"
 msgstr "Geblokkeerd"
@@ -128,78 +128,65 @@ msgstr "Vergeten"
 #: ui/DeviceConnectionSidebar.qml:53
 #, kde-format
 msgid "Device information"
-msgstr ""
+msgstr "Apparaatinformatie"
 
 #: ui/DeviceConnectionSidebar.qml:63
-#, fuzzy, kde-format
-#| msgid "Connect"
+#, kde-format
 msgid "Connecting…"
-msgstr "Verbinden"
+msgstr "Bezig met verbinden…"
 
 #: ui/DeviceConnectionSidebar.qml:63
-#, fuzzy, kde-format
-#| msgid "Disconnect"
+#, kde-format
 msgid "Disconnecting…"
-msgstr "Verbinding verbreken"
+msgstr "Verbinding wordt verbroken…"
 
 #: ui/DeviceConnectionSidebar.qml:63
 #, kde-format
 msgid "Pair"
-msgstr ""
+msgstr "Paren"
 
 #: ui/DeviceConnectionSidebar.qml:87
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Forget Device"
+#, kde-format
 msgid "Forget device"
 msgstr "Apparaat vergeten"
 
 #: ui/DeviceConnectionSidebar.qml:98
-#, fuzzy, kde-format
-#| msgid "Are you sure you want to forget \"%1\"?"
+#, kde-format
 msgid "Are you sure you want to forget the device %1?"
-msgstr "Wilt u \"%1\" vergeten?"
+msgstr "Wilt u het apparaat %1 vergeten?"
 
 #: ui/DeviceConnectionSidebar.qml:121
 #, kde-format
 msgid "Auto-accept incoming connections"
-msgstr ""
+msgstr "Inkomende verbindingen automatisch accepteren"
 
 #: ui/DeviceConnectionSidebar.qml:136
-#, fuzzy, kde-format
-#| msgid ""
-#| "When enabled, all incoming connections from this device will be rejected."
+#, kde-format
 msgid "Reject all connections from this device"
-msgstr ""
-"Indien ingeschakeld zullen alle inkomende verbindingen van dit apparaat "
-"geweigerd worden."
+msgstr "Alle verbindingen van dit apparaat weigeren"
 
 #: ui/DeviceConnectionSidebar.qml:152
 #, kde-format
 msgid "Device details"
-msgstr ""
+msgstr "Apparaatdetails"
 
 #: ui/DeviceConnectionSidebar.qml:163
-#, fuzzy, kde-format
-#| msgid "Type:"
+#, kde-format
 msgid "Type: %1"
-msgstr "Type:"
+msgstr "Type: %1"
 
 #: ui/DeviceConnectionSidebar.qml:169
-#, fuzzy, kde-format
-#| msgid "Address:"
+#, kde-format
 msgid "Address: %1"
-msgstr "Adres:"
+msgstr "Adres: %1"
 
 #: ui/DeviceConnectionSidebar.qml:176
-#, fuzzy, kde-format
-#| msgid "Battery:"
+#, kde-format
 msgid "Battery: %1"
-msgstr "Batterij:"
+msgstr "Batterij: %1"
 
 #: ui/DeviceConnectionSidebar.qml:177
-#, fuzzy, kde-format
-#| msgid "%1%"
+#, kde-format
 msgctxt "Battery percentage level"
 msgid "%1%"
 msgstr "%1%"
@@ -207,14 +194,14 @@ msgstr "%1%"
 #: ui/DeviceConnectionSidebar.qml:183 ui/DeviceConnectionSidebar.qml:190
 #, kde-format
 msgid "Change name"
-msgstr ""
+msgstr "Naam wijzigen"
 
-#: ui/DeviceDelegate.qml:25 ui/main.qml:182
+#: ui/DeviceDelegate.qml:25
 #, kde-format
 msgid "Connected"
 msgstr "Verbonden"
 
-#: ui/DeviceDelegate.qml:31 ui/main.qml:247
+#: ui/DeviceDelegate.qml:31 ui/main.qml:236
 #, kde-format
 msgid "%1% Battery"
 msgstr "Batterij %1%"
@@ -342,27 +329,20 @@ msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr "Klik op <interface>Apparaat paren…</interface> om met iets te paren"
 
-#: ui/main.qml:184
-#, kde-format
-msgid "Available"
-msgstr "Beschikbaar"
-
 #: ui/main_mediacenter.qml:20
 #, kde-format
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
 #: ui/main_mediacenter.qml:92
-#, fuzzy, kde-format
-#| msgid "Pair Device…"
+#, kde-format
 msgid "Paired devices"
-msgstr "Apparaat paren…"
+msgstr "Gepaarde apparaten"
 
 #: ui/main_mediacenter.qml:121
-#, fuzzy, kde-format
-#| msgid "Available"
+#, kde-format
 msgid "Available devices"
-msgstr "Beschikbaar"
+msgstr "Beschikbare apparaten"
 
 #: ui/script.js:13
 #, kde-format
@@ -508,6 +488,9 @@ msgstr "Overig"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
+
+#~ msgid "Available"
+#~ msgstr "Beschikbaar"
 
 #~ msgid "Forget this Device?"
 #~ msgstr "Dit apparaat vergeten?"

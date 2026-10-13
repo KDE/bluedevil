@@ -1,16 +1,16 @@
 # Translation of kcm_bluetooth.po to Catalan (Valencian)
-# Copyright (C) 2020-2025 This_file_is_part_of_KDE
+# Copyright (C) 2020-2026 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# SPDX-FileCopyrightText: 2020, 2022-2025 Josep M. Ferrer <txemaq@gmail.com>
+# SPDX-FileCopyrightText: 2020, 2022-2026 Josep M. Ferrer <txemaq@gmail.com>
 # SPDX-FileCopyrightText: 2021 Antoni Bella Pérez <antonibella5@yahoo.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-12 00:53+0000\n"
-"PO-Revision-Date: 2025-12-08 12:16+0100\n"
+"POT-Creation-Date: 2026-10-13 00:47+0000\n"
+"PO-Revision-Date: 2026-10-12 10:19+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -43,12 +43,12 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "Activa Bluetooth"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
 #, kde-format
 msgid "Disconnect"
 msgstr "Desconnecta"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
 #, kde-format
 msgid "Connect"
 msgstr "Connecta"
@@ -66,7 +66,7 @@ msgstr "Tipus:"
 #: ui/Device.qml:160
 #, kde-format
 msgid "%1%"
-msgstr "%1%"
+msgstr "%1 %"
 
 #: ui/Device.qml:162
 #, kde-format
@@ -93,7 +93,7 @@ msgstr "Nom:"
 msgid "Trusted"
 msgstr "De confiança"
 
-#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135 ui/main.qml:180
+#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135
 #, kde-format
 msgid "Blocked"
 msgstr "Blocat"
@@ -130,92 +130,80 @@ msgstr "Oblida"
 #: ui/DeviceConnectionSidebar.qml:53
 #, kde-format
 msgid "Device information"
-msgstr ""
+msgstr "Informació del dispositiu"
 
 #: ui/DeviceConnectionSidebar.qml:63
-#, fuzzy, kde-format
-#| msgid "Connect"
+#, kde-format
 msgid "Connecting…"
-msgstr "Connecta"
+msgstr "S'està connectant…"
 
 #: ui/DeviceConnectionSidebar.qml:63
-#, fuzzy, kde-format
-#| msgid "Disconnect"
+#, kde-format
 msgid "Disconnecting…"
-msgstr "Desconnecta"
+msgstr "S'està desconnectant…"
 
 #: ui/DeviceConnectionSidebar.qml:63
 #, kde-format
 msgid "Pair"
-msgstr ""
+msgstr "Aparella"
 
 #: ui/DeviceConnectionSidebar.qml:87
-#, fuzzy, kde-format
-#| msgctxt "@action:button Forget the Bluetooth device"
-#| msgid "Forget"
+#, kde-format
 msgid "Forget device"
-msgstr "Oblida"
+msgstr "Oblida el dispositiu"
 
 #: ui/DeviceConnectionSidebar.qml:98
 #, kde-format
 msgid "Are you sure you want to forget the device %1?"
-msgstr ""
+msgstr "Segur que voleu oblidar el dispositiu %1?"
 
 #: ui/DeviceConnectionSidebar.qml:121
 #, kde-format
 msgid "Auto-accept incoming connections"
-msgstr ""
+msgstr "Accepta automàticament les connexions entrants"
 
 #: ui/DeviceConnectionSidebar.qml:136
-#, fuzzy, kde-format
-#| msgid ""
-#| "When enabled, all incoming connections from this device will be rejected."
+#, kde-format
 msgid "Reject all connections from this device"
-msgstr ""
-"Quan es marca, es rebutjaran totes les connexions entrants des d'este "
-"dispositiu."
+msgstr "Rebutja totes les connexions d'este dispositiu"
 
 #: ui/DeviceConnectionSidebar.qml:152
 #, kde-format
 msgid "Device details"
-msgstr ""
+msgstr "Detalls del dispositiu"
 
 #: ui/DeviceConnectionSidebar.qml:163
-#, fuzzy, kde-format
-#| msgid "Type:"
+#, kde-format
 msgid "Type: %1"
-msgstr "Tipus:"
+msgstr "Tipus: %1"
 
 #: ui/DeviceConnectionSidebar.qml:169
-#, fuzzy, kde-format
-#| msgid "Address:"
+#, kde-format
 msgid "Address: %1"
-msgstr "Adreça:"
+msgstr "Adreça: %1"
 
 #: ui/DeviceConnectionSidebar.qml:176
-#, fuzzy, kde-format
-#| msgid "Battery:"
+#, kde-format
 msgid "Battery: %1"
-msgstr "Bateria:"
+msgstr "Bateria: %1"
 
 #: ui/DeviceConnectionSidebar.qml:177
-#, fuzzy, kde-format
-#| msgid "%1%"
+#, kde-format
 msgctxt "Battery percentage level"
 msgid "%1%"
-msgstr "%1%"
+msgstr "%1 %"
 
 #: ui/DeviceConnectionSidebar.qml:183 ui/DeviceConnectionSidebar.qml:190
 #, kde-format
 msgid "Change name"
-msgstr ""
+msgstr "Canvia el nom"
 
-#: ui/DeviceDelegate.qml:25 ui/main.qml:182
+#: ui/DeviceDelegate.qml:25
 #, kde-format
 msgid "Connected"
 msgstr "Connectat"
 
-#: ui/DeviceDelegate.qml:31 ui/main.qml:247
+#: ui/DeviceDelegate.qml:31 ui/main.qml:236
 #, kde-format
 msgid "%1% Battery"
 msgstr "Bateria %1%"
@@ -345,28 +333,20 @@ msgstr ""
 "Cliqueu damunt <interface>Aparella un dispositiu…</interface> per a "
 "aparellar-ne un"
 
-#: ui/main.qml:184
-#, kde-format
-msgid "Available"
-msgstr "Disponible"
-
 #: ui/main_mediacenter.qml:20
-#, fuzzy, kde-format
-#| msgid "Enable Bluetooth"
+#, kde-format
 msgid "Bluetooth"
-msgstr "Activa Bluetooth"
+msgstr "Bluetooth"
 
 #: ui/main_mediacenter.qml:92
-#, fuzzy, kde-format
-#| msgid "Pair Device…"
+#, kde-format
 msgid "Paired devices"
-msgstr "Aparella un dispositiu…"
+msgstr "Dispositius aparellats"
 
 #: ui/main_mediacenter.qml:121
-#, fuzzy, kde-format
-#| msgid "Available"
+#, kde-format
 msgid "Available devices"
-msgstr "Disponible"
+msgstr "Dispositius disponibles"
 
 #: ui/script.js:13
 #, kde-format
@@ -512,3 +492,6 @@ msgstr "Altres"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
+
+#~ msgid "Available"
+#~ msgstr "Disponible"

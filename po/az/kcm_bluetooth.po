@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-12 00:53+0000\n"
+"POT-Creation-Date: 2026-10-13 00:47+0000\n"
 "PO-Revision-Date: 2022-07-26 15:51+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -40,12 +40,12 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "Bluetooth'u açın"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
 #, kde-format
 msgid "Disconnect"
 msgstr "Ayırmaq"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
 #, kde-format
 msgid "Connect"
 msgstr "Qoşmaq"
@@ -90,7 +90,7 @@ msgstr "Adı:"
 msgid "Trusted"
 msgstr "Güvən Səviyyəsi"
 
-#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135 ui/main.qml:180
+#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135
 #, kde-format
 msgid "Blocked"
 msgstr "Kilidli"
@@ -202,12 +202,12 @@ msgstr ""
 msgid "Change name"
 msgstr ""
 
-#: ui/DeviceDelegate.qml:25 ui/main.qml:182
+#: ui/DeviceDelegate.qml:25
 #, kde-format
 msgid "Connected"
 msgstr "Qoşuldu"
 
-#: ui/DeviceDelegate.qml:31 ui/main.qml:247
+#: ui/DeviceDelegate.qml:31 ui/main.qml:236
 #, kde-format
 msgid "%1% Battery"
 msgstr ""
@@ -336,11 +336,6 @@ msgstr "Cihazlar bağlanmadı"
 msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr ""
-
-#: ui/main.qml:184
-#, kde-format
-msgid "Available"
-msgstr "Əlçatan"
 
 #: ui/main_mediacenter.qml:20
 #, kde-format
@@ -510,6 +505,9 @@ msgstr ""
 msgctxt "List separator"
 msgid ", "
 msgstr ""
+
+#~ msgid "Available"
+#~ msgstr "Əlçatan"
 
 #~ msgid "Forget this Device?"
 #~ msgstr "Bu cihaz unudulsun?"

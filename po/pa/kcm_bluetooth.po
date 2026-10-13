@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-12 00:53+0000\n"
+"POT-Creation-Date: 2026-10-13 00:47+0000\n"
 "PO-Revision-Date: 2024-01-28 15:20-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -40,12 +40,12 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "ਬਲੂਟੁੱਥ ਸਮਰੱਥ ਕਰੋ"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
 #, kde-format
 msgid "Disconnect"
 msgstr "ਡਿਸ-ਕਨੈਕਟ"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
 #, kde-format
 msgid "Connect"
 msgstr "ਕਨੈਕਟ"
@@ -90,7 +90,7 @@ msgstr "ਨਾਂ:"
 msgid "Trusted"
 msgstr "ਟਰੱਸਟ ਹੈ"
 
-#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135 ui/main.qml:180
+#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135
 #, kde-format
 msgid "Blocked"
 msgstr "ਪਾਬੰਦੀ ਲਾਈ"
@@ -204,12 +204,12 @@ msgstr "%1%"
 msgid "Change name"
 msgstr ""
 
-#: ui/DeviceDelegate.qml:25 ui/main.qml:182
+#: ui/DeviceDelegate.qml:25
 #, kde-format
 msgid "Connected"
 msgstr "ਕਨੈਕਟ ਹੈ"
 
-#: ui/DeviceDelegate.qml:31 ui/main.qml:247
+#: ui/DeviceDelegate.qml:31 ui/main.qml:236
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% ਬੈਟਰੀ"
@@ -337,11 +337,6 @@ msgstr "ਕੋਈ ਡਿਵਾਈਸ ਪੇਅਰ ਨਹੀਂ ਕੀਤਾ ਹ�
 msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr ""
-
-#: ui/main.qml:184
-#, kde-format
-msgid "Available"
-msgstr "ਉਪਲੱਬਧ"
 
 #: ui/main_mediacenter.qml:20
 #, kde-format
@@ -511,6 +506,9 @@ msgstr ""
 msgctxt "List separator"
 msgid ", "
 msgstr ""
+
+#~ msgid "Available"
+#~ msgstr "ਉਪਲੱਬਧ"
 
 #~ msgid "Forget this Device?"
 #~ msgstr "ਇਹ ਡਿਵਾਈਸ ਭੁੱਲਣਾ ਹੈ?"

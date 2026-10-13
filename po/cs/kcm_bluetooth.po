@@ -9,28 +9,28 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-12 00:53+0000\n"
-"PO-Revision-Date: 2025-12-15 13:46+0100\n"
-"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
+"POT-Creation-Date: 2026-10-13 00:47+0000\n"
+"PO-Revision-Date: 2026-10-12 12:55+0200\n"
+"Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 26.08.1\n"
+"X-Generator: Lokalize 26.08.2\n"
 "X-Language: cs_CZ\n"
 "X-Source-Language: en_US\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Vít Pelčák, Tomáš Chvátal"
+msgstr "Vít Pelčák,Tomáš Chvátal,Libor Filípek"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "vit@pelcak.org, tomas.chvatal@gmail.com"
+msgstr "vit@pelcak.org,tomas.chvatal@gmail.com,libor.filipek@gmail.com"
 
 #: bluetooth.cpp:135
 #, kde-format
@@ -44,12 +44,12 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "Povolit Bluetooth"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
 #, kde-format
 msgid "Disconnect"
 msgstr "Odpojit"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
 #, kde-format
 msgid "Connect"
 msgstr "Připojit se"
@@ -94,7 +94,7 @@ msgstr "Název:"
 msgid "Trusted"
 msgstr "Důvěryhodný"
 
-#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135 ui/main.qml:180
+#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135
 #, kde-format
 msgid "Blocked"
 msgstr "Blokován"
@@ -131,77 +131,65 @@ msgstr "Zapomenout"
 #: ui/DeviceConnectionSidebar.qml:53
 #, kde-format
 msgid "Device information"
-msgstr ""
+msgstr "Informace o zařízení"
 
 #: ui/DeviceConnectionSidebar.qml:63
-#, fuzzy, kde-format
-#| msgid "Connect"
+#, kde-format
 msgid "Connecting…"
-msgstr "Připojit se"
+msgstr "Připojování..."
 
 #: ui/DeviceConnectionSidebar.qml:63
-#, fuzzy, kde-format
-#| msgid "Disconnect"
+#, kde-format
 msgid "Disconnecting…"
-msgstr "Odpojit"
+msgstr "Odpojování…"
 
 #: ui/DeviceConnectionSidebar.qml:63
 #, kde-format
 msgid "Pair"
-msgstr ""
+msgstr "Spárovat"
 
 #: ui/DeviceConnectionSidebar.qml:87
-#, fuzzy, kde-format
-#| msgctxt "@action:button Forget the Bluetooth device"
-#| msgid "Forget"
+#, kde-format
 msgid "Forget device"
-msgstr "Zapomenout"
+msgstr "Zapomenout zařízení"
 
 #: ui/DeviceConnectionSidebar.qml:98
 #, kde-format
 msgid "Are you sure you want to forget the device %1?"
-msgstr ""
+msgstr "Opravdu chcete zařízení %1 odstranit?"
 
 #: ui/DeviceConnectionSidebar.qml:121
 #, kde-format
 msgid "Auto-accept incoming connections"
-msgstr ""
+msgstr "Automaticky přijímat příchozí připojení"
 
 #: ui/DeviceConnectionSidebar.qml:136
-#, fuzzy, kde-format
-#| msgid ""
-#| "When enabled, all incoming connections from this device will be rejected."
+#, kde-format
 msgid "Reject all connections from this device"
-msgstr ""
-"Pokud povoleno, každé příchozí spojení z tohoto zařízení bude automaticky "
-"odmítnuto."
+msgstr "Odmítnout všechna připojení z tohoto zařízení"
 
 #: ui/DeviceConnectionSidebar.qml:152
 #, kde-format
 msgid "Device details"
-msgstr ""
+msgstr "Podrobnosti o zařízení"
 
 #: ui/DeviceConnectionSidebar.qml:163
-#, fuzzy, kde-format
-#| msgid "Type:"
+#, kde-format
 msgid "Type: %1"
-msgstr "Typ:"
+msgstr "Druh: %1"
 
 #: ui/DeviceConnectionSidebar.qml:169
-#, fuzzy, kde-format
-#| msgid "Address:"
+#, kde-format
 msgid "Address: %1"
-msgstr "Adresa:"
+msgstr "Adresa: %1"
 
 #: ui/DeviceConnectionSidebar.qml:176
-#, fuzzy, kde-format
-#| msgid "Battery:"
+#, kde-format
 msgid "Battery: %1"
-msgstr "Baterie:"
+msgstr "Baterie: %1%"
 
 #: ui/DeviceConnectionSidebar.qml:177
-#, fuzzy, kde-format
-#| msgid "%1%"
+#, kde-format
 msgctxt "Battery percentage level"
 msgid "%1%"
 msgstr "%1%"
@@ -209,17 +197,17 @@ msgstr "%1%"
 #: ui/DeviceConnectionSidebar.qml:183 ui/DeviceConnectionSidebar.qml:190
 #, kde-format
 msgid "Change name"
-msgstr ""
+msgstr "Změnit název"
 
-#: ui/DeviceDelegate.qml:25 ui/main.qml:182
+#: ui/DeviceDelegate.qml:25
 #, kde-format
 msgid "Connected"
 msgstr "Připojen"
 
-#: ui/DeviceDelegate.qml:31 ui/main.qml:247
+#: ui/DeviceDelegate.qml:31 ui/main.qml:236
 #, kde-format
 msgid "%1% Battery"
-msgstr "%1% Baterie"
+msgstr "%1% baterie"
 
 #: ui/ForgetDeviceAction.qml:18
 #, kde-format
@@ -345,28 +333,20 @@ msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr ""
 "Klikněte <interface>Spárovat nové zařízení...</interface> pro spárování"
 
-#: ui/main.qml:184
-#, kde-format
-msgid "Available"
-msgstr "Dostupné"
-
 #: ui/main_mediacenter.qml:20
-#, fuzzy, kde-format
-#| msgid "Enable Bluetooth"
+#, kde-format
 msgid "Bluetooth"
-msgstr "Povolit Bluetooth"
+msgstr "Bluetooth"
 
 #: ui/main_mediacenter.qml:92
-#, fuzzy, kde-format
-#| msgid "Pair Device…"
+#, kde-format
 msgid "Paired devices"
-msgstr "Spárovat zařízení…"
+msgstr "Spárovaná zařízení"
 
 #: ui/main_mediacenter.qml:121
-#, fuzzy, kde-format
-#| msgid "Available"
+#, kde-format
 msgid "Available devices"
-msgstr "Dostupné"
+msgstr "Dostupná zařízení"
 
 #: ui/script.js:13
 #, kde-format
@@ -512,3 +492,6 @@ msgstr "Jiné"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
+
+#~ msgid "Available"
+#~ msgstr "Dostupné"

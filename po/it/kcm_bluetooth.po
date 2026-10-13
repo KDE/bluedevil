@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-12 00:53+0000\n"
+"POT-Creation-Date: 2026-10-13 00:47+0000\n"
 "PO-Revision-Date: 2025-12-09 08:33+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -41,12 +41,12 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "Abilita Bluetooth"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
 #, kde-format
 msgid "Disconnect"
 msgstr "Disconnetti"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
 #, kde-format
 msgid "Connect"
 msgstr "Connetti"
@@ -91,7 +91,7 @@ msgstr "Nome:"
 msgid "Trusted"
 msgstr "Di fiducia"
 
-#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135 ui/main.qml:180
+#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135
 #, kde-format
 msgid "Blocked"
 msgstr "Bloccato"
@@ -209,12 +209,12 @@ msgstr "%1%"
 msgid "Change name"
 msgstr ""
 
-#: ui/DeviceDelegate.qml:25 ui/main.qml:182
+#: ui/DeviceDelegate.qml:25
 #, kde-format
 msgid "Connected"
 msgstr "Connesso"
 
-#: ui/DeviceDelegate.qml:31 ui/main.qml:247
+#: ui/DeviceDelegate.qml:31 ui/main.qml:236
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% batteria"
@@ -343,11 +343,6 @@ msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr ""
 "Fai clic su <interface>Associa dispositivo…</interface> per accoppiarne "
 "alcuni"
-
-#: ui/main.qml:184
-#, kde-format
-msgid "Available"
-msgstr "Disponibile"
 
 #: ui/main_mediacenter.qml:20
 #, kde-format
@@ -510,6 +505,9 @@ msgstr "Altro"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
+
+#~ msgid "Available"
+#~ msgstr "Disponibile"
 
 #~ msgid "Forget this Device?"
 #~ msgstr "Vuoi dimenticare questo dispositivo?"

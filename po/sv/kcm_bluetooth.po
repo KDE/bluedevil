@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-12 00:53+0000\n"
+"POT-Creation-Date: 2026-10-13 00:47+0000\n"
 "PO-Revision-Date: 2026-01-20 20:12+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -39,12 +39,12 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "Aktivera Blåtand"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
 #, kde-format
 msgid "Disconnect"
 msgstr "Koppla ner"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
 #, kde-format
 msgid "Connect"
 msgstr "Anslut"
@@ -89,7 +89,7 @@ msgstr "Namn:"
 msgid "Trusted"
 msgstr "Pålitlig"
 
-#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135 ui/main.qml:180
+#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135
 #, kde-format
 msgid "Blocked"
 msgstr "Blockerad"
@@ -203,12 +203,12 @@ msgstr "%1 %"
 msgid "Change name"
 msgstr ""
 
-#: ui/DeviceDelegate.qml:25 ui/main.qml:182
+#: ui/DeviceDelegate.qml:25
 #, kde-format
 msgid "Connected"
 msgstr "Ansluten"
 
-#: ui/DeviceDelegate.qml:31 ui/main.qml:247
+#: ui/DeviceDelegate.qml:31 ui/main.qml:236
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1 % batteri"
@@ -335,11 +335,6 @@ msgstr "Inga enheter parkopplade"
 msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr "Klicka på <interface>Parkoppla enhet…</interface> för att parkoppla"
-
-#: ui/main.qml:184
-#, kde-format
-msgid "Available"
-msgstr "Tillgängligt"
 
 #: ui/main_mediacenter.qml:20
 #, kde-format
@@ -502,6 +497,9 @@ msgstr "Övrigt"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
+
+#~ msgid "Available"
+#~ msgstr "Tillgängligt"
 
 #~ msgid "Forget this Device?"
 #~ msgstr "Glöm enhet?"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-12 00:53+0000\n"
+"POT-Creation-Date: 2026-10-13 00:47+0000\n"
 "PO-Revision-Date: 2025-08-10 19:52+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
@@ -39,12 +39,12 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "ஊடலையை இயக்கு"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
 #, kde-format
 msgid "Disconnect"
 msgstr "இணைப்பை துண்டி"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:214
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
 #, kde-format
 msgid "Connect"
 msgstr "இணை "
@@ -89,7 +89,7 @@ msgstr "பெயர்:"
 msgid "Trusted"
 msgstr "நம்பகமானது"
 
-#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135 ui/main.qml:180
+#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135
 #, kde-format
 msgid "Blocked"
 msgstr "தடுக்கப்பட்டது"
@@ -207,12 +207,12 @@ msgstr "%1%"
 msgid "Change name"
 msgstr ""
 
-#: ui/DeviceDelegate.qml:25 ui/main.qml:182
+#: ui/DeviceDelegate.qml:25
 #, kde-format
 msgid "Connected"
 msgstr "இணைந்துள்ளது"
 
-#: ui/DeviceDelegate.qml:31 ui/main.qml:247
+#: ui/DeviceDelegate.qml:31 ui/main.qml:236
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% மின்கலம்"
@@ -340,11 +340,6 @@ msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr ""
 "புதியவற்றை சேர்க்க <interface>சாதனத்தை ஜோடியாக்கு…</interface> என்பதை அழுத்தவும்"
-
-#: ui/main.qml:184
-#, kde-format
-msgid "Available"
-msgstr "கிடைக்கிறது"
 
 #: ui/main_mediacenter.qml:20
 #, fuzzy, kde-format
@@ -508,6 +503,9 @@ msgstr "மற்றவை"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
+
+#~ msgid "Available"
+#~ msgstr "கிடைக்கிறது"
 
 #~ msgid "Forget this Device?"
 #~ msgstr "இந்த சாதனத்தை மறந்திடலாமா?"
