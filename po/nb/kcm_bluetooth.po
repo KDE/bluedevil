@@ -505,6 +505,3 @@ msgstr "Annet"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
-
-#~ msgid "Available"
-#~ msgstr "Tilgjengelig"

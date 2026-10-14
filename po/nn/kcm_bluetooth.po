@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-13 00:47+0000\n"
-"PO-Revision-Date: 2026-03-01 20:09+0100\n"
+"PO-Revision-Date: 2026-09-19 16:46+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
 "Language: nn\n"
@@ -341,10 +341,9 @@ msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr "Trykk <interface>Par ny eining</interface> for å para ei eining"
 
 #: ui/main_mediacenter.qml:20
-#, fuzzy, kde-format
-#| msgid "Enable Bluetooth"
+#, kde-format
 msgid "Bluetooth"
-msgstr "Bruk Bluetooth"
+msgstr "Bluetooth"
 
 #: ui/main_mediacenter.qml:92
 #, fuzzy, kde-format
@@ -502,6 +501,3 @@ msgstr "Anna"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
-
-#~ msgid "Available"
-#~ msgstr "Tilgjengeleg"
