@@ -407,9 +407,3 @@ msgstr "Annet"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
-
-#~ msgid "Connected"
-#~ msgstr "Tilkoblet"
-
-#~ msgid "Available"
-#~ msgstr "Tilgjengelig"

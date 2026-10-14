@@ -403,9 +403,3 @@ msgstr "Anna"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
-
-#~ msgid "Connected"
-#~ msgstr "Kopla til"
-
-#~ msgid "Available"
-#~ msgstr "Tilgjengeleg"
