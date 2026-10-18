@@ -403,9 +403,3 @@ msgstr "Друго"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
-
-#~ msgid "Connected"
-#~ msgstr "Свързано"
-
-#~ msgid "Available"
-#~ msgstr "Наличен"
