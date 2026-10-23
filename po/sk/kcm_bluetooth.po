@@ -247,11 +247,10 @@ msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr "Kliknutím na <interface>Spárovať zariadenie…</interface> spárujete"
 
 #: ui/main.qml:193
-#, fuzzy, kde-kuit-format
-#| msgid "%1%"
+#, kde-kuit-format
 msgctxt "@label/rich"
 msgid "%1"
-msgstr "%1%"
+msgstr "%1"
 
 #: ui/main.qml:235
 #, kde-format
