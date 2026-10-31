@@ -66,7 +66,7 @@ msgstr "Tipus:"
 #: ui/Device.qml:160
 #, kde-format
 msgid "%1%"
-msgstr "%1%"
+msgstr "%1 %"
 
 #: ui/Device.qml:162
 #, kde-format
@@ -407,9 +407,3 @@ msgstr "Altres"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
-
-#~ msgid "Connected"
-#~ msgstr "Connectat"
-
-#~ msgid "Available"
-#~ msgstr "Disponible"
