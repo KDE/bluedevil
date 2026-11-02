@@ -26,7 +26,7 @@ PlasmoidItem {
     readonly property alias configureAction: configureAction
 
     switchWidth: Kirigami.Units.gridUnit * 15
-    switchHeight: Kirigami.Units.gridUnit * 10
+    switchHeight: Kirigami.Units.gridUnit * 14
 
     fullRepresentation: FullRepresentation {
         plasmoidItem: root
