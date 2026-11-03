@@ -300,8 +300,7 @@ msgid "Enable Bluetooth"
 msgstr "Activar o sistema de Bluetooth"
 
 #: qml/main.qml:122
-#, fuzzy, kde-format
-#| msgid "Pair Device…"
+#, kde-format
 msgctxt "@action:button"
 msgid "Pair Device…"
 msgstr "Emparellar cun dispositivo…"
