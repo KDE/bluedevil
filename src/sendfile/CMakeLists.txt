@@ -39,6 +39,7 @@ target_link_libraries(bluedevil-sendfile
     KF6::KIOFileWidgets
     KF6::WidgetsAddons
     KF6::WindowSystem
+    KF6::Crash
 )
 
 install(TARGETS bluedevil-sendfile DESTINATION ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})

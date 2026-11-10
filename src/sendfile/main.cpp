@@ -13,6 +13,7 @@
 #include <QCommandLineParser>
 
 #include <KAboutData>
+#include <KCrash>
 #include <KDBusService>
 #include <KLocalizedString>
 #include <KWindowSystem>
@@ -42,6 +43,9 @@ int main(int argc, char *argv[])
     app.setQuitLockEnabled(false);
 
     KAboutData::setApplicationData(aboutData);
+
+    KCrash::initialize();
+
     KDBusService service;
 
     QCommandLineOption kioOption(QStringList() << QStringLiteral("kio") << QStringLiteral("k"));

@@ -36,6 +36,7 @@ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     Svg
     WidgetsAddons
     WindowSystem
+    Crash
 )
 
 find_package(Plasma ${PROJECT_DEP_VERSION} REQUIRED)
