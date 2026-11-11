@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-13 00:47+0000\n"
+"POT-Creation-Date: 2026-11-11 01:03+0000\n"
 "PO-Revision-Date: 2024-12-25 19:35+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -42,12 +42,12 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "ब्लूटूथं सक्षमं कुर्वन्तु"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63
 #, kde-format
 msgid "Disconnect"
 msgstr "विच्छेदं कुर्वन्तु"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63
 #, kde-format
 msgid "Connect"
 msgstr "संयुज्"
@@ -215,12 +215,12 @@ msgstr ""
 msgid "Connected"
 msgstr "संबद्धः"
 
-#: ui/DeviceDelegate.qml:31 ui/main.qml:236
+#: ui/DeviceDelegate.qml:31 ui/main.qml:234
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% बैटरी"
 
-#: ui/ForgetDeviceAction.qml:18
+#: ui/ForgetDeviceAction.qml:19
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
@@ -342,6 +342,20 @@ msgstr "न यन्त्राणि युग्मिताः"
 msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr "केचन युग्मीकरणं कर्तुं <interface>Pair Device…</interface> नुदन्तु"
+
+#: ui/main.qml:204
+#, fuzzy, kde-format
+#| msgid "Disconnect"
+msgctxt "@action:button"
+msgid "Disconnect"
+msgstr "विच्छेदं कुर्वन्तु"
+
+#: ui/main.qml:204
+#, fuzzy, kde-format
+#| msgid "Connect"
+msgctxt "@action:button"
+msgid "Connect"
+msgstr "संयुज्"
 
 #: ui/main_mediacenter.qml:20
 #, fuzzy, kde-format

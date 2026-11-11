@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-13 00:47+0000\n"
+"POT-Creation-Date: 2026-11-11 01:03+0000\n"
 "PO-Revision-Date: 2026-10-26 22:21+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
@@ -42,12 +42,12 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "Bruk Bluetooth"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63
 #, kde-format
 msgid "Disconnect"
 msgstr "Kopla frå"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63
 #, kde-format
 msgid "Connect"
 msgstr "Kopla til"
@@ -201,12 +201,12 @@ msgstr "Endra namn"
 msgid "Connected"
 msgstr "Kopla til"
 
-#: ui/DeviceDelegate.qml:31 ui/main.qml:236
+#: ui/DeviceDelegate.qml:31 ui/main.qml:234
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1 % batteri"
 
-#: ui/ForgetDeviceAction.qml:18
+#: ui/ForgetDeviceAction.qml:19
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
@@ -328,6 +328,20 @@ msgstr "Ingen einingar er para"
 msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr "Trykk <interface>Par ny eining</interface> for å para ei eining"
+
+#: ui/main.qml:204
+#, fuzzy, kde-format
+#| msgid "Disconnect"
+msgctxt "@action:button"
+msgid "Disconnect"
+msgstr "Kopla frå"
+
+#: ui/main.qml:204
+#, fuzzy, kde-format
+#| msgid "Connect"
+msgctxt "@action:button"
+msgid "Connect"
+msgstr "Kopla til"
 
 #: ui/main_mediacenter.qml:20
 #, kde-format

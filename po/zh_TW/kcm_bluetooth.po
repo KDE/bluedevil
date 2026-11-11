@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-13 00:47+0000\n"
+"POT-Creation-Date: 2026-11-11 01:03+0000\n"
 "PO-Revision-Date: 2026-11-03 20:53+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -42,12 +42,12 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "開啟藍牙"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63
 #, kde-format
 msgid "Disconnect"
 msgstr "斷線"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63 ui/main.qml:203
+#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63
 #, kde-format
 msgid "Connect"
 msgstr "連線"
@@ -200,12 +200,12 @@ msgstr "變更名稱"
 msgid "Connected"
 msgstr "已連線"
 
-#: ui/DeviceDelegate.qml:31 ui/main.qml:236
+#: ui/DeviceDelegate.qml:31 ui/main.qml:234
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% 電量"
 
-#: ui/ForgetDeviceAction.qml:18
+#: ui/ForgetDeviceAction.qml:19
 #, kde-format
 msgctxt "@action:button %1 is the name of a Bluetooth device"
 msgid "Forget \"%1\""
@@ -327,6 +327,20 @@ msgstr "沒有配對裝置"
 msgctxt "@info"
 msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr "點擊 <interface>配對裝置…</interface> 來配對一些"
+
+#: ui/main.qml:204
+#, fuzzy, kde-format
+#| msgid "Disconnect"
+msgctxt "@action:button"
+msgid "Disconnect"
+msgstr "斷線"
+
+#: ui/main.qml:204
+#, fuzzy, kde-format
+#| msgid "Connect"
+msgctxt "@action:button"
+msgid "Connect"
+msgstr "連線"
 
 #: ui/main_mediacenter.qml:20
 #, kde-format
