@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-28 00:47+0000\n"
-"PO-Revision-Date: 2026-01-22 19:29+0300\n"
+"PO-Revision-Date: 2026-11-11 22:56+0200\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -158,7 +158,7 @@ msgstr "Ошибка подключения"
 #: qml/DeviceItem.qml:260 qml/main.qml:74 qml/main.qml:83
 #, kde-format
 msgid "%1% Battery"
-msgstr "Батарея %1%"
+msgstr "Батарея %1 %"
 
 #: qml/DeviceItem.qml:265
 #, kde-format
