@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-11 01:03+0000\n"
-"PO-Revision-Date: 2026-10-12 07:55+0200\n"
+"PO-Revision-Date: 2026-11-11 22:59+0200\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -69,7 +69,7 @@ msgstr "Тип:"
 #: ui/Device.qml:160
 #, kde-format
 msgid "%1%"
-msgstr "%1%"
+msgstr "%1 %"
 
 #: ui/Device.qml:162
 #, kde-format
@@ -194,7 +194,7 @@ msgstr "Батарея: %1"
 #, kde-format
 msgctxt "Battery percentage level"
 msgid "%1%"
-msgstr "%1%"
+msgstr "%1 %"
 
 #: ui/DeviceConnectionSidebar.qml:183 ui/DeviceConnectionSidebar.qml:190
 #, kde-format
@@ -209,7 +209,7 @@ msgstr "Подключено"
 #: ui/DeviceDelegate.qml:31 ui/main.qml:234
 #, kde-format
 msgid "%1% Battery"
-msgstr "Батарея %1%"
+msgstr "Батарея %1 %"
 
 #: ui/ForgetDeviceAction.qml:19
 #, kde-format
@@ -338,15 +338,13 @@ msgstr ""
 "устройства…</interface>"
 
 #: ui/main.qml:204
-#, fuzzy, kde-format
-#| msgid "Disconnect"
+#, kde-format
 msgctxt "@action:button"
 msgid "Disconnect"
 msgstr "Отключить"
 
 #: ui/main.qml:204
-#, fuzzy, kde-format
-#| msgid "Connect"
+#, kde-format
 msgctxt "@action:button"
 msgid "Connect"
 msgstr "Подключить"

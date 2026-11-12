@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-11 01:03+0000\n"
-"PO-Revision-Date: 2026-10-31 18:56+0400\n"
+"PO-Revision-Date: 2026-11-11 20:51+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -327,18 +327,16 @@ msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr "انقر <interface>اقرن جهاز…</interface> لتقرن بعضا منها"
 
 #: ui/main.qml:204
-#, fuzzy, kde-format
-#| msgid "Disconnect"
+#, kde-format
 msgctxt "@action:button"
 msgid "Disconnect"
 msgstr "اقطع الاتصال"
 
 #: ui/main.qml:204
-#, fuzzy, kde-format
-#| msgid "Connect"
+#, kde-format
 msgctxt "@action:button"
 msgid "Connect"
-msgstr "اتّصل"
+msgstr "اتصل"
 
 #: ui/main_mediacenter.qml:20
 #, kde-format

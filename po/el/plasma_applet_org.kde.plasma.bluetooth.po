@@ -20,10 +20,10 @@ msgstr ""
 "X-Generator: Lokalize 24.08.0\n"
 
 #: devicesproxymodel.cpp:64
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@title:column Blocked Bluetooth devices"
 msgid "Blocked"
-msgstr ""
+msgstr "Αποκλεισμένες"
 
 #: devicesproxymodel.cpp:67
 #, fuzzy, kde-format
@@ -40,10 +40,10 @@ msgid "Available"
 msgstr "Διαθέσιμες συσκευές"
 
 #: devicesstateproxymodel.cpp:288
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@label %1 is the name of a Bluetooth device"
 msgid "Could not connect to device “%1”"
-msgstr ""
+msgstr "Αδυναμία σύνδεσης στη συσκευή «%1»"
 
 #: devicesstateproxymodel.cpp:303
 #, kde-format
@@ -84,10 +84,10 @@ msgid "Send File"
 msgstr "Αποστολή αρχείου"
 
 #: qml/DeviceItem.qml:71
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@action:button Forget a Bluetooth device"
 msgid "Forget"
-msgstr ""
+msgstr "Διαγραφή"
 
 #: qml/DeviceItem.qml:117
 #, kde-format
@@ -156,9 +156,9 @@ msgid "%1% Battery"
 msgstr "%1% μπαταρία"
 
 #: qml/DeviceItem.qml:265
-#, kde-format
+#, fuzzy, kde-format
 msgid "Headset"
-msgstr ""
+msgstr "Ακουστικά με μικρόφωνο"
 
 #: qml/DeviceItem.qml:271
 #, kde-format
@@ -166,24 +166,24 @@ msgid "Audio device"
 msgstr "Συσκευή ήχου"
 
 #: qml/DeviceItem.qml:275
-#, kde-format
+#, fuzzy, kde-format
 msgid "Keyboard"
-msgstr ""
+msgstr "Πληκτρολόγιο"
 
 #: qml/DeviceItem.qml:278
-#, kde-format
+#, fuzzy, kde-format
 msgid "Mouse"
-msgstr ""
+msgstr "Ποντίκι"
 
 #: qml/DeviceItem.qml:281
-#, kde-format
+#, fuzzy, kde-format
 msgid "Joypad"
-msgstr ""
+msgstr "Χειριστήριο"
 
 #: qml/DeviceItem.qml:284
-#, kde-format
+#, fuzzy, kde-format
 msgid "Drawing tablet"
-msgstr ""
+msgstr "Ταμπλέτα σχεδίασης"
 
 #: qml/DeviceItem.qml:288
 #, kde-format
@@ -191,14 +191,14 @@ msgid "Phone"
 msgstr "Τηλέφωνο"
 
 #: qml/DeviceItem.qml:291
-#, kde-format
+#, fuzzy, kde-format
 msgid "Camera"
-msgstr ""
+msgstr "Κάμερα"
 
 #: qml/DeviceItem.qml:294
-#, kde-format
+#, fuzzy, kde-format
 msgid "Printer"
-msgstr ""
+msgstr "Εκτυπωτής"
 
 #: qml/DeviceItem.qml:301
 #, kde-format
@@ -322,10 +322,10 @@ msgid "Configure &Bluetooth…"
 msgstr "Διαμόρφωση &Bluetooth…"
 
 #: qml/Toolbar.qml:73
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
-msgstr ""
+msgstr "Περισσότερες ενέργειες"
 
 #~ msgctxt ""
 #~ "@label %1 is human-readable device name, %2 is low-level device address"
