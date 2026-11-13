@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-11 01:03+0000\n"
-"PO-Revision-Date: 2026-10-12 10:19+0200\n"
+"PO-Revision-Date: 2026-11-11 09:47+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -334,15 +334,13 @@ msgstr ""
 "aparellar-ne un"
 
 #: ui/main.qml:204
-#, fuzzy, kde-format
-#| msgid "Disconnect"
+#, kde-format
 msgctxt "@action:button"
 msgid "Disconnect"
 msgstr "Desconnecta"
 
 #: ui/main.qml:204
-#, fuzzy, kde-format
-#| msgid "Connect"
+#, kde-format
 msgctxt "@action:button"
 msgid "Connect"
 msgstr "Connecta"
@@ -506,6 +504,3 @@ msgstr "Altres"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
-
-#~ msgid "Available"
-#~ msgstr "Disponible"
