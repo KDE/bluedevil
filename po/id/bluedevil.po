@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-01 00:47+0000\n"
+"POT-Creation-Date: 2026-11-14 01:05+0000\n"
 "PO-Revision-Date: 2023-05-28 11:25+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -60,17 +60,17 @@ msgstr "Batal"
 msgid "Bluetooth Daemon"
 msgstr "Daemon Bluetooth"
 
-#: kded/bluedevildaemon.cpp:72 sendfile/main.cpp:29 wizard/main.cpp:30
+#: kded/bluedevildaemon.cpp:72 sendfile/main.cpp:30 wizard/main.cpp:30
 #, kde-format
 msgid "(c) 2010, UFO Coders"
 msgstr "(c) 2010, UFO Coders"
 
-#: kded/bluedevildaemon.cpp:75 sendfile/main.cpp:32 wizard/main.cpp:33
+#: kded/bluedevildaemon.cpp:75 sendfile/main.cpp:33 wizard/main.cpp:33
 #, kde-format
 msgid "Maintainer"
 msgstr "Pemelihara"
 
-#: kded/bluedevildaemon.cpp:80 kded/bluedevildaemon.cpp:85 sendfile/main.cpp:37
+#: kded/bluedevildaemon.cpp:80 kded/bluedevildaemon.cpp:85 sendfile/main.cpp:38
 #: wizard/main.cpp:38
 #, kde-format
 msgid "Previous Maintainer"
@@ -330,22 +330,22 @@ msgctxt "Action to turn on Bluetooth adapter"
 msgid "Turn On"
 msgstr "Nyalakan"
 
-#: sendfile/main.cpp:25 sendfile/main.cpp:27
+#: sendfile/main.cpp:26 sendfile/main.cpp:28
 #, kde-format
 msgid "Bluetooth File Transfer"
 msgstr "Transfer File Bluetooth"
 
-#: sendfile/main.cpp:48
+#: sendfile/main.cpp:52
 #, kde-format
 msgid "Specify receiving device by MAC address."
 msgstr "Tentukan penerimaan peranti berdasarkan alamat MAC."
 
-#: sendfile/main.cpp:52
+#: sendfile/main.cpp:56
 #, kde-format
 msgid "Specify receiving device by UBI path."
 msgstr "Tentukan penerimaan peranti berdasarkan alur UBI."
 
-#: sendfile/main.cpp:56
+#: sendfile/main.cpp:60
 #, kde-format
 msgid "Files to be sent."
 msgstr "File-file yang dikirim."
