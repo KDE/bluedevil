@@ -404,9 +404,3 @@ msgstr "drugo"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
-
-#~ msgid "Connected"
-#~ msgstr "Povezani"
-
-#~ msgid "Available"
-#~ msgstr "Dostupni"
