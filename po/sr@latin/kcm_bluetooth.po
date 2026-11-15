@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-11 01:03+0000\n"
-"PO-Revision-Date: 2026-10-03 22:09+0200\n"
+"PO-Revision-Date: 2026-11-14 16:15+0100\n"
 "Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
 "Language: sr@latin\n"
@@ -127,75 +127,65 @@ msgstr "Zaboravi"
 #: ui/DeviceConnectionSidebar.qml:53
 #, kde-format
 msgid "Device information"
-msgstr ""
+msgstr "Podaci o uređaju"
 
 #: ui/DeviceConnectionSidebar.qml:63
-#, fuzzy, kde-format
-#| msgid "Connect"
+#, kde-format
 msgid "Connecting…"
-msgstr "Poveži"
+msgstr "Povezujem se…"
 
 #: ui/DeviceConnectionSidebar.qml:63
-#, fuzzy, kde-format
-#| msgid "Disconnect"
+#, kde-format
 msgid "Disconnecting…"
-msgstr "Prekini vezu"
+msgstr "Prekidam vezu…"
 
 #: ui/DeviceConnectionSidebar.qml:63
 #, kde-format
 msgid "Pair"
-msgstr ""
+msgstr "Upari"
 
 #: ui/DeviceConnectionSidebar.qml:87
-#, fuzzy, kde-format
-#| msgctxt "@action:button Forget the Bluetooth device"
-#| msgid "Forget"
+#, kde-format
 msgid "Forget device"
-msgstr "Zaboravi"
+msgstr "Zaboravi uređaj"
 
 #: ui/DeviceConnectionSidebar.qml:98
 #, kde-format
 msgid "Are you sure you want to forget the device %1?"
-msgstr ""
+msgstr "Želite li zaista da zaboravite uređaj %1?"
 
 #: ui/DeviceConnectionSidebar.qml:121
 #, kde-format
 msgid "Auto-accept incoming connections"
-msgstr ""
+msgstr "Automatski prihvataj dolazne veze"
 
 #: ui/DeviceConnectionSidebar.qml:136
-#, fuzzy, kde-format
-#| msgid ""
-#| "When enabled, all incoming connections from this device will be rejected."
+#, kde-format
 msgid "Reject all connections from this device"
-msgstr "Kad je uključeno, sve dolazne veze sa ovog uređaja biće odbijene."
+msgstr "Odbijaj sve veze sa ovog uređaja"
 
 #: ui/DeviceConnectionSidebar.qml:152
 #, kde-format
 msgid "Device details"
-msgstr ""
+msgstr "Detalji o uređaju"
 
 #: ui/DeviceConnectionSidebar.qml:163
-#, fuzzy, kde-format
-#| msgid "Type:"
+#, kde-format
 msgid "Type: %1"
-msgstr "Tip:"
+msgstr "Tip: %1"
 
 #: ui/DeviceConnectionSidebar.qml:169
-#, fuzzy, kde-format
-#| msgid "Address:"
+#, kde-format
 msgid "Address: %1"
-msgstr "Adresa:"
+msgstr "Adresa: %1"
 
 #: ui/DeviceConnectionSidebar.qml:176
-#, fuzzy, kde-format
-#| msgid "Battery:"
+#, kde-format
 msgid "Battery: %1"
-msgstr "Baterija:"
+msgstr "Baterija: %1"
 
 #: ui/DeviceConnectionSidebar.qml:177
-#, fuzzy, kde-format
-#| msgid "%1%"
+#, kde-format
 msgctxt "Battery percentage level"
 msgid "%1%"
 msgstr "%1%"
@@ -203,7 +193,7 @@ msgstr "%1%"
 #: ui/DeviceConnectionSidebar.qml:183 ui/DeviceConnectionSidebar.qml:190
 #, kde-format
 msgid "Change name"
-msgstr ""
+msgstr "Promeni ime"
 
 #: ui/DeviceDelegate.qml:25
 #, kde-format
@@ -341,36 +331,31 @@ msgstr ""
 "Kliknite na <interface>Upari uređaj…</interface> da biste uparili uređaje"
 
 #: ui/main.qml:204
-#, fuzzy, kde-format
-#| msgid "Disconnect"
+#, kde-format
 msgctxt "@action:button"
 msgid "Disconnect"
 msgstr "Prekini vezu"
 
 #: ui/main.qml:204
-#, fuzzy, kde-format
-#| msgid "Connect"
+#, kde-format
 msgctxt "@action:button"
 msgid "Connect"
 msgstr "Poveži"
 
 #: ui/main_mediacenter.qml:20
-#, fuzzy, kde-format
-#| msgid "Enable Bluetooth"
+#, kde-format
 msgid "Bluetooth"
-msgstr "Uključi Bluetooth"
+msgstr "Bluetooth"
 
 #: ui/main_mediacenter.qml:92
-#, fuzzy, kde-format
-#| msgid "Pair Device…"
+#, kde-format
 msgid "Paired devices"
-msgstr "Upari uređaj…"
+msgstr "Upareni uređaji"
 
 #: ui/main_mediacenter.qml:121
-#, fuzzy, kde-format
-#| msgid "Available"
+#, kde-format
 msgid "Available devices"
-msgstr "Dostupni"
+msgstr "Dostupni uređaji"
 
 #: ui/script.js:13
 #, kde-format
@@ -516,6 +501,3 @@ msgstr "drugo"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
-
-#~ msgid "Available"
-#~ msgstr "Dostupni"
