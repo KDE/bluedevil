@@ -328,15 +328,13 @@ msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr "Kliknutím na <interface>Spárovať zariadenie…</interface> spárujete"
 
 #: ui/main.qml:204
-#, fuzzy, kde-format
-#| msgid "Disconnect"
+#, kde-format
 msgctxt "@action:button"
 msgid "Disconnect"
 msgstr "Odpojiť"
 
 #: ui/main.qml:204
-#, fuzzy, kde-format
-#| msgid "Connect"
+#, kde-format
 msgctxt "@action:button"
 msgid "Connect"
 msgstr "Pripojiť"
