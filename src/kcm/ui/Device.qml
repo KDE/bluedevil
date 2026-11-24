@@ -24,6 +24,7 @@ KCMUtils.SimpleKCM {
     id: root
 
     required property BluezQt.Device device
+    readonly property var batteryLabels: BluedevilComponents.BatteryUtils.batteryLabels(device)
 
     title: device.name
 
@@ -157,8 +158,8 @@ KCMUtils.SimpleKCM {
             }
 
             QQC2.Label {
-                text: root.device.battery !== null ? i18n("%1%", root.device.battery.percentage) : ""
-                visible: root.device.battery !== null
+                text: root.batteryLabels.join(" · ")
+                visible: root.batteryLabels.length > 0
                 Kirigami.FormData.label: i18n("Battery:")
             }
 

@@ -3,7 +3,10 @@
 
 ecm_add_qml_module(bluedevilcomponents URI org.kde.bluedevil.components GENERATE_PLUGIN_SOURCE)
 
+set_source_files_properties(BatteryUtils.qml PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
+
 ecm_target_qml_sources(bluedevilcomponents SOURCES
+     BatteryUtils.qml
      ForgetDeviceDialog.qml
  )
 

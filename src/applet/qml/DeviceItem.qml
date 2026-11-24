@@ -14,6 +14,7 @@ import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 
 import org.kde.bluezqt as BluezQt
+import org.kde.bluedevil.components as BluedevilComponents
 import org.kde.kirigami as Kirigami
 import org.kde.kquickcontrolsaddons as KQuickControlsAddons
 import org.kde.ksvg as KSvg
@@ -256,8 +257,9 @@ PlasmaExtras.ExpandableListItem {
             labels.push(i18n("Connection failed"));
         }
 
-        if (model.Battery) {
-            labels.push(i18n("%1% Battery", model.Battery.percentage));
+        const batteryLabels = BluedevilComponents.BatteryUtils.batteryLabels(model.Device);
+        for (const label of batteryLabels) {
+            labels.push(label);
         }
 
         switch (model.Type) {

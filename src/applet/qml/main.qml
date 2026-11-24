@@ -11,6 +11,7 @@ pragma ComponentBehavior: Bound
 import QtQuick
 
 import org.kde.bluezqt as BluezQt
+import org.kde.bluedevil.components as BluedevilComponents
 import org.kde.kcmutils as KCMUtils
 import org.kde.kirigami as Kirigami
 import org.kde.plasma.core as PlasmaCore
@@ -68,20 +69,18 @@ PlasmoidItem {
 
         } else if (connectedDevices.length === 1) {
             const device = connectedDevices[0];
-            const battery = device.battery;
             const name = i18n("%1 connected", device.name);
-            let text = battery
-                ? "%1 · %2".arg(name).arg(i18n("%1% Battery", battery.percentage))
-                : name
+            const batteryText = BluedevilComponents.BatteryUtils.batteryLabels(device).join(" · ");
+            let text = batteryText !== "" ? "%1 · %2".arg(name).arg(batteryText) : name;
             return "%1\n%2".arg(text).arg(hint);
 
         } else {
             let text = i18ncp("Number of connected devices", "%1 connected device", "%1 connected devices", connectedDevices.length);
             connectedDevices.forEach(device => {
-                const { battery, name } = device;
-                text += battery
-                    ? "\n \u2022 %1 · %2".arg(name).arg(i18n("%1% Battery", battery.percentage))
-                    : "\n \u2022 %1".arg(name);
+                const batteryText = BluedevilComponents.BatteryUtils.batteryLabels(device).join(" · ");
+                text += batteryText !== ""
+                    ? "\n \u2022 %1 · %2".arg(device.name).arg(batteryText)
+                    : "\n \u2022 %1".arg(device.name);
             })
             text += "\n%1".arg(hint);
             return text;

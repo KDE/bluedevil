@@ -225,13 +225,13 @@ KCMUtils.ScrollViewKCM {
     }
 
     function infoText(device: BluezQt.Device): string {
-        const { battery } = device;
         const labels = [];
 
         labels.push(Script.deviceTypeToString(device));
 
-        if (battery) {
-            labels.push(i18n("%1% Battery", battery.percentage));
+        const batteryLabels = BluedevilComponents.BatteryUtils.batteryLabels(device);
+        for (const label of batteryLabels) {
+            labels.push(label);
         }
 
         return labels.join(" · ");
