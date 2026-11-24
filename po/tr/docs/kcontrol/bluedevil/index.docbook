@@ -256,7 +256,7 @@
         </note>
         
         <para
->&bluetooth; modülü, öntanımlı olarak sistem tepsisinde bir simge görüntüler. Bu simge, durum belirteçlerini hem denetleme hem izleme olanağı sunar. Normal bir &bluetooth; simgesi, tüm aygıtların bağlantısının kesili olduğunu, üzerine noktalar olan bir simge ise bazı aygıtların bilgisayarınıza bağlı olduğunu gösterir. </para>
+>&bluetooth; modülü, varsayılan olarak sistem tepsisinde bir simge görüntüler. Bu simge, durum belirteçlerini hem denetleme hem izleme olanağı sunar. Normal bir &bluetooth; simgesi, tüm aygıtların bağlantısının kesili olduğunu, üzerine noktalar olan bir simge ise bazı aygıtların bilgisayarınıza bağlı olduğunu gösterir. </para>
         
         <para
 >Sistem tepsisi simgesinin üzerine fareyle gelirseniz bağlı aygıtların özetini içeren bir listeyi araç ipucu olarak görebilirsiniz. </para>
