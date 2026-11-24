@@ -122,117 +122,125 @@ KCMUtils.SimpleKCM {
             Layout.alignment: Qt.AlignHCenter
         }
 
-        Kirigami.FormLayout {
+        Kirigami.Form {
+            Layout.fillWidth: true
+            Kirigami.FormGroup {
+                Kirigami.FormAction {
+                    action: Kirigami.Action {
+                        enabled: !indicator.running && !root.device.blocked
+                        text: root.device.connected
+                            ? i18nc("@action:button disconnect from device", "Disconnect")
+                            : i18nc("@action:button connect to device", "Connect")
+                        icon.name: root.device.connected ? "network-disconnect-symbolic" : "network-connect-symbolic"
 
-            Row {
-                spacing: Kirigami.Units.smallSpacing
 
-                QQC2.Button {
-                    id: connectButton
-                    enabled: !indicator.running && !root.device.blocked
-                    text: root.device.connected ? i18n("Disconnect") : i18n("Connect")
-                    icon.name: root.device.connected ? "network-disconnect-symbolic" : "network-connect-symbolic"
-
-                    QQC2.ToolTip.text: i18n("Unblock the device first to be able to connect to it")
-                    QQC2.ToolTip.visible: root.device.blocked && (hovered || visualFocus)
-
-                    onClicked: {
-                        if (root.device.connected) {
-                            root.makeCall(root.device.disconnectFromDevice())
-                        } else {
-                            root.makeCall(root.device.connectToDevice())
+                        onTriggered: {
+                            if (root.device.connected) {
+                                root.makeCall(root.device.disconnectFromDevice())
+                            } else {
+                                root.makeCall(root.device.connectToDevice())
+                            }
                         }
                     }
+                    trailingItems: [
+                        QQC2.BusyIndicator {
+                            id: indicator
+                            Layout.fillHeight: true
+                            running: false
+                            visible: running
+                        }
+                    ]
+                    QQC2.ToolTip.text: i18nc("@info:tooltip", "Unblock the device first to be able to connect to it")
+                    QQC2.ToolTip.visible: root.device.blocked && (hovered || activeFocus) // can't use visualFocus
+                    QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
                 }
-
-                QQC2.BusyIndicator {
-                    id: indicator
-                    running: false
-                    height: connectButton.height
+                Kirigami.FormSeparator { }
+                Kirigami.FormEntry {
+                    title: i18nc("@label type of device", "Type:")
+                    contentItem: QQC2.Label {
+                        text: Script.deviceTypeToString(root.device)
+                    }
                 }
-            }
-
-            QQC2.Label {
-                text: Script.deviceTypeToString(root.device)
-                Kirigami.FormData.label: i18n("Type:")
-            }
-
-            QQC2.Label {
-                text: root.batteryLabels.join(" · ")
-                visible: root.batteryLabels.length > 0
-                Kirigami.FormData.label: i18n("Battery:")
-            }
-
-            QQC2.Label {
-                text: root.device.address
-                Kirigami.FormData.label: i18n("Address:")
-            }
-
-            QQC2.Label {
-                text: root.device.adapter.name
-                Kirigami.FormData.label: i18n("Adapter:")
-            }
-
-            QQC2.TextField {
-                text: root.device.name
-                onTextEdited: root.device.name = text
-                Kirigami.FormData.label: i18n("Name:")
-            }
-
-            QQC2.Switch {
-                text: i18n("Trusted")
-                checked: root.device.trusted
-                onClicked: root.device.trusted = !root.device.trusted
-            }
-
-            RowLayout {
-                spacing: Kirigami.Units.smallSpacing
-
-                QQC2.Switch {
-                    text: i18n("Blocked")
-                    checked: root.device.blocked
-                    onClicked: root.device.blocked = !root.device.blocked
+                Kirigami.FormEntry {
+                    title: i18nc("@label battery charge percentage of connected device", "Battery:")
+                    visible: root.batteryLabels.length > 0
+                    contentItem: QQC2.Label {
+                        text: root.batteryLabels.join(" · ")
+                    }
                 }
-
-                Kirigami.ContextualHelpButton {
-                    toolTipText: i18n("When enabled, all incoming connections from this device will be rejected.")
+                Kirigami.FormEntry {
+                    title: i18nc("@label bluetooth adddess of connected device", "Address:")
+                    contentItem: QQC2.Label {
+                        text: root.device.address
+                    }
                 }
-            }
-
-            QQC2.Button {
-                icon.name: "document-share-symbolic"
-                text: i18n("Send File")
-                visible: root.device.uuids.includes(BluezQt.Services.ObexObjectPush) && root.device.connected
-                onClicked: root.KCMUtils.ConfigModule.runSendFile(root.device.ubi)
-            }
-
-            QQC2.Button {
-                id: napButton
-                icon.name: "network-wireless-bluetooth-symbolic"
-                text: i18n("Setup NAP Network…")
-                visible: false
-                onClicked: root.KCMUtils.ConfigModule.setupNetworkConnection("nap", root.device.address, root.device.name)
-            }
-
-            QQC2.Button {
-                id: dunButton
-                icon.name: "network-wireless-bluetooth-symbolic"
-                text: i18n("Setup DUN Network…")
-                visible: false
-                onClicked: root.KCMUtils.ConfigModule.setupNetworkConnection("dun", root.device.address, root.device.name)
-            }
-
-            Kirigami.Separator {
-                Kirigami.FormData.isSection: true
-            }
-
-            QQC2.Button {
-                action: ForgetDeviceAction {
-                    dialog: forgetDeviceDialog
-                    device: root.device
+                Kirigami.FormEntry {
+                    title: i18nc("@label name of the adapter used to connect to device", "Adapter:")
+                    contentItem: QQC2.Label {
+                        text: root.device.adapter.name
+                    }
                 }
-                // override action's text with a shorter label
-                text: i18nc("@action:button Forget the Bluetooth device", "Forget");
+                Kirigami.FormEntry {
+                    contentItem: QQC2.TextField {
+                        text: root.device.name
+                        onTextEdited: root.device.name = text
+                        Kirigami.FormData.label: i18nc("@label:textbox name of connected device, editable", "Name:")
+                    }
+                }
+                Kirigami.FormEntry {
+                    contentItem: QQC2.Switch {
+                        text: i18nc("@option:check switch, is device trusted", "Trust this device")
+                        checked: root.device.trusted
+                        onClicked: root.device.trusted = !root.device.trusted
+                    }
+                }
+                Kirigami.FormEntry {
+                    contentItem: QQC2.Switch {
+                        text: i18nc("@option:check switch, is device blocked", "Block all incoming connections")
+                        checked: root.device.blocked
+                        onClicked: root.device.blocked = !root.device.blocked
+                    }
+                }
+                Kirigami.FormSeparator {
+                    visible: sendFormAction.visible || napFormAction.visible || dunFormAction.visible
+                }
+                Kirigami.FormAction {
+                    id: sendFormAction
+                    visible: root.device.uuids.includes(BluezQt.Services.ObexObjectPush) && root.device.connected
+                    action: Kirigami.Action {
+                        icon.name: "document-share-symbolic"
+                        text: i18nc("@action:button, send file to this device", "Send File")
+                        onTriggered: root.KCMUtils.ConfigModule.runSendFile(root.device.ubi)
+                    }
+                }
+                Kirigami.FormAction {
+                    id: napFormAction
+                    visible: false
+                    action: Kirigami.Action {
+                        id: napButton
+                        icon.name: "network-wireless-bluetooth-symbolic"
+                        text: i18nc("@action:button", "Setup NAP Network…")
+                        onTriggered: root.KCMUtils.ConfigModule.setupNetworkConnection("nap", root.device.address, root.device.name)
+                    }
+                }
+                Kirigami.FormAction {
+                    id: dunFormAction
+                    visible: false
+                    action: Kirigami.Action {
+                        id: dunButton
+                        icon.name: "network-wireless-bluetooth-symbolic"
+                        text: i18nc("@action:button", "Setup DUN Network…")
+                        onTriggered: root.KCMUtils.ConfigModule.setupNetworkConnection("dun", root.device.address, root.device.name)
+                    }
+                }
+                Kirigami.FormSeparator {}
+                Kirigami.FormAction {
+                    action: ForgetDeviceAction {
+                        dialog: forgetDeviceDialog
+                        device: root.device
+                        text: i18nc("@action:button Forget the Bluetooth device", "Forget");
+                    }
+                }
             }
         }
     }

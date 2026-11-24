@@ -21,166 +21,175 @@ import org.kde.bluedevil.kcm
 KCMUtils.SimpleKCM {
     id: root
 
-    title: i18n("Settings")
+    title: i18nc("@title:window page title", "Settings")
 
     // FIXME: Manager.adapters property does not have any NOTIFY hook.
     // Somehow even the name won't update in the ComboBox
     readonly property BluezQt.Adapter adapter: BluezQt.Manager.adapters[box.currentIndex] ?? null
 
-    Kirigami.FormLayout {
-        id: form
-
-        QQC2.ComboBox {
-            id: box
-            Kirigami.FormData.label: i18n("Device:")
-            model: BluezQt.Manager.adapters
-            textRole: "name"
-            visible: count > 1
-        }
-
-        QQC2.TextField {
-            text: root.adapter.name
-            Kirigami.FormData.label: i18n("Name:")
-            onEditingFinished: root.adapter.name = text
-        }
-
-        QQC2.Label {
-            text: root.adapter.address
-            Kirigami.FormData.label: i18n("Address:")
-        }
-
-        QQC2.Switch {
-            Kirigami.FormData.label: i18n("Enabled:")
-            checked: root.adapter.powered
-            onToggled: root.adapter.powered = checked
-        }
-
-        QQC2.Switch {
-            Kirigami.FormData.label: i18n("Visible:")
-            checked: root.adapter.discoverable
-            onToggled: root.adapter.discoverable = checked
-        }
-
-        Kirigami.Separator {
-            Kirigami.FormData.isSection: true
-        }
-
-        QQC2.ButtonGroup {
-            id: loginStateRadioGroup
-        }
-
-        QQC2.RadioButton {
-            Kirigami.FormData.label: i18n("On login:")
-            text: i18n("Enable Bluetooth")
-            QQC2.ButtonGroup.group: loginStateRadioGroup
-            checked: GlobalSettings.launchState === GlobalSettings.Enable
-            onToggled: {
-                if (enabled) {
-                    GlobalSettings.launchState = GlobalSettings.Enable;
-                    GlobalSettings.save()
+    Kirigami.Form {
+        Kirigami.FormGroup {
+            Kirigami.FormEntry {
+                visible: box.count > 1
+                title: i18nc("@label:listbox device selector in case of multiple bt adapter", "Device:")
+                contentItem: QQC2.ComboBox {
+                    id: box
+                    model: BluezQt.Manager.adapters
+                    textRole: "name"
                 }
             }
-        }
-        QQC2.RadioButton {
-            text: i18n("Disable Bluetooth")
-            QQC2.ButtonGroup.group: loginStateRadioGroup
-            checked: GlobalSettings.launchState === GlobalSettings.Disable
-            onToggled: {
-                if (enabled) {
-                    GlobalSettings.launchState = GlobalSettings.Disable
-                    GlobalSettings.save()
+            Kirigami.FormEntry {
+                title: i18nc("@label:textbox editable name of the selected device (adapter)", "Name:")
+                contentItem: QQC2.TextField {
+                    text: root.adapter.name
+                    onEditingFinished: root.adapter.name = text
                 }
             }
-        }
-        QQC2.RadioButton {
-            text: i18n("Restore previous status")
-            QQC2.ButtonGroup.group: loginStateRadioGroup
-            checked: GlobalSettings.launchState === GlobalSettings.Remember
-            onToggled: {
-                if (enabled) {
-                    GlobalSettings.launchState = GlobalSettings.Remember
-                    GlobalSettings.save()
+            Kirigami.FormEntry {
+                title: i18nc("@info bluetooth address of the selected device (adapter)", "Address:")
+                contentItem: QQC2.Label {
+                    text: root.adapter.address
+                }
+            }
+            Kirigami.FormEntry {
+                contentItem: QQC2.Switch {
+                    text: i18nc("@option:check switch", "Enable device")
+                    checked: root.adapter.powered
+                    onToggled: root.adapter.powered = checked
+                }
+            }
+            Kirigami.FormEntry {
+                contentItem: QQC2.Switch {
+                    text: i18nc("@option:check switch", "Make visible to other devices")
+                    checked: root.adapter.discoverable
+                    onToggled: root.adapter.discoverable = checked
                 }
             }
         }
 
-        Kirigami.Separator {
-            Kirigami.FormData.isSection: true
-        }
-
-        QQC2.ButtonGroup {
-            id: receivingFilesRadioGroup
-        }
-
-        QQC2.RadioButton {
-            Kirigami.FormData.label: i18n("When receiving files:")
-            checked: FileReceiverSettings.autoAccept === 0
-            text: i18n("Ask for confirmation")
-            QQC2.ButtonGroup.group: receivingFilesRadioGroup
-            onClicked: {
-                FileReceiverSettings.autoAccept = 0
-                FileReceiverSettings.save()
-            }
-        }
-
-        QQC2.RadioButton {
-            text: i18n("Accept for trusted devices")
-            checked: FileReceiverSettings.autoAccept === 1
-            QQC2.ButtonGroup.group: receivingFilesRadioGroup
-            onClicked: {
-                FileReceiverSettings.autoAccept = 1
-                FileReceiverSettings.save()
-            }
-        }
-
-        QQC2.RadioButton {
-            text: i18n("Always accept")
-            QQC2.ButtonGroup.group: receivingFilesRadioGroup
-            checked: FileReceiverSettings.autoAccept === 2
-            onClicked: {
-                FileReceiverSettings.autoAccept = 2
-                FileReceiverSettings.save()
-            }
-        }
-
-        Row {
-            Kirigami.FormData.label: i18n("Save files in:")
-            QQC2.TextField {
-                text: kcm.receiveFolderPath
-
-                onEditingFinished: {
-                    kcm.receiveFolderPath = text
-                    FileReceiverSettings.save()
+        Kirigami.FormGroup {
+            QQC2.ButtonGroup { id: loginStateRadioGroup }
+            Kirigami.FormEntry {
+                title: i18nc("@title:group completes e.g. … Enable Bluetooth", "On login:")
+                contentItem: QQC2.RadioButton {
+                    text: i18nc("@option:radio completes On login: …", "Enable Bluetooth")
+                    QQC2.ButtonGroup.group: loginStateRadioGroup
+                    checked: GlobalSettings.launchState === GlobalSettings.Enable
+                    onToggled: {
+                        if (enabled) {
+                            GlobalSettings.launchState = GlobalSettings.Enable;
+                            GlobalSettings.save()
+                        }
+                    }
                 }
             }
-
-            QQC2.Button {
-                icon.name: "document-open-folder-symbolic"
-                display: QQC2.AbstractButton.IconOnly
-                text: i18n("Select folder")
-                onClicked: folderDialogLoader.active = true
+            Kirigami.FormEntry {
+                contentItem: QQC2.RadioButton {
+                    text: i18nc("@option:radio completes On login: …", "Disable Bluetooth")
+                    QQC2.ButtonGroup.group: loginStateRadioGroup
+                    checked: GlobalSettings.launchState === GlobalSettings.Disable
+                    onToggled: {
+                        if (enabled) {
+                            GlobalSettings.launchState = GlobalSettings.Disable
+                            GlobalSettings.save()
+                        }
+                    }
+                }
             }
+            Kirigami.FormEntry {
+                contentItem: QQC2.RadioButton {
+                    text: i18nc("@option:radio completes On login: …", "Restore previous status")
+                    QQC2.ButtonGroup.group: loginStateRadioGroup
+                    checked: GlobalSettings.launchState === GlobalSettings.Remember
+                    onToggled: {
+                        if (enabled) {
+                            GlobalSettings.launchState = GlobalSettings.Remember
+                            GlobalSettings.save()
+                        }
+                    }
+                }
+            }
+        }
 
-            Loader {
-                id: folderDialogLoader
-
-                active: false
-
-                sourceComponent: FolderDialog {
-                    id: startupFileDialog
-                    title: i18n("Select folder")
-
-                    currentFolder: FileReceiverSettings.saveUrl
-
-                    onAccepted: {
-                        kcm.receiveFolderPath = selectedFolder
-                        folderDialogLoader.active = false
+        Kirigami.FormGroup {
+            QQC2.ButtonGroup { id: receivingFilesRadioGroup }
+            Kirigami.FormEntry {
+                title: i18nc("@title:group completes e.g. … Ask for confirmation", "When receiving files:")
+                contentItem: QQC2.RadioButton {
+                    checked: FileReceiverSettings.autoAccept === 0
+                    text: i18nc("@option:radio completes When receiving files:…", "Ask for confirmation")
+                    QQC2.ButtonGroup.group: receivingFilesRadioGroup
+                    onClicked: {
+                        FileReceiverSettings.autoAccept = 0
                         FileReceiverSettings.save()
                     }
+                }
+            }
+            Kirigami.FormEntry {
+                contentItem: QQC2.RadioButton {
+                    text: i18nc("@option:radio completes When receiving files:…", "Accept for trusted devices")
+                    checked: FileReceiverSettings.autoAccept === 1
+                    QQC2.ButtonGroup.group: receivingFilesRadioGroup
+                    onClicked: {
+                        FileReceiverSettings.autoAccept = 1
+                        FileReceiverSettings.save()
+                    }
+                }
+            }
+            Kirigami.FormEntry {
+                contentItem: QQC2.RadioButton {
+                    text: i18nc("@option:radio completes When receiving files:…", "Always accept")
+                    QQC2.ButtonGroup.group: receivingFilesRadioGroup
+                    checked: FileReceiverSettings.autoAccept === 2
+                    onClicked: {
+                        FileReceiverSettings.autoAccept = 2
+                        FileReceiverSettings.save()
+                    }
+                }
+            }
+            Kirigami.FormEntry {
+                title: i18nc("@label:textbox", "Save files in:")
+                contentItem: QQC2.TextField {
+                    Layout.fillWidth: true
+                    text: kcm.receiveFolderPath
 
-                    onRejected: folderDialogLoader.active = false
+                    onEditingFinished: {
+                        kcm.receiveFolderPath = text
+                        FileReceiverSettings.save()
+                    }
+                }
+                trailingItems: [
+                    QQC2.Button {
+                        icon.name: "document-open-folder-symbolic"
+                        display: QQC2.AbstractButton.IconOnly
+                        text: i18nc("@action:button tooltip/accessible only", "Select folder")
+                        onClicked: folderDialogLoader.active = true
+                        QQC2.ToolTip.visible: hovered || visualFocus
+                        QQC2.ToolTip.text: text
+                        QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
+                    }
+                ]
+                Loader {
+                    id: folderDialogLoader
 
-                    Component.onCompleted: open()
+                    active: false
+
+                    sourceComponent: FolderDialog {
+                        id: startupFileDialog
+                        title: i18nc("@title:window dialog title", "Select folder")
+
+                        currentFolder: FileReceiverSettings.saveUrl
+
+                        onAccepted: {
+                            kcm.receiveFolderPath = selectedFolder
+                            folderDialogLoader.active = false
+                            FileReceiverSettings.save()
+                        }
+
+                        onRejected: folderDialogLoader.active = false
+
+                        Component.onCompleted: open()
+                    }
                 }
             }
         }
