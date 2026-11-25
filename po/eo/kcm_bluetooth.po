@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-11 01:03+0000\n"
+"POT-Creation-Date: 2026-11-25 01:27+0000\n"
 "PO-Revision-Date: 2025-09-07 23:34+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -40,62 +40,57 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "Ebligi Bluetooth"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63
+#: ui/Device.qml:133 ui/DeviceConnectionSidebar.qml:63
 #, kde-format
 msgid "Disconnect"
 msgstr "Malkonekti"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63
+#: ui/Device.qml:133 ui/DeviceConnectionSidebar.qml:63
 #, kde-format
 msgid "Connect"
 msgstr "Konekti"
 
-#: ui/Device.qml:135
+#: ui/Device.qml:136
 #, kde-format
 msgid "Unblock the device first to be able to connect to it"
 msgstr "Malbloku la aparaton unue por ebligi kontekti al ĝi"
 
-#: ui/Device.qml:156
+#: ui/Device.qml:157
 #, kde-format
 msgid "Type:"
 msgstr "Tipo:"
 
-#: ui/Device.qml:160
-#, kde-format
-msgid "%1%"
-msgstr "%1%"
-
-#: ui/Device.qml:162
+#: ui/Device.qml:163
 #, kde-format
 msgid "Battery:"
 msgstr "Baterio:"
 
-#: ui/Device.qml:167 ui/General.qml:49
+#: ui/Device.qml:168 ui/General.qml:49
 #, kde-format
 msgid "Address:"
 msgstr "Adreso:"
 
-#: ui/Device.qml:172
+#: ui/Device.qml:173
 #, kde-format
 msgid "Adapter:"
 msgstr "Adaptilo:"
 
-#: ui/Device.qml:178 ui/General.qml:43
+#: ui/Device.qml:179 ui/General.qml:43
 #, kde-format
 msgid "Name:"
 msgstr "Nomo:"
 
-#: ui/Device.qml:182 ui/DeviceConnectionSidebar.qml:120
+#: ui/Device.qml:183 ui/DeviceConnectionSidebar.qml:120
 #, kde-format
 msgid "Trusted"
 msgstr "Fidinda"
 
-#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135
+#: ui/Device.qml:192 ui/DeviceConnectionSidebar.qml:135
 #, kde-format
 msgid "Blocked"
 msgstr "Blokita"
 
-#: ui/Device.qml:197
+#: ui/Device.qml:198
 #, fuzzy, kde-format
 #| msgid ""
 #| "Any incoming connections from a blocked device will be immediately "
@@ -104,22 +99,22 @@ msgid ""
 "When enabled, all incoming connections from this device will be rejected."
 msgstr "Ajn konektoj envenaj el blokita aparato estos tuj malakceptitaj."
 
-#: ui/Device.qml:203
+#: ui/Device.qml:204
 #, kde-format
 msgid "Send File"
 msgstr "Sendi Dosieron"
 
-#: ui/Device.qml:211
+#: ui/Device.qml:212
 #, kde-format
 msgid "Setup NAP Network…"
 msgstr "Agordi NAP-reton…"
 
-#: ui/Device.qml:219
+#: ui/Device.qml:220
 #, kde-format
 msgid "Setup DUN Network…"
 msgstr "Agordi DUN-reton…"
 
-#: ui/Device.qml:234
+#: ui/Device.qml:235
 #, kde-format
 msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"
@@ -213,7 +208,7 @@ msgstr ""
 msgid "Connected"
 msgstr "Konektita"
 
-#: ui/DeviceDelegate.qml:31 ui/main.qml:234
+#: ui/DeviceDelegate.qml:31
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% Baterio"
@@ -517,6 +512,9 @@ msgstr "Alia"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
+
+#~ msgid "%1%"
+#~ msgstr "%1%"
 
 #~ msgid "Available"
 #~ msgstr "Disponebla"

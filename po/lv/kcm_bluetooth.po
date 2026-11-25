@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-11 01:03+0000\n"
+"POT-Creation-Date: 2026-11-25 01:27+0000\n"
 "PO-Revision-Date: 2026-10-16 14:31+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -40,83 +40,78 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "Ieslēgt „Bluetooth“"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63
+#: ui/Device.qml:133 ui/DeviceConnectionSidebar.qml:63
 #, kde-format
 msgid "Disconnect"
 msgstr "Atvienot"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63
+#: ui/Device.qml:133 ui/DeviceConnectionSidebar.qml:63
 #, kde-format
 msgid "Connect"
 msgstr "Savienot"
 
-#: ui/Device.qml:135
+#: ui/Device.qml:136
 #, kde-format
 msgid "Unblock the device first to be able to connect to it"
 msgstr "Lai savienotos ar ierīci, vispirms to atbloķējiet"
 
-#: ui/Device.qml:156
+#: ui/Device.qml:157
 #, kde-format
 msgid "Type:"
 msgstr "Tips:"
 
-#: ui/Device.qml:160
-#, kde-format
-msgid "%1%"
-msgstr "%1%"
-
-#: ui/Device.qml:162
+#: ui/Device.qml:163
 #, kde-format
 msgid "Battery:"
 msgstr "Baterija:"
 
-#: ui/Device.qml:167 ui/General.qml:49
+#: ui/Device.qml:168 ui/General.qml:49
 #, kde-format
 msgid "Address:"
 msgstr "Adrese:"
 
-#: ui/Device.qml:172
+#: ui/Device.qml:173
 #, kde-format
 msgid "Adapter:"
 msgstr "Adapteris:"
 
-#: ui/Device.qml:178 ui/General.qml:43
+#: ui/Device.qml:179 ui/General.qml:43
 #, kde-format
 msgid "Name:"
 msgstr "Nosaukums:"
 
-#: ui/Device.qml:182 ui/DeviceConnectionSidebar.qml:120
+#: ui/Device.qml:183 ui/DeviceConnectionSidebar.qml:120
 #, kde-format
 msgid "Trusted"
 msgstr "Uzticama"
 
-#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135
+#: ui/Device.qml:192 ui/DeviceConnectionSidebar.qml:135
 #, kde-format
 msgid "Blocked"
 msgstr "Bloķēta"
 
-#: ui/Device.qml:197
+#: ui/Device.qml:198
 #, kde-format
 msgid ""
 "When enabled, all incoming connections from this device will be rejected."
 msgstr "Ja ieslēgts, visi ienākošie savienojumi šīs ierīces tiks noraidīti."
 
-#: ui/Device.qml:203
+#: ui/Device.qml:204
 #, kde-format
 msgid "Send File"
 msgstr "Sūtīt datni"
 
-#: ui/Device.qml:211
+#: ui/Device.qml:212
 #, kde-format
 msgid "Setup NAP Network…"
 msgstr "Iestatīt NAP tīklu…"
 
-#: ui/Device.qml:219
+#: ui/Device.qml:220
 #, kde-format
 msgid "Setup DUN Network…"
 msgstr "Iestatīt DUN tīklu…"
 
-#: ui/Device.qml:234
+#: ui/Device.qml:235
 #, kde-format
 msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"
@@ -198,7 +193,7 @@ msgstr "Mainīt nosaukumu"
 msgid "Connected"
 msgstr "Savienots"
 
-#: ui/DeviceDelegate.qml:31 ui/main.qml:234
+#: ui/DeviceDelegate.qml:31
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1 % baterija"
@@ -499,6 +494,9 @@ msgstr "Cita"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
+
+#~ msgid "%1%"
+#~ msgstr "%1%"
 
 #~ msgid "Available"
 #~ msgstr "Pieejamas"

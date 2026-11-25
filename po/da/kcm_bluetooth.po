@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-11 01:03+0000\n"
+"POT-Creation-Date: 2026-11-25 01:27+0000\n"
 "PO-Revision-Date: 2024-10-26 12:48+0200\n"
 "Last-Translator: rasmus rosendahl-kaa <rasmus@rosendahl-kaa.name>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -41,63 +41,58 @@ msgctxt "@info:tooltip"
 msgid "Enable Bluetooth"
 msgstr "Aktivér Bluetooth"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63
+#: ui/Device.qml:133 ui/DeviceConnectionSidebar.qml:63
 #, kde-format
 msgid "Disconnect"
 msgstr "Afbryd forbindelse"
 
-#: ui/Device.qml:132 ui/DeviceConnectionSidebar.qml:63
+#: ui/Device.qml:133 ui/DeviceConnectionSidebar.qml:63
 #, kde-format
 msgid "Connect"
 msgstr "Forbind"
 
-#: ui/Device.qml:135
+#: ui/Device.qml:136
 #, kde-format
 msgid "Unblock the device first to be able to connect to it"
 msgstr ""
 "Du skal først fjerne blokeringen af enheden, før du kan forbinde til den"
 
-#: ui/Device.qml:156
+#: ui/Device.qml:157
 #, kde-format
 msgid "Type:"
 msgstr "Type:"
 
-#: ui/Device.qml:160
-#, kde-format
-msgid "%1%"
-msgstr "%1%"
-
-#: ui/Device.qml:162
+#: ui/Device.qml:163
 #, kde-format
 msgid "Battery:"
 msgstr "Batteri:"
 
-#: ui/Device.qml:167 ui/General.qml:49
+#: ui/Device.qml:168 ui/General.qml:49
 #, kde-format
 msgid "Address:"
 msgstr "Adresse:"
 
-#: ui/Device.qml:172
+#: ui/Device.qml:173
 #, kde-format
 msgid "Adapter:"
 msgstr "Adapter:"
 
-#: ui/Device.qml:178 ui/General.qml:43
+#: ui/Device.qml:179 ui/General.qml:43
 #, kde-format
 msgid "Name:"
 msgstr "Navn:"
 
-#: ui/Device.qml:182 ui/DeviceConnectionSidebar.qml:120
+#: ui/Device.qml:183 ui/DeviceConnectionSidebar.qml:120
 #, kde-format
 msgid "Trusted"
 msgstr "Betroet"
 
-#: ui/Device.qml:191 ui/DeviceConnectionSidebar.qml:135
+#: ui/Device.qml:192 ui/DeviceConnectionSidebar.qml:135
 #, kde-format
 msgid "Blocked"
 msgstr "Blokeret"
 
-#: ui/Device.qml:197
+#: ui/Device.qml:198
 #, fuzzy, kde-format
 #| msgid ""
 #| "Any incoming connections from a blocked device will be immediately "
@@ -108,22 +103,22 @@ msgstr ""
 "Enhver indkommende forbindelser fra en blokeret enhed vil afvises med det "
 "samme."
 
-#: ui/Device.qml:203
+#: ui/Device.qml:204
 #, kde-format
 msgid "Send File"
 msgstr "Send fil"
 
-#: ui/Device.qml:211
+#: ui/Device.qml:212
 #, kde-format
 msgid "Setup NAP Network…"
 msgstr "Sæt NAP-netværk op…"
 
-#: ui/Device.qml:219
+#: ui/Device.qml:220
 #, kde-format
 msgid "Setup DUN Network…"
 msgstr "Sæt DUN-netværk op…"
 
-#: ui/Device.qml:234
+#: ui/Device.qml:235
 #, kde-format
 msgctxt "@action:button Forget the Bluetooth device"
 msgid "Forget"
@@ -219,7 +214,7 @@ msgstr ""
 msgid "Connected"
 msgstr "Forbundet"
 
-#: ui/DeviceDelegate.qml:31 ui/main.qml:234
+#: ui/DeviceDelegate.qml:31
 #, kde-format
 msgid "%1% Battery"
 msgstr "%1% batteri"
@@ -522,6 +517,9 @@ msgstr "Output"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
+
+#~ msgid "%1%"
+#~ msgstr "%1%"
 
 #~ msgid "Available"
 #~ msgstr "Tilgængelig"

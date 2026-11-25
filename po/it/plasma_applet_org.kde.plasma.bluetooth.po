@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-12 00:53+0000\n"
+"POT-Creation-Date: 2026-11-24 17:04+0000\n"
 "PO-Revision-Date: 2026-01-16 14:34+0100\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -60,169 +60,164 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Il dispositivo non è pronto"
 
-#: qml/DeviceItem.qml:40
+#: qml/DeviceItem.qml:41
 #, kde-format
 msgid "Disconnect"
 msgstr "Disconnetti"
 
-#: qml/DeviceItem.qml:40
+#: qml/DeviceItem.qml:41
 #, kde-format
 msgid "Connect"
 msgstr "Connetti"
 
-#: qml/DeviceItem.qml:51
+#: qml/DeviceItem.qml:52
 #, kde-format
 msgid "Browse Files"
 msgstr "Sfoglia file"
 
-#: qml/DeviceItem.qml:62
+#: qml/DeviceItem.qml:63
 #, kde-format
 msgid "Send File"
 msgstr "Invia file"
 
-#: qml/DeviceItem.qml:71
+#: qml/DeviceItem.qml:72
 #, kde-format
 msgctxt "@action:button Forget a Bluetooth device"
 msgid "Forget"
 msgstr "Dimentica"
 
-#: qml/DeviceItem.qml:117
+#: qml/DeviceItem.qml:118
 #, kde-format
 msgid "Copy"
 msgstr "Copia"
 
-#: qml/DeviceItem.qml:213
+#: qml/DeviceItem.qml:214
 #, kde-format
 msgid "Yes"
 msgstr "Sì"
 
-#: qml/DeviceItem.qml:213
+#: qml/DeviceItem.qml:214
 #, kde-format
 msgid "No"
 msgstr "No"
 
-#: qml/DeviceItem.qml:219
+#: qml/DeviceItem.qml:220
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: qml/DeviceItem.qml:227
+#: qml/DeviceItem.qml:228
 #, kde-format
 msgid "Remote Name"
 msgstr "Nome remoto"
 
-#: qml/DeviceItem.qml:231
+#: qml/DeviceItem.qml:232
 #, kde-format
 msgid "Address"
 msgstr "Indirizzo"
 
-#: qml/DeviceItem.qml:234
+#: qml/DeviceItem.qml:235
 #, kde-format
 msgid "Paired"
 msgstr "Associato"
 
-#: qml/DeviceItem.qml:237
+#: qml/DeviceItem.qml:238
 #, kde-format
 msgid "Trusted"
 msgstr "Di fiducia"
 
-#: qml/DeviceItem.qml:240
+#: qml/DeviceItem.qml:241
 #, kde-format
 msgid "Adapter"
 msgstr "Adattatore"
 
-#: qml/DeviceItem.qml:248
+#: qml/DeviceItem.qml:249
 #, kde-format
 msgid "Connecting"
 msgstr "Connessione"
 
-#: qml/DeviceItem.qml:250
+#: qml/DeviceItem.qml:251
 #, kde-format
 msgid "Disconnecting"
 msgstr "Disconnessione"
 
-#: qml/DeviceItem.qml:256
+#: qml/DeviceItem.qml:257
 #, kde-format
 msgid "Connection failed"
 msgstr "Connessione non riuscita"
 
-#: qml/DeviceItem.qml:260 qml/main.qml:74 qml/main.qml:83
-#, kde-format
-msgid "%1% Battery"
-msgstr "%1% di batteria"
-
-#: qml/DeviceItem.qml:265
+#: qml/DeviceItem.qml:267
 #, kde-format
 msgid "Headset"
 msgstr "Cuffie con microfono"
 
-#: qml/DeviceItem.qml:271
+#: qml/DeviceItem.qml:273
 #, kde-format
 msgid "Audio device"
 msgstr "Dispositivo audio"
 
-#: qml/DeviceItem.qml:275
+#: qml/DeviceItem.qml:277
 #, kde-format
 msgid "Keyboard"
 msgstr "Tastiera"
 
-#: qml/DeviceItem.qml:278
+#: qml/DeviceItem.qml:280
 #, kde-format
 msgid "Mouse"
 msgstr "Mouse"
 
-#: qml/DeviceItem.qml:281
+#: qml/DeviceItem.qml:283
 #, kde-format
 msgid "Joypad"
 msgstr "Joypad"
 
-#: qml/DeviceItem.qml:284
+#: qml/DeviceItem.qml:286
 #, kde-format
 msgid "Drawing tablet"
 msgstr "Tavoletta da disegno"
 
-#: qml/DeviceItem.qml:288
+#: qml/DeviceItem.qml:290
 #, kde-format
 msgid "Phone"
 msgstr "Telefono"
 
-#: qml/DeviceItem.qml:291
+#: qml/DeviceItem.qml:293
 #, kde-format
 msgid "Camera"
 msgstr "Fotocamera"
 
-#: qml/DeviceItem.qml:294
+#: qml/DeviceItem.qml:296
 #, kde-format
 msgid "Printer"
 msgstr "Stampante"
 
-#: qml/DeviceItem.qml:301
+#: qml/DeviceItem.qml:303
 #, kde-format
 msgid "File transfer"
 msgstr "Trasferimento file"
 
-#: qml/DeviceItem.qml:304
+#: qml/DeviceItem.qml:306
 #, kde-format
 msgid "Send file"
 msgstr "Invio file"
 
-#: qml/DeviceItem.qml:307
+#: qml/DeviceItem.qml:309
 #, kde-format
 msgid "Input"
 msgstr "Ingresso"
 
-#: qml/DeviceItem.qml:310
+#: qml/DeviceItem.qml:312
 #, kde-format
 msgid "Audio"
 msgstr "Audio"
 
-#: qml/DeviceItem.qml:313
+#: qml/DeviceItem.qml:315
 #, kde-format
 msgid "Network"
 msgstr "Rete"
 
-#: qml/DeviceItem.qml:318
+#: qml/DeviceItem.qml:320
 #, kde-format
 msgid "Other device"
 msgstr "Altro dispositivo"
@@ -247,32 +242,32 @@ msgstr "Il Bluetooth è disabilitato"
 msgid "No devices paired"
 msgstr "Nessun dispositivo associato"
 
-#: qml/main.qml:51
+#: qml/main.qml:52
 #, kde-format
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
-#: qml/main.qml:55
+#: qml/main.qml:56
 #, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
 msgstr "Il Bluetooth è disabilitato; clic centrale per abilitarlo"
 
-#: qml/main.qml:59
+#: qml/main.qml:60
 #, kde-format
 msgid "No adapters available"
 msgstr "Nessun adattatore disponibile"
 
-#: qml/main.qml:61
+#: qml/main.qml:62
 #, kde-format
 msgid "Bluetooth is offline"
 msgstr "Il Bluetooth non è in linea"
 
-#: qml/main.qml:64
+#: qml/main.qml:65
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr "Clic centrale per disabilitare il Bluetooth"
 
-#: qml/main.qml:67
+#: qml/main.qml:68
 #, kde-format
 msgid "No connected devices"
 msgstr "Nessun dispositivo connesso"
@@ -282,7 +277,7 @@ msgstr "Nessun dispositivo connesso"
 msgid "%1 connected"
 msgstr "%1 connesso"
 
-#: qml/main.qml:79
+#: qml/main.qml:78
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -290,25 +285,25 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 dispositivo connesso"
 msgstr[1] "%1 dispositivi connessi"
 
-#: qml/main.qml:110
+#: qml/main.qml:109
 #, kde-format
 msgctxt "@option:check"
 msgid "Enable Bluetooth"
 msgstr "Abilita il Bluetooth"
 
-#: qml/main.qml:122
+#: qml/main.qml:121
 #, kde-format
 msgctxt "@action:button"
 msgid "Pair Device…"
 msgstr "Associa un dispositivo…"
 
-#: qml/main.qml:130
+#: qml/main.qml:129
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Show badge with number of connected devices"
 msgstr "Mostra il simbolo con il totale di dispositivi connessi"
 
-#: qml/main.qml:143
+#: qml/main.qml:142
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Bluetooth…"
@@ -319,6 +314,9 @@ msgstr "Configura &Bluetooth…"
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr "Altre azioni"
+
+#~ msgid "%1% Battery"
+#~ msgstr "%1% di batteria"
 
 #~ msgctxt ""
 #~ "@label %1 is human-readable device name, %2 is low-level device address"

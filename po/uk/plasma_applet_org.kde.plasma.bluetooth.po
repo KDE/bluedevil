@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.bluetooth\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-12 00:53+0000\n"
+"POT-Creation-Date: 2026-11-24 17:04+0000\n"
 "PO-Revision-Date: 2026-01-16 05:13+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -62,169 +62,164 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Пристрій неготовий"
 
-#: qml/DeviceItem.qml:40
+#: qml/DeviceItem.qml:41
 #, kde-format
 msgid "Disconnect"
 msgstr "Від’єднатися"
 
-#: qml/DeviceItem.qml:40
+#: qml/DeviceItem.qml:41
 #, kde-format
 msgid "Connect"
 msgstr "З'єднатися"
 
-#: qml/DeviceItem.qml:51
+#: qml/DeviceItem.qml:52
 #, kde-format
 msgid "Browse Files"
 msgstr "Переглянути файли"
 
-#: qml/DeviceItem.qml:62
+#: qml/DeviceItem.qml:63
 #, kde-format
 msgid "Send File"
 msgstr "Надіслати файл"
 
-#: qml/DeviceItem.qml:71
+#: qml/DeviceItem.qml:72
 #, kde-format
 msgctxt "@action:button Forget a Bluetooth device"
 msgid "Forget"
 msgstr "Забути"
 
-#: qml/DeviceItem.qml:117
+#: qml/DeviceItem.qml:118
 #, kde-format
 msgid "Copy"
 msgstr "Копіювати"
 
-#: qml/DeviceItem.qml:213
+#: qml/DeviceItem.qml:214
 #, kde-format
 msgid "Yes"
 msgstr "Так"
 
-#: qml/DeviceItem.qml:213
+#: qml/DeviceItem.qml:214
 #, kde-format
 msgid "No"
 msgstr "Ні"
 
-#: qml/DeviceItem.qml:219
+#: qml/DeviceItem.qml:220
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: qml/DeviceItem.qml:227
+#: qml/DeviceItem.qml:228
 #, kde-format
 msgid "Remote Name"
 msgstr "Назва віддаленого пристрою"
 
-#: qml/DeviceItem.qml:231
+#: qml/DeviceItem.qml:232
 #, kde-format
 msgid "Address"
 msgstr "Адреса"
 
-#: qml/DeviceItem.qml:234
+#: qml/DeviceItem.qml:235
 #, kde-format
 msgid "Paired"
 msgstr "Пов’язано"
 
-#: qml/DeviceItem.qml:237
+#: qml/DeviceItem.qml:238
 #, kde-format
 msgid "Trusted"
 msgstr "Надійний"
 
-#: qml/DeviceItem.qml:240
+#: qml/DeviceItem.qml:241
 #, kde-format
 msgid "Adapter"
 msgstr "Адаптер"
 
-#: qml/DeviceItem.qml:248
+#: qml/DeviceItem.qml:249
 #, kde-format
 msgid "Connecting"
 msgstr "Виконується з'єднання"
 
-#: qml/DeviceItem.qml:250
+#: qml/DeviceItem.qml:251
 #, kde-format
 msgid "Disconnecting"
 msgstr "Від’єднуємося"
 
-#: qml/DeviceItem.qml:256
+#: qml/DeviceItem.qml:257
 #, kde-format
 msgid "Connection failed"
 msgstr "Не вдалося встановити з'єднання"
 
-#: qml/DeviceItem.qml:260 qml/main.qml:74 qml/main.qml:83
-#, kde-format
-msgid "%1% Battery"
-msgstr "%1% акумулятора"
-
-#: qml/DeviceItem.qml:265
+#: qml/DeviceItem.qml:267
 #, kde-format
 msgid "Headset"
 msgstr "Гарнітура"
 
-#: qml/DeviceItem.qml:271
+#: qml/DeviceItem.qml:273
 #, kde-format
 msgid "Audio device"
 msgstr "Звуковий пристрій"
 
-#: qml/DeviceItem.qml:275
+#: qml/DeviceItem.qml:277
 #, kde-format
 msgid "Keyboard"
 msgstr "Клавіатура"
 
-#: qml/DeviceItem.qml:278
+#: qml/DeviceItem.qml:280
 #, kde-format
 msgid "Mouse"
 msgstr "Миша"
 
-#: qml/DeviceItem.qml:281
+#: qml/DeviceItem.qml:283
 #, kde-format
 msgid "Joypad"
 msgstr "Ігровий пульт"
 
-#: qml/DeviceItem.qml:284
+#: qml/DeviceItem.qml:286
 #, kde-format
 msgid "Drawing tablet"
 msgstr "Планшет для малювання"
 
-#: qml/DeviceItem.qml:288
+#: qml/DeviceItem.qml:290
 #, kde-format
 msgid "Phone"
 msgstr "Телефон"
 
-#: qml/DeviceItem.qml:291
+#: qml/DeviceItem.qml:293
 #, kde-format
 msgid "Camera"
 msgstr "Камера"
 
-#: qml/DeviceItem.qml:294
+#: qml/DeviceItem.qml:296
 #, kde-format
 msgid "Printer"
 msgstr "Принтер"
 
-#: qml/DeviceItem.qml:301
+#: qml/DeviceItem.qml:303
 #, kde-format
 msgid "File transfer"
 msgstr "Перенесення файлів"
 
-#: qml/DeviceItem.qml:304
+#: qml/DeviceItem.qml:306
 #, kde-format
 msgid "Send file"
 msgstr "Надіслати файл"
 
-#: qml/DeviceItem.qml:307
+#: qml/DeviceItem.qml:309
 #, kde-format
 msgid "Input"
 msgstr "Введення"
 
-#: qml/DeviceItem.qml:310
+#: qml/DeviceItem.qml:312
 #, kde-format
 msgid "Audio"
 msgstr "Звук"
 
-#: qml/DeviceItem.qml:313
+#: qml/DeviceItem.qml:315
 #, kde-format
 msgid "Network"
 msgstr "Мережа"
 
-#: qml/DeviceItem.qml:318
+#: qml/DeviceItem.qml:320
 #, kde-format
 msgid "Other device"
 msgstr "Інший пристрій"
@@ -249,32 +244,32 @@ msgstr "Bluetooth вимкнено"
 msgid "No devices paired"
 msgstr "Не пов'язано жодного пристрою"
 
-#: qml/main.qml:51
+#: qml/main.qml:52
 #, kde-format
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
-#: qml/main.qml:55
+#: qml/main.qml:56
 #, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
 msgstr "Bluetooth вимкнено; клацніть середньою кнопкою, щоб увімкнути"
 
-#: qml/main.qml:59
+#: qml/main.qml:60
 #, kde-format
 msgid "No adapters available"
 msgstr "Немає доступних адаптерів"
 
-#: qml/main.qml:61
+#: qml/main.qml:62
 #, kde-format
 msgid "Bluetooth is offline"
 msgstr "Bluetooth від’єднано"
 
-#: qml/main.qml:64
+#: qml/main.qml:65
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr "Клацніть середньою, щоб вимкнути Bluetooth"
 
-#: qml/main.qml:67
+#: qml/main.qml:68
 #, kde-format
 msgid "No connected devices"
 msgstr "Немає з’єднаних пристроїв"
@@ -284,7 +279,7 @@ msgstr "Немає з’єднаних пристроїв"
 msgid "%1 connected"
 msgstr "%1 з'єднано"
 
-#: qml/main.qml:79
+#: qml/main.qml:78
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -294,25 +289,25 @@ msgstr[1] "%1 з’єднаних пристрої"
 msgstr[2] "%1 з’єднаних пристроїв"
 msgstr[3] "%1 з’єднаний пристрій"
 
-#: qml/main.qml:110
+#: qml/main.qml:109
 #, kde-format
 msgctxt "@option:check"
 msgid "Enable Bluetooth"
 msgstr "Увімкнути Bluetooth"
 
-#: qml/main.qml:122
+#: qml/main.qml:121
 #, kde-format
 msgctxt "@action:button"
 msgid "Pair Device…"
 msgstr "Пов'язати пристрій…"
 
-#: qml/main.qml:130
+#: qml/main.qml:129
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Show badge with number of connected devices"
 msgstr "Показувати значок із кількістю з’єднаних пристроїв"
 
-#: qml/main.qml:143
+#: qml/main.qml:142
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Bluetooth…"
@@ -323,6 +318,9 @@ msgstr "Нала&штувати Bluetooth…"
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr "Додаткові дії"
+
+#~ msgid "%1% Battery"
+#~ msgstr "%1% акумулятора"
 
 #~ msgctxt ""
 #~ "@label %1 is human-readable device name, %2 is low-level device address"

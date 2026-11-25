@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-14 01:05+0000\n"
+"POT-Creation-Date: 2026-11-25 01:27+0000\n"
 "PO-Revision-Date: 2026-10-03 22:09+0200\n"
 "Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -29,6 +29,49 @@ msgstr "Часлав Илић,Немања Хиршл"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "caslav.ilic@gmx.net,nemhirsl@gmail.com"
+
+#: components/BatteryUtils.qml:60
+#, kde-format
+msgctxt "@label Bluetooth battery for the left earbud"
+msgid "Left"
+msgstr ""
+
+#: components/BatteryUtils.qml:62
+#, kde-format
+msgctxt "@label Bluetooth battery for the right earbud"
+msgid "Right"
+msgstr ""
+
+#: components/BatteryUtils.qml:64
+#, kde-format
+msgctxt "@label Bluetooth battery for the charging case"
+msgid "Case"
+msgstr ""
+
+#: components/BatteryUtils.qml:77
+#, kde-format
+msgid "%1% Battery"
+msgstr ""
+
+#: components/BatteryUtils.qml:78
+#, kde-format
+msgctxt "@info Bluetooth battery level is unknown"
+msgid "Battery level unknown"
+msgstr ""
+
+#: components/BatteryUtils.qml:83
+#, kde-format
+msgctxt ""
+"@info Bluetooth component battery level; %1 is the component name and %2 is "
+"the percentage"
+msgid "%1: %2%"
+msgstr ""
+
+#: components/BatteryUtils.qml:84
+#, kde-format
+msgctxt "@info Bluetooth component battery level; %1 is the component name"
+msgid "%1: Unknown"
+msgstr ""
 
 #: components/ForgetDeviceDialog.qml:39
 #, kde-format

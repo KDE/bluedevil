@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-12 00:53+0000\n"
+"POT-Creation-Date: 2026-11-24 17:04+0000\n"
 "PO-Revision-Date: 2024-08-26 21:24+0300\n"
 "Last-Translator: Αντώνης Γέραλης <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
@@ -63,169 +63,164 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "Η συσκευή δεν είναι έτοιμη"
 
-#: qml/DeviceItem.qml:40
+#: qml/DeviceItem.qml:41
 #, kde-format
 msgid "Disconnect"
 msgstr "Αποσύνδεση"
 
-#: qml/DeviceItem.qml:40
+#: qml/DeviceItem.qml:41
 #, kde-format
 msgid "Connect"
 msgstr "Σύνδεση"
 
-#: qml/DeviceItem.qml:51
+#: qml/DeviceItem.qml:52
 #, kde-format
 msgid "Browse Files"
 msgstr "Περιήγηση στα αρχεία"
 
-#: qml/DeviceItem.qml:62
+#: qml/DeviceItem.qml:63
 #, kde-format
 msgid "Send File"
 msgstr "Αποστολή αρχείου"
 
-#: qml/DeviceItem.qml:71
+#: qml/DeviceItem.qml:72
 #, fuzzy, kde-format
 msgctxt "@action:button Forget a Bluetooth device"
 msgid "Forget"
 msgstr "Διαγραφή"
 
-#: qml/DeviceItem.qml:117
+#: qml/DeviceItem.qml:118
 #, kde-format
 msgid "Copy"
 msgstr "Αντιγραφή"
 
-#: qml/DeviceItem.qml:213
+#: qml/DeviceItem.qml:214
 #, kde-format
 msgid "Yes"
 msgstr "Ναι"
 
-#: qml/DeviceItem.qml:213
+#: qml/DeviceItem.qml:214
 #, kde-format
 msgid "No"
 msgstr "Όχι"
 
-#: qml/DeviceItem.qml:219
+#: qml/DeviceItem.qml:220
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: qml/DeviceItem.qml:227
+#: qml/DeviceItem.qml:228
 #, kde-format
 msgid "Remote Name"
 msgstr "Όνομα απομακρυσμένης"
 
-#: qml/DeviceItem.qml:231
+#: qml/DeviceItem.qml:232
 #, kde-format
 msgid "Address"
 msgstr "Διεύθυνση"
 
-#: qml/DeviceItem.qml:234
+#: qml/DeviceItem.qml:235
 #, kde-format
 msgid "Paired"
 msgstr "Σε σύζευξη"
 
-#: qml/DeviceItem.qml:237
+#: qml/DeviceItem.qml:238
 #, kde-format
 msgid "Trusted"
 msgstr "Έμπιστη"
 
-#: qml/DeviceItem.qml:240
+#: qml/DeviceItem.qml:241
 #, kde-format
 msgid "Adapter"
 msgstr "Προσαρμογέας"
 
-#: qml/DeviceItem.qml:248
+#: qml/DeviceItem.qml:249
 #, kde-format
 msgid "Connecting"
 msgstr "Συνδέεται"
 
-#: qml/DeviceItem.qml:250
+#: qml/DeviceItem.qml:251
 #, kde-format
 msgid "Disconnecting"
 msgstr "Αποσύνδεση"
 
-#: qml/DeviceItem.qml:256
+#: qml/DeviceItem.qml:257
 #, kde-format
 msgid "Connection failed"
 msgstr "Η σύνδεση απέτυχε"
 
-#: qml/DeviceItem.qml:260 qml/main.qml:74 qml/main.qml:83
-#, kde-format
-msgid "%1% Battery"
-msgstr "%1% μπαταρία"
-
-#: qml/DeviceItem.qml:265
+#: qml/DeviceItem.qml:267
 #, fuzzy, kde-format
 msgid "Headset"
 msgstr "Ακουστικά με μικρόφωνο"
 
-#: qml/DeviceItem.qml:271
+#: qml/DeviceItem.qml:273
 #, kde-format
 msgid "Audio device"
 msgstr "Συσκευή ήχου"
 
-#: qml/DeviceItem.qml:275
+#: qml/DeviceItem.qml:277
 #, fuzzy, kde-format
 msgid "Keyboard"
 msgstr "Πληκτρολόγιο"
 
-#: qml/DeviceItem.qml:278
+#: qml/DeviceItem.qml:280
 #, fuzzy, kde-format
 msgid "Mouse"
 msgstr "Ποντίκι"
 
-#: qml/DeviceItem.qml:281
+#: qml/DeviceItem.qml:283
 #, fuzzy, kde-format
 msgid "Joypad"
 msgstr "Χειριστήριο"
 
-#: qml/DeviceItem.qml:284
+#: qml/DeviceItem.qml:286
 #, fuzzy, kde-format
 msgid "Drawing tablet"
 msgstr "Ταμπλέτα σχεδίασης"
 
-#: qml/DeviceItem.qml:288
+#: qml/DeviceItem.qml:290
 #, kde-format
 msgid "Phone"
 msgstr "Τηλέφωνο"
 
-#: qml/DeviceItem.qml:291
+#: qml/DeviceItem.qml:293
 #, fuzzy, kde-format
 msgid "Camera"
 msgstr "Κάμερα"
 
-#: qml/DeviceItem.qml:294
+#: qml/DeviceItem.qml:296
 #, fuzzy, kde-format
 msgid "Printer"
 msgstr "Εκτυπωτής"
 
-#: qml/DeviceItem.qml:301
+#: qml/DeviceItem.qml:303
 #, kde-format
 msgid "File transfer"
 msgstr "Μεταφορά αρχείου"
 
-#: qml/DeviceItem.qml:304
+#: qml/DeviceItem.qml:306
 #, kde-format
 msgid "Send file"
 msgstr "Αποστολή αρχείου"
 
-#: qml/DeviceItem.qml:307
+#: qml/DeviceItem.qml:309
 #, kde-format
 msgid "Input"
 msgstr "Είσοδος"
 
-#: qml/DeviceItem.qml:310
+#: qml/DeviceItem.qml:312
 #, kde-format
 msgid "Audio"
 msgstr "Ήχος"
 
-#: qml/DeviceItem.qml:313
+#: qml/DeviceItem.qml:315
 #, kde-format
 msgid "Network"
 msgstr "Δίκτυο"
 
-#: qml/DeviceItem.qml:318
+#: qml/DeviceItem.qml:320
 #, kde-format
 msgid "Other device"
 msgstr "Άλλη συσκευή"
@@ -250,32 +245,32 @@ msgstr "Το Bluetooth είναι ανενεργό"
 msgid "No devices paired"
 msgstr "Δεν υπάρχουν συζευγμένες συσκευές"
 
-#: qml/main.qml:51
+#: qml/main.qml:52
 #, kde-format
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
-#: qml/main.qml:55
+#: qml/main.qml:56
 #, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
 msgstr "Το Bluetooth είναι απενεργοποιημένο, ενεργοποιήστε το με μεσαίο κλικ"
 
-#: qml/main.qml:59
+#: qml/main.qml:60
 #, kde-format
 msgid "No adapters available"
 msgstr "Μη διαθέσιμοι προσαρμογείς"
 
-#: qml/main.qml:61
+#: qml/main.qml:62
 #, kde-format
 msgid "Bluetooth is offline"
 msgstr "Το Bluetooth είναι εκτός σύνδεσης"
 
-#: qml/main.qml:64
+#: qml/main.qml:65
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr "Μεσαίο κλικ για απενεργοποίηση του Bluetooth"
 
-#: qml/main.qml:67
+#: qml/main.qml:68
 #, kde-format
 msgid "No connected devices"
 msgstr "Καμία συνδεδεμένη συσκευή"
@@ -285,7 +280,7 @@ msgstr "Καμία συνδεδεμένη συσκευή"
 msgid "%1 connected"
 msgstr "%1 σε σύνδεση"
 
-#: qml/main.qml:79
+#: qml/main.qml:78
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
@@ -293,28 +288,28 @@ msgid_plural "%1 connected devices"
 msgstr[0] "%1 συνδεδεμένη συσκευή"
 msgstr[1] "%1 συνδεδεμένες συσκευές"
 
-#: qml/main.qml:110
+#: qml/main.qml:109
 #, fuzzy, kde-format
 #| msgid "Enable Bluetooth"
 msgctxt "@option:check"
 msgid "Enable Bluetooth"
 msgstr "Ενεργοποίηση Bluetooth"
 
-#: qml/main.qml:122
+#: qml/main.qml:121
 #, fuzzy, kde-format
 #| msgid "Pair Device…"
 msgctxt "@action:button"
 msgid "Pair Device…"
 msgstr "Σύζευξη συσκευής…"
 
-#: qml/main.qml:130
+#: qml/main.qml:129
 #, fuzzy, kde-format
 #| msgid "No connected devices"
 msgctxt "@item:inmenu"
 msgid "Show badge with number of connected devices"
 msgstr "Καμία συνδεδεμένη συσκευή"
 
-#: qml/main.qml:143
+#: qml/main.qml:142
 #, fuzzy, kde-format
 #| msgid "Configure &Bluetooth…"
 msgctxt "@action:inmenu"
@@ -326,6 +321,9 @@ msgstr "Διαμόρφωση &Bluetooth…"
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr "Περισσότερες ενέργειες"
+
+#~ msgid "%1% Battery"
+#~ msgstr "%1% μπαταρία"
 
 #~ msgctxt ""
 #~ "@label %1 is human-readable device name, %2 is low-level device address"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-12 00:53+0000\n"
+"POT-Creation-Date: 2026-11-24 17:04+0000\n"
 "PO-Revision-Date: 2026-01-19 19:16+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -61,169 +61,164 @@ msgctxt "Notification when the connection failed due to NotReady"
 msgid "The device is not ready"
 msgstr "裝置未就緒"
 
-#: qml/DeviceItem.qml:40
+#: qml/DeviceItem.qml:41
 #, kde-format
 msgid "Disconnect"
 msgstr "斷線"
 
-#: qml/DeviceItem.qml:40
+#: qml/DeviceItem.qml:41
 #, kde-format
 msgid "Connect"
 msgstr "連線"
 
-#: qml/DeviceItem.qml:51
+#: qml/DeviceItem.qml:52
 #, kde-format
 msgid "Browse Files"
 msgstr "瀏覽檔案"
 
-#: qml/DeviceItem.qml:62
+#: qml/DeviceItem.qml:63
 #, kde-format
 msgid "Send File"
 msgstr "傳送檔案"
 
-#: qml/DeviceItem.qml:71
+#: qml/DeviceItem.qml:72
 #, kde-format
 msgctxt "@action:button Forget a Bluetooth device"
 msgid "Forget"
 msgstr "忘記"
 
-#: qml/DeviceItem.qml:117
+#: qml/DeviceItem.qml:118
 #, kde-format
 msgid "Copy"
 msgstr "複製"
 
-#: qml/DeviceItem.qml:213
+#: qml/DeviceItem.qml:214
 #, kde-format
 msgid "Yes"
 msgstr "是"
 
-#: qml/DeviceItem.qml:213
+#: qml/DeviceItem.qml:214
 #, kde-format
 msgid "No"
 msgstr "否"
 
-#: qml/DeviceItem.qml:219
+#: qml/DeviceItem.qml:220
 #, kde-format
 msgctxt "@label %1 is human-readable adapter name, %2 is HCI"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: qml/DeviceItem.qml:227
+#: qml/DeviceItem.qml:228
 #, kde-format
 msgid "Remote Name"
 msgstr "遠端名稱"
 
-#: qml/DeviceItem.qml:231
+#: qml/DeviceItem.qml:232
 #, kde-format
 msgid "Address"
 msgstr "位址"
 
-#: qml/DeviceItem.qml:234
+#: qml/DeviceItem.qml:235
 #, kde-format
 msgid "Paired"
 msgstr "已配對"
 
-#: qml/DeviceItem.qml:237
+#: qml/DeviceItem.qml:238
 #, kde-format
 msgid "Trusted"
 msgstr "受信任的"
 
-#: qml/DeviceItem.qml:240
+#: qml/DeviceItem.qml:241
 #, kde-format
 msgid "Adapter"
 msgstr "轉接器"
 
-#: qml/DeviceItem.qml:248
+#: qml/DeviceItem.qml:249
 #, kde-format
 msgid "Connecting"
 msgstr "連線中"
 
-#: qml/DeviceItem.qml:250
+#: qml/DeviceItem.qml:251
 #, kde-format
 msgid "Disconnecting"
 msgstr "斷線中"
 
-#: qml/DeviceItem.qml:256
+#: qml/DeviceItem.qml:257
 #, kde-format
 msgid "Connection failed"
 msgstr "連線失敗"
 
-#: qml/DeviceItem.qml:260 qml/main.qml:74 qml/main.qml:83
-#, kde-format
-msgid "%1% Battery"
-msgstr "電量 %1%"
-
-#: qml/DeviceItem.qml:265
+#: qml/DeviceItem.qml:267
 #, kde-format
 msgid "Headset"
 msgstr "耳麥"
 
-#: qml/DeviceItem.qml:271
+#: qml/DeviceItem.qml:273
 #, kde-format
 msgid "Audio device"
 msgstr "音效裝置"
 
-#: qml/DeviceItem.qml:275
+#: qml/DeviceItem.qml:277
 #, kde-format
 msgid "Keyboard"
 msgstr "鍵盤"
 
-#: qml/DeviceItem.qml:278
+#: qml/DeviceItem.qml:280
 #, kde-format
 msgid "Mouse"
 msgstr "滑鼠"
 
-#: qml/DeviceItem.qml:281
+#: qml/DeviceItem.qml:283
 #, kde-format
 msgid "Joypad"
 msgstr "手把"
 
-#: qml/DeviceItem.qml:284
+#: qml/DeviceItem.qml:286
 #, kde-format
 msgid "Drawing tablet"
 msgstr "繪圖平板"
 
-#: qml/DeviceItem.qml:288
+#: qml/DeviceItem.qml:290
 #, kde-format
 msgid "Phone"
 msgstr "手機"
 
-#: qml/DeviceItem.qml:291
+#: qml/DeviceItem.qml:293
 #, kde-format
 msgid "Camera"
 msgstr "相機"
 
-#: qml/DeviceItem.qml:294
+#: qml/DeviceItem.qml:296
 #, kde-format
 msgid "Printer"
 msgstr "印表機"
 
-#: qml/DeviceItem.qml:301
+#: qml/DeviceItem.qml:303
 #, kde-format
 msgid "File transfer"
 msgstr "檔案傳輸"
 
-#: qml/DeviceItem.qml:304
+#: qml/DeviceItem.qml:306
 #, kde-format
 msgid "Send file"
 msgstr "傳送檔案"
 
-#: qml/DeviceItem.qml:307
+#: qml/DeviceItem.qml:309
 #, kde-format
 msgid "Input"
 msgstr "輸入"
 
-#: qml/DeviceItem.qml:310
+#: qml/DeviceItem.qml:312
 #, kde-format
 msgid "Audio"
 msgstr "音效"
 
-#: qml/DeviceItem.qml:313
+#: qml/DeviceItem.qml:315
 #, kde-format
 msgid "Network"
 msgstr "網路"
 
-#: qml/DeviceItem.qml:318
+#: qml/DeviceItem.qml:320
 #, kde-format
 msgid "Other device"
 msgstr "其他裝置"
@@ -248,32 +243,32 @@ msgstr "藍牙已關閉"
 msgid "No devices paired"
 msgstr "沒有配對裝置"
 
-#: qml/main.qml:51
+#: qml/main.qml:52
 #, kde-format
 msgid "Bluetooth"
 msgstr "藍牙"
 
-#: qml/main.qml:55
+#: qml/main.qml:56
 #, kde-format
 msgid "Bluetooth is disabled; middle-click to enable"
 msgstr "藍牙已關閉；中鍵點擊以開啟"
 
-#: qml/main.qml:59
+#: qml/main.qml:60
 #, kde-format
 msgid "No adapters available"
 msgstr "沒有可用的轉接器"
 
-#: qml/main.qml:61
+#: qml/main.qml:62
 #, kde-format
 msgid "Bluetooth is offline"
 msgstr "藍牙已離線"
 
-#: qml/main.qml:64
+#: qml/main.qml:65
 #, kde-format
 msgid "Middle-click to disable Bluetooth"
 msgstr "中鍵點擊以關閉藍牙"
 
-#: qml/main.qml:67
+#: qml/main.qml:68
 #, kde-format
 msgid "No connected devices"
 msgstr "沒有已連線的裝置"
@@ -283,32 +278,32 @@ msgstr "沒有已連線的裝置"
 msgid "%1 connected"
 msgstr "已連線 %1"
 
-#: qml/main.qml:79
+#: qml/main.qml:78
 #, kde-format
 msgctxt "Number of connected devices"
 msgid "%1 connected device"
 msgid_plural "%1 connected devices"
 msgstr[0] "%1 個已連線的裝置"
 
-#: qml/main.qml:110
+#: qml/main.qml:109
 #, kde-format
 msgctxt "@option:check"
 msgid "Enable Bluetooth"
 msgstr "開啟藍牙"
 
-#: qml/main.qml:122
+#: qml/main.qml:121
 #, kde-format
 msgctxt "@action:button"
 msgid "Pair Device…"
 msgstr "配對裝置…"
 
-#: qml/main.qml:130
+#: qml/main.qml:129
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Show badge with number of connected devices"
 msgstr "以徽章顯示連線裝置數量"
 
-#: qml/main.qml:143
+#: qml/main.qml:142
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Bluetooth…"
@@ -319,6 +314,9 @@ msgstr "設定藍牙(&B)…"
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr "更多動作"
+
+#~ msgid "%1% Battery"
+#~ msgstr "電量 %1%"
 
 #~ msgctxt ""
 #~ "@label %1 is human-readable device name, %2 is low-level device address"
