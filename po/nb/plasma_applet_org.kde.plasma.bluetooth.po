@@ -320,6 +320,3 @@ msgstr "Sett opp &Bluetooth …"
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr ""
-
-#~ msgid "%1% Battery"
-#~ msgstr "%1 % batteri"

@@ -514,6 +514,3 @@ msgstr "Annet"
 msgctxt "List separator"
 msgid ", "
 msgstr ", "
-
-#~ msgid "%1%"
-#~ msgstr "%1 %"
