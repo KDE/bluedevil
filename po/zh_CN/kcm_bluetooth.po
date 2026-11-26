@@ -14,8 +14,8 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf6-trunk/messages/bluedevil/kcm_bluetooth.pot\n"
-"X-Crowdin-File-ID: 43343\n"
+"X-Crowdin-File: /kf6-stable/messages/bluedevil/kcm_bluetooth.pot\n"
+"X-Crowdin-File-ID: 52112\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -246,11 +246,10 @@ msgid "Click <interface>Pair Device…</interface> to pair some"
 msgstr "点击 <interface>配对设备…</interface> 进行配对"
 
 #: ui/main.qml:193
-#, fuzzy, kde-kuit-format
-#| msgid "%1%"
+#, kde-kuit-format
 msgctxt "@label/rich"
 msgid "%1"
-msgstr "%1%"
+msgstr "%1"
 
 #: ui/main.qml:235
 #, kde-format
@@ -401,9 +400,3 @@ msgstr "其他"
 msgctxt "List separator"
 msgid ", "
 msgstr "，"
-
-#~ msgid "Connected"
-#~ msgstr "已连接"
-
-#~ msgid "Available"
-#~ msgstr "可用"
