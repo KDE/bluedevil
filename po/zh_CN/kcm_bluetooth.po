@@ -492,6 +492,3 @@ msgstr "其他"
 msgctxt "List separator"
 msgid ", "
 msgstr "，"
-
-#~ msgid "%1%"
-#~ msgstr "%1%"

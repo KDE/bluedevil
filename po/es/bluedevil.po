@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-25 01:27+0000\n"
-"PO-Revision-Date: 2026-08-06 00:02+0100\n"
+"PO-Revision-Date: 2026-11-26 23:53+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 26.04.3\n"
+"X-Generator: Lokalize 26.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -34,30 +34,30 @@ msgstr "ecuadra@eloihr.net"
 #, kde-format
 msgctxt "@label Bluetooth battery for the left earbud"
 msgid "Left"
-msgstr ""
+msgstr "Izquierda"
 
 #: components/BatteryUtils.qml:62
 #, kde-format
 msgctxt "@label Bluetooth battery for the right earbud"
 msgid "Right"
-msgstr ""
+msgstr "Derecha"
 
 #: components/BatteryUtils.qml:64
 #, kde-format
 msgctxt "@label Bluetooth battery for the charging case"
 msgid "Case"
-msgstr ""
+msgstr "Caja"
 
 #: components/BatteryUtils.qml:77
 #, kde-format
 msgid "%1% Battery"
-msgstr ""
+msgstr "Batería al %1 %"
 
 #: components/BatteryUtils.qml:78
 #, kde-format
 msgctxt "@info Bluetooth battery level is unknown"
 msgid "Battery level unknown"
-msgstr ""
+msgstr "Nivel de batería desconocido"
 
 #: components/BatteryUtils.qml:83
 #, kde-format
@@ -65,13 +65,13 @@ msgctxt ""
 "@info Bluetooth component battery level; %1 is the component name and %2 is "
 "the percentage"
 msgid "%1: %2%"
-msgstr ""
+msgstr "%1: %2 %"
 
 #: components/BatteryUtils.qml:84
 #, kde-format
 msgctxt "@info Bluetooth component battery level; %1 is the component name"
 msgid "%1: Unknown"
-msgstr ""
+msgstr "%1: Desconocido"
 
 #: components/ForgetDeviceDialog.qml:39
 #, kde-format

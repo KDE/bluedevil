@@ -313,6 +313,3 @@ msgstr "配置蓝牙(&B)…"
 msgctxt "@action:button opens hamburger menu"
 msgid "More actions"
 msgstr "更多操作"
-
-#~ msgid "%1% Battery"
-#~ msgstr "%1% 电量"

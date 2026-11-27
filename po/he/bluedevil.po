@@ -9,16 +9,16 @@ msgstr ""
 "Project-Id-Version: bluedevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-25 01:27+0000\n"
-"PO-Revision-Date: 2026-08-06 09:13+0300\n"
+"PO-Revision-Date: 2026-11-26 08:29+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: צוות התרגום של KDE ישראל\n"
+"Language-Team: Hebrew <kde-l10n-he@kde.org>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 26.04.3\n"
+"X-Generator: Lokalize 26.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -34,30 +34,30 @@ msgstr "ttv200@gmail.com,kde-l10n-he@kde.org"
 #, kde-format
 msgctxt "@label Bluetooth battery for the left earbud"
 msgid "Left"
-msgstr ""
+msgstr "שמאל"
 
 #: components/BatteryUtils.qml:62
 #, kde-format
 msgctxt "@label Bluetooth battery for the right earbud"
 msgid "Right"
-msgstr ""
+msgstr "ימין"
 
 #: components/BatteryUtils.qml:64
 #, kde-format
 msgctxt "@label Bluetooth battery for the charging case"
 msgid "Case"
-msgstr ""
+msgstr "נרתיק"
 
 #: components/BatteryUtils.qml:77
 #, kde-format
 msgid "%1% Battery"
-msgstr ""
+msgstr "%1% סוללה"
 
 #: components/BatteryUtils.qml:78
 #, kde-format
 msgctxt "@info Bluetooth battery level is unknown"
 msgid "Battery level unknown"
-msgstr ""
+msgstr "רמת הסוללה לא ידועה"
 
 #: components/BatteryUtils.qml:83
 #, kde-format
@@ -65,15 +65,13 @@ msgctxt ""
 "@info Bluetooth component battery level; %1 is the component name and %2 is "
 "the percentage"
 msgid "%1: %2%"
-msgstr ""
+msgstr "%1: %2%"
 
 #: components/BatteryUtils.qml:84
-#, fuzzy, kde-format
-#| msgctxt "Type of device: could not be determined"
-#| msgid "Unknown"
+#, kde-format
 msgctxt "@info Bluetooth component battery level; %1 is the component name"
 msgid "%1: Unknown"
-msgstr "לא ידוע"
+msgstr "%1: לא ידוע"
 
 #: components/ForgetDeviceDialog.qml:39
 #, kde-format
